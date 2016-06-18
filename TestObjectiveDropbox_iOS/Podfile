@@ -1,0 +1,3 @@
+target "TestObjectiveDropbox_iOS" do
+    pod 'ObjectiveDropbox', :path => '../'
+end
