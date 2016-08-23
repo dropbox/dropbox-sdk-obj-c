@@ -56,11 +56,11 @@
 }
 
 + (DbxFilesAlphaGetMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *includeMediaInfo = [DbxBoolSerializer deserialize:valueDict[@"include_media_info"]];
-    NSNumber *includeDeleted = [DbxBoolSerializer deserialize:valueDict[@"include_deleted"]];
-    NSNumber *includeHasExplicitSharedMembers = [DbxBoolSerializer deserialize:valueDict[@"include_has_explicit_shared_members"]];
-    NSArray<NSString *> *includePropertyTemplates = valueDict[@"include_property_templates"] != nil ? [DbxArraySerializer deserialize:valueDict[@"include_property_templates"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *includeMediaInfo = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeDeleted = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeHasExplicitSharedMembers = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<NSString *> *includePropertyTemplates = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }] : nil;
 
     return [[DbxFilesAlphaGetMetadataArg alloc] initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers includePropertyTemplates:includePropertyTemplates];
 }

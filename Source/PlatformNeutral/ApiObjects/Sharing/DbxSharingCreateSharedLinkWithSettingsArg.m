@@ -53,8 +53,8 @@
 }
 
 + (DbxSharingCreateSharedLinkWithSettingsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    DbxSharingSharedLinkSettings *settings = valueDict[@"settings"] != nil ? [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    DbxSharingSharedLinkSettings *settings = valueDict != nil ? [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:path settings:settings];
 }

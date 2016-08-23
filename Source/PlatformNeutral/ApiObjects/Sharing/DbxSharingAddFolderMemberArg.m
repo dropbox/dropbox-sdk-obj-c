@@ -59,10 +59,10 @@
 }
 
 + (DbxSharingAddFolderMemberArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSArray<DbxSharingAddMember *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id obj) { return [DbxSharingAddMemberSerializer deserialize:obj]; }];
-    NSNumber *quiet = [DbxBoolSerializer deserialize:valueDict[@"quiet"]];
-    NSString *customMessage = valueDict[@"custom_message"] != nil ? [DbxStringSerializer deserialize:valueDict[@"custom_message"]] : nil;
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxSharingAddMember *> *members = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingAddMemberSerializer deserialize:obj]; }];
+    NSNumber *quiet = [DbxBoolSerializer deserialize:valueDict];
+    NSString *customMessage = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId members:members quiet:quiet customMessage:customMessage];
 }

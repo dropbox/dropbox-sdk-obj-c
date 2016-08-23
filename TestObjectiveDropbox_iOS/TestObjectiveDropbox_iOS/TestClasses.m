@@ -21,6 +21,12 @@
 #import "DbxFilesUploadSessionStartResult.h"
 #import "DbxFilesListFolderLongpollResult.h"
 #import "DbxFilesListFolderGetLatestCursorResult.h"
+#import "DbxSharingShareFolderLaunch.h"
+#import "DbxSharingSharedFolderMetadata.h"
+#import "DbxSharingSharedLinkMetadata.h"
+#import "DbxSharingMemberSelector.h"
+#import "DbxSharingAddMember.h"
+#import "DbxSharingJobStatus.h"
 
 void MyLog(NSString *format, ...) {
     va_list args;
@@ -104,7 +110,7 @@ void MyLog(NSString *format, ...) {
     return self;
 }
 
-- (void)delete:(void (^)())nextTest {
+- (void)delete_:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     [[[_tester.files delete_:_tester.testData.baseFolder] response:^(DbxFilesMetadata *result, DbxFilesDeleteError *routeError, DbxError *error) {
         if (result) {
@@ -142,7 +148,7 @@ void MyLog(NSString *format, ...) {
         if (result) {
             MyLog(@"Something went wrong...\n");
         } else {
-            MyLog(@"Intentionally errored.\n");
+            [TestFormat printOffset:@"Intentionally errored.\n"];
             [TestFormat printErrors:error routeError:routeError];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
             nextTest();
@@ -169,7 +175,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)uploadData:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_data"];
+    NSString *outputPath = _tester.testData.testFilePath;
     [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
         if (result) {
             MyLog(@"%@\n", result);
@@ -226,40 +232,7 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)uploadFile:(void (^)())nextTest {
-    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
-    [[[_tester.files uploadURL:outputPath inputURL:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
-    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
-    }];
-}
-
-- (void)uploadStream:(void (^)())nextTest {
-    nextTest();
-//    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-//    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
-//    [[[_tester.files uploadStream:outputPath inputStream:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
-//        if (result) {
-//            MyLog(@"%@\n", result);
-//            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-//            nextTest();
-//        } else {
-//            [TestFormat abort:error routeError:routeError];
-//        }
-//    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-//        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
-//    }];
-}
-
-- (void)copy:(void (^)())nextTest {
+- (void)dCopy:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *copyOutputPath = [NSString stringWithFormat:@"%@%@%@%@", _tester.testData.testFilePath, @"_duplicate", @"_", _tester.testData.testId];
     [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
@@ -275,7 +248,7 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)copyReferenceGet:(void (^)())nextTest {
+- (void)dCopyReferenceGet:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath] response:^(DbxFilesGetCopyReferenceResult *result, DbxFilesGetCopyReferenceError *routeError, DbxError *error) {
         if (result) {
@@ -359,8 +332,11 @@ void MyLog(NSString *format, ...) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printOffset:@"Created destination folder"];
+            
+            NSString *fileToMove = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"];
+            NSString *destPath = [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", _tester.testData.testFileName, @"_session"];
 
-            [[[_tester.files move:_tester.testData.testFolderPath toPath:folderPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
+            [[[_tester.files move:fileToMove toPath:destPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
                 if (result) {
                     MyLog(@"%@\n", result);
                     [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -472,12 +448,43 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
+- (void)uploadFile:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
+    [[[_tester.files uploadURL:outputPath inputURL:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)uploadStream:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
+    [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
 - (void)listFolderLongpollAndTrigger:(void (^)())nextTest asMember:(BOOL)asMember {
     if (asMember) {
         nextTest();
         return;
     }
-    
 
     void (^copy)() = ^{
         [TestFormat printOffset:@"Making change that longpoll will detect (copy file)"];
@@ -538,6 +545,278 @@ void MyLog(NSString *format, ...) {
             [TestFormat printOffset:@"Cursor acquired"];
             MyLog(@"%@\n", result);
             listFolderLongpoll(result.cursor);
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+@end
+
+
+@implementation SharingTests
+
+- (instancetype)init:(DropboxTester *)tester{
+    self = [super init];
+    if (self) {
+        _tester = tester;
+        _sharedFolderId = @"placeholder";
+        _sharedLink = @"placeholder";
+    }
+    return self;
+}
+
+- (void)shareFolder:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing shareFolder:_tester.testData.testShareFolderPath] response:^(DbxSharingShareFolderLaunch *result, DbxSharingShareFolderError *routeError, DbxError *error) {
+        if (result) {
+            if ([result isAsyncJobId]) {
+                [TestFormat printOffset:[NSString stringWithFormat:@"Folder not yet shared! Job id: %@. Please adjust test order.", result.asyncJobId]];
+            } else if ([result isComplete]) {
+                MyLog(@"%@\n", result.complete);
+                _sharedFolderId = result.complete.sharedFolderId;
+                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                nextTest();
+            } else {
+                [TestFormat printOffset:@"Improperly handled share folder result"];
+                [TestFormat abort:error routeError:routeError];
+            }
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)createSharedLinkWithSettings:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath] response:^(DbxSharingSharedLinkMetadata *result, DbxSharingCreateSharedLinkWithSettingsError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            _sharedLink = result.url;
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)getFolderMetadata:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing getFolderMetadata:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingSharedFolderAccessError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)getSharedLinkMetadata:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing getSharedLinkMetadata:_sharedLink] response:^(DbxSharingSharedLinkMetadata *result, DbxSharingSharedLinkError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)addFolderMember:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxSharingMemberSelector *memberSelector = [[DbxSharingMemberSelector alloc] initWithEmail:_tester.testData.accountId3Email];
+    DbxSharingAddMember *addFolderMemberArg = [[DbxSharingAddMember alloc] initWithMember:memberSelector];
+    [[[_tester.sharing addFolderMember:_sharedFolderId members:@[addFolderMemberArg] quiet:[NSNumber numberWithBool:YES] customMessage:nil] response:^(DbxNilObject *result, DbxSharingAddFolderMemberError *routeError, DbxError *error) {
+        if (!error) {
+            [TestFormat printOffset:@"Folder member added"];
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)listFolderMembers:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing listFolderMembers:_sharedFolderId] response:^(DbxSharingSharedFolderMembers *result, DbxSharingSharedFolderAccessError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)listFolders:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing listFolders:[NSNumber numberWithInteger:2] actions:nil] response:^(DbxSharingListFoldersResult *result, DbxNilObject *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)listSharedLinks:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing listSharedLinks] response:^(DbxSharingListSharedLinksResult *result, DbxSharingListSharedLinksError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)removeFolderMember:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxSharingMemberSelector *memberSelector = [[DbxSharingMemberSelector alloc] initWithDropboxId:_tester.testData.accountId3];
+    
+
+    void (^checkJobStatus)(NSString *) = ^(NSString *asyncJobId) {
+        [[[_tester.sharing checkJobStatus:asyncJobId] response:^(DbxSharingJobStatus *result, DbxAsyncPollError *routeError, DbxError *error) {
+            if (result) {
+                MyLog(@"%@\n", result);
+                if ([result isInProgress]) {
+                    [TestFormat printOffset:[NSString stringWithFormat:@"Folder member not yet removed! Job id: %@. Please adjust test order.", asyncJobId]];
+                } else if ([result isComplete]) {
+                    [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                    nextTest();
+                } else if ([result isFailed]) {
+                    [TestFormat abort:error routeError:result.failed];
+                }
+                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                nextTest();
+            } else {
+                [TestFormat abort:error routeError:routeError];
+            }
+        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+            [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+        }];
+    };
+    
+    [[[_tester.sharing removeFolderMember:_sharedFolderId member:memberSelector leaveACopy:[NSNumber numberWithBool:NO]] response:^(DbxAsyncLaunchResultBase *result, DbxSharingRemoveFolderMemberError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            if ([result isAsyncJobId]) {
+                [TestFormat printOffset:[NSString stringWithFormat:@"Folder member not yet removed! Job id: %@", result.asyncJobId]];
+                MyLog(@"Sleeping for 3 seconds, then trying again");
+                for (int i = 0; i < 3; i++) {
+                    sleep(1);
+                    MyLog(@".");
+                }
+                MyLog(@"\n");
+                [TestFormat printOffset:@"Retrying!"];
+                checkJobStatus(result.asyncJobId);
+            } else {
+                [TestFormat printOffset:[NSString stringWithFormat:@"removeFolderMember result not properly handled."]];
+            }
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)revokeSharedLink:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing revokeSharedLink:_sharedLink] response:^(DbxNilObject *result, DbxSharingRevokeSharedLinkError *routeError, DbxError *error) {
+        if (!routeError) {
+            [TestFormat printOffset:@"Shared link revoked"];
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)unmountFolder:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing unmountFolder:_sharedFolderId] response:^(DbxNilObject *result, DbxSharingUnmountFolderError *routeError, DbxError *error) {
+        if (!routeError) {
+            [TestFormat printOffset:@"Folder unmounted"];
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)mountFolder:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing mountFolder:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingMountFolderError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)updateFolderPolicy:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing updateFolderPolicy:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingUpdateFolderPolicyError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)unshareFolder:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.sharing unshareFolder:_sharedFolderId] response:^(DbxAsyncLaunchEmptyResult *result, DbxSharingUnshareFolderError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
         } else {
             [TestFormat abort:error routeError:routeError];
         }
@@ -634,7 +913,7 @@ static int smallDividerSize = 150;
 
 + (void)printErrors:(DbxError *)error routeError:(id)routeError {
     MyLog(@"ERROR: %@\n", error);
-    MyLog(@"RouteERROR: %@\n", routeError);
+    MyLog(@"ROUTE_ERROR: %@\n", routeError);
 }
 
 + (void)printSentProgress:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {

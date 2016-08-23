@@ -85,21 +85,21 @@
 }
 
 + (DbxTeamGetActivityReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
-    NSArray<NSNumber *> *adds = [DbxArraySerializer deserialize:valueDict[@"adds"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *edits = [DbxArraySerializer deserialize:valueDict[@"edits"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *deletes = [DbxArraySerializer deserialize:valueDict[@"deletes"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeUsers28Day = [DbxArraySerializer deserialize:valueDict[@"active_users_28_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeUsers7Day = [DbxArraySerializer deserialize:valueDict[@"active_users_7_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeUsers1Day = [DbxArraySerializer deserialize:valueDict[@"active_users_1_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeSharedFolders28Day = [DbxArraySerializer deserialize:valueDict[@"active_shared_folders_28_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeSharedFolders7Day = [DbxArraySerializer deserialize:valueDict[@"active_shared_folders_7_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *activeSharedFolders1Day = [DbxArraySerializer deserialize:valueDict[@"active_shared_folders_1_day"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedLinksCreated = [DbxArraySerializer deserialize:valueDict[@"shared_links_created"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedLinksViewedByTeam = [DbxArraySerializer deserialize:valueDict[@"shared_links_viewed_by_team"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedLinksViewedByOutsideUser = [DbxArraySerializer deserialize:valueDict[@"shared_links_viewed_by_outside_user"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedLinksViewedByNotLoggedIn = [DbxArraySerializer deserialize:valueDict[@"shared_links_viewed_by_not_logged_in"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedLinksViewedTotal = [DbxArraySerializer deserialize:valueDict[@"shared_links_viewed_total"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSString *startDate = [DbxStringSerializer deserialize:valueDict];
+    NSArray<NSNumber *> *adds = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *edits = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *deletes = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeUsers28Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeUsers7Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeUsers1Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeSharedFolders28Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeSharedFolders7Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *activeSharedFolders1Day = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedLinksCreated = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedLinksViewedByTeam = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedLinksViewedByOutsideUser = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedLinksViewedByNotLoggedIn = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedLinksViewedTotal = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
 
     return [[DbxTeamGetActivityReport alloc] initWithStartDate:startDate adds:adds edits:edits deletes:deletes activeUsers28Day:activeUsers28Day activeUsers7Day:activeUsers7Day activeUsers1Day:activeUsers1Day activeSharedFolders28Day:activeSharedFolders28Day activeSharedFolders7Day:activeSharedFolders7Day activeSharedFolders1Day:activeSharedFolders1Day sharedLinksCreated:sharedLinksCreated sharedLinksViewedByTeam:sharedLinksViewedByTeam sharedLinksViewedByOutsideUser:sharedLinksViewedByOutsideUser sharedLinksViewedByNotLoggedIn:sharedLinksViewedByNotLoggedIn sharedLinksViewedTotal:sharedLinksViewedTotal];
 }

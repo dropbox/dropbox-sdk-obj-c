@@ -49,7 +49,7 @@
 }
 
 + (DbxSharingGetSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
+    NSString *path = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingGetSharedLinksArg alloc] initWithPath:path];
 }

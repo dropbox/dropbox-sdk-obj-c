@@ -47,7 +47,7 @@
 }
 
 + (DbxTeamIncludeMembersArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
+    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamIncludeMembersArg alloc] initWithReturnMembers:returnMembers];
 }

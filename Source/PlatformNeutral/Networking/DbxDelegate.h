@@ -16,8 +16,6 @@
 
 - (void)addUploadProgressHandler:(NSURLSessionTask *)task session:(NSURLSession *)session progressHandler:(void (^)(int64_t, int64_t, int64_t))handler;
 
-- (void)addUploadStream:(NSURLSessionTask *)task session:(NSURLSession *)session stream:(NSStream *)stream;
-
 - (void)addDownloadCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler;
 
 - (void)addDownloadProgressHandler:(NSURLSessionTask *)task session:(NSURLSession *)session progressHandler:(void (^)(int64_t, int64_t, int64_t))handler;

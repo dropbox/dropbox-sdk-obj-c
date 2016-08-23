@@ -76,14 +76,14 @@
 }
 
 + (DbxFilesFolderMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *id_ = [DbxStringSerializer deserialize:valueDict[@"id"]];
-    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
-    NSString *pathDisplay = valueDict[@"path_display"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_display"]] : nil;
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
-    NSString *sharedFolderId = valueDict[@"shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]] : nil;
-    DbxFilesFolderSharingInfo *sharingInfo = valueDict[@"sharing_info"] != nil ? [DbxFilesFolderSharingInfoSerializer deserialize:valueDict[@"sharing_info"]] : nil;
-    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict[@"property_groups"] != nil ? [DbxArraySerializer deserialize:valueDict[@"property_groups"] withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer deserialize:obj]; }] : nil;
+    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *id_ = [DbxStringSerializer deserialize:valueDict];
+    NSString *pathLower = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *pathDisplay = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *sharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    DbxFilesFolderSharingInfo *sharingInfo = valueDict != nil ? [DbxFilesFolderSharingInfoSerializer deserialize:valueDict] : nil;
+    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer deserialize:obj]; }] : nil;
 
     return [[DbxFilesFolderMetadata alloc] initWithName:name id_:id_ pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId sharedFolderId:sharedFolderId sharingInfo:sharingInfo propertyGroups:propertyGroups];
 }

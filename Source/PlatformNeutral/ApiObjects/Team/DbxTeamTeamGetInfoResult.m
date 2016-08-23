@@ -52,11 +52,11 @@
 }
 
 + (DbxTeamTeamGetInfoResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *teamId = [DbxStringSerializer deserialize:valueDict[@"team_id"]];
-    NSNumber *numLicensedUsers = [DbxNSNumberSerializer deserialize:valueDict[@"num_licensed_users"]];
-    NSNumber *numProvisionedUsers = [DbxNSNumberSerializer deserialize:valueDict[@"num_provisioned_users"]];
-    DbxTeamPoliciesTeamMemberPolicies *policies = [DbxTeamPoliciesTeamMemberPoliciesSerializer deserialize:valueDict[@"policies"]];
+    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *teamId = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *numLicensedUsers = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *numProvisionedUsers = [DbxNSNumberSerializer deserialize:valueDict];
+    DbxTeamPoliciesTeamMemberPolicies *policies = [DbxTeamPoliciesTeamMemberPoliciesSerializer deserialize:valueDict];
 
     return [[DbxTeamTeamGetInfoResult alloc] initWithName:name teamId:teamId numLicensedUsers:numLicensedUsers numProvisionedUsers:numProvisionedUsers policies:policies];
 }

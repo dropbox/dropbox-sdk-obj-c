@@ -9,7 +9,7 @@
 @implementation DbxTeamMembersListArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
 
     self = [super init];
     if (self != nil) {
@@ -50,8 +50,8 @@
 }
 
 + (DbxTeamMembersListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
-    NSNumber *includeRemoved = [DbxBoolSerializer deserialize:valueDict[@"include_removed"]];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *includeRemoved = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
 }

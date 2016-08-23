@@ -59,12 +59,12 @@
 }
 
 + (DbxTeamGetStorageReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
-    NSArray<NSNumber *> *totalUsage = [DbxArraySerializer deserialize:valueDict[@"total_usage"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedUsage = [DbxArraySerializer deserialize:valueDict[@"shared_usage"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *unsharedUsage = [DbxArraySerializer deserialize:valueDict[@"unshared_usage"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *sharedFolders = [DbxArraySerializer deserialize:valueDict[@"shared_folders"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSArray<DbxTeamStorageBucket *> *> *memberStorageMap = [DbxArraySerializer deserialize:valueDict[@"member_storage_map"] withBlock:^id(id obj) { return [DbxArraySerializer deserialize:obj withBlock:^id(id obj) { return [DbxTeamStorageBucketSerializer deserialize:obj]; }]; }];
+    NSString *startDate = [DbxStringSerializer deserialize:valueDict];
+    NSArray<NSNumber *> *totalUsage = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedUsage = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *unsharedUsage = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *sharedFolders = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSArray<DbxTeamStorageBucket *> *> *memberStorageMap = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxArraySerializer deserialize:obj withBlock:^id(id obj) { return [DbxTeamStorageBucketSerializer deserialize:obj]; }]; }];
 
     return [[DbxTeamGetStorageReport alloc] initWithStartDate:startDate totalUsage:totalUsage sharedUsage:sharedUsage unsharedUsage:unsharedUsage sharedFolders:sharedFolders memberStorageMap:memberStorageMap];
 }

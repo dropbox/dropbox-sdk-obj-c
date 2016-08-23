@@ -45,7 +45,7 @@
 }
 
 + (DbxTeamRevokeLinkedAppBatchResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamRevokeLinkedAppStatus *> *revokeLinkedAppStatus = [DbxArraySerializer deserialize:valueDict[@"revoke_linked_app_status"] withBlock:^id(id obj) { return [DbxTeamRevokeLinkedAppStatusSerializer deserialize:obj]; }];
+    NSArray<DbxTeamRevokeLinkedAppStatus *> *revokeLinkedAppStatus = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamRevokeLinkedAppStatusSerializer deserialize:obj]; }];
 
     return [[DbxTeamRevokeLinkedAppBatchResult alloc] initWithRevokeLinkedAppStatus:revokeLinkedAppStatus];
 }

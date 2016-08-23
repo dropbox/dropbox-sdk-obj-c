@@ -50,9 +50,9 @@
 }
 
 + (DbxTeamRevokeDesktopClientArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSNumber *deleteOnUnlink = [DbxBoolSerializer deserialize:valueDict[@"delete_on_unlink"]];
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *deleteOnUnlink = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamRevokeDesktopClientArg alloc] initWithSessionId:sessionId teamMemberId:teamMemberId deleteOnUnlink:deleteOnUnlink];
 }

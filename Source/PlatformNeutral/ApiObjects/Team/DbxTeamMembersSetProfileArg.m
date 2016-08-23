@@ -68,11 +68,11 @@
 }
 
 + (DbxTeamMembersSetProfileArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSString *dNewEmail = valueDict[@"new_email"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_email"]] : nil;
-    NSString *dNewExternalId = valueDict[@"new_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_external_id"]] : nil;
-    NSString *dNewGivenName = valueDict[@"new_given_name"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_given_name"]] : nil;
-    NSString *dNewSurname = valueDict[@"new_surname"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_surname"]] : nil;
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
+    NSString *dNewEmail = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *dNewExternalId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *dNewGivenName = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *dNewSurname = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxTeamMembersSetProfileArg alloc] initWithUser:user dNewEmail:dNewEmail dNewExternalId:dNewExternalId dNewGivenName:dNewGivenName dNewSurname:dNewSurname];
 }

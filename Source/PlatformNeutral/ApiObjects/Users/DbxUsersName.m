@@ -49,10 +49,10 @@
 }
 
 + (DbxUsersName *)deserialize:(NSDictionary *)valueDict {
-    NSString *givenName = [DbxStringSerializer deserialize:valueDict[@"given_name"]];
-    NSString *surname = [DbxStringSerializer deserialize:valueDict[@"surname"]];
-    NSString *familiarName = [DbxStringSerializer deserialize:valueDict[@"familiar_name"]];
-    NSString *displayName = [DbxStringSerializer deserialize:valueDict[@"display_name"]];
+    NSString *givenName = [DbxStringSerializer deserialize:valueDict];
+    NSString *surname = [DbxStringSerializer deserialize:valueDict];
+    NSString *familiarName = [DbxStringSerializer deserialize:valueDict];
+    NSString *displayName = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxUsersName alloc] initWithGivenName:givenName surname:surname familiarName:familiarName displayName:displayName];
 }

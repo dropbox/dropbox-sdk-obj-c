@@ -10,7 +10,7 @@
 
 - (instancetype)initWithCursor:(NSString *)cursor timeout:(NSNumber *)timeout {
     [DbxStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](cursor);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:30] maxValue:[NSNumber numberWithInt:480]](timeout);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:30] maxValue:[NSNumber numberWithInt:480]](timeout ?: [NSNumber numberWithInt:30]);
 
     self = [super init];
     if (self != nil) {
@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListFolderLongpollArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
-    NSNumber *timeout = [DbxNSNumberSerializer deserialize:valueDict[@"timeout"]];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *timeout = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
 }

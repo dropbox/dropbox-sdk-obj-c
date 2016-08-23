@@ -61,10 +61,10 @@
 }
 
 + (DbxSharingSharedFileMembers *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingUserMembershipInfo *> *users = [DbxArraySerializer deserialize:valueDict[@"users"] withBlock:^id(id obj) { return [DbxSharingUserMembershipInfoSerializer deserialize:obj]; }];
-    NSArray<DbxSharingGroupMembershipInfo *> *groups = [DbxArraySerializer deserialize:valueDict[@"groups"] withBlock:^id(id obj) { return [DbxSharingGroupMembershipInfoSerializer deserialize:obj]; }];
-    NSArray<DbxSharingInviteeMembershipInfo *> *invitees = [DbxArraySerializer deserialize:valueDict[@"invitees"] withBlock:^id(id obj) { return [DbxSharingInviteeMembershipInfoSerializer deserialize:obj]; }];
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSArray<DbxSharingUserMembershipInfo *> *users = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingUserMembershipInfoSerializer deserialize:obj]; }];
+    NSArray<DbxSharingGroupMembershipInfo *> *groups = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingGroupMembershipInfoSerializer deserialize:obj]; }];
+    NSArray<DbxSharingInviteeMembershipInfo *> *invitees = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingInviteeMembershipInfoSerializer deserialize:obj]; }];
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingSharedFileMembers alloc] initWithUsers:users groups:groups invitees:invitees cursor:cursor];
 }

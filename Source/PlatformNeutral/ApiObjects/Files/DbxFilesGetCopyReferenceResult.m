@@ -48,9 +48,9 @@
 }
 
 + (DbxFilesGetCopyReferenceResult *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict[@"metadata"]];
-    NSString *dCopyReference = [DbxStringSerializer deserialize:valueDict[@"copy_reference"]];
-    NSDate *expires = [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict];
+    NSString *dCopyReference = [DbxStringSerializer deserialize:valueDict];
+    NSDate *expires = [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
 
     return [[DbxFilesGetCopyReferenceResult alloc] initWithMetadata:metadata dCopyReference:dCopyReference expires:expires];
 }

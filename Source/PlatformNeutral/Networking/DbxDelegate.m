@@ -84,7 +84,6 @@
     completionHandler(location, downloadTask.response, nil);
     
     [_downloadTasks[sessionIdentifier] removeObjectForKey:@(downloadTask.taskIdentifier)];
-    [_downloadTasks removeObjectForKey:sessionIdentifier];
 }
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
@@ -92,12 +91,6 @@
 
     [_uploadTasks[sessionIdentifier] removeAllObjects];
     [_downloadTasks[sessionIdentifier] removeAllObjects];
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler {
-    NSString *sessionIdentifier = session.configuration.identifier ?: @"foreground_tasks";
-
-    completionHandler(_uploadTasks[sessionIdentifier][@(task.taskIdentifier)][@"stream"]);
 }
 
 - (void)addRpcCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
@@ -150,19 +143,6 @@
     }
     
     [_uploadTasks[sessionIdentifier][@(task.taskIdentifier)] setObject:handler forKey:@"progressHandlers"];
-}
-
-- (void)addUploadStream:(NSURLSessionTask *)task session:(NSURLSession *)session stream:(NSStream *)stream {
-    NSString *sessionIdentifier = session.configuration.identifier ?: @"foreground_tasks";
-    
-    if (!_uploadTasks[sessionIdentifier]) {
-        [_uploadTasks setObject:[NSMutableDictionary new] forKey:sessionIdentifier];
-    }
-    if (!_uploadTasks[sessionIdentifier][@(task.taskIdentifier)]) {
-        [_uploadTasks[sessionIdentifier] setObject:[NSMutableDictionary new] forKey:@(task.taskIdentifier)];
-    }
-    
-    [_uploadTasks[sessionIdentifier][@(task.taskIdentifier)] setObject:stream forKey:@"stream"];
 }
 
 - (void)addDownloadCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler {

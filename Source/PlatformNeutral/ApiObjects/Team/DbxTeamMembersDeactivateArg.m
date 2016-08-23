@@ -50,8 +50,8 @@
 }
 
 + (DbxTeamMembersDeactivateArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict[@"wipe_data"]];
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
+    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
 }

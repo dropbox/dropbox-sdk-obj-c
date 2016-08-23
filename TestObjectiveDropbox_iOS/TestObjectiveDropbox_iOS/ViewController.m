@@ -142,6 +142,9 @@
     void (^testUsersEndpoints)() = ^{
         [self testUsersEndpoints:tester nextTest:end];
     };
+    void (^testSharingEndpoints)() = ^{
+        [self testSharingEndpoints:tester nextTest:end];
+    };
     void (^testFilesEndpoints)() = ^{
         [self testFilesEndpoints:tester nextTest:end asMember:asMember];
     };
@@ -149,7 +152,7 @@
         [self testAuthEndpoints:tester nextTest:end];
     };
     void (^start)() = ^{
-        testFilesEndpoints();
+        testSharingEndpoints();
     };
     
     start();
@@ -184,8 +187,14 @@
     void (^listFolderLongpollAndTrigger)() = ^{
         [filesTests listFolderLongpollAndTrigger:end asMember:asMember];
     };
+    void (^uploadStream)() = ^{
+        [filesTests uploadStream:listFolderLongpollAndTrigger];
+    };
+    void (^uploadFile)() = ^{
+        [filesTests uploadFile:uploadStream];
+    };
     void (^downloadToMemory)() = ^{
-        [filesTests downloadToMemory:listFolderLongpollAndTrigger];
+        [filesTests downloadToMemory:uploadFile];
     };
     void (^downloadToFileAgain)() = ^{
         [filesTests downloadToFileAgain:downloadToMemory];
@@ -211,20 +220,14 @@
     void (^getMetadata)() = ^{
         [filesTests getMetadata:getMetadataError];
     };
-    void (^copyReferenceGet)() = ^{
-        [filesTests copyReferenceGet:getMetadata];
+    void (^dCopyReferenceGet)() = ^{
+        [filesTests dCopyReferenceGet:getMetadata];
     };
-    void (^copy)() = ^{
-        [filesTests copy:copyReferenceGet];
-    };
-    void (^uploadStream)() = ^{
-        [filesTests uploadStream:copy];
-    };
-    void (^uploadFile)() = ^{
-        [filesTests uploadFile:uploadStream];
+    void (^dCopy)() = ^{
+        [filesTests dCopy:dCopyReferenceGet];
     };
     void (^uploadDataSession)() = ^{
-        [filesTests uploadDataSession:uploadFile];
+        [filesTests uploadDataSession:dCopy];
     };
     void (^uploadData)() = ^{
         [filesTests uploadData:uploadDataSession];
@@ -238,11 +241,68 @@
     void (^createFolder)() = ^{
         [filesTests createFolder:listFolderError];
     };
-    void (^delete)() = ^{
-        [filesTests delete:createFolder];
+    void (^delete_)() = ^{
+        [filesTests delete_:createFolder];
     };
     void (^start)() = ^{
-        delete();
+        delete_();
+    };
+    
+    [TestFormat printTestBegin:NSStringFromSelector(_cmd)];
+    start();
+}
+
+- (void)testSharingEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest {
+    SharingTests *sharingTests = [[SharingTests alloc] init:tester];
+    
+    void (^end)() = ^{
+        [TestFormat printTestEnd];
+        nextTest();
+    };
+    void (^unshareFolder)() = ^{
+        [sharingTests updateFolderPolicy:end];
+    };
+    void (^updateFolderPolicy)() = ^{
+        [sharingTests updateFolderPolicy:unshareFolder];
+    };
+    void (^mountFolder)() = ^{
+        [sharingTests mountFolder:updateFolderPolicy];
+    };
+    void (^unmountFolder)() = ^{
+        [sharingTests unmountFolder:mountFolder];
+    };
+    void (^revokeSharedLink)() = ^{
+        [sharingTests revokeSharedLink:unmountFolder];
+    };
+    void (^removeFolderMember)() = ^{
+        [sharingTests removeFolderMember:revokeSharedLink];
+    };
+    void (^listSharedLinks)() = ^{
+        [sharingTests listSharedLinks:removeFolderMember];
+    };
+    void (^listFolders)() = ^{
+        [sharingTests listFolders:listSharedLinks];
+    };
+    void (^listFolderMembers)() = ^{
+        [sharingTests listFolderMembers:listFolders];
+    };
+    void (^addFolderMember)() = ^{
+        [sharingTests addFolderMember:listFolderMembers];
+    };
+    void (^getSharedLinkMetadata)() = ^{
+        [sharingTests getSharedLinkMetadata:addFolderMember];
+    };
+    void (^getFolderMetadata)() = ^{
+        [sharingTests getFolderMetadata:getSharedLinkMetadata];
+    };
+    void (^createSharedLinkWithSettings)() = ^{
+        [sharingTests createSharedLinkWithSettings:getFolderMetadata];
+    };
+    void (^shareFolder)() = ^{
+        [sharingTests shareFolder:createSharedLinkWithSettings];
+    };
+    void (^start)() = ^{
+        shareFolder();
     };
     
     [TestFormat printTestBegin:NSStringFromSelector(_cmd)];

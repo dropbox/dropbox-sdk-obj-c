@@ -47,7 +47,7 @@
 }
 
 + (DbxFilesUploadSessionStartArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *close = [DbxBoolSerializer deserialize:valueDict[@"close"]];
+    NSNumber *close = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxFilesUploadSessionStartArg alloc] initWithClose:close];
 }

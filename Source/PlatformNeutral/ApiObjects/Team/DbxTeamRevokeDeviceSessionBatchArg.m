@@ -45,7 +45,7 @@
 }
 
 + (DbxTeamRevokeDeviceSessionBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamRevokeDeviceSessionArg *> *revokeDevices = [DbxArraySerializer deserialize:valueDict[@"revoke_devices"] withBlock:^id(id obj) { return [DbxTeamRevokeDeviceSessionArgSerializer deserialize:obj]; }];
+    NSArray<DbxTeamRevokeDeviceSessionArg *> *revokeDevices = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamRevokeDeviceSessionArgSerializer deserialize:obj]; }];
 
     return [[DbxTeamRevokeDeviceSessionBatchArg alloc] initWithRevokeDevices:revokeDevices];
 }

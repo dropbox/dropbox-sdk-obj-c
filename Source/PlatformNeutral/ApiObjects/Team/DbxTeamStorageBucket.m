@@ -45,8 +45,8 @@
 }
 
 + (DbxTeamStorageBucket *)deserialize:(NSDictionary *)valueDict {
-    NSString *bucket = [DbxStringSerializer deserialize:valueDict[@"bucket"]];
-    NSNumber *users = [DbxNSNumberSerializer deserialize:valueDict[@"users"]];
+    NSString *bucket = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *users = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxTeamStorageBucket alloc] initWithBucket:bucket users:users];
 }

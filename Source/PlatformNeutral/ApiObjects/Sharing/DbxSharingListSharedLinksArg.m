@@ -58,9 +58,9 @@
 }
 
 + (DbxSharingListSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
-    NSNumber *directOnly = valueDict[@"direct_only"] != nil ? [DbxBoolSerializer deserialize:valueDict[@"direct_only"]] : nil;
+    NSString *path = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSNumber *directOnly = valueDict != nil ? [DbxBoolSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingListSharedLinksArg alloc] initWithPath:path cursor:cursor directOnly:directOnly];
 }

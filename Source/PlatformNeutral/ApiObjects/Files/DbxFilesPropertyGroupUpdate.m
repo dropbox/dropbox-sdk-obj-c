@@ -59,9 +59,9 @@
 }
 
 + (DbxFilesPropertyGroupUpdate *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
-    NSArray<DbxPropertiesPropertyField *> *addOrUpdateFields = valueDict[@"add_or_update_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"add_or_update_fields"] withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer deserialize:obj]; }] : nil;
-    NSArray<NSString *> *removeFields = valueDict[@"remove_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"remove_fields"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }] : nil;
+    NSString *templateId = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxPropertiesPropertyField *> *addOrUpdateFields = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer deserialize:obj]; }] : nil;
+    NSArray<NSString *> *removeFields = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }] : nil;
 
     return [[DbxFilesPropertyGroupUpdate alloc] initWithTemplateId:templateId addOrUpdateFields:addOrUpdateFields removeFields:removeFields];
 }

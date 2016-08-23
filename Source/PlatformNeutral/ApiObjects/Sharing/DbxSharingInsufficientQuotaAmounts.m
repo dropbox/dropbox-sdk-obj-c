@@ -47,9 +47,9 @@
 }
 
 + (DbxSharingInsufficientQuotaAmounts *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *spaceNeeded = [DbxNSNumberSerializer deserialize:valueDict[@"space_needed"]];
-    NSNumber *spaceShortage = [DbxNSNumberSerializer deserialize:valueDict[@"space_shortage"]];
-    NSNumber *spaceLeft = [DbxNSNumberSerializer deserialize:valueDict[@"space_left"]];
+    NSNumber *spaceNeeded = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *spaceShortage = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *spaceLeft = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxSharingInsufficientQuotaAmounts alloc] initWithSpaceNeeded:spaceNeeded spaceShortage:spaceShortage spaceLeft:spaceLeft];
 }

@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamMemberLinkedApps *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSArray<DbxTeamApiApp *> *linkedApiApps = [DbxArraySerializer deserialize:valueDict[@"linked_api_apps"] withBlock:^id(id obj) { return [DbxTeamApiAppSerializer deserialize:obj]; }];
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxTeamApiApp *> *linkedApiApps = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamApiAppSerializer deserialize:obj]; }];
 
     return [[DbxTeamMemberLinkedApps alloc] initWithTeamMemberId:teamMemberId linkedApiApps:linkedApiApps];
 }

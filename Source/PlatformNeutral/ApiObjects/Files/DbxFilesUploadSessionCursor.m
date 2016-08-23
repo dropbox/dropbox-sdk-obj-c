@@ -45,8 +45,8 @@
 }
 
 + (DbxFilesUploadSessionCursor *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSNumber *offset = [DbxNSNumberSerializer deserialize:valueDict[@"offset"]];
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *offset = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
 }

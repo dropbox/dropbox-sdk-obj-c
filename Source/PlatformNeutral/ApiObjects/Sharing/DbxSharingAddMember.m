@@ -51,8 +51,8 @@
 }
 
 + (DbxSharingAddMember *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
-    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
+    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict];
+    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict];
 
     return [[DbxSharingAddMember alloc] initWithMember:member accessLevel:accessLevel];
 }

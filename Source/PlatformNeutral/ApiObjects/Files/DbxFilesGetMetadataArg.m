@@ -54,10 +54,10 @@
 }
 
 + (DbxFilesGetMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *includeMediaInfo = [DbxBoolSerializer deserialize:valueDict[@"include_media_info"]];
-    NSNumber *includeDeleted = [DbxBoolSerializer deserialize:valueDict[@"include_deleted"]];
-    NSNumber *includeHasExplicitSharedMembers = [DbxBoolSerializer deserialize:valueDict[@"include_has_explicit_shared_members"]];
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *includeMediaInfo = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeDeleted = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeHasExplicitSharedMembers = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxFilesGetMetadataArg alloc] initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
 }

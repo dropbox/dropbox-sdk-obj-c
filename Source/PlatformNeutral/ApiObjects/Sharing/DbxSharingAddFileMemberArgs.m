@@ -63,12 +63,12 @@
 }
 
 + (DbxSharingAddFileMemberArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
-    NSArray<DbxSharingMemberSelector *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id obj) { return [DbxSharingMemberSelectorSerializer deserialize:obj]; }];
-    NSString *customMessage = valueDict[@"custom_message"] != nil ? [DbxStringSerializer deserialize:valueDict[@"custom_message"]] : nil;
-    NSNumber *quiet = [DbxBoolSerializer deserialize:valueDict[@"quiet"]];
-    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
-    NSNumber *addMessageAsComment = [DbxBoolSerializer deserialize:valueDict[@"add_message_as_comment"]];
+    NSString *file = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxSharingMemberSelector *> *members = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingMemberSelectorSerializer deserialize:obj]; }];
+    NSString *customMessage = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSNumber *quiet = [DbxBoolSerializer deserialize:valueDict];
+    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict];
+    NSNumber *addMessageAsComment = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxSharingAddFileMemberArgs alloc] initWithFile:file members:members customMessage:customMessage quiet:quiet accessLevel:accessLevel addMessageAsComment:addMessageAsComment];
 }

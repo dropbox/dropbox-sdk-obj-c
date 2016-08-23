@@ -51,8 +51,8 @@
 }
 
 + (DbxTeamMembersAddArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamMemberAddArg *> *dNewMembers = [DbxArraySerializer deserialize:valueDict[@"new_members"] withBlock:^id(id obj) { return [DbxTeamMemberAddArgSerializer deserialize:obj]; }];
-    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict[@"force_async"]];
+    NSArray<DbxTeamMemberAddArg *> *dNewMembers = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamMemberAddArgSerializer deserialize:obj]; }];
+    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamMembersAddArg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
 }

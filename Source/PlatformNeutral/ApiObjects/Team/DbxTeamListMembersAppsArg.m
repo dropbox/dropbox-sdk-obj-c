@@ -49,7 +49,7 @@
 }
 
 + (DbxTeamListMembersAppsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxTeamListMembersAppsArg alloc] initWithCursor:cursor];
 }

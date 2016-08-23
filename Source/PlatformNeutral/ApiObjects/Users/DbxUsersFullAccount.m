@@ -80,19 +80,19 @@
 }
 
 + (DbxUsersFullAccount *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
-    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
-    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
-    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict[@"disabled"]];
-    NSString *locale = [DbxStringSerializer deserialize:valueDict[@"locale"]];
-    NSString *referralLink = [DbxStringSerializer deserialize:valueDict[@"referral_link"]];
-    NSNumber *isPaired = [DbxBoolSerializer deserialize:valueDict[@"is_paired"]];
-    DbxUsersAccountType *accountType = [DbxUsersAccountTypeSerializer deserialize:valueDict[@"account_type"]];
-    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"profile_photo_url"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    DbxUsersFullTeam *team = valueDict[@"team"] != nil ? [DbxUsersFullTeamSerializer deserialize:valueDict[@"team"]] : nil;
-    NSString *teamMemberId = valueDict[@"team_member_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"team_member_id"]] : nil;
+    NSString *accountId = [DbxStringSerializer deserialize:valueDict];
+    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict];
+    NSString *email = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict];
+    NSString *locale = [DbxStringSerializer deserialize:valueDict];
+    NSString *referralLink = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *isPaired = [DbxBoolSerializer deserialize:valueDict];
+    DbxUsersAccountType *accountType = [DbxUsersAccountTypeSerializer deserialize:valueDict];
+    NSString *profilePhotoUrl = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *country = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    DbxUsersFullTeam *team = valueDict != nil ? [DbxUsersFullTeamSerializer deserialize:valueDict] : nil;
+    NSString *teamMemberId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxUsersFullAccount alloc] initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled locale:locale referralLink:referralLink isPaired:isPaired accountType:accountType profilePhotoUrl:profilePhotoUrl country:country team:team teamMemberId:teamMemberId];
 }

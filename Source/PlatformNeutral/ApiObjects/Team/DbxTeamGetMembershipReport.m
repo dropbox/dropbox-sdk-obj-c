@@ -58,12 +58,12 @@
 }
 
 + (DbxTeamGetMembershipReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
-    NSArray<NSNumber *> *teamSize = [DbxArraySerializer deserialize:valueDict[@"team_size"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *pendingInvites = [DbxArraySerializer deserialize:valueDict[@"pending_invites"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *membersJoined = [DbxArraySerializer deserialize:valueDict[@"members_joined"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *suspendedMembers = [DbxArraySerializer deserialize:valueDict[@"suspended_members"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *licenses = [DbxArraySerializer deserialize:valueDict[@"licenses"] withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSString *startDate = [DbxStringSerializer deserialize:valueDict];
+    NSArray<NSNumber *> *teamSize = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *pendingInvites = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *membersJoined = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *suspendedMembers = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *licenses = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
 
     return [[DbxTeamGetMembershipReport alloc] initWithStartDate:startDate teamSize:teamSize pendingInvites:pendingInvites membersJoined:membersJoined suspendedMembers:suspendedMembers licenses:licenses];
 }

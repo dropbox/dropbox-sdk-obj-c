@@ -55,10 +55,10 @@
 }
 
 + (DbxTeamGroupMembersSetAccessTypeArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    DbxTeamGroupAccessType *accessType = [DbxTeamGroupAccessTypeSerializer deserialize:valueDict[@"access_type"]];
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
+    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict];
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
+    DbxTeamGroupAccessType *accessType = [DbxTeamGroupAccessTypeSerializer deserialize:valueDict];
+    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType returnMembers:returnMembers];
 }

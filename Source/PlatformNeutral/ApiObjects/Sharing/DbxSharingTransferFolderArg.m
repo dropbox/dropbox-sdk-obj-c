@@ -47,8 +47,8 @@
 }
 
 + (DbxSharingTransferFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSString *toDropboxId = [DbxStringSerializer deserialize:valueDict[@"to_dropbox_id"]];
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
+    NSString *toDropboxId = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxSharingTransferFolderArg alloc] initWithSharedFolderId:sharedFolderId toDropboxId:toDropboxId];
 }

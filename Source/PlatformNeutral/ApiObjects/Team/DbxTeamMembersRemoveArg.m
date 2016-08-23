@@ -59,11 +59,11 @@
 }
 
 + (DbxTeamMembersRemoveArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict[@"wipe_data"]];
-    DbxTeamUserSelectorArg *transferDestId = valueDict[@"transfer_dest_id"] != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_dest_id"]] : nil;
-    DbxTeamUserSelectorArg *transferAdminId = valueDict[@"transfer_admin_id"] != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_admin_id"]] : nil;
-    NSNumber *keepAccount = [DbxBoolSerializer deserialize:valueDict[@"keep_account"]];
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
+    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict];
+    DbxTeamUserSelectorArg *transferDestId = valueDict != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict] : nil;
+    DbxTeamUserSelectorArg *transferAdminId = valueDict != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict] : nil;
+    NSNumber *keepAccount = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamMembersRemoveArg alloc] initWithUser:user wipeData:wipeData transferDestId:transferDestId transferAdminId:transferAdminId keepAccount:keepAccount];
 }

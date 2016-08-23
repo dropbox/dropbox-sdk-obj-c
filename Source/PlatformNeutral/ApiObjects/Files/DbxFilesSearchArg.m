@@ -11,7 +11,7 @@
 
 - (instancetype)initWithPath:(NSString *)path query:(NSString *)query start:(NSNumber *)start maxResults:(NSNumber *)maxResults mode:(DbxFilesSearchMode *)mode {
     [DbxStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)"](path);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](maxResults);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](maxResults ?: [NSNumber numberWithInt:100]);
 
     self = [super init];
     if (self != nil) {
@@ -58,11 +58,11 @@
 }
 
 + (DbxFilesSearchArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSString *query = [DbxStringSerializer deserialize:valueDict[@"query"]];
-    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict[@"start"]];
-    NSNumber *maxResults = [DbxNSNumberSerializer deserialize:valueDict[@"max_results"]];
-    DbxFilesSearchMode *mode = [DbxFilesSearchModeSerializer deserialize:valueDict[@"mode"]];
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *query = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *maxResults = [DbxNSNumberSerializer deserialize:valueDict];
+    DbxFilesSearchMode *mode = [DbxFilesSearchModeSerializer deserialize:valueDict];
 
     return [[DbxFilesSearchArg alloc] initWithPath:path query:query start:start maxResults:maxResults mode:mode];
 }

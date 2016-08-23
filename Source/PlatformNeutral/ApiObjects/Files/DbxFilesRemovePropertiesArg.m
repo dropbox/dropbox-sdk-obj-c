@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesRemovePropertiesArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSArray<NSString *> *propertyTemplateIds = [DbxArraySerializer deserialize:valueDict[@"property_template_ids"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSArray<NSString *> *propertyTemplateIds = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
 
     return [[DbxFilesRemovePropertiesArg alloc] initWithPath:path propertyTemplateIds:propertyTemplateIds];
 }

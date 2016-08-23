@@ -55,10 +55,10 @@
 }
 
 + (DbxTeamListTeamDevicesArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
-    NSNumber *includeWebSessions = [DbxBoolSerializer deserialize:valueDict[@"include_web_sessions"]];
-    NSNumber *includeDesktopClients = [DbxBoolSerializer deserialize:valueDict[@"include_desktop_clients"]];
-    NSNumber *includeMobileClients = [DbxBoolSerializer deserialize:valueDict[@"include_mobile_clients"]];
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSNumber *includeWebSessions = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeDesktopClients = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *includeMobileClients = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamListTeamDevicesArg alloc] initWithCursor:cursor includeWebSessions:includeWebSessions includeDesktopClients:includeDesktopClients includeMobileClients:includeMobileClients];
 }

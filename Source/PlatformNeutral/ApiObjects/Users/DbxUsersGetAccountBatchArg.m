@@ -44,7 +44,7 @@
 }
 
 + (DbxUsersGetAccountBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *accountIds = [DbxArraySerializer deserialize:valueDict[@"account_ids"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+    NSArray<NSString *> *accountIds = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
 
     return [[DbxUsersGetAccountBatchArg alloc] initWithAccountIds:accountIds];
 }

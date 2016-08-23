@@ -54,9 +54,9 @@
 }
 
 + (DbxSharingCreateSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *shortUrl = [DbxBoolSerializer deserialize:valueDict[@"short_url"]];
-    DbxSharingPendingUploadMode *pendingUpload = valueDict[@"pending_upload"] != nil ? [DbxSharingPendingUploadModeSerializer deserialize:valueDict[@"pending_upload"]] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *shortUrl = [DbxBoolSerializer deserialize:valueDict];
+    DbxSharingPendingUploadMode *pendingUpload = valueDict != nil ? [DbxSharingPendingUploadModeSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingCreateSharedLinkArg alloc] initWithPath:path shortUrl:shortUrl pendingUpload:pendingUpload];
 }

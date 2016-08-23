@@ -43,7 +43,7 @@
 }
 
 + (DbxTeamGroupsListContinueArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupsListContinueArg alloc] initWithCursor:cursor];
 }

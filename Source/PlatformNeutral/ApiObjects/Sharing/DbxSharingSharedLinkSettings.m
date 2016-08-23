@@ -58,9 +58,9 @@
 }
 
 + (DbxSharingSharedLinkSettings *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingRequestedVisibility *requestedVisibility = valueDict[@"requested_visibility"] != nil ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]] : nil;
-    NSString *linkPassword = valueDict[@"link_password"] != nil ? [DbxStringSerializer deserialize:valueDict[@"link_password"]] : nil;
-    NSDate *expires = valueDict[@"expires"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    DbxSharingRequestedVisibility *requestedVisibility = valueDict != nil ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict] : nil;
+    NSString *linkPassword = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSDate *expires = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxSharingSharedLinkSettings alloc] initWithRequestedVisibility:requestedVisibility linkPassword:linkPassword expires:expires];
 }

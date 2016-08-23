@@ -89,19 +89,19 @@
 }
 
 + (DbxFilesFileMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *id_ = [DbxStringSerializer deserialize:valueDict[@"id"]];
-    NSDate *clientModified = [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    NSDate *serverModified = [DbxNSDateSerializer deserialize:valueDict[@"server_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    NSString *rev = [DbxStringSerializer deserialize:valueDict[@"rev"]];
-    NSNumber *size = [DbxNSNumberSerializer deserialize:valueDict[@"size"]];
-    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
-    NSString *pathDisplay = valueDict[@"path_display"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_display"]] : nil;
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
-    DbxFilesMediaInfo *mediaInfo = valueDict[@"media_info"] != nil ? [DbxFilesMediaInfoSerializer deserialize:valueDict[@"media_info"]] : nil;
-    DbxFilesFileSharingInfo *sharingInfo = valueDict[@"sharing_info"] != nil ? [DbxFilesFileSharingInfoSerializer deserialize:valueDict[@"sharing_info"]] : nil;
-    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict[@"property_groups"] != nil ? [DbxArraySerializer deserialize:valueDict[@"property_groups"] withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer deserialize:obj]; }] : nil;
-    NSNumber *hasExplicitSharedMembers = valueDict[@"has_explicit_shared_members"] != nil ? [DbxBoolSerializer deserialize:valueDict[@"has_explicit_shared_members"]] : nil;
+    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *id_ = [DbxStringSerializer deserialize:valueDict];
+    NSDate *clientModified = [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    NSDate *serverModified = [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    NSString *rev = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *size = [DbxNSNumberSerializer deserialize:valueDict];
+    NSString *pathLower = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *pathDisplay = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    DbxFilesMediaInfo *mediaInfo = valueDict != nil ? [DbxFilesMediaInfoSerializer deserialize:valueDict] : nil;
+    DbxFilesFileSharingInfo *sharingInfo = valueDict != nil ? [DbxFilesFileSharingInfoSerializer deserialize:valueDict] : nil;
+    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer deserialize:obj]; }] : nil;
+    NSNumber *hasExplicitSharedMembers = valueDict != nil ? [DbxBoolSerializer deserialize:valueDict] : nil;
 
     return [[DbxFilesFileMetadata alloc] initWithName:name id_:id_ clientModified:clientModified serverModified:serverModified rev:rev size:size pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId mediaInfo:mediaInfo sharingInfo:sharingInfo propertyGroups:propertyGroups hasExplicitSharedMembers:hasExplicitSharedMembers];
 }

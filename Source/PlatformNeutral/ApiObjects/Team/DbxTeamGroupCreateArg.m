@@ -56,9 +56,9 @@
 }
 
 + (DbxTeamGroupCreateArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *groupName = [DbxStringSerializer deserialize:valueDict[@"group_name"]];
-    NSString *groupExternalId = valueDict[@"group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"group_external_id"]] : nil;
-    DbxTeamCommonGroupManagementType *groupManagementType = valueDict[@"group_management_type"] != nil ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]] : nil;
+    NSString *groupName = [DbxStringSerializer deserialize:valueDict];
+    NSString *groupExternalId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    DbxTeamCommonGroupManagementType *groupManagementType = valueDict != nil ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict] : nil;
 
     return [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName groupExternalId:groupExternalId groupManagementType:groupManagementType];
 }

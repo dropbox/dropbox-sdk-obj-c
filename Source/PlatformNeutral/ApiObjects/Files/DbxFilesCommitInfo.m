@@ -59,11 +59,11 @@
 }
 
 + (DbxFilesCommitInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    DbxFilesWriteMode *mode = [DbxFilesWriteModeSerializer deserialize:valueDict[@"mode"]];
-    NSNumber *autorename = [DbxBoolSerializer deserialize:valueDict[@"autorename"]];
-    NSDate *clientModified = valueDict[@"client_modified"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSNumber *mute = [DbxBoolSerializer deserialize:valueDict[@"mute"]];
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    DbxFilesWriteMode *mode = [DbxFilesWriteModeSerializer deserialize:valueDict];
+    NSNumber *autorename = [DbxBoolSerializer deserialize:valueDict];
+    NSDate *clientModified = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSNumber *mute = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxFilesCommitInfo alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
 }

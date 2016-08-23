@@ -44,7 +44,7 @@
 }
 
 + (DbxPropertiesListPropertyTemplateIds *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *templateIds = [DbxArraySerializer deserialize:valueDict[@"template_ids"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+    NSArray<NSString *> *templateIds = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
 
     return [[DbxPropertiesListPropertyTemplateIds alloc] initWithTemplateIds:templateIds];
 }

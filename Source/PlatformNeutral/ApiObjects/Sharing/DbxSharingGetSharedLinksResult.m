@@ -45,7 +45,7 @@
 }
 
 + (DbxSharingGetSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict[@"links"] withBlock:^id(id obj) { return [DbxSharingLinkMetadataSerializer deserialize:obj]; }];
+    NSArray<DbxSharingLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingLinkMetadataSerializer deserialize:obj]; }];
 
     return [[DbxSharingGetSharedLinksResult alloc] initWithLinks:links];
 }

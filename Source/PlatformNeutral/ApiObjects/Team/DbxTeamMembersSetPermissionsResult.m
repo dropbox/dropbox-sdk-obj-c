@@ -46,8 +46,8 @@
 }
 
 + (DbxTeamMembersSetPermissionsResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict[@"role"]];
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
+    DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict];
 
     return [[DbxTeamMembersSetPermissionsResult alloc] initWithTeamMemberId:teamMemberId role:role];
 }

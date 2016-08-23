@@ -43,7 +43,7 @@
 }
 
 + (DbxSharingListFilesContinueArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxSharingListFilesContinueArg alloc] initWithCursor:cursor];
 }

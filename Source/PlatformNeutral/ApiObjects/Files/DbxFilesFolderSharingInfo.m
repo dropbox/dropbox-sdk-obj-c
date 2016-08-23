@@ -57,9 +57,9 @@
 }
 
 + (DbxFilesFolderSharingInfo *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict[@"read_only"]];
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
-    NSString *sharedFolderId = valueDict[@"shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]] : nil;
+    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict];
+    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *sharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxFilesFolderSharingInfo alloc] initWithReadOnly:readOnly parentSharedFolderId:parentSharedFolderId sharedFolderId:sharedFolderId];
 }

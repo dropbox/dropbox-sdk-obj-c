@@ -53,8 +53,8 @@
 }
 
 + (DbxFilesDownloadArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSString *rev = valueDict[@"rev"] != nil ? [DbxStringSerializer deserialize:valueDict[@"rev"]] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *rev = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxFilesDownloadArg alloc] initWithPath:path rev:rev];
 }

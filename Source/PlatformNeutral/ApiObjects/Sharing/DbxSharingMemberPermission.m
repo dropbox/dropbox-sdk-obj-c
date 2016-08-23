@@ -55,9 +55,9 @@
 }
 
 + (DbxSharingMemberPermission *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingMemberAction *action = [DbxSharingMemberActionSerializer deserialize:valueDict[@"action"]];
-    NSNumber *allow = [DbxBoolSerializer deserialize:valueDict[@"allow"]];
-    DbxSharingPermissionDeniedReason *reason = valueDict[@"reason"] != nil ? [DbxSharingPermissionDeniedReasonSerializer deserialize:valueDict[@"reason"]] : nil;
+    DbxSharingMemberAction *action = [DbxSharingMemberActionSerializer deserialize:valueDict];
+    NSNumber *allow = [DbxBoolSerializer deserialize:valueDict];
+    DbxSharingPermissionDeniedReason *reason = valueDict != nil ? [DbxSharingPermissionDeniedReasonSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingMemberPermission alloc] initWithAction:action allow:allow reason:reason];
 }

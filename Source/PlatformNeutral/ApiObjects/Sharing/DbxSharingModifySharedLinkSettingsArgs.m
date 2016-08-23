@@ -52,9 +52,9 @@
 }
 
 + (DbxSharingModifySharedLinkSettingsArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
-    DbxSharingSharedLinkSettings *settings = [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]];
-    NSNumber *removeExpiration = [DbxBoolSerializer deserialize:valueDict[@"remove_expiration"]];
+    NSString *url = [DbxStringSerializer deserialize:valueDict];
+    DbxSharingSharedLinkSettings *settings = [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict];
+    NSNumber *removeExpiration = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:url settings:settings removeExpiration:removeExpiration];
 }

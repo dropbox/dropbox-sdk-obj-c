@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingGetFileMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
-    NSArray<DbxSharingFileAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id obj) { return [DbxSharingFileActionSerializer deserialize:obj]; }] : nil;
+    NSString *file = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxSharingFileAction *> *actions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingFileActionSerializer deserialize:obj]; }] : nil;
 
     return [[DbxSharingGetFileMetadataArg alloc] initWithFile:file actions:actions];
 }

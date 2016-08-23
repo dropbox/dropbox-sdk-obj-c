@@ -63,10 +63,10 @@
 }
 
 + (DbxSharingUpdateFolderPolicyArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    DbxSharingMemberPolicy *memberPolicy = valueDict[@"member_policy"] != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict[@"member_policy"]] : nil;
-    DbxSharingAclUpdatePolicy *aclUpdatePolicy = valueDict[@"acl_update_policy"] != nil ? [DbxSharingAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]] : nil;
-    DbxSharingSharedLinkPolicy *sharedLinkPolicy = valueDict[@"shared_link_policy"] != nil ? [DbxSharingSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]] : nil;
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
+    DbxSharingMemberPolicy *memberPolicy = valueDict != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict] : nil;
+    DbxSharingAclUpdatePolicy *aclUpdatePolicy = valueDict != nil ? [DbxSharingAclUpdatePolicySerializer deserialize:valueDict] : nil;
+    DbxSharingSharedLinkPolicy *sharedLinkPolicy = valueDict != nil ? [DbxSharingSharedLinkPolicySerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:sharedFolderId memberPolicy:memberPolicy aclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy];
 }

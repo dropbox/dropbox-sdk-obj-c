@@ -57,10 +57,10 @@
 }
 
 + (DbxFilesDeletedMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
-    NSString *pathDisplay = valueDict[@"path_display"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_display"]] : nil;
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
+    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *pathLower = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *pathDisplay = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxFilesDeletedMetadata alloc] initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
 }

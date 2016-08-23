@@ -9,7 +9,7 @@
 @implementation DbxTeamGroupsListArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
 
     self = [super init];
     if (self != nil) {
@@ -48,7 +48,7 @@
 }
 
 + (DbxTeamGroupsListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupsListArg alloc] initWithLimit:limit];
 }

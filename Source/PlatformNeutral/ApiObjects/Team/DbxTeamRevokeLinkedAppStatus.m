@@ -52,8 +52,8 @@
 }
 
 + (DbxTeamRevokeLinkedAppStatus *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *success = [DbxBoolSerializer deserialize:valueDict[@"success"]];
-    DbxTeamRevokeLinkedAppError *errorType = valueDict[@"error_type"] != nil ? [DbxTeamRevokeLinkedAppErrorSerializer deserialize:valueDict[@"error_type"]] : nil;
+    NSNumber *success = [DbxBoolSerializer deserialize:valueDict];
+    DbxTeamRevokeLinkedAppError *errorType = valueDict != nil ? [DbxTeamRevokeLinkedAppErrorSerializer deserialize:valueDict] : nil;
 
     return [[DbxTeamRevokeLinkedAppStatus alloc] initWithSuccess:success errorType:errorType];
 }

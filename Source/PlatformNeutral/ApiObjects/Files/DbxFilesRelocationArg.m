@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesRelocationArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *fromPath = [DbxStringSerializer deserialize:valueDict[@"from_path"]];
-    NSString *toPath = [DbxStringSerializer deserialize:valueDict[@"to_path"]];
+    NSString *fromPath = [DbxStringSerializer deserialize:valueDict];
+    NSString *toPath = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxFilesRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
 }

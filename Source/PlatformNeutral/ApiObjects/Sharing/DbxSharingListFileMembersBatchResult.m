@@ -47,8 +47,8 @@
 }
 
 + (DbxSharingListFileMembersBatchResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
-    DbxSharingListFileMembersIndividualResult *result = [DbxSharingListFileMembersIndividualResultSerializer deserialize:valueDict[@"result"]];
+    NSString *file = [DbxStringSerializer deserialize:valueDict];
+    DbxSharingListFileMembersIndividualResult *result = [DbxSharingListFileMembersIndividualResultSerializer deserialize:valueDict];
 
     return [[DbxSharingListFileMembersBatchResult alloc] initWithFile:file result:result];
 }

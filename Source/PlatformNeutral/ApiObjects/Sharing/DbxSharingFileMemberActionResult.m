@@ -47,8 +47,8 @@
 }
 
 + (DbxSharingFileMemberActionResult *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
-    DbxSharingFileMemberActionIndividualResult *result = [DbxSharingFileMemberActionIndividualResultSerializer deserialize:valueDict[@"result"]];
+    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict];
+    DbxSharingFileMemberActionIndividualResult *result = [DbxSharingFileMemberActionIndividualResultSerializer deserialize:valueDict];
 
     return [[DbxSharingFileMemberActionResult alloc] initWithMember:member result:result];
 }

@@ -70,16 +70,16 @@
 }
 
 + (DbxTeamDesktopClientSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *hostName = [DbxStringSerializer deserialize:valueDict[@"host_name"]];
-    DbxTeamDesktopPlatform *clientType = [DbxTeamDesktopPlatformSerializer deserialize:valueDict[@"client_type"]];
-    NSString *clientVersion = [DbxStringSerializer deserialize:valueDict[@"client_version"]];
-    NSString *platform = [DbxStringSerializer deserialize:valueDict[@"platform"]];
-    NSNumber *isDeleteOnUnlinkSupported = [DbxBoolSerializer deserialize:valueDict[@"is_delete_on_unlink_supported"]];
-    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
+    NSString *hostName = [DbxStringSerializer deserialize:valueDict];
+    DbxTeamDesktopPlatform *clientType = [DbxTeamDesktopPlatformSerializer deserialize:valueDict];
+    NSString *clientVersion = [DbxStringSerializer deserialize:valueDict];
+    NSString *platform = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *isDeleteOnUnlinkSupported = [DbxBoolSerializer deserialize:valueDict];
+    NSString *ipAddress = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *country = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSDate *created = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamDesktopClientSession alloc] initWithSessionId:sessionId hostName:hostName clientType:clientType clientVersion:clientVersion platform:platform isDeleteOnUnlinkSupported:isDeleteOnUnlinkSupported ipAddress:ipAddress country:country created:created updated:updated];
 }

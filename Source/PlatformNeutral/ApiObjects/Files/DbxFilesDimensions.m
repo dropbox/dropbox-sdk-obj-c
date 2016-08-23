@@ -45,8 +45,8 @@
 }
 
 + (DbxFilesDimensions *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *height = [DbxNSNumberSerializer deserialize:valueDict[@"height"]];
-    NSNumber *width = [DbxNSNumberSerializer deserialize:valueDict[@"width"]];
+    NSNumber *height = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *width = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesDimensions alloc] initWithHeight:height width:width];
 }

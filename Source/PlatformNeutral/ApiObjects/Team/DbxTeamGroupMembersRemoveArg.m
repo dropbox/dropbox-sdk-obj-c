@@ -54,9 +54,9 @@
 }
 
 + (DbxTeamGroupMembersRemoveArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
-    NSArray<DbxTeamUserSelectorArg *> *users = [DbxArraySerializer deserialize:valueDict[@"users"] withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer deserialize:obj]; }];
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
+    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict];
+    NSArray<DbxTeamUserSelectorArg *> *users = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer deserialize:obj]; }];
+    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupMembersRemoveArg alloc] initWithGroup:group users:users returnMembers:returnMembers];
 }

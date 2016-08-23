@@ -10,7 +10,7 @@
 @implementation DbxSharingListFoldersArgs 
 
 - (instancetype)initWithLimit:(NSNumber *)limit actions:(NSArray<DbxSharingFolderAction *> *)actions {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingListFoldersArgs *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
-    NSArray<DbxSharingFolderAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id obj) { return [DbxSharingFolderActionSerializer deserialize:obj]; }] : nil;
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSArray<DbxSharingFolderAction *> *actions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingFolderActionSerializer deserialize:obj]; }] : nil;
 
     return [[DbxSharingListFoldersArgs alloc] initWithLimit:limit actions:actions];
 }

@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamTeamMemberInfo *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamTeamMemberProfile *profile = [DbxTeamTeamMemberProfileSerializer deserialize:valueDict[@"profile"]];
-    DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict[@"role"]];
+    DbxTeamTeamMemberProfile *profile = [DbxTeamTeamMemberProfileSerializer deserialize:valueDict];
+    DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict];
 
     return [[DbxTeamTeamMemberInfo alloc] initWithProfile:profile role:role];
 }

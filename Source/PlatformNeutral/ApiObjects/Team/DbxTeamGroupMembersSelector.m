@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamGroupMembersSelector *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
-    DbxTeamUsersSelectorArg *users = [DbxTeamUsersSelectorArgSerializer deserialize:valueDict[@"users"]];
+    DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict];
+    DbxTeamUsersSelectorArg *users = [DbxTeamUsersSelectorArgSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupMembersSelector alloc] initWithGroup:group users:users];
 }

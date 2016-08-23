@@ -50,8 +50,8 @@
 }
 
 + (DbxSharingRelinquishFolderMembershipArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSNumber *leaveACopy = [DbxBoolSerializer deserialize:valueDict[@"leave_a_copy"]];
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *leaveACopy = [DbxBoolSerializer deserialize:valueDict];
 
     return [[DbxSharingRelinquishFolderMembershipArg alloc] initWithSharedFolderId:sharedFolderId leaveACopy:leaveACopy];
 }

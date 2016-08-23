@@ -45,7 +45,7 @@
 }
 
 + (DbxFilesUploadSessionFinishBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxFilesUploadSessionFinishArg *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id obj) { return [DbxFilesUploadSessionFinishArgSerializer deserialize:obj]; }];
+    NSArray<DbxFilesUploadSessionFinishArg *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesUploadSessionFinishArgSerializer deserialize:obj]; }];
 
     return [[DbxFilesUploadSessionFinishBatchArg alloc] initWithEntries:entries];
 }

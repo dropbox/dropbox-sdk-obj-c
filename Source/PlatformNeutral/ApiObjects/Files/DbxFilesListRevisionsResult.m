@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesListRevisionsResult *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *isDeleted = [DbxBoolSerializer deserialize:valueDict[@"is_deleted"]];
-    NSArray<DbxFilesFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id obj) { return [DbxFilesFileMetadataSerializer deserialize:obj]; }];
+    NSNumber *isDeleted = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<DbxFilesFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesFileMetadataSerializer deserialize:obj]; }];
 
     return [[DbxFilesListRevisionsResult alloc] initWithIsDeleted:isDeleted entries:entries];
 }

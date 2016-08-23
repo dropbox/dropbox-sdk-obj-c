@@ -53,8 +53,8 @@
 }
 
 + (DbxTeamDateRange *)deserialize:(NSDictionary *)valueDict {
-    NSDate *startDate = valueDict[@"start_date"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"start_date"] dateFormat:@"%Y-%m-%d"] : nil;
-    NSDate *endDate = valueDict[@"end_date"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"end_date"] dateFormat:@"%Y-%m-%d"] : nil;
+    NSDate *startDate = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%d"] : nil;
+    NSDate *endDate = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%d"] : nil;
 
     return [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
 }

@@ -44,7 +44,7 @@
 }
 
 + (DbxSharingUnmountFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxSharingUnmountFolderArg alloc] initWithSharedFolderId:sharedFolderId];
 }

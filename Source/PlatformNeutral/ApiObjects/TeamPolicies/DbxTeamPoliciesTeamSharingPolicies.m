@@ -50,9 +50,9 @@
 }
 
 + (DbxTeamPoliciesTeamSharingPolicies *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamPoliciesSharedFolderMemberPolicy *sharedFolderMemberPolicy = [DbxTeamPoliciesSharedFolderMemberPolicySerializer deserialize:valueDict[@"shared_folder_member_policy"]];
-    DbxTeamPoliciesSharedFolderJoinPolicy *sharedFolderJoinPolicy = [DbxTeamPoliciesSharedFolderJoinPolicySerializer deserialize:valueDict[@"shared_folder_join_policy"]];
-    DbxTeamPoliciesSharedLinkCreatePolicy *sharedLinkCreatePolicy = [DbxTeamPoliciesSharedLinkCreatePolicySerializer deserialize:valueDict[@"shared_link_create_policy"]];
+    DbxTeamPoliciesSharedFolderMemberPolicy *sharedFolderMemberPolicy = [DbxTeamPoliciesSharedFolderMemberPolicySerializer deserialize:valueDict];
+    DbxTeamPoliciesSharedFolderJoinPolicy *sharedFolderJoinPolicy = [DbxTeamPoliciesSharedFolderJoinPolicySerializer deserialize:valueDict];
+    DbxTeamPoliciesSharedLinkCreatePolicy *sharedLinkCreatePolicy = [DbxTeamPoliciesSharedLinkCreatePolicySerializer deserialize:valueDict];
 
     return [[DbxTeamPoliciesTeamSharingPolicies alloc] initWithSharedFolderMemberPolicy:sharedFolderMemberPolicy sharedFolderJoinPolicy:sharedFolderJoinPolicy sharedLinkCreatePolicy:sharedLinkCreatePolicy];
 }

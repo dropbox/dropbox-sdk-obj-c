@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListFolderLongpollResult *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *changes = [DbxBoolSerializer deserialize:valueDict[@"changes"]];
-    NSNumber *backoff = valueDict[@"backoff"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"backoff"]] : nil;
+    NSNumber *changes = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *backoff = valueDict != nil ? [DbxNSNumberSerializer deserialize:valueDict] : nil;
 
     return [[DbxFilesListFolderLongpollResult alloc] initWithChanges:changes backoff:backoff];
 }

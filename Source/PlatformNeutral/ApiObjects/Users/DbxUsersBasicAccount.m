@@ -62,14 +62,14 @@
 }
 
 + (DbxUsersBasicAccount *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
-    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
-    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
-    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict[@"disabled"]];
-    NSNumber *isTeammate = [DbxBoolSerializer deserialize:valueDict[@"is_teammate"]];
-    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"profile_photo_url"]] : nil;
-    NSString *teamMemberId = valueDict[@"team_member_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"team_member_id"]] : nil;
+    NSString *accountId = [DbxStringSerializer deserialize:valueDict];
+    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict];
+    NSString *email = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *isTeammate = [DbxBoolSerializer deserialize:valueDict];
+    NSString *profilePhotoUrl = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *teamMemberId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxUsersBasicAccount alloc] initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled isTeammate:isTeammate profilePhotoUrl:profilePhotoUrl teamMemberId:teamMemberId];
 }

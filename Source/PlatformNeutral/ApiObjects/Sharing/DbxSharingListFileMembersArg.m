@@ -12,7 +12,7 @@
 - (instancetype)initWithFile:(NSString *)file actions:(NSArray<DbxSharingMemberAction *> *)actions includeInherited:(NSNumber *)includeInherited limit:(NSNumber *)limit {
     [DbxStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithInt:100]);
 
     self = [super init];
     if (self != nil) {
@@ -59,10 +59,10 @@
 }
 
 + (DbxSharingListFileMembersArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
-    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id obj) { return [DbxSharingMemberActionSerializer deserialize:obj]; }] : nil;
-    NSNumber *includeInherited = [DbxBoolSerializer deserialize:valueDict[@"include_inherited"]];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSString *file = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxSharingMemberAction *> *actions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingMemberActionSerializer deserialize:obj]; }] : nil;
+    NSNumber *includeInherited = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxSharingListFileMembersArg alloc] initWithFile:file actions:actions includeInherited:includeInherited limit:limit];
 }

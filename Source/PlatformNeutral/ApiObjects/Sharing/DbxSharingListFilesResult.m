@@ -53,8 +53,8 @@
 }
 
 + (DbxSharingListFilesResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingSharedFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id obj) { return [DbxSharingSharedFileMetadataSerializer deserialize:obj]; }];
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSArray<DbxSharingSharedFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingSharedFileMetadataSerializer deserialize:obj]; }];
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingListFilesResult alloc] initWithEntries:entries cursor:cursor];
 }

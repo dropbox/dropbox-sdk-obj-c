@@ -62,10 +62,10 @@
 }
 
 + (DbxTeamUpdatePropertyTemplateArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
-    NSString *name = valueDict[@"name"] != nil ? [DbxStringSerializer deserialize:valueDict[@"name"]] : nil;
-    NSString *description_ = valueDict[@"description"] != nil ? [DbxStringSerializer deserialize:valueDict[@"description"]] : nil;
-    NSArray<DbxPropertiesPropertyFieldTemplate *> *addFields = valueDict[@"add_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"add_fields"] withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:obj]; }] : nil;
+    NSString *templateId = [DbxStringSerializer deserialize:valueDict];
+    NSString *name = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *description_ = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSArray<DbxPropertiesPropertyFieldTemplate *> *addFields = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:obj]; }] : nil;
 
     return [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:templateId name:name description_:description_ addFields:addFields];
 }

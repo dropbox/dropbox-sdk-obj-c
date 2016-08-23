@@ -49,9 +49,9 @@
 }
 
 + (DbxFilesSearchResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxFilesSearchMatch *> *matches = [DbxArraySerializer deserialize:valueDict[@"matches"] withBlock:^id(id obj) { return [DbxFilesSearchMatchSerializer deserialize:obj]; }];
-    NSNumber *more = [DbxBoolSerializer deserialize:valueDict[@"more"]];
-    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict[@"start"]];
+    NSArray<DbxFilesSearchMatch *> *matches = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesSearchMatchSerializer deserialize:obj]; }];
+    NSNumber *more = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesSearchResult alloc] initWithMatches:matches more:more start:start];
 }

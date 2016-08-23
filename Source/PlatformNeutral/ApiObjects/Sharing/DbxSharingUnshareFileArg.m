@@ -44,7 +44,7 @@
 }
 
 + (DbxSharingUnshareFileArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSString *file = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxSharingUnshareFileArg alloc] initWithFile:file];
 }

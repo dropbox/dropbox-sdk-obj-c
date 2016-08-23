@@ -48,8 +48,8 @@
 }
 
 + (DbxPropertiesPropertyGroup *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
-    NSArray<DbxPropertiesPropertyField *> *fields = [DbxArraySerializer deserialize:valueDict[@"fields"] withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer deserialize:obj]; }];
+    NSString *templateId = [DbxStringSerializer deserialize:valueDict];
+    NSArray<DbxPropertiesPropertyField *> *fields = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer deserialize:obj]; }];
 
     return [[DbxPropertiesPropertyGroup alloc] initWithTemplateId:templateId fields:fields];
 }

@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamGroupMemberInfo *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamMemberProfile *profile = [DbxTeamMemberProfileSerializer deserialize:valueDict[@"profile"]];
-    DbxTeamGroupAccessType *accessType = [DbxTeamGroupAccessTypeSerializer deserialize:valueDict[@"access_type"]];
+    DbxTeamMemberProfile *profile = [DbxTeamMemberProfileSerializer deserialize:valueDict];
+    DbxTeamGroupAccessType *accessType = [DbxTeamGroupAccessTypeSerializer deserialize:valueDict];
 
     return [[DbxTeamGroupMemberInfo alloc] initWithProfile:profile accessType:accessType];
 }

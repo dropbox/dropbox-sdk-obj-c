@@ -55,9 +55,9 @@
 }
 
 + (DbxTeamListMembersDevicesResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamMemberDevices *> *devices = [DbxArraySerializer deserialize:valueDict[@"devices"] withBlock:^id(id obj) { return [DbxTeamMemberDevicesSerializer deserialize:obj]; }];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSArray<DbxTeamMemberDevices *> *devices = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamMemberDevicesSerializer deserialize:obj]; }];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxTeamListMembersDevicesResult alloc] initWithDevices:devices hasMore:hasMore cursor:cursor];
 }

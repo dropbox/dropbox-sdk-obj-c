@@ -52,9 +52,9 @@
 }
 
 + (DbxSharingCollectionLinkMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
-    DbxSharingVisibility *visibility = [DbxSharingVisibilitySerializer deserialize:valueDict[@"visibility"]];
-    NSDate *expires = valueDict[@"expires"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *url = [DbxStringSerializer deserialize:valueDict];
+    DbxSharingVisibility *visibility = [DbxSharingVisibilitySerializer deserialize:valueDict];
+    NSDate *expires = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxSharingCollectionLinkMetadata alloc] initWithUrl:url visibility:visibility expires:expires];
 }

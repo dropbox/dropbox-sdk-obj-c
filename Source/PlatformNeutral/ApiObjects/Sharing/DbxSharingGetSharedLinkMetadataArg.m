@@ -56,9 +56,9 @@
 }
 
 + (DbxSharingGetSharedLinkMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
-    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
-    NSString *linkPassword = valueDict[@"link_password"] != nil ? [DbxStringSerializer deserialize:valueDict[@"link_password"]] : nil;
+    NSString *url = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *linkPassword = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
 }

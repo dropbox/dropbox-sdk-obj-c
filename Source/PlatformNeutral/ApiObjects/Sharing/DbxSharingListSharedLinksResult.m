@@ -55,9 +55,9 @@
 }
 
 + (DbxSharingListSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingSharedLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict[@"links"] withBlock:^id(id obj) { return [DbxSharingSharedLinkMetadataSerializer deserialize:obj]; }];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSArray<DbxSharingSharedLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingSharedLinkMetadataSerializer deserialize:obj]; }];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
+    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
 
     return [[DbxSharingListSharedLinksResult alloc] initWithLinks:links hasMore:hasMore cursor:cursor];
 }

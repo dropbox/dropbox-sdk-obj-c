@@ -43,7 +43,7 @@
 }
 
 + (DbxFilesUploadSessionOffsetError *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *correctOffset = [DbxNSNumberSerializer deserialize:valueDict[@"correct_offset"]];
+    NSNumber *correctOffset = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesUploadSessionOffsetError alloc] initWithCorrectOffset:correctOffset];
 }

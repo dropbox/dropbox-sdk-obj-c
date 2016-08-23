@@ -45,7 +45,7 @@
 }
 
 + (DbxTeamMembersGetInfoArgs *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamUserSelectorArg *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer deserialize:obj]; }];
+    NSArray<DbxTeamUserSelectorArg *> *members = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer deserialize:obj]; }];
 
     return [[DbxTeamMembersGetInfoArgs alloc] initWithMembers:members];
 }

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithPath:(NSString *)path limit:(NSNumber *)limit {
     [DbxStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:100]](limit);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:100]](limit ?: [NSNumber numberWithInt:10]);
 
     self = [super init];
     if (self != nil) {
@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListRevisionsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
 
     return [[DbxFilesListRevisionsArg alloc] initWithPath:path limit:limit];
 }

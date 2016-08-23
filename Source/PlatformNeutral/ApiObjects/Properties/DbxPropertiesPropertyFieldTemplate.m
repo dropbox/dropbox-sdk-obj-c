@@ -48,9 +48,9 @@
 }
 
 + (DbxPropertiesPropertyFieldTemplate *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *description_ = [DbxStringSerializer deserialize:valueDict[@"description"]];
-    DbxPropertiesPropertyType *type = [DbxPropertiesPropertyTypeSerializer deserialize:valueDict[@"type"]];
+    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *description_ = [DbxStringSerializer deserialize:valueDict];
+    DbxPropertiesPropertyType *type = [DbxPropertiesPropertyTypeSerializer deserialize:valueDict];
 
     return [[DbxPropertiesPropertyFieldTemplate alloc] initWithName:name description_:description_ type:type];
 }

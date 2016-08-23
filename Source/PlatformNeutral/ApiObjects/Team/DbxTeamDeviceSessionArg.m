@@ -45,8 +45,8 @@
 }
 
 + (DbxTeamDeviceSessionArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
 
     return [[DbxTeamDeviceSessionArg alloc] initWithSessionId:sessionId teamMemberId:teamMemberId];
 }
