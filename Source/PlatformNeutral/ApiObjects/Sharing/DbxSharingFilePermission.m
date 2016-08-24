@@ -47,7 +47,7 @@
 
     jsonDict[@"action"] = [DbxSharingFileActionSerializer serialize:valueObj.action];
     jsonDict[@"allow"] = [DbxBoolSerializer serialize:valueObj.allow];
-    if (valueObj.reason != nil) {
+    if (valueObj.reason) {
         jsonDict[@"reason"] = [DbxSharingPermissionDeniedReasonSerializer serialize:valueObj.reason];
     }
 
@@ -55,9 +55,9 @@
 }
 
 + (DbxSharingFilePermission *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingFileAction *action = [DbxSharingFileActionSerializer deserialize:valueDict];
-    NSNumber *allow = [DbxBoolSerializer deserialize:valueDict];
-    DbxSharingPermissionDeniedReason *reason = valueDict != nil ? [DbxSharingPermissionDeniedReasonSerializer deserialize:valueDict] : nil;
+    DbxSharingFileAction *action = [DbxSharingFileActionSerializer deserialize:valueDict[@"action"]];
+    NSNumber *allow = [DbxBoolSerializer deserialize:valueDict[@"allow"]];
+    DbxSharingPermissionDeniedReason *reason = valueDict[@"reason"] != nil ? [DbxSharingPermissionDeniedReasonSerializer deserialize:valueDict[@"reason"]] : nil;
 
     return [[DbxSharingFilePermission alloc] initWithAction:action allow:allow reason:reason];
 }

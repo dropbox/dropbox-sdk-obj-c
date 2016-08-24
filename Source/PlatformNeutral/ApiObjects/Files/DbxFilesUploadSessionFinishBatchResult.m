@@ -39,13 +39,13 @@
 + (NSDictionary *)serialize:(DbxFilesUploadSessionFinishBatchResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id obj) { return [DbxFilesUploadSessionFinishBatchResultEntrySerializer serialize:obj]; }];
+    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id elem) { return [DbxFilesUploadSessionFinishBatchResultEntrySerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxFilesUploadSessionFinishBatchResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxFilesUploadSessionFinishBatchResultEntry *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesUploadSessionFinishBatchResultEntrySerializer deserialize:obj]; }];
+    NSArray<DbxFilesUploadSessionFinishBatchResultEntry *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id elem) { return [DbxFilesUploadSessionFinishBatchResultEntrySerializer deserialize:elem]; }];
 
     return [[DbxFilesUploadSessionFinishBatchResult alloc] initWithEntries:entries];
 }

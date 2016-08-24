@@ -44,7 +44,7 @@
 }
 
 + (DbxFilesGetCopyReferenceArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
 
     return [[DbxFilesGetCopyReferenceArg alloc] initWithPath:path];
 }

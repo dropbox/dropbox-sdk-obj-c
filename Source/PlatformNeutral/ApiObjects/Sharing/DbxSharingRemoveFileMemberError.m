@@ -121,15 +121,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isUserError]) {
-        jsonDict[@"user_error"] = [DbxSharingSharingUserErrorSerializer serialize:valueObj.userError];
+        jsonDict = [[DbxSharingSharingUserErrorSerializer serialize:valueObj.userError] mutableCopy];
         jsonDict[@".tag"] = @"user_error";
     }
     else if ([valueObj isAccessError]) {
-        jsonDict[@"access_error"] = [DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError];
+        jsonDict = [[DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
         jsonDict[@".tag"] = @"access_error";
     }
     else if ([valueObj isNoExplicitAccess]) {
-        jsonDict[@"no_explicit_access"] = [DbxSharingMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess];
+        jsonDict = [[DbxSharingMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
         jsonDict[@".tag"] = @"no_explicit_access";
     }
     else if ([valueObj isOther]) {
@@ -154,7 +154,7 @@
         return [[DbxSharingRemoveFileMemberError alloc] initWithAccessError:accessError];
     }
     if ([tag isEqualToString:@"no_explicit_access"]) {
-        DbxSharingMemberAccessLevelResult *noExplicitAccess = [DbxSharingMemberAccessLevelResultSerializer deserialize:valueDict[@"no_explicit_access"]];
+        DbxSharingMemberAccessLevelResult *noExplicitAccess = [DbxSharingMemberAccessLevelResultSerializer deserialize:valueDict];
         return [[DbxSharingRemoveFileMemberError alloc] initWithNoExplicitAccess:noExplicitAccess];
     }
     if ([tag isEqualToString:@"other"]) {

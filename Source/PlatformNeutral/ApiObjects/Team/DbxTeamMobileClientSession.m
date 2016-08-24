@@ -50,25 +50,25 @@
     jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
     jsonDict[@"device_name"] = [DbxStringSerializer serialize:valueObj.deviceName];
     jsonDict[@"client_type"] = [DbxTeamMobileClientPlatformSerializer serialize:valueObj.clientType];
-    if (valueObj.ipAddress != nil) {
+    if (valueObj.ipAddress) {
         jsonDict[@"ip_address"] = [DbxStringSerializer serialize:valueObj.ipAddress];
     }
-    if (valueObj.country != nil) {
+    if (valueObj.country) {
         jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
     }
-    if (valueObj.created != nil) {
+    if (valueObj.created) {
         jsonDict[@"created"] = [DbxNSDateSerializer serialize:valueObj.created dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
-    if (valueObj.updated != nil) {
+    if (valueObj.updated) {
         jsonDict[@"updated"] = [DbxNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
-    if (valueObj.clientVersion != nil) {
+    if (valueObj.clientVersion) {
         jsonDict[@"client_version"] = [DbxStringSerializer serialize:valueObj.clientVersion];
     }
-    if (valueObj.osVersion != nil) {
+    if (valueObj.osVersion) {
         jsonDict[@"os_version"] = [DbxStringSerializer serialize:valueObj.osVersion];
     }
-    if (valueObj.lastCarrier != nil) {
+    if (valueObj.lastCarrier) {
         jsonDict[@"last_carrier"] = [DbxStringSerializer serialize:valueObj.lastCarrier];
     }
 
@@ -76,16 +76,16 @@
 }
 
 + (DbxTeamMobileClientSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
-    NSString *deviceName = [DbxStringSerializer deserialize:valueDict];
-    DbxTeamMobileClientPlatform *clientType = [DbxTeamMobileClientPlatformSerializer deserialize:valueDict];
-    NSString *ipAddress = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *country = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSDate *created = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSString *clientVersion = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *osVersion = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *lastCarrier = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
+    NSString *deviceName = [DbxStringSerializer deserialize:valueDict[@"device_name"]];
+    DbxTeamMobileClientPlatform *clientType = [DbxTeamMobileClientPlatformSerializer deserialize:valueDict[@"client_type"]];
+    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
+    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
+    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *clientVersion = valueDict[@"client_version"] != nil ? [DbxStringSerializer deserialize:valueDict[@"client_version"]] : nil;
+    NSString *osVersion = valueDict[@"os_version"] != nil ? [DbxStringSerializer deserialize:valueDict[@"os_version"]] : nil;
+    NSString *lastCarrier = valueDict[@"last_carrier"] != nil ? [DbxStringSerializer deserialize:valueDict[@"last_carrier"]] : nil;
 
     return [[DbxTeamMobileClientSession alloc] initWithSessionId:sessionId deviceName:deviceName clientType:clientType ipAddress:ipAddress country:country created:created updated:updated clientVersion:clientVersion osVersion:osVersion lastCarrier:lastCarrier];
 }

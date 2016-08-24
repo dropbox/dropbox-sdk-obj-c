@@ -35,10 +35,6 @@
 
 - (nonnull instancetype)initWithUsers:(NSArray<DbxSharingUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DbxSharingGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DbxSharingInviteeMembershipInfo *> * _Nonnull)invitees;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

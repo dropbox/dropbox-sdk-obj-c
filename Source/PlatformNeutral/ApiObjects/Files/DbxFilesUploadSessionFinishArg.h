@@ -21,10 +21,6 @@
 
 - (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

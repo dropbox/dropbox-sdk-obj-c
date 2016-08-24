@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxFilesSearchResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"matches"] = [DbxArraySerializer serialize:valueObj.matches withBlock:^id(id obj) { return [DbxFilesSearchMatchSerializer serialize:obj]; }];
+    jsonDict[@"matches"] = [DbxArraySerializer serialize:valueObj.matches withBlock:^id(id elem) { return [DbxFilesSearchMatchSerializer serialize:elem]; }];
     jsonDict[@"more"] = [DbxBoolSerializer serialize:valueObj.more];
     jsonDict[@"start"] = [DbxNSNumberSerializer serialize:valueObj.start];
 
@@ -49,9 +49,9 @@
 }
 
 + (DbxFilesSearchResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxFilesSearchMatch *> *matches = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesSearchMatchSerializer deserialize:obj]; }];
-    NSNumber *more = [DbxBoolSerializer deserialize:valueDict];
-    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict];
+    NSArray<DbxFilesSearchMatch *> *matches = [DbxArraySerializer deserialize:valueDict[@"matches"] withBlock:^id(id elem) { return [DbxFilesSearchMatchSerializer deserialize:elem]; }];
+    NSNumber *more = [DbxBoolSerializer deserialize:valueDict[@"more"]];
+    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict[@"start"]];
 
     return [[DbxFilesSearchResult alloc] initWithMatches:matches more:more start:start];
 }

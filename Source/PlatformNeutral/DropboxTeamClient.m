@@ -2,10 +2,8 @@
 /// The client for the Business API. Call routes using the namespaces inside this object (inherited from parent).
 ///
 
-#import "DbxBase.h"
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
-#import "DropboxTransportClient.h"
 
 @implementation DropboxTeamClient
 

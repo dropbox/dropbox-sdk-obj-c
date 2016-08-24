@@ -109,7 +109,7 @@
         jsonDict[@".tag"] = @"not_a_member";
     }
     else if ([valueObj isNoExplicitAccess]) {
-        jsonDict[@"no_explicit_access"] = [DbxSharingMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess];
+        jsonDict = [[DbxSharingMemberAccessLevelResultSerializer serialize:valueObj.noExplicitAccess] mutableCopy];
         jsonDict[@".tag"] = @"no_explicit_access";
     }
     else if ([valueObj isOther]) {
@@ -132,7 +132,7 @@
         return [[DbxSharingSharedFolderMemberError alloc] initWithNotAMember];
     }
     if ([tag isEqualToString:@"no_explicit_access"]) {
-        DbxSharingMemberAccessLevelResult *noExplicitAccess = [DbxSharingMemberAccessLevelResultSerializer deserialize:valueDict[@"no_explicit_access"]];
+        DbxSharingMemberAccessLevelResult *noExplicitAccess = [DbxSharingMemberAccessLevelResultSerializer deserialize:valueDict];
         return [[DbxSharingSharedFolderMemberError alloc] initWithNoExplicitAccess:noExplicitAccess];
     }
     if ([tag isEqualToString:@"other"]) {

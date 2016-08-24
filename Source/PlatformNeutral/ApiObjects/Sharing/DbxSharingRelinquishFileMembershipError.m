@@ -103,7 +103,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isAccessError]) {
-        jsonDict[@"access_error"] = [DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError];
+        jsonDict = [[DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
         jsonDict[@".tag"] = @"access_error";
     }
     else if ([valueObj isGroupAccess]) {

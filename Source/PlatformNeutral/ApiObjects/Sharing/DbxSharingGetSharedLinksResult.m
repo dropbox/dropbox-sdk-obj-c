@@ -39,13 +39,13 @@
 + (NSDictionary *)serialize:(DbxSharingGetSharedLinksResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"links"] = [DbxArraySerializer serialize:valueObj.links withBlock:^id(id obj) { return [DbxSharingLinkMetadataSerializer serialize:obj]; }];
+    jsonDict[@"links"] = [DbxArraySerializer serialize:valueObj.links withBlock:^id(id elem) { return [DbxSharingLinkMetadataSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxSharingGetSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingLinkMetadataSerializer deserialize:obj]; }];
+    NSArray<DbxSharingLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict[@"links"] withBlock:^id(id elem) { return [DbxSharingLinkMetadataSerializer deserialize:elem]; }];
 
     return [[DbxSharingGetSharedLinksResult alloc] initWithLinks:links];
 }

@@ -43,13 +43,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    if (valueObj.pathLower != nil) {
+    if (valueObj.pathLower) {
         jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
     }
-    if (valueObj.pathDisplay != nil) {
+    if (valueObj.pathDisplay) {
         jsonDict[@"path_display"] = [DbxStringSerializer serialize:valueObj.pathDisplay];
     }
-    if (valueObj.parentSharedFolderId != nil) {
+    if (valueObj.parentSharedFolderId) {
         jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
     }
 
@@ -57,10 +57,10 @@
 }
 
 + (DbxFilesDeletedMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict];
-    NSString *pathLower = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *pathDisplay = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
+    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
+    NSString *pathDisplay = valueDict[@"path_display"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_display"]] : nil;
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
 
     return [[DbxFilesDeletedMetadata alloc] initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
 }

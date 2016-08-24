@@ -58,11 +58,11 @@
 }
 
 + (DbxFilesSearchArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSString *query = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict];
-    NSNumber *maxResults = [DbxNSNumberSerializer deserialize:valueDict];
-    DbxFilesSearchMode *mode = [DbxFilesSearchModeSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *query = [DbxStringSerializer deserialize:valueDict[@"query"]];
+    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict[@"start"]];
+    NSNumber *maxResults = [DbxNSNumberSerializer deserialize:valueDict[@"max_results"]];
+    DbxFilesSearchMode *mode = [DbxFilesSearchModeSerializer deserialize:valueDict[@"mode"]];
 
     return [[DbxFilesSearchArg alloc] initWithPath:path query:query start:start maxResults:maxResults mode:mode];
 }

@@ -42,14 +42,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    jsonDict[@"update_property_groups"] = [DbxArraySerializer serialize:valueObj.updatePropertyGroups withBlock:^id(id obj) { return [DbxFilesPropertyGroupUpdateSerializer serialize:obj]; }];
+    jsonDict[@"update_property_groups"] = [DbxArraySerializer serialize:valueObj.updatePropertyGroups withBlock:^id(id elem) { return [DbxFilesPropertyGroupUpdateSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxFilesUpdatePropertyGroupArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSArray<DbxFilesPropertyGroupUpdate *> *updatePropertyGroups = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesPropertyGroupUpdateSerializer deserialize:obj]; }];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSArray<DbxFilesPropertyGroupUpdate *> *updatePropertyGroups = [DbxArraySerializer deserialize:valueDict[@"update_property_groups"] withBlock:^id(id elem) { return [DbxFilesPropertyGroupUpdateSerializer deserialize:elem]; }];
 
     return [[DbxFilesUpdatePropertyGroupArg alloc] initWithPath:path updatePropertyGroups:updatePropertyGroups];
 }

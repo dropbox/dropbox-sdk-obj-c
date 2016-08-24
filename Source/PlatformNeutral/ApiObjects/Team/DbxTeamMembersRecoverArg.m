@@ -44,7 +44,7 @@
 }
 
 + (DbxTeamMembersRecoverArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
 
     return [[DbxTeamMembersRecoverArg alloc] initWithUser:user];
 }

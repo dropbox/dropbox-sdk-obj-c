@@ -106,7 +106,7 @@ def _get_client_args():
         'upload': [
             ('upload', ['URL', [('inputURL', 'inputURL', 'NSURL * _Nonnull', input_doc.format('NSURL *')),],]),
             ('upload', ['Data', [('inputData', 'inputData', 'NSData * _Nonnull', input_doc.format('NSData *')),],]),
-            ('upload', ['Stream', [('inputStream', 'inputStream', 'NSStream * _Nonnull', input_doc.format('NSStream *')),],]),
+            ('upload', ['Stream', [('inputStream', 'inputStream', 'NSInputStream * _Nonnull', input_doc.format('NSInputStream *')),],]),
         ],
         'download': [
             ('download_url', ['URL', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),

@@ -28,10 +28,6 @@
 
 - (nonnull instancetype)initWithAction:(DbxSharingFolderAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

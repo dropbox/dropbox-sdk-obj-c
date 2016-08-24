@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamPoliciesTeamMemberPolicies *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamPoliciesTeamSharingPolicies *sharing = [DbxTeamPoliciesTeamSharingPoliciesSerializer deserialize:valueDict];
-    DbxTeamPoliciesEmmState *emmState = [DbxTeamPoliciesEmmStateSerializer deserialize:valueDict];
+    DbxTeamPoliciesTeamSharingPolicies *sharing = [DbxTeamPoliciesTeamSharingPoliciesSerializer deserialize:valueDict[@"sharing"]];
+    DbxTeamPoliciesEmmState *emmState = [DbxTeamPoliciesEmmStateSerializer deserialize:valueDict[@"emm_state"]];
 
     return [[DbxTeamPoliciesTeamMemberPolicies alloc] initWithSharing:sharing emmState:emmState];
 }

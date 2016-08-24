@@ -30,7 +30,10 @@
 
 @interface DropboxTeamTester : NSObject
 
+- (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
+
 @property DbxTeamRoutes * _Nullable team;
+@property TestData * _Nonnull testData;
 
 @end
 
@@ -70,7 +73,7 @@
 - (void)downloadToMemory:(void (^_Nonnull)())nextTest;
 - (void)uploadFile:(void (^_Nonnull)())nextTest;
 - (void)uploadStream:(void (^_Nonnull)())nextTest;
-- (void)listFolderLongpollAndTrigger:(void (^_Nonnull)())nextTest asMember:(BOOL)asMember;
+- (void)listFolderLongpollAndTrigger:(void (^_Nonnull)())nextTest;
 
 @property DropboxTester * _Nonnull tester;
 
@@ -82,7 +85,7 @@
 - (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
 
 - (void)shareFolder:(void (^_Nonnull)())nextTest;
-- (void)createSharedLinkWithSettings:(void (^)())nextTest;
+- (void)createSharedLinkWithSettings:(void (^_Nonnull)())nextTest;
 - (void)getFolderMetadata:(void (^_Nonnull)())nextTest;
 - (void)getSharedLinkMetadata:(void (^_Nonnull)())nextTest;
 - (void)addFolderMember:(void (^_Nonnull)())nextTest;
@@ -113,6 +116,47 @@
 - (void)getSpaceUsage:(void (^_Nonnull)())nextTest;
 
 @property DropboxTester * _Nonnull tester;
+
+@end
+
+
+@interface TeamTests : NSObject
+
+- (nonnull instancetype)init:(DropboxTeamTester * _Nonnull)tester;
+
+// TeamMemberFileAccess
+
+- (void)initMembersGetInfo:(void (^_Nonnull)())nextTest;
+- (void)listMemberDevices:(void (^_Nonnull)())nextTest;
+- (void)listMembersDevices:(void (^_Nonnull)())nextTest;
+- (void)linkedAppsListMemberLinkedApps:(void (^_Nonnull)())nextTest;
+- (void)linkedAppsListMembersLinkedApps:(void (^_Nonnull)())nextTest;
+- (void)getInfo:(void (^_Nonnull)())nextTest;
+- (void)reportsGetActivity:(void (^_Nonnull)())nextTest;
+- (void)reportsGetDevices:(void (^_Nonnull)())nextTest;
+- (void)reportsGetMembership:(void (^_Nonnull)())nextTest;
+- (void)reportsGetStorage:(void (^_Nonnull)())nextTest;
+
+// TeamMemberManagement
+
+- (void)groupsCreate:(void (^_Nonnull)())nextTest;
+- (void)groupsGetInfo:(void (^_Nonnull)())nextTest;
+- (void)groupsList:(void (^_Nonnull)())nextTest;
+- (void)groupsMembersAdd:(void (^_Nonnull)())nextTest;
+- (void)groupsMembersList:(void (^_Nonnull)())nextTest;
+- (void)groupsUpdate:(void (^_Nonnull)())nextTest;
+- (void)groupsDelete:(void (^_Nonnull)())nextTest;
+- (void)membersAdd:(void (^_Nonnull)())nextTest;
+- (void)membersGetInfo:(void (^_Nonnull)())nextTest;
+- (void)membersList:(void (^_Nonnull)())nextTest;
+- (void)membersSendWelcomeEmail:(void (^_Nonnull)())nextTest;
+- (void)membersSetAdminPermissions:(void (^_Nonnull)())nextTest;
+- (void)membersSetProfile:(void (^_Nonnull)())nextTest;
+- (void)membersRemove:(void (^_Nonnull)())nextTest;
+
+@property DropboxTeamTester * _Nonnull tester;
+@property NSString * _Nonnull teamMemberId;
+@property NSString * _Nonnull teamMemberId2;
 
 @end
 

@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesRestoreArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSString *rev = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *rev = [DbxStringSerializer deserialize:valueDict[@"rev"]];
 
     return [[DbxFilesRestoreArg alloc] initWithPath:path rev:rev];
 }

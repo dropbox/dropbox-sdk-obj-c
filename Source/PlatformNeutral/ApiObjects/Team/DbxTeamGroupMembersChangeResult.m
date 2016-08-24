@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamGroupMembersChangeResult *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamGroupFullInfo *groupInfo = [DbxTeamGroupFullInfoSerializer deserialize:valueDict];
-    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict];
+    DbxTeamGroupFullInfo *groupInfo = [DbxTeamGroupFullInfoSerializer deserialize:valueDict[@"group_info"]];
+    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict[@"async_job_id"]];
 
     return [[DbxTeamGroupMembersChangeResult alloc] initWithGroupInfo:groupInfo asyncJobId:asyncJobId];
 }

@@ -97,11 +97,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isIndividual]) {
-        jsonDict[@"individual"] = [DbxUsersIndividualSpaceAllocationSerializer serialize:valueObj.individual];
+        jsonDict = [[DbxUsersIndividualSpaceAllocationSerializer serialize:valueObj.individual] mutableCopy];
         jsonDict[@".tag"] = @"individual";
     }
     else if ([valueObj isTeam]) {
-        jsonDict[@"team"] = [DbxUsersTeamSpaceAllocationSerializer serialize:valueObj.team];
+        jsonDict = [[DbxUsersTeamSpaceAllocationSerializer serialize:valueObj.team] mutableCopy];
         jsonDict[@".tag"] = @"team";
     }
     else if ([valueObj isOther]) {
@@ -118,11 +118,11 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"individual"]) {
-        DbxUsersIndividualSpaceAllocation *individual = [DbxUsersIndividualSpaceAllocationSerializer deserialize:valueDict[@"individual"]];
+        DbxUsersIndividualSpaceAllocation *individual = [DbxUsersIndividualSpaceAllocationSerializer deserialize:valueDict];
         return [[DbxUsersSpaceAllocation alloc] initWithIndividual:individual];
     }
     if ([tag isEqualToString:@"team"]) {
-        DbxUsersTeamSpaceAllocation *team = [DbxUsersTeamSpaceAllocationSerializer deserialize:valueDict[@"team"]];
+        DbxUsersTeamSpaceAllocation *team = [DbxUsersTeamSpaceAllocationSerializer deserialize:valueDict];
         return [[DbxUsersSpaceAllocation alloc] initWithTeam:team];
     }
     if ([tag isEqualToString:@"other"]) {

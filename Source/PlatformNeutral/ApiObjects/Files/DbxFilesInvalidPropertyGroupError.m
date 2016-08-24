@@ -152,7 +152,7 @@
         jsonDict[@".tag"] = @"other";
     }
     else if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesLookupErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesLookupErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isPropertyFieldTooLarge]) {

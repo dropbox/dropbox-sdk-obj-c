@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxUsersGetAccountBatchArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"account_ids"] = [DbxArraySerializer serialize:valueObj.accountIds withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+    jsonDict[@"account_ids"] = [DbxArraySerializer serialize:valueObj.accountIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxUsersGetAccountBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *accountIds = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+    NSArray<NSString *> *accountIds = [DbxArraySerializer deserialize:valueDict[@"account_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
 
     return [[DbxUsersGetAccountBatchArg alloc] initWithAccountIds:accountIds];
 }

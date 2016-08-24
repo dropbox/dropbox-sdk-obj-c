@@ -49,13 +49,13 @@
     jsonDict[@"app_id"] = [DbxStringSerializer serialize:valueObj.appId];
     jsonDict[@"app_name"] = [DbxStringSerializer serialize:valueObj.appName];
     jsonDict[@"is_app_folder"] = [DbxBoolSerializer serialize:valueObj.isAppFolder];
-    if (valueObj.publisher != nil) {
+    if (valueObj.publisher) {
         jsonDict[@"publisher"] = [DbxStringSerializer serialize:valueObj.publisher];
     }
-    if (valueObj.publisherUrl != nil) {
+    if (valueObj.publisherUrl) {
         jsonDict[@"publisher_url"] = [DbxStringSerializer serialize:valueObj.publisherUrl];
     }
-    if (valueObj.linked != nil) {
+    if (valueObj.linked) {
         jsonDict[@"linked"] = [DbxNSDateSerializer serialize:valueObj.linked dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
 
@@ -63,12 +63,12 @@
 }
 
 + (DbxTeamApiApp *)deserialize:(NSDictionary *)valueDict {
-    NSString *appId = [DbxStringSerializer deserialize:valueDict];
-    NSString *appName = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *isAppFolder = [DbxBoolSerializer deserialize:valueDict];
-    NSString *publisher = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *publisherUrl = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSDate *linked = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *appId = [DbxStringSerializer deserialize:valueDict[@"app_id"]];
+    NSString *appName = [DbxStringSerializer deserialize:valueDict[@"app_name"]];
+    NSNumber *isAppFolder = [DbxBoolSerializer deserialize:valueDict[@"is_app_folder"]];
+    NSString *publisher = valueDict[@"publisher"] != nil ? [DbxStringSerializer deserialize:valueDict[@"publisher"]] : nil;
+    NSString *publisherUrl = valueDict[@"publisher_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"publisher_url"]] : nil;
+    NSDate *linked = valueDict[@"linked"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"linked"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamApiApp alloc] initWithAppId:appId appName:appName isAppFolder:isAppFolder publisher:publisher publisherUrl:publisherUrl linked:linked];
 }

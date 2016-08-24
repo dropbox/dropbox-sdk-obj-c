@@ -53,7 +53,7 @@
     jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
     jsonDict[@"email_verified"] = [DbxBoolSerializer serialize:valueObj.emailVerified];
     jsonDict[@"disabled"] = [DbxBoolSerializer serialize:valueObj.disabled];
-    if (valueObj.profilePhotoUrl != nil) {
+    if (valueObj.profilePhotoUrl) {
         jsonDict[@"profile_photo_url"] = [DbxStringSerializer serialize:valueObj.profilePhotoUrl];
     }
 
@@ -61,12 +61,12 @@
 }
 
 + (DbxUsersAccount *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict];
-    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict];
-    NSString *email = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict];
-    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict];
-    NSString *profilePhotoUrl = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
+    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
+    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
+    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
+    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict[@"disabled"]];
+    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"profile_photo_url"]] : nil;
 
     return [[DbxUsersAccount alloc] initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
 }

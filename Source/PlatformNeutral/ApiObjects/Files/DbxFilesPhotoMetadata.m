@@ -43,13 +43,13 @@
 + (NSDictionary *)serialize:(DbxFilesPhotoMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.dimensions != nil) {
+    if (valueObj.dimensions) {
         jsonDict[@"dimensions"] = [DbxFilesDimensionsSerializer serialize:valueObj.dimensions];
     }
-    if (valueObj.location != nil) {
+    if (valueObj.location) {
         jsonDict[@"location"] = [DbxFilesGpsCoordinatesSerializer serialize:valueObj.location];
     }
-    if (valueObj.timeTaken != nil) {
+    if (valueObj.timeTaken) {
         jsonDict[@"time_taken"] = [DbxNSDateSerializer serialize:valueObj.timeTaken dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
 
@@ -57,9 +57,9 @@
 }
 
 + (DbxFilesPhotoMetadata *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesDimensions *dimensions = valueDict != nil ? [DbxFilesDimensionsSerializer deserialize:valueDict] : nil;
-    DbxFilesGpsCoordinates *location = valueDict != nil ? [DbxFilesGpsCoordinatesSerializer deserialize:valueDict] : nil;
-    NSDate *timeTaken = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    DbxFilesDimensions *dimensions = valueDict[@"dimensions"] != nil ? [DbxFilesDimensionsSerializer deserialize:valueDict[@"dimensions"]] : nil;
+    DbxFilesGpsCoordinates *location = valueDict[@"location"] != nil ? [DbxFilesGpsCoordinatesSerializer deserialize:valueDict[@"location"]] : nil;
+    NSDate *timeTaken = valueDict[@"time_taken"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"time_taken"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxFilesPhotoMetadata alloc] initWithDimensions:dimensions location:location timeTaken:timeTaken];
 }

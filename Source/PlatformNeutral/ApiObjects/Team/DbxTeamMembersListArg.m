@@ -50,8 +50,8 @@
 }
 
 + (DbxTeamMembersListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
-    NSNumber *includeRemoved = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSNumber *includeRemoved = [DbxBoolSerializer deserialize:valueDict[@"include_removed"]];
 
     return [[DbxTeamMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
 }

@@ -4,112 +4,111 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DbxAsyncLaunchEmptyResult.h"
+#import "DbxAsyncLaunchResultBase.h"
+#import "DbxAsyncPollArg.h"
+#import "DbxAsyncPollError.h"
+#import "DbxAsyncPollResultBase.h"
 #import "DbxErrors.h"
+#import "DbxFilesAddPropertiesError.h"
+#import "DbxFilesAlphaGetMetadataArg.h"
+#import "DbxFilesAlphaGetMetadataError.h"
+#import "DbxFilesCommitInfo.h"
+#import "DbxFilesCommitInfoWithProperties.h"
+#import "DbxFilesCreateFolderArg.h"
+#import "DbxFilesCreateFolderError.h"
+#import "DbxFilesDeleteArg.h"
+#import "DbxFilesDeleteError.h"
+#import "DbxFilesDeletedMetadata.h"
+#import "DbxFilesDownloadArg.h"
+#import "DbxFilesDownloadError.h"
+#import "DbxFilesFileMetadata.h"
+#import "DbxFilesFileSharingInfo.h"
+#import "DbxFilesFolderMetadata.h"
+#import "DbxFilesFolderSharingInfo.h"
+#import "DbxFilesGetCopyReferenceArg.h"
+#import "DbxFilesGetCopyReferenceError.h"
+#import "DbxFilesGetCopyReferenceResult.h"
+#import "DbxFilesGetMetadataArg.h"
+#import "DbxFilesGetMetadataError.h"
+#import "DbxFilesGetTemporaryLinkArg.h"
+#import "DbxFilesGetTemporaryLinkError.h"
+#import "DbxFilesGetTemporaryLinkResult.h"
+#import "DbxFilesInvalidPropertyGroupError.h"
+#import "DbxFilesListFolderArg.h"
+#import "DbxFilesListFolderContinueArg.h"
+#import "DbxFilesListFolderContinueError.h"
+#import "DbxFilesListFolderError.h"
+#import "DbxFilesListFolderGetLatestCursorResult.h"
+#import "DbxFilesListFolderLongpollArg.h"
+#import "DbxFilesListFolderLongpollError.h"
+#import "DbxFilesListFolderLongpollResult.h"
+#import "DbxFilesListFolderResult.h"
+#import "DbxFilesListRevisionsArg.h"
+#import "DbxFilesListRevisionsError.h"
+#import "DbxFilesListRevisionsResult.h"
+#import "DbxFilesLookUpPropertiesError.h"
+#import "DbxFilesLookupError.h"
+#import "DbxFilesMediaInfo.h"
+#import "DbxFilesMetadata.h"
+#import "DbxFilesPreviewArg.h"
+#import "DbxFilesPreviewError.h"
+#import "DbxFilesPropertiesError.h"
+#import "DbxFilesPropertyGroupUpdate.h"
+#import "DbxFilesPropertyGroupWithPath.h"
+#import "DbxFilesRelocationArg.h"
+#import "DbxFilesRelocationError.h"
+#import "DbxFilesRemovePropertiesArg.h"
+#import "DbxFilesRemovePropertiesError.h"
+#import "DbxFilesRestoreArg.h"
+#import "DbxFilesRestoreError.h"
 #import "DbxFilesRouteObjects.h"
 #import "DbxFilesRoutes.h"
+#import "DbxFilesSaveCopyReferenceArg.h"
+#import "DbxFilesSaveCopyReferenceError.h"
+#import "DbxFilesSaveCopyReferenceResult.h"
+#import "DbxFilesSaveUrlArg.h"
+#import "DbxFilesSaveUrlError.h"
+#import "DbxFilesSaveUrlJobStatus.h"
+#import "DbxFilesSaveUrlResult.h"
+#import "DbxFilesSearchArg.h"
+#import "DbxFilesSearchError.h"
+#import "DbxFilesSearchMatch.h"
+#import "DbxFilesSearchMode.h"
+#import "DbxFilesSearchResult.h"
+#import "DbxFilesThumbnailArg.h"
+#import "DbxFilesThumbnailError.h"
+#import "DbxFilesThumbnailFormat.h"
+#import "DbxFilesThumbnailSize.h"
+#import "DbxFilesUpdatePropertiesError.h"
+#import "DbxFilesUpdatePropertyGroupArg.h"
+#import "DbxFilesUploadError.h"
+#import "DbxFilesUploadErrorWithProperties.h"
+#import "DbxFilesUploadSessionAppendArg.h"
+#import "DbxFilesUploadSessionCursor.h"
+#import "DbxFilesUploadSessionFinishArg.h"
+#import "DbxFilesUploadSessionFinishBatchArg.h"
+#import "DbxFilesUploadSessionFinishBatchJobStatus.h"
+#import "DbxFilesUploadSessionFinishBatchResult.h"
+#import "DbxFilesUploadSessionFinishError.h"
+#import "DbxFilesUploadSessionLookupError.h"
+#import "DbxFilesUploadSessionOffsetError.h"
+#import "DbxFilesUploadSessionStartArg.h"
+#import "DbxFilesUploadSessionStartResult.h"
+#import "DbxFilesUploadWriteFailed.h"
+#import "DbxFilesWriteError.h"
+#import "DbxFilesWriteMode.h"
+#import "DbxPropertiesGetPropertyTemplateArg.h"
+#import "DbxPropertiesGetPropertyTemplateResult.h"
+#import "DbxPropertiesListPropertyTemplateIds.h"
+#import "DbxPropertiesPropertyFieldTemplate.h"
+#import "DbxPropertiesPropertyGroup.h"
+#import "DbxPropertiesPropertyGroupTemplate.h"
+#import "DbxPropertiesPropertyTemplateError.h"
 #import "DbxStoneBase.h"
 #import "DbxTasks.h"
 #import "DropboxTransportClient.h"
 
-
-@class DbxAsyncLaunchEmptyResult;
-@class DbxAsyncLaunchResultBase;
-@class DbxAsyncPollArg;
-@class DbxAsyncPollError;
-@class DbxAsyncPollResultBase;
-@class DbxFilesAddPropertiesError;
-@class DbxFilesAlphaGetMetadataArg;
-@class DbxFilesAlphaGetMetadataError;
-@class DbxFilesCommitInfo;
-@class DbxFilesCommitInfoWithProperties;
-@class DbxFilesCreateFolderArg;
-@class DbxFilesCreateFolderError;
-@class DbxFilesDeleteArg;
-@class DbxFilesDeleteError;
-@class DbxFilesDeletedMetadata;
-@class DbxFilesDownloadArg;
-@class DbxFilesDownloadError;
-@class DbxFilesFileMetadata;
-@class DbxFilesFileSharingInfo;
-@class DbxFilesFolderMetadata;
-@class DbxFilesFolderSharingInfo;
-@class DbxFilesGetCopyReferenceArg;
-@class DbxFilesGetCopyReferenceError;
-@class DbxFilesGetCopyReferenceResult;
-@class DbxFilesGetMetadataArg;
-@class DbxFilesGetMetadataError;
-@class DbxFilesGetTemporaryLinkArg;
-@class DbxFilesGetTemporaryLinkError;
-@class DbxFilesGetTemporaryLinkResult;
-@class DbxFilesInvalidPropertyGroupError;
-@class DbxFilesListFolderArg;
-@class DbxFilesListFolderContinueArg;
-@class DbxFilesListFolderContinueError;
-@class DbxFilesListFolderError;
-@class DbxFilesListFolderGetLatestCursorResult;
-@class DbxFilesListFolderLongpollArg;
-@class DbxFilesListFolderLongpollError;
-@class DbxFilesListFolderLongpollResult;
-@class DbxFilesListFolderResult;
-@class DbxFilesListRevisionsArg;
-@class DbxFilesListRevisionsError;
-@class DbxFilesListRevisionsResult;
-@class DbxFilesLookUpPropertiesError;
-@class DbxFilesLookupError;
-@class DbxFilesMediaInfo;
-@class DbxFilesMetadata;
-@class DbxFilesPreviewArg;
-@class DbxFilesPreviewError;
-@class DbxFilesPropertiesError;
-@class DbxFilesPropertyGroupUpdate;
-@class DbxFilesPropertyGroupWithPath;
-@class DbxFilesRelocationArg;
-@class DbxFilesRelocationError;
-@class DbxFilesRemovePropertiesArg;
-@class DbxFilesRemovePropertiesError;
-@class DbxFilesRestoreArg;
-@class DbxFilesRestoreError;
-@class DbxFilesSaveCopyReferenceArg;
-@class DbxFilesSaveCopyReferenceError;
-@class DbxFilesSaveCopyReferenceResult;
-@class DbxFilesSaveUrlArg;
-@class DbxFilesSaveUrlError;
-@class DbxFilesSaveUrlJobStatus;
-@class DbxFilesSaveUrlResult;
-@class DbxFilesSearchArg;
-@class DbxFilesSearchError;
-@class DbxFilesSearchMatch;
-@class DbxFilesSearchMode;
-@class DbxFilesSearchResult;
-@class DbxFilesThumbnailArg;
-@class DbxFilesThumbnailError;
-@class DbxFilesThumbnailFormat;
-@class DbxFilesThumbnailSize;
-@class DbxFilesUpdatePropertiesError;
-@class DbxFilesUpdatePropertyGroupArg;
-@class DbxFilesUploadError;
-@class DbxFilesUploadErrorWithProperties;
-@class DbxFilesUploadSessionAppendArg;
-@class DbxFilesUploadSessionCursor;
-@class DbxFilesUploadSessionFinishArg;
-@class DbxFilesUploadSessionFinishBatchArg;
-@class DbxFilesUploadSessionFinishBatchJobStatus;
-@class DbxFilesUploadSessionFinishBatchResult;
-@class DbxFilesUploadSessionFinishError;
-@class DbxFilesUploadSessionLookupError;
-@class DbxFilesUploadSessionOffsetError;
-@class DbxFilesUploadSessionStartArg;
-@class DbxFilesUploadSessionStartResult;
-@class DbxFilesUploadWriteFailed;
-@class DbxFilesWriteError;
-@class DbxFilesWriteMode;
-@class DbxPropertiesGetPropertyTemplateArg;
-@class DbxPropertiesGetPropertyTemplateResult;
-@class DbxPropertiesListPropertyTemplateIds;
-@class DbxPropertiesPropertyFieldTemplate;
-@class DbxPropertiesPropertyGroup;
-@class DbxPropertiesPropertyGroupTemplate;
-@class DbxPropertiesPropertyTemplateError;
 
 ///
 /// Auto-generated by Stone, do not modify.
@@ -197,12 +196,12 @@
 /// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
 /// upload session with uploadSessionStart.
 /// 
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
 /// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -210,12 +209,12 @@
 /// upload session with uploadSessionStart.
 /// 
 /// - parameter propertyGroups: List of custom properties to add to file.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
 /// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
@@ -824,12 +823,12 @@
 /// Instead, create an upload session with uploadSessionStart.
 /// 
 /// - parameter path: Path in the user's Dropbox to save the file.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
 /// success or a `DbxFilesUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -845,12 +844,12 @@
 /// - parameter mute: Normally, users are made aware of any file modifications in their Dropbox account via
 /// notifications in the client software. If true, this tells the clients that this modification shouldn't result in a
 /// user notification.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
 /// success or a `DbxFilesUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
@@ -887,12 +886,12 @@
 /// - parameter sessionId: The upload session ID (returned by uploadSessionStart).
 /// - parameter offset: The amount of data that has been uploaded so far. We use this to make sure upload data isn't
 /// lost or duplicated in the event of a network error.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
 /// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendStream:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputStream:(NSStream * _Nonnull)inputStream __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendStream:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputStream:(NSInputStream * _Nonnull)inputStream __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -951,12 +950,12 @@
 /// request should not upload more than 150 MB of file contents.
 /// 
 /// - parameter cursor: Contains the upload session ID and the offset.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
 /// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -965,12 +964,12 @@
 /// - parameter cursor: Contains the upload session ID and the offset.
 /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
 /// uploadSessionAppendV2 anymore with the current session.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
 /// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
@@ -1004,12 +1003,12 @@
 /// 
 /// - parameter cursor: Contains the upload session ID and the offset.
 /// - parameter commit: Contains the path and other optional modifiers for the commit.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
 /// success or a `DbxFilesUploadSessionFinishError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadSessionFinishError *> * _Nonnull)uploadSessionFinishStream:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadSessionFinishError *> * _Nonnull)uploadSessionFinishStream:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// This route helps you commit many files at once into a user's Dropbox. Use uploadSessionStart and
@@ -1097,12 +1096,12 @@
 /// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
 /// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 /// 
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1111,12 +1110,12 @@
 /// 
 /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
 /// uploadSessionAppendV2 anymore with the current session.
-/// - parameter inputStream: The file to upload, as an NSStream * object.
+/// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSNumber * _Nullable)close inputStream:(NSStream * _Nonnull)inputStream;
+- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
 
 @property (nonatomic) DropboxTransportClient * _Nonnull client;
 

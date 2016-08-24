@@ -43,7 +43,7 @@
 }
 
 + (DbxSharingRevokeSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict];
+    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
 
     return [[DbxSharingRevokeSharedLinkArg alloc] initWithUrl:url];
 }

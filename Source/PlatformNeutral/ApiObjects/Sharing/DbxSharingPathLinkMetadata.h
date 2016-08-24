@@ -23,10 +23,6 @@
 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DbxSharingVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

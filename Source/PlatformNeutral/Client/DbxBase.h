@@ -1,8 +1,8 @@
-@class DbxAuthRoutes;
-@class DbxFilesRoutes;
-@class DbxSharingRoutes;
-@class DbxUsersRoutes;
-@class DropboxTransportClient;
+#import "DbxAuthRoutes.h"
+#import "DbxFilesRoutes.h"
+#import "DbxSharingRoutes.h"
+#import "DbxUsersRoutes.h"
+#import "DropboxTransportClient.h"
 
 @interface DbxBase : NSObject 
 

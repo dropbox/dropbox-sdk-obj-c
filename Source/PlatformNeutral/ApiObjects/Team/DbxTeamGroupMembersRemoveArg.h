@@ -24,10 +24,6 @@
 
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

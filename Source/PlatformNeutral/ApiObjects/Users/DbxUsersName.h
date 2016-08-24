@@ -28,10 +28,6 @@
 
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName surname:(NSString * _Nonnull)surname familiarName:(NSString * _Nonnull)familiarName displayName:(NSString * _Nonnull)displayName;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

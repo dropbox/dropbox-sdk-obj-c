@@ -112,11 +112,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isLookupFailed]) {
-        jsonDict[@"lookup_failed"] = [DbxFilesUploadSessionLookupErrorSerializer serialize:valueObj.lookupFailed];
+        jsonDict = [[DbxFilesUploadSessionLookupErrorSerializer serialize:valueObj.lookupFailed] mutableCopy];
         jsonDict[@".tag"] = @"lookup_failed";
     }
     else if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesWriteErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesWriteErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isTooManySharedFolderTargets]) {

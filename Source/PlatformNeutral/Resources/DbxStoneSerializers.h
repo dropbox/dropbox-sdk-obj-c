@@ -4,15 +4,11 @@
 
 #import <Foundation/Foundation.h>
 
-///
-/// Validator functions used by SDK to impose value constraints.
-///
 @protocol DbxSerializable <NSObject>
 
+@required
 + (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
 + (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end
@@ -65,8 +61,8 @@
 
 @interface DbxArraySerializer : NSObject
 
-+ (NSArray * _Nonnull)serialize:(NSArray * _Nonnull)value withBlock:(id _Nonnull(^_Nonnull)(id _Nonnull obj))withBlock;
++ (NSArray * _Nonnull)serialize:(NSArray * _Nonnull)value withBlock:(id _Nonnull (^_Nonnull)(id _Nonnull))serializeBlock;
 
-+ (NSArray * _Nonnull)deserialize:(NSArray * _Nonnull)jsonData withBlock:(id _Nonnull(^_Nonnull)(id _Nonnull obj))withBlock;
++ (NSArray * _Nonnull)deserialize:(NSArray * _Nonnull)jsonData withBlock:(id _Nonnull (^_Nonnull)(id _Nonnull))deserializeBlock;
 
 @end

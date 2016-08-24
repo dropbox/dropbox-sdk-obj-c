@@ -157,14 +157,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isAccessError]) {
-        jsonDict[@"access_error"] = [DbxSharingSharedFolderAccessErrorSerializer serialize:valueObj.accessError];
+        jsonDict = [[DbxSharingSharedFolderAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
         jsonDict[@".tag"] = @"access_error";
     }
     else if ([valueObj isInsideSharedFolder]) {
         jsonDict[@".tag"] = @"inside_shared_folder";
     }
     else if ([valueObj isInsufficientQuota]) {
-        jsonDict[@"insufficient_quota"] = [DbxSharingInsufficientQuotaAmountsSerializer serialize:valueObj.insufficientQuota];
+        jsonDict = [[DbxSharingInsufficientQuotaAmountsSerializer serialize:valueObj.insufficientQuota] mutableCopy];
         jsonDict[@".tag"] = @"insufficient_quota";
     }
     else if ([valueObj isAlreadyMounted]) {
@@ -197,7 +197,7 @@
         return [[DbxSharingMountFolderError alloc] initWithInsideSharedFolder];
     }
     if ([tag isEqualToString:@"insufficient_quota"]) {
-        DbxSharingInsufficientQuotaAmounts *insufficientQuota = [DbxSharingInsufficientQuotaAmountsSerializer deserialize:valueDict[@"insufficient_quota"]];
+        DbxSharingInsufficientQuotaAmounts *insufficientQuota = [DbxSharingInsufficientQuotaAmountsSerializer deserialize:valueDict];
         return [[DbxSharingMountFolderError alloc] initWithInsufficientQuota:insufficientQuota];
     }
     if ([tag isEqualToString:@"already_mounted"]) {

@@ -121,7 +121,7 @@
         jsonDict[@".tag"] = @"email_unverified";
     }
     else if ([valueObj isBadPath]) {
-        jsonDict[@"bad_path"] = [DbxSharingSharePathErrorSerializer serialize:valueObj.badPath];
+        jsonDict = [[DbxSharingSharePathErrorSerializer serialize:valueObj.badPath] mutableCopy];
         jsonDict[@".tag"] = @"bad_path";
     }
     else if ([valueObj isTeamPolicyDisallowsMemberPolicy]) {

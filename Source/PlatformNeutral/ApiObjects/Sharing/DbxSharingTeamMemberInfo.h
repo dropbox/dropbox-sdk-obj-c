@@ -27,10 +27,6 @@
 
 - (nonnull instancetype)initWithTeamInfo:(DbxUsersTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

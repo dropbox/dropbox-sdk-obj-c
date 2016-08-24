@@ -34,10 +34,6 @@
 
 - (nonnull instancetype)initWithWindows:(NSArray<NSNumber *> * _Nonnull)windows macos:(NSArray<NSNumber *> * _Nonnull)macos linux:(NSArray<NSNumber *> * _Nonnull)linux ios:(NSArray<NSNumber *> * _Nonnull)ios android:(NSArray<NSNumber *> * _Nonnull)android other:(NSArray<NSNumber *> * _Nonnull)other total:(NSArray<NSNumber *> * _Nonnull)total;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

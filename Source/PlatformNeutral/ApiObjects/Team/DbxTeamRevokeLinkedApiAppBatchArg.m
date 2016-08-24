@@ -39,13 +39,13 @@
 + (NSDictionary *)serialize:(DbxTeamRevokeLinkedApiAppBatchArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"revoke_linked_app"] = [DbxArraySerializer serialize:valueObj.revokeLinkedApp withBlock:^id(id obj) { return [DbxTeamRevokeLinkedApiAppArgSerializer serialize:obj]; }];
+    jsonDict[@"revoke_linked_app"] = [DbxArraySerializer serialize:valueObj.revokeLinkedApp withBlock:^id(id elem) { return [DbxTeamRevokeLinkedApiAppArgSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamRevokeLinkedApiAppBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamRevokeLinkedApiAppArg *> *revokeLinkedApp = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamRevokeLinkedApiAppArgSerializer deserialize:obj]; }];
+    NSArray<DbxTeamRevokeLinkedApiAppArg *> *revokeLinkedApp = [DbxArraySerializer deserialize:valueDict[@"revoke_linked_app"] withBlock:^id(id elem) { return [DbxTeamRevokeLinkedApiAppArgSerializer deserialize:elem]; }];
 
     return [[DbxTeamRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:revokeLinkedApp];
 }

@@ -20,10 +20,6 @@
 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

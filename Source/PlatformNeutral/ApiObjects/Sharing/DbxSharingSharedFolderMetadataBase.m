@@ -52,10 +52,10 @@
     jsonDict[@"access_type"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessType];
     jsonDict[@"is_team_folder"] = [DbxBoolSerializer serialize:valueObj.isTeamFolder];
     jsonDict[@"policy"] = [DbxSharingFolderPolicySerializer serialize:valueObj.policy];
-    if (valueObj.ownerTeam != nil) {
+    if (valueObj.ownerTeam) {
         jsonDict[@"owner_team"] = [DbxUsersTeamSerializer serialize:valueObj.ownerTeam];
     }
-    if (valueObj.parentSharedFolderId != nil) {
+    if (valueObj.parentSharedFolderId) {
         jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
     }
 
@@ -63,11 +63,11 @@
 }
 
 + (DbxSharingSharedFolderMetadataBase *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict];
-    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict];
-    DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict];
-    DbxUsersTeam *ownerTeam = valueDict != nil ? [DbxUsersTeamSerializer deserialize:valueDict] : nil;
-    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
+    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict[@"is_team_folder"]];
+    DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict[@"policy"]];
+    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] != nil ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
 
     return [[DbxSharingSharedFolderMetadataBase alloc] initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy ownerTeam:ownerTeam parentSharedFolderId:parentSharedFolderId];
 }

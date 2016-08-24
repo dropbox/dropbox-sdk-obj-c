@@ -21,10 +21,6 @@
 
 - (nonnull instancetype)initWithMatchType:(DbxFilesSearchMatchType * _Nonnull)matchType metadata:(DbxFilesMetadata * _Nonnull)metadata;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

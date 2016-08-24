@@ -39,10 +39,6 @@
 
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DbxSharingFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

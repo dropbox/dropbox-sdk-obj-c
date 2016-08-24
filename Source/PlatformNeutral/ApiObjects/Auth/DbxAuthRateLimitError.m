@@ -50,8 +50,8 @@
 }
 
 + (DbxAuthRateLimitError *)deserialize:(NSDictionary *)valueDict {
-    DbxAuthRateLimitReason *reason = [DbxAuthRateLimitReasonSerializer deserialize:valueDict];
-    NSNumber *retryAfter = [DbxNSNumberSerializer deserialize:valueDict];
+    DbxAuthRateLimitReason *reason = [DbxAuthRateLimitReasonSerializer deserialize:valueDict[@"reason"]];
+    NSNumber *retryAfter = [DbxNSNumberSerializer deserialize:valueDict[@"retry_after"]];
 
     return [[DbxAuthRateLimitError alloc] initWithReason:reason retryAfter:retryAfter];
 }

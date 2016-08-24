@@ -41,10 +41,6 @@ typedef NS_ENUM(NSInteger, TeamPoliciesEmmStateTag) {
 
 - (NSString * _Nonnull)getTagName;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 /// Current state of the DbxTeamPoliciesEmmState union type.

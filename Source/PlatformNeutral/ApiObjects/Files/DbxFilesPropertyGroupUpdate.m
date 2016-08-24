@@ -48,20 +48,20 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"template_id"] = [DbxStringSerializer serialize:valueObj.templateId];
-    if (valueObj.addOrUpdateFields != nil) {
-        jsonDict[@"add_or_update_fields"] = [DbxArraySerializer serialize:valueObj.addOrUpdateFields withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer serialize:obj]; }];
+    if (valueObj.addOrUpdateFields) {
+        jsonDict[@"add_or_update_fields"] = [DbxArraySerializer serialize:valueObj.addOrUpdateFields withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldSerializer serialize:elem]; }];
     }
-    if (valueObj.removeFields != nil) {
-        jsonDict[@"remove_fields"] = [DbxArraySerializer serialize:valueObj.removeFields withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+    if (valueObj.removeFields) {
+        jsonDict[@"remove_fields"] = [DbxArraySerializer serialize:valueObj.removeFields withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
     }
 
     return jsonDict;
 }
 
 + (DbxFilesPropertyGroupUpdate *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict];
-    NSArray<DbxPropertiesPropertyField *> *addOrUpdateFields = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldSerializer deserialize:obj]; }] : nil;
-    NSArray<NSString *> *removeFields = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }] : nil;
+    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
+    NSArray<DbxPropertiesPropertyField *> *addOrUpdateFields = valueDict[@"add_or_update_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"add_or_update_fields"] withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldSerializer deserialize:elem]; }] : nil;
+    NSArray<NSString *> *removeFields = valueDict[@"remove_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"remove_fields"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }] : nil;
 
     return [[DbxFilesPropertyGroupUpdate alloc] initWithTemplateId:templateId addOrUpdateFields:addOrUpdateFields removeFields:removeFields];
 }

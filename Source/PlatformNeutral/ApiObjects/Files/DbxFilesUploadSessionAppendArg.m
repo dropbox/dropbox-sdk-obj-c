@@ -50,8 +50,8 @@
 }
 
 + (DbxFilesUploadSessionAppendArg *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesUploadSessionCursor *cursor = [DbxFilesUploadSessionCursorSerializer deserialize:valueDict];
-    NSNumber *close = [DbxBoolSerializer deserialize:valueDict];
+    DbxFilesUploadSessionCursor *cursor = [DbxFilesUploadSessionCursorSerializer deserialize:valueDict[@"cursor"]];
+    NSNumber *close = [DbxBoolSerializer deserialize:valueDict[@"close"]];
 
     return [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
 }

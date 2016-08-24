@@ -43,7 +43,7 @@
 }
 
 + (DbxTeamRemovedStatus *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *isRecoverable = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *isRecoverable = [DbxBoolSerializer deserialize:valueDict[@"is_recoverable"]];
 
     return [[DbxTeamRemovedStatus alloc] initWithIsRecoverable:isRecoverable];
 }

@@ -47,8 +47,8 @@
 }
 
 + (DbxTeamMembersSetPermissionsArg *)deserialize:(NSDictionary *)valueDict {
-    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict];
-    DbxTeamAdminTier *dNewRole = [DbxTeamAdminTierSerializer deserialize:valueDict];
+    DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
+    DbxTeamAdminTier *dNewRole = [DbxTeamAdminTierSerializer deserialize:valueDict[@"new_role"]];
 
     return [[DbxTeamMembersSetPermissionsArg alloc] initWithUser:user dNewRole:dNewRole];
 }

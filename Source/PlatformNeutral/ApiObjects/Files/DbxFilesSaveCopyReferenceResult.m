@@ -44,7 +44,7 @@
 }
 
 + (DbxFilesSaveCopyReferenceResult *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict];
+    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict[@"metadata"]];
 
     return [[DbxFilesSaveCopyReferenceResult alloc] initWithMetadata:metadata];
 }

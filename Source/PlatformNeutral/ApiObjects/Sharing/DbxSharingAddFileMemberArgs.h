@@ -37,10 +37,6 @@
 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

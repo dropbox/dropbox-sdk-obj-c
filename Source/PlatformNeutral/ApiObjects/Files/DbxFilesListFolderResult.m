@@ -42,7 +42,7 @@
 + (NSDictionary *)serialize:(DbxFilesListFolderResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id obj) { return [DbxFilesMetadataSerializer serialize:obj]; }];
+    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id elem) { return [DbxFilesMetadataSerializer serialize:elem]; }];
     jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
 
@@ -50,9 +50,9 @@
 }
 
 + (DbxFilesListFolderResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxFilesMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesMetadataSerializer deserialize:obj]; }];
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<DbxFilesMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id elem) { return [DbxFilesMetadataSerializer deserialize:elem]; }];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
 
     return [[DbxFilesListFolderResult alloc] initWithEntries:entries cursor:cursor hasMore:hasMore];
 }

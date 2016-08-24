@@ -44,8 +44,8 @@
 + (NSDictionary *)serialize:(DbxSharingListFilesResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id obj) { return [DbxSharingSharedFileMetadataSerializer serialize:obj]; }];
-    if (valueObj.cursor != nil) {
+    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id elem) { return [DbxSharingSharedFileMetadataSerializer serialize:elem]; }];
+    if (valueObj.cursor) {
         jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     }
 
@@ -53,8 +53,8 @@
 }
 
 + (DbxSharingListFilesResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingSharedFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingSharedFileMetadataSerializer deserialize:obj]; }];
-    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSArray<DbxSharingSharedFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id elem) { return [DbxSharingSharedFileMetadataSerializer deserialize:elem]; }];
+    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
 
     return [[DbxSharingListFilesResult alloc] initWithEntries:entries cursor:cursor];
 }

@@ -77,7 +77,7 @@
         jsonDict[@".tag"] = @"in_progress";
     }
     else if ([valueObj isComplete]) {
-        jsonDict[@"complete"] = [DbxFilesUploadSessionFinishBatchResultSerializer serialize:valueObj.complete];
+        jsonDict = [[DbxFilesUploadSessionFinishBatchResultSerializer serialize:valueObj.complete] mutableCopy];
         jsonDict[@".tag"] = @"complete";
     }
     else {
@@ -94,7 +94,7 @@
         return [[DbxFilesUploadSessionFinishBatchJobStatus alloc] initWithInProgress];
     }
     if ([tag isEqualToString:@"complete"]) {
-        DbxFilesUploadSessionFinishBatchResult *complete = [DbxFilesUploadSessionFinishBatchResultSerializer deserialize:valueDict[@"complete"]];
+        DbxFilesUploadSessionFinishBatchResult *complete = [DbxFilesUploadSessionFinishBatchResultSerializer deserialize:valueDict];
         return [[DbxFilesUploadSessionFinishBatchJobStatus alloc] initWithComplete:complete];
     }
 

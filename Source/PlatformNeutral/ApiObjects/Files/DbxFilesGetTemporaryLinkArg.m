@@ -44,7 +44,7 @@
 }
 
 + (DbxFilesGetTemporaryLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
 
     return [[DbxFilesGetTemporaryLinkArg alloc] initWithPath:path];
 }

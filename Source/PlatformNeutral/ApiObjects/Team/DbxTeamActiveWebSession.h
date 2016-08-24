@@ -26,10 +26,6 @@
 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

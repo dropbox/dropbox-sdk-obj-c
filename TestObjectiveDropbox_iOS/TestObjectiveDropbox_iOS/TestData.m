@@ -34,15 +34,15 @@
         _groupName = [NSString stringWithFormat:@"%@%@", @"GroupName", _testIdTeam];
         _groupExternalId = [NSString stringWithFormat:@"%@%@", @"group-", _testIdTeam];
         
-        // user-specific data
-        _accountId = @"dbid:<ACCOUNT_ID>";
-        _accountId2 = @"dbid:<ACCOUNT_ID2>";
-        _accountId3 = @"dbid:<ACCOUNT_ID3>";
-        _accountId3Email = @"<ACCOUNT_ID3_EMAIL>";
+        // user-specific information
+        _accountId = @"dbid:AABL4QRrY7tB9viLgPUqmjkzE6Fe5ujlnlE";
+        _accountId2 = @"dbid:AABZqArm5N_YcH1YxpVbjEWkdzGkYQ6mkqk";
+        _accountId3 = @"dbid:AABi4KhsNtI1RhK-uQINEWkim3ucF-ASWgE";
+        _accountId3Email = @"scobbe502+test1@gmail.com";
         
-        // user-specific team data
-        _teamMemberEmail = @"<TEAM_MEMBER_EMAIL>";
-        _teamMemberNewEmail = @"<NEW_TEAM_MEMBER_EMAIL>";
+        // team data
+        _teamMemberEmail = @"scobbe502+dfb@gmail.com";
+        _teamMemberNewEmail = @"scobbe@yahoo.com";
     }
     return self;
 }

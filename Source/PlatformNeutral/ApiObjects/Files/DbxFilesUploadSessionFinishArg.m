@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesUploadSessionFinishArg *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesUploadSessionCursor *cursor = [DbxFilesUploadSessionCursorSerializer deserialize:valueDict];
-    DbxFilesCommitInfo *commit = [DbxFilesCommitInfoSerializer deserialize:valueDict];
+    DbxFilesUploadSessionCursor *cursor = [DbxFilesUploadSessionCursorSerializer deserialize:valueDict[@"cursor"]];
+    DbxFilesCommitInfo *commit = [DbxFilesCommitInfoSerializer deserialize:valueDict[@"commit"]];
 
     return [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:cursor commit:commit];
 }

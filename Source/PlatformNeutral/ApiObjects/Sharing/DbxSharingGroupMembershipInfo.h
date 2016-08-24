@@ -25,10 +25,6 @@
 
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType group:(DbxSharingGroupInfo * _Nonnull)group;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

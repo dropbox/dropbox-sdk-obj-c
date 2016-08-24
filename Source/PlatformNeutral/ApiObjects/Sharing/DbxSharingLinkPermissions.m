@@ -48,13 +48,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"can_revoke"] = [DbxBoolSerializer serialize:valueObj.canRevoke];
-    if (valueObj.resolvedVisibility != nil) {
+    if (valueObj.resolvedVisibility) {
         jsonDict[@"resolved_visibility"] = [DbxSharingResolvedVisibilitySerializer serialize:valueObj.resolvedVisibility];
     }
-    if (valueObj.requestedVisibility != nil) {
+    if (valueObj.requestedVisibility) {
         jsonDict[@"requested_visibility"] = [DbxSharingRequestedVisibilitySerializer serialize:valueObj.requestedVisibility];
     }
-    if (valueObj.revokeFailureReason != nil) {
+    if (valueObj.revokeFailureReason) {
         jsonDict[@"revoke_failure_reason"] = [DbxSharingSharedLinkAccessFailureReasonSerializer serialize:valueObj.revokeFailureReason];
     }
 
@@ -62,10 +62,10 @@
 }
 
 + (DbxSharingLinkPermissions *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *canRevoke = [DbxBoolSerializer deserialize:valueDict];
-    DbxSharingResolvedVisibility *resolvedVisibility = valueDict != nil ? [DbxSharingResolvedVisibilitySerializer deserialize:valueDict] : nil;
-    DbxSharingRequestedVisibility *requestedVisibility = valueDict != nil ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict] : nil;
-    DbxSharingSharedLinkAccessFailureReason *revokeFailureReason = valueDict != nil ? [DbxSharingSharedLinkAccessFailureReasonSerializer deserialize:valueDict] : nil;
+    NSNumber *canRevoke = [DbxBoolSerializer deserialize:valueDict[@"can_revoke"]];
+    DbxSharingResolvedVisibility *resolvedVisibility = valueDict[@"resolved_visibility"] != nil ? [DbxSharingResolvedVisibilitySerializer deserialize:valueDict[@"resolved_visibility"]] : nil;
+    DbxSharingRequestedVisibility *requestedVisibility = valueDict[@"requested_visibility"] != nil ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]] : nil;
+    DbxSharingSharedLinkAccessFailureReason *revokeFailureReason = valueDict[@"revoke_failure_reason"] != nil ? [DbxSharingSharedLinkAccessFailureReasonSerializer deserialize:valueDict[@"revoke_failure_reason"]] : nil;
 
     return [[DbxSharingLinkPermissions alloc] initWithCanRevoke:canRevoke resolvedVisibility:resolvedVisibility requestedVisibility:requestedVisibility revokeFailureReason:revokeFailureReason];
 }

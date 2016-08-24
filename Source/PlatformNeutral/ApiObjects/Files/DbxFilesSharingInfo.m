@@ -43,7 +43,7 @@
 }
 
 + (DbxFilesSharingInfo *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict];
+    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict[@"read_only"]];
 
     return [[DbxFilesSharingInfo alloc] initWithReadOnly:readOnly];
 }

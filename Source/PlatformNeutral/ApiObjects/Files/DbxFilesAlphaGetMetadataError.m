@@ -83,11 +83,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesLookupErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesLookupErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isPropertiesError]) {
-        jsonDict[@"properties_error"] = [DbxFilesLookUpPropertiesErrorSerializer serialize:valueObj.propertiesError];
+        jsonDict = [[DbxFilesLookUpPropertiesErrorSerializer serialize:valueObj.propertiesError] mutableCopy];
         jsonDict[@".tag"] = @"properties_error";
     }
     else {

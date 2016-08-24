@@ -45,8 +45,8 @@
 }
 
 + (DbxFilesGpsCoordinates *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *latitude = [DbxNSNumberSerializer deserialize:valueDict];
-    NSNumber *longitude = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *latitude = [DbxNSNumberSerializer deserialize:valueDict[@"latitude"]];
+    NSNumber *longitude = [DbxNSNumberSerializer deserialize:valueDict[@"longitude"]];
 
     return [[DbxFilesGpsCoordinates alloc] initWithLatitude:latitude longitude:longitude];
 }

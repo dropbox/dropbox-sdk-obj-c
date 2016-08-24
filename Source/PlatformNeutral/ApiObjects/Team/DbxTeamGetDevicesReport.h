@@ -28,10 +28,6 @@
 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DbxTeamDevicesActive * _Nonnull)active1Day active7Day:(DbxTeamDevicesActive * _Nonnull)active7Day active28Day:(DbxTeamDevicesActive * _Nonnull)active28Day;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -28,7 +28,7 @@
 
 - (DbxUploadTask * _Nonnull)requestUpload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg inputData:(NSData * _Nonnull)input;
 
-- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputStream:(NSStream *)input;
+- (DbxUploadTask * _Nonnull)requestUpload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg inputStream:(NSInputStream * _Nonnull)input;
 
 - (DbxDownloadURLTask * _Nonnull)requestDownload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 

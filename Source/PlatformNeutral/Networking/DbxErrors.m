@@ -8,7 +8,7 @@
 #import "DbxAuthRateLimitError.h"
 #import "DbxErrors.h"
 
-@implementation DbxHttpError
+@implementation DbxRequestHttpError
 
 - (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody {
     self = [super init];
@@ -27,7 +27,7 @@
 @end
 
 
-@implementation DbxBadInputError
+@implementation DbxRequestBadInputError
 
 - (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody errorMessage:(NSString *)errorMessage {
     self = [super init:requestId statusCode:statusCode errorBody:errorBody];
@@ -44,7 +44,7 @@
 @end
 
 
-@implementation DbxAuthError
+@implementation DbxRequestAuthError
 
 - (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody structuredAuthError:(DbxAuthAuthError *)structuredAuthError {
     self = [super init:requestId statusCode:statusCode errorBody:errorBody];
@@ -61,7 +61,7 @@
 @end
 
 
-@implementation DbxRateLimitError
+@implementation DbxRequestRateLimitError
 
 - (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody structuredRateLimitError:(DbxAuthRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff {
     self = [super init:requestId statusCode:statusCode errorBody:errorBody];
@@ -79,7 +79,7 @@
 @end
 
 
-@implementation DbxInternalServerError
+@implementation DbxRequestInternalServerError
 
 - (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody {
     return [super init:requestId statusCode:statusCode errorBody:errorBody];
@@ -92,7 +92,7 @@
 @end
 
 
-@implementation DbxOsError
+@implementation DbxRequestOsError
 
 - (instancetype)init:(NSString *)errorDescription {
     self = [super init];
@@ -111,7 +111,7 @@
 
 @implementation DbxError
 
-- (instancetype)init:(DbxErrorTypeTag)tag requestId:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody errorMessage:(NSString *)errorMessage structuredAuthError:(DbxAuthAuthError *)structuredAuthError structuredRateLimitError:(DbxAuthRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff errorDescription:(NSString *)errorDescription {
+- (instancetype)init:(DbxRequestErrorType)tag requestId:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody errorMessage:(NSString *)errorMessage structuredAuthError:(DbxAuthAuthError *)structuredAuthError structuredRateLimitError:(DbxAuthRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff errorDescription:(NSString *)errorDescription {
     self = [super init];
     if (self) {
         self.tag = tag;
@@ -128,75 +128,75 @@
 }
 
 - (BOOL)isHTTPError {
-    return _tag == (DbxErrorTypeTag)DbxErrorHttpError;
+    return _tag == (DbxRequestErrorType)DbxRequestHttpErrorType;
 }
 
 - (BOOL)isBadInputError {
-    return _tag == (DbxErrorTypeTag)DbxErrorBadInputError;
+    return _tag == (DbxRequestErrorType)DbxRequestBadInputErrorType;
 }
 
 - (BOOL)isAuthError {
-    return _tag == (DbxErrorTypeTag)DbxErrorAuthError;
+    return _tag == (DbxRequestErrorType)DbxRequestAuthErrorType;
 }
 
 - (BOOL)isRateLimitError {
-    return _tag == (DbxErrorTypeTag)DbxErrorRateLimitError;
+    return _tag == (DbxRequestErrorType)DbxRequestRateLimitErrorType;
 }
 
 - (BOOL)isInternalServerError {
-    return _tag == (DbxErrorTypeTag)DbxErrorInternalServerError;
+    return _tag == (DbxRequestErrorType)DbxRequestInternalServerErrorType;
 }
 
 - (BOOL)isOSError {
-    return _tag == (DbxErrorTypeTag)DbxErrorOsError;
+    return _tag == (DbxRequestErrorType)DbxRequestOsErrorType;
 }
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"GenericDropboxError[%@];", [self getTagName]];
 }
 
-- (DbxHttpError * _Nonnull)asHttpError {
-    return [[DbxHttpError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+- (DbxRequestHttpError * _Nonnull)asHttpError {
+    return [[DbxRequestHttpError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
 }
 
-- (DbxBadInputError * _Nonnull)asBadInputError {
-    return [[DbxBadInputError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+- (DbxRequestBadInputError * _Nonnull)asBadInputError {
+    return [[DbxRequestBadInputError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
 }
 
-- (DbxAuthError * _Nonnull)asAuthError {
-    return [[DbxAuthError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredAuthError:_structuredAuthError];
+- (DbxRequestAuthError * _Nonnull)asAuthError {
+    return [[DbxRequestAuthError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredAuthError:_structuredAuthError];
 }
 
-- (DbxRateLimitError * _Nonnull)asRateLimitError {
-    return [[DbxRateLimitError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredRateLimitError:_structuredRateLimitError backoff:_backoff];
+- (DbxRequestRateLimitError * _Nonnull)asRateLimitError {
+    return [[DbxRequestRateLimitError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredRateLimitError:_structuredRateLimitError backoff:_backoff];
 }
 
-- (DbxInternalServerError * _Nonnull)asInternalServerError {
-    return [[DbxInternalServerError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+- (DbxRequestInternalServerError * _Nonnull)asInternalServerError {
+    return [[DbxRequestInternalServerError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
 }
 
-- (DbxOsError * _Nonnull)asOsError {
-    return [[DbxOsError alloc] init:_errorDescription];
+- (DbxRequestOsError * _Nonnull)asOsError {
+    return [[DbxRequestOsError alloc] init:_errorDescription];
 }
 
 - (NSString *)getTagName {
-    if (_tag == (DbxErrorTypeTag)DbxErrorHttpError) {
-        return @"(DbxErrorTypeTag)DbxErrorHttpError";
+    if (_tag == (DbxRequestErrorType)DbxRequestHttpErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestHttpErrorType";
     }
-    if (_tag == (DbxErrorTypeTag)DbxErrorBadInputError) {
-        return @"(DbxErrorTypeTag)DbxErrorBadInputError";
+    if (_tag == (DbxRequestErrorType)DbxRequestBadInputErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestBadInputErrorType";
     }
-    if (_tag == (DbxErrorTypeTag)DbxErrorAuthError) {
-        return @"(DbxErrorTypeTag)DbxErrorAuthError";
+    if (_tag == (DbxRequestErrorType)DbxRequestAuthErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestAuthErrorType";
     }
-    if (_tag == (DbxErrorTypeTag)DbxErrorRateLimitError) {
-        return @"(DbxErrorTypeTag)DbxErrorRateLimitError";
+    if (_tag == (DbxRequestErrorType)DbxRequestRateLimitErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestRateLimitErrorType";
     }
-    if (_tag == (DbxErrorTypeTag)DbxErrorInternalServerError) {
-        return @"(DbxErrorTypeTag)DbxErrorInternalServerError";
+    if (_tag == (DbxRequestErrorType)DbxRequestInternalServerErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestInternalServerErrorType";
     }
-    if (_tag == (DbxErrorTypeTag)DbxErrorOsError) {
-        return @"(DbxErrorTypeTag)DbxErrorOsError";
+    if (_tag == (DbxRequestErrorType)DbxRequestOsErrorType) {
+        return @"(DbxRequestErrorType)DbxRequestOsErrorType";
     }
     
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

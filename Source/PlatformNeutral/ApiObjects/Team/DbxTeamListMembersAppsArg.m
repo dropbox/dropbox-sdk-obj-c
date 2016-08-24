@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxTeamListMembersAppsArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.cursor != nil) {
+    if (valueObj.cursor) {
         jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     }
 
@@ -49,7 +49,7 @@
 }
 
 + (DbxTeamListMembersAppsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
 
     return [[DbxTeamListMembersAppsArg alloc] initWithCursor:cursor];
 }

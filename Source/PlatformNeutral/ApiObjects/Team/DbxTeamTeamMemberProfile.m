@@ -53,11 +53,11 @@
     jsonDict[@"status"] = [DbxTeamTeamMemberStatusSerializer serialize:valueObj.status];
     jsonDict[@"name"] = [DbxUsersNameSerializer serialize:valueObj.name];
     jsonDict[@"membership_type"] = [DbxTeamTeamMembershipTypeSerializer serialize:valueObj.membershipType];
-    jsonDict[@"groups"] = [DbxArraySerializer serialize:valueObj.groups withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
-    if (valueObj.externalId != nil) {
+    jsonDict[@"groups"] = [DbxArraySerializer serialize:valueObj.groups withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+    if (valueObj.externalId) {
         jsonDict[@"external_id"] = [DbxStringSerializer serialize:valueObj.externalId];
     }
-    if (valueObj.accountId != nil) {
+    if (valueObj.accountId) {
         jsonDict[@"account_id"] = [DbxStringSerializer serialize:valueObj.accountId];
     }
 
@@ -65,15 +65,15 @@
 }
 
 + (DbxTeamTeamMemberProfile *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
-    NSString *email = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict];
-    DbxTeamTeamMemberStatus *status = [DbxTeamTeamMemberStatusSerializer deserialize:valueDict];
-    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict];
-    DbxTeamTeamMembershipType *membershipType = [DbxTeamTeamMembershipTypeSerializer deserialize:valueDict];
-    NSArray<NSString *> *groups = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
-    NSString *externalId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *accountId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
+    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
+    DbxTeamTeamMemberStatus *status = [DbxTeamTeamMemberStatusSerializer deserialize:valueDict[@"status"]];
+    DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
+    DbxTeamTeamMembershipType *membershipType = [DbxTeamTeamMembershipTypeSerializer deserialize:valueDict[@"membership_type"]];
+    NSArray<NSString *> *groups = [DbxArraySerializer deserialize:valueDict[@"groups"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+    NSString *externalId = valueDict[@"external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"external_id"]] : nil;
+    NSString *accountId = valueDict[@"account_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"account_id"]] : nil;
 
     return [[DbxTeamTeamMemberProfile alloc] initWithTeamMemberId:teamMemberId email:email emailVerified:emailVerified status:status name:name membershipType:membershipType groups:groups externalId:externalId accountId:accountId];
 }

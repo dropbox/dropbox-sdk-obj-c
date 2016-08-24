@@ -23,10 +23,6 @@
 
 - (nonnull instancetype)initWithMetadata:(DbxFilesMetadata * _Nonnull)metadata dCopyReference:(NSString * _Nonnull)dCopyReference expires:(NSDate * _Nonnull)expires;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

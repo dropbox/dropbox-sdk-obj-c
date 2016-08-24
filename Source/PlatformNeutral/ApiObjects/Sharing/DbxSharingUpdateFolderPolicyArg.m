@@ -49,13 +49,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
-    if (valueObj.memberPolicy != nil) {
+    if (valueObj.memberPolicy) {
         jsonDict[@"member_policy"] = [DbxSharingMemberPolicySerializer serialize:valueObj.memberPolicy];
     }
-    if (valueObj.aclUpdatePolicy != nil) {
+    if (valueObj.aclUpdatePolicy) {
         jsonDict[@"acl_update_policy"] = [DbxSharingAclUpdatePolicySerializer serialize:valueObj.aclUpdatePolicy];
     }
-    if (valueObj.sharedLinkPolicy != nil) {
+    if (valueObj.sharedLinkPolicy) {
         jsonDict[@"shared_link_policy"] = [DbxSharingSharedLinkPolicySerializer serialize:valueObj.sharedLinkPolicy];
     }
 
@@ -63,10 +63,10 @@
 }
 
 + (DbxSharingUpdateFolderPolicyArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
-    DbxSharingMemberPolicy *memberPolicy = valueDict != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict] : nil;
-    DbxSharingAclUpdatePolicy *aclUpdatePolicy = valueDict != nil ? [DbxSharingAclUpdatePolicySerializer deserialize:valueDict] : nil;
-    DbxSharingSharedLinkPolicy *sharedLinkPolicy = valueDict != nil ? [DbxSharingSharedLinkPolicySerializer deserialize:valueDict] : nil;
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    DbxSharingMemberPolicy *memberPolicy = valueDict[@"member_policy"] != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict[@"member_policy"]] : nil;
+    DbxSharingAclUpdatePolicy *aclUpdatePolicy = valueDict[@"acl_update_policy"] != nil ? [DbxSharingAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]] : nil;
+    DbxSharingSharedLinkPolicy *sharedLinkPolicy = valueDict[@"shared_link_policy"] != nil ? [DbxSharingSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]] : nil;
 
     return [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:sharedFolderId memberPolicy:memberPolicy aclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy];
 }

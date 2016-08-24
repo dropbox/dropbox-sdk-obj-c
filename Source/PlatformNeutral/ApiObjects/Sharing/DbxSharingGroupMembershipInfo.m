@@ -48,10 +48,10 @@
 
     jsonDict[@"access_type"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessType];
     jsonDict[@"group"] = [DbxSharingGroupInfoSerializer serialize:valueObj.group];
-    if (valueObj.permissions != nil) {
-        jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id obj) { return [DbxSharingMemberPermissionSerializer serialize:obj]; }];
+    if (valueObj.permissions) {
+        jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer serialize:elem]; }];
     }
-    if (valueObj.initials != nil) {
+    if (valueObj.initials) {
         jsonDict[@"initials"] = [DbxStringSerializer serialize:valueObj.initials];
     }
     jsonDict[@"is_inherited"] = [DbxBoolSerializer serialize:valueObj.isInherited];
@@ -60,11 +60,11 @@
 }
 
 + (DbxSharingGroupMembershipInfo *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict];
-    DbxSharingGroupInfo *group = [DbxSharingGroupInfoSerializer deserialize:valueDict];
-    NSArray<DbxSharingMemberPermission *> *permissions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingMemberPermissionSerializer deserialize:obj]; }] : nil;
-    NSString *initials = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSNumber *isInherited = [DbxBoolSerializer deserialize:valueDict];
+    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
+    DbxSharingGroupInfo *group = [DbxSharingGroupInfoSerializer deserialize:valueDict[@"group"]];
+    NSArray<DbxSharingMemberPermission *> *permissions = valueDict[@"permissions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer deserialize:elem]; }] : nil;
+    NSString *initials = valueDict[@"initials"] != nil ? [DbxStringSerializer deserialize:valueDict[@"initials"]] : nil;
+    NSNumber *isInherited = [DbxBoolSerializer deserialize:valueDict[@"is_inherited"]];
 
     return [[DbxSharingGroupMembershipInfo alloc] initWithAccessType:accessType group:group permissions:permissions initials:initials isInherited:isInherited];
 }

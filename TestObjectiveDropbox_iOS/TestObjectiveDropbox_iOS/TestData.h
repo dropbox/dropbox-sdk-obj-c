@@ -5,6 +5,8 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @interface TestData : NSObject
 
 - (nonnull instancetype)init;

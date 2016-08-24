@@ -46,23 +46,23 @@
 + (NSDictionary *)serialize:(DbxSharingMemberAccessLevelResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.accessLevel != nil) {
+    if (valueObj.accessLevel) {
         jsonDict[@"access_level"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessLevel];
     }
-    if (valueObj.warning != nil) {
+    if (valueObj.warning) {
         jsonDict[@"warning"] = [DbxStringSerializer serialize:valueObj.warning];
     }
-    if (valueObj.accessDetails != nil) {
-        jsonDict[@"access_details"] = [DbxArraySerializer serialize:valueObj.accessDetails withBlock:^id(id obj) { return [DbxSharingParentFolderAccessInfoSerializer serialize:obj]; }];
+    if (valueObj.accessDetails) {
+        jsonDict[@"access_details"] = [DbxArraySerializer serialize:valueObj.accessDetails withBlock:^id(id elem) { return [DbxSharingParentFolderAccessInfoSerializer serialize:elem]; }];
     }
 
     return jsonDict;
 }
 
 + (DbxSharingMemberAccessLevelResult *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAccessLevel *accessLevel = valueDict != nil ? [DbxSharingAccessLevelSerializer deserialize:valueDict] : nil;
-    NSString *warning = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSArray<DbxSharingParentFolderAccessInfo *> *accessDetails = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingParentFolderAccessInfoSerializer deserialize:obj]; }] : nil;
+    DbxSharingAccessLevel *accessLevel = valueDict[@"access_level"] != nil ? [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]] : nil;
+    NSString *warning = valueDict[@"warning"] != nil ? [DbxStringSerializer deserialize:valueDict[@"warning"]] : nil;
+    NSArray<DbxSharingParentFolderAccessInfo *> *accessDetails = valueDict[@"access_details"] != nil ? [DbxArraySerializer deserialize:valueDict[@"access_details"] withBlock:^id(id elem) { return [DbxSharingParentFolderAccessInfoSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingMemberAccessLevelResult alloc] initWithAccessLevel:accessLevel warning:warning accessDetails:accessDetails];
 }

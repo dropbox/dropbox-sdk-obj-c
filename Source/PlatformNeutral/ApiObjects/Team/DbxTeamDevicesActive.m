@@ -50,25 +50,25 @@
 + (NSDictionary *)serialize:(DbxTeamDevicesActive *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"windows"] = [DbxArraySerializer serialize:valueObj.windows withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"macos"] = [DbxArraySerializer serialize:valueObj.macos withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"linux"] = [DbxArraySerializer serialize:valueObj.linux withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"ios"] = [DbxArraySerializer serialize:valueObj.ios withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"android"] = [DbxArraySerializer serialize:valueObj.android withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"other"] = [DbxArraySerializer serialize:valueObj.other withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
-    jsonDict[@"total"] = [DbxArraySerializer serialize:valueObj.total withBlock:^id(id obj) { return [DbxNSNumberSerializer serialize:obj]; }];
+    jsonDict[@"windows"] = [DbxArraySerializer serialize:valueObj.windows withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"macos"] = [DbxArraySerializer serialize:valueObj.macos withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"linux"] = [DbxArraySerializer serialize:valueObj.linux withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"ios"] = [DbxArraySerializer serialize:valueObj.ios withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"android"] = [DbxArraySerializer serialize:valueObj.android withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"other"] = [DbxArraySerializer serialize:valueObj.other withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"total"] = [DbxArraySerializer serialize:valueObj.total withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamDevicesActive *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSNumber *> *windows = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *macos = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *linux = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *ios = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *android = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *other = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
-    NSArray<NSNumber *> *total = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxNSNumberSerializer deserialize:obj]; }];
+    NSArray<NSNumber *> *windows = [DbxArraySerializer deserialize:valueDict[@"windows"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *macos = [DbxArraySerializer deserialize:valueDict[@"macos"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *linux = [DbxArraySerializer deserialize:valueDict[@"linux"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *ios = [DbxArraySerializer deserialize:valueDict[@"ios"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *android = [DbxArraySerializer deserialize:valueDict[@"android"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *other = [DbxArraySerializer deserialize:valueDict[@"other"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSArray<NSNumber *> *total = [DbxArraySerializer deserialize:valueDict[@"total"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
 
     return [[DbxTeamDevicesActive alloc] initWithWindows:windows macos:macos linux:linux ios:ios android:android other:other total:total];
 }

@@ -54,9 +54,9 @@
 }
 
 + (DbxFilesThumbnailArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    DbxFilesThumbnailFormat *format = [DbxFilesThumbnailFormatSerializer deserialize:valueDict];
-    DbxFilesThumbnailSize *size = [DbxFilesThumbnailSizeSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    DbxFilesThumbnailFormat *format = [DbxFilesThumbnailFormatSerializer deserialize:valueDict[@"format"]];
+    DbxFilesThumbnailSize *size = [DbxFilesThumbnailSizeSerializer deserialize:valueDict[@"size"]];
 
     return [[DbxFilesThumbnailArg alloc] initWithPath:path format:format size:size];
 }

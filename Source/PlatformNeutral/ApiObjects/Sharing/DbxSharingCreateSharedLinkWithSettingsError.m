@@ -127,7 +127,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesLookupErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesLookupErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isEmailNotVerified]) {
@@ -137,7 +137,7 @@
         jsonDict[@".tag"] = @"shared_link_already_exists";
     }
     else if ([valueObj isSettingsError]) {
-        jsonDict[@"settings_error"] = [DbxSharingSharedLinkSettingsErrorSerializer serialize:valueObj.settingsError];
+        jsonDict = [[DbxSharingSharedLinkSettingsErrorSerializer serialize:valueObj.settingsError] mutableCopy];
         jsonDict[@".tag"] = @"settings_error";
     }
     else if ([valueObj isAccessDenied]) {

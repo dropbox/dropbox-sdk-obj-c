@@ -31,10 +31,6 @@
 
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -127,11 +127,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isUserError]) {
-        jsonDict[@"user_error"] = [DbxSharingSharingUserErrorSerializer serialize:valueObj.userError];
+        jsonDict = [[DbxSharingSharingUserErrorSerializer serialize:valueObj.userError] mutableCopy];
         jsonDict[@".tag"] = @"user_error";
     }
     else if ([valueObj isAccessError]) {
-        jsonDict[@"access_error"] = [DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError];
+        jsonDict = [[DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
         jsonDict[@".tag"] = @"access_error";
     }
     else if ([valueObj isRateLimit]) {

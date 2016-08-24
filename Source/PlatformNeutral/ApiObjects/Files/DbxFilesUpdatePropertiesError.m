@@ -176,7 +176,7 @@
         jsonDict[@".tag"] = @"other";
     }
     else if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesLookupErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesLookupErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isPropertyFieldTooLarge]) {
@@ -186,7 +186,7 @@
         jsonDict[@".tag"] = @"does_not_fit_template";
     }
     else if ([valueObj isPropertyGroupLookup]) {
-        jsonDict[@"property_group_lookup"] = [DbxFilesLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup];
+        jsonDict = [[DbxFilesLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup] mutableCopy];
         jsonDict[@".tag"] = @"property_group_lookup";
     }
     else {

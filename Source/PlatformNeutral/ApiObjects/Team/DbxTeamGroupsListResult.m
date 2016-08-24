@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxTeamGroupsListResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"groups"] = [DbxArraySerializer serialize:valueObj.groups withBlock:^id(id obj) { return [DbxTeamCommonGroupSummarySerializer serialize:obj]; }];
+    jsonDict[@"groups"] = [DbxArraySerializer serialize:valueObj.groups withBlock:^id(id elem) { return [DbxTeamCommonGroupSummarySerializer serialize:elem]; }];
     jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
 
@@ -49,9 +49,9 @@
 }
 
 + (DbxTeamGroupsListResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamCommonGroupSummary *> *groups = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamCommonGroupSummarySerializer deserialize:obj]; }];
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<DbxTeamCommonGroupSummary *> *groups = [DbxArraySerializer deserialize:valueDict[@"groups"] withBlock:^id(id elem) { return [DbxTeamCommonGroupSummarySerializer deserialize:elem]; }];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
 
     return [[DbxTeamGroupsListResult alloc] initWithGroups:groups cursor:cursor hasMore:hasMore];
 }

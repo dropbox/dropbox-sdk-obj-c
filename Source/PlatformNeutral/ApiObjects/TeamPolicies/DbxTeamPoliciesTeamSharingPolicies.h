@@ -26,10 +26,6 @@
 
 - (nonnull instancetype)initWithSharedFolderMemberPolicy:(DbxTeamPoliciesSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

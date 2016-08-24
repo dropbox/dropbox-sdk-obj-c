@@ -44,7 +44,7 @@
 }
 
 + (DbxUsersGetAccountArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict];
+    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
 
     return [[DbxUsersGetAccountArg alloc] initWithAccountId:accountId];
 }

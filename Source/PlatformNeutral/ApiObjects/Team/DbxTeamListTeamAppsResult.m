@@ -45,9 +45,9 @@
 + (NSDictionary *)serialize:(DbxTeamListTeamAppsResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"apps"] = [DbxArraySerializer serialize:valueObj.apps withBlock:^id(id obj) { return [DbxTeamMemberLinkedAppsSerializer serialize:obj]; }];
+    jsonDict[@"apps"] = [DbxArraySerializer serialize:valueObj.apps withBlock:^id(id elem) { return [DbxTeamMemberLinkedAppsSerializer serialize:elem]; }];
     jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
-    if (valueObj.cursor != nil) {
+    if (valueObj.cursor) {
         jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     }
 
@@ -55,9 +55,9 @@
 }
 
 + (DbxTeamListTeamAppsResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamMemberLinkedApps *> *apps = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamMemberLinkedAppsSerializer deserialize:obj]; }];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
-    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSArray<DbxTeamMemberLinkedApps *> *apps = [DbxArraySerializer deserialize:valueDict[@"apps"] withBlock:^id(id elem) { return [DbxTeamMemberLinkedAppsSerializer deserialize:elem]; }];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
+    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
 
     return [[DbxTeamListTeamAppsResult alloc] initWithApps:apps hasMore:hasMore cursor:cursor];
 }

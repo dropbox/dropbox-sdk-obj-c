@@ -50,9 +50,9 @@
 }
 
 + (DbxSharingChangeFileMemberAccessArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict];
-    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict];
-    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict];
+    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
+    DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
 
     return [[DbxSharingChangeFileMemberAccessArgs alloc] initWithFile:file member:member accessLevel:accessLevel];
 }

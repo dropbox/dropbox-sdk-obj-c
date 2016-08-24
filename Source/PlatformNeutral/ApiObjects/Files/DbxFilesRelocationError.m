@@ -180,15 +180,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isFromLookup]) {
-        jsonDict[@"from_lookup"] = [DbxFilesLookupErrorSerializer serialize:valueObj.fromLookup];
+        jsonDict = [[DbxFilesLookupErrorSerializer serialize:valueObj.fromLookup] mutableCopy];
         jsonDict[@".tag"] = @"from_lookup";
     }
     else if ([valueObj isFromWrite]) {
-        jsonDict[@"from_write"] = [DbxFilesWriteErrorSerializer serialize:valueObj.fromWrite];
+        jsonDict = [[DbxFilesWriteErrorSerializer serialize:valueObj.fromWrite] mutableCopy];
         jsonDict[@".tag"] = @"from_write";
     }
     else if ([valueObj isTo]) {
-        jsonDict[@"to"] = [DbxFilesWriteErrorSerializer serialize:valueObj.to];
+        jsonDict = [[DbxFilesWriteErrorSerializer serialize:valueObj.to] mutableCopy];
         jsonDict[@".tag"] = @"to";
     }
     else if ([valueObj isCantCopySharedFolder]) {

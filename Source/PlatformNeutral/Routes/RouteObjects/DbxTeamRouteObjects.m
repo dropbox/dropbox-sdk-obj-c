@@ -2,145 +2,9 @@
 /// Stone Route Objects
 /// 
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollEmptyResult.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxPropertiesGetPropertyTemplateArg.h"
-#import "DbxPropertiesGetPropertyTemplateResult.h"
-#import "DbxPropertiesListPropertyTemplateIds.h"
-#import "DbxPropertiesModifyPropertyTemplateError.h"
-#import "DbxPropertiesPropertyFieldTemplate.h"
-#import "DbxPropertiesPropertyGroupTemplate.h"
-#import "DbxPropertiesPropertyTemplateError.h"
 #import "DbxStoneBase.h"
-#import "DbxTeamActiveWebSession.h"
-#import "DbxTeamAddPropertyTemplateArg.h"
-#import "DbxTeamAddPropertyTemplateResult.h"
-#import "DbxTeamAdminTier.h"
-#import "DbxTeamApiApp.h"
-#import "DbxTeamBaseDfbReport.h"
-#import "DbxTeamCommonGroupManagementType.h"
-#import "DbxTeamCommonGroupSummary.h"
-#import "DbxTeamDateRange.h"
-#import "DbxTeamDateRangeError.h"
-#import "DbxTeamDesktopClientSession.h"
-#import "DbxTeamDeviceSessionArg.h"
-#import "DbxTeamDevicesActive.h"
-#import "DbxTeamGetActivityReport.h"
-#import "DbxTeamGetDevicesReport.h"
-#import "DbxTeamGetMembershipReport.h"
-#import "DbxTeamGetStorageReport.h"
-#import "DbxTeamGroupAccessType.h"
-#import "DbxTeamGroupCreateArg.h"
-#import "DbxTeamGroupCreateError.h"
-#import "DbxTeamGroupDeleteError.h"
-#import "DbxTeamGroupFullInfo.h"
-#import "DbxTeamGroupMemberInfo.h"
-#import "DbxTeamGroupMemberSelector.h"
-#import "DbxTeamGroupMemberSelectorError.h"
-#import "DbxTeamGroupMemberSetAccessTypeError.h"
-#import "DbxTeamGroupMembersAddArg.h"
-#import "DbxTeamGroupMembersAddError.h"
-#import "DbxTeamGroupMembersChangeResult.h"
-#import "DbxTeamGroupMembersRemoveArg.h"
-#import "DbxTeamGroupMembersRemoveError.h"
-#import "DbxTeamGroupMembersSelectorError.h"
-#import "DbxTeamGroupMembersSetAccessTypeArg.h"
-#import "DbxTeamGroupSelector.h"
-#import "DbxTeamGroupSelectorError.h"
-#import "DbxTeamGroupUpdateArgs.h"
-#import "DbxTeamGroupUpdateError.h"
-#import "DbxTeamGroupsGetInfoError.h"
-#import "DbxTeamGroupsGetInfoItem.h"
-#import "DbxTeamGroupsListArg.h"
-#import "DbxTeamGroupsListContinueArg.h"
-#import "DbxTeamGroupsListContinueError.h"
-#import "DbxTeamGroupsListResult.h"
-#import "DbxTeamGroupsMembersListArg.h"
-#import "DbxTeamGroupsMembersListContinueArg.h"
-#import "DbxTeamGroupsMembersListContinueError.h"
-#import "DbxTeamGroupsMembersListResult.h"
-#import "DbxTeamGroupsPollError.h"
-#import "DbxTeamGroupsSelector.h"
-#import "DbxTeamIncludeMembersArg.h"
-#import "DbxTeamListMemberAppsArg.h"
-#import "DbxTeamListMemberAppsError.h"
-#import "DbxTeamListMemberAppsResult.h"
-#import "DbxTeamListMemberDevicesArg.h"
-#import "DbxTeamListMemberDevicesError.h"
-#import "DbxTeamListMemberDevicesResult.h"
-#import "DbxTeamListMembersAppsArg.h"
-#import "DbxTeamListMembersAppsError.h"
-#import "DbxTeamListMembersAppsResult.h"
-#import "DbxTeamListMembersDevicesArg.h"
-#import "DbxTeamListMembersDevicesError.h"
-#import "DbxTeamListMembersDevicesResult.h"
-#import "DbxTeamListTeamAppsArg.h"
-#import "DbxTeamListTeamAppsError.h"
-#import "DbxTeamListTeamAppsResult.h"
-#import "DbxTeamListTeamDevicesArg.h"
-#import "DbxTeamListTeamDevicesError.h"
-#import "DbxTeamListTeamDevicesResult.h"
-#import "DbxTeamMemberAccess.h"
-#import "DbxTeamMemberAddArg.h"
-#import "DbxTeamMemberAddResult.h"
-#import "DbxTeamMemberDevices.h"
-#import "DbxTeamMemberLinkedApps.h"
-#import "DbxTeamMemberSelectorError.h"
-#import "DbxTeamMembersAddArg.h"
-#import "DbxTeamMembersAddJobStatus.h"
-#import "DbxTeamMembersAddLaunch.h"
-#import "DbxTeamMembersDeactivateArg.h"
-#import "DbxTeamMembersDeactivateError.h"
-#import "DbxTeamMembersGetInfoArgs.h"
-#import "DbxTeamMembersGetInfoError.h"
-#import "DbxTeamMembersGetInfoItem.h"
-#import "DbxTeamMembersListArg.h"
-#import "DbxTeamMembersListContinueArg.h"
-#import "DbxTeamMembersListContinueError.h"
-#import "DbxTeamMembersListError.h"
-#import "DbxTeamMembersListResult.h"
-#import "DbxTeamMembersRecoverArg.h"
-#import "DbxTeamMembersRecoverError.h"
-#import "DbxTeamMembersRemoveArg.h"
-#import "DbxTeamMembersRemoveError.h"
-#import "DbxTeamMembersSendWelcomeError.h"
-#import "DbxTeamMembersSetPermissionsArg.h"
-#import "DbxTeamMembersSetPermissionsError.h"
-#import "DbxTeamMembersSetPermissionsResult.h"
-#import "DbxTeamMembersSetProfileArg.h"
-#import "DbxTeamMembersSetProfileError.h"
-#import "DbxTeamMembersSuspendError.h"
-#import "DbxTeamMembersUnsuspendArg.h"
-#import "DbxTeamMembersUnsuspendError.h"
-#import "DbxTeamMobileClientSession.h"
-#import "DbxTeamPoliciesTeamMemberPolicies.h"
-#import "DbxTeamRevokeDesktopClientArg.h"
-#import "DbxTeamRevokeDeviceSessionArg.h"
-#import "DbxTeamRevokeDeviceSessionBatchArg.h"
-#import "DbxTeamRevokeDeviceSessionBatchError.h"
-#import "DbxTeamRevokeDeviceSessionBatchResult.h"
-#import "DbxTeamRevokeDeviceSessionError.h"
-#import "DbxTeamRevokeDeviceSessionStatus.h"
-#import "DbxTeamRevokeLinkedApiAppArg.h"
-#import "DbxTeamRevokeLinkedApiAppBatchArg.h"
-#import "DbxTeamRevokeLinkedAppBatchError.h"
-#import "DbxTeamRevokeLinkedAppBatchResult.h"
-#import "DbxTeamRevokeLinkedAppError.h"
-#import "DbxTeamRevokeLinkedAppStatus.h"
 #import "DbxTeamRouteObjects.h"
 #import "DbxTeamRoutes.h"
-#import "DbxTeamStorageBucket.h"
-#import "DbxTeamTeamGetInfoResult.h"
-#import "DbxTeamTeamMemberInfo.h"
-#import "DbxTeamTeamMemberProfile.h"
-#import "DbxTeamUpdatePropertyTemplateArg.h"
-#import "DbxTeamUpdatePropertyTemplateResult.h"
-#import "DbxTeamUserSelectorArg.h"
-#import "DbxTeamUserSelectorError.h"
 
 @implementation DbxTeamRouteObjects 
 
@@ -201,9 +65,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupFullInfo class]
-            errorType: [DbxTeamGroupCreateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupCreateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamAlphaGroupsCreate;
@@ -216,9 +82,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[NSArray<DbxTeamGroupsGetInfoItem *> class]
-            errorType: [DbxTeamGroupsGetInfoError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsGetInfoError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxTeamGroupsGetInfoItemSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxTeamAlphaGroupsGetInfo;
@@ -231,9 +99,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsListResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamAlphaGroupsList;
@@ -246,9 +116,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsListResult class]
-            errorType: [DbxTeamGroupsListContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsListContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamAlphaGroupsListContinue;
@@ -261,9 +133,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupFullInfo class]
-            errorType: [DbxTeamGroupUpdateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupUpdateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamAlphaGroupsUpdate;
@@ -276,9 +150,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamListMemberDevicesResult class]
-            errorType: [DbxTeamListMemberDevicesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListMemberDevicesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamDevicesListMemberDevices;
@@ -291,9 +167,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamListMembersDevicesResult class]
-            errorType: [DbxTeamListMembersDevicesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListMembersDevicesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamDevicesListMembersDevices;
@@ -306,9 +184,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@YES
             resultType:[DbxTeamListTeamDevicesResult class]
-            errorType: [DbxTeamListTeamDevicesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListTeamDevicesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamDevicesListTeamDevices;
@@ -321,9 +201,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamRevokeDeviceSessionError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamRevokeDeviceSessionError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamDevicesRevokeDeviceSession;
@@ -336,9 +218,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamRevokeDeviceSessionBatchResult class]
-            errorType: [DbxTeamRevokeDeviceSessionBatchError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamRevokeDeviceSessionBatchError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamDevicesRevokeDeviceSessionBatch;
@@ -351,9 +235,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamTeamGetInfoResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGetInfo;
@@ -366,9 +252,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupFullInfo class]
-            errorType: [DbxTeamGroupCreateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupCreateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsCreate;
@@ -381,9 +269,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxAsyncLaunchEmptyResult class]
-            errorType: [DbxTeamGroupDeleteError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupDeleteError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsDelete;
@@ -396,9 +286,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[NSArray<DbxTeamGroupsGetInfoItem *> class]
-            errorType: [DbxTeamGroupsGetInfoError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsGetInfoError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxTeamGroupsGetInfoItemSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxTeamGroupsGetInfo;
@@ -411,9 +303,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxAsyncPollEmptyResult class]
-            errorType: [DbxTeamGroupsPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsJobStatusGet;
@@ -426,9 +320,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsListResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsList;
@@ -441,9 +337,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsListResult class]
-            errorType: [DbxTeamGroupsListContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsListContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsListContinue;
@@ -456,9 +354,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupMembersChangeResult class]
-            errorType: [DbxTeamGroupMembersAddError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupMembersAddError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsMembersAdd;
@@ -471,9 +371,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsMembersListResult class]
-            errorType: [DbxTeamGroupSelectorError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupSelectorError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsMembersList;
@@ -486,9 +388,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupsMembersListResult class]
-            errorType: [DbxTeamGroupsMembersListContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupsMembersListContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsMembersListContinue;
@@ -501,9 +405,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupMembersChangeResult class]
-            errorType: [DbxTeamGroupMembersRemoveError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupMembersRemoveError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsMembersRemove;
@@ -516,9 +422,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[NSArray<DbxTeamGroupsGetInfoItem *> class]
-            errorType: [DbxTeamGroupMemberSetAccessTypeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupMemberSetAccessTypeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxTeamGroupsGetInfoItemSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxTeamGroupsMembersSetAccessType;
@@ -531,9 +439,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGroupFullInfo class]
-            errorType: [DbxTeamGroupUpdateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamGroupUpdateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamGroupsUpdate;
@@ -546,9 +456,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamListMemberAppsResult class]
-            errorType: [DbxTeamListMemberAppsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListMemberAppsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamLinkedAppsListMemberLinkedApps;
@@ -561,9 +473,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamListMembersAppsResult class]
-            errorType: [DbxTeamListMembersAppsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListMembersAppsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamLinkedAppsListMembersLinkedApps;
@@ -576,9 +490,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@YES
             resultType:[DbxTeamListTeamAppsResult class]
-            errorType: [DbxTeamListTeamAppsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamListTeamAppsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamLinkedAppsListTeamLinkedApps;
@@ -591,9 +507,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamRevokeLinkedAppError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamRevokeLinkedAppError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamLinkedAppsRevokeLinkedApp;
@@ -606,9 +524,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamRevokeLinkedAppBatchResult class]
-            errorType: [DbxTeamRevokeLinkedAppBatchError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamRevokeLinkedAppBatchError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamLinkedAppsRevokeLinkedAppBatch;
@@ -621,9 +541,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamMembersAddLaunch class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersAdd;
@@ -636,9 +558,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamMembersAddJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersAddJobStatusGet;
@@ -651,9 +575,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[NSArray<DbxTeamMembersGetInfoItem *> class]
-            errorType: [DbxTeamMembersGetInfoError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersGetInfoError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxTeamMembersGetInfoItemSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxTeamMembersGetInfo;
@@ -666,9 +592,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamMembersListResult class]
-            errorType: [DbxTeamMembersListError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersListError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersList;
@@ -681,9 +609,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamMembersListResult class]
-            errorType: [DbxTeamMembersListContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersListContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersListContinue;
@@ -696,9 +626,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamMembersRecoverError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersRecoverError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersRecover;
@@ -711,9 +643,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxAsyncLaunchEmptyResult class]
-            errorType: [DbxTeamMembersRemoveError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersRemoveError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersRemove;
@@ -726,9 +660,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxAsyncPollEmptyResult class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersRemoveJobStatusGet;
@@ -741,9 +677,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamMembersSendWelcomeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersSendWelcomeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersSendWelcomeEmail;
@@ -756,9 +694,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamMembersSetPermissionsResult class]
-            errorType: [DbxTeamMembersSetPermissionsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersSetPermissionsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersSetAdminPermissions;
@@ -771,9 +711,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamTeamMemberInfo class]
-            errorType: [DbxTeamMembersSetProfileError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersSetProfileError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersSetProfile;
@@ -786,9 +728,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamMembersSuspendError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersSuspendError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersSuspend;
@@ -801,9 +745,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxTeamMembersUnsuspendError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamMembersUnsuspendError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamMembersUnsuspend;
@@ -816,9 +762,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamAddPropertyTemplateResult class]
-            errorType: [DbxPropertiesModifyPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesModifyPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamPropertiesTemplateAdd;
@@ -831,9 +779,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxPropertiesGetPropertyTemplateResult class]
-            errorType: [DbxPropertiesPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamPropertiesTemplateGet;
@@ -846,9 +796,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxPropertiesListPropertyTemplateIds class]
-            errorType: [DbxPropertiesPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamPropertiesTemplateList;
@@ -861,9 +813,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamUpdatePropertyTemplateResult class]
-            errorType: [DbxPropertiesModifyPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesModifyPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamPropertiesTemplateUpdate;
@@ -876,9 +830,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGetActivityReport class]
-            errorType: [DbxTeamDateRangeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamDateRangeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamReportsGetActivity;
@@ -891,9 +847,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGetDevicesReport class]
-            errorType: [DbxTeamDateRangeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamDateRangeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamReportsGetDevices;
@@ -906,9 +864,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGetMembershipReport class]
-            errorType: [DbxTeamDateRangeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamDateRangeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamReportsGetMembership;
@@ -921,9 +881,11 @@ static DbxRoute *dbxTeamReportsGetStorage = nil;
             namespace_:@"team"
             deprecated:@NO
             resultType:[DbxTeamGetStorageReport class]
-            errorType: [DbxTeamDateRangeError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxTeamDateRangeError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxTeamReportsGetStorage;

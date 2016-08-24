@@ -46,8 +46,8 @@
 }
 
 + (DbxSharingListFileMembersCountResult *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingSharedFileMembers *members = [DbxSharingSharedFileMembersSerializer deserialize:valueDict];
-    NSNumber *memberCount = [DbxNSNumberSerializer deserialize:valueDict];
+    DbxSharingSharedFileMembers *members = [DbxSharingSharedFileMembersSerializer deserialize:valueDict[@"members"]];
+    NSNumber *memberCount = [DbxNSNumberSerializer deserialize:valueDict[@"member_count"]];
 
     return [[DbxSharingListFileMembersCountResult alloc] initWithMembers:members memberCount:memberCount];
 }

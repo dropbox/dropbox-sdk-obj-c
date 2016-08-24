@@ -44,7 +44,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"success"] = [DbxBoolSerializer serialize:valueObj.success];
-    if (valueObj.errorType != nil) {
+    if (valueObj.errorType) {
         jsonDict[@"error_type"] = [DbxTeamRevokeLinkedAppErrorSerializer serialize:valueObj.errorType];
     }
 
@@ -52,8 +52,8 @@
 }
 
 + (DbxTeamRevokeLinkedAppStatus *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *success = [DbxBoolSerializer deserialize:valueDict];
-    DbxTeamRevokeLinkedAppError *errorType = valueDict != nil ? [DbxTeamRevokeLinkedAppErrorSerializer deserialize:valueDict] : nil;
+    NSNumber *success = [DbxBoolSerializer deserialize:valueDict[@"success"]];
+    DbxTeamRevokeLinkedAppError *errorType = valueDict[@"error_type"] != nil ? [DbxTeamRevokeLinkedAppErrorSerializer deserialize:valueDict[@"error_type"]] : nil;
 
     return [[DbxTeamRevokeLinkedAppStatus alloc] initWithSuccess:success errorType:errorType];
 }

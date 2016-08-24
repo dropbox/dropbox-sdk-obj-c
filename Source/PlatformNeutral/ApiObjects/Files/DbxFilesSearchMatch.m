@@ -47,8 +47,8 @@
 }
 
 + (DbxFilesSearchMatch *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesSearchMatchType *matchType = [DbxFilesSearchMatchTypeSerializer deserialize:valueDict];
-    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict];
+    DbxFilesSearchMatchType *matchType = [DbxFilesSearchMatchTypeSerializer deserialize:valueDict[@"match_type"]];
+    DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict[@"metadata"]];
 
     return [[DbxFilesSearchMatch alloc] initWithMatchType:matchType metadata:metadata];
 }

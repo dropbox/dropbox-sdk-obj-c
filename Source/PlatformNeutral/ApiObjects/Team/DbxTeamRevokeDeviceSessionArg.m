@@ -105,15 +105,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isWebSession]) {
-        jsonDict[@"web_session"] = [DbxTeamDeviceSessionArgSerializer serialize:valueObj.webSession];
+        jsonDict = [[DbxTeamDeviceSessionArgSerializer serialize:valueObj.webSession] mutableCopy];
         jsonDict[@".tag"] = @"web_session";
     }
     else if ([valueObj isDesktopClient]) {
-        jsonDict[@"desktop_client"] = [DbxTeamRevokeDesktopClientArgSerializer serialize:valueObj.desktopClient];
+        jsonDict = [[DbxTeamRevokeDesktopClientArgSerializer serialize:valueObj.desktopClient] mutableCopy];
         jsonDict[@".tag"] = @"desktop_client";
     }
     else if ([valueObj isMobileClient]) {
-        jsonDict[@"mobile_client"] = [DbxTeamDeviceSessionArgSerializer serialize:valueObj.mobileClient];
+        jsonDict = [[DbxTeamDeviceSessionArgSerializer serialize:valueObj.mobileClient] mutableCopy];
         jsonDict[@".tag"] = @"mobile_client";
     }
     else {
@@ -127,15 +127,15 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"web_session"]) {
-        DbxTeamDeviceSessionArg *webSession = [DbxTeamDeviceSessionArgSerializer deserialize:valueDict[@"web_session"]];
+        DbxTeamDeviceSessionArg *webSession = [DbxTeamDeviceSessionArgSerializer deserialize:valueDict];
         return [[DbxTeamRevokeDeviceSessionArg alloc] initWithWebSession:webSession];
     }
     if ([tag isEqualToString:@"desktop_client"]) {
-        DbxTeamRevokeDesktopClientArg *desktopClient = [DbxTeamRevokeDesktopClientArgSerializer deserialize:valueDict[@"desktop_client"]];
+        DbxTeamRevokeDesktopClientArg *desktopClient = [DbxTeamRevokeDesktopClientArgSerializer deserialize:valueDict];
         return [[DbxTeamRevokeDeviceSessionArg alloc] initWithDesktopClient:desktopClient];
     }
     if ([tag isEqualToString:@"mobile_client"]) {
-        DbxTeamDeviceSessionArg *mobileClient = [DbxTeamDeviceSessionArgSerializer deserialize:valueDict[@"mobile_client"]];
+        DbxTeamDeviceSessionArg *mobileClient = [DbxTeamDeviceSessionArgSerializer deserialize:valueDict];
         return [[DbxTeamRevokeDeviceSessionArg alloc] initWithMobileClient:mobileClient];
     }
 

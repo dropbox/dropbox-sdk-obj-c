@@ -47,8 +47,8 @@
 }
 
 + (DbxSharingRemoveFileMemberArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict];
-    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict];
+    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
 
     return [[DbxSharingRemoveFileMemberArg alloc] initWithFile:file member:member];
 }

@@ -3,8 +3,6 @@
 ///
 
 #import "DbxBaseTeam.h"
-#import "DbxTeamRoutes.h"
-#import "DropboxTransportClient.h"
 
 @implementation DbxBaseTeam 
 

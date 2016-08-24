@@ -82,11 +82,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isSuccess]) {
-        jsonDict[@"success"] = [DbxFilesFileMetadataSerializer serialize:valueObj.success];
+        jsonDict = [[DbxFilesFileMetadataSerializer serialize:valueObj.success] mutableCopy];
         jsonDict[@".tag"] = @"success";
     }
     else if ([valueObj isFailure]) {
-        jsonDict[@"failure"] = [DbxFilesUploadSessionFinishErrorSerializer serialize:valueObj.failure];
+        jsonDict = [[DbxFilesUploadSessionFinishErrorSerializer serialize:valueObj.failure] mutableCopy];
         jsonDict[@".tag"] = @"failure";
     }
     else {
@@ -100,7 +100,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"success"]) {
-        DbxFilesFileMetadata *success = [DbxFilesFileMetadataSerializer deserialize:valueDict[@"success"]];
+        DbxFilesFileMetadata *success = [DbxFilesFileMetadataSerializer deserialize:valueDict];
         return [[DbxFilesUploadSessionFinishBatchResultEntry alloc] initWithSuccess:success];
     }
     if ([tag isEqualToString:@"failure"]) {

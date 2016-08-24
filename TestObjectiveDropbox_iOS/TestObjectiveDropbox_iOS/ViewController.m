@@ -7,23 +7,12 @@
 
 #import "ViewController.h"
 #import "TestData.h"
+#import "TestClasses.h"
+
+#import "DropboxClient.h"
+#import "DropboxTeamClient.h"
 #import "DropboxClientsManager+MobileAuth.h"
 
-#import "DbxStoneValidators.h"
-#import "DbxStoneSerializers.h"
-#import "DropboxClient.h"
-#import "DropboxTransportClient.h"
-#import "DbxFilesFolderMetadata.h"
-#import "DbxFilesRoutes.h"
-#import "DbxFilesListFolderResult.h"
-#import "DropboxTeamClient.h"
-#import "DbxTeamRoutes.h"
-#import "DbxTeamTeamGetInfoResult.h"
-
-#import "DbxFilesAlphaGetMetadataError.h"
-
-#import "TestClasses.h"
-#import "TestData.h"
 
 @interface ViewController ()
 
@@ -47,19 +36,21 @@
     DropboxTester *tester = [[DropboxTester alloc] initWithTestData:[TestData new]];
     
     void (^unlink)() = ^{
+        [TestFormat printAllTestsEnd];
         [DropboxClientsManager unlinkClient];
         [self checkButtons];
+        [self.view setNeedsDisplay];
     };
 
     switch(appPermission) {
         case FullDropbox:
-            [self testAllUserEndpoints:tester nextTest:nil asMember:NO];
+            [self testAllUserEndpoints:tester nextTest:unlink asMember:NO];
             break;
         case TeamMemberFileAccess:
-//                [self testTeamMemberFileAcessActions:unlink];
+            [self testTeamMemberFileAcessActions:unlink];
             break;
         case TeamMemberManagement:
-//                [self testTeamMemberManagementActions:unlink];
+            [self testTeamMemberManagementActions:unlink];
             break;
     }
 }
@@ -139,25 +130,72 @@
             [TestFormat printAllTestsEnd];
         }
     };
-    void (^testUsersEndpoints)() = ^{
-        [self testUsersEndpoints:tester nextTest:end];
-    };
-    void (^testSharingEndpoints)() = ^{
-        [self testSharingEndpoints:tester nextTest:end];
-    };
-    void (^testFilesEndpoints)() = ^{
-        [self testFilesEndpoints:tester nextTest:end asMember:asMember];
-    };
     void (^testAuthEndpoints)() = ^{
         [self testAuthEndpoints:tester nextTest:end];
     };
+    void (^testUsersEndpoints)() = ^{
+        [self testUsersEndpoints:tester nextTest:testAuthEndpoints];
+    };
+    void (^testSharingEndpoints)() = ^{
+        [self testSharingEndpoints:tester nextTest:testUsersEndpoints];
+    };
+    void (^testFilesEndpoints)() = ^{
+        [self testFilesEndpoints:tester nextTest:testSharingEndpoints asMember:asMember];
+    };
     void (^start)() = ^{
-        testSharingEndpoints();
+        testFilesEndpoints();
     };
     
     start();
 }
-         
+
+// Test business app with 'Team member file access' permission
+- (void)testTeamMemberFileAcessActions:(void (^)())nextTest {
+    DropboxTeamTester *teamTester = [[DropboxTeamTester alloc] initWithTestData:[TestData new]];
+
+    void (^end)() = ^{
+        if (nextTest) {
+            nextTest();
+        } else {
+            [TestFormat printAllTestsEnd];
+        }
+    };
+    void (^testPerformActionAsMember)() = ^{
+        DropboxTester *tester = [[DropboxTester alloc] initWithTestData:[TestData new]];
+        [self testAllUserEndpoints:tester nextTest:end asMember:YES];
+    };
+    void (^testTeamMemberFileAcessActions)() = ^{
+        [self testTeamMemberFileAcessActions:teamTester nextTest:testPerformActionAsMember];
+    };
+    void (^start)() = ^{
+        testTeamMemberFileAcessActions();
+    };
+    
+    start();
+}
+
+
+// Test business app with 'Team member management' permission
+- (void)testTeamMemberManagementActions:(void (^)())nextTest {
+    DropboxTeamTester *teamTester = [[DropboxTeamTester alloc] initWithTestData:[TestData new]];
+    
+    void (^end)() = ^{
+        if (nextTest) {
+            nextTest();
+        } else {
+            [TestFormat printAllTestsEnd];
+        }
+    };
+    void (^testTeamMemberManagementActions)() = ^{
+        [self testTeamMemberManagementActions:teamTester nextTest:end];
+    };
+    void (^start)() = ^{
+        testTeamMemberManagementActions();
+    };
+    
+    start();
+}
+
 
 - (void)testAuthEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest {
     AuthTests *authTests = [[AuthTests alloc] init:tester];
@@ -185,7 +223,7 @@
         nextTest();
     };
     void (^listFolderLongpollAndTrigger)() = ^{
-        [filesTests listFolderLongpollAndTrigger:end asMember:asMember];
+        [filesTests listFolderLongpollAndTrigger:end];
     };
     void (^uploadStream)() = ^{
         [filesTests uploadStream:listFolderLongpollAndTrigger];
@@ -336,5 +374,109 @@
     start();
 }
 
+- (void)testTeamMemberFileAcessActions:(DropboxTeamTester *)tester nextTest:(void (^)())nextTest {
+    TeamTests *teamTests = [[TeamTests alloc] init:tester];
+    
+    void (^end)() = ^{
+        [TestFormat printTestEnd];
+        nextTest();
+    };
+    void (^reportsGetStorage)() = ^{
+        [teamTests reportsGetStorage:end];
+    };
+    void (^reportsGetMembership)() = ^{
+        [teamTests reportsGetMembership:reportsGetStorage];
+    };
+    void (^reportsGetDevices)() = ^{
+        [teamTests reportsGetDevices:reportsGetMembership];
+    };
+    void (^reportsGetActivity)() = ^{
+        [teamTests reportsGetActivity:reportsGetDevices];
+    };
+    void (^getInfo)() = ^{
+        [teamTests getInfo:reportsGetActivity];
+    };
+    void (^linkedAppsListMembersLinkedApps)() = ^{
+        [teamTests linkedAppsListMembersLinkedApps:getInfo];
+    };
+    void (^linkedAppsListMemberLinkedApps)() = ^{
+        [teamTests linkedAppsListMemberLinkedApps:linkedAppsListMembersLinkedApps];
+    };
+    void (^listMembersDevices)() = ^{
+        [teamTests listMembersDevices:linkedAppsListMemberLinkedApps];
+    };
+    void (^listMemberDevices)() = ^{
+        [teamTests listMemberDevices:listMembersDevices];
+    };
+    void (^initMembersGetInfo)() = ^{
+        [teamTests initMembersGetInfo:listMemberDevices];
+    };
+    void (^start)() = ^{
+        initMembersGetInfo();
+    };
+    
+    [TestFormat printTestBegin:NSStringFromSelector(_cmd)];
+    start();
+}
+
+- (void)testTeamMemberManagementActions:(DropboxTeamTester *)tester nextTest:(void (^)())nextTest {
+    TeamTests *teamTests = [[TeamTests alloc] init:tester];
+    
+    void (^end)() = ^{
+        [TestFormat printTestEnd];
+        nextTest();
+    };
+    void (^membersRemove)() = ^{
+        [teamTests membersRemove:end];
+    };
+    void (^membersSetProfile)() = ^{
+        [teamTests membersSetProfile:membersRemove];
+    };
+    void (^membersSetAdminPermissions)() = ^{
+        [teamTests membersSetAdminPermissions:membersSetProfile];
+    };
+    void (^membersSendWelcomeEmail)() = ^{
+        [teamTests membersSendWelcomeEmail:membersSetAdminPermissions];
+    };
+    void (^membersList)() = ^{
+        [teamTests membersList:membersSendWelcomeEmail];
+    };
+    void (^membersGetInfo)() = ^{
+        [teamTests membersGetInfo:membersList];
+    };
+    void (^membersAdd)() = ^{
+        [teamTests membersAdd:membersGetInfo];
+    };
+    void (^groupsDelete)() = ^{
+        [teamTests groupsDelete:membersAdd];
+    };
+    void (^groupsUpdate)() = ^{
+        [teamTests groupsUpdate:groupsDelete];
+    };
+    void (^groupsMembersList)() = ^{
+        [teamTests groupsMembersList:groupsUpdate];
+    };
+    void (^groupsMembersAdd)() = ^{
+        [teamTests groupsMembersAdd:groupsMembersList];
+    };
+    void (^groupsList)() = ^{
+        [teamTests groupsList:groupsMembersAdd];
+    };
+    void (^groupsGetInfo)() = ^{
+        [teamTests groupsGetInfo:groupsList];
+    };
+    void (^groupsCreate)() = ^{
+        [teamTests groupsCreate:groupsGetInfo];
+    };
+    void (^initMembersGetInfo)() = ^{
+        [teamTests initMembersGetInfo:groupsCreate];
+    };
+    void (^start)() = ^{
+        initMembersGetInfo();
+    };
+    
+    [TestFormat printTestBegin:NSStringFromSelector(_cmd)];
+    start();
+}
 
 @end

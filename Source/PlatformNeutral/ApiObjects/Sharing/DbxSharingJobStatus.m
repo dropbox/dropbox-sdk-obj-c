@@ -95,7 +95,7 @@
         jsonDict[@".tag"] = @"complete";
     }
     else if ([valueObj isFailed]) {
-        jsonDict[@"failed"] = [DbxSharingJobErrorSerializer serialize:valueObj.failed];
+        jsonDict = [[DbxSharingJobErrorSerializer serialize:valueObj.failed] mutableCopy];
         jsonDict[@".tag"] = @"failed";
     }
     else {

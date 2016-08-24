@@ -121,15 +121,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isUnshareFolderError]) {
-        jsonDict[@"unshare_folder_error"] = [DbxSharingUnshareFolderErrorSerializer serialize:valueObj.unshareFolderError];
+        jsonDict = [[DbxSharingUnshareFolderErrorSerializer serialize:valueObj.unshareFolderError] mutableCopy];
         jsonDict[@".tag"] = @"unshare_folder_error";
     }
     else if ([valueObj isRemoveFolderMemberError]) {
-        jsonDict[@"remove_folder_member_error"] = [DbxSharingRemoveFolderMemberErrorSerializer serialize:valueObj.removeFolderMemberError];
+        jsonDict = [[DbxSharingRemoveFolderMemberErrorSerializer serialize:valueObj.removeFolderMemberError] mutableCopy];
         jsonDict[@".tag"] = @"remove_folder_member_error";
     }
     else if ([valueObj isRelinquishFolderMembershipError]) {
-        jsonDict[@"relinquish_folder_membership_error"] = [DbxSharingRelinquishFolderMembershipErrorSerializer serialize:valueObj.relinquishFolderMembershipError];
+        jsonDict = [[DbxSharingRelinquishFolderMembershipErrorSerializer serialize:valueObj.relinquishFolderMembershipError] mutableCopy];
         jsonDict[@".tag"] = @"relinquish_folder_membership_error";
     }
     else if ([valueObj isOther]) {

@@ -88,7 +88,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isUserError]) {
-        jsonDict[@"user_error"] = [DbxSharingSharingUserErrorSerializer serialize:valueObj.userError];
+        jsonDict = [[DbxSharingSharingUserErrorSerializer serialize:valueObj.userError] mutableCopy];
         jsonDict[@".tag"] = @"user_error";
     }
     else if ([valueObj isInvalidCursor]) {

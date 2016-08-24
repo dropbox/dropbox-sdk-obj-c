@@ -41,15 +41,15 @@
 
     jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
     jsonDict[@"description"] = [DbxStringSerializer serialize:valueObj.description_];
-    jsonDict[@"fields"] = [DbxArraySerializer serialize:valueObj.fields withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldTemplateSerializer serialize:obj]; }];
+    jsonDict[@"fields"] = [DbxArraySerializer serialize:valueObj.fields withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamAddPropertyTemplateArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict];
-    NSString *description_ = [DbxStringSerializer deserialize:valueDict];
-    NSArray<DbxPropertiesPropertyFieldTemplate *> *fields = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:obj]; }];
+    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
+    NSString *description_ = [DbxStringSerializer deserialize:valueDict[@"description"]];
+    NSArray<DbxPropertiesPropertyFieldTemplate *> *fields = [DbxArraySerializer deserialize:valueDict[@"fields"] withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:elem]; }];
 
     return [[DbxTeamAddPropertyTemplateArg alloc] initWithName:name description_:description_ fields:fields];
 }

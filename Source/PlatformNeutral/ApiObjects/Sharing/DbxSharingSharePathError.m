@@ -244,7 +244,7 @@
         jsonDict[@".tag"] = @"inside_public_folder";
     }
     else if ([valueObj isAlreadyShared]) {
-        jsonDict[@"already_shared"] = [DbxSharingSharedFolderMetadataSerializer serialize:valueObj.alreadyShared];
+        jsonDict = [[DbxSharingSharedFolderMetadataSerializer serialize:valueObj.alreadyShared] mutableCopy];
         jsonDict[@".tag"] = @"already_shared";
     }
     else if ([valueObj isInvalidPath]) {
@@ -291,7 +291,7 @@
         return [[DbxSharingSharePathError alloc] initWithInsidePublicFolder];
     }
     if ([tag isEqualToString:@"already_shared"]) {
-        DbxSharingSharedFolderMetadata *alreadyShared = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict[@"already_shared"]];
+        DbxSharingSharedFolderMetadata *alreadyShared = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict];
         return [[DbxSharingSharePathError alloc] initWithAlreadyShared:alreadyShared];
     }
     if ([tag isEqualToString:@"invalid_path"]) {

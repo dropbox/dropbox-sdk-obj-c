@@ -45,7 +45,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    if (valueObj.rev != nil) {
+    if (valueObj.rev) {
         jsonDict[@"rev"] = [DbxStringSerializer serialize:valueObj.rev];
     }
 
@@ -53,8 +53,8 @@
 }
 
 + (DbxFilesDownloadArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSString *rev = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *rev = valueDict[@"rev"] != nil ? [DbxStringSerializer deserialize:valueDict[@"rev"]] : nil;
 
     return [[DbxFilesDownloadArg alloc] initWithPath:path rev:rev];
 }

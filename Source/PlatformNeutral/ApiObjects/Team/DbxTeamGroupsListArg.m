@@ -48,7 +48,7 @@
 }
 
 + (DbxTeamGroupsListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
 
     return [[DbxTeamGroupsListArg alloc] initWithLimit:limit];
 }

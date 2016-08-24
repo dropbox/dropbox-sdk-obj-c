@@ -20,10 +20,6 @@
 
 - (nonnull instancetype)initWithIsDeleted:(NSNumber * _Nonnull)isDeleted entries:(NSArray<DbxFilesFileMetadata *> * _Nonnull)entries;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

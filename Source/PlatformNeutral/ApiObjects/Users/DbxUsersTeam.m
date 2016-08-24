@@ -45,8 +45,8 @@
 }
 
 + (DbxUsersTeam *)deserialize:(NSDictionary *)valueDict {
-    NSString *id_ = [DbxStringSerializer deserialize:valueDict];
-    NSString *name = [DbxStringSerializer deserialize:valueDict];
+    NSString *id_ = [DbxStringSerializer deserialize:valueDict[@"id"]];
+    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
 
     return [[DbxUsersTeam alloc] initWithId_:id_ name:name];
 }

@@ -101,11 +101,11 @@
         jsonDict[@".tag"] = @"in_progress";
     }
     else if ([valueObj isComplete]) {
-        jsonDict[@"complete"] = [DbxSharingSharedFolderMetadataSerializer serialize:valueObj.complete];
+        jsonDict = [[DbxSharingSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
         jsonDict[@".tag"] = @"complete";
     }
     else if ([valueObj isFailed]) {
-        jsonDict[@"failed"] = [DbxSharingShareFolderErrorSerializer serialize:valueObj.failed];
+        jsonDict = [[DbxSharingShareFolderErrorSerializer serialize:valueObj.failed] mutableCopy];
         jsonDict[@".tag"] = @"failed";
     }
     else {
@@ -122,7 +122,7 @@
         return [[DbxSharingShareFolderJobStatus alloc] initWithInProgress];
     }
     if ([tag isEqualToString:@"complete"]) {
-        DbxSharingSharedFolderMetadata *complete = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict[@"complete"]];
+        DbxSharingSharedFolderMetadata *complete = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict];
         return [[DbxSharingShareFolderJobStatus alloc] initWithComplete:complete];
     }
     if ([tag isEqualToString:@"failed"]) {

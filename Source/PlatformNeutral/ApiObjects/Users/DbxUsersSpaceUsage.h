@@ -22,10 +22,6 @@
 
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocation:(DbxUsersSpaceAllocation * _Nonnull)allocation;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

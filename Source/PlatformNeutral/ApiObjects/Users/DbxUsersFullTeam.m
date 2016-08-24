@@ -47,9 +47,9 @@
 }
 
 + (DbxUsersFullTeam *)deserialize:(NSDictionary *)valueDict {
-    NSString *id_ = [DbxStringSerializer deserialize:valueDict];
-    NSString *name = [DbxStringSerializer deserialize:valueDict];
-    DbxTeamPoliciesTeamSharingPolicies *sharingPolicies = [DbxTeamPoliciesTeamSharingPoliciesSerializer deserialize:valueDict];
+    NSString *id_ = [DbxStringSerializer deserialize:valueDict[@"id"]];
+    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
+    DbxTeamPoliciesTeamSharingPolicies *sharingPolicies = [DbxTeamPoliciesTeamSharingPoliciesSerializer deserialize:valueDict[@"sharing_policies"]];
 
     return [[DbxUsersFullTeam alloc] initWithId_:id_ name:name sharingPolicies:sharingPolicies];
 }

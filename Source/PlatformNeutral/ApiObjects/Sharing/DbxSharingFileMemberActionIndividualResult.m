@@ -82,13 +82,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isSuccess]) {
-        if (![valueObj.success isEqual:[NSNull null]]) {
+        if (valueObj.success) {
             jsonDict[@"success"] = [DbxSharingAccessLevelSerializer serialize:valueObj.success];
         }
         jsonDict[@".tag"] = @"success";
     }
     else if ([valueObj isMemberError]) {
-        jsonDict[@"member_error"] = [DbxSharingFileMemberActionErrorSerializer serialize:valueObj.memberError];
+        jsonDict = [[DbxSharingFileMemberActionErrorSerializer serialize:valueObj.memberError] mutableCopy];
         jsonDict[@".tag"] = @"member_error";
     }
     else {
@@ -102,7 +102,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"success"]) {
-        DbxSharingAccessLevel *success = valueDict[@"success"] != nil ? [DbxSharingAccessLevelSerializer deserialize:valueDict[@"success"]] : nil;
+        DbxSharingAccessLevel *success = valueDict[@"success"] ? [DbxSharingAccessLevelSerializer deserialize:valueDict[@"success"]] : nil;
         return [[DbxSharingFileMemberActionIndividualResult alloc] initWithSuccess:success];
     }
     if ([tag isEqualToString:@"member_error"]) {

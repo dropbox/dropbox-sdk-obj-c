@@ -44,7 +44,7 @@
 }
 
 + (DbxAsyncPollArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict];
+    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict[@"async_job_id"]];
 
     return [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
 }

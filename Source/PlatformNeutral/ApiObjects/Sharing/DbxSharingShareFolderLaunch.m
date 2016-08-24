@@ -86,7 +86,7 @@
         jsonDict[@".tag"] = @"async_job_id";
     }
     else if ([valueObj isComplete]) {
-        jsonDict[@"complete"] = [DbxSharingSharedFolderMetadataSerializer serialize:valueObj.complete];
+        jsonDict = [[DbxSharingSharedFolderMetadataSerializer serialize:valueObj.complete] mutableCopy];
         jsonDict[@".tag"] = @"complete";
     }
     else {
@@ -104,7 +104,7 @@
         return [[DbxSharingShareFolderLaunch alloc] initWithAsyncJobId:asyncJobId];
     }
     if ([tag isEqualToString:@"complete"]) {
-        DbxSharingSharedFolderMetadata *complete = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict[@"complete"]];
+        DbxSharingSharedFolderMetadata *complete = [DbxSharingSharedFolderMetadataSerializer deserialize:valueDict];
         return [[DbxSharingShareFolderLaunch alloc] initWithComplete:complete];
     }
 

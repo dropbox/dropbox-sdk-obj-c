@@ -73,7 +73,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesUploadWriteFailedSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesUploadWriteFailedSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isOther]) {
@@ -90,7 +90,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"path"]) {
-        DbxFilesUploadWriteFailed *path = [DbxFilesUploadWriteFailedSerializer deserialize:valueDict[@"path"]];
+        DbxFilesUploadWriteFailed *path = [DbxFilesUploadWriteFailedSerializer deserialize:valueDict];
         return [[DbxFilesUploadError alloc] initWithPath:path];
     }
     if ([tag isEqualToString:@"other"]) {

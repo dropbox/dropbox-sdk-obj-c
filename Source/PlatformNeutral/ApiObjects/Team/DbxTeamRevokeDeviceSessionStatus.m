@@ -44,7 +44,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"success"] = [DbxBoolSerializer serialize:valueObj.success];
-    if (valueObj.errorType != nil) {
+    if (valueObj.errorType) {
         jsonDict[@"error_type"] = [DbxTeamRevokeDeviceSessionErrorSerializer serialize:valueObj.errorType];
     }
 
@@ -52,8 +52,8 @@
 }
 
 + (DbxTeamRevokeDeviceSessionStatus *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *success = [DbxBoolSerializer deserialize:valueDict];
-    DbxTeamRevokeDeviceSessionError *errorType = valueDict != nil ? [DbxTeamRevokeDeviceSessionErrorSerializer deserialize:valueDict] : nil;
+    NSNumber *success = [DbxBoolSerializer deserialize:valueDict[@"success"]];
+    DbxTeamRevokeDeviceSessionError *errorType = valueDict[@"error_type"] != nil ? [DbxTeamRevokeDeviceSessionErrorSerializer deserialize:valueDict[@"error_type"]] : nil;
 
     return [[DbxTeamRevokeDeviceSessionStatus alloc] initWithSuccess:success errorType:errorType];
 }

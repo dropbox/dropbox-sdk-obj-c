@@ -48,7 +48,7 @@
 
     jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
     jsonDict[@"visibility"] = [DbxSharingVisibilitySerializer serialize:valueObj.visibility];
-    if (valueObj.expires != nil) {
+    if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
 

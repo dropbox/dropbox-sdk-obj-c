@@ -61,34 +61,34 @@
     jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
     jsonDict[@"time_invited"] = [DbxNSDateSerializer serialize:valueObj.timeInvited dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     jsonDict[@"preview_url"] = [DbxStringSerializer serialize:valueObj.previewUrl];
-    if (valueObj.ownerTeam != nil) {
+    if (valueObj.ownerTeam) {
         jsonDict[@"owner_team"] = [DbxUsersTeamSerializer serialize:valueObj.ownerTeam];
     }
-    if (valueObj.parentSharedFolderId != nil) {
+    if (valueObj.parentSharedFolderId) {
         jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
     }
-    if (valueObj.pathLower != nil) {
+    if (valueObj.pathLower) {
         jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
     }
-    if (valueObj.permissions != nil) {
-        jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id obj) { return [DbxSharingFolderPermissionSerializer serialize:obj]; }];
+    if (valueObj.permissions) {
+        jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id elem) { return [DbxSharingFolderPermissionSerializer serialize:elem]; }];
     }
 
     return jsonDict;
 }
 
 + (DbxSharingSharedFolderMetadata *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict];
-    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict];
-    DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict];
-    NSString *name = [DbxStringSerializer deserialize:valueDict];
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict];
-    NSDate *timeInvited = [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    NSString *previewUrl = [DbxStringSerializer deserialize:valueDict];
-    DbxUsersTeam *ownerTeam = valueDict != nil ? [DbxUsersTeamSerializer deserialize:valueDict] : nil;
-    NSString *parentSharedFolderId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *pathLower = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSArray<DbxSharingFolderPermission *> *permissions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingFolderPermissionSerializer deserialize:obj]; }] : nil;
+    DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
+    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict[@"is_team_folder"]];
+    DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict[@"policy"]];
+    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
+    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSDate *timeInvited = [DbxNSDateSerializer deserialize:valueDict[@"time_invited"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+    NSString *previewUrl = [DbxStringSerializer deserialize:valueDict[@"preview_url"]];
+    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] != nil ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
+    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
+    NSArray<DbxSharingFolderPermission *> *permissions = valueDict[@"permissions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingFolderPermissionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingSharedFolderMetadata alloc] initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy name:name sharedFolderId:sharedFolderId timeInvited:timeInvited previewUrl:previewUrl ownerTeam:ownerTeam parentSharedFolderId:parentSharedFolderId pathLower:pathLower permissions:permissions];
 }

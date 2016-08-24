@@ -2,106 +2,8 @@
 /// Stone Route Objects
 /// 
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxFilesAddPropertiesError.h"
-#import "DbxFilesAlphaGetMetadataArg.h"
-#import "DbxFilesAlphaGetMetadataError.h"
-#import "DbxFilesCommitInfo.h"
-#import "DbxFilesCommitInfoWithProperties.h"
-#import "DbxFilesCreateFolderArg.h"
-#import "DbxFilesCreateFolderError.h"
-#import "DbxFilesDeleteArg.h"
-#import "DbxFilesDeleteError.h"
-#import "DbxFilesDeletedMetadata.h"
-#import "DbxFilesDownloadArg.h"
-#import "DbxFilesDownloadError.h"
-#import "DbxFilesFileMetadata.h"
-#import "DbxFilesFileSharingInfo.h"
-#import "DbxFilesFolderMetadata.h"
-#import "DbxFilesFolderSharingInfo.h"
-#import "DbxFilesGetCopyReferenceArg.h"
-#import "DbxFilesGetCopyReferenceError.h"
-#import "DbxFilesGetCopyReferenceResult.h"
-#import "DbxFilesGetMetadataArg.h"
-#import "DbxFilesGetMetadataError.h"
-#import "DbxFilesGetTemporaryLinkArg.h"
-#import "DbxFilesGetTemporaryLinkError.h"
-#import "DbxFilesGetTemporaryLinkResult.h"
-#import "DbxFilesInvalidPropertyGroupError.h"
-#import "DbxFilesListFolderArg.h"
-#import "DbxFilesListFolderContinueArg.h"
-#import "DbxFilesListFolderContinueError.h"
-#import "DbxFilesListFolderError.h"
-#import "DbxFilesListFolderGetLatestCursorResult.h"
-#import "DbxFilesListFolderLongpollArg.h"
-#import "DbxFilesListFolderLongpollError.h"
-#import "DbxFilesListFolderLongpollResult.h"
-#import "DbxFilesListFolderResult.h"
-#import "DbxFilesListRevisionsArg.h"
-#import "DbxFilesListRevisionsError.h"
-#import "DbxFilesListRevisionsResult.h"
-#import "DbxFilesLookUpPropertiesError.h"
-#import "DbxFilesLookupError.h"
-#import "DbxFilesMediaInfo.h"
-#import "DbxFilesMetadata.h"
-#import "DbxFilesPreviewArg.h"
-#import "DbxFilesPreviewError.h"
-#import "DbxFilesPropertiesError.h"
-#import "DbxFilesPropertyGroupUpdate.h"
-#import "DbxFilesPropertyGroupWithPath.h"
-#import "DbxFilesRelocationArg.h"
-#import "DbxFilesRelocationError.h"
-#import "DbxFilesRemovePropertiesArg.h"
-#import "DbxFilesRemovePropertiesError.h"
-#import "DbxFilesRestoreArg.h"
-#import "DbxFilesRestoreError.h"
 #import "DbxFilesRouteObjects.h"
 #import "DbxFilesRoutes.h"
-#import "DbxFilesSaveCopyReferenceArg.h"
-#import "DbxFilesSaveCopyReferenceError.h"
-#import "DbxFilesSaveCopyReferenceResult.h"
-#import "DbxFilesSaveUrlArg.h"
-#import "DbxFilesSaveUrlError.h"
-#import "DbxFilesSaveUrlJobStatus.h"
-#import "DbxFilesSaveUrlResult.h"
-#import "DbxFilesSearchArg.h"
-#import "DbxFilesSearchError.h"
-#import "DbxFilesSearchMatch.h"
-#import "DbxFilesSearchMode.h"
-#import "DbxFilesSearchResult.h"
-#import "DbxFilesThumbnailArg.h"
-#import "DbxFilesThumbnailError.h"
-#import "DbxFilesThumbnailFormat.h"
-#import "DbxFilesThumbnailSize.h"
-#import "DbxFilesUpdatePropertiesError.h"
-#import "DbxFilesUpdatePropertyGroupArg.h"
-#import "DbxFilesUploadError.h"
-#import "DbxFilesUploadErrorWithProperties.h"
-#import "DbxFilesUploadSessionAppendArg.h"
-#import "DbxFilesUploadSessionCursor.h"
-#import "DbxFilesUploadSessionFinishArg.h"
-#import "DbxFilesUploadSessionFinishBatchArg.h"
-#import "DbxFilesUploadSessionFinishBatchJobStatus.h"
-#import "DbxFilesUploadSessionFinishBatchResult.h"
-#import "DbxFilesUploadSessionFinishError.h"
-#import "DbxFilesUploadSessionLookupError.h"
-#import "DbxFilesUploadSessionOffsetError.h"
-#import "DbxFilesUploadSessionStartArg.h"
-#import "DbxFilesUploadSessionStartResult.h"
-#import "DbxFilesUploadWriteFailed.h"
-#import "DbxFilesWriteError.h"
-#import "DbxFilesWriteMode.h"
-#import "DbxPropertiesGetPropertyTemplateArg.h"
-#import "DbxPropertiesGetPropertyTemplateResult.h"
-#import "DbxPropertiesListPropertyTemplateIds.h"
-#import "DbxPropertiesPropertyFieldTemplate.h"
-#import "DbxPropertiesPropertyGroup.h"
-#import "DbxPropertiesPropertyGroupTemplate.h"
-#import "DbxPropertiesPropertyTemplateError.h"
 #import "DbxStoneBase.h"
 
 @implementation DbxFilesRouteObjects 
@@ -150,9 +52,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesMetadata class]
-            errorType: [DbxFilesAlphaGetMetadataError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesAlphaGetMetadataError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesAlphaGetMetadata;
@@ -165,9 +69,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesUploadErrorWithProperties class]
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:[DbxFilesUploadErrorWithProperties class]
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesAlphaUpload;
@@ -180,9 +86,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesMetadata class]
-            errorType: [DbxFilesRelocationError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesRelocationError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesDCopy;
@@ -195,9 +103,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesGetCopyReferenceResult class]
-            errorType: [DbxFilesGetCopyReferenceError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesGetCopyReferenceError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesDCopyReferenceGet;
@@ -210,9 +120,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesSaveCopyReferenceResult class]
-            errorType: [DbxFilesSaveCopyReferenceError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesSaveCopyReferenceError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesDCopyReferenceSave;
@@ -225,9 +137,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFolderMetadata class]
-            errorType: [DbxFilesCreateFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesCreateFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesCreateFolder;
@@ -240,9 +154,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesMetadata class]
-            errorType: [DbxFilesDeleteError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesDeleteError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesDelete_;
@@ -255,9 +171,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesDownloadError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"download"}
+            errorType:[DbxFilesDownloadError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"download"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesDownload;
@@ -270,9 +188,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesMetadata class]
-            errorType: [DbxFilesGetMetadataError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesGetMetadataError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesGetMetadata;
@@ -285,9 +205,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesPreviewError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"download"}
+            errorType:[DbxFilesPreviewError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"download"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesGetPreview;
@@ -300,9 +222,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesGetTemporaryLinkResult class]
-            errorType: [DbxFilesGetTemporaryLinkError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesGetTemporaryLinkError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesGetTemporaryLink;
@@ -315,9 +239,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesThumbnailError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"download"}
+            errorType:[DbxFilesThumbnailError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"download"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesGetThumbnail;
@@ -330,9 +256,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesListFolderResult class]
-            errorType: [DbxFilesListFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesListFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesListFolder;
@@ -345,9 +273,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesListFolderResult class]
-            errorType: [DbxFilesListFolderContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesListFolderContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesListFolderContinue;
@@ -360,9 +290,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesListFolderGetLatestCursorResult class]
-            errorType: [DbxFilesListFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesListFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesListFolderGetLatestCursor;
@@ -375,9 +307,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesListFolderLongpollResult class]
-            errorType: [DbxFilesListFolderLongpollError class]
-            attrs: @{@"host": @"notify",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesListFolderLongpollError class]
+            attrs:@{@"host": @"notify",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesListFolderLongpoll;
@@ -390,9 +324,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesListRevisionsResult class]
-            errorType: [DbxFilesListRevisionsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesListRevisionsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesListRevisions;
@@ -405,9 +341,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesMetadata class]
-            errorType: [DbxFilesRelocationError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesRelocationError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesMove;
@@ -420,9 +358,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesDeleteError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesDeleteError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPermanentlyDelete;
@@ -435,9 +375,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesAddPropertiesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesAddPropertiesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesAdd;
@@ -450,9 +392,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesInvalidPropertyGroupError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesInvalidPropertyGroupError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesOverwrite;
@@ -465,9 +409,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesRemovePropertiesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesRemovePropertiesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesRemove;
@@ -480,9 +426,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxPropertiesGetPropertyTemplateResult class]
-            errorType: [DbxPropertiesPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesTemplateGet;
@@ -495,9 +443,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxPropertiesListPropertyTemplateIds class]
-            errorType: [DbxPropertiesPropertyTemplateError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxPropertiesPropertyTemplateError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesTemplateList;
@@ -510,9 +460,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesUpdatePropertiesError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesUpdatePropertiesError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesPropertiesUpdate;
@@ -525,9 +477,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesRestoreError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesRestoreError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesRestore;
@@ -540,9 +494,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesSaveUrlResult class]
-            errorType: [DbxFilesSaveUrlError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesSaveUrlError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesSaveUrl;
@@ -555,9 +511,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesSaveUrlJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesSaveUrlCheckJobStatus;
@@ -570,9 +528,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesSearchResult class]
-            errorType: [DbxFilesSearchError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxFilesSearchError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesSearch;
@@ -585,9 +545,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesUploadError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:[DbxFilesUploadError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUpload;
@@ -600,9 +562,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@YES
             resultType:nil
-            errorType: [DbxFilesUploadSessionLookupError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:[DbxFilesUploadSessionLookupError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionAppend;
@@ -615,9 +579,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxFilesUploadSessionLookupError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:[DbxFilesUploadSessionLookupError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionAppendV2;
@@ -630,9 +596,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesFileMetadata class]
-            errorType: [DbxFilesUploadSessionFinishError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:[DbxFilesUploadSessionFinishError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionFinish;
@@ -645,9 +613,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxAsyncLaunchEmptyResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionFinishBatch;
@@ -660,9 +630,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesUploadSessionFinishBatchJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionFinishBatchCheck;
@@ -675,9 +647,11 @@ static DbxRoute *dbxFilesUploadSessionStart = nil;
             namespace_:@"files"
             deprecated:@NO
             resultType:[DbxFilesUploadSessionStartResult class]
-            errorType: nil
-            attrs: @{@"host": @"content",
-                     @"style": @"upload"}
+            errorType:nil
+            attrs:@{@"host": @"content",
+                    @"style": @"upload"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxFilesUploadSessionStart;

@@ -52,10 +52,10 @@
     jsonDict[@"group_type"] = [DbxTeamCommonGroupTypeSerializer serialize:valueObj.groupType];
     jsonDict[@"is_owner"] = [DbxBoolSerializer serialize:valueObj.isOwner];
     jsonDict[@"same_team"] = [DbxBoolSerializer serialize:valueObj.sameTeam];
-    if (valueObj.groupExternalId != nil) {
+    if (valueObj.groupExternalId) {
         jsonDict[@"group_external_id"] = [DbxStringSerializer serialize:valueObj.groupExternalId];
     }
-    if (valueObj.memberCount != nil) {
+    if (valueObj.memberCount) {
         jsonDict[@"member_count"] = [DbxNSNumberSerializer serialize:valueObj.memberCount];
     }
 
@@ -63,14 +63,14 @@
 }
 
 + (DbxSharingGroupInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *groupName = [DbxStringSerializer deserialize:valueDict];
-    NSString *groupId = [DbxStringSerializer deserialize:valueDict];
-    DbxTeamCommonGroupManagementType *groupManagementType = [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict];
-    DbxTeamCommonGroupType *groupType = [DbxTeamCommonGroupTypeSerializer deserialize:valueDict];
-    NSNumber *isOwner = [DbxBoolSerializer deserialize:valueDict];
-    NSNumber *sameTeam = [DbxBoolSerializer deserialize:valueDict];
-    NSString *groupExternalId = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSNumber *memberCount = valueDict != nil ? [DbxNSNumberSerializer deserialize:valueDict] : nil;
+    NSString *groupName = [DbxStringSerializer deserialize:valueDict[@"group_name"]];
+    NSString *groupId = [DbxStringSerializer deserialize:valueDict[@"group_id"]];
+    DbxTeamCommonGroupManagementType *groupManagementType = [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]];
+    DbxTeamCommonGroupType *groupType = [DbxTeamCommonGroupTypeSerializer deserialize:valueDict[@"group_type"]];
+    NSNumber *isOwner = [DbxBoolSerializer deserialize:valueDict[@"is_owner"]];
+    NSNumber *sameTeam = [DbxBoolSerializer deserialize:valueDict[@"same_team"]];
+    NSString *groupExternalId = valueDict[@"group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"group_external_id"]] : nil;
+    NSNumber *memberCount = valueDict[@"member_count"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"member_count"]] : nil;
 
     return [[DbxSharingGroupInfo alloc] initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupType:groupType isOwner:isOwner sameTeam:sameTeam groupExternalId:groupExternalId memberCount:memberCount];
 }

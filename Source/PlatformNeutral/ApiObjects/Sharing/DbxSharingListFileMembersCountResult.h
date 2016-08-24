@@ -20,10 +20,6 @@
 
 - (nonnull instancetype)initWithMembers:(DbxSharingSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

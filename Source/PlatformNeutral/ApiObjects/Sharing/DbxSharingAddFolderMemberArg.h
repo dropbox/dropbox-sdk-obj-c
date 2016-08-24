@@ -28,10 +28,6 @@
 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

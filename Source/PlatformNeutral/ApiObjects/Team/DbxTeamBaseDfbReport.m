@@ -43,7 +43,7 @@
 }
 
 + (DbxTeamBaseDfbReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict];
+    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
 
     return [[DbxTeamBaseDfbReport alloc] initWithStartDate:startDate];
 }

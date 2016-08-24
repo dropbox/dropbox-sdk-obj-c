@@ -20,10 +20,6 @@
 
 - (nonnull instancetype)initWithMetadata:(DbxFilesFileMetadata * _Nonnull)metadata link:(NSString * _Nonnull)link;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

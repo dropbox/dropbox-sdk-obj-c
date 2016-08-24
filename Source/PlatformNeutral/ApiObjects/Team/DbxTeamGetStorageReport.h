@@ -37,10 +37,6 @@
 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate totalUsage:(NSArray<NSNumber *> * _Nonnull)totalUsage sharedUsage:(NSArray<NSNumber *> * _Nonnull)sharedUsage unsharedUsage:(NSArray<NSNumber *> * _Nonnull)unsharedUsage sharedFolders:(NSArray<NSNumber *> * _Nonnull)sharedFolders memberStorageMap:(NSArray<NSArray<DbxTeamStorageBucket *> *> * _Nonnull)memberStorageMap;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

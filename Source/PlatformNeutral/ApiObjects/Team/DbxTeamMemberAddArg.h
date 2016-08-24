@@ -33,10 +33,6 @@
 
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -100,7 +100,7 @@
         jsonDict[@".tag"] = @"in_progress";
     }
     else if ([valueObj isComplete]) {
-        jsonDict[@"complete"] = [DbxArraySerializer serialize:valueObj.complete withBlock:^id(id obj) { return [DbxTeamMemberAddResultSerializer serialize:obj]; }];
+        jsonDict[@"complete"] = [DbxArraySerializer serialize:valueObj.complete withBlock:^id(id elem) { return [DbxTeamMemberAddResultSerializer serialize:elem]; }];
         jsonDict[@".tag"] = @"complete";
     }
     else if ([valueObj isFailed]) {
@@ -121,7 +121,7 @@
         return [[DbxTeamMembersAddJobStatus alloc] initWithInProgress];
     }
     if ([tag isEqualToString:@"complete"]) {
-        NSArray<DbxTeamMemberAddResult *> *complete = [DbxArraySerializer deserialize:valueDict[@"complete"] withBlock:^id(id obj) { return [DbxTeamMemberAddResultSerializer deserialize:obj]; }];
+        NSArray<DbxTeamMemberAddResult *> *complete = [DbxArraySerializer deserialize:valueDict[@"complete"] withBlock:^id(id elem) { return [DbxTeamMemberAddResultSerializer deserialize:elem]; }];
         return [[DbxTeamMembersAddJobStatus alloc] initWithComplete:complete];
     }
     if ([tag isEqualToString:@"failed"]) {

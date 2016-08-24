@@ -85,7 +85,7 @@
         jsonDict[@".tag"] = @"id_not_found";
     }
     else if ([valueObj isMemberInfo]) {
-        jsonDict[@"member_info"] = [DbxTeamTeamMemberInfoSerializer serialize:valueObj.memberInfo];
+        jsonDict = [[DbxTeamTeamMemberInfoSerializer serialize:valueObj.memberInfo] mutableCopy];
         jsonDict[@".tag"] = @"member_info";
     }
     else {
@@ -103,7 +103,7 @@
         return [[DbxTeamMembersGetInfoItem alloc] initWithIdNotFound:idNotFound];
     }
     if ([tag isEqualToString:@"member_info"]) {
-        DbxTeamTeamMemberInfo *memberInfo = [DbxTeamTeamMemberInfoSerializer deserialize:valueDict[@"member_info"]];
+        DbxTeamTeamMemberInfo *memberInfo = [DbxTeamTeamMemberInfoSerializer deserialize:valueDict];
         return [[DbxTeamMembersGetInfoItem alloc] initWithMemberInfo:memberInfo];
     }
 

@@ -46,8 +46,8 @@
 }
 
 + (DbxFilesUploadWriteFailed *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesWriteError *reason = [DbxFilesWriteErrorSerializer deserialize:valueDict];
-    NSString *uploadSessionId = [DbxStringSerializer deserialize:valueDict];
+    DbxFilesWriteError *reason = [DbxFilesWriteErrorSerializer deserialize:valueDict[@"reason"]];
+    NSString *uploadSessionId = [DbxStringSerializer deserialize:valueDict[@"upload_session_id"]];
 
     return [[DbxFilesUploadWriteFailed alloc] initWithReason:reason uploadSessionId:uploadSessionId];
 }

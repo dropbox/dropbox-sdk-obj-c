@@ -45,8 +45,8 @@
 + (NSDictionary *)serialize:(DbxSharingListFolderMembersCursorArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.actions != nil) {
-        jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id obj) { return [DbxSharingMemberActionSerializer serialize:obj]; }];
+    if (valueObj.actions) {
+        jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer serialize:elem]; }];
     }
     jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
 
@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingListFolderMembersCursorArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingMemberAction *> *actions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingMemberActionSerializer deserialize:obj]; }] : nil;
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
 
     return [[DbxSharingListFolderMembersCursorArg alloc] initWithActions:actions limit:limit];
 }

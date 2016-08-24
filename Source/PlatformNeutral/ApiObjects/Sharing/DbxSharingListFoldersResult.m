@@ -44,8 +44,8 @@
 + (NSDictionary *)serialize:(DbxSharingListFoldersResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id obj) { return [DbxSharingSharedFolderMetadataSerializer serialize:obj]; }];
-    if (valueObj.cursor != nil) {
+    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id elem) { return [DbxSharingSharedFolderMetadataSerializer serialize:elem]; }];
+    if (valueObj.cursor) {
         jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     }
 
@@ -53,8 +53,8 @@
 }
 
 + (DbxSharingListFoldersResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingSharedFolderMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingSharedFolderMetadataSerializer deserialize:obj]; }];
-    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSArray<DbxSharingSharedFolderMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id elem) { return [DbxSharingSharedFolderMetadataSerializer deserialize:elem]; }];
+    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
 
     return [[DbxSharingListFoldersResult alloc] initWithEntries:entries cursor:cursor];
 }

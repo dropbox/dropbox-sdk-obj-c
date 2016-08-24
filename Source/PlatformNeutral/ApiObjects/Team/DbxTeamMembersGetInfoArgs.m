@@ -39,13 +39,13 @@
 + (NSDictionary *)serialize:(DbxTeamMembersGetInfoArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer serialize:obj]; }];
+    jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id elem) { return [DbxTeamUserSelectorArgSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamMembersGetInfoArgs *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamUserSelectorArg *> *members = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamUserSelectorArgSerializer deserialize:obj]; }];
+    NSArray<DbxTeamUserSelectorArg *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxTeamUserSelectorArgSerializer deserialize:elem]; }];
 
     return [[DbxTeamMembersGetInfoArgs alloc] initWithMembers:members];
 }

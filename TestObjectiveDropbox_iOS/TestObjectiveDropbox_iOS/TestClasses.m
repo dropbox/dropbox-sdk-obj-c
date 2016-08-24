@@ -5,28 +5,12 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
+#import "TestData.h"
 #import "TestClasses.h"
-#import "DbxAuthRoutes.h"
-#import "DbxFilesRoutes.h"
-#import "DbxSharingRoutes.h"
-#import "DbxUsersRoutes.h"
-#import "DbxTeamRoutes.h"
+
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
-#import "DropboxClientsManager.h"
-#import "TestData.h"
-#import "DbxUsersRoutes.h"
-#import "DbxFilesUploadSessionCursor.h"
-#import "DbxFilesCommitInfo.h"
-#import "DbxFilesUploadSessionStartResult.h"
-#import "DbxFilesListFolderLongpollResult.h"
-#import "DbxFilesListFolderGetLatestCursorResult.h"
-#import "DbxSharingShareFolderLaunch.h"
-#import "DbxSharingSharedFolderMetadata.h"
-#import "DbxSharingSharedLinkMetadata.h"
-#import "DbxSharingMemberSelector.h"
-#import "DbxSharingAddMember.h"
-#import "DbxSharingJobStatus.h"
+#import "DropboxClientsManager+MobileAuth.h"
 
 void MyLog(NSString *format, ...) {
     va_list args;
@@ -56,9 +40,10 @@ void MyLog(NSString *format, ...) {
 
 @implementation DropboxTeamTester
 
-- (instancetype)init {
+- (instancetype)initWithTestData:(TestData *)testData  {
     self = [super init];
     if (self) {
+        _testData = testData;
         _team = [DropboxClientsManager authorizedTeamClient].teamRoutes;
     }
     return self;
@@ -84,14 +69,10 @@ void MyLog(NSString *format, ...) {
 - (void)tokenRevoke:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     [[[_tester.auth tokenRevoke] response:^(DbxNilObject *result, DbxNilObject *routeError, DbxError *error) {
-        if (result) {
-            MyLog(@"%@\n", result);
-            [TestFormat printOffset:@"Token successfully revoked"];
-            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-            nextTest();
-        } else {
-            [TestFormat abort:error routeError:routeError];
-        }
+        MyLog(@"%@\n", result);
+        [TestFormat printOffset:@"Token successfully revoked"];
+        [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+        nextTest();
     }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
     }];
@@ -480,12 +461,7 @@ void MyLog(NSString *format, ...) {
     }];
 }
 
-- (void)listFolderLongpollAndTrigger:(void (^)())nextTest asMember:(BOOL)asMember {
-    if (asMember) {
-        nextTest();
-        return;
-    }
-
+- (void)listFolderLongpollAndTrigger:(void (^)())nextTest {
     void (^copy)() = ^{
         [TestFormat printOffset:@"Making change that longpoll will detect (copy file)"];
         NSString *copyOutputPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFilePath, @"_duplicate2_", _tester.testData.testId];
@@ -716,8 +692,6 @@ void MyLog(NSString *format, ...) {
                 } else if ([result isFailed]) {
                     [TestFormat abort:error routeError:result.failed];
                 }
-                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-                nextTest();
             } else {
                 [TestFormat abort:error routeError:routeError];
             }
@@ -900,6 +874,517 @@ void MyLog(NSString *format, ...) {
 }
 
 @end
+
+
+/**
+    Dropbox Team API Endpoint Tests
+ */
+
+
+@implementation TeamTests
+
+- (instancetype)init:(DropboxTeamTester *)tester{
+    self = [super init];
+    if (self) {
+        _tester = tester;
+    }
+    return self;
+}
+
+
+/**
+    Permission: Team member file access
+ */
+
+
+- (void)initMembersGetInfo:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberEmail];
+    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DbxTeamMembersGetInfoItem *> *result, DbxTeamMembersGetInfoError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            DbxTeamMembersGetInfoItem *getInfo = result[0];
+            if ([getInfo isIdNotFound]) {
+                [TestFormat abort:error routeError:routeError];
+            } else if ([getInfo isMemberInfo]) {
+                _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
+                [DropboxClientsManager authorizedClient:[[DropboxClientsManager authorizedTeamClient] asMember:_teamMemberId]];
+            }
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)listMemberDevices:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team devicesListMemberDevices:_teamMemberId] response:^(DbxTeamListMemberDevicesResult *result, DbxTeamListMemberDevicesError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)listMembersDevices:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team devicesListMembersDevices] response:^(DbxTeamListMembersDevicesResult *result, DbxTeamListMembersDevicesError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)linkedAppsListMemberLinkedApps:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team linkedAppsListMemberLinkedApps:_teamMemberId] response:^(DbxTeamListMemberAppsResult *result, DbxTeamListMemberAppsError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)linkedAppsListMembersLinkedApps:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team linkedAppsListMembersLinkedApps] response:^(DbxTeamListMembersAppsResult *result, DbxTeamListMembersAppsError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)getInfo:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team getInfo] response:^(DbxTeamTeamGetInfoResult *result, DbxNilObject *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)reportsGetActivity:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
+    [[[_tester.team reportsGetActivity:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetActivityReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)reportsGetDevices:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
+    [[[_tester.team reportsGetDevices:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetDevicesReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)reportsGetMembership:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
+    [[[_tester.team reportsGetMembership:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetMembershipReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)reportsGetStorage:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
+    [[[_tester.team reportsGetStorage:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetStorageReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+
+/**
+    Permission: Team member management
+ */
+
+
+- (void)groupsCreate:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team groupsCreate:_tester.testData.groupName groupExternalId:_tester.testData.groupExternalId groupManagementType:nil] response:^(DbxTeamGroupFullInfo *result, DbxTeamGroupCreateError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsGetInfo:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamGroupsSelector *groupsSelector = [[DbxTeamGroupsSelector alloc] initWithGroupExternalIds:@[_tester.testData.groupExternalId]];
+    [[[_tester.team groupsGetInfo:groupsSelector] response:^(NSArray<DbxTeamGroupsGetInfoItem *> *result, DbxTeamGroupsGetInfoError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsList:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team groupsList] response:^(DbxTeamGroupsListResult *result, DbxNilObject *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsMembersAdd:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    DbxTeamUserSelectorArg *userSelectorArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    DbxTeamGroupAccessType *accessType = [[DbxTeamGroupAccessType alloc] initWithMember];
+    DbxTeamMemberAccess *memberAccess = [[DbxTeamMemberAccess alloc] initWithUser:userSelectorArg accessType:accessType];
+    [[[_tester.team groupsMembersAdd:groupSelector members:@[memberAccess]] response:^(DbxTeamGroupMembersChangeResult *result, DbxTeamGroupMembersAddError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsMembersList:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsMembersList:groupSelector] response:^(DbxTeamGroupsMembersListResult *result, DbxTeamGroupSelectorError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsUpdate:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsUpdate:groupSelector returnMembers:nil dNewGroupName:@"New Group Name" dNewGroupExternalId:nil dNewGroupManagementType:nil] response:^(DbxTeamGroupFullInfo *result, DbxTeamGroupUpdateError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)groupsDelete:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    
+    void (^jobStatus)(NSString *) = ^(NSString *jobId) {
+        [[[_tester.team groupsJobStatusGet:jobId] response:^(DbxAsyncPollEmptyResult *result, DbxTeamGroupsPollError *routeError, DbxError *error) {
+            if (result) {
+                MyLog(@"%@\n", result);
+                if ([result isInProgress]) {
+                    [TestFormat abort:error routeError:routeError];
+                } else {
+                    [TestFormat printOffset:@"Deleted"];
+                    [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                    nextTest();
+                }
+            } else {
+                [TestFormat abort:error routeError:routeError];
+            }
+        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+            [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+        }];
+    };
+
+    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsDelete:groupSelector] response:^(DbxAsyncLaunchEmptyResult *result, DbxTeamGroupDeleteError *routeError, DbxError *error) {
+        if (result) {
+            if ([result isAsyncJobId]) {
+                [TestFormat printOffset:@"Waiting for deletion..."];
+                sleep(1);
+                jobStatus(result.asyncJobId);
+            } else if ([result isComplete]) {
+                [TestFormat printOffset:@"Deleted"];
+                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                nextTest();
+            }
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersAdd:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    
+    void (^jobStatus)(NSString *) = ^(NSString *jobId) {
+        [[[_tester.team membersAddJobStatusGet:jobId] response:^(DbxTeamMembersAddJobStatus *result, DbxAsyncPollError *routeError, DbxError *error) {
+            if (result) {
+                MyLog(@"%@\n", result);
+                if ([result isInProgress]) {
+                    [TestFormat abort:error routeError:routeError];
+                } else if ([result isComplete]) {
+                    DbxTeamMemberAddResult *addResult = result.complete[0];
+                    if ([addResult isSuccess]) {
+                        _teamMemberId2 = addResult.success.profile.teamMemberId;
+                    } else {
+                        [TestFormat abort:error routeError:routeError];
+                    }
+                    [TestFormat printOffset:@"Member added"];
+                    [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                    nextTest();
+                }
+            } else {
+                [TestFormat abort:error routeError:routeError];
+            }
+        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+            [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+        }];
+    };
+    
+    DbxTeamMemberAddArg *memberAddArg = [[DbxTeamMemberAddArg alloc] initWithMemberEmail:_tester.testData.teamMemberNewEmail memberGivenName:@"FirstName" memberSurname:@"LastName"];
+    [[[_tester.team membersAdd:@[memberAddArg]] response:^(DbxTeamMembersAddLaunch *result, DbxNilObject *routeError, DbxError *error) {
+        if (result) {
+            if ([result isAsyncJobId]) {
+                [TestFormat printOffset:@"Result incomplete..."];
+                jobStatus(result.asyncJobId);
+            } else if ([result isComplete]) {
+                DbxTeamMemberAddResult *addResult = result.complete[0];
+                if ([addResult isSuccess]) {
+                    _teamMemberId2 = addResult.success.profile.teamMemberId;
+                } else {
+                    [TestFormat abort:error routeError:routeError];
+                }
+                [TestFormat printOffset:@"Member added"];
+                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                nextTest();
+            }
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersGetInfo:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DbxTeamMembersGetInfoItem *> *result, DbxTeamMembersGetInfoError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersList:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    [[[_tester.team membersList:[NSNumber numberWithInt:2] includeRemoved:nil] response:^(DbxTeamMembersListResult *result, DbxTeamMembersListError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersSendWelcomeEmail:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    [[[_tester.team membersSendWelcomeEmail:userSelectArg] response:^(DbxNilObject *result, DbxTeamMembersSendWelcomeError *routeError, DbxError *error) {
+        if (!error) {
+            [TestFormat printOffset:@"Welcome email sent!"];
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersSetAdminPermissions:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    DbxTeamAdminTier *dNewRole = [[DbxTeamAdminTier alloc] initWithTeamAdmin];
+    [[[_tester.team membersSetAdminPermissions:userSelectArg dNewRole:dNewRole] response:^(DbxTeamMembersSetPermissionsResult *result, DbxTeamMembersSetPermissionsError *routeError, DbxError *error) {
+        if (result) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersSetProfile:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    [[[_tester.team membersSetProfile:userSelectArg dNewEmail:nil dNewExternalId:nil dNewGivenName:@"NewFirstName" dNewSurname:nil] response:^(DbxTeamTeamMemberInfo *result, DbxTeamMembersSetProfileError *routeError, DbxError *error) {
+        if (!error) {
+            MyLog(@"%@\n", result);
+            [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+            nextTest();
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+- (void)membersRemove:(void (^)())nextTest {
+    [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+    
+    void (^jobStatus)(NSString *) = ^(NSString *jobId) {
+        [[[_tester.team membersRemoveJobStatusGet:jobId] response:^(DbxAsyncPollEmptyResult *result, DbxAsyncPollError *routeError, DbxError *error) {
+            if (result) {
+                MyLog(@"%@\n", result);
+                if ([result isInProgress]) {
+                    [TestFormat abort:error routeError:routeError];
+                } else if ([result isComplete]) {
+                    [TestFormat printOffset:@"Member removed"];
+                    [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                    nextTest();
+                }
+            } else {
+                [TestFormat abort:error routeError:routeError];
+            }
+        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+            [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+        }];
+    };
+    
+    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    [[[_tester.team membersRemove:userSelectArg] response:^(DbxAsyncLaunchEmptyResult *result, DbxTeamMembersRemoveError *routeError, DbxError *error) {
+        if (result) {
+            if ([result isAsyncJobId]) {
+                [TestFormat printOffset:@"Result incomplete. Waiting to query status..."];
+                sleep(2);
+                jobStatus(result.asyncJobId);
+            } else if ([result isComplete]) {
+                [TestFormat printOffset:@"Member removed"];
+                [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+                nextTest();
+            }
+        } else {
+            [TestFormat abort:error routeError:routeError];
+        }
+    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
+}
+
+@end
+
 
 static int smallDividerSize = 150;
 

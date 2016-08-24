@@ -24,10 +24,6 @@
 
 - (nonnull instancetype)initWithMatches:(NSArray<DbxFilesSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

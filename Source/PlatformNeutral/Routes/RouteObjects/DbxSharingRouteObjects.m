@@ -2,137 +2,9 @@
 /// Stone Route Objects
 /// 
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxFilesLookupError.h"
-#import "DbxSharingAccessLevel.h"
-#import "DbxSharingAclUpdatePolicy.h"
-#import "DbxSharingAddFileMemberArgs.h"
-#import "DbxSharingAddFileMemberError.h"
-#import "DbxSharingAddFolderMemberArg.h"
-#import "DbxSharingAddFolderMemberError.h"
-#import "DbxSharingAddMember.h"
-#import "DbxSharingAddMemberSelectorError.h"
-#import "DbxSharingChangeFileMemberAccessArgs.h"
-#import "DbxSharingCreateSharedLinkArg.h"
-#import "DbxSharingCreateSharedLinkError.h"
-#import "DbxSharingCreateSharedLinkWithSettingsArg.h"
-#import "DbxSharingCreateSharedLinkWithSettingsError.h"
-#import "DbxSharingFileAction.h"
-#import "DbxSharingFileLinkMetadata.h"
-#import "DbxSharingFileMemberActionError.h"
-#import "DbxSharingFileMemberActionIndividualResult.h"
-#import "DbxSharingFileMemberActionResult.h"
-#import "DbxSharingFileMemberRemoveActionResult.h"
-#import "DbxSharingFilePermission.h"
-#import "DbxSharingFolderAction.h"
-#import "DbxSharingFolderLinkMetadata.h"
-#import "DbxSharingFolderPermission.h"
-#import "DbxSharingFolderPolicy.h"
-#import "DbxSharingGetFileMetadataArg.h"
-#import "DbxSharingGetFileMetadataBatchArg.h"
-#import "DbxSharingGetFileMetadataBatchResult.h"
-#import "DbxSharingGetFileMetadataError.h"
-#import "DbxSharingGetFileMetadataIndividualResult.h"
-#import "DbxSharingGetMetadataArgs.h"
-#import "DbxSharingGetSharedLinkFileError.h"
-#import "DbxSharingGetSharedLinkMetadataArg.h"
-#import "DbxSharingGetSharedLinksArg.h"
-#import "DbxSharingGetSharedLinksError.h"
-#import "DbxSharingGetSharedLinksResult.h"
-#import "DbxSharingGroupMembershipInfo.h"
-#import "DbxSharingInsufficientQuotaAmounts.h"
-#import "DbxSharingInviteeMembershipInfo.h"
-#import "DbxSharingJobError.h"
-#import "DbxSharingJobStatus.h"
-#import "DbxSharingLinkMetadata.h"
-#import "DbxSharingLinkPermissions.h"
-#import "DbxSharingListFileMembersArg.h"
-#import "DbxSharingListFileMembersBatchArg.h"
-#import "DbxSharingListFileMembersBatchResult.h"
-#import "DbxSharingListFileMembersContinueArg.h"
-#import "DbxSharingListFileMembersContinueError.h"
-#import "DbxSharingListFileMembersError.h"
-#import "DbxSharingListFileMembersIndividualResult.h"
-#import "DbxSharingListFilesArg.h"
-#import "DbxSharingListFilesContinueArg.h"
-#import "DbxSharingListFilesContinueError.h"
-#import "DbxSharingListFilesResult.h"
-#import "DbxSharingListFolderMembersArgs.h"
-#import "DbxSharingListFolderMembersContinueArg.h"
-#import "DbxSharingListFolderMembersContinueError.h"
-#import "DbxSharingListFolderMembersCursorArg.h"
-#import "DbxSharingListFoldersArgs.h"
-#import "DbxSharingListFoldersContinueArg.h"
-#import "DbxSharingListFoldersContinueError.h"
-#import "DbxSharingListFoldersResult.h"
-#import "DbxSharingListSharedLinksArg.h"
-#import "DbxSharingListSharedLinksError.h"
-#import "DbxSharingListSharedLinksResult.h"
-#import "DbxSharingMemberAccessLevelResult.h"
-#import "DbxSharingMemberAction.h"
-#import "DbxSharingMemberPolicy.h"
-#import "DbxSharingMemberSelector.h"
-#import "DbxSharingModifySharedLinkSettingsArgs.h"
-#import "DbxSharingModifySharedLinkSettingsError.h"
-#import "DbxSharingMountFolderArg.h"
-#import "DbxSharingMountFolderError.h"
-#import "DbxSharingParentFolderAccessInfo.h"
-#import "DbxSharingPathLinkMetadata.h"
-#import "DbxSharingPendingUploadMode.h"
-#import "DbxSharingRelinquishFileMembershipArg.h"
-#import "DbxSharingRelinquishFileMembershipError.h"
-#import "DbxSharingRelinquishFolderMembershipArg.h"
-#import "DbxSharingRelinquishFolderMembershipError.h"
-#import "DbxSharingRemoveFileMemberArg.h"
-#import "DbxSharingRemoveFileMemberError.h"
-#import "DbxSharingRemoveFolderMemberArg.h"
-#import "DbxSharingRemoveFolderMemberError.h"
-#import "DbxSharingRemoveMemberJobStatus.h"
-#import "DbxSharingRevokeSharedLinkArg.h"
-#import "DbxSharingRevokeSharedLinkError.h"
 #import "DbxSharingRouteObjects.h"
 #import "DbxSharingRoutes.h"
-#import "DbxSharingShareFolderArg.h"
-#import "DbxSharingShareFolderError.h"
-#import "DbxSharingShareFolderErrorBase.h"
-#import "DbxSharingShareFolderJobStatus.h"
-#import "DbxSharingShareFolderLaunch.h"
-#import "DbxSharingSharePathError.h"
-#import "DbxSharingSharedFileMembers.h"
-#import "DbxSharingSharedFileMetadata.h"
-#import "DbxSharingSharedFolderAccessError.h"
-#import "DbxSharingSharedFolderMemberError.h"
-#import "DbxSharingSharedFolderMembers.h"
-#import "DbxSharingSharedFolderMetadata.h"
-#import "DbxSharingSharedFolderMetadataBase.h"
-#import "DbxSharingSharedLinkError.h"
-#import "DbxSharingSharedLinkMetadata.h"
-#import "DbxSharingSharedLinkPolicy.h"
-#import "DbxSharingSharedLinkSettings.h"
-#import "DbxSharingSharedLinkSettingsError.h"
-#import "DbxSharingSharingFileAccessError.h"
-#import "DbxSharingSharingUserError.h"
-#import "DbxSharingTeamMemberInfo.h"
-#import "DbxSharingTransferFolderArg.h"
-#import "DbxSharingTransferFolderError.h"
-#import "DbxSharingUnmountFolderArg.h"
-#import "DbxSharingUnmountFolderError.h"
-#import "DbxSharingUnshareFileArg.h"
-#import "DbxSharingUnshareFileError.h"
-#import "DbxSharingUnshareFolderArg.h"
-#import "DbxSharingUnshareFolderError.h"
-#import "DbxSharingUpdateFolderMemberArg.h"
-#import "DbxSharingUpdateFolderMemberError.h"
-#import "DbxSharingUpdateFolderPolicyArg.h"
-#import "DbxSharingUpdateFolderPolicyError.h"
-#import "DbxSharingUserMembershipInfo.h"
-#import "DbxSharingVisibility.h"
 #import "DbxStoneBase.h"
-#import "DbxUsersTeam.h"
 
 @implementation DbxSharingRouteObjects 
 
@@ -185,9 +57,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[NSArray<DbxSharingFileMemberActionResult *> class]
-            errorType: [DbxSharingAddFileMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingAddFileMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxSharingFileMemberActionResultSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxSharingAddFileMember;
@@ -200,9 +74,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingAddFolderMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingAddFolderMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingAddFolderMember;
@@ -215,9 +91,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingFileMemberActionResult class]
-            errorType: [DbxSharingFileMemberActionError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingFileMemberActionError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingChangeFileMemberAccess;
@@ -230,9 +108,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingCheckJobStatus;
@@ -245,9 +125,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingRemoveMemberJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingCheckRemoveMemberJobStatus;
@@ -260,9 +142,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingShareFolderJobStatus class]
-            errorType: [DbxAsyncPollError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxAsyncPollError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingCheckShareJobStatus;
@@ -275,9 +159,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@YES
             resultType:[DbxSharingPathLinkMetadata class]
-            errorType: [DbxSharingCreateSharedLinkError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingCreateSharedLinkError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingCreateSharedLink;
@@ -290,9 +176,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedLinkMetadata class]
-            errorType: [DbxSharingCreateSharedLinkWithSettingsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingCreateSharedLinkWithSettingsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingCreateSharedLinkWithSettings;
@@ -305,9 +193,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFileMetadata class]
-            errorType: [DbxSharingGetFileMetadataError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingGetFileMetadataError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingGetFileMetadata;
@@ -320,9 +210,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[NSArray<DbxSharingGetFileMetadataBatchResult *> class]
-            errorType: [DbxSharingSharingUserError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharingUserError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxSharingGetFileMetadataBatchResultSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxSharingGetFileMetadataBatch;
@@ -335,9 +227,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFolderMetadata class]
-            errorType: [DbxSharingSharedFolderAccessError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharedFolderAccessError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingGetFolderMetadata;
@@ -350,9 +244,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedLinkMetadata class]
-            errorType: [DbxSharingGetSharedLinkFileError class]
-            attrs: @{@"host": @"content",
-                     @"style": @"download"}
+            errorType:[DbxSharingGetSharedLinkFileError class]
+            attrs:@{@"host": @"content",
+                    @"style": @"download"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingGetSharedLinkFile;
@@ -365,9 +261,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedLinkMetadata class]
-            errorType: [DbxSharingSharedLinkError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharedLinkError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingGetSharedLinkMetadata;
@@ -380,9 +278,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@YES
             resultType:[DbxSharingGetSharedLinksResult class]
-            errorType: [DbxSharingGetSharedLinksError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingGetSharedLinksError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingGetSharedLinks;
@@ -395,9 +295,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFileMembers class]
-            errorType: [DbxSharingListFileMembersError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFileMembersError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFileMembers;
@@ -410,9 +312,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[NSArray<DbxSharingListFileMembersBatchResult *> class]
-            errorType: [DbxSharingSharingUserError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharingUserError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxSharingListFileMembersBatchResultSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxSharingListFileMembersBatch;
@@ -425,9 +329,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFileMembers class]
-            errorType: [DbxSharingListFileMembersContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFileMembersContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFileMembersContinue;
@@ -440,9 +346,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFolderMembers class]
-            errorType: [DbxSharingSharedFolderAccessError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharedFolderAccessError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFolderMembers;
@@ -455,9 +363,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFolderMembers class]
-            errorType: [DbxSharingListFolderMembersContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFolderMembersContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFolderMembersContinue;
@@ -470,9 +380,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFoldersResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFolders;
@@ -485,9 +397,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFoldersResult class]
-            errorType: [DbxSharingListFoldersContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFoldersContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListFoldersContinue;
@@ -500,9 +414,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFoldersResult class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListMountableFolders;
@@ -515,9 +431,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFoldersResult class]
-            errorType: [DbxSharingListFoldersContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFoldersContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListMountableFoldersContinue;
@@ -530,9 +448,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFilesResult class]
-            errorType: [DbxSharingSharingUserError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingSharingUserError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListReceivedFiles;
@@ -545,9 +465,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListFilesResult class]
-            errorType: [DbxSharingListFilesContinueError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListFilesContinueError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListReceivedFilesContinue;
@@ -560,9 +482,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingListSharedLinksResult class]
-            errorType: [DbxSharingListSharedLinksError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingListSharedLinksError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingListSharedLinks;
@@ -575,9 +499,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedLinkMetadata class]
-            errorType: [DbxSharingModifySharedLinkSettingsError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingModifySharedLinkSettingsError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingModifySharedLinkSettings;
@@ -590,9 +516,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFolderMetadata class]
-            errorType: [DbxSharingMountFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingMountFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingMountFolder;
@@ -605,9 +533,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingRelinquishFileMembershipError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRelinquishFileMembershipError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRelinquishFileMembership;
@@ -620,9 +550,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxAsyncLaunchEmptyResult class]
-            errorType: [DbxSharingRelinquishFolderMembershipError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRelinquishFolderMembershipError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRelinquishFolderMembership;
@@ -635,9 +567,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@YES
             resultType:[DbxSharingFileMemberActionIndividualResult class]
-            errorType: [DbxSharingRemoveFileMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRemoveFileMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRemoveFileMember;
@@ -650,9 +584,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingFileMemberRemoveActionResult class]
-            errorType: [DbxSharingRemoveFileMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRemoveFileMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRemoveFileMember2;
@@ -665,9 +601,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxAsyncLaunchResultBase class]
-            errorType: [DbxSharingRemoveFolderMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRemoveFolderMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRemoveFolderMember;
@@ -680,9 +618,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingRevokeSharedLinkError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingRevokeSharedLinkError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingRevokeSharedLink;
@@ -695,9 +635,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingShareFolderLaunch class]
-            errorType: [DbxSharingShareFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingShareFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingShareFolder;
@@ -710,9 +652,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingTransferFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingTransferFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingTransferFolder;
@@ -725,9 +669,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingUnmountFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingUnmountFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingUnmountFolder;
@@ -740,9 +686,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:nil
-            errorType: [DbxSharingUnshareFileError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingUnshareFileError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingUnshareFile;
@@ -755,9 +703,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxAsyncLaunchEmptyResult class]
-            errorType: [DbxSharingUnshareFolderError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingUnshareFolderError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingUnshareFolder;
@@ -770,9 +720,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingMemberAccessLevelResult class]
-            errorType: [DbxSharingUpdateFolderMemberError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingUpdateFolderMemberError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingUpdateFolderMember;
@@ -785,9 +737,11 @@ static DbxRoute *dbxSharingUpdateFolderPolicy = nil;
             namespace_:@"sharing"
             deprecated:@NO
             resultType:[DbxSharingSharedFolderMetadata class]
-            errorType: [DbxSharingUpdateFolderPolicyError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxSharingUpdateFolderPolicyError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxSharingUpdateFolderPolicy;

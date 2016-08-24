@@ -43,7 +43,7 @@
 }
 
 + (DbxFilesUploadSessionStartResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict];
+    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
 
     return [[DbxFilesUploadSessionStartResult alloc] initWithSessionId:sessionId];
 }

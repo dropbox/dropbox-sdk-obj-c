@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxSharingGetSharedLinksArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.path != nil) {
+    if (valueObj.path) {
         jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
     }
 
@@ -49,7 +49,7 @@
 }
 
 + (DbxSharingGetSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
 
     return [[DbxSharingGetSharedLinksArg alloc] initWithPath:path];
 }

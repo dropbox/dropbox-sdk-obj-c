@@ -25,10 +25,6 @@
 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DbxTeamTeamMemberStatus * _Nonnull)status name:(DbxUsersName * _Nonnull)name membershipType:(DbxTeamTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -62,11 +62,11 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
 - (DbxRpcTask *)requestRpc:(DbxRoute *)route arg:(id<DbxSerializable>)arg {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [DropboxTransportClient serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     // RPC request submits argument in request body
-    NSData *serializedArgData = [DropboxTransportClient serializeArgData:arg ];
+    NSData *serializedArgData = [[self class] serializeArgData:route routeArg:arg];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:serializedArgData stream:nil];
 
@@ -79,7 +79,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
 - (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputURL:(NSURL *)input {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [[self class] serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
@@ -93,7 +93,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
 - (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputData:(NSData *)input {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [[self class] serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
@@ -105,9 +105,9 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return uploadTask;
 }
 
-- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputStream:(NSStream *)input {
+- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputStream:(NSInputStream *)input {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [[self class] serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:input];
@@ -121,7 +121,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
 - (DbxDownloadURLTask *)requestDownload:(DbxRoute *)route arg:(id<DbxSerializable>)arg overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [[self class] serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
@@ -135,7 +135,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
 - (DbxDownloadDataTask *)requestDownload:(DbxRoute *)route arg:(id<DbxSerializable>)arg {
     NSURL *requestUrl = [self getUrl:route];
-    NSString *serializedArg = [[self class] serializeArgString:arg];
+    NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
     
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
@@ -170,13 +170,14 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSMutableDictionary <NSString *, NSString *> * headers = [[NSMutableDictionary alloc] init];
     [headers setObject:_userAgent forKey:@"User-Agent"];
     
-    if (_selectUser != nil) {
-        [headers setObject:_selectUser forKey:@"Dropbox-Api-Select-User"];
-    }
-    
     BOOL noauth = [host isEqualToString:@"notify"];
-    
+
     if (!noauth) {
+        
+        if (_selectUser) {
+            [headers setObject:_selectUser forKey:@"Dropbox-Api-Select-User"];
+        }
+
         [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessToken] forKey:@"Authorization"];
     }
     
@@ -198,32 +199,38 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return headers;
 }
 
-+ (NSData *)serializeArgData:(id<DbxSerializable>)arg {
++ (NSData *)serializeArgData:(DbxRoute *)route routeArg:(id<DbxSerializable>)arg {
     if (arg == nil) {
         return nil;
     }
+
+    if (route.arraySerialBlock) {
+        NSArray *serializedArray = route.arraySerialBlock(arg);
+        return [[self class] jsonDataFromJsonObj:serializedArray];
+    }
+
     NSDictionary *serializedDict = [[arg class] serialize:arg];
-    return [DropboxTransportClient jsonDataFromDict:serializedDict];
+    return [[self class] jsonDataFromJsonObj:serializedDict];
 }
 
-+ (NSString *)serializeArgString:(id<DbxSerializable>)arg {
++ (NSString *)serializeArgString:(DbxRoute *)route routeArg:(id<DbxSerializable>)arg {
     if (arg == nil) {
         return nil;
     }
-    NSData *jsonData = [self serializeArgData:arg];
-    NSString *asciiEscapedStr = [DropboxTransportClient asciiEscapeString:[DropboxTransportClient utf8StringFromData:jsonData]];
+    NSData *jsonData = [self serializeArgData:route routeArg:arg];
+    NSString *asciiEscapedStr = [[self class] asciiEscapeString:[[self class] utf8StringFromData:jsonData]];
     NSMutableString *filteredStr = [[NSMutableString alloc] initWithString:asciiEscapedStr];
     [filteredStr replaceOccurrencesOfString:@"\\/" withString:@"/" options:NSLiteralSearch range:NSMakeRange(0, filteredStr.length)];
     return filteredStr;
 }
 
-+ (NSData *)jsonDataFromDict:(NSDictionary *)dict {
-    if (dict == nil) {
++ (NSData *)jsonDataFromJsonObj:(id)jsonObj {
+    if (jsonObj == nil) {
         return nil;
     }
 
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:&error];
 
     if (!jsonData) {
         NSLog(@"Error serializing dictionary: %@", error.localizedDescription);

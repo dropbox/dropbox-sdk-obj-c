@@ -26,19 +26,19 @@
         NSString *errorSummary = deserializedData ? deserializedData[@"error_summary"] : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
         if (statusCode >= 500 && statusCode < 600) {
-            dbxError = [[DbxError alloc] init:DbxErrorInternalServerError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestInternalServerErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 400) {
-            dbxError = [[DbxError alloc] init:DbxErrorBadInputError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:errorSummary structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestBadInputErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:errorSummary structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 401) {
-            dbxError = [[DbxError alloc] init:DbxErrorAuthError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:[DbxAuthAuthErrorSerializer deserialize:deserializedData[@"error"]] structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestAuthErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:[DbxAuthAuthErrorSerializer deserialize:deserializedData[@"error"]] structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 429) {
             NSString *retryAfter = httpHeaders[@"Retry-After"];
             double retryAfterSeconds = retryAfter.doubleValue;
-            dbxError = [[DbxError alloc] init:DbxErrorRateLimitError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:[DbxAuthRateLimitErrorSerializer deserialize:deserializedData[@"error"]] backoff:[NSNumber numberWithInt:retryAfterSeconds] errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestRateLimitErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:[DbxAuthRateLimitErrorSerializer deserialize:deserializedData[@"error"]] backoff:[NSNumber numberWithInt:retryAfterSeconds] errorDescription:nil];
         } else if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
-            dbxError = [[DbxError alloc] init:DbxErrorHttpError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else {
-            dbxError = [[DbxError alloc] init:DbxErrorHttpError requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DbxError alloc] init:DbxRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         }
     }
     
@@ -60,6 +60,9 @@
 }
 
 - (id)getResult:(NSData *)data {
+    if (!_route.resultType) {
+        return nil;
+    }
     NSError *serializationError;
     id jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&serializationError];
     if (!jsonData) {
@@ -67,7 +70,15 @@
         NSLog(@"Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         return nil;
     }
-    return _route.resultType ? [(Class)_route.resultType deserialize:jsonData] : nil;
+    
+    if (_route.resultType) {
+        if (_route.arrayDeserialBlock) {
+            return _route.arrayDeserialBlock(jsonData);
+        }
+        return [(Class)_route.resultType deserialize:jsonData];
+    }
+
+    return nil;
 }
 
 @end
@@ -98,7 +109,7 @@
             return responseBlock(nil, routeError, dbxError);
         }
         
-        id result = _route.resultType ? [self getResult:data] : nil;
+        id result = [self getResult:data];
         responseBlock(result, nil, nil);
     };
     
@@ -153,7 +164,7 @@
             return responseBlock(nil, routeError, dbxError);
         }
         
-        id result = _route.resultType ? [self getResult:data] : nil;
+        id result = [self getResult:data];
         responseBlock(result, nil, nil);
     };
     
@@ -228,7 +239,7 @@
             [fileManager moveItemAtPath:[location path] toPath:path error:&fileMoveError];
         }
         
-        id result = _route.resultType ? [self getResult:data] : nil;
+        id result = [self getResult:data];
         responseBlock(result, nil, nil, _destination);
     };
     
@@ -284,8 +295,8 @@
             return responseBlock(nil, routeError, dbxError, nil);
         }
         
-        id result = _route.resultType ? [self getResult:data] : nil;
-        responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:location]);
+        id result = [self getResult:data];
+        responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
     };
     
     [_delegate addDownloadCompletionHandler:_task session:_session completionHandler:handler];

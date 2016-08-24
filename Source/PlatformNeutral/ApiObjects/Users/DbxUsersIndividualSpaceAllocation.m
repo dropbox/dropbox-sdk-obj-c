@@ -43,7 +43,7 @@
 }
 
 + (DbxUsersIndividualSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict[@"allocated"]];
 
     return [[DbxUsersIndividualSpaceAllocation alloc] initWithAllocated:allocated];
 }

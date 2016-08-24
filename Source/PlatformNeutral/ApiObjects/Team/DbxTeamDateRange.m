@@ -42,10 +42,10 @@
 + (NSDictionary *)serialize:(DbxTeamDateRange *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.startDate != nil) {
+    if (valueObj.startDate) {
         jsonDict[@"start_date"] = [DbxNSDateSerializer serialize:valueObj.startDate dateFormat:@"%Y-%m-%d"];
     }
-    if (valueObj.endDate != nil) {
+    if (valueObj.endDate) {
         jsonDict[@"end_date"] = [DbxNSDateSerializer serialize:valueObj.endDate dateFormat:@"%Y-%m-%d"];
     }
 
@@ -53,8 +53,8 @@
 }
 
 + (DbxTeamDateRange *)deserialize:(NSDictionary *)valueDict {
-    NSDate *startDate = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%d"] : nil;
-    NSDate *endDate = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%d"] : nil;
+    NSDate *startDate = valueDict[@"start_date"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"start_date"] dateFormat:@"%Y-%m-%d"] : nil;
+    NSDate *endDate = valueDict[@"end_date"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"end_date"] dateFormat:@"%Y-%m-%d"] : nil;
 
     return [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
 }

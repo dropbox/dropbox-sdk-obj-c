@@ -30,10 +30,6 @@
 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate teamSize:(NSArray<NSNumber *> * _Nonnull)teamSize pendingInvites:(NSArray<NSNumber *> * _Nonnull)pendingInvites membersJoined:(NSArray<NSNumber *> * _Nonnull)membersJoined suspendedMembers:(NSArray<NSNumber *> * _Nonnull)suspendedMembers licenses:(NSArray<NSNumber *> * _Nonnull)licenses;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

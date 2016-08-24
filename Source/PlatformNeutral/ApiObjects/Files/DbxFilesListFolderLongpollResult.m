@@ -43,7 +43,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"changes"] = [DbxBoolSerializer serialize:valueObj.changes];
-    if (valueObj.backoff != nil) {
+    if (valueObj.backoff) {
         jsonDict[@"backoff"] = [DbxNSNumberSerializer serialize:valueObj.backoff];
     }
 
@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListFolderLongpollResult *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *changes = [DbxBoolSerializer deserialize:valueDict];
-    NSNumber *backoff = valueDict != nil ? [DbxNSNumberSerializer deserialize:valueDict] : nil;
+    NSNumber *changes = [DbxBoolSerializer deserialize:valueDict[@"changes"]];
+    NSNumber *backoff = valueDict[@"backoff"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"backoff"]] : nil;
 
     return [[DbxFilesListFolderLongpollResult alloc] initWithChanges:changes backoff:backoff];
 }

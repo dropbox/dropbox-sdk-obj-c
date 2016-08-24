@@ -49,13 +49,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    if (valueObj.pathLower != nil) {
+    if (valueObj.pathLower) {
         jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
     }
-    if (valueObj.pathDisplay != nil) {
+    if (valueObj.pathDisplay) {
         jsonDict[@"path_display"] = [DbxStringSerializer serialize:valueObj.pathDisplay];
     }
-    if (valueObj.parentSharedFolderId != nil) {
+    if (valueObj.parentSharedFolderId) {
         jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
     }
 

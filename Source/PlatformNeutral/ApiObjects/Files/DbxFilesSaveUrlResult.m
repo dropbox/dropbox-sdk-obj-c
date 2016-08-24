@@ -86,7 +86,7 @@
         jsonDict[@".tag"] = @"async_job_id";
     }
     else if ([valueObj isComplete]) {
-        jsonDict[@"complete"] = [DbxFilesFileMetadataSerializer serialize:valueObj.complete];
+        jsonDict = [[DbxFilesFileMetadataSerializer serialize:valueObj.complete] mutableCopy];
         jsonDict[@".tag"] = @"complete";
     }
     else {
@@ -104,7 +104,7 @@
         return [[DbxFilesSaveUrlResult alloc] initWithAsyncJobId:asyncJobId];
     }
     if ([tag isEqualToString:@"complete"]) {
-        DbxFilesFileMetadata *complete = [DbxFilesFileMetadataSerializer deserialize:valueDict[@"complete"]];
+        DbxFilesFileMetadata *complete = [DbxFilesFileMetadataSerializer deserialize:valueDict];
         return [[DbxFilesSaveUrlResult alloc] initWithComplete:complete];
     }
 

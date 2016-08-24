@@ -103,15 +103,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isTeamMemberIds]) {
-        jsonDict[@"team_member_ids"] = [DbxArraySerializer serialize:valueObj.teamMemberIds withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+        jsonDict[@"team_member_ids"] = [DbxArraySerializer serialize:valueObj.teamMemberIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
         jsonDict[@".tag"] = @"team_member_ids";
     }
     else if ([valueObj isExternalIds]) {
-        jsonDict[@"external_ids"] = [DbxArraySerializer serialize:valueObj.externalIds withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+        jsonDict[@"external_ids"] = [DbxArraySerializer serialize:valueObj.externalIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
         jsonDict[@".tag"] = @"external_ids";
     }
     else if ([valueObj isEmails]) {
-        jsonDict[@"emails"] = [DbxArraySerializer serialize:valueObj.emails withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+        jsonDict[@"emails"] = [DbxArraySerializer serialize:valueObj.emails withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
         jsonDict[@".tag"] = @"emails";
     }
     else {
@@ -125,15 +125,15 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"team_member_ids"]) {
-        NSArray<NSString *> *teamMemberIds = [DbxArraySerializer deserialize:valueDict[@"team_member_ids"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+        NSArray<NSString *> *teamMemberIds = [DbxArraySerializer deserialize:valueDict[@"team_member_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
         return [[DbxTeamUsersSelectorArg alloc] initWithTeamMemberIds:teamMemberIds];
     }
     if ([tag isEqualToString:@"external_ids"]) {
-        NSArray<NSString *> *externalIds = [DbxArraySerializer deserialize:valueDict[@"external_ids"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+        NSArray<NSString *> *externalIds = [DbxArraySerializer deserialize:valueDict[@"external_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
         return [[DbxTeamUsersSelectorArg alloc] initWithExternalIds:externalIds];
     }
     if ([tag isEqualToString:@"emails"]) {
-        NSArray<NSString *> *emails = [DbxArraySerializer deserialize:valueDict[@"emails"] withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
+        NSArray<NSString *> *emails = [DbxArraySerializer deserialize:valueDict[@"emails"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
         return [[DbxTeamUsersSelectorArg alloc] initWithEmails:emails];
     }
 

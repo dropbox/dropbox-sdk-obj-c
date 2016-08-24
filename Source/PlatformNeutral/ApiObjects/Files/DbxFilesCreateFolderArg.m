@@ -44,7 +44,7 @@
 }
 
 + (DbxFilesCreateFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
 
     return [[DbxFilesCreateFolderArg alloc] initWithPath:path];
 }

@@ -118,7 +118,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isPath]) {
-        jsonDict[@"path"] = [DbxFilesWriteErrorSerializer serialize:valueObj.path];
+        jsonDict = [[DbxFilesWriteErrorSerializer serialize:valueObj.path] mutableCopy];
         jsonDict[@".tag"] = @"path";
     }
     else if ([valueObj isDownloadFailed]) {

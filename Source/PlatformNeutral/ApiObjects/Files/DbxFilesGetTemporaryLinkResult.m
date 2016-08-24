@@ -46,8 +46,8 @@
 }
 
 + (DbxFilesGetTemporaryLinkResult *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesFileMetadata *metadata = [DbxFilesFileMetadataSerializer deserialize:valueDict];
-    NSString *link = [DbxStringSerializer deserialize:valueDict];
+    DbxFilesFileMetadata *metadata = [DbxFilesFileMetadataSerializer deserialize:valueDict[@"metadata"]];
+    NSString *link = [DbxStringSerializer deserialize:valueDict[@"link"]];
 
     return [[DbxFilesGetTemporaryLinkResult alloc] initWithMetadata:metadata link:link];
 }

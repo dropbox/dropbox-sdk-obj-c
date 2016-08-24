@@ -128,7 +128,7 @@
         jsonDict[@".tag"] = @"other";
     }
     else if ([valueObj isSettingsError]) {
-        jsonDict[@"settings_error"] = [DbxSharingSharedLinkSettingsErrorSerializer serialize:valueObj.settingsError];
+        jsonDict = [[DbxSharingSharedLinkSettingsErrorSerializer serialize:valueObj.settingsError] mutableCopy];
         jsonDict[@".tag"] = @"settings_error";
     }
     else if ([valueObj isEmailNotVerified]) {

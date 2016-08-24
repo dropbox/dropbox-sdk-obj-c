@@ -31,10 +31,6 @@
 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DbxTeamDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

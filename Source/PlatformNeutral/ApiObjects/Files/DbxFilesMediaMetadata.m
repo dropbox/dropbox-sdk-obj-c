@@ -47,13 +47,13 @@
 + (NSDictionary *)serialize:(DbxFilesMediaMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    if (valueObj.dimensions != nil) {
+    if (valueObj.dimensions) {
         jsonDict[@"dimensions"] = [DbxFilesDimensionsSerializer serialize:valueObj.dimensions];
     }
-    if (valueObj.location != nil) {
+    if (valueObj.location) {
         jsonDict[@"location"] = [DbxFilesGpsCoordinatesSerializer serialize:valueObj.location];
     }
-    if (valueObj.timeTaken != nil) {
+    if (valueObj.timeTaken) {
         jsonDict[@"time_taken"] = [DbxNSDateSerializer serialize:valueObj.timeTaken dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
 

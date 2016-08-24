@@ -41,14 +41,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"is_deleted"] = [DbxBoolSerializer serialize:valueObj.isDeleted];
-    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id obj) { return [DbxFilesFileMetadataSerializer serialize:obj]; }];
+    jsonDict[@"entries"] = [DbxArraySerializer serialize:valueObj.entries withBlock:^id(id elem) { return [DbxFilesFileMetadataSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxFilesListRevisionsResult *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *isDeleted = [DbxBoolSerializer deserialize:valueDict];
-    NSArray<DbxFilesFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxFilesFileMetadataSerializer deserialize:obj]; }];
+    NSNumber *isDeleted = [DbxBoolSerializer deserialize:valueDict[@"is_deleted"]];
+    NSArray<DbxFilesFileMetadata *> *entries = [DbxArraySerializer deserialize:valueDict[@"entries"] withBlock:^id(id elem) { return [DbxFilesFileMetadataSerializer deserialize:elem]; }];
 
     return [[DbxFilesListRevisionsResult alloc] initWithIsDeleted:isDeleted entries:entries];
 }

@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxTeamMembersListResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id obj) { return [DbxTeamTeamMemberInfoSerializer serialize:obj]; }];
+    jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id elem) { return [DbxTeamTeamMemberInfoSerializer serialize:elem]; }];
     jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
 
@@ -49,9 +49,9 @@
 }
 
 + (DbxTeamMembersListResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamTeamMemberInfo *> *members = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamTeamMemberInfoSerializer deserialize:obj]; }];
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<DbxTeamTeamMemberInfo *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxTeamTeamMemberInfoSerializer deserialize:elem]; }];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
 
     return [[DbxTeamMembersListResult alloc] initWithMembers:members cursor:cursor hasMore:hasMore];
 }

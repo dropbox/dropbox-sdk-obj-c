@@ -44,7 +44,7 @@
 }
 
 + (DbxFilesDeleteArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
 
     return [[DbxFilesDeleteArg alloc] initWithPath:path];
 }

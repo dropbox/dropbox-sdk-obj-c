@@ -5,8 +5,6 @@
 #import <Foundation/Foundation.h>
 #import "DbxBaseTeam.h"
 
-@class DropboxTransportClient;
-
 @interface DropboxTeamClient : DbxBaseTeam
 
 - (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)dropboxTransportClient;

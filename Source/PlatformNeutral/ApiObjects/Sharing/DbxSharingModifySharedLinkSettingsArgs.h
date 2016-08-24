@@ -24,10 +24,6 @@
 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

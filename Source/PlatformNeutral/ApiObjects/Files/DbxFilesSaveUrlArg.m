@@ -46,8 +46,8 @@
 }
 
 + (DbxFilesSaveUrlArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSString *url = [DbxStringSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
 
     return [[DbxFilesSaveUrlArg alloc] initWithPath:path url:url];
 }

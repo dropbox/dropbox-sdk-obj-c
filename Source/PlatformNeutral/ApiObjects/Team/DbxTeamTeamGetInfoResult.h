@@ -27,10 +27,6 @@
 
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name teamId:(NSString * _Nonnull)teamId numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers policies:(DbxTeamPoliciesTeamMemberPolicies * _Nonnull)policies;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

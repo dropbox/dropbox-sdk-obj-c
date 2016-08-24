@@ -39,13 +39,13 @@
 + (NSDictionary *)serialize:(DbxTeamRevokeLinkedAppBatchResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"revoke_linked_app_status"] = [DbxArraySerializer serialize:valueObj.revokeLinkedAppStatus withBlock:^id(id obj) { return [DbxTeamRevokeLinkedAppStatusSerializer serialize:obj]; }];
+    jsonDict[@"revoke_linked_app_status"] = [DbxArraySerializer serialize:valueObj.revokeLinkedAppStatus withBlock:^id(id elem) { return [DbxTeamRevokeLinkedAppStatusSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamRevokeLinkedAppBatchResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamRevokeLinkedAppStatus *> *revokeLinkedAppStatus = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamRevokeLinkedAppStatusSerializer deserialize:obj]; }];
+    NSArray<DbxTeamRevokeLinkedAppStatus *> *revokeLinkedAppStatus = [DbxArraySerializer deserialize:valueDict[@"revoke_linked_app_status"] withBlock:^id(id elem) { return [DbxTeamRevokeLinkedAppStatusSerializer deserialize:elem]; }];
 
     return [[DbxTeamRevokeLinkedAppBatchResult alloc] initWithRevokeLinkedAppStatus:revokeLinkedAppStatus];
 }

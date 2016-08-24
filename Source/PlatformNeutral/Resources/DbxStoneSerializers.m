@@ -4,19 +4,6 @@
 
 #import "DbxStoneSerializers.h"
 
-@implementation NSArray (DbxSerializable)
-
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj {
-    return obj;
-}
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict {
-    return dict;
-}
-
-@end
-
-
 @implementation DbxStringSerializer
 
 + (NSString *)serialize:(NSString *)value {
@@ -181,21 +168,21 @@
 
 @implementation DbxArraySerializer
 
-+ (NSArray *)serialize:(NSArray *)value withBlock:(id (^)(id obj))withBlock {
++ (NSArray *)serialize:(NSArray *)value withBlock:(id (^)(id))serializeBlock {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     
     for (id element in value) {
-        [resultArray addObject:withBlock(element)];
+        [resultArray addObject:serializeBlock(element)];
     }
     
     return resultArray;
 }
 
-+ (NSArray *)deserialize:(NSArray *)value withBlock:(id (^)(id obj))withBlock {
++ (NSArray *)deserialize:(NSArray *)value withBlock:(id (^)(id))deserializeBlock {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     
     for (id element in value) {
-        [resultArray addObject:withBlock(element)];
+        [resultArray addObject:deserializeBlock(element)];
     }
     
     return resultArray;

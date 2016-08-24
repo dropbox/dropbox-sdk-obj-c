@@ -45,9 +45,9 @@
 + (NSDictionary *)serialize:(DbxSharingListSharedLinksResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"links"] = [DbxArraySerializer serialize:valueObj.links withBlock:^id(id obj) { return [DbxSharingSharedLinkMetadataSerializer serialize:obj]; }];
+    jsonDict[@"links"] = [DbxArraySerializer serialize:valueObj.links withBlock:^id(id elem) { return [DbxSharingSharedLinkMetadataSerializer serialize:elem]; }];
     jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
-    if (valueObj.cursor != nil) {
+    if (valueObj.cursor) {
         jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
     }
 
@@ -55,9 +55,9 @@
 }
 
 + (DbxSharingListSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingSharedLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingSharedLinkMetadataSerializer deserialize:obj]; }];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict];
-    NSString *cursor = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSArray<DbxSharingSharedLinkMetadata *> *links = [DbxArraySerializer deserialize:valueDict[@"links"] withBlock:^id(id elem) { return [DbxSharingSharedLinkMetadataSerializer deserialize:elem]; }];
+    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
+    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
 
     return [[DbxSharingListSharedLinksResult alloc] initWithLinks:links hasMore:hasMore cursor:cursor];
 }

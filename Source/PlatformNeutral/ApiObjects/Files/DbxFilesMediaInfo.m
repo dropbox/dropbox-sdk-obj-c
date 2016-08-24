@@ -76,7 +76,7 @@
         jsonDict[@".tag"] = @"pending";
     }
     else if ([valueObj isMetadata]) {
-        jsonDict[@"metadata"] = [DbxFilesMediaMetadataSerializer serialize:valueObj.metadata];
+        jsonDict = [[DbxFilesMediaMetadataSerializer serialize:valueObj.metadata] mutableCopy];
         jsonDict[@".tag"] = @"metadata";
     }
     else {
@@ -93,7 +93,7 @@
         return [[DbxFilesMediaInfo alloc] initWithPending];
     }
     if ([tag isEqualToString:@"metadata"]) {
-        DbxFilesMediaMetadata *metadata = [DbxFilesMediaMetadataSerializer deserialize:valueDict[@"metadata"]];
+        DbxFilesMediaMetadata *metadata = [DbxFilesMediaMetadataSerializer deserialize:valueDict];
         return [[DbxFilesMediaInfo alloc] initWithMetadata:metadata];
     }
 

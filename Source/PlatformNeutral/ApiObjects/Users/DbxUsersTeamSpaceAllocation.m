@@ -45,8 +45,8 @@
 }
 
 + (DbxUsersTeamSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *used = [DbxNSNumberSerializer deserialize:valueDict];
-    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict];
+    NSNumber *used = [DbxNSNumberSerializer deserialize:valueDict[@"used"]];
+    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict[@"allocated"]];
 
     return [[DbxUsersTeamSpaceAllocation alloc] initWithUsed:used allocated:allocated];
 }

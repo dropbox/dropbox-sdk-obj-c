@@ -46,16 +46,16 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
-    if (valueObj.actions != nil) {
-        jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id obj) { return [DbxSharingFileActionSerializer serialize:obj]; }];
+    if (valueObj.actions) {
+        jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingFileActionSerializer serialize:elem]; }];
     }
 
     return jsonDict;
 }
 
 + (DbxSharingGetFileMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict];
-    NSArray<DbxSharingFileAction *> *actions = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxSharingFileActionSerializer deserialize:obj]; }] : nil;
+    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSArray<DbxSharingFileAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFileActionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingGetFileMetadataArg alloc] initWithFile:file actions:actions];
 }

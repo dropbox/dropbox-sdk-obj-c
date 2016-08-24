@@ -45,10 +45,10 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
-    if (valueObj.path != nil) {
+    if (valueObj.path) {
         jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
     }
-    if (valueObj.linkPassword != nil) {
+    if (valueObj.linkPassword) {
         jsonDict[@"link_password"] = [DbxStringSerializer serialize:valueObj.linkPassword];
     }
 
@@ -56,9 +56,9 @@
 }
 
 + (DbxSharingGetSharedLinkMetadataArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict];
-    NSString *path = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
-    NSString *linkPassword = valueDict != nil ? [DbxStringSerializer deserialize:valueDict] : nil;
+    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
+    NSString *linkPassword = valueDict[@"link_password"] != nil ? [DbxStringSerializer deserialize:valueDict[@"link_password"]] : nil;
 
     return [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
 }

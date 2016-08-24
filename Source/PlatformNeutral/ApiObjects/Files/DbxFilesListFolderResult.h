@@ -24,10 +24,6 @@
 
 - (nonnull instancetype)initWithEntries:(NSArray<DbxFilesMetadata *> * _Nonnull)entries cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

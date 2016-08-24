@@ -18,10 +18,6 @@
 
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

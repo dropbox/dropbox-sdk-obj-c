@@ -242,7 +242,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isSuccess]) {
-        jsonDict[@"success"] = [DbxTeamTeamMemberInfoSerializer serialize:valueObj.success];
+        jsonDict = [[DbxTeamTeamMemberInfoSerializer serialize:valueObj.success] mutableCopy];
         jsonDict[@".tag"] = @"success";
     }
     else if ([valueObj isTeamLicenseLimit]) {
@@ -288,7 +288,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"success"]) {
-        DbxTeamTeamMemberInfo *success = [DbxTeamTeamMemberInfoSerializer deserialize:valueDict[@"success"]];
+        DbxTeamTeamMemberInfo *success = [DbxTeamTeamMemberInfoSerializer deserialize:valueDict];
         return [[DbxTeamMemberAddResult alloc] initWithSuccess:success];
     }
     if ([tag isEqualToString:@"team_license_limit"]) {

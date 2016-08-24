@@ -97,11 +97,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isMetadata]) {
-        jsonDict[@"metadata"] = [DbxSharingSharedFileMetadataSerializer serialize:valueObj.metadata];
+        jsonDict = [[DbxSharingSharedFileMetadataSerializer serialize:valueObj.metadata] mutableCopy];
         jsonDict[@".tag"] = @"metadata";
     }
     else if ([valueObj isAccessError]) {
-        jsonDict[@"access_error"] = [DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError];
+        jsonDict = [[DbxSharingSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
         jsonDict[@".tag"] = @"access_error";
     }
     else if ([valueObj isOther]) {
@@ -118,7 +118,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"metadata"]) {
-        DbxSharingSharedFileMetadata *metadata = [DbxSharingSharedFileMetadataSerializer deserialize:valueDict[@"metadata"]];
+        DbxSharingSharedFileMetadata *metadata = [DbxSharingSharedFileMetadataSerializer deserialize:valueDict];
         return [[DbxSharingGetFileMetadataIndividualResult alloc] initWithMetadata:metadata];
     }
     if ([tag isEqualToString:@"access_error"]) {

@@ -24,10 +24,6 @@
 
 - (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName sharedFolderId:(NSString * _Nonnull)sharedFolderId permissions:(NSArray<DbxSharingMemberPermission *> * _Nonnull)permissions;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

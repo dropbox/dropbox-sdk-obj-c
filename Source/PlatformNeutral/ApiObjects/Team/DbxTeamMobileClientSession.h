@@ -31,10 +31,6 @@
 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DbxTeamMobileClientPlatform * _Nonnull)clientType;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -49,24 +49,24 @@
     jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
     jsonDict[@"mode"] = [DbxFilesWriteModeSerializer serialize:valueObj.mode];
     jsonDict[@"autorename"] = [DbxBoolSerializer serialize:valueObj.autorename];
-    if (valueObj.clientModified != nil) {
+    if (valueObj.clientModified) {
         jsonDict[@"client_modified"] = [DbxNSDateSerializer serialize:valueObj.clientModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
     jsonDict[@"mute"] = [DbxBoolSerializer serialize:valueObj.mute];
-    if (valueObj.propertyGroups != nil) {
-        jsonDict[@"property_groups"] = [DbxArraySerializer serialize:valueObj.propertyGroups withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer serialize:obj]; }];
+    if (valueObj.propertyGroups) {
+        jsonDict[@"property_groups"] = [DbxArraySerializer serialize:valueObj.propertyGroups withBlock:^id(id elem) { return [DbxPropertiesPropertyGroupSerializer serialize:elem]; }];
     }
 
     return jsonDict;
 }
 
 + (DbxFilesCommitInfoWithProperties *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    DbxFilesWriteMode *mode = [DbxFilesWriteModeSerializer deserialize:valueDict];
-    NSNumber *autorename = [DbxBoolSerializer deserialize:valueDict];
-    NSDate *clientModified = valueDict != nil ? [DbxNSDateSerializer deserialize:valueDict dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSNumber *mute = [DbxBoolSerializer deserialize:valueDict];
-    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict != nil ? [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxPropertiesPropertyGroupSerializer deserialize:obj]; }] : nil;
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    DbxFilesWriteMode *mode = [DbxFilesWriteModeSerializer deserialize:valueDict[@"mode"]];
+    NSNumber *autorename = [DbxBoolSerializer deserialize:valueDict[@"autorename"]];
+    NSDate *clientModified = valueDict[@"client_modified"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSNumber *mute = [DbxBoolSerializer deserialize:valueDict[@"mute"]];
+    NSArray<DbxPropertiesPropertyGroup *> *propertyGroups = valueDict[@"property_groups"] != nil ? [DbxArraySerializer deserialize:valueDict[@"property_groups"] withBlock:^id(id elem) { return [DbxPropertiesPropertyGroupSerializer deserialize:elem]; }] : nil;
 
     return [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute propertyGroups:propertyGroups];
 }

@@ -3,20 +3,8 @@
 /// 
 
 #import "DbxStoneBase.h"
-#import "DbxUsersAccount.h"
-#import "DbxUsersAccountType.h"
-#import "DbxUsersBasicAccount.h"
-#import "DbxUsersFullAccount.h"
-#import "DbxUsersFullTeam.h"
-#import "DbxUsersGetAccountArg.h"
-#import "DbxUsersGetAccountBatchArg.h"
-#import "DbxUsersGetAccountBatchError.h"
-#import "DbxUsersGetAccountError.h"
-#import "DbxUsersName.h"
 #import "DbxUsersRouteObjects.h"
 #import "DbxUsersRoutes.h"
-#import "DbxUsersSpaceAllocation.h"
-#import "DbxUsersSpaceUsage.h"
 
 @implementation DbxUsersRouteObjects 
 
@@ -32,9 +20,11 @@ static DbxRoute *dbxUsersGetSpaceUsage = nil;
             namespace_:@"users"
             deprecated:@NO
             resultType:[DbxUsersBasicAccount class]
-            errorType: [DbxUsersGetAccountError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxUsersGetAccountError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxUsersGetAccount;
@@ -47,9 +37,11 @@ static DbxRoute *dbxUsersGetSpaceUsage = nil;
             namespace_:@"users"
             deprecated:@NO
             resultType:[NSArray<DbxUsersBasicAccount *> class]
-            errorType: [DbxUsersGetAccountBatchError class]
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:[DbxUsersGetAccountBatchError class]
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:^id(id array) { return [DbxArraySerializer deserialize:array withBlock:^id(id elem) { return [DbxUsersBasicAccountSerializer deserialize:elem]; }]; }
         ];
     }
     return dbxUsersGetAccountBatch;
@@ -62,9 +54,11 @@ static DbxRoute *dbxUsersGetSpaceUsage = nil;
             namespace_:@"users"
             deprecated:@NO
             resultType:[DbxUsersFullAccount class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxUsersGetCurrentAccount;
@@ -77,9 +71,11 @@ static DbxRoute *dbxUsersGetSpaceUsage = nil;
             namespace_:@"users"
             deprecated:@NO
             resultType:[DbxUsersSpaceUsage class]
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxUsersGetSpaceUsage;

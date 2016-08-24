@@ -51,9 +51,9 @@
 }
 
 + (DbxTeamRevokeLinkedApiAppArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *appId = [DbxStringSerializer deserialize:valueDict];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *keepAppFolder = [DbxBoolSerializer deserialize:valueDict];
+    NSString *appId = [DbxStringSerializer deserialize:valueDict[@"app_id"]];
+    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSNumber *keepAppFolder = [DbxBoolSerializer deserialize:valueDict[@"keep_app_folder"]];
 
     return [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
 }

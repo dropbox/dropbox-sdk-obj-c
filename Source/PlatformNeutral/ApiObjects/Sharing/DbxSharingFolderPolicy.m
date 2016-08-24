@@ -49,10 +49,10 @@
 
     jsonDict[@"acl_update_policy"] = [DbxSharingAclUpdatePolicySerializer serialize:valueObj.aclUpdatePolicy];
     jsonDict[@"shared_link_policy"] = [DbxSharingSharedLinkPolicySerializer serialize:valueObj.sharedLinkPolicy];
-    if (valueObj.memberPolicy != nil) {
+    if (valueObj.memberPolicy) {
         jsonDict[@"member_policy"] = [DbxSharingMemberPolicySerializer serialize:valueObj.memberPolicy];
     }
-    if (valueObj.resolvedMemberPolicy != nil) {
+    if (valueObj.resolvedMemberPolicy) {
         jsonDict[@"resolved_member_policy"] = [DbxSharingMemberPolicySerializer serialize:valueObj.resolvedMemberPolicy];
     }
 
@@ -60,10 +60,10 @@
 }
 
 + (DbxSharingFolderPolicy *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAclUpdatePolicy *aclUpdatePolicy = [DbxSharingAclUpdatePolicySerializer deserialize:valueDict];
-    DbxSharingSharedLinkPolicy *sharedLinkPolicy = [DbxSharingSharedLinkPolicySerializer deserialize:valueDict];
-    DbxSharingMemberPolicy *memberPolicy = valueDict != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict] : nil;
-    DbxSharingMemberPolicy *resolvedMemberPolicy = valueDict != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict] : nil;
+    DbxSharingAclUpdatePolicy *aclUpdatePolicy = [DbxSharingAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]];
+    DbxSharingSharedLinkPolicy *sharedLinkPolicy = [DbxSharingSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]];
+    DbxSharingMemberPolicy *memberPolicy = valueDict[@"member_policy"] != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict[@"member_policy"]] : nil;
+    DbxSharingMemberPolicy *resolvedMemberPolicy = valueDict[@"resolved_member_policy"] != nil ? [DbxSharingMemberPolicySerializer deserialize:valueDict[@"resolved_member_policy"]] : nil;
 
     return [[DbxSharingFolderPolicy alloc] initWithAclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy memberPolicy:memberPolicy resolvedMemberPolicy:resolvedMemberPolicy];
 }

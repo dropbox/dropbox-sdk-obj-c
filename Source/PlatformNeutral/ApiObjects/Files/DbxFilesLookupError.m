@@ -132,7 +132,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isMalformedPath]) {
-        if (![valueObj.malformedPath isEqual:[NSNull null]]) {
+        if (valueObj.malformedPath) {
             jsonDict[@"malformed_path"] = [DbxStringSerializer serialize:valueObj.malformedPath];
         }
         jsonDict[@".tag"] = @"malformed_path";
@@ -163,7 +163,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"malformed_path"]) {
-        NSString *malformedPath = valueDict[@"malformed_path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"malformed_path"]] : nil;
+        NSString *malformedPath = valueDict[@"malformed_path"] ? [DbxStringSerializer deserialize:valueDict[@"malformed_path"]] : nil;
         return [[DbxFilesLookupError alloc] initWithMalformedPath:malformedPath];
     }
     if ([tag isEqualToString:@"not_found"]) {

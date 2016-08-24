@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListRevisionsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
 
     return [[DbxFilesListRevisionsArg alloc] initWithPath:path limit:limit];
 }

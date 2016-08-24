@@ -20,10 +20,6 @@
 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

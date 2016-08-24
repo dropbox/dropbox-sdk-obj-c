@@ -27,10 +27,6 @@
 
 - (nonnull instancetype)initWithSharing:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)sharing emmState:(DbxTeamPoliciesEmmState * _Nonnull)emmState;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

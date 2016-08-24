@@ -53,10 +53,6 @@
 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate adds:(NSArray<NSNumber *> * _Nonnull)adds edits:(NSArray<NSNumber *> * _Nonnull)edits deletes:(NSArray<NSNumber *> * _Nonnull)deletes activeUsers28Day:(NSArray<NSNumber *> * _Nonnull)activeUsers28Day activeUsers7Day:(NSArray<NSNumber *> * _Nonnull)activeUsers7Day activeUsers1Day:(NSArray<NSNumber *> * _Nonnull)activeUsers1Day activeSharedFolders28Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders28Day activeSharedFolders7Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders7Day activeSharedFolders1Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders1Day sharedLinksCreated:(NSArray<NSNumber *> * _Nonnull)sharedLinksCreated sharedLinksViewedByTeam:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByTeam sharedLinksViewedByOutsideUser:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByOutsideUser sharedLinksViewedByNotLoggedIn:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByNotLoggedIn sharedLinksViewedTotal:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedTotal;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

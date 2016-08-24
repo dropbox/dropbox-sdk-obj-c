@@ -17,9 +17,11 @@ static DbxRoute *dbxAuthTokenRevoke = nil;
             namespace_:@"auth"
             deprecated:@NO
             resultType:nil
-            errorType: nil
-            attrs: @{@"host": @"api",
-                     @"style": @"rpc"}
+            errorType:nil
+            attrs:@{@"host": @"api",
+                    @"style": @"rpc"}
+            arraySerialBlock:nil
+            arrayDeserialBlock:nil
         ];
     }
     return dbxAuthTokenRevoke;

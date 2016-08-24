@@ -23,10 +23,6 @@
 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file result:(DbxSharingGetFileMetadataIndividualResult * _Nonnull)result;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

@@ -42,10 +42,6 @@
 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DbxUsersAccountType * _Nonnull)accountType;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

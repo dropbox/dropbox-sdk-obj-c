@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxSharingListFileMembersBatchArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"files"] = [DbxArraySerializer serialize:valueObj.files withBlock:^id(id obj) { return [DbxStringSerializer serialize:obj]; }];
+    jsonDict[@"files"] = [DbxArraySerializer serialize:valueObj.files withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
     jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
 
     return jsonDict;
 }
 
 + (DbxSharingListFileMembersBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *files = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxStringSerializer deserialize:obj]; }];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict];
+    NSArray<NSString *> *files = [DbxArraySerializer deserialize:valueDict[@"files"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
 
     return [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:files limit:limit];
 }

@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxTeamMembersAddArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"new_members"] = [DbxArraySerializer serialize:valueObj.dNewMembers withBlock:^id(id obj) { return [DbxTeamMemberAddArgSerializer serialize:obj]; }];
+    jsonDict[@"new_members"] = [DbxArraySerializer serialize:valueObj.dNewMembers withBlock:^id(id elem) { return [DbxTeamMemberAddArgSerializer serialize:elem]; }];
     jsonDict[@"force_async"] = [DbxBoolSerializer serialize:valueObj.forceAsync];
 
     return jsonDict;
 }
 
 + (DbxTeamMembersAddArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxTeamMemberAddArg *> *dNewMembers = [DbxArraySerializer deserialize:valueDict withBlock:^id(id obj) { return [DbxTeamMemberAddArgSerializer deserialize:obj]; }];
-    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict];
+    NSArray<DbxTeamMemberAddArg *> *dNewMembers = [DbxArraySerializer deserialize:valueDict[@"new_members"] withBlock:^id(id elem) { return [DbxTeamMemberAddArgSerializer deserialize:elem]; }];
+    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict[@"force_async"]];
 
     return [[DbxTeamMembersAddArg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
 }

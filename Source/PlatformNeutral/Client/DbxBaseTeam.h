@@ -1,5 +1,5 @@
-@class DbxTeamRoutes;
-@class DropboxTransportClient;
+#import "DbxTeamRoutes.h"
+#import "DropboxTransportClient.h"
 
 @interface DbxBaseTeam : NSObject 
 

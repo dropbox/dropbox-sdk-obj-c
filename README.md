@@ -6,35 +6,6 @@ An Objective C SDK for integrating with the Dropbox API v2.
 
 ## Setup
 
-To get started, we recommend you add it to your project using CocoaPods.
-
-1. Install CocoaPods:
-    ```
-    sudo gem install cocoapods
-    ```
-
-1. If you've never used CocoaPods before, run:
-    ```
-    pod setup
-    ```
-
-1. In your project directory, create a new file and call it "Podfile". Add the following text to the file:
-
-    ```ruby
-      platform :ios, '8.0'
-      use_frameworks!
-
-      target '<YOUR_PROJECT_NAME>' do
-        pod 'ObjCDropbox'
-      end
-    ```
-
-1. From the project directory, install the Dropbox Objective C SDK with:
-
-    ```
-    pod install
-    ```
-
 ## Creating an application
 
 You need to create an Dropbox Application to make API requests.

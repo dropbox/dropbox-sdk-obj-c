@@ -121,7 +121,7 @@
         jsonDict[@".tag"] = @"not_found";
     }
     else if ([valueObj isIncorrectOffset]) {
-        jsonDict[@"incorrect_offset"] = [DbxFilesUploadSessionOffsetErrorSerializer serialize:valueObj.incorrectOffset];
+        jsonDict = [[DbxFilesUploadSessionOffsetErrorSerializer serialize:valueObj.incorrectOffset] mutableCopy];
         jsonDict[@".tag"] = @"incorrect_offset";
     }
     else if ([valueObj isClosed]) {
@@ -147,7 +147,7 @@
         return [[DbxFilesUploadSessionLookupError alloc] initWithNotFound];
     }
     if ([tag isEqualToString:@"incorrect_offset"]) {
-        DbxFilesUploadSessionOffsetError *incorrectOffset = [DbxFilesUploadSessionOffsetErrorSerializer deserialize:valueDict[@"incorrect_offset"]];
+        DbxFilesUploadSessionOffsetError *incorrectOffset = [DbxFilesUploadSessionOffsetErrorSerializer deserialize:valueDict];
         return [[DbxFilesUploadSessionLookupError alloc] initWithIncorrectOffset:incorrectOffset];
     }
     if ([tag isEqualToString:@"closed"]) {

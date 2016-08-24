@@ -57,19 +57,19 @@
     jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
     jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
     jsonDict[@"link_permissions"] = [DbxSharingLinkPermissionsSerializer serialize:valueObj.linkPermissions];
-    if (valueObj.id_ != nil) {
+    if (valueObj.id_) {
         jsonDict[@"id"] = [DbxStringSerializer serialize:valueObj.id_];
     }
-    if (valueObj.expires != nil) {
+    if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
-    if (valueObj.pathLower != nil) {
+    if (valueObj.pathLower) {
         jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
     }
-    if (valueObj.teamMemberInfo != nil) {
+    if (valueObj.teamMemberInfo) {
         jsonDict[@"team_member_info"] = [DbxSharingTeamMemberInfoSerializer serialize:valueObj.teamMemberInfo];
     }
-    if (valueObj.contentOwnerTeamInfo != nil) {
+    if (valueObj.contentOwnerTeamInfo) {
         jsonDict[@"content_owner_team_info"] = [DbxUsersTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
     }
 

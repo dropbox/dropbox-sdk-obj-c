@@ -112,7 +112,7 @@
         jsonDict[@".tag"] = @"suspended";
     }
     else if ([valueObj isRemoved]) {
-        jsonDict[@"removed"] = [DbxTeamRemovedStatusSerializer serialize:valueObj.removed];
+        jsonDict = [[DbxTeamRemovedStatusSerializer serialize:valueObj.removed] mutableCopy];
         jsonDict[@".tag"] = @"removed";
     }
     else {
@@ -135,7 +135,7 @@
         return [[DbxTeamTeamMemberStatus alloc] initWithSuspended];
     }
     if ([tag isEqualToString:@"removed"]) {
-        DbxTeamRemovedStatus *removed = [DbxTeamRemovedStatusSerializer deserialize:valueDict[@"removed"]];
+        DbxTeamRemovedStatus *removed = [DbxTeamRemovedStatusSerializer deserialize:valueDict];
         return [[DbxTeamTeamMemberStatus alloc] initWithRemoved:removed];
     }
 

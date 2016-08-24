@@ -21,10 +21,6 @@
 
 - (nonnull instancetype)initWithSpaceNeeded:(NSNumber * _Nonnull)spaceNeeded spaceShortage:(NSNumber * _Nonnull)spaceShortage spaceLeft:(NSNumber * _Nonnull)spaceLeft;
 
-+ (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
-
-+ (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
 - (NSString * _Nonnull)description;
 
 @end

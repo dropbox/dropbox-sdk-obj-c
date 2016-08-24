@@ -51,8 +51,8 @@
 }
 
 + (DbxFilesListFolderLongpollArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict];
-    NSNumber *timeout = [DbxNSNumberSerializer deserialize:valueDict];
+    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSNumber *timeout = [DbxNSNumberSerializer deserialize:valueDict[@"timeout"]];
 
     return [[DbxFilesListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
 }

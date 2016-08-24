@@ -26,7 +26,7 @@
 
 - (DbxRpcTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable))responseBlock;
 
-- (DbxRpcTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock;
+- (DbxRpcTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
 - (void)suspend;
@@ -41,9 +41,9 @@
 
 - (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route;
 
-- (DbxUploadTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable))responseBlock;
+- (DbxUploadTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable))responseBlock;
 
-- (DbxUploadTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock;
+- (DbxUploadTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
 - (void)suspend;
@@ -58,9 +58,9 @@
 
 - (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
-- (DbxDownloadURLTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable, NSURL * _Nonnull))responseBlock;
+- (DbxDownloadURLTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable, NSURL * _Nonnull))responseBlock;
 
-- (DbxDownloadURLTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock;
+- (DbxDownloadURLTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
 - (void)suspend;
@@ -79,7 +79,7 @@
 
 - (DbxDownloadDataTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DbxError * _Nullable, NSData * _Nonnull))responseBlock;
 
-- (DbxDownloadDataTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock;
+- (DbxDownloadDataTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
 - (void)suspend;
