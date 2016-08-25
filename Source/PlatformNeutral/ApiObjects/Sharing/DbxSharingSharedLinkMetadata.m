@@ -54,17 +54,17 @@
 + (NSDictionary *)serialize:(DbxSharingSharedLinkMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
+    jsonDict[@"url"] = valueObj.url;
+    jsonDict[@"name"] = valueObj.name;
     jsonDict[@"link_permissions"] = [DbxSharingLinkPermissionsSerializer serialize:valueObj.linkPermissions];
     if (valueObj.id_) {
-        jsonDict[@"id"] = [DbxStringSerializer serialize:valueObj.id_];
+        jsonDict[@"id"] = valueObj.id_;
     }
     if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
     if (valueObj.pathLower) {
-        jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
+        jsonDict[@"path_lower"] = valueObj.pathLower;
     }
     if (valueObj.teamMemberInfo) {
         jsonDict[@"team_member_info"] = [DbxSharingTeamMemberInfoSerializer serialize:valueObj.teamMemberInfo];

@@ -10,12 +10,12 @@
 @implementation DbxSharingListFoldersArgs 
 
 - (instancetype)initWithLimit:(NSNumber *)limit actions:(NSArray<DbxSharingFolderAction *> *)actions {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithInt:1000];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
         _actions = actions;
     }
     return self;
@@ -45,7 +45,7 @@
 + (NSDictionary *)serialize:(DbxSharingListFoldersArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer serialize:elem]; }];
     }
@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingListFoldersArgs *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
-    NSArray<DbxSharingFolderAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *limit = valueDict[@"limit"];
+    NSArray<DbxSharingFolderAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingListFoldersArgs alloc] initWithLimit:limit actions:actions];
 }

@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxFilesSharingInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"read_only"] = [DbxBoolSerializer serialize:valueObj.readOnly];
+    jsonDict[@"read_only"] = valueObj.readOnly;
 
     return jsonDict;
 }
 
 + (DbxFilesSharingInfo *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict[@"read_only"]];
+    NSNumber *readOnly = valueDict[@"read_only"];
 
     return [[DbxFilesSharingInfo alloc] initWithReadOnly:readOnly];
 }

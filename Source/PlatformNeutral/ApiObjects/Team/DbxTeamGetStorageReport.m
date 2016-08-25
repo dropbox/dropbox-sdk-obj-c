@@ -48,22 +48,22 @@
 + (NSDictionary *)serialize:(DbxTeamGetStorageReport *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"start_date"] = [DbxStringSerializer serialize:valueObj.startDate];
-    jsonDict[@"total_usage"] = [DbxArraySerializer serialize:valueObj.totalUsage withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"shared_usage"] = [DbxArraySerializer serialize:valueObj.sharedUsage withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"unshared_usage"] = [DbxArraySerializer serialize:valueObj.unsharedUsage withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"shared_folders"] = [DbxArraySerializer serialize:valueObj.sharedFolders withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"start_date"] = valueObj.startDate;
+    jsonDict[@"total_usage"] = [DbxArraySerializer serialize:valueObj.totalUsage withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"shared_usage"] = [DbxArraySerializer serialize:valueObj.sharedUsage withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"unshared_usage"] = [DbxArraySerializer serialize:valueObj.unsharedUsage withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"shared_folders"] = [DbxArraySerializer serialize:valueObj.sharedFolders withBlock:^id(id elem) { return elem; }];
     jsonDict[@"member_storage_map"] = [DbxArraySerializer serialize:valueObj.memberStorageMap withBlock:^id(id elem) { return [DbxArraySerializer serialize:elem withBlock:^id(id elem) { return [DbxTeamStorageBucketSerializer serialize:elem]; }]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamGetStorageReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
-    NSArray<NSNumber *> *totalUsage = [DbxArraySerializer deserialize:valueDict[@"total_usage"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *sharedUsage = [DbxArraySerializer deserialize:valueDict[@"shared_usage"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *unsharedUsage = [DbxArraySerializer deserialize:valueDict[@"unshared_usage"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *sharedFolders = [DbxArraySerializer deserialize:valueDict[@"shared_folders"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSString *startDate = valueDict[@"start_date"];
+    NSArray<NSNumber *> *totalUsage = [DbxArraySerializer deserialize:valueDict[@"total_usage"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *sharedUsage = [DbxArraySerializer deserialize:valueDict[@"shared_usage"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *unsharedUsage = [DbxArraySerializer deserialize:valueDict[@"unshared_usage"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *sharedFolders = [DbxArraySerializer deserialize:valueDict[@"shared_folders"] withBlock:^id(id elem) { return elem; }];
     NSArray<NSArray<DbxTeamStorageBucket *> *> *memberStorageMap = [DbxArraySerializer deserialize:valueDict[@"member_storage_map"] withBlock:^id(id elem) { return [DbxArraySerializer deserialize:elem withBlock:^id(id elem) { return [DbxTeamStorageBucketSerializer deserialize:elem]; }]; }];
 
     return [[DbxTeamGetStorageReport alloc] initWithStartDate:startDate totalUsage:totalUsage sharedUsage:sharedUsage unsharedUsage:unsharedUsage sharedFolders:sharedFolders memberStorageMap:memberStorageMap];

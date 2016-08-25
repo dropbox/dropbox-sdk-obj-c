@@ -246,35 +246,35 @@
         jsonDict[@".tag"] = @"success";
     }
     else if ([valueObj isTeamLicenseLimit]) {
-        jsonDict[@"team_license_limit"] = [DbxStringSerializer serialize:valueObj.teamLicenseLimit];
+        jsonDict[@"team_license_limit"] = valueObj.teamLicenseLimit;
         jsonDict[@".tag"] = @"team_license_limit";
     }
     else if ([valueObj isFreeTeamMemberLimitReached]) {
-        jsonDict[@"free_team_member_limit_reached"] = [DbxStringSerializer serialize:valueObj.freeTeamMemberLimitReached];
+        jsonDict[@"free_team_member_limit_reached"] = valueObj.freeTeamMemberLimitReached;
         jsonDict[@".tag"] = @"free_team_member_limit_reached";
     }
     else if ([valueObj isUserAlreadyOnTeam]) {
-        jsonDict[@"user_already_on_team"] = [DbxStringSerializer serialize:valueObj.userAlreadyOnTeam];
+        jsonDict[@"user_already_on_team"] = valueObj.userAlreadyOnTeam;
         jsonDict[@".tag"] = @"user_already_on_team";
     }
     else if ([valueObj isUserOnAnotherTeam]) {
-        jsonDict[@"user_on_another_team"] = [DbxStringSerializer serialize:valueObj.userOnAnotherTeam];
+        jsonDict[@"user_on_another_team"] = valueObj.userOnAnotherTeam;
         jsonDict[@".tag"] = @"user_on_another_team";
     }
     else if ([valueObj isUserAlreadyPaired]) {
-        jsonDict[@"user_already_paired"] = [DbxStringSerializer serialize:valueObj.userAlreadyPaired];
+        jsonDict[@"user_already_paired"] = valueObj.userAlreadyPaired;
         jsonDict[@".tag"] = @"user_already_paired";
     }
     else if ([valueObj isUserMigrationFailed]) {
-        jsonDict[@"user_migration_failed"] = [DbxStringSerializer serialize:valueObj.userMigrationFailed];
+        jsonDict[@"user_migration_failed"] = valueObj.userMigrationFailed;
         jsonDict[@".tag"] = @"user_migration_failed";
     }
     else if ([valueObj isDuplicateExternalMemberId]) {
-        jsonDict[@"duplicate_external_member_id"] = [DbxStringSerializer serialize:valueObj.duplicateExternalMemberId];
+        jsonDict[@"duplicate_external_member_id"] = valueObj.duplicateExternalMemberId;
         jsonDict[@".tag"] = @"duplicate_external_member_id";
     }
     else if ([valueObj isUserCreationFailed]) {
-        jsonDict[@"user_creation_failed"] = [DbxStringSerializer serialize:valueObj.userCreationFailed];
+        jsonDict[@"user_creation_failed"] = valueObj.userCreationFailed;
         jsonDict[@".tag"] = @"user_creation_failed";
     }
     else {
@@ -292,35 +292,35 @@
         return [[DbxTeamMemberAddResult alloc] initWithSuccess:success];
     }
     if ([tag isEqualToString:@"team_license_limit"]) {
-        NSString *teamLicenseLimit = [DbxStringSerializer deserialize:valueDict[@"team_license_limit"]];
+        NSString *teamLicenseLimit = valueDict[@"team_license_limit"];
         return [[DbxTeamMemberAddResult alloc] initWithTeamLicenseLimit:teamLicenseLimit];
     }
     if ([tag isEqualToString:@"free_team_member_limit_reached"]) {
-        NSString *freeTeamMemberLimitReached = [DbxStringSerializer deserialize:valueDict[@"free_team_member_limit_reached"]];
+        NSString *freeTeamMemberLimitReached = valueDict[@"free_team_member_limit_reached"];
         return [[DbxTeamMemberAddResult alloc] initWithFreeTeamMemberLimitReached:freeTeamMemberLimitReached];
     }
     if ([tag isEqualToString:@"user_already_on_team"]) {
-        NSString *userAlreadyOnTeam = [DbxStringSerializer deserialize:valueDict[@"user_already_on_team"]];
+        NSString *userAlreadyOnTeam = valueDict[@"user_already_on_team"];
         return [[DbxTeamMemberAddResult alloc] initWithUserAlreadyOnTeam:userAlreadyOnTeam];
     }
     if ([tag isEqualToString:@"user_on_another_team"]) {
-        NSString *userOnAnotherTeam = [DbxStringSerializer deserialize:valueDict[@"user_on_another_team"]];
+        NSString *userOnAnotherTeam = valueDict[@"user_on_another_team"];
         return [[DbxTeamMemberAddResult alloc] initWithUserOnAnotherTeam:userOnAnotherTeam];
     }
     if ([tag isEqualToString:@"user_already_paired"]) {
-        NSString *userAlreadyPaired = [DbxStringSerializer deserialize:valueDict[@"user_already_paired"]];
+        NSString *userAlreadyPaired = valueDict[@"user_already_paired"];
         return [[DbxTeamMemberAddResult alloc] initWithUserAlreadyPaired:userAlreadyPaired];
     }
     if ([tag isEqualToString:@"user_migration_failed"]) {
-        NSString *userMigrationFailed = [DbxStringSerializer deserialize:valueDict[@"user_migration_failed"]];
+        NSString *userMigrationFailed = valueDict[@"user_migration_failed"];
         return [[DbxTeamMemberAddResult alloc] initWithUserMigrationFailed:userMigrationFailed];
     }
     if ([tag isEqualToString:@"duplicate_external_member_id"]) {
-        NSString *duplicateExternalMemberId = [DbxStringSerializer deserialize:valueDict[@"duplicate_external_member_id"]];
+        NSString *duplicateExternalMemberId = valueDict[@"duplicate_external_member_id"];
         return [[DbxTeamMemberAddResult alloc] initWithDuplicateExternalMemberId:duplicateExternalMemberId];
     }
     if ([tag isEqualToString:@"user_creation_failed"]) {
-        NSString *userCreationFailed = [DbxStringSerializer deserialize:valueDict[@"user_creation_failed"]];
+        NSString *userCreationFailed = valueDict[@"user_creation_failed"];
         return [[DbxTeamMemberAddResult alloc] initWithUserCreationFailed:userCreationFailed];
     }
 

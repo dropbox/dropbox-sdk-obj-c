@@ -191,18 +191,18 @@
         jsonDict[@".tag"] = @"group_not_in_team";
     }
     else if ([valueObj isMembersNotInTeam]) {
-        jsonDict[@"members_not_in_team"] = [DbxArraySerializer serialize:valueObj.membersNotInTeam withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+        jsonDict[@"members_not_in_team"] = [DbxArraySerializer serialize:valueObj.membersNotInTeam withBlock:^id(id elem) { return elem; }];
         jsonDict[@".tag"] = @"members_not_in_team";
     }
     else if ([valueObj isUsersNotFound]) {
-        jsonDict[@"users_not_found"] = [DbxArraySerializer serialize:valueObj.usersNotFound withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+        jsonDict[@"users_not_found"] = [DbxArraySerializer serialize:valueObj.usersNotFound withBlock:^id(id elem) { return elem; }];
         jsonDict[@".tag"] = @"users_not_found";
     }
     else if ([valueObj isUserMustBeActiveToBeOwner]) {
         jsonDict[@".tag"] = @"user_must_be_active_to_be_owner";
     }
     else if ([valueObj isUserCannotBeManagerOfCompanyManagedGroup]) {
-        jsonDict[@"user_cannot_be_manager_of_company_managed_group"] = [DbxArraySerializer serialize:valueObj.userCannotBeManagerOfCompanyManagedGroup withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+        jsonDict[@"user_cannot_be_manager_of_company_managed_group"] = [DbxArraySerializer serialize:valueObj.userCannotBeManagerOfCompanyManagedGroup withBlock:^id(id elem) { return elem; }];
         jsonDict[@".tag"] = @"user_cannot_be_manager_of_company_managed_group";
     }
     else {
@@ -228,18 +228,18 @@
         return [[DbxTeamGroupMembersAddError alloc] initWithGroupNotInTeam];
     }
     if ([tag isEqualToString:@"members_not_in_team"]) {
-        NSArray<NSString *> *membersNotInTeam = [DbxArraySerializer deserialize:valueDict[@"members_not_in_team"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+        NSArray<NSString *> *membersNotInTeam = [DbxArraySerializer deserialize:valueDict[@"members_not_in_team"] withBlock:^id(id elem) { return elem; }];
         return [[DbxTeamGroupMembersAddError alloc] initWithMembersNotInTeam:membersNotInTeam];
     }
     if ([tag isEqualToString:@"users_not_found"]) {
-        NSArray<NSString *> *usersNotFound = [DbxArraySerializer deserialize:valueDict[@"users_not_found"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+        NSArray<NSString *> *usersNotFound = [DbxArraySerializer deserialize:valueDict[@"users_not_found"] withBlock:^id(id elem) { return elem; }];
         return [[DbxTeamGroupMembersAddError alloc] initWithUsersNotFound:usersNotFound];
     }
     if ([tag isEqualToString:@"user_must_be_active_to_be_owner"]) {
         return [[DbxTeamGroupMembersAddError alloc] initWithUserMustBeActiveToBeOwner];
     }
     if ([tag isEqualToString:@"user_cannot_be_manager_of_company_managed_group"]) {
-        NSArray<NSString *> *userCannotBeManagerOfCompanyManagedGroup = [DbxArraySerializer deserialize:valueDict[@"user_cannot_be_manager_of_company_managed_group"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+        NSArray<NSString *> *userCannotBeManagerOfCompanyManagedGroup = [DbxArraySerializer deserialize:valueDict[@"user_cannot_be_manager_of_company_managed_group"] withBlock:^id(id elem) { return elem; }];
         return [[DbxTeamGroupMembersAddError alloc] initWithUserCannotBeManagerOfCompanyManagedGroup:userCannotBeManagerOfCompanyManagedGroup];
     }
 

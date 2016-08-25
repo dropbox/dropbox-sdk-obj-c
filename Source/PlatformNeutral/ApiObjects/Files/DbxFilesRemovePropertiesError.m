@@ -136,7 +136,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isTemplateNotFound]) {
-        jsonDict[@"template_not_found"] = [DbxStringSerializer serialize:valueObj.templateNotFound];
+        jsonDict[@"template_not_found"] = valueObj.templateNotFound;
         jsonDict[@".tag"] = @"template_not_found";
     }
     else if ([valueObj isRestrictedContent]) {
@@ -164,7 +164,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"template_not_found"]) {
-        NSString *templateNotFound = [DbxStringSerializer deserialize:valueDict[@"template_not_found"]];
+        NSString *templateNotFound = valueDict[@"template_not_found"];
         return [[DbxFilesRemovePropertiesError alloc] initWithTemplateNotFound:templateNotFound];
     }
     if ([tag isEqualToString:@"restricted_content"]) {

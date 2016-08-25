@@ -21,13 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     switch (appPermission) {
         case FullDropbox:
-            [DropboxClientsManager setupWithAppKey:@"4adrwp5qg3jf2lz"];
+            [DropboxClientsManager setupWithAppKey:@"<APP_KEY1>"];
             break;
         case TeamMemberFileAccess:
-            [DropboxClientsManager setupWithTeamAppKey:@"ye8gk3g89l1qzti"];
+            [DropboxClientsManager setupWithTeamAppKey:@"<APP_KEY2>"];
             break;
         case TeamMemberManagement:
-            [DropboxClientsManager setupWithTeamAppKey:@"58b6omn1ngccg9r"];
+            [DropboxClientsManager setupWithTeamAppKey:@"<APP_KEY3>"];
             break;
     }
     return YES;

@@ -42,7 +42,7 @@
 + (NSDictionary *)serialize:(DbxSharingCollectionLinkMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
+    jsonDict[@"url"] = valueObj.url;
     jsonDict[@"visibility"] = [DbxSharingVisibilitySerializer serialize:valueObj.visibility];
     if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -52,9 +52,9 @@
 }
 
 + (DbxSharingCollectionLinkMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *url = valueDict[@"url"];
     DbxSharingVisibility *visibility = [DbxSharingVisibilitySerializer deserialize:valueDict[@"visibility"]];
-    NSDate *expires = valueDict[@"expires"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *expires = valueDict[@"expires"] ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxSharingCollectionLinkMetadata alloc] initWithUrl:url visibility:visibility expires:expires];
 }

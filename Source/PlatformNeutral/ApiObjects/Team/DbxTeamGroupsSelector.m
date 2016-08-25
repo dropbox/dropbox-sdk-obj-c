@@ -80,11 +80,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isGroupIds]) {
-        jsonDict[@"group_ids"] = [DbxArraySerializer serialize:valueObj.groupIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+        jsonDict[@"group_ids"] = [DbxArraySerializer serialize:valueObj.groupIds withBlock:^id(id elem) { return elem; }];
         jsonDict[@".tag"] = @"group_ids";
     }
     else if ([valueObj isGroupExternalIds]) {
-        jsonDict[@"group_external_ids"] = [DbxArraySerializer serialize:valueObj.groupExternalIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+        jsonDict[@"group_external_ids"] = [DbxArraySerializer serialize:valueObj.groupExternalIds withBlock:^id(id elem) { return elem; }];
         jsonDict[@".tag"] = @"group_external_ids";
     }
     else {
@@ -98,11 +98,11 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"group_ids"]) {
-        NSArray<NSString *> *groupIds = [DbxArraySerializer deserialize:valueDict[@"group_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+        NSArray<NSString *> *groupIds = [DbxArraySerializer deserialize:valueDict[@"group_ids"] withBlock:^id(id elem) { return elem; }];
         return [[DbxTeamGroupsSelector alloc] initWithGroupIds:groupIds];
     }
     if ([tag isEqualToString:@"group_external_ids"]) {
-        NSArray<NSString *> *groupExternalIds = [DbxArraySerializer deserialize:valueDict[@"group_external_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+        NSArray<NSString *> *groupExternalIds = [DbxArraySerializer deserialize:valueDict[@"group_external_ids"] withBlock:^id(id elem) { return elem; }];
         return [[DbxTeamGroupsSelector alloc] initWithGroupExternalIds:groupExternalIds];
     }
 

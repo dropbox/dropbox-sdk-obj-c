@@ -45,22 +45,22 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if (valueObj.path) {
-        jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+        jsonDict[@"path"] = valueObj.path;
     }
     if (valueObj.cursor) {
-        jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
+        jsonDict[@"cursor"] = valueObj.cursor;
     }
     if (valueObj.directOnly) {
-        jsonDict[@"direct_only"] = [DbxBoolSerializer serialize:valueObj.directOnly];
+        jsonDict[@"direct_only"] = valueObj.directOnly;
     }
 
     return jsonDict;
 }
 
 + (DbxSharingListSharedLinksArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = valueDict[@"path"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
-    NSNumber *directOnly = valueDict[@"direct_only"] != nil ? [DbxBoolSerializer deserialize:valueDict[@"direct_only"]] : nil;
+    NSString *path = valueDict[@"path"] ? valueDict[@"path"] : nil;
+    NSString *cursor = valueDict[@"cursor"] ? valueDict[@"cursor"] : nil;
+    NSNumber *directOnly = valueDict[@"direct_only"] ? valueDict[@"direct_only"] : nil;
 
     return [[DbxSharingListSharedLinksArg alloc] initWithPath:path cursor:cursor directOnly:directOnly];
 }

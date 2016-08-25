@@ -48,12 +48,12 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"group"] = [DbxTeamGroupSelectorSerializer serialize:valueObj.group];
-    jsonDict[@"return_members"] = [DbxBoolSerializer serialize:valueObj.returnMembers];
+    jsonDict[@"return_members"] = valueObj.returnMembers;
     if (valueObj.dNewGroupName) {
-        jsonDict[@"new_group_name"] = [DbxStringSerializer serialize:valueObj.dNewGroupName];
+        jsonDict[@"new_group_name"] = valueObj.dNewGroupName;
     }
     if (valueObj.dNewGroupExternalId) {
-        jsonDict[@"new_group_external_id"] = [DbxStringSerializer serialize:valueObj.dNewGroupExternalId];
+        jsonDict[@"new_group_external_id"] = valueObj.dNewGroupExternalId;
     }
     if (valueObj.dNewGroupManagementType) {
         jsonDict[@"new_group_management_type"] = [DbxTeamCommonGroupManagementTypeSerializer serialize:valueObj.dNewGroupManagementType];
@@ -64,10 +64,10 @@
 
 + (DbxTeamGroupUpdateArgs *)deserialize:(NSDictionary *)valueDict {
     DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
-    NSString *dNewGroupName = valueDict[@"new_group_name"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_group_name"]] : nil;
-    NSString *dNewGroupExternalId = valueDict[@"new_group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_group_external_id"]] : nil;
-    DbxTeamCommonGroupManagementType *dNewGroupManagementType = valueDict[@"new_group_management_type"] != nil ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"new_group_management_type"]] : nil;
+    NSNumber *returnMembers = valueDict[@"return_members"];
+    NSString *dNewGroupName = valueDict[@"new_group_name"] ? valueDict[@"new_group_name"] : nil;
+    NSString *dNewGroupExternalId = valueDict[@"new_group_external_id"] ? valueDict[@"new_group_external_id"] : nil;
+    DbxTeamCommonGroupManagementType *dNewGroupManagementType = valueDict[@"new_group_management_type"] ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"new_group_management_type"]] : nil;
 
     return [[DbxTeamGroupUpdateArgs alloc] initWithGroup:group returnMembers:returnMembers dNewGroupName:dNewGroupName dNewGroupExternalId:dNewGroupExternalId dNewGroupManagementType:dNewGroupManagementType];
 }

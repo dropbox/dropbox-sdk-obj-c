@@ -42,16 +42,16 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"matches"] = [DbxArraySerializer serialize:valueObj.matches withBlock:^id(id elem) { return [DbxFilesSearchMatchSerializer serialize:elem]; }];
-    jsonDict[@"more"] = [DbxBoolSerializer serialize:valueObj.more];
-    jsonDict[@"start"] = [DbxNSNumberSerializer serialize:valueObj.start];
+    jsonDict[@"more"] = valueObj.more;
+    jsonDict[@"start"] = valueObj.start;
 
     return jsonDict;
 }
 
 + (DbxFilesSearchResult *)deserialize:(NSDictionary *)valueDict {
     NSArray<DbxFilesSearchMatch *> *matches = [DbxArraySerializer deserialize:valueDict[@"matches"] withBlock:^id(id elem) { return [DbxFilesSearchMatchSerializer deserialize:elem]; }];
-    NSNumber *more = [DbxBoolSerializer deserialize:valueDict[@"more"]];
-    NSNumber *start = [DbxNSNumberSerializer deserialize:valueDict[@"start"]];
+    NSNumber *more = valueDict[@"more"];
+    NSNumber *start = valueDict[@"start"];
 
     return [[DbxFilesSearchResult alloc] initWithMatches:matches more:more start:start];
 }

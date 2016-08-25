@@ -72,7 +72,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isEmail]) {
-        jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
+        jsonDict[@"email"] = valueObj.email;
         jsonDict[@".tag"] = @"email";
     }
     else if ([valueObj isOther]) {
@@ -89,7 +89,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"email"]) {
-        NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
+        NSString *email = valueDict[@"email"];
         return [[DbxSharingInviteeInfo alloc] initWithEmail:email];
     }
     if ([tag isEqualToString:@"other"]) {

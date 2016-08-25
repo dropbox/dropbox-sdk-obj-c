@@ -13,7 +13,7 @@
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId actions:(NSArray<DbxSharingMemberAction *> *)actions limit:(NSNumber *)limit {
     [DbxStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
 
     self = [super initWithActions:actions limit:limit];
     if (self != nil) {
@@ -46,19 +46,19 @@
 + (NSDictionary *)serialize:(DbxSharingListFolderMembersArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer serialize:elem]; }];
     }
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxSharingListFolderMembersArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
+    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxSharingListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions limit:limit];
 }

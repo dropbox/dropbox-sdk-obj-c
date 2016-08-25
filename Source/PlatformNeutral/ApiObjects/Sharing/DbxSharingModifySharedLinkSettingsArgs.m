@@ -44,17 +44,17 @@
 + (NSDictionary *)serialize:(DbxSharingModifySharedLinkSettingsArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
+    jsonDict[@"url"] = valueObj.url;
     jsonDict[@"settings"] = [DbxSharingSharedLinkSettingsSerializer serialize:valueObj.settings];
-    jsonDict[@"remove_expiration"] = [DbxBoolSerializer serialize:valueObj.removeExpiration];
+    jsonDict[@"remove_expiration"] = valueObj.removeExpiration;
 
     return jsonDict;
 }
 
 + (DbxSharingModifySharedLinkSettingsArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *url = valueDict[@"url"];
     DbxSharingSharedLinkSettings *settings = [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]];
-    NSNumber *removeExpiration = [DbxBoolSerializer deserialize:valueDict[@"remove_expiration"]];
+    NSNumber *removeExpiration = valueDict[@"remove_expiration"];
 
     return [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:url settings:settings removeExpiration:removeExpiration];
 }

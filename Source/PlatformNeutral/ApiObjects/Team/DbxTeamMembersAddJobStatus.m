@@ -104,7 +104,7 @@
         jsonDict[@".tag"] = @"complete";
     }
     else if ([valueObj isFailed]) {
-        jsonDict[@"failed"] = [DbxStringSerializer serialize:valueObj.failed];
+        jsonDict[@"failed"] = valueObj.failed;
         jsonDict[@".tag"] = @"failed";
     }
     else {
@@ -125,7 +125,7 @@
         return [[DbxTeamMembersAddJobStatus alloc] initWithComplete:complete];
     }
     if ([tag isEqualToString:@"failed"]) {
-        NSString *failed = [DbxStringSerializer deserialize:valueDict[@"failed"]];
+        NSString *failed = valueDict[@"failed"];
         return [[DbxTeamMembersAddJobStatus alloc] initWithFailed:failed];
     }
 

@@ -40,14 +40,14 @@
 + (NSDictionary *)serialize:(DbxTeamMemberLinkedApps *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
     jsonDict[@"linked_api_apps"] = [DbxArraySerializer serialize:valueObj.linkedApiApps withBlock:^id(id elem) { return [DbxTeamApiAppSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxTeamMemberLinkedApps *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
     NSArray<DbxTeamApiApp *> *linkedApiApps = [DbxArraySerializer deserialize:valueDict[@"linked_api_apps"] withBlock:^id(id elem) { return [DbxTeamApiAppSerializer deserialize:elem]; }];
 
     return [[DbxTeamMemberLinkedApps alloc] initWithTeamMemberId:teamMemberId linkedApiApps:linkedApiApps];

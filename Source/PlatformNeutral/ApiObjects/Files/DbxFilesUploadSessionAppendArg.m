@@ -44,14 +44,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"cursor"] = [DbxFilesUploadSessionCursorSerializer serialize:valueObj.cursor];
-    jsonDict[@"close"] = [DbxBoolSerializer serialize:valueObj.close];
+    jsonDict[@"close"] = valueObj.close;
 
     return jsonDict;
 }
 
 + (DbxFilesUploadSessionAppendArg *)deserialize:(NSDictionary *)valueDict {
     DbxFilesUploadSessionCursor *cursor = [DbxFilesUploadSessionCursorSerializer deserialize:valueDict[@"cursor"]];
-    NSNumber *close = [DbxBoolSerializer deserialize:valueDict[@"close"]];
+    NSNumber *close = valueDict[@"close"];
 
     return [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
 }

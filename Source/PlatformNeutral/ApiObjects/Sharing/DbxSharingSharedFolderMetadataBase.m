@@ -50,13 +50,13 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"access_type"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessType];
-    jsonDict[@"is_team_folder"] = [DbxBoolSerializer serialize:valueObj.isTeamFolder];
+    jsonDict[@"is_team_folder"] = valueObj.isTeamFolder;
     jsonDict[@"policy"] = [DbxSharingFolderPolicySerializer serialize:valueObj.policy];
     if (valueObj.ownerTeam) {
         jsonDict[@"owner_team"] = [DbxUsersTeamSerializer serialize:valueObj.ownerTeam];
     }
     if (valueObj.parentSharedFolderId) {
-        jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
+        jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
     }
 
     return jsonDict;
@@ -64,10 +64,10 @@
 
 + (DbxSharingSharedFolderMetadataBase *)deserialize:(NSDictionary *)valueDict {
     DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
-    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict[@"is_team_folder"]];
+    NSNumber *isTeamFolder = valueDict[@"is_team_folder"];
     DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict[@"policy"]];
-    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] != nil ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
+    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ? valueDict[@"parent_shared_folder_id"] : nil;
 
     return [[DbxSharingSharedFolderMetadataBase alloc] initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy ownerTeam:ownerTeam parentSharedFolderId:parentSharedFolderId];
 }

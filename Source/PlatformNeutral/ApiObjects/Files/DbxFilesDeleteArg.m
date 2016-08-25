@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxFilesDeleteArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
 
     return jsonDict;
 }
 
 + (DbxFilesDeleteArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
 
     return [[DbxFilesDeleteArg alloc] initWithPath:path];
 }

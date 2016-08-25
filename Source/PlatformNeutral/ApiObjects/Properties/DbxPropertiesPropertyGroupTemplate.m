@@ -41,16 +41,16 @@
 + (NSDictionary *)serialize:(DbxPropertiesPropertyGroupTemplate *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    jsonDict[@"description"] = [DbxStringSerializer serialize:valueObj.description_];
+    jsonDict[@"name"] = valueObj.name;
+    jsonDict[@"description"] = valueObj.description_;
     jsonDict[@"fields"] = [DbxArraySerializer serialize:valueObj.fields withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxPropertiesPropertyGroupTemplate *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *description_ = [DbxStringSerializer deserialize:valueDict[@"description"]];
+    NSString *name = valueDict[@"name"];
+    NSString *description_ = valueDict[@"description"];
     NSArray<DbxPropertiesPropertyFieldTemplate *> *fields = [DbxArraySerializer deserialize:valueDict[@"fields"] withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:elem]; }];
 
     return [[DbxPropertiesPropertyGroupTemplate alloc] initWithName:name description_:description_ fields:fields];

@@ -50,25 +50,25 @@
 + (NSDictionary *)serialize:(DbxSharingAddFileMemberArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
+    jsonDict[@"file"] = valueObj.file;
     jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id elem) { return [DbxSharingMemberSelectorSerializer serialize:elem]; }];
     if (valueObj.customMessage) {
-        jsonDict[@"custom_message"] = [DbxStringSerializer serialize:valueObj.customMessage];
+        jsonDict[@"custom_message"] = valueObj.customMessage;
     }
-    jsonDict[@"quiet"] = [DbxBoolSerializer serialize:valueObj.quiet];
+    jsonDict[@"quiet"] = valueObj.quiet;
     jsonDict[@"access_level"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessLevel];
-    jsonDict[@"add_message_as_comment"] = [DbxBoolSerializer serialize:valueObj.addMessageAsComment];
+    jsonDict[@"add_message_as_comment"] = valueObj.addMessageAsComment;
 
     return jsonDict;
 }
 
 + (DbxSharingAddFileMemberArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSString *file = valueDict[@"file"];
     NSArray<DbxSharingMemberSelector *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxSharingMemberSelectorSerializer deserialize:elem]; }];
-    NSString *customMessage = valueDict[@"custom_message"] != nil ? [DbxStringSerializer deserialize:valueDict[@"custom_message"]] : nil;
-    NSNumber *quiet = [DbxBoolSerializer deserialize:valueDict[@"quiet"]];
+    NSString *customMessage = valueDict[@"custom_message"] ? valueDict[@"custom_message"] : nil;
+    NSNumber *quiet = valueDict[@"quiet"];
     DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
-    NSNumber *addMessageAsComment = [DbxBoolSerializer deserialize:valueDict[@"add_message_as_comment"]];
+    NSNumber *addMessageAsComment = valueDict[@"add_message_as_comment"];
 
     return [[DbxSharingAddFileMemberArgs alloc] initWithFile:file members:members customMessage:customMessage quiet:quiet accessLevel:accessLevel addMessageAsComment:addMessageAsComment];
 }

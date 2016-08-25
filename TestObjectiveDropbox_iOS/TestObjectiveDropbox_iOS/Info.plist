@@ -12,7 +12,9 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>db-4adrwp5qg3jf2lz</string>
+				<string>db-&lt;&gt;</string>
+				<string>db-&lt;&gt;</string>
+				<string>db-&lt;&gt;</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>

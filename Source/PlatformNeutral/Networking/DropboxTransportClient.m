@@ -14,20 +14,11 @@ static NSString * const version = @"1.0.0";
 static DbxDelegate *_delegate;
 static NSURLSession *_session;
 static NSURLSession *_backgroundSession;
+static NSString *kBackgroundSessionIdentifier = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
-@implementation DropboxTransportClient {
-    NSString * _Nullable _selectUser;
-    NSDictionary <NSString *, NSString *> * _Nullable _baseHosts;
-    NSString * _Nullable _userAgent;
-}
-
-+ (void) initialize {
-    _delegate = [[DbxDelegate alloc] init];
-    _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:_delegate delegateQueue:nil];
-    _backgroundSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.dropbox.dropbox_sdk_obj_c_background"] delegate:_delegate delegateQueue:nil];
-}
+@implementation DropboxTransportClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
     return [self initWithAccessToken:accessToken andSelectUser:nil];
@@ -37,13 +28,24 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
-    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:baseHosts andUserAgent:nil];
+- (instancetype)initWithAccessToken:(NSString *)accessToken andBackgroundSessionIdentifier:(NSString *)backgroundSessionIdentifier {
+    return [self initWithAccessToken:accessToken andSelectUser:nil andBaseHosts:nil andUserAgent:nil andBackgroundSessionIdentifier:backgroundSessionIdentifier];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts andUserAgent:(NSString *)userAgent {
+- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
+    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:baseHosts andUserAgent:nil andBackgroundSessionIdentifier:nil];
+}
+
+- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts andUserAgent:(NSString *)userAgent andBackgroundSessionIdentifier:(NSString *)backgroundSessionIdentifier {
     self = [super init];
     if (self) {
+        _delegateQueue = [NSOperationQueue new];
+        [_delegateQueue setMaxConcurrentOperationCount:1];
+        _delegate = [[DbxDelegate alloc] initWithQueue:_delegateQueue];
+        _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:_delegate delegateQueue:_delegateQueue];
+        NSString *backgroundSessionIdentifier = backgroundSessionIdentifier ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionIdentifier, (long long)[[NSDate date] timeIntervalSince1970] * 1000];
+        _backgroundSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundSessionIdentifier] delegate:_delegate delegateQueue:_delegateQueue];
+
         NSDictionary <NSString *, NSString *> * defaultBaseHosts = @{
             @"api" : @"https://api.dropbox.com/2",
             @"content" : @"https://api-content.dropbox.com/2",
@@ -51,7 +53,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
         };
         
         NSString *defaultUserAgent = [NSString stringWithFormat:@"OfficialDropboxObjCSDKv2/%@", version];
-
+        
         _accessToken = accessToken;
         _selectUser = selectUser;
         _baseHosts = baseHosts ?: defaultBaseHosts;
@@ -220,7 +222,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSData *jsonData = [self serializeArgData:route routeArg:arg];
     NSString *asciiEscapedStr = [[self class] asciiEscapeString:[[self class] utf8StringFromData:jsonData]];
     NSMutableString *filteredStr = [[NSMutableString alloc] initWithString:asciiEscapedStr];
-    [filteredStr replaceOccurrencesOfString:@"\\/" withString:@"/" options:NSLiteralSearch range:NSMakeRange(0, filteredStr.length)];
+    [filteredStr replaceOccurrencesOfString:@"\\/" withString:@"/" options:NSLiteralSearch range:NSMakeRange(0, [filteredStr length])];
     return filteredStr;
 }
 

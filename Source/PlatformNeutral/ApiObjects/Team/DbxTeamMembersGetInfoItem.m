@@ -81,7 +81,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isIdNotFound]) {
-        jsonDict[@"id_not_found"] = [DbxStringSerializer serialize:valueObj.idNotFound];
+        jsonDict[@"id_not_found"] = valueObj.idNotFound;
         jsonDict[@".tag"] = @"id_not_found";
     }
     else if ([valueObj isMemberInfo]) {
@@ -99,7 +99,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"id_not_found"]) {
-        NSString *idNotFound = [DbxStringSerializer deserialize:valueDict[@"id_not_found"]];
+        NSString *idNotFound = valueDict[@"id_not_found"];
         return [[DbxTeamMembersGetInfoItem alloc] initWithIdNotFound:idNotFound];
     }
     if ([tag isEqualToString:@"member_info"]) {

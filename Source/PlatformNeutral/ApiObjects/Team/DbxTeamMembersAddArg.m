@@ -45,14 +45,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"new_members"] = [DbxArraySerializer serialize:valueObj.dNewMembers withBlock:^id(id elem) { return [DbxTeamMemberAddArgSerializer serialize:elem]; }];
-    jsonDict[@"force_async"] = [DbxBoolSerializer serialize:valueObj.forceAsync];
+    jsonDict[@"force_async"] = valueObj.forceAsync;
 
     return jsonDict;
 }
 
 + (DbxTeamMembersAddArg *)deserialize:(NSDictionary *)valueDict {
     NSArray<DbxTeamMemberAddArg *> *dNewMembers = [DbxArraySerializer deserialize:valueDict[@"new_members"] withBlock:^id(id elem) { return [DbxTeamMemberAddArgSerializer deserialize:elem]; }];
-    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict[@"force_async"]];
+    NSNumber *forceAsync = valueDict[@"force_async"];
 
     return [[DbxTeamMembersAddArg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
 }

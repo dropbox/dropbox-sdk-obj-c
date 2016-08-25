@@ -15,259 +15,259 @@
 }
 - (DbxRpcTask *)alphaGetMetadata:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaGetMetadata;
-    DbxFilesAlphaGetMetadataArg *arg = [[DbxFilesAlphaGetMetadataArg alloc] initWithPath:(NSString *)path];
+    DbxFilesAlphaGetMetadataArg *arg = [[DbxFilesAlphaGetMetadataArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)alphaGetMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates {
+- (DbxRpcTask *)alphaGetMetadata:(NSString *)path includeMediaInfo:(NSNumber *)includeMediaInfo includeDeleted:(NSNumber *)includeDeleted includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> *)includePropertyTemplates {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaGetMetadata;
-    DbxFilesAlphaGetMetadataArg *arg = [[DbxFilesAlphaGetMetadataArg alloc] initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates];
+    DbxFilesAlphaGetMetadataArg *arg = [[DbxFilesAlphaGetMetadataArg alloc] initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers includePropertyTemplates:includePropertyTemplates];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxUploadTask *)alphaUploadURL:(NSString *)path inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)alphaUploadURL:(NSString *)path inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)alphaUploadURL:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)alphaUploadURL:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> *)propertyGroups inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute propertyGroups:propertyGroups];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)alphaUploadData:(NSString *)path inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)alphaUploadData:(NSString *)path inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)alphaUploadData:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)alphaUploadData:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> *)propertyGroups inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute propertyGroups:propertyGroups];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)alphaUploadStream:(NSString *)path inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)alphaUploadStream:(NSString *)path inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)alphaUploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)alphaUploadStream:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> *)propertyGroups inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesAlphaUpload;
-    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups];
+    DbxFilesCommitInfoWithProperties *arg = [[DbxFilesCommitInfoWithProperties alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute propertyGroups:propertyGroups];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxRpcTask *)dCopy:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath {
+- (DbxRpcTask *)dCopy:(NSString *)fromPath toPath:(NSString *)toPath {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDCopy;
-    DbxFilesRelocationArg *arg = [[DbxFilesRelocationArg alloc] initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath];
+    DbxFilesRelocationArg *arg = [[DbxFilesRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)dCopyReferenceGet:(NSString * _Nonnull)path {
+- (DbxRpcTask *)dCopyReferenceGet:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDCopyReferenceGet;
-    DbxFilesGetCopyReferenceArg *arg = [[DbxFilesGetCopyReferenceArg alloc] initWithPath:(NSString * _Nonnull)path];
+    DbxFilesGetCopyReferenceArg *arg = [[DbxFilesGetCopyReferenceArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)dCopyReferenceSave:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path {
+- (DbxRpcTask *)dCopyReferenceSave:(NSString *)dCopyReference path:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDCopyReferenceSave;
-    DbxFilesSaveCopyReferenceArg *arg = [[DbxFilesSaveCopyReferenceArg alloc] initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path];
+    DbxFilesSaveCopyReferenceArg *arg = [[DbxFilesSaveCopyReferenceArg alloc] initWithDCopyReference:dCopyReference path:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)createFolder:(NSString * _Nonnull)path {
+- (DbxRpcTask *)createFolder:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesCreateFolder;
-    DbxFilesCreateFolderArg *arg = [[DbxFilesCreateFolderArg alloc] initWithPath:(NSString * _Nonnull)path];
+    DbxFilesCreateFolderArg *arg = [[DbxFilesCreateFolderArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)delete_:(NSString * _Nonnull)path {
+- (DbxRpcTask *)delete_:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDelete_;
-    DbxFilesDeleteArg *arg = [[DbxFilesDeleteArg alloc] initWithPath:(NSString * _Nonnull)path];
+    DbxFilesDeleteArg *arg = [[DbxFilesDeleteArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxDownloadURLTask *)downloadURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)downloadURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDownload;
-    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:(NSString *)path];
+    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
-- (DbxDownloadURLTask *)downloadURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)downloadURL:(NSString *)path rev:(NSString *)rev overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDownload;
-    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev];
+    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:path rev:rev];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
 - (DbxDownloadDataTask *)downloadData:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDownload;
-    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:(NSString *)path];
+    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg];
 }
 
-- (DbxDownloadDataTask *)downloadData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev {
+- (DbxDownloadDataTask *)downloadData:(NSString *)path rev:(NSString *)rev {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesDownload;
-    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev];
+    DbxFilesDownloadArg *arg = [[DbxFilesDownloadArg alloc] initWithPath:path rev:rev];
     return [self.client requestDownload:route arg:arg];
 }
 
 - (DbxRpcTask *)getMetadata:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetMetadata;
-    DbxFilesGetMetadataArg *arg = [[DbxFilesGetMetadataArg alloc] initWithPath:(NSString *)path];
+    DbxFilesGetMetadataArg *arg = [[DbxFilesGetMetadataArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers {
+- (DbxRpcTask *)getMetadata:(NSString *)path includeMediaInfo:(NSNumber *)includeMediaInfo includeDeleted:(NSNumber *)includeDeleted includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetMetadata;
-    DbxFilesGetMetadataArg *arg = [[DbxFilesGetMetadataArg alloc] initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers];
+    DbxFilesGetMetadataArg *arg = [[DbxFilesGetMetadataArg alloc] initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxDownloadURLTask *)getPreviewURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getPreviewURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetPreview;
-    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:(NSString *)path];
+    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
-- (DbxDownloadURLTask *)getPreviewURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getPreviewURL:(NSString *)path rev:(NSString *)rev overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetPreview;
-    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev];
+    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:path rev:rev];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
 - (DbxDownloadDataTask *)getPreviewData:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetPreview;
-    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:(NSString *)path];
+    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg];
 }
 
-- (DbxDownloadDataTask *)getPreviewData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev {
+- (DbxDownloadDataTask *)getPreviewData:(NSString *)path rev:(NSString *)rev {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetPreview;
-    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev];
+    DbxFilesPreviewArg *arg = [[DbxFilesPreviewArg alloc] initWithPath:path rev:rev];
     return [self.client requestDownload:route arg:arg];
 }
 
-- (DbxRpcTask *)getTemporaryLink:(NSString * _Nonnull)path {
+- (DbxRpcTask *)getTemporaryLink:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetTemporaryLink;
-    DbxFilesGetTemporaryLinkArg *arg = [[DbxFilesGetTemporaryLinkArg alloc] initWithPath:(NSString * _Nonnull)path];
+    DbxFilesGetTemporaryLinkArg *arg = [[DbxFilesGetTemporaryLinkArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxDownloadURLTask *)getThumbnailURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getThumbnailURL:(NSString *)path overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetThumbnail;
-    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:(NSString *)path];
+    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
-- (DbxDownloadURLTask *)getThumbnailURL:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getThumbnailURL:(NSString *)path format:(DbxFilesThumbnailFormat *)format size:(DbxFilesThumbnailSize *)size overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetThumbnail;
-    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size];
+    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:path format:format size:size];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
 - (DbxDownloadDataTask *)getThumbnailData:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetThumbnail;
-    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:(NSString *)path];
+    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:path];
     return [self.client requestDownload:route arg:arg];
 }
 
-- (DbxDownloadDataTask *)getThumbnailData:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size {
+- (DbxDownloadDataTask *)getThumbnailData:(NSString *)path format:(DbxFilesThumbnailFormat *)format size:(DbxFilesThumbnailSize *)size {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesGetThumbnail;
-    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size];
+    DbxFilesThumbnailArg *arg = [[DbxFilesThumbnailArg alloc] initWithPath:path format:format size:size];
     return [self.client requestDownload:route arg:arg];
 }
 
 - (DbxRpcTask *)listFolder:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolder;
-    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:(NSString *)path];
+    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolder:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers {
+- (DbxRpcTask *)listFolder:(NSString *)path recursive:(NSNumber *)recursive includeMediaInfo:(NSNumber *)includeMediaInfo includeDeleted:(NSNumber *)includeDeleted includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolder;
-    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers];
+    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:path recursive:recursive includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolderContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listFolderContinue:(NSString *)cursor {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolderContinue;
-    DbxFilesListFolderContinueArg *arg = [[DbxFilesListFolderContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxFilesListFolderContinueArg *arg = [[DbxFilesListFolderContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listFolderGetLatestCursor:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolderGetLatestCursor;
-    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:(NSString *)path];
+    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolderGetLatestCursor:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers {
+- (DbxRpcTask *)listFolderGetLatestCursor:(NSString *)path recursive:(NSNumber *)recursive includeMediaInfo:(NSNumber *)includeMediaInfo includeDeleted:(NSNumber *)includeDeleted includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolderGetLatestCursor;
-    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers];
+    DbxFilesListFolderArg *arg = [[DbxFilesListFolderArg alloc] initWithPath:path recursive:recursive includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listFolderLongpoll:(NSString *)cursor {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolderLongpoll;
-    DbxFilesListFolderLongpollArg *arg = [[DbxFilesListFolderLongpollArg alloc] initWithCursor:(NSString *)cursor];
+    DbxFilesListFolderLongpollArg *arg = [[DbxFilesListFolderLongpollArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolderLongpoll:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout {
+- (DbxRpcTask *)listFolderLongpoll:(NSString *)cursor timeout:(NSNumber *)timeout {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListFolderLongpoll;
-    DbxFilesListFolderLongpollArg *arg = [[DbxFilesListFolderLongpollArg alloc] initWithCursor:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout];
+    DbxFilesListFolderLongpollArg *arg = [[DbxFilesListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listRevisions:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListRevisions;
-    DbxFilesListRevisionsArg *arg = [[DbxFilesListRevisionsArg alloc] initWithPath:(NSString *)path];
+    DbxFilesListRevisionsArg *arg = [[DbxFilesListRevisionsArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listRevisions:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)listRevisions:(NSString *)path limit:(NSNumber *)limit {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesListRevisions;
-    DbxFilesListRevisionsArg *arg = [[DbxFilesListRevisionsArg alloc] initWithPath:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit];
+    DbxFilesListRevisionsArg *arg = [[DbxFilesListRevisionsArg alloc] initWithPath:path limit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)move:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath {
+- (DbxRpcTask *)move:(NSString *)fromPath toPath:(NSString *)toPath {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesMove;
-    DbxFilesRelocationArg *arg = [[DbxFilesRelocationArg alloc] initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath];
+    DbxFilesRelocationArg *arg = [[DbxFilesRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)permanentlyDelete:(NSString * _Nonnull)path {
+- (DbxRpcTask *)permanentlyDelete:(NSString *)path {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPermanentlyDelete;
-    DbxFilesDeleteArg *arg = [[DbxFilesDeleteArg alloc] initWithPath:(NSString * _Nonnull)path];
+    DbxFilesDeleteArg *arg = [[DbxFilesDeleteArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesAdd:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups {
+- (DbxRpcTask *)propertiesAdd:(NSString *)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> *)propertyGroups {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPropertiesAdd;
-    DbxFilesPropertyGroupWithPath *arg = [[DbxFilesPropertyGroupWithPath alloc] initWithPath:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups];
+    DbxFilesPropertyGroupWithPath *arg = [[DbxFilesPropertyGroupWithPath alloc] initWithPath:path propertyGroups:propertyGroups];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesOverwrite:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups {
+- (DbxRpcTask *)propertiesOverwrite:(NSString *)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> *)propertyGroups {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPropertiesOverwrite;
-    DbxFilesPropertyGroupWithPath *arg = [[DbxFilesPropertyGroupWithPath alloc] initWithPath:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups];
+    DbxFilesPropertyGroupWithPath *arg = [[DbxFilesPropertyGroupWithPath alloc] initWithPath:path propertyGroups:propertyGroups];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesRemove:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds {
+- (DbxRpcTask *)propertiesRemove:(NSString *)path propertyTemplateIds:(NSArray<NSString *> *)propertyTemplateIds {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPropertiesRemove;
-    DbxFilesRemovePropertiesArg *arg = [[DbxFilesRemovePropertiesArg alloc] initWithPath:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds];
+    DbxFilesRemovePropertiesArg *arg = [[DbxFilesRemovePropertiesArg alloc] initWithPath:path propertyTemplateIds:propertyTemplateIds];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesTemplateGet:(NSString * _Nonnull)templateId {
+- (DbxRpcTask *)propertiesTemplateGet:(NSString *)templateId {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPropertiesTemplateGet;
-    DbxPropertiesGetPropertyTemplateArg *arg = [[DbxPropertiesGetPropertyTemplateArg alloc] initWithTemplateId:(NSString * _Nonnull)templateId];
+    DbxPropertiesGetPropertyTemplateArg *arg = [[DbxPropertiesGetPropertyTemplateArg alloc] initWithTemplateId:templateId];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -276,195 +276,195 @@
     return [self.client requestRpc:route arg:nil];
 }
 
-- (DbxRpcTask *)propertiesUpdate:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups {
+- (DbxRpcTask *)propertiesUpdate:(NSString *)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> *)updatePropertyGroups {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesPropertiesUpdate;
-    DbxFilesUpdatePropertyGroupArg *arg = [[DbxFilesUpdatePropertyGroupArg alloc] initWithPath:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups];
+    DbxFilesUpdatePropertyGroupArg *arg = [[DbxFilesUpdatePropertyGroupArg alloc] initWithPath:path updatePropertyGroups:updatePropertyGroups];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)restore:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev {
+- (DbxRpcTask *)restore:(NSString *)path rev:(NSString *)rev {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesRestore;
-    DbxFilesRestoreArg *arg = [[DbxFilesRestoreArg alloc] initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev];
+    DbxFilesRestoreArg *arg = [[DbxFilesRestoreArg alloc] initWithPath:path rev:rev];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)saveUrl:(NSString * _Nonnull)path url:(NSString * _Nonnull)url {
+- (DbxRpcTask *)saveUrl:(NSString *)path url:(NSString *)url {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesSaveUrl;
-    DbxFilesSaveUrlArg *arg = [[DbxFilesSaveUrlArg alloc] initWithPath:(NSString * _Nonnull)path url:(NSString * _Nonnull)url];
+    DbxFilesSaveUrlArg *arg = [[DbxFilesSaveUrlArg alloc] initWithPath:path url:url];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)saveUrlCheckJobStatus:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)saveUrlCheckJobStatus:(NSString *)asyncJobId {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesSaveUrlCheckJobStatus;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)search:(NSString *)path query:(NSString *)query {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesSearch;
-    DbxFilesSearchArg *arg = [[DbxFilesSearchArg alloc] initWithPath:(NSString *)path query:(NSString *)query];
+    DbxFilesSearchArg *arg = [[DbxFilesSearchArg alloc] initWithPath:path query:query];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)search:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DbxFilesSearchMode * _Nullable)mode {
+- (DbxRpcTask *)search:(NSString *)path query:(NSString *)query start:(NSNumber *)start maxResults:(NSNumber *)maxResults mode:(DbxFilesSearchMode *)mode {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesSearch;
-    DbxFilesSearchArg *arg = [[DbxFilesSearchArg alloc] initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DbxFilesSearchMode * _Nullable)mode];
+    DbxFilesSearchArg *arg = [[DbxFilesSearchArg alloc] initWithPath:path query:query start:start maxResults:maxResults mode:mode];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxUploadTask *)uploadURL:(NSString *)path inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadURL:(NSString *)path inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadURL:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadURL:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadData:(NSString *)path inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadData:(NSString *)path inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadData:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadData:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadStream:(NSString *)path inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadStream:(NSString *)path inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString *)path];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadStream:(NSString *)path mode:(DbxFilesWriteMode *)mode autorename:(NSNumber *)autorename clientModified:(NSDate *)clientModified mute:(NSNumber *)mute inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUpload;
-    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute];
+    DbxFilesCommitInfo *arg = [[DbxFilesCommitInfo alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadSessionAppendURL:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionAppendURL:(NSString *)sessionId offset:(NSNumber *)offset inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppend;
-    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset];
+    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionAppendData:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionAppendData:(NSString *)sessionId offset:(NSNumber *)offset inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppend;
-    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset];
+    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionAppendStream:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionAppendStream:(NSString *)sessionId offset:(NSNumber *)offset inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppend;
-    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset];
+    DbxFilesUploadSessionCursor *arg = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor *)cursor inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor *)cursor inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor *)cursor];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor *)cursor close:(NSNumber *)close inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor *)cursor inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor *)cursor inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor *)cursor];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor *)cursor close:(NSNumber *)close inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor *)cursor inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor *)cursor inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor *)cursor];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor *)cursor close:(NSNumber *)close inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionAppendV2;
-    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionAppendArg *arg = [[DbxFilesUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadSessionFinishURL:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionFinishURL:(DbxFilesUploadSessionCursor *)cursor commit:(DbxFilesCommitInfo *)commit inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionFinish;
-    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit];
+    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:cursor commit:commit];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionFinishData:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionFinishData:(DbxFilesUploadSessionCursor *)cursor commit:(DbxFilesCommitInfo *)commit inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionFinish;
-    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit];
+    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:cursor commit:commit];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionFinishStream:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionFinishStream:(DbxFilesUploadSessionCursor *)cursor commit:(DbxFilesCommitInfo *)commit inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionFinish;
-    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit];
+    DbxFilesUploadSessionFinishArg *arg = [[DbxFilesUploadSessionFinishArg alloc] initWithCursor:cursor commit:commit];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxRpcTask *)uploadSessionFinishBatch:(NSArray<DbxFilesUploadSessionFinishArg *> * _Nonnull)entries {
+- (DbxRpcTask *)uploadSessionFinishBatch:(NSArray<DbxFilesUploadSessionFinishArg *> *)entries {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionFinishBatch;
-    DbxFilesUploadSessionFinishBatchArg *arg = [[DbxFilesUploadSessionFinishBatchArg alloc] initWithEntries:(NSArray<DbxFilesUploadSessionFinishArg *> * _Nonnull)entries];
+    DbxFilesUploadSessionFinishBatchArg *arg = [[DbxFilesUploadSessionFinishBatchArg alloc] initWithEntries:entries];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)uploadSessionFinishBatchCheck:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)uploadSessionFinishBatchCheck:(NSString *)asyncJobId {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionFinishBatchCheck;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxUploadTask *)uploadSessionStartURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionStartURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
     DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] init];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionStartURL:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL {
+- (DbxUploadTask *)uploadSessionStartURL:(NSNumber *)close inputURL:(NSURL *)inputURL {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
-    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:close];
     return [self.client requestUpload:route arg:arg inputURL:inputURL];
 }
 
-- (DbxUploadTask *)uploadSessionStartData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionStartData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
     DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] init];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionStartData:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData {
+- (DbxUploadTask *)uploadSessionStartData:(NSNumber *)close inputData:(NSData *)inputData {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
-    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:close];
     return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
-- (DbxUploadTask *)uploadSessionStartStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionStartStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
     DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] init];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 
-- (DbxUploadTask *)uploadSessionStartStream:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream {
+- (DbxUploadTask *)uploadSessionStartStream:(NSNumber *)close inputStream:(NSInputStream *)inputStream {
     DbxRoute *route = DbxFilesRouteObjects.dbxFilesUploadSessionStart;
-    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:(NSNumber * _Nullable)close];
+    DbxFilesUploadSessionStartArg *arg = [[DbxFilesUploadSessionStartArg alloc] initWithClose:close];
     return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 

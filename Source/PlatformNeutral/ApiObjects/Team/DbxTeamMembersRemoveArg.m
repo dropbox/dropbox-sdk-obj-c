@@ -46,24 +46,24 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"user"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.user];
-    jsonDict[@"wipe_data"] = [DbxBoolSerializer serialize:valueObj.wipeData];
+    jsonDict[@"wipe_data"] = valueObj.wipeData;
     if (valueObj.transferDestId) {
         jsonDict[@"transfer_dest_id"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.transferDestId];
     }
     if (valueObj.transferAdminId) {
         jsonDict[@"transfer_admin_id"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.transferAdminId];
     }
-    jsonDict[@"keep_account"] = [DbxBoolSerializer serialize:valueObj.keepAccount];
+    jsonDict[@"keep_account"] = valueObj.keepAccount;
 
     return jsonDict;
 }
 
 + (DbxTeamMembersRemoveArg *)deserialize:(NSDictionary *)valueDict {
     DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict[@"wipe_data"]];
-    DbxTeamUserSelectorArg *transferDestId = valueDict[@"transfer_dest_id"] != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_dest_id"]] : nil;
-    DbxTeamUserSelectorArg *transferAdminId = valueDict[@"transfer_admin_id"] != nil ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_admin_id"]] : nil;
-    NSNumber *keepAccount = [DbxBoolSerializer deserialize:valueDict[@"keep_account"]];
+    NSNumber *wipeData = valueDict[@"wipe_data"];
+    DbxTeamUserSelectorArg *transferDestId = valueDict[@"transfer_dest_id"] ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_dest_id"]] : nil;
+    DbxTeamUserSelectorArg *transferAdminId = valueDict[@"transfer_admin_id"] ? [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"transfer_admin_id"]] : nil;
+    NSNumber *keepAccount = valueDict[@"keep_account"];
 
     return [[DbxTeamMembersRemoveArg alloc] initWithUser:user wipeData:wipeData transferDestId:transferDestId transferAdminId:transferAdminId keepAccount:keepAccount];
 }

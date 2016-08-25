@@ -44,19 +44,19 @@
 + (NSDictionary *)serialize:(DbxSharingUserInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"account_id"] = [DbxStringSerializer serialize:valueObj.accountId];
-    jsonDict[@"same_team"] = [DbxBoolSerializer serialize:valueObj.sameTeam];
+    jsonDict[@"account_id"] = valueObj.accountId;
+    jsonDict[@"same_team"] = valueObj.sameTeam;
     if (valueObj.teamMemberId) {
-        jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+        jsonDict[@"team_member_id"] = valueObj.teamMemberId;
     }
 
     return jsonDict;
 }
 
 + (DbxSharingUserInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
-    NSNumber *sameTeam = [DbxBoolSerializer deserialize:valueDict[@"same_team"]];
-    NSString *teamMemberId = valueDict[@"team_member_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"team_member_id"]] : nil;
+    NSString *accountId = valueDict[@"account_id"];
+    NSNumber *sameTeam = valueDict[@"same_team"];
+    NSString *teamMemberId = valueDict[@"team_member_id"] ? valueDict[@"team_member_id"] : nil;
 
     return [[DbxSharingUserInfo alloc] initWithAccountId:accountId sameTeam:sameTeam teamMemberId:teamMemberId];
 }

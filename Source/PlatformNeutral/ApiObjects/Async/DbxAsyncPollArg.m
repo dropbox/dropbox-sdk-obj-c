@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxAsyncPollArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"async_job_id"] = [DbxStringSerializer serialize:valueObj.asyncJobId];
+    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
 
     return jsonDict;
 }
 
 + (DbxAsyncPollArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict[@"async_job_id"]];
+    NSString *asyncJobId = valueDict[@"async_job_id"];
 
     return [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
 }

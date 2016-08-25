@@ -55,20 +55,20 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"access_type"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessType];
-    jsonDict[@"is_team_folder"] = [DbxBoolSerializer serialize:valueObj.isTeamFolder];
+    jsonDict[@"is_team_folder"] = valueObj.isTeamFolder;
     jsonDict[@"policy"] = [DbxSharingFolderPolicySerializer serialize:valueObj.policy];
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"name"] = valueObj.name;
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     jsonDict[@"time_invited"] = [DbxNSDateSerializer serialize:valueObj.timeInvited dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    jsonDict[@"preview_url"] = [DbxStringSerializer serialize:valueObj.previewUrl];
+    jsonDict[@"preview_url"] = valueObj.previewUrl;
     if (valueObj.ownerTeam) {
         jsonDict[@"owner_team"] = [DbxUsersTeamSerializer serialize:valueObj.ownerTeam];
     }
     if (valueObj.parentSharedFolderId) {
-        jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
+        jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
     }
     if (valueObj.pathLower) {
-        jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
+        jsonDict[@"path_lower"] = valueObj.pathLower;
     }
     if (valueObj.permissions) {
         jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id elem) { return [DbxSharingFolderPermissionSerializer serialize:elem]; }];
@@ -79,16 +79,16 @@
 
 + (DbxSharingSharedFolderMetadata *)deserialize:(NSDictionary *)valueDict {
     DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
-    NSNumber *isTeamFolder = [DbxBoolSerializer deserialize:valueDict[@"is_team_folder"]];
+    NSNumber *isTeamFolder = valueDict[@"is_team_folder"];
     DbxSharingFolderPolicy *policy = [DbxSharingFolderPolicySerializer deserialize:valueDict[@"policy"]];
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSString *name = valueDict[@"name"];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
     NSDate *timeInvited = [DbxNSDateSerializer deserialize:valueDict[@"time_invited"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    NSString *previewUrl = [DbxStringSerializer deserialize:valueDict[@"preview_url"]];
-    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] != nil ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
-    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
-    NSArray<DbxSharingFolderPermission *> *permissions = valueDict[@"permissions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingFolderPermissionSerializer deserialize:elem]; }] : nil;
+    NSString *previewUrl = valueDict[@"preview_url"];
+    DbxUsersTeam *ownerTeam = valueDict[@"owner_team"] ? [DbxUsersTeamSerializer deserialize:valueDict[@"owner_team"]] : nil;
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ? valueDict[@"parent_shared_folder_id"] : nil;
+    NSString *pathLower = valueDict[@"path_lower"] ? valueDict[@"path_lower"] : nil;
+    NSArray<DbxSharingFolderPermission *> *permissions = valueDict[@"permissions"] ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingFolderPermissionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingSharedFolderMetadata alloc] initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy name:name sharedFolderId:sharedFolderId timeInvited:timeInvited previewUrl:previewUrl ownerTeam:ownerTeam parentSharedFolderId:parentSharedFolderId pathLower:pathLower permissions:permissions];
 }

@@ -45,7 +45,7 @@
 + (NSDictionary *)serialize:(DbxSharingGetMetadataArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer serialize:elem]; }];
     }
@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingGetMetadataArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSArray<DbxSharingFolderAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer deserialize:elem]; }] : nil;
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
+    NSArray<DbxSharingFolderAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFolderActionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingGetMetadataArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions];
 }

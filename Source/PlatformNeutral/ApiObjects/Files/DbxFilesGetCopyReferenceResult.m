@@ -41,7 +41,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"metadata"] = [DbxFilesMetadataSerializer serialize:valueObj.metadata];
-    jsonDict[@"copy_reference"] = [DbxStringSerializer serialize:valueObj.dCopyReference];
+    jsonDict[@"copy_reference"] = valueObj.dCopyReference;
     jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
 
     return jsonDict;
@@ -49,7 +49,7 @@
 
 + (DbxFilesGetCopyReferenceResult *)deserialize:(NSDictionary *)valueDict {
     DbxFilesMetadata *metadata = [DbxFilesMetadataSerializer deserialize:valueDict[@"metadata"]];
-    NSString *dCopyReference = [DbxStringSerializer deserialize:valueDict[@"copy_reference"]];
+    NSString *dCopyReference = valueDict[@"copy_reference"];
     NSDate *expires = [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
 
     return [[DbxFilesGetCopyReferenceResult alloc] initWithMetadata:metadata dCopyReference:dCopyReference expires:expires];

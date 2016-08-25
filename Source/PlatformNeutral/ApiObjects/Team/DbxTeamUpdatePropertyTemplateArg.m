@@ -47,12 +47,12 @@
 + (NSDictionary *)serialize:(DbxTeamUpdatePropertyTemplateArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"template_id"] = [DbxStringSerializer serialize:valueObj.templateId];
+    jsonDict[@"template_id"] = valueObj.templateId;
     if (valueObj.name) {
-        jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
+        jsonDict[@"name"] = valueObj.name;
     }
     if (valueObj.description_) {
-        jsonDict[@"description"] = [DbxStringSerializer serialize:valueObj.description_];
+        jsonDict[@"description"] = valueObj.description_;
     }
     if (valueObj.addFields) {
         jsonDict[@"add_fields"] = [DbxArraySerializer serialize:valueObj.addFields withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer serialize:elem]; }];
@@ -62,10 +62,10 @@
 }
 
 + (DbxTeamUpdatePropertyTemplateArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
-    NSString *name = valueDict[@"name"] != nil ? [DbxStringSerializer deserialize:valueDict[@"name"]] : nil;
-    NSString *description_ = valueDict[@"description"] != nil ? [DbxStringSerializer deserialize:valueDict[@"description"]] : nil;
-    NSArray<DbxPropertiesPropertyFieldTemplate *> *addFields = valueDict[@"add_fields"] != nil ? [DbxArraySerializer deserialize:valueDict[@"add_fields"] withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:elem]; }] : nil;
+    NSString *templateId = valueDict[@"template_id"];
+    NSString *name = valueDict[@"name"] ? valueDict[@"name"] : nil;
+    NSString *description_ = valueDict[@"description"] ? valueDict[@"description"] : nil;
+    NSArray<DbxPropertiesPropertyFieldTemplate *> *addFields = valueDict[@"add_fields"] ? [DbxArraySerializer deserialize:valueDict[@"add_fields"] withBlock:^id(id elem) { return [DbxPropertiesPropertyFieldTemplateSerializer deserialize:elem]; }] : nil;
 
     return [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:templateId name:name description_:description_ addFields:addFields];
 }

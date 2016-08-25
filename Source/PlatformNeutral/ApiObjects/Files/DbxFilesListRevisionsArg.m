@@ -10,12 +10,12 @@
 
 - (instancetype)initWithPath:(NSString *)path limit:(NSNumber *)limit {
     [DbxStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:100]](limit ?: [NSNumber numberWithInt:10]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:100]](limit ?: [NSNumber numberWithUnsignedLong:10]);
 
     self = [super init];
     if (self != nil) {
         _path = path;
-        _limit = limit ?: [NSNumber numberWithInt:10];
+        _limit = limit ?: [NSNumber numberWithUnsignedLong:10];
     }
     return self;
 }
@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxFilesListRevisionsArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"path"] = valueObj.path;
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxFilesListRevisionsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSString *path = valueDict[@"path"];
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxFilesListRevisionsArg alloc] initWithPath:path limit:limit];
 }

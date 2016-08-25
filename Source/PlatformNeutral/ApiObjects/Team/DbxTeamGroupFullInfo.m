@@ -46,15 +46,15 @@
 + (NSDictionary *)serialize:(DbxTeamGroupFullInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"group_name"] = [DbxStringSerializer serialize:valueObj.groupName];
-    jsonDict[@"group_id"] = [DbxStringSerializer serialize:valueObj.groupId];
+    jsonDict[@"group_name"] = valueObj.groupName;
+    jsonDict[@"group_id"] = valueObj.groupId;
     jsonDict[@"group_management_type"] = [DbxTeamCommonGroupManagementTypeSerializer serialize:valueObj.groupManagementType];
-    jsonDict[@"created"] = [DbxNSNumberSerializer serialize:valueObj.created];
+    jsonDict[@"created"] = valueObj.created;
     if (valueObj.groupExternalId) {
-        jsonDict[@"group_external_id"] = [DbxStringSerializer serialize:valueObj.groupExternalId];
+        jsonDict[@"group_external_id"] = valueObj.groupExternalId;
     }
     if (valueObj.memberCount) {
-        jsonDict[@"member_count"] = [DbxNSNumberSerializer serialize:valueObj.memberCount];
+        jsonDict[@"member_count"] = valueObj.memberCount;
     }
     if (valueObj.members) {
         jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id elem) { return [DbxTeamGroupMemberInfoSerializer serialize:elem]; }];
@@ -64,13 +64,13 @@
 }
 
 + (DbxTeamGroupFullInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *groupName = [DbxStringSerializer deserialize:valueDict[@"group_name"]];
-    NSString *groupId = [DbxStringSerializer deserialize:valueDict[@"group_id"]];
+    NSString *groupName = valueDict[@"group_name"];
+    NSString *groupId = valueDict[@"group_id"];
     DbxTeamCommonGroupManagementType *groupManagementType = [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]];
-    NSNumber *created = [DbxNSNumberSerializer deserialize:valueDict[@"created"]];
-    NSString *groupExternalId = valueDict[@"group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"group_external_id"]] : nil;
-    NSNumber *memberCount = valueDict[@"member_count"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"member_count"]] : nil;
-    NSArray<DbxTeamGroupMemberInfo *> *members = valueDict[@"members"] != nil ? [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxTeamGroupMemberInfoSerializer deserialize:elem]; }] : nil;
+    NSNumber *created = valueDict[@"created"];
+    NSString *groupExternalId = valueDict[@"group_external_id"] ? valueDict[@"group_external_id"] : nil;
+    NSNumber *memberCount = valueDict[@"member_count"] ? valueDict[@"member_count"] : nil;
+    NSArray<DbxTeamGroupMemberInfo *> *members = valueDict[@"members"] ? [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxTeamGroupMemberInfoSerializer deserialize:elem]; }] : nil;
 
     return [[DbxTeamGroupFullInfo alloc] initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType created:created groupExternalId:groupExternalId memberCount:memberCount members:members];
 }

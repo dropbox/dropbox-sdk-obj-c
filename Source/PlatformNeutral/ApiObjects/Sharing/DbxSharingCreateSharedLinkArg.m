@@ -44,8 +44,8 @@
 + (NSDictionary *)serialize:(DbxSharingCreateSharedLinkArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    jsonDict[@"short_url"] = [DbxBoolSerializer serialize:valueObj.shortUrl];
+    jsonDict[@"path"] = valueObj.path;
+    jsonDict[@"short_url"] = valueObj.shortUrl;
     if (valueObj.pendingUpload) {
         jsonDict[@"pending_upload"] = [DbxSharingPendingUploadModeSerializer serialize:valueObj.pendingUpload];
     }
@@ -54,9 +54,9 @@
 }
 
 + (DbxSharingCreateSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *shortUrl = [DbxBoolSerializer deserialize:valueDict[@"short_url"]];
-    DbxSharingPendingUploadMode *pendingUpload = valueDict[@"pending_upload"] != nil ? [DbxSharingPendingUploadModeSerializer deserialize:valueDict[@"pending_upload"]] : nil;
+    NSString *path = valueDict[@"path"];
+    NSNumber *shortUrl = valueDict[@"short_url"];
+    DbxSharingPendingUploadMode *pendingUpload = valueDict[@"pending_upload"] ? [DbxSharingPendingUploadModeSerializer deserialize:valueDict[@"pending_upload"]] : nil;
 
     return [[DbxSharingCreateSharedLinkArg alloc] initWithPath:path shortUrl:shortUrl pendingUpload:pendingUpload];
 }

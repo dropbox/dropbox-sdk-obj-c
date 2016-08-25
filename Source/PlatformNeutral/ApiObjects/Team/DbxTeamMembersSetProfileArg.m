@@ -52,16 +52,16 @@
 
     jsonDict[@"user"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.user];
     if (valueObj.dNewEmail) {
-        jsonDict[@"new_email"] = [DbxStringSerializer serialize:valueObj.dNewEmail];
+        jsonDict[@"new_email"] = valueObj.dNewEmail;
     }
     if (valueObj.dNewExternalId) {
-        jsonDict[@"new_external_id"] = [DbxStringSerializer serialize:valueObj.dNewExternalId];
+        jsonDict[@"new_external_id"] = valueObj.dNewExternalId;
     }
     if (valueObj.dNewGivenName) {
-        jsonDict[@"new_given_name"] = [DbxStringSerializer serialize:valueObj.dNewGivenName];
+        jsonDict[@"new_given_name"] = valueObj.dNewGivenName;
     }
     if (valueObj.dNewSurname) {
-        jsonDict[@"new_surname"] = [DbxStringSerializer serialize:valueObj.dNewSurname];
+        jsonDict[@"new_surname"] = valueObj.dNewSurname;
     }
 
     return jsonDict;
@@ -69,10 +69,10 @@
 
 + (DbxTeamMembersSetProfileArg *)deserialize:(NSDictionary *)valueDict {
     DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSString *dNewEmail = valueDict[@"new_email"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_email"]] : nil;
-    NSString *dNewExternalId = valueDict[@"new_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_external_id"]] : nil;
-    NSString *dNewGivenName = valueDict[@"new_given_name"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_given_name"]] : nil;
-    NSString *dNewSurname = valueDict[@"new_surname"] != nil ? [DbxStringSerializer deserialize:valueDict[@"new_surname"]] : nil;
+    NSString *dNewEmail = valueDict[@"new_email"] ? valueDict[@"new_email"] : nil;
+    NSString *dNewExternalId = valueDict[@"new_external_id"] ? valueDict[@"new_external_id"] : nil;
+    NSString *dNewGivenName = valueDict[@"new_given_name"] ? valueDict[@"new_given_name"] : nil;
+    NSString *dNewSurname = valueDict[@"new_surname"] ? valueDict[@"new_surname"] : nil;
 
     return [[DbxTeamMembersSetProfileArg alloc] initWithUser:user dNewEmail:dNewEmail dNewExternalId:dNewExternalId dNewGivenName:dNewGivenName dNewSurname:dNewSurname];
 }

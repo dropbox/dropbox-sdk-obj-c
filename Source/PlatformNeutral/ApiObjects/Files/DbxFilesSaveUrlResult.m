@@ -82,7 +82,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isAsyncJobId]) {
-        jsonDict[@"async_job_id"] = [DbxStringSerializer serialize:valueObj.asyncJobId];
+        jsonDict[@"async_job_id"] = valueObj.asyncJobId;
         jsonDict[@".tag"] = @"async_job_id";
     }
     else if ([valueObj isComplete]) {
@@ -100,7 +100,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"async_job_id"]) {
-        NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict[@"async_job_id"]];
+        NSString *asyncJobId = valueDict[@"async_job_id"];
         return [[DbxFilesSaveUrlResult alloc] initWithAsyncJobId:asyncJobId];
     }
     if ([tag isEqualToString:@"complete"]) {

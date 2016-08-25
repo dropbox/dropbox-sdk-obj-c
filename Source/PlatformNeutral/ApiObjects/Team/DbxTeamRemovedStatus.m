@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxTeamRemovedStatus *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"is_recoverable"] = [DbxBoolSerializer serialize:valueObj.isRecoverable];
+    jsonDict[@"is_recoverable"] = valueObj.isRecoverable;
 
     return jsonDict;
 }
 
 + (DbxTeamRemovedStatus *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *isRecoverable = [DbxBoolSerializer deserialize:valueDict[@"is_recoverable"]];
+    NSNumber *isRecoverable = valueDict[@"is_recoverable"];
 
     return [[DbxTeamRemovedStatus alloc] initWithIsRecoverable:isRecoverable];
 }

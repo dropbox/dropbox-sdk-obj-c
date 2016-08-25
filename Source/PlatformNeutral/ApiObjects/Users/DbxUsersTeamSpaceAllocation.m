@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxUsersTeamSpaceAllocation *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"used"] = [DbxNSNumberSerializer serialize:valueObj.used];
-    jsonDict[@"allocated"] = [DbxNSNumberSerializer serialize:valueObj.allocated];
+    jsonDict[@"used"] = valueObj.used;
+    jsonDict[@"allocated"] = valueObj.allocated;
 
     return jsonDict;
 }
 
 + (DbxUsersTeamSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *used = [DbxNSNumberSerializer deserialize:valueDict[@"used"]];
-    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict[@"allocated"]];
+    NSNumber *used = valueDict[@"used"];
+    NSNumber *allocated = valueDict[@"allocated"];
 
     return [[DbxUsersTeamSpaceAllocation alloc] initWithUsed:used allocated:allocated];
 }

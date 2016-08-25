@@ -40,15 +40,15 @@
 + (NSDictionary *)serialize:(DbxSharingTransferFolderArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
-    jsonDict[@"to_dropbox_id"] = [DbxStringSerializer serialize:valueObj.toDropboxId];
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
+    jsonDict[@"to_dropbox_id"] = valueObj.toDropboxId;
 
     return jsonDict;
 }
 
 + (DbxSharingTransferFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
-    NSString *toDropboxId = [DbxStringSerializer deserialize:valueDict[@"to_dropbox_id"]];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
+    NSString *toDropboxId = valueDict[@"to_dropbox_id"];
 
     return [[DbxSharingTransferFolderArg alloc] initWithSharedFolderId:sharedFolderId toDropboxId:toDropboxId];
 }

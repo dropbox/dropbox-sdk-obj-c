@@ -46,7 +46,7 @@
 + (NSDictionary *)serialize:(DbxFilesThumbnailArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     jsonDict[@"format"] = [DbxFilesThumbnailFormatSerializer serialize:valueObj.format];
     jsonDict[@"size"] = [DbxFilesThumbnailSizeSerializer serialize:valueObj.size];
 
@@ -54,7 +54,7 @@
 }
 
 + (DbxFilesThumbnailArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
     DbxFilesThumbnailFormat *format = [DbxFilesThumbnailFormatSerializer deserialize:valueDict[@"format"]];
     DbxFilesThumbnailSize *size = [DbxFilesThumbnailSizeSerializer deserialize:valueDict[@"size"]];
 

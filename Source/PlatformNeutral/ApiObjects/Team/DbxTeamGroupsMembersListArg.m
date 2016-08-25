@@ -10,12 +10,12 @@
 @implementation DbxTeamGroupsMembersListArg 
 
 - (instancetype)initWithGroup:(DbxTeamGroupSelector *)group limit:(NSNumber *)limit {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
 
     self = [super init];
     if (self != nil) {
         _group = group;
-        _limit = limit ?: [NSNumber numberWithInt:1000];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
     }
     return self;
 }
@@ -45,14 +45,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"group"] = [DbxTeamGroupSelectorSerializer serialize:valueObj.group];
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxTeamGroupsMembersListArg *)deserialize:(NSDictionary *)valueDict {
     DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxTeamGroupsMembersListArg alloc] initWithGroup:group limit:limit];
 }

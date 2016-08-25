@@ -262,11 +262,11 @@
         jsonDict[@".tag"] = @"cant_share_outside_team";
     }
     else if ([valueObj isTooManyMembers]) {
-        jsonDict[@"too_many_members"] = [DbxNSNumberSerializer serialize:valueObj.tooManyMembers];
+        jsonDict[@"too_many_members"] = valueObj.tooManyMembers;
         jsonDict[@".tag"] = @"too_many_members";
     }
     else if ([valueObj isTooManyPendingInvites]) {
-        jsonDict[@"too_many_pending_invites"] = [DbxNSNumberSerializer serialize:valueObj.tooManyPendingInvites];
+        jsonDict[@"too_many_pending_invites"] = valueObj.tooManyPendingInvites;
         jsonDict[@".tag"] = @"too_many_pending_invites";
     }
     else if ([valueObj isRateLimit]) {
@@ -312,11 +312,11 @@
         return [[DbxSharingAddFolderMemberError alloc] initWithCantShareOutsideTeam];
     }
     if ([tag isEqualToString:@"too_many_members"]) {
-        NSNumber *tooManyMembers = [DbxNSNumberSerializer deserialize:valueDict[@"too_many_members"]];
+        NSNumber *tooManyMembers = valueDict[@"too_many_members"];
         return [[DbxSharingAddFolderMemberError alloc] initWithTooManyMembers:tooManyMembers];
     }
     if ([tag isEqualToString:@"too_many_pending_invites"]) {
-        NSNumber *tooManyPendingInvites = [DbxNSNumberSerializer deserialize:valueDict[@"too_many_pending_invites"]];
+        NSNumber *tooManyPendingInvites = valueDict[@"too_many_pending_invites"];
         return [[DbxSharingAddFolderMemberError alloc] initWithTooManyPendingInvites:tooManyPendingInvites];
     }
     if ([tag isEqualToString:@"rate_limit"]) {

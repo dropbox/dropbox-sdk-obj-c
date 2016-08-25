@@ -45,12 +45,12 @@
 + (NSDictionary *)serialize:(DbxTeamDeviceSession *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
+    jsonDict[@"session_id"] = valueObj.sessionId;
     if (valueObj.ipAddress) {
-        jsonDict[@"ip_address"] = [DbxStringSerializer serialize:valueObj.ipAddress];
+        jsonDict[@"ip_address"] = valueObj.ipAddress;
     }
     if (valueObj.country) {
-        jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
+        jsonDict[@"country"] = valueObj.country;
     }
     if (valueObj.created) {
         jsonDict[@"created"] = [DbxNSDateSerializer serialize:valueObj.created dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -63,11 +63,11 @@
 }
 
 + (DbxTeamDeviceSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *ipAddress = valueDict[@"ip_address"] ? valueDict[@"ip_address"] : nil;
+    NSString *country = valueDict[@"country"] ? valueDict[@"country"] : nil;
+    NSDate *created = valueDict[@"created"] ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict[@"updated"] ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamDeviceSession alloc] initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
 }

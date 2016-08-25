@@ -14,7 +14,7 @@
     self = [super init];
     if (self != nil) {
         _reason = reason;
-        _retryAfter = retryAfter ?: [NSNumber numberWithInt:1];
+        _retryAfter = retryAfter ?: [NSNumber numberWithUnsignedLong:1];
     }
     return self;
 }
@@ -44,14 +44,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"reason"] = [DbxAuthRateLimitReasonSerializer serialize:valueObj.reason];
-    jsonDict[@"retry_after"] = [DbxNSNumberSerializer serialize:valueObj.retryAfter];
+    jsonDict[@"retry_after"] = valueObj.retryAfter;
 
     return jsonDict;
 }
 
 + (DbxAuthRateLimitError *)deserialize:(NSDictionary *)valueDict {
     DbxAuthRateLimitReason *reason = [DbxAuthRateLimitReasonSerializer deserialize:valueDict[@"reason"]];
-    NSNumber *retryAfter = [DbxNSNumberSerializer deserialize:valueDict[@"retry_after"]];
+    NSNumber *retryAfter = valueDict[@"retry_after"];
 
     return [[DbxAuthRateLimitError alloc] initWithReason:reason retryAfter:retryAfter];
 }

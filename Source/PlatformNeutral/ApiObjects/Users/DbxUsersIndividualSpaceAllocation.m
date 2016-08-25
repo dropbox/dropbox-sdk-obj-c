@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxUsersIndividualSpaceAllocation *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"allocated"] = [DbxNSNumberSerializer serialize:valueObj.allocated];
+    jsonDict[@"allocated"] = valueObj.allocated;
 
     return jsonDict;
 }
 
 + (DbxUsersIndividualSpaceAllocation *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *allocated = [DbxNSNumberSerializer deserialize:valueDict[@"allocated"]];
+    NSNumber *allocated = valueDict[@"allocated"];
 
     return [[DbxUsersIndividualSpaceAllocation alloc] initWithAllocated:allocated];
 }

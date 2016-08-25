@@ -21,7 +21,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DropboxHttpError[RequestId: %@ StatusCode: %@ ErrorBody: %@];", self.requestId, _statusCode, _errorBody];
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil"};
+    return [NSString stringWithFormat:@"DropboxHttpError[%@];", values];
 }
 
 @end
@@ -38,7 +39,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DropboxBadInputError[RequestId: %@ StatusCode: %@ ErrorBody: %@ ErrorMessage: %@];", self.requestId, self.statusCode, self.errorBody, _errorMessage];
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"ErrorMessage": _errorMessage ?: @"nil"};
+    return [NSString stringWithFormat:@"DropboxBadInputError[%@];", values];
 }
 
 @end
@@ -55,7 +57,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DropboxAuthError[RequestId: %@ StatusCode: %@ ErrorBody: %@ StructuredAuthError: %@];", self.requestId, self.statusCode, self.errorBody, _structuredAuthError];
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"StructuredAuthError": _structuredAuthError ?: @"nil"};
+    return [NSString stringWithFormat:@"DropboxAuthError[%@];", values];
 }
 
 @end
@@ -73,7 +76,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DropboxRateLimitError[RequestId: %@ StatusCode: %@ ErrorBody: %@ StructuredRateLimitError: %@ BackOff: %@];", self.requestId, self.statusCode, self.errorBody, _structuredRateLimitError, _backoff];
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"StructuredRateLimitError": _structuredRateLimitError ?: @"nil", @"BackOff": _backoff ?: @"nil"};
+    return [NSString stringWithFormat:@"DropboxRateLimitError[%@];", values];
 }
 
 @end
@@ -86,7 +90,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DropboxInternalServerError[RequestId: %@ StatusCode: %@ ErrorBody: %@];", self.requestId, self.statusCode, self.errorBody];
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil"};
+    return [NSString stringWithFormat:@"DropboxInternalServerError[%@];", values];
 }
 
 @end
@@ -103,7 +108,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"DbxOsError[Error: %@];", @"TODO"];
+    NSDictionary *values = @{@"ErrorDescription": _errorDescription ?: @"nil"};
+    return [NSString stringWithFormat:@"DbxOsError[%@];", values];
 }
 
 @end
@@ -152,6 +158,24 @@
 }
 
 - (NSString *)description {
+    if (_tag == DbxRequestHttpErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asHttpError]];
+    }
+    if (_tag == DbxRequestBadInputErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asBadInputError]];
+    }
+    if (_tag == DbxRequestAuthErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asAuthError]];
+    }
+    if (_tag == DbxRequestRateLimitErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
+    }
+    if (_tag == DbxRequestInternalServerErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asInternalServerError]];
+    }
+    if (_tag == DbxRequestOsErrorType) {
+        return [NSString stringWithFormat:@"%@", [self asOsError]];
+    }
     return [NSString stringWithFormat:@"GenericDropboxError[%@];", [self getTagName]];
 }
 
@@ -180,22 +204,22 @@
 }
 
 - (NSString *)getTagName {
-    if (_tag == (DbxRequestErrorType)DbxRequestHttpErrorType) {
+    if (_tag == DbxRequestHttpErrorType) {
         return @"(DbxRequestErrorType)DbxRequestHttpErrorType";
     }
-    if (_tag == (DbxRequestErrorType)DbxRequestBadInputErrorType) {
+    if (_tag == DbxRequestBadInputErrorType) {
         return @"(DbxRequestErrorType)DbxRequestBadInputErrorType";
     }
-    if (_tag == (DbxRequestErrorType)DbxRequestAuthErrorType) {
+    if (_tag == DbxRequestAuthErrorType) {
         return @"(DbxRequestErrorType)DbxRequestAuthErrorType";
     }
-    if (_tag == (DbxRequestErrorType)DbxRequestRateLimitErrorType) {
+    if (_tag == DbxRequestRateLimitErrorType) {
         return @"(DbxRequestErrorType)DbxRequestRateLimitErrorType";
     }
-    if (_tag == (DbxRequestErrorType)DbxRequestInternalServerErrorType) {
+    if (_tag == DbxRequestInternalServerErrorType) {
         return @"(DbxRequestErrorType)DbxRequestInternalServerErrorType";
     }
-    if (_tag == (DbxRequestErrorType)DbxRequestOsErrorType) {
+    if (_tag == DbxRequestOsErrorType) {
         return @"(DbxRequestErrorType)DbxRequestOsErrorType";
     }
     

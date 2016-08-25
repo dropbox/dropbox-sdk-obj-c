@@ -54,9 +54,9 @@
         jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer serialize:elem]; }];
     }
     if (valueObj.initials) {
-        jsonDict[@"initials"] = [DbxStringSerializer serialize:valueObj.initials];
+        jsonDict[@"initials"] = valueObj.initials;
     }
-    jsonDict[@"is_inherited"] = [DbxBoolSerializer serialize:valueObj.isInherited];
+    jsonDict[@"is_inherited"] = valueObj.isInherited;
     if (valueObj.user) {
         jsonDict[@"user"] = [DbxSharingUserInfoSerializer serialize:valueObj.user];
     }
@@ -67,10 +67,10 @@
 + (DbxSharingInviteeMembershipInfo *)deserialize:(NSDictionary *)valueDict {
     DbxSharingAccessLevel *accessType = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_type"]];
     DbxSharingInviteeInfo *invitee = [DbxSharingInviteeInfoSerializer deserialize:valueDict[@"invitee"]];
-    NSArray<DbxSharingMemberPermission *> *permissions = valueDict[@"permissions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer deserialize:elem]; }] : nil;
-    NSString *initials = valueDict[@"initials"] != nil ? [DbxStringSerializer deserialize:valueDict[@"initials"]] : nil;
-    NSNumber *isInherited = [DbxBoolSerializer deserialize:valueDict[@"is_inherited"]];
-    DbxSharingUserInfo *user = valueDict[@"user"] != nil ? [DbxSharingUserInfoSerializer deserialize:valueDict[@"user"]] : nil;
+    NSArray<DbxSharingMemberPermission *> *permissions = valueDict[@"permissions"] ? [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer deserialize:elem]; }] : nil;
+    NSString *initials = valueDict[@"initials"] ? valueDict[@"initials"] : nil;
+    NSNumber *isInherited = valueDict[@"is_inherited"];
+    DbxSharingUserInfo *user = valueDict[@"user"] ? [DbxSharingUserInfoSerializer deserialize:valueDict[@"user"]] : nil;
 
     return [[DbxSharingInviteeMembershipInfo alloc] initWithAccessType:accessType invitee:invitee permissions:permissions initials:initials isInherited:isInherited user:user];
 }

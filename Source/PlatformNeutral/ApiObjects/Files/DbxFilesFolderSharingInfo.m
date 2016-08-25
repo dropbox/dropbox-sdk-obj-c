@@ -45,21 +45,21 @@
 + (NSDictionary *)serialize:(DbxFilesFolderSharingInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"read_only"] = [DbxBoolSerializer serialize:valueObj.readOnly];
+    jsonDict[@"read_only"] = valueObj.readOnly;
     if (valueObj.parentSharedFolderId) {
-        jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
+        jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
     }
     if (valueObj.sharedFolderId) {
-        jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+        jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     }
 
     return jsonDict;
 }
 
 + (DbxFilesFolderSharingInfo *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict[@"read_only"]];
-    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]] : nil;
-    NSString *sharedFolderId = valueDict[@"shared_folder_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]] : nil;
+    NSNumber *readOnly = valueDict[@"read_only"];
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ? valueDict[@"parent_shared_folder_id"] : nil;
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"] ? valueDict[@"shared_folder_id"] : nil;
 
     return [[DbxFilesFolderSharingInfo alloc] initWithReadOnly:readOnly parentSharedFolderId:parentSharedFolderId sharedFolderId:sharedFolderId];
 }

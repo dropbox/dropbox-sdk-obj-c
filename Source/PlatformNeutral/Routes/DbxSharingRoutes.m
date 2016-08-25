@@ -15,145 +15,145 @@
 }
 - (DbxRpcTask *)addFileMember:(NSString *)file members:(NSArray<DbxSharingMemberSelector *> *)members {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingAddFileMember;
-    DbxSharingAddFileMemberArgs *arg = [[DbxSharingAddFileMemberArgs alloc] initWithFile:(NSString *)file members:(NSArray<DbxSharingMemberSelector *> *)members];
+    DbxSharingAddFileMemberArgs *arg = [[DbxSharingAddFileMemberArgs alloc] initWithFile:file members:members];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)addFileMember:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment {
+- (DbxRpcTask *)addFileMember:(NSString *)file members:(NSArray<DbxSharingMemberSelector *> *)members customMessage:(NSString *)customMessage quiet:(NSNumber *)quiet accessLevel:(DbxSharingAccessLevel *)accessLevel addMessageAsComment:(NSNumber *)addMessageAsComment {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingAddFileMember;
-    DbxSharingAddFileMemberArgs *arg = [[DbxSharingAddFileMemberArgs alloc] initWithFile:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment];
+    DbxSharingAddFileMemberArgs *arg = [[DbxSharingAddFileMemberArgs alloc] initWithFile:file members:members customMessage:customMessage quiet:quiet accessLevel:accessLevel addMessageAsComment:addMessageAsComment];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)addFolderMember:(NSString *)sharedFolderId members:(NSArray<DbxSharingAddMember *> *)members {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingAddFolderMember;
-    DbxSharingAddFolderMemberArg *arg = [[DbxSharingAddFolderMemberArg alloc] initWithSharedFolderId:(NSString *)sharedFolderId members:(NSArray<DbxSharingAddMember *> *)members];
+    DbxSharingAddFolderMemberArg *arg = [[DbxSharingAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId members:members];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)addFolderMember:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage {
+- (DbxRpcTask *)addFolderMember:(NSString *)sharedFolderId members:(NSArray<DbxSharingAddMember *> *)members quiet:(NSNumber *)quiet customMessage:(NSString *)customMessage {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingAddFolderMember;
-    DbxSharingAddFolderMemberArg *arg = [[DbxSharingAddFolderMemberArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage];
+    DbxSharingAddFolderMemberArg *arg = [[DbxSharingAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId members:members quiet:quiet customMessage:customMessage];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)changeFileMemberAccess:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel {
+- (DbxRpcTask *)changeFileMemberAccess:(NSString *)file member:(DbxSharingMemberSelector *)member accessLevel:(DbxSharingAccessLevel *)accessLevel {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingChangeFileMemberAccess;
-    DbxSharingChangeFileMemberAccessArgs *arg = [[DbxSharingChangeFileMemberAccessArgs alloc] initWithFile:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel];
+    DbxSharingChangeFileMemberAccessArgs *arg = [[DbxSharingChangeFileMemberAccessArgs alloc] initWithFile:file member:member accessLevel:accessLevel];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)checkJobStatus:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)checkJobStatus:(NSString *)asyncJobId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCheckJobStatus;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)checkRemoveMemberJobStatus:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)checkRemoveMemberJobStatus:(NSString *)asyncJobId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCheckRemoveMemberJobStatus;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)checkShareJobStatus:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)checkShareJobStatus:(NSString *)asyncJobId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCheckShareJobStatus;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)createSharedLink:(NSString *)path {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCreateSharedLink;
-    DbxSharingCreateSharedLinkArg *arg = [[DbxSharingCreateSharedLinkArg alloc] initWithPath:(NSString *)path];
+    DbxSharingCreateSharedLinkArg *arg = [[DbxSharingCreateSharedLinkArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)createSharedLink:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DbxSharingPendingUploadMode * _Nullable)pendingUpload {
+- (DbxRpcTask *)createSharedLink:(NSString *)path shortUrl:(NSNumber *)shortUrl pendingUpload:(DbxSharingPendingUploadMode *)pendingUpload {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCreateSharedLink;
-    DbxSharingCreateSharedLinkArg *arg = [[DbxSharingCreateSharedLinkArg alloc] initWithPath:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DbxSharingPendingUploadMode * _Nullable)pendingUpload];
+    DbxSharingCreateSharedLinkArg *arg = [[DbxSharingCreateSharedLinkArg alloc] initWithPath:path shortUrl:shortUrl pendingUpload:pendingUpload];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)createSharedLinkWithSettings:(NSString *)path {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCreateSharedLinkWithSettings;
-    DbxSharingCreateSharedLinkWithSettingsArg *arg = [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:(NSString *)path];
+    DbxSharingCreateSharedLinkWithSettingsArg *arg = [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)createSharedLinkWithSettings:(NSString * _Nonnull)path settings:(DbxSharingSharedLinkSettings * _Nullable)settings {
+- (DbxRpcTask *)createSharedLinkWithSettings:(NSString *)path settings:(DbxSharingSharedLinkSettings *)settings {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingCreateSharedLinkWithSettings;
-    DbxSharingCreateSharedLinkWithSettingsArg *arg = [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:(NSString * _Nonnull)path settings:(DbxSharingSharedLinkSettings * _Nullable)settings];
+    DbxSharingCreateSharedLinkWithSettingsArg *arg = [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:path settings:settings];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)getFileMetadata:(NSString *)file {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFileMetadata;
-    DbxSharingGetFileMetadataArg *arg = [[DbxSharingGetFileMetadataArg alloc] initWithFile:(NSString *)file];
+    DbxSharingGetFileMetadataArg *arg = [[DbxSharingGetFileMetadataArg alloc] initWithFile:file];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getFileMetadata:(NSString * _Nonnull)file actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions {
+- (DbxRpcTask *)getFileMetadata:(NSString *)file actions:(NSArray<DbxSharingFileAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFileMetadata;
-    DbxSharingGetFileMetadataArg *arg = [[DbxSharingGetFileMetadataArg alloc] initWithFile:(NSString * _Nonnull)file actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions];
+    DbxSharingGetFileMetadataArg *arg = [[DbxSharingGetFileMetadataArg alloc] initWithFile:file actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)getFileMetadataBatch:(NSArray<NSString *> *)files {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFileMetadataBatch;
-    DbxSharingGetFileMetadataBatchArg *arg = [[DbxSharingGetFileMetadataBatchArg alloc] initWithFiles:(NSArray<NSString *> *)files];
+    DbxSharingGetFileMetadataBatchArg *arg = [[DbxSharingGetFileMetadataBatchArg alloc] initWithFiles:files];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions {
+- (DbxRpcTask *)getFileMetadataBatch:(NSArray<NSString *> *)files actions:(NSArray<DbxSharingFileAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFileMetadataBatch;
-    DbxSharingGetFileMetadataBatchArg *arg = [[DbxSharingGetFileMetadataBatchArg alloc] initWithFiles:(NSArray<NSString *> * _Nonnull)files actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions];
+    DbxSharingGetFileMetadataBatchArg *arg = [[DbxSharingGetFileMetadataBatchArg alloc] initWithFiles:files actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)getFolderMetadata:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFolderMetadata;
-    DbxSharingGetMetadataArgs *arg = [[DbxSharingGetMetadataArgs alloc] initWithSharedFolderId:(NSString *)sharedFolderId];
+    DbxSharingGetMetadataArgs *arg = [[DbxSharingGetMetadataArgs alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getFolderMetadata:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions {
+- (DbxRpcTask *)getFolderMetadata:(NSString *)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetFolderMetadata;
-    DbxSharingGetMetadataArgs *arg = [[DbxSharingGetMetadataArgs alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions];
+    DbxSharingGetMetadataArgs *arg = [[DbxSharingGetMetadataArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxDownloadURLTask *)getSharedLinkFileURL:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getSharedLinkFileURL:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkFile;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString *)url];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
-- (DbxDownloadURLTask *)getSharedLinkFileURL:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination {
+- (DbxDownloadURLTask *)getSharedLinkFileURL:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkFile;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
     return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
 - (DbxDownloadDataTask *)getSharedLinkFileData:(NSString *)url {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkFile;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString *)url];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url];
     return [self.client requestDownload:route arg:arg];
 }
 
-- (DbxDownloadDataTask *)getSharedLinkFileData:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword {
+- (DbxDownloadDataTask *)getSharedLinkFileData:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkFile;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
     return [self.client requestDownload:route arg:arg];
 }
 
 - (DbxRpcTask *)getSharedLinkMetadata:(NSString *)url {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkMetadata;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString *)url];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getSharedLinkMetadata:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword {
+- (DbxRpcTask *)getSharedLinkMetadata:(NSString *)url path:(NSString *)path linkPassword:(NSString *)linkPassword {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinkMetadata;
-    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword];
+    DbxSharingGetSharedLinkMetadataArg *arg = [[DbxSharingGetSharedLinkMetadataArg alloc] initWithUrl:url path:path linkPassword:linkPassword];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -163,57 +163,57 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getSharedLinks:(NSString * _Nullable)path {
+- (DbxRpcTask *)getSharedLinks:(NSString *)path {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingGetSharedLinks;
-    DbxSharingGetSharedLinksArg *arg = [[DbxSharingGetSharedLinksArg alloc] initWithPath:(NSString * _Nullable)path];
+    DbxSharingGetSharedLinksArg *arg = [[DbxSharingGetSharedLinksArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listFileMembers:(NSString *)file {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFileMembers;
-    DbxSharingListFileMembersArg *arg = [[DbxSharingListFileMembersArg alloc] initWithFile:(NSString *)file];
+    DbxSharingListFileMembersArg *arg = [[DbxSharingListFileMembersArg alloc] initWithFile:file];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFileMembers:(NSString * _Nonnull)file actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)listFileMembers:(NSString *)file actions:(NSArray<DbxSharingMemberAction *> *)actions includeInherited:(NSNumber *)includeInherited limit:(NSNumber *)limit {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFileMembers;
-    DbxSharingListFileMembersArg *arg = [[DbxSharingListFileMembersArg alloc] initWithFile:(NSString * _Nonnull)file actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit];
+    DbxSharingListFileMembersArg *arg = [[DbxSharingListFileMembersArg alloc] initWithFile:file actions:actions includeInherited:includeInherited limit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listFileMembersBatch:(NSArray<NSString *> *)files {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFileMembersBatch;
-    DbxSharingListFileMembersBatchArg *arg = [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:(NSArray<NSString *> *)files];
+    DbxSharingListFileMembersBatchArg *arg = [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:files];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)listFileMembersBatch:(NSArray<NSString *> *)files limit:(NSNumber *)limit {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFileMembersBatch;
-    DbxSharingListFileMembersBatchArg *arg = [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit];
+    DbxSharingListFileMembersBatchArg *arg = [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:files limit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFileMembersContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listFileMembersContinue:(NSString *)cursor {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFileMembersContinue;
-    DbxSharingListFileMembersContinueArg *arg = [[DbxSharingListFileMembersContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxSharingListFileMembersContinueArg *arg = [[DbxSharingListFileMembersContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)listFolderMembers:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFolderMembers;
-    DbxSharingListFolderMembersArgs *arg = [[DbxSharingListFolderMembersArgs alloc] initWithSharedFolderId:(NSString *)sharedFolderId];
+    DbxSharingListFolderMembersArgs *arg = [[DbxSharingListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolderMembers:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)listFolderMembers:(NSString *)sharedFolderId actions:(NSArray<DbxSharingMemberAction *> *)actions limit:(NSNumber *)limit {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFolderMembers;
-    DbxSharingListFolderMembersArgs *arg = [[DbxSharingListFolderMembersArgs alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit];
+    DbxSharingListFolderMembersArgs *arg = [[DbxSharingListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions limit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolderMembersContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listFolderMembersContinue:(NSString *)cursor {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFolderMembersContinue;
-    DbxSharingListFolderMembersContinueArg *arg = [[DbxSharingListFolderMembersContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxSharingListFolderMembersContinueArg *arg = [[DbxSharingListFolderMembersContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -223,15 +223,15 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFolders:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions {
+- (DbxRpcTask *)listFolders:(NSNumber *)limit actions:(NSArray<DbxSharingFolderAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFolders;
-    DbxSharingListFoldersArgs *arg = [[DbxSharingListFoldersArgs alloc] initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions];
+    DbxSharingListFoldersArgs *arg = [[DbxSharingListFoldersArgs alloc] initWithLimit:limit actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listFoldersContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listFoldersContinue:(NSString *)cursor {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListFoldersContinue;
-    DbxSharingListFoldersContinueArg *arg = [[DbxSharingListFoldersContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxSharingListFoldersContinueArg *arg = [[DbxSharingListFoldersContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -241,15 +241,15 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listMountableFolders:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions {
+- (DbxRpcTask *)listMountableFolders:(NSNumber *)limit actions:(NSArray<DbxSharingFolderAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListMountableFolders;
-    DbxSharingListFoldersArgs *arg = [[DbxSharingListFoldersArgs alloc] initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions];
+    DbxSharingListFoldersArgs *arg = [[DbxSharingListFoldersArgs alloc] initWithLimit:limit actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listMountableFoldersContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listMountableFoldersContinue:(NSString *)cursor {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListMountableFoldersContinue;
-    DbxSharingListFoldersContinueArg *arg = [[DbxSharingListFoldersContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxSharingListFoldersContinueArg *arg = [[DbxSharingListFoldersContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -259,15 +259,15 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listReceivedFiles:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions {
+- (DbxRpcTask *)listReceivedFiles:(NSNumber *)limit actions:(NSArray<DbxSharingFileAction *> *)actions {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListReceivedFiles;
-    DbxSharingListFilesArg *arg = [[DbxSharingListFilesArg alloc] initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions];
+    DbxSharingListFilesArg *arg = [[DbxSharingListFilesArg alloc] initWithLimit:limit actions:actions];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listReceivedFilesContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)listReceivedFilesContinue:(NSString *)cursor {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListReceivedFilesContinue;
-    DbxSharingListFilesContinueArg *arg = [[DbxSharingListFilesContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxSharingListFilesContinueArg *arg = [[DbxSharingListFilesContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -277,129 +277,129 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)listSharedLinks:(NSString * _Nullable)path cursor:(NSString * _Nullable)cursor directOnly:(NSNumber * _Nullable)directOnly {
+- (DbxRpcTask *)listSharedLinks:(NSString *)path cursor:(NSString *)cursor directOnly:(NSNumber *)directOnly {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingListSharedLinks;
-    DbxSharingListSharedLinksArg *arg = [[DbxSharingListSharedLinksArg alloc] initWithPath:(NSString * _Nullable)path cursor:(NSString * _Nullable)cursor directOnly:(NSNumber * _Nullable)directOnly];
+    DbxSharingListSharedLinksArg *arg = [[DbxSharingListSharedLinksArg alloc] initWithPath:path cursor:cursor directOnly:directOnly];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)modifySharedLinkSettings:(NSString *)url settings:(DbxSharingSharedLinkSettings *)settings {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingModifySharedLinkSettings;
-    DbxSharingModifySharedLinkSettingsArgs *arg = [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:(NSString *)url settings:(DbxSharingSharedLinkSettings *)settings];
+    DbxSharingModifySharedLinkSettingsArgs *arg = [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:url settings:settings];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)modifySharedLinkSettings:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration {
+- (DbxRpcTask *)modifySharedLinkSettings:(NSString *)url settings:(DbxSharingSharedLinkSettings *)settings removeExpiration:(NSNumber *)removeExpiration {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingModifySharedLinkSettings;
-    DbxSharingModifySharedLinkSettingsArgs *arg = [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration];
+    DbxSharingModifySharedLinkSettingsArgs *arg = [[DbxSharingModifySharedLinkSettingsArgs alloc] initWithUrl:url settings:settings removeExpiration:removeExpiration];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)mountFolder:(NSString * _Nonnull)sharedFolderId {
+- (DbxRpcTask *)mountFolder:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingMountFolder;
-    DbxSharingMountFolderArg *arg = [[DbxSharingMountFolderArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId];
+    DbxSharingMountFolderArg *arg = [[DbxSharingMountFolderArg alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)relinquishFileMembership:(NSString * _Nonnull)file {
+- (DbxRpcTask *)relinquishFileMembership:(NSString *)file {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRelinquishFileMembership;
-    DbxSharingRelinquishFileMembershipArg *arg = [[DbxSharingRelinquishFileMembershipArg alloc] initWithFile:(NSString * _Nonnull)file];
+    DbxSharingRelinquishFileMembershipArg *arg = [[DbxSharingRelinquishFileMembershipArg alloc] initWithFile:file];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)relinquishFolderMembership:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRelinquishFolderMembership;
-    DbxSharingRelinquishFolderMembershipArg *arg = [[DbxSharingRelinquishFolderMembershipArg alloc] initWithSharedFolderId:(NSString *)sharedFolderId];
+    DbxSharingRelinquishFolderMembershipArg *arg = [[DbxSharingRelinquishFolderMembershipArg alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy {
+- (DbxRpcTask *)relinquishFolderMembership:(NSString *)sharedFolderId leaveACopy:(NSNumber *)leaveACopy {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRelinquishFolderMembership;
-    DbxSharingRelinquishFolderMembershipArg *arg = [[DbxSharingRelinquishFolderMembershipArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy];
+    DbxSharingRelinquishFolderMembershipArg *arg = [[DbxSharingRelinquishFolderMembershipArg alloc] initWithSharedFolderId:sharedFolderId leaveACopy:leaveACopy];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)removeFileMember:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member {
+- (DbxRpcTask *)removeFileMember:(NSString *)file member:(DbxSharingMemberSelector *)member {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRemoveFileMember;
-    DbxSharingRemoveFileMemberArg *arg = [[DbxSharingRemoveFileMemberArg alloc] initWithFile:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member];
+    DbxSharingRemoveFileMemberArg *arg = [[DbxSharingRemoveFileMemberArg alloc] initWithFile:file member:member];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)removeFileMember2:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member {
+- (DbxRpcTask *)removeFileMember2:(NSString *)file member:(DbxSharingMemberSelector *)member {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRemoveFileMember2;
-    DbxSharingRemoveFileMemberArg *arg = [[DbxSharingRemoveFileMemberArg alloc] initWithFile:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member];
+    DbxSharingRemoveFileMemberArg *arg = [[DbxSharingRemoveFileMemberArg alloc] initWithFile:file member:member];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)removeFolderMember:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy {
+- (DbxRpcTask *)removeFolderMember:(NSString *)sharedFolderId member:(DbxSharingMemberSelector *)member leaveACopy:(NSNumber *)leaveACopy {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRemoveFolderMember;
-    DbxSharingRemoveFolderMemberArg *arg = [[DbxSharingRemoveFolderMemberArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy];
+    DbxSharingRemoveFolderMemberArg *arg = [[DbxSharingRemoveFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId member:member leaveACopy:leaveACopy];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)revokeSharedLink:(NSString * _Nonnull)url {
+- (DbxRpcTask *)revokeSharedLink:(NSString *)url {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingRevokeSharedLink;
-    DbxSharingRevokeSharedLinkArg *arg = [[DbxSharingRevokeSharedLinkArg alloc] initWithUrl:(NSString * _Nonnull)url];
+    DbxSharingRevokeSharedLinkArg *arg = [[DbxSharingRevokeSharedLinkArg alloc] initWithUrl:url];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)shareFolder:(NSString *)path {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingShareFolder;
-    DbxSharingShareFolderArg *arg = [[DbxSharingShareFolderArg alloc] initWithPath:(NSString *)path];
+    DbxSharingShareFolderArg *arg = [[DbxSharingShareFolderArg alloc] initWithPath:path];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)shareFolder:(NSString * _Nonnull)path memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync {
+- (DbxRpcTask *)shareFolder:(NSString *)path memberPolicy:(DbxSharingMemberPolicy *)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy *)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy *)sharedLinkPolicy forceAsync:(NSNumber *)forceAsync {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingShareFolder;
-    DbxSharingShareFolderArg *arg = [[DbxSharingShareFolderArg alloc] initWithPath:(NSString * _Nonnull)path memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync];
+    DbxSharingShareFolderArg *arg = [[DbxSharingShareFolderArg alloc] initWithPath:path memberPolicy:memberPolicy aclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy forceAsync:forceAsync];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)transferFolder:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId {
+- (DbxRpcTask *)transferFolder:(NSString *)sharedFolderId toDropboxId:(NSString *)toDropboxId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingTransferFolder;
-    DbxSharingTransferFolderArg *arg = [[DbxSharingTransferFolderArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId];
+    DbxSharingTransferFolderArg *arg = [[DbxSharingTransferFolderArg alloc] initWithSharedFolderId:sharedFolderId toDropboxId:toDropboxId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)unmountFolder:(NSString * _Nonnull)sharedFolderId {
+- (DbxRpcTask *)unmountFolder:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUnmountFolder;
-    DbxSharingUnmountFolderArg *arg = [[DbxSharingUnmountFolderArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId];
+    DbxSharingUnmountFolderArg *arg = [[DbxSharingUnmountFolderArg alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)unshareFile:(NSString * _Nonnull)file {
+- (DbxRpcTask *)unshareFile:(NSString *)file {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUnshareFile;
-    DbxSharingUnshareFileArg *arg = [[DbxSharingUnshareFileArg alloc] initWithFile:(NSString * _Nonnull)file];
+    DbxSharingUnshareFileArg *arg = [[DbxSharingUnshareFileArg alloc] initWithFile:file];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)unshareFolder:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUnshareFolder;
-    DbxSharingUnshareFolderArg *arg = [[DbxSharingUnshareFolderArg alloc] initWithSharedFolderId:(NSString *)sharedFolderId];
+    DbxSharingUnshareFolderArg *arg = [[DbxSharingUnshareFolderArg alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)unshareFolder:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy {
+- (DbxRpcTask *)unshareFolder:(NSString *)sharedFolderId leaveACopy:(NSNumber *)leaveACopy {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUnshareFolder;
-    DbxSharingUnshareFolderArg *arg = [[DbxSharingUnshareFolderArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy];
+    DbxSharingUnshareFolderArg *arg = [[DbxSharingUnshareFolderArg alloc] initWithSharedFolderId:sharedFolderId leaveACopy:leaveACopy];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)updateFolderMember:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel {
+- (DbxRpcTask *)updateFolderMember:(NSString *)sharedFolderId member:(DbxSharingMemberSelector *)member accessLevel:(DbxSharingAccessLevel *)accessLevel {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUpdateFolderMember;
-    DbxSharingUpdateFolderMemberArg *arg = [[DbxSharingUpdateFolderMemberArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel];
+    DbxSharingUpdateFolderMemberArg *arg = [[DbxSharingUpdateFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId member:member accessLevel:accessLevel];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)updateFolderPolicy:(NSString *)sharedFolderId {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUpdateFolderPolicy;
-    DbxSharingUpdateFolderPolicyArg *arg = [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:(NSString *)sharedFolderId];
+    DbxSharingUpdateFolderPolicyArg *arg = [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:sharedFolderId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)updateFolderPolicy:(NSString * _Nonnull)sharedFolderId memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy {
+- (DbxRpcTask *)updateFolderPolicy:(NSString *)sharedFolderId memberPolicy:(DbxSharingMemberPolicy *)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy *)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy *)sharedLinkPolicy {
     DbxRoute *route = DbxSharingRouteObjects.dbxSharingUpdateFolderPolicy;
-    DbxSharingUpdateFolderPolicyArg *arg = [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy];
+    DbxSharingUpdateFolderPolicyArg *arg = [[DbxSharingUpdateFolderPolicyArg alloc] initWithSharedFolderId:sharedFolderId memberPolicy:memberPolicy aclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy];
     return [self.client requestRpc:route arg:arg];
 }
 

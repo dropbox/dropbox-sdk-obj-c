@@ -40,14 +40,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"reason"] = [DbxFilesWriteErrorSerializer serialize:valueObj.reason];
-    jsonDict[@"upload_session_id"] = [DbxStringSerializer serialize:valueObj.uploadSessionId];
+    jsonDict[@"upload_session_id"] = valueObj.uploadSessionId;
 
     return jsonDict;
 }
 
 + (DbxFilesUploadWriteFailed *)deserialize:(NSDictionary *)valueDict {
     DbxFilesWriteError *reason = [DbxFilesWriteErrorSerializer deserialize:valueDict[@"reason"]];
-    NSString *uploadSessionId = [DbxStringSerializer deserialize:valueDict[@"upload_session_id"]];
+    NSString *uploadSessionId = valueDict[@"upload_session_id"];
 
     return [[DbxFilesUploadWriteFailed alloc] initWithReason:reason uploadSessionId:uploadSessionId];
 }

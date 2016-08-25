@@ -43,9 +43,9 @@
 + (NSDictionary *)serialize:(DbxSharingPathLinkMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
+    jsonDict[@"url"] = valueObj.url;
     jsonDict[@"visibility"] = [DbxSharingVisibilitySerializer serialize:valueObj.visibility];
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
@@ -54,10 +54,10 @@
 }
 
 + (DbxSharingPathLinkMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *url = valueDict[@"url"];
     DbxSharingVisibility *visibility = [DbxSharingVisibilitySerializer deserialize:valueDict[@"visibility"]];
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSDate *expires = valueDict[@"expires"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *path = valueDict[@"path"];
+    NSDate *expires = valueDict[@"expires"] ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxSharingPathLinkMetadata alloc] initWithUrl:url visibility:visibility path:path expires:expires];
 }

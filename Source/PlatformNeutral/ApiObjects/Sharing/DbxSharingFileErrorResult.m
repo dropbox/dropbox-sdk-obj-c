@@ -118,15 +118,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isFileNotFoundError]) {
-        jsonDict[@"file_not_found_error"] = [DbxStringSerializer serialize:valueObj.fileNotFoundError];
+        jsonDict[@"file_not_found_error"] = valueObj.fileNotFoundError;
         jsonDict[@".tag"] = @"file_not_found_error";
     }
     else if ([valueObj isInvalidFileActionError]) {
-        jsonDict[@"invalid_file_action_error"] = [DbxStringSerializer serialize:valueObj.invalidFileActionError];
+        jsonDict[@"invalid_file_action_error"] = valueObj.invalidFileActionError;
         jsonDict[@".tag"] = @"invalid_file_action_error";
     }
     else if ([valueObj isPermissionDeniedError]) {
-        jsonDict[@"permission_denied_error"] = [DbxStringSerializer serialize:valueObj.permissionDeniedError];
+        jsonDict[@"permission_denied_error"] = valueObj.permissionDeniedError;
         jsonDict[@".tag"] = @"permission_denied_error";
     }
     else if ([valueObj isOther]) {
@@ -143,15 +143,15 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"file_not_found_error"]) {
-        NSString *fileNotFoundError = [DbxStringSerializer deserialize:valueDict[@"file_not_found_error"]];
+        NSString *fileNotFoundError = valueDict[@"file_not_found_error"];
         return [[DbxSharingFileErrorResult alloc] initWithFileNotFoundError:fileNotFoundError];
     }
     if ([tag isEqualToString:@"invalid_file_action_error"]) {
-        NSString *invalidFileActionError = [DbxStringSerializer deserialize:valueDict[@"invalid_file_action_error"]];
+        NSString *invalidFileActionError = valueDict[@"invalid_file_action_error"];
         return [[DbxSharingFileErrorResult alloc] initWithInvalidFileActionError:invalidFileActionError];
     }
     if ([tag isEqualToString:@"permission_denied_error"]) {
-        NSString *permissionDeniedError = [DbxStringSerializer deserialize:valueDict[@"permission_denied_error"]];
+        NSString *permissionDeniedError = valueDict[@"permission_denied_error"];
         return [[DbxSharingFileErrorResult alloc] initWithPermissionDeniedError:permissionDeniedError];
     }
     if ([tag isEqualToString:@"other"]) {

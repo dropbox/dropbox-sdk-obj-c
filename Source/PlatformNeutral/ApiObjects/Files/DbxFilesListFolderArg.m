@@ -46,21 +46,21 @@
 + (NSDictionary *)serialize:(DbxFilesListFolderArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    jsonDict[@"recursive"] = [DbxBoolSerializer serialize:valueObj.recursive];
-    jsonDict[@"include_media_info"] = [DbxBoolSerializer serialize:valueObj.includeMediaInfo];
-    jsonDict[@"include_deleted"] = [DbxBoolSerializer serialize:valueObj.includeDeleted];
-    jsonDict[@"include_has_explicit_shared_members"] = [DbxBoolSerializer serialize:valueObj.includeHasExplicitSharedMembers];
+    jsonDict[@"path"] = valueObj.path;
+    jsonDict[@"recursive"] = valueObj.recursive;
+    jsonDict[@"include_media_info"] = valueObj.includeMediaInfo;
+    jsonDict[@"include_deleted"] = valueObj.includeDeleted;
+    jsonDict[@"include_has_explicit_shared_members"] = valueObj.includeHasExplicitSharedMembers;
 
     return jsonDict;
 }
 
 + (DbxFilesListFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSNumber *recursive = [DbxBoolSerializer deserialize:valueDict[@"recursive"]];
-    NSNumber *includeMediaInfo = [DbxBoolSerializer deserialize:valueDict[@"include_media_info"]];
-    NSNumber *includeDeleted = [DbxBoolSerializer deserialize:valueDict[@"include_deleted"]];
-    NSNumber *includeHasExplicitSharedMembers = [DbxBoolSerializer deserialize:valueDict[@"include_has_explicit_shared_members"]];
+    NSString *path = valueDict[@"path"];
+    NSNumber *recursive = valueDict[@"recursive"];
+    NSNumber *includeMediaInfo = valueDict[@"include_media_info"];
+    NSNumber *includeDeleted = valueDict[@"include_deleted"];
+    NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"];
 
     return [[DbxFilesListFolderArg alloc] initWithPath:path recursive:recursive includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
 }

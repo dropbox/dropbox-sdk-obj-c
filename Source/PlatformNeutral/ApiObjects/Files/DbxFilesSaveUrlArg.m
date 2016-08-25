@@ -39,15 +39,15 @@
 + (NSDictionary *)serialize:(DbxFilesSaveUrlArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
+    jsonDict[@"path"] = valueObj.path;
+    jsonDict[@"url"] = valueObj.url;
 
     return jsonDict;
 }
 
 + (DbxFilesSaveUrlArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *path = valueDict[@"path"];
+    NSString *url = valueDict[@"url"];
 
     return [[DbxFilesSaveUrlArg alloc] initWithPath:path url:url];
 }

@@ -40,14 +40,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"metadata"] = [DbxFilesFileMetadataSerializer serialize:valueObj.metadata];
-    jsonDict[@"link"] = [DbxStringSerializer serialize:valueObj.link];
+    jsonDict[@"link"] = valueObj.link;
 
     return jsonDict;
 }
 
 + (DbxFilesGetTemporaryLinkResult *)deserialize:(NSDictionary *)valueDict {
     DbxFilesFileMetadata *metadata = [DbxFilesFileMetadataSerializer deserialize:valueDict[@"metadata"]];
-    NSString *link = [DbxStringSerializer deserialize:valueDict[@"link"]];
+    NSString *link = valueDict[@"link"];
 
     return [[DbxFilesGetTemporaryLinkResult alloc] initWithMetadata:metadata link:link];
 }

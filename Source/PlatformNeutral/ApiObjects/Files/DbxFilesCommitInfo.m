@@ -47,23 +47,23 @@
 + (NSDictionary *)serialize:(DbxFilesCommitInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     jsonDict[@"mode"] = [DbxFilesWriteModeSerializer serialize:valueObj.mode];
-    jsonDict[@"autorename"] = [DbxBoolSerializer serialize:valueObj.autorename];
+    jsonDict[@"autorename"] = valueObj.autorename;
     if (valueObj.clientModified) {
         jsonDict[@"client_modified"] = [DbxNSDateSerializer serialize:valueObj.clientModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
-    jsonDict[@"mute"] = [DbxBoolSerializer serialize:valueObj.mute];
+    jsonDict[@"mute"] = valueObj.mute;
 
     return jsonDict;
 }
 
 + (DbxFilesCommitInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
     DbxFilesWriteMode *mode = [DbxFilesWriteModeSerializer deserialize:valueDict[@"mode"]];
-    NSNumber *autorename = [DbxBoolSerializer deserialize:valueDict[@"autorename"]];
-    NSDate *clientModified = valueDict[@"client_modified"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSNumber *mute = [DbxBoolSerializer deserialize:valueDict[@"mute"]];
+    NSNumber *autorename = valueDict[@"autorename"];
+    NSDate *clientModified = valueDict[@"client_modified"] ? [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSNumber *mute = valueDict[@"mute"];
 
     return [[DbxFilesCommitInfo alloc] initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
 }

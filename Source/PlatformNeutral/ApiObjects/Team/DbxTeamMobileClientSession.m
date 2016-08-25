@@ -47,14 +47,14 @@
 + (NSDictionary *)serialize:(DbxTeamMobileClientSession *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
-    jsonDict[@"device_name"] = [DbxStringSerializer serialize:valueObj.deviceName];
+    jsonDict[@"session_id"] = valueObj.sessionId;
+    jsonDict[@"device_name"] = valueObj.deviceName;
     jsonDict[@"client_type"] = [DbxTeamMobileClientPlatformSerializer serialize:valueObj.clientType];
     if (valueObj.ipAddress) {
-        jsonDict[@"ip_address"] = [DbxStringSerializer serialize:valueObj.ipAddress];
+        jsonDict[@"ip_address"] = valueObj.ipAddress;
     }
     if (valueObj.country) {
-        jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
+        jsonDict[@"country"] = valueObj.country;
     }
     if (valueObj.created) {
         jsonDict[@"created"] = [DbxNSDateSerializer serialize:valueObj.created dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -63,29 +63,29 @@
         jsonDict[@"updated"] = [DbxNSDateSerializer serialize:valueObj.updated dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
     if (valueObj.clientVersion) {
-        jsonDict[@"client_version"] = [DbxStringSerializer serialize:valueObj.clientVersion];
+        jsonDict[@"client_version"] = valueObj.clientVersion;
     }
     if (valueObj.osVersion) {
-        jsonDict[@"os_version"] = [DbxStringSerializer serialize:valueObj.osVersion];
+        jsonDict[@"os_version"] = valueObj.osVersion;
     }
     if (valueObj.lastCarrier) {
-        jsonDict[@"last_carrier"] = [DbxStringSerializer serialize:valueObj.lastCarrier];
+        jsonDict[@"last_carrier"] = valueObj.lastCarrier;
     }
 
     return jsonDict;
 }
 
 + (DbxTeamMobileClientSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *deviceName = [DbxStringSerializer deserialize:valueDict[@"device_name"]];
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *deviceName = valueDict[@"device_name"];
     DbxTeamMobileClientPlatform *clientType = [DbxTeamMobileClientPlatformSerializer deserialize:valueDict[@"client_type"]];
-    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSString *clientVersion = valueDict[@"client_version"] != nil ? [DbxStringSerializer deserialize:valueDict[@"client_version"]] : nil;
-    NSString *osVersion = valueDict[@"os_version"] != nil ? [DbxStringSerializer deserialize:valueDict[@"os_version"]] : nil;
-    NSString *lastCarrier = valueDict[@"last_carrier"] != nil ? [DbxStringSerializer deserialize:valueDict[@"last_carrier"]] : nil;
+    NSString *ipAddress = valueDict[@"ip_address"] ? valueDict[@"ip_address"] : nil;
+    NSString *country = valueDict[@"country"] ? valueDict[@"country"] : nil;
+    NSDate *created = valueDict[@"created"] ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict[@"updated"] ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *clientVersion = valueDict[@"client_version"] ? valueDict[@"client_version"] : nil;
+    NSString *osVersion = valueDict[@"os_version"] ? valueDict[@"os_version"] : nil;
+    NSString *lastCarrier = valueDict[@"last_carrier"] ? valueDict[@"last_carrier"] : nil;
 
     return [[DbxTeamMobileClientSession alloc] initWithSessionId:sessionId deviceName:deviceName clientType:clientType ipAddress:ipAddress country:country created:created updated:updated clientVersion:clientVersion osVersion:osVersion lastCarrier:lastCarrier];
 }

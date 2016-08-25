@@ -47,23 +47,23 @@
 + (NSDictionary *)serialize:(DbxTeamGetMembershipReport *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"start_date"] = [DbxStringSerializer serialize:valueObj.startDate];
-    jsonDict[@"team_size"] = [DbxArraySerializer serialize:valueObj.teamSize withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"pending_invites"] = [DbxArraySerializer serialize:valueObj.pendingInvites withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"members_joined"] = [DbxArraySerializer serialize:valueObj.membersJoined withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"suspended_members"] = [DbxArraySerializer serialize:valueObj.suspendedMembers withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
-    jsonDict[@"licenses"] = [DbxArraySerializer serialize:valueObj.licenses withBlock:^id(id elem) { return [DbxNSNumberSerializer serialize:elem]; }];
+    jsonDict[@"start_date"] = valueObj.startDate;
+    jsonDict[@"team_size"] = [DbxArraySerializer serialize:valueObj.teamSize withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"pending_invites"] = [DbxArraySerializer serialize:valueObj.pendingInvites withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"members_joined"] = [DbxArraySerializer serialize:valueObj.membersJoined withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"suspended_members"] = [DbxArraySerializer serialize:valueObj.suspendedMembers withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"licenses"] = [DbxArraySerializer serialize:valueObj.licenses withBlock:^id(id elem) { return elem; }];
 
     return jsonDict;
 }
 
 + (DbxTeamGetMembershipReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
-    NSArray<NSNumber *> *teamSize = [DbxArraySerializer deserialize:valueDict[@"team_size"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *pendingInvites = [DbxArraySerializer deserialize:valueDict[@"pending_invites"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *membersJoined = [DbxArraySerializer deserialize:valueDict[@"members_joined"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *suspendedMembers = [DbxArraySerializer deserialize:valueDict[@"suspended_members"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
-    NSArray<NSNumber *> *licenses = [DbxArraySerializer deserialize:valueDict[@"licenses"] withBlock:^id(id elem) { return [DbxNSNumberSerializer deserialize:elem]; }];
+    NSString *startDate = valueDict[@"start_date"];
+    NSArray<NSNumber *> *teamSize = [DbxArraySerializer deserialize:valueDict[@"team_size"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *pendingInvites = [DbxArraySerializer deserialize:valueDict[@"pending_invites"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *membersJoined = [DbxArraySerializer deserialize:valueDict[@"members_joined"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *suspendedMembers = [DbxArraySerializer deserialize:valueDict[@"suspended_members"] withBlock:^id(id elem) { return elem; }];
+    NSArray<NSNumber *> *licenses = [DbxArraySerializer deserialize:valueDict[@"licenses"] withBlock:^id(id elem) { return elem; }];
 
     return [[DbxTeamGetMembershipReport alloc] initWithStartDate:startDate teamSize:teamSize pendingInvites:pendingInvites membersJoined:membersJoined suspendedMembers:suspendedMembers licenses:licenses];
 }

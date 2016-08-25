@@ -50,21 +50,21 @@
 + (NSDictionary *)serialize:(DbxSharingFileLinkMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
+    jsonDict[@"url"] = valueObj.url;
+    jsonDict[@"name"] = valueObj.name;
     jsonDict[@"link_permissions"] = [DbxSharingLinkPermissionsSerializer serialize:valueObj.linkPermissions];
     jsonDict[@"client_modified"] = [DbxNSDateSerializer serialize:valueObj.clientModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     jsonDict[@"server_modified"] = [DbxNSDateSerializer serialize:valueObj.serverModified dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    jsonDict[@"rev"] = [DbxStringSerializer serialize:valueObj.rev];
-    jsonDict[@"size"] = [DbxNSNumberSerializer serialize:valueObj.size];
+    jsonDict[@"rev"] = valueObj.rev;
+    jsonDict[@"size"] = valueObj.size;
     if (valueObj.id_) {
-        jsonDict[@"id"] = [DbxStringSerializer serialize:valueObj.id_];
+        jsonDict[@"id"] = valueObj.id_;
     }
     if (valueObj.expires) {
         jsonDict[@"expires"] = [DbxNSDateSerializer serialize:valueObj.expires dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
     if (valueObj.pathLower) {
-        jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
+        jsonDict[@"path_lower"] = valueObj.pathLower;
     }
     if (valueObj.teamMemberInfo) {
         jsonDict[@"team_member_info"] = [DbxSharingTeamMemberInfoSerializer serialize:valueObj.teamMemberInfo];
@@ -77,18 +77,18 @@
 }
 
 + (DbxSharingFileLinkMetadata *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
+    NSString *url = valueDict[@"url"];
+    NSString *name = valueDict[@"name"];
     DbxSharingLinkPermissions *linkPermissions = [DbxSharingLinkPermissionsSerializer deserialize:valueDict[@"link_permissions"]];
     NSDate *clientModified = [DbxNSDateSerializer deserialize:valueDict[@"client_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     NSDate *serverModified = [DbxNSDateSerializer deserialize:valueDict[@"server_modified"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
-    NSString *rev = [DbxStringSerializer deserialize:valueDict[@"rev"]];
-    NSNumber *size = [DbxNSNumberSerializer deserialize:valueDict[@"size"]];
-    NSString *id_ = valueDict[@"id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"id"]] : nil;
-    NSDate *expires = valueDict[@"expires"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSString *pathLower = valueDict[@"path_lower"] != nil ? [DbxStringSerializer deserialize:valueDict[@"path_lower"]] : nil;
-    DbxSharingTeamMemberInfo *teamMemberInfo = valueDict[@"team_member_info"] != nil ? [DbxSharingTeamMemberInfoSerializer deserialize:valueDict[@"team_member_info"]] : nil;
-    DbxUsersTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"] != nil ? [DbxUsersTeamSerializer deserialize:valueDict[@"content_owner_team_info"]] : nil;
+    NSString *rev = valueDict[@"rev"];
+    NSNumber *size = valueDict[@"size"];
+    NSString *id_ = valueDict[@"id"] ? valueDict[@"id"] : nil;
+    NSDate *expires = valueDict[@"expires"] ? [DbxNSDateSerializer deserialize:valueDict[@"expires"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *pathLower = valueDict[@"path_lower"] ? valueDict[@"path_lower"] : nil;
+    DbxSharingTeamMemberInfo *teamMemberInfo = valueDict[@"team_member_info"] ? [DbxSharingTeamMemberInfoSerializer deserialize:valueDict[@"team_member_info"]] : nil;
+    DbxUsersTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"] ? [DbxUsersTeamSerializer deserialize:valueDict[@"content_owner_team_info"]] : nil;
 
     return [[DbxSharingFileLinkMetadata alloc] initWithUrl:url name:name linkPermissions:linkPermissions clientModified:clientModified serverModified:serverModified rev:rev size:size id_:id_ expires:expires pathLower:pathLower teamMemberInfo:teamMemberInfo contentOwnerTeamInfo:contentOwnerTeamInfo];
 }

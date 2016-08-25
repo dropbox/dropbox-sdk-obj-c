@@ -11,12 +11,12 @@
 
 - (instancetype)initWithActions:(NSArray<DbxSharingMemberAction *> *)actions limit:(NSNumber *)limit {
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
 
     self = [super init];
     if (self != nil) {
         _actions = actions;
-        _limit = limit ?: [NSNumber numberWithInt:1000];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
     }
     return self;
 }
@@ -48,14 +48,14 @@
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer serialize:elem]; }];
     }
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxSharingListFolderMembersCursorArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxSharingListFolderMembersCursorArg alloc] initWithActions:actions limit:limit];
 }

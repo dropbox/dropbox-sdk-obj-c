@@ -15,13 +15,13 @@
 }
 - (DbxRpcTask *)alphaGroupsCreate:(NSString *)groupName {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsCreate;
-    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:(NSString *)groupName];
+    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)alphaGroupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType {
+- (DbxRpcTask *)alphaGroupsCreate:(NSString *)groupName groupExternalId:(NSString *)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType *)groupManagementType {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsCreate;
-    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType];
+    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName groupExternalId:groupExternalId groupManagementType:groupManagementType];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -37,39 +37,39 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)alphaGroupsList:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)alphaGroupsList:(NSNumber *)limit {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsList;
-    DbxTeamGroupsListArg *arg = [[DbxTeamGroupsListArg alloc] initWithLimit:(NSNumber * _Nullable)limit];
+    DbxTeamGroupsListArg *arg = [[DbxTeamGroupsListArg alloc] initWithLimit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)alphaGroupsListContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)alphaGroupsListContinue:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsListContinue;
-    DbxTeamGroupsListContinueArg *arg = [[DbxTeamGroupsListContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxTeamGroupsListContinueArg *arg = [[DbxTeamGroupsListContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)alphaGroupsUpdate:(DbxTeamGroupSelector *)group {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsUpdate;
-    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:(DbxTeamGroupSelector *)group];
+    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:group];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)alphaGroupsUpdate:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType {
+- (DbxRpcTask *)alphaGroupsUpdate:(DbxTeamGroupSelector *)group returnMembers:(NSNumber *)returnMembers dNewGroupName:(NSString *)dNewGroupName dNewGroupExternalId:(NSString *)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType *)dNewGroupManagementType {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamAlphaGroupsUpdate;
-    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType];
+    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:group returnMembers:returnMembers dNewGroupName:dNewGroupName dNewGroupExternalId:dNewGroupExternalId dNewGroupManagementType:dNewGroupManagementType];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)devicesListMemberDevices:(NSString *)teamMemberId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamDevicesListMemberDevices;
-    DbxTeamListMemberDevicesArg *arg = [[DbxTeamListMemberDevicesArg alloc] initWithTeamMemberId:(NSString *)teamMemberId];
+    DbxTeamListMemberDevicesArg *arg = [[DbxTeamListMemberDevicesArg alloc] initWithTeamMemberId:teamMemberId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)devicesListMemberDevices:(NSString * _Nonnull)teamMemberId includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients {
+- (DbxRpcTask *)devicesListMemberDevices:(NSString *)teamMemberId includeWebSessions:(NSNumber *)includeWebSessions includeDesktopClients:(NSNumber *)includeDesktopClients includeMobileClients:(NSNumber *)includeMobileClients {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamDevicesListMemberDevices;
-    DbxTeamListMemberDevicesArg *arg = [[DbxTeamListMemberDevicesArg alloc] initWithTeamMemberId:(NSString * _Nonnull)teamMemberId includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients];
+    DbxTeamListMemberDevicesArg *arg = [[DbxTeamListMemberDevicesArg alloc] initWithTeamMemberId:teamMemberId includeWebSessions:includeWebSessions includeDesktopClients:includeDesktopClients includeMobileClients:includeMobileClients];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -79,9 +79,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)devicesListMembersDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients {
+- (DbxRpcTask *)devicesListMembersDevices:(NSString *)cursor includeWebSessions:(NSNumber *)includeWebSessions includeDesktopClients:(NSNumber *)includeDesktopClients includeMobileClients:(NSNumber *)includeMobileClients {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamDevicesListMembersDevices;
-    DbxTeamListMembersDevicesArg *arg = [[DbxTeamListMembersDevicesArg alloc] initWithCursor:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients];
+    DbxTeamListMembersDevicesArg *arg = [[DbxTeamListMembersDevicesArg alloc] initWithCursor:cursor includeWebSessions:includeWebSessions includeDesktopClients:includeDesktopClients includeMobileClients:includeMobileClients];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -91,9 +91,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)devicesListTeamDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients {
+- (DbxRpcTask *)devicesListTeamDevices:(NSString *)cursor includeWebSessions:(NSNumber *)includeWebSessions includeDesktopClients:(NSNumber *)includeDesktopClients includeMobileClients:(NSNumber *)includeMobileClients {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamDevicesListTeamDevices;
-    DbxTeamListTeamDevicesArg *arg = [[DbxTeamListTeamDevicesArg alloc] initWithCursor:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients];
+    DbxTeamListTeamDevicesArg *arg = [[DbxTeamListTeamDevicesArg alloc] initWithCursor:cursor includeWebSessions:includeWebSessions includeDesktopClients:includeDesktopClients includeMobileClients:includeMobileClients];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -103,9 +103,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)devicesRevokeDeviceSessionBatch:(NSArray<DbxTeamRevokeDeviceSessionArg *> * _Nonnull)revokeDevices {
+- (DbxRpcTask *)devicesRevokeDeviceSessionBatch:(NSArray<DbxTeamRevokeDeviceSessionArg *> *)revokeDevices {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamDevicesRevokeDeviceSessionBatch;
-    DbxTeamRevokeDeviceSessionBatchArg *arg = [[DbxTeamRevokeDeviceSessionBatchArg alloc] initWithRevokeDevices:(NSArray<DbxTeamRevokeDeviceSessionArg *> * _Nonnull)revokeDevices];
+    DbxTeamRevokeDeviceSessionBatchArg *arg = [[DbxTeamRevokeDeviceSessionBatchArg alloc] initWithRevokeDevices:revokeDevices];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -116,13 +116,13 @@
 
 - (DbxRpcTask *)groupsCreate:(NSString *)groupName {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsCreate;
-    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:(NSString *)groupName];
+    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType {
+- (DbxRpcTask *)groupsCreate:(NSString *)groupName groupExternalId:(NSString *)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType *)groupManagementType {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsCreate;
-    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType];
+    DbxTeamGroupCreateArg *arg = [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName groupExternalId:groupExternalId groupManagementType:groupManagementType];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -138,9 +138,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsJobStatusGet:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)groupsJobStatusGet:(NSString *)asyncJobId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsJobStatusGet;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -150,87 +150,87 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsList:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)groupsList:(NSNumber *)limit {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsList;
-    DbxTeamGroupsListArg *arg = [[DbxTeamGroupsListArg alloc] initWithLimit:(NSNumber * _Nullable)limit];
+    DbxTeamGroupsListArg *arg = [[DbxTeamGroupsListArg alloc] initWithLimit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsListContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)groupsListContinue:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsListContinue;
-    DbxTeamGroupsListContinueArg *arg = [[DbxTeamGroupsListContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxTeamGroupsListContinueArg *arg = [[DbxTeamGroupsListContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)groupsMembersAdd:(DbxTeamGroupSelector *)group members:(NSArray<DbxTeamMemberAccess *> *)members {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersAdd;
-    DbxTeamGroupMembersAddArg *arg = [[DbxTeamGroupMembersAddArg alloc] initWithGroup:(DbxTeamGroupSelector *)group members:(NSArray<DbxTeamMemberAccess *> *)members];
+    DbxTeamGroupMembersAddArg *arg = [[DbxTeamGroupMembersAddArg alloc] initWithGroup:group members:members];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsMembersAdd:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers {
+- (DbxRpcTask *)groupsMembersAdd:(DbxTeamGroupSelector *)group members:(NSArray<DbxTeamMemberAccess *> *)members returnMembers:(NSNumber *)returnMembers {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersAdd;
-    DbxTeamGroupMembersAddArg *arg = [[DbxTeamGroupMembersAddArg alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers];
+    DbxTeamGroupMembersAddArg *arg = [[DbxTeamGroupMembersAddArg alloc] initWithGroup:group members:members returnMembers:returnMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)groupsMembersList:(DbxTeamGroupSelector *)group {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersList;
-    DbxTeamGroupsMembersListArg *arg = [[DbxTeamGroupsMembersListArg alloc] initWithGroup:(DbxTeamGroupSelector *)group];
+    DbxTeamGroupsMembersListArg *arg = [[DbxTeamGroupsMembersListArg alloc] initWithGroup:group];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsMembersList:(DbxTeamGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit {
+- (DbxRpcTask *)groupsMembersList:(DbxTeamGroupSelector *)group limit:(NSNumber *)limit {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersList;
-    DbxTeamGroupsMembersListArg *arg = [[DbxTeamGroupsMembersListArg alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit];
+    DbxTeamGroupsMembersListArg *arg = [[DbxTeamGroupsMembersListArg alloc] initWithGroup:group limit:limit];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsMembersListContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)groupsMembersListContinue:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersListContinue;
-    DbxTeamGroupsMembersListContinueArg *arg = [[DbxTeamGroupsMembersListContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxTeamGroupsMembersListContinueArg *arg = [[DbxTeamGroupsMembersListContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)groupsMembersRemove:(DbxTeamGroupSelector *)group users:(NSArray<DbxTeamUserSelectorArg *> *)users {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersRemove;
-    DbxTeamGroupMembersRemoveArg *arg = [[DbxTeamGroupMembersRemoveArg alloc] initWithGroup:(DbxTeamGroupSelector *)group users:(NSArray<DbxTeamUserSelectorArg *> *)users];
+    DbxTeamGroupMembersRemoveArg *arg = [[DbxTeamGroupMembersRemoveArg alloc] initWithGroup:group users:users];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsMembersRemove:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers {
+- (DbxRpcTask *)groupsMembersRemove:(DbxTeamGroupSelector *)group users:(NSArray<DbxTeamUserSelectorArg *> *)users returnMembers:(NSNumber *)returnMembers {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersRemove;
-    DbxTeamGroupMembersRemoveArg *arg = [[DbxTeamGroupMembersRemoveArg alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers];
+    DbxTeamGroupMembersRemoveArg *arg = [[DbxTeamGroupMembersRemoveArg alloc] initWithGroup:group users:users returnMembers:returnMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)groupsMembersSetAccessType:(DbxTeamGroupSelector *)group user:(DbxTeamUserSelectorArg *)user accessType:(DbxTeamGroupAccessType *)accessType {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersSetAccessType;
-    DbxTeamGroupMembersSetAccessTypeArg *arg = [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:(DbxTeamGroupSelector *)group user:(DbxTeamUserSelectorArg *)user accessType:(DbxTeamGroupAccessType *)accessType];
+    DbxTeamGroupMembersSetAccessTypeArg *arg = [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsMembersSetAccessType:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType returnMembers:(NSNumber * _Nullable)returnMembers {
+- (DbxRpcTask *)groupsMembersSetAccessType:(DbxTeamGroupSelector *)group user:(DbxTeamUserSelectorArg *)user accessType:(DbxTeamGroupAccessType *)accessType returnMembers:(NSNumber *)returnMembers {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsMembersSetAccessType;
-    DbxTeamGroupMembersSetAccessTypeArg *arg = [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType returnMembers:(NSNumber * _Nullable)returnMembers];
+    DbxTeamGroupMembersSetAccessTypeArg *arg = [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType returnMembers:returnMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)groupsUpdate:(DbxTeamGroupSelector *)group {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsUpdate;
-    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:(DbxTeamGroupSelector *)group];
+    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:group];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)groupsUpdate:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType {
+- (DbxRpcTask *)groupsUpdate:(DbxTeamGroupSelector *)group returnMembers:(NSNumber *)returnMembers dNewGroupName:(NSString *)dNewGroupName dNewGroupExternalId:(NSString *)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType *)dNewGroupManagementType {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamGroupsUpdate;
-    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType];
+    DbxTeamGroupUpdateArgs *arg = [[DbxTeamGroupUpdateArgs alloc] initWithGroup:group returnMembers:returnMembers dNewGroupName:dNewGroupName dNewGroupExternalId:dNewGroupExternalId dNewGroupManagementType:dNewGroupManagementType];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)linkedAppsListMemberLinkedApps:(NSString * _Nonnull)teamMemberId {
+- (DbxRpcTask *)linkedAppsListMemberLinkedApps:(NSString *)teamMemberId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsListMemberLinkedApps;
-    DbxTeamListMemberAppsArg *arg = [[DbxTeamListMemberAppsArg alloc] initWithTeamMemberId:(NSString * _Nonnull)teamMemberId];
+    DbxTeamListMemberAppsArg *arg = [[DbxTeamListMemberAppsArg alloc] initWithTeamMemberId:teamMemberId];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -240,9 +240,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)linkedAppsListMembersLinkedApps:(NSString * _Nullable)cursor {
+- (DbxRpcTask *)linkedAppsListMembersLinkedApps:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsListMembersLinkedApps;
-    DbxTeamListMembersAppsArg *arg = [[DbxTeamListMembersAppsArg alloc] initWithCursor:(NSString * _Nullable)cursor];
+    DbxTeamListMembersAppsArg *arg = [[DbxTeamListMembersAppsArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -252,51 +252,51 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)linkedAppsListTeamLinkedApps:(NSString * _Nullable)cursor {
+- (DbxRpcTask *)linkedAppsListTeamLinkedApps:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsListTeamLinkedApps;
-    DbxTeamListTeamAppsArg *arg = [[DbxTeamListTeamAppsArg alloc] initWithCursor:(NSString * _Nullable)cursor];
+    DbxTeamListTeamAppsArg *arg = [[DbxTeamListTeamAppsArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)linkedAppsRevokeLinkedApp:(NSString *)appId teamMemberId:(NSString *)teamMemberId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsRevokeLinkedApp;
-    DbxTeamRevokeLinkedApiAppArg *arg = [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:(NSString *)appId teamMemberId:(NSString *)teamMemberId];
+    DbxTeamRevokeLinkedApiAppArg *arg = [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)linkedAppsRevokeLinkedApp:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId keepAppFolder:(NSNumber * _Nullable)keepAppFolder {
+- (DbxRpcTask *)linkedAppsRevokeLinkedApp:(NSString *)appId teamMemberId:(NSString *)teamMemberId keepAppFolder:(NSNumber *)keepAppFolder {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsRevokeLinkedApp;
-    DbxTeamRevokeLinkedApiAppArg *arg = [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId keepAppFolder:(NSNumber * _Nullable)keepAppFolder];
+    DbxTeamRevokeLinkedApiAppArg *arg = [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)linkedAppsRevokeLinkedAppBatch:(NSArray<DbxTeamRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp {
+- (DbxRpcTask *)linkedAppsRevokeLinkedAppBatch:(NSArray<DbxTeamRevokeLinkedApiAppArg *> *)revokeLinkedApp {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamLinkedAppsRevokeLinkedAppBatch;
-    DbxTeamRevokeLinkedApiAppBatchArg *arg = [[DbxTeamRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:(NSArray<DbxTeamRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp];
+    DbxTeamRevokeLinkedApiAppBatchArg *arg = [[DbxTeamRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:revokeLinkedApp];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)membersAdd:(NSArray<DbxTeamMemberAddArg *> *)dNewMembers {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersAdd;
-    DbxTeamMembersAddArg *arg = [[DbxTeamMembersAddArg alloc] initWithDNewMembers:(NSArray<DbxTeamMemberAddArg *> *)dNewMembers];
+    DbxTeamMembersAddArg *arg = [[DbxTeamMembersAddArg alloc] initWithDNewMembers:dNewMembers];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersAdd:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync {
+- (DbxRpcTask *)membersAdd:(NSArray<DbxTeamMemberAddArg *> *)dNewMembers forceAsync:(NSNumber *)forceAsync {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersAdd;
-    DbxTeamMembersAddArg *arg = [[DbxTeamMembersAddArg alloc] initWithDNewMembers:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync];
+    DbxTeamMembersAddArg *arg = [[DbxTeamMembersAddArg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersAddJobStatusGet:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)membersAddJobStatusGet:(NSString *)asyncJobId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersAddJobStatusGet;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersGetInfo:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)members {
+- (DbxRpcTask *)membersGetInfo:(NSArray<DbxTeamUserSelectorArg *> *)members {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersGetInfo;
-    DbxTeamMembersGetInfoArgs *arg = [[DbxTeamMembersGetInfoArgs alloc] initWithMembers:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)members];
+    DbxTeamMembersGetInfoArgs *arg = [[DbxTeamMembersGetInfoArgs alloc] initWithMembers:members];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -306,39 +306,39 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersList:(NSNumber * _Nullable)limit includeRemoved:(NSNumber * _Nullable)includeRemoved {
+- (DbxRpcTask *)membersList:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersList;
-    DbxTeamMembersListArg *arg = [[DbxTeamMembersListArg alloc] initWithLimit:(NSNumber * _Nullable)limit includeRemoved:(NSNumber * _Nullable)includeRemoved];
+    DbxTeamMembersListArg *arg = [[DbxTeamMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersListContinue:(NSString * _Nonnull)cursor {
+- (DbxRpcTask *)membersListContinue:(NSString *)cursor {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersListContinue;
-    DbxTeamMembersListContinueArg *arg = [[DbxTeamMembersListContinueArg alloc] initWithCursor:(NSString * _Nonnull)cursor];
+    DbxTeamMembersListContinueArg *arg = [[DbxTeamMembersListContinueArg alloc] initWithCursor:cursor];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersRecover:(DbxTeamUserSelectorArg * _Nonnull)user {
+- (DbxRpcTask *)membersRecover:(DbxTeamUserSelectorArg *)user {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersRecover;
-    DbxTeamMembersRecoverArg *arg = [[DbxTeamMembersRecoverArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user];
+    DbxTeamMembersRecoverArg *arg = [[DbxTeamMembersRecoverArg alloc] initWithUser:user];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)membersRemove:(DbxTeamUserSelectorArg *)user {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersRemove;
-    DbxTeamMembersRemoveArg *arg = [[DbxTeamMembersRemoveArg alloc] initWithUser:(DbxTeamUserSelectorArg *)user];
+    DbxTeamMembersRemoveArg *arg = [[DbxTeamMembersRemoveArg alloc] initWithUser:user];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersRemove:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DbxTeamUserSelectorArg * _Nullable)transferDestId transferAdminId:(DbxTeamUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount {
+- (DbxRpcTask *)membersRemove:(DbxTeamUserSelectorArg *)user wipeData:(NSNumber *)wipeData transferDestId:(DbxTeamUserSelectorArg *)transferDestId transferAdminId:(DbxTeamUserSelectorArg *)transferAdminId keepAccount:(NSNumber *)keepAccount {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersRemove;
-    DbxTeamMembersRemoveArg *arg = [[DbxTeamMembersRemoveArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DbxTeamUserSelectorArg * _Nullable)transferDestId transferAdminId:(DbxTeamUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount];
+    DbxTeamMembersRemoveArg *arg = [[DbxTeamMembersRemoveArg alloc] initWithUser:user wipeData:wipeData transferDestId:transferDestId transferAdminId:transferAdminId keepAccount:keepAccount];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersRemoveJobStatusGet:(NSString * _Nonnull)asyncJobId {
+- (DbxRpcTask *)membersRemoveJobStatusGet:(NSString *)asyncJobId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersRemoveJobStatusGet;
-    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:(NSString * _Nonnull)asyncJobId];
+    DbxAsyncPollArg *arg = [[DbxAsyncPollArg alloc] initWithAsyncJobId:asyncJobId];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -348,51 +348,51 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersSetAdminPermissions:(DbxTeamUserSelectorArg * _Nonnull)user dNewRole:(DbxTeamAdminTier * _Nonnull)dNewRole {
+- (DbxRpcTask *)membersSetAdminPermissions:(DbxTeamUserSelectorArg *)user dNewRole:(DbxTeamAdminTier *)dNewRole {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersSetAdminPermissions;
-    DbxTeamMembersSetPermissionsArg *arg = [[DbxTeamMembersSetPermissionsArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user dNewRole:(DbxTeamAdminTier * _Nonnull)dNewRole];
+    DbxTeamMembersSetPermissionsArg *arg = [[DbxTeamMembersSetPermissionsArg alloc] initWithUser:user dNewRole:dNewRole];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)membersSetProfile:(DbxTeamUserSelectorArg *)user {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersSetProfile;
-    DbxTeamMembersSetProfileArg *arg = [[DbxTeamMembersSetProfileArg alloc] initWithUser:(DbxTeamUserSelectorArg *)user];
+    DbxTeamMembersSetProfileArg *arg = [[DbxTeamMembersSetProfileArg alloc] initWithUser:user];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersSetProfile:(DbxTeamUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname {
+- (DbxRpcTask *)membersSetProfile:(DbxTeamUserSelectorArg *)user dNewEmail:(NSString *)dNewEmail dNewExternalId:(NSString *)dNewExternalId dNewGivenName:(NSString *)dNewGivenName dNewSurname:(NSString *)dNewSurname {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersSetProfile;
-    DbxTeamMembersSetProfileArg *arg = [[DbxTeamMembersSetProfileArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname];
+    DbxTeamMembersSetProfileArg *arg = [[DbxTeamMembersSetProfileArg alloc] initWithUser:user dNewEmail:dNewEmail dNewExternalId:dNewExternalId dNewGivenName:dNewGivenName dNewSurname:dNewSurname];
     return [self.client requestRpc:route arg:arg];
 }
 
 - (DbxRpcTask *)membersSuspend:(DbxTeamUserSelectorArg *)user {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersSuspend;
-    DbxTeamMembersDeactivateArg *arg = [[DbxTeamMembersDeactivateArg alloc] initWithUser:(DbxTeamUserSelectorArg *)user];
+    DbxTeamMembersDeactivateArg *arg = [[DbxTeamMembersDeactivateArg alloc] initWithUser:user];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersSuspend:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData {
+- (DbxRpcTask *)membersSuspend:(DbxTeamUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersSuspend;
-    DbxTeamMembersDeactivateArg *arg = [[DbxTeamMembersDeactivateArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData];
+    DbxTeamMembersDeactivateArg *arg = [[DbxTeamMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)membersUnsuspend:(DbxTeamUserSelectorArg * _Nonnull)user {
+- (DbxRpcTask *)membersUnsuspend:(DbxTeamUserSelectorArg *)user {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamMembersUnsuspend;
-    DbxTeamMembersUnsuspendArg *arg = [[DbxTeamMembersUnsuspendArg alloc] initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user];
+    DbxTeamMembersUnsuspendArg *arg = [[DbxTeamMembersUnsuspendArg alloc] initWithUser:user];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesTemplateAdd:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull)fields {
+- (DbxRpcTask *)propertiesTemplateAdd:(NSString *)name description_:(NSString *)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> *)fields {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamPropertiesTemplateAdd;
-    DbxTeamAddPropertyTemplateArg *arg = [[DbxTeamAddPropertyTemplateArg alloc] initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull)fields];
+    DbxTeamAddPropertyTemplateArg *arg = [[DbxTeamAddPropertyTemplateArg alloc] initWithName:name description_:description_ fields:fields];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesTemplateGet:(NSString * _Nonnull)templateId {
+- (DbxRpcTask *)propertiesTemplateGet:(NSString *)templateId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamPropertiesTemplateGet;
-    DbxPropertiesGetPropertyTemplateArg *arg = [[DbxPropertiesGetPropertyTemplateArg alloc] initWithTemplateId:(NSString * _Nonnull)templateId];
+    DbxPropertiesGetPropertyTemplateArg *arg = [[DbxPropertiesGetPropertyTemplateArg alloc] initWithTemplateId:templateId];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -403,13 +403,13 @@
 
 - (DbxRpcTask *)propertiesTemplateUpdate:(NSString *)templateId {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamPropertiesTemplateUpdate;
-    DbxTeamUpdatePropertyTemplateArg *arg = [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:(NSString *)templateId];
+    DbxTeamUpdatePropertyTemplateArg *arg = [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:templateId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)propertiesTemplateUpdate:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nullable)addFields {
+- (DbxRpcTask *)propertiesTemplateUpdate:(NSString *)templateId name:(NSString *)name description_:(NSString *)description_ addFields:(NSArray<DbxPropertiesPropertyFieldTemplate *> *)addFields {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamPropertiesTemplateUpdate;
-    DbxTeamUpdatePropertyTemplateArg *arg = [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nullable)addFields];
+    DbxTeamUpdatePropertyTemplateArg *arg = [[DbxTeamUpdatePropertyTemplateArg alloc] initWithTemplateId:templateId name:name description_:description_ addFields:addFields];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -419,9 +419,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)reportsGetActivity:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate {
+- (DbxRpcTask *)reportsGetActivity:(NSDate *)startDate endDate:(NSDate *)endDate {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamReportsGetActivity;
-    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate];
+    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -431,9 +431,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)reportsGetDevices:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate {
+- (DbxRpcTask *)reportsGetDevices:(NSDate *)startDate endDate:(NSDate *)endDate {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamReportsGetDevices;
-    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate];
+    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -443,9 +443,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)reportsGetMembership:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate {
+- (DbxRpcTask *)reportsGetMembership:(NSDate *)startDate endDate:(NSDate *)endDate {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamReportsGetMembership;
-    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate];
+    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
     return [self.client requestRpc:route arg:arg];
 }
 
@@ -455,9 +455,9 @@
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)reportsGetStorage:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate {
+- (DbxRpcTask *)reportsGetStorage:(NSDate *)startDate endDate:(NSDate *)endDate {
     DbxRoute *route = DbxTeamRouteObjects.dbxTeamReportsGetStorage;
-    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate];
+    DbxTeamDateRange *arg = [[DbxTeamDateRange alloc] initWithStartDate:startDate endDate:endDate];
     return [self.client requestRpc:route arg:arg];
 }
 

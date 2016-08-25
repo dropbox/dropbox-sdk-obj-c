@@ -45,19 +45,19 @@
 + (NSDictionary *)serialize:(DbxFilesFileSharingInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"read_only"] = [DbxBoolSerializer serialize:valueObj.readOnly];
-    jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
+    jsonDict[@"read_only"] = valueObj.readOnly;
+    jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
     if (valueObj.modifiedBy) {
-        jsonDict[@"modified_by"] = [DbxStringSerializer serialize:valueObj.modifiedBy];
+        jsonDict[@"modified_by"] = valueObj.modifiedBy;
     }
 
     return jsonDict;
 }
 
 + (DbxFilesFileSharingInfo *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *readOnly = [DbxBoolSerializer deserialize:valueDict[@"read_only"]];
-    NSString *parentSharedFolderId = [DbxStringSerializer deserialize:valueDict[@"parent_shared_folder_id"]];
-    NSString *modifiedBy = valueDict[@"modified_by"] != nil ? [DbxStringSerializer deserialize:valueDict[@"modified_by"]] : nil;
+    NSNumber *readOnly = valueDict[@"read_only"];
+    NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"];
+    NSString *modifiedBy = valueDict[@"modified_by"] ? valueDict[@"modified_by"] : nil;
 
     return [[DbxFilesFileSharingInfo alloc] initWithReadOnly:readOnly parentSharedFolderId:parentSharedFolderId modifiedBy:modifiedBy];
 }

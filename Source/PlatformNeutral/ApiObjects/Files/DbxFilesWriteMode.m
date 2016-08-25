@@ -93,7 +93,7 @@
         jsonDict[@".tag"] = @"overwrite";
     }
     else if ([valueObj isUpdate]) {
-        jsonDict[@"update"] = [DbxStringSerializer serialize:valueObj.update];
+        jsonDict[@"update"] = valueObj.update;
         jsonDict[@".tag"] = @"update";
     }
     else {
@@ -113,7 +113,7 @@
         return [[DbxFilesWriteMode alloc] initWithOverwrite];
     }
     if ([tag isEqualToString:@"update"]) {
-        NSString *update = [DbxStringSerializer deserialize:valueDict[@"update"]];
+        NSString *update = valueDict[@"update"];
         return [[DbxFilesWriteMode alloc] initWithUpdate:update];
     }
 

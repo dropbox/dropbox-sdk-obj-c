@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxTeamBaseDfbReport *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"start_date"] = [DbxStringSerializer serialize:valueObj.startDate];
+    jsonDict[@"start_date"] = valueObj.startDate;
 
     return jsonDict;
 }
 
 + (DbxTeamBaseDfbReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
+    NSString *startDate = valueDict[@"start_date"];
 
     return [[DbxTeamBaseDfbReport alloc] initWithStartDate:startDate];
 }

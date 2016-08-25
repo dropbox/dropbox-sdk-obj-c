@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxPropertiesPropertyField *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    jsonDict[@"value"] = [DbxStringSerializer serialize:valueObj.value];
+    jsonDict[@"name"] = valueObj.name;
+    jsonDict[@"value"] = valueObj.value;
 
     return jsonDict;
 }
 
 + (DbxPropertiesPropertyField *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *value = [DbxStringSerializer deserialize:valueDict[@"value"]];
+    NSString *name = valueDict[@"name"];
+    NSString *value = valueDict[@"value"];
 
     return [[DbxPropertiesPropertyField alloc] initWithName:name value:value];
 }

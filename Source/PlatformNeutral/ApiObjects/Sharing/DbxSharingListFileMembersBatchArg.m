@@ -10,12 +10,12 @@
 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files limit:(NSNumber *)limit {
     [DbxStoneValidators arrayValidator:nil maxItems:[NSNumber numberWithInt:100] itemValidator:[DbxStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
-    [DbxStoneValidators numericValidator:nil maxValue:[NSNumber numberWithInt:20]](limit ?: [NSNumber numberWithInt:10]);
+    [DbxStoneValidators numericValidator:nil maxValue:[NSNumber numberWithInt:20]](limit ?: [NSNumber numberWithUnsignedInt:10]);
 
     self = [super init];
     if (self != nil) {
         _files = files;
-        _limit = limit ?: [NSNumber numberWithInt:10];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:10];
     }
     return self;
 }
@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxSharingListFileMembersBatchArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"files"] = [DbxArraySerializer serialize:valueObj.files withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"files"] = [DbxArraySerializer serialize:valueObj.files withBlock:^id(id elem) { return elem; }];
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxSharingListFileMembersBatchArg *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *files = [DbxArraySerializer deserialize:valueDict[@"files"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSArray<NSString *> *files = [DbxArraySerializer deserialize:valueDict[@"files"] withBlock:^id(id elem) { return elem; }];
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxSharingListFileMembersBatchArg alloc] initWithFiles:files limit:limit];
 }

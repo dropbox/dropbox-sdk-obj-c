@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxTeamDeviceSessionArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+    jsonDict[@"session_id"] = valueObj.sessionId;
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
 
     return jsonDict;
 }
 
 + (DbxTeamDeviceSessionArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
 
     return [[DbxTeamDeviceSessionArg alloc] initWithSessionId:sessionId teamMemberId:teamMemberId];
 }

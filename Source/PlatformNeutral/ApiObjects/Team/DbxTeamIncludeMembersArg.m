@@ -41,13 +41,13 @@
 + (NSDictionary *)serialize:(DbxTeamIncludeMembersArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"return_members"] = [DbxBoolSerializer serialize:valueObj.returnMembers];
+    jsonDict[@"return_members"] = valueObj.returnMembers;
 
     return jsonDict;
 }
 
 + (DbxTeamIncludeMembersArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
+    NSNumber *returnMembers = valueDict[@"return_members"];
 
     return [[DbxTeamIncludeMembersArg alloc] initWithReturnMembers:returnMembers];
 }

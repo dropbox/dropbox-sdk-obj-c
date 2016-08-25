@@ -72,7 +72,7 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isNoAccount]) {
-        jsonDict[@"no_account"] = [DbxStringSerializer serialize:valueObj.noAccount];
+        jsonDict[@"no_account"] = valueObj.noAccount;
         jsonDict[@".tag"] = @"no_account";
     }
     else if ([valueObj isOther]) {
@@ -89,7 +89,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"no_account"]) {
-        NSString *noAccount = [DbxStringSerializer deserialize:valueDict[@"no_account"]];
+        NSString *noAccount = valueDict[@"no_account"];
         return [[DbxUsersGetAccountBatchError alloc] initWithNoAccount:noAccount];
     }
     if ([tag isEqualToString:@"other"]) {

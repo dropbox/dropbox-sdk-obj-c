@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxTeamListMemberAppsArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
 
     return jsonDict;
 }
 
 + (DbxTeamListMemberAppsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
 
     return [[DbxTeamListMemberAppsArg alloc] initWithTeamMemberId:teamMemberId];
 }

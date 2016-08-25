@@ -40,14 +40,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"members"] = [DbxSharingSharedFileMembersSerializer serialize:valueObj.members];
-    jsonDict[@"member_count"] = [DbxNSNumberSerializer serialize:valueObj.memberCount];
+    jsonDict[@"member_count"] = valueObj.memberCount;
 
     return jsonDict;
 }
 
 + (DbxSharingListFileMembersCountResult *)deserialize:(NSDictionary *)valueDict {
     DbxSharingSharedFileMembers *members = [DbxSharingSharedFileMembersSerializer deserialize:valueDict[@"members"]];
-    NSNumber *memberCount = [DbxNSNumberSerializer deserialize:valueDict[@"member_count"]];
+    NSNumber *memberCount = valueDict[@"member_count"];
 
     return [[DbxSharingListFileMembersCountResult alloc] initWithMembers:members memberCount:memberCount];
 }

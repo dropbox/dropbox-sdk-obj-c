@@ -142,7 +142,7 @@
 
     if ([valueObj isMalformedPath]) {
         if (valueObj.malformedPath) {
-            jsonDict[@"malformed_path"] = [DbxStringSerializer serialize:valueObj.malformedPath];
+            jsonDict[@"malformed_path"] = valueObj.malformedPath;
         }
         jsonDict[@".tag"] = @"malformed_path";
     }
@@ -173,7 +173,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"malformed_path"]) {
-        NSString *malformedPath = valueDict[@"malformed_path"] ? [DbxStringSerializer deserialize:valueDict[@"malformed_path"]] : nil;
+        NSString *malformedPath = valueDict[@"malformed_path"] ? valueDict[@"malformed_path"] : nil;
         return [[DbxFilesWriteError alloc] initWithMalformedPath:malformedPath];
     }
     if ([tag isEqualToString:@"conflict"]) {

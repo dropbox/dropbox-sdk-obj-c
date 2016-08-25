@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxPropertiesListPropertyTemplateIds *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"template_ids"] = [DbxArraySerializer serialize:valueObj.templateIds withBlock:^id(id elem) { return [DbxStringSerializer serialize:elem]; }];
+    jsonDict[@"template_ids"] = [DbxArraySerializer serialize:valueObj.templateIds withBlock:^id(id elem) { return elem; }];
 
     return jsonDict;
 }
 
 + (DbxPropertiesListPropertyTemplateIds *)deserialize:(NSDictionary *)valueDict {
-    NSArray<NSString *> *templateIds = [DbxArraySerializer deserialize:valueDict[@"template_ids"] withBlock:^id(id elem) { return [DbxStringSerializer deserialize:elem]; }];
+    NSArray<NSString *> *templateIds = [DbxArraySerializer deserialize:valueDict[@"template_ids"] withBlock:^id(id elem) { return elem; }];
 
     return [[DbxPropertiesListPropertyTemplateIds alloc] initWithTemplateIds:templateIds];
 }

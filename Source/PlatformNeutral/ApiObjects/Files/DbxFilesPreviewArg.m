@@ -44,17 +44,17 @@
 + (NSDictionary *)serialize:(DbxFilesPreviewArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     if (valueObj.rev) {
-        jsonDict[@"rev"] = [DbxStringSerializer serialize:valueObj.rev];
+        jsonDict[@"rev"] = valueObj.rev;
     }
 
     return jsonDict;
 }
 
 + (DbxFilesPreviewArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    NSString *rev = valueDict[@"rev"] != nil ? [DbxStringSerializer deserialize:valueDict[@"rev"]] : nil;
+    NSString *path = valueDict[@"path"];
+    NSString *rev = valueDict[@"rev"] ? valueDict[@"rev"] : nil;
 
     return [[DbxFilesPreviewArg alloc] initWithPath:path rev:rev];
 }

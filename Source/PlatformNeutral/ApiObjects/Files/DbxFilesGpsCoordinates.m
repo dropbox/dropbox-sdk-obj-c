@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxFilesGpsCoordinates *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"latitude"] = [DbxNSNumberSerializer serialize:valueObj.latitude];
-    jsonDict[@"longitude"] = [DbxNSNumberSerializer serialize:valueObj.longitude];
+    jsonDict[@"latitude"] = valueObj.latitude;
+    jsonDict[@"longitude"] = valueObj.longitude;
 
     return jsonDict;
 }
 
 + (DbxFilesGpsCoordinates *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *latitude = [DbxNSNumberSerializer deserialize:valueDict[@"latitude"]];
-    NSNumber *longitude = [DbxNSNumberSerializer deserialize:valueDict[@"longitude"]];
+    NSNumber *latitude = valueDict[@"latitude"];
+    NSNumber *longitude = valueDict[@"longitude"];
 
     return [[DbxFilesGpsCoordinates alloc] initWithLatitude:latitude longitude:longitude];
 }

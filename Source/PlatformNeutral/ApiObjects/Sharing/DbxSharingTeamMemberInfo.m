@@ -45,9 +45,9 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"team_info"] = [DbxUsersTeamSerializer serialize:valueObj.teamInfo];
-    jsonDict[@"display_name"] = [DbxStringSerializer serialize:valueObj.displayName];
+    jsonDict[@"display_name"] = valueObj.displayName;
     if (valueObj.memberId) {
-        jsonDict[@"member_id"] = [DbxStringSerializer serialize:valueObj.memberId];
+        jsonDict[@"member_id"] = valueObj.memberId;
     }
 
     return jsonDict;
@@ -55,8 +55,8 @@
 
 + (DbxSharingTeamMemberInfo *)deserialize:(NSDictionary *)valueDict {
     DbxUsersTeam *teamInfo = [DbxUsersTeamSerializer deserialize:valueDict[@"team_info"]];
-    NSString *displayName = [DbxStringSerializer deserialize:valueDict[@"display_name"]];
-    NSString *memberId = valueDict[@"member_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"member_id"]] : nil;
+    NSString *displayName = valueDict[@"display_name"];
+    NSString *memberId = valueDict[@"member_id"] ? valueDict[@"member_id"] : nil;
 
     return [[DbxSharingTeamMemberInfo alloc] initWithTeamInfo:teamInfo displayName:displayName memberId:memberId];
 }

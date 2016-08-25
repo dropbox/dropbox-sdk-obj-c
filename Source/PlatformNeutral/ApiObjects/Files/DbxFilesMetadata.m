@@ -48,15 +48,15 @@
 + (NSDictionary *)serialize:(DbxFilesMetadata *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
+    jsonDict[@"name"] = valueObj.name;
     if (valueObj.pathLower) {
-        jsonDict[@"path_lower"] = [DbxStringSerializer serialize:valueObj.pathLower];
+        jsonDict[@"path_lower"] = valueObj.pathLower;
     }
     if (valueObj.pathDisplay) {
-        jsonDict[@"path_display"] = [DbxStringSerializer serialize:valueObj.pathDisplay];
+        jsonDict[@"path_display"] = valueObj.pathDisplay;
     }
     if (valueObj.parentSharedFolderId) {
-        jsonDict[@"parent_shared_folder_id"] = [DbxStringSerializer serialize:valueObj.parentSharedFolderId];
+        jsonDict[@"parent_shared_folder_id"] = valueObj.parentSharedFolderId;
     }
 
     if ([valueObj isKindOfClass:[DbxFilesFileMetadata class]]) {

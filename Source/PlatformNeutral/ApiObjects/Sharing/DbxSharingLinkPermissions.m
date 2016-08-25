@@ -47,7 +47,7 @@
 + (NSDictionary *)serialize:(DbxSharingLinkPermissions *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"can_revoke"] = [DbxBoolSerializer serialize:valueObj.canRevoke];
+    jsonDict[@"can_revoke"] = valueObj.canRevoke;
     if (valueObj.resolvedVisibility) {
         jsonDict[@"resolved_visibility"] = [DbxSharingResolvedVisibilitySerializer serialize:valueObj.resolvedVisibility];
     }
@@ -62,10 +62,10 @@
 }
 
 + (DbxSharingLinkPermissions *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *canRevoke = [DbxBoolSerializer deserialize:valueDict[@"can_revoke"]];
-    DbxSharingResolvedVisibility *resolvedVisibility = valueDict[@"resolved_visibility"] != nil ? [DbxSharingResolvedVisibilitySerializer deserialize:valueDict[@"resolved_visibility"]] : nil;
-    DbxSharingRequestedVisibility *requestedVisibility = valueDict[@"requested_visibility"] != nil ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]] : nil;
-    DbxSharingSharedLinkAccessFailureReason *revokeFailureReason = valueDict[@"revoke_failure_reason"] != nil ? [DbxSharingSharedLinkAccessFailureReasonSerializer deserialize:valueDict[@"revoke_failure_reason"]] : nil;
+    NSNumber *canRevoke = valueDict[@"can_revoke"];
+    DbxSharingResolvedVisibility *resolvedVisibility = valueDict[@"resolved_visibility"] ? [DbxSharingResolvedVisibilitySerializer deserialize:valueDict[@"resolved_visibility"]] : nil;
+    DbxSharingRequestedVisibility *requestedVisibility = valueDict[@"requested_visibility"] ? [DbxSharingRequestedVisibilitySerializer deserialize:valueDict[@"requested_visibility"]] : nil;
+    DbxSharingSharedLinkAccessFailureReason *revokeFailureReason = valueDict[@"revoke_failure_reason"] ? [DbxSharingSharedLinkAccessFailureReasonSerializer deserialize:valueDict[@"revoke_failure_reason"]] : nil;
 
     return [[DbxSharingLinkPermissions alloc] initWithCanRevoke:canRevoke resolvedVisibility:resolvedVisibility requestedVisibility:requestedVisibility revokeFailureReason:revokeFailureReason];
 }

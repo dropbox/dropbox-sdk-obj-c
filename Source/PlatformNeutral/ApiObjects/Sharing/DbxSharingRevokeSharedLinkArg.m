@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxSharingRevokeSharedLinkArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"url"] = [DbxStringSerializer serialize:valueObj.url];
+    jsonDict[@"url"] = valueObj.url;
 
     return jsonDict;
 }
 
 + (DbxSharingRevokeSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *url = [DbxStringSerializer deserialize:valueDict[@"url"]];
+    NSString *url = valueDict[@"url"];
 
     return [[DbxSharingRevokeSharedLinkArg alloc] initWithUrl:url];
 }

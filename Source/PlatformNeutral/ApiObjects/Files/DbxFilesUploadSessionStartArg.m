@@ -41,13 +41,13 @@
 + (NSDictionary *)serialize:(DbxFilesUploadSessionStartArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"close"] = [DbxBoolSerializer serialize:valueObj.close];
+    jsonDict[@"close"] = valueObj.close;
 
     return jsonDict;
 }
 
 + (DbxFilesUploadSessionStartArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *close = [DbxBoolSerializer deserialize:valueDict[@"close"]];
+    NSNumber *close = valueDict[@"close"];
 
     return [[DbxFilesUploadSessionStartArg alloc] initWithClose:close];
 }

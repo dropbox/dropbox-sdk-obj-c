@@ -42,7 +42,7 @@
 + (NSDictionary *)serialize:(DbxSharingUpdateFolderMemberArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     jsonDict[@"member"] = [DbxSharingMemberSelectorSerializer serialize:valueObj.member];
     jsonDict[@"access_level"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessLevel];
 
@@ -50,7 +50,7 @@
 }
 
 + (DbxSharingUpdateFolderMemberArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
     DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
     DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
 

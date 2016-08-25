@@ -50,7 +50,7 @@
         jsonDict[@"access_level"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessLevel];
     }
     if (valueObj.warning) {
-        jsonDict[@"warning"] = [DbxStringSerializer serialize:valueObj.warning];
+        jsonDict[@"warning"] = valueObj.warning;
     }
     if (valueObj.accessDetails) {
         jsonDict[@"access_details"] = [DbxArraySerializer serialize:valueObj.accessDetails withBlock:^id(id elem) { return [DbxSharingParentFolderAccessInfoSerializer serialize:elem]; }];
@@ -60,9 +60,9 @@
 }
 
 + (DbxSharingMemberAccessLevelResult *)deserialize:(NSDictionary *)valueDict {
-    DbxSharingAccessLevel *accessLevel = valueDict[@"access_level"] != nil ? [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]] : nil;
-    NSString *warning = valueDict[@"warning"] != nil ? [DbxStringSerializer deserialize:valueDict[@"warning"]] : nil;
-    NSArray<DbxSharingParentFolderAccessInfo *> *accessDetails = valueDict[@"access_details"] != nil ? [DbxArraySerializer deserialize:valueDict[@"access_details"] withBlock:^id(id elem) { return [DbxSharingParentFolderAccessInfoSerializer deserialize:elem]; }] : nil;
+    DbxSharingAccessLevel *accessLevel = valueDict[@"access_level"] ? [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]] : nil;
+    NSString *warning = valueDict[@"warning"] ? valueDict[@"warning"] : nil;
+    NSArray<DbxSharingParentFolderAccessInfo *> *accessDetails = valueDict[@"access_details"] ? [DbxArraySerializer deserialize:valueDict[@"access_details"] withBlock:^id(id elem) { return [DbxSharingParentFolderAccessInfoSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingMemberAccessLevelResult alloc] initWithAccessLevel:accessLevel warning:warning accessDetails:accessDetails];
 }

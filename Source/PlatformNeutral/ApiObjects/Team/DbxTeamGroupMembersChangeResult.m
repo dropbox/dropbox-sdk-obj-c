@@ -41,14 +41,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"group_info"] = [DbxTeamGroupFullInfoSerializer serialize:valueObj.groupInfo];
-    jsonDict[@"async_job_id"] = [DbxStringSerializer serialize:valueObj.asyncJobId];
+    jsonDict[@"async_job_id"] = valueObj.asyncJobId;
 
     return jsonDict;
 }
 
 + (DbxTeamGroupMembersChangeResult *)deserialize:(NSDictionary *)valueDict {
     DbxTeamGroupFullInfo *groupInfo = [DbxTeamGroupFullInfoSerializer deserialize:valueDict[@"group_info"]];
-    NSString *asyncJobId = [DbxStringSerializer deserialize:valueDict[@"async_job_id"]];
+    NSString *asyncJobId = valueDict[@"async_job_id"];
 
     return [[DbxTeamGroupMembersChangeResult alloc] initWithGroupInfo:groupInfo asyncJobId:asyncJobId];
 }

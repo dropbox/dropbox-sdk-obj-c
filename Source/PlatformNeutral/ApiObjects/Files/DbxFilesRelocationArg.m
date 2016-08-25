@@ -40,15 +40,15 @@
 + (NSDictionary *)serialize:(DbxFilesRelocationArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"from_path"] = [DbxStringSerializer serialize:valueObj.fromPath];
-    jsonDict[@"to_path"] = [DbxStringSerializer serialize:valueObj.toPath];
+    jsonDict[@"from_path"] = valueObj.fromPath;
+    jsonDict[@"to_path"] = valueObj.toPath;
 
     return jsonDict;
 }
 
 + (DbxFilesRelocationArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *fromPath = [DbxStringSerializer deserialize:valueDict[@"from_path"]];
-    NSString *toPath = [DbxStringSerializer deserialize:valueDict[@"to_path"]];
+    NSString *fromPath = valueDict[@"from_path"];
+    NSString *toPath = valueDict[@"to_path"];
 
     return [[DbxFilesRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
 }

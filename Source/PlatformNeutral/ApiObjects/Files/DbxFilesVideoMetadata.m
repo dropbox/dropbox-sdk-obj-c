@@ -54,17 +54,17 @@
         jsonDict[@"time_taken"] = [DbxNSDateSerializer serialize:valueObj.timeTaken dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
     }
     if (valueObj.duration) {
-        jsonDict[@"duration"] = [DbxNSNumberSerializer serialize:valueObj.duration];
+        jsonDict[@"duration"] = valueObj.duration;
     }
 
     return jsonDict;
 }
 
 + (DbxFilesVideoMetadata *)deserialize:(NSDictionary *)valueDict {
-    DbxFilesDimensions *dimensions = valueDict[@"dimensions"] != nil ? [DbxFilesDimensionsSerializer deserialize:valueDict[@"dimensions"]] : nil;
-    DbxFilesGpsCoordinates *location = valueDict[@"location"] != nil ? [DbxFilesGpsCoordinatesSerializer deserialize:valueDict[@"location"]] : nil;
-    NSDate *timeTaken = valueDict[@"time_taken"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"time_taken"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSNumber *duration = valueDict[@"duration"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"duration"]] : nil;
+    DbxFilesDimensions *dimensions = valueDict[@"dimensions"] ? [DbxFilesDimensionsSerializer deserialize:valueDict[@"dimensions"]] : nil;
+    DbxFilesGpsCoordinates *location = valueDict[@"location"] ? [DbxFilesGpsCoordinatesSerializer deserialize:valueDict[@"location"]] : nil;
+    NSDate *timeTaken = valueDict[@"time_taken"] ? [DbxNSDateSerializer deserialize:valueDict[@"time_taken"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSNumber *duration = valueDict[@"duration"] ? valueDict[@"duration"] : nil;
 
     return [[DbxFilesVideoMetadata alloc] initWithDimensions:dimensions location:location timeTaken:timeTaken duration:duration];
 }

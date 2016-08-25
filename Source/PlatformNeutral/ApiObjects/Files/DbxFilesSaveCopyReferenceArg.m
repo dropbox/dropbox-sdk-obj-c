@@ -39,15 +39,15 @@
 + (NSDictionary *)serialize:(DbxFilesSaveCopyReferenceArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"copy_reference"] = [DbxStringSerializer serialize:valueObj.dCopyReference];
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"copy_reference"] = valueObj.dCopyReference;
+    jsonDict[@"path"] = valueObj.path;
 
     return jsonDict;
 }
 
 + (DbxFilesSaveCopyReferenceArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *dCopyReference = [DbxStringSerializer deserialize:valueDict[@"copy_reference"]];
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *dCopyReference = valueDict[@"copy_reference"];
+    NSString *path = valueDict[@"path"];
 
     return [[DbxFilesSaveCopyReferenceArg alloc] initWithDCopyReference:dCopyReference path:path];
 }

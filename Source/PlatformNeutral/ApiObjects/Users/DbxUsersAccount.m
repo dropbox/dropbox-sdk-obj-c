@@ -48,25 +48,25 @@
 + (NSDictionary *)serialize:(DbxUsersAccount *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"account_id"] = [DbxStringSerializer serialize:valueObj.accountId];
+    jsonDict[@"account_id"] = valueObj.accountId;
     jsonDict[@"name"] = [DbxUsersNameSerializer serialize:valueObj.name];
-    jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
-    jsonDict[@"email_verified"] = [DbxBoolSerializer serialize:valueObj.emailVerified];
-    jsonDict[@"disabled"] = [DbxBoolSerializer serialize:valueObj.disabled];
+    jsonDict[@"email"] = valueObj.email;
+    jsonDict[@"email_verified"] = valueObj.emailVerified;
+    jsonDict[@"disabled"] = valueObj.disabled;
     if (valueObj.profilePhotoUrl) {
-        jsonDict[@"profile_photo_url"] = [DbxStringSerializer serialize:valueObj.profilePhotoUrl];
+        jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
     }
 
     return jsonDict;
 }
 
 + (DbxUsersAccount *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
+    NSString *accountId = valueDict[@"account_id"];
     DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
-    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
-    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict[@"disabled"]];
-    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"profile_photo_url"]] : nil;
+    NSString *email = valueDict[@"email"];
+    NSNumber *emailVerified = valueDict[@"email_verified"];
+    NSNumber *disabled = valueDict[@"disabled"];
+    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ? valueDict[@"profile_photo_url"] : nil;
 
     return [[DbxUsersAccount alloc] initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
 }

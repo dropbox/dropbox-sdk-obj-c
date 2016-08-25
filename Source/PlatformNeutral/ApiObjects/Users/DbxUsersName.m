@@ -40,19 +40,19 @@
 + (NSDictionary *)serialize:(DbxUsersName *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"given_name"] = [DbxStringSerializer serialize:valueObj.givenName];
-    jsonDict[@"surname"] = [DbxStringSerializer serialize:valueObj.surname];
-    jsonDict[@"familiar_name"] = [DbxStringSerializer serialize:valueObj.familiarName];
-    jsonDict[@"display_name"] = [DbxStringSerializer serialize:valueObj.displayName];
+    jsonDict[@"given_name"] = valueObj.givenName;
+    jsonDict[@"surname"] = valueObj.surname;
+    jsonDict[@"familiar_name"] = valueObj.familiarName;
+    jsonDict[@"display_name"] = valueObj.displayName;
 
     return jsonDict;
 }
 
 + (DbxUsersName *)deserialize:(NSDictionary *)valueDict {
-    NSString *givenName = [DbxStringSerializer deserialize:valueDict[@"given_name"]];
-    NSString *surname = [DbxStringSerializer deserialize:valueDict[@"surname"]];
-    NSString *familiarName = [DbxStringSerializer deserialize:valueDict[@"familiar_name"]];
-    NSString *displayName = [DbxStringSerializer deserialize:valueDict[@"display_name"]];
+    NSString *givenName = valueDict[@"given_name"];
+    NSString *surname = valueDict[@"surname"];
+    NSString *familiarName = valueDict[@"familiar_name"];
+    NSString *displayName = valueDict[@"display_name"];
 
     return [[DbxUsersName alloc] initWithGivenName:givenName surname:surname familiarName:familiarName displayName:displayName];
 }

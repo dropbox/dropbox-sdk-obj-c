@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxTeamActiveWebSession *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
-    jsonDict[@"user_agent"] = [DbxStringSerializer serialize:valueObj.userAgent];
-    jsonDict[@"os"] = [DbxStringSerializer serialize:valueObj.os];
-    jsonDict[@"browser"] = [DbxStringSerializer serialize:valueObj.browser];
+    jsonDict[@"session_id"] = valueObj.sessionId;
+    jsonDict[@"user_agent"] = valueObj.userAgent;
+    jsonDict[@"os"] = valueObj.os;
+    jsonDict[@"browser"] = valueObj.browser;
     if (valueObj.ipAddress) {
-        jsonDict[@"ip_address"] = [DbxStringSerializer serialize:valueObj.ipAddress];
+        jsonDict[@"ip_address"] = valueObj.ipAddress;
     }
     if (valueObj.country) {
-        jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
+        jsonDict[@"country"] = valueObj.country;
     }
     if (valueObj.created) {
         jsonDict[@"created"] = [DbxNSDateSerializer serialize:valueObj.created dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -65,14 +65,14 @@
 }
 
 + (DbxTeamActiveWebSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *userAgent = [DbxStringSerializer deserialize:valueDict[@"user_agent"]];
-    NSString *os = [DbxStringSerializer deserialize:valueDict[@"os"]];
-    NSString *browser = [DbxStringSerializer deserialize:valueDict[@"browser"]];
-    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *userAgent = valueDict[@"user_agent"];
+    NSString *os = valueDict[@"os"];
+    NSString *browser = valueDict[@"browser"];
+    NSString *ipAddress = valueDict[@"ip_address"] ? valueDict[@"ip_address"] : nil;
+    NSString *country = valueDict[@"country"] ? valueDict[@"country"] : nil;
+    NSDate *created = valueDict[@"created"] ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict[@"updated"] ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamActiveWebSession alloc] initWithSessionId:sessionId userAgent:userAgent os:os browser:browser ipAddress:ipAddress country:country created:created updated:updated];
 }

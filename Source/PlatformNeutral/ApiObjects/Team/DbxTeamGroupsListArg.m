@@ -9,11 +9,11 @@
 @implementation DbxTeamGroupsListArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithInt:1000];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
     }
     return self;
 }
@@ -42,13 +42,13 @@
 + (NSDictionary *)serialize:(DbxTeamGroupsListArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxTeamGroupsListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxTeamGroupsListArg alloc] initWithLimit:limit];
 }

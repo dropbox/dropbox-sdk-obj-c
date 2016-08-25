@@ -40,14 +40,14 @@
 + (NSDictionary *)serialize:(DbxSharingRemoveFileMemberArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
+    jsonDict[@"file"] = valueObj.file;
     jsonDict[@"member"] = [DbxSharingMemberSelectorSerializer serialize:valueObj.member];
 
     return jsonDict;
 }
 
 + (DbxSharingRemoveFileMemberArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSString *file = valueDict[@"file"];
     DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
 
     return [[DbxSharingRemoveFileMemberArg alloc] initWithFile:file member:member];

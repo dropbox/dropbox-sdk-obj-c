@@ -54,45 +54,45 @@
 + (NSDictionary *)serialize:(DbxUsersFullAccount *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"account_id"] = [DbxStringSerializer serialize:valueObj.accountId];
+    jsonDict[@"account_id"] = valueObj.accountId;
     jsonDict[@"name"] = [DbxUsersNameSerializer serialize:valueObj.name];
-    jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
-    jsonDict[@"email_verified"] = [DbxBoolSerializer serialize:valueObj.emailVerified];
-    jsonDict[@"disabled"] = [DbxBoolSerializer serialize:valueObj.disabled];
-    jsonDict[@"locale"] = [DbxStringSerializer serialize:valueObj.locale];
-    jsonDict[@"referral_link"] = [DbxStringSerializer serialize:valueObj.referralLink];
-    jsonDict[@"is_paired"] = [DbxBoolSerializer serialize:valueObj.isPaired];
+    jsonDict[@"email"] = valueObj.email;
+    jsonDict[@"email_verified"] = valueObj.emailVerified;
+    jsonDict[@"disabled"] = valueObj.disabled;
+    jsonDict[@"locale"] = valueObj.locale;
+    jsonDict[@"referral_link"] = valueObj.referralLink;
+    jsonDict[@"is_paired"] = valueObj.isPaired;
     jsonDict[@"account_type"] = [DbxUsersAccountTypeSerializer serialize:valueObj.accountType];
     if (valueObj.profilePhotoUrl) {
-        jsonDict[@"profile_photo_url"] = [DbxStringSerializer serialize:valueObj.profilePhotoUrl];
+        jsonDict[@"profile_photo_url"] = valueObj.profilePhotoUrl;
     }
     if (valueObj.country) {
-        jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
+        jsonDict[@"country"] = valueObj.country;
     }
     if (valueObj.team) {
         jsonDict[@"team"] = [DbxUsersFullTeamSerializer serialize:valueObj.team];
     }
     if (valueObj.teamMemberId) {
-        jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+        jsonDict[@"team_member_id"] = valueObj.teamMemberId;
     }
 
     return jsonDict;
 }
 
 + (DbxUsersFullAccount *)deserialize:(NSDictionary *)valueDict {
-    NSString *accountId = [DbxStringSerializer deserialize:valueDict[@"account_id"]];
+    NSString *accountId = valueDict[@"account_id"];
     DbxUsersName *name = [DbxUsersNameSerializer deserialize:valueDict[@"name"]];
-    NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
-    NSNumber *emailVerified = [DbxBoolSerializer deserialize:valueDict[@"email_verified"]];
-    NSNumber *disabled = [DbxBoolSerializer deserialize:valueDict[@"disabled"]];
-    NSString *locale = [DbxStringSerializer deserialize:valueDict[@"locale"]];
-    NSString *referralLink = [DbxStringSerializer deserialize:valueDict[@"referral_link"]];
-    NSNumber *isPaired = [DbxBoolSerializer deserialize:valueDict[@"is_paired"]];
+    NSString *email = valueDict[@"email"];
+    NSNumber *emailVerified = valueDict[@"email_verified"];
+    NSNumber *disabled = valueDict[@"disabled"];
+    NSString *locale = valueDict[@"locale"];
+    NSString *referralLink = valueDict[@"referral_link"];
+    NSNumber *isPaired = valueDict[@"is_paired"];
     DbxUsersAccountType *accountType = [DbxUsersAccountTypeSerializer deserialize:valueDict[@"account_type"]];
-    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"profile_photo_url"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    DbxUsersFullTeam *team = valueDict[@"team"] != nil ? [DbxUsersFullTeamSerializer deserialize:valueDict[@"team"]] : nil;
-    NSString *teamMemberId = valueDict[@"team_member_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"team_member_id"]] : nil;
+    NSString *profilePhotoUrl = valueDict[@"profile_photo_url"] ? valueDict[@"profile_photo_url"] : nil;
+    NSString *country = valueDict[@"country"] ? valueDict[@"country"] : nil;
+    DbxUsersFullTeam *team = valueDict[@"team"] ? [DbxUsersFullTeamSerializer deserialize:valueDict[@"team"]] : nil;
+    NSString *teamMemberId = valueDict[@"team_member_id"] ? valueDict[@"team_member_id"] : nil;
 
     return [[DbxUsersFullAccount alloc] initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled locale:locale referralLink:referralLink isPaired:isPaired accountType:accountType profilePhotoUrl:profilePhotoUrl country:country team:team teamMemberId:teamMemberId];
 }

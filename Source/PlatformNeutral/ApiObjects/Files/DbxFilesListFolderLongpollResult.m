@@ -42,17 +42,17 @@
 + (NSDictionary *)serialize:(DbxFilesListFolderLongpollResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"changes"] = [DbxBoolSerializer serialize:valueObj.changes];
+    jsonDict[@"changes"] = valueObj.changes;
     if (valueObj.backoff) {
-        jsonDict[@"backoff"] = [DbxNSNumberSerializer serialize:valueObj.backoff];
+        jsonDict[@"backoff"] = valueObj.backoff;
     }
 
     return jsonDict;
 }
 
 + (DbxFilesListFolderLongpollResult *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *changes = [DbxBoolSerializer deserialize:valueDict[@"changes"]];
-    NSNumber *backoff = valueDict[@"backoff"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"backoff"]] : nil;
+    NSNumber *changes = valueDict[@"changes"];
+    NSNumber *backoff = valueDict[@"backoff"] ? valueDict[@"backoff"] : nil;
 
     return [[DbxFilesListFolderLongpollResult alloc] initWithChanges:changes backoff:backoff];
 }

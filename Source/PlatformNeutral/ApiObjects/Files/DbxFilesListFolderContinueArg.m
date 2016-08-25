@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxFilesListFolderContinueArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
+    jsonDict[@"cursor"] = valueObj.cursor;
 
     return jsonDict;
 }
 
 + (DbxFilesListFolderContinueArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSString *cursor = valueDict[@"cursor"];
 
     return [[DbxFilesListFolderContinueArg alloc] initWithCursor:cursor];
 }

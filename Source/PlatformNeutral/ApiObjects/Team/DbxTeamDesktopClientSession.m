@@ -47,17 +47,17 @@
 + (NSDictionary *)serialize:(DbxTeamDesktopClientSession *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
-    jsonDict[@"host_name"] = [DbxStringSerializer serialize:valueObj.hostName];
+    jsonDict[@"session_id"] = valueObj.sessionId;
+    jsonDict[@"host_name"] = valueObj.hostName;
     jsonDict[@"client_type"] = [DbxTeamDesktopPlatformSerializer serialize:valueObj.clientType];
-    jsonDict[@"client_version"] = [DbxStringSerializer serialize:valueObj.clientVersion];
-    jsonDict[@"platform"] = [DbxStringSerializer serialize:valueObj.platform];
-    jsonDict[@"is_delete_on_unlink_supported"] = [DbxBoolSerializer serialize:valueObj.isDeleteOnUnlinkSupported];
+    jsonDict[@"client_version"] = valueObj.clientVersion;
+    jsonDict[@"platform"] = valueObj.platform;
+    jsonDict[@"is_delete_on_unlink_supported"] = valueObj.isDeleteOnUnlinkSupported;
     if (valueObj.ipAddress) {
-        jsonDict[@"ip_address"] = [DbxStringSerializer serialize:valueObj.ipAddress];
+        jsonDict[@"ip_address"] = valueObj.ipAddress;
     }
     if (valueObj.country) {
-        jsonDict[@"country"] = [DbxStringSerializer serialize:valueObj.country];
+        jsonDict[@"country"] = valueObj.country;
     }
     if (valueObj.created) {
         jsonDict[@"created"] = [DbxNSDateSerializer serialize:valueObj.created dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -70,16 +70,16 @@
 }
 
 + (DbxTeamDesktopClientSession *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *hostName = [DbxStringSerializer deserialize:valueDict[@"host_name"]];
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *hostName = valueDict[@"host_name"];
     DbxTeamDesktopPlatform *clientType = [DbxTeamDesktopPlatformSerializer deserialize:valueDict[@"client_type"]];
-    NSString *clientVersion = [DbxStringSerializer deserialize:valueDict[@"client_version"]];
-    NSString *platform = [DbxStringSerializer deserialize:valueDict[@"platform"]];
-    NSNumber *isDeleteOnUnlinkSupported = [DbxBoolSerializer deserialize:valueDict[@"is_delete_on_unlink_supported"]];
-    NSString *ipAddress = valueDict[@"ip_address"] != nil ? [DbxStringSerializer deserialize:valueDict[@"ip_address"]] : nil;
-    NSString *country = valueDict[@"country"] != nil ? [DbxStringSerializer deserialize:valueDict[@"country"]] : nil;
-    NSDate *created = valueDict[@"created"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
-    NSDate *updated = valueDict[@"updated"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *clientVersion = valueDict[@"client_version"];
+    NSString *platform = valueDict[@"platform"];
+    NSNumber *isDeleteOnUnlinkSupported = valueDict[@"is_delete_on_unlink_supported"];
+    NSString *ipAddress = valueDict[@"ip_address"] ? valueDict[@"ip_address"] : nil;
+    NSString *country = valueDict[@"country"] ? valueDict[@"country"] : nil;
+    NSDate *created = valueDict[@"created"] ? [DbxNSDateSerializer deserialize:valueDict[@"created"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSDate *updated = valueDict[@"updated"] ? [DbxNSDateSerializer deserialize:valueDict[@"updated"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamDesktopClientSession alloc] initWithSessionId:sessionId hostName:hostName clientType:clientType clientVersion:clientVersion platform:platform isDeleteOnUnlinkSupported:isDeleteOnUnlinkSupported ipAddress:ipAddress country:country created:created updated:updated];
 }

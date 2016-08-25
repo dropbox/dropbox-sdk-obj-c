@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxSharingMountFolderArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
 
     return jsonDict;
 }
 
 + (DbxSharingMountFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
 
     return [[DbxSharingMountFolderArg alloc] initWithSharedFolderId:sharedFolderId];
 }

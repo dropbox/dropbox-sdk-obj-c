@@ -103,15 +103,15 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isTeamMemberId]) {
-        jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+        jsonDict[@"team_member_id"] = valueObj.teamMemberId;
         jsonDict[@".tag"] = @"team_member_id";
     }
     else if ([valueObj isExternalId]) {
-        jsonDict[@"external_id"] = [DbxStringSerializer serialize:valueObj.externalId];
+        jsonDict[@"external_id"] = valueObj.externalId;
         jsonDict[@".tag"] = @"external_id";
     }
     else if ([valueObj isEmail]) {
-        jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
+        jsonDict[@"email"] = valueObj.email;
         jsonDict[@".tag"] = @"email";
     }
     else {
@@ -125,15 +125,15 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"team_member_id"]) {
-        NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+        NSString *teamMemberId = valueDict[@"team_member_id"];
         return [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:teamMemberId];
     }
     if ([tag isEqualToString:@"external_id"]) {
-        NSString *externalId = [DbxStringSerializer deserialize:valueDict[@"external_id"]];
+        NSString *externalId = valueDict[@"external_id"];
         return [[DbxTeamUserSelectorArg alloc] initWithExternalId:externalId];
     }
     if ([tag isEqualToString:@"email"]) {
-        NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
+        NSString *email = valueDict[@"email"];
         return [[DbxTeamUserSelectorArg alloc] initWithEmail:email];
     }
 

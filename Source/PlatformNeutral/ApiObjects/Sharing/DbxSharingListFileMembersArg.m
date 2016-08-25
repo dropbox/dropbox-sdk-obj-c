@@ -12,14 +12,14 @@
 - (instancetype)initWithFile:(NSString *)file actions:(NSArray<DbxSharingMemberAction *> *)actions includeInherited:(NSNumber *)includeInherited limit:(NSNumber *)limit {
     [DbxStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithInt:100]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithUnsignedInt:100]);
 
     self = [super init];
     if (self != nil) {
         _file = file;
         _actions = actions;
         _includeInherited = includeInherited ?: @YES;
-        _limit = limit ?: [NSNumber numberWithInt:100];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:100];
     }
     return self;
 }
@@ -48,21 +48,21 @@
 + (NSDictionary *)serialize:(DbxSharingListFileMembersArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
+    jsonDict[@"file"] = valueObj.file;
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer serialize:elem]; }];
     }
-    jsonDict[@"include_inherited"] = [DbxBoolSerializer serialize:valueObj.includeInherited];
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"include_inherited"] = valueObj.includeInherited;
+    jsonDict[@"limit"] = valueObj.limit;
 
     return jsonDict;
 }
 
 + (DbxSharingListFileMembersArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
-    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
-    NSNumber *includeInherited = [DbxBoolSerializer deserialize:valueDict[@"include_inherited"]];
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
+    NSString *file = valueDict[@"file"];
+    NSArray<DbxSharingMemberAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingMemberActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *includeInherited = valueDict[@"include_inherited"];
+    NSNumber *limit = valueDict[@"limit"];
 
     return [[DbxSharingListFileMembersArg alloc] initWithFile:file actions:actions includeInherited:includeInherited limit:limit];
 }

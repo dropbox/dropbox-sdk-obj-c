@@ -42,14 +42,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if (valueObj.cursor) {
-        jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
+        jsonDict[@"cursor"] = valueObj.cursor;
     }
 
     return jsonDict;
 }
 
 + (DbxTeamListTeamAppsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSString *cursor = valueDict[@"cursor"] ? valueDict[@"cursor"] : nil;
 
     return [[DbxTeamListTeamAppsArg alloc] initWithCursor:cursor];
 }

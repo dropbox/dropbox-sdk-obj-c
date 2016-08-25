@@ -44,14 +44,14 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"user"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.user];
-    jsonDict[@"wipe_data"] = [DbxBoolSerializer serialize:valueObj.wipeData];
+    jsonDict[@"wipe_data"] = valueObj.wipeData;
 
     return jsonDict;
 }
 
 + (DbxTeamMembersDeactivateArg *)deserialize:(NSDictionary *)valueDict {
     DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-    NSNumber *wipeData = [DbxBoolSerializer deserialize:valueDict[@"wipe_data"]];
+    NSNumber *wipeData = valueDict[@"wipe_data"];
 
     return [[DbxTeamMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
 }

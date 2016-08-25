@@ -46,25 +46,25 @@
 + (NSDictionary *)serialize:(DbxTeamCommonGroupSummary *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"group_name"] = [DbxStringSerializer serialize:valueObj.groupName];
-    jsonDict[@"group_id"] = [DbxStringSerializer serialize:valueObj.groupId];
+    jsonDict[@"group_name"] = valueObj.groupName;
+    jsonDict[@"group_id"] = valueObj.groupId;
     jsonDict[@"group_management_type"] = [DbxTeamCommonGroupManagementTypeSerializer serialize:valueObj.groupManagementType];
     if (valueObj.groupExternalId) {
-        jsonDict[@"group_external_id"] = [DbxStringSerializer serialize:valueObj.groupExternalId];
+        jsonDict[@"group_external_id"] = valueObj.groupExternalId;
     }
     if (valueObj.memberCount) {
-        jsonDict[@"member_count"] = [DbxNSNumberSerializer serialize:valueObj.memberCount];
+        jsonDict[@"member_count"] = valueObj.memberCount;
     }
 
     return jsonDict;
 }
 
 + (DbxTeamCommonGroupSummary *)deserialize:(NSDictionary *)valueDict {
-    NSString *groupName = [DbxStringSerializer deserialize:valueDict[@"group_name"]];
-    NSString *groupId = [DbxStringSerializer deserialize:valueDict[@"group_id"]];
+    NSString *groupName = valueDict[@"group_name"];
+    NSString *groupId = valueDict[@"group_id"];
     DbxTeamCommonGroupManagementType *groupManagementType = [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]];
-    NSString *groupExternalId = valueDict[@"group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"group_external_id"]] : nil;
-    NSNumber *memberCount = valueDict[@"member_count"] != nil ? [DbxNSNumberSerializer deserialize:valueDict[@"member_count"]] : nil;
+    NSString *groupExternalId = valueDict[@"group_external_id"] ? valueDict[@"group_external_id"] : nil;
+    NSNumber *memberCount = valueDict[@"member_count"] ? valueDict[@"member_count"] : nil;
 
     return [[DbxTeamCommonGroupSummary alloc] initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupExternalId:groupExternalId memberCount:memberCount];
 }

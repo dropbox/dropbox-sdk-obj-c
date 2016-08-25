@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxFilesDimensions *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"height"] = [DbxNSNumberSerializer serialize:valueObj.height];
-    jsonDict[@"width"] = [DbxNSNumberSerializer serialize:valueObj.width];
+    jsonDict[@"height"] = valueObj.height;
+    jsonDict[@"width"] = valueObj.width;
 
     return jsonDict;
 }
 
 + (DbxFilesDimensions *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *height = [DbxNSNumberSerializer deserialize:valueDict[@"height"]];
-    NSNumber *width = [DbxNSNumberSerializer deserialize:valueDict[@"width"]];
+    NSNumber *height = valueDict[@"height"];
+    NSNumber *width = valueDict[@"width"];
 
     return [[DbxFilesDimensions alloc] initWithHeight:height width:width];
 }

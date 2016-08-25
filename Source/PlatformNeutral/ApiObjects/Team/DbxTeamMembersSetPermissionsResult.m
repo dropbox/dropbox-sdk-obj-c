@@ -39,14 +39,14 @@
 + (NSDictionary *)serialize:(DbxTeamMembersSetPermissionsResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
     jsonDict[@"role"] = [DbxTeamAdminTierSerializer serialize:valueObj.role];
 
     return jsonDict;
 }
 
 + (DbxTeamMembersSetPermissionsResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
     DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict[@"role"]];
 
     return [[DbxTeamMembersSetPermissionsResult alloc] initWithTeamMemberId:teamMemberId role:role];

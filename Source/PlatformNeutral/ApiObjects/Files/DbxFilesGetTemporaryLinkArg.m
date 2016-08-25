@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxFilesGetTemporaryLinkArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
 
     return jsonDict;
 }
 
 + (DbxFilesGetTemporaryLinkArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
 
     return [[DbxFilesGetTemporaryLinkArg alloc] initWithPath:path];
 }

@@ -43,17 +43,17 @@
 + (NSDictionary *)serialize:(DbxTeamRevokeLinkedApiAppArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"app_id"] = [DbxStringSerializer serialize:valueObj.appId];
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
-    jsonDict[@"keep_app_folder"] = [DbxBoolSerializer serialize:valueObj.keepAppFolder];
+    jsonDict[@"app_id"] = valueObj.appId;
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
+    jsonDict[@"keep_app_folder"] = valueObj.keepAppFolder;
 
     return jsonDict;
 }
 
 + (DbxTeamRevokeLinkedApiAppArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *appId = [DbxStringSerializer deserialize:valueDict[@"app_id"]];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSNumber *keepAppFolder = [DbxBoolSerializer deserialize:valueDict[@"keep_app_folder"]];
+    NSString *appId = valueDict[@"app_id"];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
+    NSNumber *keepAppFolder = valueDict[@"keep_app_folder"];
 
     return [[DbxTeamRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];
 }

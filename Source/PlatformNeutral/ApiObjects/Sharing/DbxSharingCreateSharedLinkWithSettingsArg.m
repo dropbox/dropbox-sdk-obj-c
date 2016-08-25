@@ -44,7 +44,7 @@
 + (NSDictionary *)serialize:(DbxSharingCreateSharedLinkWithSettingsArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     if (valueObj.settings) {
         jsonDict[@"settings"] = [DbxSharingSharedLinkSettingsSerializer serialize:valueObj.settings];
     }
@@ -53,8 +53,8 @@
 }
 
 + (DbxSharingCreateSharedLinkWithSettingsArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
-    DbxSharingSharedLinkSettings *settings = valueDict[@"settings"] != nil ? [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]] : nil;
+    NSString *path = valueDict[@"path"];
+    DbxSharingSharedLinkSettings *settings = valueDict[@"settings"] ? [DbxSharingSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]] : nil;
 
     return [[DbxSharingCreateSharedLinkWithSettingsArg alloc] initWithPath:path settings:settings];
 }

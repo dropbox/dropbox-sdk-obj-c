@@ -42,7 +42,7 @@
 + (NSDictionary *)serialize:(DbxSharingChangeFileMemberAccessArgs *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
+    jsonDict[@"file"] = valueObj.file;
     jsonDict[@"member"] = [DbxSharingMemberSelectorSerializer serialize:valueObj.member];
     jsonDict[@"access_level"] = [DbxSharingAccessLevelSerializer serialize:valueObj.accessLevel];
 
@@ -50,7 +50,7 @@
 }
 
 + (DbxSharingChangeFileMemberAccessArgs *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSString *file = valueDict[@"file"];
     DbxSharingMemberSelector *member = [DbxSharingMemberSelectorSerializer deserialize:valueDict[@"member"]];
     DbxSharingAccessLevel *accessLevel = [DbxSharingAccessLevelSerializer deserialize:valueDict[@"access_level"]];
 

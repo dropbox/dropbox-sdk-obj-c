@@ -42,17 +42,17 @@
 + (NSDictionary *)serialize:(DbxTeamRevokeDesktopClientArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"session_id"] = [DbxStringSerializer serialize:valueObj.sessionId];
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
-    jsonDict[@"delete_on_unlink"] = [DbxBoolSerializer serialize:valueObj.deleteOnUnlink];
+    jsonDict[@"session_id"] = valueObj.sessionId;
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
+    jsonDict[@"delete_on_unlink"] = valueObj.deleteOnUnlink;
 
     return jsonDict;
 }
 
 + (DbxTeamRevokeDesktopClientArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *sessionId = [DbxStringSerializer deserialize:valueDict[@"session_id"]];
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSNumber *deleteOnUnlink = [DbxBoolSerializer deserialize:valueDict[@"delete_on_unlink"]];
+    NSString *sessionId = valueDict[@"session_id"];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
+    NSNumber *deleteOnUnlink = valueDict[@"delete_on_unlink"];
 
     return [[DbxTeamRevokeDesktopClientArg alloc] initWithSessionId:sessionId teamMemberId:teamMemberId deleteOnUnlink:deleteOnUnlink];
 }

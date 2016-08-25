@@ -13,15 +13,15 @@
     }
     return self;
 }
-- (DbxRpcTask *)getAccount:(NSString * _Nonnull)accountId {
+- (DbxRpcTask *)getAccount:(NSString *)accountId {
     DbxRoute *route = DbxUsersRouteObjects.dbxUsersGetAccount;
-    DbxUsersGetAccountArg *arg = [[DbxUsersGetAccountArg alloc] initWithAccountId:(NSString * _Nonnull)accountId];
+    DbxUsersGetAccountArg *arg = [[DbxUsersGetAccountArg alloc] initWithAccountId:accountId];
     return [self.client requestRpc:route arg:arg];
 }
 
-- (DbxRpcTask *)getAccountBatch:(NSArray<NSString *> * _Nonnull)accountIds {
+- (DbxRpcTask *)getAccountBatch:(NSArray<NSString *> *)accountIds {
     DbxRoute *route = DbxUsersRouteObjects.dbxUsersGetAccountBatch;
-    DbxUsersGetAccountBatchArg *arg = [[DbxUsersGetAccountBatchArg alloc] initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds];
+    DbxUsersGetAccountBatchArg *arg = [[DbxUsersGetAccountBatchArg alloc] initWithAccountIds:accountIds];
     return [self.client requestRpc:route arg:arg];
 }
 

@@ -49,7 +49,7 @@
     jsonDict[@"group"] = [DbxTeamGroupSelectorSerializer serialize:valueObj.group];
     jsonDict[@"user"] = [DbxTeamUserSelectorArgSerializer serialize:valueObj.user];
     jsonDict[@"access_type"] = [DbxTeamGroupAccessTypeSerializer serialize:valueObj.accessType];
-    jsonDict[@"return_members"] = [DbxBoolSerializer serialize:valueObj.returnMembers];
+    jsonDict[@"return_members"] = valueObj.returnMembers;
 
     return jsonDict;
 }
@@ -58,7 +58,7 @@
     DbxTeamGroupSelector *group = [DbxTeamGroupSelectorSerializer deserialize:valueDict[@"group"]];
     DbxTeamUserSelectorArg *user = [DbxTeamUserSelectorArgSerializer deserialize:valueDict[@"user"]];
     DbxTeamGroupAccessType *accessType = [DbxTeamGroupAccessTypeSerializer deserialize:valueDict[@"access_type"]];
-    NSNumber *returnMembers = [DbxBoolSerializer deserialize:valueDict[@"return_members"]];
+    NSNumber *returnMembers = valueDict[@"return_members"];
 
     return [[DbxTeamGroupMembersSetAccessTypeArg alloc] initWithGroup:group user:user accessType:accessType returnMembers:returnMembers];
 }

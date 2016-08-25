@@ -38,15 +38,15 @@
 + (NSDictionary *)serialize:(DbxTeamStorageBucket *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"bucket"] = [DbxStringSerializer serialize:valueObj.bucket];
-    jsonDict[@"users"] = [DbxNSNumberSerializer serialize:valueObj.users];
+    jsonDict[@"bucket"] = valueObj.bucket;
+    jsonDict[@"users"] = valueObj.users;
 
     return jsonDict;
 }
 
 + (DbxTeamStorageBucket *)deserialize:(NSDictionary *)valueDict {
-    NSString *bucket = [DbxStringSerializer deserialize:valueDict[@"bucket"]];
-    NSNumber *users = [DbxNSNumberSerializer deserialize:valueDict[@"users"]];
+    NSString *bucket = valueDict[@"bucket"];
+    NSNumber *users = valueDict[@"users"];
 
     return [[DbxTeamStorageBucket alloc] initWithBucket:bucket users:users];
 }

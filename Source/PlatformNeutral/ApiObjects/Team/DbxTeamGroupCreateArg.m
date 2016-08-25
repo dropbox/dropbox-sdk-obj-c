@@ -44,9 +44,9 @@
 + (NSDictionary *)serialize:(DbxTeamGroupCreateArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"group_name"] = [DbxStringSerializer serialize:valueObj.groupName];
+    jsonDict[@"group_name"] = valueObj.groupName;
     if (valueObj.groupExternalId) {
-        jsonDict[@"group_external_id"] = [DbxStringSerializer serialize:valueObj.groupExternalId];
+        jsonDict[@"group_external_id"] = valueObj.groupExternalId;
     }
     if (valueObj.groupManagementType) {
         jsonDict[@"group_management_type"] = [DbxTeamCommonGroupManagementTypeSerializer serialize:valueObj.groupManagementType];
@@ -56,9 +56,9 @@
 }
 
 + (DbxTeamGroupCreateArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *groupName = [DbxStringSerializer deserialize:valueDict[@"group_name"]];
-    NSString *groupExternalId = valueDict[@"group_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"group_external_id"]] : nil;
-    DbxTeamCommonGroupManagementType *groupManagementType = valueDict[@"group_management_type"] != nil ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]] : nil;
+    NSString *groupName = valueDict[@"group_name"];
+    NSString *groupExternalId = valueDict[@"group_external_id"] ? valueDict[@"group_external_id"] : nil;
+    DbxTeamCommonGroupManagementType *groupManagementType = valueDict[@"group_management_type"] ? [DbxTeamCommonGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]] : nil;
 
     return [[DbxTeamGroupCreateArg alloc] initWithGroupName:groupName groupExternalId:groupExternalId groupManagementType:groupManagementType];
 }

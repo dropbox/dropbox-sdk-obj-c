@@ -42,16 +42,16 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"members"] = [DbxArraySerializer serialize:valueObj.members withBlock:^id(id elem) { return [DbxTeamGroupMemberInfoSerializer serialize:elem]; }];
-    jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
-    jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
+    jsonDict[@"cursor"] = valueObj.cursor;
+    jsonDict[@"has_more"] = valueObj.hasMore;
 
     return jsonDict;
 }
 
 + (DbxTeamGroupsMembersListResult *)deserialize:(NSDictionary *)valueDict {
     NSArray<DbxTeamGroupMemberInfo *> *members = [DbxArraySerializer deserialize:valueDict[@"members"] withBlock:^id(id elem) { return [DbxTeamGroupMemberInfoSerializer deserialize:elem]; }];
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
+    NSString *cursor = valueDict[@"cursor"];
+    NSNumber *hasMore = valueDict[@"has_more"];
 
     return [[DbxTeamGroupsMembersListResult alloc] initWithMembers:members cursor:cursor hasMore:hasMore];
 }

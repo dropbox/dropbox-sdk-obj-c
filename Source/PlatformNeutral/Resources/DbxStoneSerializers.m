@@ -4,45 +4,6 @@
 
 #import "DbxStoneSerializers.h"
 
-@implementation DbxStringSerializer
-
-+ (NSString *)serialize:(NSString *)value {
-    return value;
-}
-
-+ (NSString *)deserialize:(NSString *)value {
-    return value;
-}
-
-@end
-
-
-@implementation DbxNSNumberSerializer
-
-+ (NSNumber *)serialize:(NSNumber *)value {
-    return value;
-}
-
-+ (NSNumber *)deserialize:(NSNumber *)value {
-    return value;
-}
-
-@end
-
-
-@implementation DbxBoolSerializer
-
-+ (NSNumber *)serialize:(NSNumber *)value {
-    return value;
-}
-
-+ (NSNumber *)deserialize:(NSNumber *)value {
-    return value;
-}
-
-@end
-
-
 @implementation DbxNSDateSerializer
 
 + (NSString *)serialize:(NSDate *)value dateFormat:(NSString *)dateFormat {

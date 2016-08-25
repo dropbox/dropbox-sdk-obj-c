@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxTeamUpdatePropertyTemplateResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"template_id"] = [DbxStringSerializer serialize:valueObj.templateId];
+    jsonDict[@"template_id"] = valueObj.templateId;
 
     return jsonDict;
 }
 
 + (DbxTeamUpdatePropertyTemplateResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *templateId = [DbxStringSerializer deserialize:valueDict[@"template_id"]];
+    NSString *templateId = valueDict[@"template_id"];
 
     return [[DbxTeamUpdatePropertyTemplateResult alloc] initWithTemplateId:templateId];
 }

@@ -41,7 +41,7 @@
 + (NSDictionary *)serialize:(DbxTeamGetDevicesReport *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"start_date"] = [DbxStringSerializer serialize:valueObj.startDate];
+    jsonDict[@"start_date"] = valueObj.startDate;
     jsonDict[@"active_1_day"] = [DbxTeamDevicesActiveSerializer serialize:valueObj.active1Day];
     jsonDict[@"active_7_day"] = [DbxTeamDevicesActiveSerializer serialize:valueObj.active7Day];
     jsonDict[@"active_28_day"] = [DbxTeamDevicesActiveSerializer serialize:valueObj.active28Day];
@@ -50,7 +50,7 @@
 }
 
 + (DbxTeamGetDevicesReport *)deserialize:(NSDictionary *)valueDict {
-    NSString *startDate = [DbxStringSerializer deserialize:valueDict[@"start_date"]];
+    NSString *startDate = valueDict[@"start_date"];
     DbxTeamDevicesActive *active1Day = [DbxTeamDevicesActiveSerializer deserialize:valueDict[@"active_1_day"]];
     DbxTeamDevicesActive *active7Day = [DbxTeamDevicesActiveSerializer deserialize:valueDict[@"active_7_day"]];
     DbxTeamDevicesActive *active28Day = [DbxTeamDevicesActiveSerializer deserialize:valueDict[@"active_28_day"]];

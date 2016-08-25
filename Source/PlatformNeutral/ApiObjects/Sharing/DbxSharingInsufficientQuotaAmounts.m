@@ -39,17 +39,17 @@
 + (NSDictionary *)serialize:(DbxSharingInsufficientQuotaAmounts *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"space_needed"] = [DbxNSNumberSerializer serialize:valueObj.spaceNeeded];
-    jsonDict[@"space_shortage"] = [DbxNSNumberSerializer serialize:valueObj.spaceShortage];
-    jsonDict[@"space_left"] = [DbxNSNumberSerializer serialize:valueObj.spaceLeft];
+    jsonDict[@"space_needed"] = valueObj.spaceNeeded;
+    jsonDict[@"space_shortage"] = valueObj.spaceShortage;
+    jsonDict[@"space_left"] = valueObj.spaceLeft;
 
     return jsonDict;
 }
 
 + (DbxSharingInsufficientQuotaAmounts *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *spaceNeeded = [DbxNSNumberSerializer deserialize:valueDict[@"space_needed"]];
-    NSNumber *spaceShortage = [DbxNSNumberSerializer deserialize:valueDict[@"space_shortage"]];
-    NSNumber *spaceLeft = [DbxNSNumberSerializer deserialize:valueDict[@"space_left"]];
+    NSNumber *spaceNeeded = valueDict[@"space_needed"];
+    NSNumber *spaceShortage = valueDict[@"space_shortage"];
+    NSNumber *spaceLeft = valueDict[@"space_left"];
 
     return [[DbxSharingInsufficientQuotaAmounts alloc] initWithSpaceNeeded:spaceNeeded spaceShortage:spaceShortage spaceLeft:spaceLeft];
 }

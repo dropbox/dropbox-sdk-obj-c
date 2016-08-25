@@ -9,11 +9,11 @@
 @implementation DbxTeamMembersListArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithInt:1000]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithInt:1000];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
         _includeRemoved = includeRemoved ?: @NO;
     }
     return self;
@@ -43,15 +43,15 @@
 + (NSDictionary *)serialize:(DbxTeamMembersListArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
-    jsonDict[@"include_removed"] = [DbxBoolSerializer serialize:valueObj.includeRemoved];
+    jsonDict[@"limit"] = valueObj.limit;
+    jsonDict[@"include_removed"] = valueObj.includeRemoved;
 
     return jsonDict;
 }
 
 + (DbxTeamMembersListArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
-    NSNumber *includeRemoved = [DbxBoolSerializer deserialize:valueDict[@"include_removed"]];
+    NSNumber *limit = valueDict[@"limit"];
+    NSNumber *includeRemoved = valueDict[@"include_removed"];
 
     return [[DbxTeamMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
 }

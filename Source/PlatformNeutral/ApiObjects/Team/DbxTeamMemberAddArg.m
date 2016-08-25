@@ -51,24 +51,24 @@
 + (NSDictionary *)serialize:(DbxTeamMemberAddArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"member_email"] = [DbxStringSerializer serialize:valueObj.memberEmail];
-    jsonDict[@"member_given_name"] = [DbxStringSerializer serialize:valueObj.memberGivenName];
-    jsonDict[@"member_surname"] = [DbxStringSerializer serialize:valueObj.memberSurname];
+    jsonDict[@"member_email"] = valueObj.memberEmail;
+    jsonDict[@"member_given_name"] = valueObj.memberGivenName;
+    jsonDict[@"member_surname"] = valueObj.memberSurname;
     if (valueObj.memberExternalId) {
-        jsonDict[@"member_external_id"] = [DbxStringSerializer serialize:valueObj.memberExternalId];
+        jsonDict[@"member_external_id"] = valueObj.memberExternalId;
     }
-    jsonDict[@"send_welcome_email"] = [DbxBoolSerializer serialize:valueObj.sendWelcomeEmail];
+    jsonDict[@"send_welcome_email"] = valueObj.sendWelcomeEmail;
     jsonDict[@"role"] = [DbxTeamAdminTierSerializer serialize:valueObj.role];
 
     return jsonDict;
 }
 
 + (DbxTeamMemberAddArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *memberEmail = [DbxStringSerializer deserialize:valueDict[@"member_email"]];
-    NSString *memberGivenName = [DbxStringSerializer deserialize:valueDict[@"member_given_name"]];
-    NSString *memberSurname = [DbxStringSerializer deserialize:valueDict[@"member_surname"]];
-    NSString *memberExternalId = valueDict[@"member_external_id"] != nil ? [DbxStringSerializer deserialize:valueDict[@"member_external_id"]] : nil;
-    NSNumber *sendWelcomeEmail = [DbxBoolSerializer deserialize:valueDict[@"send_welcome_email"]];
+    NSString *memberEmail = valueDict[@"member_email"];
+    NSString *memberGivenName = valueDict[@"member_given_name"];
+    NSString *memberSurname = valueDict[@"member_surname"];
+    NSString *memberExternalId = valueDict[@"member_external_id"] ? valueDict[@"member_external_id"] : nil;
+    NSNumber *sendWelcomeEmail = valueDict[@"send_welcome_email"];
     DbxTeamAdminTier *role = [DbxTeamAdminTierSerializer deserialize:valueDict[@"role"]];
 
     return [[DbxTeamMemberAddArg alloc] initWithMemberEmail:memberEmail memberGivenName:memberGivenName memberSurname:memberSurname memberExternalId:memberExternalId sendWelcomeEmail:sendWelcomeEmail role:role];

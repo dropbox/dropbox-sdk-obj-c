@@ -44,19 +44,19 @@
 + (NSDictionary *)serialize:(DbxTeamListMemberDevicesArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
-    jsonDict[@"include_web_sessions"] = [DbxBoolSerializer serialize:valueObj.includeWebSessions];
-    jsonDict[@"include_desktop_clients"] = [DbxBoolSerializer serialize:valueObj.includeDesktopClients];
-    jsonDict[@"include_mobile_clients"] = [DbxBoolSerializer serialize:valueObj.includeMobileClients];
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
+    jsonDict[@"include_web_sessions"] = valueObj.includeWebSessions;
+    jsonDict[@"include_desktop_clients"] = valueObj.includeDesktopClients;
+    jsonDict[@"include_mobile_clients"] = valueObj.includeMobileClients;
 
     return jsonDict;
 }
 
 + (DbxTeamListMemberDevicesArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSNumber *includeWebSessions = [DbxBoolSerializer deserialize:valueDict[@"include_web_sessions"]];
-    NSNumber *includeDesktopClients = [DbxBoolSerializer deserialize:valueDict[@"include_desktop_clients"]];
-    NSNumber *includeMobileClients = [DbxBoolSerializer deserialize:valueDict[@"include_mobile_clients"]];
+    NSString *teamMemberId = valueDict[@"team_member_id"];
+    NSNumber *includeWebSessions = valueDict[@"include_web_sessions"];
+    NSNumber *includeDesktopClients = valueDict[@"include_desktop_clients"];
+    NSNumber *includeMobileClients = valueDict[@"include_mobile_clients"];
 
     return [[DbxTeamListMemberDevicesArg alloc] initWithTeamMemberId:teamMemberId includeWebSessions:includeWebSessions includeDesktopClients:includeDesktopClients includeMobileClients:includeMobileClients];
 }

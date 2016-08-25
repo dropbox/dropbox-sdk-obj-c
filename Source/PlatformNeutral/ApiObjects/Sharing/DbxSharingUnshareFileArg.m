@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxSharingUnshareFileArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"file"] = [DbxStringSerializer serialize:valueObj.file];
+    jsonDict[@"file"] = valueObj.file;
 
     return jsonDict;
 }
 
 + (DbxSharingUnshareFileArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *file = [DbxStringSerializer deserialize:valueDict[@"file"]];
+    NSString *file = valueDict[@"file"];
 
     return [[DbxSharingUnshareFileArg alloc] initWithFile:file];
 }

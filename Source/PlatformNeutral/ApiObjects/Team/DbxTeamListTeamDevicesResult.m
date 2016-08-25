@@ -46,9 +46,9 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     jsonDict[@"devices"] = [DbxArraySerializer serialize:valueObj.devices withBlock:^id(id elem) { return [DbxTeamMemberDevicesSerializer serialize:elem]; }];
-    jsonDict[@"has_more"] = [DbxBoolSerializer serialize:valueObj.hasMore];
+    jsonDict[@"has_more"] = valueObj.hasMore;
     if (valueObj.cursor) {
-        jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
+        jsonDict[@"cursor"] = valueObj.cursor;
     }
 
     return jsonDict;
@@ -56,8 +56,8 @@
 
 + (DbxTeamListTeamDevicesResult *)deserialize:(NSDictionary *)valueDict {
     NSArray<DbxTeamMemberDevices *> *devices = [DbxArraySerializer deserialize:valueDict[@"devices"] withBlock:^id(id elem) { return [DbxTeamMemberDevicesSerializer deserialize:elem]; }];
-    NSNumber *hasMore = [DbxBoolSerializer deserialize:valueDict[@"has_more"]];
-    NSString *cursor = valueDict[@"cursor"] != nil ? [DbxStringSerializer deserialize:valueDict[@"cursor"]] : nil;
+    NSNumber *hasMore = valueDict[@"has_more"];
+    NSString *cursor = valueDict[@"cursor"] ? valueDict[@"cursor"] : nil;
 
     return [[DbxTeamListTeamDevicesResult alloc] initWithDevices:devices hasMore:hasMore cursor:cursor];
 }

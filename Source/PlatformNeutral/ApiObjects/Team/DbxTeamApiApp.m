@@ -46,14 +46,14 @@
 + (NSDictionary *)serialize:(DbxTeamApiApp *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"app_id"] = [DbxStringSerializer serialize:valueObj.appId];
-    jsonDict[@"app_name"] = [DbxStringSerializer serialize:valueObj.appName];
-    jsonDict[@"is_app_folder"] = [DbxBoolSerializer serialize:valueObj.isAppFolder];
+    jsonDict[@"app_id"] = valueObj.appId;
+    jsonDict[@"app_name"] = valueObj.appName;
+    jsonDict[@"is_app_folder"] = valueObj.isAppFolder;
     if (valueObj.publisher) {
-        jsonDict[@"publisher"] = [DbxStringSerializer serialize:valueObj.publisher];
+        jsonDict[@"publisher"] = valueObj.publisher;
     }
     if (valueObj.publisherUrl) {
-        jsonDict[@"publisher_url"] = [DbxStringSerializer serialize:valueObj.publisherUrl];
+        jsonDict[@"publisher_url"] = valueObj.publisherUrl;
     }
     if (valueObj.linked) {
         jsonDict[@"linked"] = [DbxNSDateSerializer serialize:valueObj.linked dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
@@ -63,12 +63,12 @@
 }
 
 + (DbxTeamApiApp *)deserialize:(NSDictionary *)valueDict {
-    NSString *appId = [DbxStringSerializer deserialize:valueDict[@"app_id"]];
-    NSString *appName = [DbxStringSerializer deserialize:valueDict[@"app_name"]];
-    NSNumber *isAppFolder = [DbxBoolSerializer deserialize:valueDict[@"is_app_folder"]];
-    NSString *publisher = valueDict[@"publisher"] != nil ? [DbxStringSerializer deserialize:valueDict[@"publisher"]] : nil;
-    NSString *publisherUrl = valueDict[@"publisher_url"] != nil ? [DbxStringSerializer deserialize:valueDict[@"publisher_url"]] : nil;
-    NSDate *linked = valueDict[@"linked"] != nil ? [DbxNSDateSerializer deserialize:valueDict[@"linked"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
+    NSString *appId = valueDict[@"app_id"];
+    NSString *appName = valueDict[@"app_name"];
+    NSNumber *isAppFolder = valueDict[@"is_app_folder"];
+    NSString *publisher = valueDict[@"publisher"] ? valueDict[@"publisher"] : nil;
+    NSString *publisherUrl = valueDict[@"publisher_url"] ? valueDict[@"publisher_url"] : nil;
+    NSDate *linked = valueDict[@"linked"] ? [DbxNSDateSerializer deserialize:valueDict[@"linked"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"] : nil;
 
     return [[DbxTeamApiApp alloc] initWithAppId:appId appName:appName isAppFolder:isAppFolder publisher:publisher publisherUrl:publisherUrl linked:linked];
 }

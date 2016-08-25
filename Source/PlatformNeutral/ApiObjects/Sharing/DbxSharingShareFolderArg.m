@@ -49,21 +49,21 @@
 + (NSDictionary *)serialize:(DbxSharingShareFolderArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
     jsonDict[@"member_policy"] = [DbxSharingMemberPolicySerializer serialize:valueObj.memberPolicy];
     jsonDict[@"acl_update_policy"] = [DbxSharingAclUpdatePolicySerializer serialize:valueObj.aclUpdatePolicy];
     jsonDict[@"shared_link_policy"] = [DbxSharingSharedLinkPolicySerializer serialize:valueObj.sharedLinkPolicy];
-    jsonDict[@"force_async"] = [DbxBoolSerializer serialize:valueObj.forceAsync];
+    jsonDict[@"force_async"] = valueObj.forceAsync;
 
     return jsonDict;
 }
 
 + (DbxSharingShareFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
     DbxSharingMemberPolicy *memberPolicy = [DbxSharingMemberPolicySerializer deserialize:valueDict[@"member_policy"]];
     DbxSharingAclUpdatePolicy *aclUpdatePolicy = [DbxSharingAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]];
     DbxSharingSharedLinkPolicy *sharedLinkPolicy = [DbxSharingSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]];
-    NSNumber *forceAsync = [DbxBoolSerializer deserialize:valueDict[@"force_async"]];
+    NSNumber *forceAsync = valueDict[@"force_async"];
 
     return [[DbxSharingShareFolderArg alloc] initWithPath:path memberPolicy:memberPolicy aclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy forceAsync:forceAsync];
 }

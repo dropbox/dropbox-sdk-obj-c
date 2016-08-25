@@ -166,15 +166,15 @@
         jsonDict[@".tag"] = @"automatic_group";
     }
     else if ([valueObj isInvalidDropboxId]) {
-        jsonDict[@"invalid_dropbox_id"] = [DbxStringSerializer serialize:valueObj.invalidDropboxId];
+        jsonDict[@"invalid_dropbox_id"] = valueObj.invalidDropboxId;
         jsonDict[@".tag"] = @"invalid_dropbox_id";
     }
     else if ([valueObj isInvalidEmail]) {
-        jsonDict[@"invalid_email"] = [DbxStringSerializer serialize:valueObj.invalidEmail];
+        jsonDict[@"invalid_email"] = valueObj.invalidEmail;
         jsonDict[@".tag"] = @"invalid_email";
     }
     else if ([valueObj isUnverifiedDropboxId]) {
-        jsonDict[@"unverified_dropbox_id"] = [DbxStringSerializer serialize:valueObj.unverifiedDropboxId];
+        jsonDict[@"unverified_dropbox_id"] = valueObj.unverifiedDropboxId;
         jsonDict[@".tag"] = @"unverified_dropbox_id";
     }
     else if ([valueObj isGroupDeleted]) {
@@ -200,15 +200,15 @@
         return [[DbxSharingAddMemberSelectorError alloc] initWithAutomaticGroup];
     }
     if ([tag isEqualToString:@"invalid_dropbox_id"]) {
-        NSString *invalidDropboxId = [DbxStringSerializer deserialize:valueDict[@"invalid_dropbox_id"]];
+        NSString *invalidDropboxId = valueDict[@"invalid_dropbox_id"];
         return [[DbxSharingAddMemberSelectorError alloc] initWithInvalidDropboxId:invalidDropboxId];
     }
     if ([tag isEqualToString:@"invalid_email"]) {
-        NSString *invalidEmail = [DbxStringSerializer deserialize:valueDict[@"invalid_email"]];
+        NSString *invalidEmail = valueDict[@"invalid_email"];
         return [[DbxSharingAddMemberSelectorError alloc] initWithInvalidEmail:invalidEmail];
     }
     if ([tag isEqualToString:@"unverified_dropbox_id"]) {
-        NSString *unverifiedDropboxId = [DbxStringSerializer deserialize:valueDict[@"unverified_dropbox_id"]];
+        NSString *unverifiedDropboxId = valueDict[@"unverified_dropbox_id"];
         return [[DbxSharingAddMemberSelectorError alloc] initWithUnverifiedDropboxId:unverifiedDropboxId];
     }
     if ([tag isEqualToString:@"group_deleted"]) {

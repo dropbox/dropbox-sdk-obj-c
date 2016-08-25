@@ -10,12 +10,12 @@
 @implementation DbxSharingListFilesArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit actions:(NSArray<DbxSharingFileAction *> *)actions {
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithInt:100]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithUnsignedInt:100]);
     [DbxStoneValidators nullableValidator:[DbxStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithInt:100];
+        _limit = limit ?: [NSNumber numberWithUnsignedInt:100];
         _actions = actions;
     }
     return self;
@@ -45,7 +45,7 @@
 + (NSDictionary *)serialize:(DbxSharingListFilesArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"limit"] = [DbxNSNumberSerializer serialize:valueObj.limit];
+    jsonDict[@"limit"] = valueObj.limit;
     if (valueObj.actions) {
         jsonDict[@"actions"] = [DbxArraySerializer serialize:valueObj.actions withBlock:^id(id elem) { return [DbxSharingFileActionSerializer serialize:elem]; }];
     }
@@ -54,8 +54,8 @@
 }
 
 + (DbxSharingListFilesArg *)deserialize:(NSDictionary *)valueDict {
-    NSNumber *limit = [DbxNSNumberSerializer deserialize:valueDict[@"limit"]];
-    NSArray<DbxSharingFileAction *> *actions = valueDict[@"actions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFileActionSerializer deserialize:elem]; }] : nil;
+    NSNumber *limit = valueDict[@"limit"];
+    NSArray<DbxSharingFileAction *> *actions = valueDict[@"actions"] ? [DbxArraySerializer deserialize:valueDict[@"actions"] withBlock:^id(id elem) { return [DbxSharingFileActionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxSharingListFilesArg alloc] initWithLimit:limit actions:actions];
 }

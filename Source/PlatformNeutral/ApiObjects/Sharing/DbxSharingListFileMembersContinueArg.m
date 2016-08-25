@@ -37,13 +37,13 @@
 + (NSDictionary *)serialize:(DbxSharingListFileMembersContinueArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
+    jsonDict[@"cursor"] = valueObj.cursor;
 
     return jsonDict;
 }
 
 + (DbxSharingListFileMembersContinueArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
+    NSString *cursor = valueDict[@"cursor"];
 
     return [[DbxSharingListFileMembersContinueArg alloc] initWithCursor:cursor];
 }

@@ -50,7 +50,7 @@
 + (NSDictionary *)serialize:(DbxTeamMemberDevices *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"team_member_id"] = [DbxStringSerializer serialize:valueObj.teamMemberId];
+    jsonDict[@"team_member_id"] = valueObj.teamMemberId;
     if (valueObj.webSessions) {
         jsonDict[@"web_sessions"] = [DbxArraySerializer serialize:valueObj.webSessions withBlock:^id(id elem) { return [DbxTeamActiveWebSessionSerializer serialize:elem]; }];
     }
@@ -65,10 +65,10 @@
 }
 
 + (DbxTeamMemberDevices *)deserialize:(NSDictionary *)valueDict {
-    NSString *teamMemberId = [DbxStringSerializer deserialize:valueDict[@"team_member_id"]];
-    NSArray<DbxTeamActiveWebSession *> *webSessions = valueDict[@"web_sessions"] != nil ? [DbxArraySerializer deserialize:valueDict[@"web_sessions"] withBlock:^id(id elem) { return [DbxTeamActiveWebSessionSerializer deserialize:elem]; }] : nil;
-    NSArray<DbxTeamDesktopClientSession *> *desktopClients = valueDict[@"desktop_clients"] != nil ? [DbxArraySerializer deserialize:valueDict[@"desktop_clients"] withBlock:^id(id elem) { return [DbxTeamDesktopClientSessionSerializer deserialize:elem]; }] : nil;
-    NSArray<DbxTeamMobileClientSession *> *mobileClients = valueDict[@"mobile_clients"] != nil ? [DbxArraySerializer deserialize:valueDict[@"mobile_clients"] withBlock:^id(id elem) { return [DbxTeamMobileClientSessionSerializer deserialize:elem]; }] : nil;
+    NSString *teamMemberId = valueDict[@"team_member_id"];
+    NSArray<DbxTeamActiveWebSession *> *webSessions = valueDict[@"web_sessions"] ? [DbxArraySerializer deserialize:valueDict[@"web_sessions"] withBlock:^id(id elem) { return [DbxTeamActiveWebSessionSerializer deserialize:elem]; }] : nil;
+    NSArray<DbxTeamDesktopClientSession *> *desktopClients = valueDict[@"desktop_clients"] ? [DbxArraySerializer deserialize:valueDict[@"desktop_clients"] withBlock:^id(id elem) { return [DbxTeamDesktopClientSessionSerializer deserialize:elem]; }] : nil;
+    NSArray<DbxTeamMobileClientSession *> *mobileClients = valueDict[@"mobile_clients"] ? [DbxArraySerializer deserialize:valueDict[@"mobile_clients"] withBlock:^id(id elem) { return [DbxTeamMobileClientSessionSerializer deserialize:elem]; }] : nil;
 
     return [[DbxTeamMemberDevices alloc] initWithTeamMemberId:teamMemberId webSessions:webSessions desktopClients:desktopClients mobileClients:mobileClients];
 }

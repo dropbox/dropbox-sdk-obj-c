@@ -38,13 +38,13 @@
 + (NSDictionary *)serialize:(DbxFilesCreateFolderArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+    jsonDict[@"path"] = valueObj.path;
 
     return jsonDict;
 }
 
 + (DbxFilesCreateFolderArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *path = [DbxStringSerializer deserialize:valueDict[@"path"]];
+    NSString *path = valueDict[@"path"];
 
     return [[DbxFilesCreateFolderArg alloc] initWithPath:path];
 }

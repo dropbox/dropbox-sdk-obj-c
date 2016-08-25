@@ -42,20 +42,20 @@
 + (NSDictionary *)serialize:(DbxTeamTeamGetInfoResult *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"name"] = [DbxStringSerializer serialize:valueObj.name];
-    jsonDict[@"team_id"] = [DbxStringSerializer serialize:valueObj.teamId];
-    jsonDict[@"num_licensed_users"] = [DbxNSNumberSerializer serialize:valueObj.numLicensedUsers];
-    jsonDict[@"num_provisioned_users"] = [DbxNSNumberSerializer serialize:valueObj.numProvisionedUsers];
+    jsonDict[@"name"] = valueObj.name;
+    jsonDict[@"team_id"] = valueObj.teamId;
+    jsonDict[@"num_licensed_users"] = valueObj.numLicensedUsers;
+    jsonDict[@"num_provisioned_users"] = valueObj.numProvisionedUsers;
     jsonDict[@"policies"] = [DbxTeamPoliciesTeamMemberPoliciesSerializer serialize:valueObj.policies];
 
     return jsonDict;
 }
 
 + (DbxTeamTeamGetInfoResult *)deserialize:(NSDictionary *)valueDict {
-    NSString *name = [DbxStringSerializer deserialize:valueDict[@"name"]];
-    NSString *teamId = [DbxStringSerializer deserialize:valueDict[@"team_id"]];
-    NSNumber *numLicensedUsers = [DbxNSNumberSerializer deserialize:valueDict[@"num_licensed_users"]];
-    NSNumber *numProvisionedUsers = [DbxNSNumberSerializer deserialize:valueDict[@"num_provisioned_users"]];
+    NSString *name = valueDict[@"name"];
+    NSString *teamId = valueDict[@"team_id"];
+    NSNumber *numLicensedUsers = valueDict[@"num_licensed_users"];
+    NSNumber *numProvisionedUsers = valueDict[@"num_provisioned_users"];
     DbxTeamPoliciesTeamMemberPolicies *policies = [DbxTeamPoliciesTeamMemberPoliciesSerializer deserialize:valueDict[@"policies"]];
 
     return [[DbxTeamTeamGetInfoResult alloc] initWithName:name teamId:teamId numLicensedUsers:numLicensedUsers numProvisionedUsers:numProvisionedUsers policies:policies];

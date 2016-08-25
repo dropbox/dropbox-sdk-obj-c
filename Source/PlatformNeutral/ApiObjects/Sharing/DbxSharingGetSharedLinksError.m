@@ -73,7 +73,7 @@
 
     if ([valueObj isPath]) {
         if (valueObj.path) {
-            jsonDict[@"path"] = [DbxStringSerializer serialize:valueObj.path];
+            jsonDict[@"path"] = valueObj.path;
         }
         jsonDict[@".tag"] = @"path";
     }
@@ -91,7 +91,7 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"path"]) {
-        NSString *path = valueDict[@"path"] ? [DbxStringSerializer deserialize:valueDict[@"path"]] : nil;
+        NSString *path = valueDict[@"path"] ? valueDict[@"path"] : nil;
         return [[DbxSharingGetSharedLinksError alloc] initWithPath:path];
     }
     if ([tag isEqualToString:@"other"]) {

@@ -14,38 +14,12 @@
 @end
 
 
+// This is to avoid compiler warnings for Array route arguments
 @interface NSArray (DbxSerializable) <DbxSerializable>
 
 + (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
 
 + (id _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
-
-@end
-
-
-@interface DbxStringSerializer : NSObject
-
-+ (NSString * _Nonnull)serialize:(NSString * _Nonnull)value;
-
-+ (NSString * _Nonnull)deserialize:(NSString * _Nonnull)value;
-
-@end
-
-
-@interface DbxNSNumberSerializer : NSObject
-
-+ (NSNumber * _Nonnull)serialize:(NSNumber * _Nonnull)value;
-
-+ (NSNumber * _Nonnull)deserialize:(NSNumber * _Nonnull)value;
-
-@end
-
-
-@interface DbxBoolSerializer : NSObject
-
-+ (NSNumber * _Nonnull)serialize:(NSNumber * _Nonnull)value;
-
-+ (NSNumber * _Nonnull)deserialize:(NSNumber * _Nonnull)value;
 
 @end
 

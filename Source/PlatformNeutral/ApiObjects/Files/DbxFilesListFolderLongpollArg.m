@@ -10,12 +10,12 @@
 
 - (instancetype)initWithCursor:(NSString *)cursor timeout:(NSNumber *)timeout {
     [DbxStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](cursor);
-    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:30] maxValue:[NSNumber numberWithInt:480]](timeout ?: [NSNumber numberWithInt:30]);
+    [DbxStoneValidators numericValidator:[NSNumber numberWithInt:30] maxValue:[NSNumber numberWithInt:480]](timeout ?: [NSNumber numberWithUnsignedLong:30]);
 
     self = [super init];
     if (self != nil) {
         _cursor = cursor;
-        _timeout = timeout ?: [NSNumber numberWithInt:30];
+        _timeout = timeout ?: [NSNumber numberWithUnsignedLong:30];
     }
     return self;
 }
@@ -44,15 +44,15 @@
 + (NSDictionary *)serialize:(DbxFilesListFolderLongpollArg *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"cursor"] = [DbxStringSerializer serialize:valueObj.cursor];
-    jsonDict[@"timeout"] = [DbxNSNumberSerializer serialize:valueObj.timeout];
+    jsonDict[@"cursor"] = valueObj.cursor;
+    jsonDict[@"timeout"] = valueObj.timeout;
 
     return jsonDict;
 }
 
 + (DbxFilesListFolderLongpollArg *)deserialize:(NSDictionary *)valueDict {
-    NSString *cursor = [DbxStringSerializer deserialize:valueDict[@"cursor"]];
-    NSNumber *timeout = [DbxNSNumberSerializer deserialize:valueDict[@"timeout"]];
+    NSString *cursor = valueDict[@"cursor"];
+    NSNumber *timeout = valueDict[@"timeout"];
 
     return [[DbxFilesListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
 }

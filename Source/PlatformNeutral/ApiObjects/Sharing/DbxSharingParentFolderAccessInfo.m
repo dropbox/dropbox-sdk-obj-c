@@ -42,16 +42,16 @@
 + (NSDictionary *)serialize:(DbxSharingParentFolderAccessInfo *)valueObj {
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-    jsonDict[@"folder_name"] = [DbxStringSerializer serialize:valueObj.folderName];
-    jsonDict[@"shared_folder_id"] = [DbxStringSerializer serialize:valueObj.sharedFolderId];
+    jsonDict[@"folder_name"] = valueObj.folderName;
+    jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
     jsonDict[@"permissions"] = [DbxArraySerializer serialize:valueObj.permissions withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer serialize:elem]; }];
 
     return jsonDict;
 }
 
 + (DbxSharingParentFolderAccessInfo *)deserialize:(NSDictionary *)valueDict {
-    NSString *folderName = [DbxStringSerializer deserialize:valueDict[@"folder_name"]];
-    NSString *sharedFolderId = [DbxStringSerializer deserialize:valueDict[@"shared_folder_id"]];
+    NSString *folderName = valueDict[@"folder_name"];
+    NSString *sharedFolderId = valueDict[@"shared_folder_id"];
     NSArray<DbxSharingMemberPermission *> *permissions = [DbxArraySerializer deserialize:valueDict[@"permissions"] withBlock:^id(id elem) { return [DbxSharingMemberPermissionSerializer deserialize:elem]; }];
 
     return [[DbxSharingParentFolderAccessInfo alloc] initWithFolderName:folderName sharedFolderId:sharedFolderId permissions:permissions];

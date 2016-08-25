@@ -83,7 +83,7 @@
 
     if ([valueObj isSuccess]) {
         if (valueObj.success) {
-            jsonDict[@"success"] = [DbxSharingAccessLevelSerializer serialize:valueObj.success];
+            jsonDict = [[DbxSharingAccessLevelSerializer serialize:valueObj.success] mutableCopy];
         }
         jsonDict[@".tag"] = @"success";
     }

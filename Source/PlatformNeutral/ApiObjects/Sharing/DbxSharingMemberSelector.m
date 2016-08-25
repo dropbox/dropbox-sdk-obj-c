@@ -95,11 +95,11 @@
     NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
     if ([valueObj isDropboxId]) {
-        jsonDict[@"dropbox_id"] = [DbxStringSerializer serialize:valueObj.dropboxId];
+        jsonDict[@"dropbox_id"] = valueObj.dropboxId;
         jsonDict[@".tag"] = @"dropbox_id";
     }
     else if ([valueObj isEmail]) {
-        jsonDict[@"email"] = [DbxStringSerializer serialize:valueObj.email];
+        jsonDict[@"email"] = valueObj.email;
         jsonDict[@".tag"] = @"email";
     }
     else if ([valueObj isOther]) {
@@ -116,11 +116,11 @@
     NSString *tag = valueDict[@".tag"];
 
     if ([tag isEqualToString:@"dropbox_id"]) {
-        NSString *dropboxId = [DbxStringSerializer deserialize:valueDict[@"dropbox_id"]];
+        NSString *dropboxId = valueDict[@"dropbox_id"];
         return [[DbxSharingMemberSelector alloc] initWithDropboxId:dropboxId];
     }
     if ([tag isEqualToString:@"email"]) {
-        NSString *email = [DbxStringSerializer deserialize:valueDict[@"email"]];
+        NSString *email = valueDict[@"email"];
         return [[DbxSharingMemberSelector alloc] initWithEmail:email];
     }
     if ([tag isEqualToString:@"other"]) {
