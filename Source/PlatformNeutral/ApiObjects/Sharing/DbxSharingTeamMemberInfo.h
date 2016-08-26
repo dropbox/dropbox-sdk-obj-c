@@ -3,24 +3,24 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingTeamMemberInfo;
-@class DbxUsersTeam;
+@class DBXSHARINGTeamMemberInfo;
+@class DBXUSERSTeam;
 
 /// 
-/// The `DbxSharingTeamMemberInfo` struct.
+/// The `DBXSHARINGTeamMemberInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about a team member.
 /// 
-@interface DbxSharingTeamMemberInfo : NSObject <DbxSerializable> 
+@interface DBXSHARINGTeamMemberInfo : NSObject <DBXSerializable> 
 
 /// Information about the member's team
-@property (nonatomic) DbxUsersTeam * _Nonnull teamInfo;
+@property (nonatomic) DBXUSERSTeam * _Nonnull teamInfo;
 
 /// The display name of the user.
 @property (nonatomic, copy) NSString * _Nonnull displayName;
@@ -31,13 +31,13 @@
 
 /// Full constructor for the `TeamMemberInfo` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithTeamInfo:(DbxUsersTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName memberId:(NSString * _Nullable)memberId;
+- (nonnull instancetype)initWithTeamInfo:(DBXUSERSTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName memberId:(NSString * _Nullable)memberId;
 
 /// Convenience constructor for the `TeamMemberInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithTeamInfo:(DbxUsersTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName;
+- (nonnull instancetype)initWithTeamInfo:(DBXUSERSTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName;
 
-/// Returns a human-readable representation of the `DbxSharingTeamMemberInfo`
+/// Returns a human-readable representation of the `DBXSHARINGTeamMemberInfo`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -45,16 +45,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingTeamMemberInfo` struct.
+/// The serialization class for the `DBXSHARINGTeamMemberInfo` struct.
 /// 
-@interface DbxSharingTeamMemberInfoSerializer : NSObject 
+@interface DBXSHARINGTeamMemberInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingTeamMemberInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingTeamMemberInfo * _Nonnull)obj;
+/// `DBXSHARINGTeamMemberInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGTeamMemberInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingTeamMemberInfo` object from a
+/// Returns an instantiation of the `DBXSHARINGTeamMemberInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingTeamMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGTeamMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

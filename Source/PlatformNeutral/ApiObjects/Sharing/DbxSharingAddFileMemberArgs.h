@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingAddFileMemberArgs;
-@class DbxSharingMemberSelector;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGAddFileMemberArgs;
+@class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DbxSharingAddFileMemberArgs` struct.
+/// The `DBXSHARINGAddFileMemberArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for addFileMember.
 /// 
-@interface DbxSharingAddFileMemberArgs : NSObject <DbxSerializable> 
+@interface DBXSHARINGAddFileMemberArgs : NSObject <DBXSerializable> 
 
 /// File to which to add members.
 @property (nonatomic, copy) NSString * _Nonnull file;
@@ -26,7 +26,7 @@
 /// Members to add. Note that even an email address is given, this may result in
 /// a user being directy added to the membership if that email is the user's
 /// main account email.
-@property (nonatomic) NSArray<DbxSharingMemberSelector *> * _Nonnull members;
+@property (nonatomic) NSArray<DBXSHARINGMemberSelector *> * _Nonnull members;
 
 /// Message to send to added members in their invitation.
 @property (nonatomic, copy) NSString * _Nullable customMessage;
@@ -37,20 +37,20 @@
 
 /// AccessLevel union object, describing what access level we want to give new
 /// members.
-@property (nonatomic) DbxSharingAccessLevel * _Nonnull accessLevel;
+@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// If the custom message should be added as a comment on the file.
 @property (nonatomic, copy) NSNumber * _Nonnull addMessageAsComment;
 
 /// Full constructor for the `AddFileMemberArgs` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DBXSHARINGAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
 
 /// Convenience constructor for the `AddFileMemberArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members;
 
-/// Returns a human-readable representation of the `DbxSharingAddFileMemberArgs`
+/// Returns a human-readable representation of the `DBXSHARINGAddFileMemberArgs`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -58,16 +58,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingAddFileMemberArgs` struct.
+/// The serialization class for the `DBXSHARINGAddFileMemberArgs` struct.
 /// 
-@interface DbxSharingAddFileMemberArgsSerializer : NSObject 
+@interface DBXSHARINGAddFileMemberArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAddFileMemberArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAddFileMemberArgs * _Nonnull)obj;
+/// `DBXSHARINGAddFileMemberArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAddFileMemberArgs` object from a
+/// Returns an instantiation of the `DBXSHARINGAddFileMemberArgs` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingAddFileMemberArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAddFileMemberArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

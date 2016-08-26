@@ -3,44 +3,43 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderContinueError;
-@class DbxFilesLookupError;
+@class DBXFILESListFolderContinueError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesListFolderContinueError` union.
+/// The `DBXFILESListFolderContinueError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderContinueError : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderContinueError : NSObject <DBXSerializable> 
 
-/// The `FilesListFolderContinueErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesListFolderContinueError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesListFolderContinueErrorTag) {
+/// The `DBXFILESListFolderContinueErrorTag` enum type represents the possible
+/// tag states that the `DBXFILESListFolderContinueError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
     /// (no description).
-    FilesListFolderContinueErrorPath,
+    DBXFILESListFolderContinueErrorPath,
 
     /// Indicates that the cursor has been invalidated. Call listFolder to
     /// obtain a new cursor.
-    FilesListFolderContinueErrorReset,
+    DBXFILESListFolderContinueErrorReset,
 
     /// (no description).
-    FilesListFolderContinueErrorOther,
+    DBXFILESListFolderContinueErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesListFolderContinueErrorTag tag;
+@property (nonatomic) DBXFILESListFolderContinueErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `Reset`.
 - (nonnull instancetype)initWithReset;
@@ -61,23 +60,23 @@ typedef NS_ENUM(NSInteger, FilesListFolderContinueErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesListFolderContinueError` object.
+/// `DBXFILESListFolderContinueError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderContinueError` union.
+/// The serialization class for the `DBXFILESListFolderContinueError` union.
 /// 
-@interface DbxFilesListFolderContinueErrorSerializer : NSObject 
+@interface DBXFILESListFolderContinueErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderContinueError * _Nonnull)obj;
+/// `DBXFILESListFolderContinueError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderContinueError` object
+/// Returns an instantiation of the `DBXFILESListFolderContinueError` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesListFolderContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

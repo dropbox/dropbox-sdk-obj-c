@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRevokeSharedLinkError;
+@class DBXSHARINGRevokeSharedLinkError;
 
 /// 
-/// The `DbxSharingRevokeSharedLinkError` union.
+/// The `DBXSHARINGRevokeSharedLinkError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRevokeSharedLinkError : NSObject <DbxSerializable> 
+@interface DBXSHARINGRevokeSharedLinkError : NSObject <DBXSerializable> 
 
-/// The `SharingRevokeSharedLinkErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingRevokeSharedLinkError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingRevokeSharedLinkErrorTag) {
+/// The `DBXSHARINGRevokeSharedLinkErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGRevokeSharedLinkError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
     /// The shared link wasn't found
-    SharingRevokeSharedLinkErrorSharedLinkNotFound,
+    DBXSHARINGRevokeSharedLinkErrorSharedLinkNotFound,
 
     /// The caller is not allowed to access this shared link
-    SharingRevokeSharedLinkErrorSharedLinkAccessDenied,
+    DBXSHARINGRevokeSharedLinkErrorSharedLinkAccessDenied,
 
     /// (no description).
-    SharingRevokeSharedLinkErrorOther,
+    DBXSHARINGRevokeSharedLinkErrorOther,
 
     /// Shared link is malformed.
-    SharingRevokeSharedLinkErrorSharedLinkMalformed,
+    DBXSHARINGRevokeSharedLinkErrorSharedLinkMalformed,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingRevokeSharedLinkErrorTag tag;
-
+@property (nonatomic) DBXSHARINGRevokeSharedLinkErrorTag tag;
 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
 - (nonnull instancetype)initWithSharedLinkNotFound;
@@ -68,23 +67,23 @@ typedef NS_ENUM(NSInteger, SharingRevokeSharedLinkErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRevokeSharedLinkError` object.
+/// `DBXSHARINGRevokeSharedLinkError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRevokeSharedLinkError` union.
+/// The serialization class for the `DBXSHARINGRevokeSharedLinkError` union.
 /// 
-@interface DbxSharingRevokeSharedLinkErrorSerializer : NSObject 
+@interface DBXSHARINGRevokeSharedLinkErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRevokeSharedLinkError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRevokeSharedLinkError * _Nonnull)obj;
+/// `DBXSHARINGRevokeSharedLinkError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRevokeSharedLinkError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRevokeSharedLinkError` object
+/// Returns an instantiation of the `DBXSHARINGRevokeSharedLinkError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingRevokeSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRevokeSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

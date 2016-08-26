@@ -3,37 +3,37 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFilesResult;
-@class DbxSharingSharedFileMetadata;
+@class DBXSHARINGListFilesResult;
+@class DBXSHARINGSharedFileMetadata;
 
 /// 
-/// The `DbxSharingListFilesResult` struct.
+/// The `DBXSHARINGListFilesResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Success results for listReceivedFiles.
 /// 
-@interface DbxSharingListFilesResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFilesResult : NSObject <DBXSerializable> 
 
 /// Information about the files shared with current user.
-@property (nonatomic) NSArray<DbxSharingSharedFileMetadata *> * _Nonnull entries;
+@property (nonatomic) NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull entries;
 
 /// Cursor used to obtain additional shared files.
 @property (nonatomic, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListFilesResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFileMetadata *> * _Nonnull)entries cursor:(NSString * _Nullable)cursor;
+- (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull)entries cursor:(NSString * _Nullable)cursor;
 
 /// Convenience constructor for the `ListFilesResult` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFileMetadata *> * _Nonnull)entries;
+- (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull)entries;
 
-/// Returns a human-readable representation of the `DbxSharingListFilesResult`
+/// Returns a human-readable representation of the `DBXSHARINGListFilesResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -41,16 +41,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingListFilesResult` struct.
+/// The serialization class for the `DBXSHARINGListFilesResult` struct.
 /// 
-@interface DbxSharingListFilesResultSerializer : NSObject 
+@interface DBXSHARINGListFilesResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFilesResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFilesResult * _Nonnull)obj;
+/// `DBXSHARINGListFilesResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFilesResult` object from a
+/// Returns an instantiation of the `DBXSHARINGListFilesResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListFilesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFilesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

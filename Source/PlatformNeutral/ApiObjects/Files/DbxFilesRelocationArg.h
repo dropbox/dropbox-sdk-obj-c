@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesRelocationArg;
+@class DBXFILESRelocationArg;
 
 /// 
-/// The `DbxFilesRelocationArg` struct.
+/// The `DBXFILESRelocationArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesRelocationArg : NSObject <DbxSerializable> 
+@interface DBXFILESRelocationArg : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to be copied or moved.
 @property (nonatomic, copy) NSString * _Nonnull fromPath;
@@ -26,7 +26,7 @@
 /// variables).
 - (nonnull instancetype)initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
 
-/// Returns a human-readable representation of the `DbxFilesRelocationArg`
+/// Returns a human-readable representation of the `DBXFILESRelocationArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -34,16 +34,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesRelocationArg` struct.
+/// The serialization class for the `DBXFILESRelocationArg` struct.
 /// 
-@interface DbxFilesRelocationArgSerializer : NSObject 
+@interface DBXFILESRelocationArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesRelocationArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesRelocationArg * _Nonnull)obj;
+/// `DBXFILESRelocationArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRelocationArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesRelocationArg` object from a
+/// Returns an instantiation of the `DBXFILESRelocationArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesRelocationArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESRelocationArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

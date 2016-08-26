@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMemberAddResult;
-@class DbxTeamMembersAddLaunch;
+@class DBXTEAMMemberAddResult;
+@class DBXTEAMMembersAddLaunch;
 
 /// 
-/// The `DbxTeamMembersAddLaunch` union.
+/// The `DBXTEAMMembersAddLaunch` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersAddLaunch : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersAddLaunch : NSObject <DBXSerializable> 
 
-/// The `TeamMembersAddLaunchTag` enum type represents the possible tag states
-/// that the `DbxTeamMembersAddLaunch` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMembersAddLaunchTag) {
+/// The `DBXTEAMMembersAddLaunchTag` enum type represents the possible tag
+/// states that the `DBXTEAMMembersAddLaunch` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMembersAddLaunchTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
-    TeamMembersAddLaunchAsyncJobId,
+    DBXTEAMMembersAddLaunchAsyncJobId,
 
     /// (no description).
-    TeamMembersAddLaunchComplete,
+    DBXTEAMMembersAddLaunchComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMembersAddLaunchTag tag;
+@property (nonatomic) DBXTEAMMembersAddLaunchTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is
 /// an id that can be used to obtain the status of the asynchronous job.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
 /// (no description).
-@property (nonatomic) NSArray<DbxTeamMemberAddResult *> * _Nonnull complete;
-
+@property (nonatomic) NSArray<DBXTEAMMemberAddResult *> * _Nonnull complete;
 
 /// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(NSArray<DbxTeamMemberAddResult *> * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(NSArray<DBXTEAMMemberAddResult *> * _Nonnull)complete;
 
 /// Returns whether the union's current tag state has value `AsyncJobId`.
 - (BOOL)isAsyncJobId;
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, TeamMembersAddLaunchTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamMembersAddLaunch`
+/// Returns a human-readable representation of the `DBXTEAMMembersAddLaunch`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -63,16 +62,16 @@ typedef NS_ENUM(NSInteger, TeamMembersAddLaunchTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersAddLaunch` union.
+/// The serialization class for the `DBXTEAMMembersAddLaunch` union.
 /// 
-@interface DbxTeamMembersAddLaunchSerializer : NSObject 
+@interface DBXTEAMMembersAddLaunchSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersAddLaunch` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersAddLaunch * _Nonnull)obj;
+/// `DBXTEAMMembersAddLaunch` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddLaunch * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersAddLaunch` object from a
+/// Returns an instantiation of the `DBXTEAMMembersAddLaunch` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersAddLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersAddLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

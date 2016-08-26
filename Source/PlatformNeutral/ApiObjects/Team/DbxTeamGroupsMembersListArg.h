@@ -3,35 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupSelector;
-@class DbxTeamGroupsMembersListArg;
+@class DBXTEAMGroupSelector;
+@class DBXTEAMGroupsMembersListArg;
 
 /// 
-/// The `DbxTeamGroupsMembersListArg` struct.
+/// The `DBXTEAMGroupsMembersListArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsMembersListArg : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsMembersListArg : NSObject <DBXSerializable> 
 
 /// The group whose members are to be listed.
-@property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
 
 /// Number of results to return per call.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `GroupsMembersListArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
 
 /// Convenience constructor for the `GroupsMembersListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsMembersListArg`
+/// Returns a human-readable representation of the `DBXTEAMGroupsMembersListArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -39,16 +39,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsMembersListArg` struct.
+/// The serialization class for the `DBXTEAMGroupsMembersListArg` struct.
 /// 
-@interface DbxTeamGroupsMembersListArgSerializer : NSObject 
+@interface DBXTEAMGroupsMembersListArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsMembersListArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsMembersListArg * _Nonnull)obj;
+/// `DBXTEAMGroupsMembersListArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsMembersListArg` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsMembersListArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

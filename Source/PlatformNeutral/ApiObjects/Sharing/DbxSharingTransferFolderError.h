@@ -3,58 +3,57 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedFolderAccessError;
-@class DbxSharingTransferFolderError;
+@class DBXSHARINGSharedFolderAccessError;
+@class DBXSHARINGTransferFolderError;
 
 /// 
-/// The `DbxSharingTransferFolderError` union.
+/// The `DBXSHARINGTransferFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingTransferFolderError : NSObject <DbxSerializable> 
+@interface DBXSHARINGTransferFolderError : NSObject <DBXSerializable> 
 
-/// The `SharingTransferFolderErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingTransferFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingTransferFolderErrorTag) {
+/// The `DBXSHARINGTransferFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGTransferFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGTransferFolderErrorTag) {
     /// (no description).
-    SharingTransferFolderErrorAccessError,
+    DBXSHARINGTransferFolderErrorAccessError,
 
     /// toDropboxId in TransferFolderArg is invalid.
-    SharingTransferFolderErrorInvalidDropboxId,
+    DBXSHARINGTransferFolderErrorInvalidDropboxId,
 
     /// The new designated owner is not currently a member of the shared folder.
-    SharingTransferFolderErrorDNewOwnerNotAMember,
+    DBXSHARINGTransferFolderErrorDNewOwnerNotAMember,
 
     /// The new designated owner has not added the folder to their Dropbox.
-    SharingTransferFolderErrorDNewOwnerUnmounted,
+    DBXSHARINGTransferFolderErrorDNewOwnerUnmounted,
 
     /// The new designated owner's e-mail address is unverified.
-    SharingTransferFolderErrorDNewOwnerEmailUnverified,
+    DBXSHARINGTransferFolderErrorDNewOwnerEmailUnverified,
 
     /// This action cannot be performed on a team shared folder.
-    SharingTransferFolderErrorTeamFolder,
+    DBXSHARINGTransferFolderErrorTeamFolder,
 
     /// The current user does not have permission to perform this action.
-    SharingTransferFolderErrorNoPermission,
+    DBXSHARINGTransferFolderErrorNoPermission,
 
     /// (no description).
-    SharingTransferFolderErrorOther,
+    DBXSHARINGTransferFolderErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingTransferFolderErrorTag tag;
+@property (nonatomic) DBXSHARINGTransferFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `InvalidDropboxId`.
 - (nonnull instancetype)initWithInvalidDropboxId;
@@ -108,23 +107,23 @@ typedef NS_ENUM(NSInteger, SharingTransferFolderErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingTransferFolderError` object.
+/// `DBXSHARINGTransferFolderError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingTransferFolderError` union.
+/// The serialization class for the `DBXSHARINGTransferFolderError` union.
 /// 
-@interface DbxSharingTransferFolderErrorSerializer : NSObject 
+@interface DBXSHARINGTransferFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingTransferFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingTransferFolderError * _Nonnull)obj;
+/// `DBXSHARINGTransferFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGTransferFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingTransferFolderError` object from
+/// Returns an instantiation of the `DBXSHARINGTransferFolderError` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingTransferFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGTransferFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

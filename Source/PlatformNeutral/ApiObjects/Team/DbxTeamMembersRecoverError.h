@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersRecoverError;
+@class DBXTEAMMembersRecoverError;
 
 /// 
-/// The `DbxTeamMembersRecoverError` union.
+/// The `DBXTEAMMembersRecoverError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersRecoverError : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersRecoverError : NSObject <DBXSerializable> 
 
-/// The `TeamMembersRecoverErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamMembersRecoverError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMembersRecoverErrorTag) {
+/// The `DBXTEAMMembersRecoverErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMMembersRecoverError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMembersRecoverErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
-    TeamMembersRecoverErrorUserNotFound,
+    DBXTEAMMembersRecoverErrorUserNotFound,
 
     /// The user is not recoverable.
-    TeamMembersRecoverErrorUserUnrecoverable,
+    DBXTEAMMembersRecoverErrorUserUnrecoverable,
 
     /// The user is not a member of the team.
-    TeamMembersRecoverErrorUserNotInTeam,
+    DBXTEAMMembersRecoverErrorUserNotInTeam,
 
     /// (no description).
-    TeamMembersRecoverErrorOther,
+    DBXTEAMMembersRecoverErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMembersRecoverErrorTag tag;
-
+@property (nonatomic) DBXTEAMMembersRecoverErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -65,7 +64,7 @@ typedef NS_ENUM(NSInteger, TeamMembersRecoverErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamMembersRecoverError`
+/// Returns a human-readable representation of the `DBXTEAMMembersRecoverError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -73,16 +72,16 @@ typedef NS_ENUM(NSInteger, TeamMembersRecoverErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersRecoverError` union.
+/// The serialization class for the `DBXTEAMMembersRecoverError` union.
 /// 
-@interface DbxTeamMembersRecoverErrorSerializer : NSObject 
+@interface DBXTEAMMembersRecoverErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersRecoverError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersRecoverError * _Nonnull)obj;
+/// `DBXTEAMMembersRecoverError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersRecoverError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersRecoverError` object from a
+/// Returns an instantiation of the `DBXTEAMMembersRecoverError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersRecoverError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersRecoverError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

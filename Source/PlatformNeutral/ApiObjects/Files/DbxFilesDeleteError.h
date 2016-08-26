@@ -3,50 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesDeleteError;
-@class DbxFilesLookupError;
-@class DbxFilesWriteError;
+@class DBXFILESDeleteError;
+@class DBXFILESLookupError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesDeleteError` union.
+/// The `DBXFILESDeleteError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesDeleteError : NSObject <DbxSerializable> 
+@interface DBXFILESDeleteError : NSObject <DBXSerializable> 
 
-/// The `FilesDeleteErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesDeleteError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesDeleteErrorTag) {
+/// The `DBXFILESDeleteErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESDeleteError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
     /// (no description).
-    FilesDeleteErrorPathLookup,
-
-    /// (no description).
-    FilesDeleteErrorPathWrite,
+    DBXFILESDeleteErrorPathLookup,
 
     /// (no description).
-    FilesDeleteErrorOther,
+    DBXFILESDeleteErrorPathWrite,
+
+    /// (no description).
+    DBXFILESDeleteErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesDeleteErrorTag tag;
+@property (nonatomic) DBXFILESDeleteErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull pathLookup;
+@property (nonatomic) DBXFILESLookupError * _Nonnull pathLookup;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull pathWrite;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull pathWrite;
 
 /// Initializes union class with tag state of `PathLookup`.
-- (nonnull instancetype)initWithPathLookup:(DbxFilesLookupError * _Nonnull)pathLookup;
+- (nonnull instancetype)initWithPathLookup:(DBXFILESLookupError * _Nonnull)pathLookup;
 
 /// Initializes union class with tag state of `PathWrite`.
-- (nonnull instancetype)initWithPathWrite:(DbxFilesWriteError * _Nonnull)pathWrite;
+- (nonnull instancetype)initWithPathWrite:(DBXFILESWriteError * _Nonnull)pathWrite;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -63,23 +62,23 @@ typedef NS_ENUM(NSInteger, FilesDeleteErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesDeleteError` object.
+/// Returns a human-readable representation of the `DBXFILESDeleteError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesDeleteError` union.
+/// The serialization class for the `DBXFILESDeleteError` union.
 /// 
-@interface DbxFilesDeleteErrorSerializer : NSObject 
+@interface DBXFILESDeleteErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesDeleteError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesDeleteError * _Nonnull)obj;
+/// `DBXFILESDeleteError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesDeleteError` object from a
+/// Returns an instantiation of the `DBXFILESDeleteError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

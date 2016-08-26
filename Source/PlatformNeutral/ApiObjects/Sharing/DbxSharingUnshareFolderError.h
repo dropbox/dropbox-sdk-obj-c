@@ -3,46 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedFolderAccessError;
-@class DbxSharingUnshareFolderError;
+@class DBXSHARINGSharedFolderAccessError;
+@class DBXSHARINGUnshareFolderError;
 
 /// 
-/// The `DbxSharingUnshareFolderError` union.
+/// The `DBXSHARINGUnshareFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingUnshareFolderError : NSObject <DbxSerializable> 
+@interface DBXSHARINGUnshareFolderError : NSObject <DBXSerializable> 
 
-/// The `SharingUnshareFolderErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingUnshareFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingUnshareFolderErrorTag) {
+/// The `DBXSHARINGUnshareFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGUnshareFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGUnshareFolderErrorTag) {
     /// (no description).
-    SharingUnshareFolderErrorAccessError,
+    DBXSHARINGUnshareFolderErrorAccessError,
 
     /// This action cannot be performed on a team shared folder.
-    SharingUnshareFolderErrorTeamFolder,
+    DBXSHARINGUnshareFolderErrorTeamFolder,
 
     /// The current user does not have permission to perform this action.
-    SharingUnshareFolderErrorNoPermission,
+    DBXSHARINGUnshareFolderErrorNoPermission,
 
     /// (no description).
-    SharingUnshareFolderErrorOther,
+    DBXSHARINGUnshareFolderErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingUnshareFolderErrorTag tag;
+@property (nonatomic) DBXSHARINGUnshareFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `TeamFolder`.
 - (nonnull instancetype)initWithTeamFolder;
@@ -69,23 +68,23 @@ typedef NS_ENUM(NSInteger, SharingUnshareFolderErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingUnshareFolderError` object.
+/// `DBXSHARINGUnshareFolderError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingUnshareFolderError` union.
+/// The serialization class for the `DBXSHARINGUnshareFolderError` union.
 /// 
-@interface DbxSharingUnshareFolderErrorSerializer : NSObject 
+@interface DBXSHARINGUnshareFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUnshareFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUnshareFolderError * _Nonnull)obj;
+/// `DBXSHARINGUnshareFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUnshareFolderError` object from a
+/// Returns an instantiation of the `DBXSHARINGUnshareFolderError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingUnshareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUnshareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

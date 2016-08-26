@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadError;
-@class DbxFilesUploadWriteFailed;
+@class DBXFILESUploadError;
+@class DBXFILESUploadWriteFailed;
 
 /// 
-/// The `DbxFilesUploadError` union.
+/// The `DBXFILESUploadError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadError : NSObject <DbxSerializable> 
+@interface DBXFILESUploadError : NSObject <DBXSerializable> 
 
-/// The `FilesUploadErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesUploadError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesUploadErrorTag) {
+/// The `DBXFILESUploadErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESUploadError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
     /// Unable to save the uploaded contents to a file.
-    FilesUploadErrorPath,
+    DBXFILESUploadErrorPath,
 
     /// (no description).
-    FilesUploadErrorOther,
+    DBXFILESUploadErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesUploadErrorTag tag;
+@property (nonatomic) DBXFILESUploadErrorTag tag;
 
 /// Unable to save the uploaded contents to a file.
-@property (nonatomic) DbxFilesUploadWriteFailed * _Nonnull path;
-
+@property (nonatomic) DBXFILESUploadWriteFailed * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesUploadWriteFailed * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESUploadWriteFailed * _Nonnull)path;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -50,23 +49,23 @@ typedef NS_ENUM(NSInteger, FilesUploadErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesUploadError` object.
+/// Returns a human-readable representation of the `DBXFILESUploadError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadError` union.
+/// The serialization class for the `DBXFILESUploadError` union.
 /// 
-@interface DbxFilesUploadErrorSerializer : NSObject 
+@interface DBXFILESUploadErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadError * _Nonnull)obj;
+/// `DBXFILESUploadError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadError` object from a
+/// Returns an instantiation of the `DBXFILESUploadError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesUploadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

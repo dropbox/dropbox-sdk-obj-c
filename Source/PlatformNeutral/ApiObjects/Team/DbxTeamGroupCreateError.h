@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupCreateError;
+@class DBXTEAMGroupCreateError;
 
 /// 
-/// The `DbxTeamGroupCreateError` union.
+/// The `DBXTEAMGroupCreateError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupCreateError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupCreateError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupCreateErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupCreateError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupCreateErrorTag) {
+/// The `DBXTEAMGroupCreateErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMGroupCreateError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
     /// There is already an existing group with the requested name.
-    TeamGroupCreateErrorGroupNameAlreadyUsed,
+    DBXTEAMGroupCreateErrorGroupNameAlreadyUsed,
 
     /// Group name is empty or has invalid characters.
-    TeamGroupCreateErrorGroupNameInvalid,
+    DBXTEAMGroupCreateErrorGroupNameInvalid,
 
     /// The new external ID is already being used by another group.
-    TeamGroupCreateErrorExternalIdAlreadyInUse,
+    DBXTEAMGroupCreateErrorExternalIdAlreadyInUse,
 
     /// (no description).
-    TeamGroupCreateErrorOther,
+    DBXTEAMGroupCreateErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupCreateErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupCreateErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNameAlreadyUsed`.
 - (nonnull instancetype)initWithGroupNameAlreadyUsed;
@@ -66,7 +65,7 @@ typedef NS_ENUM(NSInteger, TeamGroupCreateErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupCreateError`
+/// Returns a human-readable representation of the `DBXTEAMGroupCreateError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -74,16 +73,16 @@ typedef NS_ENUM(NSInteger, TeamGroupCreateErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupCreateError` union.
+/// The serialization class for the `DBXTEAMGroupCreateError` union.
 /// 
-@interface DbxTeamGroupCreateErrorSerializer : NSObject 
+@interface DBXTEAMGroupCreateErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupCreateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupCreateError * _Nonnull)obj;
+/// `DBXTEAMGroupCreateError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupCreateError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupCreateError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupCreateError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupCreateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupCreateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

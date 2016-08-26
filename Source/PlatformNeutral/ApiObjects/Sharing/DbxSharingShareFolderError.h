@@ -3,56 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingShareFolderError;
-@class DbxSharingSharePathError;
+@class DBXSHARINGShareFolderError;
+@class DBXSHARINGSharePathError;
 
 /// 
-/// The `DbxSharingShareFolderError` union.
+/// The `DBXSHARINGShareFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingShareFolderError : NSObject <DbxSerializable> 
+@interface DBXSHARINGShareFolderError : NSObject <DBXSerializable> 
 
-/// The `SharingShareFolderErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingShareFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingShareFolderErrorTag) {
+/// The `DBXSHARINGShareFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGShareFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderErrorTag) {
     /// The current user's e-mail address is unverified.
-    SharingShareFolderErrorEmailUnverified,
+    DBXSHARINGShareFolderErrorEmailUnverified,
 
     /// path in ShareFolderArg is invalid.
-    SharingShareFolderErrorBadPath,
+    DBXSHARINGShareFolderErrorBadPath,
 
     /// Team policy is more restrictive than memberPolicy in ShareFolderArg.
-    SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy,
+    DBXSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy,
 
     /// The current user's account is not allowed to select the specified
     /// sharedLinkPolicy in ShareFolderArg.
-    SharingShareFolderErrorDisallowedSharedLinkPolicy,
+    DBXSHARINGShareFolderErrorDisallowedSharedLinkPolicy,
 
     /// (no description).
-    SharingShareFolderErrorOther,
+    DBXSHARINGShareFolderErrorOther,
 
     /// The current user does not have permission to perform this action.
-    SharingShareFolderErrorNoPermission,
+    DBXSHARINGShareFolderErrorNoPermission,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingShareFolderErrorTag tag;
+@property (nonatomic) DBXSHARINGShareFolderErrorTag tag;
 
 /// path in ShareFolderArg is invalid.
-@property (nonatomic) DbxSharingSharePathError * _Nonnull badPath;
-
+@property (nonatomic) DBXSHARINGSharePathError * _Nonnull badPath;
 
 /// Initializes union class with tag state of `EmailUnverified`.
 - (nonnull instancetype)initWithEmailUnverified;
 
 /// Initializes union class with tag state of `BadPath`.
-- (nonnull instancetype)initWithBadPath:(DbxSharingSharePathError * _Nonnull)badPath;
+- (nonnull instancetype)initWithBadPath:(DBXSHARINGSharePathError * _Nonnull)badPath;
 
 /// Initializes union class with tag state of `TeamPolicyDisallowsMemberPolicy`.
 - (nonnull instancetype)initWithTeamPolicyDisallowsMemberPolicy;
@@ -89,7 +88,7 @@ typedef NS_ENUM(NSInteger, SharingShareFolderErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingShareFolderError`
+/// Returns a human-readable representation of the `DBXSHARINGShareFolderError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -97,16 +96,16 @@ typedef NS_ENUM(NSInteger, SharingShareFolderErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingShareFolderError` union.
+/// The serialization class for the `DBXSHARINGShareFolderError` union.
 /// 
-@interface DbxSharingShareFolderErrorSerializer : NSObject 
+@interface DBXSHARINGShareFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingShareFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderError * _Nonnull)obj;
+/// `DBXSHARINGShareFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingShareFolderError` object from a
+/// Returns an instantiation of the `DBXSHARINGShareFolderError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingShareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGShareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

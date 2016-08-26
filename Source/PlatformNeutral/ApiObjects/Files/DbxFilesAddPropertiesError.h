@@ -3,55 +3,54 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesAddPropertiesError;
-@class DbxFilesLookupError;
+@class DBXFILESAddPropertiesError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesAddPropertiesError` union.
+/// The `DBXFILESAddPropertiesError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesAddPropertiesError : NSObject <DbxSerializable> 
+@interface DBXFILESAddPropertiesError : NSObject <DBXSerializable> 
 
-/// The `FilesAddPropertiesErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesAddPropertiesError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesAddPropertiesErrorTag) {
+/// The `DBXFILESAddPropertiesErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESAddPropertiesError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESAddPropertiesErrorTag) {
     /// Property template does not exist for given identifier.
-    FilesAddPropertiesErrorTemplateNotFound,
+    DBXFILESAddPropertiesErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    FilesAddPropertiesErrorRestrictedContent,
+    DBXFILESAddPropertiesErrorRestrictedContent,
 
     /// (no description).
-    FilesAddPropertiesErrorOther,
+    DBXFILESAddPropertiesErrorOther,
 
     /// (no description).
-    FilesAddPropertiesErrorPath,
+    DBXFILESAddPropertiesErrorPath,
 
     /// A field value in this property group is too large.
-    FilesAddPropertiesErrorPropertyFieldTooLarge,
+    DBXFILESAddPropertiesErrorPropertyFieldTooLarge,
 
     /// The property group specified does not conform to the property template.
-    FilesAddPropertiesErrorDoesNotFitTemplate,
+    DBXFILESAddPropertiesErrorDoesNotFitTemplate,
 
     /// This property group already exists for this file.
-    FilesAddPropertiesErrorPropertyGroupAlreadyExists,
+    DBXFILESAddPropertiesErrorPropertyGroupAlreadyExists,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesAddPropertiesErrorTag tag;
+@property (nonatomic) DBXFILESAddPropertiesErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -63,7 +62,7 @@ typedef NS_ENUM(NSInteger, FilesAddPropertiesErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `PropertyFieldTooLarge`.
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
@@ -101,7 +100,7 @@ typedef NS_ENUM(NSInteger, FilesAddPropertiesErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesAddPropertiesError`
+/// Returns a human-readable representation of the `DBXFILESAddPropertiesError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -109,16 +108,16 @@ typedef NS_ENUM(NSInteger, FilesAddPropertiesErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesAddPropertiesError` union.
+/// The serialization class for the `DBXFILESAddPropertiesError` union.
 /// 
-@interface DbxFilesAddPropertiesErrorSerializer : NSObject 
+@interface DBXFILESAddPropertiesErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesAddPropertiesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesAddPropertiesError * _Nonnull)obj;
+/// `DBXFILESAddPropertiesError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESAddPropertiesError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesAddPropertiesError` object from a
+/// Returns an instantiation of the `DBXFILESAddPropertiesError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesAddPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESAddPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

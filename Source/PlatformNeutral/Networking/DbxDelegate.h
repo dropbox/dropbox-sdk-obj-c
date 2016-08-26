@@ -2,11 +2,11 @@
 /// Delegate class to manage background session downloads / uploads.
 ///
 
-@class DbxRpcData;
-@class DbxUploadData;
-@class DbxDownloadData;
+@class DBXRpcData;
+@class DBXUploadData;
+@class DBXDownloadData;
 
-@interface DbxDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
+@interface DBXDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic) NSOperationQueue * _Nonnull delegateQueue;
 

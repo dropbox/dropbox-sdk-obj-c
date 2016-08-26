@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamAddPropertyTemplateResult;
+@class DBXTEAMAddPropertyTemplateResult;
 
 /// 
-/// The `DbxTeamAddPropertyTemplateResult` struct.
+/// The `DBXTEAMAddPropertyTemplateResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamAddPropertyTemplateResult : NSObject <DbxSerializable> 
+@interface DBXTEAMAddPropertyTemplateResult : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by propertiesTemplateAdd.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
@@ -24,23 +24,23 @@
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamAddPropertyTemplateResult` object.
+/// `DBXTEAMAddPropertyTemplateResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamAddPropertyTemplateResult` struct.
+/// The serialization class for the `DBXTEAMAddPropertyTemplateResult` struct.
 /// 
-@interface DbxTeamAddPropertyTemplateResultSerializer : NSObject 
+@interface DBXTEAMAddPropertyTemplateResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamAddPropertyTemplateResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamAddPropertyTemplateResult * _Nonnull)obj;
+/// `DBXTEAMAddPropertyTemplateResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMAddPropertyTemplateResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamAddPropertyTemplateResult` object
+/// Returns an instantiation of the `DBXTEAMAddPropertyTemplateResult` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamAddPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMAddPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

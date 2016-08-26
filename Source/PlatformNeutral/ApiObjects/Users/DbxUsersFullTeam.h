@@ -3,46 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxUsersTeam.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXUSERSTeam.h"
 
-@class DbxTeamPoliciesTeamSharingPolicies;
-@class DbxUsersFullTeam;
+@class DBXTEAMPOLICIESTeamSharingPolicies;
+@class DBXUSERSFullTeam;
 
 /// 
-/// The `DbxUsersFullTeam` struct.
+/// The `DBXUSERSFullTeam` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Detailed information about a team.
 /// 
-@interface DbxUsersFullTeam : DbxUsersTeam <DbxSerializable> 
+@interface DBXUSERSFullTeam : DBXUSERSTeam <DBXSerializable> 
 
 /// Team policies governing sharing.
-@property (nonatomic) DbxTeamPoliciesTeamSharingPolicies * _Nonnull sharingPolicies;
+@property (nonatomic) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharingPolicies;
 
 /// Full constructor for the `FullTeam` struct (exposes all instance variables).
-- (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name sharingPolicies:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)sharingPolicies;
+- (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name sharingPolicies:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharingPolicies;
 
-/// Returns a human-readable representation of the `DbxUsersFullTeam` object.
+/// Returns a human-readable representation of the `DBXUSERSFullTeam` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersFullTeam` struct.
+/// The serialization class for the `DBXUSERSFullTeam` struct.
 /// 
-@interface DbxUsersFullTeamSerializer : NSObject 
+@interface DBXUSERSFullTeamSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersFullTeam` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersFullTeam * _Nonnull)obj;
+/// `DBXUSERSFullTeam` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullTeam * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersFullTeam` object from a
+/// Returns an instantiation of the `DBXUSERSFullTeam` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersFullTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSFullTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

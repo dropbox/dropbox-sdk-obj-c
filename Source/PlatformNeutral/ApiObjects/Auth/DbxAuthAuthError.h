@@ -3,43 +3,42 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxAuthAuthError;
+@class DBXAUTHAuthError;
 
 /// 
-/// The `DbxAuthAuthError` union.
+/// The `DBXAUTHAuthError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Errors occurred during authentication.
 /// 
-@interface DbxAuthAuthError : NSObject <DbxSerializable> 
+@interface DBXAUTHAuthError : NSObject <DBXSerializable> 
 
-/// The `AuthAuthErrorTag` enum type represents the possible tag states that the
-/// `DbxAuthAuthError` union can exist in.
-typedef NS_ENUM(NSInteger, AuthAuthErrorTag) {
+/// The `DBXAUTHAuthErrorTag` enum type represents the possible tag states that
+/// the `DBXAUTHAuthError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
     /// The access token is invalid.
-    AuthAuthErrorInvalidAccessToken,
+    DBXAUTHAuthErrorInvalidAccessToken,
 
     /// The user specified in 'Dropbox-API-Select-User' is no longer on the
     /// team.
-    AuthAuthErrorInvalidSelectUser,
+    DBXAUTHAuthErrorInvalidSelectUser,
 
     /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox
     /// Business team admin.
-    AuthAuthErrorInvalidSelectAdmin,
+    DBXAUTHAuthErrorInvalidSelectAdmin,
 
     /// (no description).
-    AuthAuthErrorOther,
+    DBXAUTHAuthErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) AuthAuthErrorTag tag;
-
+@property (nonatomic) DBXAUTHAuthErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidAccessToken`.
 - (nonnull instancetype)initWithInvalidAccessToken;
@@ -70,23 +69,23 @@ typedef NS_ENUM(NSInteger, AuthAuthErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxAuthAuthError` object.
+/// Returns a human-readable representation of the `DBXAUTHAuthError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxAuthAuthError` union.
+/// The serialization class for the `DBXAUTHAuthError` union.
 /// 
-@interface DbxAuthAuthErrorSerializer : NSObject 
+@interface DBXAUTHAuthErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxAuthAuthError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxAuthAuthError * _Nonnull)obj;
+/// `DBXAUTHAuthError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXAUTHAuthError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxAuthAuthError` object from a
+/// Returns an instantiation of the `DBXAUTHAuthError` object from a
 /// json-compatible dictionary representation.
-+ (DbxAuthAuthError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXAUTHAuthError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

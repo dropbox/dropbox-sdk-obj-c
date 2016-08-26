@@ -3,13 +3,13 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxDelegate.h"
+#import "DBXDelegate.h"
 
 static NSString *kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
 static NSString *kProgressHandlerKey = @"progressHandler";
 static NSString *kCompletionHandlerKey = @"completionHandler";
 
-@implementation DbxDelegate
+@implementation DBXDelegate
 
 - (instancetype)initWithQueue:(NSOperationQueue *)delegateQueue {
     self = [super init];

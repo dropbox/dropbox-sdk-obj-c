@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMountFolderArg;
+@class DBXSHARINGMountFolderArg;
 
 /// 
-/// The `DbxSharingMountFolderArg` struct.
+/// The `DBXSHARINGMountFolderArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingMountFolderArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGMountFolderArg : NSObject <DBXSerializable> 
 
 /// The ID of the shared folder to mount.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
@@ -23,7 +23,7 @@
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
-/// Returns a human-readable representation of the `DbxSharingMountFolderArg`
+/// Returns a human-readable representation of the `DBXSHARINGMountFolderArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -31,16 +31,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingMountFolderArg` struct.
+/// The serialization class for the `DBXSHARINGMountFolderArg` struct.
 /// 
-@interface DbxSharingMountFolderArgSerializer : NSObject 
+@interface DBXSHARINGMountFolderArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingMountFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingMountFolderArg * _Nonnull)obj;
+/// `DBXSHARINGMountFolderArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMountFolderArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingMountFolderArg` object from a
+/// Returns an instantiation of the `DBXSHARINGMountFolderArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingMountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGMountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,32 +3,31 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeLinkedAppBatchError;
+@class DBXTEAMRevokeLinkedAppBatchError;
 
 /// 
-/// The `DbxTeamRevokeLinkedAppBatchError` union.
+/// The `DBXTEAMRevokeLinkedAppBatchError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error returned by linkedAppsRevokeLinkedAppBatch.
 /// 
-@interface DbxTeamRevokeLinkedAppBatchError : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeLinkedAppBatchError : NSObject <DBXSerializable> 
 
-/// The `TeamRevokeLinkedAppBatchErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamRevokeLinkedAppBatchError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppBatchErrorTag) {
+/// The `DBXTEAMRevokeLinkedAppBatchErrorTag` enum type represents the possible
+/// tag states that the `DBXTEAMRevokeLinkedAppBatchError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppBatchErrorTag) {
     /// (no description).
-    TeamRevokeLinkedAppBatchErrorOther,
+    DBXTEAMRevokeLinkedAppBatchErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamRevokeLinkedAppBatchErrorTag tag;
-
+@property (nonatomic) DBXTEAMRevokeLinkedAppBatchErrorTag tag;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -40,23 +39,23 @@ typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppBatchErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeLinkedAppBatchError` object.
+/// `DBXTEAMRevokeLinkedAppBatchError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeLinkedAppBatchError` union.
+/// The serialization class for the `DBXTEAMRevokeLinkedAppBatchError` union.
 /// 
-@interface DbxTeamRevokeLinkedAppBatchErrorSerializer : NSObject 
+@interface DBXTEAMRevokeLinkedAppBatchErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeLinkedAppBatchError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedAppBatchError * _Nonnull)obj;
+/// `DBXTEAMRevokeLinkedAppBatchError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppBatchError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeLinkedAppBatchError` object
+/// Returns an instantiation of the `DBXTEAMRevokeLinkedAppBatchError` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamRevokeLinkedAppBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeLinkedAppBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

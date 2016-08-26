@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesEmmState;
+@class DBXTEAMPOLICIESEmmState;
 
 /// 
-/// The `DbxTeamPoliciesEmmState` union.
+/// The `DBXTEAMPOLICIESEmmState` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamPoliciesEmmState : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESEmmState : NSObject <DBXSerializable> 
 
-/// The `TeamPoliciesEmmStateTag` enum type represents the possible tag states
-/// that the `DbxTeamPoliciesEmmState` union can exist in.
-typedef NS_ENUM(NSInteger, TeamPoliciesEmmStateTag) {
+/// The `DBXTEAMPOLICIESEmmStateTag` enum type represents the possible tag
+/// states that the `DBXTEAMPOLICIESEmmState` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
     /// Emm token is disabled
-    TeamPoliciesEmmStateDisabled,
+    DBXTEAMPOLICIESEmmStateDisabled,
 
     /// Emm token is optional
-    TeamPoliciesEmmStateOptional,
+    DBXTEAMPOLICIESEmmStateOptional,
 
     /// Emm token is required
-    TeamPoliciesEmmStateRequired,
+    DBXTEAMPOLICIESEmmStateRequired,
 
     /// (no description).
-    TeamPoliciesEmmStateOther,
+    DBXTEAMPOLICIESEmmStateOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamPoliciesEmmStateTag tag;
-
+@property (nonatomic) DBXTEAMPOLICIESEmmStateTag tag;
 
 /// Initializes union class with tag state of `Disabled`.
 - (nonnull instancetype)initWithDisabled;
@@ -64,7 +63,7 @@ typedef NS_ENUM(NSInteger, TeamPoliciesEmmStateTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamPoliciesEmmState`
+/// Returns a human-readable representation of the `DBXTEAMPOLICIESEmmState`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -72,16 +71,16 @@ typedef NS_ENUM(NSInteger, TeamPoliciesEmmStateTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesEmmState` union.
+/// The serialization class for the `DBXTEAMPOLICIESEmmState` union.
 /// 
-@interface DbxTeamPoliciesEmmStateSerializer : NSObject 
+@interface DBXTEAMPOLICIESEmmStateSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesEmmState` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesEmmState * _Nonnull)obj;
+/// `DBXTEAMPOLICIESEmmState` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESEmmState * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesEmmState` object from a
+/// Returns an instantiation of the `DBXTEAMPOLICIESEmmState` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamPoliciesEmmState * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESEmmState * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

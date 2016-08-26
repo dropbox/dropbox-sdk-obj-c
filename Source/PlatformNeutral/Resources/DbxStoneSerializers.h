@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
 ///
-/// Category to ensure `NSArray` class "implements" `DbxSerializable` protocol, which is 
+/// Category to ensure `NSArray` class "implements" `DBXSerializable` protocol, which is 
 /// required for all Obj-C SDK API route arguments. This avoids a compiler warning for 
-/// NSArray-type arguments.
+/// NSArray route arguments.
 ///
-@interface NSArray (DbxSerializable) <DbxSerializable>
+@interface NSArray (DBXSerializable) <DBXSerializable>
 
 + (NSDictionary * _Nonnull)serialize:(id _Nonnull)obj;
 
@@ -21,7 +21,7 @@
 ///
 /// Serializer functions used by the SDK to serialize/deserialize `NSDate` types.
 ///
-@interface DbxNSDateSerializer : NSObject
+@interface DBXNSDateSerializer : NSObject
 
 /// Returns a json-compatible `NSString` that represents an `NSDate` type based on the supplied
 /// `NSDate` object and date format string.
@@ -36,7 +36,7 @@
 ///
 /// Serializer functions used by the SDK to serialize/deserialize NSArray types.
 ///
-@interface DbxArraySerializer : NSObject
+@interface DBXArraySerializer : NSObject
 
 /// Applies a serialization block to each element in the array and returns a new array with
 /// all elements serialized. The serialization block either serializes the object, or if the

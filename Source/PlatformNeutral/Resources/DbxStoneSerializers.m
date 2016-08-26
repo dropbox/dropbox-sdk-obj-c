@@ -2,9 +2,9 @@
 /// The objects in this file are used by generated code and should not need to be invoked manually.
 ///
 
-#import "DbxStoneSerializers.h"
+#import "DBXStoneSerializers.h"
 
-@implementation DbxNSDateSerializer
+@implementation DBXNSDateSerializer
 
 + (NSString *)serialize:(NSDate *)value dateFormat:(NSString *)dateFormat {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -127,7 +127,7 @@
 @end
 
 
-@implementation DbxArraySerializer
+@implementation DBXArraySerializer
 
 + (NSArray *)serialize:(NSArray *)value withBlock:(id (^)(id))serializeBlock {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];

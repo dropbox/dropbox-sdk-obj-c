@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "DbxOAuth.h"
-#import "DbxOAuthMobile.h"
+#import "DBXOAuth.h"
+#import "DBXOAuthMobile.h"
 
-@implementation DbxMobileSharedApplication
+@implementation DBXMobileSharedApplication
 
 - (instancetype)init:(UIApplication *)sharedApplication controller:(UIViewController *)controller openURL:(void(^)(NSURL *))openURL {
     self = [super init];
@@ -36,11 +36,11 @@
     return YES;
 }
 
-- (void)presentWebViewAuth:(NSURL * _Nonnull)authURL tryIntercept:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryIntercept cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-    DbxWebViewController *webViewController = [[DbxWebViewController alloc] init:authURL tryIntercept:tryIntercept cancelHandler:cancelHandler];
+- (void)presentWebViewAuth:(NSURL * _Nonnull)authURL tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler cancelHandler:(void (^_Nonnull)(void))cancelHandler {
+    DBXWebViewController *webViewController = [[DBXWebViewController alloc] init:authURL tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
 
-    [_controller presentViewController:navigationController animated:YES completion:^{}];
+    [_controller presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)presentBrowserAuth:(NSURL * _Nonnull)authURL {
@@ -58,7 +58,7 @@
 
 @end
 
-@implementation DbxWebViewController
+@implementation DBXWebViewController
 
 - (instancetype)init {
     return [super initWithNibName: nil bundle:nil];
@@ -68,12 +68,12 @@
     return [super initWithCoder:coder];
 }
 
-- (instancetype)init:(NSURL *)URL tryIntercept:(BOOL (^)(NSURL *))tryIntercept cancelHandler:(void (^)(void))cancelHandler {
+- (instancetype)init:(NSURL *)URL tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler cancelHandler:(void (^)(void))cancelHandler {
     self = [super initWithNibName: nil bundle:nil];
     if (self) {
-        _tryIntercept = tryIntercept;
+        _tryInterceptHandler = tryInterceptHandler;
         _cancelHandler = cancelHandler;
-        _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)UIActivityIndicatorViewStyleGray];
+        _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         _startURL = URL;
     }
     return self;
@@ -94,7 +94,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItem)UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    _cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     self.navigationItem.rightBarButtonItem = _cancelButton;
 }
 
@@ -112,13 +112,13 @@
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (navigationAction.request.URL != nil && _tryIntercept != nil) {
-        if (_tryIntercept(navigationAction.request.URL)) {
+    if (navigationAction.request.URL && _tryInterceptHandler) {
+        if (_tryInterceptHandler(navigationAction.request.URL)) {
             [self dismiss:YES];
-            return decisionHandler((WKNavigationActionPolicy)WKNavigationActionPolicyCancel);
+            return decisionHandler(WKNavigationActionPolicyCancel);
         }
     }
-    return decisionHandler((WKNavigationActionPolicy)WKNavigationActionPolicyAllow);
+    return decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
@@ -132,7 +132,7 @@
 
 - (void)showHideBackButton:(BOOL)show {
     if (show) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItem)UIBarButtonSystemItemRewind target:self action:@selector(goBack:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(goBack:)];
     } else {
         self.navigationItem.leftBarButtonItem = nil;
     }
@@ -154,10 +154,10 @@
 - (void)dismiss:(BOOL)asCancel animated:(BOOL)animated {
     [_webView stopLoading];
     
-    if (_onWillDismiss != nil) {
+    if (_onWillDismiss) {
         _onWillDismiss(asCancel);
     }
-    if (self.presentingViewController != nil) {
+    if (self.presentingViewController) {
         [self.presentingViewController dismissViewControllerAnimated:animated completion:nil];
     }
 }

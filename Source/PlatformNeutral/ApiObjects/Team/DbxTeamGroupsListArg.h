@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsListArg;
+@class DBXTEAMGroupsListArg;
 
 /// 
-/// The `DbxTeamGroupsListArg` struct.
+/// The `DBXTEAMGroupsListArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsListArg : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsListArg : NSObject <DBXSerializable> 
 
 /// Number of results to return per call.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
@@ -27,7 +27,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsListArg`
+/// Returns a human-readable representation of the `DBXTEAMGroupsListArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsListArg` struct.
+/// The serialization class for the `DBXTEAMGroupsListArg` struct.
 /// 
-@interface DbxTeamGroupsListArgSerializer : NSObject 
+@interface DBXTEAMGroupsListArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsListArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsListArg * _Nonnull)obj;
+/// `DBXTEAMGroupsListArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsListArg` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsListArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGetTemporaryLinkArg;
+@class DBXFILESGetTemporaryLinkArg;
 
 /// 
-/// The `DbxFilesGetTemporaryLinkArg` struct.
+/// The `DBXFILESGetTemporaryLinkArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesGetTemporaryLinkArg : NSObject <DbxSerializable> 
+@interface DBXFILESGetTemporaryLinkArg : NSObject <DBXSerializable> 
 
 /// The path to the file you want a temporary link to.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -23,7 +23,7 @@
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesGetTemporaryLinkArg`
+/// Returns a human-readable representation of the `DBXFILESGetTemporaryLinkArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -31,16 +31,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesGetTemporaryLinkArg` struct.
+/// The serialization class for the `DBXFILESGetTemporaryLinkArg` struct.
 /// 
-@interface DbxFilesGetTemporaryLinkArgSerializer : NSObject 
+@interface DBXFILESGetTemporaryLinkArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGetTemporaryLinkArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGetTemporaryLinkArg * _Nonnull)obj;
+/// `DBXFILESGetTemporaryLinkArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGetTemporaryLinkArg` object from a
+/// Returns an instantiation of the `DBXFILESGetTemporaryLinkArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

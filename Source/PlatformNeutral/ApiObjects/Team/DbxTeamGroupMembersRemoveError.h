@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupMembersRemoveError;
+@class DBXTEAMGroupMembersRemoveError;
 
 /// 
-/// The `DbxTeamGroupMembersRemoveError` union.
+/// The `DBXTEAMGroupMembersRemoveError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupMembersRemoveError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupMembersRemoveError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupMembersRemoveErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamGroupMembersRemoveError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupMembersRemoveErrorTag) {
+/// The `DBXTEAMGroupMembersRemoveErrorTag` enum type represents the possible
+/// tag states that the `DBXTEAMGroupMembersRemoveError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersRemoveErrorTag) {
     /// No matching group found. No groups match the specified group ID.
-    TeamGroupMembersRemoveErrorGroupNotFound,
+    DBXTEAMGroupMembersRemoveErrorGroupNotFound,
 
     /// (no description).
-    TeamGroupMembersRemoveErrorOther,
+    DBXTEAMGroupMembersRemoveErrorOther,
 
     /// At least one of the specified users is not a member of the group.
-    TeamGroupMembersRemoveErrorMemberNotInGroup,
+    DBXTEAMGroupMembersRemoveErrorMemberNotInGroup,
 
     /// Group is not in this team. You cannot remove members from a group that
     /// is outside of your team.
-    TeamGroupMembersRemoveErrorGroupNotInTeam,
+    DBXTEAMGroupMembersRemoveErrorGroupNotInTeam,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupMembersRemoveErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupMembersRemoveErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -66,23 +65,23 @@ typedef NS_ENUM(NSInteger, TeamGroupMembersRemoveErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupMembersRemoveError` object.
+/// `DBXTEAMGroupMembersRemoveError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMembersRemoveError` union.
+/// The serialization class for the `DBXTEAMGroupMembersRemoveError` union.
 /// 
-@interface DbxTeamGroupMembersRemoveErrorSerializer : NSObject 
+@interface DBXTEAMGroupMembersRemoveErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMembersRemoveError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersRemoveError * _Nonnull)obj;
+/// `DBXTEAMGroupMembersRemoveError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersRemoveError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMembersRemoveError` object from
+/// Returns an instantiation of the `DBXTEAMGroupMembersRemoveError` object from
 /// a json-compatible dictionary representation.
-+ (DbxTeamGroupMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxUsersAccount.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXUSERSAccount.h"
 
-@class DbxUsersBasicAccount;
-@class DbxUsersName;
+@class DBXUSERSBasicAccount;
+@class DBXUSERSName;
 
 /// 
-/// The `DbxUsersBasicAccount` struct.
+/// The `DBXUSERSBasicAccount` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Basic information about any account.
 /// 
-@interface DbxUsersBasicAccount : DbxUsersAccount <DbxSerializable> 
+@interface DBXUSERSBasicAccount : DBXUSERSAccount <DBXSerializable> 
 
 /// Whether this user is a teammate of the current user. If this account is the
 /// current user's account, then this will be true.
@@ -30,13 +30,13 @@
 
 /// Full constructor for the `BasicAccount` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl teamMemberId:(NSString * _Nullable)teamMemberId;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl teamMemberId:(NSString * _Nullable)teamMemberId;
 
 /// Convenience constructor for the `BasicAccount` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate;
 
-/// Returns a human-readable representation of the `DbxUsersBasicAccount`
+/// Returns a human-readable representation of the `DBXUSERSBasicAccount`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -44,16 +44,16 @@
 
 
 /// 
-/// The serialization class for the `DbxUsersBasicAccount` struct.
+/// The serialization class for the `DBXUSERSBasicAccount` struct.
 /// 
-@interface DbxUsersBasicAccountSerializer : NSObject 
+@interface DBXUSERSBasicAccountSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersBasicAccount` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersBasicAccount * _Nonnull)obj;
+/// `DBXUSERSBasicAccount` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSBasicAccount * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersBasicAccount` object from a
+/// Returns an instantiation of the `DBXUSERSBasicAccount` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersBasicAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSBasicAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

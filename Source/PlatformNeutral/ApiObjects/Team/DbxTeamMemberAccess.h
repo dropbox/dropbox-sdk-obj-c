@@ -3,50 +3,50 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupAccessType;
-@class DbxTeamMemberAccess;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMGroupAccessType;
+@class DBXTEAMMemberAccess;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMemberAccess` struct.
+/// The `DBXTEAMMemberAccess` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Specify access type a member should have when joined to a group.
 /// 
-@interface DbxTeamMemberAccess : NSObject <DbxSerializable> 
+@interface DBXTEAMMemberAccess : NSObject <DBXSerializable> 
 
 /// Identity of a user.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Access type.
-@property (nonatomic) DbxTeamGroupAccessType * _Nonnull accessType;
+@property (nonatomic) DBXTEAMGroupAccessType * _Nonnull accessType;
 
 /// Full constructor for the `MemberAccess` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
 
-/// Returns a human-readable representation of the `DbxTeamMemberAccess` object.
+/// Returns a human-readable representation of the `DBXTEAMMemberAccess` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamMemberAccess` struct.
+/// The serialization class for the `DBXTEAMMemberAccess` struct.
 /// 
-@interface DbxTeamMemberAccessSerializer : NSObject 
+@interface DBXTEAMMemberAccessSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMemberAccess` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMemberAccess * _Nonnull)obj;
+/// `DBXTEAMMemberAccess` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAccess * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMemberAccess` object from a
+/// Returns an instantiation of the `DBXTEAMMemberAccess` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMemberAccess * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMemberAccess * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

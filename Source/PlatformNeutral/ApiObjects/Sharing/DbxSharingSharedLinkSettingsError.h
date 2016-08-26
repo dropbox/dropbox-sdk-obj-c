@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedLinkSettingsError;
+@class DBXSHARINGSharedLinkSettingsError;
 
 /// 
-/// The `DbxSharingSharedLinkSettingsError` union.
+/// The `DBXSHARINGSharedLinkSettingsError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharedLinkSettingsError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkSettingsError : NSObject <DBXSerializable> 
 
-/// The `SharingSharedLinkSettingsErrorTag` enum type represents the possible
-/// tag states that the `DbxSharingSharedLinkSettingsError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedLinkSettingsErrorTag) {
+/// The `DBXSHARINGSharedLinkSettingsErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGSharedLinkSettingsError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkSettingsErrorTag) {
     /// The given settings are invalid (for example, all attributes of the
     /// SharedLinkSettings are empty, the requested visibility is password in
     /// RequestedVisibility but the linkPassword in SharedLinkSettings is
     /// missing, expires in SharedLinkSettings is set to the past, etc.)
-    SharingSharedLinkSettingsErrorInvalidSettings,
+    DBXSHARINGSharedLinkSettingsErrorInvalidSettings,
 
     /// User is not allowed to modify the settings of this link. Note that basic
     /// users can only set public in RequestedVisibility as the
     /// requestedVisibility in SharedLinkSettings and cannot set expires in
     /// SharedLinkSettings
-    SharingSharedLinkSettingsErrorNotAuthorized,
+    DBXSHARINGSharedLinkSettingsErrorNotAuthorized,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedLinkSettingsErrorTag tag;
-
+@property (nonatomic) DBXSHARINGSharedLinkSettingsErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidSettings`.
 - (nonnull instancetype)initWithInvalidSettings;
@@ -53,23 +52,23 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkSettingsErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedLinkSettingsError` object.
+/// `DBXSHARINGSharedLinkSettingsError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkSettingsError` union.
+/// The serialization class for the `DBXSHARINGSharedLinkSettingsError` union.
 /// 
-@interface DbxSharingSharedLinkSettingsErrorSerializer : NSObject 
+@interface DBXSHARINGSharedLinkSettingsErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkSettingsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkSettingsError * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkSettingsError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkSettingsError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkSettingsError` object
+/// Returns an instantiation of the `DBXSHARINGSharedLinkSettingsError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingSharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

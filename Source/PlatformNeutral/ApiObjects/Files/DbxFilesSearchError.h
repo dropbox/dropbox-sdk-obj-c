@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookupError;
-@class DbxFilesSearchError;
+@class DBXFILESLookupError;
+@class DBXFILESSearchError;
 
 /// 
-/// The `DbxFilesSearchError` union.
+/// The `DBXFILESSearchError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSearchError : NSObject <DbxSerializable> 
+@interface DBXFILESSearchError : NSObject <DBXSerializable> 
 
-/// The `FilesSearchErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesSearchError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSearchErrorTag) {
+/// The `DBXFILESSearchErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESSearchError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSearchErrorTag) {
     /// (no description).
-    FilesSearchErrorPath,
+    DBXFILESSearchErrorPath,
 
     /// (no description).
-    FilesSearchErrorOther,
+    DBXFILESSearchErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSearchErrorTag tag;
+@property (nonatomic) DBXFILESSearchErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -50,23 +49,23 @@ typedef NS_ENUM(NSInteger, FilesSearchErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesSearchError` object.
+/// Returns a human-readable representation of the `DBXFILESSearchError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesSearchError` union.
+/// The serialization class for the `DBXFILESSearchError` union.
 /// 
-@interface DbxFilesSearchErrorSerializer : NSObject 
+@interface DBXFILESSearchErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSearchError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSearchError * _Nonnull)obj;
+/// `DBXFILESSearchError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSearchError` object from a
+/// Returns an instantiation of the `DBXFILESSearchError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSearchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSearchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

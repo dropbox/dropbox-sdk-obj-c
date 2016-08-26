@@ -3,70 +3,69 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharePathError;
-@class DbxSharingSharedFolderMetadata;
+@class DBXSHARINGSharePathError;
+@class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DbxSharingSharePathError` union.
+/// The `DBXSHARINGSharePathError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharePathError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharePathError : NSObject <DBXSerializable> 
 
-/// The `SharingSharePathErrorTag` enum type represents the possible tag states
-/// that the `DbxSharingSharePathError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharePathErrorTag) {
+/// The `DBXSHARINGSharePathErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGSharePathError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
     /// A file is at the specified path.
-    SharingSharePathErrorIsFile,
+    DBXSHARINGSharePathErrorIsFile,
 
     /// We do not support sharing a folder inside a shared folder.
-    SharingSharePathErrorInsideSharedFolder,
+    DBXSHARINGSharePathErrorInsideSharedFolder,
 
     /// We do not support shared folders that contain shared folders.
-    SharingSharePathErrorContainsSharedFolder,
+    DBXSHARINGSharePathErrorContainsSharedFolder,
 
     /// We do not support sharing an app folder.
-    SharingSharePathErrorIsAppFolder,
+    DBXSHARINGSharePathErrorIsAppFolder,
 
     /// We do not support sharing a folder inside an app folder.
-    SharingSharePathErrorInsideAppFolder,
+    DBXSHARINGSharePathErrorInsideAppFolder,
 
     /// A public folder can't be shared this way. Use a public link instead.
-    SharingSharePathErrorIsPublicFolder,
+    DBXSHARINGSharePathErrorIsPublicFolder,
 
     /// A folder inside a public folder can't be shared this way. Use a public
     /// link instead.
-    SharingSharePathErrorInsidePublicFolder,
+    DBXSHARINGSharePathErrorInsidePublicFolder,
 
     /// Folder is already shared. Contains metadata about the existing shared
     /// folder.
-    SharingSharePathErrorAlreadyShared,
+    DBXSHARINGSharePathErrorAlreadyShared,
 
     /// Path is not valid.
-    SharingSharePathErrorInvalidPath,
+    DBXSHARINGSharePathErrorInvalidPath,
 
     /// We do not support sharing a Mac OS X package.
-    SharingSharePathErrorIsOsxPackage,
+    DBXSHARINGSharePathErrorIsOsxPackage,
 
     /// We do not support sharing a folder inside a Mac OS X package.
-    SharingSharePathErrorInsideOsxPackage,
+    DBXSHARINGSharePathErrorInsideOsxPackage,
 
     /// (no description).
-    SharingSharePathErrorOther,
+    DBXSHARINGSharePathErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharePathErrorTag tag;
+@property (nonatomic) DBXSHARINGSharePathErrorTag tag;
 
 /// Folder is already shared. Contains metadata about the existing shared
 /// folder.
-@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull alreadyShared;
-
+@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
 
 /// Initializes union class with tag state of `IsFile`.
 - (nonnull instancetype)initWithIsFile;
@@ -90,7 +89,7 @@ typedef NS_ENUM(NSInteger, SharingSharePathErrorTag) {
 - (nonnull instancetype)initWithInsidePublicFolder;
 
 /// Initializes union class with tag state of `AlreadyShared`.
-- (nonnull instancetype)initWithAlreadyShared:(DbxSharingSharedFolderMetadata * _Nonnull)alreadyShared;
+- (nonnull instancetype)initWithAlreadyShared:(DBXSHARINGSharedFolderMetadata * _Nonnull)alreadyShared;
 
 /// Initializes union class with tag state of `InvalidPath`.
 - (nonnull instancetype)initWithInvalidPath;
@@ -146,7 +145,7 @@ typedef NS_ENUM(NSInteger, SharingSharePathErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingSharePathError`
+/// Returns a human-readable representation of the `DBXSHARINGSharePathError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -154,16 +153,16 @@ typedef NS_ENUM(NSInteger, SharingSharePathErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingSharePathError` union.
+/// The serialization class for the `DBXSHARINGSharePathError` union.
 /// 
-@interface DbxSharingSharePathErrorSerializer : NSObject 
+@interface DBXSHARINGSharePathErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharePathError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharePathError * _Nonnull)obj;
+/// `DBXSHARINGSharePathError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharePathError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharePathError` object from a
+/// Returns an instantiation of the `DBXSHARINGSharePathError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharePathError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharePathError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

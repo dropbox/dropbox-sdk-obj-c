@@ -3,53 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingShareFolderError;
-@class DbxSharingShareFolderJobStatus;
-@class DbxSharingSharedFolderMetadata;
+@class DBXSHARINGShareFolderError;
+@class DBXSHARINGShareFolderJobStatus;
+@class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DbxSharingShareFolderJobStatus` union.
+/// The `DBXSHARINGShareFolderJobStatus` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingShareFolderJobStatus : NSObject <DbxSerializable> 
+@interface DBXSHARINGShareFolderJobStatus : NSObject <DBXSerializable> 
 
-/// The `SharingShareFolderJobStatusTag` enum type represents the possible tag
-/// states that the `DbxSharingShareFolderJobStatus` union can exist in.
-typedef NS_ENUM(NSInteger, SharingShareFolderJobStatusTag) {
+/// The `DBXSHARINGShareFolderJobStatusTag` enum type represents the possible
+/// tag states that the `DBXSHARINGShareFolderJobStatus` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
     /// The asynchronous job is still in progress.
-    SharingShareFolderJobStatusInProgress,
+    DBXSHARINGShareFolderJobStatusInProgress,
 
     /// The share job has finished. The value is the metadata for the folder.
-    SharingShareFolderJobStatusComplete,
+    DBXSHARINGShareFolderJobStatusComplete,
 
     /// (no description).
-    SharingShareFolderJobStatusFailed,
+    DBXSHARINGShareFolderJobStatusFailed,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingShareFolderJobStatusTag tag;
+@property (nonatomic) DBXSHARINGShareFolderJobStatusTag tag;
 
 /// The share job has finished. The value is the metadata for the folder.
-@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
+@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
 
 /// (no description).
-@property (nonatomic) DbxSharingShareFolderError * _Nonnull failed;
-
+@property (nonatomic) DBXSHARINGShareFolderError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(DbxSharingSharedFolderMetadata * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(DBXSHARINGSharedFolderMetadata * _Nonnull)complete;
 
 /// Initializes union class with tag state of `Failed`.
-- (nonnull instancetype)initWithFailed:(DbxSharingShareFolderError * _Nonnull)failed;
+- (nonnull instancetype)initWithFailed:(DBXSHARINGShareFolderError * _Nonnull)failed;
 
 /// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
@@ -64,23 +63,23 @@ typedef NS_ENUM(NSInteger, SharingShareFolderJobStatusTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingShareFolderJobStatus` object.
+/// `DBXSHARINGShareFolderJobStatus` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingShareFolderJobStatus` union.
+/// The serialization class for the `DBXSHARINGShareFolderJobStatus` union.
 /// 
-@interface DbxSharingShareFolderJobStatusSerializer : NSObject 
+@interface DBXSHARINGShareFolderJobStatusSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingShareFolderJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderJobStatus * _Nonnull)obj;
+/// `DBXSHARINGShareFolderJobStatus` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderJobStatus * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingShareFolderJobStatus` object from
+/// Returns an instantiation of the `DBXSHARINGShareFolderJobStatus` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingShareFolderJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGShareFolderJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

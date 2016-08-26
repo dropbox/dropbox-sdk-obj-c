@@ -3,41 +3,40 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsPollError;
+@class DBXTEAMGroupsPollError;
 
 /// 
-/// The `DbxTeamGroupsPollError` union.
+/// The `DBXTEAMGroupsPollError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsPollError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsPollError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupsPollErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupsPollError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupsPollErrorTag) {
+/// The `DBXTEAMGroupsPollErrorTag` enum type represents the possible tag states
+/// that the `DBXTEAMGroupsPollError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupsPollErrorTag) {
     /// The job ID is invalid.
-    TeamGroupsPollErrorInvalidAsyncJobId,
+    DBXTEAMGroupsPollErrorInvalidAsyncJobId,
 
     /// Something went wrong with the job on Dropbox's end. You'll need to
     /// verify that the action you were taking succeeded, and if not, try again.
     /// This should happen very rarely.
-    TeamGroupsPollErrorInternalError,
+    DBXTEAMGroupsPollErrorInternalError,
 
     /// (no description).
-    TeamGroupsPollErrorOther,
+    DBXTEAMGroupsPollErrorOther,
 
     /// You are not allowed to poll this job.
-    TeamGroupsPollErrorAccessDenied,
+    DBXTEAMGroupsPollErrorAccessDenied,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupsPollErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupsPollErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidAsyncJobId`.
 - (nonnull instancetype)initWithInvalidAsyncJobId;
@@ -66,7 +65,7 @@ typedef NS_ENUM(NSInteger, TeamGroupsPollErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsPollError`
+/// Returns a human-readable representation of the `DBXTEAMGroupsPollError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -74,16 +73,16 @@ typedef NS_ENUM(NSInteger, TeamGroupsPollErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsPollError` union.
+/// The serialization class for the `DBXTEAMGroupsPollError` union.
 /// 
-@interface DbxTeamGroupsPollErrorSerializer : NSObject 
+@interface DBXTEAMGroupsPollErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsPollError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsPollError * _Nonnull)obj;
+/// `DBXTEAMGroupsPollError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsPollError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsPollError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsPollError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsPollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsPollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

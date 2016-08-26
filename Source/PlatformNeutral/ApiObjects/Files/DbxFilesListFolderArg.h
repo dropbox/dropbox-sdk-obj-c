@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderArg;
+@class DBXFILESListFolderArg;
 
 /// 
-/// The `DbxFilesListFolderArg` struct.
+/// The `DBXFILESListFolderArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderArg : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderArg : NSObject <DBXSerializable> 
 
 /// The path to the folder you want to see the contents of.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -42,7 +42,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesListFolderArg`
+/// Returns a human-readable representation of the `DBXFILESListFolderArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -50,16 +50,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderArg` struct.
+/// The serialization class for the `DBXFILESListFolderArg` struct.
 /// 
-@interface DbxFilesListFolderArgSerializer : NSObject 
+@interface DBXFILESListFolderArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderArg * _Nonnull)obj;
+/// `DBXFILESListFolderArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderArg` object from a
+/// Returns an instantiation of the `DBXFILESListFolderArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesListFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

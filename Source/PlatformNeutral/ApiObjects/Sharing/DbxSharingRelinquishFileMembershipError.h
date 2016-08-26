@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRelinquishFileMembershipError;
-@class DbxSharingSharingFileAccessError;
+@class DBXSHARINGRelinquishFileMembershipError;
+@class DBXSHARINGSharingFileAccessError;
 
 /// 
-/// The `DbxSharingRelinquishFileMembershipError` union.
+/// The `DBXSHARINGRelinquishFileMembershipError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRelinquishFileMembershipError : NSObject <DbxSerializable> 
+@interface DBXSHARINGRelinquishFileMembershipError : NSObject <DBXSerializable> 
 
-/// The `SharingRelinquishFileMembershipErrorTag` enum type represents the
-/// possible tag states that the `DbxSharingRelinquishFileMembershipError` union
+/// The `DBXSHARINGRelinquishFileMembershipErrorTag` enum type represents the
+/// possible tag states that the `DBXSHARINGRelinquishFileMembershipError` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, SharingRelinquishFileMembershipErrorTag) {
+typedef NS_ENUM(NSInteger, DBXSHARINGRelinquishFileMembershipErrorTag) {
     /// (no description).
-    SharingRelinquishFileMembershipErrorAccessError,
+    DBXSHARINGRelinquishFileMembershipErrorAccessError,
 
     /// The current user has access to the shared file via a group.  You can't
     /// relinquish membership to a file shared via groups.
-    SharingRelinquishFileMembershipErrorGroupAccess,
+    DBXSHARINGRelinquishFileMembershipErrorGroupAccess,
 
     /// The current user does not have permission to perform this action.
-    SharingRelinquishFileMembershipErrorNoPermission,
+    DBXSHARINGRelinquishFileMembershipErrorNoPermission,
 
     /// (no description).
-    SharingRelinquishFileMembershipErrorOther,
+    DBXSHARINGRelinquishFileMembershipErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingRelinquishFileMembershipErrorTag tag;
+@property (nonatomic) DBXSHARINGRelinquishFileMembershipErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `GroupAccess`.
 - (nonnull instancetype)initWithGroupAccess;
@@ -71,24 +70,24 @@ typedef NS_ENUM(NSInteger, SharingRelinquishFileMembershipErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRelinquishFileMembershipError` object.
+/// `DBXSHARINGRelinquishFileMembershipError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRelinquishFileMembershipError`
+/// The serialization class for the `DBXSHARINGRelinquishFileMembershipError`
 /// union.
 /// 
-@interface DbxSharingRelinquishFileMembershipErrorSerializer : NSObject 
+@interface DBXSHARINGRelinquishFileMembershipErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRelinquishFileMembershipError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRelinquishFileMembershipError * _Nonnull)obj;
+/// `DBXSHARINGRelinquishFileMembershipError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRelinquishFileMembershipError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRelinquishFileMembershipError`
+/// Returns an instantiation of the `DBXSHARINGRelinquishFileMembershipError`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingRelinquishFileMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRelinquishFileMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

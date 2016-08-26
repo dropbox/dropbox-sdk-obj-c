@@ -4,9 +4,10 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
-#import "DbxOAuth.h"
+#import "DBXOAuth.h"
+#import "DBXSharedApplicationProtocol.h"
 
-@interface DbxMobileSharedApplication : NSObject <DbxSharedApplication>  {
+@interface DBXMobileSharedApplication : NSObject <DBXSharedApplication>  {
 @protected
     UIApplication * _Nullable _sharedApplication;
     UIViewController * _Nullable _controller;
@@ -18,11 +19,11 @@
 @end
 
 
-@interface DbxWebViewController : UIViewController <WKNavigationDelegate> {
+@interface DBXWebViewController : UIViewController <WKNavigationDelegate> {
 @protected
     WKWebView * _Nullable _webView;
     void (^_Nullable _onWillDismiss)(BOOL);
-    BOOL (^_Nullable _tryIntercept)(NSURL * _Nullable);
+    BOOL (^_Nullable _tryInterceptHandler)(NSURL * _Nullable);
     NSURL * _Nullable _startURL;
     
     UIBarButtonItem * _Nullable _cancelButton;
@@ -30,6 +31,6 @@
     UIActivityIndicatorView * _Nullable _indicator;
 }
 
-- (nonnull instancetype)init:(NSURL * _Nonnull)url tryIntercept:(BOOL (^ _Nonnull)(NSURL * _Nonnull))tryIntercept cancelHandler:(void (^ _Nonnull)(void))cancel;
+- (nonnull instancetype)init:(NSURL * _Nonnull)url tryInterceptHandler:(BOOL (^ _Nonnull)(NSURL * _Nonnull))tryInterceptHandler cancelHandler:(void (^ _Nonnull)(void))cancel;
 
 @end

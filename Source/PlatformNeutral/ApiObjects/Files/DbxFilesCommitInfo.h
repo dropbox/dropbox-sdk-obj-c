@@ -3,25 +3,25 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesCommitInfo;
-@class DbxFilesWriteMode;
+@class DBXFILESCommitInfo;
+@class DBXFILESWriteMode;
 
 /// 
-/// The `DbxFilesCommitInfo` struct.
+/// The `DBXFILESCommitInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesCommitInfo : NSObject <DbxSerializable> 
+@interface DBXFILESCommitInfo : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to save the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
 /// Selects what to do if the file already exists.
-@property (nonatomic) DbxFilesWriteMode * _Nonnull mode;
+@property (nonatomic) DBXFILESWriteMode * _Nonnull mode;
 
 /// If there's a conflict, as determined by mode, have the Dropbox server try to
 /// autorename the file to avoid conflict.
@@ -41,29 +41,29 @@
 
 /// Full constructor for the `CommitInfo` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute;
+- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute;
 
 /// Convenience constructor for the `CommitInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesCommitInfo` object.
+/// Returns a human-readable representation of the `DBXFILESCommitInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesCommitInfo` struct.
+/// The serialization class for the `DBXFILESCommitInfo` struct.
 /// 
-@interface DbxFilesCommitInfoSerializer : NSObject 
+@interface DBXFILESCommitInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesCommitInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesCommitInfo * _Nonnull)obj;
+/// `DBXFILESCommitInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCommitInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesCommitInfo` object from a
+/// Returns an instantiation of the `DBXFILESCommitInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesCommitInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESCommitInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

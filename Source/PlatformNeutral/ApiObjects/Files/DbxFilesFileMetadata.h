@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxFilesMetadata.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXFILESMetadata.h"
 
-@class DbxFilesFileMetadata;
-@class DbxFilesFileSharingInfo;
-@class DbxFilesMediaInfo;
-@class DbxPropertiesPropertyGroup;
+@class DBXFILESFileMetadata;
+@class DBXFILESFileSharingInfo;
+@class DBXFILESMediaInfo;
+@class DBXPROPERTIESPropertyGroup;
 
 /// 
-/// The `DbxFilesFileMetadata` struct.
+/// The `DBXFILESFileMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesFileMetadata : DbxFilesMetadata <DbxSerializable> 
+@interface DBXFILESFileMetadata : DBXFILESMetadata <DBXSerializable> 
 
 /// A unique identifier for the file.
 @property (nonatomic, copy) NSString * _Nonnull id_;
@@ -42,14 +42,14 @@
 @property (nonatomic, copy) NSNumber * _Nonnull size;
 
 /// Additional information if the file is a photo or video.
-@property (nonatomic) DbxFilesMediaInfo * _Nullable mediaInfo;
+@property (nonatomic) DBXFILESMediaInfo * _Nullable mediaInfo;
 
 /// Set if this file is contained in a shared folder.
-@property (nonatomic) DbxFilesFileSharingInfo * _Nullable sharingInfo;
+@property (nonatomic) DBXFILESFileSharingInfo * _Nullable sharingInfo;
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
-@property (nonatomic) NSArray<DbxPropertiesPropertyGroup *> * _Nullable propertyGroups;
+@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
 /// This flag will only be present if include_has_explicit_shared_members  is
 /// true in listFolder or getMetadata. If this  flag is present, it will be true
@@ -60,13 +60,13 @@
 
 /// Full constructor for the `FileMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size pathLower:(NSString * _Nullable)pathLower pathDisplay:(NSString * _Nullable)pathDisplay parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId mediaInfo:(DbxFilesMediaInfo * _Nullable)mediaInfo sharingInfo:(DbxFilesFileSharingInfo * _Nullable)sharingInfo propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size pathLower:(NSString * _Nullable)pathLower pathDisplay:(NSString * _Nullable)pathDisplay parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId mediaInfo:(DBXFILESMediaInfo * _Nullable)mediaInfo sharingInfo:(DBXFILESFileSharingInfo * _Nullable)sharingInfo propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers;
 
 /// Convenience constructor for the `FileMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
 
-/// Returns a human-readable representation of the `DbxFilesFileMetadata`
+/// Returns a human-readable representation of the `DBXFILESFileMetadata`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -74,16 +74,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesFileMetadata` struct.
+/// The serialization class for the `DBXFILESFileMetadata` struct.
 /// 
-@interface DbxFilesFileMetadataSerializer : NSObject 
+@interface DBXFILESFileMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesFileMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesFileMetadata * _Nonnull)obj;
+/// `DBXFILESFileMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESFileMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesFileMetadata` object from a
+/// Returns an instantiation of the `DBXFILESFileMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesFileMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESFileMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

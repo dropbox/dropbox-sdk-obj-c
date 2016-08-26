@@ -3,50 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingFileMemberActionError;
-@class DbxSharingFileMemberActionIndividualResult;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGFileMemberActionError;
+@class DBXSHARINGFileMemberActionIndividualResult;
 
 /// 
-/// The `DbxSharingFileMemberActionIndividualResult` union.
+/// The `DBXSHARINGFileMemberActionIndividualResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingFileMemberActionIndividualResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGFileMemberActionIndividualResult : NSObject <DBXSerializable> 
 
-/// The `SharingFileMemberActionIndividualResultTag` enum type represents the
-/// possible tag states that the `DbxSharingFileMemberActionIndividualResult`
+/// The `DBXSHARINGFileMemberActionIndividualResultTag` enum type represents the
+/// possible tag states that the `DBXSHARINGFileMemberActionIndividualResult`
 /// union can exist in.
-typedef NS_ENUM(NSInteger, SharingFileMemberActionIndividualResultTag) {
+typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberActionIndividualResultTag) {
     /// Member was successfully removed from this file. If AccessLevel is given,
     /// the member still has access via a parent shared folder.
-    SharingFileMemberActionIndividualResultSuccess,
+    DBXSHARINGFileMemberActionIndividualResultSuccess,
 
     /// User was not able to perform this action.
-    SharingFileMemberActionIndividualResultMemberError,
+    DBXSHARINGFileMemberActionIndividualResultMemberError,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingFileMemberActionIndividualResultTag tag;
+@property (nonatomic) DBXSHARINGFileMemberActionIndividualResultTag tag;
 
 /// Member was successfully removed from this file. If AccessLevel is given, the
 /// member still has access via a parent shared folder.
-@property (nonatomic) DbxSharingAccessLevel * _Nullable success;
+@property (nonatomic) DBXSHARINGAccessLevel * _Nullable success;
 
 /// User was not able to perform this action.
-@property (nonatomic) DbxSharingFileMemberActionError * _Nonnull memberError;
-
+@property (nonatomic) DBXSHARINGFileMemberActionError * _Nonnull memberError;
 
 /// Initializes union class with tag state of `Success`.
-- (nonnull instancetype)initWithSuccess:(DbxSharingAccessLevel * _Nullable)success;
+- (nonnull instancetype)initWithSuccess:(DBXSHARINGAccessLevel * _Nullable)success;
 
 /// Initializes union class with tag state of `MemberError`.
-- (nonnull instancetype)initWithMemberError:(DbxSharingFileMemberActionError * _Nonnull)memberError;
+- (nonnull instancetype)initWithMemberError:(DBXSHARINGFileMemberActionError * _Nonnull)memberError;
 
 /// Returns whether the union's current tag state has value `Success`.
 - (BOOL)isSuccess;
@@ -58,24 +57,24 @@ typedef NS_ENUM(NSInteger, SharingFileMemberActionIndividualResultTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingFileMemberActionIndividualResult` object.
+/// `DBXSHARINGFileMemberActionIndividualResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingFileMemberActionIndividualResult`
+/// The serialization class for the `DBXSHARINGFileMemberActionIndividualResult`
 /// union.
 /// 
-@interface DbxSharingFileMemberActionIndividualResultSerializer : NSObject 
+@interface DBXSHARINGFileMemberActionIndividualResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFileMemberActionIndividualResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFileMemberActionIndividualResult * _Nonnull)obj;
+/// `DBXSHARINGFileMemberActionIndividualResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileMemberActionIndividualResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFileMemberActionIndividualResult`
+/// Returns an instantiation of the `DBXSHARINGFileMemberActionIndividualResult`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingFileMemberActionIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFileMemberActionIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

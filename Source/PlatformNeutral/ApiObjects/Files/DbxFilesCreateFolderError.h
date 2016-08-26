@@ -3,37 +3,36 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesCreateFolderError;
-@class DbxFilesWriteError;
+@class DBXFILESCreateFolderError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesCreateFolderError` union.
+/// The `DBXFILESCreateFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesCreateFolderError : NSObject <DbxSerializable> 
+@interface DBXFILESCreateFolderError : NSObject <DBXSerializable> 
 
-/// The `FilesCreateFolderErrorTag` enum type represents the possible tag states
-/// that the `DbxFilesCreateFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesCreateFolderErrorTag) {
+/// The `DBXFILESCreateFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESCreateFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESCreateFolderErrorTag) {
     /// (no description).
-    FilesCreateFolderErrorPath,
+    DBXFILESCreateFolderErrorPath,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesCreateFolderErrorTag tag;
+@property (nonatomic) DBXFILESCreateFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
 /// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
@@ -41,7 +40,7 @@ typedef NS_ENUM(NSInteger, FilesCreateFolderErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesCreateFolderError`
+/// Returns a human-readable representation of the `DBXFILESCreateFolderError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -49,16 +48,16 @@ typedef NS_ENUM(NSInteger, FilesCreateFolderErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesCreateFolderError` union.
+/// The serialization class for the `DBXFILESCreateFolderError` union.
 /// 
-@interface DbxFilesCreateFolderErrorSerializer : NSObject 
+@interface DBXFILESCreateFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesCreateFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesCreateFolderError * _Nonnull)obj;
+/// `DBXFILESCreateFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCreateFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesCreateFolderError` object from a
+/// Returns an instantiation of the `DBXFILESCreateFolderError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesCreateFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESCreateFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

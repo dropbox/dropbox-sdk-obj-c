@@ -3,44 +3,43 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedFolderAccessError;
+@class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DbxSharingSharedFolderAccessError` union.
+/// The `DBXSHARINGSharedFolderAccessError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// There is an error accessing the shared folder.
 /// 
-@interface DbxSharingSharedFolderAccessError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedFolderAccessError : NSObject <DBXSerializable> 
 
-/// The `SharingSharedFolderAccessErrorTag` enum type represents the possible
-/// tag states that the `DbxSharingSharedFolderAccessError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedFolderAccessErrorTag) {
+/// The `DBXSHARINGSharedFolderAccessErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGSharedFolderAccessError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderAccessErrorTag) {
     /// This shared folder ID is invalid.
-    SharingSharedFolderAccessErrorInvalidId,
+    DBXSHARINGSharedFolderAccessErrorInvalidId,
 
     /// The user is not a member of the shared folder thus cannot access it.
-    SharingSharedFolderAccessErrorNotAMember,
+    DBXSHARINGSharedFolderAccessErrorNotAMember,
 
     /// The current user's e-mail address is unverified.
-    SharingSharedFolderAccessErrorEmailUnverified,
+    DBXSHARINGSharedFolderAccessErrorEmailUnverified,
 
     /// The shared folder is unmounted.
-    SharingSharedFolderAccessErrorUnmounted,
+    DBXSHARINGSharedFolderAccessErrorUnmounted,
 
     /// (no description).
-    SharingSharedFolderAccessErrorOther,
+    DBXSHARINGSharedFolderAccessErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedFolderAccessErrorTag tag;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidId`.
 - (nonnull instancetype)initWithInvalidId;
@@ -76,23 +75,23 @@ typedef NS_ENUM(NSInteger, SharingSharedFolderAccessErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedFolderAccessError` object.
+/// `DBXSHARINGSharedFolderAccessError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedFolderAccessError` union.
+/// The serialization class for the `DBXSHARINGSharedFolderAccessError` union.
 /// 
-@interface DbxSharingSharedFolderAccessErrorSerializer : NSObject 
+@interface DBXSHARINGSharedFolderAccessErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedFolderAccessError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderAccessError * _Nonnull)obj;
+/// `DBXSHARINGSharedFolderAccessError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderAccessError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedFolderAccessError` object
+/// Returns an instantiation of the `DBXSHARINGSharedFolderAccessError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingSharedFolderAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedFolderAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

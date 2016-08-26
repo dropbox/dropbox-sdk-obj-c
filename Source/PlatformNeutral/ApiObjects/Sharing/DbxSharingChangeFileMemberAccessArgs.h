@@ -3,55 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingChangeFileMemberAccessArgs;
-@class DbxSharingMemberSelector;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGChangeFileMemberAccessArgs;
+@class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DbxSharingChangeFileMemberAccessArgs` struct.
+/// The `DBXSHARINGChangeFileMemberAccessArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for changeFileMemberAccess.
 /// 
-@interface DbxSharingChangeFileMemberAccessArgs : NSObject <DbxSerializable> 
+@interface DBXSHARINGChangeFileMemberAccessArgs : NSObject <DBXSerializable> 
 
 /// File for which we are changing a member's access.
 @property (nonatomic, copy) NSString * _Nonnull file;
 
 /// The member whose access we are changing.
-@property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The new access level for the member.
-@property (nonatomic) DbxSharingAccessLevel * _Nonnull accessLevel;
+@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// Full constructor for the `ChangeFileMemberAccessArgs` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingChangeFileMemberAccessArgs` object.
+/// `DBXSHARINGChangeFileMemberAccessArgs` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingChangeFileMemberAccessArgs`
+/// The serialization class for the `DBXSHARINGChangeFileMemberAccessArgs`
 /// struct.
 /// 
-@interface DbxSharingChangeFileMemberAccessArgsSerializer : NSObject 
+@interface DBXSHARINGChangeFileMemberAccessArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingChangeFileMemberAccessArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingChangeFileMemberAccessArgs * _Nonnull)obj;
+/// `DBXSHARINGChangeFileMemberAccessArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGChangeFileMemberAccessArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingChangeFileMemberAccessArgs`
+/// Returns an instantiation of the `DBXSHARINGChangeFileMemberAccessArgs`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingChangeFileMemberAccessArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGChangeFileMemberAccessArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

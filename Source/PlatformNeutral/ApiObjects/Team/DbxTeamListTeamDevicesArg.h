@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListTeamDevicesArg;
+@class DBXTEAMListTeamDevicesArg;
 
 /// 
-/// The `DbxTeamListTeamDevicesArg` struct.
+/// The `DBXTEAMListTeamDevicesArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamListTeamDevicesArg : NSObject <DbxSerializable> 
+@interface DBXTEAMListTeamDevicesArg : NSObject <DBXSerializable> 
 
 /// At the first call to the devicesListTeamDevices the cursor shouldn't be
 /// passed. Then, if the result of the call includes a cursor, the following
@@ -39,7 +39,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamListTeamDevicesArg`
+/// Returns a human-readable representation of the `DBXTEAMListTeamDevicesArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -47,16 +47,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamListTeamDevicesArg` struct.
+/// The serialization class for the `DBXTEAMListTeamDevicesArg` struct.
 /// 
-@interface DbxTeamListTeamDevicesArgSerializer : NSObject 
+@interface DBXTEAMListTeamDevicesArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListTeamDevicesArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListTeamDevicesArg * _Nonnull)obj;
+/// `DBXTEAMListTeamDevicesArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamDevicesArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListTeamDevicesArg` object from a
+/// Returns an instantiation of the `DBXTEAMListTeamDevicesArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamListTeamDevicesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListTeamDevicesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

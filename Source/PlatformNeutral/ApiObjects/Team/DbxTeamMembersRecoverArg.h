@@ -3,31 +3,31 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersRecoverArg;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMMembersRecoverArg;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMembersRecoverArg` struct.
+/// The `DBXTEAMMembersRecoverArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
 /// 
-@interface DbxTeamMembersRecoverArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersRecoverArg : NSObject <DBXSerializable> 
 
 /// Identity of user to recover.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Full constructor for the `MembersRecoverArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
-/// Returns a human-readable representation of the `DbxTeamMembersRecoverArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersRecoverArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersRecoverArg` struct.
+/// The serialization class for the `DBXTEAMMembersRecoverArg` struct.
 /// 
-@interface DbxTeamMembersRecoverArgSerializer : NSObject 
+@interface DBXTEAMMembersRecoverArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersRecoverArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersRecoverArg * _Nonnull)obj;
+/// `DBXTEAMMembersRecoverArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersRecoverArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersRecoverArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersRecoverArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersRecoverArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersRecoverArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

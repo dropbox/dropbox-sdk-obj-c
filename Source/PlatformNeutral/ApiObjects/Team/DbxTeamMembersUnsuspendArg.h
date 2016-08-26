@@ -3,31 +3,31 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersUnsuspendArg;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMMembersUnsuspendArg;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMembersUnsuspendArg` struct.
+/// The `DBXTEAMMembersUnsuspendArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
 /// 
-@interface DbxTeamMembersUnsuspendArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersUnsuspendArg : NSObject <DBXSerializable> 
 
 /// Identity of user to unsuspend.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Full constructor for the `MembersUnsuspendArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
-/// Returns a human-readable representation of the `DbxTeamMembersUnsuspendArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersUnsuspendArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersUnsuspendArg` struct.
+/// The serialization class for the `DBXTEAMMembersUnsuspendArg` struct.
 /// 
-@interface DbxTeamMembersUnsuspendArgSerializer : NSObject 
+@interface DBXTEAMMembersUnsuspendArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersUnsuspendArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersUnsuspendArg * _Nonnull)obj;
+/// `DBXTEAMMembersUnsuspendArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersUnsuspendArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersUnsuspendArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersUnsuspendArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

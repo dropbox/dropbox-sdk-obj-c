@@ -2,37 +2,27 @@
 /// Logic for handling OAuth transactions.
 ///
 
-#import "DbxKeychain.h"
-#import "DbxOAuth.h"
-#import "DbxOAuthResult.h"
+#import "DBXKeychain.h"
+#import "DBXOAuth.h"
+#import "DBXOAuthResult.h"
+#import "DBXSharedApplicationProtocol.h"
 #import "Reachability.h"
 
-@implementation DbxOAuthManager
-
-// MARK: Shared instance
-/// A shared instance of a `DbxOAuthManager` for convenience
-static DbxOAuthManager *sharedOAuthManager;
+/// A shared instance of a `DBXOAuthManager` for convenience
+static DBXOAuthManager *sharedOAuthManager;
 static Reachability *internetReachableFoo;
 
-/// Manages access token storage and authentication
-///
-/// Use the `DbxOAuthManager` to authenticate users through OAuth2, save access tokens, and retrieve access tokens.
-+ (DbxOAuthManager *)sharedOAuthManager {
+@implementation DBXOAuthManager
+
++ (DBXOAuthManager *)sharedOAuthManager {
     return sharedOAuthManager;
 }
 
-+ (void)sharedOAuthManager:(DbxOAuthManager *)sharedManager {
++ (void)sharedOAuthManager:(DBXOAuthManager *)sharedManager {
     sharedOAuthManager = sharedManager;
 }
 
-
-// MARK: Functions
-
-///
-/// Create an instance
-/// parameter appKey: The app key from the developer console that identifies this app.
-///
-- (nonnull instancetype)init:(NSString *)appKey host:(NSString *)host {
+- (instancetype)init:(NSString *)appKey host:(NSString *)host {
     if (self) {
         _appKey = appKey;
         _redirectURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"db-%@://2/token", _appKey]];
@@ -42,46 +32,30 @@ static Reachability *internetReachableFoo;
     return self;
 }
 
-///
-/// Create an instance
-/// parameter appKey: The app key from the developer console that identifies this app.
-///
-- (nonnull instancetype)init:(NSString *)appKey {
+- (instancetype)init:(NSString *)appKey {
     return [self init:appKey host:@"www.dropbox.com"];
 }
 
-///
-/// Try to handle a redirect back into the application
-///
-/// - parameter url: The URL to attempt to handle
-///
-/// - returns `nil` if SwiftyDropbox cannot handle the redirect URL, otherwise returns the `DropboxAuthResult`.
-///
-- (DbxOAuthResult *)handleRedirectURL:(NSURL *)url {
+- (DBXOAuthResult *)handleRedirectURL:(NSURL *)url {
     // check if url is a cancel url
     if (([[url host] isEqualToString:@"1"] && [[url path] isEqualToString:@"/cancel"]) || ([[url host] isEqualToString:@"2"] && [[url path] isEqualToString:@"/cancel"])) {
-        return [[DbxOAuthResult alloc] initWithCancel];
+        return [[DBXOAuthResult alloc] initWithCancel];
     }
     
     if (![self canHandleURL:url]) {
         return nil;
     }
     
-    DbxOAuthResult *result = [self extractFromUrl: url];
+    DBXOAuthResult *result = [self extractFromUrl: url];
     
     if ([result isSuccess]) {
-        [DbxKeychain setWithString:result.accessToken.uid value:result.accessToken.accessToken];
+        [DBXKeychain set:result.accessToken.uid value:result.accessToken.accessToken];
     }
     
     return result;
 }
 
-///
-/// Present the OAuth2 authorization request page by presenting a web view controller modally
-///
-/// - parameter controller: The controller to present from
-///
-- (void)authorizeFromSharedApplication:(id<DbxSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
+- (void)authorizeFromSharedApplication:(id<DBXSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
     if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus] == NotReachable) {
         NSString *message = @"Try again once you have an internet connection.";
         NSString *title = @"No internet connection";
@@ -113,7 +87,7 @@ static Reachability *internetReachableFoo;
     if (browserAuth) {
         [sharedApplication presentBrowserAuth:url];
     } else {
-        BOOL (^tryIntercept)(NSURL *) = ^BOOL(NSURL *url) {
+        BOOL (^tryInterceptHandler)(NSURL *) = ^BOOL(NSURL *url) {
             if ([self canHandleURL:url]) {
                 [sharedApplication presentExternalApp:url];
                 return YES;
@@ -127,7 +101,7 @@ static Reachability *internetReachableFoo;
             [sharedApplication presentExternalApp:cancelUrl];
         };
 
-        [sharedApplication presentWebViewAuth:url tryIntercept:tryIntercept cancelHandler:cancelHandler];
+        [sharedApplication presentWebViewAuth:url tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
     }
 }
 
@@ -172,7 +146,7 @@ static Reachability *internetReachableFoo;
     return NO;
 }
 
-- (DbxOAuthResult *)extractFromRedirectURL:(NSURL *)url {
+- (DBXOAuthResult *)extractFromRedirectURL:(NSURL *)url {
     NSMutableDictionary *results = [[NSMutableDictionary alloc] init];
     NSArray *pairs  = [[url fragment] componentsSeparatedByString:@"&"] ?: @[];
     
@@ -185,103 +159,63 @@ static Reachability *internetReachableFoo;
         NSString *desc = [[results[@"error_description"] stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding] ?: @"";
         
         if ([results[@"error"] isEqualToString:@"access_denied"]) {
-            return [[DbxOAuthResult alloc] initWithCancel];
+            return [[DBXOAuthResult alloc] initWithCancel];
         }
-        return [[DbxOAuthResult alloc] initWithError:results[@"error"] errorDescription:desc];
+        return [[DBXOAuthResult alloc] initWithError:results[@"error"] errorDescription:desc];
     } else {
-        DbxAccessToken *accessToken = [[DbxAccessToken alloc] init:results[@"access_token"] uid:results[@"uid"]];
-        return [[DbxOAuthResult alloc] initWithSuccess:accessToken];
+        NSString *uid = results[@"account_id"] ?: results[@"team_id"];
+        DBXAccessToken *accessToken = [[DBXAccessToken alloc] init:results[@"access_token"] uid:uid];
+        return [[DBXOAuthResult alloc] initWithSuccess:accessToken];
     }
 }
 
-- (DbxOAuthResult *)extractFromUrl:(NSURL *)url {
+- (DBXOAuthResult *)extractFromUrl:(NSURL *)url {
     return [self extractFromRedirectURL:url];
 }
 
-- (BOOL)checkAndPresentPlatformSpecificAuth:(id <DbxSharedApplication>)sharedApplication {
+- (BOOL)checkAndPresentPlatformSpecificAuth:(id <DBXSharedApplication>)sharedApplication {
     return NO;
 }
 
-///
-/// Retrieve all stored access tokens
-///
-/// - returns: a dictionary mapping users to their access tokens
-///
-- (NSDictionary<NSString *, DbxAccessToken *> *)getAllAccessTokens {
-    NSArray<NSString *> *users = [DbxKeychain getAll];
-    NSMutableDictionary<NSString *, DbxAccessToken *> *result = [[NSMutableDictionary alloc] init];
+- (NSDictionary<NSString *, DBXAccessToken *> *)getAllAccessTokens {
+    NSArray<NSString *> *users = [DBXKeychain getAll];
+    NSMutableDictionary<NSString *, DBXAccessToken *> *result = [[NSMutableDictionary alloc] init];
     for (NSString *user in users) {
-        NSString *accessToken = [DbxKeychain get:user];
+        NSString *accessToken = [DBXKeychain get:user];
         if (accessToken != nil) {
-            result[user] = [[DbxAccessToken alloc] init:accessToken uid:user];
+            result[user] = [[DBXAccessToken alloc] init:accessToken uid:user];
         }
     }
     return result;
 }
 
-///
-/// Check if there are any stored access tokens
-///
-/// - returns: Whether there are stored access tokens
-///
 - (BOOL)hasStoredAccessTokens {
     return [self getAllAccessTokens].count != 0;
 }
 
-///
-/// Retrieve the access token for a particular user
-///
-/// - parameter user: The user whose token to retrieve
-///
-/// - returns: An access token if present, otherwise `nil`.
-///
-- (DbxAccessToken *)getAccessToken:(NSString *)user {
-    NSString *accessToken = [DbxKeychain get:user];
+- (DBXAccessToken *)getAccessToken:(NSString *)user {
+    NSString *accessToken = [DBXKeychain get:user];
     if (accessToken != nil) {
-        return [[DbxAccessToken alloc] init:accessToken uid:user];
+        return [[DBXAccessToken alloc] init:accessToken uid:user];
     } else {
         return nil;
     }
 }
 
-///
-/// Delete a specific access token
-///
-/// - parameter token: The access token to delete
-///
-/// - returns: whether the operation succeeded
-///
-- (BOOL)clearStoredAccessToken:(DbxAccessToken *)token {
-    return [DbxKeychain delete:token.uid];
+- (BOOL)clearStoredAccessToken:(DBXAccessToken *)token {
+    return [DBXKeychain delete:token.uid];
 }
 
-///
-/// Delete all stored access tokens
-///
-/// - returns: whether the operation succeeded
-///
 - (BOOL)clearStoredAccessTokens {
-    return [DbxKeychain clear];
+    return [DBXKeychain clear];
 }
 
-///
-/// Save an access token
-///
-/// - parameter token: The access token to save
-///
-/// - returns: whether the operation succeeded
-///
-- (BOOL)storeAccessToken:(DbxAccessToken *)accessToken {
-    return [DbxKeychain setWithString:accessToken.uid value:accessToken.accessToken];
+- (BOOL)storeAccessToken:(DBXAccessToken *)accessToken {
+    return [DBXKeychain set:accessToken.uid value:accessToken.accessToken];
 }
 
-///
-/// Utility function to return an arbitrary access token
-///
-/// - returns: the "first" access token found, if any (otherwise `nil`)
-///
-- (DbxAccessToken *)getFirstAccessToken {
-    NSDictionary<NSString *, DbxAccessToken *> *tokens = [self getAllAccessTokens];
+- (DBXAccessToken *)getFirstAccessToken {
+    NSDictionary<NSString *, DBXAccessToken *> *tokens = [self getAllAccessTokens];
     NSArray *values = [tokens allValues];
     if ([values count] != 0) {
         return [values objectAtIndex:0];
@@ -292,12 +226,12 @@ static Reachability *internetReachableFoo;
 @end
 
 
-@implementation DbxDesktopOAuthManager
+@implementation DBXDesktopOAuthManager
 
 @end
 
 
-@implementation DbxMobileOAuthManager
+@implementation DBXMobileOAuthManager
 
 static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 
@@ -319,8 +253,8 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     return self;
 }
 
-- (DbxOAuthResult *)extractFromUrl:(NSURL *)url {
-    DbxOAuthResult *result;
+- (DBXOAuthResult *)extractFromUrl:(NSURL *)url {
+    DBXOAuthResult *result;
     if ([url.host isEqualToString:@"1"]) { // dauth
         result = [self extractfromDAuthURL:url];
     } else {
@@ -329,7 +263,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     return result;
 }
 
-- (BOOL)checkAndPresentPlatformSpecificAuth:(id<DbxSharedApplication>)sharedApplication {
+- (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBXSharedApplication>)sharedApplication {
     if (![self hasApplicationQueriesSchemes]) {
         NSString *message = @"DropboxSDK: unable to link; app isn't registered to query for URL schemes dbapi-2 and dbapi-8-emm. In your project's Info.plist file, add a \"dbapi-2\" value and a \"dbapi-8-emm\" value associated with the following keys: \"Information Property List\" > \"LSApplicationQueriesSchemes\" > \"Item <N>\" and \"Item <N+1>\".";
         NSString *title = @"ObjectiveDropbox Error";
@@ -367,7 +301,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     return components.URL;
 }
 
-- (NSString *)dAuthScheme:(id<DbxSharedApplication>)sharedApplication {
+- (NSString *)dAuthScheme:(id<DBXSharedApplication>)sharedApplication {
     if ([sharedApplication canPresentExternalApp:[self dAuthURL:@"dbapi-2" nonce:nil]]) {
         return @"dbapi-2";
     } else if ([sharedApplication canPresentExternalApp:[self dAuthURL:@"dbapi-8-emm" nonce:nil]]) {
@@ -377,7 +311,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     }
 }
 
-- (DbxOAuthResult *)extractfromDAuthURL:(NSURL *)url {
+- (DBXOAuthResult *)extractfromDAuthURL:(NSURL *)url {
     NSString *path = url.path;
     if (path != nil) {
         if ([path isEqualToString:@"/connect"]) {
@@ -394,9 +328,9 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
             if (state.count == 2 && [state[0] isEqualToString:@"oauth2"] && [state[1] isEqualToString:nonce]) {
                 NSString *accessToken = results[@"oauth_token_secret"];
                 NSString *uid = results[@"uid"];
-                return [[DbxOAuthResult alloc] initWithSuccess:[[DbxAccessToken alloc] init:accessToken uid:uid]];
+                return [[DBXOAuthResult alloc] initWithSuccess:[[DBXAccessToken alloc] init:accessToken uid:uid]];
             } else {
-                return [[DbxOAuthResult alloc] initWithError:@"" errorDescription:@"Unable to verify link request."];
+                return [[DBXOAuthResult alloc] initWithError:@"" errorDescription:@"Unable to verify link request."];
             }
         }
     }
@@ -424,9 +358,9 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 @end
 
 
-@implementation DbxAccessToken
+@implementation DBXAccessToken
     
-- (nonnull instancetype)init:(NSString *)accessToken uid:(NSString *)uid {
+- (instancetype)init:(NSString *)accessToken uid:(NSString *)uid {
     self = [super init];
     if (self) {
         _accessToken = accessToken;

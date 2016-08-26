@@ -3,33 +3,32 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsGetInfoError;
+@class DBXTEAMGroupsGetInfoError;
 
 /// 
-/// The `DbxTeamGroupsGetInfoError` union.
+/// The `DBXTEAMGroupsGetInfoError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsGetInfoError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsGetInfoError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupsGetInfoErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupsGetInfoError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupsGetInfoErrorTag) {
+/// The `DBXTEAMGroupsGetInfoErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMGroupsGetInfoError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoErrorTag) {
     /// The group is not on your team.
-    TeamGroupsGetInfoErrorGroupNotOnTeam,
+    DBXTEAMGroupsGetInfoErrorGroupNotOnTeam,
 
     /// (no description).
-    TeamGroupsGetInfoErrorOther,
+    DBXTEAMGroupsGetInfoErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupsGetInfoErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupsGetInfoErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotOnTeam`.
 - (nonnull instancetype)initWithGroupNotOnTeam;
@@ -46,7 +45,7 @@ typedef NS_ENUM(NSInteger, TeamGroupsGetInfoErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsGetInfoError`
+/// Returns a human-readable representation of the `DBXTEAMGroupsGetInfoError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -54,16 +53,16 @@ typedef NS_ENUM(NSInteger, TeamGroupsGetInfoErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsGetInfoError` union.
+/// The serialization class for the `DBXTEAMGroupsGetInfoError` union.
 /// 
-@interface DbxTeamGroupsGetInfoErrorSerializer : NSObject 
+@interface DBXTEAMGroupsGetInfoErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsGetInfoError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsGetInfoError * _Nonnull)obj;
+/// `DBXTEAMGroupsGetInfoError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsGetInfoError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsGetInfoError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsGetInfoError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsGetInfoError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsGetInfoError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

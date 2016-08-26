@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRemovedStatus;
+@class DBXTEAMRemovedStatus;
 
 /// 
-/// The `DbxTeamRemovedStatus` struct.
+/// The `DBXTEAMRemovedStatus` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRemovedStatus : NSObject <DbxSerializable> 
+@interface DBXTEAMRemovedStatus : NSObject <DBXSerializable> 
 
 /// True if the removed team member is recoverable
 @property (nonatomic, copy) NSNumber * _Nonnull isRecoverable;
@@ -23,7 +23,7 @@
 /// variables).
 - (nonnull instancetype)initWithIsRecoverable:(NSNumber * _Nonnull)isRecoverable;
 
-/// Returns a human-readable representation of the `DbxTeamRemovedStatus`
+/// Returns a human-readable representation of the `DBXTEAMRemovedStatus`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -31,16 +31,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamRemovedStatus` struct.
+/// The serialization class for the `DBXTEAMRemovedStatus` struct.
 /// 
-@interface DbxTeamRemovedStatusSerializer : NSObject 
+@interface DBXTEAMRemovedStatusSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRemovedStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRemovedStatus * _Nonnull)obj;
+/// `DBXTEAMRemovedStatus` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRemovedStatus * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRemovedStatus` object from a
+/// Returns an instantiation of the `DBXTEAMRemovedStatus` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamRemovedStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRemovedStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

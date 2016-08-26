@@ -3,45 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGetSharedLinksResult;
-@class DbxSharingLinkMetadata;
+@class DBXSHARINGGetSharedLinksResult;
+@class DBXSHARINGLinkMetadata;
 
 /// 
-/// The `DbxSharingGetSharedLinksResult` struct.
+/// The `DBXSHARINGGetSharedLinksResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingGetSharedLinksResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetSharedLinksResult : NSObject <DBXSerializable> 
 
 /// Shared links applicable to the path argument.
-@property (nonatomic) NSArray<DbxSharingLinkMetadata *> * _Nonnull links;
+@property (nonatomic) NSArray<DBXSHARINGLinkMetadata *> * _Nonnull links;
 
 /// Full constructor for the `GetSharedLinksResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithLinks:(NSArray<DbxSharingLinkMetadata *> * _Nonnull)links;
+- (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGLinkMetadata *> * _Nonnull)links;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingGetSharedLinksResult` object.
+/// `DBXSHARINGGetSharedLinksResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGetSharedLinksResult` struct.
+/// The serialization class for the `DBXSHARINGGetSharedLinksResult` struct.
 /// 
-@interface DbxSharingGetSharedLinksResultSerializer : NSObject 
+@interface DBXSHARINGGetSharedLinksResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetSharedLinksResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetSharedLinksResult * _Nonnull)obj;
+/// `DBXSHARINGGetSharedLinksResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetSharedLinksResult` object from
+/// Returns an instantiation of the `DBXSHARINGGetSharedLinksResult` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingGetSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,25 +3,25 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberSelector;
-@class DbxSharingRemoveFolderMemberArg;
+@class DBXSHARINGMemberSelector;
+@class DBXSHARINGRemoveFolderMemberArg;
 
 /// 
-/// The `DbxSharingRemoveFolderMemberArg` struct.
+/// The `DBXSHARINGRemoveFolderMemberArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRemoveFolderMemberArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGRemoveFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
 
 /// The member to remove from the folder.
-@property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// If true, the removed user will keep their copy of the folder after it's
 /// unshared, assuming it was mounted. Otherwise, it will be removed from their
@@ -30,26 +30,26 @@
 
 /// Full constructor for the `RemoveFolderMemberArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy;
+- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRemoveFolderMemberArg` object.
+/// `DBXSHARINGRemoveFolderMemberArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRemoveFolderMemberArg` struct.
+/// The serialization class for the `DBXSHARINGRemoveFolderMemberArg` struct.
 /// 
-@interface DbxSharingRemoveFolderMemberArgSerializer : NSObject 
+@interface DBXSHARINGRemoveFolderMemberArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRemoveFolderMemberArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRemoveFolderMemberArg * _Nonnull)obj;
+/// `DBXSHARINGRemoveFolderMemberArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFolderMemberArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRemoveFolderMemberArg` object
+/// Returns an instantiation of the `DBXSHARINGRemoveFolderMemberArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingRemoveFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRemoveFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

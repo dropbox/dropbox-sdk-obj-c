@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListRevisionsArg;
+@class DBXFILESListRevisionsArg;
 
 /// 
-/// The `DbxFilesListRevisionsArg` struct.
+/// The `DBXFILESListRevisionsArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListRevisionsArg : NSObject <DbxSerializable> 
+@interface DBXFILESListRevisionsArg : NSObject <DBXSerializable> 
 
 /// The path to the file you want to see the revisions of.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -30,7 +30,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesListRevisionsArg`
+/// Returns a human-readable representation of the `DBXFILESListRevisionsArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -38,16 +38,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesListRevisionsArg` struct.
+/// The serialization class for the `DBXFILESListRevisionsArg` struct.
 /// 
-@interface DbxFilesListRevisionsArgSerializer : NSObject 
+@interface DBXFILESListRevisionsArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListRevisionsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListRevisionsArg * _Nonnull)obj;
+/// `DBXFILESListRevisionsArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListRevisionsArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListRevisionsArg` object from a
+/// Returns an instantiation of the `DBXFILESListRevisionsArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,50 +3,50 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAddMemberSelectorError;
+@class DBXSHARINGAddMemberSelectorError;
 
 /// 
-/// The `DbxSharingAddMemberSelectorError` union.
+/// The `DBXSHARINGAddMemberSelectorError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingAddMemberSelectorError : NSObject <DbxSerializable> 
+@interface DBXSHARINGAddMemberSelectorError : NSObject <DBXSerializable> 
 
-/// The `SharingAddMemberSelectorErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingAddMemberSelectorError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingAddMemberSelectorErrorTag) {
+/// The `DBXSHARINGAddMemberSelectorErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGAddMemberSelectorError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGAddMemberSelectorErrorTag) {
     /// Automatically created groups can only be added to team folders.
-    SharingAddMemberSelectorErrorAutomaticGroup,
+    DBXSHARINGAddMemberSelectorErrorAutomaticGroup,
 
     /// The value is the ID that could not be identified.
-    SharingAddMemberSelectorErrorInvalidDropboxId,
+    DBXSHARINGAddMemberSelectorErrorInvalidDropboxId,
 
     /// The value is the e-email address that is malformed.
-    SharingAddMemberSelectorErrorInvalidEmail,
+    DBXSHARINGAddMemberSelectorErrorInvalidEmail,
 
     /// The value is the ID of the Dropbox user with an unverified e-mail
     /// address.  Invite unverified users by e-mail address instead of by their
     /// Dropbox ID.
-    SharingAddMemberSelectorErrorUnverifiedDropboxId,
+    DBXSHARINGAddMemberSelectorErrorUnverifiedDropboxId,
 
     /// At least one of the specified groups in members in AddFolderMemberArg is
     /// deleted.
-    SharingAddMemberSelectorErrorGroupDeleted,
+    DBXSHARINGAddMemberSelectorErrorGroupDeleted,
 
     /// Sharing to a group that is not on the current user's team.
-    SharingAddMemberSelectorErrorGroupNotOnTeam,
+    DBXSHARINGAddMemberSelectorErrorGroupNotOnTeam,
 
     /// (no description).
-    SharingAddMemberSelectorErrorOther,
+    DBXSHARINGAddMemberSelectorErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingAddMemberSelectorErrorTag tag;
+@property (nonatomic) DBXSHARINGAddMemberSelectorErrorTag tag;
 
 /// The value is the ID that could not be identified.
 @property (nonatomic, copy) NSString * _Nonnull invalidDropboxId;
@@ -57,7 +57,6 @@ typedef NS_ENUM(NSInteger, SharingAddMemberSelectorErrorTag) {
 /// The value is the ID of the Dropbox user with an unverified e-mail address.
 /// Invite unverified users by e-mail address instead of by their Dropbox ID.
 @property (nonatomic, copy) NSString * _Nonnull unverifiedDropboxId;
-
 
 /// Initializes union class with tag state of `AutomaticGroup`.
 - (nonnull instancetype)initWithAutomaticGroup;
@@ -106,23 +105,23 @@ typedef NS_ENUM(NSInteger, SharingAddMemberSelectorErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingAddMemberSelectorError` object.
+/// `DBXSHARINGAddMemberSelectorError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingAddMemberSelectorError` union.
+/// The serialization class for the `DBXSHARINGAddMemberSelectorError` union.
 /// 
-@interface DbxSharingAddMemberSelectorErrorSerializer : NSObject 
+@interface DBXSHARINGAddMemberSelectorErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAddMemberSelectorError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAddMemberSelectorError * _Nonnull)obj;
+/// `DBXSHARINGAddMemberSelectorError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddMemberSelectorError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAddMemberSelectorError` object
+/// Returns an instantiation of the `DBXSHARINGAddMemberSelectorError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingAddMemberSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAddMemberSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

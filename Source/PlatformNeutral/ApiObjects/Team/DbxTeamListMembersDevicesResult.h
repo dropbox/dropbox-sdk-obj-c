@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListMembersDevicesResult;
-@class DbxTeamMemberDevices;
+@class DBXTEAMListMembersDevicesResult;
+@class DBXTEAMMemberDevices;
 
 /// 
-/// The `DbxTeamListMembersDevicesResult` struct.
+/// The `DBXTEAMListMembersDevicesResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamListMembersDevicesResult : NSObject <DbxSerializable> 
+@interface DBXTEAMListMembersDevicesResult : NSObject <DBXSerializable> 
 
 /// The devices of each member of the team
-@property (nonatomic) NSArray<DbxTeamMemberDevices *> * _Nonnull devices;
+@property (nonatomic) NSArray<DBXTEAMMemberDevices *> * _Nonnull devices;
 
 /// If true, then there are more devices available. Pass the cursor to
 /// devicesListMembersDevices to retrieve the rest.
@@ -30,30 +30,30 @@
 
 /// Full constructor for the `ListMembersDevicesResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithDevices:(NSArray<DbxTeamMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
+- (nonnull instancetype)initWithDevices:(NSArray<DBXTEAMMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
 
 /// Convenience constructor for the `ListMembersDevicesResult` struct (exposes
 /// only non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithDevices:(NSArray<DbxTeamMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore;
+- (nonnull instancetype)initWithDevices:(NSArray<DBXTEAMMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamListMembersDevicesResult` object.
+/// `DBXTEAMListMembersDevicesResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamListMembersDevicesResult` struct.
+/// The serialization class for the `DBXTEAMListMembersDevicesResult` struct.
 /// 
-@interface DbxTeamListMembersDevicesResultSerializer : NSObject 
+@interface DBXTEAMListMembersDevicesResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListMembersDevicesResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListMembersDevicesResult * _Nonnull)obj;
+/// `DBXTEAMListMembersDevicesResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMembersDevicesResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListMembersDevicesResult` object
+/// Returns an instantiation of the `DBXTEAMListMembersDevicesResult` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamListMembersDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListMembersDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

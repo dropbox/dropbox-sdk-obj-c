@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRemovedStatus;
-@class DbxTeamTeamMemberStatus;
+@class DBXTEAMRemovedStatus;
+@class DBXTEAMTeamMemberStatus;
 
 /// 
-/// The `DbxTeamTeamMemberStatus` union.
+/// The `DBXTEAMTeamMemberStatus` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The user's status as a member of a specific team.
 /// 
-@interface DbxTeamTeamMemberStatus : NSObject <DbxSerializable> 
+@interface DBXTEAMTeamMemberStatus : NSObject <DBXSerializable> 
 
-/// The `TeamTeamMemberStatusTag` enum type represents the possible tag states
-/// that the `DbxTeamTeamMemberStatus` union can exist in.
-typedef NS_ENUM(NSInteger, TeamTeamMemberStatusTag) {
+/// The `DBXTEAMTeamMemberStatusTag` enum type represents the possible tag
+/// states that the `DBXTEAMTeamMemberStatus` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
     /// User has successfully joined the team.
-    TeamTeamMemberStatusActive,
+    DBXTEAMTeamMemberStatusActive,
 
     /// User has been invited to a team, but has not joined the team yet.
-    TeamTeamMemberStatusInvited,
+    DBXTEAMTeamMemberStatusInvited,
 
     /// User is no longer a member of the team, but the account can be
     /// un-suspended, re-establishing the user as a team member.
-    TeamTeamMemberStatusSuspended,
+    DBXTEAMTeamMemberStatusSuspended,
 
     /// User is no longer a member of the team. Removed users are only listed
     /// when include_removed is true in members/list.
-    TeamTeamMemberStatusRemoved,
+    DBXTEAMTeamMemberStatusRemoved,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamTeamMemberStatusTag tag;
+@property (nonatomic) DBXTEAMTeamMemberStatusTag tag;
 
 /// User is no longer a member of the team. Removed users are only listed when
 /// include_removed is true in members/list.
-@property (nonatomic) DbxTeamRemovedStatus * _Nonnull removed;
-
+@property (nonatomic) DBXTEAMRemovedStatus * _Nonnull removed;
 
 /// Initializes union class with tag state of `Active`.
 - (nonnull instancetype)initWithActive;
@@ -56,7 +55,7 @@ typedef NS_ENUM(NSInteger, TeamTeamMemberStatusTag) {
 - (nonnull instancetype)initWithSuspended;
 
 /// Initializes union class with tag state of `Removed`.
-- (nonnull instancetype)initWithRemoved:(DbxTeamRemovedStatus * _Nonnull)removed;
+- (nonnull instancetype)initWithRemoved:(DBXTEAMRemovedStatus * _Nonnull)removed;
 
 /// Returns whether the union's current tag state has value `Active`.
 - (BOOL)isActive;
@@ -73,7 +72,7 @@ typedef NS_ENUM(NSInteger, TeamTeamMemberStatusTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamTeamMemberStatus`
+/// Returns a human-readable representation of the `DBXTEAMTeamMemberStatus`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -81,16 +80,16 @@ typedef NS_ENUM(NSInteger, TeamTeamMemberStatusTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamTeamMemberStatus` union.
+/// The serialization class for the `DBXTEAMTeamMemberStatus` union.
 /// 
-@interface DbxTeamTeamMemberStatusSerializer : NSObject 
+@interface DBXTEAMTeamMemberStatusSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamTeamMemberStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMemberStatus * _Nonnull)obj;
+/// `DBXTEAMTeamMemberStatus` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMemberStatus * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamTeamMemberStatus` object from a
+/// Returns an instantiation of the `DBXTEAMTeamMemberStatus` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamTeamMemberStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMTeamMemberStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

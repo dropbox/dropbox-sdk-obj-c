@@ -3,28 +3,28 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersGetInfoArgs;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMMembersGetInfoArgs;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMembersGetInfoArgs` struct.
+/// The `DBXTEAMMembersGetInfoArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersGetInfoArgs : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersGetInfoArgs : NSObject <DBXSerializable> 
 
 /// List of team members.
-@property (nonatomic) NSArray<DbxTeamUserSelectorArg *> * _Nonnull members;
+@property (nonatomic) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull members;
 
 /// Full constructor for the `MembersGetInfoArgs` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithMembers:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)members;
+- (nonnull instancetype)initWithMembers:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)members;
 
-/// Returns a human-readable representation of the `DbxTeamMembersGetInfoArgs`
+/// Returns a human-readable representation of the `DBXTEAMMembersGetInfoArgs`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -32,16 +32,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersGetInfoArgs` struct.
+/// The serialization class for the `DBXTEAMMembersGetInfoArgs` struct.
 /// 
-@interface DbxTeamMembersGetInfoArgsSerializer : NSObject 
+@interface DBXTEAMMembersGetInfoArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersGetInfoArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersGetInfoArgs * _Nonnull)obj;
+/// `DBXTEAMMembersGetInfoArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersGetInfoArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersGetInfoArgs` object from a
+/// Returns an instantiation of the `DBXTEAMMembersGetInfoArgs` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

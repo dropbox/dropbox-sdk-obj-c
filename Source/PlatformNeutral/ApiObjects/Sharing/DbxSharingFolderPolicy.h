@@ -3,50 +3,50 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAclUpdatePolicy;
-@class DbxSharingFolderPolicy;
-@class DbxSharingMemberPolicy;
-@class DbxSharingSharedLinkPolicy;
+@class DBXSHARINGAclUpdatePolicy;
+@class DBXSHARINGFolderPolicy;
+@class DBXSHARINGMemberPolicy;
+@class DBXSHARINGSharedLinkPolicy;
 
 /// 
-/// The `DbxSharingFolderPolicy` struct.
+/// The `DBXSHARINGFolderPolicy` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// A set of policies governing membership and privileges for a shared folder.
 /// 
-@interface DbxSharingFolderPolicy : NSObject <DbxSerializable> 
+@interface DBXSHARINGFolderPolicy : NSObject <DBXSerializable> 
 
 /// Who can be a member of this shared folder, as set on the folder itself. The
 /// effective policy may differ from this value if the team-wide policy is more
 /// restrictive. Present only if the folder is owned by a team.
-@property (nonatomic) DbxSharingMemberPolicy * _Nullable memberPolicy;
+@property (nonatomic) DBXSHARINGMemberPolicy * _Nullable memberPolicy;
 
 /// Who can be a member of this shared folder, taking into account both the
 /// folder and the team-wide policy. This value may differ from that of
 /// member_policy if the team-wide policy is more restrictive than the folder
 /// policy. Present only if the folder is owned by a team.
-@property (nonatomic) DbxSharingMemberPolicy * _Nullable resolvedMemberPolicy;
+@property (nonatomic) DBXSHARINGMemberPolicy * _Nullable resolvedMemberPolicy;
 
 /// Who can add and remove members from this shared folder.
-@property (nonatomic) DbxSharingAclUpdatePolicy * _Nonnull aclUpdatePolicy;
+@property (nonatomic) DBXSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
 
 /// Who links can be shared with.
-@property (nonatomic) DbxSharingSharedLinkPolicy * _Nonnull sharedLinkPolicy;
+@property (nonatomic) DBXSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
 /// Full constructor for the `FolderPolicy` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithAclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nonnull)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nonnull)sharedLinkPolicy memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy resolvedMemberPolicy:(DbxSharingMemberPolicy * _Nullable)resolvedMemberPolicy;
+- (nonnull instancetype)initWithAclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nonnull)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nonnull)sharedLinkPolicy memberPolicy:(DBXSHARINGMemberPolicy * _Nullable)memberPolicy resolvedMemberPolicy:(DBXSHARINGMemberPolicy * _Nullable)resolvedMemberPolicy;
 
 /// Convenience constructor for the `FolderPolicy` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nonnull)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nonnull)sharedLinkPolicy;
+- (nonnull instancetype)initWithAclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nonnull)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nonnull)sharedLinkPolicy;
 
-/// Returns a human-readable representation of the `DbxSharingFolderPolicy`
+/// Returns a human-readable representation of the `DBXSHARINGFolderPolicy`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -54,16 +54,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingFolderPolicy` struct.
+/// The serialization class for the `DBXSHARINGFolderPolicy` struct.
 /// 
-@interface DbxSharingFolderPolicySerializer : NSObject 
+@interface DBXSHARINGFolderPolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFolderPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFolderPolicy * _Nonnull)obj;
+/// `DBXSHARINGFolderPolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderPolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFolderPolicy` object from a
+/// Returns an instantiation of the `DBXSHARINGFolderPolicy` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFolderPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFolderPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

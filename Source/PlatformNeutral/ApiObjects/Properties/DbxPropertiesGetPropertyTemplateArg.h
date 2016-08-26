@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesGetPropertyTemplateArg;
+@class DBXPROPERTIESGetPropertyTemplateArg;
 
 /// 
-/// The `DbxPropertiesGetPropertyTemplateArg` struct.
+/// The `DBXPROPERTIESGetPropertyTemplateArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxPropertiesGetPropertyTemplateArg : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESGetPropertyTemplateArg : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by route properties/template/add.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
@@ -24,24 +24,24 @@
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 /// Returns a human-readable representation of the
-/// `DbxPropertiesGetPropertyTemplateArg` object.
+/// `DBXPROPERTIESGetPropertyTemplateArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxPropertiesGetPropertyTemplateArg`
+/// The serialization class for the `DBXPROPERTIESGetPropertyTemplateArg`
 /// struct.
 /// 
-@interface DbxPropertiesGetPropertyTemplateArgSerializer : NSObject 
+@interface DBXPROPERTIESGetPropertyTemplateArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesGetPropertyTemplateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesGetPropertyTemplateArg * _Nonnull)obj;
+/// `DBXPROPERTIESGetPropertyTemplateArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesGetPropertyTemplateArg` object
+/// Returns an instantiation of the `DBXPROPERTIESGetPropertyTemplateArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxPropertiesGetPropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESGetPropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

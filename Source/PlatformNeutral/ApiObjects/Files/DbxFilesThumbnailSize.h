@@ -3,42 +3,41 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesThumbnailSize;
+@class DBXFILESThumbnailSize;
 
 /// 
-/// The `DbxFilesThumbnailSize` union.
+/// The `DBXFILESThumbnailSize` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesThumbnailSize : NSObject <DbxSerializable> 
+@interface DBXFILESThumbnailSize : NSObject <DBXSerializable> 
 
-/// The `FilesThumbnailSizeTag` enum type represents the possible tag states
-/// that the `DbxFilesThumbnailSize` union can exist in.
-typedef NS_ENUM(NSInteger, FilesThumbnailSizeTag) {
+/// The `DBXFILESThumbnailSizeTag` enum type represents the possible tag states
+/// that the `DBXFILESThumbnailSize` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
     /// 32 by 32 px.
-    FilesThumbnailSizeW32h32,
+    DBXFILESThumbnailSizeW32h32,
 
     /// 64 by 64 px.
-    FilesThumbnailSizeW64h64,
+    DBXFILESThumbnailSizeW64h64,
 
     /// 128 by 128 px.
-    FilesThumbnailSizeW128h128,
+    DBXFILESThumbnailSizeW128h128,
 
     /// 640 by 480 px.
-    FilesThumbnailSizeW640h480,
+    DBXFILESThumbnailSizeW640h480,
 
     /// 1024 by 768
-    FilesThumbnailSizeW1024h768,
+    DBXFILESThumbnailSizeW1024h768,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesThumbnailSizeTag tag;
-
+@property (nonatomic) DBXFILESThumbnailSizeTag tag;
 
 /// Initializes union class with tag state of `W32h32`.
 - (nonnull instancetype)initWithW32h32;
@@ -73,7 +72,7 @@ typedef NS_ENUM(NSInteger, FilesThumbnailSizeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesThumbnailSize`
+/// Returns a human-readable representation of the `DBXFILESThumbnailSize`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -81,16 +80,16 @@ typedef NS_ENUM(NSInteger, FilesThumbnailSizeTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesThumbnailSize` union.
+/// The serialization class for the `DBXFILESThumbnailSize` union.
 /// 
-@interface DbxFilesThumbnailSizeSerializer : NSObject 
+@interface DBXFILESThumbnailSizeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesThumbnailSize` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailSize * _Nonnull)obj;
+/// `DBXFILESThumbnailSize` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailSize * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesThumbnailSize` object from a
+/// Returns an instantiation of the `DBXFILESThumbnailSize` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesThumbnailSize * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESThumbnailSize * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -2,23 +2,23 @@
 /// The networking client for the User and Business API.
 ///
 
-#import "DbxAuthAuthError.h"
-#import "DbxAuthRateLimitError.h"
-#import "DbxDelegate.h"
-#import "DbxErrors.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DropboxTransportClient.h"
+#import "DBXAuthAuthError.h"
+#import "DBXAuthRateLimitError.h"
+#import "DBXDelegate.h"
+#import "DBXErrors.h"
+#import "DBXStoneBase.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
 
 static NSString * const version = @"1.0.0";
-static DbxDelegate *_delegate;
+static DBXDelegate *_delegate;
 static NSURLSession *_session;
 static NSURLSession *_backgroundSession;
 static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
-typedef void(^ErrorBlock)(DbxError * _Nonnull error);
+typedef void(^ErrorBlock)(DBXError * _Nonnull error);
 
-@implementation DropboxTransportClient
+@implementation DBXTransportClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
     return [self initWithAccessToken:accessToken andSelectUser:nil];
@@ -41,7 +41,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     if (self) {
         _delegateQueue = [NSOperationQueue new];
         [_delegateQueue setMaxConcurrentOperationCount:1];
-        _delegate = [[DbxDelegate alloc] initWithQueue:_delegateQueue];
+        _delegate = [[DBXDelegate alloc] initWithQueue:_delegateQueue];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:_delegate delegateQueue:_delegateQueue];
         NSString *backgroundId = backgroundSessionId ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionId, (long long)[[NSDate date] timeIntervalSince1970] * 1000];
         _backgroundSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId] delegate:_delegate delegateQueue:_delegateQueue];
@@ -62,7 +62,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return self;
 }
 
-- (DbxRpcTask *)requestRpc:(DbxRoute *)route arg:(id<DbxSerializable>)arg {
+- (DBXRpcTask *)requestRpc:(DBXRoute *)route arg:(id<DBXSerializable>)arg {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -73,13 +73,13 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:serializedArgData stream:nil];
 
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
-    DbxRpcTask *rpcTask = [[DbxRpcTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
+    DBXRpcTask *rpcTask = [[DBXRpcTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
     [task resume];
     
     return rpcTask;
 }
 
-- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputURL:(NSURL *)input {
+- (DBXUploadTask *)requestUpload:(DBXRoute *)route arg:(id<DBXSerializable>)arg inputURL:(NSURL *)input {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -87,13 +87,13 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
 
     NSURLSessionUploadTask *task = [_backgroundSession uploadTaskWithRequest:request fromFile:input];
-    DbxUploadTask *uploadTask = [[DbxUploadTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
+    DBXUploadTask *uploadTask = [[DBXUploadTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
     [task resume];
 
     return uploadTask;
 }
 
-- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputData:(NSData *)input {
+- (DBXUploadTask *)requestUpload:(DBXRoute *)route arg:(id<DBXSerializable>)arg inputData:(NSData *)input {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -101,13 +101,13 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
     
     NSURLSessionUploadTask *task = [_session uploadTaskWithRequest:request fromData:input];
-    DbxUploadTask *uploadTask = [[DbxUploadTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
+    DBXUploadTask *uploadTask = [[DBXUploadTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
     [task resume];
     
     return uploadTask;
 }
 
-- (DbxUploadTask *)requestUpload:(DbxRoute *)route arg:(id<DbxSerializable>)arg inputStream:(NSInputStream *)input {
+- (DBXUploadTask *)requestUpload:(DBXRoute *)route arg:(id<DBXSerializable>)arg inputStream:(NSInputStream *)input {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -115,13 +115,13 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:input];
     
     NSURLSessionUploadTask *task = [_session uploadTaskWithStreamedRequest:request];
-    DbxUploadTask *uploadTask = [[DbxUploadTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
+    DBXUploadTask *uploadTask = [[DBXUploadTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
     [task resume];
     
     return uploadTask;
 }
 
-- (DbxDownloadURLTask *)requestDownload:(DbxRoute *)route arg:(id<DbxSerializable>)arg overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+- (DBXDownloadURLTask *)requestDownload:(DBXRoute *)route arg:(id<DBXSerializable>)arg overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -129,13 +129,13 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
 
     NSURLSessionDownloadTask *task = [_backgroundSession downloadTaskWithRequest:request];
-    DbxDownloadURLTask *downloadTask = [[DbxDownloadURLTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route overwrite:overwrite destination:destination];
+    DBXDownloadURLTask *downloadTask = [[DBXDownloadURLTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route overwrite:overwrite destination:destination];
     [task resume];
 
     return downloadTask;
 }
 
-- (DbxDownloadDataTask *)requestDownload:(DbxRoute *)route arg:(id<DbxSerializable>)arg {
+- (DBXDownloadDataTask *)requestDownload:(DBXRoute *)route arg:(id<DBXSerializable>)arg {
     NSURL *requestUrl = [self getUrl:route];
     NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
     NSDictionary *headers = [self getHeaders:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -143,7 +143,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     NSURLRequest *request = [[self class] getRequest:headers url:requestUrl content:nil stream:nil];
     
     NSURLSessionDownloadTask *task = [_backgroundSession downloadTaskWithRequest:request];
-    DbxDownloadDataTask *downloadTask = [[DbxDownloadDataTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
+    DBXDownloadDataTask *downloadTask = [[DBXDownloadDataTask alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
     [task resume];
     
     return downloadTask;
@@ -164,7 +164,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return request;
 }
 
-- (NSURL *)getUrl:(DbxRoute *)route {
+- (NSURL *)getUrl:(DBXRoute *)route {
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", _baseHosts[route.attrs[@"host"]], route.namespace_, route.name]];
 }
 
@@ -201,7 +201,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return headers;
 }
 
-+ (NSData *)serializeArgData:(DbxRoute *)route routeArg:(id<DbxSerializable>)arg {
++ (NSData *)serializeArgData:(DBXRoute *)route routeArg:(id<DBXSerializable>)arg {
     if (arg == nil) {
         return nil;
     }
@@ -215,7 +215,7 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return [[self class] jsonDataFromJsonObj:serializedDict];
 }
 
-+ (NSString *)serializeArgString:(DbxRoute *)route routeArg:(id<DbxSerializable>)arg {
++ (NSString *)serializeArgString:(DBXRoute *)route routeArg:(id<DBXSerializable>)arg {
     if (arg == nil) {
         return nil;
     }

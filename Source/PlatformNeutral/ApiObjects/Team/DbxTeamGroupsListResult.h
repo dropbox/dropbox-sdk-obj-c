@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamCommonGroupSummary;
-@class DbxTeamGroupsListResult;
+@class DBXTEAMCOMMONGroupSummary;
+@class DBXTEAMGroupsListResult;
 
 /// 
-/// The `DbxTeamGroupsListResult` struct.
+/// The `DBXTEAMGroupsListResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsListResult : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsListResult : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DbxTeamCommonGroupSummary *> * _Nonnull groups;
+@property (nonatomic) NSArray<DBXTEAMCOMMONGroupSummary *> * _Nonnull groups;
 
 /// Pass the cursor into groupsListContinue to obtain the additional groups.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
@@ -29,9 +29,9 @@
 
 /// Full constructor for the `GroupsListResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroups:(NSArray<DbxTeamCommonGroupSummary *> * _Nonnull)groups cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
+- (nonnull instancetype)initWithGroups:(NSArray<DBXTEAMCOMMONGroupSummary *> * _Nonnull)groups cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsListResult`
+/// Returns a human-readable representation of the `DBXTEAMGroupsListResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -39,16 +39,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsListResult` struct.
+/// The serialization class for the `DBXTEAMGroupsListResult` struct.
 /// 
-@interface DbxTeamGroupsListResultSerializer : NSObject 
+@interface DBXTEAMGroupsListResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsListResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsListResult * _Nonnull)obj;
+/// `DBXTEAMGroupsListResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsListResult` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsListResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

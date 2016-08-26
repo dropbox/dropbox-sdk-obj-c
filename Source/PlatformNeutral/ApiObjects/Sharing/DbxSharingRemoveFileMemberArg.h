@@ -3,21 +3,21 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberSelector;
-@class DbxSharingRemoveFileMemberArg;
+@class DBXSHARINGMemberSelector;
+@class DBXSHARINGRemoveFileMemberArg;
 
 /// 
-/// The `DbxSharingRemoveFileMemberArg` struct.
+/// The `DBXSHARINGRemoveFileMemberArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for removeFileMember2.
 /// 
-@interface DbxSharingRemoveFileMemberArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGRemoveFileMemberArg : NSObject <DBXSerializable> 
 
 /// File from which to remove members.
 @property (nonatomic, copy) NSString * _Nonnull file;
@@ -25,30 +25,30 @@
 /// Member to remove from this file. Note that even if an email is specified, it
 /// may result in the removal of a user (not an invitee) if the user's main
 /// account corresponds to that email address.
-@property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// Full constructor for the `RemoveFileMemberArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRemoveFileMemberArg` object.
+/// `DBXSHARINGRemoveFileMemberArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRemoveFileMemberArg` struct.
+/// The serialization class for the `DBXSHARINGRemoveFileMemberArg` struct.
 /// 
-@interface DbxSharingRemoveFileMemberArgSerializer : NSObject 
+@interface DBXSHARINGRemoveFileMemberArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRemoveFileMemberArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRemoveFileMemberArg * _Nonnull)obj;
+/// `DBXSHARINGRemoveFileMemberArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFileMemberArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRemoveFileMemberArg` object from
+/// Returns an instantiation of the `DBXSHARINGRemoveFileMemberArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingRemoveFileMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRemoveFileMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

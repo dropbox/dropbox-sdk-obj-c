@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesPropertyField;
+@class DBXPROPERTIESPropertyField;
 
 /// 
-/// The `DbxPropertiesPropertyField` struct.
+/// The `DBXPROPERTIESPropertyField` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxPropertiesPropertyField : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESPropertyField : NSObject <DBXSerializable> 
 
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
@@ -28,7 +28,7 @@
 /// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name value:(NSString * _Nonnull)value;
 
-/// Returns a human-readable representation of the `DbxPropertiesPropertyField`
+/// Returns a human-readable representation of the `DBXPROPERTIESPropertyField`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -36,16 +36,16 @@
 
 
 /// 
-/// The serialization class for the `DbxPropertiesPropertyField` struct.
+/// The serialization class for the `DBXPROPERTIESPropertyField` struct.
 /// 
-@interface DbxPropertiesPropertyFieldSerializer : NSObject 
+@interface DBXPROPERTIESPropertyFieldSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesPropertyField` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyField * _Nonnull)obj;
+/// `DBXPROPERTIESPropertyField` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyField * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesPropertyField` object from a
+/// Returns an instantiation of the `DBXPROPERTIESPropertyField` object from a
 /// json-compatible dictionary representation.
-+ (DbxPropertiesPropertyField * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESPropertyField * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

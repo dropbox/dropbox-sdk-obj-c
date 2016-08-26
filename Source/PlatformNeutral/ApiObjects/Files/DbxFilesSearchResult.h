@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesSearchMatch;
-@class DbxFilesSearchResult;
+@class DBXFILESSearchMatch;
+@class DBXFILESSearchResult;
 
 /// 
-/// The `DbxFilesSearchResult` struct.
+/// The `DBXFILESSearchResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSearchResult : NSObject <DbxSerializable> 
+@interface DBXFILESSearchResult : NSObject <DBXSerializable> 
 
 /// A list (possibly empty) of matches for the query.
-@property (nonatomic) NSArray<DbxFilesSearchMatch *> * _Nonnull matches;
+@property (nonatomic) NSArray<DBXFILESSearchMatch *> * _Nonnull matches;
 
 /// Used for paging. If true, indicates there is another page of results
 /// available that can be fetched by calling search again.
@@ -30,9 +30,9 @@
 
 /// Full constructor for the `SearchResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithMatches:(NSArray<DbxFilesSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
+- (nonnull instancetype)initWithMatches:(NSArray<DBXFILESSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
 
-/// Returns a human-readable representation of the `DbxFilesSearchResult`
+/// Returns a human-readable representation of the `DBXFILESSearchResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -40,16 +40,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesSearchResult` struct.
+/// The serialization class for the `DBXFILESSearchResult` struct.
 /// 
-@interface DbxFilesSearchResultSerializer : NSObject 
+@interface DBXFILESSearchResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSearchResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSearchResult * _Nonnull)obj;
+/// `DBXFILESSearchResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSearchResult` object from a
+/// Returns an instantiation of the `DBXFILESSearchResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSearchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSearchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

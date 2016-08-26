@@ -3,54 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingPermissionDeniedReason;
+@class DBXSHARINGPermissionDeniedReason;
 
 /// 
-/// The `DbxSharingPermissionDeniedReason` union.
+/// The `DBXSHARINGPermissionDeniedReason` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Possible reasons the user is denied a permission.
 /// 
-@interface DbxSharingPermissionDeniedReason : NSObject <DbxSerializable> 
+@interface DBXSHARINGPermissionDeniedReason : NSObject <DBXSerializable> 
 
-/// The `SharingPermissionDeniedReasonTag` enum type represents the possible tag
-/// states that the `DbxSharingPermissionDeniedReason` union can exist in.
-typedef NS_ENUM(NSInteger, SharingPermissionDeniedReasonTag) {
+/// The `DBXSHARINGPermissionDeniedReasonTag` enum type represents the possible
+/// tag states that the `DBXSHARINGPermissionDeniedReason` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
     /// User is not on the same team as the folder owner.
-    SharingPermissionDeniedReasonUserNotSameTeamAsOwner,
+    DBXSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner,
 
     /// User is prohibited by the owner from taking the action.
-    SharingPermissionDeniedReasonUserNotAllowedByOwner,
+    DBXSHARINGPermissionDeniedReasonUserNotAllowedByOwner,
 
     /// Target is indirectly a member of the folder, for example by being part
     /// of a group.
-    SharingPermissionDeniedReasonTargetIsIndirectMember,
+    DBXSHARINGPermissionDeniedReasonTargetIsIndirectMember,
 
     /// Target is the owner of the folder.
-    SharingPermissionDeniedReasonTargetIsOwner,
+    DBXSHARINGPermissionDeniedReasonTargetIsOwner,
 
     /// Target is the user itself.
-    SharingPermissionDeniedReasonTargetIsSelf,
+    DBXSHARINGPermissionDeniedReasonTargetIsSelf,
 
     /// Target is not an active member of the team.
-    SharingPermissionDeniedReasonTargetNotActive,
+    DBXSHARINGPermissionDeniedReasonTargetNotActive,
 
     /// Folder is team folder for a limited team.
-    SharingPermissionDeniedReasonFolderIsLimitedTeamFolder,
+    DBXSHARINGPermissionDeniedReasonFolderIsLimitedTeamFolder,
 
     /// (no description).
-    SharingPermissionDeniedReasonOther,
+    DBXSHARINGPermissionDeniedReasonOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingPermissionDeniedReasonTag tag;
-
+@property (nonatomic) DBXSHARINGPermissionDeniedReasonTag tag;
 
 /// Initializes union class with tag state of `UserNotSameTeamAsOwner`.
 - (nonnull instancetype)initWithUserNotSameTeamAsOwner;
@@ -108,23 +107,23 @@ typedef NS_ENUM(NSInteger, SharingPermissionDeniedReasonTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingPermissionDeniedReason` object.
+/// `DBXSHARINGPermissionDeniedReason` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingPermissionDeniedReason` union.
+/// The serialization class for the `DBXSHARINGPermissionDeniedReason` union.
 /// 
-@interface DbxSharingPermissionDeniedReasonSerializer : NSObject 
+@interface DBXSHARINGPermissionDeniedReasonSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingPermissionDeniedReason` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingPermissionDeniedReason * _Nonnull)obj;
+/// `DBXSHARINGPermissionDeniedReason` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPermissionDeniedReason * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingPermissionDeniedReason` object
+/// Returns an instantiation of the `DBXSHARINGPermissionDeniedReason` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingPermissionDeniedReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGPermissionDeniedReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

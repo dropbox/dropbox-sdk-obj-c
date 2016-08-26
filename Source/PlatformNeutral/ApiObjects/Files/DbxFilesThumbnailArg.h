@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesThumbnailArg;
-@class DbxFilesThumbnailFormat;
-@class DbxFilesThumbnailSize;
+@class DBXFILESThumbnailArg;
+@class DBXFILESThumbnailFormat;
+@class DBXFILESThumbnailSize;
 
 /// 
-/// The `DbxFilesThumbnailArg` struct.
+/// The `DBXFILESThumbnailArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesThumbnailArg : NSObject <DbxSerializable> 
+@interface DBXFILESThumbnailArg : NSObject <DBXSerializable> 
 
 /// The path to the image file you want to thumbnail.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -24,20 +24,20 @@
 /// The format for the thumbnail image, jpeg (default) or png. For  images that
 /// are photos, jpeg should be preferred, while png is  better for screenshots
 /// and digital arts.
-@property (nonatomic) DbxFilesThumbnailFormat * _Nonnull format;
+@property (nonatomic) DBXFILESThumbnailFormat * _Nonnull format;
 
 /// The size for the thumbnail image.
-@property (nonatomic) DbxFilesThumbnailSize * _Nonnull size;
+@property (nonatomic) DBXFILESThumbnailSize * _Nonnull size;
 
 /// Full constructor for the `ThumbnailArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size;
+- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path format:(DBXFILESThumbnailFormat * _Nullable)format size:(DBXFILESThumbnailSize * _Nullable)size;
 
 /// Convenience constructor for the `ThumbnailArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesThumbnailArg`
+/// Returns a human-readable representation of the `DBXFILESThumbnailArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -45,16 +45,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesThumbnailArg` struct.
+/// The serialization class for the `DBXFILESThumbnailArg` struct.
 /// 
-@interface DbxFilesThumbnailArgSerializer : NSObject 
+@interface DBXFILESThumbnailArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesThumbnailArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailArg * _Nonnull)obj;
+/// `DBXFILESThumbnailArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesThumbnailArg` object from a
+/// Returns an instantiation of the `DBXFILESThumbnailArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesThumbnailArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESThumbnailArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

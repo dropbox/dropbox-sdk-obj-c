@@ -3,68 +3,67 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingInsufficientQuotaAmounts;
-@class DbxSharingMountFolderError;
-@class DbxSharingSharedFolderAccessError;
+@class DBXSHARINGInsufficientQuotaAmounts;
+@class DBXSHARINGMountFolderError;
+@class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DbxSharingMountFolderError` union.
+/// The `DBXSHARINGMountFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingMountFolderError : NSObject <DbxSerializable> 
+@interface DBXSHARINGMountFolderError : NSObject <DBXSerializable> 
 
-/// The `SharingMountFolderErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingMountFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingMountFolderErrorTag) {
+/// The `DBXSHARINGMountFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGMountFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
     /// (no description).
-    SharingMountFolderErrorAccessError,
+    DBXSHARINGMountFolderErrorAccessError,
 
     /// Mounting would cause a shared folder to be inside another, which is
     /// disallowed.
-    SharingMountFolderErrorInsideSharedFolder,
+    DBXSHARINGMountFolderErrorInsideSharedFolder,
 
     /// The current user does not have enough space to mount the shared folder.
-    SharingMountFolderErrorInsufficientQuota,
+    DBXSHARINGMountFolderErrorInsufficientQuota,
 
     /// The shared folder is already mounted.
-    SharingMountFolderErrorAlreadyMounted,
+    DBXSHARINGMountFolderErrorAlreadyMounted,
 
     /// The current user does not have permission to perform this action.
-    SharingMountFolderErrorNoPermission,
+    DBXSHARINGMountFolderErrorNoPermission,
 
     /// The shared folder is not mountable. One example where this can occur is
     /// when the shared folder belongs within a team folder in the user's
     /// Dropbox.
-    SharingMountFolderErrorNotMountable,
+    DBXSHARINGMountFolderErrorNotMountable,
 
     /// (no description).
-    SharingMountFolderErrorOther,
+    DBXSHARINGMountFolderErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingMountFolderErrorTag tag;
+@property (nonatomic) DBXSHARINGMountFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// The current user does not have enough space to mount the shared folder.
-@property (nonatomic) DbxSharingInsufficientQuotaAmounts * _Nonnull insufficientQuota;
-
+@property (nonatomic) DBXSHARINGInsufficientQuotaAmounts * _Nonnull insufficientQuota;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `InsideSharedFolder`.
 - (nonnull instancetype)initWithInsideSharedFolder;
 
 /// Initializes union class with tag state of `InsufficientQuota`.
-- (nonnull instancetype)initWithInsufficientQuota:(DbxSharingInsufficientQuotaAmounts * _Nonnull)insufficientQuota;
+- (nonnull instancetype)initWithInsufficientQuota:(DBXSHARINGInsufficientQuotaAmounts * _Nonnull)insufficientQuota;
 
 /// Initializes union class with tag state of `AlreadyMounted`.
 - (nonnull instancetype)initWithAlreadyMounted;
@@ -103,7 +102,7 @@ typedef NS_ENUM(NSInteger, SharingMountFolderErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingMountFolderError`
+/// Returns a human-readable representation of the `DBXSHARINGMountFolderError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -111,16 +110,16 @@ typedef NS_ENUM(NSInteger, SharingMountFolderErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingMountFolderError` union.
+/// The serialization class for the `DBXSHARINGMountFolderError` union.
 /// 
-@interface DbxSharingMountFolderErrorSerializer : NSObject 
+@interface DBXSHARINGMountFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingMountFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingMountFolderError * _Nonnull)obj;
+/// `DBXSHARINGMountFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMountFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingMountFolderError` object from a
+/// Returns an instantiation of the `DBXSHARINGMountFolderError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingMountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGMountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

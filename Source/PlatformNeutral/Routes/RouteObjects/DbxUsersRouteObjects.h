@@ -4,25 +4,25 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxRoute;
+@class DBXRoute;
 
 /// 
 /// Stone route objects for the `Users` namespace. Each route in the `Users`
 /// namespace has its own static object, which contains information about the
 /// route.
 /// 
-@interface DbxUsersRouteObjects : NSObject 
+@interface DBXUSERSRouteObjects : NSObject 
 
 /// Accessor method for the `getAccount` route object.
-+ (DbxRoute *)dbxUsersGetAccount;
++ (DBXRoute *)DBXUSERSGetAccount;
 
 /// Accessor method for the `getAccountBatch` route object.
-+ (DbxRoute *)dbxUsersGetAccountBatch;
++ (DBXRoute *)DBXUSERSGetAccountBatch;
 
 /// Accessor method for the `getCurrentAccount` route object.
-+ (DbxRoute *)dbxUsersGetCurrentAccount;
++ (DBXRoute *)DBXUSERSGetCurrentAccount;
 
 /// Accessor method for the `getSpaceUsage` route object.
-+ (DbxRoute *)dbxUsersGetSpaceUsage;
++ (DBXRoute *)DBXUSERSGetSpaceUsage;
 
 @end

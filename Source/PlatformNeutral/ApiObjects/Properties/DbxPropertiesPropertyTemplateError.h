@@ -3,39 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesPropertyTemplateError;
+@class DBXPROPERTIESPropertyTemplateError;
 
 /// 
-/// The `DbxPropertiesPropertyTemplateError` union.
+/// The `DBXPROPERTIESPropertyTemplateError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxPropertiesPropertyTemplateError : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESPropertyTemplateError : NSObject <DBXSerializable> 
 
-/// The `PropertiesPropertyTemplateErrorTag` enum type represents the possible
-/// tag states that the `DbxPropertiesPropertyTemplateError` union can exist in.
-typedef NS_ENUM(NSInteger, PropertiesPropertyTemplateErrorTag) {
+/// The `DBXPROPERTIESPropertyTemplateErrorTag` enum type represents the
+/// possible tag states that the `DBXPROPERTIESPropertyTemplateError` union can
+/// exist in.
+typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTemplateErrorTag) {
     /// Property template does not exist for given identifier.
-    PropertiesPropertyTemplateErrorTemplateNotFound,
+    DBXPROPERTIESPropertyTemplateErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    PropertiesPropertyTemplateErrorRestrictedContent,
+    DBXPROPERTIESPropertyTemplateErrorRestrictedContent,
 
     /// (no description).
-    PropertiesPropertyTemplateErrorOther,
+    DBXPROPERTIESPropertyTemplateErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) PropertiesPropertyTemplateErrorTag tag;
+@property (nonatomic) DBXPROPERTIESPropertyTemplateErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
-
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -59,23 +59,23 @@ typedef NS_ENUM(NSInteger, PropertiesPropertyTemplateErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxPropertiesPropertyTemplateError` object.
+/// `DBXPROPERTIESPropertyTemplateError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxPropertiesPropertyTemplateError` union.
+/// The serialization class for the `DBXPROPERTIESPropertyTemplateError` union.
 /// 
-@interface DbxPropertiesPropertyTemplateErrorSerializer : NSObject 
+@interface DBXPROPERTIESPropertyTemplateErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesPropertyTemplateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyTemplateError * _Nonnull)obj;
+/// `DBXPROPERTIESPropertyTemplateError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyTemplateError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesPropertyTemplateError` object
+/// Returns an instantiation of the `DBXPROPERTIESPropertyTemplateError` object
 /// from a json-compatible dictionary representation.
-+ (DbxPropertiesPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

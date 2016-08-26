@@ -3,38 +3,37 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingInviteeInfo;
+@class DBXSHARINGInviteeInfo;
 
 /// 
-/// The `DbxSharingInviteeInfo` union.
+/// The `DBXSHARINGInviteeInfo` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about the recipient of a shared content invitation.
 /// 
-@interface DbxSharingInviteeInfo : NSObject <DbxSerializable> 
+@interface DBXSHARINGInviteeInfo : NSObject <DBXSerializable> 
 
-/// The `SharingInviteeInfoTag` enum type represents the possible tag states
-/// that the `DbxSharingInviteeInfo` union can exist in.
-typedef NS_ENUM(NSInteger, SharingInviteeInfoTag) {
+/// The `DBXSHARINGInviteeInfoTag` enum type represents the possible tag states
+/// that the `DBXSHARINGInviteeInfo` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
     /// E-mail address of invited user.
-    SharingInviteeInfoEmail,
+    DBXSHARINGInviteeInfoEmail,
 
     /// (no description).
-    SharingInviteeInfoOther,
+    DBXSHARINGInviteeInfoOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingInviteeInfoTag tag;
+@property (nonatomic) DBXSHARINGInviteeInfoTag tag;
 
 /// E-mail address of invited user.
 @property (nonatomic, copy) NSString * _Nonnull email;
-
 
 /// Initializes union class with tag state of `Email`.
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
@@ -51,7 +50,7 @@ typedef NS_ENUM(NSInteger, SharingInviteeInfoTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingInviteeInfo`
+/// Returns a human-readable representation of the `DBXSHARINGInviteeInfo`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -59,16 +58,16 @@ typedef NS_ENUM(NSInteger, SharingInviteeInfoTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingInviteeInfo` union.
+/// The serialization class for the `DBXSHARINGInviteeInfo` union.
 /// 
-@interface DbxSharingInviteeInfoSerializer : NSObject 
+@interface DBXSHARINGInviteeInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingInviteeInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingInviteeInfo * _Nonnull)obj;
+/// `DBXSHARINGInviteeInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInviteeInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingInviteeInfo` object from a
+/// Returns an instantiation of the `DBXSHARINGInviteeInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingInviteeInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGInviteeInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

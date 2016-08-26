@@ -3,25 +3,25 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersDeactivateArg;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMMembersDeactivateArg;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMembersDeactivateArg` struct.
+/// The `DBXTEAMMembersDeactivateArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
 /// 
-@interface DbxTeamMembersDeactivateArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersDeactivateArg : NSObject <DBXSerializable> 
 
 /// Identity of user to remove/suspend.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// If provided, controls if the user's data will be deleted on their linked
 /// devices.
@@ -29,13 +29,13 @@
 
 /// Full constructor for the `MembersDeactivateArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
 
 /// Convenience constructor for the `MembersDeactivateArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
-/// Returns a human-readable representation of the `DbxTeamMembersDeactivateArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersDeactivateArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -43,16 +43,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersDeactivateArg` struct.
+/// The serialization class for the `DBXTEAMMembersDeactivateArg` struct.
 /// 
-@interface DbxTeamMembersDeactivateArgSerializer : NSObject 
+@interface DBXTEAMMembersDeactivateArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersDeactivateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersDeactivateArg * _Nonnull)obj;
+/// `DBXTEAMMembersDeactivateArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersDeactivateArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersDeactivateArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersDeactivateArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersDeactivateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersDeactivateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

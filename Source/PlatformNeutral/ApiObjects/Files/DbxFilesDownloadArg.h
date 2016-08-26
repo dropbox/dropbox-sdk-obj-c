@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesDownloadArg;
+@class DBXFILESDownloadArg;
 
 /// 
-/// The `DbxFilesDownloadArg` struct.
+/// The `DBXFILESDownloadArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesDownloadArg : NSObject <DbxSerializable> 
+@interface DBXFILESDownloadArg : NSObject <DBXSerializable> 
 
 /// The path of the file to download.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -30,23 +30,23 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesDownloadArg` object.
+/// Returns a human-readable representation of the `DBXFILESDownloadArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesDownloadArg` struct.
+/// The serialization class for the `DBXFILESDownloadArg` struct.
 /// 
-@interface DbxFilesDownloadArgSerializer : NSObject 
+@interface DBXFILESDownloadArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesDownloadArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesDownloadArg * _Nonnull)obj;
+/// `DBXFILESDownloadArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDownloadArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesDownloadArg` object from a
+/// Returns an instantiation of the `DBXFILESDownloadArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesDownloadArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESDownloadArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingPendingUploadMode;
+@class DBXSHARINGPendingUploadMode;
 
 /// 
-/// The `DbxSharingPendingUploadMode` union.
+/// The `DBXSHARINGPendingUploadMode` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Flag to indicate pending upload default (for linking to not-yet-existing
 /// paths).
 /// 
-@interface DbxSharingPendingUploadMode : NSObject <DbxSerializable> 
+@interface DBXSHARINGPendingUploadMode : NSObject <DBXSerializable> 
 
-/// The `SharingPendingUploadModeTag` enum type represents the possible tag
-/// states that the `DbxSharingPendingUploadMode` union can exist in.
-typedef NS_ENUM(NSInteger, SharingPendingUploadModeTag) {
+/// The `DBXSHARINGPendingUploadModeTag` enum type represents the possible tag
+/// states that the `DBXSHARINGPendingUploadMode` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
     /// Assume pending uploads are files.
-    SharingPendingUploadModeFile,
+    DBXSHARINGPendingUploadModeFile,
 
     /// Assume pending uploads are folders.
-    SharingPendingUploadModeFolder,
+    DBXSHARINGPendingUploadModeFolder,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingPendingUploadModeTag tag;
-
+@property (nonatomic) DBXSHARINGPendingUploadModeTag tag;
 
 /// Initializes union class with tag state of `File`.
 - (nonnull instancetype)initWithFile;
@@ -49,7 +48,7 @@ typedef NS_ENUM(NSInteger, SharingPendingUploadModeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingPendingUploadMode`
+/// Returns a human-readable representation of the `DBXSHARINGPendingUploadMode`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -57,16 +56,16 @@ typedef NS_ENUM(NSInteger, SharingPendingUploadModeTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingPendingUploadMode` union.
+/// The serialization class for the `DBXSHARINGPendingUploadMode` union.
 /// 
-@interface DbxSharingPendingUploadModeSerializer : NSObject 
+@interface DBXSHARINGPendingUploadModeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingPendingUploadMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingPendingUploadMode * _Nonnull)obj;
+/// `DBXSHARINGPendingUploadMode` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPendingUploadMode * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingPendingUploadMode` object from a
+/// Returns an instantiation of the `DBXSHARINGPendingUploadMode` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingPendingUploadMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGPendingUploadMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

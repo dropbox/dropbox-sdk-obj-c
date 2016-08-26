@@ -3,11 +3,11 @@
 ///
 
 #import <Foundation/Foundation.h>
-@class DbxAccessToken;
-@class DbxAuthAuthError;
-@class DbxAuthRateLimitError;
+@class DBXAccessToken;
+@class DBXAUTHAuthError;
+@class DBXAUTHRateLimitError;
 
-@interface DbxRequestHttpError : NSObject
+@interface DBXRequestHttpError : NSObject
 
 @property (nonatomic, copy) NSString * _Nonnull requestId;
 
@@ -22,7 +22,7 @@
 @end
 
 
-@interface DbxRequestRouteError<TRouteError> : DbxRequestHttpError
+@interface DBXRequestRouteError<TRouteError> : DBXRequestHttpError
 
 @property (nonatomic) TRouteError _Nonnull routeErrorObj;
 
@@ -33,7 +33,7 @@
 @end
 
 
-@interface DbxRequestBadInputError : DbxRequestHttpError
+@interface DBXRequestBadInputError : DBXRequestHttpError
 
 @property (nonatomic, copy) NSString * _Nonnull errorMessage;
 
@@ -44,38 +44,38 @@
 @end
 
 
-@interface DbxRequestAuthError : DbxRequestHttpError
+@interface DBXRequestAuthError : DBXRequestHttpError
 
-@property (nonatomic) DbxAuthAuthError * _Nonnull structuredAuthError;
+@property (nonatomic) DBXAUTHAuthError * _Nonnull structuredAuthError;
 
-- (nonnull instancetype)init:(NSString * _Nonnull)requestId statusCode:(NSNumber * _Nonnull)statusCode errorBody:(NSString * _Nonnull)errorBody structuredAuthError:(DbxAuthAuthError * _Nonnull)structuredAuthError;
+- (nonnull instancetype)init:(NSString * _Nonnull)requestId statusCode:(NSNumber * _Nonnull)statusCode errorBody:(NSString * _Nonnull)errorBody structuredAuthError:(DBXAUTHAuthError * _Nonnull)structuredAuthError;
 
 - (NSString * _Nonnull)description;
 
 @end
 
 
-@interface DbxRequestRateLimitError : DbxRequestHttpError
+@interface DBXRequestRateLimitError : DBXRequestHttpError
 
-@property (nonatomic) DbxAuthRateLimitError * _Nonnull structuredRateLimitError;
+@property (nonatomic) DBXAUTHRateLimitError * _Nonnull structuredRateLimitError;
 
 @property (nonatomic, copy) NSNumber * _Nonnull backoff;
 
-- (nonnull instancetype)init:(NSString * _Nonnull)requestId statusCode:(NSNumber * _Nonnull)statusCode errorBody:(NSString * _Nonnull)errorBody structuredRateLimitError:(DbxAuthRateLimitError * _Nonnull)structuredRateLimitError backoff:(NSNumber * _Nonnull)backoff;
+- (nonnull instancetype)init:(NSString * _Nonnull)requestId statusCode:(NSNumber * _Nonnull)statusCode errorBody:(NSString * _Nonnull)errorBody structuredRateLimitError:(DBXAUTHRateLimitError * _Nonnull)structuredRateLimitError backoff:(NSNumber * _Nonnull)backoff;
 
 - (NSString * _Nonnull)description;
 
 @end
 
 
-@interface DbxRequestInternalServerError : DbxRequestHttpError
+@interface DBXRequestInternalServerError : DBXRequestHttpError
 
 - (NSString * _Nonnull)description;
 
 @end
 
 
-@interface DbxRequestOsError : NSObject
+@interface DBXRequestOsError : NSObject
 
 @property (nonatomic, copy) NSString * _Nonnull errorDescription;
 
@@ -86,30 +86,30 @@
 @end
 
 
-@interface DbxError : NSObject
+@interface DBXError : NSObject
 
-typedef NS_ENUM(NSInteger, DbxRequestErrorType) {
+typedef NS_ENUM(NSInteger, DBXRequestErrorType) {
     /// Errors produced at the HTTP layer.
-    DbxRequestHttpErrorType,
+    DBXRequestHttpErrorType,
     
     /// Errors due to bad input parameters to an API Operation.
-    DbxRequestBadInputErrorType,
+    DBXRequestBadInputErrorType,
     
     /// Errors due to invalid authentication credentials.
-    DbxRequestAuthErrorType,
+    DBXRequestAuthErrorType,
     
     /// Error caused by rate limiting.
-    DbxRequestRateLimitErrorType,
+    DBXRequestRateLimitErrorType,
     
     /// Errors due to a problem on Dropbox.
-    DbxRequestInternalServerErrorType,
+    DBXRequestInternalServerErrorType,
     
     /// Errors due to a problem on the local operating system.
-    DbxRequestOsErrorType,
+    DBXRequestOsErrorType,
 };
 
-/// Current state of the DbxStructuredError object type.
-@property (nonatomic) DbxRequestErrorType tag;
+/// Current state of the DBXStructuredError object type.
+@property (nonatomic) DBXRequestErrorType tag;
 
 @property (nonatomic, copy) NSString * _Nonnull requestId;
 
@@ -119,15 +119,15 @@ typedef NS_ENUM(NSInteger, DbxRequestErrorType) {
 
 @property (nonatomic, copy) NSString * _Nonnull errorMessage;
 
-@property (nonatomic) DbxAuthAuthError * _Nonnull structuredAuthError;
+@property (nonatomic) DBXAUTHAuthError * _Nonnull structuredAuthError;
 
-@property (nonatomic) DbxAuthRateLimitError * _Nonnull structuredRateLimitError;
+@property (nonatomic) DBXAUTHRateLimitError * _Nonnull structuredRateLimitError;
 
 @property (nonatomic, copy) NSNumber * _Nonnull backoff;
 
 @property (nonatomic, copy) NSString * _Nonnull errorDescription;
 
-- (nonnull instancetype)init:(DbxRequestErrorType)tag requestId:(NSString * _Nullable)requestId statusCode:(NSNumber * _Nullable)statusCode errorBody:(NSString * _Nullable)errorBody errorMessage:(NSString * _Nullable)errorMessage structuredAuthError:(DbxAuthAuthError * _Nullable)structuredAuthError structuredRateLimitError:(DbxAuthRateLimitError * _Nullable)structuredRateLimitError backoff:(NSNumber * _Nullable)backoff errorDescription:(NSString * _Nullable)errorDescription;
+- (nonnull instancetype)init:(DBXRequestErrorType)tag requestId:(NSString * _Nullable)requestId statusCode:(NSNumber * _Nullable)statusCode errorBody:(NSString * _Nullable)errorBody errorMessage:(NSString * _Nullable)errorMessage structuredAuthError:(DBXAUTHAuthError * _Nullable)structuredAuthError structuredRateLimitError:(DBXAUTHRateLimitError * _Nullable)structuredRateLimitError backoff:(NSNumber * _Nullable)backoff errorDescription:(NSString * _Nullable)errorDescription;
 
 - (BOOL)isHTTPError;
 
@@ -141,17 +141,17 @@ typedef NS_ENUM(NSInteger, DbxRequestErrorType) {
 
 - (BOOL)isOSError;
 
-- (DbxRequestHttpError * _Nonnull)asHttpError;
+- (DBXRequestHttpError * _Nonnull)asHttpError;
 
-- (DbxRequestBadInputError * _Nonnull)asBadInputError;
+- (DBXRequestBadInputError * _Nonnull)asBadInputError;
 
-- (DbxRequestAuthError * _Nonnull)asAuthError;
+- (DBXRequestAuthError * _Nonnull)asAuthError;
 
-- (DbxRequestRateLimitError * _Nonnull)asRateLimitError;
+- (DBXRequestRateLimitError * _Nonnull)asRateLimitError;
 
-- (DbxRequestInternalServerError * _Nonnull)asInternalServerError;
+- (DBXRequestInternalServerError * _Nonnull)asInternalServerError;
 
-- (DbxRequestOsError * _Nonnull)asOsError;
+- (DBXRequestOsError * _Nonnull)asOsError;
 
 - (NSString * _Nonnull)getTagName;
 

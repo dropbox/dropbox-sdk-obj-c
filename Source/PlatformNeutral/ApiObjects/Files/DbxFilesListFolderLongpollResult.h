@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderLongpollResult;
+@class DBXFILESListFolderLongpollResult;
 
 /// 
-/// The `DbxFilesListFolderLongpollResult` struct.
+/// The `DBXFILESListFolderLongpollResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderLongpollResult : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderLongpollResult : NSObject <DBXSerializable> 
 
 /// Indicates whether new changes are available. If true, call
 /// listFolderContinue to retrieve the changes.
@@ -33,23 +33,23 @@
 - (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesListFolderLongpollResult` object.
+/// `DBXFILESListFolderLongpollResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderLongpollResult` struct.
+/// The serialization class for the `DBXFILESListFolderLongpollResult` struct.
 /// 
-@interface DbxFilesListFolderLongpollResultSerializer : NSObject 
+@interface DBXFILESListFolderLongpollResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderLongpollResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderLongpollResult * _Nonnull)obj;
+/// `DBXFILESListFolderLongpollResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderLongpollResult` object
+/// Returns an instantiation of the `DBXFILESListFolderLongpollResult` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesListFolderLongpollResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderLongpollResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

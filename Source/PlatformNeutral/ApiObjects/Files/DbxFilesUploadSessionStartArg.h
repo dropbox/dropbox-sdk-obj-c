@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionStartArg;
+@class DBXFILESUploadSessionStartArg;
 
 /// 
-/// The `DbxFilesUploadSessionStartArg` struct.
+/// The `DBXFILESUploadSessionStartArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionStartArg : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionStartArg : NSObject <DBXSerializable> 
 
 /// If true, the current session will be closed, at which point you won't be
 /// able to call uploadSessionAppendV2 anymore with the current session.
@@ -29,23 +29,23 @@
 - (nonnull instancetype)init;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionStartArg` object.
+/// `DBXFILESUploadSessionStartArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionStartArg` struct.
+/// The serialization class for the `DBXFILESUploadSessionStartArg` struct.
 /// 
-@interface DbxFilesUploadSessionStartArgSerializer : NSObject 
+@interface DBXFILESUploadSessionStartArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionStartArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionStartArg * _Nonnull)obj;
+/// `DBXFILESUploadSessionStartArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionStartArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionStartArg` object from
+/// Returns an instantiation of the `DBXFILESUploadSessionStartArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionStartArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionStartArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

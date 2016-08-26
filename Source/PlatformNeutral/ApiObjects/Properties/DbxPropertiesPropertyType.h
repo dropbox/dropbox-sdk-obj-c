@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesPropertyType;
+@class DBXPROPERTIESPropertyType;
 
 /// 
-/// The `DbxPropertiesPropertyType` union.
+/// The `DBXPROPERTIESPropertyType` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Data type of the given property added. This endpoint is in beta and  only
 /// properties of type strings is supported.
 /// 
-@interface DbxPropertiesPropertyType : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESPropertyType : NSObject <DBXSerializable> 
 
-/// The `PropertiesPropertyTypeTag` enum type represents the possible tag states
-/// that the `DbxPropertiesPropertyType` union can exist in.
-typedef NS_ENUM(NSInteger, PropertiesPropertyTypeTag) {
+/// The `DBXPROPERTIESPropertyTypeTag` enum type represents the possible tag
+/// states that the `DBXPROPERTIESPropertyType` union can exist in.
+typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
     /// The associated property will be of type string. Unicode is supported.
-    PropertiesPropertyTypeString,
+    DBXPROPERTIESPropertyTypeString,
 
     /// (no description).
-    PropertiesPropertyTypeOther,
+    DBXPROPERTIESPropertyTypeOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) PropertiesPropertyTypeTag tag;
-
+@property (nonatomic) DBXPROPERTIESPropertyTypeTag tag;
 
 /// Initializes union class with tag state of `String`.
 - (nonnull instancetype)initWithString;
@@ -49,7 +48,7 @@ typedef NS_ENUM(NSInteger, PropertiesPropertyTypeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxPropertiesPropertyType`
+/// Returns a human-readable representation of the `DBXPROPERTIESPropertyType`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -57,16 +56,16 @@ typedef NS_ENUM(NSInteger, PropertiesPropertyTypeTag) {
 
 
 /// 
-/// The serialization class for the `DbxPropertiesPropertyType` union.
+/// The serialization class for the `DBXPROPERTIESPropertyType` union.
 /// 
-@interface DbxPropertiesPropertyTypeSerializer : NSObject 
+@interface DBXPROPERTIESPropertyTypeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesPropertyType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyType * _Nonnull)obj;
+/// `DBXPROPERTIESPropertyType` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyType * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesPropertyType` object from a
+/// Returns an instantiation of the `DBXPROPERTIESPropertyType` object from a
 /// json-compatible dictionary representation.
-+ (DbxPropertiesPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

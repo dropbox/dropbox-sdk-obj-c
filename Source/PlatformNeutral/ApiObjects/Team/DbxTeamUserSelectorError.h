@@ -3,34 +3,33 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamUserSelectorError;
+@class DBXTEAMUserSelectorError;
 
 /// 
-/// The `DbxTeamUserSelectorError` union.
+/// The `DBXTEAMUserSelectorError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error that can be returned whenever a struct derived from UserSelectorArg is
 /// used.
 /// 
-@interface DbxTeamUserSelectorError : NSObject <DbxSerializable> 
+@interface DBXTEAMUserSelectorError : NSObject <DBXSerializable> 
 
-/// The `TeamUserSelectorErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamUserSelectorError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamUserSelectorErrorTag) {
+/// The `DBXTEAMUserSelectorErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMUserSelectorError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
-    TeamUserSelectorErrorUserNotFound,
+    DBXTEAMUserSelectorErrorUserNotFound,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamUserSelectorErrorTag tag;
-
+@property (nonatomic) DBXTEAMUserSelectorErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -41,7 +40,7 @@ typedef NS_ENUM(NSInteger, TeamUserSelectorErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamUserSelectorError`
+/// Returns a human-readable representation of the `DBXTEAMUserSelectorError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -49,16 +48,16 @@ typedef NS_ENUM(NSInteger, TeamUserSelectorErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamUserSelectorError` union.
+/// The serialization class for the `DBXTEAMUserSelectorError` union.
 /// 
-@interface DbxTeamUserSelectorErrorSerializer : NSObject 
+@interface DBXTEAMUserSelectorErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamUserSelectorError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamUserSelectorError * _Nonnull)obj;
+/// `DBXTEAMUserSelectorError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUserSelectorError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamUserSelectorError` object from a
+/// Returns an instantiation of the `DBXTEAMUserSelectorError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamUserSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMUserSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

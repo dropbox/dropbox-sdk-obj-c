@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedLinkError;
+@class DBXSHARINGSharedLinkError;
 
 /// 
-/// The `DbxSharingSharedLinkError` union.
+/// The `DBXSHARINGSharedLinkError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharedLinkError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkError : NSObject <DBXSerializable> 
 
-/// The `SharingSharedLinkErrorTag` enum type represents the possible tag states
-/// that the `DbxSharingSharedLinkError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedLinkErrorTag) {
+/// The `DBXSHARINGSharedLinkErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGSharedLinkError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkErrorTag) {
     /// The shared link wasn't found
-    SharingSharedLinkErrorSharedLinkNotFound,
+    DBXSHARINGSharedLinkErrorSharedLinkNotFound,
 
     /// The caller is not allowed to access this shared link
-    SharingSharedLinkErrorSharedLinkAccessDenied,
+    DBXSHARINGSharedLinkErrorSharedLinkAccessDenied,
 
     /// (no description).
-    SharingSharedLinkErrorOther,
+    DBXSHARINGSharedLinkErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedLinkErrorTag tag;
-
+@property (nonatomic) DBXSHARINGSharedLinkErrorTag tag;
 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
 - (nonnull instancetype)initWithSharedLinkNotFound;
@@ -57,7 +56,7 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingSharedLinkError`
+/// Returns a human-readable representation of the `DBXSHARINGSharedLinkError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -65,16 +64,16 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkError` union.
+/// The serialization class for the `DBXSHARINGSharedLinkError` union.
 /// 
-@interface DbxSharingSharedLinkErrorSerializer : NSObject 
+@interface DBXSHARINGSharedLinkErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkError * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkError` object from a
+/// Returns an instantiation of the `DBXSHARINGSharedLinkError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

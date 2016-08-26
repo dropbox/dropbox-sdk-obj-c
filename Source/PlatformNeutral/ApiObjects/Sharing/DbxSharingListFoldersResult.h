@@ -3,15 +3,15 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFoldersResult;
-@class DbxSharingSharedFolderMetadata;
+@class DBXSHARINGListFoldersResult;
+@class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DbxSharingListFoldersResult` struct.
+/// The `DBXSHARINGListFoldersResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -19,10 +19,10 @@
 /// was requested. Unmounted shared folders can be identified by the absence of
 /// pathLower in SharedFolderMetadata.
 /// 
-@interface DbxSharingListFoldersResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFoldersResult : NSObject <DBXSerializable> 
 
 /// List of all shared folders the authenticated user has access to.
-@property (nonatomic) NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull entries;
+@property (nonatomic) NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull entries;
 
 /// Present if there are additional shared folders that have not been returned
 /// yet. Pass the cursor into the corresponding continue endpoint (either
@@ -32,13 +32,13 @@
 
 /// Full constructor for the `ListFoldersResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull)entries cursor:(NSString * _Nullable)cursor;
+- (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull)entries cursor:(NSString * _Nullable)cursor;
 
 /// Convenience constructor for the `ListFoldersResult` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull)entries;
+- (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull)entries;
 
-/// Returns a human-readable representation of the `DbxSharingListFoldersResult`
+/// Returns a human-readable representation of the `DBXSHARINGListFoldersResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -46,16 +46,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingListFoldersResult` struct.
+/// The serialization class for the `DBXSHARINGListFoldersResult` struct.
 /// 
-@interface DbxSharingListFoldersResultSerializer : NSObject 
+@interface DBXSHARINGListFoldersResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFoldersResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFoldersResult * _Nonnull)obj;
+/// `DBXSHARINGListFoldersResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFoldersResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFoldersResult` object from a
+/// Returns an instantiation of the `DBXSHARINGListFoldersResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListFoldersResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFoldersResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

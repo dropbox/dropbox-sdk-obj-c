@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesDeleteArg;
+@class DBXFILESDeleteArg;
 
 /// 
-/// The `DbxFilesDeleteArg` struct.
+/// The `DBXFILESDeleteArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesDeleteArg : NSObject <DbxSerializable> 
+@interface DBXFILESDeleteArg : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to delete.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -23,23 +23,23 @@
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesDeleteArg` object.
+/// Returns a human-readable representation of the `DBXFILESDeleteArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesDeleteArg` struct.
+/// The serialization class for the `DBXFILESDeleteArg` struct.
 /// 
-@interface DbxFilesDeleteArgSerializer : NSObject 
+@interface DBXFILESDeleteArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesDeleteArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesDeleteArg * _Nonnull)obj;
+/// `DBXFILESDeleteArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesDeleteArg` object from a
+/// Returns an instantiation of the `DBXFILESDeleteArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesDeleteArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESDeleteArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

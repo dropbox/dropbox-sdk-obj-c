@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingTransferFolderArg;
+@class DBXSHARINGTransferFolderArg;
 
 /// 
-/// The `DbxSharingTransferFolderArg` struct.
+/// The `DBXSHARINGTransferFolderArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingTransferFolderArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGTransferFolderArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
@@ -26,7 +26,7 @@
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId;
 
-/// Returns a human-readable representation of the `DbxSharingTransferFolderArg`
+/// Returns a human-readable representation of the `DBXSHARINGTransferFolderArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -34,16 +34,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingTransferFolderArg` struct.
+/// The serialization class for the `DBXSHARINGTransferFolderArg` struct.
 /// 
-@interface DbxSharingTransferFolderArgSerializer : NSObject 
+@interface DBXSHARINGTransferFolderArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingTransferFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingTransferFolderArg * _Nonnull)obj;
+/// `DBXSHARINGTransferFolderArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGTransferFolderArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingTransferFolderArg` object from a
+/// Returns an instantiation of the `DBXSHARINGTransferFolderArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingTransferFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGTransferFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

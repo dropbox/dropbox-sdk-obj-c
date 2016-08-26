@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingShareFolderLaunch;
-@class DbxSharingSharedFolderMetadata;
+@class DBXSHARINGShareFolderLaunch;
+@class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DbxSharingShareFolderLaunch` union.
+/// The `DBXSHARINGShareFolderLaunch` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingShareFolderLaunch : NSObject <DbxSerializable> 
+@interface DBXSHARINGShareFolderLaunch : NSObject <DBXSerializable> 
 
-/// The `SharingShareFolderLaunchTag` enum type represents the possible tag
-/// states that the `DbxSharingShareFolderLaunch` union can exist in.
-typedef NS_ENUM(NSInteger, SharingShareFolderLaunchTag) {
+/// The `DBXSHARINGShareFolderLaunchTag` enum type represents the possible tag
+/// states that the `DBXSHARINGShareFolderLaunch` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderLaunchTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
-    SharingShareFolderLaunchAsyncJobId,
+    DBXSHARINGShareFolderLaunchAsyncJobId,
 
     /// (no description).
-    SharingShareFolderLaunchComplete,
+    DBXSHARINGShareFolderLaunchComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingShareFolderLaunchTag tag;
+@property (nonatomic) DBXSHARINGShareFolderLaunchTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is
 /// an id that can be used to obtain the status of the asynchronous job.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
-
+@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
 
 /// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(DbxSharingSharedFolderMetadata * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(DBXSHARINGSharedFolderMetadata * _Nonnull)complete;
 
 /// Returns whether the union's current tag state has value `AsyncJobId`.
 - (BOOL)isAsyncJobId;
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, SharingShareFolderLaunchTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingShareFolderLaunch`
+/// Returns a human-readable representation of the `DBXSHARINGShareFolderLaunch`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -63,16 +62,16 @@ typedef NS_ENUM(NSInteger, SharingShareFolderLaunchTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingShareFolderLaunch` union.
+/// The serialization class for the `DBXSHARINGShareFolderLaunch` union.
 /// 
-@interface DbxSharingShareFolderLaunchSerializer : NSObject 
+@interface DBXSHARINGShareFolderLaunchSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingShareFolderLaunch` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderLaunch * _Nonnull)obj;
+/// `DBXSHARINGShareFolderLaunch` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderLaunch * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingShareFolderLaunch` object from a
+/// Returns an instantiation of the `DBXSHARINGShareFolderLaunch` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingShareFolderLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGShareFolderLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

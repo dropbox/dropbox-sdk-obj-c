@@ -3,63 +3,62 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRemoveFolderMemberError;
-@class DbxSharingSharedFolderAccessError;
-@class DbxSharingSharedFolderMemberError;
+@class DBXSHARINGRemoveFolderMemberError;
+@class DBXSHARINGSharedFolderAccessError;
+@class DBXSHARINGSharedFolderMemberError;
 
 /// 
-/// The `DbxSharingRemoveFolderMemberError` union.
+/// The `DBXSHARINGRemoveFolderMemberError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRemoveFolderMemberError : NSObject <DbxSerializable> 
+@interface DBXSHARINGRemoveFolderMemberError : NSObject <DBXSerializable> 
 
-/// The `SharingRemoveFolderMemberErrorTag` enum type represents the possible
-/// tag states that the `DbxSharingRemoveFolderMemberError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingRemoveFolderMemberErrorTag) {
+/// The `DBXSHARINGRemoveFolderMemberErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGRemoveFolderMemberError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFolderMemberErrorTag) {
     /// (no description).
-    SharingRemoveFolderMemberErrorAccessError,
+    DBXSHARINGRemoveFolderMemberErrorAccessError,
 
     /// (no description).
-    SharingRemoveFolderMemberErrorMemberError,
+    DBXSHARINGRemoveFolderMemberErrorMemberError,
 
     /// The target user is the owner of the shared folder. You can't remove this
     /// user until ownership has been transferred to another member.
-    SharingRemoveFolderMemberErrorFolderOwner,
+    DBXSHARINGRemoveFolderMemberErrorFolderOwner,
 
     /// The target user has access to the shared folder via a group.
-    SharingRemoveFolderMemberErrorGroupAccess,
+    DBXSHARINGRemoveFolderMemberErrorGroupAccess,
 
     /// This action cannot be performed on a team shared folder.
-    SharingRemoveFolderMemberErrorTeamFolder,
+    DBXSHARINGRemoveFolderMemberErrorTeamFolder,
 
     /// The current user does not have permission to perform this action.
-    SharingRemoveFolderMemberErrorNoPermission,
+    DBXSHARINGRemoveFolderMemberErrorNoPermission,
 
     /// (no description).
-    SharingRemoveFolderMemberErrorOther,
+    DBXSHARINGRemoveFolderMemberErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingRemoveFolderMemberErrorTag tag;
+@property (nonatomic) DBXSHARINGRemoveFolderMemberErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderMemberError * _Nonnull memberError;
-
+@property (nonatomic) DBXSHARINGSharedFolderMemberError * _Nonnull memberError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `MemberError`.
-- (nonnull instancetype)initWithMemberError:(DbxSharingSharedFolderMemberError * _Nonnull)memberError;
+- (nonnull instancetype)initWithMemberError:(DBXSHARINGSharedFolderMemberError * _Nonnull)memberError;
 
 /// Initializes union class with tag state of `FolderOwner`.
 - (nonnull instancetype)initWithFolderOwner;
@@ -101,23 +100,23 @@ typedef NS_ENUM(NSInteger, SharingRemoveFolderMemberErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRemoveFolderMemberError` object.
+/// `DBXSHARINGRemoveFolderMemberError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRemoveFolderMemberError` union.
+/// The serialization class for the `DBXSHARINGRemoveFolderMemberError` union.
 /// 
-@interface DbxSharingRemoveFolderMemberErrorSerializer : NSObject 
+@interface DBXSHARINGRemoveFolderMemberErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRemoveFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRemoveFolderMemberError * _Nonnull)obj;
+/// `DBXSHARINGRemoveFolderMemberError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFolderMemberError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRemoveFolderMemberError` object
+/// Returns an instantiation of the `DBXSHARINGRemoveFolderMemberError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingRemoveFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRemoveFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

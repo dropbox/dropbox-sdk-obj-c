@@ -3,51 +3,50 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFileMembersCountResult;
-@class DbxSharingListFileMembersIndividualResult;
-@class DbxSharingSharingFileAccessError;
+@class DBXSHARINGListFileMembersCountResult;
+@class DBXSHARINGListFileMembersIndividualResult;
+@class DBXSHARINGSharingFileAccessError;
 
 /// 
-/// The `DbxSharingListFileMembersIndividualResult` union.
+/// The `DBXSHARINGListFileMembersIndividualResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFileMembersIndividualResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFileMembersIndividualResult : NSObject <DBXSerializable> 
 
-/// The `SharingListFileMembersIndividualResultTag` enum type represents the
-/// possible tag states that the `DbxSharingListFileMembersIndividualResult`
+/// The `DBXSHARINGListFileMembersIndividualResultTag` enum type represents the
+/// possible tag states that the `DBXSHARINGListFileMembersIndividualResult`
 /// union can exist in.
-typedef NS_ENUM(NSInteger, SharingListFileMembersIndividualResultTag) {
+typedef NS_ENUM(NSInteger, DBXSHARINGListFileMembersIndividualResultTag) {
     /// The results of the query for this file if it was successful
-    SharingListFileMembersIndividualResultResult,
+    DBXSHARINGListFileMembersIndividualResultResult,
 
     /// The result of the query for this file if it was an error.
-    SharingListFileMembersIndividualResultAccessError,
+    DBXSHARINGListFileMembersIndividualResultAccessError,
 
     /// (no description).
-    SharingListFileMembersIndividualResultOther,
+    DBXSHARINGListFileMembersIndividualResultOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingListFileMembersIndividualResultTag tag;
+@property (nonatomic) DBXSHARINGListFileMembersIndividualResultTag tag;
 
 /// The results of the query for this file if it was successful
-@property (nonatomic) DbxSharingListFileMembersCountResult * _Nonnull result;
+@property (nonatomic) DBXSHARINGListFileMembersCountResult * _Nonnull result;
 
 /// The result of the query for this file if it was an error.
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `Result`.
-- (nonnull instancetype)initWithResult:(DbxSharingListFileMembersCountResult * _Nonnull)result;
+- (nonnull instancetype)initWithResult:(DBXSHARINGListFileMembersCountResult * _Nonnull)result;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -65,24 +64,24 @@ typedef NS_ENUM(NSInteger, SharingListFileMembersIndividualResultTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFileMembersIndividualResult` object.
+/// `DBXSHARINGListFileMembersIndividualResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFileMembersIndividualResult`
+/// The serialization class for the `DBXSHARINGListFileMembersIndividualResult`
 /// union.
 /// 
-@interface DbxSharingListFileMembersIndividualResultSerializer : NSObject 
+@interface DBXSHARINGListFileMembersIndividualResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFileMembersIndividualResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersIndividualResult * _Nonnull)obj;
+/// `DBXSHARINGListFileMembersIndividualResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersIndividualResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFileMembersIndividualResult`
+/// Returns an instantiation of the `DBXSHARINGListFileMembersIndividualResult`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingListFileMembersIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFileMembersIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGetSharedLinkFileError;
+@class DBXSHARINGGetSharedLinkFileError;
 
 /// 
-/// The `DbxSharingGetSharedLinkFileError` union.
+/// The `DBXSHARINGGetSharedLinkFileError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingGetSharedLinkFileError : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetSharedLinkFileError : NSObject <DBXSerializable> 
 
-/// The `SharingGetSharedLinkFileErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingGetSharedLinkFileError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingGetSharedLinkFileErrorTag) {
+/// The `DBXSHARINGGetSharedLinkFileErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGGetSharedLinkFileError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGGetSharedLinkFileErrorTag) {
     /// The shared link wasn't found
-    SharingGetSharedLinkFileErrorSharedLinkNotFound,
+    DBXSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
 
     /// The caller is not allowed to access this shared link
-    SharingGetSharedLinkFileErrorSharedLinkAccessDenied,
+    DBXSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied,
 
     /// (no description).
-    SharingGetSharedLinkFileErrorOther,
+    DBXSHARINGGetSharedLinkFileErrorOther,
 
     /// Directories cannot be retrieved by this endpoint.
-    SharingGetSharedLinkFileErrorSharedLinkIsDirectory,
+    DBXSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingGetSharedLinkFileErrorTag tag;
-
+@property (nonatomic) DBXSHARINGGetSharedLinkFileErrorTag tag;
 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
 - (nonnull instancetype)initWithSharedLinkNotFound;
@@ -68,23 +67,23 @@ typedef NS_ENUM(NSInteger, SharingGetSharedLinkFileErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingGetSharedLinkFileError` object.
+/// `DBXSHARINGGetSharedLinkFileError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGetSharedLinkFileError` union.
+/// The serialization class for the `DBXSHARINGGetSharedLinkFileError` union.
 /// 
-@interface DbxSharingGetSharedLinkFileErrorSerializer : NSObject 
+@interface DBXSHARINGGetSharedLinkFileErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetSharedLinkFileError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetSharedLinkFileError * _Nonnull)obj;
+/// `DBXSHARINGGetSharedLinkFileError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkFileError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetSharedLinkFileError` object
+/// Returns an instantiation of the `DBXSHARINGGetSharedLinkFileError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingGetSharedLinkFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetSharedLinkFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

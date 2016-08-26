@@ -3,58 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxSharingMembershipInfo.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXSHARINGMembershipInfo.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingInviteeInfo;
-@class DbxSharingInviteeMembershipInfo;
-@class DbxSharingMemberPermission;
-@class DbxSharingUserInfo;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGInviteeInfo;
+@class DBXSHARINGInviteeMembershipInfo;
+@class DBXSHARINGMemberPermission;
+@class DBXSHARINGUserInfo;
 
 /// 
-/// The `DbxSharingInviteeMembershipInfo` struct.
+/// The `DBXSHARINGInviteeMembershipInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about an invited member of a shared content.
 /// 
-@interface DbxSharingInviteeMembershipInfo : DbxSharingMembershipInfo <DbxSerializable> 
+@interface DBXSHARINGInviteeMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// Recipient of the invitation.
-@property (nonatomic) DbxSharingInviteeInfo * _Nonnull invitee;
+@property (nonatomic) DBXSHARINGInviteeInfo * _Nonnull invitee;
 
 /// The user this invitation is tied to, if available.
-@property (nonatomic) DbxSharingUserInfo * _Nullable user;
+@property (nonatomic) DBXSHARINGUserInfo * _Nullable user;
 
 /// Full constructor for the `InviteeMembershipInfo` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType invitee:(DbxSharingInviteeInfo * _Nonnull)invitee permissions:(NSArray<DbxSharingMemberPermission *> * _Nullable)permissions initials:(NSString * _Nullable)initials isInherited:(NSNumber * _Nullable)isInherited user:(DbxSharingUserInfo * _Nullable)user;
+- (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType invitee:(DBXSHARINGInviteeInfo * _Nonnull)invitee permissions:(NSArray<DBXSHARINGMemberPermission *> * _Nullable)permissions initials:(NSString * _Nullable)initials isInherited:(NSNumber * _Nullable)isInherited user:(DBXSHARINGUserInfo * _Nullable)user;
 
 /// Convenience constructor for the `InviteeMembershipInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType invitee:(DbxSharingInviteeInfo * _Nonnull)invitee;
+- (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType invitee:(DBXSHARINGInviteeInfo * _Nonnull)invitee;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingInviteeMembershipInfo` object.
+/// `DBXSHARINGInviteeMembershipInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingInviteeMembershipInfo` struct.
+/// The serialization class for the `DBXSHARINGInviteeMembershipInfo` struct.
 /// 
-@interface DbxSharingInviteeMembershipInfoSerializer : NSObject 
+@interface DBXSHARINGInviteeMembershipInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingInviteeMembershipInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingInviteeMembershipInfo * _Nonnull)obj;
+/// `DBXSHARINGInviteeMembershipInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInviteeMembershipInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingInviteeMembershipInfo` object
+/// Returns an instantiation of the `DBXSHARINGInviteeMembershipInfo` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingInviteeMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGInviteeMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

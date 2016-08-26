@@ -3,16 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxError;
-@class DbxRoute;
-@class DbxDownloadDataTask;
-@class DbxDownloadURLTask;
-@class DbxRpcTask;
-@class DbxUploadTask;
+@class DBXDownloadDataTask;
+@class DBXDownloadURLTask;
+@class DBXError;
+@class DBXRoute;
+@class DBXRpcTask;
+@class DBXUploadTask;
+@protocol DBXSerializable;
 
-@interface DropboxTransportClient : NSObject
+@interface DBXTransportClient : NSObject
 
 @property (nonatomic, nonnull) NSString *accessToken;
 
@@ -34,16 +35,16 @@
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken andSelectUser:(NSString * _Nullable)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> * _Nullable)baseHosts andUserAgent:(NSString * _Nullable)userAgent andBackgroundSessionId:(NSString * _Nullable)backgroundSessionId;
 
-- (DbxRpcTask * _Nonnull)requestRpc:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg;
+- (DBXRpcTask * _Nonnull)requestRpc:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg;
 
-- (DbxUploadTask * _Nonnull)requestUpload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg inputURL:(NSURL * _Nonnull)input;
+- (DBXUploadTask * _Nonnull)requestUpload:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg inputURL:(NSURL * _Nonnull)input;
 
-- (DbxUploadTask * _Nonnull)requestUpload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg inputData:(NSData * _Nonnull)input;
+- (DBXUploadTask * _Nonnull)requestUpload:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg inputData:(NSData * _Nonnull)input;
 
-- (DbxUploadTask * _Nonnull)requestUpload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg inputStream:(NSInputStream * _Nonnull)input;
+- (DBXUploadTask * _Nonnull)requestUpload:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg inputStream:(NSInputStream * _Nonnull)input;
 
-- (DbxDownloadURLTask * _Nonnull)requestDownload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask * _Nonnull)requestDownload:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
-- (DbxDownloadDataTask * _Nonnull)requestDownload:(DbxRoute * _Nonnull)route arg:(id<DbxSerializable> _Nullable)arg;
+- (DBXDownloadDataTask * _Nonnull)requestDownload:(DBXRoute * _Nonnull)route arg:(id<DBXSerializable> _Nullable)arg;
 
 @end

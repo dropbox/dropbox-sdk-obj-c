@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderContinueArg;
+@class DBXFILESListFolderContinueArg;
 
 /// 
-/// The `DbxFilesListFolderContinueArg` struct.
+/// The `DBXFILESListFolderContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderContinueArg : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderContinueArg : NSObject <DBXSerializable> 
 
 /// The cursor returned by your last call to listFolder or listFolderContinue.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
@@ -24,23 +24,23 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesListFolderContinueArg` object.
+/// `DBXFILESListFolderContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderContinueArg` struct.
+/// The serialization class for the `DBXFILESListFolderContinueArg` struct.
 /// 
-@interface DbxFilesListFolderContinueArgSerializer : NSObject 
+@interface DBXFILESListFolderContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderContinueArg * _Nonnull)obj;
+/// `DBXFILESListFolderContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderContinueArg` object from
+/// Returns an instantiation of the `DBXFILESListFolderContinueArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesListFolderContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

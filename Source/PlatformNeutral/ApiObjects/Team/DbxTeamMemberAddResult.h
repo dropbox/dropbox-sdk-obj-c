@@ -3,15 +3,15 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMemberAddResult;
-@class DbxTeamTeamMemberInfo;
+@class DBXTEAMMemberAddResult;
+@class DBXTEAMTeamMemberInfo;
 
 /// 
-/// The `DbxTeamMemberAddResult` union.
+/// The `DBXTEAMMemberAddResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -20,48 +20,48 @@
 /// team - the other values explain the type of failure that occurred, and
 /// include the email of the user for which the operation has failed.
 /// 
-@interface DbxTeamMemberAddResult : NSObject <DbxSerializable> 
+@interface DBXTEAMMemberAddResult : NSObject <DBXSerializable> 
 
-/// The `TeamMemberAddResultTag` enum type represents the possible tag states
-/// that the `DbxTeamMemberAddResult` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMemberAddResultTag) {
+/// The `DBXTEAMMemberAddResultTag` enum type represents the possible tag states
+/// that the `DBXTEAMMemberAddResult` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMemberAddResultTag) {
     /// Describes a user that was successfully added to the team.
-    TeamMemberAddResultSuccess,
+    DBXTEAMMemberAddResultSuccess,
 
     /// Team is already full. The organization has no available licenses.
-    TeamMemberAddResultTeamLicenseLimit,
+    DBXTEAMMemberAddResultTeamLicenseLimit,
 
     /// Team is already full. The free team member limit has been reached.
-    TeamMemberAddResultFreeTeamMemberLimitReached,
+    DBXTEAMMemberAddResultFreeTeamMemberLimitReached,
 
     /// User is already on this team. The provided email address is associated
     /// with a user who is already a member of or invited to the team.
-    TeamMemberAddResultUserAlreadyOnTeam,
+    DBXTEAMMemberAddResultUserAlreadyOnTeam,
 
     /// User is already on another team. The provided email address is
     /// associated with a user that is already a member or invited to another
     /// team.
-    TeamMemberAddResultUserOnAnotherTeam,
+    DBXTEAMMemberAddResultUserOnAnotherTeam,
 
     /// User is already paired.
-    TeamMemberAddResultUserAlreadyPaired,
+    DBXTEAMMemberAddResultUserAlreadyPaired,
 
     /// User migration has failed.
-    TeamMemberAddResultUserMigrationFailed,
+    DBXTEAMMemberAddResultUserMigrationFailed,
 
     /// A user with the given external member ID already exists on the team.
-    TeamMemberAddResultDuplicateExternalMemberId,
+    DBXTEAMMemberAddResultDuplicateExternalMemberId,
 
     /// User creation has failed.
-    TeamMemberAddResultUserCreationFailed,
+    DBXTEAMMemberAddResultUserCreationFailed,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMemberAddResultTag tag;
+@property (nonatomic) DBXTEAMMemberAddResultTag tag;
 
 /// Describes a user that was successfully added to the team.
-@property (nonatomic) DbxTeamTeamMemberInfo * _Nonnull success;
+@property (nonatomic) DBXTEAMTeamMemberInfo * _Nonnull success;
 
 /// Team is already full. The organization has no available licenses.
 @property (nonatomic, copy) NSString * _Nonnull teamLicenseLimit;
@@ -89,9 +89,8 @@ typedef NS_ENUM(NSInteger, TeamMemberAddResultTag) {
 /// User creation has failed.
 @property (nonatomic, copy) NSString * _Nonnull userCreationFailed;
 
-
 /// Initializes union class with tag state of `Success`.
-- (nonnull instancetype)initWithSuccess:(DbxTeamTeamMemberInfo * _Nonnull)success;
+- (nonnull instancetype)initWithSuccess:(DBXTEAMTeamMemberInfo * _Nonnull)success;
 
 /// Initializes union class with tag state of `TeamLicenseLimit`.
 - (nonnull instancetype)initWithTeamLicenseLimit:(NSString * _Nonnull)teamLicenseLimit;
@@ -151,7 +150,7 @@ typedef NS_ENUM(NSInteger, TeamMemberAddResultTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamMemberAddResult`
+/// Returns a human-readable representation of the `DBXTEAMMemberAddResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -159,16 +158,16 @@ typedef NS_ENUM(NSInteger, TeamMemberAddResultTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamMemberAddResult` union.
+/// The serialization class for the `DBXTEAMMemberAddResult` union.
 /// 
-@interface DbxTeamMemberAddResultSerializer : NSObject 
+@interface DBXTEAMMemberAddResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMemberAddResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMemberAddResult * _Nonnull)obj;
+/// `DBXTEAMMemberAddResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAddResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMemberAddResult` object from a
+/// Returns an instantiation of the `DBXTEAMMemberAddResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMemberAddResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMemberAddResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -4,121 +4,121 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxRoute;
+@class DBXRoute;
 
 /// 
 /// Stone route objects for the `Files` namespace. Each route in the `Files`
 /// namespace has its own static object, which contains information about the
 /// route.
 /// 
-@interface DbxFilesRouteObjects : NSObject 
+@interface DBXFILESRouteObjects : NSObject 
 
 /// Accessor method for the `alphaGetMetadata` route object.
-+ (DbxRoute *)dbxFilesAlphaGetMetadata;
++ (DBXRoute *)DBXFILESAlphaGetMetadata;
 
 /// Accessor method for the `alphaUpload` route object.
-+ (DbxRoute *)dbxFilesAlphaUpload;
++ (DBXRoute *)DBXFILESAlphaUpload;
 
 /// Accessor method for the `dCopy` route object.
-+ (DbxRoute *)dbxFilesDCopy;
++ (DBXRoute *)DBXFILESDCopy;
 
 /// Accessor method for the `dCopyReferenceGet` route object.
-+ (DbxRoute *)dbxFilesDCopyReferenceGet;
++ (DBXRoute *)DBXFILESDCopyReferenceGet;
 
 /// Accessor method for the `dCopyReferenceSave` route object.
-+ (DbxRoute *)dbxFilesDCopyReferenceSave;
++ (DBXRoute *)DBXFILESDCopyReferenceSave;
 
 /// Accessor method for the `createFolder` route object.
-+ (DbxRoute *)dbxFilesCreateFolder;
++ (DBXRoute *)DBXFILESCreateFolder;
 
 /// Accessor method for the `delete_` route object.
-+ (DbxRoute *)dbxFilesDelete_;
++ (DBXRoute *)DBXFILESDelete_;
 
 /// Accessor method for the `download` route object.
-+ (DbxRoute *)dbxFilesDownload;
++ (DBXRoute *)DBXFILESDownload;
 
 /// Accessor method for the `getMetadata` route object.
-+ (DbxRoute *)dbxFilesGetMetadata;
++ (DBXRoute *)DBXFILESGetMetadata;
 
 /// Accessor method for the `getPreview` route object.
-+ (DbxRoute *)dbxFilesGetPreview;
++ (DBXRoute *)DBXFILESGetPreview;
 
 /// Accessor method for the `getTemporaryLink` route object.
-+ (DbxRoute *)dbxFilesGetTemporaryLink;
++ (DBXRoute *)DBXFILESGetTemporaryLink;
 
 /// Accessor method for the `getThumbnail` route object.
-+ (DbxRoute *)dbxFilesGetThumbnail;
++ (DBXRoute *)DBXFILESGetThumbnail;
 
 /// Accessor method for the `listFolder` route object.
-+ (DbxRoute *)dbxFilesListFolder;
++ (DBXRoute *)DBXFILESListFolder;
 
 /// Accessor method for the `listFolderContinue` route object.
-+ (DbxRoute *)dbxFilesListFolderContinue;
++ (DBXRoute *)DBXFILESListFolderContinue;
 
 /// Accessor method for the `listFolderGetLatestCursor` route object.
-+ (DbxRoute *)dbxFilesListFolderGetLatestCursor;
++ (DBXRoute *)DBXFILESListFolderGetLatestCursor;
 
 /// Accessor method for the `listFolderLongpoll` route object.
-+ (DbxRoute *)dbxFilesListFolderLongpoll;
++ (DBXRoute *)DBXFILESListFolderLongpoll;
 
 /// Accessor method for the `listRevisions` route object.
-+ (DbxRoute *)dbxFilesListRevisions;
++ (DBXRoute *)DBXFILESListRevisions;
 
 /// Accessor method for the `move` route object.
-+ (DbxRoute *)dbxFilesMove;
++ (DBXRoute *)DBXFILESMove;
 
 /// Accessor method for the `permanentlyDelete` route object.
-+ (DbxRoute *)dbxFilesPermanentlyDelete;
++ (DBXRoute *)DBXFILESPermanentlyDelete;
 
 /// Accessor method for the `propertiesAdd` route object.
-+ (DbxRoute *)dbxFilesPropertiesAdd;
++ (DBXRoute *)DBXFILESPropertiesAdd;
 
 /// Accessor method for the `propertiesOverwrite` route object.
-+ (DbxRoute *)dbxFilesPropertiesOverwrite;
++ (DBXRoute *)DBXFILESPropertiesOverwrite;
 
 /// Accessor method for the `propertiesRemove` route object.
-+ (DbxRoute *)dbxFilesPropertiesRemove;
++ (DBXRoute *)DBXFILESPropertiesRemove;
 
 /// Accessor method for the `propertiesTemplateGet` route object.
-+ (DbxRoute *)dbxFilesPropertiesTemplateGet;
++ (DBXRoute *)DBXFILESPropertiesTemplateGet;
 
 /// Accessor method for the `propertiesTemplateList` route object.
-+ (DbxRoute *)dbxFilesPropertiesTemplateList;
++ (DBXRoute *)DBXFILESPropertiesTemplateList;
 
 /// Accessor method for the `propertiesUpdate` route object.
-+ (DbxRoute *)dbxFilesPropertiesUpdate;
++ (DBXRoute *)DBXFILESPropertiesUpdate;
 
 /// Accessor method for the `restore` route object.
-+ (DbxRoute *)dbxFilesRestore;
++ (DBXRoute *)DBXFILESRestore;
 
 /// Accessor method for the `saveUrl` route object.
-+ (DbxRoute *)dbxFilesSaveUrl;
++ (DBXRoute *)DBXFILESSaveUrl;
 
 /// Accessor method for the `saveUrlCheckJobStatus` route object.
-+ (DbxRoute *)dbxFilesSaveUrlCheckJobStatus;
++ (DBXRoute *)DBXFILESSaveUrlCheckJobStatus;
 
 /// Accessor method for the `search` route object.
-+ (DbxRoute *)dbxFilesSearch;
++ (DBXRoute *)DBXFILESSearch;
 
 /// Accessor method for the `upload` route object.
-+ (DbxRoute *)dbxFilesUpload;
++ (DBXRoute *)DBXFILESUpload;
 
 /// Accessor method for the `uploadSessionAppend` route object.
-+ (DbxRoute *)dbxFilesUploadSessionAppend;
++ (DBXRoute *)DBXFILESUploadSessionAppend;
 
 /// Accessor method for the `uploadSessionAppendV2` route object.
-+ (DbxRoute *)dbxFilesUploadSessionAppendV2;
++ (DBXRoute *)DBXFILESUploadSessionAppendV2;
 
 /// Accessor method for the `uploadSessionFinish` route object.
-+ (DbxRoute *)dbxFilesUploadSessionFinish;
++ (DBXRoute *)DBXFILESUploadSessionFinish;
 
 /// Accessor method for the `uploadSessionFinishBatch` route object.
-+ (DbxRoute *)dbxFilesUploadSessionFinishBatch;
++ (DBXRoute *)DBXFILESUploadSessionFinishBatch;
 
 /// Accessor method for the `uploadSessionFinishBatchCheck` route object.
-+ (DbxRoute *)dbxFilesUploadSessionFinishBatchCheck;
++ (DBXRoute *)DBXFILESUploadSessionFinishBatchCheck;
 
 /// Accessor method for the `uploadSessionStart` route object.
-+ (DbxRoute *)dbxFilesUploadSessionStart;
++ (DBXRoute *)DBXFILESUploadSessionStart;
 
 @end

@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesRemovePropertiesArg;
+@class DBXFILESRemovePropertiesArg;
 
 /// 
-/// The `DbxFilesRemovePropertiesArg` struct.
+/// The `DBXFILESRemovePropertiesArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesRemovePropertiesArg : NSObject <DbxSerializable> 
+@interface DBXFILESRemovePropertiesArg : NSObject <DBXSerializable> 
 
 /// A unique identifier for the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -27,7 +27,7 @@
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
 
-/// Returns a human-readable representation of the `DbxFilesRemovePropertiesArg`
+/// Returns a human-readable representation of the `DBXFILESRemovePropertiesArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesRemovePropertiesArg` struct.
+/// The serialization class for the `DBXFILESRemovePropertiesArg` struct.
 /// 
-@interface DbxFilesRemovePropertiesArgSerializer : NSObject 
+@interface DBXFILESRemovePropertiesArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesRemovePropertiesArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesRemovePropertiesArg * _Nonnull)obj;
+/// `DBXFILESRemovePropertiesArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesRemovePropertiesArg` object from a
+/// Returns an instantiation of the `DBXFILESRemovePropertiesArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesRemovePropertiesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESRemovePropertiesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

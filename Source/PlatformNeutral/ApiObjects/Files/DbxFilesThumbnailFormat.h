@@ -3,33 +3,32 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesThumbnailFormat;
+@class DBXFILESThumbnailFormat;
 
 /// 
-/// The `DbxFilesThumbnailFormat` union.
+/// The `DBXFILESThumbnailFormat` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesThumbnailFormat : NSObject <DbxSerializable> 
+@interface DBXFILESThumbnailFormat : NSObject <DBXSerializable> 
 
-/// The `FilesThumbnailFormatTag` enum type represents the possible tag states
-/// that the `DbxFilesThumbnailFormat` union can exist in.
-typedef NS_ENUM(NSInteger, FilesThumbnailFormatTag) {
+/// The `DBXFILESThumbnailFormatTag` enum type represents the possible tag
+/// states that the `DBXFILESThumbnailFormat` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
     /// (no description).
-    FilesThumbnailFormatJpeg,
+    DBXFILESThumbnailFormatJpeg,
 
     /// (no description).
-    FilesThumbnailFormatPng,
+    DBXFILESThumbnailFormatPng,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesThumbnailFormatTag tag;
-
+@property (nonatomic) DBXFILESThumbnailFormatTag tag;
 
 /// Initializes union class with tag state of `Jpeg`.
 - (nonnull instancetype)initWithJpeg;
@@ -46,7 +45,7 @@ typedef NS_ENUM(NSInteger, FilesThumbnailFormatTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesThumbnailFormat`
+/// Returns a human-readable representation of the `DBXFILESThumbnailFormat`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -54,16 +53,16 @@ typedef NS_ENUM(NSInteger, FilesThumbnailFormatTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesThumbnailFormat` union.
+/// The serialization class for the `DBXFILESThumbnailFormat` union.
 /// 
-@interface DbxFilesThumbnailFormatSerializer : NSObject 
+@interface DBXFILESThumbnailFormatSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesThumbnailFormat` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailFormat * _Nonnull)obj;
+/// `DBXFILESThumbnailFormat` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailFormat * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesThumbnailFormat` object from a
+/// Returns an instantiation of the `DBXFILESThumbnailFormat` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesThumbnailFormat * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESThumbnailFormat * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

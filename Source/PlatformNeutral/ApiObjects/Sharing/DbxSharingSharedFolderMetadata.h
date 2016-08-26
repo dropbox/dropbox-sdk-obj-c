@@ -3,25 +3,25 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxSharingSharedFolderMetadataBase.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXSHARINGSharedFolderMetadataBase.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingFolderPermission;
-@class DbxSharingFolderPolicy;
-@class DbxSharingSharedFolderMetadata;
-@class DbxUsersTeam;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGFolderPermission;
+@class DBXSHARINGFolderPolicy;
+@class DBXSHARINGSharedFolderMetadata;
+@class DBXUSERSTeam;
 
 /// 
-/// The `DbxSharingSharedFolderMetadata` struct.
+/// The `DBXSHARINGSharedFolderMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The metadata which includes basic information about the shared folder.
 /// 
-@interface DbxSharingSharedFolderMetadata : DbxSharingSharedFolderMetadataBase <DbxSerializable> 
+@interface DBXSHARINGSharedFolderMetadata : DBXSHARINGSharedFolderMetadataBase <DBXSerializable> 
 
 /// The lower-cased full path of this shared folder. Absent for unmounted
 /// folders.
@@ -35,7 +35,7 @@
 
 /// Actions the current user may perform on the folder and its contents. The set
 /// of permissions corresponds to the FolderActions in the request.
-@property (nonatomic) NSArray<DbxSharingFolderPermission *> * _Nullable permissions;
+@property (nonatomic) NSArray<DBXSHARINGFolderPermission *> * _Nullable permissions;
 
 /// Timestamp indicating when the current user was invited to this shared
 /// folder.
@@ -46,30 +46,30 @@
 
 /// Full constructor for the `SharedFolderMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DbxSharingFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl ownerTeam:(DbxUsersTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId pathLower:(NSString * _Nullable)pathLower permissions:(NSArray<DbxSharingFolderPermission *> * _Nullable)permissions;
+- (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl ownerTeam:(DBXUSERSTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId pathLower:(NSString * _Nullable)pathLower permissions:(NSArray<DBXSHARINGFolderPermission *> * _Nullable)permissions;
 
 /// Convenience constructor for the `SharedFolderMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DbxSharingFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl;
+- (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedFolderMetadata` object.
+/// `DBXSHARINGSharedFolderMetadata` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedFolderMetadata` struct.
+/// The serialization class for the `DBXSHARINGSharedFolderMetadata` struct.
 /// 
-@interface DbxSharingSharedFolderMetadataSerializer : NSObject 
+@interface DBXSHARINGSharedFolderMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedFolderMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderMetadata * _Nonnull)obj;
+/// `DBXSHARINGSharedFolderMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedFolderMetadata` object from
+/// Returns an instantiation of the `DBXSHARINGSharedFolderMetadata` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingSharedFolderMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedFolderMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

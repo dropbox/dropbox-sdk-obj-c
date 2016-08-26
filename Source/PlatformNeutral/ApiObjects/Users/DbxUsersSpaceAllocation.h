@@ -3,52 +3,51 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersIndividualSpaceAllocation;
-@class DbxUsersSpaceAllocation;
-@class DbxUsersTeamSpaceAllocation;
+@class DBXUSERSIndividualSpaceAllocation;
+@class DBXUSERSSpaceAllocation;
+@class DBXUSERSTeamSpaceAllocation;
 
 /// 
-/// The `DbxUsersSpaceAllocation` union.
+/// The `DBXUSERSSpaceAllocation` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Space is allocated differently based on the type of account.
 /// 
-@interface DbxUsersSpaceAllocation : NSObject <DbxSerializable> 
+@interface DBXUSERSSpaceAllocation : NSObject <DBXSerializable> 
 
-/// The `UsersSpaceAllocationTag` enum type represents the possible tag states
-/// that the `DbxUsersSpaceAllocation` union can exist in.
-typedef NS_ENUM(NSInteger, UsersSpaceAllocationTag) {
+/// The `DBXUSERSSpaceAllocationTag` enum type represents the possible tag
+/// states that the `DBXUSERSSpaceAllocation` union can exist in.
+typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
     /// The user's space allocation applies only to their individual account.
-    UsersSpaceAllocationIndividual,
+    DBXUSERSSpaceAllocationIndividual,
 
     /// The user shares space with other members of their team.
-    UsersSpaceAllocationTeam,
+    DBXUSERSSpaceAllocationTeam,
 
     /// (no description).
-    UsersSpaceAllocationOther,
+    DBXUSERSSpaceAllocationOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) UsersSpaceAllocationTag tag;
+@property (nonatomic) DBXUSERSSpaceAllocationTag tag;
 
 /// The user's space allocation applies only to their individual account.
-@property (nonatomic) DbxUsersIndividualSpaceAllocation * _Nonnull individual;
+@property (nonatomic) DBXUSERSIndividualSpaceAllocation * _Nonnull individual;
 
 /// The user shares space with other members of their team.
-@property (nonatomic) DbxUsersTeamSpaceAllocation * _Nonnull team;
-
+@property (nonatomic) DBXUSERSTeamSpaceAllocation * _Nonnull team;
 
 /// Initializes union class with tag state of `Individual`.
-- (nonnull instancetype)initWithIndividual:(DbxUsersIndividualSpaceAllocation * _Nonnull)individual;
+- (nonnull instancetype)initWithIndividual:(DBXUSERSIndividualSpaceAllocation * _Nonnull)individual;
 
 /// Initializes union class with tag state of `Team`.
-- (nonnull instancetype)initWithTeam:(DbxUsersTeamSpaceAllocation * _Nonnull)team;
+- (nonnull instancetype)initWithTeam:(DBXUSERSTeamSpaceAllocation * _Nonnull)team;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -65,7 +64,7 @@ typedef NS_ENUM(NSInteger, UsersSpaceAllocationTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxUsersSpaceAllocation`
+/// Returns a human-readable representation of the `DBXUSERSSpaceAllocation`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -73,16 +72,16 @@ typedef NS_ENUM(NSInteger, UsersSpaceAllocationTag) {
 
 
 /// 
-/// The serialization class for the `DbxUsersSpaceAllocation` union.
+/// The serialization class for the `DBXUSERSSpaceAllocation` union.
 /// 
-@interface DbxUsersSpaceAllocationSerializer : NSObject 
+@interface DBXUSERSSpaceAllocationSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersSpaceAllocation` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersSpaceAllocation * _Nonnull)obj;
+/// `DBXUSERSSpaceAllocation` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSSpaceAllocation * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersSpaceAllocation` object from a
+/// Returns an instantiation of the `DBXUSERSSpaceAllocation` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

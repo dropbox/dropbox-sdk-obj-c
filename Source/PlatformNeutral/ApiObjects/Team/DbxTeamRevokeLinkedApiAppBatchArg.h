@@ -3,45 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeLinkedApiAppArg;
-@class DbxTeamRevokeLinkedApiAppBatchArg;
+@class DBXTEAMRevokeLinkedApiAppArg;
+@class DBXTEAMRevokeLinkedApiAppBatchArg;
 
 /// 
-/// The `DbxTeamRevokeLinkedApiAppBatchArg` struct.
+/// The `DBXTEAMRevokeLinkedApiAppBatchArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeLinkedApiAppBatchArg : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeLinkedApiAppBatchArg : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DbxTeamRevokeLinkedApiAppArg *> * _Nonnull revokeLinkedApp;
+@property (nonatomic) NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull revokeLinkedApp;
 
 /// Full constructor for the `RevokeLinkedApiAppBatchArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithRevokeLinkedApp:(NSArray<DbxTeamRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
+- (nonnull instancetype)initWithRevokeLinkedApp:(NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeLinkedApiAppBatchArg` object.
+/// `DBXTEAMRevokeLinkedApiAppBatchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeLinkedApiAppBatchArg` struct.
+/// The serialization class for the `DBXTEAMRevokeLinkedApiAppBatchArg` struct.
 /// 
-@interface DbxTeamRevokeLinkedApiAppBatchArgSerializer : NSObject 
+@interface DBXTEAMRevokeLinkedApiAppBatchArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeLinkedApiAppBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedApiAppBatchArg * _Nonnull)obj;
+/// `DBXTEAMRevokeLinkedApiAppBatchArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppBatchArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeLinkedApiAppBatchArg` object
+/// Returns an instantiation of the `DBXTEAMRevokeLinkedApiAppBatchArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamRevokeLinkedApiAppBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeLinkedApiAppBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

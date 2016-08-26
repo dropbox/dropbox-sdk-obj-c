@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ObjectiveDropbox: f4a9fd4935d5704ffeff4f238776fe9acf83c352
+  ObjectiveDropbox: 16a3d896e2ec6079a4f299a18ea4c0ced4817600
 
 PODFILE CHECKSUM: a6499e7824982e4d3c06f90a6c1e7f56e66629e2
 

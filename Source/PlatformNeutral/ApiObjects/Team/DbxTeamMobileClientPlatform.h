@@ -3,45 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMobileClientPlatform;
+@class DBXTEAMMobileClientPlatform;
 
 /// 
-/// The `DbxTeamMobileClientPlatform` union.
+/// The `DBXTEAMMobileClientPlatform` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMobileClientPlatform : NSObject <DbxSerializable> 
+@interface DBXTEAMMobileClientPlatform : NSObject <DBXSerializable> 
 
-/// The `TeamMobileClientPlatformTag` enum type represents the possible tag
-/// states that the `DbxTeamMobileClientPlatform` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMobileClientPlatformTag) {
+/// The `DBXTEAMMobileClientPlatformTag` enum type represents the possible tag
+/// states that the `DBXTEAMMobileClientPlatform` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMobileClientPlatformTag) {
     /// Official Dropbox iPhone client
-    TeamMobileClientPlatformIphone,
+    DBXTEAMMobileClientPlatformIphone,
 
     /// Official Dropbox iPad client
-    TeamMobileClientPlatformIpad,
+    DBXTEAMMobileClientPlatformIpad,
 
     /// Official Dropbox Android client
-    TeamMobileClientPlatformAndroid,
+    DBXTEAMMobileClientPlatformAndroid,
 
     /// Official Dropbox Windows phone client
-    TeamMobileClientPlatformWindowsPhone,
+    DBXTEAMMobileClientPlatformWindowsPhone,
 
     /// Official Dropbox Blackberry client
-    TeamMobileClientPlatformBlackberry,
+    DBXTEAMMobileClientPlatformBlackberry,
 
     /// (no description).
-    TeamMobileClientPlatformOther,
+    DBXTEAMMobileClientPlatformOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMobileClientPlatformTag tag;
-
+@property (nonatomic) DBXTEAMMobileClientPlatformTag tag;
 
 /// Initializes union class with tag state of `Iphone`.
 - (nonnull instancetype)initWithIphone;
@@ -82,7 +81,7 @@ typedef NS_ENUM(NSInteger, TeamMobileClientPlatformTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamMobileClientPlatform`
+/// Returns a human-readable representation of the `DBXTEAMMobileClientPlatform`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -90,16 +89,16 @@ typedef NS_ENUM(NSInteger, TeamMobileClientPlatformTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamMobileClientPlatform` union.
+/// The serialization class for the `DBXTEAMMobileClientPlatform` union.
 /// 
-@interface DbxTeamMobileClientPlatformSerializer : NSObject 
+@interface DBXTEAMMobileClientPlatformSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMobileClientPlatform` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMobileClientPlatform * _Nonnull)obj;
+/// `DBXTEAMMobileClientPlatform` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMobileClientPlatform * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMobileClientPlatform` object from a
+/// Returns an instantiation of the `DBXTEAMMobileClientPlatform` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMobileClientPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMobileClientPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,34 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupAccessType;
-@class DbxTeamGroupMemberInfo;
-@class DbxTeamMemberProfile;
+@class DBXTEAMGroupAccessType;
+@class DBXTEAMGroupMemberInfo;
+@class DBXTEAMMemberProfile;
 
 /// 
-/// The `DbxTeamGroupMemberInfo` struct.
+/// The `DBXTEAMGroupMemberInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Profile of group member, and role in group.
 /// 
-@interface DbxTeamGroupMemberInfo : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupMemberInfo : NSObject <DBXSerializable> 
 
 /// Profile of group member.
-@property (nonatomic) DbxTeamMemberProfile * _Nonnull profile;
+@property (nonatomic) DBXTEAMMemberProfile * _Nonnull profile;
 
 /// The role that the user has in the group.
-@property (nonatomic) DbxTeamGroupAccessType * _Nonnull accessType;
+@property (nonatomic) DBXTEAMGroupAccessType * _Nonnull accessType;
 
 /// Full constructor for the `GroupMemberInfo` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithProfile:(DbxTeamMemberProfile * _Nonnull)profile accessType:(DbxTeamGroupAccessType * _Nonnull)accessType;
+- (nonnull instancetype)initWithProfile:(DBXTEAMMemberProfile * _Nonnull)profile accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
 
-/// Returns a human-readable representation of the `DbxTeamGroupMemberInfo`
+/// Returns a human-readable representation of the `DBXTEAMGroupMemberInfo`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -38,16 +38,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMemberInfo` struct.
+/// The serialization class for the `DBXTEAMGroupMemberInfo` struct.
 /// 
-@interface DbxTeamGroupMemberInfoSerializer : NSObject 
+@interface DBXTEAMGroupMemberInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMemberInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMemberInfo * _Nonnull)obj;
+/// `DBXTEAMGroupMemberInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMemberInfo` object from a
+/// Returns an instantiation of the `DBXTEAMGroupMemberInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

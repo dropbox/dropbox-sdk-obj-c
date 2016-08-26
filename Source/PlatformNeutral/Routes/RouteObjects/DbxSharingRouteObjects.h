@@ -4,136 +4,136 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxRoute;
+@class DBXRoute;
 
 /// 
 /// Stone route objects for the `Sharing` namespace. Each route in the `Sharing`
 /// namespace has its own static object, which contains information about the
 /// route.
 /// 
-@interface DbxSharingRouteObjects : NSObject 
+@interface DBXSHARINGRouteObjects : NSObject 
 
 /// Accessor method for the `addFileMember` route object.
-+ (DbxRoute *)dbxSharingAddFileMember;
++ (DBXRoute *)DBXSHARINGAddFileMember;
 
 /// Accessor method for the `addFolderMember` route object.
-+ (DbxRoute *)dbxSharingAddFolderMember;
++ (DBXRoute *)DBXSHARINGAddFolderMember;
 
 /// Accessor method for the `changeFileMemberAccess` route object.
-+ (DbxRoute *)dbxSharingChangeFileMemberAccess;
++ (DBXRoute *)DBXSHARINGChangeFileMemberAccess;
 
 /// Accessor method for the `checkJobStatus` route object.
-+ (DbxRoute *)dbxSharingCheckJobStatus;
++ (DBXRoute *)DBXSHARINGCheckJobStatus;
 
 /// Accessor method for the `checkRemoveMemberJobStatus` route object.
-+ (DbxRoute *)dbxSharingCheckRemoveMemberJobStatus;
++ (DBXRoute *)DBXSHARINGCheckRemoveMemberJobStatus;
 
 /// Accessor method for the `checkShareJobStatus` route object.
-+ (DbxRoute *)dbxSharingCheckShareJobStatus;
++ (DBXRoute *)DBXSHARINGCheckShareJobStatus;
 
 /// Accessor method for the `createSharedLink` route object.
-+ (DbxRoute *)dbxSharingCreateSharedLink;
++ (DBXRoute *)DBXSHARINGCreateSharedLink;
 
 /// Accessor method for the `createSharedLinkWithSettings` route object.
-+ (DbxRoute *)dbxSharingCreateSharedLinkWithSettings;
++ (DBXRoute *)DBXSHARINGCreateSharedLinkWithSettings;
 
 /// Accessor method for the `getFileMetadata` route object.
-+ (DbxRoute *)dbxSharingGetFileMetadata;
++ (DBXRoute *)DBXSHARINGGetFileMetadata;
 
 /// Accessor method for the `getFileMetadataBatch` route object.
-+ (DbxRoute *)dbxSharingGetFileMetadataBatch;
++ (DBXRoute *)DBXSHARINGGetFileMetadataBatch;
 
 /// Accessor method for the `getFolderMetadata` route object.
-+ (DbxRoute *)dbxSharingGetFolderMetadata;
++ (DBXRoute *)DBXSHARINGGetFolderMetadata;
 
 /// Accessor method for the `getSharedLinkFile` route object.
-+ (DbxRoute *)dbxSharingGetSharedLinkFile;
++ (DBXRoute *)DBXSHARINGGetSharedLinkFile;
 
 /// Accessor method for the `getSharedLinkMetadata` route object.
-+ (DbxRoute *)dbxSharingGetSharedLinkMetadata;
++ (DBXRoute *)DBXSHARINGGetSharedLinkMetadata;
 
 /// Accessor method for the `getSharedLinks` route object.
-+ (DbxRoute *)dbxSharingGetSharedLinks;
++ (DBXRoute *)DBXSHARINGGetSharedLinks;
 
 /// Accessor method for the `listFileMembers` route object.
-+ (DbxRoute *)dbxSharingListFileMembers;
++ (DBXRoute *)DBXSHARINGListFileMembers;
 
 /// Accessor method for the `listFileMembersBatch` route object.
-+ (DbxRoute *)dbxSharingListFileMembersBatch;
++ (DBXRoute *)DBXSHARINGListFileMembersBatch;
 
 /// Accessor method for the `listFileMembersContinue` route object.
-+ (DbxRoute *)dbxSharingListFileMembersContinue;
++ (DBXRoute *)DBXSHARINGListFileMembersContinue;
 
 /// Accessor method for the `listFolderMembers` route object.
-+ (DbxRoute *)dbxSharingListFolderMembers;
++ (DBXRoute *)DBXSHARINGListFolderMembers;
 
 /// Accessor method for the `listFolderMembersContinue` route object.
-+ (DbxRoute *)dbxSharingListFolderMembersContinue;
++ (DBXRoute *)DBXSHARINGListFolderMembersContinue;
 
 /// Accessor method for the `listFolders` route object.
-+ (DbxRoute *)dbxSharingListFolders;
++ (DBXRoute *)DBXSHARINGListFolders;
 
 /// Accessor method for the `listFoldersContinue` route object.
-+ (DbxRoute *)dbxSharingListFoldersContinue;
++ (DBXRoute *)DBXSHARINGListFoldersContinue;
 
 /// Accessor method for the `listMountableFolders` route object.
-+ (DbxRoute *)dbxSharingListMountableFolders;
++ (DBXRoute *)DBXSHARINGListMountableFolders;
 
 /// Accessor method for the `listMountableFoldersContinue` route object.
-+ (DbxRoute *)dbxSharingListMountableFoldersContinue;
++ (DBXRoute *)DBXSHARINGListMountableFoldersContinue;
 
 /// Accessor method for the `listReceivedFiles` route object.
-+ (DbxRoute *)dbxSharingListReceivedFiles;
++ (DBXRoute *)DBXSHARINGListReceivedFiles;
 
 /// Accessor method for the `listReceivedFilesContinue` route object.
-+ (DbxRoute *)dbxSharingListReceivedFilesContinue;
++ (DBXRoute *)DBXSHARINGListReceivedFilesContinue;
 
 /// Accessor method for the `listSharedLinks` route object.
-+ (DbxRoute *)dbxSharingListSharedLinks;
++ (DBXRoute *)DBXSHARINGListSharedLinks;
 
 /// Accessor method for the `modifySharedLinkSettings` route object.
-+ (DbxRoute *)dbxSharingModifySharedLinkSettings;
++ (DBXRoute *)DBXSHARINGModifySharedLinkSettings;
 
 /// Accessor method for the `mountFolder` route object.
-+ (DbxRoute *)dbxSharingMountFolder;
++ (DBXRoute *)DBXSHARINGMountFolder;
 
 /// Accessor method for the `relinquishFileMembership` route object.
-+ (DbxRoute *)dbxSharingRelinquishFileMembership;
++ (DBXRoute *)DBXSHARINGRelinquishFileMembership;
 
 /// Accessor method for the `relinquishFolderMembership` route object.
-+ (DbxRoute *)dbxSharingRelinquishFolderMembership;
++ (DBXRoute *)DBXSHARINGRelinquishFolderMembership;
 
 /// Accessor method for the `removeFileMember` route object.
-+ (DbxRoute *)dbxSharingRemoveFileMember;
++ (DBXRoute *)DBXSHARINGRemoveFileMember;
 
 /// Accessor method for the `removeFileMember2` route object.
-+ (DbxRoute *)dbxSharingRemoveFileMember2;
++ (DBXRoute *)DBXSHARINGRemoveFileMember2;
 
 /// Accessor method for the `removeFolderMember` route object.
-+ (DbxRoute *)dbxSharingRemoveFolderMember;
++ (DBXRoute *)DBXSHARINGRemoveFolderMember;
 
 /// Accessor method for the `revokeSharedLink` route object.
-+ (DbxRoute *)dbxSharingRevokeSharedLink;
++ (DBXRoute *)DBXSHARINGRevokeSharedLink;
 
 /// Accessor method for the `shareFolder` route object.
-+ (DbxRoute *)dbxSharingShareFolder;
++ (DBXRoute *)DBXSHARINGShareFolder;
 
 /// Accessor method for the `transferFolder` route object.
-+ (DbxRoute *)dbxSharingTransferFolder;
++ (DBXRoute *)DBXSHARINGTransferFolder;
 
 /// Accessor method for the `unmountFolder` route object.
-+ (DbxRoute *)dbxSharingUnmountFolder;
++ (DBXRoute *)DBXSHARINGUnmountFolder;
 
 /// Accessor method for the `unshareFile` route object.
-+ (DbxRoute *)dbxSharingUnshareFile;
++ (DBXRoute *)DBXSHARINGUnshareFile;
 
 /// Accessor method for the `unshareFolder` route object.
-+ (DbxRoute *)dbxSharingUnshareFolder;
++ (DBXRoute *)DBXSHARINGUnshareFolder;
 
 /// Accessor method for the `updateFolderMember` route object.
-+ (DbxRoute *)dbxSharingUpdateFolderMember;
++ (DBXRoute *)DBXSHARINGUpdateFolderMember;
 
 /// Accessor method for the `updateFolderPolicy` route object.
-+ (DbxRoute *)dbxSharingUpdateFolderPolicy;
++ (DBXRoute *)DBXSHARINGUpdateFolderPolicy;
 
 @end

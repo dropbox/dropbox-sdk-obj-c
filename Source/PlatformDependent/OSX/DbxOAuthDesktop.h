@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
-#import "DbxOAuth.h"
+#import "DBXOAuth.h"
 
-@interface DbxDesktopSharedApplication : NSObject <DbxSharedApplication>  {
+@interface DBXDesktopSharedApplication : NSObject <DBXSharedApplication>  {
 @protected
     NSWorkspace * _Nullable _sharedWorkspace;
     NSViewController * _Nullable _controller;
@@ -17,7 +17,7 @@
 
 @end
 
-@interface DbxWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate> {
+@interface DBXWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate> {
 @protected
     WKWebView * _Nullable _webView;
     BOOL (^_Nullable _tryIntercept)(NSURL * _Nullable);

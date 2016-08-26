@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingInsufficientQuotaAmounts;
+@class DBXSHARINGInsufficientQuotaAmounts;
 
 /// 
-/// The `DbxSharingInsufficientQuotaAmounts` struct.
+/// The `DBXSHARINGInsufficientQuotaAmounts` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingInsufficientQuotaAmounts : NSObject <DbxSerializable> 
+@interface DBXSHARINGInsufficientQuotaAmounts : NSObject <DBXSerializable> 
 
 /// The amount of space needed to add the item (the size of the item).
 @property (nonatomic, copy) NSNumber * _Nonnull spaceNeeded;
@@ -30,23 +30,23 @@
 - (nonnull instancetype)initWithSpaceNeeded:(NSNumber * _Nonnull)spaceNeeded spaceShortage:(NSNumber * _Nonnull)spaceShortage spaceLeft:(NSNumber * _Nonnull)spaceLeft;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingInsufficientQuotaAmounts` object.
+/// `DBXSHARINGInsufficientQuotaAmounts` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingInsufficientQuotaAmounts` struct.
+/// The serialization class for the `DBXSHARINGInsufficientQuotaAmounts` struct.
 /// 
-@interface DbxSharingInsufficientQuotaAmountsSerializer : NSObject 
+@interface DBXSHARINGInsufficientQuotaAmountsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingInsufficientQuotaAmounts` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingInsufficientQuotaAmounts * _Nonnull)obj;
+/// `DBXSHARINGInsufficientQuotaAmounts` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInsufficientQuotaAmounts * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingInsufficientQuotaAmounts` object
+/// Returns an instantiation of the `DBXSHARINGInsufficientQuotaAmounts` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingInsufficientQuotaAmounts * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGInsufficientQuotaAmounts * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

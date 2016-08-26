@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFolderAction;
-@class DbxSharingGetMetadataArgs;
+@class DBXSHARINGFolderAction;
+@class DBXSHARINGGetMetadataArgs;
 
 /// 
-/// The `DbxSharingGetMetadataArgs` struct.
+/// The `DBXSHARINGGetMetadataArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingGetMetadataArgs : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetMetadataArgs : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
@@ -23,17 +23,17 @@
 /// This is a list indicating whether the returned folder data will include a
 /// boolean value  allow in FolderPermission that describes whether the current
 /// user can perform the  FolderAction on the folder.
-@property (nonatomic) NSArray<DbxSharingFolderAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
 
 /// Full constructor for the `GetMetadataArgs` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
+- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DBXSHARINGFolderAction *> * _Nullable)actions;
 
 /// Convenience constructor for the `GetMetadataArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
-/// Returns a human-readable representation of the `DbxSharingGetMetadataArgs`
+/// Returns a human-readable representation of the `DBXSHARINGGetMetadataArgs`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -41,16 +41,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingGetMetadataArgs` struct.
+/// The serialization class for the `DBXSHARINGGetMetadataArgs` struct.
 /// 
-@interface DbxSharingGetMetadataArgsSerializer : NSObject 
+@interface DBXSHARINGGetMetadataArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetMetadataArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetMetadataArgs * _Nonnull)obj;
+/// `DBXSHARINGGetMetadataArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetMetadataArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetMetadataArgs` object from a
+/// Returns an instantiation of the `DBXSHARINGGetMetadataArgs` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingGetMetadataArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetMetadataArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

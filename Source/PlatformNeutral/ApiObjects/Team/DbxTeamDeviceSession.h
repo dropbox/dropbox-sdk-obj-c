@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamDeviceSession;
+@class DBXTEAMDeviceSession;
 
 /// 
-/// The `DbxTeamDeviceSession` struct.
+/// The `DBXTEAMDeviceSession` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamDeviceSession : NSObject <DbxSerializable> 
+@interface DBXTEAMDeviceSession : NSObject <DBXSerializable> 
 
 /// The session id
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
@@ -39,7 +39,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
-/// Returns a human-readable representation of the `DbxTeamDeviceSession`
+/// Returns a human-readable representation of the `DBXTEAMDeviceSession`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -47,16 +47,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamDeviceSession` struct.
+/// The serialization class for the `DBXTEAMDeviceSession` struct.
 /// 
-@interface DbxTeamDeviceSessionSerializer : NSObject 
+@interface DBXTEAMDeviceSessionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamDeviceSession` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamDeviceSession * _Nonnull)obj;
+/// `DBXTEAMDeviceSession` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSession * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamDeviceSession` object from a
+/// Returns an instantiation of the `DBXTEAMDeviceSession` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamDeviceSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMDeviceSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

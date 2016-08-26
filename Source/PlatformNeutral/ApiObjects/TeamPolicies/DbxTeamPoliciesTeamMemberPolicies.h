@@ -3,55 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesEmmState;
-@class DbxTeamPoliciesTeamMemberPolicies;
-@class DbxTeamPoliciesTeamSharingPolicies;
+@class DBXTEAMPOLICIESEmmState;
+@class DBXTEAMPOLICIESTeamMemberPolicies;
+@class DBXTEAMPOLICIESTeamSharingPolicies;
 
 /// 
-/// The `DbxTeamPoliciesTeamMemberPolicies` struct.
+/// The `DBXTEAMPOLICIESTeamMemberPolicies` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policies governing team members.
 /// 
-@interface DbxTeamPoliciesTeamMemberPolicies : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESTeamMemberPolicies : NSObject <DBXSerializable> 
 
 /// Policies governing sharing.
-@property (nonatomic) DbxTeamPoliciesTeamSharingPolicies * _Nonnull sharing;
+@property (nonatomic) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharing;
 
 /// This describes the Enterprise Mobility Management (EMM) state for this team.
 /// This information can be used to understand if an organization is integrating
 /// with a third-party EMM vendor to further manage and apply restrictions upon
 /// the team's Dropbox usage on mobile devices. This is a new feature and in the
 /// future we'll be adding more new fields and additional documentation.
-@property (nonatomic) DbxTeamPoliciesEmmState * _Nonnull emmState;
+@property (nonatomic) DBXTEAMPOLICIESEmmState * _Nonnull emmState;
 
 /// Full constructor for the `TeamMemberPolicies` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSharing:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)sharing emmState:(DbxTeamPoliciesEmmState * _Nonnull)emmState;
+- (nonnull instancetype)initWithSharing:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharing emmState:(DBXTEAMPOLICIESEmmState * _Nonnull)emmState;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamPoliciesTeamMemberPolicies` object.
+/// `DBXTEAMPOLICIESTeamMemberPolicies` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesTeamMemberPolicies` struct.
+/// The serialization class for the `DBXTEAMPOLICIESTeamMemberPolicies` struct.
 /// 
-@interface DbxTeamPoliciesTeamMemberPoliciesSerializer : NSObject 
+@interface DBXTEAMPOLICIESTeamMemberPoliciesSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesTeamMemberPolicies` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesTeamMemberPolicies * _Nonnull)obj;
+/// `DBXTEAMPOLICIESTeamMemberPolicies` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesTeamMemberPolicies` object
+/// Returns an instantiation of the `DBXTEAMPOLICIESTeamMemberPolicies` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamPoliciesTeamMemberPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

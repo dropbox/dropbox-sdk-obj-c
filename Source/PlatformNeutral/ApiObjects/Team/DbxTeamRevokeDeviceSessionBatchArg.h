@@ -3,45 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeDeviceSessionArg;
-@class DbxTeamRevokeDeviceSessionBatchArg;
+@class DBXTEAMRevokeDeviceSessionArg;
+@class DBXTEAMRevokeDeviceSessionBatchArg;
 
 /// 
-/// The `DbxTeamRevokeDeviceSessionBatchArg` struct.
+/// The `DBXTEAMRevokeDeviceSessionBatchArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeDeviceSessionBatchArg : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeDeviceSessionBatchArg : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DbxTeamRevokeDeviceSessionArg *> * _Nonnull revokeDevices;
+@property (nonatomic) NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull revokeDevices;
 
 /// Full constructor for the `RevokeDeviceSessionBatchArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithRevokeDevices:(NSArray<DbxTeamRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
+- (nonnull instancetype)initWithRevokeDevices:(NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeDeviceSessionBatchArg` object.
+/// `DBXTEAMRevokeDeviceSessionBatchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeDeviceSessionBatchArg` struct.
+/// The serialization class for the `DBXTEAMRevokeDeviceSessionBatchArg` struct.
 /// 
-@interface DbxTeamRevokeDeviceSessionBatchArgSerializer : NSObject 
+@interface DBXTEAMRevokeDeviceSessionBatchArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeDeviceSessionBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeDeviceSessionBatchArg * _Nonnull)obj;
+/// `DBXTEAMRevokeDeviceSessionBatchArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionBatchArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeDeviceSessionBatchArg` object
+/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionBatchArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamRevokeDeviceSessionBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeDeviceSessionBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

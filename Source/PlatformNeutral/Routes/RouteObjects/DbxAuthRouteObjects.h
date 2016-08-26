@@ -4,16 +4,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxRoute;
+@class DBXRoute;
 
 /// 
 /// Stone route objects for the `Auth` namespace. Each route in the `Auth`
 /// namespace has its own static object, which contains information about the
 /// route.
 /// 
-@interface DbxAuthRouteObjects : NSObject 
+@interface DBXAUTHRouteObjects : NSObject 
 
 /// Accessor method for the `tokenRevoke` route object.
-+ (DbxRoute *)dbxAuthTokenRevoke;
++ (DBXRoute *)DBXAUTHTokenRevoke;
 
 @end

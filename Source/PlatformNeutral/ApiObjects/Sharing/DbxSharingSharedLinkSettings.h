@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRequestedVisibility;
-@class DbxSharingSharedLinkSettings;
+@class DBXSHARINGRequestedVisibility;
+@class DBXSHARINGSharedLinkSettings;
 
 /// 
-/// The `DbxSharingSharedLinkSettings` struct.
+/// The `DBXSHARINGSharedLinkSettings` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharedLinkSettings : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkSettings : NSObject <DBXSerializable> 
 
 /// The requested access for this shared link.
-@property (nonatomic) DbxSharingRequestedVisibility * _Nullable requestedVisibility;
+@property (nonatomic) DBXSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
 /// If requestedVisibility is password in RequestedVisibility this is needed to
 /// specify the password to access the link.
@@ -29,30 +29,30 @@
 
 /// Full constructor for the `SharedLinkSettings` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithRequestedVisibility:(DbxSharingRequestedVisibility * _Nullable)requestedVisibility linkPassword:(NSString * _Nullable)linkPassword expires:(NSDate * _Nullable)expires;
+- (nonnull instancetype)initWithRequestedVisibility:(DBXSHARINGRequestedVisibility * _Nullable)requestedVisibility linkPassword:(NSString * _Nullable)linkPassword expires:(NSDate * _Nullable)expires;
 
 /// Convenience constructor for the `SharedLinkSettings` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedLinkSettings` object.
+/// `DBXSHARINGSharedLinkSettings` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkSettings` struct.
+/// The serialization class for the `DBXSHARINGSharedLinkSettings` struct.
 /// 
-@interface DbxSharingSharedLinkSettingsSerializer : NSObject 
+@interface DBXSHARINGSharedLinkSettingsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkSettings` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkSettings * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkSettings` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkSettings * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkSettings` object from a
+/// Returns an instantiation of the `DBXSHARINGSharedLinkSettings` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharedLinkSettings * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkSettings * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

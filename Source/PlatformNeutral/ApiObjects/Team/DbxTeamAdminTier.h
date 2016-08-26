@@ -3,41 +3,40 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamAdminTier;
+@class DBXTEAMAdminTier;
 
 /// 
-/// The `DbxTeamAdminTier` union.
+/// The `DBXTEAMAdminTier` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Describes which team-related admin permissions a user has.
 /// 
-@interface DbxTeamAdminTier : NSObject <DbxSerializable> 
+@interface DBXTEAMAdminTier : NSObject <DBXSerializable> 
 
-/// The `TeamAdminTierTag` enum type represents the possible tag states that the
-/// `DbxTeamAdminTier` union can exist in.
-typedef NS_ENUM(NSInteger, TeamAdminTierTag) {
+/// The `DBXTEAMAdminTierTag` enum type represents the possible tag states that
+/// the `DBXTEAMAdminTier` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
     /// User is an administrator of the team - has all permissions.
-    TeamAdminTierTeamAdmin,
+    DBXTEAMAdminTierTeamAdmin,
 
     /// User can do most user provisioning, de-provisioning and management.
-    TeamAdminTierUserManagementAdmin,
+    DBXTEAMAdminTierUserManagementAdmin,
 
     /// User can do a limited set of common support tasks for existing users.
-    TeamAdminTierSupportAdmin,
+    DBXTEAMAdminTierSupportAdmin,
 
     /// User is not an admin of the team.
-    TeamAdminTierMemberOnly,
+    DBXTEAMAdminTierMemberOnly,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamAdminTierTag tag;
-
+@property (nonatomic) DBXTEAMAdminTierTag tag;
 
 /// Initializes union class with tag state of `TeamAdmin`.
 - (nonnull instancetype)initWithTeamAdmin;
@@ -67,23 +66,23 @@ typedef NS_ENUM(NSInteger, TeamAdminTierTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamAdminTier` object.
+/// Returns a human-readable representation of the `DBXTEAMAdminTier` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamAdminTier` union.
+/// The serialization class for the `DBXTEAMAdminTier` union.
 /// 
-@interface DbxTeamAdminTierSerializer : NSObject 
+@interface DBXTEAMAdminTierSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamAdminTier` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamAdminTier * _Nonnull)obj;
+/// `DBXTEAMAdminTier` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMAdminTier * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamAdminTier` object from a
+/// Returns an instantiation of the `DBXTEAMAdminTier` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamAdminTier * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMAdminTier * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

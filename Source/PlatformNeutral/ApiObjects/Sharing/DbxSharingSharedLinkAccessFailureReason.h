@@ -3,46 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedLinkAccessFailureReason;
+@class DBXSHARINGSharedLinkAccessFailureReason;
 
 /// 
-/// The `DbxSharingSharedLinkAccessFailureReason` union.
+/// The `DBXSHARINGSharedLinkAccessFailureReason` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharedLinkAccessFailureReason : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkAccessFailureReason : NSObject <DBXSerializable> 
 
-/// The `SharingSharedLinkAccessFailureReasonTag` enum type represents the
-/// possible tag states that the `DbxSharingSharedLinkAccessFailureReason` union
+/// The `DBXSHARINGSharedLinkAccessFailureReasonTag` enum type represents the
+/// possible tag states that the `DBXSHARINGSharedLinkAccessFailureReason` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedLinkAccessFailureReasonTag) {
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
     /// User is not logged in.
-    SharingSharedLinkAccessFailureReasonLoginRequired,
+    DBXSHARINGSharedLinkAccessFailureReasonLoginRequired,
 
     /// User's email is not verified.
-    SharingSharedLinkAccessFailureReasonEmailVerifyRequired,
+    DBXSHARINGSharedLinkAccessFailureReasonEmailVerifyRequired,
 
     /// The link is password protected.
-    SharingSharedLinkAccessFailureReasonPasswordRequired,
+    DBXSHARINGSharedLinkAccessFailureReasonPasswordRequired,
 
     /// Access is allowed for team members only.
-    SharingSharedLinkAccessFailureReasonTeamOnly,
+    DBXSHARINGSharedLinkAccessFailureReasonTeamOnly,
 
     /// Access is allowed for the shared link's owner only.
-    SharingSharedLinkAccessFailureReasonOwnerOnly,
+    DBXSHARINGSharedLinkAccessFailureReasonOwnerOnly,
 
     /// (no description).
-    SharingSharedLinkAccessFailureReasonOther,
+    DBXSHARINGSharedLinkAccessFailureReasonOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedLinkAccessFailureReasonTag tag;
-
+@property (nonatomic) DBXSHARINGSharedLinkAccessFailureReasonTag tag;
 
 /// Initializes union class with tag state of `LoginRequired`.
 - (nonnull instancetype)initWithLoginRequired;
@@ -85,24 +84,24 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkAccessFailureReasonTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedLinkAccessFailureReason` object.
+/// `DBXSHARINGSharedLinkAccessFailureReason` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkAccessFailureReason`
+/// The serialization class for the `DBXSHARINGSharedLinkAccessFailureReason`
 /// union.
 /// 
-@interface DbxSharingSharedLinkAccessFailureReasonSerializer : NSObject 
+@interface DBXSHARINGSharedLinkAccessFailureReasonSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkAccessFailureReason` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkAccessFailureReason * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkAccessFailureReason` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkAccessFailureReason * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkAccessFailureReason`
+/// Returns an instantiation of the `DBXSHARINGSharedLinkAccessFailureReason`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingSharedLinkAccessFailureReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkAccessFailureReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

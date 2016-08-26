@@ -3,28 +3,28 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersAccount;
-@class DbxUsersName;
+@class DBXUSERSAccount;
+@class DBXUSERSName;
 
 /// 
-/// The `DbxUsersAccount` struct.
+/// The `DBXUSERSAccount` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The amount of detail revealed about an account depends on the user being
 /// queried and the user making the query.
 /// 
-@interface DbxUsersAccount : NSObject <DbxSerializable> 
+@interface DBXUSERSAccount : NSObject <DBXSerializable> 
 
 /// The user's unique Dropbox ID.
 @property (nonatomic, copy) NSString * _Nonnull accountId;
 
 /// Details of a user's name.
-@property (nonatomic) DbxUsersName * _Nonnull name;
+@property (nonatomic) DBXUSERSName * _Nonnull name;
 
 /// The user's e-mail address. Do not rely on this without checking the
 /// emailVerified field. Even then, it's possible that the user has since lost
@@ -41,29 +41,29 @@
 @property (nonatomic, copy) NSNumber * _Nonnull disabled;
 
 /// Full constructor for the `Account` struct (exposes all instance variables).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
 
 /// Convenience constructor for the `Account` struct (exposes only non-nullable
 /// instance variables with no default value).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled;
 
-/// Returns a human-readable representation of the `DbxUsersAccount` object.
+/// Returns a human-readable representation of the `DBXUSERSAccount` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersAccount` struct.
+/// The serialization class for the `DBXUSERSAccount` struct.
 /// 
-@interface DbxUsersAccountSerializer : NSObject 
+@interface DBXUSERSAccountSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DbxUsersAccount`
+/// Returns a json-compatible dictionary representation of the `DBXUSERSAccount`
 /// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersAccount * _Nonnull)obj;
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSAccount * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersAccount` object from a
+/// Returns an instantiation of the `DBXUSERSAccount` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

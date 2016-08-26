@@ -3,26 +3,26 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesPropertyGroupUpdate;
-@class DbxPropertiesPropertyField;
+@class DBXFILESPropertyGroupUpdate;
+@class DBXPROPERTIESPropertyField;
 
 /// 
-/// The `DbxFilesPropertyGroupUpdate` struct.
+/// The `DBXFILESPropertyGroupUpdate` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesPropertyGroupUpdate : NSObject <DbxSerializable> 
+@interface DBXFILESPropertyGroupUpdate : NSObject <DBXSerializable> 
 
 /// A unique identifier for a property template.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
 
 /// List of property fields to update if the field already exists. If the field
 /// doesn't exist, add the field to the property group.
-@property (nonatomic) NSArray<DbxPropertiesPropertyField *> * _Nullable addOrUpdateFields;
+@property (nonatomic) NSArray<DBXPROPERTIESPropertyField *> * _Nullable addOrUpdateFields;
 
 /// List of property field names to remove from property group if the field
 /// exists.
@@ -30,13 +30,13 @@
 
 /// Full constructor for the `PropertyGroupUpdate` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId addOrUpdateFields:(NSArray<DbxPropertiesPropertyField *> * _Nullable)addOrUpdateFields removeFields:(NSArray<NSString *> * _Nullable)removeFields;
+- (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId addOrUpdateFields:(NSArray<DBXPROPERTIESPropertyField *> * _Nullable)addOrUpdateFields removeFields:(NSArray<NSString *> * _Nullable)removeFields;
 
 /// Convenience constructor for the `PropertyGroupUpdate` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
-/// Returns a human-readable representation of the `DbxFilesPropertyGroupUpdate`
+/// Returns a human-readable representation of the `DBXFILESPropertyGroupUpdate`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -44,16 +44,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesPropertyGroupUpdate` struct.
+/// The serialization class for the `DBXFILESPropertyGroupUpdate` struct.
 /// 
-@interface DbxFilesPropertyGroupUpdateSerializer : NSObject 
+@interface DBXFILESPropertyGroupUpdateSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesPropertyGroupUpdate` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesPropertyGroupUpdate * _Nonnull)obj;
+/// `DBXFILESPropertyGroupUpdate` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPropertyGroupUpdate * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesPropertyGroupUpdate` object from a
+/// Returns an instantiation of the `DBXFILESPropertyGroupUpdate` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesPropertyGroupUpdate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESPropertyGroupUpdate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

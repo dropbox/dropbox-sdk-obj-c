@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFolderAction;
-@class DbxSharingListFoldersArgs;
+@class DBXSHARINGFolderAction;
+@class DBXSHARINGListFoldersArgs;
 
 /// 
-/// The `DbxSharingListFoldersArgs` struct.
+/// The `DBXSHARINGListFoldersArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFoldersArgs : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFoldersArgs : NSObject <DBXSerializable> 
 
 /// The maximum number of results to return per request.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
@@ -23,17 +23,17 @@
 /// This is a list indicating whether each returned folder data entry will
 /// include a boolean field allow in FolderPermission that describes whether the
 /// current user can perform the `FolderAction` on the folder.
-@property (nonatomic) NSArray<DbxSharingFolderAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
 
 /// Full constructor for the `ListFoldersArgs` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
+- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DBXSHARINGFolderAction *> * _Nullable)actions;
 
 /// Convenience constructor for the `ListFoldersArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxSharingListFoldersArgs`
+/// Returns a human-readable representation of the `DBXSHARINGListFoldersArgs`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -41,16 +41,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingListFoldersArgs` struct.
+/// The serialization class for the `DBXSHARINGListFoldersArgs` struct.
 /// 
-@interface DbxSharingListFoldersArgsSerializer : NSObject 
+@interface DBXSHARINGListFoldersArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFoldersArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFoldersArgs * _Nonnull)obj;
+/// `DBXSHARINGListFoldersArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFoldersArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFoldersArgs` object from a
+/// Returns an instantiation of the `DBXSHARINGListFoldersArgs` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListFoldersArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFoldersArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

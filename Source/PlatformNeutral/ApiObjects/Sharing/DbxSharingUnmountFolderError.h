@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedFolderAccessError;
-@class DbxSharingUnmountFolderError;
+@class DBXSHARINGSharedFolderAccessError;
+@class DBXSHARINGUnmountFolderError;
 
 /// 
-/// The `DbxSharingUnmountFolderError` union.
+/// The `DBXSHARINGUnmountFolderError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingUnmountFolderError : NSObject <DbxSerializable> 
+@interface DBXSHARINGUnmountFolderError : NSObject <DBXSerializable> 
 
-/// The `SharingUnmountFolderErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingUnmountFolderError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingUnmountFolderErrorTag) {
+/// The `DBXSHARINGUnmountFolderErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGUnmountFolderError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGUnmountFolderErrorTag) {
     /// (no description).
-    SharingUnmountFolderErrorAccessError,
+    DBXSHARINGUnmountFolderErrorAccessError,
 
     /// The current user does not have permission to perform this action.
-    SharingUnmountFolderErrorNoPermission,
+    DBXSHARINGUnmountFolderErrorNoPermission,
 
     /// The shared folder can't be unmounted. One example where this can occur
     /// is when the shared folder's parent folder is also a shared folder that
     /// resides in the current user's Dropbox.
-    SharingUnmountFolderErrorNotUnmountable,
+    DBXSHARINGUnmountFolderErrorNotUnmountable,
 
     /// (no description).
-    SharingUnmountFolderErrorOther,
+    DBXSHARINGUnmountFolderErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingUnmountFolderErrorTag tag;
+@property (nonatomic) DBXSHARINGUnmountFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
@@ -71,23 +70,23 @@ typedef NS_ENUM(NSInteger, SharingUnmountFolderErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingUnmountFolderError` object.
+/// `DBXSHARINGUnmountFolderError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingUnmountFolderError` union.
+/// The serialization class for the `DBXSHARINGUnmountFolderError` union.
 /// 
-@interface DbxSharingUnmountFolderErrorSerializer : NSObject 
+@interface DBXSHARINGUnmountFolderErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUnmountFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUnmountFolderError * _Nonnull)obj;
+/// `DBXSHARINGUnmountFolderError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnmountFolderError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUnmountFolderError` object from a
+/// Returns an instantiation of the `DBXSHARINGUnmountFolderError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingUnmountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUnmountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

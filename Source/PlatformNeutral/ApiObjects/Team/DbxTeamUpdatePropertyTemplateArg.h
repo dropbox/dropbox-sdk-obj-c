@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesPropertyFieldTemplate;
-@class DbxTeamUpdatePropertyTemplateArg;
+@class DBXPROPERTIESPropertyFieldTemplate;
+@class DBXTEAMUpdatePropertyTemplateArg;
 
 /// 
-/// The `DbxTeamUpdatePropertyTemplateArg` struct.
+/// The `DBXTEAMUpdatePropertyTemplateArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamUpdatePropertyTemplateArg : NSObject <DbxSerializable> 
+@interface DBXTEAMUpdatePropertyTemplateArg : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by propertiesTemplateAdd.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
@@ -30,34 +30,34 @@
 
 /// This is a list of custom properties to add to the property template. There
 /// can be up to 64 properties in a single property template.
-@property (nonatomic) NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nullable addFields;
+@property (nonatomic) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable addFields;
 
 /// Full constructor for the `UpdatePropertyTemplateArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nullable)addFields;
+- (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable)addFields;
 
 /// Convenience constructor for the `UpdatePropertyTemplateArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamUpdatePropertyTemplateArg` object.
+/// `DBXTEAMUpdatePropertyTemplateArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamUpdatePropertyTemplateArg` struct.
+/// The serialization class for the `DBXTEAMUpdatePropertyTemplateArg` struct.
 /// 
-@interface DbxTeamUpdatePropertyTemplateArgSerializer : NSObject 
+@interface DBXTEAMUpdatePropertyTemplateArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamUpdatePropertyTemplateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamUpdatePropertyTemplateArg * _Nonnull)obj;
+/// `DBXTEAMUpdatePropertyTemplateArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUpdatePropertyTemplateArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamUpdatePropertyTemplateArg` object
+/// Returns an instantiation of the `DBXTEAMUpdatePropertyTemplateArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamUpdatePropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMUpdatePropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,37 +3,36 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGetMetadataError;
-@class DbxFilesLookupError;
+@class DBXFILESGetMetadataError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesGetMetadataError` union.
+/// The `DBXFILESGetMetadataError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesGetMetadataError : NSObject <DbxSerializable> 
+@interface DBXFILESGetMetadataError : NSObject <DBXSerializable> 
 
-/// The `FilesGetMetadataErrorTag` enum type represents the possible tag states
-/// that the `DbxFilesGetMetadataError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesGetMetadataErrorTag) {
+/// The `DBXFILESGetMetadataErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESGetMetadataError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESGetMetadataErrorTag) {
     /// (no description).
-    FilesGetMetadataErrorPath,
+    DBXFILESGetMetadataErrorPath,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesGetMetadataErrorTag tag;
+@property (nonatomic) DBXFILESGetMetadataErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
@@ -41,7 +40,7 @@ typedef NS_ENUM(NSInteger, FilesGetMetadataErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesGetMetadataError`
+/// Returns a human-readable representation of the `DBXFILESGetMetadataError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -49,16 +48,16 @@ typedef NS_ENUM(NSInteger, FilesGetMetadataErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesGetMetadataError` union.
+/// The serialization class for the `DBXFILESGetMetadataError` union.
 /// 
-@interface DbxFilesGetMetadataErrorSerializer : NSObject 
+@interface DBXFILESGetMetadataErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGetMetadataError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGetMetadataError * _Nonnull)obj;
+/// `DBXFILESGetMetadataError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetMetadataError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGetMetadataError` object from a
+/// Returns an instantiation of the `DBXFILESGetMetadataError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesGetMetadataError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGetMetadataError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,29 +3,29 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamMembersDeactivateArg.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMMembersDeactivateArg.h"
 
-@class DbxTeamMembersRemoveArg;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMMembersRemoveArg;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamMembersRemoveArg` struct.
+/// The `DBXTEAMMembersRemoveArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersRemoveArg : DbxTeamMembersDeactivateArg <DbxSerializable> 
+@interface DBXTEAMMembersRemoveArg : DBXTEAMMembersDeactivateArg <DBXSerializable> 
 
 /// If provided, files from the deleted member account will be transferred to
 /// this user.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nullable transferDestId;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nullable transferDestId;
 
 /// If provided, errors during the transfer process will be sent via email to
 /// this user. If the transfer_dest_id argument was provided, then this argument
 /// must be provided as well.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nullable transferAdminId;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nullable transferAdminId;
 
 /// Downgrade the member to a Basic account. The user will retain the email
 /// address associated with their Dropbox  account and data in their account
@@ -34,13 +34,13 @@
 
 /// Full constructor for the `MembersRemoveArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DbxTeamUserSelectorArg * _Nullable)transferDestId transferAdminId:(DbxTeamUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DBXTEAMUserSelectorArg * _Nullable)transferDestId transferAdminId:(DBXTEAMUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount;
 
 /// Convenience constructor for the `MembersRemoveArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
-/// Returns a human-readable representation of the `DbxTeamMembersRemoveArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersRemoveArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -48,16 +48,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersRemoveArg` struct.
+/// The serialization class for the `DBXTEAMMembersRemoveArg` struct.
 /// 
-@interface DbxTeamMembersRemoveArgSerializer : NSObject 
+@interface DBXTEAMMembersRemoveArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersRemoveArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersRemoveArg * _Nonnull)obj;
+/// `DBXTEAMMembersRemoveArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersRemoveArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersRemoveArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersRemoveArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersRemoveArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersRemoveArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,34 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupMemberSelector;
-@class DbxTeamGroupSelector;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMGroupMemberSelector;
+@class DBXTEAMGroupSelector;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamGroupMemberSelector` struct.
+/// The `DBXTEAMGroupMemberSelector` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Argument for selecting a group and a single user.
 /// 
-@interface DbxTeamGroupMemberSelector : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupMemberSelector : NSObject <DBXSerializable> 
 
 /// Specify a group.
-@property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
 
 /// Identity of a user that is a member of group.
-@property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Full constructor for the `GroupMemberSelector` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group user:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
-/// Returns a human-readable representation of the `DbxTeamGroupMemberSelector`
+/// Returns a human-readable representation of the `DBXTEAMGroupMemberSelector`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -38,16 +38,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMemberSelector` struct.
+/// The serialization class for the `DBXTEAMGroupMemberSelector` struct.
 /// 
-@interface DbxTeamGroupMemberSelectorSerializer : NSObject 
+@interface DBXTEAMGroupMemberSelectorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMemberSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMemberSelector * _Nonnull)obj;
+/// `DBXTEAMGroupMemberSelector` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSelector * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMemberSelector` object from a
+/// Returns an instantiation of the `DBXTEAMGroupMemberSelector` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,56 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersSetProfileError;
+@class DBXTEAMMembersSetProfileError;
 
 /// 
-/// The `DbxTeamMembersSetProfileError` union.
+/// The `DBXTEAMMembersSetProfileError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersSetProfileError : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersSetProfileError : NSObject <DBXSerializable> 
 
-/// The `TeamMembersSetProfileErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamMembersSetProfileError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMembersSetProfileErrorTag) {
+/// The `DBXTEAMMembersSetProfileErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMMembersSetProfileError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMembersSetProfileErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
-    TeamMembersSetProfileErrorUserNotFound,
+    DBXTEAMMembersSetProfileErrorUserNotFound,
 
     /// The user is not a member of the team.
-    TeamMembersSetProfileErrorUserNotInTeam,
+    DBXTEAMMembersSetProfileErrorUserNotInTeam,
 
     /// It is unsafe to use both external_id and new_external_id
-    TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe,
+    DBXTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe,
 
     /// None of new_email, new_given_name, new_surname, or new_external_id are
     /// specified
-    TeamMembersSetProfileErrorNoNewDataSpecified,
+    DBXTEAMMembersSetProfileErrorNoNewDataSpecified,
 
     /// Email is already reserved for another user.
-    TeamMembersSetProfileErrorEmailReservedForOtherUser,
+    DBXTEAMMembersSetProfileErrorEmailReservedForOtherUser,
 
     /// The external ID is already in use by another team member.
-    TeamMembersSetProfileErrorExternalIdUsedByOtherUser,
+    DBXTEAMMembersSetProfileErrorExternalIdUsedByOtherUser,
 
     /// Setting profile disallowed
-    TeamMembersSetProfileErrorSetProfileDisallowed,
+    DBXTEAMMembersSetProfileErrorSetProfileDisallowed,
 
     /// Parameter new_email cannot be empty.
-    TeamMembersSetProfileErrorParamCannotBeEmpty,
+    DBXTEAMMembersSetProfileErrorParamCannotBeEmpty,
 
     /// (no description).
-    TeamMembersSetProfileErrorOther,
+    DBXTEAMMembersSetProfileErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMembersSetProfileErrorTag tag;
-
+@property (nonatomic) DBXTEAMMembersSetProfileErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -119,23 +118,23 @@ typedef NS_ENUM(NSInteger, TeamMembersSetProfileErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamMembersSetProfileError` object.
+/// `DBXTEAMMembersSetProfileError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersSetProfileError` union.
+/// The serialization class for the `DBXTEAMMembersSetProfileError` union.
 /// 
-@interface DbxTeamMembersSetProfileErrorSerializer : NSObject 
+@interface DBXTEAMMembersSetProfileErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersSetProfileError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersSetProfileError * _Nonnull)obj;
+/// `DBXTEAMMembersSetProfileError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetProfileError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersSetProfileError` object from
+/// Returns an instantiation of the `DBXTEAMMembersSetProfileError` object from
 /// a json-compatible dictionary representation.
-+ (DbxTeamMembersSetProfileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersSetProfileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

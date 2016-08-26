@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionOffsetError;
+@class DBXFILESUploadSessionOffsetError;
 
 /// 
-/// The `DbxFilesUploadSessionOffsetError` struct.
+/// The `DBXFILESUploadSessionOffsetError` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionOffsetError : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionOffsetError : NSObject <DBXSerializable> 
 
 /// The offset up to which data has been collected.
 @property (nonatomic, copy) NSNumber * _Nonnull correctOffset;
@@ -24,23 +24,23 @@
 - (nonnull instancetype)initWithCorrectOffset:(NSNumber * _Nonnull)correctOffset;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionOffsetError` object.
+/// `DBXFILESUploadSessionOffsetError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionOffsetError` struct.
+/// The serialization class for the `DBXFILESUploadSessionOffsetError` struct.
 /// 
-@interface DbxFilesUploadSessionOffsetErrorSerializer : NSObject 
+@interface DBXFILESUploadSessionOffsetErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionOffsetError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionOffsetError * _Nonnull)obj;
+/// `DBXFILESUploadSessionOffsetError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionOffsetError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionOffsetError` object
+/// Returns an instantiation of the `DBXFILESUploadSessionOffsetError` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionOffsetError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionOffsetError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

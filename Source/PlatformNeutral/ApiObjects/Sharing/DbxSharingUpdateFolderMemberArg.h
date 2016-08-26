@@ -3,53 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAccessLevel;
-@class DbxSharingMemberSelector;
-@class DbxSharingUpdateFolderMemberArg;
+@class DBXSHARINGAccessLevel;
+@class DBXSHARINGMemberSelector;
+@class DBXSHARINGUpdateFolderMemberArg;
 
 /// 
-/// The `DbxSharingUpdateFolderMemberArg` struct.
+/// The `DBXSHARINGUpdateFolderMemberArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingUpdateFolderMemberArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGUpdateFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
 
 /// The member of the shared folder to update.  Only the dropboxId in
 /// MemberSelector may be set at this time.
-@property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The new access level for member. owner in AccessLevel is disallowed.
-@property (nonatomic) DbxSharingAccessLevel * _Nonnull accessLevel;
+@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// Full constructor for the `UpdateFolderMemberArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel;
+- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingUpdateFolderMemberArg` object.
+/// `DBXSHARINGUpdateFolderMemberArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingUpdateFolderMemberArg` struct.
+/// The serialization class for the `DBXSHARINGUpdateFolderMemberArg` struct.
 /// 
-@interface DbxSharingUpdateFolderMemberArgSerializer : NSObject 
+@interface DBXSHARINGUpdateFolderMemberArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUpdateFolderMemberArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUpdateFolderMemberArg * _Nonnull)obj;
+/// `DBXSHARINGUpdateFolderMemberArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderMemberArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUpdateFolderMemberArg` object
+/// Returns an instantiation of the `DBXSHARINGUpdateFolderMemberArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingUpdateFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUpdateFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

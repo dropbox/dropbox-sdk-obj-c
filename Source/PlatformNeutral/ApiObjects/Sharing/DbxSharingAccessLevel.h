@@ -3,47 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAccessLevel;
+@class DBXSHARINGAccessLevel;
 
 /// 
-/// The `DbxSharingAccessLevel` union.
+/// The `DBXSHARINGAccessLevel` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Defines the access levels for collaborators.
 /// 
-@interface DbxSharingAccessLevel : NSObject <DbxSerializable> 
+@interface DBXSHARINGAccessLevel : NSObject <DBXSerializable> 
 
-/// The `SharingAccessLevelTag` enum type represents the possible tag states
-/// that the `DbxSharingAccessLevel` union can exist in.
-typedef NS_ENUM(NSInteger, SharingAccessLevelTag) {
+/// The `DBXSHARINGAccessLevelTag` enum type represents the possible tag states
+/// that the `DBXSHARINGAccessLevel` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
     /// The collaborator is the owner of the shared folder. Owners can view and
     /// edit the shared folder as well as set the folder's policies using
     /// updateFolderPolicy.
-    SharingAccessLevelOwner,
+    DBXSHARINGAccessLevelOwner,
 
     /// The collaborator can both view and edit the shared folder.
-    SharingAccessLevelEditor,
+    DBXSHARINGAccessLevelEditor,
 
     /// The collaborator can only view the shared folder.
-    SharingAccessLevelViewer,
+    DBXSHARINGAccessLevelViewer,
 
     /// The collaborator can only view the shared folder and does not have any
     /// access to comments.
-    SharingAccessLevelViewerNoComment,
+    DBXSHARINGAccessLevelViewerNoComment,
 
     /// (no description).
-    SharingAccessLevelOther,
+    DBXSHARINGAccessLevelOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingAccessLevelTag tag;
-
+@property (nonatomic) DBXSHARINGAccessLevelTag tag;
 
 /// Initializes union class with tag state of `Owner`.
 - (nonnull instancetype)initWithOwner;
@@ -78,7 +77,7 @@ typedef NS_ENUM(NSInteger, SharingAccessLevelTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingAccessLevel`
+/// Returns a human-readable representation of the `DBXSHARINGAccessLevel`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -86,16 +85,16 @@ typedef NS_ENUM(NSInteger, SharingAccessLevelTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingAccessLevel` union.
+/// The serialization class for the `DBXSHARINGAccessLevel` union.
 /// 
-@interface DbxSharingAccessLevelSerializer : NSObject 
+@interface DBXSHARINGAccessLevelSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAccessLevel` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAccessLevel * _Nonnull)obj;
+/// `DBXSHARINGAccessLevel` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAccessLevel * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAccessLevel` object from a
+/// Returns an instantiation of the `DBXSHARINGAccessLevel` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingAccessLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAccessLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

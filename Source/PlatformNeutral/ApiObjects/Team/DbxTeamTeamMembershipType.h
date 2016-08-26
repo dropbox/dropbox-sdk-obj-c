@@ -3,35 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamTeamMembershipType;
+@class DBXTEAMTeamMembershipType;
 
 /// 
-/// The `DbxTeamTeamMembershipType` union.
+/// The `DBXTEAMTeamMembershipType` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamTeamMembershipType : NSObject <DbxSerializable> 
+@interface DBXTEAMTeamMembershipType : NSObject <DBXSerializable> 
 
-/// The `TeamTeamMembershipTypeTag` enum type represents the possible tag states
-/// that the `DbxTeamTeamMembershipType` union can exist in.
-typedef NS_ENUM(NSInteger, TeamTeamMembershipTypeTag) {
+/// The `DBXTEAMTeamMembershipTypeTag` enum type represents the possible tag
+/// states that the `DBXTEAMTeamMembershipType` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMTeamMembershipTypeTag) {
     /// User uses a license and has full access to team resources like the
     /// shared quota.
-    TeamTeamMembershipTypeFull,
+    DBXTEAMTeamMembershipTypeFull,
 
     /// User does not have access to the shared quota and team admins have
     /// restricted administrative control.
-    TeamTeamMembershipTypeLimited,
+    DBXTEAMTeamMembershipTypeLimited,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamTeamMembershipTypeTag tag;
-
+@property (nonatomic) DBXTEAMTeamMembershipTypeTag tag;
 
 /// Initializes union class with tag state of `Full`.
 - (nonnull instancetype)initWithFull;
@@ -48,7 +47,7 @@ typedef NS_ENUM(NSInteger, TeamTeamMembershipTypeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamTeamMembershipType`
+/// Returns a human-readable representation of the `DBXTEAMTeamMembershipType`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -56,16 +55,16 @@ typedef NS_ENUM(NSInteger, TeamTeamMembershipTypeTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamTeamMembershipType` union.
+/// The serialization class for the `DBXTEAMTeamMembershipType` union.
 /// 
-@interface DbxTeamTeamMembershipTypeSerializer : NSObject 
+@interface DBXTEAMTeamMembershipTypeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamTeamMembershipType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMembershipType * _Nonnull)obj;
+/// `DBXTEAMTeamMembershipType` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMembershipType * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamTeamMembershipType` object from a
+/// Returns an instantiation of the `DBXTEAMTeamMembershipType` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamTeamMembershipType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMTeamMembershipType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

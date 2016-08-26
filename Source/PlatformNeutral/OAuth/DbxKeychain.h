@@ -4,17 +4,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DbxKeychain : NSObject
+@interface DBXKeychain : NSObject
 
-+ (BOOL)setWithString:(NSString *)key value:(NSString *)value;
-
-+ (BOOL)setWithData:(NSString *)key value:(NSData *)value;
-
-+ (NSData *)getAsData:(NSString *)key;
-
-+ (NSArray<NSString *> *)getAll;
++ (BOOL)set:(NSString *)key value:(NSString *)value;
 
 + (NSString *)get:(NSString *)key;
+
++ (NSArray<NSString *> *)getAll;
 
 + (BOOL)delete:(NSString *)key;
 

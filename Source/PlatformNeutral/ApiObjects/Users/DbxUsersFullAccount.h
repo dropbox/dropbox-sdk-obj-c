@@ -3,24 +3,24 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxUsersAccount.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXUSERSAccount.h"
 
-@class DbxUsersAccountType;
-@class DbxUsersFullAccount;
-@class DbxUsersFullTeam;
-@class DbxUsersName;
+@class DBXUSERSAccountType;
+@class DBXUSERSFullAccount;
+@class DBXUSERSFullTeam;
+@class DBXUSERSName;
 
 /// 
-/// The `DbxUsersFullAccount` struct.
+/// The `DBXUSERSFullAccount` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Detailed information about the current user's account.
 /// 
-@interface DbxUsersFullAccount : DbxUsersAccount <DbxSerializable> 
+@interface DBXUSERSFullAccount : DBXUSERSAccount <DBXSerializable> 
 
 /// The user's two-letter country code, if available. Country codes are based on
 /// ISO 3166-1 http://en.wikipedia.org/wiki/ISO_3166-1.
@@ -34,7 +34,7 @@
 @property (nonatomic, copy) NSString * _Nonnull referralLink;
 
 /// If this account is a member of a team, information about that team.
-@property (nonatomic) DbxUsersFullTeam * _Nullable team;
+@property (nonatomic) DBXUSERSFullTeam * _Nullable team;
 
 /// This account's unique team member id. This field will only be present if
 /// team is present.
@@ -46,33 +46,33 @@
 @property (nonatomic, copy) NSNumber * _Nonnull isPaired;
 
 /// What type of account this user has.
-@property (nonatomic) DbxUsersAccountType * _Nonnull accountType;
+@property (nonatomic) DBXUSERSAccountType * _Nonnull accountType;
 
 /// Full constructor for the `FullAccount` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DbxUsersAccountType * _Nonnull)accountType profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl country:(NSString * _Nullable)country team:(DbxUsersFullTeam * _Nullable)team teamMemberId:(NSString * _Nullable)teamMemberId;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DBXUSERSAccountType * _Nonnull)accountType profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl country:(NSString * _Nullable)country team:(DBXUSERSFullTeam * _Nullable)team teamMemberId:(NSString * _Nullable)teamMemberId;
 
 /// Convenience constructor for the `FullAccount` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DbxUsersAccountType * _Nonnull)accountType;
+- (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DBXUSERSAccountType * _Nonnull)accountType;
 
-/// Returns a human-readable representation of the `DbxUsersFullAccount` object.
+/// Returns a human-readable representation of the `DBXUSERSFullAccount` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersFullAccount` struct.
+/// The serialization class for the `DBXUSERSFullAccount` struct.
 /// 
-@interface DbxUsersFullAccountSerializer : NSObject 
+@interface DBXUSERSFullAccountSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersFullAccount` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersFullAccount * _Nonnull)obj;
+/// `DBXUSERSFullAccount` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullAccount * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersFullAccount` object from a
+/// Returns an instantiation of the `DBXUSERSFullAccount` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersFullAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSFullAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

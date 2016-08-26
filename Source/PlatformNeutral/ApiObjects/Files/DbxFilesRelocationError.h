@@ -3,72 +3,71 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookupError;
-@class DbxFilesRelocationError;
-@class DbxFilesWriteError;
+@class DBXFILESLookupError;
+@class DBXFILESRelocationError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesRelocationError` union.
+/// The `DBXFILESRelocationError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesRelocationError : NSObject <DbxSerializable> 
+@interface DBXFILESRelocationError : NSObject <DBXSerializable> 
 
-/// The `FilesRelocationErrorTag` enum type represents the possible tag states
-/// that the `DbxFilesRelocationError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesRelocationErrorTag) {
+/// The `DBXFILESRelocationErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESRelocationError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESRelocationErrorTag) {
     /// (no description).
-    FilesRelocationErrorFromLookup,
-
-    /// (no description).
-    FilesRelocationErrorFromWrite,
+    DBXFILESRelocationErrorFromLookup,
 
     /// (no description).
-    FilesRelocationErrorTo,
+    DBXFILESRelocationErrorFromWrite,
+
+    /// (no description).
+    DBXFILESRelocationErrorTo,
 
     /// Shared folders can't be copied.
-    FilesRelocationErrorCantCopySharedFolder,
+    DBXFILESRelocationErrorCantCopySharedFolder,
 
     /// Your move operation would result in nested shared folders.  This is not
     /// allowed.
-    FilesRelocationErrorCantNestSharedFolder,
+    DBXFILESRelocationErrorCantNestSharedFolder,
 
     /// You cannot move a folder into itself.
-    FilesRelocationErrorCantMoveFolderIntoItself,
+    DBXFILESRelocationErrorCantMoveFolderIntoItself,
 
     /// The operation would involve more than 10,000 files and folders.
-    FilesRelocationErrorTooManyFiles,
+    DBXFILESRelocationErrorTooManyFiles,
 
     /// (no description).
-    FilesRelocationErrorOther,
+    DBXFILESRelocationErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesRelocationErrorTag tag;
+@property (nonatomic) DBXFILESRelocationErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull fromLookup;
+@property (nonatomic) DBXFILESLookupError * _Nonnull fromLookup;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull fromWrite;
+@property (nonatomic) DBXFILESWriteError * _Nonnull fromWrite;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull to;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull to;
 
 /// Initializes union class with tag state of `FromLookup`.
-- (nonnull instancetype)initWithFromLookup:(DbxFilesLookupError * _Nonnull)fromLookup;
+- (nonnull instancetype)initWithFromLookup:(DBXFILESLookupError * _Nonnull)fromLookup;
 
 /// Initializes union class with tag state of `FromWrite`.
-- (nonnull instancetype)initWithFromWrite:(DbxFilesWriteError * _Nonnull)fromWrite;
+- (nonnull instancetype)initWithFromWrite:(DBXFILESWriteError * _Nonnull)fromWrite;
 
 /// Initializes union class with tag state of `To`.
-- (nonnull instancetype)initWithTo:(DbxFilesWriteError * _Nonnull)to;
+- (nonnull instancetype)initWithTo:(DBXFILESWriteError * _Nonnull)to;
 
 /// Initializes union class with tag state of `CantCopySharedFolder`.
 - (nonnull instancetype)initWithCantCopySharedFolder;
@@ -115,7 +114,7 @@ typedef NS_ENUM(NSInteger, FilesRelocationErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesRelocationError`
+/// Returns a human-readable representation of the `DBXFILESRelocationError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -123,16 +122,16 @@ typedef NS_ENUM(NSInteger, FilesRelocationErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesRelocationError` union.
+/// The serialization class for the `DBXFILESRelocationError` union.
 /// 
-@interface DbxFilesRelocationErrorSerializer : NSObject 
+@interface DBXFILESRelocationErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesRelocationError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesRelocationError * _Nonnull)obj;
+/// `DBXFILESRelocationError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRelocationError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesRelocationError` object from a
+/// Returns an instantiation of the `DBXFILESRelocationError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesRelocationError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESRelocationError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

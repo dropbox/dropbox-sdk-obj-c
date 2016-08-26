@@ -3,55 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupMembersAddError;
+@class DBXTEAMGroupMembersAddError;
 
 /// 
-/// The `DbxTeamGroupMembersAddError` union.
+/// The `DBXTEAMGroupMembersAddError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupMembersAddError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupMembersAddError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupMembersAddErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamGroupMembersAddError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupMembersAddErrorTag) {
+/// The `DBXTEAMGroupMembersAddErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMGroupMembersAddError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
     /// No matching group found. No groups match the specified group ID.
-    TeamGroupMembersAddErrorGroupNotFound,
+    DBXTEAMGroupMembersAddErrorGroupNotFound,
 
     /// (no description).
-    TeamGroupMembersAddErrorOther,
+    DBXTEAMGroupMembersAddErrorOther,
 
     /// You cannot add duplicate users. One or more of the members you are
     /// trying to add is already a member of the group.
-    TeamGroupMembersAddErrorDuplicateUser,
+    DBXTEAMGroupMembersAddErrorDuplicateUser,
 
     /// Group is not in this team. You cannot add members to a group that is
     /// outside of your team.
-    TeamGroupMembersAddErrorGroupNotInTeam,
+    DBXTEAMGroupMembersAddErrorGroupNotInTeam,
 
     /// These members are not part of your team. Currently, you cannot add
     /// members to a group if they are not part of your team, though this may
     /// change in a subsequent version. To add new members to your Dropbox
     /// Business team, use the membersAdd endpoint.
-    TeamGroupMembersAddErrorMembersNotInTeam,
+    DBXTEAMGroupMembersAddErrorMembersNotInTeam,
 
     /// These users were not found in Dropbox.
-    TeamGroupMembersAddErrorUsersNotFound,
+    DBXTEAMGroupMembersAddErrorUsersNotFound,
 
     /// A suspended user cannot be added to a group as owner in GroupAccessType.
-    TeamGroupMembersAddErrorUserMustBeActiveToBeOwner,
+    DBXTEAMGroupMembersAddErrorUserMustBeActiveToBeOwner,
 
     /// A company-managed group cannot be managed by a user.
-    TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup,
+    DBXTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupMembersAddErrorTag tag;
+@property (nonatomic) DBXTEAMGroupMembersAddErrorTag tag;
 
 /// These members are not part of your team. Currently, you cannot add members
 /// to a group if they are not part of your team, though this may change in a
@@ -64,7 +64,6 @@ typedef NS_ENUM(NSInteger, TeamGroupMembersAddErrorTag) {
 
 /// A company-managed group cannot be managed by a user.
 @property (nonatomic) NSArray<NSString *> * _Nonnull userCannotBeManagerOfCompanyManagedGroup;
-
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -120,7 +119,7 @@ typedef NS_ENUM(NSInteger, TeamGroupMembersAddErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupMembersAddError`
+/// Returns a human-readable representation of the `DBXTEAMGroupMembersAddError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -128,16 +127,16 @@ typedef NS_ENUM(NSInteger, TeamGroupMembersAddErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMembersAddError` union.
+/// The serialization class for the `DBXTEAMGroupMembersAddError` union.
 /// 
-@interface DbxTeamGroupMembersAddErrorSerializer : NSObject 
+@interface DBXTEAMGroupMembersAddErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMembersAddError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersAddError * _Nonnull)obj;
+/// `DBXTEAMGroupMembersAddError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersAddError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMembersAddError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupMembersAddError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupMembersAddError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMembersAddError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

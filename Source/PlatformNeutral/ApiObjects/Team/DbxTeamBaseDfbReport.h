@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamBaseDfbReport;
+@class DBXTEAMBaseDfbReport;
 
 /// 
-/// The `DbxTeamBaseDfbReport` struct.
+/// The `DBXTEAMBaseDfbReport` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Base report structure.
 /// 
-@interface DbxTeamBaseDfbReport : NSObject <DbxSerializable> 
+@interface DBXTEAMBaseDfbReport : NSObject <DBXSerializable> 
 
 /// First date present in the results as 'YYYY-MM-DD' or None.
 @property (nonatomic, copy) NSString * _Nonnull startDate;
@@ -25,7 +25,7 @@
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate;
 
-/// Returns a human-readable representation of the `DbxTeamBaseDfbReport`
+/// Returns a human-readable representation of the `DBXTEAMBaseDfbReport`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -33,16 +33,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamBaseDfbReport` struct.
+/// The serialization class for the `DBXTEAMBaseDfbReport` struct.
 /// 
-@interface DbxTeamBaseDfbReportSerializer : NSObject 
+@interface DBXTEAMBaseDfbReportSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamBaseDfbReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamBaseDfbReport * _Nonnull)obj;
+/// `DBXTEAMBaseDfbReport` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMBaseDfbReport * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamBaseDfbReport` object from a
+/// Returns an instantiation of the `DBXTEAMBaseDfbReport` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamBaseDfbReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMBaseDfbReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,36 +3,36 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxFilesMediaMetadata.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXFILESMediaMetadata.h"
 
-@class DbxFilesDimensions;
-@class DbxFilesGpsCoordinates;
-@class DbxFilesVideoMetadata;
+@class DBXFILESDimensions;
+@class DBXFILESGpsCoordinates;
+@class DBXFILESVideoMetadata;
 
 /// 
-/// The `DbxFilesVideoMetadata` struct.
+/// The `DBXFILESVideoMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Metadata for a video.
 /// 
-@interface DbxFilesVideoMetadata : DbxFilesMediaMetadata <DbxSerializable> 
+@interface DBXFILESVideoMetadata : DBXFILESMediaMetadata <DBXSerializable> 
 
 /// The duration of the video in milliseconds.
 @property (nonatomic, copy) NSNumber * _Nullable duration;
 
 /// Full constructor for the `VideoMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithDimensions:(DbxFilesDimensions * _Nullable)dimensions location:(DbxFilesGpsCoordinates * _Nullable)location timeTaken:(NSDate * _Nullable)timeTaken duration:(NSNumber * _Nullable)duration;
+- (nonnull instancetype)initWithDimensions:(DBXFILESDimensions * _Nullable)dimensions location:(DBXFILESGpsCoordinates * _Nullable)location timeTaken:(NSDate * _Nullable)timeTaken duration:(NSNumber * _Nullable)duration;
 
 /// Convenience constructor for the `VideoMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxFilesVideoMetadata`
+/// Returns a human-readable representation of the `DBXFILESVideoMetadata`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -40,16 +40,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesVideoMetadata` struct.
+/// The serialization class for the `DBXFILESVideoMetadata` struct.
 /// 
-@interface DbxFilesVideoMetadataSerializer : NSObject 
+@interface DBXFILESVideoMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesVideoMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesVideoMetadata * _Nonnull)obj;
+/// `DBXFILESVideoMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESVideoMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesVideoMetadata` object from a
+/// Returns an instantiation of the `DBXFILESVideoMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesVideoMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESVideoMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

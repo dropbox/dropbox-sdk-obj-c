@@ -3,34 +3,33 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsMembersListContinueError;
+@class DBXTEAMGroupsMembersListContinueError;
 
 /// 
-/// The `DbxTeamGroupsMembersListContinueError` union.
+/// The `DBXTEAMGroupsMembersListContinueError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsMembersListContinueError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsMembersListContinueError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupsMembersListContinueErrorTag` enum type represents the
-/// possible tag states that the `DbxTeamGroupsMembersListContinueError` union
+/// The `DBXTEAMGroupsMembersListContinueErrorTag` enum type represents the
+/// possible tag states that the `DBXTEAMGroupsMembersListContinueError` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupsMembersListContinueErrorTag) {
+typedef NS_ENUM(NSInteger, DBXTEAMGroupsMembersListContinueErrorTag) {
     /// The cursor is invalid.
-    TeamGroupsMembersListContinueErrorInvalidCursor,
+    DBXTEAMGroupsMembersListContinueErrorInvalidCursor,
 
     /// (no description).
-    TeamGroupsMembersListContinueErrorOther,
+    DBXTEAMGroupsMembersListContinueErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupsMembersListContinueErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupsMembersListContinueErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidCursor`.
 - (nonnull instancetype)initWithInvalidCursor;
@@ -48,24 +47,24 @@ typedef NS_ENUM(NSInteger, TeamGroupsMembersListContinueErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupsMembersListContinueError` object.
+/// `DBXTEAMGroupsMembersListContinueError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsMembersListContinueError`
+/// The serialization class for the `DBXTEAMGroupsMembersListContinueError`
 /// union.
 /// 
-@interface DbxTeamGroupsMembersListContinueErrorSerializer : NSObject 
+@interface DBXTEAMGroupsMembersListContinueErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsMembersListContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsMembersListContinueError * _Nonnull)obj;
+/// `DBXTEAMGroupsMembersListContinueError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListContinueError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsMembersListContinueError`
+/// Returns an instantiation of the `DBXTEAMGroupsMembersListContinueError`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamGroupsMembersListContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsMembersListContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

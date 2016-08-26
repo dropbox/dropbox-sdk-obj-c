@@ -3,38 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFileErrorResult;
+@class DBXSHARINGFileErrorResult;
 
 /// 
-/// The `DbxSharingFileErrorResult` union.
+/// The `DBXSHARINGFileErrorResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingFileErrorResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGFileErrorResult : NSObject <DBXSerializable> 
 
-/// The `SharingFileErrorResultTag` enum type represents the possible tag states
-/// that the `DbxSharingFileErrorResult` union can exist in.
-typedef NS_ENUM(NSInteger, SharingFileErrorResultTag) {
+/// The `DBXSHARINGFileErrorResultTag` enum type represents the possible tag
+/// states that the `DBXSHARINGFileErrorResult` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGFileErrorResultTag) {
     /// File specified by id was not found.
-    SharingFileErrorResultFileNotFoundError,
+    DBXSHARINGFileErrorResultFileNotFoundError,
 
     /// User does not have permission to take the specified action on the file.
-    SharingFileErrorResultInvalidFileActionError,
+    DBXSHARINGFileErrorResultInvalidFileActionError,
 
     /// User does not have permission to access file specified by file.Id.
-    SharingFileErrorResultPermissionDeniedError,
+    DBXSHARINGFileErrorResultPermissionDeniedError,
 
     /// (no description).
-    SharingFileErrorResultOther,
+    DBXSHARINGFileErrorResultOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingFileErrorResultTag tag;
+@property (nonatomic) DBXSHARINGFileErrorResultTag tag;
 
 /// File specified by id was not found.
 @property (nonatomic, copy) NSString * _Nonnull fileNotFoundError;
@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, SharingFileErrorResultTag) {
 
 /// User does not have permission to access file specified by file.Id.
 @property (nonatomic, copy) NSString * _Nonnull permissionDeniedError;
-
 
 /// Initializes union class with tag state of `FileNotFoundError`.
 - (nonnull instancetype)initWithFileNotFoundError:(NSString * _Nonnull)fileNotFoundError;
@@ -75,7 +74,7 @@ typedef NS_ENUM(NSInteger, SharingFileErrorResultTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingFileErrorResult`
+/// Returns a human-readable representation of the `DBXSHARINGFileErrorResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -83,16 +82,16 @@ typedef NS_ENUM(NSInteger, SharingFileErrorResultTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingFileErrorResult` union.
+/// The serialization class for the `DBXSHARINGFileErrorResult` union.
 /// 
-@interface DbxSharingFileErrorResultSerializer : NSObject 
+@interface DBXSHARINGFileErrorResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFileErrorResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFileErrorResult * _Nonnull)obj;
+/// `DBXSHARINGFileErrorResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileErrorResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFileErrorResult` object from a
+/// Returns an instantiation of the `DBXSHARINGFileErrorResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFileErrorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFileErrorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

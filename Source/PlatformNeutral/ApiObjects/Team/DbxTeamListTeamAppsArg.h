@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListTeamAppsArg;
+@class DBXTEAMListTeamAppsArg;
 
 /// 
-/// The `DbxTeamListTeamAppsArg` struct.
+/// The `DBXTEAMListTeamAppsArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for linkedAppsListTeamLinkedApps.
 /// 
-@interface DbxTeamListTeamAppsArg : NSObject <DbxSerializable> 
+@interface DBXTEAMListTeamAppsArg : NSObject <DBXSerializable> 
 
 /// At the first call to the linkedAppsListTeamLinkedApps the cursor shouldn't
 /// be passed. Then, if the result of the call includes a cursor, the following
@@ -32,7 +32,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamListTeamAppsArg`
+/// Returns a human-readable representation of the `DBXTEAMListTeamAppsArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -40,16 +40,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamListTeamAppsArg` struct.
+/// The serialization class for the `DBXTEAMListTeamAppsArg` struct.
 /// 
-@interface DbxTeamListTeamAppsArgSerializer : NSObject 
+@interface DBXTEAMListTeamAppsArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListTeamAppsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListTeamAppsArg * _Nonnull)obj;
+/// `DBXTEAMListTeamAppsArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamAppsArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListTeamAppsArg` object from a
+/// Returns an instantiation of the `DBXTEAMListTeamAppsArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamListTeamAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListTeamAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

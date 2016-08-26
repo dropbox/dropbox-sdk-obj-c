@@ -3,41 +3,41 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingLinkMetadata;
-@class DbxSharingVisibility;
+@class DBXSHARINGLinkMetadata;
+@class DBXSHARINGVisibility;
 
 /// 
-/// The `DbxSharingLinkMetadata` struct.
+/// The `DBXSHARINGLinkMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Metadata for a shared link. This can be either a PathLinkMetadata or
 /// CollectionLinkMetadata.
 /// 
-@interface DbxSharingLinkMetadata : NSObject <DbxSerializable> 
+@interface DBXSHARINGLinkMetadata : NSObject <DBXSerializable> 
 
 /// URL of the shared link.
 @property (nonatomic, copy) NSString * _Nonnull url;
 
 /// Who can access the link.
-@property (nonatomic) DbxSharingVisibility * _Nonnull visibility;
+@property (nonatomic) DBXSHARINGVisibility * _Nonnull visibility;
 
 /// Expiration time, if set. By default the link won't expire.
 @property (nonatomic) NSDate * _Nullable expires;
 
 /// Full constructor for the `LinkMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DbxSharingVisibility * _Nonnull)visibility expires:(NSDate * _Nullable)expires;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility expires:(NSDate * _Nullable)expires;
 
 /// Convenience constructor for the `LinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DbxSharingVisibility * _Nonnull)visibility;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility;
 
-/// Returns a human-readable representation of the `DbxSharingLinkMetadata`
+/// Returns a human-readable representation of the `DBXSHARINGLinkMetadata`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -45,16 +45,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingLinkMetadata` struct.
+/// The serialization class for the `DBXSHARINGLinkMetadata` struct.
 /// 
-@interface DbxSharingLinkMetadataSerializer : NSObject 
+@interface DBXSHARINGLinkMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingLinkMetadata * _Nonnull)obj;
+/// `DBXSHARINGLinkMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGLinkMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingLinkMetadata` object from a
+/// Returns an instantiation of the `DBXSHARINGLinkMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

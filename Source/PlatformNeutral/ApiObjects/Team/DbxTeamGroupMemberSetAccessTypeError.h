@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupMemberSetAccessTypeError;
+@class DBXTEAMGroupMemberSetAccessTypeError;
 
 /// 
-/// The `DbxTeamGroupMemberSetAccessTypeError` union.
+/// The `DBXTEAMGroupMemberSetAccessTypeError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupMemberSetAccessTypeError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupMemberSetAccessTypeError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupMemberSetAccessTypeErrorTag` enum type represents the possible
-/// tag states that the `DbxTeamGroupMemberSetAccessTypeError` union can exist
-/// in.
-typedef NS_ENUM(NSInteger, TeamGroupMemberSetAccessTypeErrorTag) {
+/// The `DBXTEAMGroupMemberSetAccessTypeErrorTag` enum type represents the
+/// possible tag states that the `DBXTEAMGroupMemberSetAccessTypeError` union
+/// can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupMemberSetAccessTypeErrorTag) {
     /// No matching group found. No groups match the specified group ID.
-    TeamGroupMemberSetAccessTypeErrorGroupNotFound,
+    DBXTEAMGroupMemberSetAccessTypeErrorGroupNotFound,
 
     /// (no description).
-    TeamGroupMemberSetAccessTypeErrorOther,
+    DBXTEAMGroupMemberSetAccessTypeErrorOther,
 
     /// The specified user is not a member of this group.
-    TeamGroupMemberSetAccessTypeErrorMemberNotInGroup,
+    DBXTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup,
 
     /// A company managed group cannot be managed by a user.
-    TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup,
+    DBXTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupMemberSetAccessTypeErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupMemberSetAccessTypeErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -68,24 +67,24 @@ typedef NS_ENUM(NSInteger, TeamGroupMemberSetAccessTypeErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupMemberSetAccessTypeError` object.
+/// `DBXTEAMGroupMemberSetAccessTypeError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMemberSetAccessTypeError`
+/// The serialization class for the `DBXTEAMGroupMemberSetAccessTypeError`
 /// union.
 /// 
-@interface DbxTeamGroupMemberSetAccessTypeErrorSerializer : NSObject 
+@interface DBXTEAMGroupMemberSetAccessTypeErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMemberSetAccessTypeError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMemberSetAccessTypeError * _Nonnull)obj;
+/// `DBXTEAMGroupMemberSetAccessTypeError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSetAccessTypeError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMemberSetAccessTypeError`
+/// Returns an instantiation of the `DBXTEAMGroupMemberSetAccessTypeError`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamGroupMemberSetAccessTypeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMemberSetAccessTypeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

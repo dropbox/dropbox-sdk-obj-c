@@ -3,56 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamDeviceSessionArg;
-@class DbxTeamRevokeDesktopClientArg;
-@class DbxTeamRevokeDeviceSessionArg;
+@class DBXTEAMDeviceSessionArg;
+@class DBXTEAMRevokeDesktopClientArg;
+@class DBXTEAMRevokeDeviceSessionArg;
 
 /// 
-/// The `DbxTeamRevokeDeviceSessionArg` union.
+/// The `DBXTEAMRevokeDeviceSessionArg` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeDeviceSessionArg : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeDeviceSessionArg : NSObject <DBXSerializable> 
 
-/// The `TeamRevokeDeviceSessionArgTag` enum type represents the possible tag
-/// states that the `DbxTeamRevokeDeviceSessionArg` union can exist in.
-typedef NS_ENUM(NSInteger, TeamRevokeDeviceSessionArgTag) {
+/// The `DBXTEAMRevokeDeviceSessionArgTag` enum type represents the possible tag
+/// states that the `DBXTEAMRevokeDeviceSessionArg` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
     /// End an active session
-    TeamRevokeDeviceSessionArgWebSession,
+    DBXTEAMRevokeDeviceSessionArgWebSession,
 
     /// Unlink a linked desktop device
-    TeamRevokeDeviceSessionArgDesktopClient,
+    DBXTEAMRevokeDeviceSessionArgDesktopClient,
 
     /// Unlink a linked mobile device
-    TeamRevokeDeviceSessionArgMobileClient,
+    DBXTEAMRevokeDeviceSessionArgMobileClient,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamRevokeDeviceSessionArgTag tag;
+@property (nonatomic) DBXTEAMRevokeDeviceSessionArgTag tag;
 
 /// End an active session
-@property (nonatomic) DbxTeamDeviceSessionArg * _Nonnull webSession;
+@property (nonatomic) DBXTEAMDeviceSessionArg * _Nonnull webSession;
 
 /// Unlink a linked desktop device
-@property (nonatomic) DbxTeamRevokeDesktopClientArg * _Nonnull desktopClient;
+@property (nonatomic) DBXTEAMRevokeDesktopClientArg * _Nonnull desktopClient;
 
 /// Unlink a linked mobile device
-@property (nonatomic) DbxTeamDeviceSessionArg * _Nonnull mobileClient;
-
+@property (nonatomic) DBXTEAMDeviceSessionArg * _Nonnull mobileClient;
 
 /// Initializes union class with tag state of `WebSession`.
-- (nonnull instancetype)initWithWebSession:(DbxTeamDeviceSessionArg * _Nonnull)webSession;
+- (nonnull instancetype)initWithWebSession:(DBXTEAMDeviceSessionArg * _Nonnull)webSession;
 
 /// Initializes union class with tag state of `DesktopClient`.
-- (nonnull instancetype)initWithDesktopClient:(DbxTeamRevokeDesktopClientArg * _Nonnull)desktopClient;
+- (nonnull instancetype)initWithDesktopClient:(DBXTEAMRevokeDesktopClientArg * _Nonnull)desktopClient;
 
 /// Initializes union class with tag state of `MobileClient`.
-- (nonnull instancetype)initWithMobileClient:(DbxTeamDeviceSessionArg * _Nonnull)mobileClient;
+- (nonnull instancetype)initWithMobileClient:(DBXTEAMDeviceSessionArg * _Nonnull)mobileClient;
 
 /// Returns whether the union's current tag state has value `WebSession`.
 - (BOOL)isWebSession;
@@ -67,23 +66,23 @@ typedef NS_ENUM(NSInteger, TeamRevokeDeviceSessionArgTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeDeviceSessionArg` object.
+/// `DBXTEAMRevokeDeviceSessionArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeDeviceSessionArg` union.
+/// The serialization class for the `DBXTEAMRevokeDeviceSessionArg` union.
 /// 
-@interface DbxTeamRevokeDeviceSessionArgSerializer : NSObject 
+@interface DBXTEAMRevokeDeviceSessionArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeDeviceSessionArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeDeviceSessionArg * _Nonnull)obj;
+/// `DBXTEAMRevokeDeviceSessionArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeDeviceSessionArg` object from
+/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxTeamRevokeDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

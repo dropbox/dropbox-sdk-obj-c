@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAclUpdatePolicy;
+@class DBXSHARINGAclUpdatePolicy;
 
 /// 
-/// The `DbxSharingAclUpdatePolicy` union.
+/// The `DBXSHARINGAclUpdatePolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing who can change a shared folder's access control list (ACL).
 /// In other words, who can add, remove, or change the privileges of members.
 /// 
-@interface DbxSharingAclUpdatePolicy : NSObject <DbxSerializable> 
+@interface DBXSHARINGAclUpdatePolicy : NSObject <DBXSerializable> 
 
-/// The `SharingAclUpdatePolicyTag` enum type represents the possible tag states
-/// that the `DbxSharingAclUpdatePolicy` union can exist in.
-typedef NS_ENUM(NSInteger, SharingAclUpdatePolicyTag) {
+/// The `DBXSHARINGAclUpdatePolicyTag` enum type represents the possible tag
+/// states that the `DBXSHARINGAclUpdatePolicy` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGAclUpdatePolicyTag) {
     /// Only the owner can update the ACL.
-    SharingAclUpdatePolicyOwner,
+    DBXSHARINGAclUpdatePolicyOwner,
 
     /// Any editor can update the ACL. This may be further restricted to editors
     /// on the same team.
-    SharingAclUpdatePolicyEditors,
+    DBXSHARINGAclUpdatePolicyEditors,
 
     /// (no description).
-    SharingAclUpdatePolicyOther,
+    DBXSHARINGAclUpdatePolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingAclUpdatePolicyTag tag;
-
+@property (nonatomic) DBXSHARINGAclUpdatePolicyTag tag;
 
 /// Initializes union class with tag state of `Owner`.
 - (nonnull instancetype)initWithOwner;
@@ -59,7 +58,7 @@ typedef NS_ENUM(NSInteger, SharingAclUpdatePolicyTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingAclUpdatePolicy`
+/// Returns a human-readable representation of the `DBXSHARINGAclUpdatePolicy`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -67,16 +66,16 @@ typedef NS_ENUM(NSInteger, SharingAclUpdatePolicyTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingAclUpdatePolicy` union.
+/// The serialization class for the `DBXSHARINGAclUpdatePolicy` union.
 /// 
-@interface DbxSharingAclUpdatePolicySerializer : NSObject 
+@interface DBXSHARINGAclUpdatePolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAclUpdatePolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAclUpdatePolicy * _Nonnull)obj;
+/// `DBXSHARINGAclUpdatePolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAclUpdatePolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAclUpdatePolicy` object from a
+/// Returns an instantiation of the `DBXSHARINGAclUpdatePolicy` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingAclUpdatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAclUpdatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,34 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamAdminTier;
-@class DbxTeamTeamMemberInfo;
-@class DbxTeamTeamMemberProfile;
+@class DBXTEAMAdminTier;
+@class DBXTEAMTeamMemberInfo;
+@class DBXTEAMTeamMemberProfile;
 
 /// 
-/// The `DbxTeamTeamMemberInfo` struct.
+/// The `DBXTEAMTeamMemberInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about a team member.
 /// 
-@interface DbxTeamTeamMemberInfo : NSObject <DbxSerializable> 
+@interface DBXTEAMTeamMemberInfo : NSObject <DBXSerializable> 
 
 /// Profile of a user as a member of a team.
-@property (nonatomic) DbxTeamTeamMemberProfile * _Nonnull profile;
+@property (nonatomic) DBXTEAMTeamMemberProfile * _Nonnull profile;
 
 /// The user's role in the team.
-@property (nonatomic) DbxTeamAdminTier * _Nonnull role;
+@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `TeamMemberInfo` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithProfile:(DbxTeamTeamMemberProfile * _Nonnull)profile role:(DbxTeamAdminTier * _Nonnull)role;
+- (nonnull instancetype)initWithProfile:(DBXTEAMTeamMemberProfile * _Nonnull)profile role:(DBXTEAMAdminTier * _Nonnull)role;
 
-/// Returns a human-readable representation of the `DbxTeamTeamMemberInfo`
+/// Returns a human-readable representation of the `DBXTEAMTeamMemberInfo`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -38,16 +38,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamTeamMemberInfo` struct.
+/// The serialization class for the `DBXTEAMTeamMemberInfo` struct.
 /// 
-@interface DbxTeamTeamMemberInfoSerializer : NSObject 
+@interface DBXTEAMTeamMemberInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamTeamMemberInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMemberInfo * _Nonnull)obj;
+/// `DBXTEAMTeamMemberInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMemberInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamTeamMemberInfo` object from a
+/// Returns an instantiation of the `DBXTEAMTeamMemberInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamTeamMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMTeamMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

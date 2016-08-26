@@ -1,5 +1,5 @@
-#import "DbxOAuth.h"
-#import "DbxOAuthResult.h"
+#import "DBXOAuth.h"
+#import "DBXOAuthResult.h"
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
 #import "DropboxClientsManager.h"
@@ -28,31 +28,31 @@ static DropboxTeamClient *authorizedTeamClient;
     authorizedTeamClient = client;
 }
 
-+ (void)setupWithAppKey:(NSString *)appKey sharedOAuthManager:(DbxOAuthManager *)sharedOAuthManager {
-    NSAssert([DbxOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
-    [DbxOAuthManager sharedOAuthManager:sharedOAuthManager];
++ (void)setupWithAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager {
+    NSAssert([DBXOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
+    [DBXOAuthManager sharedOAuthManager:sharedOAuthManager];
     
-    DbxAccessToken *accessToken = [[DbxOAuthManager sharedOAuthManager] getFirstAccessToken];
+    DBXAccessToken *accessToken = [[DBXOAuthManager sharedOAuthManager] getFirstAccessToken];
     if (accessToken) {
         authorizedClient = [[DropboxClient alloc] initWithAccessToken:accessToken.accessToken];
     }
 }
 
-+ (void)setupWithTeamAppKey:(NSString *)appKey sharedOAuthManager:(DbxOAuthManager *)sharedOAuthManager {
-    NSAssert([DbxOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
-    [DbxOAuthManager sharedOAuthManager:sharedOAuthManager];
++ (void)setupWithTeamAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager {
+    NSAssert([DBXOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
+    [DBXOAuthManager sharedOAuthManager:sharedOAuthManager];
     
-    DbxAccessToken *accessToken = [[DbxOAuthManager sharedOAuthManager] getFirstAccessToken];
+    DBXAccessToken *accessToken = [[DBXOAuthManager sharedOAuthManager] getFirstAccessToken];
     if (accessToken) {
         authorizedTeamClient = [[DropboxTeamClient alloc] initWithAccessToken:accessToken.accessToken];
     }
 }
 
-+ (DbxOAuthResult *)handleRedirectURL:(NSURL *)url {
-    NSAssert([DbxOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithAppKey` before calling this method");
++ (DBXOAuthResult *)handleRedirectURL:(NSURL *)url {
+    NSAssert([DBXOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithAppKey` before calling this method");
     NSAssert([DropboxClientsManager authorizedClient] == nil, @"Dropbox user client is already authorized");
     
-    DbxOAuthResult *result = [[DbxOAuthManager sharedOAuthManager] handleRedirectURL:url];
+    DBXOAuthResult *result = [[DBXOAuthManager sharedOAuthManager] handleRedirectURL:url];
     
     if ([result isSuccess]) {
         [DropboxClientsManager authorizedClient:[[DropboxClient alloc] initWithAccessToken:result.accessToken.accessToken]];
@@ -65,11 +65,11 @@ static DropboxTeamClient *authorizedTeamClient;
     return result;
 }
 
-+ (DbxOAuthResult *)handleRedirectURLTeam:(NSURL *)url {
-    NSAssert([DbxOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithTeamAppKey` before calling this method");
++ (DBXOAuthResult *)handleRedirectURLTeam:(NSURL *)url {
+    NSAssert([DBXOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithTeamAppKey` before calling this method");
     NSAssert([DropboxClientsManager authorizedClient] == nil, @"Dropbox user client is already authorized");
     
-    DbxOAuthResult *result = [[DbxOAuthManager sharedOAuthManager] handleRedirectURL:url];
+    DBXOAuthResult *result = [[DBXOAuthManager sharedOAuthManager] handleRedirectURL:url];
     
     if ([result isSuccess]) {
         [DropboxClientsManager authorizedTeamClient:[[DropboxTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
@@ -83,13 +83,13 @@ static DropboxTeamClient *authorizedTeamClient;
 }
 
 + (void)unlinkClient {
-    NSAssert([DbxOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
+    NSAssert([DBXOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
     if ([DropboxClientsManager authorizedClient] == nil && [DropboxClientsManager authorizedTeamClient] == nil) {
         // already unlinked
         return;
     }
     
-    [[DbxOAuthManager sharedOAuthManager] clearStoredAccessTokens];
+    [[DBXOAuthManager sharedOAuthManager] clearStoredAccessTokens];
     [DropboxClientsManager authorizedClient:nil];
     [DropboxClientsManager authorizedTeamClient:nil];
 }

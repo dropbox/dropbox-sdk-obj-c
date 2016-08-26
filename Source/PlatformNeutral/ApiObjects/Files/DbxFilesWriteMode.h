@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesWriteMode;
+@class DBXFILESWriteMode;
 
 /// 
-/// The `DbxFilesWriteMode` union.
+/// The `DBXFILESWriteMode` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -24,37 +24,36 @@
 /// the target path with contents different from the contents you're trying to
 /// write.
 /// 
-@interface DbxFilesWriteMode : NSObject <DbxSerializable> 
+@interface DBXFILESWriteMode : NSObject <DBXSerializable> 
 
-/// The `FilesWriteModeTag` enum type represents the possible tag states that
-/// the `DbxFilesWriteMode` union can exist in.
-typedef NS_ENUM(NSInteger, FilesWriteModeTag) {
+/// The `DBXFILESWriteModeTag` enum type represents the possible tag states that
+/// the `DBXFILESWriteMode` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
     /// Never overwrite the existing file. The autorename strategy is to append
     /// a number to the file name. For example, "document.txt" might become
     /// "document (2).txt".
-    FilesWriteModeAdd,
+    DBXFILESWriteModeAdd,
 
     /// Always overwrite the existing file. The autorename strategy is the same
     /// as it is for add.
-    FilesWriteModeOverwrite,
+    DBXFILESWriteModeOverwrite,
 
     /// Overwrite if the given "rev" matches the existing file's "rev". The
     /// autorename strategy is to append the string "conflicted copy" to the
     /// file name. For example, "document.txt" might become "document
     /// (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
-    FilesWriteModeUpdate,
+    DBXFILESWriteModeUpdate,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesWriteModeTag tag;
+@property (nonatomic) DBXFILESWriteModeTag tag;
 
 /// Overwrite if the given "rev" matches the existing file's "rev". The
 /// autorename strategy is to append the string "conflicted copy" to the file
 /// name. For example, "document.txt" might become "document (conflicted
 /// copy).txt" or "document (Panda's conflicted copy).txt".
 @property (nonatomic, copy) NSString * _Nonnull update;
-
 
 /// Initializes union class with tag state of `Add`.
 - (nonnull instancetype)initWithAdd;
@@ -77,23 +76,23 @@ typedef NS_ENUM(NSInteger, FilesWriteModeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesWriteMode` object.
+/// Returns a human-readable representation of the `DBXFILESWriteMode` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesWriteMode` union.
+/// The serialization class for the `DBXFILESWriteMode` union.
 /// 
-@interface DbxFilesWriteModeSerializer : NSObject 
+@interface DBXFILESWriteModeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesWriteMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesWriteMode * _Nonnull)obj;
+/// `DBXFILESWriteMode` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteMode * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesWriteMode` object from a
+/// Returns an instantiation of the `DBXFILESWriteMode` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesWriteMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESWriteMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

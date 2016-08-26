@@ -3,55 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesSharedFolderJoinPolicy;
-@class DbxTeamPoliciesSharedFolderMemberPolicy;
-@class DbxTeamPoliciesSharedLinkCreatePolicy;
-@class DbxTeamPoliciesTeamSharingPolicies;
+@class DBXTEAMPOLICIESSharedFolderJoinPolicy;
+@class DBXTEAMPOLICIESSharedFolderMemberPolicy;
+@class DBXTEAMPOLICIESSharedLinkCreatePolicy;
+@class DBXTEAMPOLICIESTeamSharingPolicies;
 
 /// 
-/// The `DbxTeamPoliciesTeamSharingPolicies` struct.
+/// The `DBXTEAMPOLICIESTeamSharingPolicies` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policies governing sharing within and outside of the team.
 /// 
-@interface DbxTeamPoliciesTeamSharingPolicies : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESTeamSharingPolicies : NSObject <DBXSerializable> 
 
 /// Who can join folders shared by team members.
-@property (nonatomic) DbxTeamPoliciesSharedFolderMemberPolicy * _Nonnull sharedFolderMemberPolicy;
+@property (nonatomic) DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull sharedFolderMemberPolicy;
 
 /// Which shared folders team members can join.
-@property (nonatomic) DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
+@property (nonatomic) DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
 
 /// What is the visibility of newly created shared links.
-@property (nonatomic) DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
+@property (nonatomic) DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
 
 /// Full constructor for the `TeamSharingPolicies` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSharedFolderMemberPolicy:(DbxTeamPoliciesSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
+- (nonnull instancetype)initWithSharedFolderMemberPolicy:(DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamPoliciesTeamSharingPolicies` object.
+/// `DBXTEAMPOLICIESTeamSharingPolicies` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesTeamSharingPolicies` struct.
+/// The serialization class for the `DBXTEAMPOLICIESTeamSharingPolicies` struct.
 /// 
-@interface DbxTeamPoliciesTeamSharingPoliciesSerializer : NSObject 
+@interface DBXTEAMPOLICIESTeamSharingPoliciesSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesTeamSharingPolicies` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)obj;
+/// `DBXTEAMPOLICIESTeamSharingPolicies` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesTeamSharingPolicies` object
+/// Returns an instantiation of the `DBXTEAMPOLICIESTeamSharingPolicies` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamPoliciesTeamSharingPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

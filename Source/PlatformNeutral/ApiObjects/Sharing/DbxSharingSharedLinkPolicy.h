@@ -3,38 +3,37 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedLinkPolicy;
+@class DBXSHARINGSharedLinkPolicy;
 
 /// 
-/// The `DbxSharingSharedLinkPolicy` union.
+/// The `DBXSHARINGSharedLinkPolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing who can view shared links.
 /// 
-@interface DbxSharingSharedLinkPolicy : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkPolicy : NSObject <DBXSerializable> 
 
-/// The `SharingSharedLinkPolicyTag` enum type represents the possible tag
-/// states that the `DbxSharingSharedLinkPolicy` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedLinkPolicyTag) {
+/// The `DBXSHARINGSharedLinkPolicyTag` enum type represents the possible tag
+/// states that the `DBXSHARINGSharedLinkPolicy` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkPolicyTag) {
     /// Links can be shared with anyone.
-    SharingSharedLinkPolicyAnyone,
+    DBXSHARINGSharedLinkPolicyAnyone,
 
     /// Links can only be shared among members of the shared folder.
-    SharingSharedLinkPolicyMembers,
+    DBXSHARINGSharedLinkPolicyMembers,
 
     /// (no description).
-    SharingSharedLinkPolicyOther,
+    DBXSHARINGSharedLinkPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedLinkPolicyTag tag;
-
+@property (nonatomic) DBXSHARINGSharedLinkPolicyTag tag;
 
 /// Initializes union class with tag state of `Anyone`.
 - (nonnull instancetype)initWithAnyone;
@@ -57,7 +56,7 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkPolicyTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingSharedLinkPolicy`
+/// Returns a human-readable representation of the `DBXSHARINGSharedLinkPolicy`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -65,16 +64,16 @@ typedef NS_ENUM(NSInteger, SharingSharedLinkPolicyTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkPolicy` union.
+/// The serialization class for the `DBXSHARINGSharedLinkPolicy` union.
 /// 
-@interface DbxSharingSharedLinkPolicySerializer : NSObject 
+@interface DBXSHARINGSharedLinkPolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkPolicy * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkPolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkPolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkPolicy` object from a
+/// Returns an instantiation of the `DBXSHARINGSharedLinkPolicy` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharedLinkPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,24 +3,24 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFolderMembersCursorArg;
-@class DbxSharingMemberAction;
+@class DBXSHARINGListFolderMembersCursorArg;
+@class DBXSHARINGMemberAction;
 
 /// 
-/// The `DbxSharingListFolderMembersCursorArg` struct.
+/// The `DBXSHARINGListFolderMembersCursorArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFolderMembersCursorArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFolderMembersCursorArg : NSObject <DBXSerializable> 
 
 /// This is a list indicating whether each returned member will include a
 /// boolean value allow in MemberPermission that describes whether the current
 /// user can perform the MemberAction on the member.
-@property (nonatomic) NSArray<DbxSharingMemberAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
 
 /// The maximum number of results that include members, groups and invitees to
 /// return per request.
@@ -28,31 +28,31 @@
 
 /// Full constructor for the `ListFolderMembersCursorArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithActions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit;
+- (nonnull instancetype)initWithActions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit;
 
 /// Convenience constructor for the `ListFolderMembersCursorArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFolderMembersCursorArg` object.
+/// `DBXSHARINGListFolderMembersCursorArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFolderMembersCursorArg`
+/// The serialization class for the `DBXSHARINGListFolderMembersCursorArg`
 /// struct.
 /// 
-@interface DbxSharingListFolderMembersCursorArgSerializer : NSObject 
+@interface DBXSHARINGListFolderMembersCursorArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFolderMembersCursorArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFolderMembersCursorArg * _Nonnull)obj;
+/// `DBXSHARINGListFolderMembersCursorArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersCursorArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFolderMembersCursorArg`
+/// Returns an instantiation of the `DBXSHARINGListFolderMembersCursorArg`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingListFolderMembersCursorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFolderMembersCursorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

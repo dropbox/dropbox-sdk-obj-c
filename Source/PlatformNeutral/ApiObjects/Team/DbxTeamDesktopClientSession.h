@@ -3,28 +3,28 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamDeviceSession.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMDeviceSession.h"
 
-@class DbxTeamDesktopClientSession;
-@class DbxTeamDesktopPlatform;
+@class DBXTEAMDesktopClientSession;
+@class DBXTEAMDesktopPlatform;
 
 /// 
-/// The `DbxTeamDesktopClientSession` struct.
+/// The `DBXTEAMDesktopClientSession` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about linked Dropbox desktop client sessions
 /// 
-@interface DbxTeamDesktopClientSession : DbxTeamDeviceSession <DbxSerializable> 
+@interface DBXTEAMDesktopClientSession : DBXTEAMDeviceSession <DBXSerializable> 
 
 /// Name of the hosting desktop
 @property (nonatomic, copy) NSString * _Nonnull hostName;
 
 /// The Dropbox desktop client type
-@property (nonatomic) DbxTeamDesktopPlatform * _Nonnull clientType;
+@property (nonatomic) DBXTEAMDesktopPlatform * _Nonnull clientType;
 
 /// The Dropbox client version
 @property (nonatomic, copy) NSString * _Nonnull clientVersion;
@@ -37,13 +37,13 @@
 
 /// Full constructor for the `DesktopClientSession` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DbxTeamDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DBXTEAMDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
 /// Convenience constructor for the `DesktopClientSession` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DbxTeamDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DBXTEAMDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported;
 
-/// Returns a human-readable representation of the `DbxTeamDesktopClientSession`
+/// Returns a human-readable representation of the `DBXTEAMDesktopClientSession`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -51,16 +51,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamDesktopClientSession` struct.
+/// The serialization class for the `DBXTEAMDesktopClientSession` struct.
 /// 
-@interface DbxTeamDesktopClientSessionSerializer : NSObject 
+@interface DBXTEAMDesktopClientSessionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamDesktopClientSession` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamDesktopClientSession * _Nonnull)obj;
+/// `DBXTEAMDesktopClientSession` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDesktopClientSession * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamDesktopClientSession` object from a
+/// Returns an instantiation of the `DBXTEAMDesktopClientSession` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamDesktopClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMDesktopClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeLinkedApiAppArg;
+@class DBXTEAMRevokeLinkedApiAppArg;
 
 /// 
-/// The `DbxTeamRevokeLinkedApiAppArg` struct.
+/// The `DBXTEAMRevokeLinkedApiAppArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeLinkedApiAppArg : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeLinkedApiAppArg : NSObject <DBXSerializable> 
 
 /// The application's unique id
 @property (nonatomic, copy) NSString * _Nonnull appId;
@@ -35,23 +35,23 @@
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeLinkedApiAppArg` object.
+/// `DBXTEAMRevokeLinkedApiAppArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeLinkedApiAppArg` struct.
+/// The serialization class for the `DBXTEAMRevokeLinkedApiAppArg` struct.
 /// 
-@interface DbxTeamRevokeLinkedApiAppArgSerializer : NSObject 
+@interface DBXTEAMRevokeLinkedApiAppArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeLinkedApiAppArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedApiAppArg * _Nonnull)obj;
+/// `DBXTEAMRevokeLinkedApiAppArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeLinkedApiAppArg` object from a
+/// Returns an instantiation of the `DBXTEAMRevokeLinkedApiAppArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamRevokeLinkedApiAppArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeLinkedApiAppArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

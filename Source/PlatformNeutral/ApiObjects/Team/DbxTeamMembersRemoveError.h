@@ -3,75 +3,74 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersRemoveError;
+@class DBXTEAMMembersRemoveError;
 
 /// 
-/// The `DbxTeamMembersRemoveError` union.
+/// The `DBXTEAMMembersRemoveError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersRemoveError : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersRemoveError : NSObject <DBXSerializable> 
 
-/// The `TeamMembersRemoveErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamMembersRemoveError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMembersRemoveErrorTag) {
+/// The `DBXTEAMMembersRemoveErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMMembersRemoveError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMembersRemoveErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
-    TeamMembersRemoveErrorUserNotFound,
+    DBXTEAMMembersRemoveErrorUserNotFound,
 
     /// The user is not a member of the team.
-    TeamMembersRemoveErrorUserNotInTeam,
+    DBXTEAMMembersRemoveErrorUserNotInTeam,
 
     /// (no description).
-    TeamMembersRemoveErrorOther,
+    DBXTEAMMembersRemoveErrorOther,
 
     /// The user is the last admin of the team, so it cannot be removed from it.
-    TeamMembersRemoveErrorRemoveLastAdmin,
+    DBXTEAMMembersRemoveErrorRemoveLastAdmin,
 
     /// Expected removed user and transfer_dest user to be different
-    TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
+    DBXTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer,
 
     /// Expected removed user and transfer_admin user to be different.
-    TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
+    DBXTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer,
 
     /// No matching user found for the argument transfer_dest_id.
-    TeamMembersRemoveErrorTransferDestUserNotFound,
+    DBXTEAMMembersRemoveErrorTransferDestUserNotFound,
 
     /// The provided transfer_dest_id does not exist on this team.
-    TeamMembersRemoveErrorTransferDestUserNotInTeam,
+    DBXTEAMMembersRemoveErrorTransferDestUserNotInTeam,
 
     /// No matching user found for the argument transfer_admin_id.
-    TeamMembersRemoveErrorTransferAdminUserNotFound,
+    DBXTEAMMembersRemoveErrorTransferAdminUserNotFound,
 
     /// The provided transfer_admin_id does not exist on this team.
-    TeamMembersRemoveErrorTransferAdminUserNotInTeam,
+    DBXTEAMMembersRemoveErrorTransferAdminUserNotInTeam,
 
     /// The transfer_admin_id argument must be provided when file transfer is
     /// requested.
-    TeamMembersRemoveErrorUnspecifiedTransferAdminId,
+    DBXTEAMMembersRemoveErrorUnspecifiedTransferAdminId,
 
     /// Specified transfer_admin user is not a team admin.
-    TeamMembersRemoveErrorTransferAdminIsNotAdmin,
+    DBXTEAMMembersRemoveErrorTransferAdminIsNotAdmin,
 
     /// Cannot keep account and transfer the data to another user at the same
     /// time.
-    TeamMembersRemoveErrorCannotKeepAccountAndTransfer,
+    DBXTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
 
     /// Cannot keep account and delete the data at the same time.
-    TeamMembersRemoveErrorCannotKeepAccountAndDeleteData,
+    DBXTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
 
     /// The email address of the user is too long to be disabled.
-    TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled,
+    DBXTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMembersRemoveErrorTag tag;
-
+@property (nonatomic) DBXTEAMMembersRemoveErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -179,7 +178,7 @@ typedef NS_ENUM(NSInteger, TeamMembersRemoveErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamMembersRemoveError`
+/// Returns a human-readable representation of the `DBXTEAMMembersRemoveError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -187,16 +186,16 @@ typedef NS_ENUM(NSInteger, TeamMembersRemoveErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersRemoveError` union.
+/// The serialization class for the `DBXTEAMMembersRemoveError` union.
 /// 
-@interface DbxTeamMembersRemoveErrorSerializer : NSObject 
+@interface DBXTEAMMembersRemoveErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersRemoveError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersRemoveError * _Nonnull)obj;
+/// `DBXTEAMMembersRemoveError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersRemoveError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersRemoveError` object from a
+/// Returns an instantiation of the `DBXTEAMMembersRemoveError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

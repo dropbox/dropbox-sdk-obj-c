@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesTeamMemberPolicies;
-@class DbxTeamTeamGetInfoResult;
+@class DBXTEAMPOLICIESTeamMemberPolicies;
+@class DBXTEAMTeamGetInfoResult;
 
 /// 
-/// The `DbxTeamTeamGetInfoResult` struct.
+/// The `DBXTEAMTeamGetInfoResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamTeamGetInfoResult : NSObject <DbxSerializable> 
+@interface DBXTEAMTeamGetInfoResult : NSObject <DBXSerializable> 
 
 /// The name of the team.
 @property (nonatomic, copy) NSString * _Nonnull name;
@@ -31,13 +31,13 @@
 @property (nonatomic, copy) NSNumber * _Nonnull numProvisionedUsers;
 
 /// (no description).
-@property (nonatomic) DbxTeamPoliciesTeamMemberPolicies * _Nonnull policies;
+@property (nonatomic) DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull policies;
 
 /// Full constructor for the `TeamGetInfoResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name teamId:(NSString * _Nonnull)teamId numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers policies:(DbxTeamPoliciesTeamMemberPolicies * _Nonnull)policies;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name teamId:(NSString * _Nonnull)teamId numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers policies:(DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)policies;
 
-/// Returns a human-readable representation of the `DbxTeamTeamGetInfoResult`
+/// Returns a human-readable representation of the `DBXTEAMTeamGetInfoResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -45,16 +45,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamTeamGetInfoResult` struct.
+/// The serialization class for the `DBXTEAMTeamGetInfoResult` struct.
 /// 
-@interface DbxTeamTeamGetInfoResultSerializer : NSObject 
+@interface DBXTEAMTeamGetInfoResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamTeamGetInfoResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamTeamGetInfoResult * _Nonnull)obj;
+/// `DBXTEAMTeamGetInfoResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamGetInfoResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamTeamGetInfoResult` object from a
+/// Returns an instantiation of the `DBXTEAMTeamGetInfoResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamTeamGetInfoResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMTeamGetInfoResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

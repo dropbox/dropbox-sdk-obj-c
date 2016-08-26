@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderResult;
-@class DbxFilesMetadata;
+@class DBXFILESListFolderResult;
+@class DBXFILESMetadata;
 
 /// 
-/// The `DbxFilesListFolderResult` struct.
+/// The `DBXFILESListFolderResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderResult : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderResult : NSObject <DBXSerializable> 
 
 /// The files and (direct) subfolders in the folder.
-@property (nonatomic) NSArray<DbxFilesMetadata *> * _Nonnull entries;
+@property (nonatomic) NSArray<DBXFILESMetadata *> * _Nonnull entries;
 
 /// Pass the cursor into listFolderContinue to see what's changed in the folder
 /// since your previous query.
@@ -30,9 +30,9 @@
 
 /// Full constructor for the `ListFolderResult` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithEntries:(NSArray<DbxFilesMetadata *> * _Nonnull)entries cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
+- (nonnull instancetype)initWithEntries:(NSArray<DBXFILESMetadata *> * _Nonnull)entries cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
 
-/// Returns a human-readable representation of the `DbxFilesListFolderResult`
+/// Returns a human-readable representation of the `DBXFILESListFolderResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -40,16 +40,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderResult` struct.
+/// The serialization class for the `DBXFILESListFolderResult` struct.
 /// 
-@interface DbxFilesListFolderResultSerializer : NSObject 
+@interface DBXFILESListFolderResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderResult * _Nonnull)obj;
+/// `DBXFILESListFolderResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderResult` object from a
+/// Returns an instantiation of the `DBXFILESListFolderResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesListFolderResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

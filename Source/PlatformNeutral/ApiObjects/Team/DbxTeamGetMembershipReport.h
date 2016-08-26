@@ -3,15 +3,15 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamBaseDfbReport.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMBaseDfbReport.h"
 
-@class DbxTeamGetMembershipReport;
+@class DBXTEAMGetMembershipReport;
 
 /// 
-/// The `DbxTeamGetMembershipReport` struct.
+/// The `DBXTEAMGetMembershipReport` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -19,7 +19,7 @@
 /// array of values, one value per day. If there is no data for a day, then the
 /// value will be None.
 /// 
-@interface DbxTeamGetMembershipReport : DbxTeamBaseDfbReport <DbxSerializable> 
+@interface DBXTEAMGetMembershipReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
 /// Team size, for each day.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull teamSize;
@@ -40,7 +40,7 @@
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate teamSize:(NSArray<NSNumber *> * _Nonnull)teamSize pendingInvites:(NSArray<NSNumber *> * _Nonnull)pendingInvites membersJoined:(NSArray<NSNumber *> * _Nonnull)membersJoined suspendedMembers:(NSArray<NSNumber *> * _Nonnull)suspendedMembers licenses:(NSArray<NSNumber *> * _Nonnull)licenses;
 
-/// Returns a human-readable representation of the `DbxTeamGetMembershipReport`
+/// Returns a human-readable representation of the `DBXTEAMGetMembershipReport`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -48,16 +48,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGetMembershipReport` struct.
+/// The serialization class for the `DBXTEAMGetMembershipReport` struct.
 /// 
-@interface DbxTeamGetMembershipReportSerializer : NSObject 
+@interface DBXTEAMGetMembershipReportSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGetMembershipReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGetMembershipReport * _Nonnull)obj;
+/// `DBXTEAMGetMembershipReport` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetMembershipReport * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGetMembershipReport` object from a
+/// Returns an instantiation of the `DBXTEAMGetMembershipReport` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGetMembershipReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGetMembershipReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

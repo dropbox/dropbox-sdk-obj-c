@@ -3,21 +3,21 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxTasks.h"
+#import "DBXTasks.h"
 
-#import "DbxAuthAuthError.h"
-#import "DbxAuthRateLimitError.h"
-#import "DbxDelegate.h"
-#import "DbxErrors.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DropboxTransportClient.h"
-#import "DbxDelegate.h"
+#import "DBXAuthAuthError.h"
+#import "DBXAuthRateLimitError.h"
+#import "DBXDelegate.h"
+#import "DBXErrors.h"
+#import "DBXStoneBase.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
+#import "DBXDelegate.h"
 
-@implementation DbxTask
+@implementation DBXTask
 
-- (DbxError *)getDbxError:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error statusCode:(int)statusCode httpHeaders:(NSDictionary *)httpHeaders {
-    DbxError *dbxError = nil;
+- (DBXError *)getDBXError:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error statusCode:(int)statusCode httpHeaders:(NSDictionary *)httpHeaders {
+    DBXError *dbxError = nil;
 
     if (error || statusCode != 200) {
         NSDictionary *deserializedData = [self deserializeHttpData:data];
@@ -26,19 +26,19 @@
         NSString *errorSummary = deserializedData ? deserializedData[@"error_summary"] : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
         if (statusCode >= 500 && statusCode < 600) {
-            dbxError = [[DbxError alloc] init:DbxRequestInternalServerErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestInternalServerErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 400) {
-            dbxError = [[DbxError alloc] init:DbxRequestBadInputErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:errorSummary structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestBadInputErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:errorSummary structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 401) {
-            dbxError = [[DbxError alloc] init:DbxRequestAuthErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:[DbxAuthAuthErrorSerializer deserialize:deserializedData[@"error"]] structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestAuthErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:[DBXAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]] structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else if (statusCode == 429) {
             NSString *retryAfter = httpHeaders[@"Retry-After"];
             double retryAfterSeconds = retryAfter.doubleValue;
-            dbxError = [[DbxError alloc] init:DbxRequestRateLimitErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:[DbxAuthRateLimitErrorSerializer deserialize:deserializedData[@"error"]] backoff:[NSNumber numberWithInt:retryAfterSeconds] errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestRateLimitErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:[DBXAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]] backoff:[NSNumber numberWithInt:retryAfterSeconds] errorDescription:nil];
         } else if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
-            dbxError = [[DbxError alloc] init:DbxRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         } else {
-            dbxError = [[DbxError alloc] init:DbxRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
+            dbxError = [[DBXError alloc] init:DBXRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
         }
     }
     
@@ -84,9 +84,9 @@
 @end
 
 
-@implementation DbxRpcTask
+@implementation DBXRpcTask
 
-- (instancetype)initWithTask:(NSURLSessionDataTask *)task session:(NSURLSession *)session delegate:(DbxDelegate *)delegate route:(DbxRoute *)route {
+- (instancetype)initWithTask:(NSURLSessionDataTask *)task session:(NSURLSession *)session delegate:(DBXDelegate *)delegate route:(DBXRoute *)route {
     self = [self init];
     if (self) {
         _task = task;
@@ -97,13 +97,13 @@
     return self;
 }
 
-- (DbxRpcTask *)response:(void (^)(id, id, DbxError *))responseBlock {
+- (DBXRpcTask *)response:(void (^)(id, id, DBXError *))responseBlock {
     void (^handler)(NSData *, NSURLResponse *, NSError *) = ^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         int statusCode = (int)httpResponse.statusCode;
         NSDictionary *httpHeaders = httpResponse.allHeaderFields;
         
-        DbxError *dbxError = [self getDbxError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+        DBXError *dbxError = [self getDBXError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
         if (dbxError) {
             id routeError = [self getRouteError:data statusCode:statusCode];
             return responseBlock(nil, routeError, dbxError);
@@ -118,7 +118,7 @@
     return self;
 }
 
-- (DbxRpcTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
+- (DBXRpcTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
     [_delegate addRpcProgressHandler:_task session:_session progressHandler:progressBlock];
 
     return self;
@@ -139,9 +139,9 @@
 @end
 
 
-@implementation DbxUploadTask
+@implementation DBXUploadTask
 
-- (instancetype)initWithTask:(NSURLSessionUploadTask *)task session:(NSURLSession *)session delegate:(DbxDelegate *)delegate route:(DbxRoute *)route {
+- (instancetype)initWithTask:(NSURLSessionUploadTask *)task session:(NSURLSession *)session delegate:(DBXDelegate *)delegate route:(DBXRoute *)route {
     self = [self init];
     if (self) {
         _task = task;
@@ -152,13 +152,13 @@
     return self;
 }
 
-- (DbxUploadTask *)response:(void (^)(id, id, DbxError *))responseBlock {
+- (DBXUploadTask *)response:(void (^)(id, id, DBXError *))responseBlock {
     void (^handler)(NSData *, NSURLResponse *, NSError *) = ^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         int statusCode = (int)httpResponse.statusCode;
         NSDictionary *httpHeaders = httpResponse.allHeaderFields;
         
-        DbxError *dbxError = [self getDbxError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+        DBXError *dbxError = [self getDBXError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
         if (dbxError) {
             id routeError = [self getRouteError:data statusCode:statusCode];
             return responseBlock(nil, routeError, dbxError);
@@ -173,7 +173,7 @@
     return self;
 }
 
-- (DbxUploadTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
+- (DBXUploadTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
     [_delegate addUploadProgressHandler:_task session:_session progressHandler:progressBlock];
     
     return self;
@@ -195,9 +195,9 @@
 @end
 
 
-@implementation DbxDownloadURLTask
+@implementation DBXDownloadURLTask
 
-- (instancetype)initWithTask:(NSURLSessionDownloadTask *)task session:(NSURLSession *)session delegate:(DbxDelegate *)delegate route:(DbxRoute *)route overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+- (instancetype)initWithTask:(NSURLSessionDownloadTask *)task session:(NSURLSession *)session delegate:(DBXDelegate *)delegate route:(DBXRoute *)route overwrite:(BOOL)overwrite destination:(NSURL *)destination {
     self = [self init];
     if (self) {
         _task = task;
@@ -210,14 +210,14 @@
     return self;
 }
 
-- (DbxDownloadURLTask *)response:(void (^)(id, id, DbxError *dbxError, NSURL *))responseBlock {
+- (DBXDownloadURLTask *)response:(void (^)(id, id, DBXError *dbxError, NSURL *))responseBlock {
     void (^handler)(NSURL *, NSURLResponse *, NSError *) = ^(NSURL *location, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         int statusCode = (int)httpResponse.statusCode;
         NSDictionary *httpHeaders = httpResponse.allHeaderFields;
         NSData *data = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
 
-        DbxError *dbxError = [self getDbxError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+        DBXError *dbxError = [self getDBXError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
         if (dbxError) {
             id routeError = [self getRouteError:data statusCode:statusCode];
             return responseBlock(nil, routeError, dbxError, _destination);
@@ -248,7 +248,7 @@
     return self;
 }
 
-- (DbxDownloadURLTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
+- (DBXDownloadURLTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
     [_delegate addDownloadProgressHandler:_task session:_session progressHandler:progressBlock];
     
     return self;
@@ -269,9 +269,9 @@
 @end
 
 
-@implementation DbxDownloadDataTask
+@implementation DBXDownloadDataTask
 
-- (instancetype)initWithTask:(NSURLSessionDownloadTask *)task session:(NSURLSession *)session delegate:(DbxDelegate *)delegate route:(DbxRoute *)route {
+- (instancetype)initWithTask:(NSURLSessionDownloadTask *)task session:(NSURLSession *)session delegate:(DBXDelegate *)delegate route:(DBXRoute *)route {
     self = [self init];
     if (self) {
         _task = task;
@@ -282,14 +282,14 @@
     return self;
 }
 
-- (DbxDownloadDataTask *)response:(void (^)(id, id, DbxError *dbxError, NSData *))responseBlock {
+- (DBXDownloadDataTask *)response:(void (^)(id, id, DBXError *dbxError, NSData *))responseBlock {
     void (^handler)(NSURL *, NSURLResponse *, NSError *) = ^(NSURL *location, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         int statusCode = (int)httpResponse.statusCode;
         NSDictionary *httpHeaders = httpResponse.allHeaderFields;
         NSData *data = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
         
-        DbxError *dbxError = [self getDbxError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+        DBXError *dbxError = [self getDBXError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
         if (dbxError) {
             id routeError = [self getRouteError:data statusCode:statusCode];
             return responseBlock(nil, routeError, dbxError, nil);
@@ -304,7 +304,7 @@
     return self;
 }
 
-- (DbxDownloadDataTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
+- (DBXDownloadDataTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
     [_delegate addDownloadProgressHandler:_task session:_session progressHandler:progressBlock];
     
     return self;

@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersIndividualSpaceAllocation;
+@class DBXUSERSIndividualSpaceAllocation;
 
 /// 
-/// The `DbxUsersIndividualSpaceAllocation` struct.
+/// The `DBXUSERSIndividualSpaceAllocation` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxUsersIndividualSpaceAllocation : NSObject <DbxSerializable> 
+@interface DBXUSERSIndividualSpaceAllocation : NSObject <DBXSerializable> 
 
 /// The total space allocated to the user's account (bytes).
 @property (nonatomic, copy) NSNumber * _Nonnull allocated;
@@ -24,23 +24,23 @@
 - (nonnull instancetype)initWithAllocated:(NSNumber * _Nonnull)allocated;
 
 /// Returns a human-readable representation of the
-/// `DbxUsersIndividualSpaceAllocation` object.
+/// `DBXUSERSIndividualSpaceAllocation` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersIndividualSpaceAllocation` struct.
+/// The serialization class for the `DBXUSERSIndividualSpaceAllocation` struct.
 /// 
-@interface DbxUsersIndividualSpaceAllocationSerializer : NSObject 
+@interface DBXUSERSIndividualSpaceAllocationSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersIndividualSpaceAllocation` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersIndividualSpaceAllocation * _Nonnull)obj;
+/// `DBXUSERSIndividualSpaceAllocation` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSIndividualSpaceAllocation * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersIndividualSpaceAllocation` object
+/// Returns an instantiation of the `DBXUSERSIndividualSpaceAllocation` object
 /// from a json-compatible dictionary representation.
-+ (DbxUsersIndividualSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSIndividualSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

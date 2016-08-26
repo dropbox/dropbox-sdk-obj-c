@@ -3,31 +3,30 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeDeviceSessionBatchError;
+@class DBXTEAMRevokeDeviceSessionBatchError;
 
 /// 
-/// The `DbxTeamRevokeDeviceSessionBatchError` union.
+/// The `DBXTEAMRevokeDeviceSessionBatchError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeDeviceSessionBatchError : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeDeviceSessionBatchError : NSObject <DBXSerializable> 
 
-/// The `TeamRevokeDeviceSessionBatchErrorTag` enum type represents the possible
-/// tag states that the `DbxTeamRevokeDeviceSessionBatchError` union can exist
-/// in.
-typedef NS_ENUM(NSInteger, TeamRevokeDeviceSessionBatchErrorTag) {
+/// The `DBXTEAMRevokeDeviceSessionBatchErrorTag` enum type represents the
+/// possible tag states that the `DBXTEAMRevokeDeviceSessionBatchError` union
+/// can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionBatchErrorTag) {
     /// (no description).
-    TeamRevokeDeviceSessionBatchErrorOther,
+    DBXTEAMRevokeDeviceSessionBatchErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamRevokeDeviceSessionBatchErrorTag tag;
-
+@property (nonatomic) DBXTEAMRevokeDeviceSessionBatchErrorTag tag;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -39,24 +38,24 @@ typedef NS_ENUM(NSInteger, TeamRevokeDeviceSessionBatchErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeDeviceSessionBatchError` object.
+/// `DBXTEAMRevokeDeviceSessionBatchError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeDeviceSessionBatchError`
+/// The serialization class for the `DBXTEAMRevokeDeviceSessionBatchError`
 /// union.
 /// 
-@interface DbxTeamRevokeDeviceSessionBatchErrorSerializer : NSObject 
+@interface DBXTEAMRevokeDeviceSessionBatchErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeDeviceSessionBatchError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeDeviceSessionBatchError * _Nonnull)obj;
+/// `DBXTEAMRevokeDeviceSessionBatchError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionBatchError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeDeviceSessionBatchError`
+/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionBatchError`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamRevokeDeviceSessionBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeDeviceSessionBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

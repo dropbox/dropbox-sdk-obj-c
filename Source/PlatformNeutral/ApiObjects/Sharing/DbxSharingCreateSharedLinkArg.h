@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingCreateSharedLinkArg;
-@class DbxSharingPendingUploadMode;
+@class DBXSHARINGCreateSharedLinkArg;
+@class DBXSHARINGPendingUploadMode;
 
 /// 
-/// The `DbxSharingCreateSharedLinkArg` struct.
+/// The `DBXSHARINGCreateSharedLinkArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingCreateSharedLinkArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGCreateSharedLinkArg : NSObject <DBXSerializable> 
 
 /// The path to share.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -26,34 +26,34 @@
 /// If it's okay to share a path that does not yet exist, set this to either
 /// file in PendingUploadMode or folder in PendingUploadMode to indicate whether
 /// to assume it's a file or folder.
-@property (nonatomic) DbxSharingPendingUploadMode * _Nullable pendingUpload;
+@property (nonatomic) DBXSHARINGPendingUploadMode * _Nullable pendingUpload;
 
 /// Full constructor for the `CreateSharedLinkArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DbxSharingPendingUploadMode * _Nullable)pendingUpload;
+- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DBXSHARINGPendingUploadMode * _Nullable)pendingUpload;
 
 /// Convenience constructor for the `CreateSharedLinkArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingCreateSharedLinkArg` object.
+/// `DBXSHARINGCreateSharedLinkArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingCreateSharedLinkArg` struct.
+/// The serialization class for the `DBXSHARINGCreateSharedLinkArg` struct.
 /// 
-@interface DbxSharingCreateSharedLinkArgSerializer : NSObject 
+@interface DBXSHARINGCreateSharedLinkArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingCreateSharedLinkArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingCreateSharedLinkArg * _Nonnull)obj;
+/// `DBXSHARINGCreateSharedLinkArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingCreateSharedLinkArg` object from
+/// Returns an instantiation of the `DBXSHARINGCreateSharedLinkArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingCreateSharedLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGCreateSharedLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

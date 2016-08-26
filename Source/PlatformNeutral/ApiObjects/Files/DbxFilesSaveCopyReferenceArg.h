@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesSaveCopyReferenceArg;
+@class DBXFILESSaveCopyReferenceArg;
 
 /// 
-/// The `DbxFilesSaveCopyReferenceArg` struct.
+/// The `DBXFILESSaveCopyReferenceArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSaveCopyReferenceArg : NSObject <DbxSerializable> 
+@interface DBXFILESSaveCopyReferenceArg : NSObject <DBXSerializable> 
 
 /// A copy reference returned by dCopyReferenceGet.
 @property (nonatomic, copy) NSString * _Nonnull dCopyReference;
@@ -27,23 +27,23 @@
 - (nonnull instancetype)initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesSaveCopyReferenceArg` object.
+/// `DBXFILESSaveCopyReferenceArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesSaveCopyReferenceArg` struct.
+/// The serialization class for the `DBXFILESSaveCopyReferenceArg` struct.
 /// 
-@interface DbxFilesSaveCopyReferenceArgSerializer : NSObject 
+@interface DBXFILESSaveCopyReferenceArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSaveCopyReferenceArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSaveCopyReferenceArg * _Nonnull)obj;
+/// `DBXFILESSaveCopyReferenceArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSaveCopyReferenceArg` object from a
+/// Returns an instantiation of the `DBXFILESSaveCopyReferenceArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSaveCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSaveCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

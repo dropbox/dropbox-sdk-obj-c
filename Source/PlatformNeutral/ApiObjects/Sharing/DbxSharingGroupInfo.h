@@ -3,27 +3,27 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamCommonGroupSummary.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMCOMMONGroupSummary.h"
 
-@class DbxSharingGroupInfo;
-@class DbxTeamCommonGroupManagementType;
-@class DbxTeamCommonGroupType;
+@class DBXSHARINGGroupInfo;
+@class DBXTEAMCOMMONGroupManagementType;
+@class DBXTEAMCOMMONGroupType;
 
 /// 
-/// The `DbxSharingGroupInfo` struct.
+/// The `DBXSHARINGGroupInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The information about a group. Groups is a way to manage a list of users
 /// who need same access permission to the shared folder.
 /// 
-@interface DbxSharingGroupInfo : DbxTeamCommonGroupSummary <DbxSerializable> 
+@interface DBXSHARINGGroupInfo : DBXTEAMCOMMONGroupSummary <DBXSerializable> 
 
 /// The type of group.
-@property (nonatomic) DbxTeamCommonGroupType * _Nonnull groupType;
+@property (nonatomic) DBXTEAMCOMMONGroupType * _Nonnull groupType;
 
 /// If the current user is an owner of the group.
 @property (nonatomic, copy) NSNumber * _Nonnull isOwner;
@@ -33,29 +33,29 @@
 
 /// Full constructor for the `GroupInfo` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType groupType:(DbxTeamCommonGroupType * _Nonnull)groupType isOwner:(NSNumber * _Nonnull)isOwner sameTeam:(NSNumber * _Nonnull)sameTeam groupExternalId:(NSString * _Nullable)groupExternalId memberCount:(NSNumber * _Nullable)memberCount;
+- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType groupType:(DBXTEAMCOMMONGroupType * _Nonnull)groupType isOwner:(NSNumber * _Nonnull)isOwner sameTeam:(NSNumber * _Nonnull)sameTeam groupExternalId:(NSString * _Nullable)groupExternalId memberCount:(NSNumber * _Nullable)memberCount;
 
 /// Convenience constructor for the `GroupInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType groupType:(DbxTeamCommonGroupType * _Nonnull)groupType isOwner:(NSNumber * _Nonnull)isOwner sameTeam:(NSNumber * _Nonnull)sameTeam;
+- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType groupType:(DBXTEAMCOMMONGroupType * _Nonnull)groupType isOwner:(NSNumber * _Nonnull)isOwner sameTeam:(NSNumber * _Nonnull)sameTeam;
 
-/// Returns a human-readable representation of the `DbxSharingGroupInfo` object.
+/// Returns a human-readable representation of the `DBXSHARINGGroupInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGroupInfo` struct.
+/// The serialization class for the `DBXSHARINGGroupInfo` struct.
 /// 
-@interface DbxSharingGroupInfoSerializer : NSObject 
+@interface DBXSHARINGGroupInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGroupInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGroupInfo * _Nonnull)obj;
+/// `DBXSHARINGGroupInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGroupInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGroupInfo` object from a
+/// Returns an instantiation of the `DBXSHARINGGroupInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingGroupInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGroupInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

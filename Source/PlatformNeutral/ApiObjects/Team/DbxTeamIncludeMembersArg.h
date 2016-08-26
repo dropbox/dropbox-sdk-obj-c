@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamIncludeMembersArg;
+@class DBXTEAMIncludeMembersArg;
 
 /// 
-/// The `DbxTeamIncludeMembersArg` struct.
+/// The `DBXTEAMIncludeMembersArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamIncludeMembersArg : NSObject <DbxSerializable> 
+@interface DBXTEAMIncludeMembersArg : NSObject <DBXSerializable> 
 
 /// Whether to return the list of members in the group.  Note that the default
 /// value will cause all the group members  to be returned in the response. This
@@ -29,7 +29,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamIncludeMembersArg`
+/// Returns a human-readable representation of the `DBXTEAMIncludeMembersArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -37,16 +37,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamIncludeMembersArg` struct.
+/// The serialization class for the `DBXTEAMIncludeMembersArg` struct.
 /// 
-@interface DbxTeamIncludeMembersArgSerializer : NSObject 
+@interface DBXTEAMIncludeMembersArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamIncludeMembersArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamIncludeMembersArg * _Nonnull)obj;
+/// `DBXTEAMIncludeMembersArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMIncludeMembersArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamIncludeMembersArg` object from a
+/// Returns an instantiation of the `DBXTEAMIncludeMembersArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamIncludeMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMIncludeMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListMembersAppsArg;
+@class DBXTEAMListMembersAppsArg;
 
 /// 
-/// The `DbxTeamListMembersAppsArg` struct.
+/// The `DBXTEAMListMembersAppsArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for linkedAppsListMembersLinkedApps.
 /// 
-@interface DbxTeamListMembersAppsArg : NSObject <DbxSerializable> 
+@interface DBXTEAMListMembersAppsArg : NSObject <DBXSerializable> 
 
 /// At the first call to the linkedAppsListMembersLinkedApps the cursor
 /// shouldn't be passed. Then, if the result of the call includes a cursor, the
@@ -32,7 +32,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamListMembersAppsArg`
+/// Returns a human-readable representation of the `DBXTEAMListMembersAppsArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -40,16 +40,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamListMembersAppsArg` struct.
+/// The serialization class for the `DBXTEAMListMembersAppsArg` struct.
 /// 
-@interface DbxTeamListMembersAppsArgSerializer : NSObject 
+@interface DBXTEAMListMembersAppsArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListMembersAppsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListMembersAppsArg * _Nonnull)obj;
+/// `DBXTEAMListMembersAppsArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMembersAppsArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListMembersAppsArg` object from a
+/// Returns an instantiation of the `DBXTEAMListMembersAppsArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamListMembersAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListMembersAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

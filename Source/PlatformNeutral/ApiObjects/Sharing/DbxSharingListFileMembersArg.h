@@ -3,27 +3,27 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFileMembersArg;
-@class DbxSharingMemberAction;
+@class DBXSHARINGListFileMembersArg;
+@class DBXSHARINGMemberAction;
 
 /// 
-/// The `DbxSharingListFileMembersArg` struct.
+/// The `DBXSHARINGListFileMembersArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for listFileMembers.
 /// 
-@interface DbxSharingListFileMembersArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFileMembersArg : NSObject <DBXSerializable> 
 
 /// The file for which you want to see members.
 @property (nonatomic, copy) NSString * _Nonnull file;
 
 /// The actions for which to return permissions on a member
-@property (nonatomic) NSArray<DbxSharingMemberAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
 
 /// Whether to include members who only have access from a parent shared folder.
 @property (nonatomic, copy) NSNumber * _Nonnull includeInherited;
@@ -34,30 +34,30 @@
 
 /// Full constructor for the `ListFileMembersArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file actions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit;
 
 /// Convenience constructor for the `ListFileMembersArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFileMembersArg` object.
+/// `DBXSHARINGListFileMembersArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFileMembersArg` struct.
+/// The serialization class for the `DBXSHARINGListFileMembersArg` struct.
 /// 
-@interface DbxSharingListFileMembersArgSerializer : NSObject 
+@interface DBXSHARINGListFileMembersArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFileMembersArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersArg * _Nonnull)obj;
+/// `DBXSHARINGListFileMembersArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFileMembersArg` object from a
+/// Returns an instantiation of the `DBXSHARINGListFileMembersArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListFileMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFileMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

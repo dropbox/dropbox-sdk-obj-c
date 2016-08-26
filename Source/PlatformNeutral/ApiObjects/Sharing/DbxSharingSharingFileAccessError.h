@@ -3,50 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharingFileAccessError;
+@class DBXSHARINGSharingFileAccessError;
 
 /// 
-/// The `DbxSharingSharingFileAccessError` union.
+/// The `DBXSHARINGSharingFileAccessError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// User could not access this file.
 /// 
-@interface DbxSharingSharingFileAccessError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharingFileAccessError : NSObject <DBXSerializable> 
 
-/// The `SharingSharingFileAccessErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingSharingFileAccessError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharingFileAccessErrorTag) {
+/// The `DBXSHARINGSharingFileAccessErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGSharingFileAccessError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharingFileAccessErrorTag) {
     /// Current user does not have sufficient privileges to perform the desired
     /// action.
-    SharingSharingFileAccessErrorNoPermission,
+    DBXSHARINGSharingFileAccessErrorNoPermission,
 
     /// File specified was not found.
-    SharingSharingFileAccessErrorInvalidFile,
+    DBXSHARINGSharingFileAccessErrorInvalidFile,
 
     /// A folder can't be shared this way. Use folder sharing or a shared link
     /// instead.
-    SharingSharingFileAccessErrorIsFolder,
+    DBXSHARINGSharingFileAccessErrorIsFolder,
 
     /// A file inside a public folder can't be shared this way. Use a public
     /// link instead.
-    SharingSharingFileAccessErrorInsidePublicFolder,
+    DBXSHARINGSharingFileAccessErrorInsidePublicFolder,
 
     /// A Mac OS X package can't be shared this way. Use a shared link instead.
-    SharingSharingFileAccessErrorInsideOsxPackage,
+    DBXSHARINGSharingFileAccessErrorInsideOsxPackage,
 
     /// (no description).
-    SharingSharingFileAccessErrorOther,
+    DBXSHARINGSharingFileAccessErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharingFileAccessErrorTag tag;
-
+@property (nonatomic) DBXSHARINGSharingFileAccessErrorTag tag;
 
 /// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
@@ -89,23 +88,23 @@ typedef NS_ENUM(NSInteger, SharingSharingFileAccessErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharingFileAccessError` object.
+/// `DBXSHARINGSharingFileAccessError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharingFileAccessError` union.
+/// The serialization class for the `DBXSHARINGSharingFileAccessError` union.
 /// 
-@interface DbxSharingSharingFileAccessErrorSerializer : NSObject 
+@interface DBXSHARINGSharingFileAccessErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharingFileAccessError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharingFileAccessError * _Nonnull)obj;
+/// `DBXSHARINGSharingFileAccessError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingFileAccessError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharingFileAccessError` object
+/// Returns an instantiation of the `DBXSHARINGSharingFileAccessError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingSharingFileAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharingFileAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

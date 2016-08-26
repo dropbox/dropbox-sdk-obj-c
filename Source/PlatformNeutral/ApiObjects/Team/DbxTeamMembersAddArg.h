@@ -3,35 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMemberAddArg;
-@class DbxTeamMembersAddArg;
+@class DBXTEAMMemberAddArg;
+@class DBXTEAMMembersAddArg;
 
 /// 
-/// The `DbxTeamMembersAddArg` struct.
+/// The `DBXTEAMMembersAddArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersAddArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersAddArg : NSObject <DBXSerializable> 
 
 /// Details of new members to be added to the team.
-@property (nonatomic) NSArray<DbxTeamMemberAddArg *> * _Nonnull dNewMembers;
+@property (nonatomic) NSArray<DBXTEAMMemberAddArg *> * _Nonnull dNewMembers;
 
 /// Whether to force the add to happen asynchronously.
 @property (nonatomic, copy) NSNumber * _Nonnull forceAsync;
 
 /// Full constructor for the `MembersAddArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithDNewMembers:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync;
+- (nonnull instancetype)initWithDNewMembers:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync;
 
 /// Convenience constructor for the `MembersAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithDNewMembers:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers;
+- (nonnull instancetype)initWithDNewMembers:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers;
 
-/// Returns a human-readable representation of the `DbxTeamMembersAddArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersAddArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -39,16 +39,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersAddArg` struct.
+/// The serialization class for the `DBXTEAMMembersAddArg` struct.
 /// 
-@interface DbxTeamMembersAddArgSerializer : NSObject 
+@interface DBXTEAMMembersAddArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersAddArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersAddArg * _Nonnull)obj;
+/// `DBXTEAMMembersAddArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersAddArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersAddArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

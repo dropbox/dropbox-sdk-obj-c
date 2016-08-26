@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGetSharedLinksArg;
+@class DBXSHARINGGetSharedLinksArg;
 
 /// 
-/// The `DbxSharingGetSharedLinksArg` struct.
+/// The `DBXSHARINGGetSharedLinksArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingGetSharedLinksArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetSharedLinksArg : NSObject <DBXSerializable> 
 
 /// See getSharedLinks description.
 @property (nonatomic, copy) NSString * _Nullable path;
@@ -27,7 +27,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxSharingGetSharedLinksArg`
+/// Returns a human-readable representation of the `DBXSHARINGGetSharedLinksArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingGetSharedLinksArg` struct.
+/// The serialization class for the `DBXSHARINGGetSharedLinksArg` struct.
 /// 
-@interface DbxSharingGetSharedLinksArgSerializer : NSObject 
+@interface DBXSHARINGGetSharedLinksArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetSharedLinksArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetSharedLinksArg * _Nonnull)obj;
+/// `DBXSHARINGGetSharedLinksArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetSharedLinksArg` object from a
+/// Returns an instantiation of the `DBXSHARINGGetSharedLinksArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingGetSharedLinksArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetSharedLinksArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

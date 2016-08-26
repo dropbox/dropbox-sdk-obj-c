@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesPreviewArg;
+@class DBXFILESPreviewArg;
 
 /// 
-/// The `DbxFilesPreviewArg` struct.
+/// The `DBXFILESPreviewArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesPreviewArg : NSObject <DbxSerializable> 
+@interface DBXFILESPreviewArg : NSObject <DBXSerializable> 
 
 /// The path of the file to preview.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -30,23 +30,23 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesPreviewArg` object.
+/// Returns a human-readable representation of the `DBXFILESPreviewArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesPreviewArg` struct.
+/// The serialization class for the `DBXFILESPreviewArg` struct.
 /// 
-@interface DbxFilesPreviewArgSerializer : NSObject 
+@interface DBXFILESPreviewArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesPreviewArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesPreviewArg * _Nonnull)obj;
+/// `DBXFILESPreviewArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPreviewArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesPreviewArg` object from a
+/// Returns an instantiation of the `DBXFILESPreviewArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesPreviewArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESPreviewArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

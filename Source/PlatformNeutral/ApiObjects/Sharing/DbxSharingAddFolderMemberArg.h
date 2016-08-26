@@ -3,26 +3,26 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAddFolderMemberArg;
-@class DbxSharingAddMember;
+@class DBXSHARINGAddFolderMemberArg;
+@class DBXSHARINGAddMember;
 
 /// 
-/// The `DbxSharingAddFolderMemberArg` struct.
+/// The `DBXSHARINGAddFolderMemberArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingAddFolderMemberArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGAddFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
 
 /// The intended list of members to add.  Added members will receive invites to
 /// join the shared folder.
-@property (nonatomic) NSArray<DbxSharingAddMember *> * _Nonnull members;
+@property (nonatomic) NSArray<DBXSHARINGAddMember *> * _Nonnull members;
 
 /// Whether added members should be notified via email and device notifications
 /// of their invite.
@@ -33,30 +33,30 @@
 
 /// Full constructor for the `AddFolderMemberArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage;
+- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage;
 
 /// Convenience constructor for the `AddFolderMemberArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members;
+- (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> * _Nonnull)members;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingAddFolderMemberArg` object.
+/// `DBXSHARINGAddFolderMemberArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingAddFolderMemberArg` struct.
+/// The serialization class for the `DBXSHARINGAddFolderMemberArg` struct.
 /// 
-@interface DbxSharingAddFolderMemberArgSerializer : NSObject 
+@interface DBXSHARINGAddFolderMemberArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAddFolderMemberArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAddFolderMemberArg * _Nonnull)obj;
+/// `DBXSHARINGAddFolderMemberArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFolderMemberArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAddFolderMemberArg` object from a
+/// Returns an instantiation of the `DBXSHARINGAddFolderMemberArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingAddFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAddFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

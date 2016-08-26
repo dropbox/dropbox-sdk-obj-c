@@ -4,153 +4,153 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxErrors.h"
-#import "DbxFilesLookupError.h"
-#import "DbxSharingAccessLevel.h"
-#import "DbxSharingAclUpdatePolicy.h"
-#import "DbxSharingAddFileMemberArgs.h"
-#import "DbxSharingAddFileMemberError.h"
-#import "DbxSharingAddFolderMemberArg.h"
-#import "DbxSharingAddFolderMemberError.h"
-#import "DbxSharingAddMember.h"
-#import "DbxSharingAddMemberSelectorError.h"
-#import "DbxSharingChangeFileMemberAccessArgs.h"
-#import "DbxSharingCreateSharedLinkArg.h"
-#import "DbxSharingCreateSharedLinkError.h"
-#import "DbxSharingCreateSharedLinkWithSettingsArg.h"
-#import "DbxSharingCreateSharedLinkWithSettingsError.h"
-#import "DbxSharingFileAction.h"
-#import "DbxSharingFileLinkMetadata.h"
-#import "DbxSharingFileMemberActionError.h"
-#import "DbxSharingFileMemberActionIndividualResult.h"
-#import "DbxSharingFileMemberActionResult.h"
-#import "DbxSharingFileMemberRemoveActionResult.h"
-#import "DbxSharingFilePermission.h"
-#import "DbxSharingFolderAction.h"
-#import "DbxSharingFolderLinkMetadata.h"
-#import "DbxSharingFolderPermission.h"
-#import "DbxSharingFolderPolicy.h"
-#import "DbxSharingGetFileMetadataArg.h"
-#import "DbxSharingGetFileMetadataBatchArg.h"
-#import "DbxSharingGetFileMetadataBatchResult.h"
-#import "DbxSharingGetFileMetadataError.h"
-#import "DbxSharingGetFileMetadataIndividualResult.h"
-#import "DbxSharingGetMetadataArgs.h"
-#import "DbxSharingGetSharedLinkFileError.h"
-#import "DbxSharingGetSharedLinkMetadataArg.h"
-#import "DbxSharingGetSharedLinksArg.h"
-#import "DbxSharingGetSharedLinksError.h"
-#import "DbxSharingGetSharedLinksResult.h"
-#import "DbxSharingGroupMembershipInfo.h"
-#import "DbxSharingInsufficientQuotaAmounts.h"
-#import "DbxSharingInviteeMembershipInfo.h"
-#import "DbxSharingJobError.h"
-#import "DbxSharingJobStatus.h"
-#import "DbxSharingLinkMetadata.h"
-#import "DbxSharingLinkPermissions.h"
-#import "DbxSharingListFileMembersArg.h"
-#import "DbxSharingListFileMembersBatchArg.h"
-#import "DbxSharingListFileMembersBatchResult.h"
-#import "DbxSharingListFileMembersContinueArg.h"
-#import "DbxSharingListFileMembersContinueError.h"
-#import "DbxSharingListFileMembersError.h"
-#import "DbxSharingListFileMembersIndividualResult.h"
-#import "DbxSharingListFilesArg.h"
-#import "DbxSharingListFilesContinueArg.h"
-#import "DbxSharingListFilesContinueError.h"
-#import "DbxSharingListFilesResult.h"
-#import "DbxSharingListFolderMembersArgs.h"
-#import "DbxSharingListFolderMembersContinueArg.h"
-#import "DbxSharingListFolderMembersContinueError.h"
-#import "DbxSharingListFolderMembersCursorArg.h"
-#import "DbxSharingListFoldersArgs.h"
-#import "DbxSharingListFoldersContinueArg.h"
-#import "DbxSharingListFoldersContinueError.h"
-#import "DbxSharingListFoldersResult.h"
-#import "DbxSharingListSharedLinksArg.h"
-#import "DbxSharingListSharedLinksError.h"
-#import "DbxSharingListSharedLinksResult.h"
-#import "DbxSharingMemberAccessLevelResult.h"
-#import "DbxSharingMemberAction.h"
-#import "DbxSharingMemberPolicy.h"
-#import "DbxSharingMemberSelector.h"
-#import "DbxSharingModifySharedLinkSettingsArgs.h"
-#import "DbxSharingModifySharedLinkSettingsError.h"
-#import "DbxSharingMountFolderArg.h"
-#import "DbxSharingMountFolderError.h"
-#import "DbxSharingParentFolderAccessInfo.h"
-#import "DbxSharingPathLinkMetadata.h"
-#import "DbxSharingPendingUploadMode.h"
-#import "DbxSharingRelinquishFileMembershipArg.h"
-#import "DbxSharingRelinquishFileMembershipError.h"
-#import "DbxSharingRelinquishFolderMembershipArg.h"
-#import "DbxSharingRelinquishFolderMembershipError.h"
-#import "DbxSharingRemoveFileMemberArg.h"
-#import "DbxSharingRemoveFileMemberError.h"
-#import "DbxSharingRemoveFolderMemberArg.h"
-#import "DbxSharingRemoveFolderMemberError.h"
-#import "DbxSharingRemoveMemberJobStatus.h"
-#import "DbxSharingRevokeSharedLinkArg.h"
-#import "DbxSharingRevokeSharedLinkError.h"
-#import "DbxSharingRouteObjects.h"
-#import "DbxSharingRoutes.h"
-#import "DbxSharingShareFolderArg.h"
-#import "DbxSharingShareFolderError.h"
-#import "DbxSharingShareFolderErrorBase.h"
-#import "DbxSharingShareFolderJobStatus.h"
-#import "DbxSharingShareFolderLaunch.h"
-#import "DbxSharingSharePathError.h"
-#import "DbxSharingSharedFileMembers.h"
-#import "DbxSharingSharedFileMetadata.h"
-#import "DbxSharingSharedFolderAccessError.h"
-#import "DbxSharingSharedFolderMemberError.h"
-#import "DbxSharingSharedFolderMembers.h"
-#import "DbxSharingSharedFolderMetadata.h"
-#import "DbxSharingSharedFolderMetadataBase.h"
-#import "DbxSharingSharedLinkError.h"
-#import "DbxSharingSharedLinkMetadata.h"
-#import "DbxSharingSharedLinkPolicy.h"
-#import "DbxSharingSharedLinkSettings.h"
-#import "DbxSharingSharedLinkSettingsError.h"
-#import "DbxSharingSharingFileAccessError.h"
-#import "DbxSharingSharingUserError.h"
-#import "DbxSharingTeamMemberInfo.h"
-#import "DbxSharingTransferFolderArg.h"
-#import "DbxSharingTransferFolderError.h"
-#import "DbxSharingUnmountFolderArg.h"
-#import "DbxSharingUnmountFolderError.h"
-#import "DbxSharingUnshareFileArg.h"
-#import "DbxSharingUnshareFileError.h"
-#import "DbxSharingUnshareFolderArg.h"
-#import "DbxSharingUnshareFolderError.h"
-#import "DbxSharingUpdateFolderMemberArg.h"
-#import "DbxSharingUpdateFolderMemberError.h"
-#import "DbxSharingUpdateFolderPolicyArg.h"
-#import "DbxSharingUpdateFolderPolicyError.h"
-#import "DbxSharingUserMembershipInfo.h"
-#import "DbxSharingVisibility.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DbxUsersTeam.h"
-#import "DropboxTransportClient.h"
+#import "DBXASYNCLaunchEmptyResult.h"
+#import "DBXASYNCLaunchResultBase.h"
+#import "DBXASYNCPollArg.h"
+#import "DBXASYNCPollError.h"
+#import "DBXASYNCPollResultBase.h"
+#import "DBXErrors.h"
+#import "DBXFILESLookupError.h"
+#import "DBXSHARINGAccessLevel.h"
+#import "DBXSHARINGAclUpdatePolicy.h"
+#import "DBXSHARINGAddFileMemberArgs.h"
+#import "DBXSHARINGAddFileMemberError.h"
+#import "DBXSHARINGAddFolderMemberArg.h"
+#import "DBXSHARINGAddFolderMemberError.h"
+#import "DBXSHARINGAddMember.h"
+#import "DBXSHARINGAddMemberSelectorError.h"
+#import "DBXSHARINGChangeFileMemberAccessArgs.h"
+#import "DBXSHARINGCreateSharedLinkArg.h"
+#import "DBXSHARINGCreateSharedLinkError.h"
+#import "DBXSHARINGCreateSharedLinkWithSettingsArg.h"
+#import "DBXSHARINGCreateSharedLinkWithSettingsError.h"
+#import "DBXSHARINGFileAction.h"
+#import "DBXSHARINGFileLinkMetadata.h"
+#import "DBXSHARINGFileMemberActionError.h"
+#import "DBXSHARINGFileMemberActionIndividualResult.h"
+#import "DBXSHARINGFileMemberActionResult.h"
+#import "DBXSHARINGFileMemberRemoveActionResult.h"
+#import "DBXSHARINGFilePermission.h"
+#import "DBXSHARINGFolderAction.h"
+#import "DBXSHARINGFolderLinkMetadata.h"
+#import "DBXSHARINGFolderPermission.h"
+#import "DBXSHARINGFolderPolicy.h"
+#import "DBXSHARINGGetFileMetadataArg.h"
+#import "DBXSHARINGGetFileMetadataBatchArg.h"
+#import "DBXSHARINGGetFileMetadataBatchResult.h"
+#import "DBXSHARINGGetFileMetadataError.h"
+#import "DBXSHARINGGetFileMetadataIndividualResult.h"
+#import "DBXSHARINGGetMetadataArgs.h"
+#import "DBXSHARINGGetSharedLinkFileError.h"
+#import "DBXSHARINGGetSharedLinkMetadataArg.h"
+#import "DBXSHARINGGetSharedLinksArg.h"
+#import "DBXSHARINGGetSharedLinksError.h"
+#import "DBXSHARINGGetSharedLinksResult.h"
+#import "DBXSHARINGGroupMembershipInfo.h"
+#import "DBXSHARINGInsufficientQuotaAmounts.h"
+#import "DBXSHARINGInviteeMembershipInfo.h"
+#import "DBXSHARINGJobError.h"
+#import "DBXSHARINGJobStatus.h"
+#import "DBXSHARINGLinkMetadata.h"
+#import "DBXSHARINGLinkPermissions.h"
+#import "DBXSHARINGListFileMembersArg.h"
+#import "DBXSHARINGListFileMembersBatchArg.h"
+#import "DBXSHARINGListFileMembersBatchResult.h"
+#import "DBXSHARINGListFileMembersContinueArg.h"
+#import "DBXSHARINGListFileMembersContinueError.h"
+#import "DBXSHARINGListFileMembersError.h"
+#import "DBXSHARINGListFileMembersIndividualResult.h"
+#import "DBXSHARINGListFilesArg.h"
+#import "DBXSHARINGListFilesContinueArg.h"
+#import "DBXSHARINGListFilesContinueError.h"
+#import "DBXSHARINGListFilesResult.h"
+#import "DBXSHARINGListFolderMembersArgs.h"
+#import "DBXSHARINGListFolderMembersContinueArg.h"
+#import "DBXSHARINGListFolderMembersContinueError.h"
+#import "DBXSHARINGListFolderMembersCursorArg.h"
+#import "DBXSHARINGListFoldersArgs.h"
+#import "DBXSHARINGListFoldersContinueArg.h"
+#import "DBXSHARINGListFoldersContinueError.h"
+#import "DBXSHARINGListFoldersResult.h"
+#import "DBXSHARINGListSharedLinksArg.h"
+#import "DBXSHARINGListSharedLinksError.h"
+#import "DBXSHARINGListSharedLinksResult.h"
+#import "DBXSHARINGMemberAccessLevelResult.h"
+#import "DBXSHARINGMemberAction.h"
+#import "DBXSHARINGMemberPolicy.h"
+#import "DBXSHARINGMemberSelector.h"
+#import "DBXSHARINGModifySharedLinkSettingsArgs.h"
+#import "DBXSHARINGModifySharedLinkSettingsError.h"
+#import "DBXSHARINGMountFolderArg.h"
+#import "DBXSHARINGMountFolderError.h"
+#import "DBXSHARINGParentFolderAccessInfo.h"
+#import "DBXSHARINGPathLinkMetadata.h"
+#import "DBXSHARINGPendingUploadMode.h"
+#import "DBXSHARINGRelinquishFileMembershipArg.h"
+#import "DBXSHARINGRelinquishFileMembershipError.h"
+#import "DBXSHARINGRelinquishFolderMembershipArg.h"
+#import "DBXSHARINGRelinquishFolderMembershipError.h"
+#import "DBXSHARINGRemoveFileMemberArg.h"
+#import "DBXSHARINGRemoveFileMemberError.h"
+#import "DBXSHARINGRemoveFolderMemberArg.h"
+#import "DBXSHARINGRemoveFolderMemberError.h"
+#import "DBXSHARINGRemoveMemberJobStatus.h"
+#import "DBXSHARINGRevokeSharedLinkArg.h"
+#import "DBXSHARINGRevokeSharedLinkError.h"
+#import "DBXSHARINGRouteObjects.h"
+#import "DBXSHARINGRoutes.h"
+#import "DBXSHARINGShareFolderArg.h"
+#import "DBXSHARINGShareFolderError.h"
+#import "DBXSHARINGShareFolderErrorBase.h"
+#import "DBXSHARINGShareFolderJobStatus.h"
+#import "DBXSHARINGShareFolderLaunch.h"
+#import "DBXSHARINGSharePathError.h"
+#import "DBXSHARINGSharedFileMembers.h"
+#import "DBXSHARINGSharedFileMetadata.h"
+#import "DBXSHARINGSharedFolderAccessError.h"
+#import "DBXSHARINGSharedFolderMemberError.h"
+#import "DBXSHARINGSharedFolderMembers.h"
+#import "DBXSHARINGSharedFolderMetadata.h"
+#import "DBXSHARINGSharedFolderMetadataBase.h"
+#import "DBXSHARINGSharedLinkError.h"
+#import "DBXSHARINGSharedLinkMetadata.h"
+#import "DBXSHARINGSharedLinkPolicy.h"
+#import "DBXSHARINGSharedLinkSettings.h"
+#import "DBXSHARINGSharedLinkSettingsError.h"
+#import "DBXSHARINGSharingFileAccessError.h"
+#import "DBXSHARINGSharingUserError.h"
+#import "DBXSHARINGTeamMemberInfo.h"
+#import "DBXSHARINGTransferFolderArg.h"
+#import "DBXSHARINGTransferFolderError.h"
+#import "DBXSHARINGUnmountFolderArg.h"
+#import "DBXSHARINGUnmountFolderError.h"
+#import "DBXSHARINGUnshareFileArg.h"
+#import "DBXSHARINGUnshareFileError.h"
+#import "DBXSHARINGUnshareFolderArg.h"
+#import "DBXSHARINGUnshareFolderError.h"
+#import "DBXSHARINGUpdateFolderMemberArg.h"
+#import "DBXSHARINGUpdateFolderMemberError.h"
+#import "DBXSHARINGUpdateFolderPolicyArg.h"
+#import "DBXSHARINGUpdateFolderPolicyError.h"
+#import "DBXSHARINGUserMembershipInfo.h"
+#import "DBXSHARINGVisibility.h"
+#import "DBXStoneBase.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
+#import "DBXUSERSTeam.h"
 
 /// 
 /// Routes for the Sharing namespace
 /// 
-@interface DbxSharingRoutes : NSObject 
+@interface DBXSHARINGRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic) DropboxTransportClient * _Nonnull client;
+@property (nonatomic) DBXTransportClient * _Nonnull client;
 
-/// Initializes the `DbxSharingRoutes` namespace container object with a
+/// Initializes the `DBXSHARINGRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
 
 /// 
 /// Adds specified members to a file.
@@ -159,10 +159,10 @@
 /// - parameter members: Members to add. Note that even an email address is given, this may result in a user being
 /// directy added to the membership if that email is the user's main account email.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingFileMemberActionResult *> *
-/// _Nonnull` object on success or a `DbxSharingAddFileMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGFileMemberActionResult *> *
+/// _Nonnull` object on success or a `DBXSHARINGAddFileMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingFileMemberActionResult *> *, DbxSharingAddFileMemberError *> * _Nonnull)addFileMember:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members;
+- (DBXRpcTask<NSArray<DBXSHARINGFileMemberActionResult *> *, DBXSHARINGAddFileMemberError *> * _Nonnull)addFileMember:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members;
 
 /// 
 /// Adds specified members to a file.
@@ -175,10 +175,10 @@
 /// - parameter accessLevel: AccessLevel union object, describing what access level we want to give new members.
 /// - parameter addMessageAsComment: If the custom message should be added as a comment on the file.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingFileMemberActionResult *> *
-/// _Nonnull` object on success or a `DbxSharingAddFileMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGFileMemberActionResult *> *
+/// _Nonnull` object on success or a `DBXSHARINGAddFileMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingFileMemberActionResult *> *, DbxSharingAddFileMemberError *> * _Nonnull)addFileMember:(NSString * _Nonnull)file members:(NSArray<DbxSharingMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
+- (DBXRpcTask<NSArray<DBXSHARINGFileMemberActionResult *> *, DBXSHARINGAddFileMemberError *> * _Nonnull)addFileMember:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DBXSHARINGAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
 
 /// 
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new
@@ -190,9 +190,9 @@
 /// folder.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingAddFolderMemberError * _Nonnull` object on failure.
+/// `DBXSHARINGAddFolderMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingAddFolderMemberError *> * _Nonnull)addFolderMember:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGAddFolderMemberError *> * _Nonnull)addFolderMember:(NSString * _Nonnull)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> * _Nonnull)members;
 
 /// 
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new
@@ -206,9 +206,9 @@
 /// - parameter customMessage: Optional message to display to added members in their invitation.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingAddFolderMemberError * _Nonnull` object on failure.
+/// `DBXSHARINGAddFolderMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingAddFolderMemberError *> * _Nonnull)addFolderMember:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGAddFolderMemberError *> * _Nonnull)addFolderMember:(NSString * _Nonnull)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage;
 
 /// 
 /// Changes a member's access on a shared file.
@@ -217,10 +217,10 @@
 /// - parameter member: The member whose access we are changing.
 /// - parameter accessLevel: The new access level for the member.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingFileMemberActionResult * _Nonnull`
-/// object on success or a `DbxSharingFileMemberActionError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGFileMemberActionResult * _Nonnull`
+/// object on success or a `DBXSHARINGFileMemberActionError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingFileMemberActionResult *, DbxSharingFileMemberActionError *> * _Nonnull)changeFileMemberAccess:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel;
+- (DBXRpcTask<DBXSHARINGFileMemberActionResult *, DBXSHARINGFileMemberActionError *> * _Nonnull)changeFileMemberAccess:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 /// 
 /// Returns the status of an asynchronous job. Apps must have full Dropbox access to use this endpoint.
@@ -228,10 +228,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingJobStatus * _Nonnull` object on
-/// success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGJobStatus * _Nonnull` object on
+/// success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingJobStatus *, DbxAsyncPollError *> * _Nonnull)checkJobStatus:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXSHARINGJobStatus *, DBXASYNCPollError *> * _Nonnull)checkJobStatus:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this
@@ -240,10 +240,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingRemoveMemberJobStatus * _Nonnull`
-/// object on success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGRemoveMemberJobStatus * _Nonnull`
+/// object on success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingRemoveMemberJobStatus *, DbxAsyncPollError *> * _Nonnull)checkRemoveMemberJobStatus:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXSHARINGRemoveMemberJobStatus *, DBXASYNCPollError *> * _Nonnull)checkRemoveMemberJobStatus:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this
@@ -252,10 +252,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingShareFolderJobStatus * _Nonnull`
-/// object on success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGShareFolderJobStatus * _Nonnull`
+/// object on success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingShareFolderJobStatus *, DbxAsyncPollError *> * _Nonnull)checkShareJobStatus:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXSHARINGShareFolderJobStatus *, DBXASYNCPollError *> * _Nonnull)checkShareJobStatus:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// DEPRECATED: Create a shared link. If a shared link already exists for the given path, that link is returned. Note
@@ -266,10 +266,10 @@
 /// 
 /// - parameter path: The path to share.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingPathLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingCreateSharedLinkError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGPathLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGCreateSharedLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingPathLinkMetadata *, DbxSharingCreateSharedLinkError *> * _Nonnull)createSharedLink:(NSString * _Nonnull)path __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
+- (DBXRpcTask<DBXSHARINGPathLinkMetadata *, DBXSHARINGCreateSharedLinkError *> * _Nonnull)createSharedLink:(NSString * _Nonnull)path __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
 
 /// 
 /// DEPRECATED: Create a shared link. If a shared link already exists for the given path, that link is returned. Note
@@ -283,10 +283,10 @@
 /// - parameter pendingUpload: If it's okay to share a path that does not yet exist, set this to either file in
 /// PendingUploadMode or folder in PendingUploadMode to indicate whether to assume it's a file or folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingPathLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingCreateSharedLinkError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGPathLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGCreateSharedLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingPathLinkMetadata *, DbxSharingCreateSharedLinkError *> * _Nonnull)createSharedLink:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DbxSharingPendingUploadMode * _Nullable)pendingUpload __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
+- (DBXRpcTask<DBXSHARINGPathLinkMetadata *, DBXSHARINGCreateSharedLinkError *> * _Nonnull)createSharedLink:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DBXSHARINGPendingUploadMode * _Nullable)pendingUpload __deprecated_msg("create_shared_link is deprecated. Use create_shared_link_with_settings.");
 
 /// 
 /// Create a shared link with custom settings. If no settings are given then the default visibility is public in
@@ -295,10 +295,10 @@
 /// 
 /// - parameter path: The path to be shared by the shared link
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingCreateSharedLinkWithSettingsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGCreateSharedLinkWithSettingsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingCreateSharedLinkWithSettingsError *> * _Nonnull)createSharedLinkWithSettings:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGCreateSharedLinkWithSettingsError *> * _Nonnull)createSharedLinkWithSettings:(NSString * _Nonnull)path;
 
 /// 
 /// Create a shared link with custom settings. If no settings are given then the default visibility is public in
@@ -308,20 +308,20 @@
 /// - parameter path: The path to be shared by the shared link
 /// - parameter settings: The requested settings for the newly created shared link
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingCreateSharedLinkWithSettingsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGCreateSharedLinkWithSettingsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingCreateSharedLinkWithSettingsError *> * _Nonnull)createSharedLinkWithSettings:(NSString * _Nonnull)path settings:(DbxSharingSharedLinkSettings * _Nullable)settings;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGCreateSharedLinkWithSettingsError *> * _Nonnull)createSharedLinkWithSettings:(NSString * _Nonnull)path settings:(DBXSHARINGSharedLinkSettings * _Nullable)settings;
 
 /// 
 /// Returns shared file metadata.
 /// 
 /// - parameter file: The file to query.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFileMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetFileMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFileMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetFileMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFileMetadata *, DbxSharingGetFileMetadataError *> * _Nonnull)getFileMetadata:(NSString * _Nonnull)file;
+- (DBXRpcTask<DBXSHARINGSharedFileMetadata *, DBXSHARINGGetFileMetadataError *> * _Nonnull)getFileMetadata:(NSString * _Nonnull)file;
 
 /// 
 /// Returns shared file metadata.
@@ -329,20 +329,20 @@
 /// - parameter file: The file to query.
 /// - parameter actions: File actions to query.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFileMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetFileMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFileMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetFileMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFileMetadata *, DbxSharingGetFileMetadataError *> * _Nonnull)getFileMetadata:(NSString * _Nonnull)file actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
+- (DBXRpcTask<DBXSHARINGSharedFileMetadata *, DBXSHARINGGetFileMetadataError *> * _Nonnull)getFileMetadata:(NSString * _Nonnull)file actions:(NSArray<DBXSHARINGFileAction *> * _Nullable)actions;
 
 /// 
 /// Returns shared file metadata.
 /// 
 /// - parameter files: The files to query.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingGetFileMetadataBatchResult *>
-/// * _Nonnull` object on success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGGetFileMetadataBatchResult *>
+/// * _Nonnull` object on success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingGetFileMetadataBatchResult *> *, DbxSharingSharingUserError *> * _Nonnull)getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files;
+- (DBXRpcTask<NSArray<DBXSHARINGGetFileMetadataBatchResult *> *, DBXSHARINGSharingUserError *> * _Nonnull)getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files;
 
 /// 
 /// Returns shared file metadata.
@@ -350,20 +350,20 @@
 /// - parameter files: The files to query.
 /// - parameter actions: File actions to query.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingGetFileMetadataBatchResult *>
-/// * _Nonnull` object on success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGGetFileMetadataBatchResult *>
+/// * _Nonnull` object on success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingGetFileMetadataBatchResult *> *, DbxSharingSharingUserError *> * _Nonnull)getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
+- (DBXRpcTask<NSArray<DBXSHARINGGetFileMetadataBatchResult *> *, DBXSHARINGSharingUserError *> * _Nonnull)getFileMetadataBatch:(NSArray<NSString *> * _Nonnull)files actions:(NSArray<DBXSHARINGFileAction *> * _Nullable)actions;
 
 /// 
 /// Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMetadata * _Nonnull`
-/// object on success or a `DbxSharingSharedFolderAccessError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMetadata * _Nonnull`
+/// object on success or a `DBXSHARINGSharedFolderAccessError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMetadata *, DbxSharingSharedFolderAccessError *> * _Nonnull)getFolderMetadata:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXSHARINGSharedFolderMetadata *, DBXSHARINGSharedFolderAccessError *> * _Nonnull)getFolderMetadata:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
@@ -372,10 +372,10 @@
 /// - parameter actions: This is a list indicating whether the returned folder data will include a boolean value  allow
 /// in FolderPermission that describes whether the current user can perform the  FolderAction on the folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMetadata * _Nonnull`
-/// object on success or a `DbxSharingSharedFolderAccessError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMetadata * _Nonnull`
+/// object on success or a `DBXSHARINGSharedFolderAccessError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMetadata *, DbxSharingSharedFolderAccessError *> * _Nonnull)getFolderMetadata:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
+- (DBXRpcTask<DBXSHARINGSharedFolderMetadata *, DBXSHARINGSharedFolderAccessError *> * _Nonnull)getFolderMetadata:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DBXSHARINGFolderAction *> * _Nullable)actions;
 
 /// 
 /// Download the shared link's file from a user's Dropbox.
@@ -387,10 +387,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetSharedLinkFileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetSharedLinkFileError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxSharingSharedLinkMetadata *, DbxSharingGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileURL:(NSString * _Nonnull)url overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileURL:(NSString * _Nonnull)url overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Download the shared link's file from a user's Dropbox.
@@ -405,20 +405,20 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetSharedLinkFileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetSharedLinkFileError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxSharingSharedLinkMetadata *, DbxSharingGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileURL:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileURL:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Download the shared link's file from a user's Dropbox.
 /// 
 /// - parameter url: URL of the shared link.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetSharedLinkFileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetSharedLinkFileError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxSharingSharedLinkMetadata *, DbxSharingGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileData:(NSString * _Nonnull)url;
+- (DBXDownloadDataTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileData:(NSString * _Nonnull)url;
 
 /// 
 /// Download the shared link's file from a user's Dropbox.
@@ -428,20 +428,20 @@
 /// specific file or sub-folder in this folder. A relative path should be used.
 /// - parameter linkPassword: If the shared link has a password, this parameter can be used.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingGetSharedLinkFileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGGetSharedLinkFileError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxSharingSharedLinkMetadata *, DbxSharingGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileData:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword;
+- (DBXDownloadDataTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGGetSharedLinkFileError *> * _Nonnull)getSharedLinkFileData:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword;
 
 /// 
 /// Get the shared link's metadata.
 /// 
 /// - parameter url: URL of the shared link.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingSharedLinkError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGSharedLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingSharedLinkError *> * _Nonnull)getSharedLinkMetadata:(NSString * _Nonnull)url;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGSharedLinkError *> * _Nonnull)getSharedLinkMetadata:(NSString * _Nonnull)url;
 
 /// 
 /// Get the shared link's metadata.
@@ -451,10 +451,10 @@
 /// specific file or sub-folder in this folder. A relative path should be used.
 /// - parameter linkPassword: If the shared link has a password, this parameter can be used.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingSharedLinkError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGSharedLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingSharedLinkError *> * _Nonnull)getSharedLinkMetadata:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGSharedLinkError *> * _Nonnull)getSharedLinkMetadata:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword;
 
 /// 
 /// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given or
@@ -463,10 +463,10 @@
 /// are never returned in this case. Note that the url field in the response is never the shortened URL.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingGetSharedLinksResult * _Nonnull`
-/// object on success or a `DbxSharingGetSharedLinksError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGGetSharedLinksResult * _Nonnull`
+/// object on success or a `DBXSHARINGGetSharedLinksError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingGetSharedLinksResult *, DbxSharingGetSharedLinksError *> * _Nonnull)getSharedLinks __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
+- (DBXRpcTask<DBXSHARINGGetSharedLinksResult *, DBXSHARINGGetSharedLinksError *> * _Nonnull)getSharedLinks __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
 
 /// 
 /// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given or
@@ -476,20 +476,20 @@
 /// 
 /// - parameter path: See getSharedLinks description.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingGetSharedLinksResult * _Nonnull`
-/// object on success or a `DbxSharingGetSharedLinksError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGGetSharedLinksResult * _Nonnull`
+/// object on success or a `DBXSHARINGGetSharedLinksError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingGetSharedLinksResult *, DbxSharingGetSharedLinksError *> * _Nonnull)getSharedLinks:(NSString * _Nullable)path __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
+- (DBXRpcTask<DBXSHARINGGetSharedLinksResult *, DBXSHARINGGetSharedLinksError *> * _Nonnull)getSharedLinks:(NSString * _Nullable)path __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
 
 /// 
 /// Use to obtain the members who have been invited to a file, both inherited and uninherited members.
 /// 
 /// - parameter file: The file for which you want to see members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFileMembers * _Nonnull` object
-/// on success or a `DbxSharingListFileMembersError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFileMembers * _Nonnull` object
+/// on success or a `DBXSHARINGListFileMembersError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFileMembers *, DbxSharingListFileMembersError *> * _Nonnull)listFileMembers:(NSString * _Nonnull)file;
+- (DBXRpcTask<DBXSHARINGSharedFileMembers *, DBXSHARINGListFileMembersError *> * _Nonnull)listFileMembers:(NSString * _Nonnull)file;
 
 /// 
 /// Use to obtain the members who have been invited to a file, both inherited and uninherited members.
@@ -499,10 +499,10 @@
 /// - parameter includeInherited: Whether to include members who only have access from a parent shared folder.
 /// - parameter limit: Number of members to return max per query. Defaults to 100 if no limit is specified.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFileMembers * _Nonnull` object
-/// on success or a `DbxSharingListFileMembersError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFileMembers * _Nonnull` object
+/// on success or a `DBXSHARINGListFileMembersError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFileMembers *, DbxSharingListFileMembersError *> * _Nonnull)listFileMembers:(NSString * _Nonnull)file actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXSHARINGSharedFileMembers *, DBXSHARINGListFileMembersError *> * _Nonnull)listFileMembers:(NSString * _Nonnull)file actions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit;
 
 /// 
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
@@ -511,10 +511,10 @@
 /// 
 /// - parameter files: Files for which to return members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingListFileMembersBatchResult *>
-/// * _Nonnull` object on success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGListFileMembersBatchResult *>
+/// * _Nonnull` object on success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingListFileMembersBatchResult *> *, DbxSharingSharingUserError *> * _Nonnull)listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files;
+- (DBXRpcTask<NSArray<DBXSHARINGListFileMembersBatchResult *> *, DBXSHARINGSharingUserError *> * _Nonnull)listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files;
 
 /// 
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
@@ -524,10 +524,10 @@
 /// - parameter files: Files for which to return members.
 /// - parameter limit: Number of members to return max per query. Defaults to 10 if no limit is specified.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxSharingListFileMembersBatchResult *>
-/// * _Nonnull` object on success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXSHARINGListFileMembersBatchResult *>
+/// * _Nonnull` object on success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxSharingListFileMembersBatchResult *> *, DbxSharingSharingUserError *> * _Nonnull)listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<NSArray<DBXSHARINGListFileMembersBatchResult *> *, DBXSHARINGSharingUserError *> * _Nonnull)listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit;
 
 /// 
 /// Once a cursor has been retrieved from listFileMembers or listFileMembersBatch, use this to paginate through all
@@ -536,30 +536,30 @@
 /// - parameter cursor: The cursor returned by your last call to listFileMembers, listFileMembersContinue, or
 /// listFileMembersBatch.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFileMembers * _Nonnull` object
-/// on success or a `DbxSharingListFileMembersContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFileMembers * _Nonnull` object
+/// on success or a `DBXSHARINGListFileMembersContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFileMembers *, DbxSharingListFileMembersContinueError *> * _Nonnull)listFileMembersContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXSHARINGSharedFileMembers *, DBXSHARINGListFileMembersContinueError *> * _Nonnull)listFileMembersContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMembers * _Nonnull`
-/// object on success or a `DbxSharingSharedFolderAccessError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMembers * _Nonnull`
+/// object on success or a `DBXSHARINGSharedFolderAccessError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMembers *, DbxSharingSharedFolderAccessError *> * _Nonnull)listFolderMembers:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXSHARINGSharedFolderMembers *, DBXSHARINGSharedFolderAccessError *> * _Nonnull)listFolderMembers:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMembers * _Nonnull`
-/// object on success or a `DbxSharingSharedFolderAccessError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMembers * _Nonnull`
+/// object on success or a `DBXSHARINGSharedFolderAccessError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMembers *, DbxSharingSharedFolderAccessError *> * _Nonnull)listFolderMembers:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXSHARINGSharedFolderMembers *, DBXSHARINGSharedFolderAccessError *> * _Nonnull)listFolderMembers:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit;
 
 /// 
 /// Once a cursor has been retrieved from listFolderMembers, use this to paginate through all shared folder members.
@@ -567,20 +567,20 @@
 /// 
 /// - parameter cursor: The cursor returned by your last call to listFolderMembers or listFolderMembersContinue.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMembers * _Nonnull`
-/// object on success or a `DbxSharingListFolderMembersContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMembers * _Nonnull`
+/// object on success or a `DBXSHARINGListFolderMembersContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMembers *, DbxSharingListFolderMembersContinueError *> * _Nonnull)listFolderMembersContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXSHARINGSharedFolderMembers *, DBXSHARINGListFolderMembersContinueError *> * _Nonnull)listFolderMembersContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this
 /// endpoint.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
 /// on success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxNilObject *> * _Nonnull)listFolders;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXNilObject *> * _Nonnull)listFolders;
 
 /// 
 /// Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this
@@ -590,10 +590,10 @@
 /// - parameter actions: This is a list indicating whether each returned folder data entry will include a boolean field
 /// allow in FolderPermission that describes whether the current user can perform the `FolderAction` on the folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
 /// on success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxNilObject *> * _Nonnull)listFolders:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXNilObject *> * _Nonnull)listFolders:(NSNumber * _Nullable)limit actions:(NSArray<DBXSHARINGFolderAction *> * _Nullable)actions;
 
 /// 
 /// Once a cursor has been retrieved from listFolders, use this to paginate through all shared folders. The cursor must
@@ -602,20 +602,20 @@
 /// 
 /// - parameter cursor: The cursor returned by the previous API call specified in the endpoint description.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
-/// on success or a `DbxSharingListFoldersContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
+/// on success or a `DBXSHARINGListFoldersContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxSharingListFoldersContinueError *> * _Nonnull)listFoldersContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXSHARINGListFoldersContinueError *> * _Nonnull)listFoldersContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to
 /// use this endpoint.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
 /// on success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxNilObject *> * _Nonnull)listMountableFolders;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXNilObject *> * _Nonnull)listMountableFolders;
 
 /// 
 /// Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to
@@ -625,10 +625,10 @@
 /// - parameter actions: This is a list indicating whether each returned folder data entry will include a boolean field
 /// allow in FolderPermission that describes whether the current user can perform the `FolderAction` on the folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
 /// on success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxNilObject *> * _Nonnull)listMountableFolders:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXNilObject *> * _Nonnull)listMountableFolders:(NSNumber * _Nullable)limit actions:(NSArray<DBXSHARINGFolderAction *> * _Nullable)actions;
 
 /// 
 /// Once a cursor has been retrieved from listMountableFolders, use this to paginate through all mountable shared
@@ -637,20 +637,20 @@
 /// 
 /// - parameter cursor: The cursor returned by the previous API call specified in the endpoint description.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFoldersResult * _Nonnull` object
-/// on success or a `DbxSharingListFoldersContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFoldersResult * _Nonnull` object
+/// on success or a `DBXSHARINGListFoldersContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFoldersResult *, DbxSharingListFoldersContinueError *> * _Nonnull)listMountableFoldersContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXSHARINGListFoldersResult *, DBXSHARINGListFoldersContinueError *> * _Nonnull)listMountableFoldersContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Returns a list of all files shared with current user.  Does not include files the user has received via shared
 /// folders, and does  not include unclaimed invitations.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFilesResult * _Nonnull` object on
-/// success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFilesResult * _Nonnull` object on
+/// success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFilesResult *, DbxSharingSharingUserError *> * _Nonnull)listReceivedFiles;
+- (DBXRpcTask<DBXSHARINGListFilesResult *, DBXSHARINGSharingUserError *> * _Nonnull)listReceivedFiles;
 
 /// 
 /// Returns a list of all files shared with current user.  Does not include files the user has received via shared
@@ -659,20 +659,20 @@
 /// - parameter limit: Number of files to return max per query. Defaults to 100 if no limit is specified.
 /// - parameter actions: File actions to query.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFilesResult * _Nonnull` object on
-/// success or a `DbxSharingSharingUserError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFilesResult * _Nonnull` object on
+/// success or a `DBXSHARINGSharingUserError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFilesResult *, DbxSharingSharingUserError *> * _Nonnull)listReceivedFiles:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
+- (DBXRpcTask<DBXSHARINGListFilesResult *, DBXSHARINGSharingUserError *> * _Nonnull)listReceivedFiles:(NSNumber * _Nullable)limit actions:(NSArray<DBXSHARINGFileAction *> * _Nullable)actions;
 
 /// 
 /// Get more results with a cursor from listReceivedFiles.
 /// 
 /// - parameter cursor: Cursor in cursor in ListFilesResult
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListFilesResult * _Nonnull` object on
-/// success or a `DbxSharingListFilesContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListFilesResult * _Nonnull` object on
+/// success or a `DBXSHARINGListFilesContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListFilesResult *, DbxSharingListFilesContinueError *> * _Nonnull)listReceivedFilesContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXSHARINGListFilesResult *, DBXSHARINGListFilesContinueError *> * _Nonnull)listReceivedFilesContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// List shared links of this user. If no path is given or the path is empty, returns a list of all shared links for the
@@ -681,10 +681,10 @@
 /// suppressed by setting direct_only to true.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListSharedLinksResult * _Nonnull`
-/// object on success or a `DbxSharingListSharedLinksError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListSharedLinksResult * _Nonnull`
+/// object on success or a `DBXSHARINGListSharedLinksError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListSharedLinksResult *, DbxSharingListSharedLinksError *> * _Nonnull)listSharedLinks;
+- (DBXRpcTask<DBXSHARINGListSharedLinksResult *, DBXSHARINGListSharedLinksError *> * _Nonnull)listSharedLinks;
 
 /// 
 /// List shared links of this user. If no path is given or the path is empty, returns a list of all shared links for the
@@ -696,10 +696,10 @@
 /// - parameter cursor: The cursor returned by your last call to listSharedLinks.
 /// - parameter directOnly: See listSharedLinks description.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingListSharedLinksResult * _Nonnull`
-/// object on success or a `DbxSharingListSharedLinksError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGListSharedLinksResult * _Nonnull`
+/// object on success or a `DBXSHARINGListSharedLinksError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingListSharedLinksResult *, DbxSharingListSharedLinksError *> * _Nonnull)listSharedLinks:(NSString * _Nullable)path cursor:(NSString * _Nullable)cursor directOnly:(NSNumber * _Nullable)directOnly;
+- (DBXRpcTask<DBXSHARINGListSharedLinksResult *, DBXSHARINGListSharedLinksError *> * _Nonnull)listSharedLinks:(NSString * _Nullable)path cursor:(NSString * _Nullable)cursor directOnly:(NSNumber * _Nullable)directOnly;
 
 /// 
 /// Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or
@@ -710,10 +710,10 @@
 /// - parameter url: URL of the shared link to change its settings
 /// - parameter settings: Set of settings for the shared link.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingModifySharedLinkSettingsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGModifySharedLinkSettingsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingModifySharedLinkSettingsError *> * _Nonnull)modifySharedLinkSettings:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGModifySharedLinkSettingsError *> * _Nonnull)modifySharedLinkSettings:(NSString * _Nonnull)url settings:(DBXSHARINGSharedLinkSettings * _Nonnull)settings;
 
 /// 
 /// Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or
@@ -725,10 +725,10 @@
 /// - parameter settings: Set of settings for the shared link.
 /// - parameter removeExpiration: If set to true, removes the expiration of the shared link.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedLinkMetadata * _Nonnull` object
-/// on success or a `DbxSharingModifySharedLinkSettingsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedLinkMetadata * _Nonnull` object
+/// on success or a `DBXSHARINGModifySharedLinkSettingsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedLinkMetadata *, DbxSharingModifySharedLinkSettingsError *> * _Nonnull)modifySharedLinkSettings:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration;
+- (DBXRpcTask<DBXSHARINGSharedLinkMetadata *, DBXSHARINGModifySharedLinkSettingsError *> * _Nonnull)modifySharedLinkSettings:(NSString * _Nonnull)url settings:(DBXSHARINGSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration;
 
 /// 
 /// The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a
@@ -737,10 +737,10 @@
 /// 
 /// - parameter sharedFolderId: The ID of the shared folder to mount.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMetadata * _Nonnull`
-/// object on success or a `DbxSharingMountFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMetadata * _Nonnull`
+/// object on success or a `DBXSHARINGMountFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMetadata *, DbxSharingMountFolderError *> * _Nonnull)mountFolder:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXSHARINGSharedFolderMetadata *, DBXSHARINGMountFolderError *> * _Nonnull)mountFolder:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// The current user relinquishes their membership in the designated file. Note that the current user may still have
@@ -749,9 +749,9 @@
 /// - parameter file: The path or id for the file.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingRelinquishFileMembershipError * _Nonnull` object on failure.
+/// `DBXSHARINGRelinquishFileMembershipError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingRelinquishFileMembershipError *> * _Nonnull)relinquishFileMembership:(NSString * _Nonnull)file;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGRelinquishFileMembershipError *> * _Nonnull)relinquishFileMembership:(NSString * _Nonnull)file;
 
 /// 
 /// The current user relinquishes their membership in the designated shared folder and will no longer have access to the
@@ -761,10 +761,10 @@
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxSharingRelinquishFolderMembershipError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXSHARINGRelinquishFolderMembershipError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxSharingRelinquishFolderMembershipError *> * _Nonnull)relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXSHARINGRelinquishFolderMembershipError *> * _Nonnull)relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// The current user relinquishes their membership in the designated shared folder and will no longer have access to the
@@ -775,10 +775,10 @@
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// - parameter leaveACopy: Keep a copy of the folder's contents upon relinquishing membership.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxSharingRelinquishFolderMembershipError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXSHARINGRelinquishFolderMembershipError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxSharingRelinquishFolderMembershipError *> * _Nonnull)relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXSHARINGRelinquishFolderMembershipError *> * _Nonnull)relinquishFolderMembership:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
 /// 
 /// DEPRECATED: Identical to remove_file_member_2 but with less information returned.
@@ -787,10 +787,10 @@
 /// - parameter member: Member to remove from this file. Note that even if an email is specified, it may result in the
 /// removal of a user (not an invitee) if the user's main account corresponds to that email address.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingFileMemberActionIndividualResult *
-/// _Nonnull` object on success or a `DbxSharingRemoveFileMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGFileMemberActionIndividualResult *
+/// _Nonnull` object on success or a `DBXSHARINGRemoveFileMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingFileMemberActionIndividualResult *, DbxSharingRemoveFileMemberError *> * _Nonnull)removeFileMember:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member __deprecated_msg("remove_file_member is deprecated. Use remove_file_member_2.");
+- (DBXRpcTask<DBXSHARINGFileMemberActionIndividualResult *, DBXSHARINGRemoveFileMemberError *> * _Nonnull)removeFileMember:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member __deprecated_msg("remove_file_member is deprecated. Use remove_file_member_2.");
 
 /// 
 /// Removes a specified member from the file.
@@ -799,10 +799,10 @@
 /// - parameter member: Member to remove from this file. Note that even if an email is specified, it may result in the
 /// removal of a user (not an invitee) if the user's main account corresponds to that email address.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingFileMemberRemoveActionResult *
-/// _Nonnull` object on success or a `DbxSharingRemoveFileMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGFileMemberRemoveActionResult *
+/// _Nonnull` object on success or a `DBXSHARINGRemoveFileMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingFileMemberRemoveActionResult *, DbxSharingRemoveFileMemberError *> * _Nonnull)removeFileMember2:(NSString * _Nonnull)file member:(DbxSharingMemberSelector * _Nonnull)member;
+- (DBXRpcTask<DBXSHARINGFileMemberRemoveActionResult *, DBXSHARINGRemoveFileMemberError *> * _Nonnull)removeFileMember2:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member;
 
 /// 
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member. Apps must
@@ -814,10 +814,10 @@
 /// it was mounted. Otherwise, it will be removed from their Dropbox. Also, this must be set to false when kicking a
 /// group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchResultBase * _Nonnull` object on
-/// success or a `DbxSharingRemoveFolderMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchResultBase * _Nonnull` object on
+/// success or a `DBXSHARINGRemoveFolderMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchResultBase *, DbxSharingRemoveFolderMemberError *> * _Nonnull)removeFolderMember:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy;
+- (DBXRpcTask<DBXASYNCLaunchResultBase *, DBXSHARINGRemoveFolderMemberError *> * _Nonnull)removeFolderMember:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy;
 
 /// 
 /// Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are
@@ -827,9 +827,9 @@
 /// - parameter url: URL of the shared link.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingRevokeSharedLinkError * _Nonnull` object on failure.
+/// `DBXSHARINGRevokeSharedLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingRevokeSharedLinkError *> * _Nonnull)revokeSharedLink:(NSString * _Nonnull)url;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGRevokeSharedLinkError *> * _Nonnull)revokeSharedLink:(NSString * _Nonnull)url;
 
 /// 
 /// Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed
@@ -839,10 +839,10 @@
 /// 
 /// - parameter path: The path to the folder to share. If it does not exist, then a new one is created.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingShareFolderLaunch * _Nonnull` object
-/// on success or a `DbxSharingShareFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGShareFolderLaunch * _Nonnull` object
+/// on success or a `DBXSHARINGShareFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingShareFolderLaunch *, DbxSharingShareFolderError *> * _Nonnull)shareFolder:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXSHARINGShareFolderLaunch *, DBXSHARINGShareFolderError *> * _Nonnull)shareFolder:(NSString * _Nonnull)path;
 
 /// 
 /// Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed
@@ -858,10 +858,10 @@
 /// The current user must be on a team to set this policy to members in SharedLinkPolicy.
 /// - parameter forceAsync: Whether to force the share to happen asynchronously.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingShareFolderLaunch * _Nonnull` object
-/// on success or a `DbxSharingShareFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGShareFolderLaunch * _Nonnull` object
+/// on success or a `DBXSHARINGShareFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingShareFolderLaunch *, DbxSharingShareFolderError *> * _Nonnull)shareFolder:(NSString * _Nonnull)path memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync;
+- (DBXRpcTask<DBXSHARINGShareFolderLaunch *, DBXSHARINGShareFolderError *> * _Nonnull)shareFolder:(NSString * _Nonnull)path memberPolicy:(DBXSHARINGMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync;
 
 /// 
 /// Transfer ownership of a shared folder to a member of the shared folder. User must have owner in AccessLevel access
@@ -871,9 +871,9 @@
 /// - parameter toDropboxId: A account or team member ID to transfer ownership to.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingTransferFolderError * _Nonnull` object on failure.
+/// `DBXSHARINGTransferFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingTransferFolderError *> * _Nonnull)transferFolder:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGTransferFolderError *> * _Nonnull)transferFolder:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId;
 
 /// 
 /// The current user unmounts the designated folder. They can re-mount the folder at a later time using mountFolder.
@@ -882,9 +882,9 @@
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingUnmountFolderError * _Nonnull` object on failure.
+/// `DBXSHARINGUnmountFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingUnmountFolderError *> * _Nonnull)unmountFolder:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGUnmountFolderError *> * _Nonnull)unmountFolder:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// Remove all members from this file. Does not remove inherited members.
@@ -892,9 +892,9 @@
 /// - parameter file: The file to unshare.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxSharingUnshareFileError * _Nonnull` object on failure.
+/// `DBXSHARINGUnshareFileError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxSharingUnshareFileError *> * _Nonnull)unshareFile:(NSString * _Nonnull)file;
+- (DBXRpcTask<DBXNilObject *, DBXSHARINGUnshareFileError *> * _Nonnull)unshareFile:(NSString * _Nonnull)file;
 
 /// 
 /// Allows a shared folder owner to unshare the folder. You'll need to call checkJobStatus to determine if the action
@@ -902,10 +902,10 @@
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxSharingUnshareFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXSHARINGUnshareFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxSharingUnshareFolderError *> * _Nonnull)unshareFolder:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXSHARINGUnshareFolderError *> * _Nonnull)unshareFolder:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// Allows a shared folder owner to unshare the folder. You'll need to call checkJobStatus to determine if the action
@@ -915,10 +915,10 @@
 /// - parameter leaveACopy: If true, members of this shared folder will get a copy of this folder after it's unshared.
 /// Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always retain their copy.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxSharingUnshareFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXSHARINGUnshareFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxSharingUnshareFolderError *> * _Nonnull)unshareFolder:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXSHARINGUnshareFolderError *> * _Nonnull)unshareFolder:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
 /// 
 /// Allows an owner or editor of a shared folder to update another member's permissions. Apps must have full Dropbox
@@ -929,10 +929,10 @@
 /// this time.
 /// - parameter accessLevel: The new access level for member. owner in AccessLevel is disallowed.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingMemberAccessLevelResult * _Nonnull`
-/// object on success or a `DbxSharingUpdateFolderMemberError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGMemberAccessLevelResult * _Nonnull`
+/// object on success or a `DBXSHARINGUpdateFolderMemberError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingMemberAccessLevelResult *, DbxSharingUpdateFolderMemberError *> * _Nonnull)updateFolderMember:(NSString * _Nonnull)sharedFolderId member:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nonnull)accessLevel;
+- (DBXRpcTask<DBXSHARINGMemberAccessLevelResult *, DBXSHARINGUpdateFolderMemberError *> * _Nonnull)updateFolderMember:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 /// 
 /// Update the sharing policies for a shared folder. User must have owner in AccessLevel access to the shared folder to
@@ -940,10 +940,10 @@
 /// 
 /// - parameter sharedFolderId: The ID for the shared folder.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMetadata * _Nonnull`
-/// object on success or a `DbxSharingUpdateFolderPolicyError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMetadata * _Nonnull`
+/// object on success or a `DBXSHARINGUpdateFolderPolicyError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMetadata *, DbxSharingUpdateFolderPolicyError *> * _Nonnull)updateFolderPolicy:(NSString * _Nonnull)sharedFolderId;
+- (DBXRpcTask<DBXSHARINGSharedFolderMetadata *, DBXSHARINGUpdateFolderPolicyError *> * _Nonnull)updateFolderPolicy:(NSString * _Nonnull)sharedFolderId;
 
 /// 
 /// Update the sharing policies for a shared folder. User must have owner in AccessLevel access to the shared folder to
@@ -956,9 +956,9 @@
 /// - parameter sharedLinkPolicy: The policy to apply to shared links created for content inside this shared folder. The
 /// current user must be on a team to set this policy to members in SharedLinkPolicy.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxSharingSharedFolderMetadata * _Nonnull`
-/// object on success or a `DbxSharingUpdateFolderPolicyError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXSHARINGSharedFolderMetadata * _Nonnull`
+/// object on success or a `DBXSHARINGUpdateFolderPolicyError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxSharingSharedFolderMetadata *, DbxSharingUpdateFolderPolicyError *> * _Nonnull)updateFolderPolicy:(NSString * _Nonnull)sharedFolderId memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy;
+- (DBXRpcTask<DBXSHARINGSharedFolderMetadata *, DBXSHARINGUpdateFolderPolicyError *> * _Nonnull)updateFolderPolicy:(NSString * _Nonnull)sharedFolderId memberPolicy:(DBXSHARINGMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy;
 
 @end

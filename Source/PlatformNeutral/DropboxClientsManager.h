@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class DropboxClient;
 @class DropboxTeamClient;
-@class DbxOAuthResult;
+@class DBXOAuthResult;
 
 @interface DropboxClientsManager : NSObject
 
@@ -22,10 +22,10 @@
 + (void)authorizedTeamClient:(DropboxTeamClient * _Nullable)client;
 
 /// Handle a redirect and automatically initialize the client and save the token.
-+ (DbxOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
++ (DBXOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
 
 /// Handle a redirect and automatically initialize the team client and save the token.
-+ (DbxOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
++ (DBXOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
 
 /// Unlink the user.
 + (void)unlinkClient;

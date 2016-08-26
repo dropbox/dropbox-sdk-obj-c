@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupDeleteError;
+@class DBXTEAMGroupDeleteError;
 
 /// 
-/// The `DbxTeamGroupDeleteError` union.
+/// The `DBXTEAMGroupDeleteError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupDeleteError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupDeleteError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupDeleteErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupDeleteError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupDeleteErrorTag) {
+/// The `DBXTEAMGroupDeleteErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMGroupDeleteError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupDeleteErrorTag) {
     /// No matching group found. No groups match the specified group ID.
-    TeamGroupDeleteErrorGroupNotFound,
+    DBXTEAMGroupDeleteErrorGroupNotFound,
 
     /// (no description).
-    TeamGroupDeleteErrorOther,
+    DBXTEAMGroupDeleteErrorOther,
 
     /// This group has already been deleted.
-    TeamGroupDeleteErrorGroupAlreadyDeleted,
+    DBXTEAMGroupDeleteErrorGroupAlreadyDeleted,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupDeleteErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupDeleteErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -56,7 +55,7 @@ typedef NS_ENUM(NSInteger, TeamGroupDeleteErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupDeleteError`
+/// Returns a human-readable representation of the `DBXTEAMGroupDeleteError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -64,16 +63,16 @@ typedef NS_ENUM(NSInteger, TeamGroupDeleteErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupDeleteError` union.
+/// The serialization class for the `DBXTEAMGroupDeleteError` union.
 /// 
-@interface DbxTeamGroupDeleteErrorSerializer : NSObject 
+@interface DBXTEAMGroupDeleteErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupDeleteError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupDeleteError * _Nonnull)obj;
+/// `DBXTEAMGroupDeleteError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupDeleteError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupDeleteError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupDeleteError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

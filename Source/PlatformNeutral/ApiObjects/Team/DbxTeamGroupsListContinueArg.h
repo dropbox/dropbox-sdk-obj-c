@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsListContinueArg;
+@class DBXTEAMGroupsListContinueArg;
 
 /// 
-/// The `DbxTeamGroupsListContinueArg` struct.
+/// The `DBXTEAMGroupsListContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsListContinueArg : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsListContinueArg : NSObject <DBXSerializable> 
 
 /// Indicates from what point to get the next set of groups.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
@@ -24,23 +24,23 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupsListContinueArg` object.
+/// `DBXTEAMGroupsListContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsListContinueArg` struct.
+/// The serialization class for the `DBXTEAMGroupsListContinueArg` struct.
 /// 
-@interface DbxTeamGroupsListContinueArgSerializer : NSObject 
+@interface DBXTEAMGroupsListContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsListContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsListContinueArg * _Nonnull)obj;
+/// `DBXTEAMGroupsListContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsListContinueArg` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsListContinueArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

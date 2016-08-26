@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxAsyncPollResultBase;
+@class DBXASYNCPollResultBase;
 
 /// 
-/// The `DbxAsyncPollResultBase` union.
+/// The `DBXASYNCPollResultBase` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -19,19 +19,18 @@
 /// the information returned upon job completion. See PollEmptyResult for an
 /// example.
 /// 
-@interface DbxAsyncPollResultBase : NSObject <DbxSerializable> 
+@interface DBXASYNCPollResultBase : NSObject <DBXSerializable> 
 
-/// The `AsyncPollResultBaseTag` enum type represents the possible tag states
-/// that the `DbxAsyncPollResultBase` union can exist in.
-typedef NS_ENUM(NSInteger, AsyncPollResultBaseTag) {
+/// The `DBXASYNCPollResultBaseTag` enum type represents the possible tag states
+/// that the `DBXASYNCPollResultBase` union can exist in.
+typedef NS_ENUM(NSInteger, DBXASYNCPollResultBaseTag) {
     /// The asynchronous job is still in progress.
-    AsyncPollResultBaseInProgress,
+    DBXASYNCPollResultBaseInProgress,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) AsyncPollResultBaseTag tag;
-
+@property (nonatomic) DBXASYNCPollResultBaseTag tag;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -42,7 +41,7 @@ typedef NS_ENUM(NSInteger, AsyncPollResultBaseTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxAsyncPollResultBase`
+/// Returns a human-readable representation of the `DBXASYNCPollResultBase`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -50,16 +49,16 @@ typedef NS_ENUM(NSInteger, AsyncPollResultBaseTag) {
 
 
 /// 
-/// The serialization class for the `DbxAsyncPollResultBase` union.
+/// The serialization class for the `DBXASYNCPollResultBase` union.
 /// 
-@interface DbxAsyncPollResultBaseSerializer : NSObject 
+@interface DBXASYNCPollResultBaseSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxAsyncPollResultBase` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxAsyncPollResultBase * _Nonnull)obj;
+/// `DBXASYNCPollResultBase` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollResultBase * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxAsyncPollResultBase` object from a
+/// Returns an instantiation of the `DBXASYNCPollResultBase` object from a
 /// json-compatible dictionary representation.
-+ (DbxAsyncPollResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXASYNCPollResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

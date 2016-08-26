@@ -3,54 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesSaveCopyReferenceError;
-@class DbxFilesWriteError;
+@class DBXFILESSaveCopyReferenceError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesSaveCopyReferenceError` union.
+/// The `DBXFILESSaveCopyReferenceError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSaveCopyReferenceError : NSObject <DbxSerializable> 
+@interface DBXFILESSaveCopyReferenceError : NSObject <DBXSerializable> 
 
-/// The `FilesSaveCopyReferenceErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesSaveCopyReferenceError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSaveCopyReferenceErrorTag) {
+/// The `DBXFILESSaveCopyReferenceErrorTag` enum type represents the possible
+/// tag states that the `DBXFILESSaveCopyReferenceError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
     /// (no description).
-    FilesSaveCopyReferenceErrorPath,
+    DBXFILESSaveCopyReferenceErrorPath,
 
     /// The copy reference is invalid.
-    FilesSaveCopyReferenceErrorInvalidCopyReference,
+    DBXFILESSaveCopyReferenceErrorInvalidCopyReference,
 
     /// You don't have permission to save the given copy reference. Please make
     /// sure this app is same app which created the copy reference and the
     /// source user is still linked to the app.
-    FilesSaveCopyReferenceErrorNoPermission,
+    DBXFILESSaveCopyReferenceErrorNoPermission,
 
     /// The file referenced by the copy reference cannot be found.
-    FilesSaveCopyReferenceErrorNotFound,
+    DBXFILESSaveCopyReferenceErrorNotFound,
 
     /// The operation would involve more than 10,000 files and folders.
-    FilesSaveCopyReferenceErrorTooManyFiles,
+    DBXFILESSaveCopyReferenceErrorTooManyFiles,
 
     /// (no description).
-    FilesSaveCopyReferenceErrorOther,
+    DBXFILESSaveCopyReferenceErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSaveCopyReferenceErrorTag tag;
+@property (nonatomic) DBXFILESSaveCopyReferenceErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
 /// Initializes union class with tag state of `InvalidCopyReference`.
 - (nonnull instancetype)initWithInvalidCopyReference;
@@ -90,23 +89,23 @@ typedef NS_ENUM(NSInteger, FilesSaveCopyReferenceErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesSaveCopyReferenceError` object.
+/// `DBXFILESSaveCopyReferenceError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesSaveCopyReferenceError` union.
+/// The serialization class for the `DBXFILESSaveCopyReferenceError` union.
 /// 
-@interface DbxFilesSaveCopyReferenceErrorSerializer : NSObject 
+@interface DBXFILESSaveCopyReferenceErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSaveCopyReferenceError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSaveCopyReferenceError * _Nonnull)obj;
+/// `DBXFILESSaveCopyReferenceError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSaveCopyReferenceError` object from
+/// Returns an instantiation of the `DBXFILESSaveCopyReferenceError` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesSaveCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSaveCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

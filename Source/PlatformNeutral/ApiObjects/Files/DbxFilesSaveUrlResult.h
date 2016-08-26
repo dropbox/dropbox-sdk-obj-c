@@ -3,48 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesFileMetadata;
-@class DbxFilesSaveUrlResult;
+@class DBXFILESFileMetadata;
+@class DBXFILESSaveUrlResult;
 
 /// 
-/// The `DbxFilesSaveUrlResult` union.
+/// The `DBXFILESSaveUrlResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSaveUrlResult : NSObject <DbxSerializable> 
+@interface DBXFILESSaveUrlResult : NSObject <DBXSerializable> 
 
-/// The `FilesSaveUrlResultTag` enum type represents the possible tag states
-/// that the `DbxFilesSaveUrlResult` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSaveUrlResultTag) {
+/// The `DBXFILESSaveUrlResultTag` enum type represents the possible tag states
+/// that the `DBXFILESSaveUrlResult` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSaveUrlResultTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
-    FilesSaveUrlResultAsyncJobId,
+    DBXFILESSaveUrlResultAsyncJobId,
 
     /// Metadata of the file where the URL is saved to.
-    FilesSaveUrlResultComplete,
+    DBXFILESSaveUrlResultComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSaveUrlResultTag tag;
+@property (nonatomic) DBXFILESSaveUrlResultTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is
 /// an id that can be used to obtain the status of the asynchronous job.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
 /// Metadata of the file where the URL is saved to.
-@property (nonatomic) DbxFilesFileMetadata * _Nonnull complete;
-
+@property (nonatomic) DBXFILESFileMetadata * _Nonnull complete;
 
 /// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(DbxFilesFileMetadata * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(DBXFILESFileMetadata * _Nonnull)complete;
 
 /// Returns whether the union's current tag state has value `AsyncJobId`.
 - (BOOL)isAsyncJobId;
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlResultTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesSaveUrlResult`
+/// Returns a human-readable representation of the `DBXFILESSaveUrlResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -63,16 +62,16 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlResultTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesSaveUrlResult` union.
+/// The serialization class for the `DBXFILESSaveUrlResult` union.
 /// 
-@interface DbxFilesSaveUrlResultSerializer : NSObject 
+@interface DBXFILESSaveUrlResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSaveUrlResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSaveUrlResult * _Nonnull)obj;
+/// `DBXFILESSaveUrlResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveUrlResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSaveUrlResult` object from a
+/// Returns an instantiation of the `DBXFILESSaveUrlResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSaveUrlResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSaveUrlResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

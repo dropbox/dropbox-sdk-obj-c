@@ -4,133 +4,133 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxErrors.h"
-#import "DbxFilesAddPropertiesError.h"
-#import "DbxFilesAlphaGetMetadataArg.h"
-#import "DbxFilesAlphaGetMetadataError.h"
-#import "DbxFilesCommitInfo.h"
-#import "DbxFilesCommitInfoWithProperties.h"
-#import "DbxFilesCreateFolderArg.h"
-#import "DbxFilesCreateFolderError.h"
-#import "DbxFilesDeleteArg.h"
-#import "DbxFilesDeleteError.h"
-#import "DbxFilesDeletedMetadata.h"
-#import "DbxFilesDownloadArg.h"
-#import "DbxFilesDownloadError.h"
-#import "DbxFilesFileMetadata.h"
-#import "DbxFilesFileSharingInfo.h"
-#import "DbxFilesFolderMetadata.h"
-#import "DbxFilesFolderSharingInfo.h"
-#import "DbxFilesGetCopyReferenceArg.h"
-#import "DbxFilesGetCopyReferenceError.h"
-#import "DbxFilesGetCopyReferenceResult.h"
-#import "DbxFilesGetMetadataArg.h"
-#import "DbxFilesGetMetadataError.h"
-#import "DbxFilesGetTemporaryLinkArg.h"
-#import "DbxFilesGetTemporaryLinkError.h"
-#import "DbxFilesGetTemporaryLinkResult.h"
-#import "DbxFilesInvalidPropertyGroupError.h"
-#import "DbxFilesListFolderArg.h"
-#import "DbxFilesListFolderContinueArg.h"
-#import "DbxFilesListFolderContinueError.h"
-#import "DbxFilesListFolderError.h"
-#import "DbxFilesListFolderGetLatestCursorResult.h"
-#import "DbxFilesListFolderLongpollArg.h"
-#import "DbxFilesListFolderLongpollError.h"
-#import "DbxFilesListFolderLongpollResult.h"
-#import "DbxFilesListFolderResult.h"
-#import "DbxFilesListRevisionsArg.h"
-#import "DbxFilesListRevisionsError.h"
-#import "DbxFilesListRevisionsResult.h"
-#import "DbxFilesLookUpPropertiesError.h"
-#import "DbxFilesLookupError.h"
-#import "DbxFilesMediaInfo.h"
-#import "DbxFilesMetadata.h"
-#import "DbxFilesPreviewArg.h"
-#import "DbxFilesPreviewError.h"
-#import "DbxFilesPropertiesError.h"
-#import "DbxFilesPropertyGroupUpdate.h"
-#import "DbxFilesPropertyGroupWithPath.h"
-#import "DbxFilesRelocationArg.h"
-#import "DbxFilesRelocationError.h"
-#import "DbxFilesRemovePropertiesArg.h"
-#import "DbxFilesRemovePropertiesError.h"
-#import "DbxFilesRestoreArg.h"
-#import "DbxFilesRestoreError.h"
-#import "DbxFilesRouteObjects.h"
-#import "DbxFilesRoutes.h"
-#import "DbxFilesSaveCopyReferenceArg.h"
-#import "DbxFilesSaveCopyReferenceError.h"
-#import "DbxFilesSaveCopyReferenceResult.h"
-#import "DbxFilesSaveUrlArg.h"
-#import "DbxFilesSaveUrlError.h"
-#import "DbxFilesSaveUrlJobStatus.h"
-#import "DbxFilesSaveUrlResult.h"
-#import "DbxFilesSearchArg.h"
-#import "DbxFilesSearchError.h"
-#import "DbxFilesSearchMatch.h"
-#import "DbxFilesSearchMode.h"
-#import "DbxFilesSearchResult.h"
-#import "DbxFilesThumbnailArg.h"
-#import "DbxFilesThumbnailError.h"
-#import "DbxFilesThumbnailFormat.h"
-#import "DbxFilesThumbnailSize.h"
-#import "DbxFilesUpdatePropertiesError.h"
-#import "DbxFilesUpdatePropertyGroupArg.h"
-#import "DbxFilesUploadError.h"
-#import "DbxFilesUploadErrorWithProperties.h"
-#import "DbxFilesUploadSessionAppendArg.h"
-#import "DbxFilesUploadSessionCursor.h"
-#import "DbxFilesUploadSessionFinishArg.h"
-#import "DbxFilesUploadSessionFinishBatchArg.h"
-#import "DbxFilesUploadSessionFinishBatchJobStatus.h"
-#import "DbxFilesUploadSessionFinishBatchResult.h"
-#import "DbxFilesUploadSessionFinishError.h"
-#import "DbxFilesUploadSessionLookupError.h"
-#import "DbxFilesUploadSessionOffsetError.h"
-#import "DbxFilesUploadSessionStartArg.h"
-#import "DbxFilesUploadSessionStartResult.h"
-#import "DbxFilesUploadWriteFailed.h"
-#import "DbxFilesWriteError.h"
-#import "DbxFilesWriteMode.h"
-#import "DbxPropertiesGetPropertyTemplateArg.h"
-#import "DbxPropertiesGetPropertyTemplateResult.h"
-#import "DbxPropertiesListPropertyTemplateIds.h"
-#import "DbxPropertiesPropertyFieldTemplate.h"
-#import "DbxPropertiesPropertyGroup.h"
-#import "DbxPropertiesPropertyGroupTemplate.h"
-#import "DbxPropertiesPropertyTemplateError.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DropboxTransportClient.h"
+#import "DBXASYNCLaunchEmptyResult.h"
+#import "DBXASYNCLaunchResultBase.h"
+#import "DBXASYNCPollArg.h"
+#import "DBXASYNCPollError.h"
+#import "DBXASYNCPollResultBase.h"
+#import "DBXErrors.h"
+#import "DBXFILESAddPropertiesError.h"
+#import "DBXFILESAlphaGetMetadataArg.h"
+#import "DBXFILESAlphaGetMetadataError.h"
+#import "DBXFILESCommitInfo.h"
+#import "DBXFILESCommitInfoWithProperties.h"
+#import "DBXFILESCreateFolderArg.h"
+#import "DBXFILESCreateFolderError.h"
+#import "DBXFILESDeleteArg.h"
+#import "DBXFILESDeleteError.h"
+#import "DBXFILESDeletedMetadata.h"
+#import "DBXFILESDownloadArg.h"
+#import "DBXFILESDownloadError.h"
+#import "DBXFILESFileMetadata.h"
+#import "DBXFILESFileSharingInfo.h"
+#import "DBXFILESFolderMetadata.h"
+#import "DBXFILESFolderSharingInfo.h"
+#import "DBXFILESGetCopyReferenceArg.h"
+#import "DBXFILESGetCopyReferenceError.h"
+#import "DBXFILESGetCopyReferenceResult.h"
+#import "DBXFILESGetMetadataArg.h"
+#import "DBXFILESGetMetadataError.h"
+#import "DBXFILESGetTemporaryLinkArg.h"
+#import "DBXFILESGetTemporaryLinkError.h"
+#import "DBXFILESGetTemporaryLinkResult.h"
+#import "DBXFILESInvalidPropertyGroupError.h"
+#import "DBXFILESListFolderArg.h"
+#import "DBXFILESListFolderContinueArg.h"
+#import "DBXFILESListFolderContinueError.h"
+#import "DBXFILESListFolderError.h"
+#import "DBXFILESListFolderGetLatestCursorResult.h"
+#import "DBXFILESListFolderLongpollArg.h"
+#import "DBXFILESListFolderLongpollError.h"
+#import "DBXFILESListFolderLongpollResult.h"
+#import "DBXFILESListFolderResult.h"
+#import "DBXFILESListRevisionsArg.h"
+#import "DBXFILESListRevisionsError.h"
+#import "DBXFILESListRevisionsResult.h"
+#import "DBXFILESLookUpPropertiesError.h"
+#import "DBXFILESLookupError.h"
+#import "DBXFILESMediaInfo.h"
+#import "DBXFILESMetadata.h"
+#import "DBXFILESPreviewArg.h"
+#import "DBXFILESPreviewError.h"
+#import "DBXFILESPropertiesError.h"
+#import "DBXFILESPropertyGroupUpdate.h"
+#import "DBXFILESPropertyGroupWithPath.h"
+#import "DBXFILESRelocationArg.h"
+#import "DBXFILESRelocationError.h"
+#import "DBXFILESRemovePropertiesArg.h"
+#import "DBXFILESRemovePropertiesError.h"
+#import "DBXFILESRestoreArg.h"
+#import "DBXFILESRestoreError.h"
+#import "DBXFILESRouteObjects.h"
+#import "DBXFILESRoutes.h"
+#import "DBXFILESSaveCopyReferenceArg.h"
+#import "DBXFILESSaveCopyReferenceError.h"
+#import "DBXFILESSaveCopyReferenceResult.h"
+#import "DBXFILESSaveUrlArg.h"
+#import "DBXFILESSaveUrlError.h"
+#import "DBXFILESSaveUrlJobStatus.h"
+#import "DBXFILESSaveUrlResult.h"
+#import "DBXFILESSearchArg.h"
+#import "DBXFILESSearchError.h"
+#import "DBXFILESSearchMatch.h"
+#import "DBXFILESSearchMode.h"
+#import "DBXFILESSearchResult.h"
+#import "DBXFILESThumbnailArg.h"
+#import "DBXFILESThumbnailError.h"
+#import "DBXFILESThumbnailFormat.h"
+#import "DBXFILESThumbnailSize.h"
+#import "DBXFILESUpdatePropertiesError.h"
+#import "DBXFILESUpdatePropertyGroupArg.h"
+#import "DBXFILESUploadError.h"
+#import "DBXFILESUploadErrorWithProperties.h"
+#import "DBXFILESUploadSessionAppendArg.h"
+#import "DBXFILESUploadSessionCursor.h"
+#import "DBXFILESUploadSessionFinishArg.h"
+#import "DBXFILESUploadSessionFinishBatchArg.h"
+#import "DBXFILESUploadSessionFinishBatchJobStatus.h"
+#import "DBXFILESUploadSessionFinishBatchResult.h"
+#import "DBXFILESUploadSessionFinishError.h"
+#import "DBXFILESUploadSessionLookupError.h"
+#import "DBXFILESUploadSessionOffsetError.h"
+#import "DBXFILESUploadSessionStartArg.h"
+#import "DBXFILESUploadSessionStartResult.h"
+#import "DBXFILESUploadWriteFailed.h"
+#import "DBXFILESWriteError.h"
+#import "DBXFILESWriteMode.h"
+#import "DBXPROPERTIESGetPropertyTemplateArg.h"
+#import "DBXPROPERTIESGetPropertyTemplateResult.h"
+#import "DBXPROPERTIESListPropertyTemplateIds.h"
+#import "DBXPROPERTIESPropertyFieldTemplate.h"
+#import "DBXPROPERTIESPropertyGroup.h"
+#import "DBXPROPERTIESPropertyGroupTemplate.h"
+#import "DBXPROPERTIESPropertyTemplateError.h"
+#import "DBXStoneBase.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
 
 /// 
 /// Routes for the Files namespace
 /// 
-@interface DbxFilesRoutes : NSObject 
+@interface DBXFILESRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic) DropboxTransportClient * _Nonnull client;
+@property (nonatomic) DBXTransportClient * _Nonnull client;
 
-/// Initializes the `DbxFilesRoutes` namespace container object with a
+/// Initializes the `DBXFILESRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
 
 /// 
 /// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
 /// Metadata for the root folder is unsupported.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesAlphaGetMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESAlphaGetMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesAlphaGetMetadataError *> * _Nonnull)alphaGetMetadata:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESAlphaGetMetadataError *> * _Nonnull)alphaGetMetadata:(NSString * _Nonnull)path;
 
 /// 
 /// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
@@ -139,10 +139,10 @@
 /// - parameter includePropertyTemplates: If true, propertyGroups in FileMetadata is set for files with custom
 /// properties.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesAlphaGetMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESAlphaGetMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesAlphaGetMetadataError *> * _Nonnull)alphaGetMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESAlphaGetMetadataError *> * _Nonnull)alphaGetMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -151,10 +151,10 @@
 /// 
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadURL:(NSString * _Nonnull)path inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadURL:(NSString * _Nonnull)path inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -164,10 +164,10 @@
 /// - parameter propertyGroups: List of custom properties to add to file.
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadURL:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadURL:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -176,10 +176,10 @@
 /// 
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadData:(NSString * _Nonnull)path inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadData:(NSString * _Nonnull)path inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -189,10 +189,10 @@
 /// - parameter propertyGroups: List of custom properties to add to file.
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadData:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadData:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -201,10 +201,10 @@
 /// 
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -214,10 +214,10 @@
 /// - parameter propertyGroups: List of custom properties to add to file.
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadErrorWithProperties * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadErrorWithProperties * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadErrorWithProperties *> * _Nonnull)alphaUploadStream:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
@@ -226,10 +226,10 @@
 /// - parameter fromPath: Path in the user's Dropbox to be copied or moved.
 /// - parameter toPath: Path in the user's Dropbox that is the destination.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesRelocationError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESRelocationError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesRelocationError *> * _Nonnull)dCopy:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESRelocationError *> * _Nonnull)dCopy:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
 
 /// 
 /// Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another
@@ -237,10 +237,10 @@
 /// 
 /// - parameter path: The path to the file or folder you want to get a copy reference to.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesGetCopyReferenceResult * _Nonnull`
-/// object on success or a `DbxFilesGetCopyReferenceError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESGetCopyReferenceResult * _Nonnull`
+/// object on success or a `DBXFILESGetCopyReferenceError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesGetCopyReferenceResult *, DbxFilesGetCopyReferenceError *> * _Nonnull)dCopyReferenceGet:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESGetCopyReferenceResult *, DBXFILESGetCopyReferenceError *> * _Nonnull)dCopyReferenceGet:(NSString * _Nonnull)path;
 
 /// 
 /// Save a copy reference returned by dCopyReferenceGet to the user's Dropbox.
@@ -248,20 +248,20 @@
 /// - parameter dCopyReference: A copy reference returned by dCopyReferenceGet.
 /// - parameter path: Path in the user's Dropbox that is the destination.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesSaveCopyReferenceResult * _Nonnull`
-/// object on success or a `DbxFilesSaveCopyReferenceError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESSaveCopyReferenceResult * _Nonnull`
+/// object on success or a `DBXFILESSaveCopyReferenceError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesSaveCopyReferenceResult *, DbxFilesSaveCopyReferenceError *> * _Nonnull)dCopyReferenceSave:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESSaveCopyReferenceResult *, DBXFILESSaveCopyReferenceError *> * _Nonnull)dCopyReferenceSave:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
 
 /// 
 /// Create a folder at a given path.
 /// 
 /// - parameter path: Path in the user's Dropbox to create.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFolderMetadata * _Nonnull` object on
-/// success or a `DbxFilesCreateFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFolderMetadata * _Nonnull` object on
+/// success or a `DBXFILESCreateFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesFolderMetadata *, DbxFilesCreateFolderError *> * _Nonnull)createFolder:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESFolderMetadata *, DBXFILESCreateFolderError *> * _Nonnull)createFolder:(NSString * _Nonnull)path;
 
 /// 
 /// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
@@ -270,10 +270,10 @@
 /// 
 /// - parameter path: Path in the user's Dropbox to delete.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesDeleteError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESDeleteError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesDeleteError *> * _Nonnull)delete_:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESDeleteError *> * _Nonnull)delete_:(NSString * _Nonnull)path;
 
 /// 
 /// Download a file from a user's Dropbox.
@@ -285,10 +285,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesDownloadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESDownloadError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesDownloadError *> * _Nonnull)downloadURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESDownloadError *> * _Nonnull)downloadURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Download a file from a user's Dropbox.
@@ -301,20 +301,20 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesDownloadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESDownloadError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesDownloadError *> * _Nonnull)downloadURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESDownloadError *> * _Nonnull)downloadURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Download a file from a user's Dropbox.
 /// 
 /// - parameter path: The path of the file to download.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesDownloadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESDownloadError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path;
 
 /// 
 /// Download a file from a user's Dropbox.
@@ -322,20 +322,20 @@
 /// - parameter path: The path of the file to download.
 /// - parameter rev: Deprecated. Please specify revision in path instead
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesDownloadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESDownloadError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
 
 /// 
 /// Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
 /// 
 /// - parameter path: The path of a file or folder on Dropbox.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesGetMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESGetMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path;
 
 /// 
 /// Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
@@ -347,10 +347,10 @@
 /// - parameter includeHasExplicitSharedMembers: If true, the results will include a flag for each file indicating
 /// whether or not  that file has any explicit members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesGetMetadataError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESGetMetadataError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 /// 
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
@@ -363,10 +363,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesPreviewError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESPreviewError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesPreviewError *> * _Nonnull)getPreviewURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESPreviewError *> * _Nonnull)getPreviewURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
@@ -380,10 +380,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesPreviewError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESPreviewError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesPreviewError *> * _Nonnull)getPreviewURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESPreviewError *> * _Nonnull)getPreviewURL:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
@@ -391,10 +391,10 @@
 /// 
 /// - parameter path: The path of the file to preview.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesPreviewError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESPreviewError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path;
 
 /// 
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
@@ -403,10 +403,10 @@
 /// - parameter path: The path of the file to preview.
 /// - parameter rev: Deprecated. Please specify revision in path instead
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesPreviewError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESPreviewError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
 
 /// 
 /// Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get
@@ -414,10 +414,10 @@
 /// 
 /// - parameter path: The path to the file you want a temporary link to.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesGetTemporaryLinkResult * _Nonnull`
-/// object on success or a `DbxFilesGetTemporaryLinkError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESGetTemporaryLinkResult * _Nonnull`
+/// object on success or a `DBXFILESGetTemporaryLinkError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesGetTemporaryLinkResult *, DbxFilesGetTemporaryLinkError *> * _Nonnull)getTemporaryLink:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESGetTemporaryLinkResult *, DBXFILESGetTemporaryLinkError *> * _Nonnull)getTemporaryLink:(NSString * _Nonnull)path;
 
 /// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -430,10 +430,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesThumbnailError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESThumbnailError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesThumbnailError *> * _Nonnull)getThumbnailURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESThumbnailError *> * _Nonnull)getThumbnailURL:(NSString * _Nonnull)path overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -449,10 +449,10 @@
 /// - parameter destination: A closure used to compute the destination, given the temporary file location and the
 /// response.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesThumbnailError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESThumbnailError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadURLTask<DbxFilesFileMetadata *, DbxFilesThumbnailError *> * _Nonnull)getThumbnailURL:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBXDownloadURLTask<DBXFILESFileMetadata *, DBXFILESThumbnailError *> * _Nonnull)getThumbnailURL:(NSString * _Nonnull)path format:(DBXFILESThumbnailFormat * _Nullable)format size:(DBXFILESThumbnailSize * _Nullable)size overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
 /// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -460,10 +460,10 @@
 /// 
 /// - parameter path: The path to the image file you want to thumbnail.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesThumbnailError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESThumbnailError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesThumbnailError *> * _Nonnull)getThumbnailData:(NSString * _Nonnull)path;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESThumbnailError *> * _Nonnull)getThumbnailData:(NSString * _Nonnull)path;
 
 /// 
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -474,20 +474,20 @@
 /// should be preferred, while png is  better for screenshots and digital arts.
 /// - parameter size: The size for the thumbnail image.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesThumbnailError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESThumbnailError * _Nonnull` object on failure.
 /// 
-- (DbxDownloadDataTask<DbxFilesFileMetadata *, DbxFilesThumbnailError *> * _Nonnull)getThumbnailData:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size;
+- (DBXDownloadDataTask<DBXFILESFileMetadata *, DBXFILESThumbnailError *> * _Nonnull)getThumbnailData:(NSString * _Nonnull)path format:(DBXFILESThumbnailFormat * _Nullable)format size:(DBXFILESThumbnailSize * _Nullable)size;
 
 /// 
 /// Returns the contents of a folder.
 /// 
 /// - parameter path: The path to the folder you want to see the contents of.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderResult * _Nonnull` object on
-/// success or a `DbxFilesListFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderResult * _Nonnull` object on
+/// success or a `DBXFILESListFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderResult *, DbxFilesListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESListFolderResult *, DBXFILESListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path;
 
 /// 
 /// Returns the contents of a folder.
@@ -501,10 +501,10 @@
 /// - parameter includeHasExplicitSharedMembers: If true, the results will include a flag for each file indicating
 /// whether or not  that file has any explicit members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderResult * _Nonnull` object on
-/// success or a `DbxFilesListFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderResult * _Nonnull` object on
+/// success or a `DBXFILESListFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderResult *, DbxFilesListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
+- (DBXRpcTask<DBXFILESListFolderResult *, DBXFILESListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 /// 
 /// Once a cursor has been retrieved from listFolder, use this to paginate through all files and retrieve updates to the
@@ -512,10 +512,10 @@
 /// 
 /// - parameter cursor: The cursor returned by your last call to listFolder or listFolderContinue.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderResult * _Nonnull` object on
-/// success or a `DbxFilesListFolderContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderResult * _Nonnull` object on
+/// success or a `DBXFILESListFolderContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderResult *, DbxFilesListFolderContinueError *> * _Nonnull)listFolderContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXFILESListFolderResult *, DBXFILESListFolderContinueError *> * _Nonnull)listFolderContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// A way to quickly get a cursor for the folder's state. Unlike listFolder, listFolderGetLatestCursor doesn't return
@@ -524,10 +524,10 @@
 /// 
 /// - parameter path: The path to the folder you want to see the contents of.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderGetLatestCursorResult *
-/// _Nonnull` object on success or a `DbxFilesListFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderGetLatestCursorResult *
+/// _Nonnull` object on success or a `DBXFILESListFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderGetLatestCursorResult *, DbxFilesListFolderError *> * _Nonnull)listFolderGetLatestCursor:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESListFolderGetLatestCursorResult *, DBXFILESListFolderError *> * _Nonnull)listFolderGetLatestCursor:(NSString * _Nonnull)path;
 
 /// 
 /// A way to quickly get a cursor for the folder's state. Unlike listFolder, listFolderGetLatestCursor doesn't return
@@ -543,10 +543,10 @@
 /// - parameter includeHasExplicitSharedMembers: If true, the results will include a flag for each file indicating
 /// whether or not  that file has any explicit members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderGetLatestCursorResult *
-/// _Nonnull` object on success or a `DbxFilesListFolderError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderGetLatestCursorResult *
+/// _Nonnull` object on success or a `DBXFILESListFolderError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderGetLatestCursorResult *, DbxFilesListFolderError *> * _Nonnull)listFolderGetLatestCursor:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
+- (DBXRpcTask<DBXFILESListFolderGetLatestCursorResult *, DBXFILESListFolderError *> * _Nonnull)listFolderGetLatestCursor:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 /// 
 /// A longpoll endpoint to wait for changes on an account. In conjunction with listFolderContinue, this call gives you a
@@ -557,10 +557,10 @@
 /// - parameter cursor: A cursor as returned by listFolder or listFolderContinue. Cursors retrieved by setting
 /// includeMediaInfo in ListFolderArg to true are not supported.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderLongpollResult * _Nonnull`
-/// object on success or a `DbxFilesListFolderLongpollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderLongpollResult * _Nonnull`
+/// object on success or a `DBXFILESListFolderLongpollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderLongpollResult *, DbxFilesListFolderLongpollError *> * _Nonnull)listFolderLongpoll:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXFILESListFolderLongpollResult *, DBXFILESListFolderLongpollError *> * _Nonnull)listFolderLongpoll:(NSString * _Nonnull)cursor;
 
 /// 
 /// A longpoll endpoint to wait for changes on an account. In conjunction with listFolderContinue, this call gives you a
@@ -574,20 +574,20 @@
 /// seconds of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter,
 /// as some network infrastructure does not support long timeouts.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListFolderLongpollResult * _Nonnull`
-/// object on success or a `DbxFilesListFolderLongpollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListFolderLongpollResult * _Nonnull`
+/// object on success or a `DBXFILESListFolderLongpollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListFolderLongpollResult *, DbxFilesListFolderLongpollError *> * _Nonnull)listFolderLongpoll:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout;
+- (DBXRpcTask<DBXFILESListFolderLongpollResult *, DBXFILESListFolderLongpollError *> * _Nonnull)listFolderLongpoll:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout;
 
 /// 
 /// Return revisions of a file
 /// 
 /// - parameter path: The path to the file you want to see the revisions of.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListRevisionsResult * _Nonnull` object
-/// on success or a `DbxFilesListRevisionsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListRevisionsResult * _Nonnull` object
+/// on success or a `DBXFILESListRevisionsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListRevisionsResult *, DbxFilesListRevisionsError *> * _Nonnull)listRevisions:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXFILESListRevisionsResult *, DBXFILESListRevisionsError *> * _Nonnull)listRevisions:(NSString * _Nonnull)path;
 
 /// 
 /// Return revisions of a file
@@ -595,10 +595,10 @@
 /// - parameter path: The path to the file you want to see the revisions of.
 /// - parameter limit: The maximum number of revision entries returned.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesListRevisionsResult * _Nonnull` object
-/// on success or a `DbxFilesListRevisionsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESListRevisionsResult * _Nonnull` object
+/// on success or a `DBXFILESListRevisionsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesListRevisionsResult *, DbxFilesListRevisionsError *> * _Nonnull)listRevisions:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXFILESListRevisionsResult *, DBXFILESListRevisionsError *> * _Nonnull)listRevisions:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
 
 /// 
 /// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
@@ -607,10 +607,10 @@
 /// - parameter fromPath: Path in the user's Dropbox to be copied or moved.
 /// - parameter toPath: Path in the user's Dropbox that is the destination.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesMetadata * _Nonnull` object on success
-/// or a `DbxFilesRelocationError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESMetadata * _Nonnull` object on success
+/// or a `DBXFILESRelocationError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesMetadata *, DbxFilesRelocationError *> * _Nonnull)move:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
+- (DBXRpcTask<DBXFILESMetadata *, DBXFILESRelocationError *> * _Nonnull)move:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
 
 /// 
 /// Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint
@@ -619,9 +619,9 @@
 /// - parameter path: Path in the user's Dropbox to delete.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesDeleteError * _Nonnull` object on failure.
+/// `DBXFILESDeleteError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxFilesDeleteError *> * _Nonnull)permanentlyDelete:(NSString * _Nonnull)path;
+- (DBXRpcTask<DBXNilObject *, DBXFILESDeleteError *> * _Nonnull)permanentlyDelete:(NSString * _Nonnull)path;
 
 /// 
 /// Add custom properties to a file using a filled property template. See properties/template/add to create new property
@@ -631,9 +631,9 @@
 /// - parameter propertyGroups: Filled custom property templates associated with a file.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesAddPropertiesError * _Nonnull` object on failure.
+/// `DBXFILESAddPropertiesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxFilesAddPropertiesError *> * _Nonnull)propertiesAdd:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups;
+- (DBXRpcTask<DBXNilObject *, DBXFILESAddPropertiesError *> * _Nonnull)propertiesAdd:(NSString * _Nonnull)path propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
 
 /// 
 /// Overwrite custom properties from a specified template associated with a file.
@@ -642,9 +642,9 @@
 /// - parameter propertyGroups: Filled custom property templates associated with a file.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesInvalidPropertyGroupError * _Nonnull` object on failure.
+/// `DBXFILESInvalidPropertyGroupError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxFilesInvalidPropertyGroupError *> * _Nonnull)propertiesOverwrite:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups;
+- (DBXRpcTask<DBXNilObject *, DBXFILESInvalidPropertyGroupError *> * _Nonnull)propertiesOverwrite:(NSString * _Nonnull)path propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
 
 /// 
 /// Remove all custom properties from a specified template associated with a file. To remove specific property key value
@@ -656,28 +656,28 @@
 /// properties/template/add.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesRemovePropertiesError * _Nonnull` object on failure.
+/// `DBXFILESRemovePropertiesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxFilesRemovePropertiesError *> * _Nonnull)propertiesRemove:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
+- (DBXRpcTask<DBXNilObject *, DBXFILESRemovePropertiesError *> * _Nonnull)propertiesRemove:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
 
 /// 
 /// Get the schema for a specified template.
 /// 
 /// - parameter templateId: An identifier for property template added by route properties/template/add.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxPropertiesGetPropertyTemplateResult *
-/// _Nonnull` object on success or a `DbxPropertiesPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXPROPERTIESGetPropertyTemplateResult *
+/// _Nonnull` object on success or a `DBXPROPERTIESPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxPropertiesGetPropertyTemplateResult *, DbxPropertiesPropertyTemplateError *> * _Nonnull)propertiesTemplateGet:(NSString * _Nonnull)templateId;
+- (DBXRpcTask<DBXPROPERTIESGetPropertyTemplateResult *, DBXPROPERTIESPropertyTemplateError *> * _Nonnull)propertiesTemplateGet:(NSString * _Nonnull)templateId;
 
 /// 
 /// Get the property template identifiers for a user. To get the schema of each template use propertiesTemplateGet.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxPropertiesListPropertyTemplateIds *
-/// _Nonnull` object on success or a `DbxPropertiesPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXPROPERTIESListPropertyTemplateIds *
+/// _Nonnull` object on success or a `DBXPROPERTIESPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxPropertiesListPropertyTemplateIds *, DbxPropertiesPropertyTemplateError *> * _Nonnull)propertiesTemplateList;
+- (DBXRpcTask<DBXPROPERTIESListPropertyTemplateIds *, DBXPROPERTIESPropertyTemplateError *> * _Nonnull)propertiesTemplateList;
 
 /// 
 /// Add, update or remove custom properties from a specified template associated with a file. Fields that already exist
@@ -687,9 +687,9 @@
 /// - parameter updatePropertyGroups: Filled custom property templates associated with a file.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUpdatePropertiesError * _Nonnull` object on failure.
+/// `DBXFILESUpdatePropertiesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxFilesUpdatePropertiesError *> * _Nonnull)propertiesUpdate:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
+- (DBXRpcTask<DBXNilObject *, DBXFILESUpdatePropertiesError *> * _Nonnull)propertiesUpdate:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
 
 /// 
 /// Restore a file to a specific revision
@@ -697,10 +697,10 @@
 /// - parameter path: The path to the file you want to restore.
 /// - parameter rev: The revision to restore for the file.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesRestoreError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESRestoreError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesFileMetadata *, DbxFilesRestoreError *> * _Nonnull)restore:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev;
+- (DBXRpcTask<DBXFILESFileMetadata *, DBXFILESRestoreError *> * _Nonnull)restore:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev;
 
 /// 
 /// Save a specified URL into a file in user's Dropbox. If the given path already exists, the file will be renamed to
@@ -709,10 +709,10 @@
 /// - parameter path: The path in Dropbox where the URL will be saved to.
 /// - parameter url: The URL to be saved.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesSaveUrlResult * _Nonnull` object on
-/// success or a `DbxFilesSaveUrlError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESSaveUrlResult * _Nonnull` object on
+/// success or a `DBXFILESSaveUrlError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesSaveUrlResult *, DbxFilesSaveUrlError *> * _Nonnull)saveUrl:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
+- (DBXRpcTask<DBXFILESSaveUrlResult *, DBXFILESSaveUrlError *> * _Nonnull)saveUrl:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
 
 /// 
 /// Check the status of a saveUrl job.
@@ -720,10 +720,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesSaveUrlJobStatus * _Nonnull` object on
-/// success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESSaveUrlJobStatus * _Nonnull` object on
+/// success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesSaveUrlJobStatus *, DbxAsyncPollError *> * _Nonnull)saveUrlCheckJobStatus:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXFILESSaveUrlJobStatus *, DBXASYNCPollError *> * _Nonnull)saveUrlCheckJobStatus:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Searches for files and folders. Note: Recent changes may not immediately be reflected in search results due to a
@@ -733,10 +733,10 @@
 /// - parameter query: The string to search for. The search string is split on spaces into multiple tokens. For file
 /// name searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesSearchResult * _Nonnull` object on
-/// success or a `DbxFilesSearchError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESSearchResult * _Nonnull` object on
+/// success or a `DBXFILESSearchError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesSearchResult *, DbxFilesSearchError *> * _Nonnull)search:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
+- (DBXRpcTask<DBXFILESSearchResult *, DBXFILESSearchError *> * _Nonnull)search:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
 
 /// 
 /// Searches for files and folders. Note: Recent changes may not immediately be reflected in search results due to a
@@ -750,10 +750,10 @@
 /// - parameter mode: The search mode (filename, filename_and_content, or deleted_filename). Note that searching file
 /// content is only available for Dropbox Business accounts.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesSearchResult * _Nonnull` object on
-/// success or a `DbxFilesSearchError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESSearchResult * _Nonnull` object on
+/// success or a `DBXFILESSearchError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesSearchResult *, DbxFilesSearchError *> * _Nonnull)search:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DbxFilesSearchMode * _Nullable)mode;
+- (DBXRpcTask<DBXFILESSearchResult *, DBXFILESSearchError *> * _Nonnull)search:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DBXFILESSearchMode * _Nullable)mode;
 
 /// 
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -762,43 +762,10 @@
 /// - parameter path: Path in the user's Dropbox to save the file.
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadURL:(NSString * _Nonnull)path inputURL:(NSURL * _Nonnull)inputURL;
-
-/// 
-/// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
-/// 
-/// - parameter path: Path in the user's Dropbox to save the file.
-/// - parameter mode: Selects what to do if the file already exists.
-/// - parameter autorename: If there's a conflict, as determined by mode, have the Dropbox server try to autorename the
-/// file to avoid conflict.
-/// - parameter clientModified: The value to store as the clientModified timestamp. Dropbox automatically records the
-/// time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by
-/// Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified.
-/// - parameter mute: Normally, users are made aware of any file modifications in their Dropbox account via
-/// notifications in the client software. If true, this tells the clients that this modification shouldn't result in a
-/// user notification.
-/// - parameter inputURL: The file to upload, as an NSURL * object.
-/// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
-/// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadURL:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputURL:(NSURL * _Nonnull)inputURL;
-
-/// 
-/// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
-/// 
-/// - parameter path: Path in the user's Dropbox to save the file.
-/// - parameter inputData: The file to upload, as an NSData * object.
-/// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
-/// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadURL:(NSString * _Nonnull)path inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -814,12 +781,45 @@
 /// - parameter mute: Normally, users are made aware of any file modifications in their Dropbox account via
 /// notifications in the client software. If true, this tells the clients that this modification shouldn't result in a
 /// user notification.
+/// - parameter inputURL: The file to upload, as an NSURL * object.
+/// 
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
+/// 
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadURL:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputURL:(NSURL * _Nonnull)inputURL;
+
+/// 
+/// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with uploadSessionStart.
+/// 
+/// - parameter path: Path in the user's Dropbox to save the file.
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path inputData:(NSData * _Nonnull)inputData;
+
+/// 
+/// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
+/// Instead, create an upload session with uploadSessionStart.
+/// 
+/// - parameter path: Path in the user's Dropbox to save the file.
+/// - parameter mode: Selects what to do if the file already exists.
+/// - parameter autorename: If there's a conflict, as determined by mode, have the Dropbox server try to autorename the
+/// file to avoid conflict.
+/// - parameter clientModified: The value to store as the clientModified timestamp. Dropbox automatically records the
+/// time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by
+/// Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified.
+/// - parameter mute: Normally, users are made aware of any file modifications in their Dropbox account via
+/// notifications in the client software. If true, this tells the clients that this modification shouldn't result in a
+/// user notification.
+/// - parameter inputData: The file to upload, as an NSData * object.
+/// 
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
+/// 
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -828,10 +828,10 @@
 /// - parameter path: Path in the user's Dropbox to save the file.
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -849,10 +849,10 @@
 /// user notification.
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
@@ -864,9 +864,9 @@
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendURL:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputURL:(NSURL * _Nonnull)inputURL __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendURL:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputURL:(NSURL * _Nonnull)inputURL __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
 
 /// 
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
@@ -878,9 +878,9 @@
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendData:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputData:(NSData * _Nonnull)inputData __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendData:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputData:(NSData * _Nonnull)inputData __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
 
 /// 
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
@@ -892,9 +892,9 @@
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendStream:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputStream:(NSInputStream * _Nonnull)inputStream __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendStream:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset inputStream:(NSInputStream * _Nonnull)inputStream __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -904,9 +904,9 @@
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor * _Nonnull)cursor inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2URL:(DBXFILESUploadSessionCursor * _Nonnull)cursor inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -918,9 +918,9 @@
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2URL:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2URL:(DBXFILESUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -930,9 +930,9 @@
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor * _Nonnull)cursor inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Data:(DBXFILESUploadSessionCursor * _Nonnull)cursor inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -944,9 +944,9 @@
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Data:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Data:(DBXFILESUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -956,9 +956,9 @@
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DBXFILESUploadSessionCursor * _Nonnull)cursor inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -970,9 +970,9 @@
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxFilesUploadSessionLookupError * _Nonnull` object on failure.
+/// `DBXFILESUploadSessionLookupError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxNilObject *, DbxFilesUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXNilObject *, DBXFILESUploadSessionLookupError *> * _Nonnull)uploadSessionAppendV2Stream:(DBXFILESUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
@@ -982,10 +982,10 @@
 /// - parameter commit: Contains the path and other optional modifiers for the commit.
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadSessionFinishError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadSessionFinishError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadSessionFinishError *> * _Nonnull)uploadSessionFinishURL:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadSessionFinishError *> * _Nonnull)uploadSessionFinishURL:(DBXFILESUploadSessionCursor * _Nonnull)cursor commit:(DBXFILESCommitInfo * _Nonnull)commit inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
@@ -995,10 +995,10 @@
 /// - parameter commit: Contains the path and other optional modifiers for the commit.
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadSessionFinishError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadSessionFinishError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadSessionFinishError *> * _Nonnull)uploadSessionFinishData:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadSessionFinishError *> * _Nonnull)uploadSessionFinishData:(DBXFILESUploadSessionCursor * _Nonnull)cursor commit:(DBXFILESCommitInfo * _Nonnull)commit inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
@@ -1008,10 +1008,10 @@
 /// - parameter commit: Contains the path and other optional modifiers for the commit.
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesFileMetadata * _Nonnull` object on
-/// success or a `DbxFilesUploadSessionFinishError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESFileMetadata * _Nonnull` object on
+/// success or a `DBXFILESUploadSessionFinishError * _Nonnull` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesFileMetadata *, DbxFilesUploadSessionFinishError *> * _Nonnull)uploadSessionFinishStream:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESFileMetadata *, DBXFILESUploadSessionFinishError *> * _Nonnull)uploadSessionFinishStream:(DBXFILESUploadSessionCursor * _Nonnull)cursor commit:(DBXFILESCommitInfo * _Nonnull)commit inputStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// This route helps you commit many files at once into a user's Dropbox. Use uploadSessionStart and
@@ -1025,10 +1025,10 @@
 /// 
 /// - parameter entries: Commit information for each file in the batch.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxNilObject *> * _Nonnull)uploadSessionFinishBatch:(NSArray<DbxFilesUploadSessionFinishArg *> * _Nonnull)entries;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXNilObject *> * _Nonnull)uploadSessionFinishBatch:(NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull)entries;
 
 /// 
 /// Returns the status of an asynchronous job for uploadSessionFinishBatch. If success, it returns list of result for
@@ -1037,10 +1037,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionFinishBatchJobStatus *
-/// _Nonnull` object on success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionFinishBatchJobStatus *
+/// _Nonnull` object on success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxFilesUploadSessionFinishBatchJobStatus *, DbxAsyncPollError *> * _Nonnull)uploadSessionFinishBatchCheck:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXFILESUploadSessionFinishBatchJobStatus *, DBXASYNCPollError *> * _Nonnull)uploadSessionFinishBatchCheck:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1049,10 +1049,10 @@
 /// 
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1063,10 +1063,10 @@
 /// uploadSessionAppendV2 anymore with the current session.
 /// - parameter inputURL: The file to upload, as an NSURL * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartURL:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartURL:(NSNumber * _Nullable)close inputURL:(NSURL * _Nonnull)inputURL;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1075,10 +1075,10 @@
 /// 
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1089,10 +1089,10 @@
 /// uploadSessionAppendV2 anymore with the current session.
 /// - parameter inputData: The file to upload, as an NSData * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartData:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartData:(NSNumber * _Nullable)close inputData:(NSData * _Nonnull)inputData;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1101,10 +1101,10 @@
 /// 
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartStream:(NSInputStream * _Nonnull)inputStream;
 
 /// 
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
@@ -1115,9 +1115,9 @@
 /// uploadSessionAppendV2 anymore with the current session.
 /// - parameter inputStream: The file to upload, as an NSInputStream * object.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxFilesUploadSessionStartResult * _Nonnull`
+/// - returns: Through the response callback, the caller will receive a `DBXFILESUploadSessionStartResult * _Nonnull`
 /// object on success or a `void` object on failure.
 /// 
-- (DbxUploadTask<DbxFilesUploadSessionStartResult *, DbxNilObject *> * _Nonnull)uploadSessionStartStream:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
+- (DBXUploadTask<DBXFILESUploadSessionStartResult *, DBXNilObject *> * _Nonnull)uploadSessionStartStream:(NSNumber * _Nullable)close inputStream:(NSInputStream * _Nonnull)inputStream;
 
 @end

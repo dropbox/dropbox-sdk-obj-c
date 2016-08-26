@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGetCopyReferenceError;
-@class DbxFilesLookupError;
+@class DBXFILESGetCopyReferenceError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesGetCopyReferenceError` union.
+/// The `DBXFILESGetCopyReferenceError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesGetCopyReferenceError : NSObject <DbxSerializable> 
+@interface DBXFILESGetCopyReferenceError : NSObject <DBXSerializable> 
 
-/// The `FilesGetCopyReferenceErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesGetCopyReferenceError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesGetCopyReferenceErrorTag) {
+/// The `DBXFILESGetCopyReferenceErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESGetCopyReferenceError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESGetCopyReferenceErrorTag) {
     /// (no description).
-    FilesGetCopyReferenceErrorPath,
+    DBXFILESGetCopyReferenceErrorPath,
 
     /// (no description).
-    FilesGetCopyReferenceErrorOther,
+    DBXFILESGetCopyReferenceErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesGetCopyReferenceErrorTag tag;
+@property (nonatomic) DBXFILESGetCopyReferenceErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -51,23 +50,23 @@ typedef NS_ENUM(NSInteger, FilesGetCopyReferenceErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesGetCopyReferenceError` object.
+/// `DBXFILESGetCopyReferenceError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesGetCopyReferenceError` union.
+/// The serialization class for the `DBXFILESGetCopyReferenceError` union.
 /// 
-@interface DbxFilesGetCopyReferenceErrorSerializer : NSObject 
+@interface DBXFILESGetCopyReferenceErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGetCopyReferenceError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGetCopyReferenceError * _Nonnull)obj;
+/// `DBXFILESGetCopyReferenceError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetCopyReferenceError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGetCopyReferenceError` object from
+/// Returns an instantiation of the `DBXFILESGetCopyReferenceError` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesGetCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGetCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

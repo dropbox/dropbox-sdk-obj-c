@@ -3,35 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListMemberAppsError;
+@class DBXTEAMListMemberAppsError;
 
 /// 
-/// The `DbxTeamListMemberAppsError` union.
+/// The `DBXTEAMListMemberAppsError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error returned by linkedAppsListMemberLinkedApps.
 /// 
-@interface DbxTeamListMemberAppsError : NSObject <DbxSerializable> 
+@interface DBXTEAMListMemberAppsError : NSObject <DBXSerializable> 
 
-/// The `TeamListMemberAppsErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamListMemberAppsError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamListMemberAppsErrorTag) {
+/// The `DBXTEAMListMemberAppsErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMListMemberAppsError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMListMemberAppsErrorTag) {
     /// Member not found.
-    TeamListMemberAppsErrorMemberNotFound,
+    DBXTEAMListMemberAppsErrorMemberNotFound,
 
     /// (no description).
-    TeamListMemberAppsErrorOther,
+    DBXTEAMListMemberAppsErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamListMemberAppsErrorTag tag;
-
+@property (nonatomic) DBXTEAMListMemberAppsErrorTag tag;
 
 /// Initializes union class with tag state of `MemberNotFound`.
 - (nonnull instancetype)initWithMemberNotFound;
@@ -48,7 +47,7 @@ typedef NS_ENUM(NSInteger, TeamListMemberAppsErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamListMemberAppsError`
+/// Returns a human-readable representation of the `DBXTEAMListMemberAppsError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -56,16 +55,16 @@ typedef NS_ENUM(NSInteger, TeamListMemberAppsErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamListMemberAppsError` union.
+/// The serialization class for the `DBXTEAMListMemberAppsError` union.
 /// 
-@interface DbxTeamListMemberAppsErrorSerializer : NSObject 
+@interface DBXTEAMListMemberAppsErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListMemberAppsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListMemberAppsError * _Nonnull)obj;
+/// `DBXTEAMListMemberAppsError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListMemberAppsError` object from a
+/// Returns an instantiation of the `DBXTEAMListMemberAppsError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamListMemberAppsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListMemberAppsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

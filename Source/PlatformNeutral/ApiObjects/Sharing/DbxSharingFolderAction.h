@@ -3,65 +3,64 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFolderAction;
+@class DBXSHARINGFolderAction;
 
 /// 
-/// The `DbxSharingFolderAction` union.
+/// The `DBXSHARINGFolderAction` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Actions that may be taken on shared folders.
 /// 
-@interface DbxSharingFolderAction : NSObject <DbxSerializable> 
+@interface DBXSHARINGFolderAction : NSObject <DBXSerializable> 
 
-/// The `SharingFolderActionTag` enum type represents the possible tag states
-/// that the `DbxSharingFolderAction` union can exist in.
-typedef NS_ENUM(NSInteger, SharingFolderActionTag) {
+/// The `DBXSHARINGFolderActionTag` enum type represents the possible tag states
+/// that the `DBXSHARINGFolderAction` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
     /// Change folder options, such as who can be invited to join the folder.
-    SharingFolderActionChangeOptions,
+    DBXSHARINGFolderActionChangeOptions,
 
     /// Change or edit contents of the folder.
-    SharingFolderActionEditContents,
+    DBXSHARINGFolderActionEditContents,
 
     /// Invite a user or group to join the folder with read and write
     /// permission.
-    SharingFolderActionInviteEditor,
+    DBXSHARINGFolderActionInviteEditor,
 
     /// Invite a user or group to join the folder with read permission.
-    SharingFolderActionInviteViewer,
+    DBXSHARINGFolderActionInviteViewer,
 
     /// Invite a user or group to join the folder with read permission but no
     /// comment permissions.
-    SharingFolderActionInviteViewerNoComment,
+    DBXSHARINGFolderActionInviteViewerNoComment,
 
     /// Relinquish one's own membership in the folder.
-    SharingFolderActionRelinquishMembership,
+    DBXSHARINGFolderActionRelinquishMembership,
 
     /// Unmount the folder.
-    SharingFolderActionUnmount,
+    DBXSHARINGFolderActionUnmount,
 
     /// Stop sharing this folder.
-    SharingFolderActionUnshare,
+    DBXSHARINGFolderActionUnshare,
 
     /// Keep a copy of the contents upon leaving or being kicked from the
     /// folder.
-    SharingFolderActionLeaveACopy,
+    DBXSHARINGFolderActionLeaveACopy,
 
     /// Create a shared link for folder.
-    SharingFolderActionShareLink,
+    DBXSHARINGFolderActionShareLink,
 
     /// (no description).
-    SharingFolderActionOther,
+    DBXSHARINGFolderActionOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingFolderActionTag tag;
-
+@property (nonatomic) DBXSHARINGFolderActionTag tag;
 
 /// Initializes union class with tag state of `ChangeOptions`.
 - (nonnull instancetype)initWithChangeOptions;
@@ -134,7 +133,7 @@ typedef NS_ENUM(NSInteger, SharingFolderActionTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingFolderAction`
+/// Returns a human-readable representation of the `DBXSHARINGFolderAction`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -142,16 +141,16 @@ typedef NS_ENUM(NSInteger, SharingFolderActionTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingFolderAction` union.
+/// The serialization class for the `DBXSHARINGFolderAction` union.
 /// 
-@interface DbxSharingFolderActionSerializer : NSObject 
+@interface DBXSHARINGFolderActionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFolderAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFolderAction * _Nonnull)obj;
+/// `DBXSHARINGFolderAction` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderAction * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFolderAction` object from a
+/// Returns an instantiation of the `DBXSHARINGFolderAction` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFolderAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFolderAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

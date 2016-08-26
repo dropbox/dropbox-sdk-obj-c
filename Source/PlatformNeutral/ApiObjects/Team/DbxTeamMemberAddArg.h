@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamAdminTier;
-@class DbxTeamMemberAddArg;
+@class DBXTEAMAdminTier;
+@class DBXTEAMMemberAddArg;
 
 /// 
-/// The `DbxTeamMemberAddArg` struct.
+/// The `DBXTEAMMemberAddArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMemberAddArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMemberAddArg : NSObject <DBXSerializable> 
 
 /// (no description).
 @property (nonatomic, copy) NSString * _Nonnull memberEmail;
@@ -36,33 +36,33 @@
 @property (nonatomic, copy) NSNumber * _Nonnull sendWelcomeEmail;
 
 /// (no description).
-@property (nonatomic) DbxTeamAdminTier * _Nonnull role;
+@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `MemberAddArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname memberExternalId:(NSString * _Nullable)memberExternalId sendWelcomeEmail:(NSNumber * _Nullable)sendWelcomeEmail role:(DbxTeamAdminTier * _Nullable)role;
+- (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname memberExternalId:(NSString * _Nullable)memberExternalId sendWelcomeEmail:(NSNumber * _Nullable)sendWelcomeEmail role:(DBXTEAMAdminTier * _Nullable)role;
 
 /// Convenience constructor for the `MemberAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname;
 
-/// Returns a human-readable representation of the `DbxTeamMemberAddArg` object.
+/// Returns a human-readable representation of the `DBXTEAMMemberAddArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamMemberAddArg` struct.
+/// The serialization class for the `DBXTEAMMemberAddArg` struct.
 /// 
-@interface DbxTeamMemberAddArgSerializer : NSObject 
+@interface DBXTEAMMemberAddArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMemberAddArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMemberAddArg * _Nonnull)obj;
+/// `DBXTEAMMemberAddArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAddArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMemberAddArg` object from a
+/// Returns an instantiation of the `DBXTEAMMemberAddArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMemberAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMemberAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

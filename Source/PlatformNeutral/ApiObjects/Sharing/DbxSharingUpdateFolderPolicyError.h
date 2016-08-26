@@ -3,54 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharedFolderAccessError;
-@class DbxSharingUpdateFolderPolicyError;
+@class DBXSHARINGSharedFolderAccessError;
+@class DBXSHARINGUpdateFolderPolicyError;
 
 /// 
-/// The `DbxSharingUpdateFolderPolicyError` union.
+/// The `DBXSHARINGUpdateFolderPolicyError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingUpdateFolderPolicyError : NSObject <DbxSerializable> 
+@interface DBXSHARINGUpdateFolderPolicyError : NSObject <DBXSerializable> 
 
-/// The `SharingUpdateFolderPolicyErrorTag` enum type represents the possible
-/// tag states that the `DbxSharingUpdateFolderPolicyError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingUpdateFolderPolicyErrorTag) {
+/// The `DBXSHARINGUpdateFolderPolicyErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGUpdateFolderPolicyError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderPolicyErrorTag) {
     /// (no description).
-    SharingUpdateFolderPolicyErrorAccessError,
+    DBXSHARINGUpdateFolderPolicyErrorAccessError,
 
     /// memberPolicy in UpdateFolderPolicyArg was set even though user is not on
     /// a team.
-    SharingUpdateFolderPolicyErrorNotOnTeam,
+    DBXSHARINGUpdateFolderPolicyErrorNotOnTeam,
 
     /// Team policy is more restrictive than memberPolicy in ShareFolderArg.
-    SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy,
+    DBXSHARINGUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy,
 
     /// The current account is not allowed to select the specified
     /// sharedLinkPolicy in ShareFolderArg.
-    SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy,
+    DBXSHARINGUpdateFolderPolicyErrorDisallowedSharedLinkPolicy,
 
     /// The current user does not have permission to perform this action.
-    SharingUpdateFolderPolicyErrorNoPermission,
+    DBXSHARINGUpdateFolderPolicyErrorNoPermission,
 
     /// (no description).
-    SharingUpdateFolderPolicyErrorOther,
+    DBXSHARINGUpdateFolderPolicyErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingUpdateFolderPolicyErrorTag tag;
+@property (nonatomic) DBXSHARINGUpdateFolderPolicyErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `NotOnTeam`.
 - (nonnull instancetype)initWithNotOnTeam;
@@ -91,23 +90,23 @@ typedef NS_ENUM(NSInteger, SharingUpdateFolderPolicyErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingUpdateFolderPolicyError` object.
+/// `DBXSHARINGUpdateFolderPolicyError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingUpdateFolderPolicyError` union.
+/// The serialization class for the `DBXSHARINGUpdateFolderPolicyError` union.
 /// 
-@interface DbxSharingUpdateFolderPolicyErrorSerializer : NSObject 
+@interface DBXSHARINGUpdateFolderPolicyErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUpdateFolderPolicyError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUpdateFolderPolicyError * _Nonnull)obj;
+/// `DBXSHARINGUpdateFolderPolicyError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderPolicyError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUpdateFolderPolicyError` object
+/// Returns an instantiation of the `DBXSHARINGUpdateFolderPolicyError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingUpdateFolderPolicyError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUpdateFolderPolicyError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

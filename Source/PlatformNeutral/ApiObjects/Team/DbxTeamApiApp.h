@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamApiApp;
+@class DBXTEAMApiApp;
 
 /// 
-/// The `DbxTeamApiApp` struct.
+/// The `DBXTEAMApiApp` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information on linked third party applications
 /// 
-@interface DbxTeamApiApp : NSObject <DbxSerializable> 
+@interface DBXTEAMApiApp : NSObject <DBXSerializable> 
 
 /// The application unique id
 @property (nonatomic, copy) NSString * _Nonnull appId;
@@ -43,23 +43,23 @@
 /// instance variables with no default value).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder;
 
-/// Returns a human-readable representation of the `DbxTeamApiApp` object.
+/// Returns a human-readable representation of the `DBXTEAMApiApp` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamApiApp` struct.
+/// The serialization class for the `DBXTEAMApiApp` struct.
 /// 
-@interface DbxTeamApiAppSerializer : NSObject 
+@interface DBXTEAMApiAppSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DbxTeamApiApp`
+/// Returns a json-compatible dictionary representation of the `DBXTEAMApiApp`
 /// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamApiApp * _Nonnull)obj;
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMApiApp * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamApiApp` object from a
+/// Returns an instantiation of the `DBXTEAMApiApp` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamApiApp * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMApiApp * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,29 +3,26 @@
 
 @implementation DropboxTeamClient
 
-- (instancetype)init:(DropboxTransportClient *)dropboxTransportClient
-{
-    self = [super init:dropboxTransportClient];
+- (instancetype)init:(DBXTransportClient *)transportClient {
+    self = [super init:transportClient];
     if (self != nil) {
-        _dropboxTransportClient = dropboxTransportClient;
-        _accessToken = dropboxTransportClient.accessToken;
+        _transportClient = transportClient;
+        _accessToken = transportClient.accessToken;
     }
     return self;
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-{
-    DropboxTransportClient *client = [[DropboxTransportClient alloc] initWithAccessToken:accessToken];
-    self = [super init:client];
+- (instancetype)initWithAccessToken:(NSString *)accessToken {
+    DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken];
+    self = [super init:transportClient];
     if (self != nil) {
-        _dropboxTransportClient = client;
+        _transportClient = transportClient;
         _accessToken = accessToken;
     }
     return self;
 }
 
-- (DropboxClient *)asMember:(NSString *)memberId
-{
+- (DropboxClient *)asMember:(NSString *)memberId {
     return [[DropboxClient alloc] initWithAccessToken:self.accessToken andSelectUser:memberId];
 }
 

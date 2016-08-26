@@ -3,21 +3,21 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberPermission;
-@class DbxSharingParentFolderAccessInfo;
+@class DBXSHARINGMemberPermission;
+@class DBXSHARINGParentFolderAccessInfo;
 
 /// 
-/// The `DbxSharingParentFolderAccessInfo` struct.
+/// The `DBXSHARINGParentFolderAccessInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Contains information about a parent folder that a member has access to.
 /// 
-@interface DbxSharingParentFolderAccessInfo : NSObject <DbxSerializable> 
+@interface DBXSHARINGParentFolderAccessInfo : NSObject <DBXSerializable> 
 
 /// Display name for the folder.
 @property (nonatomic, copy) NSString * _Nonnull folderName;
@@ -26,30 +26,30 @@
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
 
 /// The user's permissions for the parent shared folder.
-@property (nonatomic) NSArray<DbxSharingMemberPermission *> * _Nonnull permissions;
+@property (nonatomic) NSArray<DBXSHARINGMemberPermission *> * _Nonnull permissions;
 
 /// Full constructor for the `ParentFolderAccessInfo` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName sharedFolderId:(NSString * _Nonnull)sharedFolderId permissions:(NSArray<DbxSharingMemberPermission *> * _Nonnull)permissions;
+- (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName sharedFolderId:(NSString * _Nonnull)sharedFolderId permissions:(NSArray<DBXSHARINGMemberPermission *> * _Nonnull)permissions;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingParentFolderAccessInfo` object.
+/// `DBXSHARINGParentFolderAccessInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingParentFolderAccessInfo` struct.
+/// The serialization class for the `DBXSHARINGParentFolderAccessInfo` struct.
 /// 
-@interface DbxSharingParentFolderAccessInfoSerializer : NSObject 
+@interface DBXSHARINGParentFolderAccessInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingParentFolderAccessInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingParentFolderAccessInfo * _Nonnull)obj;
+/// `DBXSHARINGParentFolderAccessInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGParentFolderAccessInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingParentFolderAccessInfo` object
+/// Returns an instantiation of the `DBXSHARINGParentFolderAccessInfo` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingParentFolderAccessInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGParentFolderAccessInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -4,25 +4,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DbxAuthRouteObjects.h"
-#import "DbxAuthRoutes.h"
-#import "DbxErrors.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DropboxTransportClient.h"
+#import "DBXAUTHRouteObjects.h"
+#import "DBXAUTHRoutes.h"
+#import "DBXErrors.h"
+#import "DBXStoneBase.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
 
 /// 
 /// Routes for the Auth namespace
 /// 
-@interface DbxAuthRoutes : NSObject 
+@interface DBXAUTHRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic) DropboxTransportClient * _Nonnull client;
+@property (nonatomic) DBXTransportClient * _Nonnull client;
 
-/// Initializes the `DbxAuthRoutes` namespace container object with a networking
+/// Initializes the `DBXAUTHRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
 
 /// 
 /// Disables the access token used to authenticate the call.
@@ -31,6 +31,6 @@
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a `void` object on
 /// failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxNilObject *> * _Nonnull)tokenRevoke;
+- (DBXRpcTask<DBXNilObject *, DBXNilObject *> * _Nonnull)tokenRevoke;
 
 @end

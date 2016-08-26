@@ -3,24 +3,24 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamIncludeMembersArg.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMIncludeMembersArg.h"
 
-@class DbxTeamCommonGroupManagementType;
-@class DbxTeamGroupSelector;
-@class DbxTeamGroupUpdateArgs;
+@class DBXTEAMCOMMONGroupManagementType;
+@class DBXTEAMGroupSelector;
+@class DBXTEAMGroupUpdateArgs;
 
 /// 
-/// The `DbxTeamGroupUpdateArgs` struct.
+/// The `DBXTEAMGroupUpdateArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupUpdateArgs : DbxTeamIncludeMembersArg <DbxSerializable> 
+@interface DBXTEAMGroupUpdateArgs : DBXTEAMIncludeMembersArg <DBXSerializable> 
 
 /// Specify a group.
-@property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
 
 /// Optional argument. Set group name to this if provided.
 @property (nonatomic, copy) NSString * _Nullable dNewGroupName;
@@ -31,17 +31,17 @@
 @property (nonatomic, copy) NSString * _Nullable dNewGroupExternalId;
 
 /// Set new group management type, if provided.
-@property (nonatomic) DbxTeamCommonGroupManagementType * _Nullable dNewGroupManagementType;
+@property (nonatomic) DBXTEAMCOMMONGroupManagementType * _Nullable dNewGroupManagementType;
 
 /// Full constructor for the `GroupUpdateArgs` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)dNewGroupManagementType;
 
 /// Convenience constructor for the `GroupUpdateArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group;
 
-/// Returns a human-readable representation of the `DbxTeamGroupUpdateArgs`
+/// Returns a human-readable representation of the `DBXTEAMGroupUpdateArgs`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -49,16 +49,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupUpdateArgs` struct.
+/// The serialization class for the `DBXTEAMGroupUpdateArgs` struct.
 /// 
-@interface DbxTeamGroupUpdateArgsSerializer : NSObject 
+@interface DBXTEAMGroupUpdateArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupUpdateArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupUpdateArgs * _Nonnull)obj;
+/// `DBXTEAMGroupUpdateArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupUpdateArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupUpdateArgs` object from a
+/// Returns an instantiation of the `DBXTEAMGroupUpdateArgs` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupUpdateArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupUpdateArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListMemberAppsArg;
+@class DBXTEAMListMemberAppsArg;
 
 /// 
-/// The `DbxTeamListMemberAppsArg` struct.
+/// The `DBXTEAMListMemberAppsArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamListMemberAppsArg : NSObject <DbxSerializable> 
+@interface DBXTEAMListMemberAppsArg : NSObject <DBXSerializable> 
 
 /// The team member id
 @property (nonatomic, copy) NSString * _Nonnull teamMemberId;
@@ -23,7 +23,7 @@
 /// variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
-/// Returns a human-readable representation of the `DbxTeamListMemberAppsArg`
+/// Returns a human-readable representation of the `DBXTEAMListMemberAppsArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -31,16 +31,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamListMemberAppsArg` struct.
+/// The serialization class for the `DBXTEAMListMemberAppsArg` struct.
 /// 
-@interface DbxTeamListMemberAppsArgSerializer : NSObject 
+@interface DBXTEAMListMemberAppsArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListMemberAppsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListMemberAppsArg * _Nonnull)obj;
+/// `DBXTEAMListMemberAppsArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListMemberAppsArg` object from a
+/// Returns an instantiation of the `DBXTEAMListMemberAppsArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamListMemberAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListMemberAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

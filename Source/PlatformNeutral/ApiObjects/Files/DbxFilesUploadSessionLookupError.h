@@ -3,59 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionLookupError;
-@class DbxFilesUploadSessionOffsetError;
+@class DBXFILESUploadSessionLookupError;
+@class DBXFILESUploadSessionOffsetError;
 
 /// 
-/// The `DbxFilesUploadSessionLookupError` union.
+/// The `DBXFILESUploadSessionLookupError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionLookupError : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionLookupError : NSObject <DBXSerializable> 
 
-/// The `FilesUploadSessionLookupErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesUploadSessionLookupError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesUploadSessionLookupErrorTag) {
+/// The `DBXFILESUploadSessionLookupErrorTag` enum type represents the possible
+/// tag states that the `DBXFILESUploadSessionLookupError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
     /// The upload session id was not found.
-    FilesUploadSessionLookupErrorNotFound,
+    DBXFILESUploadSessionLookupErrorNotFound,
 
     /// The specified offset was incorrect. See the value for the correct
     /// offset. (This error may occur when a previous request was received and
     /// processed successfully but the client did not receive the response, e.g.
     /// due to a network error.)
-    FilesUploadSessionLookupErrorIncorrectOffset,
+    DBXFILESUploadSessionLookupErrorIncorrectOffset,
 
     /// You are attempting to append data to an upload session that has alread
     /// been closed (i.e. committed).
-    FilesUploadSessionLookupErrorClosed,
+    DBXFILESUploadSessionLookupErrorClosed,
 
     /// The session must be closed before calling upload_session/finish_batch.
-    FilesUploadSessionLookupErrorNotClosed,
+    DBXFILESUploadSessionLookupErrorNotClosed,
 
     /// (no description).
-    FilesUploadSessionLookupErrorOther,
+    DBXFILESUploadSessionLookupErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesUploadSessionLookupErrorTag tag;
+@property (nonatomic) DBXFILESUploadSessionLookupErrorTag tag;
 
 /// The specified offset was incorrect. See the value for the correct offset.
 /// (This error may occur when a previous request was received and processed
 /// successfully but the client did not receive the response, e.g. due to a
 /// network error.)
-@property (nonatomic) DbxFilesUploadSessionOffsetError * _Nonnull incorrectOffset;
-
+@property (nonatomic) DBXFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
 
 /// Initializes union class with tag state of `NotFound`.
 - (nonnull instancetype)initWithNotFound;
 
 /// Initializes union class with tag state of `IncorrectOffset`.
-- (nonnull instancetype)initWithIncorrectOffset:(DbxFilesUploadSessionOffsetError * _Nonnull)incorrectOffset;
+- (nonnull instancetype)initWithIncorrectOffset:(DBXFILESUploadSessionOffsetError * _Nonnull)incorrectOffset;
 
 /// Initializes union class with tag state of `Closed`.
 - (nonnull instancetype)initWithClosed;
@@ -85,23 +84,23 @@ typedef NS_ENUM(NSInteger, FilesUploadSessionLookupErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionLookupError` object.
+/// `DBXFILESUploadSessionLookupError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionLookupError` union.
+/// The serialization class for the `DBXFILESUploadSessionLookupError` union.
 /// 
-@interface DbxFilesUploadSessionLookupErrorSerializer : NSObject 
+@interface DBXFILESUploadSessionLookupErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionLookupError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionLookupError * _Nonnull)obj;
+/// `DBXFILESUploadSessionLookupError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionLookupError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionLookupError` object
+/// Returns an instantiation of the `DBXFILESUploadSessionLookupError` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

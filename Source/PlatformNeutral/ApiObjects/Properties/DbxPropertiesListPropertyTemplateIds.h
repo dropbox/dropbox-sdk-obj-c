@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesListPropertyTemplateIds;
+@class DBXPROPERTIESListPropertyTemplateIds;
 
 /// 
-/// The `DbxPropertiesListPropertyTemplateIds` struct.
+/// The `DBXPROPERTIESListPropertyTemplateIds` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxPropertiesListPropertyTemplateIds : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESListPropertyTemplateIds : NSObject <DBXSerializable> 
 
 /// List of identifiers for templates added by route properties/template/add.
 @property (nonatomic) NSArray<NSString *> * _Nonnull templateIds;
@@ -24,24 +24,24 @@
 - (nonnull instancetype)initWithTemplateIds:(NSArray<NSString *> * _Nonnull)templateIds;
 
 /// Returns a human-readable representation of the
-/// `DbxPropertiesListPropertyTemplateIds` object.
+/// `DBXPROPERTIESListPropertyTemplateIds` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxPropertiesListPropertyTemplateIds`
+/// The serialization class for the `DBXPROPERTIESListPropertyTemplateIds`
 /// struct.
 /// 
-@interface DbxPropertiesListPropertyTemplateIdsSerializer : NSObject 
+@interface DBXPROPERTIESListPropertyTemplateIdsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesListPropertyTemplateIds` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesListPropertyTemplateIds * _Nonnull)obj;
+/// `DBXPROPERTIESListPropertyTemplateIds` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESListPropertyTemplateIds * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesListPropertyTemplateIds`
+/// Returns an instantiation of the `DBXPROPERTIESListPropertyTemplateIds`
 /// object from a json-compatible dictionary representation.
-+ (DbxPropertiesListPropertyTemplateIds * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESListPropertyTemplateIds * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

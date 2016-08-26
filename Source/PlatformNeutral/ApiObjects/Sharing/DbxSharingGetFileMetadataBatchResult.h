@@ -3,52 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGetFileMetadataBatchResult;
-@class DbxSharingGetFileMetadataIndividualResult;
+@class DBXSHARINGGetFileMetadataBatchResult;
+@class DBXSHARINGGetFileMetadataIndividualResult;
 
 /// 
-/// The `DbxSharingGetFileMetadataBatchResult` struct.
+/// The `DBXSHARINGGetFileMetadataBatchResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Per file results of getFileMetadataBatch
 /// 
-@interface DbxSharingGetFileMetadataBatchResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetFileMetadataBatchResult : NSObject <DBXSerializable> 
 
 /// This is the input file identifier corresponding to one of files in
 /// GetFileMetadataBatchArg.
 @property (nonatomic, copy) NSString * _Nonnull file;
 
 /// The result for this particular file
-@property (nonatomic) DbxSharingGetFileMetadataIndividualResult * _Nonnull result;
+@property (nonatomic) DBXSHARINGGetFileMetadataIndividualResult * _Nonnull result;
 
 /// Full constructor for the `GetFileMetadataBatchResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file result:(DbxSharingGetFileMetadataIndividualResult * _Nonnull)result;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file result:(DBXSHARINGGetFileMetadataIndividualResult * _Nonnull)result;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingGetFileMetadataBatchResult` object.
+/// `DBXSHARINGGetFileMetadataBatchResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGetFileMetadataBatchResult`
+/// The serialization class for the `DBXSHARINGGetFileMetadataBatchResult`
 /// struct.
 /// 
-@interface DbxSharingGetFileMetadataBatchResultSerializer : NSObject 
+@interface DBXSHARINGGetFileMetadataBatchResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetFileMetadataBatchResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetFileMetadataBatchResult * _Nonnull)obj;
+/// `DBXSHARINGGetFileMetadataBatchResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataBatchResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetFileMetadataBatchResult`
+/// Returns an instantiation of the `DBXSHARINGGetFileMetadataBatchResult`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingGetFileMetadataBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetFileMetadataBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

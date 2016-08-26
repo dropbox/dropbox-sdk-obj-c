@@ -4,160 +4,160 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxRoute;
+@class DBXRoute;
 
 /// 
 /// Stone route objects for the `Team` namespace. Each route in the `Team`
 /// namespace has its own static object, which contains information about the
 /// route.
 /// 
-@interface DbxTeamRouteObjects : NSObject 
+@interface DBXTEAMRouteObjects : NSObject 
 
 /// Accessor method for the `alphaGroupsCreate` route object.
-+ (DbxRoute *)dbxTeamAlphaGroupsCreate;
++ (DBXRoute *)DBXTEAMAlphaGroupsCreate;
 
 /// Accessor method for the `alphaGroupsGetInfo` route object.
-+ (DbxRoute *)dbxTeamAlphaGroupsGetInfo;
++ (DBXRoute *)DBXTEAMAlphaGroupsGetInfo;
 
 /// Accessor method for the `alphaGroupsList` route object.
-+ (DbxRoute *)dbxTeamAlphaGroupsList;
++ (DBXRoute *)DBXTEAMAlphaGroupsList;
 
 /// Accessor method for the `alphaGroupsListContinue` route object.
-+ (DbxRoute *)dbxTeamAlphaGroupsListContinue;
++ (DBXRoute *)DBXTEAMAlphaGroupsListContinue;
 
 /// Accessor method for the `alphaGroupsUpdate` route object.
-+ (DbxRoute *)dbxTeamAlphaGroupsUpdate;
++ (DBXRoute *)DBXTEAMAlphaGroupsUpdate;
 
 /// Accessor method for the `devicesListMemberDevices` route object.
-+ (DbxRoute *)dbxTeamDevicesListMemberDevices;
++ (DBXRoute *)DBXTEAMDevicesListMemberDevices;
 
 /// Accessor method for the `devicesListMembersDevices` route object.
-+ (DbxRoute *)dbxTeamDevicesListMembersDevices;
++ (DBXRoute *)DBXTEAMDevicesListMembersDevices;
 
 /// Accessor method for the `devicesListTeamDevices` route object.
-+ (DbxRoute *)dbxTeamDevicesListTeamDevices;
++ (DBXRoute *)DBXTEAMDevicesListTeamDevices;
 
 /// Accessor method for the `devicesRevokeDeviceSession` route object.
-+ (DbxRoute *)dbxTeamDevicesRevokeDeviceSession;
++ (DBXRoute *)DBXTEAMDevicesRevokeDeviceSession;
 
 /// Accessor method for the `devicesRevokeDeviceSessionBatch` route object.
-+ (DbxRoute *)dbxTeamDevicesRevokeDeviceSessionBatch;
++ (DBXRoute *)DBXTEAMDevicesRevokeDeviceSessionBatch;
 
 /// Accessor method for the `getInfo` route object.
-+ (DbxRoute *)dbxTeamGetInfo;
++ (DBXRoute *)DBXTEAMGetInfo;
 
 /// Accessor method for the `groupsCreate` route object.
-+ (DbxRoute *)dbxTeamGroupsCreate;
++ (DBXRoute *)DBXTEAMGroupsCreate;
 
 /// Accessor method for the `groupsDelete` route object.
-+ (DbxRoute *)dbxTeamGroupsDelete;
++ (DBXRoute *)DBXTEAMGroupsDelete;
 
 /// Accessor method for the `groupsGetInfo` route object.
-+ (DbxRoute *)dbxTeamGroupsGetInfo;
++ (DBXRoute *)DBXTEAMGroupsGetInfo;
 
 /// Accessor method for the `groupsJobStatusGet` route object.
-+ (DbxRoute *)dbxTeamGroupsJobStatusGet;
++ (DBXRoute *)DBXTEAMGroupsJobStatusGet;
 
 /// Accessor method for the `groupsList` route object.
-+ (DbxRoute *)dbxTeamGroupsList;
++ (DBXRoute *)DBXTEAMGroupsList;
 
 /// Accessor method for the `groupsListContinue` route object.
-+ (DbxRoute *)dbxTeamGroupsListContinue;
++ (DBXRoute *)DBXTEAMGroupsListContinue;
 
 /// Accessor method for the `groupsMembersAdd` route object.
-+ (DbxRoute *)dbxTeamGroupsMembersAdd;
++ (DBXRoute *)DBXTEAMGroupsMembersAdd;
 
 /// Accessor method for the `groupsMembersList` route object.
-+ (DbxRoute *)dbxTeamGroupsMembersList;
++ (DBXRoute *)DBXTEAMGroupsMembersList;
 
 /// Accessor method for the `groupsMembersListContinue` route object.
-+ (DbxRoute *)dbxTeamGroupsMembersListContinue;
++ (DBXRoute *)DBXTEAMGroupsMembersListContinue;
 
 /// Accessor method for the `groupsMembersRemove` route object.
-+ (DbxRoute *)dbxTeamGroupsMembersRemove;
++ (DBXRoute *)DBXTEAMGroupsMembersRemove;
 
 /// Accessor method for the `groupsMembersSetAccessType` route object.
-+ (DbxRoute *)dbxTeamGroupsMembersSetAccessType;
++ (DBXRoute *)DBXTEAMGroupsMembersSetAccessType;
 
 /// Accessor method for the `groupsUpdate` route object.
-+ (DbxRoute *)dbxTeamGroupsUpdate;
++ (DBXRoute *)DBXTEAMGroupsUpdate;
 
 /// Accessor method for the `linkedAppsListMemberLinkedApps` route object.
-+ (DbxRoute *)dbxTeamLinkedAppsListMemberLinkedApps;
++ (DBXRoute *)DBXTEAMLinkedAppsListMemberLinkedApps;
 
 /// Accessor method for the `linkedAppsListMembersLinkedApps` route object.
-+ (DbxRoute *)dbxTeamLinkedAppsListMembersLinkedApps;
++ (DBXRoute *)DBXTEAMLinkedAppsListMembersLinkedApps;
 
 /// Accessor method for the `linkedAppsListTeamLinkedApps` route object.
-+ (DbxRoute *)dbxTeamLinkedAppsListTeamLinkedApps;
++ (DBXRoute *)DBXTEAMLinkedAppsListTeamLinkedApps;
 
 /// Accessor method for the `linkedAppsRevokeLinkedApp` route object.
-+ (DbxRoute *)dbxTeamLinkedAppsRevokeLinkedApp;
++ (DBXRoute *)DBXTEAMLinkedAppsRevokeLinkedApp;
 
 /// Accessor method for the `linkedAppsRevokeLinkedAppBatch` route object.
-+ (DbxRoute *)dbxTeamLinkedAppsRevokeLinkedAppBatch;
++ (DBXRoute *)DBXTEAMLinkedAppsRevokeLinkedAppBatch;
 
 /// Accessor method for the `membersAdd` route object.
-+ (DbxRoute *)dbxTeamMembersAdd;
++ (DBXRoute *)DBXTEAMMembersAdd;
 
 /// Accessor method for the `membersAddJobStatusGet` route object.
-+ (DbxRoute *)dbxTeamMembersAddJobStatusGet;
++ (DBXRoute *)DBXTEAMMembersAddJobStatusGet;
 
 /// Accessor method for the `membersGetInfo` route object.
-+ (DbxRoute *)dbxTeamMembersGetInfo;
++ (DBXRoute *)DBXTEAMMembersGetInfo;
 
 /// Accessor method for the `membersList` route object.
-+ (DbxRoute *)dbxTeamMembersList;
++ (DBXRoute *)DBXTEAMMembersList;
 
 /// Accessor method for the `membersListContinue` route object.
-+ (DbxRoute *)dbxTeamMembersListContinue;
++ (DBXRoute *)DBXTEAMMembersListContinue;
 
 /// Accessor method for the `membersRecover` route object.
-+ (DbxRoute *)dbxTeamMembersRecover;
++ (DBXRoute *)DBXTEAMMembersRecover;
 
 /// Accessor method for the `membersRemove` route object.
-+ (DbxRoute *)dbxTeamMembersRemove;
++ (DBXRoute *)DBXTEAMMembersRemove;
 
 /// Accessor method for the `membersRemoveJobStatusGet` route object.
-+ (DbxRoute *)dbxTeamMembersRemoveJobStatusGet;
++ (DBXRoute *)DBXTEAMMembersRemoveJobStatusGet;
 
 /// Accessor method for the `membersSendWelcomeEmail` route object.
-+ (DbxRoute *)dbxTeamMembersSendWelcomeEmail;
++ (DBXRoute *)DBXTEAMMembersSendWelcomeEmail;
 
 /// Accessor method for the `membersSetAdminPermissions` route object.
-+ (DbxRoute *)dbxTeamMembersSetAdminPermissions;
++ (DBXRoute *)DBXTEAMMembersSetAdminPermissions;
 
 /// Accessor method for the `membersSetProfile` route object.
-+ (DbxRoute *)dbxTeamMembersSetProfile;
++ (DBXRoute *)DBXTEAMMembersSetProfile;
 
 /// Accessor method for the `membersSuspend` route object.
-+ (DbxRoute *)dbxTeamMembersSuspend;
++ (DBXRoute *)DBXTEAMMembersSuspend;
 
 /// Accessor method for the `membersUnsuspend` route object.
-+ (DbxRoute *)dbxTeamMembersUnsuspend;
++ (DBXRoute *)DBXTEAMMembersUnsuspend;
 
 /// Accessor method for the `propertiesTemplateAdd` route object.
-+ (DbxRoute *)dbxTeamPropertiesTemplateAdd;
++ (DBXRoute *)DBXTEAMPropertiesTemplateAdd;
 
 /// Accessor method for the `propertiesTemplateGet` route object.
-+ (DbxRoute *)dbxTeamPropertiesTemplateGet;
++ (DBXRoute *)DBXTEAMPropertiesTemplateGet;
 
 /// Accessor method for the `propertiesTemplateList` route object.
-+ (DbxRoute *)dbxTeamPropertiesTemplateList;
++ (DBXRoute *)DBXTEAMPropertiesTemplateList;
 
 /// Accessor method for the `propertiesTemplateUpdate` route object.
-+ (DbxRoute *)dbxTeamPropertiesTemplateUpdate;
++ (DBXRoute *)DBXTEAMPropertiesTemplateUpdate;
 
 /// Accessor method for the `reportsGetActivity` route object.
-+ (DbxRoute *)dbxTeamReportsGetActivity;
++ (DBXRoute *)DBXTEAMReportsGetActivity;
 
 /// Accessor method for the `reportsGetDevices` route object.
-+ (DbxRoute *)dbxTeamReportsGetDevices;
++ (DBXRoute *)DBXTEAMReportsGetDevices;
 
 /// Accessor method for the `reportsGetMembership` route object.
-+ (DbxRoute *)dbxTeamReportsGetMembership;
++ (DBXRoute *)DBXTEAMReportsGetMembership;
 
 /// Accessor method for the `reportsGetStorage` route object.
-+ (DbxRoute *)dbxTeamReportsGetStorage;
++ (DBXRoute *)DBXTEAMReportsGetStorage;
 
 @end

@@ -3,52 +3,51 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharingFileAccessError;
-@class DbxSharingSharingUserError;
-@class DbxSharingUnshareFileError;
+@class DBXSHARINGSharingFileAccessError;
+@class DBXSHARINGSharingUserError;
+@class DBXSHARINGUnshareFileError;
 
 /// 
-/// The `DbxSharingUnshareFileError` union.
+/// The `DBXSHARINGUnshareFileError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error result for unshareFile.
 /// 
-@interface DbxSharingUnshareFileError : NSObject <DbxSerializable> 
+@interface DBXSHARINGUnshareFileError : NSObject <DBXSerializable> 
 
-/// The `SharingUnshareFileErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingUnshareFileError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingUnshareFileErrorTag) {
+/// The `DBXSHARINGUnshareFileErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGUnshareFileError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGUnshareFileErrorTag) {
     /// (no description).
-    SharingUnshareFileErrorUserError,
-
-    /// (no description).
-    SharingUnshareFileErrorAccessError,
+    DBXSHARINGUnshareFileErrorUserError,
 
     /// (no description).
-    SharingUnshareFileErrorOther,
+    DBXSHARINGUnshareFileErrorAccessError,
+
+    /// (no description).
+    DBXSHARINGUnshareFileErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingUnshareFileErrorTag tag;
+@property (nonatomic) DBXSHARINGUnshareFileErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
+@property (nonatomic) DBXSHARINGSharingUserError * _Nonnull userError;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `UserError`.
-- (nonnull instancetype)initWithUserError:(DbxSharingSharingUserError * _Nonnull)userError;
+- (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -65,7 +64,7 @@ typedef NS_ENUM(NSInteger, SharingUnshareFileErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingUnshareFileError`
+/// Returns a human-readable representation of the `DBXSHARINGUnshareFileError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -73,16 +72,16 @@ typedef NS_ENUM(NSInteger, SharingUnshareFileErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingUnshareFileError` union.
+/// The serialization class for the `DBXSHARINGUnshareFileError` union.
 /// 
-@interface DbxSharingUnshareFileErrorSerializer : NSObject 
+@interface DBXSHARINGUnshareFileErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUnshareFileError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUnshareFileError * _Nonnull)obj;
+/// `DBXSHARINGUnshareFileError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFileError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUnshareFileError` object from a
+/// Returns an instantiation of the `DBXSHARINGUnshareFileError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingUnshareFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUnshareFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

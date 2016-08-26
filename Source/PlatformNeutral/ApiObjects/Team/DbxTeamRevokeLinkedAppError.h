@@ -3,38 +3,37 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamRevokeLinkedAppError;
+@class DBXTEAMRevokeLinkedAppError;
 
 /// 
-/// The `DbxTeamRevokeLinkedAppError` union.
+/// The `DBXTEAMRevokeLinkedAppError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error returned by linkedAppsRevokeLinkedApp.
 /// 
-@interface DbxTeamRevokeLinkedAppError : NSObject <DbxSerializable> 
+@interface DBXTEAMRevokeLinkedAppError : NSObject <DBXSerializable> 
 
-/// The `TeamRevokeLinkedAppErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamRevokeLinkedAppError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppErrorTag) {
+/// The `DBXTEAMRevokeLinkedAppErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMRevokeLinkedAppError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
     /// Application not found.
-    TeamRevokeLinkedAppErrorAppNotFound,
+    DBXTEAMRevokeLinkedAppErrorAppNotFound,
 
     /// Member not found.
-    TeamRevokeLinkedAppErrorMemberNotFound,
+    DBXTEAMRevokeLinkedAppErrorMemberNotFound,
 
     /// (no description).
-    TeamRevokeLinkedAppErrorOther,
+    DBXTEAMRevokeLinkedAppErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamRevokeLinkedAppErrorTag tag;
-
+@property (nonatomic) DBXTEAMRevokeLinkedAppErrorTag tag;
 
 /// Initializes union class with tag state of `AppNotFound`.
 - (nonnull instancetype)initWithAppNotFound;
@@ -57,7 +56,7 @@ typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamRevokeLinkedAppError`
+/// Returns a human-readable representation of the `DBXTEAMRevokeLinkedAppError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -65,16 +64,16 @@ typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeLinkedAppError` union.
+/// The serialization class for the `DBXTEAMRevokeLinkedAppError` union.
 /// 
-@interface DbxTeamRevokeLinkedAppErrorSerializer : NSObject 
+@interface DBXTEAMRevokeLinkedAppErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeLinkedAppError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedAppError * _Nonnull)obj;
+/// `DBXTEAMRevokeLinkedAppError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeLinkedAppError` object from a
+/// Returns an instantiation of the `DBXTEAMRevokeLinkedAppError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

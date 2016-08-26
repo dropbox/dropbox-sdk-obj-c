@@ -3,49 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesSaveUrlError;
-@class DbxFilesWriteError;
+@class DBXFILESSaveUrlError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesSaveUrlError` union.
+/// The `DBXFILESSaveUrlError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSaveUrlError : NSObject <DbxSerializable> 
+@interface DBXFILESSaveUrlError : NSObject <DBXSerializable> 
 
-/// The `FilesSaveUrlErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesSaveUrlError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSaveUrlErrorTag) {
+/// The `DBXFILESSaveUrlErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESSaveUrlError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSaveUrlErrorTag) {
     /// (no description).
-    FilesSaveUrlErrorPath,
+    DBXFILESSaveUrlErrorPath,
 
     /// Failed downloading the given URL.
-    FilesSaveUrlErrorDownloadFailed,
+    DBXFILESSaveUrlErrorDownloadFailed,
 
     /// The given URL is invalid.
-    FilesSaveUrlErrorInvalidUrl,
+    DBXFILESSaveUrlErrorInvalidUrl,
 
     /// The file where the URL is saved to no longer exists.
-    FilesSaveUrlErrorNotFound,
+    DBXFILESSaveUrlErrorNotFound,
 
     /// (no description).
-    FilesSaveUrlErrorOther,
+    DBXFILESSaveUrlErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSaveUrlErrorTag tag;
+@property (nonatomic) DBXFILESSaveUrlErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
 /// Initializes union class with tag state of `DownloadFailed`.
 - (nonnull instancetype)initWithDownloadFailed;
@@ -77,7 +76,7 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesSaveUrlError`
+/// Returns a human-readable representation of the `DBXFILESSaveUrlError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -85,16 +84,16 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesSaveUrlError` union.
+/// The serialization class for the `DBXFILESSaveUrlError` union.
 /// 
-@interface DbxFilesSaveUrlErrorSerializer : NSObject 
+@interface DBXFILESSaveUrlErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSaveUrlError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSaveUrlError * _Nonnull)obj;
+/// `DBXFILESSaveUrlError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveUrlError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSaveUrlError` object from a
+/// Returns an instantiation of the `DBXFILESSaveUrlError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSaveUrlError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSaveUrlError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

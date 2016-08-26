@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListSharedLinksArg;
+@class DBXSHARINGListSharedLinksArg;
 
 /// 
-/// The `DbxSharingListSharedLinksArg` struct.
+/// The `DBXSHARINGListSharedLinksArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListSharedLinksArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListSharedLinksArg : NSObject <DBXSerializable> 
 
 /// See listSharedLinks description.
 @property (nonatomic, copy) NSString * _Nullable path;
@@ -34,23 +34,23 @@
 - (nonnull instancetype)init;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListSharedLinksArg` object.
+/// `DBXSHARINGListSharedLinksArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListSharedLinksArg` struct.
+/// The serialization class for the `DBXSHARINGListSharedLinksArg` struct.
 /// 
-@interface DbxSharingListSharedLinksArgSerializer : NSObject 
+@interface DBXSHARINGListSharedLinksArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListSharedLinksArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListSharedLinksArg * _Nonnull)obj;
+/// `DBXSHARINGListSharedLinksArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListSharedLinksArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListSharedLinksArg` object from a
+/// Returns an instantiation of the `DBXSHARINGListSharedLinksArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListSharedLinksArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListSharedLinksArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

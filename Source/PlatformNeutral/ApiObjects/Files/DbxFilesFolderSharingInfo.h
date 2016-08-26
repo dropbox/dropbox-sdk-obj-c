@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxFilesSharingInfo.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXFILESSharingInfo.h"
 
-@class DbxFilesFolderSharingInfo;
+@class DBXFILESFolderSharingInfo;
 
 /// 
-/// The `DbxFilesFolderSharingInfo` struct.
+/// The `DBXFILESFolderSharingInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Sharing info for a folder which is contained in a shared folder or is a
 /// shared folder mount point.
 /// 
-@interface DbxFilesFolderSharingInfo : DbxFilesSharingInfo <DbxSerializable> 
+@interface DBXFILESFolderSharingInfo : DBXFILESSharingInfo <DBXSerializable> 
 
 /// Set if the folder is contained by a shared folder.
 @property (nonatomic, copy) NSString * _Nullable parentSharedFolderId;
@@ -35,7 +35,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
 
-/// Returns a human-readable representation of the `DbxFilesFolderSharingInfo`
+/// Returns a human-readable representation of the `DBXFILESFolderSharingInfo`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -43,16 +43,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesFolderSharingInfo` struct.
+/// The serialization class for the `DBXFILESFolderSharingInfo` struct.
 /// 
-@interface DbxFilesFolderSharingInfoSerializer : NSObject 
+@interface DBXFILESFolderSharingInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesFolderSharingInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesFolderSharingInfo * _Nonnull)obj;
+/// `DBXFILESFolderSharingInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESFolderSharingInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesFolderSharingInfo` object from a
+/// Returns an instantiation of the `DBXFILESFolderSharingInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesFolderSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESFolderSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

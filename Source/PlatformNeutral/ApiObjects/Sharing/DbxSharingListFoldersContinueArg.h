@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFoldersContinueArg;
+@class DBXSHARINGListFoldersContinueArg;
 
 /// 
-/// The `DbxSharingListFoldersContinueArg` struct.
+/// The `DBXSHARINGListFoldersContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFoldersContinueArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFoldersContinueArg : NSObject <DBXSerializable> 
 
 /// The cursor returned by the previous API call specified in the endpoint
 /// description.
@@ -25,23 +25,23 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFoldersContinueArg` object.
+/// `DBXSHARINGListFoldersContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFoldersContinueArg` struct.
+/// The serialization class for the `DBXSHARINGListFoldersContinueArg` struct.
 /// 
-@interface DbxSharingListFoldersContinueArgSerializer : NSObject 
+@interface DBXSHARINGListFoldersContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFoldersContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFoldersContinueArg * _Nonnull)obj;
+/// `DBXSHARINGListFoldersContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFoldersContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFoldersContinueArg` object
+/// Returns an instantiation of the `DBXSHARINGListFoldersContinueArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingListFoldersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFoldersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

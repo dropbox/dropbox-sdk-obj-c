@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesSharedFolderMemberPolicy;
+@class DBXTEAMPOLICIESSharedFolderMemberPolicy;
 
 /// 
-/// The `DbxTeamPoliciesSharedFolderMemberPolicy` union.
+/// The `DBXTEAMPOLICIESSharedFolderMemberPolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing who can be a member of a folder shared by a team member.
 /// 
-@interface DbxTeamPoliciesSharedFolderMemberPolicy : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESSharedFolderMemberPolicy : NSObject <DBXSerializable> 
 
-/// The `TeamPoliciesSharedFolderMemberPolicyTag` enum type represents the
-/// possible tag states that the `DbxTeamPoliciesSharedFolderMemberPolicy` union
+/// The `DBXTEAMPOLICIESSharedFolderMemberPolicyTag` enum type represents the
+/// possible tag states that the `DBXTEAMPOLICIESSharedFolderMemberPolicy` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, TeamPoliciesSharedFolderMemberPolicyTag) {
+typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedFolderMemberPolicyTag) {
     /// Only a teammate can be a member of a folder shared by a team member.
-    TeamPoliciesSharedFolderMemberPolicyTeam,
+    DBXTEAMPOLICIESSharedFolderMemberPolicyTeam,
 
     /// Anyone can be a member of a folder shared by a team member.
-    TeamPoliciesSharedFolderMemberPolicyAnyone,
+    DBXTEAMPOLICIESSharedFolderMemberPolicyAnyone,
 
     /// (no description).
-    TeamPoliciesSharedFolderMemberPolicyOther,
+    DBXTEAMPOLICIESSharedFolderMemberPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamPoliciesSharedFolderMemberPolicyTag tag;
-
+@property (nonatomic) DBXTEAMPOLICIESSharedFolderMemberPolicyTag tag;
 
 /// Initializes union class with tag state of `Team`.
 - (nonnull instancetype)initWithTeam;
@@ -59,24 +58,24 @@ typedef NS_ENUM(NSInteger, TeamPoliciesSharedFolderMemberPolicyTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamPoliciesSharedFolderMemberPolicy` object.
+/// `DBXTEAMPOLICIESSharedFolderMemberPolicy` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesSharedFolderMemberPolicy`
+/// The serialization class for the `DBXTEAMPOLICIESSharedFolderMemberPolicy`
 /// union.
 /// 
-@interface DbxTeamPoliciesSharedFolderMemberPolicySerializer : NSObject 
+@interface DBXTEAMPOLICIESSharedFolderMemberPolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesSharedFolderMemberPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesSharedFolderMemberPolicy * _Nonnull)obj;
+/// `DBXTEAMPOLICIESSharedFolderMemberPolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesSharedFolderMemberPolicy`
+/// Returns an instantiation of the `DBXTEAMPOLICIESSharedFolderMemberPolicy`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamPoliciesSharedFolderMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

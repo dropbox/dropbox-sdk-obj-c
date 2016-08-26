@@ -3,23 +3,23 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingLinkPermissions;
-@class DbxSharingSharedLinkMetadata;
-@class DbxSharingTeamMemberInfo;
-@class DbxUsersTeam;
+@class DBXSHARINGLinkPermissions;
+@class DBXSHARINGSharedLinkMetadata;
+@class DBXSHARINGTeamMemberInfo;
+@class DBXUSERSTeam;
 
 /// 
-/// The `DbxSharingSharedLinkMetadata` struct.
+/// The `DBXSHARINGSharedLinkMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The metadata of a shared link
 /// 
-@interface DbxSharingSharedLinkMetadata : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedLinkMetadata : NSObject <DBXSerializable> 
 
 /// URL of the shared link.
 @property (nonatomic, copy) NSString * _Nonnull url;
@@ -39,43 +39,43 @@
 @property (nonatomic, copy) NSString * _Nullable pathLower;
 
 /// The link's access permissions.
-@property (nonatomic) DbxSharingLinkPermissions * _Nonnull linkPermissions;
+@property (nonatomic) DBXSHARINGLinkPermissions * _Nonnull linkPermissions;
 
 /// The team membership information of the link's owner.  This field will only
 /// be present  if the link's owner is a team member.
-@property (nonatomic) DbxSharingTeamMemberInfo * _Nullable teamMemberInfo;
+@property (nonatomic) DBXSHARINGTeamMemberInfo * _Nullable teamMemberInfo;
 
 /// The team information of the content's owner. This field will only be present
 /// if the content's owner is a team member and the content's owner team is
 /// different from the link's owner team.
-@property (nonatomic) DbxUsersTeam * _Nullable contentOwnerTeamInfo;
+@property (nonatomic) DBXUSERSTeam * _Nullable contentOwnerTeamInfo;
 
 /// Full constructor for the `SharedLinkMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DbxSharingTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DbxUsersTeam * _Nullable)contentOwnerTeamInfo;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
 /// Convenience constructor for the `SharedLinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedLinkMetadata` object.
+/// `DBXSHARINGSharedLinkMetadata` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedLinkMetadata` struct.
+/// The serialization class for the `DBXSHARINGSharedLinkMetadata` struct.
 /// 
-@interface DbxSharingSharedLinkMetadataSerializer : NSObject 
+@interface DBXSHARINGSharedLinkMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkMetadata * _Nonnull)obj;
+/// `DBXSHARINGSharedLinkMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedLinkMetadata` object from a
+/// Returns an instantiation of the `DBXSHARINGSharedLinkMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharedLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

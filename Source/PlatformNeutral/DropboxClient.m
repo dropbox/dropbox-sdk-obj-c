@@ -1,34 +1,31 @@
-#import "DbxBase.h"
+#import "DBXBase.h"
+#import "DBXTransportClient.h"
 #import "DropboxClient.h"
-#import "DropboxTransportClient.h"
 
 @implementation DropboxClient
 
-- (instancetype)init:(DropboxTransportClient *)dropboxTransportClient
-{
-    self = [super init:dropboxTransportClient];
+- (instancetype)init:(DBXTransportClient *)transportClient {
+    self = [super init:transportClient];
     if (self != nil) {
-        _dropboxTransportClient = dropboxTransportClient;
+        _transportClient = transportClient;
     }
     return self;
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-{
-    DropboxTransportClient *client = [[DropboxTransportClient alloc] initWithAccessToken:accessToken];
-    self = [super init:client];
+- (instancetype)initWithAccessToken:(NSString *)accessToken {
+    DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken];
+    self = [super init:transportClient];
     if (self != nil) {
-        _dropboxTransportClient = client;
+        _transportClient = transportClient;
     }
     return self;
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser
-{
-    DropboxTransportClient *client = [[DropboxTransportClient alloc] initWithAccessToken:accessToken andSelectUser:selectUser];
-    self = [super init:client];
+- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser {
+    DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken andSelectUser:selectUser];
+    self = [super init:transportClient];
     if (self != nil) {
-        _dropboxTransportClient = client;
+        _transportClient = transportClient;
     }
     return self;
 }

@@ -7,7 +7,7 @@
 ///
 /// Validator functions used by SDK to impose value constraints.
 ///
-@interface DbxStoneValidators<T> : NSObject
+@interface DBXStoneValidators<T> : NSObject
 
 /// Validator for `NSString` objects. Enforces minimum length and/or maximum length and/or regex pattern.
 + (void (^_Nonnull)(NSString * _Nonnull))stringValidator:(NSNumber * _Nullable)minLength maxLength:(NSNumber * _Nullable)maxLength pattern:(NSString * _Nullable)pattern;

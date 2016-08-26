@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGetMetadataArg;
+@class DBXFILESGetMetadataArg;
 
 /// 
-/// The `DbxFilesGetMetadataArg` struct.
+/// The `DBXFILESGetMetadataArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesGetMetadataArg : NSObject <DbxSerializable> 
+@interface DBXFILESGetMetadataArg : NSObject <DBXSerializable> 
 
 /// The path of a file or folder on Dropbox.
 @property (nonatomic, copy) NSString * _Nonnull path;
@@ -38,7 +38,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxFilesGetMetadataArg`
+/// Returns a human-readable representation of the `DBXFILESGetMetadataArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -46,16 +46,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesGetMetadataArg` struct.
+/// The serialization class for the `DBXFILESGetMetadataArg` struct.
 /// 
-@interface DbxFilesGetMetadataArgSerializer : NSObject 
+@interface DBXFILESGetMetadataArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGetMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGetMetadataArg * _Nonnull)obj;
+/// `DBXFILESGetMetadataArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetMetadataArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGetMetadataArg` object from a
+/// Returns an instantiation of the `DBXFILESGetMetadataArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

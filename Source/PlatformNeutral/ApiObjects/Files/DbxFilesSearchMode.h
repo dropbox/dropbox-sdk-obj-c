@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesSearchMode;
+@class DBXFILESSearchMode;
 
 /// 
-/// The `DbxFilesSearchMode` union.
+/// The `DBXFILESSearchMode` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSearchMode : NSObject <DbxSerializable> 
+@interface DBXFILESSearchMode : NSObject <DBXSerializable> 
 
-/// The `FilesSearchModeTag` enum type represents the possible tag states that
-/// the `DbxFilesSearchMode` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSearchModeTag) {
+/// The `DBXFILESSearchModeTag` enum type represents the possible tag states
+/// that the `DBXFILESSearchMode` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
     /// Search file and folder names.
-    FilesSearchModeFilename,
+    DBXFILESSearchModeFilename,
 
     /// Search file and folder names as well as file contents.
-    FilesSearchModeFilenameAndContent,
+    DBXFILESSearchModeFilenameAndContent,
 
     /// Search for deleted file and folder names.
-    FilesSearchModeDeletedFilename,
+    DBXFILESSearchModeDeletedFilename,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSearchModeTag tag;
-
+@property (nonatomic) DBXFILESSearchModeTag tag;
 
 /// Initializes union class with tag state of `Filename`.
 - (nonnull instancetype)initWithFilename;
@@ -56,23 +55,23 @@ typedef NS_ENUM(NSInteger, FilesSearchModeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesSearchMode` object.
+/// Returns a human-readable representation of the `DBXFILESSearchMode` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesSearchMode` union.
+/// The serialization class for the `DBXFILESSearchMode` union.
 /// 
-@interface DbxFilesSearchModeSerializer : NSObject 
+@interface DBXFILESSearchModeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSearchMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSearchMode * _Nonnull)obj;
+/// `DBXFILESSearchMode` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchMode * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSearchMode` object from a
+/// Returns an instantiation of the `DBXFILESSearchMode` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -2,9 +2,9 @@
 /// The objects in this file are used by generated code and should not need to be invoked manually.
 ///
 
-#import "DbxStoneValidators.h"
+#import "DBXStoneValidators.h"
 
-@implementation DbxStoneValidators
+@implementation DBXStoneValidators
 
 + (void (^)(NSString *))stringValidator:(NSNumber *)minLength maxLength:(NSNumber *)maxLength pattern:(NSString *)pattern {
     

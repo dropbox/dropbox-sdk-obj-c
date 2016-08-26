@@ -3,55 +3,54 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionFinishError;
-@class DbxFilesUploadSessionLookupError;
-@class DbxFilesWriteError;
+@class DBXFILESUploadSessionFinishError;
+@class DBXFILESUploadSessionLookupError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesUploadSessionFinishError` union.
+/// The `DBXFILESUploadSessionFinishError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionFinishError : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionFinishError : NSObject <DBXSerializable> 
 
-/// The `FilesUploadSessionFinishErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesUploadSessionFinishError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesUploadSessionFinishErrorTag) {
+/// The `DBXFILESUploadSessionFinishErrorTag` enum type represents the possible
+/// tag states that the `DBXFILESUploadSessionFinishError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishErrorTag) {
     /// The session arguments are incorrect; the value explains the reason.
-    FilesUploadSessionFinishErrorLookupFailed,
+    DBXFILESUploadSessionFinishErrorLookupFailed,
 
     /// Unable to save the uploaded contents to a file.
-    FilesUploadSessionFinishErrorPath,
+    DBXFILESUploadSessionFinishErrorPath,
 
     /// The batch request commits files into too many different shared folders.
     /// Please limit your batch request to files contained in a single shared
     /// folder.
-    FilesUploadSessionFinishErrorTooManySharedFolderTargets,
+    DBXFILESUploadSessionFinishErrorTooManySharedFolderTargets,
 
     /// (no description).
-    FilesUploadSessionFinishErrorOther,
+    DBXFILESUploadSessionFinishErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesUploadSessionFinishErrorTag tag;
+@property (nonatomic) DBXFILESUploadSessionFinishErrorTag tag;
 
 /// The session arguments are incorrect; the value explains the reason.
-@property (nonatomic) DbxFilesUploadSessionLookupError * _Nonnull lookupFailed;
+@property (nonatomic) DBXFILESUploadSessionLookupError * _Nonnull lookupFailed;
 
 /// Unable to save the uploaded contents to a file.
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `LookupFailed`.
-- (nonnull instancetype)initWithLookupFailed:(DbxFilesUploadSessionLookupError * _Nonnull)lookupFailed;
+- (nonnull instancetype)initWithLookupFailed:(DBXFILESUploadSessionLookupError * _Nonnull)lookupFailed;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
 /// Initializes union class with tag state of `TooManySharedFolderTargets`.
 - (nonnull instancetype)initWithTooManySharedFolderTargets;
@@ -76,23 +75,23 @@ typedef NS_ENUM(NSInteger, FilesUploadSessionFinishErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionFinishError` object.
+/// `DBXFILESUploadSessionFinishError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionFinishError` union.
+/// The serialization class for the `DBXFILESUploadSessionFinishError` union.
 /// 
-@interface DbxFilesUploadSessionFinishErrorSerializer : NSObject 
+@interface DBXFILESUploadSessionFinishErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionFinishError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionFinishError * _Nonnull)obj;
+/// `DBXFILESUploadSessionFinishError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionFinishError` object
+/// Returns an instantiation of the `DBXFILESUploadSessionFinishError` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionFinishError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionFinishError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

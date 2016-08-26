@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersTeam;
+@class DBXUSERSTeam;
 
 /// 
-/// The `DbxUsersTeam` struct.
+/// The `DBXUSERSTeam` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about a team.
 /// 
-@interface DbxUsersTeam : NSObject <DbxSerializable> 
+@interface DBXUSERSTeam : NSObject <DBXSerializable> 
 
 /// The team's unique ID.
 @property (nonatomic, copy) NSString * _Nonnull id_;
@@ -27,23 +27,23 @@
 /// Full constructor for the `Team` struct (exposes all instance variables).
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
 
-/// Returns a human-readable representation of the `DbxUsersTeam` object.
+/// Returns a human-readable representation of the `DBXUSERSTeam` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersTeam` struct.
+/// The serialization class for the `DBXUSERSTeam` struct.
 /// 
-@interface DbxUsersTeamSerializer : NSObject 
+@interface DBXUSERSTeamSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DbxUsersTeam`
+/// Returns a json-compatible dictionary representation of the `DBXUSERSTeam`
 /// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersTeam * _Nonnull)obj;
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSTeam * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersTeam` object from a json-compatible
+/// Returns an instantiation of the `DBXUSERSTeam` object from a json-compatible
 /// dictionary representation.
-+ (DbxUsersTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

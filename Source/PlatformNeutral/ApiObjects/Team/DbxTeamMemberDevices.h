@@ -3,45 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamActiveWebSession;
-@class DbxTeamDesktopClientSession;
-@class DbxTeamMemberDevices;
-@class DbxTeamMobileClientSession;
+@class DBXTEAMActiveWebSession;
+@class DBXTEAMDesktopClientSession;
+@class DBXTEAMMemberDevices;
+@class DBXTEAMMobileClientSession;
 
 /// 
-/// The `DbxTeamMemberDevices` struct.
+/// The `DBXTEAMMemberDevices` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information on devices of a team's member.
 /// 
-@interface DbxTeamMemberDevices : NSObject <DbxSerializable> 
+@interface DBXTEAMMemberDevices : NSObject <DBXSerializable> 
 
 /// The member unique Id
 @property (nonatomic, copy) NSString * _Nonnull teamMemberId;
 
 /// List of web sessions made by this team member
-@property (nonatomic) NSArray<DbxTeamActiveWebSession *> * _Nullable webSessions;
+@property (nonatomic) NSArray<DBXTEAMActiveWebSession *> * _Nullable webSessions;
 
 /// List of desktop clients by this team member
-@property (nonatomic) NSArray<DbxTeamDesktopClientSession *> * _Nullable desktopClients;
+@property (nonatomic) NSArray<DBXTEAMDesktopClientSession *> * _Nullable desktopClients;
 
 /// List of mobile clients by this team member
-@property (nonatomic) NSArray<DbxTeamMobileClientSession *> * _Nullable mobileClients;
+@property (nonatomic) NSArray<DBXTEAMMobileClientSession *> * _Nullable mobileClients;
 
 /// Full constructor for the `MemberDevices` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId webSessions:(NSArray<DbxTeamActiveWebSession *> * _Nullable)webSessions desktopClients:(NSArray<DbxTeamDesktopClientSession *> * _Nullable)desktopClients mobileClients:(NSArray<DbxTeamMobileClientSession *> * _Nullable)mobileClients;
+- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId webSessions:(NSArray<DBXTEAMActiveWebSession *> * _Nullable)webSessions desktopClients:(NSArray<DBXTEAMDesktopClientSession *> * _Nullable)desktopClients mobileClients:(NSArray<DBXTEAMMobileClientSession *> * _Nullable)mobileClients;
 
 /// Convenience constructor for the `MemberDevices` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
-/// Returns a human-readable representation of the `DbxTeamMemberDevices`
+/// Returns a human-readable representation of the `DBXTEAMMemberDevices`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -49,16 +49,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMemberDevices` struct.
+/// The serialization class for the `DBXTEAMMemberDevices` struct.
 /// 
-@interface DbxTeamMemberDevicesSerializer : NSObject 
+@interface DBXTEAMMemberDevicesSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMemberDevices` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMemberDevices * _Nonnull)obj;
+/// `DBXTEAMMemberDevices` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberDevices * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMemberDevices` object from a
+/// Returns an instantiation of the `DBXTEAMMemberDevices` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMemberDevices * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMemberDevices * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

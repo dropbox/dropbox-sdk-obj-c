@@ -3,32 +3,31 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamDateRangeError;
+@class DBXTEAMDateRangeError;
 
 /// 
-/// The `DbxTeamDateRangeError` union.
+/// The `DBXTEAMDateRangeError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Errors that can originate from problems in input arguments to reports.
 /// 
-@interface DbxTeamDateRangeError : NSObject <DbxSerializable> 
+@interface DBXTEAMDateRangeError : NSObject <DBXSerializable> 
 
-/// The `TeamDateRangeErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamDateRangeError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamDateRangeErrorTag) {
+/// The `DBXTEAMDateRangeErrorTag` enum type represents the possible tag states
+/// that the `DBXTEAMDateRangeError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMDateRangeErrorTag) {
     /// (no description).
-    TeamDateRangeErrorOther,
+    DBXTEAMDateRangeErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamDateRangeErrorTag tag;
-
+@property (nonatomic) DBXTEAMDateRangeErrorTag tag;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -39,7 +38,7 @@ typedef NS_ENUM(NSInteger, TeamDateRangeErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamDateRangeError`
+/// Returns a human-readable representation of the `DBXTEAMDateRangeError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -47,16 +46,16 @@ typedef NS_ENUM(NSInteger, TeamDateRangeErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamDateRangeError` union.
+/// The serialization class for the `DBXTEAMDateRangeError` union.
 /// 
-@interface DbxTeamDateRangeErrorSerializer : NSObject 
+@interface DBXTEAMDateRangeErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamDateRangeError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamDateRangeError * _Nonnull)obj;
+/// `DBXTEAMDateRangeError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDateRangeError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamDateRangeError` object from a
+/// Returns an instantiation of the `DBXTEAMDateRangeError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamDateRangeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMDateRangeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

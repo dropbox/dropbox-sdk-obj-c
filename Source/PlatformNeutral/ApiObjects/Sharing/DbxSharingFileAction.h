@@ -3,50 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFileAction;
+@class DBXSHARINGFileAction;
 
 /// 
-/// The `DbxSharingFileAction` union.
+/// The `DBXSHARINGFileAction` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Sharing actions that may be taken on files.
 /// 
-@interface DbxSharingFileAction : NSObject <DbxSerializable> 
+@interface DBXSHARINGFileAction : NSObject <DBXSerializable> 
 
-/// The `SharingFileActionTag` enum type represents the possible tag states that
-/// the `DbxSharingFileAction` union can exist in.
-typedef NS_ENUM(NSInteger, SharingFileActionTag) {
+/// The `DBXSHARINGFileActionTag` enum type represents the possible tag states
+/// that the `DBXSHARINGFileAction` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
     /// Change or edit contents of the file.
-    SharingFileActionEditContents,
+    DBXSHARINGFileActionEditContents,
 
     /// Add a member with view permissions.
-    SharingFileActionInviteViewer,
+    DBXSHARINGFileActionInviteViewer,
 
     /// Add a member with view permissions but no comment permissions.
-    SharingFileActionInviteViewerNoComment,
+    DBXSHARINGFileActionInviteViewerNoComment,
 
     /// Stop sharing this file.
-    SharingFileActionUnshare,
+    DBXSHARINGFileActionUnshare,
 
     /// Relinquish one's own membership to the file.
-    SharingFileActionRelinquishMembership,
+    DBXSHARINGFileActionRelinquishMembership,
 
     /// Create a shared link to the file.
-    SharingFileActionShareLink,
+    DBXSHARINGFileActionShareLink,
 
     /// (no description).
-    SharingFileActionOther,
+    DBXSHARINGFileActionOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingFileActionTag tag;
-
+@property (nonatomic) DBXSHARINGFileActionTag tag;
 
 /// Initializes union class with tag state of `EditContents`.
 - (nonnull instancetype)initWithEditContents;
@@ -95,7 +94,7 @@ typedef NS_ENUM(NSInteger, SharingFileActionTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingFileAction`
+/// Returns a human-readable representation of the `DBXSHARINGFileAction`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -103,16 +102,16 @@ typedef NS_ENUM(NSInteger, SharingFileActionTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingFileAction` union.
+/// The serialization class for the `DBXSHARINGFileAction` union.
 /// 
-@interface DbxSharingFileActionSerializer : NSObject 
+@interface DBXSHARINGFileActionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFileAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFileAction * _Nonnull)obj;
+/// `DBXSHARINGFileAction` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileAction * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFileAction` object from a
+/// Returns an instantiation of the `DBXSHARINGFileAction` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFileAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFileAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

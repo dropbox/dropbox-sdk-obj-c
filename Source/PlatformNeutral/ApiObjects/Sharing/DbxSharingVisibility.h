@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingVisibility;
+@class DBXSHARINGVisibility;
 
 /// 
-/// The `DbxSharingVisibility` union.
+/// The `DBXSHARINGVisibility` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -18,37 +18,36 @@
 /// default depends on many aspects, such as team and user preferences and
 /// shared folder settings.
 /// 
-@interface DbxSharingVisibility : NSObject <DbxSerializable> 
+@interface DBXSHARINGVisibility : NSObject <DBXSerializable> 
 
-/// The `SharingVisibilityTag` enum type represents the possible tag states that
-/// the `DbxSharingVisibility` union can exist in.
-typedef NS_ENUM(NSInteger, SharingVisibilityTag) {
+/// The `DBXSHARINGVisibilityTag` enum type represents the possible tag states
+/// that the `DBXSHARINGVisibility` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGVisibilityTag) {
     /// Anyone who has received the link can access it. No login required.
-    SharingVisibilityPublic,
+    DBXSHARINGVisibilityPublic,
 
     /// Only members of the same team can access the link. Login is required.
-    SharingVisibilityTeamOnly,
+    DBXSHARINGVisibilityTeamOnly,
 
     /// A link-specific password is required to access the link. Login is not
     /// required.
-    SharingVisibilityPassword,
+    DBXSHARINGVisibilityPassword,
 
     /// Only members of the same team who have the link-specific password can
     /// access the link.
-    SharingVisibilityTeamAndPassword,
+    DBXSHARINGVisibilityTeamAndPassword,
 
     /// Only members of the shared folder containing the linked file can access
     /// the link. Login is required.
-    SharingVisibilitySharedFolderOnly,
+    DBXSHARINGVisibilitySharedFolderOnly,
 
     /// (no description).
-    SharingVisibilityOther,
+    DBXSHARINGVisibilityOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingVisibilityTag tag;
-
+@property (nonatomic) DBXSHARINGVisibilityTag tag;
 
 /// Initializes union class with tag state of `Public`.
 - (nonnull instancetype)initWithPublic;
@@ -89,7 +88,7 @@ typedef NS_ENUM(NSInteger, SharingVisibilityTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingVisibility`
+/// Returns a human-readable representation of the `DBXSHARINGVisibility`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -97,16 +96,16 @@ typedef NS_ENUM(NSInteger, SharingVisibilityTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingVisibility` union.
+/// The serialization class for the `DBXSHARINGVisibility` union.
 /// 
-@interface DbxSharingVisibilitySerializer : NSObject 
+@interface DBXSHARINGVisibilitySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingVisibility` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingVisibility * _Nonnull)obj;
+/// `DBXSHARINGVisibility` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGVisibility * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingVisibility` object from a
+/// Returns an instantiation of the `DBXSHARINGVisibility` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

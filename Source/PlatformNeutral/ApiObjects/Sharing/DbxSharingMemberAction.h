@@ -3,50 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberAction;
+@class DBXSHARINGMemberAction;
 
 /// 
-/// The `DbxSharingMemberAction` union.
+/// The `DBXSHARINGMemberAction` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Actions that may be taken on members of a shared folder.
 /// 
-@interface DbxSharingMemberAction : NSObject <DbxSerializable> 
+@interface DBXSHARINGMemberAction : NSObject <DBXSerializable> 
 
-/// The `SharingMemberActionTag` enum type represents the possible tag states
-/// that the `DbxSharingMemberAction` union can exist in.
-typedef NS_ENUM(NSInteger, SharingMemberActionTag) {
+/// The `DBXSHARINGMemberActionTag` enum type represents the possible tag states
+/// that the `DBXSHARINGMemberAction` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGMemberActionTag) {
     /// Allow the member to keep a copy of the folder when removing.
-    SharingMemberActionLeaveACopy,
+    DBXSHARINGMemberActionLeaveACopy,
 
     /// Make the member an editor of the folder.
-    SharingMemberActionMakeEditor,
+    DBXSHARINGMemberActionMakeEditor,
 
     /// Make the member an owner of the folder.
-    SharingMemberActionMakeOwner,
+    DBXSHARINGMemberActionMakeOwner,
 
     /// Make the member a viewer of the folder.
-    SharingMemberActionMakeViewer,
+    DBXSHARINGMemberActionMakeViewer,
 
     /// Make the member a viewer of the folder without commenting permissions.
-    SharingMemberActionMakeViewerNoComment,
+    DBXSHARINGMemberActionMakeViewerNoComment,
 
     /// Remove the member from the folder.
-    SharingMemberActionRemove,
+    DBXSHARINGMemberActionRemove,
 
     /// (no description).
-    SharingMemberActionOther,
+    DBXSHARINGMemberActionOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingMemberActionTag tag;
-
+@property (nonatomic) DBXSHARINGMemberActionTag tag;
 
 /// Initializes union class with tag state of `LeaveACopy`.
 - (nonnull instancetype)initWithLeaveACopy;
@@ -94,7 +93,7 @@ typedef NS_ENUM(NSInteger, SharingMemberActionTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingMemberAction`
+/// Returns a human-readable representation of the `DBXSHARINGMemberAction`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -102,16 +101,16 @@ typedef NS_ENUM(NSInteger, SharingMemberActionTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingMemberAction` union.
+/// The serialization class for the `DBXSHARINGMemberAction` union.
 /// 
-@interface DbxSharingMemberActionSerializer : NSObject 
+@interface DBXSHARINGMemberActionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingMemberAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingMemberAction * _Nonnull)obj;
+/// `DBXSHARINGMemberAction` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberAction * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingMemberAction` object from a
+/// Returns an instantiation of the `DBXSHARINGMemberAction` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingMemberAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGMemberAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

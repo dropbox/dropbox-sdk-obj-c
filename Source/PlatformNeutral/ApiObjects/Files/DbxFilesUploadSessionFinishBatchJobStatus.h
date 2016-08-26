@@ -3,44 +3,43 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionFinishBatchJobStatus;
-@class DbxFilesUploadSessionFinishBatchResult;
+@class DBXFILESUploadSessionFinishBatchJobStatus;
+@class DBXFILESUploadSessionFinishBatchResult;
 
 /// 
-/// The `DbxFilesUploadSessionFinishBatchJobStatus` union.
+/// The `DBXFILESUploadSessionFinishBatchJobStatus` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionFinishBatchJobStatus : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionFinishBatchJobStatus : NSObject <DBXSerializable> 
 
-/// The `FilesUploadSessionFinishBatchJobStatusTag` enum type represents the
-/// possible tag states that the `DbxFilesUploadSessionFinishBatchJobStatus`
+/// The `DBXFILESUploadSessionFinishBatchJobStatusTag` enum type represents the
+/// possible tag states that the `DBXFILESUploadSessionFinishBatchJobStatus`
 /// union can exist in.
-typedef NS_ENUM(NSInteger, FilesUploadSessionFinishBatchJobStatusTag) {
+typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
     /// The asynchronous job is still in progress.
-    FilesUploadSessionFinishBatchJobStatusInProgress,
+    DBXFILESUploadSessionFinishBatchJobStatusInProgress,
 
     /// The uploadSessionFinishBatch has finished.
-    FilesUploadSessionFinishBatchJobStatusComplete,
+    DBXFILESUploadSessionFinishBatchJobStatusComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesUploadSessionFinishBatchJobStatusTag tag;
+@property (nonatomic) DBXFILESUploadSessionFinishBatchJobStatusTag tag;
 
 /// The uploadSessionFinishBatch has finished.
-@property (nonatomic) DbxFilesUploadSessionFinishBatchResult * _Nonnull complete;
-
+@property (nonatomic) DBXFILESUploadSessionFinishBatchResult * _Nonnull complete;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(DbxFilesUploadSessionFinishBatchResult * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(DBXFILESUploadSessionFinishBatchResult * _Nonnull)complete;
 
 /// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
@@ -52,24 +51,24 @@ typedef NS_ENUM(NSInteger, FilesUploadSessionFinishBatchJobStatusTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionFinishBatchJobStatus` object.
+/// `DBXFILESUploadSessionFinishBatchJobStatus` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionFinishBatchJobStatus`
+/// The serialization class for the `DBXFILESUploadSessionFinishBatchJobStatus`
 /// union.
 /// 
-@interface DbxFilesUploadSessionFinishBatchJobStatusSerializer : NSObject 
+@interface DBXFILESUploadSessionFinishBatchJobStatusSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionFinishBatchJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionFinishBatchJobStatus * _Nonnull)obj;
+/// `DBXFILESUploadSessionFinishBatchJobStatus` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishBatchJobStatus * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionFinishBatchJobStatus`
+/// Returns an instantiation of the `DBXFILESUploadSessionFinishBatchJobStatus`
 /// object from a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionFinishBatchJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionFinishBatchJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -4,171 +4,171 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DbxAsyncLaunchEmptyResult.h"
-#import "DbxAsyncLaunchResultBase.h"
-#import "DbxAsyncPollArg.h"
-#import "DbxAsyncPollEmptyResult.h"
-#import "DbxAsyncPollError.h"
-#import "DbxAsyncPollResultBase.h"
-#import "DbxErrors.h"
-#import "DbxPropertiesGetPropertyTemplateArg.h"
-#import "DbxPropertiesGetPropertyTemplateResult.h"
-#import "DbxPropertiesListPropertyTemplateIds.h"
-#import "DbxPropertiesModifyPropertyTemplateError.h"
-#import "DbxPropertiesPropertyFieldTemplate.h"
-#import "DbxPropertiesPropertyGroupTemplate.h"
-#import "DbxPropertiesPropertyTemplateError.h"
-#import "DbxStoneBase.h"
-#import "DbxTasks.h"
-#import "DbxTeamActiveWebSession.h"
-#import "DbxTeamAddPropertyTemplateArg.h"
-#import "DbxTeamAddPropertyTemplateResult.h"
-#import "DbxTeamAdminTier.h"
-#import "DbxTeamApiApp.h"
-#import "DbxTeamBaseDfbReport.h"
-#import "DbxTeamCommonGroupManagementType.h"
-#import "DbxTeamCommonGroupSummary.h"
-#import "DbxTeamDateRange.h"
-#import "DbxTeamDateRangeError.h"
-#import "DbxTeamDesktopClientSession.h"
-#import "DbxTeamDeviceSessionArg.h"
-#import "DbxTeamDevicesActive.h"
-#import "DbxTeamGetActivityReport.h"
-#import "DbxTeamGetDevicesReport.h"
-#import "DbxTeamGetMembershipReport.h"
-#import "DbxTeamGetStorageReport.h"
-#import "DbxTeamGroupAccessType.h"
-#import "DbxTeamGroupCreateArg.h"
-#import "DbxTeamGroupCreateError.h"
-#import "DbxTeamGroupDeleteError.h"
-#import "DbxTeamGroupFullInfo.h"
-#import "DbxTeamGroupMemberInfo.h"
-#import "DbxTeamGroupMemberSelector.h"
-#import "DbxTeamGroupMemberSelectorError.h"
-#import "DbxTeamGroupMemberSetAccessTypeError.h"
-#import "DbxTeamGroupMembersAddArg.h"
-#import "DbxTeamGroupMembersAddError.h"
-#import "DbxTeamGroupMembersChangeResult.h"
-#import "DbxTeamGroupMembersRemoveArg.h"
-#import "DbxTeamGroupMembersRemoveError.h"
-#import "DbxTeamGroupMembersSelectorError.h"
-#import "DbxTeamGroupMembersSetAccessTypeArg.h"
-#import "DbxTeamGroupSelector.h"
-#import "DbxTeamGroupSelectorError.h"
-#import "DbxTeamGroupUpdateArgs.h"
-#import "DbxTeamGroupUpdateError.h"
-#import "DbxTeamGroupsGetInfoError.h"
-#import "DbxTeamGroupsGetInfoItem.h"
-#import "DbxTeamGroupsListArg.h"
-#import "DbxTeamGroupsListContinueArg.h"
-#import "DbxTeamGroupsListContinueError.h"
-#import "DbxTeamGroupsListResult.h"
-#import "DbxTeamGroupsMembersListArg.h"
-#import "DbxTeamGroupsMembersListContinueArg.h"
-#import "DbxTeamGroupsMembersListContinueError.h"
-#import "DbxTeamGroupsMembersListResult.h"
-#import "DbxTeamGroupsPollError.h"
-#import "DbxTeamGroupsSelector.h"
-#import "DbxTeamIncludeMembersArg.h"
-#import "DbxTeamListMemberAppsArg.h"
-#import "DbxTeamListMemberAppsError.h"
-#import "DbxTeamListMemberAppsResult.h"
-#import "DbxTeamListMemberDevicesArg.h"
-#import "DbxTeamListMemberDevicesError.h"
-#import "DbxTeamListMemberDevicesResult.h"
-#import "DbxTeamListMembersAppsArg.h"
-#import "DbxTeamListMembersAppsError.h"
-#import "DbxTeamListMembersAppsResult.h"
-#import "DbxTeamListMembersDevicesArg.h"
-#import "DbxTeamListMembersDevicesError.h"
-#import "DbxTeamListMembersDevicesResult.h"
-#import "DbxTeamListTeamAppsArg.h"
-#import "DbxTeamListTeamAppsError.h"
-#import "DbxTeamListTeamAppsResult.h"
-#import "DbxTeamListTeamDevicesArg.h"
-#import "DbxTeamListTeamDevicesError.h"
-#import "DbxTeamListTeamDevicesResult.h"
-#import "DbxTeamMemberAccess.h"
-#import "DbxTeamMemberAddArg.h"
-#import "DbxTeamMemberAddResult.h"
-#import "DbxTeamMemberDevices.h"
-#import "DbxTeamMemberLinkedApps.h"
-#import "DbxTeamMemberSelectorError.h"
-#import "DbxTeamMembersAddArg.h"
-#import "DbxTeamMembersAddJobStatus.h"
-#import "DbxTeamMembersAddLaunch.h"
-#import "DbxTeamMembersDeactivateArg.h"
-#import "DbxTeamMembersDeactivateError.h"
-#import "DbxTeamMembersGetInfoArgs.h"
-#import "DbxTeamMembersGetInfoError.h"
-#import "DbxTeamMembersGetInfoItem.h"
-#import "DbxTeamMembersListArg.h"
-#import "DbxTeamMembersListContinueArg.h"
-#import "DbxTeamMembersListContinueError.h"
-#import "DbxTeamMembersListError.h"
-#import "DbxTeamMembersListResult.h"
-#import "DbxTeamMembersRecoverArg.h"
-#import "DbxTeamMembersRecoverError.h"
-#import "DbxTeamMembersRemoveArg.h"
-#import "DbxTeamMembersRemoveError.h"
-#import "DbxTeamMembersSendWelcomeError.h"
-#import "DbxTeamMembersSetPermissionsArg.h"
-#import "DbxTeamMembersSetPermissionsError.h"
-#import "DbxTeamMembersSetPermissionsResult.h"
-#import "DbxTeamMembersSetProfileArg.h"
-#import "DbxTeamMembersSetProfileError.h"
-#import "DbxTeamMembersSuspendError.h"
-#import "DbxTeamMembersUnsuspendArg.h"
-#import "DbxTeamMembersUnsuspendError.h"
-#import "DbxTeamMobileClientSession.h"
-#import "DbxTeamPoliciesTeamMemberPolicies.h"
-#import "DbxTeamRevokeDesktopClientArg.h"
-#import "DbxTeamRevokeDeviceSessionArg.h"
-#import "DbxTeamRevokeDeviceSessionBatchArg.h"
-#import "DbxTeamRevokeDeviceSessionBatchError.h"
-#import "DbxTeamRevokeDeviceSessionBatchResult.h"
-#import "DbxTeamRevokeDeviceSessionError.h"
-#import "DbxTeamRevokeDeviceSessionStatus.h"
-#import "DbxTeamRevokeLinkedApiAppArg.h"
-#import "DbxTeamRevokeLinkedApiAppBatchArg.h"
-#import "DbxTeamRevokeLinkedAppBatchError.h"
-#import "DbxTeamRevokeLinkedAppBatchResult.h"
-#import "DbxTeamRevokeLinkedAppError.h"
-#import "DbxTeamRevokeLinkedAppStatus.h"
-#import "DbxTeamRouteObjects.h"
-#import "DbxTeamRoutes.h"
-#import "DbxTeamStorageBucket.h"
-#import "DbxTeamTeamGetInfoResult.h"
-#import "DbxTeamTeamMemberInfo.h"
-#import "DbxTeamTeamMemberProfile.h"
-#import "DbxTeamUpdatePropertyTemplateArg.h"
-#import "DbxTeamUpdatePropertyTemplateResult.h"
-#import "DbxTeamUserSelectorArg.h"
-#import "DbxTeamUserSelectorError.h"
-#import "DropboxTransportClient.h"
+#import "DBXASYNCLaunchEmptyResult.h"
+#import "DBXASYNCLaunchResultBase.h"
+#import "DBXASYNCPollArg.h"
+#import "DBXASYNCPollEmptyResult.h"
+#import "DBXASYNCPollError.h"
+#import "DBXASYNCPollResultBase.h"
+#import "DBXErrors.h"
+#import "DBXPROPERTIESGetPropertyTemplateArg.h"
+#import "DBXPROPERTIESGetPropertyTemplateResult.h"
+#import "DBXPROPERTIESListPropertyTemplateIds.h"
+#import "DBXPROPERTIESModifyPropertyTemplateError.h"
+#import "DBXPROPERTIESPropertyFieldTemplate.h"
+#import "DBXPROPERTIESPropertyGroupTemplate.h"
+#import "DBXPROPERTIESPropertyTemplateError.h"
+#import "DBXStoneBase.h"
+#import "DBXTEAMActiveWebSession.h"
+#import "DBXTEAMAddPropertyTemplateArg.h"
+#import "DBXTEAMAddPropertyTemplateResult.h"
+#import "DBXTEAMAdminTier.h"
+#import "DBXTEAMApiApp.h"
+#import "DBXTEAMBaseDfbReport.h"
+#import "DBXTEAMCOMMONGroupManagementType.h"
+#import "DBXTEAMCOMMONGroupSummary.h"
+#import "DBXTEAMDateRange.h"
+#import "DBXTEAMDateRangeError.h"
+#import "DBXTEAMDesktopClientSession.h"
+#import "DBXTEAMDeviceSessionArg.h"
+#import "DBXTEAMDevicesActive.h"
+#import "DBXTEAMGetActivityReport.h"
+#import "DBXTEAMGetDevicesReport.h"
+#import "DBXTEAMGetMembershipReport.h"
+#import "DBXTEAMGetStorageReport.h"
+#import "DBXTEAMGroupAccessType.h"
+#import "DBXTEAMGroupCreateArg.h"
+#import "DBXTEAMGroupCreateError.h"
+#import "DBXTEAMGroupDeleteError.h"
+#import "DBXTEAMGroupFullInfo.h"
+#import "DBXTEAMGroupMemberInfo.h"
+#import "DBXTEAMGroupMemberSelector.h"
+#import "DBXTEAMGroupMemberSelectorError.h"
+#import "DBXTEAMGroupMemberSetAccessTypeError.h"
+#import "DBXTEAMGroupMembersAddArg.h"
+#import "DBXTEAMGroupMembersAddError.h"
+#import "DBXTEAMGroupMembersChangeResult.h"
+#import "DBXTEAMGroupMembersRemoveArg.h"
+#import "DBXTEAMGroupMembersRemoveError.h"
+#import "DBXTEAMGroupMembersSelectorError.h"
+#import "DBXTEAMGroupMembersSetAccessTypeArg.h"
+#import "DBXTEAMGroupSelector.h"
+#import "DBXTEAMGroupSelectorError.h"
+#import "DBXTEAMGroupUpdateArgs.h"
+#import "DBXTEAMGroupUpdateError.h"
+#import "DBXTEAMGroupsGetInfoError.h"
+#import "DBXTEAMGroupsGetInfoItem.h"
+#import "DBXTEAMGroupsListArg.h"
+#import "DBXTEAMGroupsListContinueArg.h"
+#import "DBXTEAMGroupsListContinueError.h"
+#import "DBXTEAMGroupsListResult.h"
+#import "DBXTEAMGroupsMembersListArg.h"
+#import "DBXTEAMGroupsMembersListContinueArg.h"
+#import "DBXTEAMGroupsMembersListContinueError.h"
+#import "DBXTEAMGroupsMembersListResult.h"
+#import "DBXTEAMGroupsPollError.h"
+#import "DBXTEAMGroupsSelector.h"
+#import "DBXTEAMIncludeMembersArg.h"
+#import "DBXTEAMListMemberAppsArg.h"
+#import "DBXTEAMListMemberAppsError.h"
+#import "DBXTEAMListMemberAppsResult.h"
+#import "DBXTEAMListMemberDevicesArg.h"
+#import "DBXTEAMListMemberDevicesError.h"
+#import "DBXTEAMListMemberDevicesResult.h"
+#import "DBXTEAMListMembersAppsArg.h"
+#import "DBXTEAMListMembersAppsError.h"
+#import "DBXTEAMListMembersAppsResult.h"
+#import "DBXTEAMListMembersDevicesArg.h"
+#import "DBXTEAMListMembersDevicesError.h"
+#import "DBXTEAMListMembersDevicesResult.h"
+#import "DBXTEAMListTeamAppsArg.h"
+#import "DBXTEAMListTeamAppsError.h"
+#import "DBXTEAMListTeamAppsResult.h"
+#import "DBXTEAMListTeamDevicesArg.h"
+#import "DBXTEAMListTeamDevicesError.h"
+#import "DBXTEAMListTeamDevicesResult.h"
+#import "DBXTEAMMemberAccess.h"
+#import "DBXTEAMMemberAddArg.h"
+#import "DBXTEAMMemberAddResult.h"
+#import "DBXTEAMMemberDevices.h"
+#import "DBXTEAMMemberLinkedApps.h"
+#import "DBXTEAMMemberSelectorError.h"
+#import "DBXTEAMMembersAddArg.h"
+#import "DBXTEAMMembersAddJobStatus.h"
+#import "DBXTEAMMembersAddLaunch.h"
+#import "DBXTEAMMembersDeactivateArg.h"
+#import "DBXTEAMMembersDeactivateError.h"
+#import "DBXTEAMMembersGetInfoArgs.h"
+#import "DBXTEAMMembersGetInfoError.h"
+#import "DBXTEAMMembersGetInfoItem.h"
+#import "DBXTEAMMembersListArg.h"
+#import "DBXTEAMMembersListContinueArg.h"
+#import "DBXTEAMMembersListContinueError.h"
+#import "DBXTEAMMembersListError.h"
+#import "DBXTEAMMembersListResult.h"
+#import "DBXTEAMMembersRecoverArg.h"
+#import "DBXTEAMMembersRecoverError.h"
+#import "DBXTEAMMembersRemoveArg.h"
+#import "DBXTEAMMembersRemoveError.h"
+#import "DBXTEAMMembersSendWelcomeError.h"
+#import "DBXTEAMMembersSetPermissionsArg.h"
+#import "DBXTEAMMembersSetPermissionsError.h"
+#import "DBXTEAMMembersSetPermissionsResult.h"
+#import "DBXTEAMMembersSetProfileArg.h"
+#import "DBXTEAMMembersSetProfileError.h"
+#import "DBXTEAMMembersSuspendError.h"
+#import "DBXTEAMMembersUnsuspendArg.h"
+#import "DBXTEAMMembersUnsuspendError.h"
+#import "DBXTEAMMobileClientSession.h"
+#import "DBXTEAMPOLICIESTeamMemberPolicies.h"
+#import "DBXTEAMRevokeDesktopClientArg.h"
+#import "DBXTEAMRevokeDeviceSessionArg.h"
+#import "DBXTEAMRevokeDeviceSessionBatchArg.h"
+#import "DBXTEAMRevokeDeviceSessionBatchError.h"
+#import "DBXTEAMRevokeDeviceSessionBatchResult.h"
+#import "DBXTEAMRevokeDeviceSessionError.h"
+#import "DBXTEAMRevokeDeviceSessionStatus.h"
+#import "DBXTEAMRevokeLinkedApiAppArg.h"
+#import "DBXTEAMRevokeLinkedApiAppBatchArg.h"
+#import "DBXTEAMRevokeLinkedAppBatchError.h"
+#import "DBXTEAMRevokeLinkedAppBatchResult.h"
+#import "DBXTEAMRevokeLinkedAppError.h"
+#import "DBXTEAMRevokeLinkedAppStatus.h"
+#import "DBXTEAMRouteObjects.h"
+#import "DBXTEAMRoutes.h"
+#import "DBXTEAMStorageBucket.h"
+#import "DBXTEAMTeamGetInfoResult.h"
+#import "DBXTEAMTeamMemberInfo.h"
+#import "DBXTEAMTeamMemberProfile.h"
+#import "DBXTEAMUpdatePropertyTemplateArg.h"
+#import "DBXTEAMUpdatePropertyTemplateResult.h"
+#import "DBXTEAMUserSelectorArg.h"
+#import "DBXTEAMUserSelectorError.h"
+#import "DBXTasks.h"
+#import "DBXTransportClient.h"
 
 /// 
 /// Routes for the Team namespace
 /// 
-@interface DbxTeamRoutes : NSObject 
+@interface DBXTEAMRoutes : NSObject 
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic) DropboxTransportClient * _Nonnull client;
+@property (nonatomic) DBXTransportClient * _Nonnull client;
 
-/// Initializes the `DbxTeamRoutes` namespace container object with a networking
+/// Initializes the `DBXTEAMRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
 
 /// 
 /// Creates a new, empty group, with a requested name. Permission : Team member management
 /// 
 /// - parameter groupName: Group name.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupCreateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupCreateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupCreateError *> * _Nonnull)alphaGroupsCreate:(NSString * _Nonnull)groupName;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupCreateError *> * _Nonnull)alphaGroupsCreate:(NSString * _Nonnull)groupName;
 
 /// 
 /// Creates a new, empty group, with a requested name. Permission : Team member management
@@ -177,39 +177,39 @@
 /// - parameter groupExternalId: The creator of a team can associate an arbitrary external ID to the group.
 /// - parameter groupManagementType: Whether the team can be managed by selected users, or only by team admins
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupCreateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupCreateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupCreateError *> * _Nonnull)alphaGroupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupCreateError *> * _Nonnull)alphaGroupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)groupManagementType;
 
 /// 
 /// Retrieves information about one or more groups. Permission : Team Information
 /// 
 /// - parameter groupsSelector: Argument for selecting a list of groups, either by group_ids, or external group IDs.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxTeamGroupsGetInfoItem *> * _Nonnull`
-/// object on success or a `DbxTeamGroupsGetInfoError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXTEAMGroupsGetInfoItem *> * _Nonnull`
+/// object on success or a `DBXTEAMGroupsGetInfoError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxTeamGroupsGetInfoItem *> *, DbxTeamGroupsGetInfoError *> * _Nonnull)alphaGroupsGetInfo:(DbxTeamGroupsSelector * _Nonnull)groupsSelector;
+- (DBXRpcTask<NSArray<DBXTEAMGroupsGetInfoItem *> *, DBXTEAMGroupsGetInfoError *> * _Nonnull)alphaGroupsGetInfo:(DBXTEAMGroupsSelector * _Nonnull)groupsSelector;
 
 /// 
 /// Lists groups on a team. Permission : Team Information
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxNilObject *> * _Nonnull)alphaGroupsList;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXNilObject *> * _Nonnull)alphaGroupsList;
 
 /// 
 /// Lists groups on a team. Permission : Team Information
 /// 
 /// - parameter limit: Number of results to return per call.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxNilObject *> * _Nonnull)alphaGroupsList:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXNilObject *> * _Nonnull)alphaGroupsList:(NSNumber * _Nullable)limit;
 
 /// 
 /// Once a cursor has been retrieved from alphaGroupsList, use this to paginate through all groups. Permission : Team
@@ -217,20 +217,20 @@
 /// 
 /// - parameter cursor: Indicates from what point to get the next set of groups.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
-/// success or a `DbxTeamGroupsListContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
+/// success or a `DBXTEAMGroupsListContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxTeamGroupsListContinueError *> * _Nonnull)alphaGroupsListContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXTEAMGroupsListContinueError *> * _Nonnull)alphaGroupsListContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Updates a group's name, external ID or management type. Permission : Team member management
 /// 
 /// - parameter group: Specify a group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupUpdateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupUpdateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupUpdateError *> * _Nonnull)alphaGroupsUpdate:(DbxTeamGroupSelector * _Nonnull)group;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupUpdateError *> * _Nonnull)alphaGroupsUpdate:(DBXTEAMGroupSelector * _Nonnull)group;
 
 /// 
 /// Updates a group's name, external ID or management type. Permission : Team member management
@@ -241,20 +241,20 @@
 /// external_id won't be updated. If the argument is empty string, the group's external id will be cleared.
 /// - parameter dNewGroupManagementType: Set new group management type, if provided.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupUpdateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupUpdateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupUpdateError *> * _Nonnull)alphaGroupsUpdate:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupUpdateError *> * _Nonnull)alphaGroupsUpdate:(DBXTEAMGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)dNewGroupManagementType;
 
 /// 
 /// List all device sessions of a team's member.
 /// 
 /// - parameter teamMemberId: The team's member id
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMemberDevicesResult * _Nonnull`
-/// object on success or a `DbxTeamListMemberDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMemberDevicesResult * _Nonnull`
+/// object on success or a `DBXTEAMListMemberDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMemberDevicesResult *, DbxTeamListMemberDevicesError *> * _Nonnull)devicesListMemberDevices:(NSString * _Nonnull)teamMemberId;
+- (DBXRpcTask<DBXTEAMListMemberDevicesResult *, DBXTEAMListMemberDevicesError *> * _Nonnull)devicesListMemberDevices:(NSString * _Nonnull)teamMemberId;
 
 /// 
 /// List all device sessions of a team's member.
@@ -264,19 +264,19 @@
 /// - parameter includeDesktopClients: Whether to list linked desktop devices of the team's member
 /// - parameter includeMobileClients: Whether to list linked mobile devices of the team's member
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMemberDevicesResult * _Nonnull`
-/// object on success or a `DbxTeamListMemberDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMemberDevicesResult * _Nonnull`
+/// object on success or a `DBXTEAMListMemberDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMemberDevicesResult *, DbxTeamListMemberDevicesError *> * _Nonnull)devicesListMemberDevices:(NSString * _Nonnull)teamMemberId includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
+- (DBXRpcTask<DBXTEAMListMemberDevicesResult *, DBXTEAMListMemberDevicesError *> * _Nonnull)devicesListMemberDevices:(NSString * _Nonnull)teamMemberId includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
 /// 
 /// List all device sessions of a team.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMembersDevicesResult * _Nonnull`
-/// object on success or a `DbxTeamListMembersDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMembersDevicesResult * _Nonnull`
+/// object on success or a `DBXTEAMListMembersDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMembersDevicesResult *, DbxTeamListMembersDevicesError *> * _Nonnull)devicesListMembersDevices;
+- (DBXRpcTask<DBXTEAMListMembersDevicesResult *, DBXTEAMListMembersDevicesError *> * _Nonnull)devicesListMembersDevices;
 
 /// 
 /// List all device sessions of a team.
@@ -288,19 +288,19 @@
 /// - parameter includeDesktopClients: Whether to list desktop clients of the team members
 /// - parameter includeMobileClients: Whether to list mobile clients of the team members
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMembersDevicesResult * _Nonnull`
-/// object on success or a `DbxTeamListMembersDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMembersDevicesResult * _Nonnull`
+/// object on success or a `DBXTEAMListMembersDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMembersDevicesResult *, DbxTeamListMembersDevicesError *> * _Nonnull)devicesListMembersDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
+- (DBXRpcTask<DBXTEAMListMembersDevicesResult *, DBXTEAMListMembersDevicesError *> * _Nonnull)devicesListMembersDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
 /// 
 /// DEPRECATED: List all device sessions of a team.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListTeamDevicesResult * _Nonnull` object
-/// on success or a `DbxTeamListTeamDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListTeamDevicesResult * _Nonnull` object
+/// on success or a `DBXTEAMListTeamDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListTeamDevicesResult *, DbxTeamListTeamDevicesError *> * _Nonnull)devicesListTeamDevices __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+- (DBXRpcTask<DBXTEAMListTeamDevicesResult *, DBXTEAMListTeamDevicesError *> * _Nonnull)devicesListTeamDevices __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
 
 /// 
 /// DEPRECATED: List all device sessions of a team.
@@ -312,10 +312,10 @@
 /// - parameter includeDesktopClients: Whether to list desktop clients of the team members
 /// - parameter includeMobileClients: Whether to list mobile clients of the team members
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListTeamDevicesResult * _Nonnull` object
-/// on success or a `DbxTeamListTeamDevicesError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListTeamDevicesResult * _Nonnull` object
+/// on success or a `DBXTEAMListTeamDevicesError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListTeamDevicesResult *, DbxTeamListTeamDevicesError *> * _Nonnull)devicesListTeamDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
+- (DBXRpcTask<DBXTEAMListTeamDevicesResult *, DBXTEAMListTeamDevicesError *> * _Nonnull)devicesListTeamDevices:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients __deprecated_msg("devices/list_team_devices is deprecated. Use devices/list_members_devices.");
 
 /// 
 /// Revoke a device session of a team's member
@@ -323,37 +323,37 @@
 /// - parameter revokeDeviceSessionArg: The RevokeDeviceSessionArg union
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamRevokeDeviceSessionError * _Nonnull` object on failure.
+/// `DBXTEAMRevokeDeviceSessionError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamRevokeDeviceSessionError *> * _Nonnull)devicesRevokeDeviceSession:(DbxTeamRevokeDeviceSessionArg * _Nonnull)revokeDeviceSessionArg;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMRevokeDeviceSessionError *> * _Nonnull)devicesRevokeDeviceSession:(DBXTEAMRevokeDeviceSessionArg * _Nonnull)revokeDeviceSessionArg;
 
 /// 
 /// Revoke a list of device sessions of team members
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamRevokeDeviceSessionBatchResult *
-/// _Nonnull` object on success or a `DbxTeamRevokeDeviceSessionBatchError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMRevokeDeviceSessionBatchResult *
+/// _Nonnull` object on success or a `DBXTEAMRevokeDeviceSessionBatchError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamRevokeDeviceSessionBatchResult *, DbxTeamRevokeDeviceSessionBatchError *> * _Nonnull)devicesRevokeDeviceSessionBatch:(NSArray<DbxTeamRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
+- (DBXRpcTask<DBXTEAMRevokeDeviceSessionBatchResult *, DBXTEAMRevokeDeviceSessionBatchError *> * _Nonnull)devicesRevokeDeviceSessionBatch:(NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
 
 /// 
 /// Retrieves information about a team.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamTeamGetInfoResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMTeamGetInfoResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamTeamGetInfoResult *, DbxNilObject *> * _Nonnull)getInfo;
+- (DBXRpcTask<DBXTEAMTeamGetInfoResult *, DBXNilObject *> * _Nonnull)getInfo;
 
 /// 
 /// Creates a new, empty group, with a requested name. Permission : Team member management
 /// 
 /// - parameter groupName: Group name.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupCreateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupCreateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupCreateError *> * _Nonnull)groupsCreate:(NSString * _Nonnull)groupName;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupCreateError *> * _Nonnull)groupsCreate:(NSString * _Nonnull)groupName;
 
 /// 
 /// Creates a new, empty group, with a requested name. Permission : Team member management
@@ -362,10 +362,10 @@
 /// - parameter groupExternalId: The creator of a team can associate an arbitrary external ID to the group.
 /// - parameter groupManagementType: Whether the team can be managed by selected users, or only by team admins
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupCreateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupCreateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupCreateError *> * _Nonnull)groupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupCreateError *> * _Nonnull)groupsCreate:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)groupManagementType;
 
 /// 
 /// Deletes a group. The group is deleted immediately. However the revoking of group-owned resources may take additional
@@ -374,20 +374,20 @@
 /// 
 /// - parameter groupSelector: Argument for selecting a single group, either by group_id or by external group ID.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxTeamGroupDeleteError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXTEAMGroupDeleteError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxTeamGroupDeleteError *> * _Nonnull)groupsDelete:(DbxTeamGroupSelector * _Nonnull)groupSelector;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXTEAMGroupDeleteError *> * _Nonnull)groupsDelete:(DBXTEAMGroupSelector * _Nonnull)groupSelector;
 
 /// 
 /// Retrieves information about one or more groups. Permission : Team Information
 /// 
 /// - parameter groupsSelector: Argument for selecting a list of groups, either by group_ids, or external group IDs.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxTeamGroupsGetInfoItem *> * _Nonnull`
-/// object on success or a `DbxTeamGroupsGetInfoError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXTEAMGroupsGetInfoItem *> * _Nonnull`
+/// object on success or a `DBXTEAMGroupsGetInfoError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxTeamGroupsGetInfoItem *> *, DbxTeamGroupsGetInfoError *> * _Nonnull)groupsGetInfo:(DbxTeamGroupsSelector * _Nonnull)groupsSelector;
+- (DBXRpcTask<NSArray<DBXTEAMGroupsGetInfoItem *> *, DBXTEAMGroupsGetInfoError *> * _Nonnull)groupsGetInfo:(DBXTEAMGroupsSelector * _Nonnull)groupsSelector;
 
 /// 
 /// Once an async_job_id is returned from groupsDelete, groupsMembersAdd , or groupsMembersRemove use this method to
@@ -397,29 +397,29 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncPollEmptyResult * _Nonnull` object on
-/// success or a `DbxTeamGroupsPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCPollEmptyResult * _Nonnull` object on
+/// success or a `DBXTEAMGroupsPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncPollEmptyResult *, DbxTeamGroupsPollError *> * _Nonnull)groupsJobStatusGet:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXASYNCPollEmptyResult *, DBXTEAMGroupsPollError *> * _Nonnull)groupsJobStatusGet:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Lists groups on a team. Permission : Team Information
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxNilObject *> * _Nonnull)groupsList;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXNilObject *> * _Nonnull)groupsList;
 
 /// 
 /// Lists groups on a team. Permission : Team Information
 /// 
 /// - parameter limit: Number of results to return per call.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxNilObject *> * _Nonnull)groupsList:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXNilObject *> * _Nonnull)groupsList:(NSNumber * _Nullable)limit;
 
 /// 
 /// Once a cursor has been retrieved from groupsList, use this to paginate through all groups. Permission : Team
@@ -427,10 +427,10 @@
 /// 
 /// - parameter cursor: Indicates from what point to get the next set of groups.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsListResult * _Nonnull` object on
-/// success or a `DbxTeamGroupsListContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsListResult * _Nonnull` object on
+/// success or a `DBXTEAMGroupsListContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsListResult *, DbxTeamGroupsListContinueError *> * _Nonnull)groupsListContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXTEAMGroupsListResult *, DBXTEAMGroupsListContinueError *> * _Nonnull)groupsListContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Adds members to a group. The members are added immediately. However the granting of group-owned resources may take
@@ -440,10 +440,10 @@
 /// - parameter group: Group to which users will be added.
 /// - parameter members: List of users to be added to the group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupMembersChangeResult * _Nonnull`
-/// object on success or a `DbxTeamGroupMembersAddError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupMembersChangeResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupMembersAddError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupMembersChangeResult *, DbxTeamGroupMembersAddError *> * _Nonnull)groupsMembersAdd:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members;
+- (DBXRpcTask<DBXTEAMGroupMembersChangeResult *, DBXTEAMGroupMembersAddError *> * _Nonnull)groupsMembersAdd:(DBXTEAMGroupSelector * _Nonnull)group members:(NSArray<DBXTEAMMemberAccess *> * _Nonnull)members;
 
 /// 
 /// Adds members to a group. The members are added immediately. However the granting of group-owned resources may take
@@ -453,20 +453,20 @@
 /// - parameter group: Group to which users will be added.
 /// - parameter members: List of users to be added to the group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupMembersChangeResult * _Nonnull`
-/// object on success or a `DbxTeamGroupMembersAddError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupMembersChangeResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupMembersAddError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupMembersChangeResult *, DbxTeamGroupMembersAddError *> * _Nonnull)groupsMembersAdd:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers;
+- (DBXRpcTask<DBXTEAMGroupMembersChangeResult *, DBXTEAMGroupMembersAddError *> * _Nonnull)groupsMembersAdd:(DBXTEAMGroupSelector * _Nonnull)group members:(NSArray<DBXTEAMMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers;
 
 /// 
 /// Lists members of a group. Permission : Team Information
 /// 
 /// - parameter group: The group whose members are to be listed.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsMembersListResult * _Nonnull`
-/// object on success or a `DbxTeamGroupSelectorError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsMembersListResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupSelectorError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsMembersListResult *, DbxTeamGroupSelectorError *> * _Nonnull)groupsMembersList:(DbxTeamGroupSelector * _Nonnull)group;
+- (DBXRpcTask<DBXTEAMGroupsMembersListResult *, DBXTEAMGroupSelectorError *> * _Nonnull)groupsMembersList:(DBXTEAMGroupSelector * _Nonnull)group;
 
 /// 
 /// Lists members of a group. Permission : Team Information
@@ -474,10 +474,10 @@
 /// - parameter group: The group whose members are to be listed.
 /// - parameter limit: Number of results to return per call.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsMembersListResult * _Nonnull`
-/// object on success or a `DbxTeamGroupSelectorError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsMembersListResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupSelectorError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsMembersListResult *, DbxTeamGroupSelectorError *> * _Nonnull)groupsMembersList:(DbxTeamGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
+- (DBXRpcTask<DBXTEAMGroupsMembersListResult *, DBXTEAMGroupSelectorError *> * _Nonnull)groupsMembersList:(DBXTEAMGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
 
 /// 
 /// Once a cursor has been retrieved from groupsMembersList, use this to paginate through all members of the group.
@@ -485,10 +485,10 @@
 /// 
 /// - parameter cursor: Indicates from what point to get the next set of groups.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupsMembersListResult * _Nonnull`
-/// object on success or a `DbxTeamGroupsMembersListContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupsMembersListResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupsMembersListContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupsMembersListResult *, DbxTeamGroupsMembersListContinueError *> * _Nonnull)groupsMembersListContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXTEAMGroupsMembersListResult *, DBXTEAMGroupsMembersListContinueError *> * _Nonnull)groupsMembersListContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Removes members from a group. The members are removed immediately. However the revoking of group-owned resources may
@@ -499,10 +499,10 @@
 /// - parameter group: Group from which users will be removed.
 /// - parameter users: List of users to be removed from the group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupMembersChangeResult * _Nonnull`
-/// object on success or a `DbxTeamGroupMembersRemoveError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupMembersChangeResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupMembersRemoveError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupMembersChangeResult *, DbxTeamGroupMembersRemoveError *> * _Nonnull)groupsMembersRemove:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users;
+- (DBXRpcTask<DBXTEAMGroupMembersChangeResult *, DBXTEAMGroupMembersRemoveError *> * _Nonnull)groupsMembersRemove:(DBXTEAMGroupSelector * _Nonnull)group users:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)users;
 
 /// 
 /// Removes members from a group. The members are removed immediately. However the revoking of group-owned resources may
@@ -513,20 +513,20 @@
 /// - parameter group: Group from which users will be removed.
 /// - parameter users: List of users to be removed from the group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupMembersChangeResult * _Nonnull`
-/// object on success or a `DbxTeamGroupMembersRemoveError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupMembersChangeResult * _Nonnull`
+/// object on success or a `DBXTEAMGroupMembersRemoveError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupMembersChangeResult *, DbxTeamGroupMembersRemoveError *> * _Nonnull)groupsMembersRemove:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers;
+- (DBXRpcTask<DBXTEAMGroupMembersChangeResult *, DBXTEAMGroupMembersRemoveError *> * _Nonnull)groupsMembersRemove:(DBXTEAMGroupSelector * _Nonnull)group users:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers;
 
 /// 
 /// Sets a member's access type in a group. Permission : Team member management
 /// 
 /// - parameter accessType: New group access type the user will have.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxTeamGroupsGetInfoItem *> * _Nonnull`
-/// object on success or a `DbxTeamGroupMemberSetAccessTypeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXTEAMGroupsGetInfoItem *> * _Nonnull`
+/// object on success or a `DBXTEAMGroupMemberSetAccessTypeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxTeamGroupsGetInfoItem *> *, DbxTeamGroupMemberSetAccessTypeError *> * _Nonnull)groupsMembersSetAccessType:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType;
+- (DBXRpcTask<NSArray<DBXTEAMGroupsGetInfoItem *> *, DBXTEAMGroupMemberSetAccessTypeError *> * _Nonnull)groupsMembersSetAccessType:(DBXTEAMGroupSelector * _Nonnull)group user:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
 
 /// 
 /// Sets a member's access type in a group. Permission : Team member management
@@ -535,20 +535,20 @@
 /// - parameter returnMembers: Whether to return the list of members in the group.  Note that the default value will
 /// cause all the group members  to be returned in the response. This may take a long time for large groups.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxTeamGroupsGetInfoItem *> * _Nonnull`
-/// object on success or a `DbxTeamGroupMemberSetAccessTypeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXTEAMGroupsGetInfoItem *> * _Nonnull`
+/// object on success or a `DBXTEAMGroupMemberSetAccessTypeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxTeamGroupsGetInfoItem *> *, DbxTeamGroupMemberSetAccessTypeError *> * _Nonnull)groupsMembersSetAccessType:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType returnMembers:(NSNumber * _Nullable)returnMembers;
+- (DBXRpcTask<NSArray<DBXTEAMGroupsGetInfoItem *> *, DBXTEAMGroupMemberSetAccessTypeError *> * _Nonnull)groupsMembersSetAccessType:(DBXTEAMGroupSelector * _Nonnull)group user:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType returnMembers:(NSNumber * _Nullable)returnMembers;
 
 /// 
 /// Updates a group's name and/or external ID. Permission : Team member management
 /// 
 /// - parameter group: Specify a group.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupUpdateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupUpdateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupUpdateError *> * _Nonnull)groupsUpdate:(DbxTeamGroupSelector * _Nonnull)group;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupUpdateError *> * _Nonnull)groupsUpdate:(DBXTEAMGroupSelector * _Nonnull)group;
 
 /// 
 /// Updates a group's name and/or external ID. Permission : Team member management
@@ -559,30 +559,30 @@
 /// external_id won't be updated. If the argument is empty string, the group's external id will be cleared.
 /// - parameter dNewGroupManagementType: Set new group management type, if provided.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGroupFullInfo * _Nonnull` object on
-/// success or a `DbxTeamGroupUpdateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGroupFullInfo * _Nonnull` object on
+/// success or a `DBXTEAMGroupUpdateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGroupFullInfo *, DbxTeamGroupUpdateError *> * _Nonnull)groupsUpdate:(DbxTeamGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)dNewGroupManagementType;
+- (DBXRpcTask<DBXTEAMGroupFullInfo *, DBXTEAMGroupUpdateError *> * _Nonnull)groupsUpdate:(DBXTEAMGroupSelector * _Nonnull)group returnMembers:(NSNumber * _Nullable)returnMembers dNewGroupName:(NSString * _Nullable)dNewGroupName dNewGroupExternalId:(NSString * _Nullable)dNewGroupExternalId dNewGroupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)dNewGroupManagementType;
 
 /// 
 /// List all linked applications of the team member. Note, this endpoint does not list any team-linked applications.
 /// 
 /// - parameter teamMemberId: The team member id
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMemberAppsResult * _Nonnull` object
-/// on success or a `DbxTeamListMemberAppsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMemberAppsResult * _Nonnull` object
+/// on success or a `DBXTEAMListMemberAppsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMemberAppsResult *, DbxTeamListMemberAppsError *> * _Nonnull)linkedAppsListMemberLinkedApps:(NSString * _Nonnull)teamMemberId;
+- (DBXRpcTask<DBXTEAMListMemberAppsResult *, DBXTEAMListMemberAppsError *> * _Nonnull)linkedAppsListMemberLinkedApps:(NSString * _Nonnull)teamMemberId;
 
 /// 
 /// List all applications linked to the team members' accounts. Note, this endpoint does not list any team-linked
 /// applications.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMembersAppsResult * _Nonnull` object
-/// on success or a `DbxTeamListMembersAppsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMembersAppsResult * _Nonnull` object
+/// on success or a `DBXTEAMListMembersAppsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMembersAppsResult *, DbxTeamListMembersAppsError *> * _Nonnull)linkedAppsListMembersLinkedApps;
+- (DBXRpcTask<DBXTEAMListMembersAppsResult *, DBXTEAMListMembersAppsError *> * _Nonnull)linkedAppsListMembersLinkedApps;
 
 /// 
 /// List all applications linked to the team members' accounts. Note, this endpoint does not list any team-linked
@@ -592,20 +592,20 @@
 /// if the result of the call includes a cursor, the following requests should include the received cursors in order to
 /// receive the next sub list of the team applications
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListMembersAppsResult * _Nonnull` object
-/// on success or a `DbxTeamListMembersAppsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListMembersAppsResult * _Nonnull` object
+/// on success or a `DBXTEAMListMembersAppsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListMembersAppsResult *, DbxTeamListMembersAppsError *> * _Nonnull)linkedAppsListMembersLinkedApps:(NSString * _Nullable)cursor;
+- (DBXRpcTask<DBXTEAMListMembersAppsResult *, DBXTEAMListMembersAppsError *> * _Nonnull)linkedAppsListMembersLinkedApps:(NSString * _Nullable)cursor;
 
 /// 
 /// DEPRECATED: List all applications linked to the team members' accounts. Note, this endpoint doesn't list any
 /// team-linked applications.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListTeamAppsResult * _Nonnull` object on
-/// success or a `DbxTeamListTeamAppsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListTeamAppsResult * _Nonnull` object on
+/// success or a `DBXTEAMListTeamAppsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListTeamAppsResult *, DbxTeamListTeamAppsError *> * _Nonnull)linkedAppsListTeamLinkedApps __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+- (DBXRpcTask<DBXTEAMListTeamAppsResult *, DBXTEAMListTeamAppsError *> * _Nonnull)linkedAppsListTeamLinkedApps __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
 
 /// 
 /// DEPRECATED: List all applications linked to the team members' accounts. Note, this endpoint doesn't list any
@@ -615,10 +615,10 @@
 /// the result of the call includes a cursor, the following requests should include the received cursors in order to
 /// receive the next sub list of the team applications
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamListTeamAppsResult * _Nonnull` object on
-/// success or a `DbxTeamListTeamAppsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMListTeamAppsResult * _Nonnull` object on
+/// success or a `DBXTEAMListTeamAppsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamListTeamAppsResult *, DbxTeamListTeamAppsError *> * _Nonnull)linkedAppsListTeamLinkedApps:(NSString * _Nullable)cursor __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
+- (DBXRpcTask<DBXTEAMListTeamAppsResult *, DBXTEAMListTeamAppsError *> * _Nonnull)linkedAppsListTeamLinkedApps:(NSString * _Nullable)cursor __deprecated_msg("linked_apps/list_team_linked_apps is deprecated. Use linked_apps/list_members_linked_apps.");
 
 /// 
 /// Revoke a linked application of the team member
@@ -627,9 +627,9 @@
 /// - parameter teamMemberId: The unique id of the member owning the device
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamRevokeLinkedAppError * _Nonnull` object on failure.
+/// `DBXTEAMRevokeLinkedAppError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamRevokeLinkedAppError *> * _Nonnull)linkedAppsRevokeLinkedApp:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMRevokeLinkedAppError *> * _Nonnull)linkedAppsRevokeLinkedApp:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 /// 
 /// Revoke a linked application of the team member
@@ -639,18 +639,18 @@
 /// - parameter keepAppFolder: Whether to keep the application dedicated folder (in case the application uses  one)
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamRevokeLinkedAppError * _Nonnull` object on failure.
+/// `DBXTEAMRevokeLinkedAppError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamRevokeLinkedAppError *> * _Nonnull)linkedAppsRevokeLinkedApp:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId keepAppFolder:(NSNumber * _Nullable)keepAppFolder;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMRevokeLinkedAppError *> * _Nonnull)linkedAppsRevokeLinkedApp:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId keepAppFolder:(NSNumber * _Nullable)keepAppFolder;
 
 /// 
 /// Revoke a list of linked applications of the team members
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamRevokeLinkedAppBatchResult * _Nonnull`
-/// object on success or a `DbxTeamRevokeLinkedAppBatchError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMRevokeLinkedAppBatchResult * _Nonnull`
+/// object on success or a `DBXTEAMRevokeLinkedAppBatchError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamRevokeLinkedAppBatchResult *, DbxTeamRevokeLinkedAppBatchError *> * _Nonnull)linkedAppsRevokeLinkedAppBatch:(NSArray<DbxTeamRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
+- (DBXRpcTask<DBXTEAMRevokeLinkedAppBatchResult *, DBXTEAMRevokeLinkedAppBatchError *> * _Nonnull)linkedAppsRevokeLinkedAppBatch:(NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
 
 /// 
 /// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
@@ -663,10 +663,10 @@
 /// 
 /// - parameter dNewMembers: Details of new members to be added to the team.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersAddLaunch * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersAddLaunch * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersAddLaunch *, DbxNilObject *> * _Nonnull)membersAdd:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers;
+- (DBXRpcTask<DBXTEAMMembersAddLaunch *, DBXNilObject *> * _Nonnull)membersAdd:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers;
 
 /// 
 /// Adds members to a team. Permission : Team member management A maximum of 20 members can be specified in a single
@@ -680,10 +680,10 @@
 /// - parameter dNewMembers: Details of new members to be added to the team.
 /// - parameter forceAsync: Whether to force the add to happen asynchronously.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersAddLaunch * _Nonnull` object on
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersAddLaunch * _Nonnull` object on
 /// success or a `void` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersAddLaunch *, DbxNilObject *> * _Nonnull)membersAdd:(NSArray<DbxTeamMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync;
+- (DBXRpcTask<DBXTEAMMembersAddLaunch *, DBXNilObject *> * _Nonnull)membersAdd:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync;
 
 /// 
 /// Once an async_job_id is returned from membersAdd , use this to poll the status of the asynchronous request.
@@ -692,10 +692,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersAddJobStatus * _Nonnull` object
-/// on success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersAddJobStatus * _Nonnull` object
+/// on success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersAddJobStatus *, DbxAsyncPollError *> * _Nonnull)membersAddJobStatusGet:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXTEAMMembersAddJobStatus *, DBXASYNCPollError *> * _Nonnull)membersAddJobStatusGet:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Returns information about multiple team members. Permission : Team information This endpoint will return idNotFound
@@ -703,19 +703,19 @@
 /// 
 /// - parameter members: List of team members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `NSArray<DbxTeamMembersGetInfoItem *> *
-/// _Nonnull` object on success or a `DbxTeamMembersGetInfoError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `NSArray<DBXTEAMMembersGetInfoItem *> *
+/// _Nonnull` object on success or a `DBXTEAMMembersGetInfoError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<NSArray<DbxTeamMembersGetInfoItem *> *, DbxTeamMembersGetInfoError *> * _Nonnull)membersGetInfo:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)members;
+- (DBXRpcTask<NSArray<DBXTEAMMembersGetInfoItem *> *, DBXTEAMMembersGetInfoError *> * _Nonnull)membersGetInfo:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)members;
 
 /// 
 /// Lists members of a team. Permission : Team information
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersListResult * _Nonnull` object on
-/// success or a `DbxTeamMembersListError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersListResult * _Nonnull` object on
+/// success or a `DBXTEAMMembersListError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersListResult *, DbxTeamMembersListError *> * _Nonnull)membersList;
+- (DBXRpcTask<DBXTEAMMembersListResult *, DBXTEAMMembersListError *> * _Nonnull)membersList;
 
 /// 
 /// Lists members of a team. Permission : Team information
@@ -723,10 +723,10 @@
 /// - parameter limit: Number of results to return per call.
 /// - parameter includeRemoved: Whether to return removed members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersListResult * _Nonnull` object on
-/// success or a `DbxTeamMembersListError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersListResult * _Nonnull` object on
+/// success or a `DBXTEAMMembersListError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersListResult *, DbxTeamMembersListError *> * _Nonnull)membersList:(NSNumber * _Nullable)limit includeRemoved:(NSNumber * _Nullable)includeRemoved;
+- (DBXRpcTask<DBXTEAMMembersListResult *, DBXTEAMMembersListError *> * _Nonnull)membersList:(NSNumber * _Nullable)limit includeRemoved:(NSNumber * _Nullable)includeRemoved;
 
 /// 
 /// Once a cursor has been retrieved from membersList, use this to paginate through all team members. Permission : Team
@@ -734,10 +734,10 @@
 /// 
 /// - parameter cursor: Indicates from what point to get the next set of members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersListResult * _Nonnull` object on
-/// success or a `DbxTeamMembersListContinueError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersListResult * _Nonnull` object on
+/// success or a `DBXTEAMMembersListContinueError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersListResult *, DbxTeamMembersListContinueError *> * _Nonnull)membersListContinue:(NSString * _Nonnull)cursor;
+- (DBXRpcTask<DBXTEAMMembersListResult *, DBXTEAMMembersListContinueError *> * _Nonnull)membersListContinue:(NSString * _Nonnull)cursor;
 
 /// 
 /// Recover a deleted member. Permission : Team member management Exactly one of team_member_id, email, or external_id
@@ -746,9 +746,9 @@
 /// - parameter user: Identity of user to recover.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamMembersRecoverError * _Nonnull` object on failure.
+/// `DBXTEAMMembersRecoverError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamMembersRecoverError *> * _Nonnull)membersRecover:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMMembersRecoverError *> * _Nonnull)membersRecover:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 /// 
 /// Removes a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
@@ -759,10 +759,10 @@
 /// membersRemoveJobStatusGet.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxTeamMembersRemoveError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXTEAMMembersRemoveError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxTeamMembersRemoveError *> * _Nonnull)membersRemove:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXTEAMMembersRemoveError *> * _Nonnull)membersRemove:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 /// 
 /// Removes a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
@@ -778,10 +778,10 @@
 /// - parameter keepAccount: Downgrade the member to a Basic account. The user will retain the email address associated
 /// with their Dropbox  account and data in their account that is not restricted to team members.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncLaunchEmptyResult * _Nonnull` object on
-/// success or a `DbxTeamMembersRemoveError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCLaunchEmptyResult * _Nonnull` object on
+/// success or a `DBXTEAMMembersRemoveError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncLaunchEmptyResult *, DbxTeamMembersRemoveError *> * _Nonnull)membersRemove:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DbxTeamUserSelectorArg * _Nullable)transferDestId transferAdminId:(DbxTeamUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount;
+- (DBXRpcTask<DBXASYNCLaunchEmptyResult *, DBXTEAMMembersRemoveError *> * _Nonnull)membersRemove:(DBXTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData transferDestId:(DBXTEAMUserSelectorArg * _Nullable)transferDestId transferAdminId:(DBXTEAMUserSelectorArg * _Nullable)transferAdminId keepAccount:(NSNumber * _Nullable)keepAccount;
 
 /// 
 /// Once an async_job_id is returned from membersRemove , use this to poll the status of the asynchronous request.
@@ -790,10 +790,10 @@
 /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method that
 /// launched the job.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxAsyncPollEmptyResult * _Nonnull` object on
-/// success or a `DbxAsyncPollError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXASYNCPollEmptyResult * _Nonnull` object on
+/// success or a `DBXASYNCPollError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxAsyncPollEmptyResult *, DbxAsyncPollError *> * _Nonnull)membersRemoveJobStatusGet:(NSString * _Nonnull)asyncJobId;
+- (DBXRpcTask<DBXASYNCPollEmptyResult *, DBXASYNCPollError *> * _Nonnull)membersRemoveJobStatusGet:(NSString * _Nonnull)asyncJobId;
 
 /// 
 /// Sends welcome email to pending team member. Permission : Team member management Exactly one of team_member_id,
@@ -802,9 +802,9 @@
 /// - parameter userSelectorArg: Argument for selecting a single user, either by team_member_id, external_id or email.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamMembersSendWelcomeError * _Nonnull` object on failure.
+/// `DBXTEAMMembersSendWelcomeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamMembersSendWelcomeError *> * _Nonnull)membersSendWelcomeEmail:(DbxTeamUserSelectorArg * _Nonnull)userSelectorArg;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMMembersSendWelcomeError *> * _Nonnull)membersSendWelcomeEmail:(DBXTEAMUserSelectorArg * _Nonnull)userSelectorArg;
 
 /// 
 /// Updates a team member's permissions. Permission : Team member management
@@ -812,20 +812,20 @@
 /// - parameter user: Identity of user whose role will be set.
 /// - parameter dNewRole: The new role of the member.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamMembersSetPermissionsResult * _Nonnull`
-/// object on success or a `DbxTeamMembersSetPermissionsError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMMembersSetPermissionsResult * _Nonnull`
+/// object on success or a `DBXTEAMMembersSetPermissionsError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamMembersSetPermissionsResult *, DbxTeamMembersSetPermissionsError *> * _Nonnull)membersSetAdminPermissions:(DbxTeamUserSelectorArg * _Nonnull)user dNewRole:(DbxTeamAdminTier * _Nonnull)dNewRole;
+- (DBXRpcTask<DBXTEAMMembersSetPermissionsResult *, DBXTEAMMembersSetPermissionsError *> * _Nonnull)membersSetAdminPermissions:(DBXTEAMUserSelectorArg * _Nonnull)user dNewRole:(DBXTEAMAdminTier * _Nonnull)dNewRole;
 
 /// 
 /// Updates a team member's profile. Permission : Team member management
 /// 
 /// - parameter user: Identity of user whose profile will be set.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamTeamMemberInfo * _Nonnull` object on
-/// success or a `DbxTeamMembersSetProfileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMTeamMemberInfo * _Nonnull` object on
+/// success or a `DBXTEAMMembersSetProfileError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamTeamMemberInfo *, DbxTeamMembersSetProfileError *> * _Nonnull)membersSetProfile:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (DBXRpcTask<DBXTEAMTeamMemberInfo *, DBXTEAMMembersSetProfileError *> * _Nonnull)membersSetProfile:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 /// 
 /// Updates a team member's profile. Permission : Team member management
@@ -836,10 +836,10 @@
 /// - parameter dNewGivenName: New given name for member.
 /// - parameter dNewSurname: New surname for member.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamTeamMemberInfo * _Nonnull` object on
-/// success or a `DbxTeamMembersSetProfileError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMTeamMemberInfo * _Nonnull` object on
+/// success or a `DBXTEAMMembersSetProfileError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamTeamMemberInfo *, DbxTeamMembersSetProfileError *> * _Nonnull)membersSetProfile:(DbxTeamUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname;
+- (DBXRpcTask<DBXTEAMTeamMemberInfo *, DBXTEAMMembersSetProfileError *> * _Nonnull)membersSetProfile:(DBXTEAMUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname;
 
 /// 
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
@@ -848,9 +848,9 @@
 /// - parameter user: Identity of user to remove/suspend.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamMembersSuspendError * _Nonnull` object on failure.
+/// `DBXTEAMMembersSuspendError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamMembersSuspendError *> * _Nonnull)membersSuspend:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMMembersSuspendError *> * _Nonnull)membersSuspend:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 /// 
 /// Suspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
@@ -860,9 +860,9 @@
 /// - parameter wipeData: If provided, controls if the user's data will be deleted on their linked devices.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamMembersSuspendError * _Nonnull` object on failure.
+/// `DBXTEAMMembersSuspendError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamMembersSuspendError *> * _Nonnull)membersSuspend:(DbxTeamUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMMembersSuspendError *> * _Nonnull)membersSuspend:(DBXTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
 
 /// 
 /// Unsuspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
@@ -871,37 +871,37 @@
 /// - parameter user: Identity of user to unsuspend.
 /// 
 /// - returns: Through the response callback, the caller will receive a `void` object on success or a
-/// `DbxTeamMembersUnsuspendError * _Nonnull` object on failure.
+/// `DBXTEAMMembersUnsuspendError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxNilObject *, DbxTeamMembersUnsuspendError *> * _Nonnull)membersUnsuspend:(DbxTeamUserSelectorArg * _Nonnull)user;
+- (DBXRpcTask<DBXNilObject *, DBXTEAMMembersUnsuspendError *> * _Nonnull)membersUnsuspend:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 /// 
 /// Add a property template. See route files/properties/add to add properties to a file.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamAddPropertyTemplateResult * _Nonnull`
-/// object on success or a `DbxPropertiesModifyPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMAddPropertyTemplateResult * _Nonnull`
+/// object on success or a `DBXPROPERTIESModifyPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamAddPropertyTemplateResult *, DbxPropertiesModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateAdd:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull)fields;
+- (DBXRpcTask<DBXTEAMAddPropertyTemplateResult *, DBXPROPERTIESModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateAdd:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
 
 /// 
 /// Get the schema for a specified template.
 /// 
 /// - parameter templateId: An identifier for property template added by route properties/template/add.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxPropertiesGetPropertyTemplateResult *
-/// _Nonnull` object on success or a `DbxPropertiesPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXPROPERTIESGetPropertyTemplateResult *
+/// _Nonnull` object on success or a `DBXPROPERTIESPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxPropertiesGetPropertyTemplateResult *, DbxPropertiesPropertyTemplateError *> * _Nonnull)propertiesTemplateGet:(NSString * _Nonnull)templateId;
+- (DBXRpcTask<DBXPROPERTIESGetPropertyTemplateResult *, DBXPROPERTIESPropertyTemplateError *> * _Nonnull)propertiesTemplateGet:(NSString * _Nonnull)templateId;
 
 /// 
 /// Get the property template identifiers for a team. To get the schema of each template use propertiesTemplateGet.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxPropertiesListPropertyTemplateIds *
-/// _Nonnull` object on success or a `DbxPropertiesPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXPROPERTIESListPropertyTemplateIds *
+/// _Nonnull` object on success or a `DBXPROPERTIESPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxPropertiesListPropertyTemplateIds *, DbxPropertiesPropertyTemplateError *> * _Nonnull)propertiesTemplateList;
+- (DBXRpcTask<DBXPROPERTIESListPropertyTemplateIds *, DBXPROPERTIESPropertyTemplateError *> * _Nonnull)propertiesTemplateList;
 
 /// 
 /// Update a property template. This route can update the template name, the template description and add optional
@@ -909,10 +909,10 @@
 /// 
 /// - parameter templateId: An identifier for property template added by propertiesTemplateAdd.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamUpdatePropertyTemplateResult * _Nonnull`
-/// object on success or a `DbxPropertiesModifyPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMUpdatePropertyTemplateResult * _Nonnull`
+/// object on success or a `DBXPROPERTIESModifyPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamUpdatePropertyTemplateResult *, DbxPropertiesModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateUpdate:(NSString * _Nonnull)templateId;
+- (DBXRpcTask<DBXTEAMUpdatePropertyTemplateResult *, DBXPROPERTIESModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateUpdate:(NSString * _Nonnull)templateId;
 
 /// 
 /// Update a property template. This route can update the template name, the template description and add optional
@@ -925,19 +925,19 @@
 /// - parameter addFields: This is a list of custom properties to add to the property template. There can be up to 64
 /// properties in a single property template.
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamUpdatePropertyTemplateResult * _Nonnull`
-/// object on success or a `DbxPropertiesModifyPropertyTemplateError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMUpdatePropertyTemplateResult * _Nonnull`
+/// object on success or a `DBXPROPERTIESModifyPropertyTemplateError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamUpdatePropertyTemplateResult *, DbxPropertiesModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateUpdate:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nullable)addFields;
+- (DBXRpcTask<DBXTEAMUpdatePropertyTemplateResult *, DBXPROPERTIESModifyPropertyTemplateError *> * _Nonnull)propertiesTemplateUpdate:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable)addFields;
 
 /// 
 /// Retrieves reporting data about a team's user activity.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetActivityReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetActivityReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetActivityReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetActivity;
+- (DBXRpcTask<DBXTEAMGetActivityReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetActivity;
 
 /// 
 /// Retrieves reporting data about a team's user activity.
@@ -945,19 +945,19 @@
 /// - parameter startDate: Optional starting date (inclusive)
 /// - parameter endDate: Optional ending date (exclusive)
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetActivityReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetActivityReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetActivityReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetActivity:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
+- (DBXRpcTask<DBXTEAMGetActivityReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetActivity:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
 /// 
 /// Retrieves reporting data about a team's linked devices.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetDevicesReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetDevicesReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetDevicesReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetDevices;
+- (DBXRpcTask<DBXTEAMGetDevicesReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetDevices;
 
 /// 
 /// Retrieves reporting data about a team's linked devices.
@@ -965,19 +965,19 @@
 /// - parameter startDate: Optional starting date (inclusive)
 /// - parameter endDate: Optional ending date (exclusive)
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetDevicesReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetDevicesReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetDevicesReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetDevices:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
+- (DBXRpcTask<DBXTEAMGetDevicesReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetDevices:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
 /// 
 /// Retrieves reporting data about a team's membership.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetMembershipReport * _Nonnull` object
-/// on success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetMembershipReport * _Nonnull` object
+/// on success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetMembershipReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetMembership;
+- (DBXRpcTask<DBXTEAMGetMembershipReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetMembership;
 
 /// 
 /// Retrieves reporting data about a team's membership.
@@ -985,19 +985,19 @@
 /// - parameter startDate: Optional starting date (inclusive)
 /// - parameter endDate: Optional ending date (exclusive)
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetMembershipReport * _Nonnull` object
-/// on success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetMembershipReport * _Nonnull` object
+/// on success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetMembershipReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetMembership:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
+- (DBXRpcTask<DBXTEAMGetMembershipReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetMembership:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
 /// 
 /// Retrieves reporting data about a team's storage usage.
 /// 
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetStorageReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetStorageReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetStorageReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetStorage;
+- (DBXRpcTask<DBXTEAMGetStorageReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetStorage;
 
 /// 
 /// Retrieves reporting data about a team's storage usage.
@@ -1005,9 +1005,9 @@
 /// - parameter startDate: Optional starting date (inclusive)
 /// - parameter endDate: Optional ending date (exclusive)
 /// 
-/// - returns: Through the response callback, the caller will receive a `DbxTeamGetStorageReport * _Nonnull` object on
-/// success or a `DbxTeamDateRangeError * _Nonnull` object on failure.
+/// - returns: Through the response callback, the caller will receive a `DBXTEAMGetStorageReport * _Nonnull` object on
+/// success or a `DBXTEAMDateRangeError * _Nonnull` object on failure.
 /// 
-- (DbxRpcTask<DbxTeamGetStorageReport *, DbxTeamDateRangeError *> * _Nonnull)reportsGetStorage:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
+- (DBXRpcTask<DBXTEAMGetStorageReport *, DBXTEAMDateRangeError *> * _Nonnull)reportsGetStorage:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
 @end

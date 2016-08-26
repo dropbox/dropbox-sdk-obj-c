@@ -3,46 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxPropertiesPropertyGroupTemplate.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXPROPERTIESPropertyGroupTemplate.h"
 
-@class DbxPropertiesGetPropertyTemplateResult;
-@class DbxPropertiesPropertyFieldTemplate;
+@class DBXPROPERTIESGetPropertyTemplateResult;
+@class DBXPROPERTIESPropertyFieldTemplate;
 
 /// 
-/// The `DbxPropertiesGetPropertyTemplateResult` struct.
+/// The `DBXPROPERTIESGetPropertyTemplateResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The Property template for the specified template.
 /// 
-@interface DbxPropertiesGetPropertyTemplateResult : DbxPropertiesPropertyGroupTemplate <DbxSerializable> 
+@interface DBXPROPERTIESGetPropertyTemplateResult : DBXPROPERTIESPropertyGroupTemplate <DBXSerializable> 
 
 /// Full constructor for the `GetPropertyTemplateResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull)fields;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
 
 /// Returns a human-readable representation of the
-/// `DbxPropertiesGetPropertyTemplateResult` object.
+/// `DBXPROPERTIESGetPropertyTemplateResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxPropertiesGetPropertyTemplateResult`
+/// The serialization class for the `DBXPROPERTIESGetPropertyTemplateResult`
 /// struct.
 /// 
-@interface DbxPropertiesGetPropertyTemplateResultSerializer : NSObject 
+@interface DBXPROPERTIESGetPropertyTemplateResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesGetPropertyTemplateResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesGetPropertyTemplateResult * _Nonnull)obj;
+/// `DBXPROPERTIESGetPropertyTemplateResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesGetPropertyTemplateResult`
+/// Returns an instantiation of the `DBXPROPERTIESGetPropertyTemplateResult`
 /// object from a json-compatible dictionary representation.
-+ (DbxPropertiesGetPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESGetPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

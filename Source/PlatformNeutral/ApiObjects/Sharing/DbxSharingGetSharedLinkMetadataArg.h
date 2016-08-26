@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGetSharedLinkMetadataArg;
+@class DBXSHARINGGetSharedLinkMetadataArg;
 
 /// 
-/// The `DbxSharingGetSharedLinkMetadataArg` struct.
+/// The `DBXSHARINGGetSharedLinkMetadataArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingGetSharedLinkMetadataArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetSharedLinkMetadataArg : NSObject <DBXSerializable> 
 
 /// URL of the shared link.
 @property (nonatomic, copy) NSString * _Nonnull url;
@@ -36,23 +36,23 @@
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingGetSharedLinkMetadataArg` object.
+/// `DBXSHARINGGetSharedLinkMetadataArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGetSharedLinkMetadataArg` struct.
+/// The serialization class for the `DBXSHARINGGetSharedLinkMetadataArg` struct.
 /// 
-@interface DbxSharingGetSharedLinkMetadataArgSerializer : NSObject 
+@interface DBXSHARINGGetSharedLinkMetadataArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetSharedLinkMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetSharedLinkMetadataArg * _Nonnull)obj;
+/// `DBXSHARINGGetSharedLinkMetadataArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkMetadataArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetSharedLinkMetadataArg` object
+/// Returns an instantiation of the `DBXSHARINGGetSharedLinkMetadataArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingGetSharedLinkMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetSharedLinkMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

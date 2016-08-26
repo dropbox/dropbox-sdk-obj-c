@@ -3,35 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxSharingLinkMetadata.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXSHARINGLinkMetadata.h"
 
-@class DbxSharingPathLinkMetadata;
-@class DbxSharingVisibility;
+@class DBXSHARINGPathLinkMetadata;
+@class DBXSHARINGVisibility;
 
 /// 
-/// The `DbxSharingPathLinkMetadata` struct.
+/// The `DBXSHARINGPathLinkMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Metadata for a path-based shared link.
 /// 
-@interface DbxSharingPathLinkMetadata : DbxSharingLinkMetadata <DbxSerializable> 
+@interface DBXSHARINGPathLinkMetadata : DBXSHARINGLinkMetadata <DBXSerializable> 
 
 /// Path in user's Dropbox.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `PathLinkMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DbxSharingVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path expires:(NSDate * _Nullable)expires;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path expires:(NSDate * _Nullable)expires;
 
 /// Convenience constructor for the `PathLinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DbxSharingVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path;
 
-/// Returns a human-readable representation of the `DbxSharingPathLinkMetadata`
+/// Returns a human-readable representation of the `DBXSHARINGPathLinkMetadata`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -39,16 +39,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingPathLinkMetadata` struct.
+/// The serialization class for the `DBXSHARINGPathLinkMetadata` struct.
 /// 
-@interface DbxSharingPathLinkMetadataSerializer : NSObject 
+@interface DBXSHARINGPathLinkMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingPathLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingPathLinkMetadata * _Nonnull)obj;
+/// `DBXSHARINGPathLinkMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPathLinkMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingPathLinkMetadata` object from a
+/// Returns an instantiation of the `DBXSHARINGPathLinkMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingPathLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGPathLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

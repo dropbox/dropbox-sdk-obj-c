@@ -3,38 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFileAction;
-@class DbxSharingListFilesArg;
+@class DBXSHARINGFileAction;
+@class DBXSHARINGListFilesArg;
 
 /// 
-/// The `DbxSharingListFilesArg` struct.
+/// The `DBXSHARINGListFilesArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for listReceivedFiles.
 /// 
-@interface DbxSharingListFilesArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFilesArg : NSObject <DBXSerializable> 
 
 /// Number of files to return max per query. Defaults to 100 if no limit is
 /// specified.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
 
 /// File actions to query.
-@property (nonatomic) NSArray<DbxSharingFileAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
 
 /// Full constructor for the `ListFilesArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
+- (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit actions:(NSArray<DBXSHARINGFileAction *> * _Nullable)actions;
 
 /// Convenience constructor for the `ListFilesArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxSharingListFilesArg`
+/// Returns a human-readable representation of the `DBXSHARINGListFilesArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -42,16 +42,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingListFilesArg` struct.
+/// The serialization class for the `DBXSHARINGListFilesArg` struct.
 /// 
-@interface DbxSharingListFilesArgSerializer : NSObject 
+@interface DBXSHARINGListFilesArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFilesArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFilesArg * _Nonnull)obj;
+/// `DBXSHARINGListFilesArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFilesArg` object from a
+/// Returns an instantiation of the `DBXSHARINGListFilesArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingListFilesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFilesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingSharingUserError;
+@class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DbxSharingSharingUserError` union.
+/// The `DBXSHARINGSharingUserError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// User account had a problem preventing this action.
 /// 
-@interface DbxSharingSharingUserError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharingUserError : NSObject <DBXSerializable> 
 
-/// The `SharingSharingUserErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingSharingUserError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharingUserErrorTag) {
+/// The `DBXSHARINGSharingUserErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGSharingUserError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
     /// The current user must verify the account e-mail address before
     /// performing this action.
-    SharingSharingUserErrorEmailUnverified,
+    DBXSHARINGSharingUserErrorEmailUnverified,
 
     /// (no description).
-    SharingSharingUserErrorOther,
+    DBXSHARINGSharingUserErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharingUserErrorTag tag;
-
+@property (nonatomic) DBXSHARINGSharingUserErrorTag tag;
 
 /// Initializes union class with tag state of `EmailUnverified`.
 - (nonnull instancetype)initWithEmailUnverified;
@@ -49,7 +48,7 @@ typedef NS_ENUM(NSInteger, SharingSharingUserErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingSharingUserError`
+/// Returns a human-readable representation of the `DBXSHARINGSharingUserError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -57,16 +56,16 @@ typedef NS_ENUM(NSInteger, SharingSharingUserErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingSharingUserError` union.
+/// The serialization class for the `DBXSHARINGSharingUserError` union.
 /// 
-@interface DbxSharingSharingUserErrorSerializer : NSObject 
+@interface DBXSHARINGSharingUserErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharingUserError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharingUserError * _Nonnull)obj;
+/// `DBXSHARINGSharingUserError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingUserError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharingUserError` object from a
+/// Returns an instantiation of the `DBXSHARINGSharingUserError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingSharingUserError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharingUserError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

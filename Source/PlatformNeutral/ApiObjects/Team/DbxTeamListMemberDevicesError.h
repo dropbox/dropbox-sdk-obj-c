@@ -3,33 +3,32 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamListMemberDevicesError;
+@class DBXTEAMListMemberDevicesError;
 
 /// 
-/// The `DbxTeamListMemberDevicesError` union.
+/// The `DBXTEAMListMemberDevicesError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamListMemberDevicesError : NSObject <DbxSerializable> 
+@interface DBXTEAMListMemberDevicesError : NSObject <DBXSerializable> 
 
-/// The `TeamListMemberDevicesErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamListMemberDevicesError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamListMemberDevicesErrorTag) {
+/// The `DBXTEAMListMemberDevicesErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMListMemberDevicesError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMListMemberDevicesErrorTag) {
     /// Member not found.
-    TeamListMemberDevicesErrorMemberNotFound,
+    DBXTEAMListMemberDevicesErrorMemberNotFound,
 
     /// (no description).
-    TeamListMemberDevicesErrorOther,
+    DBXTEAMListMemberDevicesErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamListMemberDevicesErrorTag tag;
-
+@property (nonatomic) DBXTEAMListMemberDevicesErrorTag tag;
 
 /// Initializes union class with tag state of `MemberNotFound`.
 - (nonnull instancetype)initWithMemberNotFound;
@@ -47,23 +46,23 @@ typedef NS_ENUM(NSInteger, TeamListMemberDevicesErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamListMemberDevicesError` object.
+/// `DBXTEAMListMemberDevicesError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamListMemberDevicesError` union.
+/// The serialization class for the `DBXTEAMListMemberDevicesError` union.
 /// 
-@interface DbxTeamListMemberDevicesErrorSerializer : NSObject 
+@interface DBXTEAMListMemberDevicesErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamListMemberDevicesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamListMemberDevicesError * _Nonnull)obj;
+/// `DBXTEAMListMemberDevicesError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberDevicesError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamListMemberDevicesError` object from
+/// Returns an instantiation of the `DBXTEAMListMemberDevicesError` object from
 /// a json-compatible dictionary representation.
-+ (DbxTeamListMemberDevicesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMListMemberDevicesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

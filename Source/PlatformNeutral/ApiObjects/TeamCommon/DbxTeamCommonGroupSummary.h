@@ -3,21 +3,21 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamCommonGroupManagementType;
-@class DbxTeamCommonGroupSummary;
+@class DBXTEAMCOMMONGroupManagementType;
+@class DBXTEAMCOMMONGroupSummary;
 
 /// 
-/// The `DbxTeamCommonGroupSummary` struct.
+/// The `DBXTEAMCOMMONGroupSummary` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about a group.
 /// 
-@interface DbxTeamCommonGroupSummary : NSObject <DbxSerializable> 
+@interface DBXTEAMCOMMONGroupSummary : NSObject <DBXSerializable> 
 
 /// (no description).
 @property (nonatomic, copy) NSString * _Nonnull groupName;
@@ -33,17 +33,17 @@
 @property (nonatomic, copy) NSNumber * _Nullable memberCount;
 
 /// Who is allowed to manage the group.
-@property (nonatomic) DbxTeamCommonGroupManagementType * _Nonnull groupManagementType;
+@property (nonatomic) DBXTEAMCOMMONGroupManagementType * _Nonnull groupManagementType;
 
 /// Full constructor for the `GroupSummary` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType groupExternalId:(NSString * _Nullable)groupExternalId memberCount:(NSNumber * _Nullable)memberCount;
+- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType groupExternalId:(NSString * _Nullable)groupExternalId memberCount:(NSNumber * _Nullable)memberCount;
 
 /// Convenience constructor for the `GroupSummary` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType;
+- (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType;
 
-/// Returns a human-readable representation of the `DbxTeamCommonGroupSummary`
+/// Returns a human-readable representation of the `DBXTEAMCOMMONGroupSummary`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -51,16 +51,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamCommonGroupSummary` struct.
+/// The serialization class for the `DBXTEAMCOMMONGroupSummary` struct.
 /// 
-@interface DbxTeamCommonGroupSummarySerializer : NSObject 
+@interface DBXTEAMCOMMONGroupSummarySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamCommonGroupSummary` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamCommonGroupSummary * _Nonnull)obj;
+/// `DBXTEAMCOMMONGroupSummary` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupSummary * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamCommonGroupSummary` object from a
+/// Returns an instantiation of the `DBXTEAMCOMMONGroupSummary` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamCommonGroupSummary * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMCOMMONGroupSummary * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

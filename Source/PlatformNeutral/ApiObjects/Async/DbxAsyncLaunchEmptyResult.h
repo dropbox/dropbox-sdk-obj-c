@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxAsyncLaunchEmptyResult;
+@class DBXASYNCLaunchEmptyResult;
 
 /// 
-/// The `DbxAsyncLaunchEmptyResult` union.
+/// The `DBXASYNCLaunchEmptyResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -18,27 +18,26 @@
 /// complete synchronously. Upon synchronous completion of the job, no
 /// additional information is returned.
 /// 
-@interface DbxAsyncLaunchEmptyResult : NSObject <DbxSerializable> 
+@interface DBXASYNCLaunchEmptyResult : NSObject <DBXSerializable> 
 
-/// The `AsyncLaunchEmptyResultTag` enum type represents the possible tag states
-/// that the `DbxAsyncLaunchEmptyResult` union can exist in.
-typedef NS_ENUM(NSInteger, AsyncLaunchEmptyResultTag) {
+/// The `DBXASYNCLaunchEmptyResultTag` enum type represents the possible tag
+/// states that the `DBXASYNCLaunchEmptyResult` union can exist in.
+typedef NS_ENUM(NSInteger, DBXASYNCLaunchEmptyResultTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
-    AsyncLaunchEmptyResultAsyncJobId,
+    DBXASYNCLaunchEmptyResultAsyncJobId,
 
     /// The job finished synchronously and successfully.
-    AsyncLaunchEmptyResultComplete,
+    DBXASYNCLaunchEmptyResultComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) AsyncLaunchEmptyResultTag tag;
+@property (nonatomic) DBXASYNCLaunchEmptyResultTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is
 /// an id that can be used to obtain the status of the asynchronous job.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
-
 
 /// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, AsyncLaunchEmptyResultTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxAsyncLaunchEmptyResult`
+/// Returns a human-readable representation of the `DBXASYNCLaunchEmptyResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -63,16 +62,16 @@ typedef NS_ENUM(NSInteger, AsyncLaunchEmptyResultTag) {
 
 
 /// 
-/// The serialization class for the `DbxAsyncLaunchEmptyResult` union.
+/// The serialization class for the `DBXASYNCLaunchEmptyResult` union.
 /// 
-@interface DbxAsyncLaunchEmptyResultSerializer : NSObject 
+@interface DBXASYNCLaunchEmptyResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxAsyncLaunchEmptyResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxAsyncLaunchEmptyResult * _Nonnull)obj;
+/// `DBXASYNCLaunchEmptyResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCLaunchEmptyResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxAsyncLaunchEmptyResult` object from a
+/// Returns an instantiation of the `DBXASYNCLaunchEmptyResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxAsyncLaunchEmptyResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXASYNCLaunchEmptyResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

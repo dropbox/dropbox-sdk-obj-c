@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionCursor;
+@class DBXFILESUploadSessionCursor;
 
 /// 
-/// The `DbxFilesUploadSessionCursor` struct.
+/// The `DBXFILESUploadSessionCursor` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionCursor : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionCursor : NSObject <DBXSerializable> 
 
 /// The upload session ID (returned by uploadSessionStart).
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
@@ -27,7 +27,7 @@
 /// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset;
 
-/// Returns a human-readable representation of the `DbxFilesUploadSessionCursor`
+/// Returns a human-readable representation of the `DBXFILESUploadSessionCursor`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionCursor` struct.
+/// The serialization class for the `DBXFILESUploadSessionCursor` struct.
 /// 
-@interface DbxFilesUploadSessionCursorSerializer : NSObject 
+@interface DBXFILESUploadSessionCursorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionCursor` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionCursor * _Nonnull)obj;
+/// `DBXFILESUploadSessionCursor` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionCursor * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionCursor` object from a
+/// Returns an instantiation of the `DBXFILESUploadSessionCursor` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesUploadSessionCursor * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionCursor * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

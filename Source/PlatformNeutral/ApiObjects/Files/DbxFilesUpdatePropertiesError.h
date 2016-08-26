@@ -3,59 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookUpPropertiesError;
-@class DbxFilesLookupError;
-@class DbxFilesUpdatePropertiesError;
+@class DBXFILESLookUpPropertiesError;
+@class DBXFILESLookupError;
+@class DBXFILESUpdatePropertiesError;
 
 /// 
-/// The `DbxFilesUpdatePropertiesError` union.
+/// The `DBXFILESUpdatePropertiesError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUpdatePropertiesError : NSObject <DbxSerializable> 
+@interface DBXFILESUpdatePropertiesError : NSObject <DBXSerializable> 
 
-/// The `FilesUpdatePropertiesErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesUpdatePropertiesError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesUpdatePropertiesErrorTag) {
+/// The `DBXFILESUpdatePropertiesErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESUpdatePropertiesError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESUpdatePropertiesErrorTag) {
     /// Property template does not exist for given identifier.
-    FilesUpdatePropertiesErrorTemplateNotFound,
+    DBXFILESUpdatePropertiesErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    FilesUpdatePropertiesErrorRestrictedContent,
+    DBXFILESUpdatePropertiesErrorRestrictedContent,
 
     /// (no description).
-    FilesUpdatePropertiesErrorOther,
+    DBXFILESUpdatePropertiesErrorOther,
 
     /// (no description).
-    FilesUpdatePropertiesErrorPath,
+    DBXFILESUpdatePropertiesErrorPath,
 
     /// A field value in this property group is too large.
-    FilesUpdatePropertiesErrorPropertyFieldTooLarge,
+    DBXFILESUpdatePropertiesErrorPropertyFieldTooLarge,
 
     /// The property group specified does not conform to the property template.
-    FilesUpdatePropertiesErrorDoesNotFitTemplate,
+    DBXFILESUpdatePropertiesErrorDoesNotFitTemplate,
 
     /// (no description).
-    FilesUpdatePropertiesErrorPropertyGroupLookup,
+    DBXFILESUpdatePropertiesErrorPropertyGroupLookup,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesUpdatePropertiesErrorTag tag;
+@property (nonatomic) DBXFILESUpdatePropertiesErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookUpPropertiesError * _Nonnull propertyGroupLookup;
-
+@property (nonatomic) DBXFILESLookUpPropertiesError * _Nonnull propertyGroupLookup;
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -67,7 +66,7 @@ typedef NS_ENUM(NSInteger, FilesUpdatePropertiesErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `PropertyFieldTooLarge`.
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
@@ -76,7 +75,7 @@ typedef NS_ENUM(NSInteger, FilesUpdatePropertiesErrorTag) {
 - (nonnull instancetype)initWithDoesNotFitTemplate;
 
 /// Initializes union class with tag state of `PropertyGroupLookup`.
-- (nonnull instancetype)initWithPropertyGroupLookup:(DbxFilesLookUpPropertiesError * _Nonnull)propertyGroupLookup;
+- (nonnull instancetype)initWithPropertyGroupLookup:(DBXFILESLookUpPropertiesError * _Nonnull)propertyGroupLookup;
 
 /// Returns whether the union's current tag state has value `TemplateNotFound`.
 - (BOOL)isTemplateNotFound;
@@ -106,23 +105,23 @@ typedef NS_ENUM(NSInteger, FilesUpdatePropertiesErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUpdatePropertiesError` object.
+/// `DBXFILESUpdatePropertiesError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUpdatePropertiesError` union.
+/// The serialization class for the `DBXFILESUpdatePropertiesError` union.
 /// 
-@interface DbxFilesUpdatePropertiesErrorSerializer : NSObject 
+@interface DBXFILESUpdatePropertiesErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUpdatePropertiesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUpdatePropertiesError * _Nonnull)obj;
+/// `DBXFILESUpdatePropertiesError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUpdatePropertiesError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUpdatePropertiesError` object from
+/// Returns an instantiation of the `DBXFILESUpdatePropertiesError` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesUpdatePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUpdatePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

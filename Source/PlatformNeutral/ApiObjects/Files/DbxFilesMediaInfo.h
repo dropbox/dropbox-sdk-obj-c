@@ -3,44 +3,43 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesMediaInfo;
-@class DbxFilesMediaMetadata;
+@class DBXFILESMediaInfo;
+@class DBXFILESMediaMetadata;
 
 /// 
-/// The `DbxFilesMediaInfo` union.
+/// The `DBXFILESMediaInfo` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesMediaInfo : NSObject <DbxSerializable> 
+@interface DBXFILESMediaInfo : NSObject <DBXSerializable> 
 
-/// The `FilesMediaInfoTag` enum type represents the possible tag states that
-/// the `DbxFilesMediaInfo` union can exist in.
-typedef NS_ENUM(NSInteger, FilesMediaInfoTag) {
+/// The `DBXFILESMediaInfoTag` enum type represents the possible tag states that
+/// the `DBXFILESMediaInfo` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
     /// Indicate the photo/video is still under processing and metadata is not
     /// available yet.
-    FilesMediaInfoPending,
+    DBXFILESMediaInfoPending,
 
     /// The metadata for the photo/video.
-    FilesMediaInfoMetadata,
+    DBXFILESMediaInfoMetadata,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesMediaInfoTag tag;
+@property (nonatomic) DBXFILESMediaInfoTag tag;
 
 /// The metadata for the photo/video.
-@property (nonatomic) DbxFilesMediaMetadata * _Nonnull metadata;
-
+@property (nonatomic) DBXFILESMediaMetadata * _Nonnull metadata;
 
 /// Initializes union class with tag state of `Pending`.
 - (nonnull instancetype)initWithPending;
 
 /// Initializes union class with tag state of `Metadata`.
-- (nonnull instancetype)initWithMetadata:(DbxFilesMediaMetadata * _Nonnull)metadata;
+- (nonnull instancetype)initWithMetadata:(DBXFILESMediaMetadata * _Nonnull)metadata;
 
 /// Returns whether the union's current tag state has value `Pending`.
 - (BOOL)isPending;
@@ -51,23 +50,23 @@ typedef NS_ENUM(NSInteger, FilesMediaInfoTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesMediaInfo` object.
+/// Returns a human-readable representation of the `DBXFILESMediaInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesMediaInfo` union.
+/// The serialization class for the `DBXFILESMediaInfo` union.
 /// 
-@interface DbxFilesMediaInfoSerializer : NSObject 
+@interface DBXFILESMediaInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesMediaInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesMediaInfo * _Nonnull)obj;
+/// `DBXFILESMediaInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESMediaInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesMediaInfo` object from a
+/// Returns an instantiation of the `DBXFILESMediaInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesMediaInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESMediaInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

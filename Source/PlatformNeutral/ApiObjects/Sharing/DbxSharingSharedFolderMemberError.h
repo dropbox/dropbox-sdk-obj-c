@@ -3,43 +3,42 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberAccessLevelResult;
-@class DbxSharingSharedFolderMemberError;
+@class DBXSHARINGMemberAccessLevelResult;
+@class DBXSHARINGSharedFolderMemberError;
 
 /// 
-/// The `DbxSharingSharedFolderMemberError` union.
+/// The `DBXSHARINGSharedFolderMemberError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingSharedFolderMemberError : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedFolderMemberError : NSObject <DBXSerializable> 
 
-/// The `SharingSharedFolderMemberErrorTag` enum type represents the possible
-/// tag states that the `DbxSharingSharedFolderMemberError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingSharedFolderMemberErrorTag) {
+/// The `DBXSHARINGSharedFolderMemberErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGSharedFolderMemberError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderMemberErrorTag) {
     /// The target dropbox_id is invalid.
-    SharingSharedFolderMemberErrorInvalidDropboxId,
+    DBXSHARINGSharedFolderMemberErrorInvalidDropboxId,
 
     /// The target dropbox_id is not a member of the shared folder.
-    SharingSharedFolderMemberErrorNotAMember,
+    DBXSHARINGSharedFolderMemberErrorNotAMember,
 
     /// The target member only has inherited access to the shared folder.
-    SharingSharedFolderMemberErrorNoExplicitAccess,
+    DBXSHARINGSharedFolderMemberErrorNoExplicitAccess,
 
     /// (no description).
-    SharingSharedFolderMemberErrorOther,
+    DBXSHARINGSharedFolderMemberErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingSharedFolderMemberErrorTag tag;
+@property (nonatomic) DBXSHARINGSharedFolderMemberErrorTag tag;
 
 /// The target member only has inherited access to the shared folder.
-@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull noExplicitAccess;
-
+@property (nonatomic) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 /// Initializes union class with tag state of `InvalidDropboxId`.
 - (nonnull instancetype)initWithInvalidDropboxId;
@@ -48,7 +47,7 @@ typedef NS_ENUM(NSInteger, SharingSharedFolderMemberErrorTag) {
 - (nonnull instancetype)initWithNotAMember;
 
 /// Initializes union class with tag state of `NoExplicitAccess`.
-- (nonnull instancetype)initWithNoExplicitAccess:(DbxSharingMemberAccessLevelResult * _Nonnull)noExplicitAccess;
+- (nonnull instancetype)initWithNoExplicitAccess:(DBXSHARINGMemberAccessLevelResult * _Nonnull)noExplicitAccess;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -69,23 +68,23 @@ typedef NS_ENUM(NSInteger, SharingSharedFolderMemberErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedFolderMemberError` object.
+/// `DBXSHARINGSharedFolderMemberError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedFolderMemberError` union.
+/// The serialization class for the `DBXSHARINGSharedFolderMemberError` union.
 /// 
-@interface DbxSharingSharedFolderMemberErrorSerializer : NSObject 
+@interface DBXSHARINGSharedFolderMemberErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderMemberError * _Nonnull)obj;
+/// `DBXSHARINGSharedFolderMemberError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMemberError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedFolderMemberError` object
+/// Returns an instantiation of the `DBXSHARINGSharedFolderMemberError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingSharedFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

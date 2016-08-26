@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesMetadata;
+@class DBXFILESMetadata;
 
 /// 
-/// The `DbxFilesMetadata` struct.
+/// The `DBXFILESMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Metadata for a file or folder.
 /// 
-@interface DbxFilesMetadata : NSObject <DbxSerializable> 
+@interface DBXFILESMetadata : NSObject <DBXSerializable> 
 
 /// The last component of the path (including extension). This never contains a
 /// slash.
@@ -44,23 +44,23 @@
 /// instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name;
 
-/// Returns a human-readable representation of the `DbxFilesMetadata` object.
+/// Returns a human-readable representation of the `DBXFILESMetadata` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesMetadata` struct.
+/// The serialization class for the `DBXFILESMetadata` struct.
 /// 
-@interface DbxFilesMetadataSerializer : NSObject 
+@interface DBXFILESMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesMetadata * _Nonnull)obj;
+/// `DBXFILESMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesMetadata` object from a
+/// Returns an instantiation of the `DBXFILESMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

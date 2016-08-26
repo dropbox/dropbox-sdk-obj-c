@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFilesContinueArg;
+@class DBXSHARINGListFilesContinueArg;
 
 /// 
-/// The `DbxSharingListFilesContinueArg` struct.
+/// The `DBXSHARINGListFilesContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for listReceivedFilesContinue.
 /// 
-@interface DbxSharingListFilesContinueArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFilesContinueArg : NSObject <DBXSerializable> 
 
 /// Cursor in cursor in ListFilesResult
 @property (nonatomic, copy) NSString * _Nonnull cursor;
@@ -26,23 +26,23 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFilesContinueArg` object.
+/// `DBXSHARINGListFilesContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFilesContinueArg` struct.
+/// The serialization class for the `DBXSHARINGListFilesContinueArg` struct.
 /// 
-@interface DbxSharingListFilesContinueArgSerializer : NSObject 
+@interface DBXSHARINGListFilesContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFilesContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFilesContinueArg * _Nonnull)obj;
+/// `DBXSHARINGListFilesContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFilesContinueArg` object from
+/// Returns an instantiation of the `DBXSHARINGListFilesContinueArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingListFilesContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFilesContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

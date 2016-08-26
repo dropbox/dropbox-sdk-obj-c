@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsMembersListContinueArg;
+@class DBXTEAMGroupsMembersListContinueArg;
 
 /// 
-/// The `DbxTeamGroupsMembersListContinueArg` struct.
+/// The `DBXTEAMGroupsMembersListContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupsMembersListContinueArg : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsMembersListContinueArg : NSObject <DBXSerializable> 
 
 /// Indicates from what point to get the next set of groups.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
@@ -24,24 +24,24 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupsMembersListContinueArg` object.
+/// `DBXTEAMGroupsMembersListContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsMembersListContinueArg`
+/// The serialization class for the `DBXTEAMGroupsMembersListContinueArg`
 /// struct.
 /// 
-@interface DbxTeamGroupsMembersListContinueArgSerializer : NSObject 
+@interface DBXTEAMGroupsMembersListContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsMembersListContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsMembersListContinueArg * _Nonnull)obj;
+/// `DBXTEAMGroupsMembersListContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsMembersListContinueArg` object
+/// Returns an instantiation of the `DBXTEAMGroupsMembersListContinueArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamGroupsMembersListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsMembersListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

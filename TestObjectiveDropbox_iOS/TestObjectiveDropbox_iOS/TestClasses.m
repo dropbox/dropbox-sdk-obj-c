@@ -10,7 +10,7 @@
 
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
-#import "DropboxClientsManager+MobileAuth.h"
+#import "DropboxClientsManager+MobileAUTH.h"
 
 void MyLog(NSString *format, ...) {
     va_list args;
@@ -68,7 +68,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)tokenRevoke:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.auth tokenRevoke] response:^(DbxNilObject *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.auth tokenRevoke] response:^(DBXNilObject *result, DBXNilObject *routeError, DBXError *error) {
         MyLog(@"%@\n", result);
         [TestFormat printOffset:@"Token successfully revoked"];
         [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -93,7 +93,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)delete_:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files delete_:_tester.testData.baseFolder] response:^(DbxFilesMetadata *result, DbxFilesDeleteError *routeError, DbxError *error) {
+    [[[_tester.files delete_:_tester.testData.baseFolder] response:^(DBXFILESMetadata *result, DBXFILESDeleteError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -110,7 +110,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)createFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files createFolder:_tester.testData.testFolderPath] response:^(DbxFilesFolderMetadata *result, DbxFilesCreateFolderError *routeError, DbxError *error) {
+    [[[_tester.files createFolder:_tester.testData.testFolderPath] response:^(DBXFILESFolderMetadata *result, DBXFILESCreateFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -125,7 +125,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolderError:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listFolder:@"/"] response:^(DbxFilesListFolderResult *result, DbxFilesListFolderError *routeError, DbxError *error) {
+    [[[_tester.files listFolder:@"/"] response:^(DBXFILESListFolderResult *result, DBXFILESListFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"Something went wrong...\n");
         } else {
@@ -141,7 +141,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listFolder:_tester.testData.testFolderPath] response:^(DbxFilesListFolderResult *result, DbxFilesListFolderError *routeError, DbxError *error) {
+    [[[_tester.files listFolder:_tester.testData.testFolderPath] response:^(DBXFILESListFolderResult *result, DBXFILESListFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -157,7 +157,7 @@ void MyLog(NSString *format, ...) {
 - (void)uploadData:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *outputPath = _tester.testData.testFilePath;
-    [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
+    [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData] response:^(DBXFILESFileMetadata *result, DBXFILESUploadError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -173,14 +173,14 @@ void MyLog(NSString *format, ...) {
 - (void)uploadDataSession:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
-    void (^uploadSessionAppendV2)(NSString *, DbxFilesUploadSessionCursor *) = ^(NSString * sessionId, DbxFilesUploadSessionCursor *cursor) {
-        [[[_tester.files uploadSessionAppendV2Data:cursor inputData:_tester.testData.fileData] response:^(DbxNilObject *result, DbxFilesUploadSessionLookupError *routeError, DbxError *error) {
+    void (^uploadSessionAppendV2)(NSString *, DBXFILESUploadSessionCursor *) = ^(NSString * sessionId, DBXFILESUploadSessionCursor *cursor) {
+        [[[_tester.files uploadSessionAppendV2Data:cursor inputData:_tester.testData.fileData] response:^(DBXNilObject *result, DBXFILESUploadSessionLookupError *routeError, DBXError *error) {
             // response type for this route is nil
             if (!error) {
-                DbxFilesUploadSessionCursor *cursor = [[DbxFilesUploadSessionCursor alloc] initWithSessionId:sessionId offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length * 2)]];
-                DbxFilesCommitInfo *commitInfo = [[DbxFilesCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"]];
+                DBXFILESUploadSessionCursor *cursor = [[DBXFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length * 2)]];
+                DBXFILESCommitInfo *commitInfo = [[DBXFILESCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"]];
                 
-                [[[_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:_tester.testData.fileData] response:^(DbxFilesFileMetadata *result, DbxFilesUploadSessionFinishError *routeError, DbxError *error) {
+                [[[_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:_tester.testData.fileData] response:^(DBXFILESFileMetadata *result, DBXFILESUploadSessionFinishError *routeError, DBXError *error) {
                     if (result) {
                         MyLog(@"%@\n", result);
                         [TestFormat printOffset:@"Upload session complete"];
@@ -200,11 +200,11 @@ void MyLog(NSString *format, ...) {
         }];
     };
 
-    [[[_tester.files uploadSessionStartData:_tester.testData.fileData] response:^(DbxFilesUploadSessionStartResult *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.files uploadSessionStartData:_tester.testData.fileData] response:^(DBXFILESUploadSessionStartResult *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printOffset:@"Acquiring sessionId"];
-            uploadSessionAppendV2(result.sessionId, [[DbxFilesUploadSessionCursor alloc] initWithSessionId:result.sessionId offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length)]]);
+            uploadSessionAppendV2(result.sessionId, [[DBXFILESUploadSessionCursor alloc] initWithSessionId:result.sessionId offset:[NSNumber numberWithUnsignedLong:(_tester.testData.fileData.length)]]);
         } else {
             [TestFormat abort:error routeError:routeError];
         }
@@ -216,7 +216,7 @@ void MyLog(NSString *format, ...) {
 - (void)dCopy:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *copyOutputPath = [NSString stringWithFormat:@"%@%@%@%@", _tester.testData.testFilePath, @"_duplicate", @"_", _tester.testData.testId];
-    [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
+    [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath] response:^(DBXFILESMetadata *result, DBXFILESRelocationError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -231,7 +231,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)dCopyReferenceGet:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath] response:^(DbxFilesGetCopyReferenceResult *result, DbxFilesGetCopyReferenceError *routeError, DbxError *error) {
+    [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath] response:^(DBXFILESGetCopyReferenceResult *result, DBXFILESGetCopyReferenceError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -246,7 +246,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getMetadata:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getMetadata:_tester.testData.testFilePath] response:^(DbxFilesMetadata *result, DbxFilesGetMetadataError *routeError, DbxError *error) {
+    [[[_tester.files getMetadata:_tester.testData.testFilePath] response:^(DBXFILESMetadata *result, DBXFILESGetMetadataError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -261,7 +261,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getMetadataError:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getMetadata:@"/"] response:^(DbxFilesMetadata *result, DbxFilesGetMetadataError *routeError, DbxError *error) {
+    [[[_tester.files getMetadata:@"/"] response:^(DBXFILESMetadata *result, DBXFILESGetMetadataError *routeError, DBXError *error) {
         if (result) {
             NSAssert(NO, @"This call should have errored.");
         } else {
@@ -278,7 +278,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getTemporaryLink:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files getTemporaryLink:_tester.testData.testFilePath] response:^(DbxFilesGetTemporaryLinkResult *result, DbxFilesGetTemporaryLinkError *routeError, DbxError *error) {
+    [[[_tester.files getTemporaryLink:_tester.testData.testFilePath] response:^(DBXFILESGetTemporaryLinkResult *result, DBXFILESGetTemporaryLinkError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -293,7 +293,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listRevisions:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files listRevisions:_tester.testData.testFilePath] response:^(DbxFilesListRevisionsResult *result, DbxFilesListRevisionsError *routeError, DbxError *error) {
+    [[[_tester.files listRevisions:_tester.testData.testFilePath] response:^(DBXFILESListRevisionsResult *result, DBXFILESListRevisionsError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -309,7 +309,7 @@ void MyLog(NSString *format, ...) {
 - (void)move:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"movedLocation"];
-    [[[_tester.files createFolder:folderPath] response:^(DbxFilesFolderMetadata *result, DbxFilesCreateFolderError *routeError, DbxError *error) {
+    [[[_tester.files createFolder:folderPath] response:^(DBXFILESFolderMetadata *result, DBXFILESCreateFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printOffset:@"Created destination folder"];
@@ -317,7 +317,7 @@ void MyLog(NSString *format, ...) {
             NSString *fileToMove = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"];
             NSString *destPath = [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", _tester.testData.testFileName, @"_session"];
 
-            [[[_tester.files move:fileToMove toPath:destPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
+            [[[_tester.files move:fileToMove toPath:destPath] response:^(DBXFILESMetadata *result, DBXFILESRelocationError *routeError, DBXError *error) {
                 if (result) {
                     MyLog(@"%@\n", result);
                     [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -343,7 +343,7 @@ void MyLog(NSString *format, ...) {
     }
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"dbx-test.html"];
-    [[[_tester.files saveUrl:folderPath url:@"https://www.dropbox.com/help/5"] response:^(DbxFilesSaveUrlResult *result, DbxFilesSaveUrlError *routeError, DbxError *error) {
+    [[[_tester.files saveUrl:folderPath url:@"https://www.dropbox.com/help/5"] response:^(DBXFILESSaveUrlResult *result, DBXFILESSaveUrlError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -358,7 +358,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFile:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesDownloadError *routeError, DbxError *error, NSURL *destination) {
+    [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL] response:^(DBXFILESFileMetadata *result, DBXFILESDownloadError *routeError, DBXError *error, NSURL *destination) {
         if (result) {
             MyLog(@"%@\n", result);
             NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
@@ -377,7 +377,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFileAgain:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesDownloadError *routeError, DbxError *error, NSURL *destination) {
+    [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL] response:^(DBXFILESFileMetadata *result, DBXFILESDownloadError *routeError, DBXError *error, NSURL *destination) {
         if (result) {
             MyLog(@"%@\n", result);
             NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
@@ -397,7 +397,7 @@ void MyLog(NSString *format, ...) {
 - (void)downloadToFileError:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *filePath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_does_not_exist"];
-    [[[_tester.files downloadURL:filePath overwrite:YES destination:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesDownloadError *routeError, DbxError *error, NSURL *destination) {
+    [[[_tester.files downloadURL:filePath overwrite:YES destination:_tester.testData.destURL] response:^(DBXFILESFileMetadata *result, DBXFILESDownloadError *routeError, DBXError *error, NSURL *destination) {
         if (result) {
             NSAssert(NO, @"This call should have errored!");
         } else {
@@ -413,7 +413,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToMemory:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.files downloadData:_tester.testData.testFilePath] response:^(DbxFilesFileMetadata *result, DbxFilesDownloadError *routeError, DbxError *error, NSData *fileContents) {
+    [[[_tester.files downloadData:_tester.testData.testFilePath] response:^(DBXFILESFileMetadata *result, DBXFILESDownloadError *routeError, DBXError *error, NSData *fileContents) {
         if (result) {
             MyLog(@"%@\n", result);
             NSString *dataStr = [[NSString alloc]initWithData:fileContents encoding:NSUTF8StringEncoding];
@@ -432,7 +432,7 @@ void MyLog(NSString *format, ...) {
 - (void)uploadFile:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
-    [[[_tester.files uploadURL:outputPath inputURL:_tester.testData.destURL] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
+    [[[_tester.files uploadURL:outputPath inputURL:_tester.testData.destURL] response:^(DBXFILESFileMetadata *result, DBXFILESUploadError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -448,7 +448,7 @@ void MyLog(NSString *format, ...) {
 - (void)uploadStream:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
-    [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]] response:^(DbxFilesFileMetadata *result, DbxFilesUploadError *routeError, DbxError *error) {
+    [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]] response:^(DBXFILESFileMetadata *result, DBXFILESUploadError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -466,7 +466,7 @@ void MyLog(NSString *format, ...) {
         [TestFormat printOffset:@"Making change that longpoll will detect (copy file)"];
         NSString *copyOutputPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFilePath, @"_duplicate2_", _tester.testData.testId];
 
-        [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath] response:^(DbxFilesMetadata *result, DbxFilesRelocationError *routeError, DbxError *error) {
+        [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath] response:^(DBXFILESMetadata *result, DBXFILESRelocationError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
             } else {
@@ -478,7 +478,7 @@ void MyLog(NSString *format, ...) {
     };
 
     void (^listFolderContinue)(NSString *) = ^(NSString *cursor) {
-        [[[_tester.files listFolderContinue:cursor] response:^(DbxFilesListFolderResult *result, DbxFilesListFolderContinueError *routeError, DbxError *error) {
+        [[[_tester.files listFolderContinue:cursor] response:^(DBXFILESListFolderResult *result, DBXFILESListFolderContinueError *routeError, DBXError *error) {
             if (result) {
                 [TestFormat printOffset:@"Here are the changes:"];
                 MyLog(@"%@\n", result);
@@ -494,7 +494,7 @@ void MyLog(NSString *format, ...) {
 
     void (^listFolderLongpoll)(NSString *) = ^(NSString *cursor) {
         [TestFormat printOffset:@"Establishing longpoll"];
-        [[[_tester.files listFolderLongpoll:cursor] response:^(DbxFilesListFolderLongpollResult *result, DbxFilesListFolderLongpollError *routeError, DbxError *error) {
+        [[[_tester.files listFolderLongpoll:cursor] response:^(DBXFILESListFolderLongpollResult *result, DBXFILESListFolderLongpollError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if (result.changes) {
@@ -516,7 +516,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     [TestFormat printOffset:@"Acquring cursor"];
-    [[[_tester.files listFolderGetLatestCursor:_tester.testData.testFolderPath] response:^(DbxFilesListFolderGetLatestCursorResult *result, DbxFilesListFolderError *routeError, DbxError *error) {
+    [[[_tester.files listFolderGetLatestCursor:_tester.testData.testFolderPath] response:^(DBXFILESListFolderGetLatestCursorResult *result, DBXFILESListFolderError *routeError, DBXError *error) {
         if (result) {
             [TestFormat printOffset:@"Cursor acquired"];
             MyLog(@"%@\n", result);
@@ -546,7 +546,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)shareFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing shareFolder:_tester.testData.testShareFolderPath] response:^(DbxSharingShareFolderLaunch *result, DbxSharingShareFolderError *routeError, DbxError *error) {
+    [[[_tester.sharing shareFolder:_tester.testData.testShareFolderPath] response:^(DBXSHARINGShareFolderLaunch *result, DBXSHARINGShareFolderError *routeError, DBXError *error) {
         if (result) {
             if ([result isAsyncJobId]) {
                 [TestFormat printOffset:[NSString stringWithFormat:@"Folder not yet shared! Job id: %@. Please adjust test order.", result.asyncJobId]];
@@ -569,7 +569,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)createSharedLinkWithSettings:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath] response:^(DbxSharingSharedLinkMetadata *result, DbxSharingCreateSharedLinkWithSettingsError *routeError, DbxError *error) {
+    [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath] response:^(DBXSHARINGSharedLinkMetadata *result, DBXSHARINGCreateSharedLinkWithSettingsError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             _sharedLink = result.url;
@@ -585,7 +585,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getFolderMetadata:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing getFolderMetadata:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingSharedFolderAccessError *routeError, DbxError *error) {
+    [[[_tester.sharing getFolderMetadata:_sharedFolderId] response:^(DBXSHARINGSharedFolderMetadata *result, DBXSHARINGSharedFolderAccessError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -600,7 +600,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getSharedLinkMetadata:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing getSharedLinkMetadata:_sharedLink] response:^(DbxSharingSharedLinkMetadata *result, DbxSharingSharedLinkError *routeError, DbxError *error) {
+    [[[_tester.sharing getSharedLinkMetadata:_sharedLink] response:^(DBXSHARINGSharedLinkMetadata *result, DBXSHARINGSharedLinkError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -615,9 +615,9 @@ void MyLog(NSString *format, ...) {
 
 - (void)addFolderMember:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxSharingMemberSelector *memberSelector = [[DbxSharingMemberSelector alloc] initWithEmail:_tester.testData.accountId3Email];
-    DbxSharingAddMember *addFolderMemberArg = [[DbxSharingAddMember alloc] initWithMember:memberSelector];
-    [[[_tester.sharing addFolderMember:_sharedFolderId members:@[addFolderMemberArg] quiet:[NSNumber numberWithBool:YES] customMessage:nil] response:^(DbxNilObject *result, DbxSharingAddFolderMemberError *routeError, DbxError *error) {
+    DBXSHARINGMemberSelector *memberSelector = [[DBXSHARINGMemberSelector alloc] initWithEmail:_tester.testData.accountId3Email];
+    DBXSHARINGAddMember *addFolderMemberArg = [[DBXSHARINGAddMember alloc] initWithMember:memberSelector];
+    [[[_tester.sharing addFolderMember:_sharedFolderId members:@[addFolderMemberArg] quiet:[NSNumber numberWithBool:YES] customMessage:nil] response:^(DBXNilObject *result, DBXSHARINGAddFolderMemberError *routeError, DBXError *error) {
         if (!error) {
             [TestFormat printOffset:@"Folder member added"];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -632,7 +632,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolderMembers:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing listFolderMembers:_sharedFolderId] response:^(DbxSharingSharedFolderMembers *result, DbxSharingSharedFolderAccessError *routeError, DbxError *error) {
+    [[[_tester.sharing listFolderMembers:_sharedFolderId] response:^(DBXSHARINGSharedFolderMembers *result, DBXSHARINGSharedFolderAccessError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -647,7 +647,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolders:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing listFolders:[NSNumber numberWithInteger:2] actions:nil] response:^(DbxSharingListFoldersResult *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.sharing listFolders:[NSNumber numberWithInteger:2] actions:nil] response:^(DBXSHARINGListFoldersResult *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -662,7 +662,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listSharedLinks:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing listSharedLinks] response:^(DbxSharingListSharedLinksResult *result, DbxSharingListSharedLinksError *routeError, DbxError *error) {
+    [[[_tester.sharing listSharedLinks] response:^(DBXSHARINGListSharedLinksResult *result, DBXSHARINGListSharedLinksError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -677,11 +677,11 @@ void MyLog(NSString *format, ...) {
 
 - (void)removeFolderMember:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxSharingMemberSelector *memberSelector = [[DbxSharingMemberSelector alloc] initWithDropboxId:_tester.testData.accountId3];
+    DBXSHARINGMemberSelector *memberSelector = [[DBXSHARINGMemberSelector alloc] initWithDropboxId:_tester.testData.accountId3];
     
 
     void (^checkJobStatus)(NSString *) = ^(NSString *asyncJobId) {
-        [[[_tester.sharing checkJobStatus:asyncJobId] response:^(DbxSharingJobStatus *result, DbxAsyncPollError *routeError, DbxError *error) {
+        [[[_tester.sharing checkJobStatus:asyncJobId] response:^(DBXSHARINGJobStatus *result, DBXASYNCPollError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if ([result isInProgress]) {
@@ -700,7 +700,7 @@ void MyLog(NSString *format, ...) {
         }];
     };
     
-    [[[_tester.sharing removeFolderMember:_sharedFolderId member:memberSelector leaveACopy:[NSNumber numberWithBool:NO]] response:^(DbxAsyncLaunchResultBase *result, DbxSharingRemoveFolderMemberError *routeError, DbxError *error) {
+    [[[_tester.sharing removeFolderMember:_sharedFolderId member:memberSelector leaveACopy:[NSNumber numberWithBool:NO]] response:^(DBXASYNCLaunchResultBase *result, DBXSHARINGRemoveFolderMemberError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             if ([result isAsyncJobId]) {
@@ -726,7 +726,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)revokeSharedLink:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing revokeSharedLink:_sharedLink] response:^(DbxNilObject *result, DbxSharingRevokeSharedLinkError *routeError, DbxError *error) {
+    [[[_tester.sharing revokeSharedLink:_sharedLink] response:^(DBXNilObject *result, DBXSHARINGRevokeSharedLinkError *routeError, DBXError *error) {
         if (!routeError) {
             [TestFormat printOffset:@"Shared link revoked"];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -741,7 +741,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)unmountFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing unmountFolder:_sharedFolderId] response:^(DbxNilObject *result, DbxSharingUnmountFolderError *routeError, DbxError *error) {
+    [[[_tester.sharing unmountFolder:_sharedFolderId] response:^(DBXNilObject *result, DBXSHARINGUnmountFolderError *routeError, DBXError *error) {
         if (!routeError) {
             [TestFormat printOffset:@"Folder unmounted"];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -756,7 +756,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)mountFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing mountFolder:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingMountFolderError *routeError, DbxError *error) {
+    [[[_tester.sharing mountFolder:_sharedFolderId] response:^(DBXSHARINGSharedFolderMetadata *result, DBXSHARINGMountFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -771,7 +771,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)updateFolderPolicy:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing updateFolderPolicy:_sharedFolderId] response:^(DbxSharingSharedFolderMetadata *result, DbxSharingUpdateFolderPolicyError *routeError, DbxError *error) {
+    [[[_tester.sharing updateFolderPolicy:_sharedFolderId] response:^(DBXSHARINGSharedFolderMetadata *result, DBXSHARINGUpdateFolderPolicyError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -786,7 +786,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)unshareFolder:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.sharing unshareFolder:_sharedFolderId] response:^(DbxAsyncLaunchEmptyResult *result, DbxSharingUnshareFolderError *routeError, DbxError *error) {
+    [[[_tester.sharing unshareFolder:_sharedFolderId] response:^(DBXASYNCLaunchEmptyResult *result, DBXSHARINGUnshareFolderError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -814,7 +814,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getAccount:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.users getAccount:_tester.testData.accountId] response:^(DbxUsersBasicAccount *result, DbxUsersGetAccountError *routeError, DbxError *error) {
+    [[[_tester.users getAccount:_tester.testData.accountId] response:^(DBXUSERSBasicAccount *result, DBXUSERSGetAccountError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -830,7 +830,7 @@ void MyLog(NSString *format, ...) {
 - (void)getAccountBatch:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSArray<NSString *> *accountIds = @[_tester.testData.accountId, _tester.testData.accountId2];
-    [[[_tester.users getAccountBatch:accountIds] response:^(NSArray<DbxUsersBasicAccount *> *result, DbxUsersGetAccountBatchError *routeError, DbxError *error) {
+    [[[_tester.users getAccountBatch:accountIds] response:^(NSArray<DBXUSERSBasicAccount *> *result, DBXUSERSGetAccountBatchError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -845,7 +845,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getCurrentAccount:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.users getCurrentAccount] response:^(DbxUsersFullAccount *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.users getCurrentAccount] response:^(DBXUSERSFullAccount *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -860,7 +860,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getSpaceUsage:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.users getSpaceUsage] response:^(DbxUsersSpaceUsage *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.users getSpaceUsage] response:^(DBXUSERSSpaceUsage *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -877,7 +877,7 @@ void MyLog(NSString *format, ...) {
 
 
 /**
-    Dropbox Team API Endpoint Tests
+    Dropbox TEAM API Endpoint Tests
  */
 
 
@@ -893,17 +893,17 @@ void MyLog(NSString *format, ...) {
 
 
 /**
-    Permission: Team member file access
+    Permission: TEAM member file access
  */
 
 
 - (void)initMembersGetInfo:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberEmail];
-    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DbxTeamMembersGetInfoItem *> *result, DbxTeamMembersGetInfoError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberEmail];
+    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DBXTEAMMembersGetInfoItem *> *result, DBXTEAMMembersGetInfoError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
-            DbxTeamMembersGetInfoItem *getInfo = result[0];
+            DBXTEAMMembersGetInfoItem *getInfo = result[0];
             if ([getInfo isIdNotFound]) {
                 [TestFormat abort:error routeError:routeError];
             } else if ([getInfo isMemberInfo]) {
@@ -922,7 +922,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listMemberDevices:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team devicesListMemberDevices:_teamMemberId] response:^(DbxTeamListMemberDevicesResult *result, DbxTeamListMemberDevicesError *routeError, DbxError *error) {
+    [[[_tester.team devicesListMemberDevices:_teamMemberId] response:^(DBXTEAMListMemberDevicesResult *result, DBXTEAMListMemberDevicesError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -937,7 +937,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)listMembersDevices:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team devicesListMembersDevices] response:^(DbxTeamListMembersDevicesResult *result, DbxTeamListMembersDevicesError *routeError, DbxError *error) {
+    [[[_tester.team devicesListMembersDevices] response:^(DBXTEAMListMembersDevicesResult *result, DBXTEAMListMembersDevicesError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -952,7 +952,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)linkedAppsListMemberLinkedApps:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team linkedAppsListMemberLinkedApps:_teamMemberId] response:^(DbxTeamListMemberAppsResult *result, DbxTeamListMemberAppsError *routeError, DbxError *error) {
+    [[[_tester.team linkedAppsListMemberLinkedApps:_teamMemberId] response:^(DBXTEAMListMemberAppsResult *result, DBXTEAMListMemberAppsError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -967,7 +967,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)linkedAppsListMembersLinkedApps:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team linkedAppsListMembersLinkedApps] response:^(DbxTeamListMembersAppsResult *result, DbxTeamListMembersAppsError *routeError, DbxError *error) {
+    [[[_tester.team linkedAppsListMembersLinkedApps] response:^(DBXTEAMListMembersAppsResult *result, DBXTEAMListMembersAppsError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -982,7 +982,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getInfo:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team getInfo] response:^(DbxTeamTeamGetInfoResult *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.team getInfo] response:^(DBXTEAMTeamGetInfoResult *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -999,7 +999,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetActivity:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetActivityReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+    [[[_tester.team reportsGetActivity:twoDaysAgo endDate:[NSDate new]] response:^(DBXTEAMGetActivityReport *result, DBXTEAMDateRangeError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1016,7 +1016,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetDevices:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetDevicesReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+    [[[_tester.team reportsGetDevices:twoDaysAgo endDate:[NSDate new]] response:^(DBXTEAMGetDevicesReport *result, DBXTEAMDateRangeError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1033,7 +1033,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetMembership:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetMembershipReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+    [[[_tester.team reportsGetMembership:twoDaysAgo endDate:[NSDate new]] response:^(DBXTEAMGetMembershipReport *result, DBXTEAMDateRangeError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1050,7 +1050,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value: -2 toDate:[NSDate new] options:0];
-    [[[_tester.team reportsGetStorage:twoDaysAgo endDate:[NSDate new]] response:^(DbxTeamGetStorageReport *result, DbxTeamDateRangeError *routeError, DbxError *error) {
+    [[[_tester.team reportsGetStorage:twoDaysAgo endDate:[NSDate new]] response:^(DBXTEAMGetStorageReport *result, DBXTEAMDateRangeError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1065,13 +1065,13 @@ void MyLog(NSString *format, ...) {
 
 
 /**
-    Permission: Team member management
+    Permission: TEAM member management
  */
 
 
 - (void)groupsCreate:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team groupsCreate:_tester.testData.groupName groupExternalId:_tester.testData.groupExternalId groupManagementType:nil] response:^(DbxTeamGroupFullInfo *result, DbxTeamGroupCreateError *routeError, DbxError *error) {
+    [[[_tester.team groupsCreate:_tester.testData.groupName groupExternalId:_tester.testData.groupExternalId groupManagementType:nil] response:^(DBXTEAMGroupFullInfo *result, DBXTEAMGroupCreateError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1086,8 +1086,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsGetInfo:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamGroupsSelector *groupsSelector = [[DbxTeamGroupsSelector alloc] initWithGroupExternalIds:@[_tester.testData.groupExternalId]];
-    [[[_tester.team groupsGetInfo:groupsSelector] response:^(NSArray<DbxTeamGroupsGetInfoItem *> *result, DbxTeamGroupsGetInfoError *routeError, DbxError *error) {
+    DBXTEAMGroupsSelector *groupsSelector = [[DBXTEAMGroupsSelector alloc] initWithGroupExternalIds:@[_tester.testData.groupExternalId]];
+    [[[_tester.team groupsGetInfo:groupsSelector] response:^(NSArray<DBXTEAMGroupsGetInfoItem *> *result, DBXTEAMGroupsGetInfoError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1102,7 +1102,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsList:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team groupsList] response:^(DbxTeamGroupsListResult *result, DbxNilObject *routeError, DbxError *error) {
+    [[[_tester.team groupsList] response:^(DBXTEAMGroupsListResult *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1117,11 +1117,11 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsMembersAdd:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
-    DbxTeamUserSelectorArg *userSelectorArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
-    DbxTeamGroupAccessType *accessType = [[DbxTeamGroupAccessType alloc] initWithMember];
-    DbxTeamMemberAccess *memberAccess = [[DbxTeamMemberAccess alloc] initWithUser:userSelectorArg accessType:accessType];
-    [[[_tester.team groupsMembersAdd:groupSelector members:@[memberAccess]] response:^(DbxTeamGroupMembersChangeResult *result, DbxTeamGroupMembersAddError *routeError, DbxError *error) {
+    DBXTEAMGroupSelector *groupSelector = [[DBXTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    DBXTEAMUserSelectorArg *userSelectorArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    DBXTEAMGroupAccessType *accessType = [[DBXTEAMGroupAccessType alloc] initWithMember];
+    DBXTEAMMemberAccess *memberAccess = [[DBXTEAMMemberAccess alloc] initWithUser:userSelectorArg accessType:accessType];
+    [[[_tester.team groupsMembersAdd:groupSelector members:@[memberAccess]] response:^(DBXTEAMGroupMembersChangeResult *result, DBXTEAMGroupMembersAddError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1136,8 +1136,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsMembersList:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
-    [[[_tester.team groupsMembersList:groupSelector] response:^(DbxTeamGroupsMembersListResult *result, DbxTeamGroupSelectorError *routeError, DbxError *error) {
+    DBXTEAMGroupSelector *groupSelector = [[DBXTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsMembersList:groupSelector] response:^(DBXTEAMGroupsMembersListResult *result, DBXTEAMGroupSelectorError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1152,8 +1152,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsUpdate:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
-    [[[_tester.team groupsUpdate:groupSelector returnMembers:nil dNewGroupName:@"New Group Name" dNewGroupExternalId:nil dNewGroupManagementType:nil] response:^(DbxTeamGroupFullInfo *result, DbxTeamGroupUpdateError *routeError, DbxError *error) {
+    DBXTEAMGroupSelector *groupSelector = [[DBXTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsUpdate:groupSelector returnMembers:nil dNewGroupName:@"New Group Name" dNewGroupExternalId:nil dNewGroupManagementType:nil] response:^(DBXTEAMGroupFullInfo *result, DBXTEAMGroupUpdateError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1170,7 +1170,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-        [[[_tester.team groupsJobStatusGet:jobId] response:^(DbxAsyncPollEmptyResult *result, DbxTeamGroupsPollError *routeError, DbxError *error) {
+        [[[_tester.team groupsJobStatusGet:jobId] response:^(DBXASYNCPollEmptyResult *result, DBXTEAMGroupsPollError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if ([result isInProgress]) {
@@ -1188,8 +1188,8 @@ void MyLog(NSString *format, ...) {
         }];
     };
 
-    DbxTeamGroupSelector *groupSelector = [[DbxTeamGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
-    [[[_tester.team groupsDelete:groupSelector] response:^(DbxAsyncLaunchEmptyResult *result, DbxTeamGroupDeleteError *routeError, DbxError *error) {
+    DBXTEAMGroupSelector *groupSelector = [[DBXTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
+    [[[_tester.team groupsDelete:groupSelector] response:^(DBXASYNCLaunchEmptyResult *result, DBXTEAMGroupDeleteError *routeError, DBXError *error) {
         if (result) {
             if ([result isAsyncJobId]) {
                 [TestFormat printOffset:@"Waiting for deletion..."];
@@ -1212,13 +1212,13 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-        [[[_tester.team membersAddJobStatusGet:jobId] response:^(DbxTeamMembersAddJobStatus *result, DbxAsyncPollError *routeError, DbxError *error) {
+        [[[_tester.team membersAddJobStatusGet:jobId] response:^(DBXTEAMMembersAddJobStatus *result, DBXASYNCPollError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if ([result isInProgress]) {
                     [TestFormat abort:error routeError:routeError];
                 } else if ([result isComplete]) {
-                    DbxTeamMemberAddResult *addResult = result.complete[0];
+                    DBXTEAMMemberAddResult *addResult = result.complete[0];
                     if ([addResult isSuccess]) {
                         _teamMemberId2 = addResult.success.profile.teamMemberId;
                     } else {
@@ -1236,14 +1236,14 @@ void MyLog(NSString *format, ...) {
         }];
     };
     
-    DbxTeamMemberAddArg *memberAddArg = [[DbxTeamMemberAddArg alloc] initWithMemberEmail:_tester.testData.teamMemberNewEmail memberGivenName:@"FirstName" memberSurname:@"LastName"];
-    [[[_tester.team membersAdd:@[memberAddArg]] response:^(DbxTeamMembersAddLaunch *result, DbxNilObject *routeError, DbxError *error) {
+    DBXTEAMMemberAddArg *memberAddArg = [[DBXTEAMMemberAddArg alloc] initWithMemberEmail:_tester.testData.teamMemberNewEmail memberGivenName:@"FirstName" memberSurname:@"LastName"];
+    [[[_tester.team membersAdd:@[memberAddArg]] response:^(DBXTEAMMembersAddLaunch *result, DBXNilObject *routeError, DBXError *error) {
         if (result) {
             if ([result isAsyncJobId]) {
                 [TestFormat printOffset:@"Result incomplete..."];
                 jobStatus(result.asyncJobId);
             } else if ([result isComplete]) {
-                DbxTeamMemberAddResult *addResult = result.complete[0];
+                DBXTEAMMemberAddResult *addResult = result.complete[0];
                 if ([addResult isSuccess]) {
                     _teamMemberId2 = addResult.success.profile.teamMemberId;
                 } else {
@@ -1263,8 +1263,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersGetInfo:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
-    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DbxTeamMembersGetInfoItem *> *result, DbxTeamMembersGetInfoError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    [[[_tester.team membersGetInfo:@[userSelectArg]] response:^(NSArray<DBXTEAMMembersGetInfoItem *> *result, DBXTEAMMembersGetInfoError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1279,7 +1279,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersList:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    [[[_tester.team membersList:[NSNumber numberWithInt:2] includeRemoved:nil] response:^(DbxTeamMembersListResult *result, DbxTeamMembersListError *routeError, DbxError *error) {
+    [[[_tester.team membersList:[NSNumber numberWithInt:2] includeRemoved:nil] response:^(DBXTEAMMembersListResult *result, DBXTEAMMembersListError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1294,8 +1294,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersSendWelcomeEmail:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
-    [[[_tester.team membersSendWelcomeEmail:userSelectArg] response:^(DbxNilObject *result, DbxTeamMembersSendWelcomeError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
+    [[[_tester.team membersSendWelcomeEmail:userSelectArg] response:^(DBXNilObject *result, DBXTEAMMembersSendWelcomeError *routeError, DBXError *error) {
         if (!error) {
             [TestFormat printOffset:@"Welcome email sent!"];
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1310,9 +1310,9 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersSetAdminPermissions:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
-    DbxTeamAdminTier *dNewRole = [[DbxTeamAdminTier alloc] initWithTeamAdmin];
-    [[[_tester.team membersSetAdminPermissions:userSelectArg dNewRole:dNewRole] response:^(DbxTeamMembersSetPermissionsResult *result, DbxTeamMembersSetPermissionsError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    DBXTEAMAdminTier *dNewRole = [[DBXTEAMAdminTier alloc] initWithTeamAdmin];
+    [[[_tester.team membersSetAdminPermissions:userSelectArg dNewRole:dNewRole] response:^(DBXTEAMMembersSetPermissionsResult *result, DBXTEAMMembersSetPermissionsError *routeError, DBXError *error) {
         if (result) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1327,8 +1327,8 @@ void MyLog(NSString *format, ...) {
 
 - (void)membersSetProfile:(void (^)())nextTest {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
-    [[[_tester.team membersSetProfile:userSelectArg dNewEmail:nil dNewExternalId:nil dNewGivenName:@"NewFirstName" dNewSurname:nil] response:^(DbxTeamTeamMemberInfo *result, DbxTeamMembersSetProfileError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    [[[_tester.team membersSetProfile:userSelectArg dNewEmail:nil dNewExternalId:nil dNewGivenName:@"NewFirstName" dNewSurname:nil] response:^(DBXTEAMTeamMemberInfo *result, DBXTEAMMembersSetProfileError *routeError, DBXError *error) {
         if (!error) {
             MyLog(@"%@\n", result);
             [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1345,7 +1345,7 @@ void MyLog(NSString *format, ...) {
     [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
     
     void (^jobStatus)(NSString *) = ^(NSString *jobId) {
-        [[[_tester.team membersRemoveJobStatusGet:jobId] response:^(DbxAsyncPollEmptyResult *result, DbxAsyncPollError *routeError, DbxError *error) {
+        [[[_tester.team membersRemoveJobStatusGet:jobId] response:^(DBXASYNCPollEmptyResult *result, DBXASYNCPollError *routeError, DBXError *error) {
             if (result) {
                 MyLog(@"%@\n", result);
                 if ([result isInProgress]) {
@@ -1363,8 +1363,8 @@ void MyLog(NSString *format, ...) {
         }];
     };
     
-    DbxTeamUserSelectorArg *userSelectArg = [[DbxTeamUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
-    [[[_tester.team membersRemove:userSelectArg] response:^(DbxAsyncLaunchEmptyResult *result, DbxTeamMembersRemoveError *routeError, DbxError *error) {
+    DBXTEAMUserSelectorArg *userSelectArg = [[DBXTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
+    [[[_tester.team membersRemove:userSelectArg] response:^(DBXASYNCLaunchEmptyResult *result, DBXTEAMMembersRemoveError *routeError, DBXError *error) {
         if (result) {
             if ([result isAsyncJobId]) {
                 [TestFormat printOffset:@"Result incomplete. Waiting to query status..."];
@@ -1390,13 +1390,13 @@ static int smallDividerSize = 150;
 
 @implementation TestFormat
 
-+ (void)abort:(DbxError *)error routeError:(id)routeError {
++ (void)abort:(DBXError *)error routeError:(id)routeError {
     [self printErrors:error routeError:routeError];
     MyLog(@"Terminating....\n");
     exit(0);
 }
 
-+ (void)printErrors:(DbxError *)error routeError:(id)routeError {
++ (void)printErrors:(DBXError *)error routeError:(id)routeError {
     MyLog(@"ERROR: %@\n", error);
     MyLog(@"ROUTE_ERROR: %@\n", routeError);
 }

@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesDimensions;
+@class DBXFILESDimensions;
 
 /// 
-/// The `DbxFilesDimensions` struct.
+/// The `DBXFILESDimensions` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Dimensions for a photo or video.
 /// 
-@interface DbxFilesDimensions : NSObject <DbxSerializable> 
+@interface DBXFILESDimensions : NSObject <DBXSerializable> 
 
 /// Height of the photo/video.
 @property (nonatomic, copy) NSNumber * _Nonnull height;
@@ -28,23 +28,23 @@
 /// variables).
 - (nonnull instancetype)initWithHeight:(NSNumber * _Nonnull)height width:(NSNumber * _Nonnull)width;
 
-/// Returns a human-readable representation of the `DbxFilesDimensions` object.
+/// Returns a human-readable representation of the `DBXFILESDimensions` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesDimensions` struct.
+/// The serialization class for the `DBXFILESDimensions` struct.
 /// 
-@interface DbxFilesDimensionsSerializer : NSObject 
+@interface DBXFILESDimensionsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesDimensions` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesDimensions * _Nonnull)obj;
+/// `DBXFILESDimensions` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDimensions * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesDimensions` object from a
+/// Returns an instantiation of the `DBXFILESDimensions` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesDimensions * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESDimensions * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

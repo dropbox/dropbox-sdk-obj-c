@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamStorageBucket;
+@class DBXTEAMStorageBucket;
 
 /// 
-/// The `DbxTeamStorageBucket` struct.
+/// The `DBXTEAMStorageBucket` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Describes the number of users in a specific storage bucket.
 /// 
-@interface DbxTeamStorageBucket : NSObject <DbxSerializable> 
+@interface DBXTEAMStorageBucket : NSObject <DBXSerializable> 
 
 /// The name of the storage bucket. For example, '1G' is a bucket of users with
 /// storage size up to 1 Giga.
@@ -29,7 +29,7 @@
 /// variables).
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
 
-/// Returns a human-readable representation of the `DbxTeamStorageBucket`
+/// Returns a human-readable representation of the `DBXTEAMStorageBucket`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -37,16 +37,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamStorageBucket` struct.
+/// The serialization class for the `DBXTEAMStorageBucket` struct.
 /// 
-@interface DbxTeamStorageBucketSerializer : NSObject 
+@interface DBXTEAMStorageBucketSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamStorageBucket` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamStorageBucket * _Nonnull)obj;
+/// `DBXTEAMStorageBucket` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMStorageBucket * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamStorageBucket` object from a
+/// Returns an instantiation of the `DBXTEAMStorageBucket` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamStorageBucket * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMStorageBucket * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

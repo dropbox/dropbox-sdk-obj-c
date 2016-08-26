@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingUnmountFolderArg;
+@class DBXSHARINGUnmountFolderArg;
 
 /// 
-/// The `DbxSharingUnmountFolderArg` struct.
+/// The `DBXSHARINGUnmountFolderArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingUnmountFolderArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGUnmountFolderArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
@@ -23,7 +23,7 @@
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
-/// Returns a human-readable representation of the `DbxSharingUnmountFolderArg`
+/// Returns a human-readable representation of the `DBXSHARINGUnmountFolderArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -31,16 +31,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingUnmountFolderArg` struct.
+/// The serialization class for the `DBXSHARINGUnmountFolderArg` struct.
 /// 
-@interface DbxSharingUnmountFolderArgSerializer : NSObject 
+@interface DBXSHARINGUnmountFolderArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUnmountFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUnmountFolderArg * _Nonnull)obj;
+/// `DBXSHARINGUnmountFolderArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnmountFolderArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUnmountFolderArg` object from a
+/// Returns an instantiation of the `DBXSHARINGUnmountFolderArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingUnmountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUnmountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxAsyncPollArg;
+@class DBXASYNCPollArg;
 
 /// 
-/// The `DbxAsyncPollArg` struct.
+/// The `DBXASYNCPollArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for methods that poll the status of an asynchronous job.
 /// 
-@interface DbxAsyncPollArg : NSObject <DbxSerializable> 
+@interface DBXASYNCPollArg : NSObject <DBXSerializable> 
 
 /// Id of the asynchronous job. This is the value of a response returned from
 /// the method that launched the job.
@@ -25,23 +25,23 @@
 /// Full constructor for the `PollArg` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
-/// Returns a human-readable representation of the `DbxAsyncPollArg` object.
+/// Returns a human-readable representation of the `DBXASYNCPollArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxAsyncPollArg` struct.
+/// The serialization class for the `DBXASYNCPollArg` struct.
 /// 
-@interface DbxAsyncPollArgSerializer : NSObject 
+@interface DBXASYNCPollArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DbxAsyncPollArg`
+/// Returns a json-compatible dictionary representation of the `DBXASYNCPollArg`
 /// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxAsyncPollArg * _Nonnull)obj;
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxAsyncPollArg` object from a
+/// Returns an instantiation of the `DBXASYNCPollArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxAsyncPollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXASYNCPollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

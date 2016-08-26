@@ -3,53 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookupError;
-@class DbxFilesRestoreError;
-@class DbxFilesWriteError;
+@class DBXFILESLookupError;
+@class DBXFILESRestoreError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesRestoreError` union.
+/// The `DBXFILESRestoreError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesRestoreError : NSObject <DbxSerializable> 
+@interface DBXFILESRestoreError : NSObject <DBXSerializable> 
 
-/// The `FilesRestoreErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesRestoreError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesRestoreErrorTag) {
+/// The `DBXFILESRestoreErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESRestoreError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESRestoreErrorTag) {
     /// An error occurs when downloading metadata for the file.
-    FilesRestoreErrorPathLookup,
+    DBXFILESRestoreErrorPathLookup,
 
     /// An error occurs when trying to restore the file to that path.
-    FilesRestoreErrorPathWrite,
+    DBXFILESRestoreErrorPathWrite,
 
     /// The revision is invalid. It may point to a different file.
-    FilesRestoreErrorInvalidRevision,
+    DBXFILESRestoreErrorInvalidRevision,
 
     /// (no description).
-    FilesRestoreErrorOther,
+    DBXFILESRestoreErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesRestoreErrorTag tag;
+@property (nonatomic) DBXFILESRestoreErrorTag tag;
 
 /// An error occurs when downloading metadata for the file.
-@property (nonatomic) DbxFilesLookupError * _Nonnull pathLookup;
+@property (nonatomic) DBXFILESLookupError * _Nonnull pathLookup;
 
 /// An error occurs when trying to restore the file to that path.
-@property (nonatomic) DbxFilesWriteError * _Nonnull pathWrite;
-
+@property (nonatomic) DBXFILESWriteError * _Nonnull pathWrite;
 
 /// Initializes union class with tag state of `PathLookup`.
-- (nonnull instancetype)initWithPathLookup:(DbxFilesLookupError * _Nonnull)pathLookup;
+- (nonnull instancetype)initWithPathLookup:(DBXFILESLookupError * _Nonnull)pathLookup;
 
 /// Initializes union class with tag state of `PathWrite`.
-- (nonnull instancetype)initWithPathWrite:(DbxFilesWriteError * _Nonnull)pathWrite;
+- (nonnull instancetype)initWithPathWrite:(DBXFILESWriteError * _Nonnull)pathWrite;
 
 /// Initializes union class with tag state of `InvalidRevision`.
 - (nonnull instancetype)initWithInvalidRevision;
@@ -72,7 +71,7 @@ typedef NS_ENUM(NSInteger, FilesRestoreErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesRestoreError`
+/// Returns a human-readable representation of the `DBXFILESRestoreError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -80,16 +79,16 @@ typedef NS_ENUM(NSInteger, FilesRestoreErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesRestoreError` union.
+/// The serialization class for the `DBXFILESRestoreError` union.
 /// 
-@interface DbxFilesRestoreErrorSerializer : NSObject 
+@interface DBXFILESRestoreErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesRestoreError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesRestoreError * _Nonnull)obj;
+/// `DBXFILESRestoreError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRestoreError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesRestoreError` object from a
+/// Returns an instantiation of the `DBXFILESRestoreError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesRestoreError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESRestoreError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

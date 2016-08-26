@@ -1,36 +1,29 @@
-#import "DbxOAuth.h"
-#import "DbxOAuthResult.h"
+#import "DBXOAuth.h"
+#import "DBXOAuthResult.h"
 
-@implementation DbxOAuthResult
+@implementation DBXOAuthResult
 
 static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 
-+ (DbxAuthErrorType)getErrorType:(NSString *) errorDescription {
++ (DBXAuthErrorType)getErrorType:(NSString *) errorDescription {
     if (!errorTypeLookup) {
         errorTypeLookup = @{
-            @"unauthorized_client": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthUnauthorizedClient],
-            @"access_denied": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthAccessDenied],
-            @"unsupported_response_type": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthUnsupportedResponseType],
-            @"invalid_scope": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthInvalidScope],
-            @"server_error": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthServerError],
-            @"temporarily_unavailable": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthTemporarilyUnavailable],
-            @"": [NSNumber numberWithInt:(DbxAuthErrorType)DbxAuthUnknown],
+            @"unauthorized_client": [NSNumber numberWithInt:DBXAuthUnauthorizedClient],
+            @"access_denied": [NSNumber numberWithInt:DBXAuthAccessDenied],
+            @"unsupported_response_type": [NSNumber numberWithInt:DBXAuthUnsupportedResponseType],
+            @"invalid_scope": [NSNumber numberWithInt:DBXAuthInvalidScope],
+            @"server_error": [NSNumber numberWithInt:DBXAuthServerError],
+            @"temporarily_unavailable": [NSNumber numberWithInt:DBXAuthTemporarilyUnavailable],
+            @"": [NSNumber numberWithInt:DBXAuthUnknown],
         };
     }
-
-    NSNumber *result = errorTypeLookup[errorDescription];
-    
-    if (!result) {
-        return (DbxAuthErrorType)DbxAuthUnknown;
-    }
-    
-    return (DbxAuthErrorType)result;
+    return (DBXAuthErrorType)errorTypeLookup[errorDescription] ?: DBXAuthUnknown;
 }
 
-- (nonnull instancetype)initWithSuccess:(DbxAccessToken *)accessToken {
+- (nonnull instancetype)initWithSuccess:(DBXAccessToken *)accessToken {
     self = [super init];
     if (self) {
-        _tag = (DbxAuthResultTag)DbxAuthSuccess;
+        _tag = DBXAuthSuccess;
         _accessToken = accessToken;
     }
     return self;
@@ -39,7 +32,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 - (nonnull instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription {
     self = [super init];
     if (self) {
-        _tag = (DbxAuthResultTag)DbxAuthError;
+        _tag = DBXAuthError;
         _errorType = [[self class] getErrorType:errorType];
         _errorDescription = errorDescription;
     }
@@ -49,70 +42,68 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 - (nonnull instancetype)initWithCancel {
     self = [super init];
     if (self) {
-        _tag = (DbxAuthResultTag)DbxAuthCancel;
+        _tag = DBXAuthCancel;
     }
     return self;
 }
 
 - (BOOL)isSuccess {
-    return _tag == (DbxAuthResultTag)DbxAuthSuccess;
+    return _tag == DBXAuthSuccess;
 }
 
 - (BOOL)isError {
-    return _tag == (DbxAuthResultTag)DbxAuthError;
+    return _tag == DBXAuthError;
 }
 
 - (BOOL)isCancel {
-    return _tag == (DbxAuthResultTag)DbxAuthCancel;
+    return _tag == DBXAuthCancel;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (DbxAuthResultTag)DbxAuthSuccess) {
-        return @"(DbxAuthResultTag)DbxAuthSuccess";
-    }
-    if (_tag == (DbxAuthResultTag)DbxAuthError) {
-        return @"(DbxAuthResultTag)DbxAuthError";
-    }
-    if (_tag == (DbxAuthResultTag)DbxAuthCancel) {
-        return @"(DbxAuthResultTag)DbxAuthCancel";
+    switch (_tag) {
+        case DBXAuthSuccess:
+            return @"DBXAuthSuccess";
+        case DBXAuthError:
+            return @"DBXAuthError";
+        case DBXAuthCancel:
+            return @"DBXAuthCancel";
     }
     
-    @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-- (DbxAccessToken *)accessToken {
-    if (_tag != (DbxAuthResultTag)DbxAuthSuccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (DbxAuthResultTag)DbxAuthSuccess, but was %@.", [self getTagName]];
+- (DBXAccessToken *)accessToken {
+    if (_tag != DBXAuthSuccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthSuccess`, but was %@.", [self getTagName]];
     }
     return _accessToken;
 }
 
 - (NSString *)errorMessage {
-    if (_tag != (DbxAuthResultTag)DbxAuthError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (DbxAuthResultTag)DbxAuthError, but was %@.", [self getTagName]];
+    if (_tag != DBXAuthError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthError`, but was %@.", [self getTagName]];
     }
     return _errorDescription;
 }
 
-- (DbxAuthErrorType)errorType {
-    if (_tag != (DbxAuthResultTag)DbxAuthError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (DbxAuthResultTag)DbxAuthError, but was %@.", [self getTagName]];
+- (DBXAuthErrorType)errorType {
+    if (_tag != DBXAuthError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthError`, but was %@.", [self getTagName]];
     }
     return _errorType;
 }
 
 - (NSString *)description {
-    if (_tag == (DbxAuthResultTag)DbxAuthSuccess) {
-        return [NSString stringWithFormat:@"Success:[Token: %@]", _accessToken.accessToken];
-    }
-    if (_tag == (DbxAuthResultTag)DbxAuthError) {
-        return [NSString stringWithFormat:@"Error:[ErrorType: %ld ErrorDescription: %@]", (long)_errorType, _errorDescription];
-    }
-    if (_tag == (DbxAuthResultTag)DbxAuthCancel) {
-        return [NSString stringWithFormat:@"Cancel:[]"];
+    switch (_tag) {
+        case DBXAuthSuccess:
+            return [NSString stringWithFormat:@"Success:[Token: %@]", _accessToken.accessToken];
+        case DBXAuthError:
+            return [NSString stringWithFormat:@"Error:[ErrorType: %ld ErrorDescription: %@]", (long)_errorType, _errorDescription];
+        case DBXAuthCancel:
+            return [NSString stringWithFormat:@"Cancel:[]"];
     }
     
-    @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
 @end

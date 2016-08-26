@@ -3,42 +3,42 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFileAction;
-@class DbxSharingFilePermission;
-@class DbxSharingPermissionDeniedReason;
+@class DBXSHARINGFileAction;
+@class DBXSHARINGFilePermission;
+@class DBXSHARINGPermissionDeniedReason;
 
 /// 
-/// The `DbxSharingFilePermission` struct.
+/// The `DBXSHARINGFilePermission` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Whether the user is allowed to take the sharing action on the file.
 /// 
-@interface DbxSharingFilePermission : NSObject <DbxSerializable> 
+@interface DBXSHARINGFilePermission : NSObject <DBXSerializable> 
 
 /// The action that the user may wish to take on the file.
-@property (nonatomic) DbxSharingFileAction * _Nonnull action;
+@property (nonatomic) DBXSHARINGFileAction * _Nonnull action;
 
 /// True if the user is allowed to take the action.
 @property (nonatomic, copy) NSNumber * _Nonnull allow;
 
 /// The reason why the user is denied the permission. Not present if the action
 /// is allowed
-@property (nonatomic) DbxSharingPermissionDeniedReason * _Nullable reason;
+@property (nonatomic) DBXSHARINGPermissionDeniedReason * _Nullable reason;
 
 /// Full constructor for the `FilePermission` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithAction:(DbxSharingFileAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow reason:(DbxSharingPermissionDeniedReason * _Nullable)reason;
+- (nonnull instancetype)initWithAction:(DBXSHARINGFileAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow reason:(DBXSHARINGPermissionDeniedReason * _Nullable)reason;
 
 /// Convenience constructor for the `FilePermission` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithAction:(DbxSharingFileAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
+- (nonnull instancetype)initWithAction:(DBXSHARINGFileAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
 
-/// Returns a human-readable representation of the `DbxSharingFilePermission`
+/// Returns a human-readable representation of the `DBXSHARINGFilePermission`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -46,16 +46,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingFilePermission` struct.
+/// The serialization class for the `DBXSHARINGFilePermission` struct.
 /// 
-@interface DbxSharingFilePermissionSerializer : NSObject 
+@interface DBXSHARINGFilePermissionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFilePermission` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFilePermission * _Nonnull)obj;
+/// `DBXSHARINGFilePermission` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFilePermission * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFilePermission` object from a
+/// Returns an instantiation of the `DBXSHARINGFilePermission` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFilePermission * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFilePermission * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

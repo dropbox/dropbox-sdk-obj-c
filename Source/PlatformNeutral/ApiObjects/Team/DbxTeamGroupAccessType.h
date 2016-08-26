@@ -3,35 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupAccessType;
+@class DBXTEAMGroupAccessType;
 
 /// 
-/// The `DbxTeamGroupAccessType` union.
+/// The `DBXTEAMGroupAccessType` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Role of a user in group.
 /// 
-@interface DbxTeamGroupAccessType : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupAccessType : NSObject <DBXSerializable> 
 
-/// The `TeamGroupAccessTypeTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupAccessType` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupAccessTypeTag) {
+/// The `DBXTEAMGroupAccessTypeTag` enum type represents the possible tag states
+/// that the `DBXTEAMGroupAccessType` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupAccessTypeTag) {
     /// User is a member of the group, but has no special permissions.
-    TeamGroupAccessTypeMember,
+    DBXTEAMGroupAccessTypeMember,
 
     /// User can rename the group, and add/remove members.
-    TeamGroupAccessTypeOwner,
+    DBXTEAMGroupAccessTypeOwner,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupAccessTypeTag tag;
-
+@property (nonatomic) DBXTEAMGroupAccessTypeTag tag;
 
 /// Initializes union class with tag state of `Member`.
 - (nonnull instancetype)initWithMember;
@@ -48,7 +47,7 @@ typedef NS_ENUM(NSInteger, TeamGroupAccessTypeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupAccessType`
+/// Returns a human-readable representation of the `DBXTEAMGroupAccessType`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -56,16 +55,16 @@ typedef NS_ENUM(NSInteger, TeamGroupAccessTypeTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupAccessType` union.
+/// The serialization class for the `DBXTEAMGroupAccessType` union.
 /// 
-@interface DbxTeamGroupAccessTypeSerializer : NSObject 
+@interface DBXTEAMGroupAccessTypeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupAccessType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupAccessType * _Nonnull)obj;
+/// `DBXTEAMGroupAccessType` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupAccessType * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupAccessType` object from a
+/// Returns an instantiation of the `DBXTEAMGroupAccessType` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupAccessType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupAccessType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

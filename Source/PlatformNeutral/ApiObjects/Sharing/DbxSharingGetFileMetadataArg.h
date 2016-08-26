@@ -3,54 +3,54 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingFileAction;
-@class DbxSharingGetFileMetadataArg;
+@class DBXSHARINGFileAction;
+@class DBXSHARINGGetFileMetadataArg;
 
 /// 
-/// The `DbxSharingGetFileMetadataArg` struct.
+/// The `DBXSHARINGGetFileMetadataArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments of getFileMetadata
 /// 
-@interface DbxSharingGetFileMetadataArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGGetFileMetadataArg : NSObject <DBXSerializable> 
 
 /// The file to query.
 @property (nonatomic, copy) NSString * _Nonnull file;
 
 /// File actions to query.
-@property (nonatomic) NSArray<DbxSharingFileAction *> * _Nullable actions;
+@property (nonatomic) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
 
 /// Full constructor for the `GetFileMetadataArg` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
+- (nonnull instancetype)initWithFile:(NSString * _Nonnull)file actions:(NSArray<DBXSHARINGFileAction *> * _Nullable)actions;
 
 /// Convenience constructor for the `GetFileMetadataArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingGetFileMetadataArg` object.
+/// `DBXSHARINGGetFileMetadataArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingGetFileMetadataArg` struct.
+/// The serialization class for the `DBXSHARINGGetFileMetadataArg` struct.
 /// 
-@interface DbxSharingGetFileMetadataArgSerializer : NSObject 
+@interface DBXSHARINGGetFileMetadataArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingGetFileMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingGetFileMetadataArg * _Nonnull)obj;
+/// `DBXSHARINGGetFileMetadataArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingGetFileMetadataArg` object from a
+/// Returns an instantiation of the `DBXSHARINGGetFileMetadataArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingGetFileMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGGetFileMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

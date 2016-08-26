@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesDownloadError;
-@class DbxFilesLookupError;
+@class DBXFILESDownloadError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesDownloadError` union.
+/// The `DBXFILESDownloadError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesDownloadError : NSObject <DbxSerializable> 
+@interface DBXFILESDownloadError : NSObject <DBXSerializable> 
 
-/// The `FilesDownloadErrorTag` enum type represents the possible tag states
-/// that the `DbxFilesDownloadError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesDownloadErrorTag) {
+/// The `DBXFILESDownloadErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESDownloadError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESDownloadErrorTag) {
     /// (no description).
-    FilesDownloadErrorPath,
+    DBXFILESDownloadErrorPath,
 
     /// (no description).
-    FilesDownloadErrorOther,
+    DBXFILESDownloadErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesDownloadErrorTag tag;
+@property (nonatomic) DBXFILESDownloadErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -50,7 +49,7 @@ typedef NS_ENUM(NSInteger, FilesDownloadErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesDownloadError`
+/// Returns a human-readable representation of the `DBXFILESDownloadError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -58,16 +57,16 @@ typedef NS_ENUM(NSInteger, FilesDownloadErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesDownloadError` union.
+/// The serialization class for the `DBXFILESDownloadError` union.
 /// 
-@interface DbxFilesDownloadErrorSerializer : NSObject 
+@interface DBXFILESDownloadErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesDownloadError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesDownloadError * _Nonnull)obj;
+/// `DBXFILESDownloadError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDownloadError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesDownloadError` object from a
+/// Returns an instantiation of the `DBXFILESDownloadError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesDownloadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESDownloadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

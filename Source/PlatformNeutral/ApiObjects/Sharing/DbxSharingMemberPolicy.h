@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberPolicy;
+@class DBXSHARINGMemberPolicy;
 
 /// 
-/// The `DbxSharingMemberPolicy` union.
+/// The `DBXSHARINGMemberPolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing who can be a member of a shared folder. Only applicable to
 /// folders owned by a user on a team.
 /// 
-@interface DbxSharingMemberPolicy : NSObject <DbxSerializable> 
+@interface DBXSHARINGMemberPolicy : NSObject <DBXSerializable> 
 
-/// The `SharingMemberPolicyTag` enum type represents the possible tag states
-/// that the `DbxSharingMemberPolicy` union can exist in.
-typedef NS_ENUM(NSInteger, SharingMemberPolicyTag) {
+/// The `DBXSHARINGMemberPolicyTag` enum type represents the possible tag states
+/// that the `DBXSHARINGMemberPolicy` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGMemberPolicyTag) {
     /// Only a teammate can become a member.
-    SharingMemberPolicyTeam,
+    DBXSHARINGMemberPolicyTeam,
 
     /// Anyone can become a member.
-    SharingMemberPolicyAnyone,
+    DBXSHARINGMemberPolicyAnyone,
 
     /// (no description).
-    SharingMemberPolicyOther,
+    DBXSHARINGMemberPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingMemberPolicyTag tag;
-
+@property (nonatomic) DBXSHARINGMemberPolicyTag tag;
 
 /// Initializes union class with tag state of `Team`.
 - (nonnull instancetype)initWithTeam;
@@ -58,7 +57,7 @@ typedef NS_ENUM(NSInteger, SharingMemberPolicyTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingMemberPolicy`
+/// Returns a human-readable representation of the `DBXSHARINGMemberPolicy`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -66,16 +65,16 @@ typedef NS_ENUM(NSInteger, SharingMemberPolicyTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingMemberPolicy` union.
+/// The serialization class for the `DBXSHARINGMemberPolicy` union.
 /// 
-@interface DbxSharingMemberPolicySerializer : NSObject 
+@interface DBXSHARINGMemberPolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingMemberPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingMemberPolicy * _Nonnull)obj;
+/// `DBXSHARINGMemberPolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberPolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingMemberPolicy` object from a
+/// Returns an instantiation of the `DBXSHARINGMemberPolicy` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

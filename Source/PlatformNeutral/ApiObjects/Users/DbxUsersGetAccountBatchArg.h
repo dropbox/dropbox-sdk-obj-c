@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersGetAccountBatchArg;
+@class DBXUSERSGetAccountBatchArg;
 
 /// 
-/// The `DbxUsersGetAccountBatchArg` struct.
+/// The `DBXUSERSGetAccountBatchArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxUsersGetAccountBatchArg : NSObject <DbxSerializable> 
+@interface DBXUSERSGetAccountBatchArg : NSObject <DBXSerializable> 
 
 /// List of user account identifiers.  Should not contain any duplicate account
 /// IDs.
@@ -24,7 +24,7 @@
 /// variables).
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
 
-/// Returns a human-readable representation of the `DbxUsersGetAccountBatchArg`
+/// Returns a human-readable representation of the `DBXUSERSGetAccountBatchArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -32,16 +32,16 @@
 
 
 /// 
-/// The serialization class for the `DbxUsersGetAccountBatchArg` struct.
+/// The serialization class for the `DBXUSERSGetAccountBatchArg` struct.
 /// 
-@interface DbxUsersGetAccountBatchArgSerializer : NSObject 
+@interface DBXUSERSGetAccountBatchArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxUsersGetAccountBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersGetAccountBatchArg * _Nonnull)obj;
+/// `DBXUSERSGetAccountBatchArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountBatchArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersGetAccountBatchArg` object from a
+/// Returns an instantiation of the `DBXUSERSGetAccountBatchArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxUsersGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

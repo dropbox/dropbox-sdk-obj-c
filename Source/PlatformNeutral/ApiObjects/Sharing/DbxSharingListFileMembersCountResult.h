@@ -3,49 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFileMembersCountResult;
-@class DbxSharingSharedFileMembers;
+@class DBXSHARINGListFileMembersCountResult;
+@class DBXSHARINGSharedFileMembers;
 
 /// 
-/// The `DbxSharingListFileMembersCountResult` struct.
+/// The `DBXSHARINGListFileMembersCountResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFileMembersCountResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFileMembersCountResult : NSObject <DBXSerializable> 
 
 /// A list of members on this file.
-@property (nonatomic) DbxSharingSharedFileMembers * _Nonnull members;
+@property (nonatomic) DBXSHARINGSharedFileMembers * _Nonnull members;
 
 /// The number of members on this file. This does not include inherited members
 @property (nonatomic, copy) NSNumber * _Nonnull memberCount;
 
 /// Full constructor for the `ListFileMembersCountResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithMembers:(DbxSharingSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
+- (nonnull instancetype)initWithMembers:(DBXSHARINGSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFileMembersCountResult` object.
+/// `DBXSHARINGListFileMembersCountResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFileMembersCountResult`
+/// The serialization class for the `DBXSHARINGListFileMembersCountResult`
 /// struct.
 /// 
-@interface DbxSharingListFileMembersCountResultSerializer : NSObject 
+@interface DBXSHARINGListFileMembersCountResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFileMembersCountResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersCountResult * _Nonnull)obj;
+/// `DBXSHARINGListFileMembersCountResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersCountResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFileMembersCountResult`
+/// Returns an instantiation of the `DBXSHARINGListFileMembersCountResult`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingListFileMembersCountResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFileMembersCountResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

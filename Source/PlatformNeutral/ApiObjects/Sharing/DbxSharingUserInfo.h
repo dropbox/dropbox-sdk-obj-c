@@ -3,21 +3,21 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingUserInfo;
+@class DBXSHARINGUserInfo;
 
 /// 
-/// The `DbxSharingUserInfo` struct.
+/// The `DBXSHARINGUserInfo` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Basic information about a user. Use usersAccount and usersAccountBatch to
 /// obtain more detailed information.
 /// 
-@interface DbxSharingUserInfo : NSObject <DbxSerializable> 
+@interface DBXSHARINGUserInfo : NSObject <DBXSerializable> 
 
 /// The account ID of the user.
 @property (nonatomic, copy) NSString * _Nonnull accountId;
@@ -36,23 +36,23 @@
 /// instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam;
 
-/// Returns a human-readable representation of the `DbxSharingUserInfo` object.
+/// Returns a human-readable representation of the `DBXSHARINGUserInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingUserInfo` struct.
+/// The serialization class for the `DBXSHARINGUserInfo` struct.
 /// 
-@interface DbxSharingUserInfoSerializer : NSObject 
+@interface DBXSHARINGUserInfoSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingUserInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingUserInfo * _Nonnull)obj;
+/// `DBXSHARINGUserInfo` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUserInfo * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingUserInfo` object from a
+/// Returns an instantiation of the `DBXSHARINGUserInfo` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingUserInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGUserInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

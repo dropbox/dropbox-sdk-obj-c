@@ -3,45 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFilesContinueError;
-@class DbxSharingSharingUserError;
+@class DBXSHARINGListFilesContinueError;
+@class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DbxSharingListFilesContinueError` union.
+/// The `DBXSHARINGListFilesContinueError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error results for listReceivedFilesContinue.
 /// 
-@interface DbxSharingListFilesContinueError : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFilesContinueError : NSObject <DBXSerializable> 
 
-/// The `SharingListFilesContinueErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingListFilesContinueError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingListFilesContinueErrorTag) {
+/// The `DBXSHARINGListFilesContinueErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGListFilesContinueError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGListFilesContinueErrorTag) {
     /// User account had a problem.
-    SharingListFilesContinueErrorUserError,
+    DBXSHARINGListFilesContinueErrorUserError,
 
     /// cursor in ListFilesContinueArg is invalid.
-    SharingListFilesContinueErrorInvalidCursor,
+    DBXSHARINGListFilesContinueErrorInvalidCursor,
 
     /// (no description).
-    SharingListFilesContinueErrorOther,
+    DBXSHARINGListFilesContinueErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingListFilesContinueErrorTag tag;
+@property (nonatomic) DBXSHARINGListFilesContinueErrorTag tag;
 
 /// User account had a problem.
-@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
-
+@property (nonatomic) DBXSHARINGSharingUserError * _Nonnull userError;
 
 /// Initializes union class with tag state of `UserError`.
-- (nonnull instancetype)initWithUserError:(DbxSharingSharingUserError * _Nonnull)userError;
+- (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
 /// Initializes union class with tag state of `InvalidCursor`.
 - (nonnull instancetype)initWithInvalidCursor;
@@ -62,23 +61,23 @@ typedef NS_ENUM(NSInteger, SharingListFilesContinueErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFilesContinueError` object.
+/// `DBXSHARINGListFilesContinueError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFilesContinueError` union.
+/// The serialization class for the `DBXSHARINGListFilesContinueError` union.
 /// 
-@interface DbxSharingListFilesContinueErrorSerializer : NSObject 
+@interface DBXSHARINGListFilesContinueErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFilesContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFilesContinueError * _Nonnull)obj;
+/// `DBXSHARINGListFilesContinueError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesContinueError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFilesContinueError` object
+/// Returns an instantiation of the `DBXSHARINGListFilesContinueError` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingListFilesContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFilesContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

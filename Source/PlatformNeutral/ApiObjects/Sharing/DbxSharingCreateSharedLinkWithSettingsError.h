@@ -3,54 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookupError;
-@class DbxSharingCreateSharedLinkWithSettingsError;
-@class DbxSharingSharedLinkSettingsError;
+@class DBXFILESLookupError;
+@class DBXSHARINGCreateSharedLinkWithSettingsError;
+@class DBXSHARINGSharedLinkSettingsError;
 
 /// 
-/// The `DbxSharingCreateSharedLinkWithSettingsError` union.
+/// The `DBXSHARINGCreateSharedLinkWithSettingsError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingCreateSharedLinkWithSettingsError : NSObject <DbxSerializable> 
+@interface DBXSHARINGCreateSharedLinkWithSettingsError : NSObject <DBXSerializable> 
 
-/// The `SharingCreateSharedLinkWithSettingsErrorTag` enum type represents the
-/// possible tag states that the `DbxSharingCreateSharedLinkWithSettingsError`
-/// union can exist in.
-typedef NS_ENUM(NSInteger, SharingCreateSharedLinkWithSettingsErrorTag) {
+/// The `DBXSHARINGCreateSharedLinkWithSettingsErrorTag` enum type represents
+/// the possible tag states that the
+/// `DBXSHARINGCreateSharedLinkWithSettingsError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGCreateSharedLinkWithSettingsErrorTag) {
     /// (no description).
-    SharingCreateSharedLinkWithSettingsErrorPath,
+    DBXSHARINGCreateSharedLinkWithSettingsErrorPath,
 
     /// User's email should be verified
-    SharingCreateSharedLinkWithSettingsErrorEmailNotVerified,
+    DBXSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified,
 
     /// The shared link already exists
-    SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
+    DBXSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
 
     /// There is an error with the given settings
-    SharingCreateSharedLinkWithSettingsErrorSettingsError,
+    DBXSHARINGCreateSharedLinkWithSettingsErrorSettingsError,
 
     /// Access to the requested path is forbidden
-    SharingCreateSharedLinkWithSettingsErrorAccessDenied,
+    DBXSHARINGCreateSharedLinkWithSettingsErrorAccessDenied,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingCreateSharedLinkWithSettingsErrorTag tag;
+@property (nonatomic) DBXSHARINGCreateSharedLinkWithSettingsErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// There is an error with the given settings
-@property (nonatomic) DbxSharingSharedLinkSettingsError * _Nonnull settingsError;
-
+@property (nonatomic) DBXSHARINGSharedLinkSettingsError * _Nonnull settingsError;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `EmailNotVerified`.
 - (nonnull instancetype)initWithEmailNotVerified;
@@ -59,7 +58,7 @@ typedef NS_ENUM(NSInteger, SharingCreateSharedLinkWithSettingsErrorTag) {
 - (nonnull instancetype)initWithSharedLinkAlreadyExists;
 
 /// Initializes union class with tag state of `SettingsError`.
-- (nonnull instancetype)initWithSettingsError:(DbxSharingSharedLinkSettingsError * _Nonnull)settingsError;
+- (nonnull instancetype)initWithSettingsError:(DBXSHARINGSharedLinkSettingsError * _Nonnull)settingsError;
 
 /// Initializes union class with tag state of `AccessDenied`.
 - (nonnull instancetype)initWithAccessDenied;
@@ -84,7 +83,7 @@ typedef NS_ENUM(NSInteger, SharingCreateSharedLinkWithSettingsErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingCreateSharedLinkWithSettingsError` object.
+/// `DBXSHARINGCreateSharedLinkWithSettingsError` object.
 - (NSString * _Nonnull)description;
 
 @end
@@ -92,17 +91,17 @@ typedef NS_ENUM(NSInteger, SharingCreateSharedLinkWithSettingsErrorTag) {
 
 /// 
 /// The serialization class for the
-/// `DbxSharingCreateSharedLinkWithSettingsError` union.
+/// `DBXSHARINGCreateSharedLinkWithSettingsError` union.
 /// 
-@interface DbxSharingCreateSharedLinkWithSettingsErrorSerializer : NSObject 
+@interface DBXSHARINGCreateSharedLinkWithSettingsErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingCreateSharedLinkWithSettingsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingCreateSharedLinkWithSettingsError * _Nonnull)obj;
+/// `DBXSHARINGCreateSharedLinkWithSettingsError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkWithSettingsError * _Nonnull)obj;
 
 /// Returns an instantiation of the
-/// `DbxSharingCreateSharedLinkWithSettingsError` object from a json-compatible
+/// `DBXSHARINGCreateSharedLinkWithSettingsError` object from a json-compatible
 /// dictionary representation.
-+ (DbxSharingCreateSharedLinkWithSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGCreateSharedLinkWithSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

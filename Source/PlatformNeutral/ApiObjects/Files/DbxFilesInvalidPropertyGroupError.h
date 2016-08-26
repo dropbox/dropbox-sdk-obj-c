@@ -3,52 +3,51 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesInvalidPropertyGroupError;
-@class DbxFilesLookupError;
+@class DBXFILESInvalidPropertyGroupError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesInvalidPropertyGroupError` union.
+/// The `DBXFILESInvalidPropertyGroupError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesInvalidPropertyGroupError : NSObject <DbxSerializable> 
+@interface DBXFILESInvalidPropertyGroupError : NSObject <DBXSerializable> 
 
-/// The `FilesInvalidPropertyGroupErrorTag` enum type represents the possible
-/// tag states that the `DbxFilesInvalidPropertyGroupError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesInvalidPropertyGroupErrorTag) {
+/// The `DBXFILESInvalidPropertyGroupErrorTag` enum type represents the possible
+/// tag states that the `DBXFILESInvalidPropertyGroupError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESInvalidPropertyGroupErrorTag) {
     /// Property template does not exist for given identifier.
-    FilesInvalidPropertyGroupErrorTemplateNotFound,
+    DBXFILESInvalidPropertyGroupErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    FilesInvalidPropertyGroupErrorRestrictedContent,
+    DBXFILESInvalidPropertyGroupErrorRestrictedContent,
 
     /// (no description).
-    FilesInvalidPropertyGroupErrorOther,
+    DBXFILESInvalidPropertyGroupErrorOther,
 
     /// (no description).
-    FilesInvalidPropertyGroupErrorPath,
+    DBXFILESInvalidPropertyGroupErrorPath,
 
     /// A field value in this property group is too large.
-    FilesInvalidPropertyGroupErrorPropertyFieldTooLarge,
+    DBXFILESInvalidPropertyGroupErrorPropertyFieldTooLarge,
 
     /// The property group specified does not conform to the property template.
-    FilesInvalidPropertyGroupErrorDoesNotFitTemplate,
+    DBXFILESInvalidPropertyGroupErrorDoesNotFitTemplate,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesInvalidPropertyGroupErrorTag tag;
+@property (nonatomic) DBXFILESInvalidPropertyGroupErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -60,7 +59,7 @@ typedef NS_ENUM(NSInteger, FilesInvalidPropertyGroupErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `PropertyFieldTooLarge`.
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
@@ -92,23 +91,23 @@ typedef NS_ENUM(NSInteger, FilesInvalidPropertyGroupErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesInvalidPropertyGroupError` object.
+/// `DBXFILESInvalidPropertyGroupError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesInvalidPropertyGroupError` union.
+/// The serialization class for the `DBXFILESInvalidPropertyGroupError` union.
 /// 
-@interface DbxFilesInvalidPropertyGroupErrorSerializer : NSObject 
+@interface DBXFILESInvalidPropertyGroupErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesInvalidPropertyGroupError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesInvalidPropertyGroupError * _Nonnull)obj;
+/// `DBXFILESInvalidPropertyGroupError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESInvalidPropertyGroupError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesInvalidPropertyGroupError` object
+/// Returns an instantiation of the `DBXFILESInvalidPropertyGroupError` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesInvalidPropertyGroupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESInvalidPropertyGroupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

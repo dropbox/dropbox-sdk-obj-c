@@ -3,19 +3,19 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamDeviceSessionArg.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMDeviceSessionArg.h"
 
-@class DbxTeamRevokeDesktopClientArg;
+@class DBXTEAMRevokeDesktopClientArg;
 
 /// 
-/// The `DbxTeamRevokeDesktopClientArg` struct.
+/// The `DBXTEAMRevokeDesktopClientArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamRevokeDesktopClientArg : DbxTeamDeviceSessionArg <DbxSerializable> 
+@interface DBXTEAMRevokeDesktopClientArg : DBXTEAMDeviceSessionArg <DBXSerializable> 
 
 /// Whether to delete all files of the account (this is possible only if
 /// supported by the desktop client and  will be made the next time the client
@@ -31,23 +31,23 @@
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamRevokeDesktopClientArg` object.
+/// `DBXTEAMRevokeDesktopClientArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamRevokeDesktopClientArg` struct.
+/// The serialization class for the `DBXTEAMRevokeDesktopClientArg` struct.
 /// 
-@interface DbxTeamRevokeDesktopClientArgSerializer : NSObject 
+@interface DBXTEAMRevokeDesktopClientArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamRevokeDesktopClientArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeDesktopClientArg * _Nonnull)obj;
+/// `DBXTEAMRevokeDesktopClientArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDesktopClientArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamRevokeDesktopClientArg` object from
+/// Returns an instantiation of the `DBXTEAMRevokeDesktopClientArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxTeamRevokeDesktopClientArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMRevokeDesktopClientArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

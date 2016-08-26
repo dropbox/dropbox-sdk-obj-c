@@ -3,60 +3,59 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRelinquishFolderMembershipError;
-@class DbxSharingSharedFolderAccessError;
+@class DBXSHARINGRelinquishFolderMembershipError;
+@class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DbxSharingRelinquishFolderMembershipError` union.
+/// The `DBXSHARINGRelinquishFolderMembershipError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRelinquishFolderMembershipError : NSObject <DbxSerializable> 
+@interface DBXSHARINGRelinquishFolderMembershipError : NSObject <DBXSerializable> 
 
-/// The `SharingRelinquishFolderMembershipErrorTag` enum type represents the
-/// possible tag states that the `DbxSharingRelinquishFolderMembershipError`
+/// The `DBXSHARINGRelinquishFolderMembershipErrorTag` enum type represents the
+/// possible tag states that the `DBXSHARINGRelinquishFolderMembershipError`
 /// union can exist in.
-typedef NS_ENUM(NSInteger, SharingRelinquishFolderMembershipErrorTag) {
+typedef NS_ENUM(NSInteger, DBXSHARINGRelinquishFolderMembershipErrorTag) {
     /// (no description).
-    SharingRelinquishFolderMembershipErrorAccessError,
+    DBXSHARINGRelinquishFolderMembershipErrorAccessError,
 
     /// The current user is the owner of the shared folder. Owners cannot
     /// relinquish membership to their own folders. Try unsharing or
     /// transferring ownership first.
-    SharingRelinquishFolderMembershipErrorFolderOwner,
+    DBXSHARINGRelinquishFolderMembershipErrorFolderOwner,
 
     /// The shared folder is currently mounted.  Unmount the shared folder
     /// before relinquishing membership.
-    SharingRelinquishFolderMembershipErrorMounted,
+    DBXSHARINGRelinquishFolderMembershipErrorMounted,
 
     /// The current user has access to the shared folder via a group.  You can't
     /// relinquish membership to folders shared via groups.
-    SharingRelinquishFolderMembershipErrorGroupAccess,
+    DBXSHARINGRelinquishFolderMembershipErrorGroupAccess,
 
     /// This action cannot be performed on a team shared folder.
-    SharingRelinquishFolderMembershipErrorTeamFolder,
+    DBXSHARINGRelinquishFolderMembershipErrorTeamFolder,
 
     /// The current user does not have permission to perform this action.
-    SharingRelinquishFolderMembershipErrorNoPermission,
+    DBXSHARINGRelinquishFolderMembershipErrorNoPermission,
 
     /// (no description).
-    SharingRelinquishFolderMembershipErrorOther,
+    DBXSHARINGRelinquishFolderMembershipErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingRelinquishFolderMembershipErrorTag tag;
+@property (nonatomic) DBXSHARINGRelinquishFolderMembershipErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `FolderOwner`.
 - (nonnull instancetype)initWithFolderOwner;
@@ -101,24 +100,24 @@ typedef NS_ENUM(NSInteger, SharingRelinquishFolderMembershipErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRelinquishFolderMembershipError` object.
+/// `DBXSHARINGRelinquishFolderMembershipError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRelinquishFolderMembershipError`
+/// The serialization class for the `DBXSHARINGRelinquishFolderMembershipError`
 /// union.
 /// 
-@interface DbxSharingRelinquishFolderMembershipErrorSerializer : NSObject 
+@interface DBXSHARINGRelinquishFolderMembershipErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRelinquishFolderMembershipError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRelinquishFolderMembershipError * _Nonnull)obj;
+/// `DBXSHARINGRelinquishFolderMembershipError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRelinquishFolderMembershipError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRelinquishFolderMembershipError`
+/// Returns an instantiation of the `DBXSHARINGRelinquishFolderMembershipError`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingRelinquishFolderMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRelinquishFolderMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

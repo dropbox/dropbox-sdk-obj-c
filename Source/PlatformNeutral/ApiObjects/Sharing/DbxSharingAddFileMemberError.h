@@ -3,58 +3,57 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAddFileMemberError;
-@class DbxSharingSharingFileAccessError;
-@class DbxSharingSharingUserError;
+@class DBXSHARINGAddFileMemberError;
+@class DBXSHARINGSharingFileAccessError;
+@class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DbxSharingAddFileMemberError` union.
+/// The `DBXSHARINGAddFileMemberError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Errors for addFileMember.
 /// 
-@interface DbxSharingAddFileMemberError : NSObject <DbxSerializable> 
+@interface DBXSHARINGAddFileMemberError : NSObject <DBXSerializable> 
 
-/// The `SharingAddFileMemberErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingAddFileMemberError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingAddFileMemberErrorTag) {
+/// The `DBXSHARINGAddFileMemberErrorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGAddFileMemberError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGAddFileMemberErrorTag) {
     /// (no description).
-    SharingAddFileMemberErrorUserError,
+    DBXSHARINGAddFileMemberErrorUserError,
 
     /// (no description).
-    SharingAddFileMemberErrorAccessError,
+    DBXSHARINGAddFileMemberErrorAccessError,
 
     /// The user has reached the rate limit for invitations.
-    SharingAddFileMemberErrorRateLimit,
+    DBXSHARINGAddFileMemberErrorRateLimit,
 
     /// The custom message did not pass comment permissions checks.
-    SharingAddFileMemberErrorInvalidComment,
+    DBXSHARINGAddFileMemberErrorInvalidComment,
 
     /// (no description).
-    SharingAddFileMemberErrorOther,
+    DBXSHARINGAddFileMemberErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingAddFileMemberErrorTag tag;
+@property (nonatomic) DBXSHARINGAddFileMemberErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
+@property (nonatomic) DBXSHARINGSharingUserError * _Nonnull userError;
 
 /// (no description).
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
-
+@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `UserError`.
-- (nonnull instancetype)initWithUserError:(DbxSharingSharingUserError * _Nonnull)userError;
+- (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `RateLimit`.
 - (nonnull instancetype)initWithRateLimit;
@@ -84,23 +83,23 @@ typedef NS_ENUM(NSInteger, SharingAddFileMemberErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingAddFileMemberError` object.
+/// `DBXSHARINGAddFileMemberError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingAddFileMemberError` union.
+/// The serialization class for the `DBXSHARINGAddFileMemberError` union.
 /// 
-@interface DbxSharingAddFileMemberErrorSerializer : NSObject 
+@interface DBXSHARINGAddFileMemberErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAddFileMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAddFileMemberError * _Nonnull)obj;
+/// `DBXSHARINGAddFileMemberError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAddFileMemberError` object from a
+/// Returns an instantiation of the `DBXSHARINGAddFileMemberError` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingAddFileMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAddFileMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

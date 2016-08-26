@@ -3,43 +3,42 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersUnsuspendError;
+@class DBXTEAMMembersUnsuspendError;
 
 /// 
-/// The `DbxTeamMembersUnsuspendError` union.
+/// The `DBXTEAMMembersUnsuspendError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersUnsuspendError : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersUnsuspendError : NSObject <DBXSerializable> 
 
-/// The `TeamMembersUnsuspendErrorTag` enum type represents the possible tag
-/// states that the `DbxTeamMembersUnsuspendError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamMembersUnsuspendErrorTag) {
+/// The `DBXTEAMMembersUnsuspendErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMMembersUnsuspendError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMMembersUnsuspendErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
-    TeamMembersUnsuspendErrorUserNotFound,
+    DBXTEAMMembersUnsuspendErrorUserNotFound,
 
     /// The user is not a member of the team.
-    TeamMembersUnsuspendErrorUserNotInTeam,
+    DBXTEAMMembersUnsuspendErrorUserNotInTeam,
 
     /// (no description).
-    TeamMembersUnsuspendErrorOther,
+    DBXTEAMMembersUnsuspendErrorOther,
 
     /// The user is unsuspended, so it cannot be unsuspended again.
-    TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember,
+    DBXTEAMMembersUnsuspendErrorUnsuspendNonSuspendedMember,
 
     /// Team is full. The organization has no available licenses.
-    TeamMembersUnsuspendErrorTeamLicenseLimit,
+    DBXTEAMMembersUnsuspendErrorTeamLicenseLimit,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamMembersUnsuspendErrorTag tag;
-
+@property (nonatomic) DBXTEAMMembersUnsuspendErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -76,23 +75,23 @@ typedef NS_ENUM(NSInteger, TeamMembersUnsuspendErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamMembersUnsuspendError` object.
+/// `DBXTEAMMembersUnsuspendError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersUnsuspendError` union.
+/// The serialization class for the `DBXTEAMMembersUnsuspendError` union.
 /// 
-@interface DbxTeamMembersUnsuspendErrorSerializer : NSObject 
+@interface DBXTEAMMembersUnsuspendErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersUnsuspendError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersUnsuspendError * _Nonnull)obj;
+/// `DBXTEAMMembersUnsuspendError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersUnsuspendError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersUnsuspendError` object from a
+/// Returns an instantiation of the `DBXTEAMMembersUnsuspendError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersUnsuspendError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersUnsuspendError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

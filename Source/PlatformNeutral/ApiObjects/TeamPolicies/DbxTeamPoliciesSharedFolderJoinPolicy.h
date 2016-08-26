@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesSharedFolderJoinPolicy;
+@class DBXTEAMPOLICIESSharedFolderJoinPolicy;
 
 /// 
-/// The `DbxTeamPoliciesSharedFolderJoinPolicy` union.
+/// The `DBXTEAMPOLICIESSharedFolderJoinPolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing which shared folders a team member can join.
 /// 
-@interface DbxTeamPoliciesSharedFolderJoinPolicy : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESSharedFolderJoinPolicy : NSObject <DBXSerializable> 
 
-/// The `TeamPoliciesSharedFolderJoinPolicyTag` enum type represents the
-/// possible tag states that the `DbxTeamPoliciesSharedFolderJoinPolicy` union
+/// The `DBXTEAMPOLICIESSharedFolderJoinPolicyTag` enum type represents the
+/// possible tag states that the `DBXTEAMPOLICIESSharedFolderJoinPolicy` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, TeamPoliciesSharedFolderJoinPolicyTag) {
+typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedFolderJoinPolicyTag) {
     /// Team members can only join folders shared by teammates.
-    TeamPoliciesSharedFolderJoinPolicyFromTeamOnly,
+    DBXTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly,
 
     /// Team members can join any shared folder, including those shared by users
     /// outside the team.
-    TeamPoliciesSharedFolderJoinPolicyFromAnyone,
+    DBXTEAMPOLICIESSharedFolderJoinPolicyFromAnyone,
 
     /// (no description).
-    TeamPoliciesSharedFolderJoinPolicyOther,
+    DBXTEAMPOLICIESSharedFolderJoinPolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamPoliciesSharedFolderJoinPolicyTag tag;
-
+@property (nonatomic) DBXTEAMPOLICIESSharedFolderJoinPolicyTag tag;
 
 /// Initializes union class with tag state of `FromTeamOnly`.
 - (nonnull instancetype)initWithFromTeamOnly;
@@ -60,24 +59,24 @@ typedef NS_ENUM(NSInteger, TeamPoliciesSharedFolderJoinPolicyTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamPoliciesSharedFolderJoinPolicy` object.
+/// `DBXTEAMPOLICIESSharedFolderJoinPolicy` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesSharedFolderJoinPolicy`
+/// The serialization class for the `DBXTEAMPOLICIESSharedFolderJoinPolicy`
 /// union.
 /// 
-@interface DbxTeamPoliciesSharedFolderJoinPolicySerializer : NSObject 
+@interface DBXTEAMPOLICIESSharedFolderJoinPolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesSharedFolderJoinPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)obj;
+/// `DBXTEAMPOLICIESSharedFolderJoinPolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesSharedFolderJoinPolicy`
+/// Returns an instantiation of the `DBXTEAMPOLICIESSharedFolderJoinPolicy`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGpsCoordinates;
+@class DBXFILESGpsCoordinates;
 
 /// 
-/// The `DbxFilesGpsCoordinates` struct.
+/// The `DBXFILESGpsCoordinates` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// GPS coordinates for a photo or video.
 /// 
-@interface DbxFilesGpsCoordinates : NSObject <DbxSerializable> 
+@interface DBXFILESGpsCoordinates : NSObject <DBXSerializable> 
 
 /// Latitude of the GPS coordinates.
 @property (nonatomic, copy) NSNumber * _Nonnull latitude;
@@ -28,7 +28,7 @@
 /// variables).
 - (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
 
-/// Returns a human-readable representation of the `DbxFilesGpsCoordinates`
+/// Returns a human-readable representation of the `DBXFILESGpsCoordinates`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -36,16 +36,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesGpsCoordinates` struct.
+/// The serialization class for the `DBXFILESGpsCoordinates` struct.
 /// 
-@interface DbxFilesGpsCoordinatesSerializer : NSObject 
+@interface DBXFILESGpsCoordinatesSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGpsCoordinates` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGpsCoordinates * _Nonnull)obj;
+/// `DBXFILESGpsCoordinates` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGpsCoordinates * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGpsCoordinates` object from a
+/// Returns an instantiation of the `DBXFILESGpsCoordinates` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

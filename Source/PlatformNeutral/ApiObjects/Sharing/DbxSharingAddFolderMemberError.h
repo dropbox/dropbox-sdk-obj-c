@@ -3,73 +3,73 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingAddFolderMemberError;
-@class DbxSharingAddMemberSelectorError;
-@class DbxSharingSharedFolderAccessError;
+@class DBXSHARINGAddFolderMemberError;
+@class DBXSHARINGAddMemberSelectorError;
+@class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DbxSharingAddFolderMemberError` union.
+/// The `DBXSHARINGAddFolderMemberError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingAddFolderMemberError : NSObject <DbxSerializable> 
+@interface DBXSHARINGAddFolderMemberError : NSObject <DBXSerializable> 
 
-/// The `SharingAddFolderMemberErrorTag` enum type represents the possible tag
-/// states that the `DbxSharingAddFolderMemberError` union can exist in.
-typedef NS_ENUM(NSInteger, SharingAddFolderMemberErrorTag) {
+/// The `DBXSHARINGAddFolderMemberErrorTag` enum type represents the possible
+/// tag states that the `DBXSHARINGAddFolderMemberError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
     /// Unable to access shared folder.
-    SharingAddFolderMemberErrorAccessError,
+    DBXSHARINGAddFolderMemberErrorAccessError,
 
     /// The current user's e-mail address is unverified.
-    SharingAddFolderMemberErrorEmailUnverified,
+    DBXSHARINGAddFolderMemberErrorEmailUnverified,
 
     /// members in AddFolderMemberArg contains a bad invitation recipient.
-    SharingAddFolderMemberErrorBadMember,
+    DBXSHARINGAddFolderMemberErrorBadMember,
 
     /// Your team policy does not allow sharing outside of the team.
-    SharingAddFolderMemberErrorCantShareOutsideTeam,
+    DBXSHARINGAddFolderMemberErrorCantShareOutsideTeam,
 
     /// The value is the member limit that was reached.
-    SharingAddFolderMemberErrorTooManyMembers,
+    DBXSHARINGAddFolderMemberErrorTooManyMembers,
 
     /// The value is the pending invite limit that was reached.
-    SharingAddFolderMemberErrorTooManyPendingInvites,
+    DBXSHARINGAddFolderMemberErrorTooManyPendingInvites,
 
     /// The current user has hit the limit of invites they can send per day. Try
     /// again in 24 hours.
-    SharingAddFolderMemberErrorRateLimit,
+    DBXSHARINGAddFolderMemberErrorRateLimit,
 
     /// The current user is trying to share with too many people at once.
-    SharingAddFolderMemberErrorTooManyInvitees,
+    DBXSHARINGAddFolderMemberErrorTooManyInvitees,
 
     /// The current user's account doesn't support this action. An example of
     /// this is when adding a read-only member. This action can only be
     /// performed by users that have upgraded to a Pro or Business plan.
-    SharingAddFolderMemberErrorInsufficientPlan,
+    DBXSHARINGAddFolderMemberErrorInsufficientPlan,
 
     /// This action cannot be performed on a team shared folder.
-    SharingAddFolderMemberErrorTeamFolder,
+    DBXSHARINGAddFolderMemberErrorTeamFolder,
 
     /// The current user does not have permission to perform this action.
-    SharingAddFolderMemberErrorNoPermission,
+    DBXSHARINGAddFolderMemberErrorNoPermission,
 
     /// (no description).
-    SharingAddFolderMemberErrorOther,
+    DBXSHARINGAddFolderMemberErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingAddFolderMemberErrorTag tag;
+@property (nonatomic) DBXSHARINGAddFolderMemberErrorTag tag;
 
 /// Unable to access shared folder.
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// members in AddFolderMemberArg contains a bad invitation recipient.
-@property (nonatomic) DbxSharingAddMemberSelectorError * _Nonnull badMember;
+@property (nonatomic) DBXSHARINGAddMemberSelectorError * _Nonnull badMember;
 
 /// The value is the member limit that was reached.
 @property (nonatomic, copy) NSNumber * _Nonnull tooManyMembers;
@@ -77,15 +77,14 @@ typedef NS_ENUM(NSInteger, SharingAddFolderMemberErrorTag) {
 /// The value is the pending invite limit that was reached.
 @property (nonatomic, copy) NSNumber * _Nonnull tooManyPendingInvites;
 
-
 /// Initializes union class with tag state of `AccessError`.
-- (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
+- (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 /// Initializes union class with tag state of `EmailUnverified`.
 - (nonnull instancetype)initWithEmailUnverified;
 
 /// Initializes union class with tag state of `BadMember`.
-- (nonnull instancetype)initWithBadMember:(DbxSharingAddMemberSelectorError * _Nonnull)badMember;
+- (nonnull instancetype)initWithBadMember:(DBXSHARINGAddMemberSelectorError * _Nonnull)badMember;
 
 /// Initializes union class with tag state of `CantShareOutsideTeam`.
 - (nonnull instancetype)initWithCantShareOutsideTeam;
@@ -156,23 +155,23 @@ typedef NS_ENUM(NSInteger, SharingAddFolderMemberErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingAddFolderMemberError` object.
+/// `DBXSHARINGAddFolderMemberError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingAddFolderMemberError` union.
+/// The serialization class for the `DBXSHARINGAddFolderMemberError` union.
 /// 
-@interface DbxSharingAddFolderMemberErrorSerializer : NSObject 
+@interface DBXSHARINGAddFolderMemberErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingAddFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingAddFolderMemberError * _Nonnull)obj;
+/// `DBXSHARINGAddFolderMemberError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFolderMemberError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingAddFolderMemberError` object from
+/// Returns an instantiation of the `DBXSHARINGAddFolderMemberError` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingAddFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGAddFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

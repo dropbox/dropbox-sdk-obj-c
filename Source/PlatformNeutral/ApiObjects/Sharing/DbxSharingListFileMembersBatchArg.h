@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFileMembersBatchArg;
+@class DBXSHARINGListFileMembersBatchArg;
 
 /// 
-/// The `DbxSharingListFileMembersBatchArg` struct.
+/// The `DBXSHARINGListFileMembersBatchArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Arguments for listFileMembersBatch.
 /// 
-@interface DbxSharingListFileMembersBatchArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFileMembersBatchArg : NSObject <DBXSerializable> 
 
 /// Files for which to return members.
 @property (nonatomic) NSArray<NSString *> * _Nonnull files;
@@ -34,23 +34,23 @@
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFileMembersBatchArg` object.
+/// `DBXSHARINGListFileMembersBatchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFileMembersBatchArg` struct.
+/// The serialization class for the `DBXSHARINGListFileMembersBatchArg` struct.
 /// 
-@interface DbxSharingListFileMembersBatchArgSerializer : NSObject 
+@interface DBXSHARINGListFileMembersBatchArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFileMembersBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersBatchArg * _Nonnull)obj;
+/// `DBXSHARINGListFileMembersBatchArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersBatchArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFileMembersBatchArg` object
+/// Returns an instantiation of the `DBXSHARINGListFileMembersBatchArg` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingListFileMembersBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFileMembersBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

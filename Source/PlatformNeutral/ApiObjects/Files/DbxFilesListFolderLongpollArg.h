@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesListFolderLongpollArg;
+@class DBXFILESListFolderLongpollArg;
 
 /// 
-/// The `DbxFilesListFolderLongpollArg` struct.
+/// The `DBXFILESListFolderLongpollArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesListFolderLongpollArg : NSObject <DbxSerializable> 
+@interface DBXFILESListFolderLongpollArg : NSObject <DBXSerializable> 
 
 /// A cursor as returned by listFolder or listFolderContinue. Cursors retrieved
 /// by setting includeMediaInfo in ListFolderArg to true are not supported.
@@ -35,23 +35,23 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesListFolderLongpollArg` object.
+/// `DBXFILESListFolderLongpollArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesListFolderLongpollArg` struct.
+/// The serialization class for the `DBXFILESListFolderLongpollArg` struct.
 /// 
-@interface DbxFilesListFolderLongpollArgSerializer : NSObject 
+@interface DBXFILESListFolderLongpollArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesListFolderLongpollArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderLongpollArg * _Nonnull)obj;
+/// `DBXFILESListFolderLongpollArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesListFolderLongpollArg` object from
+/// Returns an instantiation of the `DBXFILESListFolderLongpollArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesListFolderLongpollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESListFolderLongpollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

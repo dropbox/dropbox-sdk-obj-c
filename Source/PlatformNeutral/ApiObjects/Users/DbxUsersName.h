@@ -3,20 +3,20 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxUsersName;
+@class DBXUSERSName;
 
 /// 
-/// The `DbxUsersName` struct.
+/// The `DBXUSERSName` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Representations for a person's name to assist with internationalization.
 /// 
-@interface DbxUsersName : NSObject <DbxSerializable> 
+@interface DBXUSERSName : NSObject <DBXSerializable> 
 
 /// Also known as a first name.
 @property (nonatomic, copy) NSString * _Nonnull givenName;
@@ -36,23 +36,23 @@
 /// Full constructor for the `Name` struct (exposes all instance variables).
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName surname:(NSString * _Nonnull)surname familiarName:(NSString * _Nonnull)familiarName displayName:(NSString * _Nonnull)displayName;
 
-/// Returns a human-readable representation of the `DbxUsersName` object.
+/// Returns a human-readable representation of the `DBXUSERSName` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxUsersName` struct.
+/// The serialization class for the `DBXUSERSName` struct.
 /// 
-@interface DbxUsersNameSerializer : NSObject 
+@interface DBXUSERSNameSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DbxUsersName`
+/// Returns a json-compatible dictionary representation of the `DBXUSERSName`
 /// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxUsersName * _Nonnull)obj;
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSName * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxUsersName` object from a json-compatible
+/// Returns an instantiation of the `DBXUSERSName` object from a json-compatible
 /// dictionary representation.
-+ (DbxUsersName * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXUSERSName * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

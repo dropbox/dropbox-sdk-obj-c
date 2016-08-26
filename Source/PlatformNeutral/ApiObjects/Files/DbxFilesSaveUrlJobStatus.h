@@ -3,53 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesFileMetadata;
-@class DbxFilesSaveUrlError;
-@class DbxFilesSaveUrlJobStatus;
+@class DBXFILESFileMetadata;
+@class DBXFILESSaveUrlError;
+@class DBXFILESSaveUrlJobStatus;
 
 /// 
-/// The `DbxFilesSaveUrlJobStatus` union.
+/// The `DBXFILESSaveUrlJobStatus` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesSaveUrlJobStatus : NSObject <DbxSerializable> 
+@interface DBXFILESSaveUrlJobStatus : NSObject <DBXSerializable> 
 
-/// The `FilesSaveUrlJobStatusTag` enum type represents the possible tag states
-/// that the `DbxFilesSaveUrlJobStatus` union can exist in.
-typedef NS_ENUM(NSInteger, FilesSaveUrlJobStatusTag) {
+/// The `DBXFILESSaveUrlJobStatusTag` enum type represents the possible tag
+/// states that the `DBXFILESSaveUrlJobStatus` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESSaveUrlJobStatusTag) {
     /// The asynchronous job is still in progress.
-    FilesSaveUrlJobStatusInProgress,
+    DBXFILESSaveUrlJobStatusInProgress,
 
     /// Metadata of the file where the URL is saved to.
-    FilesSaveUrlJobStatusComplete,
+    DBXFILESSaveUrlJobStatusComplete,
 
     /// (no description).
-    FilesSaveUrlJobStatusFailed,
+    DBXFILESSaveUrlJobStatusFailed,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesSaveUrlJobStatusTag tag;
+@property (nonatomic) DBXFILESSaveUrlJobStatusTag tag;
 
 /// Metadata of the file where the URL is saved to.
-@property (nonatomic) DbxFilesFileMetadata * _Nonnull complete;
+@property (nonatomic) DBXFILESFileMetadata * _Nonnull complete;
 
 /// (no description).
-@property (nonatomic) DbxFilesSaveUrlError * _Nonnull failed;
-
+@property (nonatomic) DBXFILESSaveUrlError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
 /// Initializes union class with tag state of `Complete`.
-- (nonnull instancetype)initWithComplete:(DbxFilesFileMetadata * _Nonnull)complete;
+- (nonnull instancetype)initWithComplete:(DBXFILESFileMetadata * _Nonnull)complete;
 
 /// Initializes union class with tag state of `Failed`.
-- (nonnull instancetype)initWithFailed:(DbxFilesSaveUrlError * _Nonnull)failed;
+- (nonnull instancetype)initWithFailed:(DBXFILESSaveUrlError * _Nonnull)failed;
 
 /// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
@@ -63,7 +62,7 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlJobStatusTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesSaveUrlJobStatus`
+/// Returns a human-readable representation of the `DBXFILESSaveUrlJobStatus`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -71,16 +70,16 @@ typedef NS_ENUM(NSInteger, FilesSaveUrlJobStatusTag) {
 
 
 /// 
-/// The serialization class for the `DbxFilesSaveUrlJobStatus` union.
+/// The serialization class for the `DBXFILESSaveUrlJobStatus` union.
 /// 
-@interface DbxFilesSaveUrlJobStatusSerializer : NSObject 
+@interface DBXFILESSaveUrlJobStatusSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesSaveUrlJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesSaveUrlJobStatus * _Nonnull)obj;
+/// `DBXFILESSaveUrlJobStatus` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveUrlJobStatus * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesSaveUrlJobStatus` object from a
+/// Returns an instantiation of the `DBXFILESSaveUrlJobStatus` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesSaveUrlJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESSaveUrlJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

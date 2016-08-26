@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamMembersListArg;
+@class DBXTEAMMembersListArg;
 
 /// 
-/// The `DbxTeamMembersListArg` struct.
+/// The `DBXTEAMMembersListArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersListArg : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersListArg : NSObject <DBXSerializable> 
 
 /// Number of results to return per call.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
@@ -30,7 +30,7 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DbxTeamMembersListArg`
+/// Returns a human-readable representation of the `DBXTEAMMembersListArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -38,16 +38,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersListArg` struct.
+/// The serialization class for the `DBXTEAMMembersListArg` struct.
 /// 
-@interface DbxTeamMembersListArgSerializer : NSObject 
+@interface DBXTEAMMembersListArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersListArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersListArg * _Nonnull)obj;
+/// `DBXTEAMMembersListArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersListArg` object from a
+/// Returns an instantiation of the `DBXTEAMMembersListArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

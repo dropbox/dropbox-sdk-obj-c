@@ -3,51 +3,51 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxFilesCommitInfo.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXFILESCommitInfo.h"
 
-@class DbxFilesCommitInfoWithProperties;
-@class DbxFilesWriteMode;
-@class DbxPropertiesPropertyGroup;
+@class DBXFILESCommitInfoWithProperties;
+@class DBXFILESWriteMode;
+@class DBXPROPERTIESPropertyGroup;
 
 /// 
-/// The `DbxFilesCommitInfoWithProperties` struct.
+/// The `DBXFILESCommitInfoWithProperties` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesCommitInfoWithProperties : DbxFilesCommitInfo <DbxSerializable> 
+@interface DBXFILESCommitInfoWithProperties : DBXFILESCommitInfo <DBXSerializable> 
 
 /// List of custom properties to add to file.
-@property (nonatomic) NSArray<DbxPropertiesPropertyGroup *> * _Nullable propertyGroups;
+@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
 /// Full constructor for the `CommitInfoWithProperties` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups;
+- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups;
 
 /// Convenience constructor for the `CommitInfoWithProperties` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesCommitInfoWithProperties` object.
+/// `DBXFILESCommitInfoWithProperties` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesCommitInfoWithProperties` struct.
+/// The serialization class for the `DBXFILESCommitInfoWithProperties` struct.
 /// 
-@interface DbxFilesCommitInfoWithPropertiesSerializer : NSObject 
+@interface DBXFILESCommitInfoWithPropertiesSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesCommitInfoWithProperties` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesCommitInfoWithProperties * _Nonnull)obj;
+/// `DBXFILESCommitInfoWithProperties` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCommitInfoWithProperties * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesCommitInfoWithProperties` object
+/// Returns an instantiation of the `DBXFILESCommitInfoWithProperties` object
 /// from a json-compatible dictionary representation.
-+ (DbxFilesCommitInfoWithProperties * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESCommitInfoWithProperties * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

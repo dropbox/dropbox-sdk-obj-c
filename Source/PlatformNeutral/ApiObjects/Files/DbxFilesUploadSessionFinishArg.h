@@ -3,49 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesCommitInfo;
-@class DbxFilesUploadSessionCursor;
-@class DbxFilesUploadSessionFinishArg;
+@class DBXFILESCommitInfo;
+@class DBXFILESUploadSessionCursor;
+@class DBXFILESUploadSessionFinishArg;
 
 /// 
-/// The `DbxFilesUploadSessionFinishArg` struct.
+/// The `DBXFILESUploadSessionFinishArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionFinishArg : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionFinishArg : NSObject <DBXSerializable> 
 
 /// Contains the upload session ID and the offset.
-@property (nonatomic) DbxFilesUploadSessionCursor * _Nonnull cursor;
+@property (nonatomic) DBXFILESUploadSessionCursor * _Nonnull cursor;
 
 /// Contains the path and other optional modifiers for the commit.
-@property (nonatomic) DbxFilesCommitInfo * _Nonnull commit;
+@property (nonatomic) DBXFILESCommitInfo * _Nonnull commit;
 
 /// Full constructor for the `UploadSessionFinishArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor commit:(DbxFilesCommitInfo * _Nonnull)commit;
+- (nonnull instancetype)initWithCursor:(DBXFILESUploadSessionCursor * _Nonnull)cursor commit:(DBXFILESCommitInfo * _Nonnull)commit;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionFinishArg` object.
+/// `DBXFILESUploadSessionFinishArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionFinishArg` struct.
+/// The serialization class for the `DBXFILESUploadSessionFinishArg` struct.
 /// 
-@interface DbxFilesUploadSessionFinishArgSerializer : NSObject 
+@interface DBXFILESUploadSessionFinishArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionFinishArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionFinishArg * _Nonnull)obj;
+/// `DBXFILESUploadSessionFinishArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionFinishArg` object from
+/// Returns an instantiation of the `DBXFILESUploadSessionFinishArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionFinishArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionFinishArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

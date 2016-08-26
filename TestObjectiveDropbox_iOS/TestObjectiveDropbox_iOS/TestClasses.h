@@ -7,23 +7,23 @@
 
 #import <Foundation/Foundation.h>
 
-@class DbxAuthRoutes;
-@class DbxFilesRoutes;
-@class DbxSharingRoutes;
-@class DbxUsersRoutes;
-@class DbxTeamRoutes;
+@class DBXAUTHRoutes;
+@class DBXFILESRoutes;
+@class DBXSHARINGRoutes;
+@class DBXUSERSRoutes;
+@class DBXTEAMRoutes;
 @class TestData;
-@class DbxError;
+@class DBXError;
 
 @interface DropboxTester : NSObject
 
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 
 @property TestData * _Nonnull testData;
-@property DbxAuthRoutes * _Nullable auth;
-@property DbxFilesRoutes * _Nullable files;
-@property DbxSharingRoutes * _Nullable sharing;
-@property DbxUsersRoutes * _Nullable users;
+@property DBXAUTHRoutes * _Nullable auth;
+@property DBXFILESRoutes * _Nullable files;
+@property DBXSHARINGRoutes * _Nullable sharing;
+@property DBXUSERSRoutes * _Nullable users;
 
 @end
 
@@ -32,7 +32,7 @@
 
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 
-@property DbxTeamRoutes * _Nullable team;
+@property DBXTEAMRoutes * _Nullable team;
 @property TestData * _Nonnull testData;
 
 @end
@@ -163,8 +163,8 @@
 
 @interface TestFormat : NSObject
 
-+ (void)abort:(DbxError * _Nonnull)error routeError:(id _Nonnull)routeError;
-+ (void)printErrors:(DbxError * _Nonnull)error routeError:(id _Nonnull)routeError;
++ (void)abort:(DBXError * _Nonnull)error routeError:(id _Nonnull)routeError;
++ (void)printErrors:(DBXError * _Nonnull)error routeError:(id _Nonnull)routeError;
 + (void)printSentProgress:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend;
 + (void)printTestBegin:(NSString * _Nonnull)title;
 + (void)printTestEnd;

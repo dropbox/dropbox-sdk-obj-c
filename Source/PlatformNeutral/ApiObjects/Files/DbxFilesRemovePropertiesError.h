@@ -3,53 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesLookUpPropertiesError;
-@class DbxFilesLookupError;
-@class DbxFilesRemovePropertiesError;
+@class DBXFILESLookUpPropertiesError;
+@class DBXFILESLookupError;
+@class DBXFILESRemovePropertiesError;
 
 /// 
-/// The `DbxFilesRemovePropertiesError` union.
+/// The `DBXFILESRemovePropertiesError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesRemovePropertiesError : NSObject <DbxSerializable> 
+@interface DBXFILESRemovePropertiesError : NSObject <DBXSerializable> 
 
-/// The `FilesRemovePropertiesErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesRemovePropertiesError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesRemovePropertiesErrorTag) {
+/// The `DBXFILESRemovePropertiesErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESRemovePropertiesError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESRemovePropertiesErrorTag) {
     /// Property template does not exist for given identifier.
-    FilesRemovePropertiesErrorTemplateNotFound,
+    DBXFILESRemovePropertiesErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    FilesRemovePropertiesErrorRestrictedContent,
+    DBXFILESRemovePropertiesErrorRestrictedContent,
 
     /// (no description).
-    FilesRemovePropertiesErrorOther,
+    DBXFILESRemovePropertiesErrorOther,
 
     /// (no description).
-    FilesRemovePropertiesErrorPath,
+    DBXFILESRemovePropertiesErrorPath,
 
     /// (no description).
-    FilesRemovePropertiesErrorPropertyGroupLookup,
+    DBXFILESRemovePropertiesErrorPropertyGroupLookup,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesRemovePropertiesErrorTag tag;
+@property (nonatomic) DBXFILESRemovePropertiesErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookUpPropertiesError * _Nonnull propertyGroupLookup;
-
+@property (nonatomic) DBXFILESLookUpPropertiesError * _Nonnull propertyGroupLookup;
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -61,10 +60,10 @@ typedef NS_ENUM(NSInteger, FilesRemovePropertiesErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `PropertyGroupLookup`.
-- (nonnull instancetype)initWithPropertyGroupLookup:(DbxFilesLookUpPropertiesError * _Nonnull)propertyGroupLookup;
+- (nonnull instancetype)initWithPropertyGroupLookup:(DBXFILESLookUpPropertiesError * _Nonnull)propertyGroupLookup;
 
 /// Returns whether the union's current tag state has value `TemplateNotFound`.
 - (BOOL)isTemplateNotFound;
@@ -86,23 +85,23 @@ typedef NS_ENUM(NSInteger, FilesRemovePropertiesErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesRemovePropertiesError` object.
+/// `DBXFILESRemovePropertiesError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesRemovePropertiesError` union.
+/// The serialization class for the `DBXFILESRemovePropertiesError` union.
 /// 
-@interface DbxFilesRemovePropertiesErrorSerializer : NSObject 
+@interface DBXFILESRemovePropertiesErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesRemovePropertiesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesRemovePropertiesError * _Nonnull)obj;
+/// `DBXFILESRemovePropertiesError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesRemovePropertiesError` object from
+/// Returns an instantiation of the `DBXFILESRemovePropertiesError` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesRemovePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESRemovePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

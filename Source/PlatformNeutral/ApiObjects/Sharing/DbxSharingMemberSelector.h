@@ -3,44 +3,43 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingMemberSelector;
+@class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DbxSharingMemberSelector` union.
+/// The `DBXSHARINGMemberSelector` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Includes different ways to identify a member of a shared folder.
 /// 
-@interface DbxSharingMemberSelector : NSObject <DbxSerializable> 
+@interface DBXSHARINGMemberSelector : NSObject <DBXSerializable> 
 
-/// The `SharingMemberSelectorTag` enum type represents the possible tag states
-/// that the `DbxSharingMemberSelector` union can exist in.
-typedef NS_ENUM(NSInteger, SharingMemberSelectorTag) {
+/// The `DBXSHARINGMemberSelectorTag` enum type represents the possible tag
+/// states that the `DBXSHARINGMemberSelector` union can exist in.
+typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
     /// Dropbox account, team member, or group ID of member.
-    SharingMemberSelectorDropboxId,
+    DBXSHARINGMemberSelectorDropboxId,
 
     /// E-mail address of member.
-    SharingMemberSelectorEmail,
+    DBXSHARINGMemberSelectorEmail,
 
     /// (no description).
-    SharingMemberSelectorOther,
+    DBXSHARINGMemberSelectorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) SharingMemberSelectorTag tag;
+@property (nonatomic) DBXSHARINGMemberSelectorTag tag;
 
 /// Dropbox account, team member, or group ID of member.
 @property (nonatomic, copy) NSString * _Nonnull dropboxId;
 
 /// E-mail address of member.
 @property (nonatomic, copy) NSString * _Nonnull email;
-
 
 /// Initializes union class with tag state of `DropboxId`.
 - (nonnull instancetype)initWithDropboxId:(NSString * _Nonnull)dropboxId;
@@ -63,7 +62,7 @@ typedef NS_ENUM(NSInteger, SharingMemberSelectorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxSharingMemberSelector`
+/// Returns a human-readable representation of the `DBXSHARINGMemberSelector`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -71,16 +70,16 @@ typedef NS_ENUM(NSInteger, SharingMemberSelectorTag) {
 
 
 /// 
-/// The serialization class for the `DbxSharingMemberSelector` union.
+/// The serialization class for the `DBXSHARINGMemberSelector` union.
 /// 
-@interface DbxSharingMemberSelectorSerializer : NSObject 
+@interface DBXSHARINGMemberSelectorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingMemberSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingMemberSelector * _Nonnull)obj;
+/// `DBXSHARINGMemberSelector` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberSelector * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingMemberSelector` object from a
+/// Returns an instantiation of the `DBXSHARINGMemberSelector` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

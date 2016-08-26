@@ -3,31 +3,31 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadWriteFailed;
-@class DbxFilesWriteError;
+@class DBXFILESUploadWriteFailed;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesUploadWriteFailed` struct.
+/// The `DBXFILESUploadWriteFailed` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadWriteFailed : NSObject <DbxSerializable> 
+@interface DBXFILESUploadWriteFailed : NSObject <DBXSerializable> 
 
 /// The reason why the file couldn't be saved.
-@property (nonatomic) DbxFilesWriteError * _Nonnull reason;
+@property (nonatomic) DBXFILESWriteError * _Nonnull reason;
 
 /// The upload session ID; this may be used to retry the commit.
 @property (nonatomic, copy) NSString * _Nonnull uploadSessionId;
 
 /// Full constructor for the `UploadWriteFailed` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithReason:(DbxFilesWriteError * _Nonnull)reason uploadSessionId:(NSString * _Nonnull)uploadSessionId;
+- (nonnull instancetype)initWithReason:(DBXFILESWriteError * _Nonnull)reason uploadSessionId:(NSString * _Nonnull)uploadSessionId;
 
-/// Returns a human-readable representation of the `DbxFilesUploadWriteFailed`
+/// Returns a human-readable representation of the `DBXFILESUploadWriteFailed`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -35,16 +35,16 @@
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadWriteFailed` struct.
+/// The serialization class for the `DBXFILESUploadWriteFailed` struct.
 /// 
-@interface DbxFilesUploadWriteFailedSerializer : NSObject 
+@interface DBXFILESUploadWriteFailedSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadWriteFailed` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadWriteFailed * _Nonnull)obj;
+/// `DBXFILESUploadWriteFailed` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadWriteFailed * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadWriteFailed` object from a
+/// Returns an instantiation of the `DBXFILESUploadWriteFailed` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesUploadWriteFailed * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadWriteFailed * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

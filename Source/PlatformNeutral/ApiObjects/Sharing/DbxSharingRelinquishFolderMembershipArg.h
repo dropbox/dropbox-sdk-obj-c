@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingRelinquishFolderMembershipArg;
+@class DBXSHARINGRelinquishFolderMembershipArg;
 
 /// 
-/// The `DbxSharingRelinquishFolderMembershipArg` struct.
+/// The `DBXSHARINGRelinquishFolderMembershipArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingRelinquishFolderMembershipArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGRelinquishFolderMembershipArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
@@ -31,24 +31,24 @@
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingRelinquishFolderMembershipArg` object.
+/// `DBXSHARINGRelinquishFolderMembershipArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingRelinquishFolderMembershipArg`
+/// The serialization class for the `DBXSHARINGRelinquishFolderMembershipArg`
 /// struct.
 /// 
-@interface DbxSharingRelinquishFolderMembershipArgSerializer : NSObject 
+@interface DBXSHARINGRelinquishFolderMembershipArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingRelinquishFolderMembershipArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingRelinquishFolderMembershipArg * _Nonnull)obj;
+/// `DBXSHARINGRelinquishFolderMembershipArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRelinquishFolderMembershipArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingRelinquishFolderMembershipArg`
+/// Returns an instantiation of the `DBXSHARINGRelinquishFolderMembershipArg`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingRelinquishFolderMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGRelinquishFolderMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

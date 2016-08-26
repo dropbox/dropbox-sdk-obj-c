@@ -3,35 +3,34 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupSelectorError;
+@class DBXTEAMGroupSelectorError;
 
 /// 
-/// The `DbxTeamGroupSelectorError` union.
+/// The `DBXTEAMGroupSelectorError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Error that can be raised when GroupSelector is used.
 /// 
-@interface DbxTeamGroupSelectorError : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupSelectorError : NSObject <DBXSerializable> 
 
-/// The `TeamGroupSelectorErrorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupSelectorError` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupSelectorErrorTag) {
+/// The `DBXTEAMGroupSelectorErrorTag` enum type represents the possible tag
+/// states that the `DBXTEAMGroupSelectorError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupSelectorErrorTag) {
     /// No matching group found. No groups match the specified group ID.
-    TeamGroupSelectorErrorGroupNotFound,
+    DBXTEAMGroupSelectorErrorGroupNotFound,
 
     /// (no description).
-    TeamGroupSelectorErrorOther,
+    DBXTEAMGroupSelectorErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupSelectorErrorTag tag;
-
+@property (nonatomic) DBXTEAMGroupSelectorErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -48,7 +47,7 @@ typedef NS_ENUM(NSInteger, TeamGroupSelectorErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupSelectorError`
+/// Returns a human-readable representation of the `DBXTEAMGroupSelectorError`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -56,16 +55,16 @@ typedef NS_ENUM(NSInteger, TeamGroupSelectorErrorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupSelectorError` union.
+/// The serialization class for the `DBXTEAMGroupSelectorError` union.
 /// 
-@interface DbxTeamGroupSelectorErrorSerializer : NSObject 
+@interface DBXTEAMGroupSelectorErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupSelectorError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupSelectorError * _Nonnull)obj;
+/// `DBXTEAMGroupSelectorError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupSelectorError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupSelectorError` object from a
+/// Returns an instantiation of the `DBXTEAMGroupSelectorError` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

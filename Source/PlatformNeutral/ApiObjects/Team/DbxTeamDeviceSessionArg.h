@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamDeviceSessionArg;
+@class DBXTEAMDeviceSessionArg;
 
 /// 
-/// The `DbxTeamDeviceSessionArg` struct.
+/// The `DBXTEAMDeviceSessionArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamDeviceSessionArg : NSObject <DbxSerializable> 
+@interface DBXTEAMDeviceSessionArg : NSObject <DBXSerializable> 
 
 /// The session id
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
@@ -26,7 +26,7 @@
 /// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
-/// Returns a human-readable representation of the `DbxTeamDeviceSessionArg`
+/// Returns a human-readable representation of the `DBXTEAMDeviceSessionArg`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -34,16 +34,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamDeviceSessionArg` struct.
+/// The serialization class for the `DBXTEAMDeviceSessionArg` struct.
 /// 
-@interface DbxTeamDeviceSessionArgSerializer : NSObject 
+@interface DBXTEAMDeviceSessionArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamDeviceSessionArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamDeviceSessionArg * _Nonnull)obj;
+/// `DBXTEAMDeviceSessionArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSessionArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamDeviceSessionArg` object from a
+/// Returns an instantiation of the `DBXTEAMDeviceSessionArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

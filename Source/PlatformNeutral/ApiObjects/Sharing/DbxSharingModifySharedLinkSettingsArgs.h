@@ -3,56 +3,56 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingModifySharedLinkSettingsArgs;
-@class DbxSharingSharedLinkSettings;
+@class DBXSHARINGModifySharedLinkSettingsArgs;
+@class DBXSHARINGSharedLinkSettings;
 
 /// 
-/// The `DbxSharingModifySharedLinkSettingsArgs` struct.
+/// The `DBXSHARINGModifySharedLinkSettingsArgs` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingModifySharedLinkSettingsArgs : NSObject <DbxSerializable> 
+@interface DBXSHARINGModifySharedLinkSettingsArgs : NSObject <DBXSerializable> 
 
 /// URL of the shared link to change its settings
 @property (nonatomic, copy) NSString * _Nonnull url;
 
 /// Set of settings for the shared link.
-@property (nonatomic) DbxSharingSharedLinkSettings * _Nonnull settings;
+@property (nonatomic) DBXSHARINGSharedLinkSettings * _Nonnull settings;
 
 /// If set to true, removes the expiration of the shared link.
 @property (nonatomic, copy) NSNumber * _Nonnull removeExpiration;
 
 /// Full constructor for the `ModifySharedLinkSettingsArgs` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DBXSHARINGSharedLinkSettings * _Nonnull)settings removeExpiration:(NSNumber * _Nullable)removeExpiration;
 
 /// Convenience constructor for the `ModifySharedLinkSettingsArgs` struct
 /// (exposes only non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DbxSharingSharedLinkSettings * _Nonnull)settings;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DBXSHARINGSharedLinkSettings * _Nonnull)settings;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingModifySharedLinkSettingsArgs` object.
+/// `DBXSHARINGModifySharedLinkSettingsArgs` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingModifySharedLinkSettingsArgs`
+/// The serialization class for the `DBXSHARINGModifySharedLinkSettingsArgs`
 /// struct.
 /// 
-@interface DbxSharingModifySharedLinkSettingsArgsSerializer : NSObject 
+@interface DBXSHARINGModifySharedLinkSettingsArgsSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingModifySharedLinkSettingsArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingModifySharedLinkSettingsArgs * _Nonnull)obj;
+/// `DBXSHARINGModifySharedLinkSettingsArgs` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGModifySharedLinkSettingsArgs * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingModifySharedLinkSettingsArgs`
+/// Returns an instantiation of the `DBXSHARINGModifySharedLinkSettingsArgs`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingModifySharedLinkSettingsArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGModifySharedLinkSettingsArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

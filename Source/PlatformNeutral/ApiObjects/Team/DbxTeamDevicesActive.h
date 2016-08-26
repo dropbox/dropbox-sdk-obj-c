@@ -3,14 +3,14 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamDevicesActive;
+@class DBXTEAMDevicesActive;
 
 /// 
-/// The `DbxTeamDevicesActive` struct.
+/// The `DBXTEAMDevicesActive` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -18,7 +18,7 @@
 /// number of devices active within a time window, ending with that day. If
 /// there is no data for a day, then the value will be None.
 /// 
-@interface DbxTeamDevicesActive : NSObject <DbxSerializable> 
+@interface DBXTEAMDevicesActive : NSObject <DBXSerializable> 
 
 /// Array of number of linked windows (desktop) clients with activity.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull windows;
@@ -46,7 +46,7 @@
 /// variables).
 - (nonnull instancetype)initWithWindows:(NSArray<NSNumber *> * _Nonnull)windows macos:(NSArray<NSNumber *> * _Nonnull)macos linux:(NSArray<NSNumber *> * _Nonnull)linux ios:(NSArray<NSNumber *> * _Nonnull)ios android:(NSArray<NSNumber *> * _Nonnull)android other:(NSArray<NSNumber *> * _Nonnull)other total:(NSArray<NSNumber *> * _Nonnull)total;
 
-/// Returns a human-readable representation of the `DbxTeamDevicesActive`
+/// Returns a human-readable representation of the `DBXTEAMDevicesActive`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -54,16 +54,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamDevicesActive` struct.
+/// The serialization class for the `DBXTEAMDevicesActive` struct.
 /// 
-@interface DbxTeamDevicesActiveSerializer : NSObject 
+@interface DBXTEAMDevicesActiveSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamDevicesActive` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamDevicesActive * _Nonnull)obj;
+/// `DBXTEAMDevicesActive` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDevicesActive * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamDevicesActive` object from a
+/// Returns an instantiation of the `DBXTEAMDevicesActive` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamDevicesActive * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMDevicesActive * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

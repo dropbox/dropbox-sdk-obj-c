@@ -3,54 +3,54 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamIncludeMembersArg.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMIncludeMembersArg.h"
 
-@class DbxTeamGroupMembersRemoveArg;
-@class DbxTeamGroupSelector;
-@class DbxTeamUserSelectorArg;
+@class DBXTEAMGroupMembersRemoveArg;
+@class DBXTEAMGroupSelector;
+@class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DbxTeamGroupMembersRemoveArg` struct.
+/// The `DBXTEAMGroupMembersRemoveArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamGroupMembersRemoveArg : DbxTeamIncludeMembersArg <DbxSerializable> 
+@interface DBXTEAMGroupMembersRemoveArg : DBXTEAMIncludeMembersArg <DBXSerializable> 
 
 /// Group from which users will be removed.
-@property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
 
 /// List of users to be removed from the group.
-@property (nonatomic) NSArray<DbxTeamUserSelectorArg *> * _Nonnull users;
+@property (nonatomic) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull users;
 
 /// Full constructor for the `GroupMembersRemoveArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group users:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers;
 
 /// Convenience constructor for the `GroupMembersRemoveArg` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users;
+- (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group users:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)users;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamGroupMembersRemoveArg` object.
+/// `DBXTEAMGroupMembersRemoveArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupMembersRemoveArg` struct.
+/// The serialization class for the `DBXTEAMGroupMembersRemoveArg` struct.
 /// 
-@interface DbxTeamGroupMembersRemoveArgSerializer : NSObject 
+@interface DBXTEAMGroupMembersRemoveArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupMembersRemoveArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersRemoveArg * _Nonnull)obj;
+/// `DBXTEAMGroupMembersRemoveArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersRemoveArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupMembersRemoveArg` object from a
+/// Returns an instantiation of the `DBXTEAMGroupMembersRemoveArg` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupMembersRemoveArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupMembersRemoveArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

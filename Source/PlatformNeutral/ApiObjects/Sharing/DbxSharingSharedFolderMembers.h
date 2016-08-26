@@ -3,32 +3,32 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingGroupMembershipInfo;
-@class DbxSharingInviteeMembershipInfo;
-@class DbxSharingSharedFolderMembers;
-@class DbxSharingUserMembershipInfo;
+@class DBXSHARINGGroupMembershipInfo;
+@class DBXSHARINGInviteeMembershipInfo;
+@class DBXSHARINGSharedFolderMembers;
+@class DBXSHARINGUserMembershipInfo;
 
 /// 
-/// The `DbxSharingSharedFolderMembers` struct.
+/// The `DBXSHARINGSharedFolderMembers` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Shared folder user and group membership.
 /// 
-@interface DbxSharingSharedFolderMembers : NSObject <DbxSerializable> 
+@interface DBXSHARINGSharedFolderMembers : NSObject <DBXSerializable> 
 
 /// The list of user members of the shared folder.
-@property (nonatomic) NSArray<DbxSharingUserMembershipInfo *> * _Nonnull users;
+@property (nonatomic) NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull users;
 
 /// The list of group members of the shared folder.
-@property (nonatomic) NSArray<DbxSharingGroupMembershipInfo *> * _Nonnull groups;
+@property (nonatomic) NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull groups;
 
 /// The list of invitees to the shared folder.
-@property (nonatomic) NSArray<DbxSharingInviteeMembershipInfo *> * _Nonnull invitees;
+@property (nonatomic) NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull invitees;
 
 /// Present if there are additional shared folder members that have not been
 /// returned yet. Pass the cursor into listFolderMembersContinue to list
@@ -37,30 +37,30 @@
 
 /// Full constructor for the `SharedFolderMembers` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUsers:(NSArray<DbxSharingUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DbxSharingGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DbxSharingInviteeMembershipInfo *> * _Nonnull)invitees cursor:(NSString * _Nullable)cursor;
+- (nonnull instancetype)initWithUsers:(NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull)invitees cursor:(NSString * _Nullable)cursor;
 
 /// Convenience constructor for the `SharedFolderMembers` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUsers:(NSArray<DbxSharingUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DbxSharingGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DbxSharingInviteeMembershipInfo *> * _Nonnull)invitees;
+- (nonnull instancetype)initWithUsers:(NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull)invitees;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingSharedFolderMembers` object.
+/// `DBXSHARINGSharedFolderMembers` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingSharedFolderMembers` struct.
+/// The serialization class for the `DBXSHARINGSharedFolderMembers` struct.
 /// 
-@interface DbxSharingSharedFolderMembersSerializer : NSObject 
+@interface DBXSHARINGSharedFolderMembersSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingSharedFolderMembers` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderMembers * _Nonnull)obj;
+/// `DBXSHARINGSharedFolderMembers` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMembers * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingSharedFolderMembers` object from
+/// Returns an instantiation of the `DBXSHARINGSharedFolderMembers` object from
 /// a json-compatible dictionary representation.
-+ (DbxSharingSharedFolderMembers * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGSharedFolderMembers * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

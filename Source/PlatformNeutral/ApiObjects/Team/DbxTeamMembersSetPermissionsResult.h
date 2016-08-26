@@ -3,48 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamAdminTier;
-@class DbxTeamMembersSetPermissionsResult;
+@class DBXTEAMAdminTier;
+@class DBXTEAMMembersSetPermissionsResult;
 
 /// 
-/// The `DbxTeamMembersSetPermissionsResult` struct.
+/// The `DBXTEAMMembersSetPermissionsResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxTeamMembersSetPermissionsResult : NSObject <DbxSerializable> 
+@interface DBXTEAMMembersSetPermissionsResult : NSObject <DBXSerializable> 
 
 /// The member ID of the user to which the change was applied.
 @property (nonatomic, copy) NSString * _Nonnull teamMemberId;
 
 /// The role after the change.
-@property (nonatomic) DbxTeamAdminTier * _Nonnull role;
+@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `MembersSetPermissionsResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId role:(DbxTeamAdminTier * _Nonnull)role;
+- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId role:(DBXTEAMAdminTier * _Nonnull)role;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamMembersSetPermissionsResult` object.
+/// `DBXTEAMMembersSetPermissionsResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamMembersSetPermissionsResult` struct.
+/// The serialization class for the `DBXTEAMMembersSetPermissionsResult` struct.
 /// 
-@interface DbxTeamMembersSetPermissionsResultSerializer : NSObject 
+@interface DBXTEAMMembersSetPermissionsResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMembersSetPermissionsResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMembersSetPermissionsResult * _Nonnull)obj;
+/// `DBXTEAMMembersSetPermissionsResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetPermissionsResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMembersSetPermissionsResult` object
+/// Returns an instantiation of the `DBXTEAMMembersSetPermissionsResult` object
 /// from a json-compatible dictionary representation.
-+ (DbxTeamMembersSetPermissionsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMembersSetPermissionsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

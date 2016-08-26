@@ -3,53 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxPropertiesModifyPropertyTemplateError;
+@class DBXPROPERTIESModifyPropertyTemplateError;
 
 /// 
-/// The `DbxPropertiesModifyPropertyTemplateError` union.
+/// The `DBXPROPERTIESModifyPropertyTemplateError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxPropertiesModifyPropertyTemplateError : NSObject <DbxSerializable> 
+@interface DBXPROPERTIESModifyPropertyTemplateError : NSObject <DBXSerializable> 
 
-/// The `PropertiesModifyPropertyTemplateErrorTag` enum type represents the
-/// possible tag states that the `DbxPropertiesModifyPropertyTemplateError`
+/// The `DBXPROPERTIESModifyPropertyTemplateErrorTag` enum type represents the
+/// possible tag states that the `DBXPROPERTIESModifyPropertyTemplateError`
 /// union can exist in.
-typedef NS_ENUM(NSInteger, PropertiesModifyPropertyTemplateErrorTag) {
+typedef NS_ENUM(NSInteger, DBXPROPERTIESModifyPropertyTemplateErrorTag) {
     /// Property template does not exist for given identifier.
-    PropertiesModifyPropertyTemplateErrorTemplateNotFound,
+    DBXPROPERTIESModifyPropertyTemplateErrorTemplateNotFound,
 
     /// You do not have the permissions to modify this property template.
-    PropertiesModifyPropertyTemplateErrorRestrictedContent,
+    DBXPROPERTIESModifyPropertyTemplateErrorRestrictedContent,
 
     /// (no description).
-    PropertiesModifyPropertyTemplateErrorOther,
+    DBXPROPERTIESModifyPropertyTemplateErrorOther,
 
     /// A property field name already exists in the template.
-    PropertiesModifyPropertyTemplateErrorConflictingPropertyNames,
+    DBXPROPERTIESModifyPropertyTemplateErrorConflictingPropertyNames,
 
     /// There are too many properties in the changed template. The maximum
     /// number of properties per template is 32.
-    PropertiesModifyPropertyTemplateErrorTooManyProperties,
+    DBXPROPERTIESModifyPropertyTemplateErrorTooManyProperties,
 
     /// There are too many templates for the team.
-    PropertiesModifyPropertyTemplateErrorTooManyTemplates,
+    DBXPROPERTIESModifyPropertyTemplateErrorTooManyTemplates,
 
     /// The template name, description or field names is too large.
-    PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge,
+    DBXPROPERTIESModifyPropertyTemplateErrorTemplateAttributeTooLarge,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) PropertiesModifyPropertyTemplateErrorTag tag;
+@property (nonatomic) DBXPROPERTIESModifyPropertyTemplateErrorTag tag;
 
 /// Property template does not exist for given identifier.
 @property (nonatomic, copy) NSString * _Nonnull templateNotFound;
-
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -99,24 +98,24 @@ typedef NS_ENUM(NSInteger, PropertiesModifyPropertyTemplateErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxPropertiesModifyPropertyTemplateError` object.
+/// `DBXPROPERTIESModifyPropertyTemplateError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxPropertiesModifyPropertyTemplateError`
+/// The serialization class for the `DBXPROPERTIESModifyPropertyTemplateError`
 /// union.
 /// 
-@interface DbxPropertiesModifyPropertyTemplateErrorSerializer : NSObject 
+@interface DBXPROPERTIESModifyPropertyTemplateErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxPropertiesModifyPropertyTemplateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxPropertiesModifyPropertyTemplateError * _Nonnull)obj;
+/// `DBXPROPERTIESModifyPropertyTemplateError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESModifyPropertyTemplateError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxPropertiesModifyPropertyTemplateError`
+/// Returns an instantiation of the `DBXPROPERTIESModifyPropertyTemplateError`
 /// object from a json-compatible dictionary representation.
-+ (DbxPropertiesModifyPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXPROPERTIESModifyPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

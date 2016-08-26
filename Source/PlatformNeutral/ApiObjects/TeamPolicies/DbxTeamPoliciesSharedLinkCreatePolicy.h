@@ -3,46 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamPoliciesSharedLinkCreatePolicy;
+@class DBXTEAMPOLICIESSharedLinkCreatePolicy;
 
 /// 
-/// The `DbxTeamPoliciesSharedLinkCreatePolicy` union.
+/// The `DBXTEAMPOLICIESSharedLinkCreatePolicy` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Policy governing the visibility of newly created shared links.
 /// 
-@interface DbxTeamPoliciesSharedLinkCreatePolicy : NSObject <DbxSerializable> 
+@interface DBXTEAMPOLICIESSharedLinkCreatePolicy : NSObject <DBXSerializable> 
 
-/// The `TeamPoliciesSharedLinkCreatePolicyTag` enum type represents the
-/// possible tag states that the `DbxTeamPoliciesSharedLinkCreatePolicy` union
+/// The `DBXTEAMPOLICIESSharedLinkCreatePolicyTag` enum type represents the
+/// possible tag states that the `DBXTEAMPOLICIESSharedLinkCreatePolicy` union
 /// can exist in.
-typedef NS_ENUM(NSInteger, TeamPoliciesSharedLinkCreatePolicyTag) {
+typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
     /// By default, anyone can access newly created shared links. No login will
     /// be required to access the shared links unless overridden.
-    TeamPoliciesSharedLinkCreatePolicyDefaultPublic,
+    DBXTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic,
 
     /// By default, only members of the same team can access newly created
     /// shared links. Login will be required to access the shared links unless
     /// overridden.
-    TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly,
+    DBXTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly,
 
     /// Only members of the same team can access newly created shared links.
     /// Login will be required to access the shared links.
-    TeamPoliciesSharedLinkCreatePolicyTeamOnly,
+    DBXTEAMPOLICIESSharedLinkCreatePolicyTeamOnly,
 
     /// (no description).
-    TeamPoliciesSharedLinkCreatePolicyOther,
+    DBXTEAMPOLICIESSharedLinkCreatePolicyOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamPoliciesSharedLinkCreatePolicyTag tag;
-
+@property (nonatomic) DBXTEAMPOLICIESSharedLinkCreatePolicyTag tag;
 
 /// Initializes union class with tag state of `DefaultPublic`.
 - (nonnull instancetype)initWithDefaultPublic;
@@ -72,24 +71,24 @@ typedef NS_ENUM(NSInteger, TeamPoliciesSharedLinkCreatePolicyTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxTeamPoliciesSharedLinkCreatePolicy` object.
+/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxTeamPoliciesSharedLinkCreatePolicy`
+/// The serialization class for the `DBXTEAMPOLICIESSharedLinkCreatePolicy`
 /// union.
 /// 
-@interface DbxTeamPoliciesSharedLinkCreatePolicySerializer : NSObject 
+@interface DBXTEAMPOLICIESSharedLinkCreatePolicySerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamPoliciesSharedLinkCreatePolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)obj;
+/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamPoliciesSharedLinkCreatePolicy`
+/// Returns an instantiation of the `DBXTEAMPOLICIESSharedLinkCreatePolicy`
 /// object from a json-compatible dictionary representation.
-+ (DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

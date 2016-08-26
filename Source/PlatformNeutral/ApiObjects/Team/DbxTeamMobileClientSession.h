@@ -3,28 +3,28 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamDeviceSession.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMDeviceSession.h"
 
-@class DbxTeamMobileClientPlatform;
-@class DbxTeamMobileClientSession;
+@class DBXTEAMMobileClientPlatform;
+@class DBXTEAMMobileClientSession;
 
 /// 
-/// The `DbxTeamMobileClientSession` struct.
+/// The `DBXTEAMMobileClientSession` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Information about linked Dropbox mobile client sessions
 /// 
-@interface DbxTeamMobileClientSession : DbxTeamDeviceSession <DbxSerializable> 
+@interface DBXTEAMMobileClientSession : DBXTEAMDeviceSession <DBXSerializable> 
 
 /// The device name
 @property (nonatomic, copy) NSString * _Nonnull deviceName;
 
 /// The mobile application type
-@property (nonatomic) DbxTeamMobileClientPlatform * _Nonnull clientType;
+@property (nonatomic) DBXTEAMMobileClientPlatform * _Nonnull clientType;
 
 /// The dropbox client version
 @property (nonatomic, copy) NSString * _Nullable clientVersion;
@@ -37,13 +37,13 @@
 
 /// Full constructor for the `MobileClientSession` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DbxTeamMobileClientPlatform * _Nonnull)clientType ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated clientVersion:(NSString * _Nullable)clientVersion osVersion:(NSString * _Nullable)osVersion lastCarrier:(NSString * _Nullable)lastCarrier;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DBXTEAMMobileClientPlatform * _Nonnull)clientType ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated clientVersion:(NSString * _Nullable)clientVersion osVersion:(NSString * _Nullable)osVersion lastCarrier:(NSString * _Nullable)lastCarrier;
 
 /// Convenience constructor for the `MobileClientSession` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DbxTeamMobileClientPlatform * _Nonnull)clientType;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DBXTEAMMobileClientPlatform * _Nonnull)clientType;
 
-/// Returns a human-readable representation of the `DbxTeamMobileClientSession`
+/// Returns a human-readable representation of the `DBXTEAMMobileClientSession`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -51,16 +51,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamMobileClientSession` struct.
+/// The serialization class for the `DBXTEAMMobileClientSession` struct.
 /// 
-@interface DbxTeamMobileClientSessionSerializer : NSObject 
+@interface DBXTEAMMobileClientSessionSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamMobileClientSession` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamMobileClientSession * _Nonnull)obj;
+/// `DBXTEAMMobileClientSession` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMobileClientSession * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamMobileClientSession` object from a
+/// Returns an instantiation of the `DBXTEAMMobileClientSession` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamMobileClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMMobileClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

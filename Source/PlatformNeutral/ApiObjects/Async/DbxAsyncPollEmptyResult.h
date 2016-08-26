@@ -3,36 +3,35 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxAsyncPollEmptyResult;
+@class DBXASYNCPollEmptyResult;
 
 /// 
-/// The `DbxAsyncPollEmptyResult` union.
+/// The `DBXASYNCPollEmptyResult` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Result returned by methods that poll for the status of an asynchronous job.
 /// Upon completion of the job, no additional information is returned.
 /// 
-@interface DbxAsyncPollEmptyResult : NSObject <DbxSerializable> 
+@interface DBXASYNCPollEmptyResult : NSObject <DBXSerializable> 
 
-/// The `AsyncPollEmptyResultTag` enum type represents the possible tag states
-/// that the `DbxAsyncPollEmptyResult` union can exist in.
-typedef NS_ENUM(NSInteger, AsyncPollEmptyResultTag) {
+/// The `DBXASYNCPollEmptyResultTag` enum type represents the possible tag
+/// states that the `DBXASYNCPollEmptyResult` union can exist in.
+typedef NS_ENUM(NSInteger, DBXASYNCPollEmptyResultTag) {
     /// The asynchronous job is still in progress.
-    AsyncPollEmptyResultInProgress,
+    DBXASYNCPollEmptyResultInProgress,
 
     /// The asynchronous job has completed successfully.
-    AsyncPollEmptyResultComplete,
+    DBXASYNCPollEmptyResultComplete,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) AsyncPollEmptyResultTag tag;
-
+@property (nonatomic) DBXASYNCPollEmptyResultTag tag;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -49,7 +48,7 @@ typedef NS_ENUM(NSInteger, AsyncPollEmptyResultTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxAsyncPollEmptyResult`
+/// Returns a human-readable representation of the `DBXASYNCPollEmptyResult`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -57,16 +56,16 @@ typedef NS_ENUM(NSInteger, AsyncPollEmptyResultTag) {
 
 
 /// 
-/// The serialization class for the `DbxAsyncPollEmptyResult` union.
+/// The serialization class for the `DBXASYNCPollEmptyResult` union.
 /// 
-@interface DbxAsyncPollEmptyResultSerializer : NSObject 
+@interface DBXASYNCPollEmptyResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxAsyncPollEmptyResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxAsyncPollEmptyResult * _Nonnull)obj;
+/// `DBXASYNCPollEmptyResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollEmptyResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxAsyncPollEmptyResult` object from a
+/// Returns an instantiation of the `DBXASYNCPollEmptyResult` object from a
 /// json-compatible dictionary representation.
-+ (DbxAsyncPollEmptyResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXASYNCPollEmptyResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

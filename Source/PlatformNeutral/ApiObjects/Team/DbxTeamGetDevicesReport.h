@@ -3,16 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamBaseDfbReport.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMBaseDfbReport.h"
 
-@class DbxTeamDevicesActive;
-@class DbxTeamGetDevicesReport;
+@class DBXTEAMDevicesActive;
+@class DBXTEAMGetDevicesReport;
 
 /// 
-/// The `DbxTeamGetDevicesReport` struct.
+/// The `DBXTEAMGetDevicesReport` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
@@ -21,22 +21,22 @@
 /// array of values, one value per day. If there is no data for a day, then the
 /// value will be None.
 /// 
-@interface DbxTeamGetDevicesReport : DbxTeamBaseDfbReport <DbxSerializable> 
+@interface DBXTEAMGetDevicesReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
 /// Report of the number of devices active in the last day.
-@property (nonatomic) DbxTeamDevicesActive * _Nonnull active1Day;
+@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active1Day;
 
 /// Report of the number of devices active in the last 7 days.
-@property (nonatomic) DbxTeamDevicesActive * _Nonnull active7Day;
+@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active7Day;
 
 /// Report of the number of devices active in the last 28 days.
-@property (nonatomic) DbxTeamDevicesActive * _Nonnull active28Day;
+@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active28Day;
 
 /// Full constructor for the `GetDevicesReport` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DbxTeamDevicesActive * _Nonnull)active1Day active7Day:(DbxTeamDevicesActive * _Nonnull)active7Day active28Day:(DbxTeamDevicesActive * _Nonnull)active28Day;
+- (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DBXTEAMDevicesActive * _Nonnull)active1Day active7Day:(DBXTEAMDevicesActive * _Nonnull)active7Day active28Day:(DBXTEAMDevicesActive * _Nonnull)active28Day;
 
-/// Returns a human-readable representation of the `DbxTeamGetDevicesReport`
+/// Returns a human-readable representation of the `DBXTEAMGetDevicesReport`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -44,16 +44,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamGetDevicesReport` struct.
+/// The serialization class for the `DBXTEAMGetDevicesReport` struct.
 /// 
-@interface DbxTeamGetDevicesReportSerializer : NSObject 
+@interface DBXTEAMGetDevicesReportSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGetDevicesReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGetDevicesReport * _Nonnull)obj;
+/// `DBXTEAMGetDevicesReport` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetDevicesReport * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGetDevicesReport` object from a
+/// Returns an instantiation of the `DBXTEAMGetDevicesReport` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGetDevicesReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGetDevicesReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

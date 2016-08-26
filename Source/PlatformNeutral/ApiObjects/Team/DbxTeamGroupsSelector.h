@@ -3,42 +3,41 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamGroupsSelector;
+@class DBXTEAMGroupsSelector;
 
 /// 
-/// The `DbxTeamGroupsSelector` union.
+/// The `DBXTEAMGroupsSelector` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Argument for selecting a list of groups, either by group_ids, or external
 /// group IDs.
 /// 
-@interface DbxTeamGroupsSelector : NSObject <DbxSerializable> 
+@interface DBXTEAMGroupsSelector : NSObject <DBXSerializable> 
 
-/// The `TeamGroupsSelectorTag` enum type represents the possible tag states
-/// that the `DbxTeamGroupsSelector` union can exist in.
-typedef NS_ENUM(NSInteger, TeamGroupsSelectorTag) {
+/// The `DBXTEAMGroupsSelectorTag` enum type represents the possible tag states
+/// that the `DBXTEAMGroupsSelector` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMGroupsSelectorTag) {
     /// List of group IDs.
-    TeamGroupsSelectorGroupIds,
+    DBXTEAMGroupsSelectorGroupIds,
 
     /// List of external IDs of groups.
-    TeamGroupsSelectorGroupExternalIds,
+    DBXTEAMGroupsSelectorGroupExternalIds,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamGroupsSelectorTag tag;
+@property (nonatomic) DBXTEAMGroupsSelectorTag tag;
 
 /// List of group IDs.
 @property (nonatomic) NSArray<NSString *> * _Nonnull groupIds;
 
 /// List of external IDs of groups.
 @property (nonatomic) NSArray<NSString *> * _Nonnull groupExternalIds;
-
 
 /// Initializes union class with tag state of `GroupIds`.
 - (nonnull instancetype)initWithGroupIds:(NSArray<NSString *> * _Nonnull)groupIds;
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, TeamGroupsSelectorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamGroupsSelector`
+/// Returns a human-readable representation of the `DBXTEAMGroupsSelector`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -63,16 +62,16 @@ typedef NS_ENUM(NSInteger, TeamGroupsSelectorTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamGroupsSelector` union.
+/// The serialization class for the `DBXTEAMGroupsSelector` union.
 /// 
-@interface DbxTeamGroupsSelectorSerializer : NSObject 
+@interface DBXTEAMGroupsSelectorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamGroupsSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsSelector * _Nonnull)obj;
+/// `DBXTEAMGroupsSelector` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsSelector * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamGroupsSelector` object from a
+/// Returns an instantiation of the `DBXTEAMGroupsSelector` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamGroupsSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMGroupsSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

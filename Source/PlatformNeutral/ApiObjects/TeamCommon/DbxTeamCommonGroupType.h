@@ -3,39 +3,38 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxTeamCommonGroupType;
+@class DBXTEAMCOMMONGroupType;
 
 /// 
-/// The `DbxTeamCommonGroupType` union.
+/// The `DBXTEAMCOMMONGroupType` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The group type determines how a group is created and managed.
 /// 
-@interface DbxTeamCommonGroupType : NSObject <DbxSerializable> 
+@interface DBXTEAMCOMMONGroupType : NSObject <DBXSerializable> 
 
-/// The `TeamCommonGroupTypeTag` enum type represents the possible tag states
-/// that the `DbxTeamCommonGroupType` union can exist in.
-typedef NS_ENUM(NSInteger, TeamCommonGroupTypeTag) {
+/// The `DBXTEAMCOMMONGroupTypeTag` enum type represents the possible tag states
+/// that the `DBXTEAMCOMMONGroupType` union can exist in.
+typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupTypeTag) {
     /// A group to which team members are automatically added. Applicable to
     /// team folders https://www.dropbox.com/help/986 only.
-    TeamCommonGroupTypeTeam,
+    DBXTEAMCOMMONGroupTypeTeam,
 
     /// A group is created and managed by a user.
-    TeamCommonGroupTypeUserManaged,
+    DBXTEAMCOMMONGroupTypeUserManaged,
 
     /// (no description).
-    TeamCommonGroupTypeOther,
+    DBXTEAMCOMMONGroupTypeOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) TeamCommonGroupTypeTag tag;
-
+@property (nonatomic) DBXTEAMCOMMONGroupTypeTag tag;
 
 /// Initializes union class with tag state of `Team`.
 - (nonnull instancetype)initWithTeam;
@@ -58,7 +57,7 @@ typedef NS_ENUM(NSInteger, TeamCommonGroupTypeTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxTeamCommonGroupType`
+/// Returns a human-readable representation of the `DBXTEAMCOMMONGroupType`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -66,16 +65,16 @@ typedef NS_ENUM(NSInteger, TeamCommonGroupTypeTag) {
 
 
 /// 
-/// The serialization class for the `DbxTeamCommonGroupType` union.
+/// The serialization class for the `DBXTEAMCOMMONGroupType` union.
 /// 
-@interface DbxTeamCommonGroupTypeSerializer : NSObject 
+@interface DBXTEAMCOMMONGroupTypeSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamCommonGroupType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamCommonGroupType * _Nonnull)obj;
+/// `DBXTEAMCOMMONGroupType` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupType * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamCommonGroupType` object from a
+/// Returns an instantiation of the `DBXTEAMCOMMONGroupType` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamCommonGroupType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMCOMMONGroupType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -5,10 +5,10 @@
 #import <AppKit/AppKit.h>
 #import <WebKit/WebKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "DbxOAuth.h"
-#import "DbxOAuthDesktop.h"
+#import "DBXOAuth.h"
+#import "DBXOAuthDesktop.h"
 
-@implementation DbxDesktopSharedApplication
+@implementation DBXDesktopSharedApplication
 
 - (instancetype)init:(NSWorkspace *)sharedWorkspace controller:(NSViewController *)controller openURL:(void(^)(NSURL *))openURL {
     self = [super init];
@@ -36,7 +36,7 @@
 }
 
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL tryIntercept:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryIntercept cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-    DbxWebViewController *webViewController = [[DbxWebViewController alloc] init:authURL tryIntercept:tryIntercept cancelHandler:cancelHandler];
+    DBXWebViewController *webViewController = [[DBXWebViewController alloc] init:authURL tryIntercept:tryIntercept cancelHandler:cancelHandler];
     [_controller presentViewControllerAsModalWindow:webViewController];
 }
 
@@ -55,7 +55,7 @@
 @end
 
 
-@implementation DbxWebViewController
+@implementation DBXWebViewController
 
 - (instancetype)init {
     return [super initWithNibName: nil bundle:nil];

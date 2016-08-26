@@ -3,17 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxBaseTeam.h"
+#import "DBXBaseTeam.h"
 
-@interface DropboxTeamClient : DbxBaseTeam
+@interface DropboxTeamClient : DBXBaseTeam
 
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)dropboxTransportClient;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)transportClient;
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
 
 - (DropboxClient * _Nonnull)asMember:(NSString * _Nonnull)memberId;
 
-@property (nonatomic) DropboxTransportClient * _Nonnull dropboxTransportClient;
+@property (nonatomic) DBXTransportClient * _Nonnull transportClient;
 @property (nonatomic) NSString * _Nullable accessToken;
 
 @end

@@ -3,16 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxBase.h"
+#import "DBXBase.h"
 
-@interface DropboxClient : DbxBase
+@interface DropboxClient : DBXBase
 
-- (nonnull instancetype)init:(DropboxTransportClient * _Nonnull)dropboxTransportClient;
+- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)transportClient;
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken andSelectUser:(NSString * _Nonnull)selectUser;
 
-@property (nonatomic) DropboxTransportClient * _Nonnull dropboxTransportClient;
+@property (nonatomic) DBXTransportClient * _Nonnull transportClient;
 
 @end

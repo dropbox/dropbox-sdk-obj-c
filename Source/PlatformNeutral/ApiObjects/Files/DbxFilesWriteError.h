@@ -3,59 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesWriteConflictError;
-@class DbxFilesWriteError;
+@class DBXFILESWriteConflictError;
+@class DBXFILESWriteError;
 
 /// 
-/// The `DbxFilesWriteError` union.
+/// The `DBXFILESWriteError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesWriteError : NSObject <DbxSerializable> 
+@interface DBXFILESWriteError : NSObject <DBXSerializable> 
 
-/// The `FilesWriteErrorTag` enum type represents the possible tag states that
-/// the `DbxFilesWriteError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesWriteErrorTag) {
+/// The `DBXFILESWriteErrorTag` enum type represents the possible tag states
+/// that the `DBXFILESWriteError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
     /// (no description).
-    FilesWriteErrorMalformedPath,
+    DBXFILESWriteErrorMalformedPath,
 
     /// Couldn't write to the target path because there was something in the
     /// way.
-    FilesWriteErrorConflict,
+    DBXFILESWriteErrorConflict,
 
     /// The user doesn't have permissions to write to the target location.
-    FilesWriteErrorNoWritePermission,
+    DBXFILESWriteErrorNoWritePermission,
 
     /// The user doesn't have enough available space (bytes) to write more data.
-    FilesWriteErrorInsufficientSpace,
+    DBXFILESWriteErrorInsufficientSpace,
 
     /// Dropbox will not save the file or folder because of its name.
-    FilesWriteErrorDisallowedName,
+    DBXFILESWriteErrorDisallowedName,
 
     /// (no description).
-    FilesWriteErrorOther,
+    DBXFILESWriteErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesWriteErrorTag tag;
+@property (nonatomic) DBXFILESWriteErrorTag tag;
 
 /// (no description).
 @property (nonatomic, copy) NSString * _Nullable malformedPath;
 
 /// Couldn't write to the target path because there was something in the way.
-@property (nonatomic) DbxFilesWriteConflictError * _Nonnull conflict;
-
+@property (nonatomic) DBXFILESWriteConflictError * _Nonnull conflict;
 
 /// Initializes union class with tag state of `MalformedPath`.
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
 
 /// Initializes union class with tag state of `Conflict`.
-- (nonnull instancetype)initWithConflict:(DbxFilesWriteConflictError * _Nonnull)conflict;
+- (nonnull instancetype)initWithConflict:(DBXFILESWriteConflictError * _Nonnull)conflict;
 
 /// Initializes union class with tag state of `NoWritePermission`.
 - (nonnull instancetype)initWithNoWritePermission;
@@ -90,23 +89,23 @@ typedef NS_ENUM(NSInteger, FilesWriteErrorTag) {
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the `DbxFilesWriteError` object.
+/// Returns a human-readable representation of the `DBXFILESWriteError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesWriteError` union.
+/// The serialization class for the `DBXFILESWriteError` union.
 /// 
-@interface DbxFilesWriteErrorSerializer : NSObject 
+@interface DBXFILESWriteErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesWriteError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesWriteError * _Nonnull)obj;
+/// `DBXFILESWriteError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesWriteError` object from a
+/// Returns an instantiation of the `DBXFILESWriteError` object from a
 /// json-compatible dictionary representation.
-+ (DbxFilesWriteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESWriteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

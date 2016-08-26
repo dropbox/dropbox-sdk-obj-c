@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListSharedLinksResult;
-@class DbxSharingSharedLinkMetadata;
+@class DBXSHARINGListSharedLinksResult;
+@class DBXSHARINGSharedLinkMetadata;
 
 /// 
-/// The `DbxSharingListSharedLinksResult` struct.
+/// The `DBXSHARINGListSharedLinksResult` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListSharedLinksResult : NSObject <DbxSerializable> 
+@interface DBXSHARINGListSharedLinksResult : NSObject <DBXSerializable> 
 
 /// Shared links applicable to the path argument.
-@property (nonatomic) NSArray<DbxSharingSharedLinkMetadata *> * _Nonnull links;
+@property (nonatomic) NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull links;
 
 /// Is true if there are additional shared links that have not been returned
 /// yet. Pass the cursor into listSharedLinks to retrieve them.
@@ -30,30 +30,30 @@
 
 /// Full constructor for the `ListSharedLinksResult` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithLinks:(NSArray<DbxSharingSharedLinkMetadata *> * _Nonnull)links hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
+- (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull)links hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
 
 /// Convenience constructor for the `ListSharedLinksResult` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithLinks:(NSArray<DbxSharingSharedLinkMetadata *> * _Nonnull)links hasMore:(NSNumber * _Nonnull)hasMore;
+- (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull)links hasMore:(NSNumber * _Nonnull)hasMore;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListSharedLinksResult` object.
+/// `DBXSHARINGListSharedLinksResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListSharedLinksResult` struct.
+/// The serialization class for the `DBXSHARINGListSharedLinksResult` struct.
 /// 
-@interface DbxSharingListSharedLinksResultSerializer : NSObject 
+@interface DBXSHARINGListSharedLinksResultSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListSharedLinksResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListSharedLinksResult * _Nonnull)obj;
+/// `DBXSHARINGListSharedLinksResult` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListSharedLinksResult * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListSharedLinksResult` object
+/// Returns an instantiation of the `DBXSHARINGListSharedLinksResult` object
 /// from a json-compatible dictionary representation.
-+ (DbxSharingListSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,24 +3,24 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxSharingSharedLinkMetadata.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXSHARINGSharedLinkMetadata.h"
 
-@class DbxSharingFileLinkMetadata;
-@class DbxSharingLinkPermissions;
-@class DbxSharingTeamMemberInfo;
-@class DbxUsersTeam;
+@class DBXSHARINGFileLinkMetadata;
+@class DBXSHARINGLinkPermissions;
+@class DBXSHARINGTeamMemberInfo;
+@class DBXUSERSTeam;
 
 /// 
-/// The `DbxSharingFileLinkMetadata` struct.
+/// The `DBXSHARINGFileLinkMetadata` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// The metadata of a file shared link
 /// 
-@interface DbxSharingFileLinkMetadata : DbxSharingSharedLinkMetadata <DbxSerializable> 
+@interface DBXSHARINGFileLinkMetadata : DBXSHARINGSharedLinkMetadata <DBXSerializable> 
 
 /// The modification time set by the desktop client when the file was added to
 /// Dropbox. Since this time is not verified (the Dropbox server stores whatever
@@ -42,13 +42,13 @@
 
 /// Full constructor for the `FileLinkMetadata` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DbxSharingTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DbxUsersTeam * _Nullable)contentOwnerTeamInfo;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
 /// Convenience constructor for the `FileLinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
 
-/// Returns a human-readable representation of the `DbxSharingFileLinkMetadata`
+/// Returns a human-readable representation of the `DBXSHARINGFileLinkMetadata`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -56,16 +56,16 @@
 
 
 /// 
-/// The serialization class for the `DbxSharingFileLinkMetadata` struct.
+/// The serialization class for the `DBXSHARINGFileLinkMetadata` struct.
 /// 
-@interface DbxSharingFileLinkMetadataSerializer : NSObject 
+@interface DBXSHARINGFileLinkMetadataSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingFileLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingFileLinkMetadata * _Nonnull)obj;
+/// `DBXSHARINGFileLinkMetadata` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileLinkMetadata * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingFileLinkMetadata` object from a
+/// Returns an instantiation of the `DBXSHARINGFileLinkMetadata` object from a
 /// json-compatible dictionary representation.
-+ (DbxSharingFileLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGFileLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

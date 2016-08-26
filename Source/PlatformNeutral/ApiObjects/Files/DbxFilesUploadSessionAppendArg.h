@@ -3,22 +3,22 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesUploadSessionAppendArg;
-@class DbxFilesUploadSessionCursor;
+@class DBXFILESUploadSessionAppendArg;
+@class DBXFILESUploadSessionCursor;
 
 /// 
-/// The `DbxFilesUploadSessionAppendArg` struct.
+/// The `DBXFILESUploadSessionAppendArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesUploadSessionAppendArg : NSObject <DbxSerializable> 
+@interface DBXFILESUploadSessionAppendArg : NSObject <DBXSerializable> 
 
 /// Contains the upload session ID and the offset.
-@property (nonatomic) DbxFilesUploadSessionCursor * _Nonnull cursor;
+@property (nonatomic) DBXFILESUploadSessionCursor * _Nonnull cursor;
 
 /// If true, the current session will be closed, at which point you won't be
 /// able to call uploadSessionAppendV2 anymore with the current session.
@@ -26,30 +26,30 @@
 
 /// Full constructor for the `UploadSessionAppendArg` struct (exposes all
 /// instance variables).
-- (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close;
+- (nonnull instancetype)initWithCursor:(DBXFILESUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close;
 
 /// Convenience constructor for the `UploadSessionAppendArg` struct (exposes
 /// only non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor;
+- (nonnull instancetype)initWithCursor:(DBXFILESUploadSessionCursor * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesUploadSessionAppendArg` object.
+/// `DBXFILESUploadSessionAppendArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesUploadSessionAppendArg` struct.
+/// The serialization class for the `DBXFILESUploadSessionAppendArg` struct.
 /// 
-@interface DbxFilesUploadSessionAppendArgSerializer : NSObject 
+@interface DBXFILESUploadSessionAppendArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesUploadSessionAppendArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionAppendArg * _Nonnull)obj;
+/// `DBXFILESUploadSessionAppendArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionAppendArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesUploadSessionAppendArg` object from
+/// Returns an instantiation of the `DBXFILESUploadSessionAppendArg` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesUploadSessionAppendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESUploadSessionAppendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

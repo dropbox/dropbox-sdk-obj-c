@@ -3,37 +3,37 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
-#import "DbxTeamMemberProfile.h"
+#import "DBXSerializableProtocol.h"
+#import "DBXTEAMMemberProfile.h"
 
-@class DbxTeamTeamMemberProfile;
-@class DbxTeamTeamMemberStatus;
-@class DbxTeamTeamMembershipType;
-@class DbxUsersName;
+@class DBXTEAMTeamMemberProfile;
+@class DBXTEAMTeamMemberStatus;
+@class DBXTEAMTeamMembershipType;
+@class DBXUSERSName;
 
 /// 
-/// The `DbxTeamTeamMemberProfile` struct.
+/// The `DBXTEAMTeamMemberProfile` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
 /// Profile of a user as a member of a team.
 /// 
-@interface DbxTeamTeamMemberProfile : DbxTeamMemberProfile <DbxSerializable> 
+@interface DBXTEAMTeamMemberProfile : DBXTEAMMemberProfile <DBXSerializable> 
 
 /// List of group IDs of groups that the user belongs to.
 @property (nonatomic) NSArray<NSString *> * _Nonnull groups;
 
 /// Full constructor for the `TeamMemberProfile` struct (exposes all instance
 /// variables).
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DbxTeamTeamMemberStatus * _Nonnull)status name:(DbxUsersName * _Nonnull)name membershipType:(DbxTeamTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups externalId:(NSString * _Nullable)externalId accountId:(NSString * _Nullable)accountId;
+- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DBXTEAMTeamMemberStatus * _Nonnull)status name:(DBXUSERSName * _Nonnull)name membershipType:(DBXTEAMTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups externalId:(NSString * _Nullable)externalId accountId:(NSString * _Nullable)accountId;
 
 /// Convenience constructor for the `TeamMemberProfile` struct (exposes only
 /// non-nullable instance variables with no default value).
-- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DbxTeamTeamMemberStatus * _Nonnull)status name:(DbxUsersName * _Nonnull)name membershipType:(DbxTeamTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups;
+- (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DBXTEAMTeamMemberStatus * _Nonnull)status name:(DBXUSERSName * _Nonnull)name membershipType:(DBXTEAMTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups;
 
-/// Returns a human-readable representation of the `DbxTeamTeamMemberProfile`
+/// Returns a human-readable representation of the `DBXTEAMTeamMemberProfile`
 /// object.
 - (NSString * _Nonnull)description;
 
@@ -41,16 +41,16 @@
 
 
 /// 
-/// The serialization class for the `DbxTeamTeamMemberProfile` struct.
+/// The serialization class for the `DBXTEAMTeamMemberProfile` struct.
 /// 
-@interface DbxTeamTeamMemberProfileSerializer : NSObject 
+@interface DBXTEAMTeamMemberProfileSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxTeamTeamMemberProfile` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMemberProfile * _Nonnull)obj;
+/// `DBXTEAMTeamMemberProfile` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMemberProfile * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxTeamTeamMemberProfile` object from a
+/// Returns an instantiation of the `DBXTEAMTeamMemberProfile` object from a
 /// json-compatible dictionary representation.
-+ (DbxTeamTeamMemberProfile * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXTEAMTeamMemberProfile * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

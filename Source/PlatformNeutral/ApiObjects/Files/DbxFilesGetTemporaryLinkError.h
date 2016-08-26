@@ -3,40 +3,39 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxFilesGetTemporaryLinkError;
-@class DbxFilesLookupError;
+@class DBXFILESGetTemporaryLinkError;
+@class DBXFILESLookupError;
 
 /// 
-/// The `DbxFilesGetTemporaryLinkError` union.
+/// The `DBXFILESGetTemporaryLinkError` union.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxFilesGetTemporaryLinkError : NSObject <DbxSerializable> 
+@interface DBXFILESGetTemporaryLinkError : NSObject <DBXSerializable> 
 
-/// The `FilesGetTemporaryLinkErrorTag` enum type represents the possible tag
-/// states that the `DbxFilesGetTemporaryLinkError` union can exist in.
-typedef NS_ENUM(NSInteger, FilesGetTemporaryLinkErrorTag) {
+/// The `DBXFILESGetTemporaryLinkErrorTag` enum type represents the possible tag
+/// states that the `DBXFILESGetTemporaryLinkError` union can exist in.
+typedef NS_ENUM(NSInteger, DBXFILESGetTemporaryLinkErrorTag) {
     /// (no description).
-    FilesGetTemporaryLinkErrorPath,
+    DBXFILESGetTemporaryLinkErrorPath,
 
     /// (no description).
-    FilesGetTemporaryLinkErrorOther,
+    DBXFILESGetTemporaryLinkErrorOther,
 
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) FilesGetTemporaryLinkErrorTag tag;
+@property (nonatomic) DBXFILESGetTemporaryLinkErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-
+@property (nonatomic) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
-- (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
+- (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -51,23 +50,23 @@ typedef NS_ENUM(NSInteger, FilesGetTemporaryLinkErrorTag) {
 - (NSString * _Nonnull)getTagName;
 
 /// Returns a human-readable representation of the
-/// `DbxFilesGetTemporaryLinkError` object.
+/// `DBXFILESGetTemporaryLinkError` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxFilesGetTemporaryLinkError` union.
+/// The serialization class for the `DBXFILESGetTemporaryLinkError` union.
 /// 
-@interface DbxFilesGetTemporaryLinkErrorSerializer : NSObject 
+@interface DBXFILESGetTemporaryLinkErrorSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxFilesGetTemporaryLinkError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxFilesGetTemporaryLinkError * _Nonnull)obj;
+/// `DBXFILESGetTemporaryLinkError` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkError * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxFilesGetTemporaryLinkError` object from
+/// Returns an instantiation of the `DBXFILESGetTemporaryLinkError` object from
 /// a json-compatible dictionary representation.
-+ (DbxFilesGetTemporaryLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXFILESGetTemporaryLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

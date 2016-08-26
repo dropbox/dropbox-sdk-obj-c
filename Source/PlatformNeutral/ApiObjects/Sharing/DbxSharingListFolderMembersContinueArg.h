@@ -3,18 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxSerializable.h"
+#import "DBXSerializableProtocol.h"
 
-@class DbxSharingListFolderMembersContinueArg;
+@class DBXSHARINGListFolderMembersContinueArg;
 
 /// 
-/// The `DbxSharingListFolderMembersContinueArg` struct.
+/// The `DBXSHARINGListFolderMembersContinueArg` struct.
 /// 
-/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-@interface DbxSharingListFolderMembersContinueArg : NSObject <DbxSerializable> 
+@interface DBXSHARINGListFolderMembersContinueArg : NSObject <DBXSerializable> 
 
 /// The cursor returned by your last call to listFolderMembers or
 /// listFolderMembersContinue.
@@ -25,24 +25,24 @@
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 /// Returns a human-readable representation of the
-/// `DbxSharingListFolderMembersContinueArg` object.
+/// `DBXSHARINGListFolderMembersContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
 /// 
-/// The serialization class for the `DbxSharingListFolderMembersContinueArg`
+/// The serialization class for the `DBXSHARINGListFolderMembersContinueArg`
 /// struct.
 /// 
-@interface DbxSharingListFolderMembersContinueArgSerializer : NSObject 
+@interface DBXSHARINGListFolderMembersContinueArgSerializer : NSObject 
 
 /// Returns a json-compatible dictionary representation of the
-/// `DbxSharingListFolderMembersContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DbxSharingListFolderMembersContinueArg * _Nonnull)obj;
+/// `DBXSHARINGListFolderMembersContinueArg` object from an instantiation.
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersContinueArg * _Nonnull)obj;
 
-/// Returns an instantiation of the `DbxSharingListFolderMembersContinueArg`
+/// Returns an instantiation of the `DBXSHARINGListFolderMembersContinueArg`
 /// object from a json-compatible dictionary representation.
-+ (DbxSharingListFolderMembersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
++ (DBXSHARINGListFolderMembersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end
