@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAclUpdatePolicy;
 @class DbxSharingMemberPolicy;
@@ -11,38 +11,59 @@
 @class DbxSharingSharedLinkPolicy;
 
 /// 
-/// The DbxSharingShareFolderArg struct.
+/// The `DbxSharingShareFolderArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingShareFolderArg : NSObject <DbxSerializable> 
 
 /// The path to the folder to share. If it does not exist, then a new one is
 /// created.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// Who can be a member of this shared folder. Only applicable if the current
 /// user is on a team.
 @property (nonatomic) DbxSharingMemberPolicy * _Nonnull memberPolicy;
+
 /// Who can add and remove members of this shared folder.
 @property (nonatomic) DbxSharingAclUpdatePolicy * _Nonnull aclUpdatePolicy;
+
 /// The policy to apply to shared links created for content inside this shared
 /// folder.  The current user must be on a team to set this policy to members in
 /// SharedLinkPolicy.
 @property (nonatomic) DbxSharingSharedLinkPolicy * _Nonnull sharedLinkPolicy;
+
 /// Whether to force the share to happen asynchronously.
 @property (nonatomic, copy) NSNumber * _Nonnull forceAsync;
 
+/// Full constructor for the `ShareFolderArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path memberPolicy:(DbxSharingMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DbxSharingAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DbxSharingSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync;
 
+/// Convenience constructor for the `ShareFolderArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxSharingShareFolderArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingShareFolderArg` struct.
+/// 
 @interface DbxSharingShareFolderArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingShareFolderArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingShareFolderArg` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingShareFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,7 +11,7 @@
 - (instancetype)initWithDeviceSessionNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorDeviceSessionNotFound;
+        _tag = TeamRevokeDeviceSessionErrorDeviceSessionNotFound;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithMemberNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorMemberNotFound;
+        _tag = TeamRevokeDeviceSessionErrorMemberNotFound;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorOther;
+        _tag = TeamRevokeDeviceSessionErrorOther;
     }
     return self;
 }
 
 - (BOOL)isDeviceSessionNotFound {
-    return _tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorDeviceSessionNotFound;
+    return _tag == TeamRevokeDeviceSessionErrorDeviceSessionNotFound;
 }
 
 - (BOOL)isMemberNotFound {
-    return _tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorMemberNotFound;
+    return _tag == TeamRevokeDeviceSessionErrorMemberNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorOther;
+    return _tag == TeamRevokeDeviceSessionErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorDeviceSessionNotFound) {
-        return @"(TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorDeviceSessionNotFound";
-    }
-    if (_tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorMemberNotFound) {
-        return @"(TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorMemberNotFound";
-    }
-    if (_tag == (TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorOther) {
-        return @"(TeamRevokeDeviceSessionErrorTag)TeamRevokeDeviceSessionErrorOther";
+    switch (_tag) {
+        case TeamRevokeDeviceSessionErrorDeviceSessionNotFound:
+           return @"TeamRevokeDeviceSessionErrorDeviceSessionNotFound";
+        case TeamRevokeDeviceSessionErrorMemberNotFound:
+           return @"TeamRevokeDeviceSessionErrorMemberNotFound";
+        case TeamRevokeDeviceSessionErrorOther:
+           return @"TeamRevokeDeviceSessionErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

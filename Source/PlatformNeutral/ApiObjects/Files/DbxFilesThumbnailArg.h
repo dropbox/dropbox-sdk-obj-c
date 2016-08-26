@@ -3,39 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesThumbnailArg;
 @class DbxFilesThumbnailFormat;
 @class DbxFilesThumbnailSize;
 
 /// 
-/// The DbxFilesThumbnailArg struct.
+/// The `DbxFilesThumbnailArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesThumbnailArg : NSObject <DbxSerializable> 
 
 /// The path to the image file you want to thumbnail.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The format for the thumbnail image, jpeg (default) or png. For  images that
 /// are photos, jpeg should be preferred, while png is  better for screenshots
 /// and digital arts.
 @property (nonatomic) DbxFilesThumbnailFormat * _Nonnull format;
+
 /// The size for the thumbnail image.
 @property (nonatomic) DbxFilesThumbnailSize * _Nonnull size;
 
+/// Full constructor for the `ThumbnailArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path format:(DbxFilesThumbnailFormat * _Nullable)format size:(DbxFilesThumbnailSize * _Nullable)size;
 
+/// Convenience constructor for the `ThumbnailArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesThumbnailArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesThumbnailArg` struct.
+/// 
 @interface DbxFilesThumbnailArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesThumbnailArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesThumbnailArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesThumbnailArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

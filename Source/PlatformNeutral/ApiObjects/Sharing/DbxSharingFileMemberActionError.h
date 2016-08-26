@@ -3,50 +3,76 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFileMemberActionError;
 
 /// 
-/// The DbxSharingFileMemberActionError union.
+/// The `DbxSharingFileMemberActionError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingFileMemberActionError : NSObject <DbxSerializable> 
 
+/// The `SharingFileMemberActionErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingFileMemberActionError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingFileMemberActionErrorTag) {
     /// Specified member was not found.
     SharingFileMemberActionErrorInvalidMember,
+
     /// User does not have permission to perform this action on this member.
     SharingFileMemberActionErrorNoPermission,
-    /// (no description)
+
+    /// (no description).
     SharingFileMemberActionErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingFileMemberActionErrorTag tag;
+
+
+/// Initializes union class with tag state of `InvalidMember`.
 - (nonnull instancetype)initWithInvalidMember;
 
+/// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `InvalidMember`.
 - (BOOL)isInvalidMember;
 
+/// Returns whether the union's current tag state has value `NoPermission`.
 - (BOOL)isNoPermission;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingFileMemberActionError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingFileMemberActionError union type.
-@property (nonatomic) SharingFileMemberActionErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFileMemberActionError` union.
+/// 
 @interface DbxSharingFileMemberActionErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFileMemberActionError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFileMemberActionError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFileMemberActionError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingFileMemberActionError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

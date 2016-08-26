@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidCursor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorInvalidCursor;
+        _tag = SharingListFoldersContinueErrorInvalidCursor;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorOther;
+        _tag = SharingListFoldersContinueErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidCursor {
-    return _tag == (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorInvalidCursor;
+    return _tag == SharingListFoldersContinueErrorInvalidCursor;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorOther;
+    return _tag == SharingListFoldersContinueErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorInvalidCursor) {
-        return @"(SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorInvalidCursor";
-    }
-    if (_tag == (SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorOther) {
-        return @"(SharingListFoldersContinueErrorTag)SharingListFoldersContinueErrorOther";
+    switch (_tag) {
+        case SharingListFoldersContinueErrorInvalidCursor:
+           return @"SharingListFoldersContinueErrorInvalidCursor";
+        case SharingListFoldersContinueErrorOther:
+           return @"SharingListFoldersContinueErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

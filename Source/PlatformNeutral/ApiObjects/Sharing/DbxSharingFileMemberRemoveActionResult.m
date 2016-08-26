@@ -13,7 +13,7 @@
 - (instancetype)initWithSuccess:(DbxSharingMemberAccessLevelResult *)success {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess;
+        _tag = SharingFileMemberRemoveActionResultSuccess;
         _success = success;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithMemberError:(DbxSharingFileMemberActionError *)memberError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError;
+        _tag = SharingFileMemberRemoveActionResultMemberError;
         _memberError = memberError;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultOther;
+        _tag = SharingFileMemberRemoveActionResultOther;
     }
     return self;
 }
 
 - (BOOL)isSuccess {
-    return _tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess;
+    return _tag == SharingFileMemberRemoveActionResultSuccess;
 }
 
 - (BOOL)isMemberError {
-    return _tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError;
+    return _tag == SharingFileMemberRemoveActionResultMemberError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultOther;
+    return _tag == SharingFileMemberRemoveActionResultOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess) {
-        return @"(SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess";
-    }
-    if (_tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError) {
-        return @"(SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError";
-    }
-    if (_tag == (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultOther) {
-        return @"(SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultOther";
+    switch (_tag) {
+        case SharingFileMemberRemoveActionResultSuccess:
+           return @"SharingFileMemberRemoveActionResultSuccess";
+        case SharingFileMemberRemoveActionResultMemberError:
+           return @"SharingFileMemberRemoveActionResultMemberError";
+        case SharingFileMemberRemoveActionResultOther:
+           return @"SharingFileMemberRemoveActionResultOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingMemberAccessLevelResult *)success {
-    if (_tag != (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultSuccess, but was %@.", [self getTagName]];
+    if (_tag != SharingFileMemberRemoveActionResultSuccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileMemberRemoveActionResultSuccess, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (DbxSharingFileMemberActionError *)memberError {
-    if (_tag != (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileMemberRemoveActionResultTag)SharingFileMemberRemoveActionResultMemberError, but was %@.", [self getTagName]];
+    if (_tag != SharingFileMemberRemoveActionResultMemberError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileMemberRemoveActionResultMemberError, but was %@.", [self getTagName]];
     }
     return _memberError;
 }

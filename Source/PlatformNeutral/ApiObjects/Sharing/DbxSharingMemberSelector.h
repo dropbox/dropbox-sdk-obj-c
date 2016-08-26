@@ -3,54 +3,84 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingMemberSelector;
 
 /// 
-/// The DbxSharingMemberSelector union.
+/// The `DbxSharingMemberSelector` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Includes different ways to identify a member of a shared folder.
 /// 
 @interface DbxSharingMemberSelector : NSObject <DbxSerializable> 
 
+/// The `SharingMemberSelectorTag` enum type represents the possible tag states
+/// that the `DbxSharingMemberSelector` union can exist in.
 typedef NS_ENUM(NSInteger, SharingMemberSelectorTag) {
     /// Dropbox account, team member, or group ID of member.
     SharingMemberSelectorDropboxId,
+
     /// E-mail address of member.
     SharingMemberSelectorEmail,
-    /// (no description)
+
+    /// (no description).
     SharingMemberSelectorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingMemberSelectorTag tag;
+
+/// Dropbox account, team member, or group ID of member.
+@property (nonatomic, copy) NSString * _Nonnull dropboxId;
+
+/// E-mail address of member.
+@property (nonatomic, copy) NSString * _Nonnull email;
+
+
+/// Initializes union class with tag state of `DropboxId`.
 - (nonnull instancetype)initWithDropboxId:(NSString * _Nonnull)dropboxId;
 
+/// Initializes union class with tag state of `Email`.
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `DropboxId`.
 - (BOOL)isDropboxId;
 
+/// Returns whether the union's current tag state has value `Email`.
 - (BOOL)isEmail;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingMemberSelector`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingMemberSelector union type.
-@property (nonatomic) SharingMemberSelectorTag tag;
-@property (nonatomic, copy) NSString * _Nonnull dropboxId;
-@property (nonatomic, copy) NSString * _Nonnull email;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingMemberSelector` union.
+/// 
 @interface DbxSharingMemberSelectorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingMemberSelector` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingMemberSelector * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingMemberSelector` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

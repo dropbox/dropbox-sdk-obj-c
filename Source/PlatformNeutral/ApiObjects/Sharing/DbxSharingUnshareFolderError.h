@@ -3,58 +3,89 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingSharedFolderAccessError;
 @class DbxSharingUnshareFolderError;
 
 /// 
-/// The DbxSharingUnshareFolderError union.
+/// The `DbxSharingUnshareFolderError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingUnshareFolderError : NSObject <DbxSerializable> 
 
+/// The `SharingUnshareFolderErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingUnshareFolderError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingUnshareFolderErrorTag) {
-    /// (no description)
+    /// (no description).
     SharingUnshareFolderErrorAccessError,
+
     /// This action cannot be performed on a team shared folder.
     SharingUnshareFolderErrorTeamFolder,
+
     /// The current user does not have permission to perform this action.
     SharingUnshareFolderErrorNoPermission,
-    /// (no description)
+
+    /// (no description).
     SharingUnshareFolderErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingUnshareFolderErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
+
+
+/// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
 
+/// Initializes union class with tag state of `TeamFolder`.
 - (nonnull instancetype)initWithTeamFolder;
 
+/// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `AccessError`.
 - (BOOL)isAccessError;
 
+/// Returns whether the union's current tag state has value `TeamFolder`.
 - (BOOL)isTeamFolder;
 
+/// Returns whether the union's current tag state has value `NoPermission`.
 - (BOOL)isNoPermission;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingUnshareFolderError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingUnshareFolderError union type.
-@property (nonatomic) SharingUnshareFolderErrorTag tag;
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingUnshareFolderError` union.
+/// 
 @interface DbxSharingUnshareFolderErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingUnshareFolderError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingUnshareFolderError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingUnshareFolderError` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingUnshareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

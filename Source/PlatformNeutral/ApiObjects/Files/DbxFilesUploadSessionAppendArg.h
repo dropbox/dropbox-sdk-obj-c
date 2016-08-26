@@ -3,35 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesUploadSessionAppendArg;
 @class DbxFilesUploadSessionCursor;
 
 /// 
-/// The DbxFilesUploadSessionAppendArg struct.
+/// The `DbxFilesUploadSessionAppendArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesUploadSessionAppendArg : NSObject <DbxSerializable> 
 
 /// Contains the upload session ID and the offset.
 @property (nonatomic) DbxFilesUploadSessionCursor * _Nonnull cursor;
+
 /// If true, the current session will be closed, at which point you won't be
 /// able to call uploadSessionAppendV2 anymore with the current session.
 @property (nonatomic, copy) NSNumber * _Nonnull close;
 
+/// Full constructor for the `UploadSessionAppendArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close;
 
+/// Convenience constructor for the `UploadSessionAppendArg` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithCursor:(DbxFilesUploadSessionCursor * _Nonnull)cursor;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesUploadSessionAppendArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesUploadSessionAppendArg` struct.
+/// 
 @interface DbxFilesUploadSessionAppendArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesUploadSessionAppendArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionAppendArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesUploadSessionAppendArg` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesUploadSessionAppendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

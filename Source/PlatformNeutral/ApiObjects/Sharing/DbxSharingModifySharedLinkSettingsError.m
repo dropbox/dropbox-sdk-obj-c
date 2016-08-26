@@ -13,7 +13,7 @@
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkNotFound;
+        _tag = SharingModifySharedLinkSettingsErrorSharedLinkNotFound;
     }
     return self;
 }
@@ -21,7 +21,7 @@
 - (instancetype)initWithSharedLinkAccessDenied {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied;
+        _tag = SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorOther;
+        _tag = SharingModifySharedLinkSettingsErrorOther;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithSettingsError:(DbxSharingSharedLinkSettingsError *)settingsError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError;
+        _tag = SharingModifySharedLinkSettingsErrorSettingsError;
         _settingsError = settingsError;
     }
     return self;
@@ -46,54 +46,51 @@
 - (instancetype)initWithEmailNotVerified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorEmailNotVerified;
+        _tag = SharingModifySharedLinkSettingsErrorEmailNotVerified;
     }
     return self;
 }
 
 - (BOOL)isSharedLinkNotFound {
-    return _tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkNotFound;
+    return _tag == SharingModifySharedLinkSettingsErrorSharedLinkNotFound;
 }
 
 - (BOOL)isSharedLinkAccessDenied {
-    return _tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied;
+    return _tag == SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorOther;
+    return _tag == SharingModifySharedLinkSettingsErrorOther;
 }
 
 - (BOOL)isSettingsError {
-    return _tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError;
+    return _tag == SharingModifySharedLinkSettingsErrorSettingsError;
 }
 
 - (BOOL)isEmailNotVerified {
-    return _tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorEmailNotVerified;
+    return _tag == SharingModifySharedLinkSettingsErrorEmailNotVerified;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkNotFound) {
-        return @"(SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkNotFound";
-    }
-    if (_tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied) {
-        return @"(SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied";
-    }
-    if (_tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorOther) {
-        return @"(SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorOther";
-    }
-    if (_tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError) {
-        return @"(SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError";
-    }
-    if (_tag == (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorEmailNotVerified) {
-        return @"(SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorEmailNotVerified";
+    switch (_tag) {
+        case SharingModifySharedLinkSettingsErrorSharedLinkNotFound:
+           return @"SharingModifySharedLinkSettingsErrorSharedLinkNotFound";
+        case SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied:
+           return @"SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied";
+        case SharingModifySharedLinkSettingsErrorOther:
+           return @"SharingModifySharedLinkSettingsErrorOther";
+        case SharingModifySharedLinkSettingsErrorSettingsError:
+           return @"SharingModifySharedLinkSettingsErrorSettingsError";
+        case SharingModifySharedLinkSettingsErrorEmailNotVerified:
+           return @"SharingModifySharedLinkSettingsErrorEmailNotVerified";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedLinkSettingsError *)settingsError {
-    if (_tag != (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingModifySharedLinkSettingsErrorTag)SharingModifySharedLinkSettingsErrorSettingsError, but was %@.", [self getTagName]];
+    if (_tag != SharingModifySharedLinkSettingsErrorSettingsError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingModifySharedLinkSettingsErrorSettingsError, but was %@.", [self getTagName]];
     }
     return _settingsError;
 }

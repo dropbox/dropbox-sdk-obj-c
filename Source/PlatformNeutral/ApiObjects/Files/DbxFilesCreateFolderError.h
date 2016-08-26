@@ -3,40 +3,62 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesCreateFolderError;
 @class DbxFilesWriteError;
 
 /// 
-/// The DbxFilesCreateFolderError union.
+/// The `DbxFilesCreateFolderError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesCreateFolderError : NSObject <DbxSerializable> 
 
+/// The `FilesCreateFolderErrorTag` enum type represents the possible tag states
+/// that the `DbxFilesCreateFolderError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesCreateFolderErrorTag) {
-    /// (no description)
+    /// (no description).
     FilesCreateFolderErrorPath,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesCreateFolderErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesWriteError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesCreateFolderError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesCreateFolderError union type.
-@property (nonatomic) FilesCreateFolderErrorTag tag;
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesCreateFolderError` union.
+/// 
 @interface DbxFilesCreateFolderErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesCreateFolderError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesCreateFolderError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesCreateFolderError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesCreateFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

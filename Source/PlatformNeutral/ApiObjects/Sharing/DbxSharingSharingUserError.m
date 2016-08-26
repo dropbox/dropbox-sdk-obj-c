@@ -11,7 +11,7 @@
 - (instancetype)initWithEmailUnverified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingUserErrorTag)SharingSharingUserErrorEmailUnverified;
+        _tag = SharingSharingUserErrorEmailUnverified;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingUserErrorTag)SharingSharingUserErrorOther;
+        _tag = SharingSharingUserErrorOther;
     }
     return self;
 }
 
 - (BOOL)isEmailUnverified {
-    return _tag == (SharingSharingUserErrorTag)SharingSharingUserErrorEmailUnverified;
+    return _tag == SharingSharingUserErrorEmailUnverified;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharingUserErrorTag)SharingSharingUserErrorOther;
+    return _tag == SharingSharingUserErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharingUserErrorTag)SharingSharingUserErrorEmailUnverified) {
-        return @"(SharingSharingUserErrorTag)SharingSharingUserErrorEmailUnverified";
-    }
-    if (_tag == (SharingSharingUserErrorTag)SharingSharingUserErrorOther) {
-        return @"(SharingSharingUserErrorTag)SharingSharingUserErrorOther";
+    switch (_tag) {
+        case SharingSharingUserErrorEmailUnverified:
+           return @"SharingSharingUserErrorEmailUnverified";
+        case SharingSharingUserErrorOther:
+           return @"SharingSharingUserErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

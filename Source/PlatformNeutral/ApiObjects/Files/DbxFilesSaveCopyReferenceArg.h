@@ -3,31 +3,47 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSaveCopyReferenceArg;
 
 /// 
-/// The DbxFilesSaveCopyReferenceArg struct.
+/// The `DbxFilesSaveCopyReferenceArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSaveCopyReferenceArg : NSObject <DbxSerializable> 
 
 /// A copy reference returned by dCopyReferenceGet.
 @property (nonatomic, copy) NSString * _Nonnull dCopyReference;
+
 /// Path in the user's Dropbox that is the destination.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
+/// Full constructor for the `SaveCopyReferenceArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesSaveCopyReferenceArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSaveCopyReferenceArg` struct.
+/// 
 @interface DbxFilesSaveCopyReferenceArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSaveCopyReferenceArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSaveCopyReferenceArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSaveCopyReferenceArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSaveCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

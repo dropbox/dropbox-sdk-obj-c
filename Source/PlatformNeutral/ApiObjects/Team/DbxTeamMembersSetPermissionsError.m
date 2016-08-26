@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotFound;
+        _tag = TeamMembersSetPermissionsErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithLastAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorLastAdmin;
+        _tag = TeamMembersSetPermissionsErrorLastAdmin;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotInTeam;
+        _tag = TeamMembersSetPermissionsErrorUserNotInTeam;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithCannotSetPermissions {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorCannotSetPermissions;
+        _tag = TeamMembersSetPermissionsErrorCannotSetPermissions;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithTeamLicenseLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorTeamLicenseLimit;
+        _tag = TeamMembersSetPermissionsErrorTeamLicenseLimit;
     }
     return self;
 }
@@ -52,53 +52,49 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorOther;
+        _tag = TeamMembersSetPermissionsErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotFound;
+    return _tag == TeamMembersSetPermissionsErrorUserNotFound;
 }
 
 - (BOOL)isLastAdmin {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorLastAdmin;
+    return _tag == TeamMembersSetPermissionsErrorLastAdmin;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotInTeam;
+    return _tag == TeamMembersSetPermissionsErrorUserNotInTeam;
 }
 
 - (BOOL)isCannotSetPermissions {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorCannotSetPermissions;
+    return _tag == TeamMembersSetPermissionsErrorCannotSetPermissions;
 }
 
 - (BOOL)isTeamLicenseLimit {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorTeamLicenseLimit;
+    return _tag == TeamMembersSetPermissionsErrorTeamLicenseLimit;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorOther;
+    return _tag == TeamMembersSetPermissionsErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotFound) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorLastAdmin) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorLastAdmin";
-    }
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotInTeam) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorCannotSetPermissions) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorCannotSetPermissions";
-    }
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorTeamLicenseLimit) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorTeamLicenseLimit";
-    }
-    if (_tag == (TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorOther) {
-        return @"(TeamMembersSetPermissionsErrorTag)TeamMembersSetPermissionsErrorOther";
+    switch (_tag) {
+        case TeamMembersSetPermissionsErrorUserNotFound:
+           return @"TeamMembersSetPermissionsErrorUserNotFound";
+        case TeamMembersSetPermissionsErrorLastAdmin:
+           return @"TeamMembersSetPermissionsErrorLastAdmin";
+        case TeamMembersSetPermissionsErrorUserNotInTeam:
+           return @"TeamMembersSetPermissionsErrorUserNotInTeam";
+        case TeamMembersSetPermissionsErrorCannotSetPermissions:
+           return @"TeamMembersSetPermissionsErrorCannotSetPermissions";
+        case TeamMembersSetPermissionsErrorTeamLicenseLimit:
+           return @"TeamMembersSetPermissionsErrorTeamLicenseLimit";
+        case TeamMembersSetPermissionsErrorOther:
+           return @"TeamMembersSetPermissionsErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -3,34 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingCreateSharedLinkWithSettingsArg;
 @class DbxSharingSharedLinkSettings;
 
 /// 
-/// The DbxSharingCreateSharedLinkWithSettingsArg struct.
+/// The `DbxSharingCreateSharedLinkWithSettingsArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingCreateSharedLinkWithSettingsArg : NSObject <DbxSerializable> 
 
 /// The path to be shared by the shared link
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The requested settings for the newly created shared link
 @property (nonatomic) DbxSharingSharedLinkSettings * _Nullable settings;
 
+/// Full constructor for the `CreateSharedLinkWithSettingsArg` struct (exposes
+/// all instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path settings:(DbxSharingSharedLinkSettings * _Nullable)settings;
 
+/// Convenience constructor for the `CreateSharedLinkWithSettingsArg` struct
+/// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingCreateSharedLinkWithSettingsArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingCreateSharedLinkWithSettingsArg`
+/// struct.
+/// 
 @interface DbxSharingCreateSharedLinkWithSettingsArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingCreateSharedLinkWithSettingsArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingCreateSharedLinkWithSettingsArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingCreateSharedLinkWithSettingsArg`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingCreateSharedLinkWithSettingsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

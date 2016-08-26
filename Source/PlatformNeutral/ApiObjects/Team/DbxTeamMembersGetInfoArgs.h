@@ -3,30 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersGetInfoArgs;
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamMembersGetInfoArgs struct.
+/// The `DbxTeamMembersGetInfoArgs` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersGetInfoArgs : NSObject <DbxSerializable> 
 
 /// List of team members.
 @property (nonatomic) NSArray<DbxTeamUserSelectorArg *> * _Nonnull members;
 
+/// Full constructor for the `MembersGetInfoArgs` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithMembers:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)members;
 
+/// Returns a human-readable representation of the `DbxTeamMembersGetInfoArgs`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersGetInfoArgs` struct.
+/// 
 @interface DbxTeamMembersGetInfoArgsSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersGetInfoArgs` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersGetInfoArgs * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersGetInfoArgs` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

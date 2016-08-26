@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotFound;
+        _tag = TeamMembersDeactivateErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotInTeam;
+        _tag = TeamMembersDeactivateErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,32 +28,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorOther;
+        _tag = TeamMembersDeactivateErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotFound;
+    return _tag == TeamMembersDeactivateErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotInTeam;
+    return _tag == TeamMembersDeactivateErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorOther;
+    return _tag == TeamMembersDeactivateErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotFound) {
-        return @"(TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotInTeam) {
-        return @"(TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorOther) {
-        return @"(TeamMembersDeactivateErrorTag)TeamMembersDeactivateErrorOther";
+    switch (_tag) {
+        case TeamMembersDeactivateErrorUserNotFound:
+           return @"TeamMembersDeactivateErrorUserNotFound";
+        case TeamMembersDeactivateErrorUserNotInTeam:
+           return @"TeamMembersDeactivateErrorUserNotInTeam";
+        case TeamMembersDeactivateErrorOther:
+           return @"TeamMembersDeactivateErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

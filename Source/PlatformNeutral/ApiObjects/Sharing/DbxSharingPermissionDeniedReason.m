@@ -11,7 +11,7 @@
 - (instancetype)initWithUserNotSameTeamAsOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotSameTeamAsOwner;
+        _tag = SharingPermissionDeniedReasonUserNotSameTeamAsOwner;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithUserNotAllowedByOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotAllowedByOwner;
+        _tag = SharingPermissionDeniedReasonUserNotAllowedByOwner;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithTargetIsIndirectMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsIndirectMember;
+        _tag = SharingPermissionDeniedReasonTargetIsIndirectMember;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithTargetIsOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsOwner;
+        _tag = SharingPermissionDeniedReasonTargetIsOwner;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithTargetIsSelf {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsSelf;
+        _tag = SharingPermissionDeniedReasonTargetIsSelf;
     }
     return self;
 }
@@ -51,7 +51,7 @@
 - (instancetype)initWithTargetNotActive {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetNotActive;
+        _tag = SharingPermissionDeniedReasonTargetNotActive;
     }
     return self;
 }
@@ -59,7 +59,7 @@
 - (instancetype)initWithFolderIsLimitedTeamFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonFolderIsLimitedTeamFolder;
+        _tag = SharingPermissionDeniedReasonFolderIsLimitedTeamFolder;
     }
     return self;
 }
@@ -67,67 +67,61 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonOther;
+        _tag = SharingPermissionDeniedReasonOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotSameTeamAsOwner {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotSameTeamAsOwner;
+    return _tag == SharingPermissionDeniedReasonUserNotSameTeamAsOwner;
 }
 
 - (BOOL)isUserNotAllowedByOwner {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotAllowedByOwner;
+    return _tag == SharingPermissionDeniedReasonUserNotAllowedByOwner;
 }
 
 - (BOOL)isTargetIsIndirectMember {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsIndirectMember;
+    return _tag == SharingPermissionDeniedReasonTargetIsIndirectMember;
 }
 
 - (BOOL)isTargetIsOwner {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsOwner;
+    return _tag == SharingPermissionDeniedReasonTargetIsOwner;
 }
 
 - (BOOL)isTargetIsSelf {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsSelf;
+    return _tag == SharingPermissionDeniedReasonTargetIsSelf;
 }
 
 - (BOOL)isTargetNotActive {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetNotActive;
+    return _tag == SharingPermissionDeniedReasonTargetNotActive;
 }
 
 - (BOOL)isFolderIsLimitedTeamFolder {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonFolderIsLimitedTeamFolder;
+    return _tag == SharingPermissionDeniedReasonFolderIsLimitedTeamFolder;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonOther;
+    return _tag == SharingPermissionDeniedReasonOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotSameTeamAsOwner) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotSameTeamAsOwner";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotAllowedByOwner) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonUserNotAllowedByOwner";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsIndirectMember) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsIndirectMember";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsOwner) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsOwner";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsSelf) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetIsSelf";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetNotActive) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonTargetNotActive";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonFolderIsLimitedTeamFolder) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonFolderIsLimitedTeamFolder";
-    }
-    if (_tag == (SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonOther) {
-        return @"(SharingPermissionDeniedReasonTag)SharingPermissionDeniedReasonOther";
+    switch (_tag) {
+        case SharingPermissionDeniedReasonUserNotSameTeamAsOwner:
+           return @"SharingPermissionDeniedReasonUserNotSameTeamAsOwner";
+        case SharingPermissionDeniedReasonUserNotAllowedByOwner:
+           return @"SharingPermissionDeniedReasonUserNotAllowedByOwner";
+        case SharingPermissionDeniedReasonTargetIsIndirectMember:
+           return @"SharingPermissionDeniedReasonTargetIsIndirectMember";
+        case SharingPermissionDeniedReasonTargetIsOwner:
+           return @"SharingPermissionDeniedReasonTargetIsOwner";
+        case SharingPermissionDeniedReasonTargetIsSelf:
+           return @"SharingPermissionDeniedReasonTargetIsSelf";
+        case SharingPermissionDeniedReasonTargetNotActive:
+           return @"SharingPermissionDeniedReasonTargetNotActive";
+        case SharingPermissionDeniedReasonFolderIsLimitedTeamFolder:
+           return @"SharingPermissionDeniedReasonFolderIsLimitedTeamFolder";
+        case SharingPermissionDeniedReasonOther:
+           return @"SharingPermissionDeniedReasonOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -13,7 +13,7 @@
 - (instancetype)initWithLookupFailed:(DbxFilesUploadSessionLookupError *)lookupFailed {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed;
+        _tag = FilesUploadSessionFinishErrorLookupFailed;
         _lookupFailed = lookupFailed;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithPath:(DbxFilesWriteError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath;
+        _tag = FilesUploadSessionFinishErrorPath;
         _path = path;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithTooManySharedFolderTargets {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorTooManySharedFolderTargets;
+        _tag = FilesUploadSessionFinishErrorTooManySharedFolderTargets;
     }
     return self;
 }
@@ -39,54 +39,52 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorOther;
+        _tag = FilesUploadSessionFinishErrorOther;
     }
     return self;
 }
 
 - (BOOL)isLookupFailed {
-    return _tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed;
+    return _tag == FilesUploadSessionFinishErrorLookupFailed;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath;
+    return _tag == FilesUploadSessionFinishErrorPath;
 }
 
 - (BOOL)isTooManySharedFolderTargets {
-    return _tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorTooManySharedFolderTargets;
+    return _tag == FilesUploadSessionFinishErrorTooManySharedFolderTargets;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorOther;
+    return _tag == FilesUploadSessionFinishErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed) {
-        return @"(FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed";
-    }
-    if (_tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath) {
-        return @"(FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath";
-    }
-    if (_tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorTooManySharedFolderTargets) {
-        return @"(FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorTooManySharedFolderTargets";
-    }
-    if (_tag == (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorOther) {
-        return @"(FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorOther";
+    switch (_tag) {
+        case FilesUploadSessionFinishErrorLookupFailed:
+           return @"FilesUploadSessionFinishErrorLookupFailed";
+        case FilesUploadSessionFinishErrorPath:
+           return @"FilesUploadSessionFinishErrorPath";
+        case FilesUploadSessionFinishErrorTooManySharedFolderTargets:
+           return @"FilesUploadSessionFinishErrorTooManySharedFolderTargets";
+        case FilesUploadSessionFinishErrorOther:
+           return @"FilesUploadSessionFinishErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesUploadSessionLookupError *)lookupFailed {
-    if (_tag != (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorLookupFailed, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionFinishErrorLookupFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionFinishErrorLookupFailed, but was %@.", [self getTagName]];
     }
     return _lookupFailed;
 }
 
 - (DbxFilesWriteError *)path {
-    if (_tag != (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionFinishErrorTag)FilesUploadSessionFinishErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionFinishErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionFinishErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

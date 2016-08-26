@@ -11,7 +11,7 @@
 - (instancetype)initWithNoAccount:(NSString *)noAccount {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount;
+        _tag = UsersGetAccountBatchErrorNoAccount;
         _noAccount = noAccount;
     }
     return self;
@@ -20,33 +20,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorOther;
+        _tag = UsersGetAccountBatchErrorOther;
     }
     return self;
 }
 
 - (BOOL)isNoAccount {
-    return _tag == (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount;
+    return _tag == UsersGetAccountBatchErrorNoAccount;
 }
 
 - (BOOL)isOther {
-    return _tag == (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorOther;
+    return _tag == UsersGetAccountBatchErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount) {
-        return @"(UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount";
-    }
-    if (_tag == (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorOther) {
-        return @"(UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorOther";
+    switch (_tag) {
+        case UsersGetAccountBatchErrorNoAccount:
+           return @"UsersGetAccountBatchErrorNoAccount";
+        case UsersGetAccountBatchErrorOther:
+           return @"UsersGetAccountBatchErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)noAccount {
-    if (_tag != (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (UsersGetAccountBatchErrorTag)UsersGetAccountBatchErrorNoAccount, but was %@.", [self getTagName]];
+    if (_tag != UsersGetAccountBatchErrorNoAccount) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required UsersGetAccountBatchErrorNoAccount, but was %@.", [self getTagName]];
     }
     return _noAccount;
 }

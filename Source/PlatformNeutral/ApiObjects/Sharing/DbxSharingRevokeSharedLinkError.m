@@ -12,7 +12,7 @@
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkNotFound;
+        _tag = SharingRevokeSharedLinkErrorSharedLinkNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithSharedLinkAccessDenied {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkAccessDenied;
+        _tag = SharingRevokeSharedLinkErrorSharedLinkAccessDenied;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorOther;
+        _tag = SharingRevokeSharedLinkErrorOther;
     }
     return self;
 }
@@ -36,39 +36,37 @@
 - (instancetype)initWithSharedLinkMalformed {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkMalformed;
+        _tag = SharingRevokeSharedLinkErrorSharedLinkMalformed;
     }
     return self;
 }
 
 - (BOOL)isSharedLinkNotFound {
-    return _tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkNotFound;
+    return _tag == SharingRevokeSharedLinkErrorSharedLinkNotFound;
 }
 
 - (BOOL)isSharedLinkAccessDenied {
-    return _tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkAccessDenied;
+    return _tag == SharingRevokeSharedLinkErrorSharedLinkAccessDenied;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorOther;
+    return _tag == SharingRevokeSharedLinkErrorOther;
 }
 
 - (BOOL)isSharedLinkMalformed {
-    return _tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkMalformed;
+    return _tag == SharingRevokeSharedLinkErrorSharedLinkMalformed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkNotFound) {
-        return @"(SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkNotFound";
-    }
-    if (_tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkAccessDenied) {
-        return @"(SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkAccessDenied";
-    }
-    if (_tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorOther) {
-        return @"(SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorOther";
-    }
-    if (_tag == (SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkMalformed) {
-        return @"(SharingRevokeSharedLinkErrorTag)SharingRevokeSharedLinkErrorSharedLinkMalformed";
+    switch (_tag) {
+        case SharingRevokeSharedLinkErrorSharedLinkNotFound:
+           return @"SharingRevokeSharedLinkErrorSharedLinkNotFound";
+        case SharingRevokeSharedLinkErrorSharedLinkAccessDenied:
+           return @"SharingRevokeSharedLinkErrorSharedLinkAccessDenied";
+        case SharingRevokeSharedLinkErrorOther:
+           return @"SharingRevokeSharedLinkErrorOther";
+        case SharingRevokeSharedLinkErrorSharedLinkMalformed:
+           return @"SharingRevokeSharedLinkErrorSharedLinkMalformed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

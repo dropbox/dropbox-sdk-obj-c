@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAccessLevel;
 @class DbxSharingMemberPermission;
 @class DbxSharingMembershipInfo;
 
 /// 
-/// The DbxSharingMembershipInfo struct.
+/// The `DbxSharingMembershipInfo` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The information about a member of the shared content.
 /// 
@@ -18,27 +22,43 @@
 
 /// The access type for this member.
 @property (nonatomic) DbxSharingAccessLevel * _Nonnull accessType;
+
 /// The permissions that requesting user has on this member. The set of
 /// permissions corresponds to the MemberActions in the request.
 @property (nonatomic) NSArray<DbxSharingMemberPermission *> * _Nullable permissions;
+
 /// Suggested name initials for a member.
 @property (nonatomic, copy) NSString * _Nullable initials;
+
 /// True if the member has access from a parent folder.
 @property (nonatomic, copy) NSNumber * _Nonnull isInherited;
 
+/// Full constructor for the `MembershipInfo` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType permissions:(NSArray<DbxSharingMemberPermission *> * _Nullable)permissions initials:(NSString * _Nullable)initials isInherited:(NSNumber * _Nullable)isInherited;
 
+/// Convenience constructor for the `MembershipInfo` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType;
 
+/// Returns a human-readable representation of the `DbxSharingMembershipInfo`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingMembershipInfo` struct.
+/// 
 @interface DbxSharingMembershipInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingMembershipInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingMembershipInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingMembershipInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

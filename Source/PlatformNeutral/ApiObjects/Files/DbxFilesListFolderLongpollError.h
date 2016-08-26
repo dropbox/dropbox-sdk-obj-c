@@ -3,45 +3,68 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListFolderLongpollError;
 
 /// 
-/// The DbxFilesListFolderLongpollError union.
+/// The `DbxFilesListFolderLongpollError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListFolderLongpollError : NSObject <DbxSerializable> 
 
+/// The `FilesListFolderLongpollErrorTag` enum type represents the possible tag
+/// states that the `DbxFilesListFolderLongpollError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesListFolderLongpollErrorTag) {
     /// Indicates that the cursor has been invalidated. Call listFolder to
     /// obtain a new cursor.
     FilesListFolderLongpollErrorReset,
-    /// (no description)
+
+    /// (no description).
     FilesListFolderLongpollErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesListFolderLongpollErrorTag tag;
+
+
+/// Initializes union class with tag state of `Reset`.
 - (nonnull instancetype)initWithReset;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Reset`.
 - (BOOL)isReset;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesListFolderLongpollError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesListFolderLongpollError union type.
-@property (nonatomic) FilesListFolderLongpollErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListFolderLongpollError` union.
+/// 
 @interface DbxFilesListFolderLongpollErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListFolderLongpollError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderLongpollError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListFolderLongpollError` object
+/// from a json-compatible dictionary representation.
 + (DbxFilesListFolderLongpollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

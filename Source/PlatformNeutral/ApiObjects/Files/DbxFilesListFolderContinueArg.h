@@ -3,29 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListFolderContinueArg;
 
 /// 
-/// The DbxFilesListFolderContinueArg struct.
+/// The `DbxFilesListFolderContinueArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListFolderContinueArg : NSObject <DbxSerializable> 
 
 /// The cursor returned by your last call to listFolder or listFolderContinue.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
 
+/// Full constructor for the `ListFolderContinueArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesListFolderContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListFolderContinueArg` struct.
+/// 
 @interface DbxFilesListFolderContinueArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListFolderContinueArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderContinueArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListFolderContinueArg` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesListFolderContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

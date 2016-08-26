@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupFullInfo;
 @class DbxTeamGroupMembersChangeResult;
 
 /// 
-/// The DbxTeamGroupMembersChangeResult struct.
+/// The `DbxTeamGroupMembersChangeResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Result returned by groupsMembersAdd and groupsMembersRemove.
 /// 
@@ -17,21 +21,33 @@
 
 /// The group info after member change operation has been performed.
 @property (nonatomic) DbxTeamGroupFullInfo * _Nonnull groupInfo;
+
 /// An ID that can be used to obtain the status of granting/revoking group-owned
 /// resources.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
+/// Full constructor for the `GroupMembersChangeResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithGroupInfo:(DbxTeamGroupFullInfo * _Nonnull)groupInfo asyncJobId:(NSString * _Nonnull)asyncJobId;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamGroupMembersChangeResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMembersChangeResult` struct.
+/// 
 @interface DbxTeamGroupMembersChangeResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMembersChangeResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersChangeResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMembersChangeResult` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamGroupMembersChangeResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

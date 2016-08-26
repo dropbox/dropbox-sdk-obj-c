@@ -11,7 +11,7 @@
 - (instancetype)initWithAppNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorAppNotFound;
+        _tag = TeamRevokeLinkedAppErrorAppNotFound;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithMemberNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorMemberNotFound;
+        _tag = TeamRevokeLinkedAppErrorMemberNotFound;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorOther;
+        _tag = TeamRevokeLinkedAppErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAppNotFound {
-    return _tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorAppNotFound;
+    return _tag == TeamRevokeLinkedAppErrorAppNotFound;
 }
 
 - (BOOL)isMemberNotFound {
-    return _tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorMemberNotFound;
+    return _tag == TeamRevokeLinkedAppErrorMemberNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorOther;
+    return _tag == TeamRevokeLinkedAppErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorAppNotFound) {
-        return @"(TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorAppNotFound";
-    }
-    if (_tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorMemberNotFound) {
-        return @"(TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorMemberNotFound";
-    }
-    if (_tag == (TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorOther) {
-        return @"(TeamRevokeLinkedAppErrorTag)TeamRevokeLinkedAppErrorOther";
+    switch (_tag) {
+        case TeamRevokeLinkedAppErrorAppNotFound:
+           return @"TeamRevokeLinkedAppErrorAppNotFound";
+        case TeamRevokeLinkedAppErrorMemberNotFound:
+           return @"TeamRevokeLinkedAppErrorMemberNotFound";
+        case TeamRevokeLinkedAppErrorOther:
+           return @"TeamRevokeLinkedAppErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

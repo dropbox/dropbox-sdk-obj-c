@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxFilesGetMetadataArg.h"
 
 @class DbxFilesAlphaGetMetadataArg;
 
 /// 
-/// The DbxFilesAlphaGetMetadataArg struct.
+/// The `DbxFilesAlphaGetMetadataArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesAlphaGetMetadataArg : DbxFilesGetMetadataArg <DbxSerializable> 
 
@@ -17,19 +21,32 @@
 /// properties.
 @property (nonatomic) NSArray<NSString *> * _Nullable includePropertyTemplates;
 
+/// Full constructor for the `AlphaGetMetadataArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates;
 
+/// Convenience constructor for the `AlphaGetMetadataArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesAlphaGetMetadataArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesAlphaGetMetadataArg` struct.
+/// 
 @interface DbxFilesAlphaGetMetadataArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesAlphaGetMetadataArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesAlphaGetMetadataArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesAlphaGetMetadataArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesAlphaGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

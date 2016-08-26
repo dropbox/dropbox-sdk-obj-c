@@ -13,7 +13,7 @@
 - (instancetype)initWithSuccess:(DbxSharingAccessLevel *)success {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess;
+        _tag = SharingFileMemberActionIndividualResultSuccess;
         _success = success;
     }
     return self;
@@ -22,41 +22,41 @@
 - (instancetype)initWithMemberError:(DbxSharingFileMemberActionError *)memberError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError;
+        _tag = SharingFileMemberActionIndividualResultMemberError;
         _memberError = memberError;
     }
     return self;
 }
 
 - (BOOL)isSuccess {
-    return _tag == (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess;
+    return _tag == SharingFileMemberActionIndividualResultSuccess;
 }
 
 - (BOOL)isMemberError {
-    return _tag == (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError;
+    return _tag == SharingFileMemberActionIndividualResultMemberError;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess) {
-        return @"(SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess";
-    }
-    if (_tag == (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError) {
-        return @"(SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError";
+    switch (_tag) {
+        case SharingFileMemberActionIndividualResultSuccess:
+           return @"SharingFileMemberActionIndividualResultSuccess";
+        case SharingFileMemberActionIndividualResultMemberError:
+           return @"SharingFileMemberActionIndividualResultMemberError";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingAccessLevel *)success {
-    if (_tag != (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultSuccess, but was %@.", [self getTagName]];
+    if (_tag != SharingFileMemberActionIndividualResultSuccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileMemberActionIndividualResultSuccess, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (DbxSharingFileMemberActionError *)memberError {
-    if (_tag != (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileMemberActionIndividualResultTag)SharingFileMemberActionIndividualResultMemberError, but was %@.", [self getTagName]];
+    if (_tag != SharingFileMemberActionIndividualResultMemberError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileMemberActionIndividualResultMemberError, but was %@.", [self getTagName]];
     }
     return _memberError;
 }

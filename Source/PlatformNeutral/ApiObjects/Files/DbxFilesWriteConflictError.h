@@ -3,57 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesWriteConflictError;
 
 /// 
-/// The DbxFilesWriteConflictError union.
+/// The `DbxFilesWriteConflictError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesWriteConflictError : NSObject <DbxSerializable> 
 
+/// The `FilesWriteConflictErrorTag` enum type represents the possible tag
+/// states that the `DbxFilesWriteConflictError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesWriteConflictErrorTag) {
     /// There's a file in the way.
     FilesWriteConflictErrorFile,
+
     /// There's a folder in the way.
     FilesWriteConflictErrorFolder,
+
     /// There's a file at an ancestor path, so we couldn't create the required
     /// parent folders.
     FilesWriteConflictErrorFileAncestor,
-    /// (no description)
+
+    /// (no description).
     FilesWriteConflictErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesWriteConflictErrorTag tag;
+
+
+/// Initializes union class with tag state of `File`.
 - (nonnull instancetype)initWithFile;
 
+/// Initializes union class with tag state of `Folder`.
 - (nonnull instancetype)initWithFolder;
 
+/// Initializes union class with tag state of `FileAncestor`.
 - (nonnull instancetype)initWithFileAncestor;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `File`.
 - (BOOL)isFile;
 
+/// Returns whether the union's current tag state has value `Folder`.
 - (BOOL)isFolder;
 
+/// Returns whether the union's current tag state has value `FileAncestor`.
 - (BOOL)isFileAncestor;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesWriteConflictError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesWriteConflictError union type.
-@property (nonatomic) FilesWriteConflictErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesWriteConflictError` union.
+/// 
 @interface DbxFilesWriteConflictErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesWriteConflictError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesWriteConflictError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesWriteConflictError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesWriteConflictError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

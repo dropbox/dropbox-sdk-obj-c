@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingUserInfo;
 
 /// 
-/// The DbxSharingUserInfo struct.
+/// The `DbxSharingUserInfo` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Basic information about a user. Use usersAccount and usersAccountBatch to
 /// obtain more detailed information.
@@ -17,25 +21,38 @@
 
 /// The account ID of the user.
 @property (nonatomic, copy) NSString * _Nonnull accountId;
+
 /// If the user is in the same team as current user.
 @property (nonatomic, copy) NSNumber * _Nonnull sameTeam;
+
 /// The team member ID of the shared folder member. Only present if sameTeam is
 /// true.
 @property (nonatomic, copy) NSString * _Nullable teamMemberId;
 
+/// Full constructor for the `UserInfo` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam teamMemberId:(NSString * _Nullable)teamMemberId;
 
+/// Convenience constructor for the `UserInfo` struct (exposes only non-nullable
+/// instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam;
 
+/// Returns a human-readable representation of the `DbxSharingUserInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingUserInfo` struct.
+/// 
 @interface DbxSharingUserInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingUserInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingUserInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingUserInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingUserInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

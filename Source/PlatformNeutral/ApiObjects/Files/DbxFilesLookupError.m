@@ -11,7 +11,7 @@
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorMalformedPath;
+        _tag = FilesLookupErrorMalformedPath;
         _malformedPath = malformedPath;
     }
     return self;
@@ -20,7 +20,7 @@
 - (instancetype)initWithNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorNotFound;
+        _tag = FilesLookupErrorNotFound;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithNotFile {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorNotFile;
+        _tag = FilesLookupErrorNotFile;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithNotFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorNotFolder;
+        _tag = FilesLookupErrorNotFolder;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorRestrictedContent;
+        _tag = FilesLookupErrorRestrictedContent;
     }
     return self;
 }
@@ -52,61 +52,57 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookupErrorTag)FilesLookupErrorOther;
+        _tag = FilesLookupErrorOther;
     }
     return self;
 }
 
 - (BOOL)isMalformedPath {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorMalformedPath;
+    return _tag == FilesLookupErrorMalformedPath;
 }
 
 - (BOOL)isNotFound {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorNotFound;
+    return _tag == FilesLookupErrorNotFound;
 }
 
 - (BOOL)isNotFile {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorNotFile;
+    return _tag == FilesLookupErrorNotFile;
 }
 
 - (BOOL)isNotFolder {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorNotFolder;
+    return _tag == FilesLookupErrorNotFolder;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorRestrictedContent;
+    return _tag == FilesLookupErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesLookupErrorTag)FilesLookupErrorOther;
+    return _tag == FilesLookupErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorMalformedPath) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorMalformedPath";
-    }
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorNotFound) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorNotFound";
-    }
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorNotFile) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorNotFile";
-    }
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorNotFolder) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorNotFolder";
-    }
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorRestrictedContent) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorRestrictedContent";
-    }
-    if (_tag == (FilesLookupErrorTag)FilesLookupErrorOther) {
-        return @"(FilesLookupErrorTag)FilesLookupErrorOther";
+    switch (_tag) {
+        case FilesLookupErrorMalformedPath:
+           return @"FilesLookupErrorMalformedPath";
+        case FilesLookupErrorNotFound:
+           return @"FilesLookupErrorNotFound";
+        case FilesLookupErrorNotFile:
+           return @"FilesLookupErrorNotFile";
+        case FilesLookupErrorNotFolder:
+           return @"FilesLookupErrorNotFolder";
+        case FilesLookupErrorRestrictedContent:
+           return @"FilesLookupErrorRestrictedContent";
+        case FilesLookupErrorOther:
+           return @"FilesLookupErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)malformedPath {
-    if (_tag != (FilesLookupErrorTag)FilesLookupErrorMalformedPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesLookupErrorTag)FilesLookupErrorMalformedPath, but was %@.", [self getTagName]];
+    if (_tag != FilesLookupErrorMalformedPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesLookupErrorMalformedPath, but was %@.", [self getTagName]];
     }
     return _malformedPath;
 }

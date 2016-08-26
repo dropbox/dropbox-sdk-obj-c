@@ -3,47 +3,72 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingInviteeInfo;
 
 /// 
-/// The DbxSharingInviteeInfo union.
+/// The `DbxSharingInviteeInfo` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information about the recipient of a shared content invitation.
 /// 
 @interface DbxSharingInviteeInfo : NSObject <DbxSerializable> 
 
+/// The `SharingInviteeInfoTag` enum type represents the possible tag states
+/// that the `DbxSharingInviteeInfo` union can exist in.
 typedef NS_ENUM(NSInteger, SharingInviteeInfoTag) {
     /// E-mail address of invited user.
     SharingInviteeInfoEmail,
-    /// (no description)
+
+    /// (no description).
     SharingInviteeInfoOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingInviteeInfoTag tag;
+
+/// E-mail address of invited user.
+@property (nonatomic, copy) NSString * _Nonnull email;
+
+
+/// Initializes union class with tag state of `Email`.
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Email`.
 - (BOOL)isEmail;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingInviteeInfo`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingInviteeInfo union type.
-@property (nonatomic) SharingInviteeInfoTag tag;
-@property (nonatomic, copy) NSString * _Nonnull email;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingInviteeInfo` union.
+/// 
 @interface DbxSharingInviteeInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingInviteeInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingInviteeInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingInviteeInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingInviteeInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

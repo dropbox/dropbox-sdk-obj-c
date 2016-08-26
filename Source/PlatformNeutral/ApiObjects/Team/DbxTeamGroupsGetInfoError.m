@@ -11,7 +11,7 @@
 - (instancetype)initWithGroupNotOnTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorGroupNotOnTeam;
+        _tag = TeamGroupsGetInfoErrorGroupNotOnTeam;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorOther;
+        _tag = TeamGroupsGetInfoErrorOther;
     }
     return self;
 }
 
 - (BOOL)isGroupNotOnTeam {
-    return _tag == (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorGroupNotOnTeam;
+    return _tag == TeamGroupsGetInfoErrorGroupNotOnTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorOther;
+    return _tag == TeamGroupsGetInfoErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorGroupNotOnTeam) {
-        return @"(TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorGroupNotOnTeam";
-    }
-    if (_tag == (TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorOther) {
-        return @"(TeamGroupsGetInfoErrorTag)TeamGroupsGetInfoErrorOther";
+    switch (_tag) {
+        case TeamGroupsGetInfoErrorGroupNotOnTeam:
+           return @"TeamGroupsGetInfoErrorGroupNotOnTeam";
+        case TeamGroupsGetInfoErrorOther:
+           return @"TeamGroupsGetInfoErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

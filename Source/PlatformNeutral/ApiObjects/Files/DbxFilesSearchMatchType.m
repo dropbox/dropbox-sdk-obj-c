@@ -11,7 +11,7 @@
 - (instancetype)initWithFilename {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchMatchTypeTag)FilesSearchMatchTypeFilename;
+        _tag = FilesSearchMatchTypeFilename;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchMatchTypeTag)FilesSearchMatchTypeContent;
+        _tag = FilesSearchMatchTypeContent;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithBoth {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchMatchTypeTag)FilesSearchMatchTypeBoth;
+        _tag = FilesSearchMatchTypeBoth;
     }
     return self;
 }
 
 - (BOOL)isFilename {
-    return _tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeFilename;
+    return _tag == FilesSearchMatchTypeFilename;
 }
 
 - (BOOL)isContent {
-    return _tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeContent;
+    return _tag == FilesSearchMatchTypeContent;
 }
 
 - (BOOL)isBoth {
-    return _tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeBoth;
+    return _tag == FilesSearchMatchTypeBoth;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeFilename) {
-        return @"(FilesSearchMatchTypeTag)FilesSearchMatchTypeFilename";
-    }
-    if (_tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeContent) {
-        return @"(FilesSearchMatchTypeTag)FilesSearchMatchTypeContent";
-    }
-    if (_tag == (FilesSearchMatchTypeTag)FilesSearchMatchTypeBoth) {
-        return @"(FilesSearchMatchTypeTag)FilesSearchMatchTypeBoth";
+    switch (_tag) {
+        case FilesSearchMatchTypeFilename:
+           return @"FilesSearchMatchTypeFilename";
+        case FilesSearchMatchTypeContent:
+           return @"FilesSearchMatchTypeContent";
+        case FilesSearchMatchTypeBoth:
+           return @"FilesSearchMatchTypeBoth";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

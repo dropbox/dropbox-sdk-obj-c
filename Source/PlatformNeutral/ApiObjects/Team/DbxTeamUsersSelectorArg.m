@@ -11,7 +11,7 @@
 - (instancetype)initWithTeamMemberIds:(NSArray<NSString *> *)teamMemberIds {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds;
+        _tag = TeamUsersSelectorArgTeamMemberIds;
         _teamMemberIds = teamMemberIds;
     }
     return self;
@@ -20,7 +20,7 @@
 - (instancetype)initWithExternalIds:(NSArray<NSString *> *)externalIds {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds;
+        _tag = TeamUsersSelectorArgExternalIds;
         _externalIds = externalIds;
     }
     return self;
@@ -29,55 +29,54 @@
 - (instancetype)initWithEmails:(NSArray<NSString *> *)emails {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails;
+        _tag = TeamUsersSelectorArgEmails;
         _emails = emails;
     }
     return self;
 }
 
 - (BOOL)isTeamMemberIds {
-    return _tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds;
+    return _tag == TeamUsersSelectorArgTeamMemberIds;
 }
 
 - (BOOL)isExternalIds {
-    return _tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds;
+    return _tag == TeamUsersSelectorArgExternalIds;
 }
 
 - (BOOL)isEmails {
-    return _tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails;
+    return _tag == TeamUsersSelectorArgEmails;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds) {
-        return @"(TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds";
-    }
-    if (_tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds) {
-        return @"(TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds";
-    }
-    if (_tag == (TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails) {
-        return @"(TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails";
+    switch (_tag) {
+        case TeamUsersSelectorArgTeamMemberIds:
+           return @"TeamUsersSelectorArgTeamMemberIds";
+        case TeamUsersSelectorArgExternalIds:
+           return @"TeamUsersSelectorArgExternalIds";
+        case TeamUsersSelectorArgEmails:
+           return @"TeamUsersSelectorArgEmails";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSArray<NSString *> *)teamMemberIds {
-    if (_tag != (TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamUsersSelectorArgTag)TeamUsersSelectorArgTeamMemberIds, but was %@.", [self getTagName]];
+    if (_tag != TeamUsersSelectorArgTeamMemberIds) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamUsersSelectorArgTeamMemberIds, but was %@.", [self getTagName]];
     }
     return _teamMemberIds;
 }
 
 - (NSArray<NSString *> *)externalIds {
-    if (_tag != (TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamUsersSelectorArgTag)TeamUsersSelectorArgExternalIds, but was %@.", [self getTagName]];
+    if (_tag != TeamUsersSelectorArgExternalIds) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamUsersSelectorArgExternalIds, but was %@.", [self getTagName]];
     }
     return _externalIds;
 }
 
 - (NSArray<NSString *> *)emails {
-    if (_tag != (TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamUsersSelectorArgTag)TeamUsersSelectorArgEmails, but was %@.", [self getTagName]];
+    if (_tag != TeamUsersSelectorArgEmails) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamUsersSelectorArgEmails, but was %@.", [self getTagName]];
     }
     return _emails;
 }

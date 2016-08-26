@@ -11,7 +11,7 @@
 - (instancetype)initWithOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAccessLevelTag)SharingAccessLevelOwner;
+        _tag = SharingAccessLevelOwner;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithEditor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAccessLevelTag)SharingAccessLevelEditor;
+        _tag = SharingAccessLevelEditor;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithViewer {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAccessLevelTag)SharingAccessLevelViewer;
+        _tag = SharingAccessLevelViewer;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithViewerNoComment {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAccessLevelTag)SharingAccessLevelViewerNoComment;
+        _tag = SharingAccessLevelViewerNoComment;
     }
     return self;
 }
@@ -43,46 +43,43 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAccessLevelTag)SharingAccessLevelOther;
+        _tag = SharingAccessLevelOther;
     }
     return self;
 }
 
 - (BOOL)isOwner {
-    return _tag == (SharingAccessLevelTag)SharingAccessLevelOwner;
+    return _tag == SharingAccessLevelOwner;
 }
 
 - (BOOL)isEditor {
-    return _tag == (SharingAccessLevelTag)SharingAccessLevelEditor;
+    return _tag == SharingAccessLevelEditor;
 }
 
 - (BOOL)isViewer {
-    return _tag == (SharingAccessLevelTag)SharingAccessLevelViewer;
+    return _tag == SharingAccessLevelViewer;
 }
 
 - (BOOL)isViewerNoComment {
-    return _tag == (SharingAccessLevelTag)SharingAccessLevelViewerNoComment;
+    return _tag == SharingAccessLevelViewerNoComment;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingAccessLevelTag)SharingAccessLevelOther;
+    return _tag == SharingAccessLevelOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingAccessLevelTag)SharingAccessLevelOwner) {
-        return @"(SharingAccessLevelTag)SharingAccessLevelOwner";
-    }
-    if (_tag == (SharingAccessLevelTag)SharingAccessLevelEditor) {
-        return @"(SharingAccessLevelTag)SharingAccessLevelEditor";
-    }
-    if (_tag == (SharingAccessLevelTag)SharingAccessLevelViewer) {
-        return @"(SharingAccessLevelTag)SharingAccessLevelViewer";
-    }
-    if (_tag == (SharingAccessLevelTag)SharingAccessLevelViewerNoComment) {
-        return @"(SharingAccessLevelTag)SharingAccessLevelViewerNoComment";
-    }
-    if (_tag == (SharingAccessLevelTag)SharingAccessLevelOther) {
-        return @"(SharingAccessLevelTag)SharingAccessLevelOther";
+    switch (_tag) {
+        case SharingAccessLevelOwner:
+           return @"SharingAccessLevelOwner";
+        case SharingAccessLevelEditor:
+           return @"SharingAccessLevelEditor";
+        case SharingAccessLevelViewer:
+           return @"SharingAccessLevelViewer";
+        case SharingAccessLevelViewerNoComment:
+           return @"SharingAccessLevelViewerNoComment";
+        case SharingAccessLevelOther:
+           return @"SharingAccessLevelOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

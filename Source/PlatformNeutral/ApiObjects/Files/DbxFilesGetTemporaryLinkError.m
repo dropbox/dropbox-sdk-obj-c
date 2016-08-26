@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath;
+        _tag = FilesGetTemporaryLinkErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorOther;
+        _tag = FilesGetTemporaryLinkErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath;
+    return _tag == FilesGetTemporaryLinkErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorOther;
+    return _tag == FilesGetTemporaryLinkErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath) {
-        return @"(FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath";
-    }
-    if (_tag == (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorOther) {
-        return @"(FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorOther";
+    switch (_tag) {
+        case FilesGetTemporaryLinkErrorPath:
+           return @"FilesGetTemporaryLinkErrorPath";
+        case FilesGetTemporaryLinkErrorOther:
+           return @"FilesGetTemporaryLinkErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesGetTemporaryLinkErrorTag)FilesGetTemporaryLinkErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesGetTemporaryLinkErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesGetTemporaryLinkErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

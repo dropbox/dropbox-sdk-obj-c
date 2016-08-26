@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidSettings {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorInvalidSettings;
+        _tag = SharingSharedLinkSettingsErrorInvalidSettings;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithNotAuthorized {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorNotAuthorized;
+        _tag = SharingSharedLinkSettingsErrorNotAuthorized;
     }
     return self;
 }
 
 - (BOOL)isInvalidSettings {
-    return _tag == (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorInvalidSettings;
+    return _tag == SharingSharedLinkSettingsErrorInvalidSettings;
 }
 
 - (BOOL)isNotAuthorized {
-    return _tag == (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorNotAuthorized;
+    return _tag == SharingSharedLinkSettingsErrorNotAuthorized;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorInvalidSettings) {
-        return @"(SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorInvalidSettings";
-    }
-    if (_tag == (SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorNotAuthorized) {
-        return @"(SharingSharedLinkSettingsErrorTag)SharingSharedLinkSettingsErrorNotAuthorized";
+    switch (_tag) {
+        case SharingSharedLinkSettingsErrorInvalidSettings:
+           return @"SharingSharedLinkSettingsErrorInvalidSettings";
+        case SharingSharedLinkSettingsErrorNotAuthorized:
+           return @"SharingSharedLinkSettingsErrorNotAuthorized";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

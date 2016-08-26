@@ -3,59 +3,87 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncPollError.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupsPollError;
 
 /// 
-/// The DbxTeamGroupsPollError union.
+/// The `DbxTeamGroupsPollError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupsPollError : NSObject <DbxSerializable> 
 
+/// The `TeamGroupsPollErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamGroupsPollError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupsPollErrorTag) {
     /// The job ID is invalid.
     TeamGroupsPollErrorInvalidAsyncJobId,
+
     /// Something went wrong with the job on Dropbox's end. You'll need to
     /// verify that the action you were taking succeeded, and if not, try again.
     /// This should happen very rarely.
     TeamGroupsPollErrorInternalError,
-    /// (no description)
+
+    /// (no description).
     TeamGroupsPollErrorOther,
+
     /// You are not allowed to poll this job.
     TeamGroupsPollErrorAccessDenied,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupsPollErrorTag tag;
+
+
+/// Initializes union class with tag state of `InvalidAsyncJobId`.
 - (nonnull instancetype)initWithInvalidAsyncJobId;
 
+/// Initializes union class with tag state of `InternalError`.
 - (nonnull instancetype)initWithInternalError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Initializes union class with tag state of `AccessDenied`.
 - (nonnull instancetype)initWithAccessDenied;
 
+/// Returns whether the union's current tag state has value `InvalidAsyncJobId`.
 - (BOOL)isInvalidAsyncJobId;
 
+/// Returns whether the union's current tag state has value `InternalError`.
 - (BOOL)isInternalError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns whether the union's current tag state has value `AccessDenied`.
 - (BOOL)isAccessDenied;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupsPollError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupsPollError union type.
-@property (nonatomic) TeamGroupsPollErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupsPollError` union.
+/// 
 @interface DbxTeamGroupsPollErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupsPollError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsPollError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupsPollError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupsPollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

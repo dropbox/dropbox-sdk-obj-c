@@ -14,7 +14,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound;
+        _tag = FilesRemovePropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorRestrictedContent;
+        _tag = FilesRemovePropertiesErrorRestrictedContent;
     }
     return self;
 }
@@ -31,7 +31,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorOther;
+        _tag = FilesRemovePropertiesErrorOther;
     }
     return self;
 }
@@ -39,7 +39,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath;
+        _tag = FilesRemovePropertiesErrorPath;
         _path = path;
     }
     return self;
@@ -48,69 +48,66 @@
 - (instancetype)initWithPropertyGroupLookup:(DbxFilesLookUpPropertiesError *)propertyGroupLookup {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup;
+        _tag = FilesRemovePropertiesErrorPropertyGroupLookup;
         _propertyGroupLookup = propertyGroupLookup;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound;
+    return _tag == FilesRemovePropertiesErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorRestrictedContent;
+    return _tag == FilesRemovePropertiesErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorOther;
+    return _tag == FilesRemovePropertiesErrorOther;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath;
+    return _tag == FilesRemovePropertiesErrorPath;
 }
 
 - (BOOL)isPropertyGroupLookup {
-    return _tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup;
+    return _tag == FilesRemovePropertiesErrorPropertyGroupLookup;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound) {
-        return @"(FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound";
-    }
-    if (_tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorRestrictedContent) {
-        return @"(FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorRestrictedContent";
-    }
-    if (_tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorOther) {
-        return @"(FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorOther";
-    }
-    if (_tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath) {
-        return @"(FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath";
-    }
-    if (_tag == (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup) {
-        return @"(FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup";
+    switch (_tag) {
+        case FilesRemovePropertiesErrorTemplateNotFound:
+           return @"FilesRemovePropertiesErrorTemplateNotFound";
+        case FilesRemovePropertiesErrorRestrictedContent:
+           return @"FilesRemovePropertiesErrorRestrictedContent";
+        case FilesRemovePropertiesErrorOther:
+           return @"FilesRemovePropertiesErrorOther";
+        case FilesRemovePropertiesErrorPath:
+           return @"FilesRemovePropertiesErrorPath";
+        case FilesRemovePropertiesErrorPropertyGroupLookup:
+           return @"FilesRemovePropertiesErrorPropertyGroupLookup";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != FilesRemovePropertiesErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRemovePropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesRemovePropertiesErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRemovePropertiesErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DbxFilesLookUpPropertiesError *)propertyGroupLookup {
-    if (_tag != (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRemovePropertiesErrorTag)FilesRemovePropertiesErrorPropertyGroupLookup, but was %@.", [self getTagName]];
+    if (_tag != FilesRemovePropertiesErrorPropertyGroupLookup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRemovePropertiesErrorPropertyGroupLookup, but was %@.", [self getTagName]];
     }
     return _propertyGroupLookup;
 }

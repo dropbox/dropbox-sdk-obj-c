@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError;
+        _tag = SharingRelinquishFileMembershipErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithGroupAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorGroupAccess;
+        _tag = SharingRelinquishFileMembershipErrorGroupAccess;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorNoPermission;
+        _tag = SharingRelinquishFileMembershipErrorNoPermission;
     }
     return self;
 }
@@ -37,47 +37,45 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorOther;
+        _tag = SharingRelinquishFileMembershipErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError;
+    return _tag == SharingRelinquishFileMembershipErrorAccessError;
 }
 
 - (BOOL)isGroupAccess {
-    return _tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorGroupAccess;
+    return _tag == SharingRelinquishFileMembershipErrorGroupAccess;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorNoPermission;
+    return _tag == SharingRelinquishFileMembershipErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorOther;
+    return _tag == SharingRelinquishFileMembershipErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError) {
-        return @"(SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError";
-    }
-    if (_tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorGroupAccess) {
-        return @"(SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorGroupAccess";
-    }
-    if (_tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorNoPermission) {
-        return @"(SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorNoPermission";
-    }
-    if (_tag == (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorOther) {
-        return @"(SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorOther";
+    switch (_tag) {
+        case SharingRelinquishFileMembershipErrorAccessError:
+           return @"SharingRelinquishFileMembershipErrorAccessError";
+        case SharingRelinquishFileMembershipErrorGroupAccess:
+           return @"SharingRelinquishFileMembershipErrorGroupAccess";
+        case SharingRelinquishFileMembershipErrorNoPermission:
+           return @"SharingRelinquishFileMembershipErrorNoPermission";
+        case SharingRelinquishFileMembershipErrorOther:
+           return @"SharingRelinquishFileMembershipErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRelinquishFileMembershipErrorTag)SharingRelinquishFileMembershipErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingRelinquishFileMembershipErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRelinquishFileMembershipErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

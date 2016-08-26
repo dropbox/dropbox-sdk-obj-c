@@ -3,38 +3,57 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesPropertyGroupUpdate;
 @class DbxPropertiesPropertyField;
 
 /// 
-/// The DbxFilesPropertyGroupUpdate struct.
+/// The `DbxFilesPropertyGroupUpdate` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesPropertyGroupUpdate : NSObject <DbxSerializable> 
 
 /// A unique identifier for a property template.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
+
 /// List of property fields to update if the field already exists. If the field
 /// doesn't exist, add the field to the property group.
 @property (nonatomic) NSArray<DbxPropertiesPropertyField *> * _Nullable addOrUpdateFields;
+
 /// List of property field names to remove from property group if the field
 /// exists.
 @property (nonatomic) NSArray<NSString *> * _Nullable removeFields;
 
+/// Full constructor for the `PropertyGroupUpdate` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId addOrUpdateFields:(NSArray<DbxPropertiesPropertyField *> * _Nullable)addOrUpdateFields removeFields:(NSArray<NSString *> * _Nullable)removeFields;
 
+/// Convenience constructor for the `PropertyGroupUpdate` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
+/// Returns a human-readable representation of the `DbxFilesPropertyGroupUpdate`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesPropertyGroupUpdate` struct.
+/// 
 @interface DbxFilesPropertyGroupUpdateSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesPropertyGroupUpdate` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesPropertyGroupUpdate * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesPropertyGroupUpdate` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesPropertyGroupUpdate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -14,7 +14,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError;
+        _tag = SharingUpdateFolderMemberErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithMemberError:(DbxSharingSharedFolderMemberError *)memberError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError;
+        _tag = SharingUpdateFolderMemberErrorMemberError;
         _memberError = memberError;
     }
     return self;
@@ -32,7 +32,7 @@
 - (instancetype)initWithNoExplicitAccess:(DbxSharingAddFolderMemberError *)noExplicitAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess;
+        _tag = SharingUpdateFolderMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
     return self;
@@ -41,7 +41,7 @@
 - (instancetype)initWithInsufficientPlan {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorInsufficientPlan;
+        _tag = SharingUpdateFolderMemberErrorInsufficientPlan;
     }
     return self;
 }
@@ -49,7 +49,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoPermission;
+        _tag = SharingUpdateFolderMemberErrorNoPermission;
     }
     return self;
 }
@@ -57,75 +57,71 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorOther;
+        _tag = SharingUpdateFolderMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError;
+    return _tag == SharingUpdateFolderMemberErrorAccessError;
 }
 
 - (BOOL)isMemberError {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError;
+    return _tag == SharingUpdateFolderMemberErrorMemberError;
 }
 
 - (BOOL)isNoExplicitAccess {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess;
+    return _tag == SharingUpdateFolderMemberErrorNoExplicitAccess;
 }
 
 - (BOOL)isInsufficientPlan {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorInsufficientPlan;
+    return _tag == SharingUpdateFolderMemberErrorInsufficientPlan;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoPermission;
+    return _tag == SharingUpdateFolderMemberErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorOther;
+    return _tag == SharingUpdateFolderMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError";
-    }
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError";
-    }
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess";
-    }
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorInsufficientPlan) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorInsufficientPlan";
-    }
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoPermission) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoPermission";
-    }
-    if (_tag == (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorOther) {
-        return @"(SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorOther";
+    switch (_tag) {
+        case SharingUpdateFolderMemberErrorAccessError:
+           return @"SharingUpdateFolderMemberErrorAccessError";
+        case SharingUpdateFolderMemberErrorMemberError:
+           return @"SharingUpdateFolderMemberErrorMemberError";
+        case SharingUpdateFolderMemberErrorNoExplicitAccess:
+           return @"SharingUpdateFolderMemberErrorNoExplicitAccess";
+        case SharingUpdateFolderMemberErrorInsufficientPlan:
+           return @"SharingUpdateFolderMemberErrorInsufficientPlan";
+        case SharingUpdateFolderMemberErrorNoPermission:
+           return @"SharingUpdateFolderMemberErrorNoPermission";
+        case SharingUpdateFolderMemberErrorOther:
+           return @"SharingUpdateFolderMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingUpdateFolderMemberErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUpdateFolderMemberErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DbxSharingSharedFolderMemberError *)memberError {
-    if (_tag != (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorMemberError, but was %@.", [self getTagName]];
+    if (_tag != SharingUpdateFolderMemberErrorMemberError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUpdateFolderMemberErrorMemberError, but was %@.", [self getTagName]];
     }
     return _memberError;
 }
 
 - (DbxSharingAddFolderMemberError *)noExplicitAccess {
-    if (_tag != (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUpdateFolderMemberErrorTag)SharingUpdateFolderMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
+    if (_tag != SharingUpdateFolderMemberErrorNoExplicitAccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUpdateFolderMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }

@@ -12,7 +12,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollEmptyResultTag)AsyncPollEmptyResultInProgress;
+        _tag = AsyncPollEmptyResultInProgress;
     }
     return self;
 }
@@ -20,25 +20,25 @@
 - (instancetype)initWithComplete {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollEmptyResultTag)AsyncPollEmptyResultComplete;
+        _tag = AsyncPollEmptyResultComplete;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (AsyncPollEmptyResultTag)AsyncPollEmptyResultInProgress;
+    return _tag == AsyncPollEmptyResultInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (AsyncPollEmptyResultTag)AsyncPollEmptyResultComplete;
+    return _tag == AsyncPollEmptyResultComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AsyncPollEmptyResultTag)AsyncPollEmptyResultInProgress) {
-        return @"(AsyncPollEmptyResultTag)AsyncPollEmptyResultInProgress";
-    }
-    if (_tag == (AsyncPollEmptyResultTag)AsyncPollEmptyResultComplete) {
-        return @"(AsyncPollEmptyResultTag)AsyncPollEmptyResultComplete";
+    switch (_tag) {
+        case AsyncPollEmptyResultInProgress:
+           return @"AsyncPollEmptyResultInProgress";
+        case AsyncPollEmptyResultComplete:
+           return @"AsyncPollEmptyResultComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

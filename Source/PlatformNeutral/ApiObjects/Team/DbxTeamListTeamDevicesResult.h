@@ -3,38 +3,57 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamListTeamDevicesResult;
 @class DbxTeamMemberDevices;
 
 /// 
-/// The DbxTeamListTeamDevicesResult struct.
+/// The `DbxTeamListTeamDevicesResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamListTeamDevicesResult : NSObject <DbxSerializable> 
 
 /// The devices of each member of the team
 @property (nonatomic) NSArray<DbxTeamMemberDevices *> * _Nonnull devices;
+
 /// If true, then there are more devices available. Pass the cursor to
 /// devicesListTeamDevices to retrieve the rest.
 @property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+
 /// Pass the cursor into devicesListTeamDevices to receive the next sub list of
 /// team's devices.
 @property (nonatomic, copy) NSString * _Nullable cursor;
 
+/// Full constructor for the `ListTeamDevicesResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithDevices:(NSArray<DbxTeamMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
 
+/// Convenience constructor for the `ListTeamDevicesResult` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithDevices:(NSArray<DbxTeamMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamListTeamDevicesResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamListTeamDevicesResult` struct.
+/// 
 @interface DbxTeamListTeamDevicesResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamListTeamDevicesResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamListTeamDevicesResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamListTeamDevicesResult` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamListTeamDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

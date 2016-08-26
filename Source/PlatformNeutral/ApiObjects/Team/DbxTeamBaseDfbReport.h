@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamBaseDfbReport;
 
 /// 
-/// The DbxTeamBaseDfbReport struct.
+/// The `DbxTeamBaseDfbReport` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Base report structure.
 /// 
@@ -17,17 +21,28 @@
 /// First date present in the results as 'YYYY-MM-DD' or None.
 @property (nonatomic, copy) NSString * _Nonnull startDate;
 
+/// Full constructor for the `BaseDfbReport` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate;
 
+/// Returns a human-readable representation of the `DbxTeamBaseDfbReport`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamBaseDfbReport` struct.
+/// 
 @interface DbxTeamBaseDfbReportSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamBaseDfbReport` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamBaseDfbReport * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamBaseDfbReport` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamBaseDfbReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

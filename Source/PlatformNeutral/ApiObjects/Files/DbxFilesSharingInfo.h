@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSharingInfo;
 
 /// 
-/// The DbxFilesSharingInfo struct.
+/// The `DbxFilesSharingInfo` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Sharing info for a file or folder.
 /// 
@@ -17,17 +21,27 @@
 /// True if the file or folder is inside a read-only shared folder.
 @property (nonatomic, copy) NSNumber * _Nonnull readOnly;
 
+/// Full constructor for the `SharingInfo` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
 
+/// Returns a human-readable representation of the `DbxFilesSharingInfo` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSharingInfo` struct.
+/// 
 @interface DbxFilesSharingInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSharingInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSharingInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSharingInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,29 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingMountFolderArg;
 
 /// 
-/// The DbxSharingMountFolderArg struct.
+/// The `DbxSharingMountFolderArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingMountFolderArg : NSObject <DbxSerializable> 
 
 /// The ID of the shared folder to mount.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
 
+/// Full constructor for the `MountFolderArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
+/// Returns a human-readable representation of the `DbxSharingMountFolderArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingMountFolderArg` struct.
+/// 
 @interface DbxSharingMountFolderArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingMountFolderArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingMountFolderArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingMountFolderArg` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingMountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

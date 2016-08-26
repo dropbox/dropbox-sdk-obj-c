@@ -13,7 +13,7 @@
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId;
+        _tag = SharingShareFolderLaunchAsyncJobId;
         _asyncJobId = asyncJobId;
     }
     return self;
@@ -22,41 +22,41 @@
 - (instancetype)initWithComplete:(DbxSharingSharedFolderMetadata *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete;
+        _tag = SharingShareFolderLaunchComplete;
         _complete = complete;
     }
     return self;
 }
 
 - (BOOL)isAsyncJobId {
-    return _tag == (SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId;
+    return _tag == SharingShareFolderLaunchAsyncJobId;
 }
 
 - (BOOL)isComplete {
-    return _tag == (SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete;
+    return _tag == SharingShareFolderLaunchComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId) {
-        return @"(SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId";
-    }
-    if (_tag == (SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete) {
-        return @"(SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete";
+    switch (_tag) {
+        case SharingShareFolderLaunchAsyncJobId:
+           return @"SharingShareFolderLaunchAsyncJobId";
+        case SharingShareFolderLaunchComplete:
+           return @"SharingShareFolderLaunchComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != (SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingShareFolderLaunchTag)SharingShareFolderLaunchAsyncJobId, but was %@.", [self getTagName]];
+    if (_tag != SharingShareFolderLaunchAsyncJobId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingShareFolderLaunchAsyncJobId, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (DbxSharingSharedFolderMetadata *)complete {
-    if (_tag != (SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingShareFolderLaunchTag)SharingShareFolderLaunchComplete, but was %@.", [self getTagName]];
+    if (_tag != SharingShareFolderLaunchComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingShareFolderLaunchComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }

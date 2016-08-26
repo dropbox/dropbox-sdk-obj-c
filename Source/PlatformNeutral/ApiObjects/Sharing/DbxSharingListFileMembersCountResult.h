@@ -3,32 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFileMembersCountResult;
 @class DbxSharingSharedFileMembers;
 
 /// 
-/// The DbxSharingListFileMembersCountResult struct.
+/// The `DbxSharingListFileMembersCountResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingListFileMembersCountResult : NSObject <DbxSerializable> 
 
 /// A list of members on this file.
 @property (nonatomic) DbxSharingSharedFileMembers * _Nonnull members;
+
 /// The number of members on this file. This does not include inherited members
 @property (nonatomic, copy) NSNumber * _Nonnull memberCount;
 
+/// Full constructor for the `ListFileMembersCountResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithMembers:(DbxSharingSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingListFileMembersCountResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFileMembersCountResult`
+/// struct.
+/// 
 @interface DbxSharingListFileMembersCountResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFileMembersCountResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersCountResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFileMembersCountResult`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingListFileMembersCountResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

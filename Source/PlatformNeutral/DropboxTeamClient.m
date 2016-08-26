@@ -1,7 +1,3 @@
-///
-/// The client for the Business API. Call routes using the namespaces inside this object (inherited from parent).
-///
-
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
 

@@ -11,27 +11,28 @@
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId;
+        _tag = AsyncLaunchResultBaseAsyncJobId;
         _asyncJobId = asyncJobId;
     }
     return self;
 }
 
 - (BOOL)isAsyncJobId {
-    return _tag == (AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId;
+    return _tag == AsyncLaunchResultBaseAsyncJobId;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId) {
-        return @"(AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId";
+    switch (_tag) {
+        case AsyncLaunchResultBaseAsyncJobId:
+           return @"AsyncLaunchResultBaseAsyncJobId";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != (AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (AsyncLaunchResultBaseTag)AsyncLaunchResultBaseAsyncJobId, but was %@.", [self getTagName]];
+    if (_tag != AsyncLaunchResultBaseAsyncJobId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required AsyncLaunchResultBaseAsyncJobId, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }

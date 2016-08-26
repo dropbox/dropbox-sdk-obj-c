@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotFound;
+        _tag = TeamMemberSelectorErrorUserNotFound;
     }
     return self;
 }
@@ -20,25 +20,25 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotInTeam;
+        _tag = TeamMemberSelectorErrorUserNotInTeam;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotFound;
+    return _tag == TeamMemberSelectorErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotInTeam;
+    return _tag == TeamMemberSelectorErrorUserNotInTeam;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotFound) {
-        return @"(TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotFound";
-    }
-    if (_tag == (TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotInTeam) {
-        return @"(TeamMemberSelectorErrorTag)TeamMemberSelectorErrorUserNotInTeam";
+    switch (_tag) {
+        case TeamMemberSelectorErrorUserNotFound:
+           return @"TeamMemberSelectorErrorUserNotFound";
+        case TeamMemberSelectorErrorUserNotInTeam:
+           return @"TeamMemberSelectorErrorUserNotInTeam";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -13,7 +13,7 @@
 - (instancetype)initWithUserError:(DbxSharingSharingUserError *)userError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError;
+        _tag = SharingGetFileMetadataErrorUserError;
         _userError = userError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError;
+        _tag = SharingGetFileMetadataErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorOther;
+        _tag = SharingGetFileMetadataErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserError {
-    return _tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError;
+    return _tag == SharingGetFileMetadataErrorUserError;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError;
+    return _tag == SharingGetFileMetadataErrorAccessError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorOther;
+    return _tag == SharingGetFileMetadataErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError) {
-        return @"(SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError";
-    }
-    if (_tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError) {
-        return @"(SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError";
-    }
-    if (_tag == (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorOther) {
-        return @"(SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorOther";
+    switch (_tag) {
+        case SharingGetFileMetadataErrorUserError:
+           return @"SharingGetFileMetadataErrorUserError";
+        case SharingGetFileMetadataErrorAccessError:
+           return @"SharingGetFileMetadataErrorAccessError";
+        case SharingGetFileMetadataErrorOther:
+           return @"SharingGetFileMetadataErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingUserError *)userError {
-    if (_tag != (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorUserError, but was %@.", [self getTagName]];
+    if (_tag != SharingGetFileMetadataErrorUserError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingGetFileMetadataErrorUserError, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingGetFileMetadataErrorTag)SharingGetFileMetadataErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingGetFileMetadataErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingGetFileMetadataErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

@@ -3,29 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingRelinquishFileMembershipArg;
 
 /// 
-/// The DbxSharingRelinquishFileMembershipArg struct.
+/// The `DbxSharingRelinquishFileMembershipArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingRelinquishFileMembershipArg : NSObject <DbxSerializable> 
 
 /// The path or id for the file.
 @property (nonatomic, copy) NSString * _Nonnull file;
 
+/// Full constructor for the `RelinquishFileMembershipArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingRelinquishFileMembershipArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingRelinquishFileMembershipArg`
+/// struct.
+/// 
 @interface DbxSharingRelinquishFileMembershipArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingRelinquishFileMembershipArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingRelinquishFileMembershipArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingRelinquishFileMembershipArg`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingRelinquishFileMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

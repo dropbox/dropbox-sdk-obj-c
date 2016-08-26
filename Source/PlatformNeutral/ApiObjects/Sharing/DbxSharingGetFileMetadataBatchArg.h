@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFileAction;
 @class DbxSharingGetFileMetadataBatchArg;
 
 /// 
-/// The DbxSharingGetFileMetadataBatchArg struct.
+/// The `DbxSharingGetFileMetadataBatchArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Arguments of getFileMetadataBatch
 /// 
@@ -17,22 +21,36 @@
 
 /// The files to query.
 @property (nonatomic) NSArray<NSString *> * _Nonnull files;
+
 /// File actions to query.
 @property (nonatomic) NSArray<DbxSharingFileAction *> * _Nullable actions;
 
+/// Full constructor for the `GetFileMetadataBatchArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files actions:(NSArray<DbxSharingFileAction *> * _Nullable)actions;
 
+/// Convenience constructor for the `GetFileMetadataBatchArg` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingGetFileMetadataBatchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingGetFileMetadataBatchArg` struct.
+/// 
 @interface DbxSharingGetFileMetadataBatchArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingGetFileMetadataBatchArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingGetFileMetadataBatchArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingGetFileMetadataBatchArg` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingGetFileMetadataBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

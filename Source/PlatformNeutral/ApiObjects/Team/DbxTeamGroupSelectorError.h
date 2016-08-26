@@ -3,46 +3,69 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupSelectorError;
 
 /// 
-/// The DbxTeamGroupSelectorError union.
+/// The `DbxTeamGroupSelectorError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error that can be raised when GroupSelector is used.
 /// 
 @interface DbxTeamGroupSelectorError : NSObject <DbxSerializable> 
 
+/// The `TeamGroupSelectorErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamGroupSelectorError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupSelectorErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     TeamGroupSelectorErrorGroupNotFound,
-    /// (no description)
+
+    /// (no description).
     TeamGroupSelectorErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupSelectorErrorTag tag;
+
+
+/// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `GroupNotFound`.
 - (BOOL)isGroupNotFound;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupSelectorError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupSelectorError union type.
-@property (nonatomic) TeamGroupSelectorErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupSelectorError` union.
+/// 
 @interface DbxTeamGroupSelectorErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupSelectorError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupSelectorError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupSelectorError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesUploadSessionStartResult;
 
 /// 
-/// The DbxFilesUploadSessionStartResult struct.
+/// The `DbxFilesUploadSessionStartResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesUploadSessionStartResult : NSObject <DbxSerializable> 
 
@@ -16,17 +20,28 @@
 /// uploadSessionAppendV2 and uploadSessionFinish.
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
 
+/// Full constructor for the `UploadSessionStartResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesUploadSessionStartResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesUploadSessionStartResult` struct.
+/// 
 @interface DbxFilesUploadSessionStartResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesUploadSessionStartResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionStartResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesUploadSessionStartResult` object
+/// from a json-compatible dictionary representation.
 + (DbxFilesUploadSessionStartResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,7 +11,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorGroupNotFound;
+        _tag = TeamGroupSelectorErrorGroupNotFound;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorOther;
+        _tag = TeamGroupSelectorErrorOther;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorGroupNotFound;
+    return _tag == TeamGroupSelectorErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorOther;
+    return _tag == TeamGroupSelectorErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorGroupNotFound) {
-        return @"(TeamGroupSelectorErrorTag)TeamGroupSelectorErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupSelectorErrorTag)TeamGroupSelectorErrorOther) {
-        return @"(TeamGroupSelectorErrorTag)TeamGroupSelectorErrorOther";
+    switch (_tag) {
+        case TeamGroupSelectorErrorGroupNotFound:
+           return @"TeamGroupSelectorErrorGroupNotFound";
+        case TeamGroupSelectorErrorOther:
+           return @"TeamGroupSelectorErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

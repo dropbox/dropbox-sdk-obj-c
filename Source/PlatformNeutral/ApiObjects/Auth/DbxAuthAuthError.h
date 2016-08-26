@@ -3,60 +3,90 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAuthAuthError;
 
 /// 
-/// The DbxAuthAuthError union.
+/// The `DbxAuthAuthError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Errors occurred during authentication.
 /// 
 @interface DbxAuthAuthError : NSObject <DbxSerializable> 
 
+/// The `AuthAuthErrorTag` enum type represents the possible tag states that the
+/// `DbxAuthAuthError` union can exist in.
 typedef NS_ENUM(NSInteger, AuthAuthErrorTag) {
     /// The access token is invalid.
     AuthAuthErrorInvalidAccessToken,
+
     /// The user specified in 'Dropbox-API-Select-User' is no longer on the
     /// team.
     AuthAuthErrorInvalidSelectUser,
+
     /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox
     /// Business team admin.
     AuthAuthErrorInvalidSelectAdmin,
-    /// (no description)
+
+    /// (no description).
     AuthAuthErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) AuthAuthErrorTag tag;
+
+
+/// Initializes union class with tag state of `InvalidAccessToken`.
 - (nonnull instancetype)initWithInvalidAccessToken;
 
+/// Initializes union class with tag state of `InvalidSelectUser`.
 - (nonnull instancetype)initWithInvalidSelectUser;
 
+/// Initializes union class with tag state of `InvalidSelectAdmin`.
 - (nonnull instancetype)initWithInvalidSelectAdmin;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value
+/// `InvalidAccessToken`.
 - (BOOL)isInvalidAccessToken;
 
+/// Returns whether the union's current tag state has value `InvalidSelectUser`.
 - (BOOL)isInvalidSelectUser;
 
+/// Returns whether the union's current tag state has value
+/// `InvalidSelectAdmin`.
 - (BOOL)isInvalidSelectAdmin;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxAuthAuthError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxAuthAuthError union type.
-@property (nonatomic) AuthAuthErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAuthAuthError` union.
+/// 
 @interface DbxAuthAuthErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxAuthAuthError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAuthAuthError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAuthAuthError` object from a
+/// json-compatible dictionary representation.
 + (DbxAuthAuthError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

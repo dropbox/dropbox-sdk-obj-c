@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError;
+        _tag = SharingTransferFolderErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithInvalidDropboxId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorInvalidDropboxId;
+        _tag = SharingTransferFolderErrorInvalidDropboxId;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithDNewOwnerNotAMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerNotAMember;
+        _tag = SharingTransferFolderErrorDNewOwnerNotAMember;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithDNewOwnerUnmounted {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerUnmounted;
+        _tag = SharingTransferFolderErrorDNewOwnerUnmounted;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (instancetype)initWithDNewOwnerEmailUnverified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerEmailUnverified;
+        _tag = SharingTransferFolderErrorDNewOwnerEmailUnverified;
     }
     return self;
 }
@@ -53,7 +53,7 @@
 - (instancetype)initWithTeamFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorTeamFolder;
+        _tag = SharingTransferFolderErrorTeamFolder;
     }
     return self;
 }
@@ -61,7 +61,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorNoPermission;
+        _tag = SharingTransferFolderErrorNoPermission;
     }
     return self;
 }
@@ -69,75 +69,69 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingTransferFolderErrorTag)SharingTransferFolderErrorOther;
+        _tag = SharingTransferFolderErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError;
+    return _tag == SharingTransferFolderErrorAccessError;
 }
 
 - (BOOL)isInvalidDropboxId {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorInvalidDropboxId;
+    return _tag == SharingTransferFolderErrorInvalidDropboxId;
 }
 
 - (BOOL)isDNewOwnerNotAMember {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerNotAMember;
+    return _tag == SharingTransferFolderErrorDNewOwnerNotAMember;
 }
 
 - (BOOL)isDNewOwnerUnmounted {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerUnmounted;
+    return _tag == SharingTransferFolderErrorDNewOwnerUnmounted;
 }
 
 - (BOOL)isDNewOwnerEmailUnverified {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerEmailUnverified;
+    return _tag == SharingTransferFolderErrorDNewOwnerEmailUnverified;
 }
 
 - (BOOL)isTeamFolder {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorTeamFolder;
+    return _tag == SharingTransferFolderErrorTeamFolder;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorNoPermission;
+    return _tag == SharingTransferFolderErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorOther;
+    return _tag == SharingTransferFolderErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorInvalidDropboxId) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorInvalidDropboxId";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerNotAMember) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerNotAMember";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerUnmounted) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerUnmounted";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerEmailUnverified) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorDNewOwnerEmailUnverified";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorTeamFolder) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorTeamFolder";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorNoPermission) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorNoPermission";
-    }
-    if (_tag == (SharingTransferFolderErrorTag)SharingTransferFolderErrorOther) {
-        return @"(SharingTransferFolderErrorTag)SharingTransferFolderErrorOther";
+    switch (_tag) {
+        case SharingTransferFolderErrorAccessError:
+           return @"SharingTransferFolderErrorAccessError";
+        case SharingTransferFolderErrorInvalidDropboxId:
+           return @"SharingTransferFolderErrorInvalidDropboxId";
+        case SharingTransferFolderErrorDNewOwnerNotAMember:
+           return @"SharingTransferFolderErrorDNewOwnerNotAMember";
+        case SharingTransferFolderErrorDNewOwnerUnmounted:
+           return @"SharingTransferFolderErrorDNewOwnerUnmounted";
+        case SharingTransferFolderErrorDNewOwnerEmailUnverified:
+           return @"SharingTransferFolderErrorDNewOwnerEmailUnverified";
+        case SharingTransferFolderErrorTeamFolder:
+           return @"SharingTransferFolderErrorTeamFolder";
+        case SharingTransferFolderErrorNoPermission:
+           return @"SharingTransferFolderErrorNoPermission";
+        case SharingTransferFolderErrorOther:
+           return @"SharingTransferFolderErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingTransferFolderErrorTag)SharingTransferFolderErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingTransferFolderErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingTransferFolderErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

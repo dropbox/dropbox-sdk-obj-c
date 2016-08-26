@@ -3,68 +3,103 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMobileClientPlatform;
 
 /// 
-/// The DbxTeamMobileClientPlatform union.
+/// The `DbxTeamMobileClientPlatform` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMobileClientPlatform : NSObject <DbxSerializable> 
 
+/// The `TeamMobileClientPlatformTag` enum type represents the possible tag
+/// states that the `DbxTeamMobileClientPlatform` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMobileClientPlatformTag) {
     /// Official Dropbox iPhone client
     TeamMobileClientPlatformIphone,
+
     /// Official Dropbox iPad client
     TeamMobileClientPlatformIpad,
+
     /// Official Dropbox Android client
     TeamMobileClientPlatformAndroid,
+
     /// Official Dropbox Windows phone client
     TeamMobileClientPlatformWindowsPhone,
+
     /// Official Dropbox Blackberry client
     TeamMobileClientPlatformBlackberry,
-    /// (no description)
+
+    /// (no description).
     TeamMobileClientPlatformOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMobileClientPlatformTag tag;
+
+
+/// Initializes union class with tag state of `Iphone`.
 - (nonnull instancetype)initWithIphone;
 
+/// Initializes union class with tag state of `Ipad`.
 - (nonnull instancetype)initWithIpad;
 
+/// Initializes union class with tag state of `Android`.
 - (nonnull instancetype)initWithAndroid;
 
+/// Initializes union class with tag state of `WindowsPhone`.
 - (nonnull instancetype)initWithWindowsPhone;
 
+/// Initializes union class with tag state of `Blackberry`.
 - (nonnull instancetype)initWithBlackberry;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Iphone`.
 - (BOOL)isIphone;
 
+/// Returns whether the union's current tag state has value `Ipad`.
 - (BOOL)isIpad;
 
+/// Returns whether the union's current tag state has value `Android`.
 - (BOOL)isAndroid;
 
+/// Returns whether the union's current tag state has value `WindowsPhone`.
 - (BOOL)isWindowsPhone;
 
+/// Returns whether the union's current tag state has value `Blackberry`.
 - (BOOL)isBlackberry;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamMobileClientPlatform`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMobileClientPlatform union type.
-@property (nonatomic) TeamMobileClientPlatformTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMobileClientPlatform` union.
+/// 
 @interface DbxTeamMobileClientPlatformSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMobileClientPlatform` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMobileClientPlatform * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMobileClientPlatform` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMobileClientPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAsyncLaunchResultBase;
 
 /// 
-/// The DbxAsyncLaunchResultBase union.
+/// The `DbxAsyncLaunchResultBase` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Result returned by methods that launch an asynchronous job. A method who may
 /// either launch an asynchronous job, or complete the request synchronously,
@@ -17,31 +21,50 @@
 /// 
 @interface DbxAsyncLaunchResultBase : NSObject <DbxSerializable> 
 
+/// The `AsyncLaunchResultBaseTag` enum type represents the possible tag states
+/// that the `DbxAsyncLaunchResultBase` union can exist in.
 typedef NS_ENUM(NSInteger, AsyncLaunchResultBaseTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
     AsyncLaunchResultBaseAsyncJobId,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) AsyncLaunchResultBaseTag tag;
+
+/// This response indicates that the processing is asynchronous. The string is
+/// an id that can be used to obtain the status of the asynchronous job.
+@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
+
+
+/// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
+/// Returns whether the union's current tag state has value `AsyncJobId`.
 - (BOOL)isAsyncJobId;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxAsyncLaunchResultBase`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxAsyncLaunchResultBase union type.
-@property (nonatomic) AsyncLaunchResultBaseTag tag;
-@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAsyncLaunchResultBase` union.
+/// 
 @interface DbxAsyncLaunchResultBaseSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxAsyncLaunchResultBase` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAsyncLaunchResultBase * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAsyncLaunchResultBase` object from a
+/// json-compatible dictionary representation.
 + (DbxAsyncLaunchResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

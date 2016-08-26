@@ -11,7 +11,7 @@
 - (instancetype)initWithTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberPolicyTag)SharingMemberPolicyTeam;
+        _tag = SharingMemberPolicyTeam;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithAnyone {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberPolicyTag)SharingMemberPolicyAnyone;
+        _tag = SharingMemberPolicyAnyone;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberPolicyTag)SharingMemberPolicyOther;
+        _tag = SharingMemberPolicyOther;
     }
     return self;
 }
 
 - (BOOL)isTeam {
-    return _tag == (SharingMemberPolicyTag)SharingMemberPolicyTeam;
+    return _tag == SharingMemberPolicyTeam;
 }
 
 - (BOOL)isAnyone {
-    return _tag == (SharingMemberPolicyTag)SharingMemberPolicyAnyone;
+    return _tag == SharingMemberPolicyAnyone;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingMemberPolicyTag)SharingMemberPolicyOther;
+    return _tag == SharingMemberPolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingMemberPolicyTag)SharingMemberPolicyTeam) {
-        return @"(SharingMemberPolicyTag)SharingMemberPolicyTeam";
-    }
-    if (_tag == (SharingMemberPolicyTag)SharingMemberPolicyAnyone) {
-        return @"(SharingMemberPolicyTag)SharingMemberPolicyAnyone";
-    }
-    if (_tag == (SharingMemberPolicyTag)SharingMemberPolicyOther) {
-        return @"(SharingMemberPolicyTag)SharingMemberPolicyOther";
+    switch (_tag) {
+        case SharingMemberPolicyTeam:
+           return @"SharingMemberPolicyTeam";
+        case SharingMemberPolicyAnyone:
+           return @"SharingMemberPolicyAnyone";
+        case SharingMemberPolicyOther:
+           return @"SharingMemberPolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

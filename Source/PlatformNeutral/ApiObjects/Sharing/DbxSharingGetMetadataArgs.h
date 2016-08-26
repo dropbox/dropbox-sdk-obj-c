@@ -3,36 +3,54 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFolderAction;
 @class DbxSharingGetMetadataArgs;
 
 /// 
-/// The DbxSharingGetMetadataArgs struct.
+/// The `DbxSharingGetMetadataArgs` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingGetMetadataArgs : NSObject <DbxSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+
 /// This is a list indicating whether the returned folder data will include a
 /// boolean value  allow in FolderPermission that describes whether the current
 /// user can perform the  FolderAction on the folder.
 @property (nonatomic) NSArray<DbxSharingFolderAction *> * _Nullable actions;
 
+/// Full constructor for the `GetMetadataArgs` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DbxSharingFolderAction *> * _Nullable)actions;
 
+/// Convenience constructor for the `GetMetadataArgs` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
+/// Returns a human-readable representation of the `DbxSharingGetMetadataArgs`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingGetMetadataArgs` struct.
+/// 
 @interface DbxSharingGetMetadataArgsSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingGetMetadataArgs` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingGetMetadataArgs * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingGetMetadataArgs` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingGetMetadataArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

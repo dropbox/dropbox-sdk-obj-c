@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamPoliciesEmmState;
 @class DbxTeamPoliciesTeamMemberPolicies;
 @class DbxTeamPoliciesTeamSharingPolicies;
 
 /// 
-/// The DbxTeamPoliciesTeamMemberPolicies struct.
+/// The `DbxTeamPoliciesTeamMemberPolicies` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Policies governing team members.
 /// 
@@ -18,6 +22,7 @@
 
 /// Policies governing sharing.
 @property (nonatomic) DbxTeamPoliciesTeamSharingPolicies * _Nonnull sharing;
+
 /// This describes the Enterprise Mobility Management (EMM) state for this team.
 /// This information can be used to understand if an organization is integrating
 /// with a third-party EMM vendor to further manage and apply restrictions upon
@@ -25,17 +30,28 @@
 /// future we'll be adding more new fields and additional documentation.
 @property (nonatomic) DbxTeamPoliciesEmmState * _Nonnull emmState;
 
+/// Full constructor for the `TeamMemberPolicies` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSharing:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)sharing emmState:(DbxTeamPoliciesEmmState * _Nonnull)emmState;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamPoliciesTeamMemberPolicies` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamPoliciesTeamMemberPolicies` struct.
+/// 
 @interface DbxTeamPoliciesTeamMemberPoliciesSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamPoliciesTeamMemberPolicies` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesTeamMemberPolicies * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamPoliciesTeamMemberPolicies` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamPoliciesTeamMemberPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

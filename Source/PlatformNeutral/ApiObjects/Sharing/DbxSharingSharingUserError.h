@@ -3,47 +3,70 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingSharingUserError;
 
 /// 
-/// The DbxSharingSharingUserError union.
+/// The `DbxSharingSharingUserError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// User account had a problem preventing this action.
 /// 
 @interface DbxSharingSharingUserError : NSObject <DbxSerializable> 
 
+/// The `SharingSharingUserErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingSharingUserError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingSharingUserErrorTag) {
     /// The current user must verify the account e-mail address before
     /// performing this action.
     SharingSharingUserErrorEmailUnverified,
-    /// (no description)
+
+    /// (no description).
     SharingSharingUserErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingSharingUserErrorTag tag;
+
+
+/// Initializes union class with tag state of `EmailUnverified`.
 - (nonnull instancetype)initWithEmailUnverified;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `EmailUnverified`.
 - (BOOL)isEmailUnverified;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingSharingUserError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingSharingUserError union type.
-@property (nonatomic) SharingSharingUserErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharingUserError` union.
+/// 
 @interface DbxSharingSharingUserErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharingUserError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharingUserError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharingUserError` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingSharingUserError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

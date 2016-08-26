@@ -12,7 +12,7 @@
 - (instancetype)initWithSuccess:(DbxTeamTeamMemberInfo *)success {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultSuccess;
+        _tag = TeamMemberAddResultSuccess;
         _success = success;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithTeamLicenseLimit:(NSString *)teamLicenseLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit;
+        _tag = TeamMemberAddResultTeamLicenseLimit;
         _teamLicenseLimit = teamLicenseLimit;
     }
     return self;
@@ -30,7 +30,7 @@
 - (instancetype)initWithFreeTeamMemberLimitReached:(NSString *)freeTeamMemberLimitReached {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached;
+        _tag = TeamMemberAddResultFreeTeamMemberLimitReached;
         _freeTeamMemberLimitReached = freeTeamMemberLimitReached;
     }
     return self;
@@ -39,7 +39,7 @@
 - (instancetype)initWithUserAlreadyOnTeam:(NSString *)userAlreadyOnTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam;
+        _tag = TeamMemberAddResultUserAlreadyOnTeam;
         _userAlreadyOnTeam = userAlreadyOnTeam;
     }
     return self;
@@ -48,7 +48,7 @@
 - (instancetype)initWithUserOnAnotherTeam:(NSString *)userOnAnotherTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam;
+        _tag = TeamMemberAddResultUserOnAnotherTeam;
         _userOnAnotherTeam = userOnAnotherTeam;
     }
     return self;
@@ -57,7 +57,7 @@
 - (instancetype)initWithUserAlreadyPaired:(NSString *)userAlreadyPaired {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired;
+        _tag = TeamMemberAddResultUserAlreadyPaired;
         _userAlreadyPaired = userAlreadyPaired;
     }
     return self;
@@ -66,7 +66,7 @@
 - (instancetype)initWithUserMigrationFailed:(NSString *)userMigrationFailed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed;
+        _tag = TeamMemberAddResultUserMigrationFailed;
         _userMigrationFailed = userMigrationFailed;
     }
     return self;
@@ -75,7 +75,7 @@
 - (instancetype)initWithDuplicateExternalMemberId:(NSString *)duplicateExternalMemberId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId;
+        _tag = TeamMemberAddResultDuplicateExternalMemberId;
         _duplicateExternalMemberId = duplicateExternalMemberId;
     }
     return self;
@@ -84,139 +84,132 @@
 - (instancetype)initWithUserCreationFailed:(NSString *)userCreationFailed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed;
+        _tag = TeamMemberAddResultUserCreationFailed;
         _userCreationFailed = userCreationFailed;
     }
     return self;
 }
 
 - (BOOL)isSuccess {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultSuccess;
+    return _tag == TeamMemberAddResultSuccess;
 }
 
 - (BOOL)isTeamLicenseLimit {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit;
+    return _tag == TeamMemberAddResultTeamLicenseLimit;
 }
 
 - (BOOL)isFreeTeamMemberLimitReached {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached;
+    return _tag == TeamMemberAddResultFreeTeamMemberLimitReached;
 }
 
 - (BOOL)isUserAlreadyOnTeam {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam;
+    return _tag == TeamMemberAddResultUserAlreadyOnTeam;
 }
 
 - (BOOL)isUserOnAnotherTeam {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam;
+    return _tag == TeamMemberAddResultUserOnAnotherTeam;
 }
 
 - (BOOL)isUserAlreadyPaired {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired;
+    return _tag == TeamMemberAddResultUserAlreadyPaired;
 }
 
 - (BOOL)isUserMigrationFailed {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed;
+    return _tag == TeamMemberAddResultUserMigrationFailed;
 }
 
 - (BOOL)isDuplicateExternalMemberId {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId;
+    return _tag == TeamMemberAddResultDuplicateExternalMemberId;
 }
 
 - (BOOL)isUserCreationFailed {
-    return _tag == (TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed;
+    return _tag == TeamMemberAddResultUserCreationFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultSuccess) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultSuccess";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId";
-    }
-    if (_tag == (TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed) {
-        return @"(TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed";
+    switch (_tag) {
+        case TeamMemberAddResultSuccess:
+           return @"TeamMemberAddResultSuccess";
+        case TeamMemberAddResultTeamLicenseLimit:
+           return @"TeamMemberAddResultTeamLicenseLimit";
+        case TeamMemberAddResultFreeTeamMemberLimitReached:
+           return @"TeamMemberAddResultFreeTeamMemberLimitReached";
+        case TeamMemberAddResultUserAlreadyOnTeam:
+           return @"TeamMemberAddResultUserAlreadyOnTeam";
+        case TeamMemberAddResultUserOnAnotherTeam:
+           return @"TeamMemberAddResultUserOnAnotherTeam";
+        case TeamMemberAddResultUserAlreadyPaired:
+           return @"TeamMemberAddResultUserAlreadyPaired";
+        case TeamMemberAddResultUserMigrationFailed:
+           return @"TeamMemberAddResultUserMigrationFailed";
+        case TeamMemberAddResultDuplicateExternalMemberId:
+           return @"TeamMemberAddResultDuplicateExternalMemberId";
+        case TeamMemberAddResultUserCreationFailed:
+           return @"TeamMemberAddResultUserCreationFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxTeamTeamMemberInfo *)success {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultSuccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultSuccess, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultSuccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultSuccess, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (NSString *)teamLicenseLimit {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultTeamLicenseLimit, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultTeamLicenseLimit) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultTeamLicenseLimit, but was %@.", [self getTagName]];
     }
     return _teamLicenseLimit;
 }
 
 - (NSString *)freeTeamMemberLimitReached {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultFreeTeamMemberLimitReached, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultFreeTeamMemberLimitReached) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultFreeTeamMemberLimitReached, but was %@.", [self getTagName]];
     }
     return _freeTeamMemberLimitReached;
 }
 
 - (NSString *)userAlreadyOnTeam {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyOnTeam, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultUserAlreadyOnTeam) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultUserAlreadyOnTeam, but was %@.", [self getTagName]];
     }
     return _userAlreadyOnTeam;
 }
 
 - (NSString *)userOnAnotherTeam {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultUserOnAnotherTeam, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultUserOnAnotherTeam) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultUserOnAnotherTeam, but was %@.", [self getTagName]];
     }
     return _userOnAnotherTeam;
 }
 
 - (NSString *)userAlreadyPaired {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultUserAlreadyPaired, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultUserAlreadyPaired) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultUserAlreadyPaired, but was %@.", [self getTagName]];
     }
     return _userAlreadyPaired;
 }
 
 - (NSString *)userMigrationFailed {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultUserMigrationFailed, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultUserMigrationFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultUserMigrationFailed, but was %@.", [self getTagName]];
     }
     return _userMigrationFailed;
 }
 
 - (NSString *)duplicateExternalMemberId {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultDuplicateExternalMemberId, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultDuplicateExternalMemberId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultDuplicateExternalMemberId, but was %@.", [self getTagName]];
     }
     return _duplicateExternalMemberId;
 }
 
 - (NSString *)userCreationFailed {
-    if (_tag != (TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMemberAddResultTag)TeamMemberAddResultUserCreationFailed, but was %@.", [self getTagName]];
+    if (_tag != TeamMemberAddResultUserCreationFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMemberAddResultUserCreationFailed, but was %@.", [self getTagName]];
     }
     return _userCreationFailed;
 }

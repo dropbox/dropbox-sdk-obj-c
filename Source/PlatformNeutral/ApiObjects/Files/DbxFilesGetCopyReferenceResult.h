@@ -3,35 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesGetCopyReferenceResult;
 @class DbxFilesMetadata;
 
 /// 
-/// The DbxFilesGetCopyReferenceResult struct.
+/// The `DbxFilesGetCopyReferenceResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesGetCopyReferenceResult : NSObject <DbxSerializable> 
 
 /// Metadata of the file or folder.
 @property (nonatomic) DbxFilesMetadata * _Nonnull metadata;
+
 /// A copy reference to the file or folder.
 @property (nonatomic, copy) NSString * _Nonnull dCopyReference;
+
 /// The expiration date of the copy reference. This value is currently set to be
 /// far enough in the future so that expiration is effectively not an issue.
 @property (nonatomic) NSDate * _Nonnull expires;
 
+/// Full constructor for the `GetCopyReferenceResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithMetadata:(DbxFilesMetadata * _Nonnull)metadata dCopyReference:(NSString * _Nonnull)dCopyReference expires:(NSDate * _Nonnull)expires;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesGetCopyReferenceResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGetCopyReferenceResult` struct.
+/// 
 @interface DbxFilesGetCopyReferenceResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGetCopyReferenceResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGetCopyReferenceResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGetCopyReferenceResult` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesGetCopyReferenceResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

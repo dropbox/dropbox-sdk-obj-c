@@ -3,52 +3,81 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersGetInfoItem;
 @class DbxTeamTeamMemberInfo;
 
 /// 
-/// The DbxTeamMembersGetInfoItem union.
+/// The `DbxTeamMembersGetInfoItem` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Describes a result obtained for a single user whose id was specified in the
 /// parameter of membersGetInfo.
 /// 
 @interface DbxTeamMembersGetInfoItem : NSObject <DbxSerializable> 
 
+/// The `TeamMembersGetInfoItemTag` enum type represents the possible tag states
+/// that the `DbxTeamMembersGetInfoItem` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersGetInfoItemTag) {
     /// An ID that was provided as a parameter to membersGetInfo, and did not
     /// match a corresponding user. This might be a team_member_id, an email, or
     /// an external ID, depending on how the method was called.
     TeamMembersGetInfoItemIdNotFound,
+
     /// Info about a team member.
     TeamMembersGetInfoItemMemberInfo,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersGetInfoItemTag tag;
+
+/// An ID that was provided as a parameter to membersGetInfo, and did not match
+/// a corresponding user. This might be a team_member_id, an email, or an
+/// external ID, depending on how the method was called.
+@property (nonatomic, copy) NSString * _Nonnull idNotFound;
+
+/// Info about a team member.
+@property (nonatomic) DbxTeamTeamMemberInfo * _Nonnull memberInfo;
+
+
+/// Initializes union class with tag state of `IdNotFound`.
 - (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
 
+/// Initializes union class with tag state of `MemberInfo`.
 - (nonnull instancetype)initWithMemberInfo:(DbxTeamTeamMemberInfo * _Nonnull)memberInfo;
 
+/// Returns whether the union's current tag state has value `IdNotFound`.
 - (BOOL)isIdNotFound;
 
+/// Returns whether the union's current tag state has value `MemberInfo`.
 - (BOOL)isMemberInfo;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamMembersGetInfoItem`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersGetInfoItem union type.
-@property (nonatomic) TeamMembersGetInfoItemTag tag;
-@property (nonatomic, copy) NSString * _Nonnull idNotFound;
-@property (nonatomic) DbxTeamTeamMemberInfo * _Nonnull memberInfo;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersGetInfoItem` union.
+/// 
 @interface DbxTeamMembersGetInfoItemSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersGetInfoItem` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersGetInfoItem * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersGetInfoItem` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersGetInfoItem * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

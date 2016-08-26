@@ -13,7 +13,7 @@
 - (instancetype)initWithUserError:(DbxSharingSharingUserError *)userError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError;
+        _tag = SharingAddFileMemberErrorUserError;
         _userError = userError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError;
+        _tag = SharingAddFileMemberErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithRateLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorRateLimit;
+        _tag = SharingAddFileMemberErrorRateLimit;
     }
     return self;
 }
@@ -39,7 +39,7 @@
 - (instancetype)initWithInvalidComment {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorInvalidComment;
+        _tag = SharingAddFileMemberErrorInvalidComment;
     }
     return self;
 }
@@ -47,61 +47,58 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorOther;
+        _tag = SharingAddFileMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserError {
-    return _tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError;
+    return _tag == SharingAddFileMemberErrorUserError;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError;
+    return _tag == SharingAddFileMemberErrorAccessError;
 }
 
 - (BOOL)isRateLimit {
-    return _tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorRateLimit;
+    return _tag == SharingAddFileMemberErrorRateLimit;
 }
 
 - (BOOL)isInvalidComment {
-    return _tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorInvalidComment;
+    return _tag == SharingAddFileMemberErrorInvalidComment;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorOther;
+    return _tag == SharingAddFileMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError) {
-        return @"(SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError";
-    }
-    if (_tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError) {
-        return @"(SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError";
-    }
-    if (_tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorRateLimit) {
-        return @"(SharingAddFileMemberErrorTag)SharingAddFileMemberErrorRateLimit";
-    }
-    if (_tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorInvalidComment) {
-        return @"(SharingAddFileMemberErrorTag)SharingAddFileMemberErrorInvalidComment";
-    }
-    if (_tag == (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorOther) {
-        return @"(SharingAddFileMemberErrorTag)SharingAddFileMemberErrorOther";
+    switch (_tag) {
+        case SharingAddFileMemberErrorUserError:
+           return @"SharingAddFileMemberErrorUserError";
+        case SharingAddFileMemberErrorAccessError:
+           return @"SharingAddFileMemberErrorAccessError";
+        case SharingAddFileMemberErrorRateLimit:
+           return @"SharingAddFileMemberErrorRateLimit";
+        case SharingAddFileMemberErrorInvalidComment:
+           return @"SharingAddFileMemberErrorInvalidComment";
+        case SharingAddFileMemberErrorOther:
+           return @"SharingAddFileMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingUserError *)userError {
-    if (_tag != (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorUserError, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFileMemberErrorUserError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFileMemberErrorUserError, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFileMemberErrorTag)SharingAddFileMemberErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFileMemberErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFileMemberErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

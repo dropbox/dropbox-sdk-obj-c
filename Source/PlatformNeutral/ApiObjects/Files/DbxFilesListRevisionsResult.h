@@ -3,32 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesFileMetadata;
 @class DbxFilesListRevisionsResult;
 
 /// 
-/// The DbxFilesListRevisionsResult struct.
+/// The `DbxFilesListRevisionsResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListRevisionsResult : NSObject <DbxSerializable> 
 
 /// If the file is deleted.
 @property (nonatomic, copy) NSNumber * _Nonnull isDeleted;
+
 /// The revisions for the file. Only non-delete revisions will show up here.
 @property (nonatomic) NSArray<DbxFilesFileMetadata *> * _Nonnull entries;
 
+/// Full constructor for the `ListRevisionsResult` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithIsDeleted:(NSNumber * _Nonnull)isDeleted entries:(NSArray<DbxFilesFileMetadata *> * _Nonnull)entries;
 
+/// Returns a human-readable representation of the `DbxFilesListRevisionsResult`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListRevisionsResult` struct.
+/// 
 @interface DbxFilesListRevisionsResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListRevisionsResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListRevisionsResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListRevisionsResult` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesListRevisionsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

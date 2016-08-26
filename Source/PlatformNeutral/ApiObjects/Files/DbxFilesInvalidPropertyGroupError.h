@@ -3,72 +3,112 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxFilesPropertiesError.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesInvalidPropertyGroupError;
 @class DbxFilesLookupError;
 
 /// 
-/// The DbxFilesInvalidPropertyGroupError union.
+/// The `DbxFilesInvalidPropertyGroupError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesInvalidPropertyGroupError : NSObject <DbxSerializable> 
 
+/// The `FilesInvalidPropertyGroupErrorTag` enum type represents the possible
+/// tag states that the `DbxFilesInvalidPropertyGroupError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesInvalidPropertyGroupErrorTag) {
     /// Property template does not exist for given identifier.
     FilesInvalidPropertyGroupErrorTemplateNotFound,
+
     /// You do not have the permissions to modify this property template.
     FilesInvalidPropertyGroupErrorRestrictedContent,
-    /// (no description)
+
+    /// (no description).
     FilesInvalidPropertyGroupErrorOther,
-    /// (no description)
+
+    /// (no description).
     FilesInvalidPropertyGroupErrorPath,
+
     /// A field value in this property group is too large.
     FilesInvalidPropertyGroupErrorPropertyFieldTooLarge,
+
     /// The property group specified does not conform to the property template.
     FilesInvalidPropertyGroupErrorDoesNotFitTemplate,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesInvalidPropertyGroupErrorTag tag;
+
+/// Property template does not exist for given identifier.
+@property (nonatomic, copy) NSString * _Nonnull templateNotFound;
+
+/// (no description).
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
+/// Initializes union class with tag state of `RestrictedContent`.
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `PropertyFieldTooLarge`.
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
 
+/// Initializes union class with tag state of `DoesNotFitTemplate`.
 - (nonnull instancetype)initWithDoesNotFitTemplate;
 
+/// Returns whether the union's current tag state has value `TemplateNotFound`.
 - (BOOL)isTemplateNotFound;
 
+/// Returns whether the union's current tag state has value `RestrictedContent`.
 - (BOOL)isRestrictedContent;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value
+/// `PropertyFieldTooLarge`.
 - (BOOL)isPropertyFieldTooLarge;
 
+/// Returns whether the union's current tag state has value
+/// `DoesNotFitTemplate`.
 - (BOOL)isDoesNotFitTemplate;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesInvalidPropertyGroupError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesInvalidPropertyGroupError union type.
-@property (nonatomic) FilesInvalidPropertyGroupErrorTag tag;
-@property (nonatomic, copy) NSString * _Nonnull templateNotFound;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesInvalidPropertyGroupError` union.
+/// 
 @interface DbxFilesInvalidPropertyGroupErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesInvalidPropertyGroupError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesInvalidPropertyGroupError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesInvalidPropertyGroupError` object
+/// from a json-compatible dictionary representation.
 + (DbxFilesInvalidPropertyGroupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

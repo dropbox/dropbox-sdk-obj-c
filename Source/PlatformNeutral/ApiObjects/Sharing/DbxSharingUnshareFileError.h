@@ -3,56 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingSharingFileAccessError;
 @class DbxSharingSharingUserError;
 @class DbxSharingUnshareFileError;
 
 /// 
-/// The DbxSharingUnshareFileError union.
+/// The `DbxSharingUnshareFileError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error result for unshareFile.
 /// 
 @interface DbxSharingUnshareFileError : NSObject <DbxSerializable> 
 
+/// The `SharingUnshareFileErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingUnshareFileError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingUnshareFileErrorTag) {
-    /// (no description)
+    /// (no description).
     SharingUnshareFileErrorUserError,
-    /// (no description)
+
+    /// (no description).
     SharingUnshareFileErrorAccessError,
-    /// (no description)
+
+    /// (no description).
     SharingUnshareFileErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingUnshareFileErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
+
+
+/// Initializes union class with tag state of `UserError`.
 - (nonnull instancetype)initWithUserError:(DbxSharingSharingUserError * _Nonnull)userError;
 
+/// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `UserError`.
 - (BOOL)isUserError;
 
+/// Returns whether the union's current tag state has value `AccessError`.
 - (BOOL)isAccessError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingUnshareFileError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingUnshareFileError union type.
-@property (nonatomic) SharingUnshareFileErrorTag tag;
-@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingUnshareFileError` union.
+/// 
 @interface DbxSharingUnshareFileErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingUnshareFileError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingUnshareFileError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingUnshareFileError` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingUnshareFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

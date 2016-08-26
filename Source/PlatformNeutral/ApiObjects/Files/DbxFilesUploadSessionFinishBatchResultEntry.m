@@ -13,7 +13,7 @@
 - (instancetype)initWithSuccess:(DbxFilesFileMetadata *)success {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess;
+        _tag = FilesUploadSessionFinishBatchResultEntrySuccess;
         _success = success;
     }
     return self;
@@ -22,41 +22,41 @@
 - (instancetype)initWithFailure:(DbxFilesUploadSessionFinishError *)failure {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure;
+        _tag = FilesUploadSessionFinishBatchResultEntryFailure;
         _failure = failure;
     }
     return self;
 }
 
 - (BOOL)isSuccess {
-    return _tag == (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess;
+    return _tag == FilesUploadSessionFinishBatchResultEntrySuccess;
 }
 
 - (BOOL)isFailure {
-    return _tag == (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure;
+    return _tag == FilesUploadSessionFinishBatchResultEntryFailure;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess) {
-        return @"(FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess";
-    }
-    if (_tag == (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure) {
-        return @"(FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure";
+    switch (_tag) {
+        case FilesUploadSessionFinishBatchResultEntrySuccess:
+           return @"FilesUploadSessionFinishBatchResultEntrySuccess";
+        case FilesUploadSessionFinishBatchResultEntryFailure:
+           return @"FilesUploadSessionFinishBatchResultEntryFailure";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesFileMetadata *)success {
-    if (_tag != (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntrySuccess, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionFinishBatchResultEntrySuccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionFinishBatchResultEntrySuccess, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (DbxFilesUploadSessionFinishError *)failure {
-    if (_tag != (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionFinishBatchResultEntryTag)FilesUploadSessionFinishBatchResultEntryFailure, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionFinishBatchResultEntryFailure) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionFinishBatchResultEntryFailure, but was %@.", [self getTagName]];
     }
     return _failure;
 }

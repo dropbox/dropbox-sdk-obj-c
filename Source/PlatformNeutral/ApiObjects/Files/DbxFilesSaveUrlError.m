@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesWriteError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlErrorTag)FilesSaveUrlErrorPath;
+        _tag = FilesSaveUrlErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithDownloadFailed {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlErrorTag)FilesSaveUrlErrorDownloadFailed;
+        _tag = FilesSaveUrlErrorDownloadFailed;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithInvalidUrl {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlErrorTag)FilesSaveUrlErrorInvalidUrl;
+        _tag = FilesSaveUrlErrorInvalidUrl;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlErrorTag)FilesSaveUrlErrorNotFound;
+        _tag = FilesSaveUrlErrorNotFound;
     }
     return self;
 }
@@ -45,54 +45,51 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlErrorTag)FilesSaveUrlErrorOther;
+        _tag = FilesSaveUrlErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorPath;
+    return _tag == FilesSaveUrlErrorPath;
 }
 
 - (BOOL)isDownloadFailed {
-    return _tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorDownloadFailed;
+    return _tag == FilesSaveUrlErrorDownloadFailed;
 }
 
 - (BOOL)isInvalidUrl {
-    return _tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorInvalidUrl;
+    return _tag == FilesSaveUrlErrorInvalidUrl;
 }
 
 - (BOOL)isNotFound {
-    return _tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorNotFound;
+    return _tag == FilesSaveUrlErrorNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorOther;
+    return _tag == FilesSaveUrlErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorPath) {
-        return @"(FilesSaveUrlErrorTag)FilesSaveUrlErrorPath";
-    }
-    if (_tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorDownloadFailed) {
-        return @"(FilesSaveUrlErrorTag)FilesSaveUrlErrorDownloadFailed";
-    }
-    if (_tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorInvalidUrl) {
-        return @"(FilesSaveUrlErrorTag)FilesSaveUrlErrorInvalidUrl";
-    }
-    if (_tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorNotFound) {
-        return @"(FilesSaveUrlErrorTag)FilesSaveUrlErrorNotFound";
-    }
-    if (_tag == (FilesSaveUrlErrorTag)FilesSaveUrlErrorOther) {
-        return @"(FilesSaveUrlErrorTag)FilesSaveUrlErrorOther";
+    switch (_tag) {
+        case FilesSaveUrlErrorPath:
+           return @"FilesSaveUrlErrorPath";
+        case FilesSaveUrlErrorDownloadFailed:
+           return @"FilesSaveUrlErrorDownloadFailed";
+        case FilesSaveUrlErrorInvalidUrl:
+           return @"FilesSaveUrlErrorInvalidUrl";
+        case FilesSaveUrlErrorNotFound:
+           return @"FilesSaveUrlErrorNotFound";
+        case FilesSaveUrlErrorOther:
+           return @"FilesSaveUrlErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesWriteError *)path {
-    if (_tag != (FilesSaveUrlErrorTag)FilesSaveUrlErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveUrlErrorTag)FilesSaveUrlErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveUrlErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveUrlErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

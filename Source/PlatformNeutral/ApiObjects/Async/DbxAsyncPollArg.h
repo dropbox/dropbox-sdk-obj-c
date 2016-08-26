@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAsyncPollArg;
 
 /// 
-/// The DbxAsyncPollArg struct.
+/// The `DbxAsyncPollArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Arguments for methods that poll the status of an asynchronous job.
 /// 
@@ -18,17 +22,26 @@
 /// the method that launched the job.
 @property (nonatomic, copy) NSString * _Nonnull asyncJobId;
 
+/// Full constructor for the `PollArg` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
+/// Returns a human-readable representation of the `DbxAsyncPollArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAsyncPollArg` struct.
+/// 
 @interface DbxAsyncPollArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the `DbxAsyncPollArg`
+/// object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAsyncPollArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAsyncPollArg` object from a
+/// json-compatible dictionary representation.
 + (DbxAsyncPollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingRequestedVisibility;
 
 /// 
-/// The DbxSharingRequestedVisibility union.
+/// The `DbxSharingRequestedVisibility` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The access permission that can be requested by the caller for the shared
 /// link. Note that the final resolved visibility of the shared link takes into
@@ -18,42 +22,64 @@
 /// 
 @interface DbxSharingRequestedVisibility : NSObject <DbxSerializable> 
 
+/// The `SharingRequestedVisibilityTag` enum type represents the possible tag
+/// states that the `DbxSharingRequestedVisibility` union can exist in.
 typedef NS_ENUM(NSInteger, SharingRequestedVisibilityTag) {
     /// Anyone who has received the link can access it. No login required.
     SharingRequestedVisibilityPublic,
+
     /// Only members of the same team can access the link. Login is required.
     SharingRequestedVisibilityTeamOnly,
+
     /// A link-specific password is required to access the link. Login is not
     /// required.
     SharingRequestedVisibilityPassword,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingRequestedVisibilityTag tag;
+
+
+/// Initializes union class with tag state of `Public`.
 - (nonnull instancetype)initWithPublic;
 
+/// Initializes union class with tag state of `TeamOnly`.
 - (nonnull instancetype)initWithTeamOnly;
 
+/// Initializes union class with tag state of `Password`.
 - (nonnull instancetype)initWithPassword;
 
+/// Returns whether the union's current tag state has value `Public`.
 - (BOOL)isPublic;
 
+/// Returns whether the union's current tag state has value `TeamOnly`.
 - (BOOL)isTeamOnly;
 
+/// Returns whether the union's current tag state has value `Password`.
 - (BOOL)isPassword;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingRequestedVisibility` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingRequestedVisibility union type.
-@property (nonatomic) SharingRequestedVisibilityTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingRequestedVisibility` union.
+/// 
 @interface DbxSharingRequestedVisibilitySerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingRequestedVisibility` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingRequestedVisibility * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingRequestedVisibility` object from
+/// a json-compatible dictionary representation.
 + (DbxSharingRequestedVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

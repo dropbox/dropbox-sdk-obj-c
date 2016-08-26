@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorInvalidMember;
+        _tag = SharingFileMemberActionErrorInvalidMember;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorNoPermission;
+        _tag = SharingFileMemberActionErrorNoPermission;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorOther;
+        _tag = SharingFileMemberActionErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidMember {
-    return _tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorInvalidMember;
+    return _tag == SharingFileMemberActionErrorInvalidMember;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorNoPermission;
+    return _tag == SharingFileMemberActionErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorOther;
+    return _tag == SharingFileMemberActionErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorInvalidMember) {
-        return @"(SharingFileMemberActionErrorTag)SharingFileMemberActionErrorInvalidMember";
-    }
-    if (_tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorNoPermission) {
-        return @"(SharingFileMemberActionErrorTag)SharingFileMemberActionErrorNoPermission";
-    }
-    if (_tag == (SharingFileMemberActionErrorTag)SharingFileMemberActionErrorOther) {
-        return @"(SharingFileMemberActionErrorTag)SharingFileMemberActionErrorOther";
+    switch (_tag) {
+        case SharingFileMemberActionErrorInvalidMember:
+           return @"SharingFileMemberActionErrorInvalidMember";
+        case SharingFileMemberActionErrorNoPermission:
+           return @"SharingFileMemberActionErrorNoPermission";
+        case SharingFileMemberActionErrorOther:
+           return @"SharingFileMemberActionErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

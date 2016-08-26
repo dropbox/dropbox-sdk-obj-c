@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorGroupNotFound;
+        _tag = TeamGroupMemberSetAccessTypeErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorOther;
+        _tag = TeamGroupMemberSetAccessTypeErrorOther;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithMemberNotInGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorMemberNotInGroup;
+        _tag = TeamGroupMemberSetAccessTypeErrorMemberNotInGroup;
     }
     return self;
 }
@@ -36,39 +36,37 @@
 - (instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup;
+        _tag = TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorGroupNotFound;
+    return _tag == TeamGroupMemberSetAccessTypeErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorOther;
+    return _tag == TeamGroupMemberSetAccessTypeErrorOther;
 }
 
 - (BOOL)isMemberNotInGroup {
-    return _tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorMemberNotInGroup;
+    return _tag == TeamGroupMemberSetAccessTypeErrorMemberNotInGroup;
 }
 
 - (BOOL)isUserCannotBeManagerOfCompanyManagedGroup {
-    return _tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup;
+    return _tag == TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorGroupNotFound) {
-        return @"(TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorOther) {
-        return @"(TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorOther";
-    }
-    if (_tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorMemberNotInGroup) {
-        return @"(TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorMemberNotInGroup";
-    }
-    if (_tag == (TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup) {
-        return @"(TeamGroupMemberSetAccessTypeErrorTag)TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup";
+    switch (_tag) {
+        case TeamGroupMemberSetAccessTypeErrorGroupNotFound:
+           return @"TeamGroupMemberSetAccessTypeErrorGroupNotFound";
+        case TeamGroupMemberSetAccessTypeErrorOther:
+           return @"TeamGroupMemberSetAccessTypeErrorOther";
+        case TeamGroupMemberSetAccessTypeErrorMemberNotInGroup:
+           return @"TeamGroupMemberSetAccessTypeErrorMemberNotInGroup";
+        case TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup:
+           return @"TeamGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

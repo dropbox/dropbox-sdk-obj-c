@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidCursor {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorInvalidCursor;
+        _tag = TeamGroupsMembersListContinueErrorInvalidCursor;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorOther;
+        _tag = TeamGroupsMembersListContinueErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidCursor {
-    return _tag == (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorInvalidCursor;
+    return _tag == TeamGroupsMembersListContinueErrorInvalidCursor;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorOther;
+    return _tag == TeamGroupsMembersListContinueErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorInvalidCursor) {
-        return @"(TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorInvalidCursor";
-    }
-    if (_tag == (TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorOther) {
-        return @"(TeamGroupsMembersListContinueErrorTag)TeamGroupsMembersListContinueErrorOther";
+    switch (_tag) {
+        case TeamGroupsMembersListContinueErrorInvalidCursor:
+           return @"TeamGroupsMembersListContinueErrorInvalidCursor";
+        case TeamGroupsMembersListContinueErrorOther:
+           return @"TeamGroupsMembersListContinueErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

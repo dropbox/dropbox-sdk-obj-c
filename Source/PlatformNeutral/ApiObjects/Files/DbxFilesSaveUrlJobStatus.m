@@ -14,7 +14,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusInProgress;
+        _tag = FilesSaveUrlJobStatusInProgress;
     }
     return self;
 }
@@ -22,7 +22,7 @@
 - (instancetype)initWithComplete:(DbxFilesFileMetadata *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete;
+        _tag = FilesSaveUrlJobStatusComplete;
         _complete = complete;
     }
     return self;
@@ -31,48 +31,47 @@
 - (instancetype)initWithFailed:(DbxFilesSaveUrlError *)failed {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed;
+        _tag = FilesSaveUrlJobStatusFailed;
         _failed = failed;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusInProgress;
+    return _tag == FilesSaveUrlJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete;
+    return _tag == FilesSaveUrlJobStatusComplete;
 }
 
 - (BOOL)isFailed {
-    return _tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed;
+    return _tag == FilesSaveUrlJobStatusFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusInProgress) {
-        return @"(FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusInProgress";
-    }
-    if (_tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete) {
-        return @"(FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete";
-    }
-    if (_tag == (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed) {
-        return @"(FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed";
+    switch (_tag) {
+        case FilesSaveUrlJobStatusInProgress:
+           return @"FilesSaveUrlJobStatusInProgress";
+        case FilesSaveUrlJobStatusComplete:
+           return @"FilesSaveUrlJobStatusComplete";
+        case FilesSaveUrlJobStatusFailed:
+           return @"FilesSaveUrlJobStatusFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesFileMetadata *)complete {
-    if (_tag != (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusComplete, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveUrlJobStatusComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveUrlJobStatusComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DbxFilesSaveUrlError *)failed {
-    if (_tag != (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveUrlJobStatusTag)FilesSaveUrlJobStatusFailed, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveUrlJobStatusFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveUrlJobStatusFailed, but was %@.", [self getTagName]];
     }
     return _failed;
 }

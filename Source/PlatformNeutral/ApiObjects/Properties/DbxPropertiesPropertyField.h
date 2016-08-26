@@ -3,33 +3,49 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxPropertiesPropertyField;
 
 /// 
-/// The DbxPropertiesPropertyField struct.
+/// The `DbxPropertiesPropertyField` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxPropertiesPropertyField : NSObject <DbxSerializable> 
 
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
 @property (nonatomic, copy) NSString * _Nonnull name;
+
 /// Value of a custom property attached to a file. Values can be up to 1024
 /// bytes.
 @property (nonatomic, copy) NSString * _Nonnull value;
 
+/// Full constructor for the `PropertyField` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name value:(NSString * _Nonnull)value;
 
+/// Returns a human-readable representation of the `DbxPropertiesPropertyField`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxPropertiesPropertyField` struct.
+/// 
 @interface DbxPropertiesPropertyFieldSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxPropertiesPropertyField` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyField * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxPropertiesPropertyField` object from a
+/// json-compatible dictionary representation.
 + (DbxPropertiesPropertyField * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

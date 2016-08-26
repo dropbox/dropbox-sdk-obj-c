@@ -11,7 +11,7 @@
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkNotFound;
+        _tag = SharingSharedLinkErrorSharedLinkNotFound;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithSharedLinkAccessDenied {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkAccessDenied;
+        _tag = SharingSharedLinkErrorSharedLinkAccessDenied;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkErrorTag)SharingSharedLinkErrorOther;
+        _tag = SharingSharedLinkErrorOther;
     }
     return self;
 }
 
 - (BOOL)isSharedLinkNotFound {
-    return _tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkNotFound;
+    return _tag == SharingSharedLinkErrorSharedLinkNotFound;
 }
 
 - (BOOL)isSharedLinkAccessDenied {
-    return _tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkAccessDenied;
+    return _tag == SharingSharedLinkErrorSharedLinkAccessDenied;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorOther;
+    return _tag == SharingSharedLinkErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkNotFound) {
-        return @"(SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkNotFound";
-    }
-    if (_tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkAccessDenied) {
-        return @"(SharingSharedLinkErrorTag)SharingSharedLinkErrorSharedLinkAccessDenied";
-    }
-    if (_tag == (SharingSharedLinkErrorTag)SharingSharedLinkErrorOther) {
-        return @"(SharingSharedLinkErrorTag)SharingSharedLinkErrorOther";
+    switch (_tag) {
+        case SharingSharedLinkErrorSharedLinkNotFound:
+           return @"SharingSharedLinkErrorSharedLinkNotFound";
+        case SharingSharedLinkErrorSharedLinkAccessDenied:
+           return @"SharingSharedLinkErrorSharedLinkAccessDenied";
+        case SharingSharedLinkErrorOther:
+           return @"SharingSharedLinkErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

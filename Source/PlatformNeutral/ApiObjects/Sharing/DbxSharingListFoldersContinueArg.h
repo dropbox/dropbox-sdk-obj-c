@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFoldersContinueArg;
 
 /// 
-/// The DbxSharingListFoldersContinueArg struct.
+/// The `DbxSharingListFoldersContinueArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingListFoldersContinueArg : NSObject <DbxSerializable> 
 
@@ -16,17 +20,28 @@
 /// description.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
 
+/// Full constructor for the `ListFoldersContinueArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingListFoldersContinueArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFoldersContinueArg` struct.
+/// 
 @interface DbxSharingListFoldersContinueArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFoldersContinueArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFoldersContinueArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFoldersContinueArg` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingListFoldersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

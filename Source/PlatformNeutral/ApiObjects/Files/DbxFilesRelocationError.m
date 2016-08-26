@@ -13,7 +13,7 @@
 - (instancetype)initWithFromLookup:(DbxFilesLookupError *)fromLookup {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorFromLookup;
+        _tag = FilesRelocationErrorFromLookup;
         _fromLookup = fromLookup;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithFromWrite:(DbxFilesWriteError *)fromWrite {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorFromWrite;
+        _tag = FilesRelocationErrorFromWrite;
         _fromWrite = fromWrite;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithTo:(DbxFilesWriteError *)to {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorTo;
+        _tag = FilesRelocationErrorTo;
         _to = to;
     }
     return self;
@@ -40,7 +40,7 @@
 - (instancetype)initWithCantCopySharedFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorCantCopySharedFolder;
+        _tag = FilesRelocationErrorCantCopySharedFolder;
     }
     return self;
 }
@@ -48,7 +48,7 @@
 - (instancetype)initWithCantNestSharedFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorCantNestSharedFolder;
+        _tag = FilesRelocationErrorCantNestSharedFolder;
     }
     return self;
 }
@@ -56,7 +56,7 @@
 - (instancetype)initWithCantMoveFolderIntoItself {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorCantMoveFolderIntoItself;
+        _tag = FilesRelocationErrorCantMoveFolderIntoItself;
     }
     return self;
 }
@@ -64,7 +64,7 @@
 - (instancetype)initWithTooManyFiles {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorTooManyFiles;
+        _tag = FilesRelocationErrorTooManyFiles;
     }
     return self;
 }
@@ -72,89 +72,83 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRelocationErrorTag)FilesRelocationErrorOther;
+        _tag = FilesRelocationErrorOther;
     }
     return self;
 }
 
 - (BOOL)isFromLookup {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorFromLookup;
+    return _tag == FilesRelocationErrorFromLookup;
 }
 
 - (BOOL)isFromWrite {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorFromWrite;
+    return _tag == FilesRelocationErrorFromWrite;
 }
 
 - (BOOL)isTo {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorTo;
+    return _tag == FilesRelocationErrorTo;
 }
 
 - (BOOL)isCantCopySharedFolder {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorCantCopySharedFolder;
+    return _tag == FilesRelocationErrorCantCopySharedFolder;
 }
 
 - (BOOL)isCantNestSharedFolder {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorCantNestSharedFolder;
+    return _tag == FilesRelocationErrorCantNestSharedFolder;
 }
 
 - (BOOL)isCantMoveFolderIntoItself {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorCantMoveFolderIntoItself;
+    return _tag == FilesRelocationErrorCantMoveFolderIntoItself;
 }
 
 - (BOOL)isTooManyFiles {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorTooManyFiles;
+    return _tag == FilesRelocationErrorTooManyFiles;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesRelocationErrorTag)FilesRelocationErrorOther;
+    return _tag == FilesRelocationErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorFromLookup) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorFromLookup";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorFromWrite) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorFromWrite";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorTo) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorTo";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorCantCopySharedFolder) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorCantCopySharedFolder";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorCantNestSharedFolder) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorCantNestSharedFolder";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorCantMoveFolderIntoItself) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorCantMoveFolderIntoItself";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorTooManyFiles) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorTooManyFiles";
-    }
-    if (_tag == (FilesRelocationErrorTag)FilesRelocationErrorOther) {
-        return @"(FilesRelocationErrorTag)FilesRelocationErrorOther";
+    switch (_tag) {
+        case FilesRelocationErrorFromLookup:
+           return @"FilesRelocationErrorFromLookup";
+        case FilesRelocationErrorFromWrite:
+           return @"FilesRelocationErrorFromWrite";
+        case FilesRelocationErrorTo:
+           return @"FilesRelocationErrorTo";
+        case FilesRelocationErrorCantCopySharedFolder:
+           return @"FilesRelocationErrorCantCopySharedFolder";
+        case FilesRelocationErrorCantNestSharedFolder:
+           return @"FilesRelocationErrorCantNestSharedFolder";
+        case FilesRelocationErrorCantMoveFolderIntoItself:
+           return @"FilesRelocationErrorCantMoveFolderIntoItself";
+        case FilesRelocationErrorTooManyFiles:
+           return @"FilesRelocationErrorTooManyFiles";
+        case FilesRelocationErrorOther:
+           return @"FilesRelocationErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)fromLookup {
-    if (_tag != (FilesRelocationErrorTag)FilesRelocationErrorFromLookup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRelocationErrorTag)FilesRelocationErrorFromLookup, but was %@.", [self getTagName]];
+    if (_tag != FilesRelocationErrorFromLookup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRelocationErrorFromLookup, but was %@.", [self getTagName]];
     }
     return _fromLookup;
 }
 
 - (DbxFilesWriteError *)fromWrite {
-    if (_tag != (FilesRelocationErrorTag)FilesRelocationErrorFromWrite) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRelocationErrorTag)FilesRelocationErrorFromWrite, but was %@.", [self getTagName]];
+    if (_tag != FilesRelocationErrorFromWrite) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRelocationErrorFromWrite, but was %@.", [self getTagName]];
     }
     return _fromWrite;
 }
 
 - (DbxFilesWriteError *)to {
-    if (_tag != (FilesRelocationErrorTag)FilesRelocationErrorTo) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRelocationErrorTag)FilesRelocationErrorTo, but was %@.", [self getTagName]];
+    if (_tag != FilesRelocationErrorTo) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRelocationErrorTo, but was %@.", [self getTagName]];
     }
     return _to;
 }

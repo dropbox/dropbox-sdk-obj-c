@@ -3,58 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxTeamGroupMembersSelectorError.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupMembersRemoveError;
 
 /// 
-/// The DbxTeamGroupMembersRemoveError union.
+/// The `DbxTeamGroupMembersRemoveError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupMembersRemoveError : NSObject <DbxSerializable> 
 
+/// The `TeamGroupMembersRemoveErrorTag` enum type represents the possible tag
+/// states that the `DbxTeamGroupMembersRemoveError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupMembersRemoveErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     TeamGroupMembersRemoveErrorGroupNotFound,
-    /// (no description)
+
+    /// (no description).
     TeamGroupMembersRemoveErrorOther,
+
     /// At least one of the specified users is not a member of the group.
     TeamGroupMembersRemoveErrorMemberNotInGroup,
+
     /// Group is not in this team. You cannot remove members from a group that
     /// is outside of your team.
     TeamGroupMembersRemoveErrorGroupNotInTeam,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupMembersRemoveErrorTag tag;
+
+
+/// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Initializes union class with tag state of `MemberNotInGroup`.
 - (nonnull instancetype)initWithMemberNotInGroup;
 
+/// Initializes union class with tag state of `GroupNotInTeam`.
 - (nonnull instancetype)initWithGroupNotInTeam;
 
+/// Returns whether the union's current tag state has value `GroupNotFound`.
 - (BOOL)isGroupNotFound;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns whether the union's current tag state has value `MemberNotInGroup`.
 - (BOOL)isMemberNotInGroup;
 
+/// Returns whether the union's current tag state has value `GroupNotInTeam`.
 - (BOOL)isGroupNotInTeam;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamGroupMembersRemoveError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupMembersRemoveError union type.
-@property (nonatomic) TeamGroupMembersRemoveErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMembersRemoveError` union.
+/// 
 @interface DbxTeamGroupMembersRemoveErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMembersRemoveError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersRemoveError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMembersRemoveError` object from
+/// a json-compatible dictionary representation.
 + (DbxTeamGroupMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

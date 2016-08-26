@@ -11,7 +11,7 @@
 - (instancetype)initWithJpeg {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailFormatTag)FilesThumbnailFormatJpeg;
+        _tag = FilesThumbnailFormatJpeg;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithPng {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailFormatTag)FilesThumbnailFormatPng;
+        _tag = FilesThumbnailFormatPng;
     }
     return self;
 }
 
 - (BOOL)isJpeg {
-    return _tag == (FilesThumbnailFormatTag)FilesThumbnailFormatJpeg;
+    return _tag == FilesThumbnailFormatJpeg;
 }
 
 - (BOOL)isPng {
-    return _tag == (FilesThumbnailFormatTag)FilesThumbnailFormatPng;
+    return _tag == FilesThumbnailFormatPng;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesThumbnailFormatTag)FilesThumbnailFormatJpeg) {
-        return @"(FilesThumbnailFormatTag)FilesThumbnailFormatJpeg";
-    }
-    if (_tag == (FilesThumbnailFormatTag)FilesThumbnailFormatPng) {
-        return @"(FilesThumbnailFormatTag)FilesThumbnailFormatPng";
+    switch (_tag) {
+        case FilesThumbnailFormatJpeg:
+           return @"FilesThumbnailFormatJpeg";
+        case FilesThumbnailFormatPng:
+           return @"FilesThumbnailFormatPng";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

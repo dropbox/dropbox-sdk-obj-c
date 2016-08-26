@@ -12,7 +12,7 @@
 - (instancetype)initWithPending {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesMediaInfoTag)FilesMediaInfoPending;
+        _tag = FilesMediaInfoPending;
     }
     return self;
 }
@@ -20,34 +20,34 @@
 - (instancetype)initWithMetadata:(DbxFilesMediaMetadata *)metadata {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesMediaInfoTag)FilesMediaInfoMetadata;
+        _tag = FilesMediaInfoMetadata;
         _metadata = metadata;
     }
     return self;
 }
 
 - (BOOL)isPending {
-    return _tag == (FilesMediaInfoTag)FilesMediaInfoPending;
+    return _tag == FilesMediaInfoPending;
 }
 
 - (BOOL)isMetadata {
-    return _tag == (FilesMediaInfoTag)FilesMediaInfoMetadata;
+    return _tag == FilesMediaInfoMetadata;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesMediaInfoTag)FilesMediaInfoPending) {
-        return @"(FilesMediaInfoTag)FilesMediaInfoPending";
-    }
-    if (_tag == (FilesMediaInfoTag)FilesMediaInfoMetadata) {
-        return @"(FilesMediaInfoTag)FilesMediaInfoMetadata";
+    switch (_tag) {
+        case FilesMediaInfoPending:
+           return @"FilesMediaInfoPending";
+        case FilesMediaInfoMetadata:
+           return @"FilesMediaInfoMetadata";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesMediaMetadata *)metadata {
-    if (_tag != (FilesMediaInfoTag)FilesMediaInfoMetadata) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesMediaInfoTag)FilesMediaInfoMetadata, but was %@.", [self getTagName]];
+    if (_tag != FilesMediaInfoMetadata) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesMediaInfoMetadata, but was %@.", [self getTagName]];
     }
     return _metadata;
 }

@@ -12,7 +12,7 @@
 - (instancetype)initWithNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotFound;
+        _tag = FilesUploadSessionLookupErrorNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithIncorrectOffset:(DbxFilesUploadSessionOffsetError *)incorrectOffset {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset;
+        _tag = FilesUploadSessionLookupErrorIncorrectOffset;
         _incorrectOffset = incorrectOffset;
     }
     return self;
@@ -29,7 +29,7 @@
 - (instancetype)initWithClosed {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorClosed;
+        _tag = FilesUploadSessionLookupErrorClosed;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithNotClosed {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotClosed;
+        _tag = FilesUploadSessionLookupErrorNotClosed;
     }
     return self;
 }
@@ -45,54 +45,51 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorOther;
+        _tag = FilesUploadSessionLookupErrorOther;
     }
     return self;
 }
 
 - (BOOL)isNotFound {
-    return _tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotFound;
+    return _tag == FilesUploadSessionLookupErrorNotFound;
 }
 
 - (BOOL)isIncorrectOffset {
-    return _tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset;
+    return _tag == FilesUploadSessionLookupErrorIncorrectOffset;
 }
 
 - (BOOL)isClosed {
-    return _tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorClosed;
+    return _tag == FilesUploadSessionLookupErrorClosed;
 }
 
 - (BOOL)isNotClosed {
-    return _tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotClosed;
+    return _tag == FilesUploadSessionLookupErrorNotClosed;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorOther;
+    return _tag == FilesUploadSessionLookupErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotFound) {
-        return @"(FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotFound";
-    }
-    if (_tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset) {
-        return @"(FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset";
-    }
-    if (_tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorClosed) {
-        return @"(FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorClosed";
-    }
-    if (_tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotClosed) {
-        return @"(FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorNotClosed";
-    }
-    if (_tag == (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorOther) {
-        return @"(FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorOther";
+    switch (_tag) {
+        case FilesUploadSessionLookupErrorNotFound:
+           return @"FilesUploadSessionLookupErrorNotFound";
+        case FilesUploadSessionLookupErrorIncorrectOffset:
+           return @"FilesUploadSessionLookupErrorIncorrectOffset";
+        case FilesUploadSessionLookupErrorClosed:
+           return @"FilesUploadSessionLookupErrorClosed";
+        case FilesUploadSessionLookupErrorNotClosed:
+           return @"FilesUploadSessionLookupErrorNotClosed";
+        case FilesUploadSessionLookupErrorOther:
+           return @"FilesUploadSessionLookupErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesUploadSessionOffsetError *)incorrectOffset {
-    if (_tag != (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionLookupErrorTag)FilesUploadSessionLookupErrorIncorrectOffset, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionLookupErrorIncorrectOffset) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionLookupErrorIncorrectOffset, but was %@.", [self getTagName]];
     }
     return _incorrectOffset;
 }

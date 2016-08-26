@@ -3,50 +3,76 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSearchMode;
 
 /// 
-/// The DbxFilesSearchMode union.
+/// The `DbxFilesSearchMode` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSearchMode : NSObject <DbxSerializable> 
 
+/// The `FilesSearchModeTag` enum type represents the possible tag states that
+/// the `DbxFilesSearchMode` union can exist in.
 typedef NS_ENUM(NSInteger, FilesSearchModeTag) {
     /// Search file and folder names.
     FilesSearchModeFilename,
+
     /// Search file and folder names as well as file contents.
     FilesSearchModeFilenameAndContent,
+
     /// Search for deleted file and folder names.
     FilesSearchModeDeletedFilename,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesSearchModeTag tag;
+
+
+/// Initializes union class with tag state of `Filename`.
 - (nonnull instancetype)initWithFilename;
 
+/// Initializes union class with tag state of `FilenameAndContent`.
 - (nonnull instancetype)initWithFilenameAndContent;
 
+/// Initializes union class with tag state of `DeletedFilename`.
 - (nonnull instancetype)initWithDeletedFilename;
 
+/// Returns whether the union's current tag state has value `Filename`.
 - (BOOL)isFilename;
 
+/// Returns whether the union's current tag state has value
+/// `FilenameAndContent`.
 - (BOOL)isFilenameAndContent;
 
+/// Returns whether the union's current tag state has value `DeletedFilename`.
 - (BOOL)isDeletedFilename;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesSearchMode` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesSearchMode union type.
-@property (nonatomic) FilesSearchModeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSearchMode` union.
+/// 
 @interface DbxFilesSearchModeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSearchMode` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSearchMode * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSearchMode` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

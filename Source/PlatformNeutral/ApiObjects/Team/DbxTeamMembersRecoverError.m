@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotFound;
+        _tag = TeamMembersRecoverErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserUnrecoverable {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserUnrecoverable;
+        _tag = TeamMembersRecoverErrorUserUnrecoverable;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotInTeam;
+        _tag = TeamMembersRecoverErrorUserNotInTeam;
     }
     return self;
 }
@@ -36,39 +36,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorOther;
+        _tag = TeamMembersRecoverErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotFound;
+    return _tag == TeamMembersRecoverErrorUserNotFound;
 }
 
 - (BOOL)isUserUnrecoverable {
-    return _tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserUnrecoverable;
+    return _tag == TeamMembersRecoverErrorUserUnrecoverable;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotInTeam;
+    return _tag == TeamMembersRecoverErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorOther;
+    return _tag == TeamMembersRecoverErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotFound) {
-        return @"(TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserUnrecoverable) {
-        return @"(TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserUnrecoverable";
-    }
-    if (_tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotInTeam) {
-        return @"(TeamMembersRecoverErrorTag)TeamMembersRecoverErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersRecoverErrorTag)TeamMembersRecoverErrorOther) {
-        return @"(TeamMembersRecoverErrorTag)TeamMembersRecoverErrorOther";
+    switch (_tag) {
+        case TeamMembersRecoverErrorUserNotFound:
+           return @"TeamMembersRecoverErrorUserNotFound";
+        case TeamMembersRecoverErrorUserUnrecoverable:
+           return @"TeamMembersRecoverErrorUserUnrecoverable";
+        case TeamMembersRecoverErrorUserNotInTeam:
+           return @"TeamMembersRecoverErrorUserNotInTeam";
+        case TeamMembersRecoverErrorOther:
+           return @"TeamMembersRecoverErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

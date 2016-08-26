@@ -11,7 +11,7 @@
 - (instancetype)initWithBasic {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersAccountTypeTag)UsersAccountTypeBasic;
+        _tag = UsersAccountTypeBasic;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithPro {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersAccountTypeTag)UsersAccountTypePro;
+        _tag = UsersAccountTypePro;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithBusiness {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersAccountTypeTag)UsersAccountTypeBusiness;
+        _tag = UsersAccountTypeBusiness;
     }
     return self;
 }
 
 - (BOOL)isBasic {
-    return _tag == (UsersAccountTypeTag)UsersAccountTypeBasic;
+    return _tag == UsersAccountTypeBasic;
 }
 
 - (BOOL)isPro {
-    return _tag == (UsersAccountTypeTag)UsersAccountTypePro;
+    return _tag == UsersAccountTypePro;
 }
 
 - (BOOL)isBusiness {
-    return _tag == (UsersAccountTypeTag)UsersAccountTypeBusiness;
+    return _tag == UsersAccountTypeBusiness;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (UsersAccountTypeTag)UsersAccountTypeBasic) {
-        return @"(UsersAccountTypeTag)UsersAccountTypeBasic";
-    }
-    if (_tag == (UsersAccountTypeTag)UsersAccountTypePro) {
-        return @"(UsersAccountTypeTag)UsersAccountTypePro";
-    }
-    if (_tag == (UsersAccountTypeTag)UsersAccountTypeBusiness) {
-        return @"(UsersAccountTypeTag)UsersAccountTypeBusiness";
+    switch (_tag) {
+        case UsersAccountTypeBasic:
+           return @"UsersAccountTypeBasic";
+        case UsersAccountTypePro:
+           return @"UsersAccountTypePro";
+        case UsersAccountTypeBusiness:
+           return @"UsersAccountTypeBusiness";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

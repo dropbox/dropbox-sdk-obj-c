@@ -13,7 +13,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError;
+        _tag = SharingRemoveFolderMemberErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithMemberError:(DbxSharingSharedFolderMemberError *)memberError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError;
+        _tag = SharingRemoveFolderMemberErrorMemberError;
         _memberError = memberError;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithFolderOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorFolderOwner;
+        _tag = SharingRemoveFolderMemberErrorFolderOwner;
     }
     return self;
 }
@@ -39,7 +39,7 @@
 - (instancetype)initWithGroupAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorGroupAccess;
+        _tag = SharingRemoveFolderMemberErrorGroupAccess;
     }
     return self;
 }
@@ -47,7 +47,7 @@
 - (instancetype)initWithTeamFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorTeamFolder;
+        _tag = SharingRemoveFolderMemberErrorTeamFolder;
     }
     return self;
 }
@@ -55,7 +55,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorNoPermission;
+        _tag = SharingRemoveFolderMemberErrorNoPermission;
     }
     return self;
 }
@@ -63,75 +63,70 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorOther;
+        _tag = SharingRemoveFolderMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError;
+    return _tag == SharingRemoveFolderMemberErrorAccessError;
 }
 
 - (BOOL)isMemberError {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError;
+    return _tag == SharingRemoveFolderMemberErrorMemberError;
 }
 
 - (BOOL)isFolderOwner {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorFolderOwner;
+    return _tag == SharingRemoveFolderMemberErrorFolderOwner;
 }
 
 - (BOOL)isGroupAccess {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorGroupAccess;
+    return _tag == SharingRemoveFolderMemberErrorGroupAccess;
 }
 
 - (BOOL)isTeamFolder {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorTeamFolder;
+    return _tag == SharingRemoveFolderMemberErrorTeamFolder;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorNoPermission;
+    return _tag == SharingRemoveFolderMemberErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorOther;
+    return _tag == SharingRemoveFolderMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorFolderOwner) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorFolderOwner";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorGroupAccess) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorGroupAccess";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorTeamFolder) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorTeamFolder";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorNoPermission) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorNoPermission";
-    }
-    if (_tag == (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorOther) {
-        return @"(SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorOther";
+    switch (_tag) {
+        case SharingRemoveFolderMemberErrorAccessError:
+           return @"SharingRemoveFolderMemberErrorAccessError";
+        case SharingRemoveFolderMemberErrorMemberError:
+           return @"SharingRemoveFolderMemberErrorMemberError";
+        case SharingRemoveFolderMemberErrorFolderOwner:
+           return @"SharingRemoveFolderMemberErrorFolderOwner";
+        case SharingRemoveFolderMemberErrorGroupAccess:
+           return @"SharingRemoveFolderMemberErrorGroupAccess";
+        case SharingRemoveFolderMemberErrorTeamFolder:
+           return @"SharingRemoveFolderMemberErrorTeamFolder";
+        case SharingRemoveFolderMemberErrorNoPermission:
+           return @"SharingRemoveFolderMemberErrorNoPermission";
+        case SharingRemoveFolderMemberErrorOther:
+           return @"SharingRemoveFolderMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveFolderMemberErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveFolderMemberErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DbxSharingSharedFolderMemberError *)memberError {
-    if (_tag != (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveFolderMemberErrorTag)SharingRemoveFolderMemberErrorMemberError, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveFolderMemberErrorMemberError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveFolderMemberErrorMemberError, but was %@.", [self getTagName]];
     }
     return _memberError;
 }

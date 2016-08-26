@@ -3,56 +3,87 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupCreateError;
 
 /// 
-/// The DbxTeamGroupCreateError union.
+/// The `DbxTeamGroupCreateError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupCreateError : NSObject <DbxSerializable> 
 
+/// The `TeamGroupCreateErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamGroupCreateError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupCreateErrorTag) {
     /// There is already an existing group with the requested name.
     TeamGroupCreateErrorGroupNameAlreadyUsed,
+
     /// Group name is empty or has invalid characters.
     TeamGroupCreateErrorGroupNameInvalid,
+
     /// The new external ID is already being used by another group.
     TeamGroupCreateErrorExternalIdAlreadyInUse,
-    /// (no description)
+
+    /// (no description).
     TeamGroupCreateErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupCreateErrorTag tag;
+
+
+/// Initializes union class with tag state of `GroupNameAlreadyUsed`.
 - (nonnull instancetype)initWithGroupNameAlreadyUsed;
 
+/// Initializes union class with tag state of `GroupNameInvalid`.
 - (nonnull instancetype)initWithGroupNameInvalid;
 
+/// Initializes union class with tag state of `ExternalIdAlreadyInUse`.
 - (nonnull instancetype)initWithExternalIdAlreadyInUse;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value
+/// `GroupNameAlreadyUsed`.
 - (BOOL)isGroupNameAlreadyUsed;
 
+/// Returns whether the union's current tag state has value `GroupNameInvalid`.
 - (BOOL)isGroupNameInvalid;
 
+/// Returns whether the union's current tag state has value
+/// `ExternalIdAlreadyInUse`.
 - (BOOL)isExternalIdAlreadyInUse;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupCreateError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupCreateError union type.
-@property (nonatomic) TeamGroupCreateErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupCreateError` union.
+/// 
 @interface DbxTeamGroupCreateErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupCreateError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupCreateError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupCreateError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupCreateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

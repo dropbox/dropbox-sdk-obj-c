@@ -14,7 +14,7 @@ static NSString * const version = @"1.0.0";
 static DbxDelegate *_delegate;
 static NSURLSession *_session;
 static NSURLSession *_backgroundSession;
-static NSString *kBackgroundSessionIdentifier = @"com.dropbox.dropbox_sdk_obj_c_background";
+static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 typedef void(^ErrorBlock)(DbxError * _Nonnull error);
 
@@ -28,23 +28,23 @@ typedef void(^ErrorBlock)(DbxError * _Nonnull error);
     return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andBackgroundSessionIdentifier:(NSString *)backgroundSessionIdentifier {
-    return [self initWithAccessToken:accessToken andSelectUser:nil andBaseHosts:nil andUserAgent:nil andBackgroundSessionIdentifier:backgroundSessionIdentifier];
+- (instancetype)initWithAccessToken:(NSString *)accessToken andBackgroundSessionId:(NSString *)backgroundSessionId {
+    return [self initWithAccessToken:accessToken andSelectUser:nil andBaseHosts:nil andUserAgent:nil andBackgroundSessionId:backgroundSessionId];
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
-    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:baseHosts andUserAgent:nil andBackgroundSessionIdentifier:nil];
+    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:baseHosts andUserAgent:nil andBackgroundSessionId:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts andUserAgent:(NSString *)userAgent andBackgroundSessionIdentifier:(NSString *)backgroundSessionIdentifier {
+- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts andUserAgent:(NSString *)userAgent andBackgroundSessionId:(NSString *)backgroundSessionId {
     self = [super init];
     if (self) {
         _delegateQueue = [NSOperationQueue new];
         [_delegateQueue setMaxConcurrentOperationCount:1];
         _delegate = [[DbxDelegate alloc] initWithQueue:_delegateQueue];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:_delegate delegateQueue:_delegateQueue];
-        NSString *backgroundSessionIdentifier = backgroundSessionIdentifier ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionIdentifier, (long long)[[NSDate date] timeIntervalSince1970] * 1000];
-        _backgroundSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundSessionIdentifier] delegate:_delegate delegateQueue:_delegateQueue];
+        NSString *backgroundId = backgroundSessionId ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionId, (long long)[[NSDate date] timeIntervalSince1970] * 1000];
+        _backgroundSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId] delegate:_delegate delegateQueue:_delegateQueue];
 
         NSDictionary <NSString *, NSString *> * defaultBaseHosts = @{
             @"api" : @"https://api.dropbox.com/2",

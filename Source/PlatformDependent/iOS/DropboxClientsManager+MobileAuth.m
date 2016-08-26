@@ -1,7 +1,3 @@
-///
-/// Code with platform-specific (here, iOS) dependencies. Extends logic for the `DropboxClientsManager` class.
-///
-
 #import <UIKit/UIKit.h>
 #import "DbxOAuth.h"
 #import "DbxOAuthMobile.h"

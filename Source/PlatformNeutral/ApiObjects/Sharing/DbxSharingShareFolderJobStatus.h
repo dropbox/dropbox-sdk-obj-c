@@ -3,55 +3,84 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncPollResultBase.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingShareFolderError;
 @class DbxSharingShareFolderJobStatus;
 @class DbxSharingSharedFolderMetadata;
 
 /// 
-/// The DbxSharingShareFolderJobStatus union.
+/// The `DbxSharingShareFolderJobStatus` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingShareFolderJobStatus : NSObject <DbxSerializable> 
 
+/// The `SharingShareFolderJobStatusTag` enum type represents the possible tag
+/// states that the `DbxSharingShareFolderJobStatus` union can exist in.
 typedef NS_ENUM(NSInteger, SharingShareFolderJobStatusTag) {
     /// The asynchronous job is still in progress.
     SharingShareFolderJobStatusInProgress,
+
     /// The share job has finished. The value is the metadata for the folder.
     SharingShareFolderJobStatusComplete,
-    /// (no description)
+
+    /// (no description).
     SharingShareFolderJobStatusFailed,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingShareFolderJobStatusTag tag;
+
+/// The share job has finished. The value is the metadata for the folder.
+@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
+
+/// (no description).
+@property (nonatomic) DbxSharingShareFolderError * _Nonnull failed;
+
+
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Initializes union class with tag state of `Complete`.
 - (nonnull instancetype)initWithComplete:(DbxSharingSharedFolderMetadata * _Nonnull)complete;
 
+/// Initializes union class with tag state of `Failed`.
 - (nonnull instancetype)initWithFailed:(DbxSharingShareFolderError * _Nonnull)failed;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns whether the union's current tag state has value `Complete`.
 - (BOOL)isComplete;
 
+/// Returns whether the union's current tag state has value `Failed`.
 - (BOOL)isFailed;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingShareFolderJobStatus` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingShareFolderJobStatus union type.
-@property (nonatomic) SharingShareFolderJobStatusTag tag;
-@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
-@property (nonatomic) DbxSharingShareFolderError * _Nonnull failed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingShareFolderJobStatus` union.
+/// 
 @interface DbxSharingShareFolderJobStatusSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingShareFolderJobStatus` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderJobStatus * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingShareFolderJobStatus` object from
+/// a json-compatible dictionary representation.
 + (DbxSharingShareFolderJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

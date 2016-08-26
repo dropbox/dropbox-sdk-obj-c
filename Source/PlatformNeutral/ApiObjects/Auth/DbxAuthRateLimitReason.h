@@ -3,51 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAuthRateLimitReason;
 
 /// 
-/// The DbxAuthRateLimitReason union.
+/// The `DbxAuthRateLimitReason` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxAuthRateLimitReason : NSObject <DbxSerializable> 
 
+/// The `AuthRateLimitReasonTag` enum type represents the possible tag states
+/// that the `DbxAuthRateLimitReason` union can exist in.
 typedef NS_ENUM(NSInteger, AuthRateLimitReasonTag) {
     /// You are making too many requests in the past few minutes.
     AuthRateLimitReasonTooManyRequests,
+
     /// There are currently too many write operations happening in the user's
     /// Dropbox.
     AuthRateLimitReasonTooManyWriteOperations,
-    /// (no description)
+
+    /// (no description).
     AuthRateLimitReasonOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) AuthRateLimitReasonTag tag;
+
+
+/// Initializes union class with tag state of `TooManyRequests`.
 - (nonnull instancetype)initWithTooManyRequests;
 
+/// Initializes union class with tag state of `TooManyWriteOperations`.
 - (nonnull instancetype)initWithTooManyWriteOperations;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `TooManyRequests`.
 - (BOOL)isTooManyRequests;
 
+/// Returns whether the union's current tag state has value
+/// `TooManyWriteOperations`.
 - (BOOL)isTooManyWriteOperations;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxAuthRateLimitReason`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxAuthRateLimitReason union type.
-@property (nonatomic) AuthRateLimitReasonTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAuthRateLimitReason` union.
+/// 
 @interface DbxAuthRateLimitReasonSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxAuthRateLimitReason` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAuthRateLimitReason * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAuthRateLimitReason` object from a
+/// json-compatible dictionary representation.
 + (DbxAuthRateLimitReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

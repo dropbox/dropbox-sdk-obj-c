@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxFilesSharingInfo.h"
 
 @class DbxFilesFileSharingInfo;
 
 /// 
-/// The DbxFilesFileSharingInfo struct.
+/// The `DbxFilesFileSharingInfo` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Sharing info for a file which is contained by a shared folder.
 /// 
@@ -17,23 +21,37 @@
 
 /// ID of shared folder that holds this file.
 @property (nonatomic, copy) NSString * _Nonnull parentSharedFolderId;
+
 /// The last user who modified the file. This field will be null if the user's
 /// account has been deleted.
 @property (nonatomic, copy) NSString * _Nullable modifiedBy;
 
+/// Full constructor for the `FileSharingInfo` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly parentSharedFolderId:(NSString * _Nonnull)parentSharedFolderId modifiedBy:(NSString * _Nullable)modifiedBy;
 
+/// Convenience constructor for the `FileSharingInfo` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly parentSharedFolderId:(NSString * _Nonnull)parentSharedFolderId;
 
+/// Returns a human-readable representation of the `DbxFilesFileSharingInfo`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesFileSharingInfo` struct.
+/// 
 @interface DbxFilesFileSharingInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesFileSharingInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesFileSharingInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesFileSharingInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesFileSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

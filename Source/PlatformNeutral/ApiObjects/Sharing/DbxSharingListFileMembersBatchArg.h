@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFileMembersBatchArg;
 
 /// 
-/// The DbxSharingListFileMembersBatchArg struct.
+/// The `DbxSharingListFileMembersBatchArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Arguments for listFileMembersBatch.
 /// 
@@ -16,23 +20,37 @@
 
 /// Files for which to return members.
 @property (nonatomic) NSArray<NSString *> * _Nonnull files;
+
 /// Number of members to return max per query. Defaults to 10 if no limit is
 /// specified.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
 
+/// Full constructor for the `ListFileMembersBatchArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit;
 
+/// Convenience constructor for the `ListFileMembersBatchArg` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingListFileMembersBatchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFileMembersBatchArg` struct.
+/// 
 @interface DbxSharingListFileMembersBatchArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFileMembersBatchArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersBatchArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFileMembersBatchArg` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingListFileMembersBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

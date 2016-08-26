@@ -13,7 +13,7 @@
 - (instancetype)initWithWebSession:(DbxTeamDeviceSessionArg *)webSession {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession;
+        _tag = TeamRevokeDeviceSessionArgWebSession;
         _webSession = webSession;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithDesktopClient:(DbxTeamRevokeDesktopClientArg *)desktopClient {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient;
+        _tag = TeamRevokeDeviceSessionArgDesktopClient;
         _desktopClient = desktopClient;
     }
     return self;
@@ -31,55 +31,54 @@
 - (instancetype)initWithMobileClient:(DbxTeamDeviceSessionArg *)mobileClient {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient;
+        _tag = TeamRevokeDeviceSessionArgMobileClient;
         _mobileClient = mobileClient;
     }
     return self;
 }
 
 - (BOOL)isWebSession {
-    return _tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession;
+    return _tag == TeamRevokeDeviceSessionArgWebSession;
 }
 
 - (BOOL)isDesktopClient {
-    return _tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient;
+    return _tag == TeamRevokeDeviceSessionArgDesktopClient;
 }
 
 - (BOOL)isMobileClient {
-    return _tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient;
+    return _tag == TeamRevokeDeviceSessionArgMobileClient;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession) {
-        return @"(TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession";
-    }
-    if (_tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient) {
-        return @"(TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient";
-    }
-    if (_tag == (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient) {
-        return @"(TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient";
+    switch (_tag) {
+        case TeamRevokeDeviceSessionArgWebSession:
+           return @"TeamRevokeDeviceSessionArgWebSession";
+        case TeamRevokeDeviceSessionArgDesktopClient:
+           return @"TeamRevokeDeviceSessionArgDesktopClient";
+        case TeamRevokeDeviceSessionArgMobileClient:
+           return @"TeamRevokeDeviceSessionArgMobileClient";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxTeamDeviceSessionArg *)webSession {
-    if (_tag != (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgWebSession, but was %@.", [self getTagName]];
+    if (_tag != TeamRevokeDeviceSessionArgWebSession) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamRevokeDeviceSessionArgWebSession, but was %@.", [self getTagName]];
     }
     return _webSession;
 }
 
 - (DbxTeamRevokeDesktopClientArg *)desktopClient {
-    if (_tag != (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgDesktopClient, but was %@.", [self getTagName]];
+    if (_tag != TeamRevokeDeviceSessionArgDesktopClient) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamRevokeDeviceSessionArgDesktopClient, but was %@.", [self getTagName]];
     }
     return _desktopClient;
 }
 
 - (DbxTeamDeviceSessionArg *)mobileClient {
-    if (_tag != (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamRevokeDeviceSessionArgTag)TeamRevokeDeviceSessionArgMobileClient, but was %@.", [self getTagName]];
+    if (_tag != TeamRevokeDeviceSessionArgMobileClient) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamRevokeDeviceSessionArgMobileClient, but was %@.", [self getTagName]];
     }
     return _mobileClient;
 }

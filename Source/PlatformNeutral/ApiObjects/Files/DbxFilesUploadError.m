@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesUploadWriteFailed *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadErrorTag)FilesUploadErrorPath;
+        _tag = FilesUploadErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadErrorTag)FilesUploadErrorOther;
+        _tag = FilesUploadErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesUploadErrorTag)FilesUploadErrorPath;
+    return _tag == FilesUploadErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesUploadErrorTag)FilesUploadErrorOther;
+    return _tag == FilesUploadErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadErrorTag)FilesUploadErrorPath) {
-        return @"(FilesUploadErrorTag)FilesUploadErrorPath";
-    }
-    if (_tag == (FilesUploadErrorTag)FilesUploadErrorOther) {
-        return @"(FilesUploadErrorTag)FilesUploadErrorOther";
+    switch (_tag) {
+        case FilesUploadErrorPath:
+           return @"FilesUploadErrorPath";
+        case FilesUploadErrorOther:
+           return @"FilesUploadErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesUploadWriteFailed *)path {
-    if (_tag != (FilesUploadErrorTag)FilesUploadErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadErrorTag)FilesUploadErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

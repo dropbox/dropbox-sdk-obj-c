@@ -3,52 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamRevokeLinkedAppError;
 
 /// 
-/// The DbxTeamRevokeLinkedAppError union.
+/// The `DbxTeamRevokeLinkedAppError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error returned by linkedAppsRevokeLinkedApp.
 /// 
 @interface DbxTeamRevokeLinkedAppError : NSObject <DbxSerializable> 
 
+/// The `TeamRevokeLinkedAppErrorTag` enum type represents the possible tag
+/// states that the `DbxTeamRevokeLinkedAppError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamRevokeLinkedAppErrorTag) {
     /// Application not found.
     TeamRevokeLinkedAppErrorAppNotFound,
+
     /// Member not found.
     TeamRevokeLinkedAppErrorMemberNotFound,
-    /// (no description)
+
+    /// (no description).
     TeamRevokeLinkedAppErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamRevokeLinkedAppErrorTag tag;
+
+
+/// Initializes union class with tag state of `AppNotFound`.
 - (nonnull instancetype)initWithAppNotFound;
 
+/// Initializes union class with tag state of `MemberNotFound`.
 - (nonnull instancetype)initWithMemberNotFound;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `AppNotFound`.
 - (BOOL)isAppNotFound;
 
+/// Returns whether the union's current tag state has value `MemberNotFound`.
 - (BOOL)isMemberNotFound;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamRevokeLinkedAppError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamRevokeLinkedAppError union type.
-@property (nonatomic) TeamRevokeLinkedAppErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamRevokeLinkedAppError` union.
+/// 
 @interface DbxTeamRevokeLinkedAppErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamRevokeLinkedAppError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedAppError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamRevokeLinkedAppError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

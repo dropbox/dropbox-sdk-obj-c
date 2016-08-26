@@ -13,7 +13,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusInProgress;
+        _tag = TeamMembersAddJobStatusInProgress;
     }
     return self;
 }
@@ -21,7 +21,7 @@
 - (instancetype)initWithComplete:(NSArray<DbxTeamMemberAddResult *> *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete;
+        _tag = TeamMembersAddJobStatusComplete;
         _complete = complete;
     }
     return self;
@@ -30,48 +30,47 @@
 - (instancetype)initWithFailed:(NSString *)failed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed;
+        _tag = TeamMembersAddJobStatusFailed;
         _failed = failed;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusInProgress;
+    return _tag == TeamMembersAddJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete;
+    return _tag == TeamMembersAddJobStatusComplete;
 }
 
 - (BOOL)isFailed {
-    return _tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed;
+    return _tag == TeamMembersAddJobStatusFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusInProgress) {
-        return @"(TeamMembersAddJobStatusTag)TeamMembersAddJobStatusInProgress";
-    }
-    if (_tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete) {
-        return @"(TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete";
-    }
-    if (_tag == (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed) {
-        return @"(TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed";
+    switch (_tag) {
+        case TeamMembersAddJobStatusInProgress:
+           return @"TeamMembersAddJobStatusInProgress";
+        case TeamMembersAddJobStatusComplete:
+           return @"TeamMembersAddJobStatusComplete";
+        case TeamMembersAddJobStatusFailed:
+           return @"TeamMembersAddJobStatusFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSArray<DbxTeamMemberAddResult *> *)complete {
-    if (_tag != (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusComplete, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersAddJobStatusComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersAddJobStatusComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (NSString *)failed {
-    if (_tag != (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersAddJobStatusTag)TeamMembersAddJobStatusFailed, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersAddJobStatusFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersAddJobStatusFailed, but was %@.", [self getTagName]];
     }
     return _failed;
 }

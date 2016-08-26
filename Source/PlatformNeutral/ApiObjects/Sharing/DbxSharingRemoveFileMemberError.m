@@ -14,7 +14,7 @@
 - (instancetype)initWithUserError:(DbxSharingSharingUserError *)userError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError;
+        _tag = SharingRemoveFileMemberErrorUserError;
         _userError = userError;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError;
+        _tag = SharingRemoveFileMemberErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -32,7 +32,7 @@
 - (instancetype)initWithNoExplicitAccess:(DbxSharingMemberAccessLevelResult *)noExplicitAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess;
+        _tag = SharingRemoveFileMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
     return self;
@@ -41,61 +41,59 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorOther;
+        _tag = SharingRemoveFileMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserError {
-    return _tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError;
+    return _tag == SharingRemoveFileMemberErrorUserError;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError;
+    return _tag == SharingRemoveFileMemberErrorAccessError;
 }
 
 - (BOOL)isNoExplicitAccess {
-    return _tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess;
+    return _tag == SharingRemoveFileMemberErrorNoExplicitAccess;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorOther;
+    return _tag == SharingRemoveFileMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError) {
-        return @"(SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError";
-    }
-    if (_tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError) {
-        return @"(SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError";
-    }
-    if (_tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess) {
-        return @"(SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess";
-    }
-    if (_tag == (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorOther) {
-        return @"(SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorOther";
+    switch (_tag) {
+        case SharingRemoveFileMemberErrorUserError:
+           return @"SharingRemoveFileMemberErrorUserError";
+        case SharingRemoveFileMemberErrorAccessError:
+           return @"SharingRemoveFileMemberErrorAccessError";
+        case SharingRemoveFileMemberErrorNoExplicitAccess:
+           return @"SharingRemoveFileMemberErrorNoExplicitAccess";
+        case SharingRemoveFileMemberErrorOther:
+           return @"SharingRemoveFileMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingUserError *)userError {
-    if (_tag != (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorUserError, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveFileMemberErrorUserError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveFileMemberErrorUserError, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveFileMemberErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveFileMemberErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DbxSharingMemberAccessLevelResult *)noExplicitAccess {
-    if (_tag != (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveFileMemberErrorTag)SharingRemoveFileMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveFileMemberErrorNoExplicitAccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveFileMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }

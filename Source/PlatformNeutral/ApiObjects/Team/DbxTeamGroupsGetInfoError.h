@@ -3,44 +3,67 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupsGetInfoError;
 
 /// 
-/// The DbxTeamGroupsGetInfoError union.
+/// The `DbxTeamGroupsGetInfoError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupsGetInfoError : NSObject <DbxSerializable> 
 
+/// The `TeamGroupsGetInfoErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamGroupsGetInfoError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupsGetInfoErrorTag) {
     /// The group is not on your team.
     TeamGroupsGetInfoErrorGroupNotOnTeam,
-    /// (no description)
+
+    /// (no description).
     TeamGroupsGetInfoErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupsGetInfoErrorTag tag;
+
+
+/// Initializes union class with tag state of `GroupNotOnTeam`.
 - (nonnull instancetype)initWithGroupNotOnTeam;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `GroupNotOnTeam`.
 - (BOOL)isGroupNotOnTeam;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupsGetInfoError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupsGetInfoError union type.
-@property (nonatomic) TeamGroupsGetInfoErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupsGetInfoError` union.
+/// 
 @interface DbxTeamGroupsGetInfoErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupsGetInfoError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsGetInfoError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupsGetInfoError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupsGetInfoError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

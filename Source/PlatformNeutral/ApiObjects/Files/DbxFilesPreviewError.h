@@ -3,59 +3,92 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 @class DbxFilesPreviewError;
 
 /// 
-/// The DbxFilesPreviewError union.
+/// The `DbxFilesPreviewError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesPreviewError : NSObject <DbxSerializable> 
 
+/// The `FilesPreviewErrorTag` enum type represents the possible tag states that
+/// the `DbxFilesPreviewError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesPreviewErrorTag) {
     /// An error occurs when downloading metadata for the file.
     FilesPreviewErrorPath,
+
     /// This preview generation is still in progress and the file is not ready
     /// for preview yet.
     FilesPreviewErrorInProgress,
+
     /// The file extension is not supported preview generation.
     FilesPreviewErrorUnsupportedExtension,
+
     /// The file content is not supported for preview generation.
     FilesPreviewErrorUnsupportedContent,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesPreviewErrorTag tag;
+
+/// An error occurs when downloading metadata for the file.
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Initializes union class with tag state of `UnsupportedExtension`.
 - (nonnull instancetype)initWithUnsupportedExtension;
 
+/// Initializes union class with tag state of `UnsupportedContent`.
 - (nonnull instancetype)initWithUnsupportedContent;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns whether the union's current tag state has value
+/// `UnsupportedExtension`.
 - (BOOL)isUnsupportedExtension;
 
+/// Returns whether the union's current tag state has value
+/// `UnsupportedContent`.
 - (BOOL)isUnsupportedContent;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesPreviewError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesPreviewError union type.
-@property (nonatomic) FilesPreviewErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesPreviewError` union.
+/// 
 @interface DbxFilesPreviewErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesPreviewError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesPreviewError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesPreviewError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesPreviewError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

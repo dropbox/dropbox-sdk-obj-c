@@ -3,33 +3,52 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingRelinquishFolderMembershipArg;
 
 /// 
-/// The DbxSharingRelinquishFolderMembershipArg struct.
+/// The `DbxSharingRelinquishFolderMembershipArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingRelinquishFolderMembershipArg : NSObject <DbxSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+
 /// Keep a copy of the folder's contents upon relinquishing membership.
 @property (nonatomic, copy) NSNumber * _Nonnull leaveACopy;
 
+/// Full constructor for the `RelinquishFolderMembershipArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
+/// Convenience constructor for the `RelinquishFolderMembershipArg` struct
+/// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingRelinquishFolderMembershipArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingRelinquishFolderMembershipArg`
+/// struct.
+/// 
 @interface DbxSharingRelinquishFolderMembershipArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingRelinquishFolderMembershipArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingRelinquishFolderMembershipArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingRelinquishFolderMembershipArg`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingRelinquishFolderMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

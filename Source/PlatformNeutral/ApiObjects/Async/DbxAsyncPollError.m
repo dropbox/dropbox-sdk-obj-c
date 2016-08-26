@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidAsyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollErrorTag)AsyncPollErrorInvalidAsyncJobId;
+        _tag = AsyncPollErrorInvalidAsyncJobId;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithInternalError {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollErrorTag)AsyncPollErrorInternalError;
+        _tag = AsyncPollErrorInternalError;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollErrorTag)AsyncPollErrorOther;
+        _tag = AsyncPollErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidAsyncJobId {
-    return _tag == (AsyncPollErrorTag)AsyncPollErrorInvalidAsyncJobId;
+    return _tag == AsyncPollErrorInvalidAsyncJobId;
 }
 
 - (BOOL)isInternalError {
-    return _tag == (AsyncPollErrorTag)AsyncPollErrorInternalError;
+    return _tag == AsyncPollErrorInternalError;
 }
 
 - (BOOL)isOther {
-    return _tag == (AsyncPollErrorTag)AsyncPollErrorOther;
+    return _tag == AsyncPollErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AsyncPollErrorTag)AsyncPollErrorInvalidAsyncJobId) {
-        return @"(AsyncPollErrorTag)AsyncPollErrorInvalidAsyncJobId";
-    }
-    if (_tag == (AsyncPollErrorTag)AsyncPollErrorInternalError) {
-        return @"(AsyncPollErrorTag)AsyncPollErrorInternalError";
-    }
-    if (_tag == (AsyncPollErrorTag)AsyncPollErrorOther) {
-        return @"(AsyncPollErrorTag)AsyncPollErrorOther";
+    switch (_tag) {
+        case AsyncPollErrorInvalidAsyncJobId:
+           return @"AsyncPollErrorInvalidAsyncJobId";
+        case AsyncPollErrorInternalError:
+           return @"AsyncPollErrorInternalError";
+        case AsyncPollErrorOther:
+           return @"AsyncPollErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

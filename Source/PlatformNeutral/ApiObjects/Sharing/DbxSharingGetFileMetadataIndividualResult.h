@@ -3,54 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingGetFileMetadataIndividualResult;
 @class DbxSharingSharedFileMetadata;
 @class DbxSharingSharingFileAccessError;
 
 /// 
-/// The DbxSharingGetFileMetadataIndividualResult union.
+/// The `DbxSharingGetFileMetadataIndividualResult` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingGetFileMetadataIndividualResult : NSObject <DbxSerializable> 
 
+/// The `SharingGetFileMetadataIndividualResultTag` enum type represents the
+/// possible tag states that the `DbxSharingGetFileMetadataIndividualResult`
+/// union can exist in.
 typedef NS_ENUM(NSInteger, SharingGetFileMetadataIndividualResultTag) {
     /// The result for this file if it was successful.
     SharingGetFileMetadataIndividualResultMetadata,
+
     /// The result for this file if it was an error.
     SharingGetFileMetadataIndividualResultAccessError,
-    /// (no description)
+
+    /// (no description).
     SharingGetFileMetadataIndividualResultOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingGetFileMetadataIndividualResultTag tag;
+
+/// The result for this file if it was successful.
+@property (nonatomic) DbxSharingSharedFileMetadata * _Nonnull metadata;
+
+/// The result for this file if it was an error.
+@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
+
+
+/// Initializes union class with tag state of `Metadata`.
 - (nonnull instancetype)initWithMetadata:(DbxSharingSharedFileMetadata * _Nonnull)metadata;
 
+/// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Metadata`.
 - (BOOL)isMetadata;
 
+/// Returns whether the union's current tag state has value `AccessError`.
 - (BOOL)isAccessError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingGetFileMetadataIndividualResult` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingGetFileMetadataIndividualResult union type.
-@property (nonatomic) SharingGetFileMetadataIndividualResultTag tag;
-@property (nonatomic) DbxSharingSharedFileMetadata * _Nonnull metadata;
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingGetFileMetadataIndividualResult`
+/// union.
+/// 
 @interface DbxSharingGetFileMetadataIndividualResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingGetFileMetadataIndividualResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingGetFileMetadataIndividualResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingGetFileMetadataIndividualResult`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingGetFileMetadataIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

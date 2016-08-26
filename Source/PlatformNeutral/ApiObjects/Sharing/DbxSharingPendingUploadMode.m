@@ -11,7 +11,7 @@
 - (instancetype)initWithFile {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPendingUploadModeTag)SharingPendingUploadModeFile;
+        _tag = SharingPendingUploadModeFile;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingPendingUploadModeTag)SharingPendingUploadModeFolder;
+        _tag = SharingPendingUploadModeFolder;
     }
     return self;
 }
 
 - (BOOL)isFile {
-    return _tag == (SharingPendingUploadModeTag)SharingPendingUploadModeFile;
+    return _tag == SharingPendingUploadModeFile;
 }
 
 - (BOOL)isFolder {
-    return _tag == (SharingPendingUploadModeTag)SharingPendingUploadModeFolder;
+    return _tag == SharingPendingUploadModeFolder;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingPendingUploadModeTag)SharingPendingUploadModeFile) {
-        return @"(SharingPendingUploadModeTag)SharingPendingUploadModeFile";
-    }
-    if (_tag == (SharingPendingUploadModeTag)SharingPendingUploadModeFolder) {
-        return @"(SharingPendingUploadModeTag)SharingPendingUploadModeFolder";
+    switch (_tag) {
+        case SharingPendingUploadModeFile:
+           return @"SharingPendingUploadModeFile";
+        case SharingPendingUploadModeFolder:
+           return @"SharingPendingUploadModeFolder";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

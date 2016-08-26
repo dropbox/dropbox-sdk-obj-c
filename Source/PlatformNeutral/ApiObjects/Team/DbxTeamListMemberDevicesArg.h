@@ -3,37 +3,57 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamListMemberDevicesArg;
 
 /// 
-/// The DbxTeamListMemberDevicesArg struct.
+/// The `DbxTeamListMemberDevicesArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamListMemberDevicesArg : NSObject <DbxSerializable> 
 
 /// The team's member id
 @property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+
 /// Whether to list web sessions of the team's member
 @property (nonatomic, copy) NSNumber * _Nonnull includeWebSessions;
+
 /// Whether to list linked desktop devices of the team's member
 @property (nonatomic, copy) NSNumber * _Nonnull includeDesktopClients;
+
 /// Whether to list linked mobile devices of the team's member
 @property (nonatomic, copy) NSNumber * _Nonnull includeMobileClients;
 
+/// Full constructor for the `ListMemberDevicesArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
+/// Convenience constructor for the `ListMemberDevicesArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
+/// Returns a human-readable representation of the `DbxTeamListMemberDevicesArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamListMemberDevicesArg` struct.
+/// 
 @interface DbxTeamListMemberDevicesArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamListMemberDevicesArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamListMemberDevicesArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamListMemberDevicesArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamListMemberDevicesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

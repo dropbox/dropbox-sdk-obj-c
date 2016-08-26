@@ -3,56 +3,88 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamUserSelectorArg union.
+/// The `DbxTeamUserSelectorArg` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Argument for selecting a single user, either by team_member_id, external_id
 /// or email.
 /// 
 @interface DbxTeamUserSelectorArg : NSObject <DbxSerializable> 
 
+/// The `TeamUserSelectorArgTag` enum type represents the possible tag states
+/// that the `DbxTeamUserSelectorArg` union can exist in.
 typedef NS_ENUM(NSInteger, TeamUserSelectorArgTag) {
-    /// (no description)
+    /// (no description).
     TeamUserSelectorArgTeamMemberId,
-    /// (no description)
+
+    /// (no description).
     TeamUserSelectorArgExternalId,
-    /// (no description)
+
+    /// (no description).
     TeamUserSelectorArgEmail,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamUserSelectorArgTag tag;
+
+/// (no description).
+@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+
+/// (no description).
+@property (nonatomic, copy) NSString * _Nonnull externalId;
+
+/// (no description).
+@property (nonatomic, copy) NSString * _Nonnull email;
+
+
+/// Initializes union class with tag state of `TeamMemberId`.
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
+/// Initializes union class with tag state of `ExternalId`.
 - (nonnull instancetype)initWithExternalId:(NSString * _Nonnull)externalId;
 
+/// Initializes union class with tag state of `Email`.
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
+/// Returns whether the union's current tag state has value `TeamMemberId`.
 - (BOOL)isTeamMemberId;
 
+/// Returns whether the union's current tag state has value `ExternalId`.
 - (BOOL)isExternalId;
 
+/// Returns whether the union's current tag state has value `Email`.
 - (BOOL)isEmail;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamUserSelectorArg`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamUserSelectorArg union type.
-@property (nonatomic) TeamUserSelectorArgTag tag;
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
-@property (nonatomic, copy) NSString * _Nonnull externalId;
-@property (nonatomic, copy) NSString * _Nonnull email;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamUserSelectorArg` union.
+/// 
 @interface DbxTeamUserSelectorArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamUserSelectorArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamUserSelectorArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamUserSelectorArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamUserSelectorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

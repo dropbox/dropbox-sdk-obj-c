@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxUsersTeam.h"
 
 @class DbxTeamPoliciesTeamSharingPolicies;
 @class DbxUsersFullTeam;
 
 /// 
-/// The DbxUsersFullTeam struct.
+/// The `DbxUsersFullTeam` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Detailed information about a team.
 /// 
@@ -19,17 +23,26 @@
 /// Team policies governing sharing.
 @property (nonatomic) DbxTeamPoliciesTeamSharingPolicies * _Nonnull sharingPolicies;
 
+/// Full constructor for the `FullTeam` struct (exposes all instance variables).
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name sharingPolicies:(DbxTeamPoliciesTeamSharingPolicies * _Nonnull)sharingPolicies;
 
+/// Returns a human-readable representation of the `DbxUsersFullTeam` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersFullTeam` struct.
+/// 
 @interface DbxUsersFullTeamSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersFullTeam` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersFullTeam * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersFullTeam` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersFullTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

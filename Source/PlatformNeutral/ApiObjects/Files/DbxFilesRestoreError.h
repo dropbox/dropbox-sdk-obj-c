@@ -3,60 +3,93 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 @class DbxFilesRestoreError;
 @class DbxFilesWriteError;
 
 /// 
-/// The DbxFilesRestoreError union.
+/// The `DbxFilesRestoreError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesRestoreError : NSObject <DbxSerializable> 
 
+/// The `FilesRestoreErrorTag` enum type represents the possible tag states that
+/// the `DbxFilesRestoreError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesRestoreErrorTag) {
     /// An error occurs when downloading metadata for the file.
     FilesRestoreErrorPathLookup,
+
     /// An error occurs when trying to restore the file to that path.
     FilesRestoreErrorPathWrite,
+
     /// The revision is invalid. It may point to a different file.
     FilesRestoreErrorInvalidRevision,
-    /// (no description)
+
+    /// (no description).
     FilesRestoreErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesRestoreErrorTag tag;
+
+/// An error occurs when downloading metadata for the file.
+@property (nonatomic) DbxFilesLookupError * _Nonnull pathLookup;
+
+/// An error occurs when trying to restore the file to that path.
+@property (nonatomic) DbxFilesWriteError * _Nonnull pathWrite;
+
+
+/// Initializes union class with tag state of `PathLookup`.
 - (nonnull instancetype)initWithPathLookup:(DbxFilesLookupError * _Nonnull)pathLookup;
 
+/// Initializes union class with tag state of `PathWrite`.
 - (nonnull instancetype)initWithPathWrite:(DbxFilesWriteError * _Nonnull)pathWrite;
 
+/// Initializes union class with tag state of `InvalidRevision`.
 - (nonnull instancetype)initWithInvalidRevision;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `PathLookup`.
 - (BOOL)isPathLookup;
 
+/// Returns whether the union's current tag state has value `PathWrite`.
 - (BOOL)isPathWrite;
 
+/// Returns whether the union's current tag state has value `InvalidRevision`.
 - (BOOL)isInvalidRevision;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesRestoreError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesRestoreError union type.
-@property (nonatomic) FilesRestoreErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull pathLookup;
-@property (nonatomic) DbxFilesWriteError * _Nonnull pathWrite;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesRestoreError` union.
+/// 
 @interface DbxFilesRestoreErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesRestoreError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesRestoreError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesRestoreError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesRestoreError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

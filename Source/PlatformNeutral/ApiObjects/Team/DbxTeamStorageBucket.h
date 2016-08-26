@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamStorageBucket;
 
 /// 
-/// The DbxTeamStorageBucket struct.
+/// The `DbxTeamStorageBucket` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Describes the number of users in a specific storage bucket.
 /// 
@@ -17,20 +21,32 @@
 /// The name of the storage bucket. For example, '1G' is a bucket of users with
 /// storage size up to 1 Giga.
 @property (nonatomic, copy) NSString * _Nonnull bucket;
+
 /// The number of people whose storage is in the range of this storage bucket.
 @property (nonatomic, copy) NSNumber * _Nonnull users;
 
+/// Full constructor for the `StorageBucket` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
 
+/// Returns a human-readable representation of the `DbxTeamStorageBucket`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamStorageBucket` struct.
+/// 
 @interface DbxTeamStorageBucketSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamStorageBucket` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamStorageBucket * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamStorageBucket` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamStorageBucket * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -14,7 +14,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusInProgress;
+        _tag = SharingShareFolderJobStatusInProgress;
     }
     return self;
 }
@@ -22,7 +22,7 @@
 - (instancetype)initWithComplete:(DbxSharingSharedFolderMetadata *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete;
+        _tag = SharingShareFolderJobStatusComplete;
         _complete = complete;
     }
     return self;
@@ -31,48 +31,47 @@
 - (instancetype)initWithFailed:(DbxSharingShareFolderError *)failed {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed;
+        _tag = SharingShareFolderJobStatusFailed;
         _failed = failed;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusInProgress;
+    return _tag == SharingShareFolderJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete;
+    return _tag == SharingShareFolderJobStatusComplete;
 }
 
 - (BOOL)isFailed {
-    return _tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed;
+    return _tag == SharingShareFolderJobStatusFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusInProgress) {
-        return @"(SharingShareFolderJobStatusTag)SharingShareFolderJobStatusInProgress";
-    }
-    if (_tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete) {
-        return @"(SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete";
-    }
-    if (_tag == (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed) {
-        return @"(SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed";
+    switch (_tag) {
+        case SharingShareFolderJobStatusInProgress:
+           return @"SharingShareFolderJobStatusInProgress";
+        case SharingShareFolderJobStatusComplete:
+           return @"SharingShareFolderJobStatusComplete";
+        case SharingShareFolderJobStatusFailed:
+           return @"SharingShareFolderJobStatusFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderMetadata *)complete {
-    if (_tag != (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusComplete, but was %@.", [self getTagName]];
+    if (_tag != SharingShareFolderJobStatusComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingShareFolderJobStatusComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DbxSharingShareFolderError *)failed {
-    if (_tag != (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingShareFolderJobStatusTag)SharingShareFolderJobStatusFailed, but was %@.", [self getTagName]];
+    if (_tag != SharingShareFolderJobStatusFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingShareFolderJobStatusFailed, but was %@.", [self getTagName]];
     }
     return _failed;
 }

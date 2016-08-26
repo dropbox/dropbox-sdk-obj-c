@@ -11,7 +11,7 @@
 - (instancetype)initWithMemberNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorMemberNotFound;
+        _tag = TeamListMemberDevicesErrorMemberNotFound;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorOther;
+        _tag = TeamListMemberDevicesErrorOther;
     }
     return self;
 }
 
 - (BOOL)isMemberNotFound {
-    return _tag == (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorMemberNotFound;
+    return _tag == TeamListMemberDevicesErrorMemberNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorOther;
+    return _tag == TeamListMemberDevicesErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorMemberNotFound) {
-        return @"(TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorMemberNotFound";
-    }
-    if (_tag == (TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorOther) {
-        return @"(TeamListMemberDevicesErrorTag)TeamListMemberDevicesErrorOther";
+    switch (_tag) {
+        case TeamListMemberDevicesErrorMemberNotFound:
+           return @"TeamListMemberDevicesErrorMemberNotFound";
+        case TeamListMemberDevicesErrorOther:
+           return @"TeamListMemberDevicesErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

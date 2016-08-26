@@ -11,7 +11,7 @@
 - (instancetype)initWithChangeOptions {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionChangeOptions;
+        _tag = SharingFolderActionChangeOptions;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithEditContents {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionEditContents;
+        _tag = SharingFolderActionEditContents;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithInviteEditor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionInviteEditor;
+        _tag = SharingFolderActionInviteEditor;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithInviteViewer {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionInviteViewer;
+        _tag = SharingFolderActionInviteViewer;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithInviteViewerNoComment {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionInviteViewerNoComment;
+        _tag = SharingFolderActionInviteViewerNoComment;
     }
     return self;
 }
@@ -51,7 +51,7 @@
 - (instancetype)initWithRelinquishMembership {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionRelinquishMembership;
+        _tag = SharingFolderActionRelinquishMembership;
     }
     return self;
 }
@@ -59,7 +59,7 @@
 - (instancetype)initWithUnmount {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionUnmount;
+        _tag = SharingFolderActionUnmount;
     }
     return self;
 }
@@ -67,7 +67,7 @@
 - (instancetype)initWithUnshare {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionUnshare;
+        _tag = SharingFolderActionUnshare;
     }
     return self;
 }
@@ -75,7 +75,7 @@
 - (instancetype)initWithLeaveACopy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionLeaveACopy;
+        _tag = SharingFolderActionLeaveACopy;
     }
     return self;
 }
@@ -83,7 +83,7 @@
 - (instancetype)initWithShareLink {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionShareLink;
+        _tag = SharingFolderActionShareLink;
     }
     return self;
 }
@@ -91,88 +91,79 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFolderActionTag)SharingFolderActionOther;
+        _tag = SharingFolderActionOther;
     }
     return self;
 }
 
 - (BOOL)isChangeOptions {
-    return _tag == (SharingFolderActionTag)SharingFolderActionChangeOptions;
+    return _tag == SharingFolderActionChangeOptions;
 }
 
 - (BOOL)isEditContents {
-    return _tag == (SharingFolderActionTag)SharingFolderActionEditContents;
+    return _tag == SharingFolderActionEditContents;
 }
 
 - (BOOL)isInviteEditor {
-    return _tag == (SharingFolderActionTag)SharingFolderActionInviteEditor;
+    return _tag == SharingFolderActionInviteEditor;
 }
 
 - (BOOL)isInviteViewer {
-    return _tag == (SharingFolderActionTag)SharingFolderActionInviteViewer;
+    return _tag == SharingFolderActionInviteViewer;
 }
 
 - (BOOL)isInviteViewerNoComment {
-    return _tag == (SharingFolderActionTag)SharingFolderActionInviteViewerNoComment;
+    return _tag == SharingFolderActionInviteViewerNoComment;
 }
 
 - (BOOL)isRelinquishMembership {
-    return _tag == (SharingFolderActionTag)SharingFolderActionRelinquishMembership;
+    return _tag == SharingFolderActionRelinquishMembership;
 }
 
 - (BOOL)isUnmount {
-    return _tag == (SharingFolderActionTag)SharingFolderActionUnmount;
+    return _tag == SharingFolderActionUnmount;
 }
 
 - (BOOL)isUnshare {
-    return _tag == (SharingFolderActionTag)SharingFolderActionUnshare;
+    return _tag == SharingFolderActionUnshare;
 }
 
 - (BOOL)isLeaveACopy {
-    return _tag == (SharingFolderActionTag)SharingFolderActionLeaveACopy;
+    return _tag == SharingFolderActionLeaveACopy;
 }
 
 - (BOOL)isShareLink {
-    return _tag == (SharingFolderActionTag)SharingFolderActionShareLink;
+    return _tag == SharingFolderActionShareLink;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingFolderActionTag)SharingFolderActionOther;
+    return _tag == SharingFolderActionOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFolderActionTag)SharingFolderActionChangeOptions) {
-        return @"(SharingFolderActionTag)SharingFolderActionChangeOptions";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionEditContents) {
-        return @"(SharingFolderActionTag)SharingFolderActionEditContents";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionInviteEditor) {
-        return @"(SharingFolderActionTag)SharingFolderActionInviteEditor";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionInviteViewer) {
-        return @"(SharingFolderActionTag)SharingFolderActionInviteViewer";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionInviteViewerNoComment) {
-        return @"(SharingFolderActionTag)SharingFolderActionInviteViewerNoComment";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionRelinquishMembership) {
-        return @"(SharingFolderActionTag)SharingFolderActionRelinquishMembership";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionUnmount) {
-        return @"(SharingFolderActionTag)SharingFolderActionUnmount";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionUnshare) {
-        return @"(SharingFolderActionTag)SharingFolderActionUnshare";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionLeaveACopy) {
-        return @"(SharingFolderActionTag)SharingFolderActionLeaveACopy";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionShareLink) {
-        return @"(SharingFolderActionTag)SharingFolderActionShareLink";
-    }
-    if (_tag == (SharingFolderActionTag)SharingFolderActionOther) {
-        return @"(SharingFolderActionTag)SharingFolderActionOther";
+    switch (_tag) {
+        case SharingFolderActionChangeOptions:
+           return @"SharingFolderActionChangeOptions";
+        case SharingFolderActionEditContents:
+           return @"SharingFolderActionEditContents";
+        case SharingFolderActionInviteEditor:
+           return @"SharingFolderActionInviteEditor";
+        case SharingFolderActionInviteViewer:
+           return @"SharingFolderActionInviteViewer";
+        case SharingFolderActionInviteViewerNoComment:
+           return @"SharingFolderActionInviteViewerNoComment";
+        case SharingFolderActionRelinquishMembership:
+           return @"SharingFolderActionRelinquishMembership";
+        case SharingFolderActionUnmount:
+           return @"SharingFolderActionUnmount";
+        case SharingFolderActionUnshare:
+           return @"SharingFolderActionUnshare";
+        case SharingFolderActionLeaveACopy:
+           return @"SharingFolderActionLeaveACopy";
+        case SharingFolderActionShareLink:
+           return @"SharingFolderActionShareLink";
+        case SharingFolderActionOther:
+           return @"SharingFolderActionOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingJobError;
 @class DbxSharingRelinquishFolderMembershipError;
@@ -11,57 +11,94 @@
 @class DbxSharingUnshareFolderError;
 
 /// 
-/// The DbxSharingJobError union.
+/// The `DbxSharingJobError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error occurred while performing an asynchronous job from unshareFolder or
 /// removeFolderMember.
 /// 
 @interface DbxSharingJobError : NSObject <DbxSerializable> 
 
+/// The `SharingJobErrorTag` enum type represents the possible tag states that
+/// the `DbxSharingJobError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingJobErrorTag) {
     /// Error occurred while performing unshareFolder action.
     SharingJobErrorUnshareFolderError,
+
     /// Error occurred while performing removeFolderMember action.
     SharingJobErrorRemoveFolderMemberError,
+
     /// Error occurred while performing relinquishFolderMembership action.
     SharingJobErrorRelinquishFolderMembershipError,
-    /// (no description)
+
+    /// (no description).
     SharingJobErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingJobErrorTag tag;
+
+/// Error occurred while performing unshareFolder action.
+@property (nonatomic) DbxSharingUnshareFolderError * _Nonnull unshareFolderError;
+
+/// Error occurred while performing removeFolderMember action.
+@property (nonatomic) DbxSharingRemoveFolderMemberError * _Nonnull removeFolderMemberError;
+
+/// Error occurred while performing relinquishFolderMembership action.
+@property (nonatomic) DbxSharingRelinquishFolderMembershipError * _Nonnull relinquishFolderMembershipError;
+
+
+/// Initializes union class with tag state of `UnshareFolderError`.
 - (nonnull instancetype)initWithUnshareFolderError:(DbxSharingUnshareFolderError * _Nonnull)unshareFolderError;
 
+/// Initializes union class with tag state of `RemoveFolderMemberError`.
 - (nonnull instancetype)initWithRemoveFolderMemberError:(DbxSharingRemoveFolderMemberError * _Nonnull)removeFolderMemberError;
 
+/// Initializes union class with tag state of `RelinquishFolderMembershipError`.
 - (nonnull instancetype)initWithRelinquishFolderMembershipError:(DbxSharingRelinquishFolderMembershipError * _Nonnull)relinquishFolderMembershipError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value
+/// `UnshareFolderError`.
 - (BOOL)isUnshareFolderError;
 
+/// Returns whether the union's current tag state has value
+/// `RemoveFolderMemberError`.
 - (BOOL)isRemoveFolderMemberError;
 
+/// Returns whether the union's current tag state has value
+/// `RelinquishFolderMembershipError`.
 - (BOOL)isRelinquishFolderMembershipError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingJobError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingJobError union type.
-@property (nonatomic) SharingJobErrorTag tag;
-@property (nonatomic) DbxSharingUnshareFolderError * _Nonnull unshareFolderError;
-@property (nonatomic) DbxSharingRemoveFolderMemberError * _Nonnull removeFolderMemberError;
-@property (nonatomic) DbxSharingRelinquishFolderMembershipError * _Nonnull relinquishFolderMembershipError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingJobError` union.
+/// 
 @interface DbxSharingJobErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingJobError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingJobError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingJobError` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingJobError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

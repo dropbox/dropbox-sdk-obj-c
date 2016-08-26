@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupNotFound;
+        _tag = TeamGroupDeleteErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorOther;
+        _tag = TeamGroupDeleteErrorOther;
     }
     return self;
 }
@@ -28,32 +28,31 @@
 - (instancetype)initWithGroupAlreadyDeleted {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupAlreadyDeleted;
+        _tag = TeamGroupDeleteErrorGroupAlreadyDeleted;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupNotFound;
+    return _tag == TeamGroupDeleteErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorOther;
+    return _tag == TeamGroupDeleteErrorOther;
 }
 
 - (BOOL)isGroupAlreadyDeleted {
-    return _tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupAlreadyDeleted;
+    return _tag == TeamGroupDeleteErrorGroupAlreadyDeleted;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupNotFound) {
-        return @"(TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorOther) {
-        return @"(TeamGroupDeleteErrorTag)TeamGroupDeleteErrorOther";
-    }
-    if (_tag == (TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupAlreadyDeleted) {
-        return @"(TeamGroupDeleteErrorTag)TeamGroupDeleteErrorGroupAlreadyDeleted";
+    switch (_tag) {
+        case TeamGroupDeleteErrorGroupNotFound:
+           return @"TeamGroupDeleteErrorGroupNotFound";
+        case TeamGroupDeleteErrorOther:
+           return @"TeamGroupDeleteErrorOther";
+        case TeamGroupDeleteErrorGroupAlreadyDeleted:
+           return @"TeamGroupDeleteErrorGroupAlreadyDeleted";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

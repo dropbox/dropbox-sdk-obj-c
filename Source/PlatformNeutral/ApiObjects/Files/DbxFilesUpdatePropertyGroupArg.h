@@ -3,32 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesPropertyGroupUpdate;
 @class DbxFilesUpdatePropertyGroupArg;
 
 /// 
-/// The DbxFilesUpdatePropertyGroupArg struct.
+/// The `DbxFilesUpdatePropertyGroupArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesUpdatePropertyGroupArg : NSObject <DbxSerializable> 
 
 /// A unique identifier for the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// Filled custom property templates associated with a file.
 @property (nonatomic) NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull updatePropertyGroups;
 
+/// Full constructor for the `UpdatePropertyGroupArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DbxFilesPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesUpdatePropertyGroupArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesUpdatePropertyGroupArg` struct.
+/// 
 @interface DbxFilesUpdatePropertyGroupArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesUpdatePropertyGroupArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesUpdatePropertyGroupArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesUpdatePropertyGroupArg` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesUpdatePropertyGroupArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

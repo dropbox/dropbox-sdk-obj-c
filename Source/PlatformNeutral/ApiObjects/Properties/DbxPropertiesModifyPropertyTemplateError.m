@@ -12,7 +12,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound;
+        _tag = PropertiesModifyPropertyTemplateErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorRestrictedContent;
+        _tag = PropertiesModifyPropertyTemplateErrorRestrictedContent;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorOther;
+        _tag = PropertiesModifyPropertyTemplateErrorOther;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithConflictingPropertyNames {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorConflictingPropertyNames;
+        _tag = PropertiesModifyPropertyTemplateErrorConflictingPropertyNames;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (instancetype)initWithTooManyProperties {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyProperties;
+        _tag = PropertiesModifyPropertyTemplateErrorTooManyProperties;
     }
     return self;
 }
@@ -53,7 +53,7 @@
 - (instancetype)initWithTooManyTemplates {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyTemplates;
+        _tag = PropertiesModifyPropertyTemplateErrorTooManyTemplates;
     }
     return self;
 }
@@ -61,68 +61,63 @@
 - (instancetype)initWithTemplateAttributeTooLarge {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge;
+        _tag = PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound;
+    return _tag == PropertiesModifyPropertyTemplateErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorRestrictedContent;
+    return _tag == PropertiesModifyPropertyTemplateErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorOther;
+    return _tag == PropertiesModifyPropertyTemplateErrorOther;
 }
 
 - (BOOL)isConflictingPropertyNames {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorConflictingPropertyNames;
+    return _tag == PropertiesModifyPropertyTemplateErrorConflictingPropertyNames;
 }
 
 - (BOOL)isTooManyProperties {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyProperties;
+    return _tag == PropertiesModifyPropertyTemplateErrorTooManyProperties;
 }
 
 - (BOOL)isTooManyTemplates {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyTemplates;
+    return _tag == PropertiesModifyPropertyTemplateErrorTooManyTemplates;
 }
 
 - (BOOL)isTemplateAttributeTooLarge {
-    return _tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge;
+    return _tag == PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorRestrictedContent) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorRestrictedContent";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorOther) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorOther";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorConflictingPropertyNames) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorConflictingPropertyNames";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyProperties) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyProperties";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyTemplates) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTooManyTemplates";
-    }
-    if (_tag == (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge) {
-        return @"(PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge";
+    switch (_tag) {
+        case PropertiesModifyPropertyTemplateErrorTemplateNotFound:
+           return @"PropertiesModifyPropertyTemplateErrorTemplateNotFound";
+        case PropertiesModifyPropertyTemplateErrorRestrictedContent:
+           return @"PropertiesModifyPropertyTemplateErrorRestrictedContent";
+        case PropertiesModifyPropertyTemplateErrorOther:
+           return @"PropertiesModifyPropertyTemplateErrorOther";
+        case PropertiesModifyPropertyTemplateErrorConflictingPropertyNames:
+           return @"PropertiesModifyPropertyTemplateErrorConflictingPropertyNames";
+        case PropertiesModifyPropertyTemplateErrorTooManyProperties:
+           return @"PropertiesModifyPropertyTemplateErrorTooManyProperties";
+        case PropertiesModifyPropertyTemplateErrorTooManyTemplates:
+           return @"PropertiesModifyPropertyTemplateErrorTooManyTemplates";
+        case PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge:
+           return @"PropertiesModifyPropertyTemplateErrorTemplateAttributeTooLarge";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (PropertiesModifyPropertyTemplateErrorTag)PropertiesModifyPropertyTemplateErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != PropertiesModifyPropertyTemplateErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required PropertiesModifyPropertyTemplateErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }

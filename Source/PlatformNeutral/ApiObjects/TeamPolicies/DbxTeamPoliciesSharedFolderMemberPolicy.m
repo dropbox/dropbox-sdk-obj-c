@@ -11,7 +11,7 @@
 - (instancetype)initWithTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyTeam;
+        _tag = TeamPoliciesSharedFolderMemberPolicyTeam;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithAnyone {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyAnyone;
+        _tag = TeamPoliciesSharedFolderMemberPolicyAnyone;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyOther;
+        _tag = TeamPoliciesSharedFolderMemberPolicyOther;
     }
     return self;
 }
 
 - (BOOL)isTeam {
-    return _tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyTeam;
+    return _tag == TeamPoliciesSharedFolderMemberPolicyTeam;
 }
 
 - (BOOL)isAnyone {
-    return _tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyAnyone;
+    return _tag == TeamPoliciesSharedFolderMemberPolicyAnyone;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyOther;
+    return _tag == TeamPoliciesSharedFolderMemberPolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyTeam) {
-        return @"(TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyTeam";
-    }
-    if (_tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyAnyone) {
-        return @"(TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyAnyone";
-    }
-    if (_tag == (TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyOther) {
-        return @"(TeamPoliciesSharedFolderMemberPolicyTag)TeamPoliciesSharedFolderMemberPolicyOther";
+    switch (_tag) {
+        case TeamPoliciesSharedFolderMemberPolicyTeam:
+           return @"TeamPoliciesSharedFolderMemberPolicyTeam";
+        case TeamPoliciesSharedFolderMemberPolicyAnyone:
+           return @"TeamPoliciesSharedFolderMemberPolicyAnyone";
+        case TeamPoliciesSharedFolderMemberPolicyOther:
+           return @"TeamPoliciesSharedFolderMemberPolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -13,7 +13,7 @@
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId;
+        _tag = FilesSaveUrlResultAsyncJobId;
         _asyncJobId = asyncJobId;
     }
     return self;
@@ -22,41 +22,41 @@
 - (instancetype)initWithComplete:(DbxFilesFileMetadata *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveUrlResultTag)FilesSaveUrlResultComplete;
+        _tag = FilesSaveUrlResultComplete;
         _complete = complete;
     }
     return self;
 }
 
 - (BOOL)isAsyncJobId {
-    return _tag == (FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId;
+    return _tag == FilesSaveUrlResultAsyncJobId;
 }
 
 - (BOOL)isComplete {
-    return _tag == (FilesSaveUrlResultTag)FilesSaveUrlResultComplete;
+    return _tag == FilesSaveUrlResultComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId) {
-        return @"(FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId";
-    }
-    if (_tag == (FilesSaveUrlResultTag)FilesSaveUrlResultComplete) {
-        return @"(FilesSaveUrlResultTag)FilesSaveUrlResultComplete";
+    switch (_tag) {
+        case FilesSaveUrlResultAsyncJobId:
+           return @"FilesSaveUrlResultAsyncJobId";
+        case FilesSaveUrlResultComplete:
+           return @"FilesSaveUrlResultComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != (FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveUrlResultTag)FilesSaveUrlResultAsyncJobId, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveUrlResultAsyncJobId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveUrlResultAsyncJobId, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (DbxFilesFileMetadata *)complete {
-    if (_tag != (FilesSaveUrlResultTag)FilesSaveUrlResultComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveUrlResultTag)FilesSaveUrlResultComplete, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveUrlResultComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveUrlResultComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }

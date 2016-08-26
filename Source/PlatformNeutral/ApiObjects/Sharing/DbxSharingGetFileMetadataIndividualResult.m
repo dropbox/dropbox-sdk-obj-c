@@ -13,7 +13,7 @@
 - (instancetype)initWithMetadata:(DbxSharingSharedFileMetadata *)metadata {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata;
+        _tag = SharingGetFileMetadataIndividualResultMetadata;
         _metadata = metadata;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError;
+        _tag = SharingGetFileMetadataIndividualResultAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultOther;
+        _tag = SharingGetFileMetadataIndividualResultOther;
     }
     return self;
 }
 
 - (BOOL)isMetadata {
-    return _tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata;
+    return _tag == SharingGetFileMetadataIndividualResultMetadata;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError;
+    return _tag == SharingGetFileMetadataIndividualResultAccessError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultOther;
+    return _tag == SharingGetFileMetadataIndividualResultOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata) {
-        return @"(SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata";
-    }
-    if (_tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError) {
-        return @"(SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError";
-    }
-    if (_tag == (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultOther) {
-        return @"(SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultOther";
+    switch (_tag) {
+        case SharingGetFileMetadataIndividualResultMetadata:
+           return @"SharingGetFileMetadataIndividualResultMetadata";
+        case SharingGetFileMetadataIndividualResultAccessError:
+           return @"SharingGetFileMetadataIndividualResultAccessError";
+        case SharingGetFileMetadataIndividualResultOther:
+           return @"SharingGetFileMetadataIndividualResultOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFileMetadata *)metadata {
-    if (_tag != (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultMetadata, but was %@.", [self getTagName]];
+    if (_tag != SharingGetFileMetadataIndividualResultMetadata) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingGetFileMetadataIndividualResultMetadata, but was %@.", [self getTagName]];
     }
     return _metadata;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingGetFileMetadataIndividualResultTag)SharingGetFileMetadataIndividualResultAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingGetFileMetadataIndividualResultAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingGetFileMetadataIndividualResultAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

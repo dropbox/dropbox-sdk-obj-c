@@ -11,7 +11,7 @@
 - (instancetype)initWithDisabled {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateDisabled;
+        _tag = TeamPoliciesEmmStateDisabled;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithOptional {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOptional;
+        _tag = TeamPoliciesEmmStateOptional;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithRequired {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateRequired;
+        _tag = TeamPoliciesEmmStateRequired;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOther;
+        _tag = TeamPoliciesEmmStateOther;
     }
     return self;
 }
 
 - (BOOL)isDisabled {
-    return _tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateDisabled;
+    return _tag == TeamPoliciesEmmStateDisabled;
 }
 
 - (BOOL)isOptional {
-    return _tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOptional;
+    return _tag == TeamPoliciesEmmStateOptional;
 }
 
 - (BOOL)isRequired {
-    return _tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateRequired;
+    return _tag == TeamPoliciesEmmStateRequired;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOther;
+    return _tag == TeamPoliciesEmmStateOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateDisabled) {
-        return @"(TeamPoliciesEmmStateTag)TeamPoliciesEmmStateDisabled";
-    }
-    if (_tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOptional) {
-        return @"(TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOptional";
-    }
-    if (_tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateRequired) {
-        return @"(TeamPoliciesEmmStateTag)TeamPoliciesEmmStateRequired";
-    }
-    if (_tag == (TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOther) {
-        return @"(TeamPoliciesEmmStateTag)TeamPoliciesEmmStateOther";
+    switch (_tag) {
+        case TeamPoliciesEmmStateDisabled:
+           return @"TeamPoliciesEmmStateDisabled";
+        case TeamPoliciesEmmStateOptional:
+           return @"TeamPoliciesEmmStateOptional";
+        case TeamPoliciesEmmStateRequired:
+           return @"TeamPoliciesEmmStateRequired";
+        case TeamPoliciesEmmStateOther:
+           return @"TeamPoliciesEmmStateOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

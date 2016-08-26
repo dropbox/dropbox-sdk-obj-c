@@ -3,46 +3,71 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 @class DbxSharingCreateSharedLinkError;
 
 /// 
-/// The DbxSharingCreateSharedLinkError union.
+/// The `DbxSharingCreateSharedLinkError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingCreateSharedLinkError : NSObject <DbxSerializable> 
 
+/// The `SharingCreateSharedLinkErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingCreateSharedLinkError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingCreateSharedLinkErrorTag) {
-    /// (no description)
+    /// (no description).
     SharingCreateSharedLinkErrorPath,
-    /// (no description)
+
+    /// (no description).
     SharingCreateSharedLinkErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingCreateSharedLinkErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingCreateSharedLinkError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingCreateSharedLinkError union type.
-@property (nonatomic) SharingCreateSharedLinkErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingCreateSharedLinkError` union.
+/// 
 @interface DbxSharingCreateSharedLinkErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingCreateSharedLinkError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingCreateSharedLinkError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingCreateSharedLinkError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingCreateSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

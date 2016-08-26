@@ -12,7 +12,7 @@
 - (instancetype)initWithInvalidDropboxId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorInvalidDropboxId;
+        _tag = SharingSharedFolderMemberErrorInvalidDropboxId;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithNotAMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNotAMember;
+        _tag = SharingSharedFolderMemberErrorNotAMember;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithNoExplicitAccess:(DbxSharingMemberAccessLevelResult *)noExplicitAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess;
+        _tag = SharingSharedFolderMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
     return self;
@@ -37,47 +37,45 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorOther;
+        _tag = SharingSharedFolderMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidDropboxId {
-    return _tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorInvalidDropboxId;
+    return _tag == SharingSharedFolderMemberErrorInvalidDropboxId;
 }
 
 - (BOOL)isNotAMember {
-    return _tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNotAMember;
+    return _tag == SharingSharedFolderMemberErrorNotAMember;
 }
 
 - (BOOL)isNoExplicitAccess {
-    return _tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess;
+    return _tag == SharingSharedFolderMemberErrorNoExplicitAccess;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorOther;
+    return _tag == SharingSharedFolderMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorInvalidDropboxId) {
-        return @"(SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorInvalidDropboxId";
-    }
-    if (_tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNotAMember) {
-        return @"(SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNotAMember";
-    }
-    if (_tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess) {
-        return @"(SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess";
-    }
-    if (_tag == (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorOther) {
-        return @"(SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorOther";
+    switch (_tag) {
+        case SharingSharedFolderMemberErrorInvalidDropboxId:
+           return @"SharingSharedFolderMemberErrorInvalidDropboxId";
+        case SharingSharedFolderMemberErrorNotAMember:
+           return @"SharingSharedFolderMemberErrorNotAMember";
+        case SharingSharedFolderMemberErrorNoExplicitAccess:
+           return @"SharingSharedFolderMemberErrorNoExplicitAccess";
+        case SharingSharedFolderMemberErrorOther:
+           return @"SharingSharedFolderMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingMemberAccessLevelResult *)noExplicitAccess {
-    if (_tag != (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingSharedFolderMemberErrorTag)SharingSharedFolderMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
+    if (_tag != SharingSharedFolderMemberErrorNoExplicitAccess) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingSharedFolderMemberErrorNoExplicitAccess, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }

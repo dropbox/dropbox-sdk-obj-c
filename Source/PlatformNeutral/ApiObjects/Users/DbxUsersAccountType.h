@@ -3,52 +3,77 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersAccountType;
 
 /// 
-/// The DbxUsersAccountType union.
+/// The `DbxUsersAccountType` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// What type of account this user has.
 /// 
 @interface DbxUsersAccountType : NSObject <DbxSerializable> 
 
+/// The `UsersAccountTypeTag` enum type represents the possible tag states that
+/// the `DbxUsersAccountType` union can exist in.
 typedef NS_ENUM(NSInteger, UsersAccountTypeTag) {
     /// The basic account type.
     UsersAccountTypeBasic,
+
     /// The Dropbox Pro account type.
     UsersAccountTypePro,
+
     /// The Dropbox Business account type.
     UsersAccountTypeBusiness,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) UsersAccountTypeTag tag;
+
+
+/// Initializes union class with tag state of `Basic`.
 - (nonnull instancetype)initWithBasic;
 
+/// Initializes union class with tag state of `Pro`.
 - (nonnull instancetype)initWithPro;
 
+/// Initializes union class with tag state of `Business`.
 - (nonnull instancetype)initWithBusiness;
 
+/// Returns whether the union's current tag state has value `Basic`.
 - (BOOL)isBasic;
 
+/// Returns whether the union's current tag state has value `Pro`.
 - (BOOL)isPro;
 
+/// Returns whether the union's current tag state has value `Business`.
 - (BOOL)isBusiness;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxUsersAccountType` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxUsersAccountType union type.
-@property (nonatomic) UsersAccountTypeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersAccountType` union.
+/// 
 @interface DbxUsersAccountTypeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersAccountType` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersAccountType * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersAccountType` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersAccountType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

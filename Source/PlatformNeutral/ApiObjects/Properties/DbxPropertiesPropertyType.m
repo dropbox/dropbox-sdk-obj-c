@@ -11,7 +11,7 @@
 - (instancetype)initWithString {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesPropertyTypeTag)PropertiesPropertyTypeString;
+        _tag = PropertiesPropertyTypeString;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesPropertyTypeTag)PropertiesPropertyTypeOther;
+        _tag = PropertiesPropertyTypeOther;
     }
     return self;
 }
 
 - (BOOL)isString {
-    return _tag == (PropertiesPropertyTypeTag)PropertiesPropertyTypeString;
+    return _tag == PropertiesPropertyTypeString;
 }
 
 - (BOOL)isOther {
-    return _tag == (PropertiesPropertyTypeTag)PropertiesPropertyTypeOther;
+    return _tag == PropertiesPropertyTypeOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (PropertiesPropertyTypeTag)PropertiesPropertyTypeString) {
-        return @"(PropertiesPropertyTypeTag)PropertiesPropertyTypeString";
-    }
-    if (_tag == (PropertiesPropertyTypeTag)PropertiesPropertyTypeOther) {
-        return @"(PropertiesPropertyTypeTag)PropertiesPropertyTypeOther";
+    switch (_tag) {
+        case PropertiesPropertyTypeString:
+           return @"PropertiesPropertyTypeString";
+        case PropertiesPropertyTypeOther:
+           return @"PropertiesPropertyTypeOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

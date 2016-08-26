@@ -3,39 +3,59 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesGetMetadataArg;
 
 /// 
-/// The DbxFilesGetMetadataArg struct.
+/// The `DbxFilesGetMetadataArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesGetMetadataArg : NSObject <DbxSerializable> 
 
 /// The path of a file or folder on Dropbox.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// If true, mediaInfo in FileMetadata is set for photo and video.
 @property (nonatomic, copy) NSNumber * _Nonnull includeMediaInfo;
+
 /// If true, DeletedMetadata will be returned for deleted file or folder,
 /// otherwise notFound in LookupError will be returned.
 @property (nonatomic, copy) NSNumber * _Nonnull includeDeleted;
+
 /// If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
 @property (nonatomic, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
+/// Full constructor for the `GetMetadataArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
+/// Convenience constructor for the `GetMetadataArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesGetMetadataArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGetMetadataArg` struct.
+/// 
 @interface DbxFilesGetMetadataArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGetMetadataArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGetMetadataArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGetMetadataArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

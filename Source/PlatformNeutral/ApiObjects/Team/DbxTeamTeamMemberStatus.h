@@ -3,62 +3,94 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamRemovedStatus;
 @class DbxTeamTeamMemberStatus;
 
 /// 
-/// The DbxTeamTeamMemberStatus union.
+/// The `DbxTeamTeamMemberStatus` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The user's status as a member of a specific team.
 /// 
 @interface DbxTeamTeamMemberStatus : NSObject <DbxSerializable> 
 
+/// The `TeamTeamMemberStatusTag` enum type represents the possible tag states
+/// that the `DbxTeamTeamMemberStatus` union can exist in.
 typedef NS_ENUM(NSInteger, TeamTeamMemberStatusTag) {
     /// User has successfully joined the team.
     TeamTeamMemberStatusActive,
+
     /// User has been invited to a team, but has not joined the team yet.
     TeamTeamMemberStatusInvited,
+
     /// User is no longer a member of the team, but the account can be
     /// un-suspended, re-establishing the user as a team member.
     TeamTeamMemberStatusSuspended,
+
     /// User is no longer a member of the team. Removed users are only listed
     /// when include_removed is true in members/list.
     TeamTeamMemberStatusRemoved,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamTeamMemberStatusTag tag;
+
+/// User is no longer a member of the team. Removed users are only listed when
+/// include_removed is true in members/list.
+@property (nonatomic) DbxTeamRemovedStatus * _Nonnull removed;
+
+
+/// Initializes union class with tag state of `Active`.
 - (nonnull instancetype)initWithActive;
 
+/// Initializes union class with tag state of `Invited`.
 - (nonnull instancetype)initWithInvited;
 
+/// Initializes union class with tag state of `Suspended`.
 - (nonnull instancetype)initWithSuspended;
 
+/// Initializes union class with tag state of `Removed`.
 - (nonnull instancetype)initWithRemoved:(DbxTeamRemovedStatus * _Nonnull)removed;
 
+/// Returns whether the union's current tag state has value `Active`.
 - (BOOL)isActive;
 
+/// Returns whether the union's current tag state has value `Invited`.
 - (BOOL)isInvited;
 
+/// Returns whether the union's current tag state has value `Suspended`.
 - (BOOL)isSuspended;
 
+/// Returns whether the union's current tag state has value `Removed`.
 - (BOOL)isRemoved;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamTeamMemberStatus`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamTeamMemberStatus union type.
-@property (nonatomic) TeamTeamMemberStatusTag tag;
-@property (nonatomic) DbxTeamRemovedStatus * _Nonnull removed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamTeamMemberStatus` union.
+/// 
 @interface DbxTeamTeamMemberStatusSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamTeamMemberStatus` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMemberStatus * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamTeamMemberStatus` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamTeamMemberStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

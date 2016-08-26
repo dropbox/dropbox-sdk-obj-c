@@ -11,7 +11,7 @@
 - (instancetype)initWithPublic {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilityPublic;
+        _tag = SharingVisibilityPublic;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilityTeamOnly;
+        _tag = SharingVisibilityTeamOnly;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithPassword {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilityPassword;
+        _tag = SharingVisibilityPassword;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithTeamAndPassword {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilityTeamAndPassword;
+        _tag = SharingVisibilityTeamAndPassword;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithSharedFolderOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilitySharedFolderOnly;
+        _tag = SharingVisibilitySharedFolderOnly;
     }
     return self;
 }
@@ -51,53 +51,49 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingVisibilityTag)SharingVisibilityOther;
+        _tag = SharingVisibilityOther;
     }
     return self;
 }
 
 - (BOOL)isPublic {
-    return _tag == (SharingVisibilityTag)SharingVisibilityPublic;
+    return _tag == SharingVisibilityPublic;
 }
 
 - (BOOL)isTeamOnly {
-    return _tag == (SharingVisibilityTag)SharingVisibilityTeamOnly;
+    return _tag == SharingVisibilityTeamOnly;
 }
 
 - (BOOL)isPassword {
-    return _tag == (SharingVisibilityTag)SharingVisibilityPassword;
+    return _tag == SharingVisibilityPassword;
 }
 
 - (BOOL)isTeamAndPassword {
-    return _tag == (SharingVisibilityTag)SharingVisibilityTeamAndPassword;
+    return _tag == SharingVisibilityTeamAndPassword;
 }
 
 - (BOOL)isSharedFolderOnly {
-    return _tag == (SharingVisibilityTag)SharingVisibilitySharedFolderOnly;
+    return _tag == SharingVisibilitySharedFolderOnly;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingVisibilityTag)SharingVisibilityOther;
+    return _tag == SharingVisibilityOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingVisibilityTag)SharingVisibilityPublic) {
-        return @"(SharingVisibilityTag)SharingVisibilityPublic";
-    }
-    if (_tag == (SharingVisibilityTag)SharingVisibilityTeamOnly) {
-        return @"(SharingVisibilityTag)SharingVisibilityTeamOnly";
-    }
-    if (_tag == (SharingVisibilityTag)SharingVisibilityPassword) {
-        return @"(SharingVisibilityTag)SharingVisibilityPassword";
-    }
-    if (_tag == (SharingVisibilityTag)SharingVisibilityTeamAndPassword) {
-        return @"(SharingVisibilityTag)SharingVisibilityTeamAndPassword";
-    }
-    if (_tag == (SharingVisibilityTag)SharingVisibilitySharedFolderOnly) {
-        return @"(SharingVisibilityTag)SharingVisibilitySharedFolderOnly";
-    }
-    if (_tag == (SharingVisibilityTag)SharingVisibilityOther) {
-        return @"(SharingVisibilityTag)SharingVisibilityOther";
+    switch (_tag) {
+        case SharingVisibilityPublic:
+           return @"SharingVisibilityPublic";
+        case SharingVisibilityTeamOnly:
+           return @"SharingVisibilityTeamOnly";
+        case SharingVisibilityPassword:
+           return @"SharingVisibilityPassword";
+        case SharingVisibilityTeamAndPassword:
+           return @"SharingVisibilityTeamAndPassword";
+        case SharingVisibilitySharedFolderOnly:
+           return @"SharingVisibilitySharedFolderOnly";
+        case SharingVisibilityOther:
+           return @"SharingVisibilityOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

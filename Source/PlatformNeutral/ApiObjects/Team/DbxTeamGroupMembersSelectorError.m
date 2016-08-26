@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorGroupNotFound;
+        _tag = TeamGroupMembersSelectorErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorOther;
+        _tag = TeamGroupMembersSelectorErrorOther;
     }
     return self;
 }
@@ -28,32 +28,31 @@
 - (instancetype)initWithMemberNotInGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorMemberNotInGroup;
+        _tag = TeamGroupMembersSelectorErrorMemberNotInGroup;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorGroupNotFound;
+    return _tag == TeamGroupMembersSelectorErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorOther;
+    return _tag == TeamGroupMembersSelectorErrorOther;
 }
 
 - (BOOL)isMemberNotInGroup {
-    return _tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorMemberNotInGroup;
+    return _tag == TeamGroupMembersSelectorErrorMemberNotInGroup;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorGroupNotFound) {
-        return @"(TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorOther) {
-        return @"(TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorOther";
-    }
-    if (_tag == (TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorMemberNotInGroup) {
-        return @"(TeamGroupMembersSelectorErrorTag)TeamGroupMembersSelectorErrorMemberNotInGroup";
+    switch (_tag) {
+        case TeamGroupMembersSelectorErrorGroupNotFound:
+           return @"TeamGroupMembersSelectorErrorGroupNotFound";
+        case TeamGroupMembersSelectorErrorOther:
+           return @"TeamGroupMembersSelectorErrorOther";
+        case TeamGroupMembersSelectorErrorMemberNotInGroup:
+           return @"TeamGroupMembersSelectorErrorMemberNotInGroup";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

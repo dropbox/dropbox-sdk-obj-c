@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath;
+        _tag = FilesListFolderContinueErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithReset {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorReset;
+        _tag = FilesListFolderContinueErrorReset;
     }
     return self;
 }
@@ -29,40 +29,39 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorOther;
+        _tag = FilesListFolderContinueErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath;
+    return _tag == FilesListFolderContinueErrorPath;
 }
 
 - (BOOL)isReset {
-    return _tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorReset;
+    return _tag == FilesListFolderContinueErrorReset;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorOther;
+    return _tag == FilesListFolderContinueErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath) {
-        return @"(FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath";
-    }
-    if (_tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorReset) {
-        return @"(FilesListFolderContinueErrorTag)FilesListFolderContinueErrorReset";
-    }
-    if (_tag == (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorOther) {
-        return @"(FilesListFolderContinueErrorTag)FilesListFolderContinueErrorOther";
+    switch (_tag) {
+        case FilesListFolderContinueErrorPath:
+           return @"FilesListFolderContinueErrorPath";
+        case FilesListFolderContinueErrorReset:
+           return @"FilesListFolderContinueErrorReset";
+        case FilesListFolderContinueErrorOther:
+           return @"FilesListFolderContinueErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesListFolderContinueErrorTag)FilesListFolderContinueErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesListFolderContinueErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesListFolderContinueErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamDeviceSession.h"
 
 @class DbxTeamDesktopClientSession;
 @class DbxTeamDesktopPlatform;
 
 /// 
-/// The DbxTeamDesktopClientSession struct.
+/// The `DbxTeamDesktopClientSession` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information about linked Dropbox desktop client sessions
 /// 
@@ -18,28 +22,45 @@
 
 /// Name of the hosting desktop
 @property (nonatomic, copy) NSString * _Nonnull hostName;
+
 /// The Dropbox desktop client type
 @property (nonatomic) DbxTeamDesktopPlatform * _Nonnull clientType;
+
 /// The Dropbox client version
 @property (nonatomic, copy) NSString * _Nonnull clientVersion;
+
 /// Information on the hosting platform
 @property (nonatomic, copy) NSString * _Nonnull platform;
+
 /// Whether it's possible to delete all of the account files upon unlinking
 @property (nonatomic, copy) NSNumber * _Nonnull isDeleteOnUnlinkSupported;
 
+/// Full constructor for the `DesktopClientSession` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DbxTeamDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
+/// Convenience constructor for the `DesktopClientSession` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DbxTeamDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported;
 
+/// Returns a human-readable representation of the `DbxTeamDesktopClientSession`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamDesktopClientSession` struct.
+/// 
 @interface DbxTeamDesktopClientSessionSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamDesktopClientSession` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamDesktopClientSession * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamDesktopClientSession` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamDesktopClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

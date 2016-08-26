@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamIncludeMembersArg.h"
 
 @class DbxTeamGroupMembersAddArg;
@@ -11,28 +11,46 @@
 @class DbxTeamMemberAccess;
 
 /// 
-/// The DbxTeamGroupMembersAddArg struct.
+/// The `DbxTeamGroupMembersAddArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupMembersAddArg : DbxTeamIncludeMembersArg <DbxSerializable> 
 
 /// Group to which users will be added.
 @property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+
 /// List of users to be added to the group.
 @property (nonatomic) NSArray<DbxTeamMemberAccess *> * _Nonnull members;
 
+/// Full constructor for the `GroupMembersAddArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers;
 
+/// Convenience constructor for the `GroupMembersAddArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group members:(NSArray<DbxTeamMemberAccess *> * _Nonnull)members;
 
+/// Returns a human-readable representation of the `DbxTeamGroupMembersAddArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMembersAddArg` struct.
+/// 
 @interface DbxTeamGroupMembersAddArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMembersAddArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersAddArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMembersAddArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

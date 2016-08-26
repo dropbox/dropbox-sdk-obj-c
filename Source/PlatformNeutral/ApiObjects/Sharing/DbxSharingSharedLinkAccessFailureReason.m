@@ -11,7 +11,7 @@
 - (instancetype)initWithLoginRequired {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonLoginRequired;
+        _tag = SharingSharedLinkAccessFailureReasonLoginRequired;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithEmailVerifyRequired {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonEmailVerifyRequired;
+        _tag = SharingSharedLinkAccessFailureReasonEmailVerifyRequired;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithPasswordRequired {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonPasswordRequired;
+        _tag = SharingSharedLinkAccessFailureReasonPasswordRequired;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonTeamOnly;
+        _tag = SharingSharedLinkAccessFailureReasonTeamOnly;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithOwnerOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOwnerOnly;
+        _tag = SharingSharedLinkAccessFailureReasonOwnerOnly;
     }
     return self;
 }
@@ -51,53 +51,49 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOther;
+        _tag = SharingSharedLinkAccessFailureReasonOther;
     }
     return self;
 }
 
 - (BOOL)isLoginRequired {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonLoginRequired;
+    return _tag == SharingSharedLinkAccessFailureReasonLoginRequired;
 }
 
 - (BOOL)isEmailVerifyRequired {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonEmailVerifyRequired;
+    return _tag == SharingSharedLinkAccessFailureReasonEmailVerifyRequired;
 }
 
 - (BOOL)isPasswordRequired {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonPasswordRequired;
+    return _tag == SharingSharedLinkAccessFailureReasonPasswordRequired;
 }
 
 - (BOOL)isTeamOnly {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonTeamOnly;
+    return _tag == SharingSharedLinkAccessFailureReasonTeamOnly;
 }
 
 - (BOOL)isOwnerOnly {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOwnerOnly;
+    return _tag == SharingSharedLinkAccessFailureReasonOwnerOnly;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOther;
+    return _tag == SharingSharedLinkAccessFailureReasonOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonLoginRequired) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonLoginRequired";
-    }
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonEmailVerifyRequired) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonEmailVerifyRequired";
-    }
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonPasswordRequired) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonPasswordRequired";
-    }
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonTeamOnly) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonTeamOnly";
-    }
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOwnerOnly) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOwnerOnly";
-    }
-    if (_tag == (SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOther) {
-        return @"(SharingSharedLinkAccessFailureReasonTag)SharingSharedLinkAccessFailureReasonOther";
+    switch (_tag) {
+        case SharingSharedLinkAccessFailureReasonLoginRequired:
+           return @"SharingSharedLinkAccessFailureReasonLoginRequired";
+        case SharingSharedLinkAccessFailureReasonEmailVerifyRequired:
+           return @"SharingSharedLinkAccessFailureReasonEmailVerifyRequired";
+        case SharingSharedLinkAccessFailureReasonPasswordRequired:
+           return @"SharingSharedLinkAccessFailureReasonPasswordRequired";
+        case SharingSharedLinkAccessFailureReasonTeamOnly:
+           return @"SharingSharedLinkAccessFailureReasonTeamOnly";
+        case SharingSharedLinkAccessFailureReasonOwnerOnly:
+           return @"SharingSharedLinkAccessFailureReasonOwnerOnly";
+        case SharingSharedLinkAccessFailureReasonOther:
+           return @"SharingSharedLinkAccessFailureReasonOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorGroupNotFound;
+        _tag = TeamGroupUpdateErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorOther;
+        _tag = TeamGroupUpdateErrorOther;
     }
     return self;
 }
@@ -28,32 +28,31 @@
 - (instancetype)initWithExternalIdAlreadyInUse {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorExternalIdAlreadyInUse;
+        _tag = TeamGroupUpdateErrorExternalIdAlreadyInUse;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorGroupNotFound;
+    return _tag == TeamGroupUpdateErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorOther;
+    return _tag == TeamGroupUpdateErrorOther;
 }
 
 - (BOOL)isExternalIdAlreadyInUse {
-    return _tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorExternalIdAlreadyInUse;
+    return _tag == TeamGroupUpdateErrorExternalIdAlreadyInUse;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorGroupNotFound) {
-        return @"(TeamGroupUpdateErrorTag)TeamGroupUpdateErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorOther) {
-        return @"(TeamGroupUpdateErrorTag)TeamGroupUpdateErrorOther";
-    }
-    if (_tag == (TeamGroupUpdateErrorTag)TeamGroupUpdateErrorExternalIdAlreadyInUse) {
-        return @"(TeamGroupUpdateErrorTag)TeamGroupUpdateErrorExternalIdAlreadyInUse";
+    switch (_tag) {
+        case TeamGroupUpdateErrorGroupNotFound:
+           return @"TeamGroupUpdateErrorGroupNotFound";
+        case TeamGroupUpdateErrorOther:
+           return @"TeamGroupUpdateErrorOther";
+        case TeamGroupUpdateErrorExternalIdAlreadyInUse:
+           return @"TeamGroupUpdateErrorExternalIdAlreadyInUse";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

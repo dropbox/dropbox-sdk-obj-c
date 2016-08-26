@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesGpsCoordinates;
 
 /// 
-/// The DbxFilesGpsCoordinates struct.
+/// The `DbxFilesGpsCoordinates` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// GPS coordinates for a photo or video.
 /// 
@@ -16,20 +20,32 @@
 
 /// Latitude of the GPS coordinates.
 @property (nonatomic, copy) NSNumber * _Nonnull latitude;
+
 /// Longitude of the GPS coordinates.
 @property (nonatomic, copy) NSNumber * _Nonnull longitude;
 
+/// Full constructor for the `GpsCoordinates` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
 
+/// Returns a human-readable representation of the `DbxFilesGpsCoordinates`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGpsCoordinates` struct.
+/// 
 @interface DbxFilesGpsCoordinatesSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGpsCoordinates` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGpsCoordinates * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGpsCoordinates` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

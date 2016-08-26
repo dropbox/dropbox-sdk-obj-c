@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesDimensions;
 @class DbxFilesGpsCoordinates;
 @class DbxFilesMediaMetadata;
 
 /// 
-/// The DbxFilesMediaMetadata struct.
+/// The `DbxFilesMediaMetadata` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Metadata for a photo or video.
 /// 
@@ -18,24 +22,39 @@
 
 /// Dimension of the photo/video.
 @property (nonatomic) DbxFilesDimensions * _Nullable dimensions;
+
 /// The GPS coordinate of the photo/video.
 @property (nonatomic) DbxFilesGpsCoordinates * _Nullable location;
+
 /// The timestamp when the photo/video is taken.
 @property (nonatomic) NSDate * _Nullable timeTaken;
 
+/// Full constructor for the `MediaMetadata` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithDimensions:(DbxFilesDimensions * _Nullable)dimensions location:(DbxFilesGpsCoordinates * _Nullable)location timeTaken:(NSDate * _Nullable)timeTaken;
 
+/// Convenience constructor for the `MediaMetadata` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
+/// Returns a human-readable representation of the `DbxFilesMediaMetadata`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesMediaMetadata` struct.
+/// 
 @interface DbxFilesMediaMetadataSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesMediaMetadata` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesMediaMetadata * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesMediaMetadata` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesMediaMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

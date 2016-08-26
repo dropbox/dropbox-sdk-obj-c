@@ -3,54 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFileMembersCountResult;
 @class DbxSharingListFileMembersIndividualResult;
 @class DbxSharingSharingFileAccessError;
 
 /// 
-/// The DbxSharingListFileMembersIndividualResult union.
+/// The `DbxSharingListFileMembersIndividualResult` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingListFileMembersIndividualResult : NSObject <DbxSerializable> 
 
+/// The `SharingListFileMembersIndividualResultTag` enum type represents the
+/// possible tag states that the `DbxSharingListFileMembersIndividualResult`
+/// union can exist in.
 typedef NS_ENUM(NSInteger, SharingListFileMembersIndividualResultTag) {
     /// The results of the query for this file if it was successful
     SharingListFileMembersIndividualResultResult,
+
     /// The result of the query for this file if it was an error.
     SharingListFileMembersIndividualResultAccessError,
-    /// (no description)
+
+    /// (no description).
     SharingListFileMembersIndividualResultOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingListFileMembersIndividualResultTag tag;
+
+/// The results of the query for this file if it was successful
+@property (nonatomic) DbxSharingListFileMembersCountResult * _Nonnull result;
+
+/// The result of the query for this file if it was an error.
+@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
+
+
+/// Initializes union class with tag state of `Result`.
 - (nonnull instancetype)initWithResult:(DbxSharingListFileMembersCountResult * _Nonnull)result;
 
+/// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DbxSharingSharingFileAccessError * _Nonnull)accessError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Result`.
 - (BOOL)isResult;
 
+/// Returns whether the union's current tag state has value `AccessError`.
 - (BOOL)isAccessError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingListFileMembersIndividualResult` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingListFileMembersIndividualResult union type.
-@property (nonatomic) SharingListFileMembersIndividualResultTag tag;
-@property (nonatomic) DbxSharingListFileMembersCountResult * _Nonnull result;
-@property (nonatomic) DbxSharingSharingFileAccessError * _Nonnull accessError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFileMembersIndividualResult`
+/// union.
+/// 
 @interface DbxSharingListFileMembersIndividualResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFileMembersIndividualResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFileMembersIndividualResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFileMembersIndividualResult`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingListFileMembersIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

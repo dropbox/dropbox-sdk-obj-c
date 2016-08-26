@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamMemberProfile.h"
 
 @class DbxTeamTeamMemberProfile;
@@ -12,7 +12,11 @@
 @class DbxUsersName;
 
 /// 
-/// The DbxTeamTeamMemberProfile struct.
+/// The `DbxTeamTeamMemberProfile` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Profile of a user as a member of a team.
 /// 
@@ -21,19 +25,32 @@
 /// List of group IDs of groups that the user belongs to.
 @property (nonatomic) NSArray<NSString *> * _Nonnull groups;
 
+/// Full constructor for the `TeamMemberProfile` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DbxTeamTeamMemberStatus * _Nonnull)status name:(DbxUsersName * _Nonnull)name membershipType:(DbxTeamTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups externalId:(NSString * _Nullable)externalId accountId:(NSString * _Nullable)accountId;
 
+/// Convenience constructor for the `TeamMemberProfile` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DbxTeamTeamMemberStatus * _Nonnull)status name:(DbxUsersName * _Nonnull)name membershipType:(DbxTeamTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups;
 
+/// Returns a human-readable representation of the `DbxTeamTeamMemberProfile`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamTeamMemberProfile` struct.
+/// 
 @interface DbxTeamTeamMemberProfileSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamTeamMemberProfile` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMemberProfile * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamTeamMemberProfile` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamTeamMemberProfile * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

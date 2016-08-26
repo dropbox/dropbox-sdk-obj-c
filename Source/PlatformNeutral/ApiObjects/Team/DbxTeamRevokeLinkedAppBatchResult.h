@@ -3,30 +3,45 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamRevokeLinkedAppBatchResult;
 @class DbxTeamRevokeLinkedAppStatus;
 
 /// 
-/// The DbxTeamRevokeLinkedAppBatchResult struct.
+/// The `DbxTeamRevokeLinkedAppBatchResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamRevokeLinkedAppBatchResult : NSObject <DbxSerializable> 
 
-/// (no description)
+/// (no description).
 @property (nonatomic) NSArray<DbxTeamRevokeLinkedAppStatus *> * _Nonnull revokeLinkedAppStatus;
 
+/// Full constructor for the `RevokeLinkedAppBatchResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithRevokeLinkedAppStatus:(NSArray<DbxTeamRevokeLinkedAppStatus *> * _Nonnull)revokeLinkedAppStatus;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamRevokeLinkedAppBatchResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamRevokeLinkedAppBatchResult` struct.
+/// 
 @interface DbxTeamRevokeLinkedAppBatchResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamRevokeLinkedAppBatchResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeLinkedAppBatchResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamRevokeLinkedAppBatchResult` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamRevokeLinkedAppBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

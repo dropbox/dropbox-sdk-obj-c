@@ -12,7 +12,7 @@
 - (instancetype)initWithInvalidAsyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsPollErrorTag)TeamGroupsPollErrorInvalidAsyncJobId;
+        _tag = TeamGroupsPollErrorInvalidAsyncJobId;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithInternalError {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsPollErrorTag)TeamGroupsPollErrorInternalError;
+        _tag = TeamGroupsPollErrorInternalError;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsPollErrorTag)TeamGroupsPollErrorOther;
+        _tag = TeamGroupsPollErrorOther;
     }
     return self;
 }
@@ -36,39 +36,37 @@
 - (instancetype)initWithAccessDenied {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsPollErrorTag)TeamGroupsPollErrorAccessDenied;
+        _tag = TeamGroupsPollErrorAccessDenied;
     }
     return self;
 }
 
 - (BOOL)isInvalidAsyncJobId {
-    return _tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorInvalidAsyncJobId;
+    return _tag == TeamGroupsPollErrorInvalidAsyncJobId;
 }
 
 - (BOOL)isInternalError {
-    return _tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorInternalError;
+    return _tag == TeamGroupsPollErrorInternalError;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorOther;
+    return _tag == TeamGroupsPollErrorOther;
 }
 
 - (BOOL)isAccessDenied {
-    return _tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorAccessDenied;
+    return _tag == TeamGroupsPollErrorAccessDenied;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorInvalidAsyncJobId) {
-        return @"(TeamGroupsPollErrorTag)TeamGroupsPollErrorInvalidAsyncJobId";
-    }
-    if (_tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorInternalError) {
-        return @"(TeamGroupsPollErrorTag)TeamGroupsPollErrorInternalError";
-    }
-    if (_tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorOther) {
-        return @"(TeamGroupsPollErrorTag)TeamGroupsPollErrorOther";
-    }
-    if (_tag == (TeamGroupsPollErrorTag)TeamGroupsPollErrorAccessDenied) {
-        return @"(TeamGroupsPollErrorTag)TeamGroupsPollErrorAccessDenied";
+    switch (_tag) {
+        case TeamGroupsPollErrorInvalidAsyncJobId:
+           return @"TeamGroupsPollErrorInvalidAsyncJobId";
+        case TeamGroupsPollErrorInternalError:
+           return @"TeamGroupsPollErrorInternalError";
+        case TeamGroupsPollErrorOther:
+           return @"TeamGroupsPollErrorOther";
+        case TeamGroupsPollErrorAccessDenied:
+           return @"TeamGroupsPollErrorAccessDenied";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

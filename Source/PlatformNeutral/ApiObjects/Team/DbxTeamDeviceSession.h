@@ -3,39 +3,60 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamDeviceSession;
 
 /// 
-/// The DbxTeamDeviceSession struct.
+/// The `DbxTeamDeviceSession` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamDeviceSession : NSObject <DbxSerializable> 
 
 /// The session id
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
+
 /// The IP address of the last activity from this session
 @property (nonatomic, copy) NSString * _Nullable ipAddress;
+
 /// The country from which the last activity from this session was made
 @property (nonatomic, copy) NSString * _Nullable country;
+
 /// The time this session was created
 @property (nonatomic) NSDate * _Nullable created;
+
 /// The time of the last activity from this session
 @property (nonatomic) NSDate * _Nullable updated;
 
+/// Full constructor for the `DeviceSession` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
+/// Convenience constructor for the `DeviceSession` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
+/// Returns a human-readable representation of the `DbxTeamDeviceSession`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamDeviceSession` struct.
+/// 
 @interface DbxTeamDeviceSessionSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamDeviceSession` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamDeviceSession * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamDeviceSession` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamDeviceSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

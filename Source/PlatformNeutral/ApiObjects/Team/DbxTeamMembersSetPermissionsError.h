@@ -3,70 +3,105 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxTeamUserSelectorError.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersSetPermissionsError;
 
 /// 
-/// The DbxTeamMembersSetPermissionsError union.
+/// The `DbxTeamMembersSetPermissionsError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersSetPermissionsError : NSObject <DbxSerializable> 
 
+/// The `TeamMembersSetPermissionsErrorTag` enum type represents the possible
+/// tag states that the `DbxTeamMembersSetPermissionsError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersSetPermissionsErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
     TeamMembersSetPermissionsErrorUserNotFound,
+
     /// Cannot remove the admin setting of the last admin.
     TeamMembersSetPermissionsErrorLastAdmin,
+
     /// The user is not a member of the team.
     TeamMembersSetPermissionsErrorUserNotInTeam,
+
     /// Cannot remove/grant permissions.
     TeamMembersSetPermissionsErrorCannotSetPermissions,
+
     /// Team is full. The organization has no available licenses.
     TeamMembersSetPermissionsErrorTeamLicenseLimit,
-    /// (no description)
+
+    /// (no description).
     TeamMembersSetPermissionsErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersSetPermissionsErrorTag tag;
+
+
+/// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
 
+/// Initializes union class with tag state of `LastAdmin`.
 - (nonnull instancetype)initWithLastAdmin;
 
+/// Initializes union class with tag state of `UserNotInTeam`.
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// Initializes union class with tag state of `CannotSetPermissions`.
 - (nonnull instancetype)initWithCannotSetPermissions;
 
+/// Initializes union class with tag state of `TeamLicenseLimit`.
 - (nonnull instancetype)initWithTeamLicenseLimit;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `UserNotFound`.
 - (BOOL)isUserNotFound;
 
+/// Returns whether the union's current tag state has value `LastAdmin`.
 - (BOOL)isLastAdmin;
 
+/// Returns whether the union's current tag state has value `UserNotInTeam`.
 - (BOOL)isUserNotInTeam;
 
+/// Returns whether the union's current tag state has value
+/// `CannotSetPermissions`.
 - (BOOL)isCannotSetPermissions;
 
+/// Returns whether the union's current tag state has value `TeamLicenseLimit`.
 - (BOOL)isTeamLicenseLimit;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamMembersSetPermissionsError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersSetPermissionsError union type.
-@property (nonatomic) TeamMembersSetPermissionsErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersSetPermissionsError` union.
+/// 
 @interface DbxTeamMembersSetPermissionsErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersSetPermissionsError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersSetPermissionsError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersSetPermissionsError` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamMembersSetPermissionsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

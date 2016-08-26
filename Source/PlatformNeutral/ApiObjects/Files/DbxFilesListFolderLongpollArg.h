@@ -3,37 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListFolderLongpollArg;
 
 /// 
-/// The DbxFilesListFolderLongpollArg struct.
+/// The `DbxFilesListFolderLongpollArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListFolderLongpollArg : NSObject <DbxSerializable> 
 
 /// A cursor as returned by listFolder or listFolderContinue. Cursors retrieved
 /// by setting includeMediaInfo in ListFolderArg to true are not supported.
 @property (nonatomic, copy) NSString * _Nonnull cursor;
+
 /// A timeout in seconds. The request will block for at most this length of
 /// time, plus up to 90 seconds of random jitter added to avoid the thundering
 /// herd problem. Care should be taken when using this parameter, as some
 /// network infrastructure does not support long timeouts.
 @property (nonatomic, copy) NSNumber * _Nonnull timeout;
 
+/// Full constructor for the `ListFolderLongpollArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout;
 
+/// Convenience constructor for the `ListFolderLongpollArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesListFolderLongpollArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListFolderLongpollArg` struct.
+/// 
 @interface DbxFilesListFolderLongpollArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListFolderLongpollArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderLongpollArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListFolderLongpollArg` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesListFolderLongpollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

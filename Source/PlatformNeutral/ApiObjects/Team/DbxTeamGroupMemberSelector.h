@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupMemberSelector;
 @class DbxTeamGroupSelector;
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamGroupMemberSelector struct.
+/// The `DbxTeamGroupMemberSelector` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Argument for selecting a group and a single user.
 /// 
@@ -18,20 +22,32 @@
 
 /// Specify a group.
 @property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+
 /// Identity of a user that is a member of group.
 @property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
 
+/// Full constructor for the `GroupMemberSelector` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user;
 
+/// Returns a human-readable representation of the `DbxTeamGroupMemberSelector`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMemberSelector` struct.
+/// 
 @interface DbxTeamGroupMemberSelectorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMemberSelector` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMemberSelector * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMemberSelector` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

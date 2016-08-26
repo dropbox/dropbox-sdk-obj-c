@@ -11,7 +11,7 @@
 - (instancetype)initWithW32h32 {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailSizeTag)FilesThumbnailSizeW32h32;
+        _tag = FilesThumbnailSizeW32h32;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithW64h64 {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailSizeTag)FilesThumbnailSizeW64h64;
+        _tag = FilesThumbnailSizeW64h64;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithW128h128 {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailSizeTag)FilesThumbnailSizeW128h128;
+        _tag = FilesThumbnailSizeW128h128;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithW640h480 {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailSizeTag)FilesThumbnailSizeW640h480;
+        _tag = FilesThumbnailSizeW640h480;
     }
     return self;
 }
@@ -43,46 +43,43 @@
 - (instancetype)initWithW1024h768 {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailSizeTag)FilesThumbnailSizeW1024h768;
+        _tag = FilesThumbnailSizeW1024h768;
     }
     return self;
 }
 
 - (BOOL)isW32h32 {
-    return _tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW32h32;
+    return _tag == FilesThumbnailSizeW32h32;
 }
 
 - (BOOL)isW64h64 {
-    return _tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW64h64;
+    return _tag == FilesThumbnailSizeW64h64;
 }
 
 - (BOOL)isW128h128 {
-    return _tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW128h128;
+    return _tag == FilesThumbnailSizeW128h128;
 }
 
 - (BOOL)isW640h480 {
-    return _tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW640h480;
+    return _tag == FilesThumbnailSizeW640h480;
 }
 
 - (BOOL)isW1024h768 {
-    return _tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW1024h768;
+    return _tag == FilesThumbnailSizeW1024h768;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW32h32) {
-        return @"(FilesThumbnailSizeTag)FilesThumbnailSizeW32h32";
-    }
-    if (_tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW64h64) {
-        return @"(FilesThumbnailSizeTag)FilesThumbnailSizeW64h64";
-    }
-    if (_tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW128h128) {
-        return @"(FilesThumbnailSizeTag)FilesThumbnailSizeW128h128";
-    }
-    if (_tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW640h480) {
-        return @"(FilesThumbnailSizeTag)FilesThumbnailSizeW640h480";
-    }
-    if (_tag == (FilesThumbnailSizeTag)FilesThumbnailSizeW1024h768) {
-        return @"(FilesThumbnailSizeTag)FilesThumbnailSizeW1024h768";
+    switch (_tag) {
+        case FilesThumbnailSizeW32h32:
+           return @"FilesThumbnailSizeW32h32";
+        case FilesThumbnailSizeW64h64:
+           return @"FilesThumbnailSizeW64h64";
+        case FilesThumbnailSizeW128h128:
+           return @"FilesThumbnailSizeW128h128";
+        case FilesThumbnailSizeW640h480:
+           return @"FilesThumbnailSizeW640h480";
+        case FilesThumbnailSizeW1024h768:
+           return @"FilesThumbnailSizeW1024h768";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -3,56 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncPollResultBase.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingMemberAccessLevelResult;
 @class DbxSharingRemoveFolderMemberError;
 @class DbxSharingRemoveMemberJobStatus;
 
 /// 
-/// The DbxSharingRemoveMemberJobStatus union.
+/// The `DbxSharingRemoveMemberJobStatus` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingRemoveMemberJobStatus : NSObject <DbxSerializable> 
 
+/// The `SharingRemoveMemberJobStatusTag` enum type represents the possible tag
+/// states that the `DbxSharingRemoveMemberJobStatus` union can exist in.
 typedef NS_ENUM(NSInteger, SharingRemoveMemberJobStatusTag) {
     /// The asynchronous job is still in progress.
     SharingRemoveMemberJobStatusInProgress,
+
     /// Removing the folder member has finished. The value is information about
     /// whether the member has another form of access.
     SharingRemoveMemberJobStatusComplete,
-    /// (no description)
+
+    /// (no description).
     SharingRemoveMemberJobStatusFailed,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingRemoveMemberJobStatusTag tag;
+
+/// Removing the folder member has finished. The value is information about
+/// whether the member has another form of access.
+@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull complete;
+
+/// (no description).
+@property (nonatomic) DbxSharingRemoveFolderMemberError * _Nonnull failed;
+
+
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Initializes union class with tag state of `Complete`.
 - (nonnull instancetype)initWithComplete:(DbxSharingMemberAccessLevelResult * _Nonnull)complete;
 
+/// Initializes union class with tag state of `Failed`.
 - (nonnull instancetype)initWithFailed:(DbxSharingRemoveFolderMemberError * _Nonnull)failed;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns whether the union's current tag state has value `Complete`.
 - (BOOL)isComplete;
 
+/// Returns whether the union's current tag state has value `Failed`.
 - (BOOL)isFailed;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingRemoveMemberJobStatus` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingRemoveMemberJobStatus union type.
-@property (nonatomic) SharingRemoveMemberJobStatusTag tag;
-@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull complete;
-@property (nonatomic) DbxSharingRemoveFolderMemberError * _Nonnull failed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingRemoveMemberJobStatus` union.
+/// 
 @interface DbxSharingRemoveMemberJobStatusSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingRemoveMemberJobStatus` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingRemoveMemberJobStatus * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingRemoveMemberJobStatus` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingRemoveMemberJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

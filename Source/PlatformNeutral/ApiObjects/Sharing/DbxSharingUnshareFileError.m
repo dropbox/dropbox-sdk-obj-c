@@ -13,7 +13,7 @@
 - (instancetype)initWithUserError:(DbxSharingSharingUserError *)userError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError;
+        _tag = SharingUnshareFileErrorUserError;
         _userError = userError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError;
+        _tag = SharingUnshareFileErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnshareFileErrorTag)SharingUnshareFileErrorOther;
+        _tag = SharingUnshareFileErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserError {
-    return _tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError;
+    return _tag == SharingUnshareFileErrorUserError;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError;
+    return _tag == SharingUnshareFileErrorAccessError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorOther;
+    return _tag == SharingUnshareFileErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError) {
-        return @"(SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError";
-    }
-    if (_tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError) {
-        return @"(SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError";
-    }
-    if (_tag == (SharingUnshareFileErrorTag)SharingUnshareFileErrorOther) {
-        return @"(SharingUnshareFileErrorTag)SharingUnshareFileErrorOther";
+    switch (_tag) {
+        case SharingUnshareFileErrorUserError:
+           return @"SharingUnshareFileErrorUserError";
+        case SharingUnshareFileErrorAccessError:
+           return @"SharingUnshareFileErrorAccessError";
+        case SharingUnshareFileErrorOther:
+           return @"SharingUnshareFileErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingUserError *)userError {
-    if (_tag != (SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUnshareFileErrorTag)SharingUnshareFileErrorUserError, but was %@.", [self getTagName]];
+    if (_tag != SharingUnshareFileErrorUserError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUnshareFileErrorUserError, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUnshareFileErrorTag)SharingUnshareFileErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingUnshareFileErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUnshareFileErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

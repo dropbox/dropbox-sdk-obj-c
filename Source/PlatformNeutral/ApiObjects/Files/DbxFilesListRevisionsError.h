@@ -3,46 +3,71 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListRevisionsError;
 @class DbxFilesLookupError;
 
 /// 
-/// The DbxFilesListRevisionsError union.
+/// The `DbxFilesListRevisionsError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListRevisionsError : NSObject <DbxSerializable> 
 
+/// The `FilesListRevisionsErrorTag` enum type represents the possible tag
+/// states that the `DbxFilesListRevisionsError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesListRevisionsErrorTag) {
-    /// (no description)
+    /// (no description).
     FilesListRevisionsErrorPath,
-    /// (no description)
+
+    /// (no description).
     FilesListRevisionsErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesListRevisionsErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesListRevisionsError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesListRevisionsError union type.
-@property (nonatomic) FilesListRevisionsErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListRevisionsError` union.
+/// 
 @interface DbxFilesListRevisionsErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListRevisionsError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListRevisionsError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListRevisionsError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesListRevisionsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

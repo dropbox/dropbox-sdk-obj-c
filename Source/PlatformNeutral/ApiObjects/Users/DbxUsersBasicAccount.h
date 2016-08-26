@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxUsersAccount.h"
 
 @class DbxUsersBasicAccount;
 @class DbxUsersName;
 
 /// 
-/// The DbxUsersBasicAccount struct.
+/// The `DbxUsersBasicAccount` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Basic information about any account.
 /// 
@@ -19,23 +23,37 @@
 /// Whether this user is a teammate of the current user. If this account is the
 /// current user's account, then this will be true.
 @property (nonatomic, copy) NSNumber * _Nonnull isTeammate;
+
 /// The user's unique team member id. This field will only be present if the
 /// user is part of a team and isTeammate is true.
 @property (nonatomic, copy) NSString * _Nullable teamMemberId;
 
+/// Full constructor for the `BasicAccount` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl teamMemberId:(NSString * _Nullable)teamMemberId;
 
+/// Convenience constructor for the `BasicAccount` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate;
 
+/// Returns a human-readable representation of the `DbxUsersBasicAccount`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersBasicAccount` struct.
+/// 
 @interface DbxUsersBasicAccountSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersBasicAccount` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersBasicAccount * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersBasicAccount` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersBasicAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

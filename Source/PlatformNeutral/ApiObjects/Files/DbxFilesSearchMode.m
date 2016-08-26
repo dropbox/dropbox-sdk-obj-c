@@ -11,7 +11,7 @@
 - (instancetype)initWithFilename {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchModeTag)FilesSearchModeFilename;
+        _tag = FilesSearchModeFilename;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithFilenameAndContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchModeTag)FilesSearchModeFilenameAndContent;
+        _tag = FilesSearchModeFilenameAndContent;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithDeletedFilename {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSearchModeTag)FilesSearchModeDeletedFilename;
+        _tag = FilesSearchModeDeletedFilename;
     }
     return self;
 }
 
 - (BOOL)isFilename {
-    return _tag == (FilesSearchModeTag)FilesSearchModeFilename;
+    return _tag == FilesSearchModeFilename;
 }
 
 - (BOOL)isFilenameAndContent {
-    return _tag == (FilesSearchModeTag)FilesSearchModeFilenameAndContent;
+    return _tag == FilesSearchModeFilenameAndContent;
 }
 
 - (BOOL)isDeletedFilename {
-    return _tag == (FilesSearchModeTag)FilesSearchModeDeletedFilename;
+    return _tag == FilesSearchModeDeletedFilename;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSearchModeTag)FilesSearchModeFilename) {
-        return @"(FilesSearchModeTag)FilesSearchModeFilename";
-    }
-    if (_tag == (FilesSearchModeTag)FilesSearchModeFilenameAndContent) {
-        return @"(FilesSearchModeTag)FilesSearchModeFilenameAndContent";
-    }
-    if (_tag == (FilesSearchModeTag)FilesSearchModeDeletedFilename) {
-        return @"(FilesSearchModeTag)FilesSearchModeDeletedFilename";
+    switch (_tag) {
+        case FilesSearchModeFilename:
+           return @"FilesSearchModeFilename";
+        case FilesSearchModeFilenameAndContent:
+           return @"FilesSearchModeFilenameAndContent";
+        case FilesSearchModeDeletedFilename:
+           return @"FilesSearchModeDeletedFilename";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

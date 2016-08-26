@@ -12,7 +12,7 @@
 - (instancetype)initWithIsFile {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorIsFile;
+        _tag = SharingSharePathErrorIsFile;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithInsideSharedFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorInsideSharedFolder;
+        _tag = SharingSharePathErrorInsideSharedFolder;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithContainsSharedFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorContainsSharedFolder;
+        _tag = SharingSharePathErrorContainsSharedFolder;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithIsAppFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorIsAppFolder;
+        _tag = SharingSharePathErrorIsAppFolder;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithInsideAppFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorInsideAppFolder;
+        _tag = SharingSharePathErrorInsideAppFolder;
     }
     return self;
 }
@@ -52,7 +52,7 @@
 - (instancetype)initWithIsPublicFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorIsPublicFolder;
+        _tag = SharingSharePathErrorIsPublicFolder;
     }
     return self;
 }
@@ -60,7 +60,7 @@
 - (instancetype)initWithInsidePublicFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorInsidePublicFolder;
+        _tag = SharingSharePathErrorInsidePublicFolder;
     }
     return self;
 }
@@ -68,7 +68,7 @@
 - (instancetype)initWithAlreadyShared:(DbxSharingSharedFolderMetadata *)alreadyShared {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared;
+        _tag = SharingSharePathErrorAlreadyShared;
         _alreadyShared = alreadyShared;
     }
     return self;
@@ -77,7 +77,7 @@
 - (instancetype)initWithInvalidPath {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorInvalidPath;
+        _tag = SharingSharePathErrorInvalidPath;
     }
     return self;
 }
@@ -85,7 +85,7 @@
 - (instancetype)initWithIsOsxPackage {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorIsOsxPackage;
+        _tag = SharingSharePathErrorIsOsxPackage;
     }
     return self;
 }
@@ -93,7 +93,7 @@
 - (instancetype)initWithInsideOsxPackage {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorInsideOsxPackage;
+        _tag = SharingSharePathErrorInsideOsxPackage;
     }
     return self;
 }
@@ -101,103 +101,93 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharePathErrorTag)SharingSharePathErrorOther;
+        _tag = SharingSharePathErrorOther;
     }
     return self;
 }
 
 - (BOOL)isIsFile {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorIsFile;
+    return _tag == SharingSharePathErrorIsFile;
 }
 
 - (BOOL)isInsideSharedFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideSharedFolder;
+    return _tag == SharingSharePathErrorInsideSharedFolder;
 }
 
 - (BOOL)isContainsSharedFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorContainsSharedFolder;
+    return _tag == SharingSharePathErrorContainsSharedFolder;
 }
 
 - (BOOL)isIsAppFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorIsAppFolder;
+    return _tag == SharingSharePathErrorIsAppFolder;
 }
 
 - (BOOL)isInsideAppFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideAppFolder;
+    return _tag == SharingSharePathErrorInsideAppFolder;
 }
 
 - (BOOL)isIsPublicFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorIsPublicFolder;
+    return _tag == SharingSharePathErrorIsPublicFolder;
 }
 
 - (BOOL)isInsidePublicFolder {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorInsidePublicFolder;
+    return _tag == SharingSharePathErrorInsidePublicFolder;
 }
 
 - (BOOL)isAlreadyShared {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared;
+    return _tag == SharingSharePathErrorAlreadyShared;
 }
 
 - (BOOL)isInvalidPath {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorInvalidPath;
+    return _tag == SharingSharePathErrorInvalidPath;
 }
 
 - (BOOL)isIsOsxPackage {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorIsOsxPackage;
+    return _tag == SharingSharePathErrorIsOsxPackage;
 }
 
 - (BOOL)isInsideOsxPackage {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideOsxPackage;
+    return _tag == SharingSharePathErrorInsideOsxPackage;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharePathErrorTag)SharingSharePathErrorOther;
+    return _tag == SharingSharePathErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorIsFile) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorIsFile";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideSharedFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorInsideSharedFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorContainsSharedFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorContainsSharedFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorIsAppFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorIsAppFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideAppFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorInsideAppFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorIsPublicFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorIsPublicFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorInsidePublicFolder) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorInsidePublicFolder";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorInvalidPath) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorInvalidPath";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorIsOsxPackage) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorIsOsxPackage";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorInsideOsxPackage) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorInsideOsxPackage";
-    }
-    if (_tag == (SharingSharePathErrorTag)SharingSharePathErrorOther) {
-        return @"(SharingSharePathErrorTag)SharingSharePathErrorOther";
+    switch (_tag) {
+        case SharingSharePathErrorIsFile:
+           return @"SharingSharePathErrorIsFile";
+        case SharingSharePathErrorInsideSharedFolder:
+           return @"SharingSharePathErrorInsideSharedFolder";
+        case SharingSharePathErrorContainsSharedFolder:
+           return @"SharingSharePathErrorContainsSharedFolder";
+        case SharingSharePathErrorIsAppFolder:
+           return @"SharingSharePathErrorIsAppFolder";
+        case SharingSharePathErrorInsideAppFolder:
+           return @"SharingSharePathErrorInsideAppFolder";
+        case SharingSharePathErrorIsPublicFolder:
+           return @"SharingSharePathErrorIsPublicFolder";
+        case SharingSharePathErrorInsidePublicFolder:
+           return @"SharingSharePathErrorInsidePublicFolder";
+        case SharingSharePathErrorAlreadyShared:
+           return @"SharingSharePathErrorAlreadyShared";
+        case SharingSharePathErrorInvalidPath:
+           return @"SharingSharePathErrorInvalidPath";
+        case SharingSharePathErrorIsOsxPackage:
+           return @"SharingSharePathErrorIsOsxPackage";
+        case SharingSharePathErrorInsideOsxPackage:
+           return @"SharingSharePathErrorInsideOsxPackage";
+        case SharingSharePathErrorOther:
+           return @"SharingSharePathErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderMetadata *)alreadyShared {
-    if (_tag != (SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingSharePathErrorTag)SharingSharePathErrorAlreadyShared, but was %@.", [self getTagName]];
+    if (_tag != SharingSharePathErrorAlreadyShared) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingSharePathErrorAlreadyShared, but was %@.", [self getTagName]];
     }
     return _alreadyShared;
 }

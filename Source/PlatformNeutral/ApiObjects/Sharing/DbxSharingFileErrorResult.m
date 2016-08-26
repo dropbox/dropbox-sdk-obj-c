@@ -11,7 +11,7 @@
 - (instancetype)initWithFileNotFoundError:(NSString *)fileNotFoundError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError;
+        _tag = SharingFileErrorResultFileNotFoundError;
         _fileNotFoundError = fileNotFoundError;
     }
     return self;
@@ -20,7 +20,7 @@
 - (instancetype)initWithInvalidFileActionError:(NSString *)invalidFileActionError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError;
+        _tag = SharingFileErrorResultInvalidFileActionError;
         _invalidFileActionError = invalidFileActionError;
     }
     return self;
@@ -29,7 +29,7 @@
 - (instancetype)initWithPermissionDeniedError:(NSString *)permissionDeniedError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError;
+        _tag = SharingFileErrorResultPermissionDeniedError;
         _permissionDeniedError = permissionDeniedError;
     }
     return self;
@@ -38,61 +38,59 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileErrorResultTag)SharingFileErrorResultOther;
+        _tag = SharingFileErrorResultOther;
     }
     return self;
 }
 
 - (BOOL)isFileNotFoundError {
-    return _tag == (SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError;
+    return _tag == SharingFileErrorResultFileNotFoundError;
 }
 
 - (BOOL)isInvalidFileActionError {
-    return _tag == (SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError;
+    return _tag == SharingFileErrorResultInvalidFileActionError;
 }
 
 - (BOOL)isPermissionDeniedError {
-    return _tag == (SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError;
+    return _tag == SharingFileErrorResultPermissionDeniedError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingFileErrorResultTag)SharingFileErrorResultOther;
+    return _tag == SharingFileErrorResultOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError) {
-        return @"(SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError";
-    }
-    if (_tag == (SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError) {
-        return @"(SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError";
-    }
-    if (_tag == (SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError) {
-        return @"(SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError";
-    }
-    if (_tag == (SharingFileErrorResultTag)SharingFileErrorResultOther) {
-        return @"(SharingFileErrorResultTag)SharingFileErrorResultOther";
+    switch (_tag) {
+        case SharingFileErrorResultFileNotFoundError:
+           return @"SharingFileErrorResultFileNotFoundError";
+        case SharingFileErrorResultInvalidFileActionError:
+           return @"SharingFileErrorResultInvalidFileActionError";
+        case SharingFileErrorResultPermissionDeniedError:
+           return @"SharingFileErrorResultPermissionDeniedError";
+        case SharingFileErrorResultOther:
+           return @"SharingFileErrorResultOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)fileNotFoundError {
-    if (_tag != (SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileErrorResultTag)SharingFileErrorResultFileNotFoundError, but was %@.", [self getTagName]];
+    if (_tag != SharingFileErrorResultFileNotFoundError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileErrorResultFileNotFoundError, but was %@.", [self getTagName]];
     }
     return _fileNotFoundError;
 }
 
 - (NSString *)invalidFileActionError {
-    if (_tag != (SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileErrorResultTag)SharingFileErrorResultInvalidFileActionError, but was %@.", [self getTagName]];
+    if (_tag != SharingFileErrorResultInvalidFileActionError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileErrorResultInvalidFileActionError, but was %@.", [self getTagName]];
     }
     return _invalidFileActionError;
 }
 
 - (NSString *)permissionDeniedError {
-    if (_tag != (SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingFileErrorResultTag)SharingFileErrorResultPermissionDeniedError, but was %@.", [self getTagName]];
+    if (_tag != SharingFileErrorResultPermissionDeniedError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingFileErrorResultPermissionDeniedError, but was %@.", [self getTagName]];
     }
     return _permissionDeniedError;
 }

@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersSetProfileArg;
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamMembersSetProfileArg struct.
+/// The `DbxTeamMembersSetProfileArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account. At least one of new_email, new_external_id,
@@ -19,28 +23,45 @@
 
 /// Identity of user whose profile will be set.
 @property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
+
 /// New email for member.
 @property (nonatomic, copy) NSString * _Nullable dNewEmail;
+
 /// New external ID for member.
 @property (nonatomic, copy) NSString * _Nullable dNewExternalId;
+
 /// New given name for member.
 @property (nonatomic, copy) NSString * _Nullable dNewGivenName;
+
 /// New surname for member.
 @property (nonatomic, copy) NSString * _Nullable dNewSurname;
 
+/// Full constructor for the `MembersSetProfileArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname;
 
+/// Convenience constructor for the `MembersSetProfileArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
 
+/// Returns a human-readable representation of the `DbxTeamMembersSetProfileArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersSetProfileArg` struct.
+/// 
 @interface DbxTeamMembersSetProfileArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersSetProfileArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersSetProfileArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersSetProfileArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersSetProfileArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

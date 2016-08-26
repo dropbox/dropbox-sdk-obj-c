@@ -3,32 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesRemovePropertiesArg;
 
 /// 
-/// The DbxFilesRemovePropertiesArg struct.
+/// The `DbxFilesRemovePropertiesArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesRemovePropertiesArg : NSObject <DbxSerializable> 
 
 /// A unique identifier for the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// A list of identifiers for a property template created by route
 /// properties/template/add.
 @property (nonatomic) NSArray<NSString *> * _Nonnull propertyTemplateIds;
 
+/// Full constructor for the `RemovePropertiesArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
 
+/// Returns a human-readable representation of the `DbxFilesRemovePropertiesArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesRemovePropertiesArg` struct.
+/// 
 @interface DbxFilesRemovePropertiesArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesRemovePropertiesArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesRemovePropertiesArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesRemovePropertiesArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesRemovePropertiesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

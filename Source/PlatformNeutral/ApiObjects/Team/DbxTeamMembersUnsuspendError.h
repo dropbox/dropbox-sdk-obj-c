@@ -3,64 +3,96 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxTeamMembersDeactivateError.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersUnsuspendError;
 
 /// 
-/// The DbxTeamMembersUnsuspendError union.
+/// The `DbxTeamMembersUnsuspendError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersUnsuspendError : NSObject <DbxSerializable> 
 
+/// The `TeamMembersUnsuspendErrorTag` enum type represents the possible tag
+/// states that the `DbxTeamMembersUnsuspendError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersUnsuspendErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
     TeamMembersUnsuspendErrorUserNotFound,
+
     /// The user is not a member of the team.
     TeamMembersUnsuspendErrorUserNotInTeam,
-    /// (no description)
+
+    /// (no description).
     TeamMembersUnsuspendErrorOther,
+
     /// The user is unsuspended, so it cannot be unsuspended again.
     TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember,
+
     /// Team is full. The organization has no available licenses.
     TeamMembersUnsuspendErrorTeamLicenseLimit,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersUnsuspendErrorTag tag;
+
+
+/// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
 
+/// Initializes union class with tag state of `UserNotInTeam`.
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Initializes union class with tag state of `UnsuspendNonSuspendedMember`.
 - (nonnull instancetype)initWithUnsuspendNonSuspendedMember;
 
+/// Initializes union class with tag state of `TeamLicenseLimit`.
 - (nonnull instancetype)initWithTeamLicenseLimit;
 
+/// Returns whether the union's current tag state has value `UserNotFound`.
 - (BOOL)isUserNotFound;
 
+/// Returns whether the union's current tag state has value `UserNotInTeam`.
 - (BOOL)isUserNotInTeam;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns whether the union's current tag state has value
+/// `UnsuspendNonSuspendedMember`.
 - (BOOL)isUnsuspendNonSuspendedMember;
 
+/// Returns whether the union's current tag state has value `TeamLicenseLimit`.
 - (BOOL)isTeamLicenseLimit;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamMembersUnsuspendError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersUnsuspendError union type.
-@property (nonatomic) TeamMembersUnsuspendErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersUnsuspendError` union.
+/// 
 @interface DbxTeamMembersUnsuspendErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersUnsuspendError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersUnsuspendError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersUnsuspendError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersUnsuspendError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

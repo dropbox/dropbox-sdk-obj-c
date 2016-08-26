@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath;
+        _tag = FilesGetCopyReferenceErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorOther;
+        _tag = FilesGetCopyReferenceErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath;
+    return _tag == FilesGetCopyReferenceErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorOther;
+    return _tag == FilesGetCopyReferenceErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath) {
-        return @"(FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath";
-    }
-    if (_tag == (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorOther) {
-        return @"(FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorOther";
+    switch (_tag) {
+        case FilesGetCopyReferenceErrorPath:
+           return @"FilesGetCopyReferenceErrorPath";
+        case FilesGetCopyReferenceErrorOther:
+           return @"FilesGetCopyReferenceErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesGetCopyReferenceErrorTag)FilesGetCopyReferenceErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesGetCopyReferenceErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesGetCopyReferenceErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

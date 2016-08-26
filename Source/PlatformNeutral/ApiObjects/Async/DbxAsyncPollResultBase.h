@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAsyncPollResultBase;
 
 /// 
-/// The DbxAsyncPollResultBase union.
+/// The `DbxAsyncPollResultBase` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Result returned by methods that poll for the status of an asynchronous job.
 /// Unions that extend this union should add a 'complete' field with a type of
@@ -17,29 +21,45 @@
 /// 
 @interface DbxAsyncPollResultBase : NSObject <DbxSerializable> 
 
+/// The `AsyncPollResultBaseTag` enum type represents the possible tag states
+/// that the `DbxAsyncPollResultBase` union can exist in.
 typedef NS_ENUM(NSInteger, AsyncPollResultBaseTag) {
     /// The asynchronous job is still in progress.
     AsyncPollResultBaseInProgress,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) AsyncPollResultBaseTag tag;
+
+
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxAsyncPollResultBase`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxAsyncPollResultBase union type.
-@property (nonatomic) AsyncPollResultBaseTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAsyncPollResultBase` union.
+/// 
 @interface DbxAsyncPollResultBaseSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxAsyncPollResultBase` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAsyncPollResultBase * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAsyncPollResultBase` object from a
+/// json-compatible dictionary representation.
 + (DbxAsyncPollResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

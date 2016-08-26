@@ -3,33 +3,51 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListRevisionsArg;
 
 /// 
-/// The DbxFilesListRevisionsArg struct.
+/// The `DbxFilesListRevisionsArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListRevisionsArg : NSObject <DbxSerializable> 
 
 /// The path to the file you want to see the revisions of.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The maximum number of revision entries returned.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
 
+/// Full constructor for the `ListRevisionsArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
 
+/// Convenience constructor for the `ListRevisionsArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesListRevisionsArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListRevisionsArg` struct.
+/// 
 @interface DbxFilesListRevisionsArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListRevisionsArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListRevisionsArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListRevisionsArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

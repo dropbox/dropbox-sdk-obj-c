@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamDeviceSession.h"
 
 @class DbxTeamMobileClientPlatform;
 @class DbxTeamMobileClientSession;
 
 /// 
-/// The DbxTeamMobileClientSession struct.
+/// The `DbxTeamMobileClientSession` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information about linked Dropbox mobile client sessions
 /// 
@@ -18,28 +22,45 @@
 
 /// The device name
 @property (nonatomic, copy) NSString * _Nonnull deviceName;
+
 /// The mobile application type
 @property (nonatomic) DbxTeamMobileClientPlatform * _Nonnull clientType;
+
 /// The dropbox client version
 @property (nonatomic, copy) NSString * _Nullable clientVersion;
+
 /// The hosting OS version
 @property (nonatomic, copy) NSString * _Nullable osVersion;
+
 /// last carrier used by the device
 @property (nonatomic, copy) NSString * _Nullable lastCarrier;
 
+/// Full constructor for the `MobileClientSession` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DbxTeamMobileClientPlatform * _Nonnull)clientType ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated clientVersion:(NSString * _Nullable)clientVersion osVersion:(NSString * _Nullable)osVersion lastCarrier:(NSString * _Nullable)lastCarrier;
 
+/// Convenience constructor for the `MobileClientSession` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DbxTeamMobileClientPlatform * _Nonnull)clientType;
 
+/// Returns a human-readable representation of the `DbxTeamMobileClientSession`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMobileClientSession` struct.
+/// 
 @interface DbxTeamMobileClientSessionSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMobileClientSession` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMobileClientSession * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMobileClientSession` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMobileClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

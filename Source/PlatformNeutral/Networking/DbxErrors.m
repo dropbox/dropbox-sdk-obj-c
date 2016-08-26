@@ -158,24 +158,21 @@
 }
 
 - (NSString *)description {
-    if (_tag == DbxRequestHttpErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asHttpError]];
+    switch (_tag) {
+        case DbxRequestHttpErrorType:
+            return [NSString stringWithFormat:@"%@", [self asHttpError]];
+        case DbxRequestBadInputErrorType:
+            return [NSString stringWithFormat:@"%@", [self asBadInputError]];
+        case DbxRequestAuthErrorType:
+            return [NSString stringWithFormat:@"%@", [self asAuthError]];
+        case DbxRequestRateLimitErrorType:
+            return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
+        case DbxRequestInternalServerErrorType:
+            return @"DbxRequestInternalServerErrorType";
+        case DbxRequestOsErrorType:
+            return [NSString stringWithFormat:@"%@", [self asOsError]];
     }
-    if (_tag == DbxRequestBadInputErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asBadInputError]];
-    }
-    if (_tag == DbxRequestAuthErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asAuthError]];
-    }
-    if (_tag == DbxRequestRateLimitErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
-    }
-    if (_tag == DbxRequestInternalServerErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asInternalServerError]];
-    }
-    if (_tag == DbxRequestOsErrorType) {
-        return [NSString stringWithFormat:@"%@", [self asOsError]];
-    }
+
     return [NSString stringWithFormat:@"GenericDropboxError[%@];", [self getTagName]];
 }
 
@@ -204,23 +201,19 @@
 }
 
 - (NSString *)getTagName {
-    if (_tag == DbxRequestHttpErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestHttpErrorType";
-    }
-    if (_tag == DbxRequestBadInputErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestBadInputErrorType";
-    }
-    if (_tag == DbxRequestAuthErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestAuthErrorType";
-    }
-    if (_tag == DbxRequestRateLimitErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestRateLimitErrorType";
-    }
-    if (_tag == DbxRequestInternalServerErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestInternalServerErrorType";
-    }
-    if (_tag == DbxRequestOsErrorType) {
-        return @"(DbxRequestErrorType)DbxRequestOsErrorType";
+    switch (_tag) {
+        case DbxRequestHttpErrorType:
+            return @"DbxRequestHttpErrorType";
+        case DbxRequestBadInputErrorType:
+            return @"DbxRequestBadInputErrorType";
+        case DbxRequestAuthErrorType:
+            return @"DbxRequestAuthErrorType";
+        case DbxRequestRateLimitErrorType:
+            return @"DbxRequestRateLimitErrorType";
+        case DbxRequestInternalServerErrorType:
+            return @"DbxRequestInternalServerErrorType";
+        case DbxRequestOsErrorType:
+            return @"DbxRequestOsErrorType";
     }
     
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

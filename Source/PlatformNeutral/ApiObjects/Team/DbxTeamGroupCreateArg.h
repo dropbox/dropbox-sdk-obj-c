@@ -3,36 +3,55 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamCommonGroupManagementType;
 @class DbxTeamGroupCreateArg;
 
 /// 
-/// The DbxTeamGroupCreateArg struct.
+/// The `DbxTeamGroupCreateArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupCreateArg : NSObject <DbxSerializable> 
 
 /// Group name.
 @property (nonatomic, copy) NSString * _Nonnull groupName;
+
 /// The creator of a team can associate an arbitrary external ID to the group.
 @property (nonatomic, copy) NSString * _Nullable groupExternalId;
+
 /// Whether the team can be managed by selected users, or only by team admins
 @property (nonatomic) DbxTeamCommonGroupManagementType * _Nullable groupManagementType;
 
+/// Full constructor for the `GroupCreateArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DbxTeamCommonGroupManagementType * _Nullable)groupManagementType;
 
+/// Convenience constructor for the `GroupCreateArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupCreateArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupCreateArg` struct.
+/// 
 @interface DbxTeamGroupCreateArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupCreateArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupCreateArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupCreateArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupCreateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

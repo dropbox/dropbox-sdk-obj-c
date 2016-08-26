@@ -3,46 +3,71 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesDownloadError;
 @class DbxFilesLookupError;
 
 /// 
-/// The DbxFilesDownloadError union.
+/// The `DbxFilesDownloadError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesDownloadError : NSObject <DbxSerializable> 
 
+/// The `FilesDownloadErrorTag` enum type represents the possible tag states
+/// that the `DbxFilesDownloadError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesDownloadErrorTag) {
-    /// (no description)
+    /// (no description).
     FilesDownloadErrorPath,
-    /// (no description)
+
+    /// (no description).
     FilesDownloadErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesDownloadErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesDownloadError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesDownloadError union type.
-@property (nonatomic) FilesDownloadErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesDownloadError` union.
+/// 
 @interface DbxFilesDownloadErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesDownloadError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesDownloadError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesDownloadError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesDownloadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

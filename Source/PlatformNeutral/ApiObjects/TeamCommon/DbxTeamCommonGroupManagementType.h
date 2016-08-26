@@ -3,52 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamCommonGroupManagementType;
 
 /// 
-/// The DbxTeamCommonGroupManagementType union.
+/// The `DbxTeamCommonGroupManagementType` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The group type determines how a group is managed.
 /// 
 @interface DbxTeamCommonGroupManagementType : NSObject <DbxSerializable> 
 
+/// The `TeamCommonGroupManagementTypeTag` enum type represents the possible tag
+/// states that the `DbxTeamCommonGroupManagementType` union can exist in.
 typedef NS_ENUM(NSInteger, TeamCommonGroupManagementTypeTag) {
     /// A group which is managed by team admins only.
     TeamCommonGroupManagementTypeCompanyManaged,
+
     /// A group which is managed by selected users.
     TeamCommonGroupManagementTypeUserManaged,
-    /// (no description)
+
+    /// (no description).
     TeamCommonGroupManagementTypeOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamCommonGroupManagementTypeTag tag;
+
+
+/// Initializes union class with tag state of `CompanyManaged`.
 - (nonnull instancetype)initWithCompanyManaged;
 
+/// Initializes union class with tag state of `UserManaged`.
 - (nonnull instancetype)initWithUserManaged;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `CompanyManaged`.
 - (BOOL)isCompanyManaged;
 
+/// Returns whether the union's current tag state has value `UserManaged`.
 - (BOOL)isUserManaged;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamCommonGroupManagementType` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamCommonGroupManagementType union type.
-@property (nonatomic) TeamCommonGroupManagementTypeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamCommonGroupManagementType` union.
+/// 
 @interface DbxTeamCommonGroupManagementTypeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamCommonGroupManagementType` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamCommonGroupManagementType * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamCommonGroupManagementType` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamCommonGroupManagementType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

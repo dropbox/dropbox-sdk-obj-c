@@ -14,7 +14,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusInProgress;
+        _tag = SharingRemoveMemberJobStatusInProgress;
     }
     return self;
 }
@@ -22,7 +22,7 @@
 - (instancetype)initWithComplete:(DbxSharingMemberAccessLevelResult *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete;
+        _tag = SharingRemoveMemberJobStatusComplete;
         _complete = complete;
     }
     return self;
@@ -31,48 +31,47 @@
 - (instancetype)initWithFailed:(DbxSharingRemoveFolderMemberError *)failed {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed;
+        _tag = SharingRemoveMemberJobStatusFailed;
         _failed = failed;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusInProgress;
+    return _tag == SharingRemoveMemberJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete;
+    return _tag == SharingRemoveMemberJobStatusComplete;
 }
 
 - (BOOL)isFailed {
-    return _tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed;
+    return _tag == SharingRemoveMemberJobStatusFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusInProgress) {
-        return @"(SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusInProgress";
-    }
-    if (_tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete) {
-        return @"(SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete";
-    }
-    if (_tag == (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed) {
-        return @"(SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed";
+    switch (_tag) {
+        case SharingRemoveMemberJobStatusInProgress:
+           return @"SharingRemoveMemberJobStatusInProgress";
+        case SharingRemoveMemberJobStatusComplete:
+           return @"SharingRemoveMemberJobStatusComplete";
+        case SharingRemoveMemberJobStatusFailed:
+           return @"SharingRemoveMemberJobStatusFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingMemberAccessLevelResult *)complete {
-    if (_tag != (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusComplete, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveMemberJobStatusComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveMemberJobStatusComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DbxSharingRemoveFolderMemberError *)failed {
-    if (_tag != (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRemoveMemberJobStatusTag)SharingRemoveMemberJobStatusFailed, but was %@.", [self getTagName]];
+    if (_tag != SharingRemoveMemberJobStatusFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRemoveMemberJobStatusFailed, but was %@.", [self getTagName]];
     }
     return _failed;
 }

@@ -3,29 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesGetCopyReferenceArg;
 
 /// 
-/// The DbxFilesGetCopyReferenceArg struct.
+/// The `DbxFilesGetCopyReferenceArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesGetCopyReferenceArg : NSObject <DbxSerializable> 
 
 /// The path to the file or folder you want to get a copy reference to.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
+/// Full constructor for the `GetCopyReferenceArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesGetCopyReferenceArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGetCopyReferenceArg` struct.
+/// 
 @interface DbxFilesGetCopyReferenceArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGetCopyReferenceArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGetCopyReferenceArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGetCopyReferenceArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesGetCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

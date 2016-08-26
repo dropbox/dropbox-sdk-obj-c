@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamApiApp;
 
 /// 
-/// The DbxTeamApiApp struct.
+/// The `DbxTeamApiApp` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information on linked third party applications
 /// 
@@ -16,30 +20,46 @@
 
 /// The application unique id
 @property (nonatomic, copy) NSString * _Nonnull appId;
+
 /// The application name
 @property (nonatomic, copy) NSString * _Nonnull appName;
+
 /// The application publisher name
 @property (nonatomic, copy) NSString * _Nullable publisher;
+
 /// The publisher's URL
 @property (nonatomic, copy) NSString * _Nullable publisherUrl;
+
 /// The time this application was linked
 @property (nonatomic) NSDate * _Nullable linked;
+
 /// Whether the linked application uses a dedicated folder
 @property (nonatomic, copy) NSNumber * _Nonnull isAppFolder;
 
+/// Full constructor for the `ApiApp` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder publisher:(NSString * _Nullable)publisher publisherUrl:(NSString * _Nullable)publisherUrl linked:(NSDate * _Nullable)linked;
 
+/// Convenience constructor for the `ApiApp` struct (exposes only non-nullable
+/// instance variables with no default value).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder;
 
+/// Returns a human-readable representation of the `DbxTeamApiApp` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamApiApp` struct.
+/// 
 @interface DbxTeamApiAppSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the `DbxTeamApiApp`
+/// object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamApiApp * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamApiApp` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamApiApp * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

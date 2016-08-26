@@ -3,46 +3,69 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamTeamMembershipType;
 
 /// 
-/// The DbxTeamTeamMembershipType union.
+/// The `DbxTeamTeamMembershipType` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamTeamMembershipType : NSObject <DbxSerializable> 
 
+/// The `TeamTeamMembershipTypeTag` enum type represents the possible tag states
+/// that the `DbxTeamTeamMembershipType` union can exist in.
 typedef NS_ENUM(NSInteger, TeamTeamMembershipTypeTag) {
     /// User uses a license and has full access to team resources like the
     /// shared quota.
     TeamTeamMembershipTypeFull,
+
     /// User does not have access to the shared quota and team admins have
     /// restricted administrative control.
     TeamTeamMembershipTypeLimited,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamTeamMembershipTypeTag tag;
+
+
+/// Initializes union class with tag state of `Full`.
 - (nonnull instancetype)initWithFull;
 
+/// Initializes union class with tag state of `Limited`.
 - (nonnull instancetype)initWithLimited;
 
+/// Returns whether the union's current tag state has value `Full`.
 - (BOOL)isFull;
 
+/// Returns whether the union's current tag state has value `Limited`.
 - (BOOL)isLimited;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamTeamMembershipType`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamTeamMembershipType union type.
-@property (nonatomic) TeamTeamMembershipTypeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamTeamMembershipType` union.
+/// 
 @interface DbxTeamTeamMembershipTypeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamTeamMembershipType` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamTeamMembershipType * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamTeamMembershipType` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamTeamMembershipType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

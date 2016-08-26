@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxSharingSharedLinkMetadata.h"
 
 @class DbxSharingFileLinkMetadata;
@@ -12,7 +12,11 @@
 @class DbxUsersTeam;
 
 /// 
-/// The DbxSharingFileLinkMetadata struct.
+/// The `DbxSharingFileLinkMetadata` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The metadata of a file shared link
 /// 
@@ -24,28 +28,44 @@
 /// (such as sorting) and not, for example, to determine if a file has changed
 /// or not.
 @property (nonatomic) NSDate * _Nonnull clientModified;
+
 /// The last time the file was modified on Dropbox.
 @property (nonatomic) NSDate * _Nonnull serverModified;
+
 /// A unique identifier for the current revision of a file. This field is the
 /// same rev as elsewhere in the API and can be used to detect changes and avoid
 /// conflicts.
 @property (nonatomic, copy) NSString * _Nonnull rev;
+
 /// The file size in bytes.
 @property (nonatomic, copy) NSNumber * _Nonnull size;
 
+/// Full constructor for the `FileLinkMetadata` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DbxSharingTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DbxUsersTeam * _Nullable)contentOwnerTeamInfo;
 
+/// Convenience constructor for the `FileLinkMetadata` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
 
+/// Returns a human-readable representation of the `DbxSharingFileLinkMetadata`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFileLinkMetadata` struct.
+/// 
 @interface DbxSharingFileLinkMetadataSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFileLinkMetadata` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFileLinkMetadata * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFileLinkMetadata` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingFileLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

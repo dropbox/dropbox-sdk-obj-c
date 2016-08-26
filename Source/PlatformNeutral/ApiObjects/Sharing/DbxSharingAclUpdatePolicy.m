@@ -11,7 +11,7 @@
 - (instancetype)initWithOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOwner;
+        _tag = SharingAclUpdatePolicyOwner;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithEditors {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyEditors;
+        _tag = SharingAclUpdatePolicyEditors;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOther;
+        _tag = SharingAclUpdatePolicyOther;
     }
     return self;
 }
 
 - (BOOL)isOwner {
-    return _tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOwner;
+    return _tag == SharingAclUpdatePolicyOwner;
 }
 
 - (BOOL)isEditors {
-    return _tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyEditors;
+    return _tag == SharingAclUpdatePolicyEditors;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOther;
+    return _tag == SharingAclUpdatePolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOwner) {
-        return @"(SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOwner";
-    }
-    if (_tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyEditors) {
-        return @"(SharingAclUpdatePolicyTag)SharingAclUpdatePolicyEditors";
-    }
-    if (_tag == (SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOther) {
-        return @"(SharingAclUpdatePolicyTag)SharingAclUpdatePolicyOther";
+    switch (_tag) {
+        case SharingAclUpdatePolicyOwner:
+           return @"SharingAclUpdatePolicyOwner";
+        case SharingAclUpdatePolicyEditors:
+           return @"SharingAclUpdatePolicyEditors";
+        case SharingAclUpdatePolicyOther:
+           return @"SharingAclUpdatePolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -11,18 +11,19 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersGetInfoErrorTag)TeamMembersGetInfoErrorOther;
+        _tag = TeamMembersGetInfoErrorOther;
     }
     return self;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersGetInfoErrorTag)TeamMembersGetInfoErrorOther;
+    return _tag == TeamMembersGetInfoErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersGetInfoErrorTag)TeamMembersGetInfoErrorOther) {
-        return @"(TeamMembersGetInfoErrorTag)TeamMembersGetInfoErrorOther";
+    switch (_tag) {
+        case TeamMembersGetInfoErrorOther:
+           return @"TeamMembersGetInfoErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -3,29 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesGetTemporaryLinkArg;
 
 /// 
-/// The DbxFilesGetTemporaryLinkArg struct.
+/// The `DbxFilesGetTemporaryLinkArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesGetTemporaryLinkArg : NSObject <DbxSerializable> 
 
 /// The path to the file you want a temporary link to.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
+/// Full constructor for the `GetTemporaryLinkArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesGetTemporaryLinkArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGetTemporaryLinkArg` struct.
+/// 
 @interface DbxFilesGetTemporaryLinkArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGetTemporaryLinkArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGetTemporaryLinkArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGetTemporaryLinkArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

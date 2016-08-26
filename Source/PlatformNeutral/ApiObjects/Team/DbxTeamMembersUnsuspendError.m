@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotFound;
+        _tag = TeamMembersUnsuspendErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotInTeam;
+        _tag = TeamMembersUnsuspendErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorOther;
+        _tag = TeamMembersUnsuspendErrorOther;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithUnsuspendNonSuspendedMember {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember;
+        _tag = TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember;
     }
     return self;
 }
@@ -44,46 +44,43 @@
 - (instancetype)initWithTeamLicenseLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorTeamLicenseLimit;
+        _tag = TeamMembersUnsuspendErrorTeamLicenseLimit;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotFound;
+    return _tag == TeamMembersUnsuspendErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotInTeam;
+    return _tag == TeamMembersUnsuspendErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorOther;
+    return _tag == TeamMembersUnsuspendErrorOther;
 }
 
 - (BOOL)isUnsuspendNonSuspendedMember {
-    return _tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember;
+    return _tag == TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember;
 }
 
 - (BOOL)isTeamLicenseLimit {
-    return _tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorTeamLicenseLimit;
+    return _tag == TeamMembersUnsuspendErrorTeamLicenseLimit;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotFound) {
-        return @"(TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotInTeam) {
-        return @"(TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorOther) {
-        return @"(TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorOther";
-    }
-    if (_tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember) {
-        return @"(TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember";
-    }
-    if (_tag == (TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorTeamLicenseLimit) {
-        return @"(TeamMembersUnsuspendErrorTag)TeamMembersUnsuspendErrorTeamLicenseLimit";
+    switch (_tag) {
+        case TeamMembersUnsuspendErrorUserNotFound:
+           return @"TeamMembersUnsuspendErrorUserNotFound";
+        case TeamMembersUnsuspendErrorUserNotInTeam:
+           return @"TeamMembersUnsuspendErrorUserNotInTeam";
+        case TeamMembersUnsuspendErrorOther:
+           return @"TeamMembersUnsuspendErrorOther";
+        case TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember:
+           return @"TeamMembersUnsuspendErrorUnsuspendNonSuspendedMember";
+        case TeamMembersUnsuspendErrorTeamLicenseLimit:
+           return @"TeamMembersUnsuspendErrorTeamLicenseLimit";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

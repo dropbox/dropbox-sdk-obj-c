@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamIncludeMembersArg.h"
 
 @class DbxTeamGroupMembersRemoveArg;
@@ -11,28 +11,46 @@
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamGroupMembersRemoveArg struct.
+/// The `DbxTeamGroupMembersRemoveArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupMembersRemoveArg : DbxTeamIncludeMembersArg <DbxSerializable> 
 
 /// Group from which users will be removed.
 @property (nonatomic) DbxTeamGroupSelector * _Nonnull group;
+
 /// List of users to be removed from the group.
 @property (nonatomic) NSArray<DbxTeamUserSelectorArg *> * _Nonnull users;
 
+/// Full constructor for the `GroupMembersRemoveArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users returnMembers:(NSNumber * _Nullable)returnMembers;
 
+/// Convenience constructor for the `GroupMembersRemoveArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group users:(NSArray<DbxTeamUserSelectorArg *> * _Nonnull)users;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamGroupMembersRemoveArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMembersRemoveArg` struct.
+/// 
 @interface DbxTeamGroupMembersRemoveArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMembersRemoveArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersRemoveArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMembersRemoveArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupMembersRemoveArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

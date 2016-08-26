@@ -11,7 +11,7 @@
 - (instancetype)initWithWindows {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamDesktopPlatformTag)TeamDesktopPlatformWindows;
+        _tag = TeamDesktopPlatformWindows;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithMac {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamDesktopPlatformTag)TeamDesktopPlatformMac;
+        _tag = TeamDesktopPlatformMac;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithLinux {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamDesktopPlatformTag)TeamDesktopPlatformLinux;
+        _tag = TeamDesktopPlatformLinux;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamDesktopPlatformTag)TeamDesktopPlatformOther;
+        _tag = TeamDesktopPlatformOther;
     }
     return self;
 }
 
 - (BOOL)isWindows {
-    return _tag == (TeamDesktopPlatformTag)TeamDesktopPlatformWindows;
+    return _tag == TeamDesktopPlatformWindows;
 }
 
 - (BOOL)isMac {
-    return _tag == (TeamDesktopPlatformTag)TeamDesktopPlatformMac;
+    return _tag == TeamDesktopPlatformMac;
 }
 
 - (BOOL)isLinux {
-    return _tag == (TeamDesktopPlatformTag)TeamDesktopPlatformLinux;
+    return _tag == TeamDesktopPlatformLinux;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamDesktopPlatformTag)TeamDesktopPlatformOther;
+    return _tag == TeamDesktopPlatformOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamDesktopPlatformTag)TeamDesktopPlatformWindows) {
-        return @"(TeamDesktopPlatformTag)TeamDesktopPlatformWindows";
-    }
-    if (_tag == (TeamDesktopPlatformTag)TeamDesktopPlatformMac) {
-        return @"(TeamDesktopPlatformTag)TeamDesktopPlatformMac";
-    }
-    if (_tag == (TeamDesktopPlatformTag)TeamDesktopPlatformLinux) {
-        return @"(TeamDesktopPlatformTag)TeamDesktopPlatformLinux";
-    }
-    if (_tag == (TeamDesktopPlatformTag)TeamDesktopPlatformOther) {
-        return @"(TeamDesktopPlatformTag)TeamDesktopPlatformOther";
+    switch (_tag) {
+        case TeamDesktopPlatformWindows:
+           return @"TeamDesktopPlatformWindows";
+        case TeamDesktopPlatformMac:
+           return @"TeamDesktopPlatformMac";
+        case TeamDesktopPlatformLinux:
+           return @"TeamDesktopPlatformLinux";
+        case TeamDesktopPlatformOther:
+           return @"TeamDesktopPlatformOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

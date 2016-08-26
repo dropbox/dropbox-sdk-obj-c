@@ -3,72 +3,108 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 
 /// 
-/// The DbxFilesLookupError union.
+/// The `DbxFilesLookupError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesLookupError : NSObject <DbxSerializable> 
 
+/// The `FilesLookupErrorTag` enum type represents the possible tag states that
+/// the `DbxFilesLookupError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesLookupErrorTag) {
-    /// (no description)
+    /// (no description).
     FilesLookupErrorMalformedPath,
+
     /// There is nothing at the given path.
     FilesLookupErrorNotFound,
+
     /// We were expecting a file, but the given path refers to something that
     /// isn't a file.
     FilesLookupErrorNotFile,
+
     /// We were expecting a folder, but the given path refers to something that
     /// isn't a folder.
     FilesLookupErrorNotFolder,
+
     /// The file cannot be transferred because the content is restricted.  For
     /// example, sometimes there are legal restrictions due to copyright claims.
     FilesLookupErrorRestrictedContent,
-    /// (no description)
+
+    /// (no description).
     FilesLookupErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesLookupErrorTag tag;
+
+/// (no description).
+@property (nonatomic, copy) NSString * _Nullable malformedPath;
+
+
+/// Initializes union class with tag state of `MalformedPath`.
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
 
+/// Initializes union class with tag state of `NotFound`.
 - (nonnull instancetype)initWithNotFound;
 
+/// Initializes union class with tag state of `NotFile`.
 - (nonnull instancetype)initWithNotFile;
 
+/// Initializes union class with tag state of `NotFolder`.
 - (nonnull instancetype)initWithNotFolder;
 
+/// Initializes union class with tag state of `RestrictedContent`.
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `MalformedPath`.
 - (BOOL)isMalformedPath;
 
+/// Returns whether the union's current tag state has value `NotFound`.
 - (BOOL)isNotFound;
 
+/// Returns whether the union's current tag state has value `NotFile`.
 - (BOOL)isNotFile;
 
+/// Returns whether the union's current tag state has value `NotFolder`.
 - (BOOL)isNotFolder;
 
+/// Returns whether the union's current tag state has value `RestrictedContent`.
 - (BOOL)isRestrictedContent;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesLookupError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesLookupError union type.
-@property (nonatomic) FilesLookupErrorTag tag;
-@property (nonatomic, copy) NSString * _Nullable malformedPath;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesLookupError` union.
+/// 
 @interface DbxFilesLookupErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesLookupError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesLookupError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesLookupError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

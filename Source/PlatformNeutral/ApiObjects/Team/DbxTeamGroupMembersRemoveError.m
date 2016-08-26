@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotFound;
+        _tag = TeamGroupMembersRemoveErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorOther;
+        _tag = TeamGroupMembersRemoveErrorOther;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithMemberNotInGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorMemberNotInGroup;
+        _tag = TeamGroupMembersRemoveErrorMemberNotInGroup;
     }
     return self;
 }
@@ -36,39 +36,37 @@
 - (instancetype)initWithGroupNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotInTeam;
+        _tag = TeamGroupMembersRemoveErrorGroupNotInTeam;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotFound;
+    return _tag == TeamGroupMembersRemoveErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorOther;
+    return _tag == TeamGroupMembersRemoveErrorOther;
 }
 
 - (BOOL)isMemberNotInGroup {
-    return _tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorMemberNotInGroup;
+    return _tag == TeamGroupMembersRemoveErrorMemberNotInGroup;
 }
 
 - (BOOL)isGroupNotInTeam {
-    return _tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotInTeam;
+    return _tag == TeamGroupMembersRemoveErrorGroupNotInTeam;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotFound) {
-        return @"(TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorOther) {
-        return @"(TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorOther";
-    }
-    if (_tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorMemberNotInGroup) {
-        return @"(TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorMemberNotInGroup";
-    }
-    if (_tag == (TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotInTeam) {
-        return @"(TeamGroupMembersRemoveErrorTag)TeamGroupMembersRemoveErrorGroupNotInTeam";
+    switch (_tag) {
+        case TeamGroupMembersRemoveErrorGroupNotFound:
+           return @"TeamGroupMembersRemoveErrorGroupNotFound";
+        case TeamGroupMembersRemoveErrorOther:
+           return @"TeamGroupMembersRemoveErrorOther";
+        case TeamGroupMembersRemoveErrorMemberNotInGroup:
+           return @"TeamGroupMembersRemoveErrorMemberNotInGroup";
+        case TeamGroupMembersRemoveErrorGroupNotInTeam:
+           return @"TeamGroupMembersRemoveErrorGroupNotInTeam";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

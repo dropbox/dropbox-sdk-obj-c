@@ -3,31 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesRestoreArg;
 
 /// 
-/// The DbxFilesRestoreArg struct.
+/// The `DbxFilesRestoreArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesRestoreArg : NSObject <DbxSerializable> 
 
 /// The path to the file you want to restore.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The revision to restore for the file.
 @property (nonatomic, copy) NSString * _Nonnull rev;
 
+/// Full constructor for the `RestoreArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev;
 
+/// Returns a human-readable representation of the `DbxFilesRestoreArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesRestoreArg` struct.
+/// 
 @interface DbxFilesRestoreArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesRestoreArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesRestoreArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesRestoreArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesRestoreArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxFilesCommitInfo.h"
 
 @class DbxFilesCommitInfoWithProperties;
@@ -11,26 +11,43 @@
 @class DbxPropertiesPropertyGroup;
 
 /// 
-/// The DbxFilesCommitInfoWithProperties struct.
+/// The `DbxFilesCommitInfoWithProperties` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesCommitInfoWithProperties : DbxFilesCommitInfo <DbxSerializable> 
 
 /// List of custom properties to add to file.
 @property (nonatomic) NSArray<DbxPropertiesPropertyGroup *> * _Nullable propertyGroups;
 
+/// Full constructor for the `CommitInfoWithProperties` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DbxFilesWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups;
 
+/// Convenience constructor for the `CommitInfoWithProperties` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesCommitInfoWithProperties` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesCommitInfoWithProperties` struct.
+/// 
 @interface DbxFilesCommitInfoWithPropertiesSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesCommitInfoWithProperties` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesCommitInfoWithProperties * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesCommitInfoWithProperties` object
+/// from a json-compatible dictionary representation.
 + (DbxFilesCommitInfoWithProperties * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

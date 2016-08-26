@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError;
+        _tag = SharingUpdateFolderPolicyErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithNotOnTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNotOnTeam;
+        _tag = SharingUpdateFolderPolicyErrorNotOnTeam;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithTeamPolicyDisallowsMemberPolicy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy;
+        _tag = SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithDisallowedSharedLinkPolicy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy;
+        _tag = SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNoPermission;
+        _tag = SharingUpdateFolderPolicyErrorNoPermission;
     }
     return self;
 }
@@ -53,61 +53,57 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorOther;
+        _tag = SharingUpdateFolderPolicyErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError;
+    return _tag == SharingUpdateFolderPolicyErrorAccessError;
 }
 
 - (BOOL)isNotOnTeam {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNotOnTeam;
+    return _tag == SharingUpdateFolderPolicyErrorNotOnTeam;
 }
 
 - (BOOL)isTeamPolicyDisallowsMemberPolicy {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy;
+    return _tag == SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy;
 }
 
 - (BOOL)isDisallowedSharedLinkPolicy {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy;
+    return _tag == SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNoPermission;
+    return _tag == SharingUpdateFolderPolicyErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorOther;
+    return _tag == SharingUpdateFolderPolicyErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError";
-    }
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNotOnTeam) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNotOnTeam";
-    }
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy";
-    }
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy";
-    }
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNoPermission) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorNoPermission";
-    }
-    if (_tag == (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorOther) {
-        return @"(SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorOther";
+    switch (_tag) {
+        case SharingUpdateFolderPolicyErrorAccessError:
+           return @"SharingUpdateFolderPolicyErrorAccessError";
+        case SharingUpdateFolderPolicyErrorNotOnTeam:
+           return @"SharingUpdateFolderPolicyErrorNotOnTeam";
+        case SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy:
+           return @"SharingUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy";
+        case SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy:
+           return @"SharingUpdateFolderPolicyErrorDisallowedSharedLinkPolicy";
+        case SharingUpdateFolderPolicyErrorNoPermission:
+           return @"SharingUpdateFolderPolicyErrorNoPermission";
+        case SharingUpdateFolderPolicyErrorOther:
+           return @"SharingUpdateFolderPolicyErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUpdateFolderPolicyErrorTag)SharingUpdateFolderPolicyErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingUpdateFolderPolicyErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUpdateFolderPolicyErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

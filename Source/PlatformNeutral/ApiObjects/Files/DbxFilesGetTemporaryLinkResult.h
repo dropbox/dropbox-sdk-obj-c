@@ -3,32 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesFileMetadata;
 @class DbxFilesGetTemporaryLinkResult;
 
 /// 
-/// The DbxFilesGetTemporaryLinkResult struct.
+/// The `DbxFilesGetTemporaryLinkResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesGetTemporaryLinkResult : NSObject <DbxSerializable> 
 
 /// Metadata of the file.
 @property (nonatomic) DbxFilesFileMetadata * _Nonnull metadata;
+
 /// The temporary link which can be used to stream content the file.
 @property (nonatomic, copy) NSString * _Nonnull link;
 
+/// Full constructor for the `GetTemporaryLinkResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithMetadata:(DbxFilesFileMetadata * _Nonnull)metadata link:(NSString * _Nonnull)link;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesGetTemporaryLinkResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesGetTemporaryLinkResult` struct.
+/// 
 @interface DbxFilesGetTemporaryLinkResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesGetTemporaryLinkResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesGetTemporaryLinkResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesGetTemporaryLinkResult` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesGetTemporaryLinkResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

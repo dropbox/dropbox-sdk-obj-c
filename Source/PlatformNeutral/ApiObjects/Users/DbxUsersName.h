@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersName;
 
 /// 
-/// The DbxUsersName struct.
+/// The `DbxUsersName` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Representations for a person's name to assist with internationalization.
 /// 
@@ -16,27 +20,39 @@
 
 /// Also known as a first name.
 @property (nonatomic, copy) NSString * _Nonnull givenName;
+
 /// Also known as a last name or family name.
 @property (nonatomic, copy) NSString * _Nonnull surname;
+
 /// Locale-dependent name. In the US, a person's familiar name is their
 /// givenName, but elsewhere, it could be any combination of a person's
 /// givenName and surname.
 @property (nonatomic, copy) NSString * _Nonnull familiarName;
+
 /// A name that can be used directly to represent the name of a user's Dropbox
 /// account.
 @property (nonatomic, copy) NSString * _Nonnull displayName;
 
+/// Full constructor for the `Name` struct (exposes all instance variables).
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName surname:(NSString * _Nonnull)surname familiarName:(NSString * _Nonnull)familiarName displayName:(NSString * _Nonnull)displayName;
 
+/// Returns a human-readable representation of the `DbxUsersName` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersName` struct.
+/// 
 @interface DbxUsersNameSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the `DbxUsersName`
+/// object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersName * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersName` object from a json-compatible
+/// dictionary representation.
 + (DbxUsersName * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,32 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesPropertyGroupWithPath;
 @class DbxPropertiesPropertyGroup;
 
 /// 
-/// The DbxFilesPropertyGroupWithPath struct.
+/// The `DbxFilesPropertyGroupWithPath` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesPropertyGroupWithPath : NSObject <DbxSerializable> 
 
 /// A unique identifier for the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// Filled custom property templates associated with a file.
 @property (nonatomic) NSArray<DbxPropertiesPropertyGroup *> * _Nonnull propertyGroups;
 
+/// Full constructor for the `PropertyGroupWithPath` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nonnull)propertyGroups;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesPropertyGroupWithPath` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesPropertyGroupWithPath` struct.
+/// 
 @interface DbxFilesPropertyGroupWithPathSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesPropertyGroupWithPath` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesPropertyGroupWithPath * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesPropertyGroupWithPath` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesPropertyGroupWithPath * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

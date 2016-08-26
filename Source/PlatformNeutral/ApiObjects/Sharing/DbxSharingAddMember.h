@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAccessLevel;
 @class DbxSharingAddMember;
 @class DbxSharingMemberSelector;
 
 /// 
-/// The DbxSharingAddMember struct.
+/// The `DbxSharingAddMember` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The member and type of access the member should have when added to a shared
 /// folder.
@@ -19,23 +23,36 @@
 
 /// The member to add to the shared folder.
 @property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+
 /// The access level to grant member to the shared folder.  owner in AccessLevel
 /// is disallowed.
 @property (nonatomic) DbxSharingAccessLevel * _Nonnull accessLevel;
 
+/// Full constructor for the `AddMember` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithMember:(DbxSharingMemberSelector * _Nonnull)member accessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel;
 
+/// Convenience constructor for the `AddMember` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithMember:(DbxSharingMemberSelector * _Nonnull)member;
 
+/// Returns a human-readable representation of the `DbxSharingAddMember` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingAddMember` struct.
+/// 
 @interface DbxSharingAddMemberSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingAddMember` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingAddMember * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingAddMember` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingAddMember * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

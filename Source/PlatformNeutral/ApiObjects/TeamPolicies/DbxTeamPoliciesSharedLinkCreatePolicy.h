@@ -3,62 +3,93 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamPoliciesSharedLinkCreatePolicy;
 
 /// 
-/// The DbxTeamPoliciesSharedLinkCreatePolicy union.
+/// The `DbxTeamPoliciesSharedLinkCreatePolicy` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Policy governing the visibility of newly created shared links.
 /// 
 @interface DbxTeamPoliciesSharedLinkCreatePolicy : NSObject <DbxSerializable> 
 
+/// The `TeamPoliciesSharedLinkCreatePolicyTag` enum type represents the
+/// possible tag states that the `DbxTeamPoliciesSharedLinkCreatePolicy` union
+/// can exist in.
 typedef NS_ENUM(NSInteger, TeamPoliciesSharedLinkCreatePolicyTag) {
     /// By default, anyone can access newly created shared links. No login will
     /// be required to access the shared links unless overridden.
     TeamPoliciesSharedLinkCreatePolicyDefaultPublic,
+
     /// By default, only members of the same team can access newly created
     /// shared links. Login will be required to access the shared links unless
     /// overridden.
     TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly,
+
     /// Only members of the same team can access newly created shared links.
     /// Login will be required to access the shared links.
     TeamPoliciesSharedLinkCreatePolicyTeamOnly,
-    /// (no description)
+
+    /// (no description).
     TeamPoliciesSharedLinkCreatePolicyOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamPoliciesSharedLinkCreatePolicyTag tag;
+
+
+/// Initializes union class with tag state of `DefaultPublic`.
 - (nonnull instancetype)initWithDefaultPublic;
 
+/// Initializes union class with tag state of `DefaultTeamOnly`.
 - (nonnull instancetype)initWithDefaultTeamOnly;
 
+/// Initializes union class with tag state of `TeamOnly`.
 - (nonnull instancetype)initWithTeamOnly;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `DefaultPublic`.
 - (BOOL)isDefaultPublic;
 
+/// Returns whether the union's current tag state has value `DefaultTeamOnly`.
 - (BOOL)isDefaultTeamOnly;
 
+/// Returns whether the union's current tag state has value `TeamOnly`.
 - (BOOL)isTeamOnly;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamPoliciesSharedLinkCreatePolicy` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamPoliciesSharedLinkCreatePolicy union type.
-@property (nonatomic) TeamPoliciesSharedLinkCreatePolicyTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamPoliciesSharedLinkCreatePolicy`
+/// union.
+/// 
 @interface DbxTeamPoliciesSharedLinkCreatePolicySerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamPoliciesSharedLinkCreatePolicy` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamPoliciesSharedLinkCreatePolicy`
+/// object from a json-compatible dictionary representation.
 + (DbxTeamPoliciesSharedLinkCreatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

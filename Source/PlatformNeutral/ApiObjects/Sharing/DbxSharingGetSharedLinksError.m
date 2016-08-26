@@ -11,7 +11,7 @@
 - (instancetype)initWithPath:(NSString *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath;
+        _tag = SharingGetSharedLinksErrorPath;
         _path = path;
     }
     return self;
@@ -20,33 +20,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorOther;
+        _tag = SharingGetSharedLinksErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath;
+    return _tag == SharingGetSharedLinksErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorOther;
+    return _tag == SharingGetSharedLinksErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath) {
-        return @"(SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath";
-    }
-    if (_tag == (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorOther) {
-        return @"(SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorOther";
+    switch (_tag) {
+        case SharingGetSharedLinksErrorPath:
+           return @"SharingGetSharedLinksErrorPath";
+        case SharingGetSharedLinksErrorOther:
+           return @"SharingGetSharedLinksErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)path {
-    if (_tag != (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingGetSharedLinksErrorTag)SharingGetSharedLinksErrorPath, but was %@.", [self getTagName]];
+    if (_tag != SharingGetSharedLinksErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingGetSharedLinksErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

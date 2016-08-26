@@ -3,56 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersIndividualSpaceAllocation;
 @class DbxUsersSpaceAllocation;
 @class DbxUsersTeamSpaceAllocation;
 
 /// 
-/// The DbxUsersSpaceAllocation union.
+/// The `DbxUsersSpaceAllocation` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Space is allocated differently based on the type of account.
 /// 
 @interface DbxUsersSpaceAllocation : NSObject <DbxSerializable> 
 
+/// The `UsersSpaceAllocationTag` enum type represents the possible tag states
+/// that the `DbxUsersSpaceAllocation` union can exist in.
 typedef NS_ENUM(NSInteger, UsersSpaceAllocationTag) {
     /// The user's space allocation applies only to their individual account.
     UsersSpaceAllocationIndividual,
+
     /// The user shares space with other members of their team.
     UsersSpaceAllocationTeam,
-    /// (no description)
+
+    /// (no description).
     UsersSpaceAllocationOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) UsersSpaceAllocationTag tag;
+
+/// The user's space allocation applies only to their individual account.
+@property (nonatomic) DbxUsersIndividualSpaceAllocation * _Nonnull individual;
+
+/// The user shares space with other members of their team.
+@property (nonatomic) DbxUsersTeamSpaceAllocation * _Nonnull team;
+
+
+/// Initializes union class with tag state of `Individual`.
 - (nonnull instancetype)initWithIndividual:(DbxUsersIndividualSpaceAllocation * _Nonnull)individual;
 
+/// Initializes union class with tag state of `Team`.
 - (nonnull instancetype)initWithTeam:(DbxUsersTeamSpaceAllocation * _Nonnull)team;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Individual`.
 - (BOOL)isIndividual;
 
+/// Returns whether the union's current tag state has value `Team`.
 - (BOOL)isTeam;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxUsersSpaceAllocation`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxUsersSpaceAllocation union type.
-@property (nonatomic) UsersSpaceAllocationTag tag;
-@property (nonatomic) DbxUsersIndividualSpaceAllocation * _Nonnull individual;
-@property (nonatomic) DbxUsersTeamSpaceAllocation * _Nonnull team;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersSpaceAllocation` union.
+/// 
 @interface DbxUsersSpaceAllocationSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersSpaceAllocation` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersSpaceAllocation * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersSpaceAllocation` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

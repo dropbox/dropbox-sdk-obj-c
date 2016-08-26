@@ -11,7 +11,7 @@
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingInviteeInfoTag)SharingInviteeInfoEmail;
+        _tag = SharingInviteeInfoEmail;
         _email = email;
     }
     return self;
@@ -20,33 +20,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingInviteeInfoTag)SharingInviteeInfoOther;
+        _tag = SharingInviteeInfoOther;
     }
     return self;
 }
 
 - (BOOL)isEmail {
-    return _tag == (SharingInviteeInfoTag)SharingInviteeInfoEmail;
+    return _tag == SharingInviteeInfoEmail;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingInviteeInfoTag)SharingInviteeInfoOther;
+    return _tag == SharingInviteeInfoOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingInviteeInfoTag)SharingInviteeInfoEmail) {
-        return @"(SharingInviteeInfoTag)SharingInviteeInfoEmail";
-    }
-    if (_tag == (SharingInviteeInfoTag)SharingInviteeInfoOther) {
-        return @"(SharingInviteeInfoTag)SharingInviteeInfoOther";
+    switch (_tag) {
+        case SharingInviteeInfoEmail:
+           return @"SharingInviteeInfoEmail";
+        case SharingInviteeInfoOther:
+           return @"SharingInviteeInfoOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)email {
-    if (_tag != (SharingInviteeInfoTag)SharingInviteeInfoEmail) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingInviteeInfoTag)SharingInviteeInfoEmail, but was %@.", [self getTagName]];
+    if (_tag != SharingInviteeInfoEmail) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingInviteeInfoEmail, but was %@.", [self getTagName]];
     }
     return _email;
 }

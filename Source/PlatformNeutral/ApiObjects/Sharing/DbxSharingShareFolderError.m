@@ -13,7 +13,7 @@
 - (instancetype)initWithEmailUnverified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorEmailUnverified;
+        _tag = SharingShareFolderErrorEmailUnverified;
     }
     return self;
 }
@@ -21,7 +21,7 @@
 - (instancetype)initWithBadPath:(DbxSharingSharePathError *)badPath {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorBadPath;
+        _tag = SharingShareFolderErrorBadPath;
         _badPath = badPath;
     }
     return self;
@@ -30,7 +30,7 @@
 - (instancetype)initWithTeamPolicyDisallowsMemberPolicy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy;
+        _tag = SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy;
     }
     return self;
 }
@@ -38,7 +38,7 @@
 - (instancetype)initWithDisallowedSharedLinkPolicy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorDisallowedSharedLinkPolicy;
+        _tag = SharingShareFolderErrorDisallowedSharedLinkPolicy;
     }
     return self;
 }
@@ -46,7 +46,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorOther;
+        _tag = SharingShareFolderErrorOther;
     }
     return self;
 }
@@ -54,61 +54,57 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingShareFolderErrorTag)SharingShareFolderErrorNoPermission;
+        _tag = SharingShareFolderErrorNoPermission;
     }
     return self;
 }
 
 - (BOOL)isEmailUnverified {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorEmailUnverified;
+    return _tag == SharingShareFolderErrorEmailUnverified;
 }
 
 - (BOOL)isBadPath {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorBadPath;
+    return _tag == SharingShareFolderErrorBadPath;
 }
 
 - (BOOL)isTeamPolicyDisallowsMemberPolicy {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy;
+    return _tag == SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy;
 }
 
 - (BOOL)isDisallowedSharedLinkPolicy {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorDisallowedSharedLinkPolicy;
+    return _tag == SharingShareFolderErrorDisallowedSharedLinkPolicy;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorOther;
+    return _tag == SharingShareFolderErrorOther;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingShareFolderErrorTag)SharingShareFolderErrorNoPermission;
+    return _tag == SharingShareFolderErrorNoPermission;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorEmailUnverified) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorEmailUnverified";
-    }
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorBadPath) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorBadPath";
-    }
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy";
-    }
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorDisallowedSharedLinkPolicy) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorDisallowedSharedLinkPolicy";
-    }
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorOther) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorOther";
-    }
-    if (_tag == (SharingShareFolderErrorTag)SharingShareFolderErrorNoPermission) {
-        return @"(SharingShareFolderErrorTag)SharingShareFolderErrorNoPermission";
+    switch (_tag) {
+        case SharingShareFolderErrorEmailUnverified:
+           return @"SharingShareFolderErrorEmailUnverified";
+        case SharingShareFolderErrorBadPath:
+           return @"SharingShareFolderErrorBadPath";
+        case SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy:
+           return @"SharingShareFolderErrorTeamPolicyDisallowsMemberPolicy";
+        case SharingShareFolderErrorDisallowedSharedLinkPolicy:
+           return @"SharingShareFolderErrorDisallowedSharedLinkPolicy";
+        case SharingShareFolderErrorOther:
+           return @"SharingShareFolderErrorOther";
+        case SharingShareFolderErrorNoPermission:
+           return @"SharingShareFolderErrorNoPermission";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharePathError *)badPath {
-    if (_tag != (SharingShareFolderErrorTag)SharingShareFolderErrorBadPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingShareFolderErrorTag)SharingShareFolderErrorBadPath, but was %@.", [self getTagName]];
+    if (_tag != SharingShareFolderErrorBadPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingShareFolderErrorBadPath, but was %@.", [self getTagName]];
     }
     return _badPath;
 }

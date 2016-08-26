@@ -3,89 +3,139 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxTeamMemberSelectorError.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersSetProfileError;
 
 /// 
-/// The DbxTeamMembersSetProfileError union.
+/// The `DbxTeamMembersSetProfileError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersSetProfileError : NSObject <DbxSerializable> 
 
+/// The `TeamMembersSetProfileErrorTag` enum type represents the possible tag
+/// states that the `DbxTeamMembersSetProfileError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersSetProfileErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
     TeamMembersSetProfileErrorUserNotFound,
+
     /// The user is not a member of the team.
     TeamMembersSetProfileErrorUserNotInTeam,
+
     /// It is unsafe to use both external_id and new_external_id
     TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe,
+
     /// None of new_email, new_given_name, new_surname, or new_external_id are
     /// specified
     TeamMembersSetProfileErrorNoNewDataSpecified,
+
     /// Email is already reserved for another user.
     TeamMembersSetProfileErrorEmailReservedForOtherUser,
+
     /// The external ID is already in use by another team member.
     TeamMembersSetProfileErrorExternalIdUsedByOtherUser,
+
     /// Setting profile disallowed
     TeamMembersSetProfileErrorSetProfileDisallowed,
+
     /// Parameter new_email cannot be empty.
     TeamMembersSetProfileErrorParamCannotBeEmpty,
-    /// (no description)
+
+    /// (no description).
     TeamMembersSetProfileErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersSetProfileErrorTag tag;
+
+
+/// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
 
+/// Initializes union class with tag state of `UserNotInTeam`.
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// Initializes union class with tag state of
+/// `ExternalIdAndNewExternalIdUnsafe`.
 - (nonnull instancetype)initWithExternalIdAndNewExternalIdUnsafe;
 
+/// Initializes union class with tag state of `NoNewDataSpecified`.
 - (nonnull instancetype)initWithNoNewDataSpecified;
 
+/// Initializes union class with tag state of `EmailReservedForOtherUser`.
 - (nonnull instancetype)initWithEmailReservedForOtherUser;
 
+/// Initializes union class with tag state of `ExternalIdUsedByOtherUser`.
 - (nonnull instancetype)initWithExternalIdUsedByOtherUser;
 
+/// Initializes union class with tag state of `SetProfileDisallowed`.
 - (nonnull instancetype)initWithSetProfileDisallowed;
 
+/// Initializes union class with tag state of `ParamCannotBeEmpty`.
 - (nonnull instancetype)initWithParamCannotBeEmpty;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `UserNotFound`.
 - (BOOL)isUserNotFound;
 
+/// Returns whether the union's current tag state has value `UserNotInTeam`.
 - (BOOL)isUserNotInTeam;
 
+/// Returns whether the union's current tag state has value
+/// `ExternalIdAndNewExternalIdUnsafe`.
 - (BOOL)isExternalIdAndNewExternalIdUnsafe;
 
+/// Returns whether the union's current tag state has value
+/// `NoNewDataSpecified`.
 - (BOOL)isNoNewDataSpecified;
 
+/// Returns whether the union's current tag state has value
+/// `EmailReservedForOtherUser`.
 - (BOOL)isEmailReservedForOtherUser;
 
+/// Returns whether the union's current tag state has value
+/// `ExternalIdUsedByOtherUser`.
 - (BOOL)isExternalIdUsedByOtherUser;
 
+/// Returns whether the union's current tag state has value
+/// `SetProfileDisallowed`.
 - (BOOL)isSetProfileDisallowed;
 
+/// Returns whether the union's current tag state has value
+/// `ParamCannotBeEmpty`.
 - (BOOL)isParamCannotBeEmpty;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamMembersSetProfileError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersSetProfileError union type.
-@property (nonatomic) TeamMembersSetProfileErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersSetProfileError` union.
+/// 
 @interface DbxTeamMembersSetProfileErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersSetProfileError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersSetProfileError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersSetProfileError` object from
+/// a json-compatible dictionary representation.
 + (DbxTeamMembersSetProfileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

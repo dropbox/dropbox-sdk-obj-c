@@ -14,7 +14,7 @@
 - (instancetype)initWithUnshareFolderError:(DbxSharingUnshareFolderError *)unshareFolderError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobErrorTag)SharingJobErrorUnshareFolderError;
+        _tag = SharingJobErrorUnshareFolderError;
         _unshareFolderError = unshareFolderError;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithRemoveFolderMemberError:(DbxSharingRemoveFolderMemberError *)removeFolderMemberError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError;
+        _tag = SharingJobErrorRemoveFolderMemberError;
         _removeFolderMemberError = removeFolderMemberError;
     }
     return self;
@@ -32,7 +32,7 @@
 - (instancetype)initWithRelinquishFolderMembershipError:(DbxSharingRelinquishFolderMembershipError *)relinquishFolderMembershipError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError;
+        _tag = SharingJobErrorRelinquishFolderMembershipError;
         _relinquishFolderMembershipError = relinquishFolderMembershipError;
     }
     return self;
@@ -41,61 +41,59 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobErrorTag)SharingJobErrorOther;
+        _tag = SharingJobErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUnshareFolderError {
-    return _tag == (SharingJobErrorTag)SharingJobErrorUnshareFolderError;
+    return _tag == SharingJobErrorUnshareFolderError;
 }
 
 - (BOOL)isRemoveFolderMemberError {
-    return _tag == (SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError;
+    return _tag == SharingJobErrorRemoveFolderMemberError;
 }
 
 - (BOOL)isRelinquishFolderMembershipError {
-    return _tag == (SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError;
+    return _tag == SharingJobErrorRelinquishFolderMembershipError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingJobErrorTag)SharingJobErrorOther;
+    return _tag == SharingJobErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingJobErrorTag)SharingJobErrorUnshareFolderError) {
-        return @"(SharingJobErrorTag)SharingJobErrorUnshareFolderError";
-    }
-    if (_tag == (SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError) {
-        return @"(SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError";
-    }
-    if (_tag == (SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError) {
-        return @"(SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError";
-    }
-    if (_tag == (SharingJobErrorTag)SharingJobErrorOther) {
-        return @"(SharingJobErrorTag)SharingJobErrorOther";
+    switch (_tag) {
+        case SharingJobErrorUnshareFolderError:
+           return @"SharingJobErrorUnshareFolderError";
+        case SharingJobErrorRemoveFolderMemberError:
+           return @"SharingJobErrorRemoveFolderMemberError";
+        case SharingJobErrorRelinquishFolderMembershipError:
+           return @"SharingJobErrorRelinquishFolderMembershipError";
+        case SharingJobErrorOther:
+           return @"SharingJobErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingUnshareFolderError *)unshareFolderError {
-    if (_tag != (SharingJobErrorTag)SharingJobErrorUnshareFolderError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingJobErrorTag)SharingJobErrorUnshareFolderError, but was %@.", [self getTagName]];
+    if (_tag != SharingJobErrorUnshareFolderError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingJobErrorUnshareFolderError, but was %@.", [self getTagName]];
     }
     return _unshareFolderError;
 }
 
 - (DbxSharingRemoveFolderMemberError *)removeFolderMemberError {
-    if (_tag != (SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingJobErrorTag)SharingJobErrorRemoveFolderMemberError, but was %@.", [self getTagName]];
+    if (_tag != SharingJobErrorRemoveFolderMemberError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingJobErrorRemoveFolderMemberError, but was %@.", [self getTagName]];
     }
     return _removeFolderMemberError;
 }
 
 - (DbxSharingRelinquishFolderMembershipError *)relinquishFolderMembershipError {
-    if (_tag != (SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingJobErrorTag)SharingJobErrorRelinquishFolderMembershipError, but was %@.", [self getTagName]];
+    if (_tag != SharingJobErrorRelinquishFolderMembershipError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingJobErrorRelinquishFolderMembershipError, but was %@.", [self getTagName]];
     }
     return _relinquishFolderMembershipError;
 }

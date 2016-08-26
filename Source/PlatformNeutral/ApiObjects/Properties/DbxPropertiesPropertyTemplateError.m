@@ -11,7 +11,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound;
+        _tag = PropertiesPropertyTemplateErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -20,7 +20,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorRestrictedContent;
+        _tag = PropertiesPropertyTemplateErrorRestrictedContent;
     }
     return self;
 }
@@ -28,40 +28,39 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorOther;
+        _tag = PropertiesPropertyTemplateErrorOther;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound;
+    return _tag == PropertiesPropertyTemplateErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorRestrictedContent;
+    return _tag == PropertiesPropertyTemplateErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorOther;
+    return _tag == PropertiesPropertyTemplateErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound) {
-        return @"(PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound";
-    }
-    if (_tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorRestrictedContent) {
-        return @"(PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorRestrictedContent";
-    }
-    if (_tag == (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorOther) {
-        return @"(PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorOther";
+    switch (_tag) {
+        case PropertiesPropertyTemplateErrorTemplateNotFound:
+           return @"PropertiesPropertyTemplateErrorTemplateNotFound";
+        case PropertiesPropertyTemplateErrorRestrictedContent:
+           return @"PropertiesPropertyTemplateErrorRestrictedContent";
+        case PropertiesPropertyTemplateErrorOther:
+           return @"PropertiesPropertyTemplateErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (PropertiesPropertyTemplateErrorTag)PropertiesPropertyTemplateErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != PropertiesPropertyTemplateErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required PropertiesPropertyTemplateErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }

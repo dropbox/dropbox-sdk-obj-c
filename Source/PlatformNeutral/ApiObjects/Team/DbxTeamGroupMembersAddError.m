@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotFound;
+        _tag = TeamGroupMembersAddErrorGroupNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorOther;
+        _tag = TeamGroupMembersAddErrorOther;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithDuplicateUser {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorDuplicateUser;
+        _tag = TeamGroupMembersAddErrorDuplicateUser;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithGroupNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotInTeam;
+        _tag = TeamGroupMembersAddErrorGroupNotInTeam;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithMembersNotInTeam:(NSArray<NSString *> *)membersNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam;
+        _tag = TeamGroupMembersAddErrorMembersNotInTeam;
         _membersNotInTeam = membersNotInTeam;
     }
     return self;
@@ -53,7 +53,7 @@
 - (instancetype)initWithUsersNotFound:(NSArray<NSString *> *)usersNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound;
+        _tag = TeamGroupMembersAddErrorUsersNotFound;
         _usersNotFound = usersNotFound;
     }
     return self;
@@ -62,7 +62,7 @@
 - (instancetype)initWithUserMustBeActiveToBeOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserMustBeActiveToBeOwner;
+        _tag = TeamGroupMembersAddErrorUserMustBeActiveToBeOwner;
     }
     return self;
 }
@@ -70,90 +70,84 @@
 - (instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup:(NSArray<NSString *> *)userCannotBeManagerOfCompanyManagedGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup;
+        _tag = TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup;
         _userCannotBeManagerOfCompanyManagedGroup = userCannotBeManagerOfCompanyManagedGroup;
     }
     return self;
 }
 
 - (BOOL)isGroupNotFound {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotFound;
+    return _tag == TeamGroupMembersAddErrorGroupNotFound;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorOther;
+    return _tag == TeamGroupMembersAddErrorOther;
 }
 
 - (BOOL)isDuplicateUser {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorDuplicateUser;
+    return _tag == TeamGroupMembersAddErrorDuplicateUser;
 }
 
 - (BOOL)isGroupNotInTeam {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotInTeam;
+    return _tag == TeamGroupMembersAddErrorGroupNotInTeam;
 }
 
 - (BOOL)isMembersNotInTeam {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam;
+    return _tag == TeamGroupMembersAddErrorMembersNotInTeam;
 }
 
 - (BOOL)isUsersNotFound {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound;
+    return _tag == TeamGroupMembersAddErrorUsersNotFound;
 }
 
 - (BOOL)isUserMustBeActiveToBeOwner {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserMustBeActiveToBeOwner;
+    return _tag == TeamGroupMembersAddErrorUserMustBeActiveToBeOwner;
 }
 
 - (BOOL)isUserCannotBeManagerOfCompanyManagedGroup {
-    return _tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup;
+    return _tag == TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotFound) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotFound";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorOther) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorOther";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorDuplicateUser) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorDuplicateUser";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotInTeam) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorGroupNotInTeam";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserMustBeActiveToBeOwner) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserMustBeActiveToBeOwner";
-    }
-    if (_tag == (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup) {
-        return @"(TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup";
+    switch (_tag) {
+        case TeamGroupMembersAddErrorGroupNotFound:
+           return @"TeamGroupMembersAddErrorGroupNotFound";
+        case TeamGroupMembersAddErrorOther:
+           return @"TeamGroupMembersAddErrorOther";
+        case TeamGroupMembersAddErrorDuplicateUser:
+           return @"TeamGroupMembersAddErrorDuplicateUser";
+        case TeamGroupMembersAddErrorGroupNotInTeam:
+           return @"TeamGroupMembersAddErrorGroupNotInTeam";
+        case TeamGroupMembersAddErrorMembersNotInTeam:
+           return @"TeamGroupMembersAddErrorMembersNotInTeam";
+        case TeamGroupMembersAddErrorUsersNotFound:
+           return @"TeamGroupMembersAddErrorUsersNotFound";
+        case TeamGroupMembersAddErrorUserMustBeActiveToBeOwner:
+           return @"TeamGroupMembersAddErrorUserMustBeActiveToBeOwner";
+        case TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup:
+           return @"TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSArray<NSString *> *)membersNotInTeam {
-    if (_tag != (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorMembersNotInTeam, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupMembersAddErrorMembersNotInTeam) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupMembersAddErrorMembersNotInTeam, but was %@.", [self getTagName]];
     }
     return _membersNotInTeam;
 }
 
 - (NSArray<NSString *> *)usersNotFound {
-    if (_tag != (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUsersNotFound, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupMembersAddErrorUsersNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupMembersAddErrorUsersNotFound, but was %@.", [self getTagName]];
     }
     return _usersNotFound;
 }
 
 - (NSArray<NSString *> *)userCannotBeManagerOfCompanyManagedGroup {
-    if (_tag != (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupMembersAddErrorTag)TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup, but was %@.", [self getTagName]];
     }
     return _userCannotBeManagerOfCompanyManagedGroup;
 }

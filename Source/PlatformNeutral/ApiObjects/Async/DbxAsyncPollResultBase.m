@@ -11,18 +11,19 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncPollResultBaseTag)AsyncPollResultBaseInProgress;
+        _tag = AsyncPollResultBaseInProgress;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (AsyncPollResultBaseTag)AsyncPollResultBaseInProgress;
+    return _tag == AsyncPollResultBaseInProgress;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AsyncPollResultBaseTag)AsyncPollResultBaseInProgress) {
-        return @"(AsyncPollResultBaseTag)AsyncPollResultBaseInProgress";
+    switch (_tag) {
+        case AsyncPollResultBaseInProgress:
+           return @"AsyncPollResultBaseInProgress";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

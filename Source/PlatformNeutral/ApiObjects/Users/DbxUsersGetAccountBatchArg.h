@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersGetAccountBatchArg;
 
 /// 
-/// The DbxUsersGetAccountBatchArg struct.
+/// The `DbxUsersGetAccountBatchArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxUsersGetAccountBatchArg : NSObject <DbxSerializable> 
 
@@ -16,17 +20,28 @@
 /// IDs.
 @property (nonatomic) NSArray<NSString *> * _Nonnull accountIds;
 
+/// Full constructor for the `GetAccountBatchArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
 
+/// Returns a human-readable representation of the `DbxUsersGetAccountBatchArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersGetAccountBatchArg` struct.
+/// 
 @interface DbxUsersGetAccountBatchArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersGetAccountBatchArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersGetAccountBatchArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersGetAccountBatchArg` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

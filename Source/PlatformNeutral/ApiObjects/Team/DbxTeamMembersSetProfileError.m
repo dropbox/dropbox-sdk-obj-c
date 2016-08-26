@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotFound;
+        _tag = TeamMembersSetProfileErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotInTeam;
+        _tag = TeamMembersSetProfileErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithExternalIdAndNewExternalIdUnsafe {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe;
+        _tag = TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithNoNewDataSpecified {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorNoNewDataSpecified;
+        _tag = TeamMembersSetProfileErrorNoNewDataSpecified;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithEmailReservedForOtherUser {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorEmailReservedForOtherUser;
+        _tag = TeamMembersSetProfileErrorEmailReservedForOtherUser;
     }
     return self;
 }
@@ -52,7 +52,7 @@
 - (instancetype)initWithExternalIdUsedByOtherUser {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdUsedByOtherUser;
+        _tag = TeamMembersSetProfileErrorExternalIdUsedByOtherUser;
     }
     return self;
 }
@@ -60,7 +60,7 @@
 - (instancetype)initWithSetProfileDisallowed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorSetProfileDisallowed;
+        _tag = TeamMembersSetProfileErrorSetProfileDisallowed;
     }
     return self;
 }
@@ -68,7 +68,7 @@
 - (instancetype)initWithParamCannotBeEmpty {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorParamCannotBeEmpty;
+        _tag = TeamMembersSetProfileErrorParamCannotBeEmpty;
     }
     return self;
 }
@@ -76,74 +76,67 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorOther;
+        _tag = TeamMembersSetProfileErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotFound;
+    return _tag == TeamMembersSetProfileErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotInTeam;
+    return _tag == TeamMembersSetProfileErrorUserNotInTeam;
 }
 
 - (BOOL)isExternalIdAndNewExternalIdUnsafe {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe;
+    return _tag == TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe;
 }
 
 - (BOOL)isNoNewDataSpecified {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorNoNewDataSpecified;
+    return _tag == TeamMembersSetProfileErrorNoNewDataSpecified;
 }
 
 - (BOOL)isEmailReservedForOtherUser {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorEmailReservedForOtherUser;
+    return _tag == TeamMembersSetProfileErrorEmailReservedForOtherUser;
 }
 
 - (BOOL)isExternalIdUsedByOtherUser {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdUsedByOtherUser;
+    return _tag == TeamMembersSetProfileErrorExternalIdUsedByOtherUser;
 }
 
 - (BOOL)isSetProfileDisallowed {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorSetProfileDisallowed;
+    return _tag == TeamMembersSetProfileErrorSetProfileDisallowed;
 }
 
 - (BOOL)isParamCannotBeEmpty {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorParamCannotBeEmpty;
+    return _tag == TeamMembersSetProfileErrorParamCannotBeEmpty;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorOther;
+    return _tag == TeamMembersSetProfileErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotFound) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotInTeam) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorNoNewDataSpecified) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorNoNewDataSpecified";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorEmailReservedForOtherUser) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorEmailReservedForOtherUser";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdUsedByOtherUser) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorExternalIdUsedByOtherUser";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorSetProfileDisallowed) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorSetProfileDisallowed";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorParamCannotBeEmpty) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorParamCannotBeEmpty";
-    }
-    if (_tag == (TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorOther) {
-        return @"(TeamMembersSetProfileErrorTag)TeamMembersSetProfileErrorOther";
+    switch (_tag) {
+        case TeamMembersSetProfileErrorUserNotFound:
+           return @"TeamMembersSetProfileErrorUserNotFound";
+        case TeamMembersSetProfileErrorUserNotInTeam:
+           return @"TeamMembersSetProfileErrorUserNotInTeam";
+        case TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe:
+           return @"TeamMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe";
+        case TeamMembersSetProfileErrorNoNewDataSpecified:
+           return @"TeamMembersSetProfileErrorNoNewDataSpecified";
+        case TeamMembersSetProfileErrorEmailReservedForOtherUser:
+           return @"TeamMembersSetProfileErrorEmailReservedForOtherUser";
+        case TeamMembersSetProfileErrorExternalIdUsedByOtherUser:
+           return @"TeamMembersSetProfileErrorExternalIdUsedByOtherUser";
+        case TeamMembersSetProfileErrorSetProfileDisallowed:
+           return @"TeamMembersSetProfileErrorSetProfileDisallowed";
+        case TeamMembersSetProfileErrorParamCannotBeEmpty:
+           return @"TeamMembersSetProfileErrorParamCannotBeEmpty";
+        case TeamMembersSetProfileErrorOther:
+           return @"TeamMembersSetProfileErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

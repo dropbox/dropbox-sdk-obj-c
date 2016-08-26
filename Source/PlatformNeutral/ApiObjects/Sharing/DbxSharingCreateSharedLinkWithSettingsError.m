@@ -13,7 +13,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath;
+        _tag = SharingCreateSharedLinkWithSettingsErrorPath;
         _path = path;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithEmailNotVerified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorEmailNotVerified;
+        _tag = SharingCreateSharedLinkWithSettingsErrorEmailNotVerified;
     }
     return self;
 }
@@ -30,7 +30,7 @@
 - (instancetype)initWithSharedLinkAlreadyExists {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists;
+        _tag = SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists;
     }
     return self;
 }
@@ -38,7 +38,7 @@
 - (instancetype)initWithSettingsError:(DbxSharingSharedLinkSettingsError *)settingsError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError;
+        _tag = SharingCreateSharedLinkWithSettingsErrorSettingsError;
         _settingsError = settingsError;
     }
     return self;
@@ -47,61 +47,58 @@
 - (instancetype)initWithAccessDenied {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorAccessDenied;
+        _tag = SharingCreateSharedLinkWithSettingsErrorAccessDenied;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath;
+    return _tag == SharingCreateSharedLinkWithSettingsErrorPath;
 }
 
 - (BOOL)isEmailNotVerified {
-    return _tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorEmailNotVerified;
+    return _tag == SharingCreateSharedLinkWithSettingsErrorEmailNotVerified;
 }
 
 - (BOOL)isSharedLinkAlreadyExists {
-    return _tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists;
+    return _tag == SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists;
 }
 
 - (BOOL)isSettingsError {
-    return _tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError;
+    return _tag == SharingCreateSharedLinkWithSettingsErrorSettingsError;
 }
 
 - (BOOL)isAccessDenied {
-    return _tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorAccessDenied;
+    return _tag == SharingCreateSharedLinkWithSettingsErrorAccessDenied;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath) {
-        return @"(SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath";
-    }
-    if (_tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorEmailNotVerified) {
-        return @"(SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorEmailNotVerified";
-    }
-    if (_tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists) {
-        return @"(SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists";
-    }
-    if (_tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError) {
-        return @"(SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError";
-    }
-    if (_tag == (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorAccessDenied) {
-        return @"(SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorAccessDenied";
+    switch (_tag) {
+        case SharingCreateSharedLinkWithSettingsErrorPath:
+           return @"SharingCreateSharedLinkWithSettingsErrorPath";
+        case SharingCreateSharedLinkWithSettingsErrorEmailNotVerified:
+           return @"SharingCreateSharedLinkWithSettingsErrorEmailNotVerified";
+        case SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists:
+           return @"SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists";
+        case SharingCreateSharedLinkWithSettingsErrorSettingsError:
+           return @"SharingCreateSharedLinkWithSettingsErrorSettingsError";
+        case SharingCreateSharedLinkWithSettingsErrorAccessDenied:
+           return @"SharingCreateSharedLinkWithSettingsErrorAccessDenied";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorPath, but was %@.", [self getTagName]];
+    if (_tag != SharingCreateSharedLinkWithSettingsErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingCreateSharedLinkWithSettingsErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DbxSharingSharedLinkSettingsError *)settingsError {
-    if (_tag != (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingCreateSharedLinkWithSettingsErrorTag)SharingCreateSharedLinkWithSettingsErrorSettingsError, but was %@.", [self getTagName]];
+    if (_tag != SharingCreateSharedLinkWithSettingsErrorSettingsError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingCreateSharedLinkWithSettingsErrorSettingsError, but was %@.", [self getTagName]];
     }
     return _settingsError;
 }

@@ -11,7 +11,7 @@
 - (instancetype)initWithGroupId:(NSString *)groupId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupSelectorTag)TeamGroupSelectorGroupId;
+        _tag = TeamGroupSelectorGroupId;
         _groupId = groupId;
     }
     return self;
@@ -20,41 +20,41 @@
 - (instancetype)initWithGroupExternalId:(NSString *)groupExternalId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId;
+        _tag = TeamGroupSelectorGroupExternalId;
         _groupExternalId = groupExternalId;
     }
     return self;
 }
 
 - (BOOL)isGroupId {
-    return _tag == (TeamGroupSelectorTag)TeamGroupSelectorGroupId;
+    return _tag == TeamGroupSelectorGroupId;
 }
 
 - (BOOL)isGroupExternalId {
-    return _tag == (TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId;
+    return _tag == TeamGroupSelectorGroupExternalId;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupSelectorTag)TeamGroupSelectorGroupId) {
-        return @"(TeamGroupSelectorTag)TeamGroupSelectorGroupId";
-    }
-    if (_tag == (TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId) {
-        return @"(TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId";
+    switch (_tag) {
+        case TeamGroupSelectorGroupId:
+           return @"TeamGroupSelectorGroupId";
+        case TeamGroupSelectorGroupExternalId:
+           return @"TeamGroupSelectorGroupExternalId";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)groupId {
-    if (_tag != (TeamGroupSelectorTag)TeamGroupSelectorGroupId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupSelectorTag)TeamGroupSelectorGroupId, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupSelectorGroupId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupSelectorGroupId, but was %@.", [self getTagName]];
     }
     return _groupId;
 }
 
 - (NSString *)groupExternalId {
-    if (_tag != (TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupSelectorTag)TeamGroupSelectorGroupExternalId, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupSelectorGroupExternalId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupSelectorGroupExternalId, but was %@.", [self getTagName]];
     }
     return _groupExternalId;
 }

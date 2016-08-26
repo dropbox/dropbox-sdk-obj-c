@@ -3,52 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingSharedLinkPolicy;
 
 /// 
-/// The DbxSharingSharedLinkPolicy union.
+/// The `DbxSharingSharedLinkPolicy` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Policy governing who can view shared links.
 /// 
 @interface DbxSharingSharedLinkPolicy : NSObject <DbxSerializable> 
 
+/// The `SharingSharedLinkPolicyTag` enum type represents the possible tag
+/// states that the `DbxSharingSharedLinkPolicy` union can exist in.
 typedef NS_ENUM(NSInteger, SharingSharedLinkPolicyTag) {
     /// Links can be shared with anyone.
     SharingSharedLinkPolicyAnyone,
+
     /// Links can only be shared among members of the shared folder.
     SharingSharedLinkPolicyMembers,
-    /// (no description)
+
+    /// (no description).
     SharingSharedLinkPolicyOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingSharedLinkPolicyTag tag;
+
+
+/// Initializes union class with tag state of `Anyone`.
 - (nonnull instancetype)initWithAnyone;
 
+/// Initializes union class with tag state of `Members`.
 - (nonnull instancetype)initWithMembers;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Anyone`.
 - (BOOL)isAnyone;
 
+/// Returns whether the union's current tag state has value `Members`.
 - (BOOL)isMembers;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingSharedLinkPolicy`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingSharedLinkPolicy union type.
-@property (nonatomic) SharingSharedLinkPolicyTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharedLinkPolicy` union.
+/// 
 @interface DbxSharingSharedLinkPolicySerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharedLinkPolicy` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkPolicy * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharedLinkPolicy` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingSharedLinkPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

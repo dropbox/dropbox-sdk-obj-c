@@ -3,54 +3,79 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxAsyncPollError;
 
 /// 
-/// The DbxAsyncPollError union.
+/// The `DbxAsyncPollError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error returned by methods for polling the status of asynchronous job.
 /// 
 @interface DbxAsyncPollError : NSObject <DbxSerializable> 
 
+/// The `AsyncPollErrorTag` enum type represents the possible tag states that
+/// the `DbxAsyncPollError` union can exist in.
 typedef NS_ENUM(NSInteger, AsyncPollErrorTag) {
     /// The job ID is invalid.
     AsyncPollErrorInvalidAsyncJobId,
+
     /// Something went wrong with the job on Dropbox's end. You'll need to
     /// verify that the action you were taking succeeded, and if not, try again.
     /// This should happen very rarely.
     AsyncPollErrorInternalError,
-    /// (no description)
+
+    /// (no description).
     AsyncPollErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) AsyncPollErrorTag tag;
+
+
+/// Initializes union class with tag state of `InvalidAsyncJobId`.
 - (nonnull instancetype)initWithInvalidAsyncJobId;
 
+/// Initializes union class with tag state of `InternalError`.
 - (nonnull instancetype)initWithInternalError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `InvalidAsyncJobId`.
 - (BOOL)isInvalidAsyncJobId;
 
+/// Returns whether the union's current tag state has value `InternalError`.
 - (BOOL)isInternalError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxAsyncPollError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxAsyncPollError union type.
-@property (nonatomic) AsyncPollErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxAsyncPollError` union.
+/// 
 @interface DbxAsyncPollErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxAsyncPollError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxAsyncPollError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxAsyncPollError` object from a
+/// json-compatible dictionary representation.
 + (DbxAsyncPollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

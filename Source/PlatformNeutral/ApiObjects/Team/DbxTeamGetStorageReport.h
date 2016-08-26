@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamBaseDfbReport.h"
 
 @class DbxTeamGetStorageReport;
 @class DbxTeamStorageBucket;
 
 /// 
-/// The DbxTeamGetStorageReport struct.
+/// The `DbxTeamGetStorageReport` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Storage Report Result. Each of the items in the storage report is an array
 /// of values, one value per day. If there is no data for a day, then the value
@@ -20,14 +24,18 @@
 
 /// Sum of the shared, unshared, and datastore usages, for each day.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull totalUsage;
+
 /// Array of the combined size (bytes) of team members' shared folders, for each
 /// day.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull sharedUsage;
+
 /// Array of the combined size (bytes) of team members' root namespaces, for
 /// each day.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull unsharedUsage;
+
 /// Array of the number of shared folders owned by team members, for each day.
 @property (nonatomic) NSArray<NSNumber *> * _Nonnull sharedFolders;
+
 /// Array of storage summaries of team members' account sizes. Each storage
 /// summary is an array of key, value pairs, where each pair describes a storage
 /// bucket. The key indicates the upper bound of the bucket and the value is the
@@ -35,17 +43,28 @@
 /// is no data for a day, the storage summary will be empty.
 @property (nonatomic) NSArray<NSArray<DbxTeamStorageBucket *> *> * _Nonnull memberStorageMap;
 
+/// Full constructor for the `GetStorageReport` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate totalUsage:(NSArray<NSNumber *> * _Nonnull)totalUsage sharedUsage:(NSArray<NSNumber *> * _Nonnull)sharedUsage unsharedUsage:(NSArray<NSNumber *> * _Nonnull)unsharedUsage sharedFolders:(NSArray<NSNumber *> * _Nonnull)sharedFolders memberStorageMap:(NSArray<NSArray<DbxTeamStorageBucket *> *> * _Nonnull)memberStorageMap;
 
+/// Returns a human-readable representation of the `DbxTeamGetStorageReport`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGetStorageReport` struct.
+/// 
 @interface DbxTeamGetStorageReportSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGetStorageReport` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGetStorageReport * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGetStorageReport` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGetStorageReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

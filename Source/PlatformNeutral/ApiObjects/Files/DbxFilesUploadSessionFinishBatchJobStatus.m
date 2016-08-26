@@ -13,7 +13,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusInProgress;
+        _tag = FilesUploadSessionFinishBatchJobStatusInProgress;
     }
     return self;
 }
@@ -21,34 +21,34 @@
 - (instancetype)initWithComplete:(DbxFilesUploadSessionFinishBatchResult *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete;
+        _tag = FilesUploadSessionFinishBatchJobStatusComplete;
         _complete = complete;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusInProgress;
+    return _tag == FilesUploadSessionFinishBatchJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete;
+    return _tag == FilesUploadSessionFinishBatchJobStatusComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusInProgress) {
-        return @"(FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusInProgress";
-    }
-    if (_tag == (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete) {
-        return @"(FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete";
+    switch (_tag) {
+        case FilesUploadSessionFinishBatchJobStatusInProgress:
+           return @"FilesUploadSessionFinishBatchJobStatusInProgress";
+        case FilesUploadSessionFinishBatchJobStatusComplete:
+           return @"FilesUploadSessionFinishBatchJobStatusComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesUploadSessionFinishBatchResult *)complete {
-    if (_tag != (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadSessionFinishBatchJobStatusTag)FilesUploadSessionFinishBatchJobStatusComplete, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadSessionFinishBatchJobStatusComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadSessionFinishBatchJobStatusComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }

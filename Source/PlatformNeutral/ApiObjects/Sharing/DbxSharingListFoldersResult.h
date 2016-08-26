@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFoldersResult;
 @class DbxSharingSharedFolderMetadata;
 
 /// 
-/// The DbxSharingListFoldersResult struct.
+/// The `DbxSharingListFoldersResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Result for listFolders or listMountableFolders, depending on which endpoint
 /// was requested. Unmounted shared folders can be identified by the absence of
@@ -19,25 +23,39 @@
 
 /// List of all shared folders the authenticated user has access to.
 @property (nonatomic) NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull entries;
+
 /// Present if there are additional shared folders that have not been returned
 /// yet. Pass the cursor into the corresponding continue endpoint (either
 /// listFoldersContinue or listMountableFoldersContinue) to list additional
 /// folders.
 @property (nonatomic, copy) NSString * _Nullable cursor;
 
+/// Full constructor for the `ListFoldersResult` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull)entries cursor:(NSString * _Nullable)cursor;
 
+/// Convenience constructor for the `ListFoldersResult` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithEntries:(NSArray<DbxSharingSharedFolderMetadata *> * _Nonnull)entries;
 
+/// Returns a human-readable representation of the `DbxSharingListFoldersResult`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFoldersResult` struct.
+/// 
 @interface DbxSharingListFoldersResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFoldersResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFoldersResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFoldersResult` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingListFoldersResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

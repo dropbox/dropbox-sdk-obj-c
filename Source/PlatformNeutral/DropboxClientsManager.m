@@ -1,11 +1,3 @@
-///
-/// This is a convenience class for the typical single user case. To use this
-/// class, see details in the tutorial at:
-/// https://www.dropbox.com/developers/documentation/obj-c
-///
-/// For information on the available API methods, see the documentation for DropboxClient
-///
-
 #import "DbxOAuth.h"
 #import "DbxOAuthResult.h"
 #import "DropboxClient.h"

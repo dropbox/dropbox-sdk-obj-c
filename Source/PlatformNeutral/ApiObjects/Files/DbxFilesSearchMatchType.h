@@ -3,52 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSearchMatchType;
 
 /// 
-/// The DbxFilesSearchMatchType union.
+/// The `DbxFilesSearchMatchType` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Indicates what type of match was found for a given item.
 /// 
 @interface DbxFilesSearchMatchType : NSObject <DbxSerializable> 
 
+/// The `FilesSearchMatchTypeTag` enum type represents the possible tag states
+/// that the `DbxFilesSearchMatchType` union can exist in.
 typedef NS_ENUM(NSInteger, FilesSearchMatchTypeTag) {
     /// This item was matched on its file or folder name.
     FilesSearchMatchTypeFilename,
+
     /// This item was matched based on its file contents.
     FilesSearchMatchTypeContent,
+
     /// This item was matched based on both its contents and its file name.
     FilesSearchMatchTypeBoth,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesSearchMatchTypeTag tag;
+
+
+/// Initializes union class with tag state of `Filename`.
 - (nonnull instancetype)initWithFilename;
 
+/// Initializes union class with tag state of `Content`.
 - (nonnull instancetype)initWithContent;
 
+/// Initializes union class with tag state of `Both`.
 - (nonnull instancetype)initWithBoth;
 
+/// Returns whether the union's current tag state has value `Filename`.
 - (BOOL)isFilename;
 
+/// Returns whether the union's current tag state has value `Content`.
 - (BOOL)isContent;
 
+/// Returns whether the union's current tag state has value `Both`.
 - (BOOL)isBoth;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesSearchMatchType`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesSearchMatchType union type.
-@property (nonatomic) FilesSearchMatchTypeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSearchMatchType` union.
+/// 
 @interface DbxFilesSearchMatchTypeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSearchMatchType` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSearchMatchType * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSearchMatchType` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSearchMatchType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

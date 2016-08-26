@@ -3,38 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersListError;
 
 /// 
-/// The DbxTeamMembersListError union.
+/// The `DbxTeamMembersListError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersListError : NSObject <DbxSerializable> 
 
+/// The `TeamMembersListErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamMembersListError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersListErrorTag) {
-    /// (no description)
+    /// (no description).
     TeamMembersListErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersListErrorTag tag;
+
+
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamMembersListError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersListError union type.
-@property (nonatomic) TeamMembersListErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersListError` union.
+/// 
 @interface DbxTeamMembersListErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersListError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersListError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersListError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersListError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

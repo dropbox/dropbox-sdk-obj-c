@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAccessLevel;
 @class DbxSharingFolderPolicy;
@@ -11,7 +11,11 @@
 @class DbxUsersTeam;
 
 /// 
-/// The DbxSharingSharedFolderMetadataBase struct.
+/// The `DbxSharingSharedFolderMetadataBase` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Properties of the shared folder.
 /// 
@@ -19,30 +23,47 @@
 
 /// The current user's access level for this shared folder.
 @property (nonatomic) DbxSharingAccessLevel * _Nonnull accessType;
+
 /// Whether this folder is a team folder https://www.dropbox.com/en/help/986.
 @property (nonatomic, copy) NSNumber * _Nonnull isTeamFolder;
+
 /// Policies governing this shared folder.
 @property (nonatomic) DbxSharingFolderPolicy * _Nonnull policy;
+
 /// The team that owns the folder. This field is not present if the folder is
 /// not owned by a team.
 @property (nonatomic) DbxUsersTeam * _Nullable ownerTeam;
+
 /// The ID of the parent shared folder. This field is present only if the folder
 /// is contained within another shared folder.
 @property (nonatomic, copy) NSString * _Nullable parentSharedFolderId;
 
+/// Full constructor for the `SharedFolderMetadataBase` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DbxSharingFolderPolicy * _Nonnull)policy ownerTeam:(DbxUsersTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
+/// Convenience constructor for the `SharedFolderMetadataBase` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DbxSharingAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DbxSharingFolderPolicy * _Nonnull)policy;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingSharedFolderMetadataBase` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharedFolderMetadataBase` struct.
+/// 
 @interface DbxSharingSharedFolderMetadataBaseSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharedFolderMetadataBase` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderMetadataBase * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharedFolderMetadataBase` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingSharedFolderMetadataBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

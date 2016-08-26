@@ -11,18 +11,19 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamDateRangeErrorTag)TeamDateRangeErrorOther;
+        _tag = TeamDateRangeErrorOther;
     }
     return self;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamDateRangeErrorTag)TeamDateRangeErrorOther;
+    return _tag == TeamDateRangeErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamDateRangeErrorTag)TeamDateRangeErrorOther) {
-        return @"(TeamDateRangeErrorTag)TeamDateRangeErrorOther";
+    switch (_tag) {
+        case TeamDateRangeErrorOther:
+           return @"TeamDateRangeErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamCommonGroupSummary.h"
 
 @class DbxTeamCommonGroupManagementType;
@@ -11,7 +11,11 @@
 @class DbxTeamGroupMemberInfo;
 
 /// 
-/// The DbxTeamGroupFullInfo struct.
+/// The `DbxTeamGroupFullInfo` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Full description of a group.
 /// 
@@ -19,23 +23,37 @@
 
 /// List of group members.
 @property (nonatomic) NSArray<DbxTeamGroupMemberInfo *> * _Nullable members;
+
 /// The group creation time as a UTC timestamp in milliseconds since the Unix
 /// epoch.
 @property (nonatomic, copy) NSNumber * _Nonnull created;
 
+/// Full constructor for the `GroupFullInfo` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType created:(NSNumber * _Nonnull)created groupExternalId:(NSString * _Nullable)groupExternalId memberCount:(NSNumber * _Nullable)memberCount members:(NSArray<DbxTeamGroupMemberInfo *> * _Nullable)members;
 
+/// Convenience constructor for the `GroupFullInfo` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DbxTeamCommonGroupManagementType * _Nonnull)groupManagementType created:(NSNumber * _Nonnull)created;
 
+/// Returns a human-readable representation of the `DbxTeamGroupFullInfo`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupFullInfo` struct.
+/// 
 @interface DbxTeamGroupFullInfoSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupFullInfo` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupFullInfo * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupFullInfo` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupFullInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFolderAction;
 @class DbxSharingFolderPermission;
 @class DbxSharingPermissionDeniedReason;
 
 /// 
-/// The DbxSharingFolderPermission struct.
+/// The `DbxSharingFolderPermission` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Whether the user is allowed to take the action on the shared folder.
 /// 
@@ -18,25 +22,40 @@
 
 /// The action that the user may wish to take on the folder.
 @property (nonatomic) DbxSharingFolderAction * _Nonnull action;
+
 /// True if the user is allowed to take the action.
 @property (nonatomic, copy) NSNumber * _Nonnull allow;
+
 /// The reason why the user is denied the permission. Not present if the action
 /// is allowed, or if no reason is available.
 @property (nonatomic) DbxSharingPermissionDeniedReason * _Nullable reason;
 
+/// Full constructor for the `FolderPermission` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithAction:(DbxSharingFolderAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow reason:(DbxSharingPermissionDeniedReason * _Nullable)reason;
 
+/// Convenience constructor for the `FolderPermission` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAction:(DbxSharingFolderAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
 
+/// Returns a human-readable representation of the `DbxSharingFolderPermission`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFolderPermission` struct.
+/// 
 @interface DbxSharingFolderPermissionSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFolderPermission` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFolderPermission * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFolderPermission` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingFolderPermission * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

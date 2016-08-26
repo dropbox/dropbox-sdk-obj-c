@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotFound;
+        _tag = TeamMembersRemoveErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotInTeam;
+        _tag = TeamMembersRemoveErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorOther;
+        _tag = TeamMembersRemoveErrorOther;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithRemoveLastAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemoveLastAdmin;
+        _tag = TeamMembersRemoveErrorRemoveLastAdmin;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithRemovedAndTransferDestShouldDiffer {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
+        _tag = TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
     }
     return self;
 }
@@ -52,7 +52,7 @@
 - (instancetype)initWithRemovedAndTransferAdminShouldDiffer {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer;
+        _tag = TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer;
     }
     return self;
 }
@@ -60,7 +60,7 @@
 - (instancetype)initWithTransferDestUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotFound;
+        _tag = TeamMembersRemoveErrorTransferDestUserNotFound;
     }
     return self;
 }
@@ -68,7 +68,7 @@
 - (instancetype)initWithTransferDestUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotInTeam;
+        _tag = TeamMembersRemoveErrorTransferDestUserNotInTeam;
     }
     return self;
 }
@@ -76,7 +76,7 @@
 - (instancetype)initWithTransferAdminUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotFound;
+        _tag = TeamMembersRemoveErrorTransferAdminUserNotFound;
     }
     return self;
 }
@@ -84,7 +84,7 @@
 - (instancetype)initWithTransferAdminUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotInTeam;
+        _tag = TeamMembersRemoveErrorTransferAdminUserNotInTeam;
     }
     return self;
 }
@@ -92,7 +92,7 @@
 - (instancetype)initWithUnspecifiedTransferAdminId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUnspecifiedTransferAdminId;
+        _tag = TeamMembersRemoveErrorUnspecifiedTransferAdminId;
     }
     return self;
 }
@@ -100,7 +100,7 @@
 - (instancetype)initWithTransferAdminIsNotAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminIsNotAdmin;
+        _tag = TeamMembersRemoveErrorTransferAdminIsNotAdmin;
     }
     return self;
 }
@@ -108,7 +108,7 @@
 - (instancetype)initWithCannotKeepAccountAndTransfer {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndTransfer;
+        _tag = TeamMembersRemoveErrorCannotKeepAccountAndTransfer;
     }
     return self;
 }
@@ -116,7 +116,7 @@
 - (instancetype)initWithCannotKeepAccountAndDeleteData {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndDeleteData;
+        _tag = TeamMembersRemoveErrorCannotKeepAccountAndDeleteData;
     }
     return self;
 }
@@ -124,116 +124,103 @@
 - (instancetype)initWithEmailAddressTooLongToBeDisabled {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled;
+        _tag = TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotFound;
+    return _tag == TeamMembersRemoveErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotInTeam;
+    return _tag == TeamMembersRemoveErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorOther;
+    return _tag == TeamMembersRemoveErrorOther;
 }
 
 - (BOOL)isRemoveLastAdmin {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemoveLastAdmin;
+    return _tag == TeamMembersRemoveErrorRemoveLastAdmin;
 }
 
 - (BOOL)isRemovedAndTransferDestShouldDiffer {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
+    return _tag == TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
 }
 
 - (BOOL)isRemovedAndTransferAdminShouldDiffer {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer;
+    return _tag == TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer;
 }
 
 - (BOOL)isTransferDestUserNotFound {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotFound;
+    return _tag == TeamMembersRemoveErrorTransferDestUserNotFound;
 }
 
 - (BOOL)isTransferDestUserNotInTeam {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotInTeam;
+    return _tag == TeamMembersRemoveErrorTransferDestUserNotInTeam;
 }
 
 - (BOOL)isTransferAdminUserNotFound {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotFound;
+    return _tag == TeamMembersRemoveErrorTransferAdminUserNotFound;
 }
 
 - (BOOL)isTransferAdminUserNotInTeam {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotInTeam;
+    return _tag == TeamMembersRemoveErrorTransferAdminUserNotInTeam;
 }
 
 - (BOOL)isUnspecifiedTransferAdminId {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUnspecifiedTransferAdminId;
+    return _tag == TeamMembersRemoveErrorUnspecifiedTransferAdminId;
 }
 
 - (BOOL)isTransferAdminIsNotAdmin {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminIsNotAdmin;
+    return _tag == TeamMembersRemoveErrorTransferAdminIsNotAdmin;
 }
 
 - (BOOL)isCannotKeepAccountAndTransfer {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndTransfer;
+    return _tag == TeamMembersRemoveErrorCannotKeepAccountAndTransfer;
 }
 
 - (BOOL)isCannotKeepAccountAndDeleteData {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndDeleteData;
+    return _tag == TeamMembersRemoveErrorCannotKeepAccountAndDeleteData;
 }
 
 - (BOOL)isEmailAddressTooLongToBeDisabled {
-    return _tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled;
+    return _tag == TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotFound) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotInTeam) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorOther) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorOther";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemoveLastAdmin) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemoveLastAdmin";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotFound) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotFound";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotInTeam) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferDestUserNotInTeam";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotFound) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotFound";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotInTeam) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminUserNotInTeam";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUnspecifiedTransferAdminId) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorUnspecifiedTransferAdminId";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminIsNotAdmin) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorTransferAdminIsNotAdmin";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndTransfer) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndTransfer";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndDeleteData) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorCannotKeepAccountAndDeleteData";
-    }
-    if (_tag == (TeamMembersRemoveErrorTag)TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled) {
-        return @"(TeamMembersRemoveErrorTag)TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled";
+    switch (_tag) {
+        case TeamMembersRemoveErrorUserNotFound:
+           return @"TeamMembersRemoveErrorUserNotFound";
+        case TeamMembersRemoveErrorUserNotInTeam:
+           return @"TeamMembersRemoveErrorUserNotInTeam";
+        case TeamMembersRemoveErrorOther:
+           return @"TeamMembersRemoveErrorOther";
+        case TeamMembersRemoveErrorRemoveLastAdmin:
+           return @"TeamMembersRemoveErrorRemoveLastAdmin";
+        case TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
+           return @"TeamMembersRemoveErrorRemovedAndTransferDestShouldDiffer";
+        case TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
+           return @"TeamMembersRemoveErrorRemovedAndTransferAdminShouldDiffer";
+        case TeamMembersRemoveErrorTransferDestUserNotFound:
+           return @"TeamMembersRemoveErrorTransferDestUserNotFound";
+        case TeamMembersRemoveErrorTransferDestUserNotInTeam:
+           return @"TeamMembersRemoveErrorTransferDestUserNotInTeam";
+        case TeamMembersRemoveErrorTransferAdminUserNotFound:
+           return @"TeamMembersRemoveErrorTransferAdminUserNotFound";
+        case TeamMembersRemoveErrorTransferAdminUserNotInTeam:
+           return @"TeamMembersRemoveErrorTransferAdminUserNotInTeam";
+        case TeamMembersRemoveErrorUnspecifiedTransferAdminId:
+           return @"TeamMembersRemoveErrorUnspecifiedTransferAdminId";
+        case TeamMembersRemoveErrorTransferAdminIsNotAdmin:
+           return @"TeamMembersRemoveErrorTransferAdminIsNotAdmin";
+        case TeamMembersRemoveErrorCannotKeepAccountAndTransfer:
+           return @"TeamMembersRemoveErrorCannotKeepAccountAndTransfer";
+        case TeamMembersRemoveErrorCannotKeepAccountAndDeleteData:
+           return @"TeamMembersRemoveErrorCannotKeepAccountAndDeleteData";
+        case TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled:
+           return @"TeamMembersRemoveErrorEmailAddressTooLongToBeDisabled";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

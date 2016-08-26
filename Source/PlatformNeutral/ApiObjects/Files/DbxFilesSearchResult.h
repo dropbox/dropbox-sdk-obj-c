@@ -3,36 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSearchMatch;
 @class DbxFilesSearchResult;
 
 /// 
-/// The DbxFilesSearchResult struct.
+/// The `DbxFilesSearchResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSearchResult : NSObject <DbxSerializable> 
 
 /// A list (possibly empty) of matches for the query.
 @property (nonatomic) NSArray<DbxFilesSearchMatch *> * _Nonnull matches;
+
 /// Used for paging. If true, indicates there is another page of results
 /// available that can be fetched by calling search again.
 @property (nonatomic, copy) NSNumber * _Nonnull more;
+
 /// Used for paging. Value to set the start argument to when calling search to
 /// fetch the next page of results.
 @property (nonatomic, copy) NSNumber * _Nonnull start;
 
+/// Full constructor for the `SearchResult` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithMatches:(NSArray<DbxFilesSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
 
+/// Returns a human-readable representation of the `DbxFilesSearchResult`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSearchResult` struct.
+/// 
 @interface DbxFilesSearchResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSearchResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSearchResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSearchResult` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSearchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

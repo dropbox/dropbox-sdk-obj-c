@@ -3,47 +3,70 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxPropertiesPropertyType;
 
 /// 
-/// The DbxPropertiesPropertyType union.
+/// The `DbxPropertiesPropertyType` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Data type of the given property added. This endpoint is in beta and  only
 /// properties of type strings is supported.
 /// 
 @interface DbxPropertiesPropertyType : NSObject <DbxSerializable> 
 
+/// The `PropertiesPropertyTypeTag` enum type represents the possible tag states
+/// that the `DbxPropertiesPropertyType` union can exist in.
 typedef NS_ENUM(NSInteger, PropertiesPropertyTypeTag) {
     /// The associated property will be of type string. Unicode is supported.
     PropertiesPropertyTypeString,
-    /// (no description)
+
+    /// (no description).
     PropertiesPropertyTypeOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) PropertiesPropertyTypeTag tag;
+
+
+/// Initializes union class with tag state of `String`.
 - (nonnull instancetype)initWithString;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `String`.
 - (BOOL)isString;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxPropertiesPropertyType`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxPropertiesPropertyType union type.
-@property (nonatomic) PropertiesPropertyTypeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxPropertiesPropertyType` union.
+/// 
 @interface DbxPropertiesPropertyTypeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxPropertiesPropertyType` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyType * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxPropertiesPropertyType` object from a
+/// json-compatible dictionary representation.
 + (DbxPropertiesPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

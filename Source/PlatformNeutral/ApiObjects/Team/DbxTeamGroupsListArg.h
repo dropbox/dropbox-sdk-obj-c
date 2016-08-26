@@ -3,31 +3,48 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupsListArg;
 
 /// 
-/// The DbxTeamGroupsListArg struct.
+/// The `DbxTeamGroupsListArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupsListArg : NSObject <DbxSerializable> 
 
 /// Number of results to return per call.
 @property (nonatomic, copy) NSNumber * _Nonnull limit;
 
+/// Full constructor for the `GroupsListArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit;
 
+/// Convenience constructor for the `GroupsListArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
+/// Returns a human-readable representation of the `DbxTeamGroupsListArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupsListArg` struct.
+/// 
 @interface DbxTeamGroupsListArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupsListArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsListArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupsListArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupsListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

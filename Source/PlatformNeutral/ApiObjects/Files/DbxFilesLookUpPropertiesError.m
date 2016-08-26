@@ -11,18 +11,19 @@
 - (instancetype)initWithPropertyGroupNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesLookUpPropertiesErrorTag)FilesLookUpPropertiesErrorPropertyGroupNotFound;
+        _tag = FilesLookUpPropertiesErrorPropertyGroupNotFound;
     }
     return self;
 }
 
 - (BOOL)isPropertyGroupNotFound {
-    return _tag == (FilesLookUpPropertiesErrorTag)FilesLookUpPropertiesErrorPropertyGroupNotFound;
+    return _tag == FilesLookUpPropertiesErrorPropertyGroupNotFound;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesLookUpPropertiesErrorTag)FilesLookUpPropertiesErrorPropertyGroupNotFound) {
-        return @"(FilesLookUpPropertiesErrorTag)FilesLookUpPropertiesErrorPropertyGroupNotFound";
+    switch (_tag) {
+        case FilesLookUpPropertiesErrorPropertyGroupNotFound:
+           return @"FilesLookUpPropertiesErrorPropertyGroupNotFound";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

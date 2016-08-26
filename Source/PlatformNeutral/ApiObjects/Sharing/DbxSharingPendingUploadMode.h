@@ -3,47 +3,70 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingPendingUploadMode;
 
 /// 
-/// The DbxSharingPendingUploadMode union.
+/// The `DbxSharingPendingUploadMode` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Flag to indicate pending upload default (for linking to not-yet-existing
 /// paths).
 /// 
 @interface DbxSharingPendingUploadMode : NSObject <DbxSerializable> 
 
+/// The `SharingPendingUploadModeTag` enum type represents the possible tag
+/// states that the `DbxSharingPendingUploadMode` union can exist in.
 typedef NS_ENUM(NSInteger, SharingPendingUploadModeTag) {
     /// Assume pending uploads are files.
     SharingPendingUploadModeFile,
+
     /// Assume pending uploads are folders.
     SharingPendingUploadModeFolder,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingPendingUploadModeTag tag;
+
+
+/// Initializes union class with tag state of `File`.
 - (nonnull instancetype)initWithFile;
 
+/// Initializes union class with tag state of `Folder`.
 - (nonnull instancetype)initWithFolder;
 
+/// Returns whether the union's current tag state has value `File`.
 - (BOOL)isFile;
 
+/// Returns whether the union's current tag state has value `Folder`.
 - (BOOL)isFolder;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingPendingUploadMode`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingPendingUploadMode union type.
-@property (nonatomic) SharingPendingUploadModeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingPendingUploadMode` union.
+/// 
 @interface DbxSharingPendingUploadModeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingPendingUploadMode` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingPendingUploadMode * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingPendingUploadMode` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingPendingUploadMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

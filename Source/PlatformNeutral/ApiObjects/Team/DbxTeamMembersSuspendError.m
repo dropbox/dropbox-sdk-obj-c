@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotFound;
+        _tag = TeamMembersSuspendErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotInTeam;
+        _tag = TeamMembersSuspendErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorOther;
+        _tag = TeamMembersSuspendErrorOther;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (instancetype)initWithSuspendInactiveUser {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendInactiveUser;
+        _tag = TeamMembersSuspendErrorSuspendInactiveUser;
     }
     return self;
 }
@@ -44,7 +44,7 @@
 - (instancetype)initWithSuspendLastAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendLastAdmin;
+        _tag = TeamMembersSuspendErrorSuspendLastAdmin;
     }
     return self;
 }
@@ -52,53 +52,49 @@
 - (instancetype)initWithTeamLicenseLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorTeamLicenseLimit;
+        _tag = TeamMembersSuspendErrorTeamLicenseLimit;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotFound;
+    return _tag == TeamMembersSuspendErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotInTeam;
+    return _tag == TeamMembersSuspendErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorOther;
+    return _tag == TeamMembersSuspendErrorOther;
 }
 
 - (BOOL)isSuspendInactiveUser {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendInactiveUser;
+    return _tag == TeamMembersSuspendErrorSuspendInactiveUser;
 }
 
 - (BOOL)isSuspendLastAdmin {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendLastAdmin;
+    return _tag == TeamMembersSuspendErrorSuspendLastAdmin;
 }
 
 - (BOOL)isTeamLicenseLimit {
-    return _tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorTeamLicenseLimit;
+    return _tag == TeamMembersSuspendErrorTeamLicenseLimit;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotFound) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotInTeam) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorOther) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorOther";
-    }
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendInactiveUser) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendInactiveUser";
-    }
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendLastAdmin) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorSuspendLastAdmin";
-    }
-    if (_tag == (TeamMembersSuspendErrorTag)TeamMembersSuspendErrorTeamLicenseLimit) {
-        return @"(TeamMembersSuspendErrorTag)TeamMembersSuspendErrorTeamLicenseLimit";
+    switch (_tag) {
+        case TeamMembersSuspendErrorUserNotFound:
+           return @"TeamMembersSuspendErrorUserNotFound";
+        case TeamMembersSuspendErrorUserNotInTeam:
+           return @"TeamMembersSuspendErrorUserNotInTeam";
+        case TeamMembersSuspendErrorOther:
+           return @"TeamMembersSuspendErrorOther";
+        case TeamMembersSuspendErrorSuspendInactiveUser:
+           return @"TeamMembersSuspendErrorSuspendInactiveUser";
+        case TeamMembersSuspendErrorSuspendLastAdmin:
+           return @"TeamMembersSuspendErrorSuspendLastAdmin";
+        case TeamMembersSuspendErrorTeamLicenseLimit:
+           return @"TeamMembersSuspendErrorTeamLicenseLimit";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

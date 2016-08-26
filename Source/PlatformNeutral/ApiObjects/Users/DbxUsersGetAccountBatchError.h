@@ -3,46 +3,72 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersGetAccountBatchError;
 
 /// 
-/// The DbxUsersGetAccountBatchError union.
+/// The `DbxUsersGetAccountBatchError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxUsersGetAccountBatchError : NSObject <DbxSerializable> 
 
+/// The `UsersGetAccountBatchErrorTag` enum type represents the possible tag
+/// states that the `DbxUsersGetAccountBatchError` union can exist in.
 typedef NS_ENUM(NSInteger, UsersGetAccountBatchErrorTag) {
     /// The value is an account ID specified in accountIds in GetAccountBatchArg
     /// that does not exist.
     UsersGetAccountBatchErrorNoAccount,
-    /// (no description)
+
+    /// (no description).
     UsersGetAccountBatchErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) UsersGetAccountBatchErrorTag tag;
+
+/// The value is an account ID specified in accountIds in GetAccountBatchArg
+/// that does not exist.
+@property (nonatomic, copy) NSString * _Nonnull noAccount;
+
+
+/// Initializes union class with tag state of `NoAccount`.
 - (nonnull instancetype)initWithNoAccount:(NSString * _Nonnull)noAccount;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `NoAccount`.
 - (BOOL)isNoAccount;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxUsersGetAccountBatchError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxUsersGetAccountBatchError union type.
-@property (nonatomic) UsersGetAccountBatchErrorTag tag;
-@property (nonatomic, copy) NSString * _Nonnull noAccount;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersGetAccountBatchError` union.
+/// 
 @interface DbxUsersGetAccountBatchErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxUsersGetAccountBatchError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersGetAccountBatchError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersGetAccountBatchError` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersGetAccountBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

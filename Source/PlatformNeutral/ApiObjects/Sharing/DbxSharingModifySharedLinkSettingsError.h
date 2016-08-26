@@ -3,65 +3,102 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxSharingSharedLinkError.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingModifySharedLinkSettingsError;
 @class DbxSharingSharedLinkSettingsError;
 
 /// 
-/// The DbxSharingModifySharedLinkSettingsError union.
+/// The `DbxSharingModifySharedLinkSettingsError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingModifySharedLinkSettingsError : NSObject <DbxSerializable> 
 
+/// The `SharingModifySharedLinkSettingsErrorTag` enum type represents the
+/// possible tag states that the `DbxSharingModifySharedLinkSettingsError` union
+/// can exist in.
 typedef NS_ENUM(NSInteger, SharingModifySharedLinkSettingsErrorTag) {
     /// The shared link wasn't found
     SharingModifySharedLinkSettingsErrorSharedLinkNotFound,
+
     /// The caller is not allowed to access this shared link
     SharingModifySharedLinkSettingsErrorSharedLinkAccessDenied,
-    /// (no description)
+
+    /// (no description).
     SharingModifySharedLinkSettingsErrorOther,
+
     /// There is an error with the given settings
     SharingModifySharedLinkSettingsErrorSettingsError,
+
     /// The caller's email should be verified
     SharingModifySharedLinkSettingsErrorEmailNotVerified,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingModifySharedLinkSettingsErrorTag tag;
+
+/// There is an error with the given settings
+@property (nonatomic) DbxSharingSharedLinkSettingsError * _Nonnull settingsError;
+
+
+/// Initializes union class with tag state of `SharedLinkNotFound`.
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
+/// Initializes union class with tag state of `SharedLinkAccessDenied`.
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Initializes union class with tag state of `SettingsError`.
 - (nonnull instancetype)initWithSettingsError:(DbxSharingSharedLinkSettingsError * _Nonnull)settingsError;
 
+/// Initializes union class with tag state of `EmailNotVerified`.
 - (nonnull instancetype)initWithEmailNotVerified;
 
+/// Returns whether the union's current tag state has value
+/// `SharedLinkNotFound`.
 - (BOOL)isSharedLinkNotFound;
 
+/// Returns whether the union's current tag state has value
+/// `SharedLinkAccessDenied`.
 - (BOOL)isSharedLinkAccessDenied;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns whether the union's current tag state has value `SettingsError`.
 - (BOOL)isSettingsError;
 
+/// Returns whether the union's current tag state has value `EmailNotVerified`.
 - (BOOL)isEmailNotVerified;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingModifySharedLinkSettingsError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingModifySharedLinkSettingsError union type.
-@property (nonatomic) SharingModifySharedLinkSettingsErrorTag tag;
-@property (nonatomic) DbxSharingSharedLinkSettingsError * _Nonnull settingsError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingModifySharedLinkSettingsError`
+/// union.
+/// 
 @interface DbxSharingModifySharedLinkSettingsErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingModifySharedLinkSettingsError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingModifySharedLinkSettingsError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingModifySharedLinkSettingsError`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingModifySharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

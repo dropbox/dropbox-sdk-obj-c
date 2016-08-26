@@ -12,27 +12,28 @@
 - (instancetype)initWithPath:(DbxFilesWriteError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesCreateFolderErrorTag)FilesCreateFolderErrorPath;
+        _tag = FilesCreateFolderErrorPath;
         _path = path;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesCreateFolderErrorTag)FilesCreateFolderErrorPath;
+    return _tag == FilesCreateFolderErrorPath;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesCreateFolderErrorTag)FilesCreateFolderErrorPath) {
-        return @"(FilesCreateFolderErrorTag)FilesCreateFolderErrorPath";
+    switch (_tag) {
+        case FilesCreateFolderErrorPath:
+           return @"FilesCreateFolderErrorPath";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesWriteError *)path {
-    if (_tag != (FilesCreateFolderErrorTag)FilesCreateFolderErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesCreateFolderErrorTag)FilesCreateFolderErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesCreateFolderErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesCreateFolderErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamDateRange;
 
 /// 
-/// The DbxTeamDateRange struct.
+/// The `DbxTeamDateRange` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Input arguments that can be provided for most reports.
 /// 
@@ -16,22 +20,35 @@
 
 /// Optional starting date (inclusive)
 @property (nonatomic) NSDate * _Nullable startDate;
+
 /// Optional ending date (exclusive)
 @property (nonatomic) NSDate * _Nullable endDate;
 
+/// Full constructor for the `DateRange` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
+/// Convenience constructor for the `DateRange` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
+/// Returns a human-readable representation of the `DbxTeamDateRange` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamDateRange` struct.
+/// 
 @interface DbxTeamDateRangeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamDateRange` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamDateRange * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamDateRange` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamDateRange * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

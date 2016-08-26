@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAccessLevel;
 @class DbxSharingMemberAccessLevelResult;
 @class DbxSharingParentFolderAccessInfo;
 
 /// 
-/// The DbxSharingMemberAccessLevelResult struct.
+/// The `DbxSharingMemberAccessLevelResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Contains information about a member's access level to content after an
 /// operation.
@@ -20,26 +24,41 @@
 /// The member still has this level of access to the content through a parent
 /// folder.
 @property (nonatomic) DbxSharingAccessLevel * _Nullable accessLevel;
+
 /// A localized string with additional information about why the user has this
 /// access level to the content.
 @property (nonatomic, copy) NSString * _Nullable warning;
+
 /// The parent folders that a member has access to. The field is present if the
 /// user has access to the first parent folder where the member gains access.
 @property (nonatomic) NSArray<DbxSharingParentFolderAccessInfo *> * _Nullable accessDetails;
 
+/// Full constructor for the `MemberAccessLevelResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithAccessLevel:(DbxSharingAccessLevel * _Nullable)accessLevel warning:(NSString * _Nullable)warning accessDetails:(NSArray<DbxSharingParentFolderAccessInfo *> * _Nullable)accessDetails;
 
+/// Convenience constructor for the `MemberAccessLevelResult` struct (exposes
+/// only non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingMemberAccessLevelResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingMemberAccessLevelResult` struct.
+/// 
 @interface DbxSharingMemberAccessLevelResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingMemberAccessLevelResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingMemberAccessLevelResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingMemberAccessLevelResult` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingMemberAccessLevelResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

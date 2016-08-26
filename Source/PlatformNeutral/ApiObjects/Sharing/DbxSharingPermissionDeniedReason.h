@@ -3,83 +3,128 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingPermissionDeniedReason;
 
 /// 
-/// The DbxSharingPermissionDeniedReason union.
+/// The `DbxSharingPermissionDeniedReason` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Possible reasons the user is denied a permission.
 /// 
 @interface DbxSharingPermissionDeniedReason : NSObject <DbxSerializable> 
 
+/// The `SharingPermissionDeniedReasonTag` enum type represents the possible tag
+/// states that the `DbxSharingPermissionDeniedReason` union can exist in.
 typedef NS_ENUM(NSInteger, SharingPermissionDeniedReasonTag) {
     /// User is not on the same team as the folder owner.
     SharingPermissionDeniedReasonUserNotSameTeamAsOwner,
+
     /// User is prohibited by the owner from taking the action.
     SharingPermissionDeniedReasonUserNotAllowedByOwner,
+
     /// Target is indirectly a member of the folder, for example by being part
     /// of a group.
     SharingPermissionDeniedReasonTargetIsIndirectMember,
+
     /// Target is the owner of the folder.
     SharingPermissionDeniedReasonTargetIsOwner,
+
     /// Target is the user itself.
     SharingPermissionDeniedReasonTargetIsSelf,
+
     /// Target is not an active member of the team.
     SharingPermissionDeniedReasonTargetNotActive,
+
     /// Folder is team folder for a limited team.
     SharingPermissionDeniedReasonFolderIsLimitedTeamFolder,
-    /// (no description)
+
+    /// (no description).
     SharingPermissionDeniedReasonOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingPermissionDeniedReasonTag tag;
+
+
+/// Initializes union class with tag state of `UserNotSameTeamAsOwner`.
 - (nonnull instancetype)initWithUserNotSameTeamAsOwner;
 
+/// Initializes union class with tag state of `UserNotAllowedByOwner`.
 - (nonnull instancetype)initWithUserNotAllowedByOwner;
 
+/// Initializes union class with tag state of `TargetIsIndirectMember`.
 - (nonnull instancetype)initWithTargetIsIndirectMember;
 
+/// Initializes union class with tag state of `TargetIsOwner`.
 - (nonnull instancetype)initWithTargetIsOwner;
 
+/// Initializes union class with tag state of `TargetIsSelf`.
 - (nonnull instancetype)initWithTargetIsSelf;
 
+/// Initializes union class with tag state of `TargetNotActive`.
 - (nonnull instancetype)initWithTargetNotActive;
 
+/// Initializes union class with tag state of `FolderIsLimitedTeamFolder`.
 - (nonnull instancetype)initWithFolderIsLimitedTeamFolder;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value
+/// `UserNotSameTeamAsOwner`.
 - (BOOL)isUserNotSameTeamAsOwner;
 
+/// Returns whether the union's current tag state has value
+/// `UserNotAllowedByOwner`.
 - (BOOL)isUserNotAllowedByOwner;
 
+/// Returns whether the union's current tag state has value
+/// `TargetIsIndirectMember`.
 - (BOOL)isTargetIsIndirectMember;
 
+/// Returns whether the union's current tag state has value `TargetIsOwner`.
 - (BOOL)isTargetIsOwner;
 
+/// Returns whether the union's current tag state has value `TargetIsSelf`.
 - (BOOL)isTargetIsSelf;
 
+/// Returns whether the union's current tag state has value `TargetNotActive`.
 - (BOOL)isTargetNotActive;
 
+/// Returns whether the union's current tag state has value
+/// `FolderIsLimitedTeamFolder`.
 - (BOOL)isFolderIsLimitedTeamFolder;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingPermissionDeniedReason` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingPermissionDeniedReason union type.
-@property (nonatomic) SharingPermissionDeniedReasonTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingPermissionDeniedReason` union.
+/// 
 @interface DbxSharingPermissionDeniedReasonSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingPermissionDeniedReason` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingPermissionDeniedReason * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingPermissionDeniedReason` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingPermissionDeniedReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingLinkPermissions;
 @class DbxSharingSharedLinkMetadata;
@@ -11,7 +11,11 @@
 @class DbxUsersTeam;
 
 /// 
-/// The DbxSharingSharedLinkMetadata struct.
+/// The `DbxSharingSharedLinkMetadata` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The metadata of a shared link
 /// 
@@ -19,39 +23,59 @@
 
 /// URL of the shared link.
 @property (nonatomic, copy) NSString * _Nonnull url;
+
 /// A unique identifier for the linked file.
 @property (nonatomic, copy) NSString * _Nullable id_;
+
 /// The linked file name (including extension). This never contains a slash.
 @property (nonatomic, copy) NSString * _Nonnull name;
+
 /// Expiration time, if set. By default the link won't expire.
 @property (nonatomic) NSDate * _Nullable expires;
+
 /// The lowercased full path in the user's Dropbox. This always starts with a
 /// slash. This field will only be present only if the linked file is in the
 /// authenticated user's  dropbox.
 @property (nonatomic, copy) NSString * _Nullable pathLower;
+
 /// The link's access permissions.
 @property (nonatomic) DbxSharingLinkPermissions * _Nonnull linkPermissions;
+
 /// The team membership information of the link's owner.  This field will only
 /// be present  if the link's owner is a team member.
 @property (nonatomic) DbxSharingTeamMemberInfo * _Nullable teamMemberInfo;
+
 /// The team information of the content's owner. This field will only be present
 /// if the content's owner is a team member and the content's owner team is
 /// different from the link's owner team.
 @property (nonatomic) DbxUsersTeam * _Nullable contentOwnerTeamInfo;
 
+/// Full constructor for the `SharedLinkMetadata` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DbxSharingTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DbxUsersTeam * _Nullable)contentOwnerTeamInfo;
 
+/// Convenience constructor for the `SharedLinkMetadata` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingSharedLinkMetadata` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharedLinkMetadata` struct.
+/// 
 @interface DbxSharingSharedLinkMetadataSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharedLinkMetadata` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharedLinkMetadata * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharedLinkMetadata` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingSharedLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

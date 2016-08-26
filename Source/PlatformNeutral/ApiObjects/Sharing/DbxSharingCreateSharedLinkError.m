@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath;
+        _tag = SharingCreateSharedLinkErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorOther;
+        _tag = SharingCreateSharedLinkErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath;
+    return _tag == SharingCreateSharedLinkErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorOther;
+    return _tag == SharingCreateSharedLinkErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath) {
-        return @"(SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath";
-    }
-    if (_tag == (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorOther) {
-        return @"(SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorOther";
+    switch (_tag) {
+        case SharingCreateSharedLinkErrorPath:
+           return @"SharingCreateSharedLinkErrorPath";
+        case SharingCreateSharedLinkErrorOther:
+           return @"SharingCreateSharedLinkErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingCreateSharedLinkErrorTag)SharingCreateSharedLinkErrorPath, but was %@.", [self getTagName]];
+    if (_tag != SharingCreateSharedLinkErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingCreateSharedLinkErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

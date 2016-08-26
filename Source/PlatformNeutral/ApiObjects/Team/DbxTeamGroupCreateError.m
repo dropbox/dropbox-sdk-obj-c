@@ -11,7 +11,7 @@
 - (instancetype)initWithGroupNameAlreadyUsed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameAlreadyUsed;
+        _tag = TeamGroupCreateErrorGroupNameAlreadyUsed;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithGroupNameInvalid {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameInvalid;
+        _tag = TeamGroupCreateErrorGroupNameInvalid;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithExternalIdAlreadyInUse {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupCreateErrorTag)TeamGroupCreateErrorExternalIdAlreadyInUse;
+        _tag = TeamGroupCreateErrorExternalIdAlreadyInUse;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupCreateErrorTag)TeamGroupCreateErrorOther;
+        _tag = TeamGroupCreateErrorOther;
     }
     return self;
 }
 
 - (BOOL)isGroupNameAlreadyUsed {
-    return _tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameAlreadyUsed;
+    return _tag == TeamGroupCreateErrorGroupNameAlreadyUsed;
 }
 
 - (BOOL)isGroupNameInvalid {
-    return _tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameInvalid;
+    return _tag == TeamGroupCreateErrorGroupNameInvalid;
 }
 
 - (BOOL)isExternalIdAlreadyInUse {
-    return _tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorExternalIdAlreadyInUse;
+    return _tag == TeamGroupCreateErrorExternalIdAlreadyInUse;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorOther;
+    return _tag == TeamGroupCreateErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameAlreadyUsed) {
-        return @"(TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameAlreadyUsed";
-    }
-    if (_tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameInvalid) {
-        return @"(TeamGroupCreateErrorTag)TeamGroupCreateErrorGroupNameInvalid";
-    }
-    if (_tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorExternalIdAlreadyInUse) {
-        return @"(TeamGroupCreateErrorTag)TeamGroupCreateErrorExternalIdAlreadyInUse";
-    }
-    if (_tag == (TeamGroupCreateErrorTag)TeamGroupCreateErrorOther) {
-        return @"(TeamGroupCreateErrorTag)TeamGroupCreateErrorOther";
+    switch (_tag) {
+        case TeamGroupCreateErrorGroupNameAlreadyUsed:
+           return @"TeamGroupCreateErrorGroupNameAlreadyUsed";
+        case TeamGroupCreateErrorGroupNameInvalid:
+           return @"TeamGroupCreateErrorGroupNameInvalid";
+        case TeamGroupCreateErrorExternalIdAlreadyInUse:
+           return @"TeamGroupCreateErrorExternalIdAlreadyInUse";
+        case TeamGroupCreateErrorOther:
+           return @"TeamGroupCreateErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

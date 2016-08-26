@@ -14,7 +14,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound;
+        _tag = FilesUpdatePropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorRestrictedContent;
+        _tag = FilesUpdatePropertiesErrorRestrictedContent;
     }
     return self;
 }
@@ -31,7 +31,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorOther;
+        _tag = FilesUpdatePropertiesErrorOther;
     }
     return self;
 }
@@ -39,7 +39,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath;
+        _tag = FilesUpdatePropertiesErrorPath;
         _path = path;
     }
     return self;
@@ -48,7 +48,7 @@
 - (instancetype)initWithPropertyFieldTooLarge {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyFieldTooLarge;
+        _tag = FilesUpdatePropertiesErrorPropertyFieldTooLarge;
     }
     return self;
 }
@@ -56,7 +56,7 @@
 - (instancetype)initWithDoesNotFitTemplate {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorDoesNotFitTemplate;
+        _tag = FilesUpdatePropertiesErrorDoesNotFitTemplate;
     }
     return self;
 }
@@ -64,83 +64,78 @@
 - (instancetype)initWithPropertyGroupLookup:(DbxFilesLookUpPropertiesError *)propertyGroupLookup {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup;
+        _tag = FilesUpdatePropertiesErrorPropertyGroupLookup;
         _propertyGroupLookup = propertyGroupLookup;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound;
+    return _tag == FilesUpdatePropertiesErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorRestrictedContent;
+    return _tag == FilesUpdatePropertiesErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorOther;
+    return _tag == FilesUpdatePropertiesErrorOther;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath;
+    return _tag == FilesUpdatePropertiesErrorPath;
 }
 
 - (BOOL)isPropertyFieldTooLarge {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyFieldTooLarge;
+    return _tag == FilesUpdatePropertiesErrorPropertyFieldTooLarge;
 }
 
 - (BOOL)isDoesNotFitTemplate {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorDoesNotFitTemplate;
+    return _tag == FilesUpdatePropertiesErrorDoesNotFitTemplate;
 }
 
 - (BOOL)isPropertyGroupLookup {
-    return _tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup;
+    return _tag == FilesUpdatePropertiesErrorPropertyGroupLookup;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorRestrictedContent) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorRestrictedContent";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorOther) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorOther";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyFieldTooLarge) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyFieldTooLarge";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorDoesNotFitTemplate) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorDoesNotFitTemplate";
-    }
-    if (_tag == (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup) {
-        return @"(FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup";
+    switch (_tag) {
+        case FilesUpdatePropertiesErrorTemplateNotFound:
+           return @"FilesUpdatePropertiesErrorTemplateNotFound";
+        case FilesUpdatePropertiesErrorRestrictedContent:
+           return @"FilesUpdatePropertiesErrorRestrictedContent";
+        case FilesUpdatePropertiesErrorOther:
+           return @"FilesUpdatePropertiesErrorOther";
+        case FilesUpdatePropertiesErrorPath:
+           return @"FilesUpdatePropertiesErrorPath";
+        case FilesUpdatePropertiesErrorPropertyFieldTooLarge:
+           return @"FilesUpdatePropertiesErrorPropertyFieldTooLarge";
+        case FilesUpdatePropertiesErrorDoesNotFitTemplate:
+           return @"FilesUpdatePropertiesErrorDoesNotFitTemplate";
+        case FilesUpdatePropertiesErrorPropertyGroupLookup:
+           return @"FilesUpdatePropertiesErrorPropertyGroupLookup";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != FilesUpdatePropertiesErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUpdatePropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesUpdatePropertiesErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUpdatePropertiesErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DbxFilesLookUpPropertiesError *)propertyGroupLookup {
-    if (_tag != (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUpdatePropertiesErrorTag)FilesUpdatePropertiesErrorPropertyGroupLookup, but was %@.", [self getTagName]];
+    if (_tag != FilesUpdatePropertiesErrorPropertyGroupLookup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUpdatePropertiesErrorPropertyGroupLookup, but was %@.", [self getTagName]];
     }
     return _propertyGroupLookup;
 }

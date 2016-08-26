@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesDownloadErrorTag)FilesDownloadErrorPath;
+        _tag = FilesDownloadErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesDownloadErrorTag)FilesDownloadErrorOther;
+        _tag = FilesDownloadErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesDownloadErrorTag)FilesDownloadErrorPath;
+    return _tag == FilesDownloadErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesDownloadErrorTag)FilesDownloadErrorOther;
+    return _tag == FilesDownloadErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesDownloadErrorTag)FilesDownloadErrorPath) {
-        return @"(FilesDownloadErrorTag)FilesDownloadErrorPath";
-    }
-    if (_tag == (FilesDownloadErrorTag)FilesDownloadErrorOther) {
-        return @"(FilesDownloadErrorTag)FilesDownloadErrorOther";
+    switch (_tag) {
+        case FilesDownloadErrorPath:
+           return @"FilesDownloadErrorPath";
+        case FilesDownloadErrorOther:
+           return @"FilesDownloadErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesDownloadErrorTag)FilesDownloadErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesDownloadErrorTag)FilesDownloadErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesDownloadErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesDownloadErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxFilesMetadata.h"
 
 @class DbxFilesFolderMetadata;
@@ -11,34 +11,54 @@
 @class DbxPropertiesPropertyGroup;
 
 /// 
-/// The DbxFilesFolderMetadata struct.
+/// The `DbxFilesFolderMetadata` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesFolderMetadata : DbxFilesMetadata <DbxSerializable> 
 
 /// A unique identifier for the folder.
 @property (nonatomic, copy) NSString * _Nonnull id_;
+
 /// Deprecated. Please use sharingInfo instead.
 @property (nonatomic, copy) NSString * _Nullable sharedFolderId;
+
 /// Set if the folder is contained in a shared folder or is a shared folder
 /// mount point.
 @property (nonatomic) DbxFilesFolderSharingInfo * _Nullable sharingInfo;
+
 /// Additional information if the file has custom properties with the property
 /// template specified.
 @property (nonatomic) NSArray<DbxPropertiesPropertyGroup *> * _Nullable propertyGroups;
 
+/// Full constructor for the `FolderMetadata` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ pathLower:(NSString * _Nullable)pathLower pathDisplay:(NSString * _Nullable)pathDisplay parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId sharedFolderId:(NSString * _Nullable)sharedFolderId sharingInfo:(DbxFilesFolderSharingInfo * _Nullable)sharingInfo propertyGroups:(NSArray<DbxPropertiesPropertyGroup *> * _Nullable)propertyGroups;
 
+/// Convenience constructor for the `FolderMetadata` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_;
 
+/// Returns a human-readable representation of the `DbxFilesFolderMetadata`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesFolderMetadata` struct.
+/// 
 @interface DbxFilesFolderMetadataSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesFolderMetadata` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesFolderMetadata * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesFolderMetadata` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesFolderMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

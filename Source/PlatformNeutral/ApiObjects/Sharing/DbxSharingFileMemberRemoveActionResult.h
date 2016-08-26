@@ -3,54 +3,86 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFileMemberActionError;
 @class DbxSharingFileMemberRemoveActionResult;
 @class DbxSharingMemberAccessLevelResult;
 
 /// 
-/// The DbxSharingFileMemberRemoveActionResult union.
+/// The `DbxSharingFileMemberRemoveActionResult` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingFileMemberRemoveActionResult : NSObject <DbxSerializable> 
 
+/// The `SharingFileMemberRemoveActionResultTag` enum type represents the
+/// possible tag states that the `DbxSharingFileMemberRemoveActionResult` union
+/// can exist in.
 typedef NS_ENUM(NSInteger, SharingFileMemberRemoveActionResultTag) {
     /// Member was successfully removed from this file.
     SharingFileMemberRemoveActionResultSuccess,
+
     /// User was not able to remove this member.
     SharingFileMemberRemoveActionResultMemberError,
-    /// (no description)
+
+    /// (no description).
     SharingFileMemberRemoveActionResultOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingFileMemberRemoveActionResultTag tag;
+
+/// Member was successfully removed from this file.
+@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull success;
+
+/// User was not able to remove this member.
+@property (nonatomic) DbxSharingFileMemberActionError * _Nonnull memberError;
+
+
+/// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DbxSharingMemberAccessLevelResult * _Nonnull)success;
 
+/// Initializes union class with tag state of `MemberError`.
 - (nonnull instancetype)initWithMemberError:(DbxSharingFileMemberActionError * _Nonnull)memberError;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Success`.
 - (BOOL)isSuccess;
 
+/// Returns whether the union's current tag state has value `MemberError`.
 - (BOOL)isMemberError;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingFileMemberRemoveActionResult` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingFileMemberRemoveActionResult union type.
-@property (nonatomic) SharingFileMemberRemoveActionResultTag tag;
-@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull success;
-@property (nonatomic) DbxSharingFileMemberActionError * _Nonnull memberError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFileMemberRemoveActionResult`
+/// union.
+/// 
 @interface DbxSharingFileMemberRemoveActionResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFileMemberRemoveActionResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFileMemberRemoveActionResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFileMemberRemoveActionResult`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingFileMemberRemoveActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,31 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSaveUrlArg;
 
 /// 
-/// The DbxFilesSaveUrlArg struct.
+/// The `DbxFilesSaveUrlArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSaveUrlArg : NSObject <DbxSerializable> 
 
 /// The path in Dropbox where the URL will be saved to.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The URL to be saved.
 @property (nonatomic, copy) NSString * _Nonnull url;
 
+/// Full constructor for the `SaveUrlArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
 
+/// Returns a human-readable representation of the `DbxFilesSaveUrlArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSaveUrlArg` struct.
+/// 
 @interface DbxFilesSaveUrlArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSaveUrlArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSaveUrlArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSaveUrlArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSaveUrlArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

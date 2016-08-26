@@ -11,7 +11,7 @@
 - (instancetype)initWithNoAccount {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersGetAccountErrorTag)UsersGetAccountErrorNoAccount;
+        _tag = UsersGetAccountErrorNoAccount;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersGetAccountErrorTag)UsersGetAccountErrorOther;
+        _tag = UsersGetAccountErrorOther;
     }
     return self;
 }
 
 - (BOOL)isNoAccount {
-    return _tag == (UsersGetAccountErrorTag)UsersGetAccountErrorNoAccount;
+    return _tag == UsersGetAccountErrorNoAccount;
 }
 
 - (BOOL)isOther {
-    return _tag == (UsersGetAccountErrorTag)UsersGetAccountErrorOther;
+    return _tag == UsersGetAccountErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (UsersGetAccountErrorTag)UsersGetAccountErrorNoAccount) {
-        return @"(UsersGetAccountErrorTag)UsersGetAccountErrorNoAccount";
-    }
-    if (_tag == (UsersGetAccountErrorTag)UsersGetAccountErrorOther) {
-        return @"(UsersGetAccountErrorTag)UsersGetAccountErrorOther";
+    switch (_tag) {
+        case UsersGetAccountErrorNoAccount:
+           return @"UsersGetAccountErrorNoAccount";
+        case UsersGetAccountErrorOther:
+           return @"UsersGetAccountErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

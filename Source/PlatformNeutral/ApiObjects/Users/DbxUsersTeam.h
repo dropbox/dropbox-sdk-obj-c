@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersTeam;
 
 /// 
-/// The DbxUsersTeam struct.
+/// The `DbxUsersTeam` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information about a team.
 /// 
@@ -16,20 +20,30 @@
 
 /// The team's unique ID.
 @property (nonatomic, copy) NSString * _Nonnull id_;
+
 /// The name of the team.
 @property (nonatomic, copy) NSString * _Nonnull name;
 
+/// Full constructor for the `Team` struct (exposes all instance variables).
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
 
+/// Returns a human-readable representation of the `DbxUsersTeam` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersTeam` struct.
+/// 
 @interface DbxUsersTeamSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the `DbxUsersTeam`
+/// object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersTeam * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersTeam` object from a json-compatible
+/// dictionary representation.
 + (DbxUsersTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

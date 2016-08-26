@@ -11,7 +11,7 @@
 - (instancetype)initWithFromTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromTeamOnly;
+        _tag = TeamPoliciesSharedFolderJoinPolicyFromTeamOnly;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithFromAnyone {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromAnyone;
+        _tag = TeamPoliciesSharedFolderJoinPolicyFromAnyone;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyOther;
+        _tag = TeamPoliciesSharedFolderJoinPolicyOther;
     }
     return self;
 }
 
 - (BOOL)isFromTeamOnly {
-    return _tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromTeamOnly;
+    return _tag == TeamPoliciesSharedFolderJoinPolicyFromTeamOnly;
 }
 
 - (BOOL)isFromAnyone {
-    return _tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromAnyone;
+    return _tag == TeamPoliciesSharedFolderJoinPolicyFromAnyone;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyOther;
+    return _tag == TeamPoliciesSharedFolderJoinPolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromTeamOnly) {
-        return @"(TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromTeamOnly";
-    }
-    if (_tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromAnyone) {
-        return @"(TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyFromAnyone";
-    }
-    if (_tag == (TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyOther) {
-        return @"(TeamPoliciesSharedFolderJoinPolicyTag)TeamPoliciesSharedFolderJoinPolicyOther";
+    switch (_tag) {
+        case TeamPoliciesSharedFolderJoinPolicyFromTeamOnly:
+           return @"TeamPoliciesSharedFolderJoinPolicyFromTeamOnly";
+        case TeamPoliciesSharedFolderJoinPolicyFromAnyone:
+           return @"TeamPoliciesSharedFolderJoinPolicyFromAnyone";
+        case TeamPoliciesSharedFolderJoinPolicyOther:
+           return @"TeamPoliciesSharedFolderJoinPolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

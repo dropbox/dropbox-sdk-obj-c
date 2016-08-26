@@ -11,7 +11,7 @@
 - (instancetype)initWithDefaultPublic {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultPublic;
+        _tag = TeamPoliciesSharedLinkCreatePolicyDefaultPublic;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithDefaultTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly;
+        _tag = TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyTeamOnly;
+        _tag = TeamPoliciesSharedLinkCreatePolicyTeamOnly;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyOther;
+        _tag = TeamPoliciesSharedLinkCreatePolicyOther;
     }
     return self;
 }
 
 - (BOOL)isDefaultPublic {
-    return _tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultPublic;
+    return _tag == TeamPoliciesSharedLinkCreatePolicyDefaultPublic;
 }
 
 - (BOOL)isDefaultTeamOnly {
-    return _tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly;
+    return _tag == TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly;
 }
 
 - (BOOL)isTeamOnly {
-    return _tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyTeamOnly;
+    return _tag == TeamPoliciesSharedLinkCreatePolicyTeamOnly;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyOther;
+    return _tag == TeamPoliciesSharedLinkCreatePolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultPublic) {
-        return @"(TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultPublic";
-    }
-    if (_tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly) {
-        return @"(TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly";
-    }
-    if (_tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyTeamOnly) {
-        return @"(TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyTeamOnly";
-    }
-    if (_tag == (TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyOther) {
-        return @"(TeamPoliciesSharedLinkCreatePolicyTag)TeamPoliciesSharedLinkCreatePolicyOther";
+    switch (_tag) {
+        case TeamPoliciesSharedLinkCreatePolicyDefaultPublic:
+           return @"TeamPoliciesSharedLinkCreatePolicyDefaultPublic";
+        case TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly:
+           return @"TeamPoliciesSharedLinkCreatePolicyDefaultTeamOnly";
+        case TeamPoliciesSharedLinkCreatePolicyTeamOnly:
+           return @"TeamPoliciesSharedLinkCreatePolicyTeamOnly";
+        case TeamPoliciesSharedLinkCreatePolicyOther:
+           return @"TeamPoliciesSharedLinkCreatePolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

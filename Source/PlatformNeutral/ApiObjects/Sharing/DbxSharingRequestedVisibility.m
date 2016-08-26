@@ -11,7 +11,7 @@
 - (instancetype)initWithPublic {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRequestedVisibilityTag)SharingRequestedVisibilityPublic;
+        _tag = SharingRequestedVisibilityPublic;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithTeamOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRequestedVisibilityTag)SharingRequestedVisibilityTeamOnly;
+        _tag = SharingRequestedVisibilityTeamOnly;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithPassword {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRequestedVisibilityTag)SharingRequestedVisibilityPassword;
+        _tag = SharingRequestedVisibilityPassword;
     }
     return self;
 }
 
 - (BOOL)isPublic {
-    return _tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityPublic;
+    return _tag == SharingRequestedVisibilityPublic;
 }
 
 - (BOOL)isTeamOnly {
-    return _tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityTeamOnly;
+    return _tag == SharingRequestedVisibilityTeamOnly;
 }
 
 - (BOOL)isPassword {
-    return _tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityPassword;
+    return _tag == SharingRequestedVisibilityPassword;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityPublic) {
-        return @"(SharingRequestedVisibilityTag)SharingRequestedVisibilityPublic";
-    }
-    if (_tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityTeamOnly) {
-        return @"(SharingRequestedVisibilityTag)SharingRequestedVisibilityTeamOnly";
-    }
-    if (_tag == (SharingRequestedVisibilityTag)SharingRequestedVisibilityPassword) {
-        return @"(SharingRequestedVisibilityTag)SharingRequestedVisibilityPassword";
+    switch (_tag) {
+        case SharingRequestedVisibilityPublic:
+           return @"SharingRequestedVisibilityPublic";
+        case SharingRequestedVisibilityTeamOnly:
+           return @"SharingRequestedVisibilityTeamOnly";
+        case SharingRequestedVisibilityPassword:
+           return @"SharingRequestedVisibilityPassword";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

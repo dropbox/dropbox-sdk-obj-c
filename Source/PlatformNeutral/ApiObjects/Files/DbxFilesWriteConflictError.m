@@ -11,7 +11,7 @@
 - (instancetype)initWithFile {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteConflictErrorTag)FilesWriteConflictErrorFile;
+        _tag = FilesWriteConflictErrorFile;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteConflictErrorTag)FilesWriteConflictErrorFolder;
+        _tag = FilesWriteConflictErrorFolder;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithFileAncestor {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteConflictErrorTag)FilesWriteConflictErrorFileAncestor;
+        _tag = FilesWriteConflictErrorFileAncestor;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteConflictErrorTag)FilesWriteConflictErrorOther;
+        _tag = FilesWriteConflictErrorOther;
     }
     return self;
 }
 
 - (BOOL)isFile {
-    return _tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFile;
+    return _tag == FilesWriteConflictErrorFile;
 }
 
 - (BOOL)isFolder {
-    return _tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFolder;
+    return _tag == FilesWriteConflictErrorFolder;
 }
 
 - (BOOL)isFileAncestor {
-    return _tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFileAncestor;
+    return _tag == FilesWriteConflictErrorFileAncestor;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorOther;
+    return _tag == FilesWriteConflictErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFile) {
-        return @"(FilesWriteConflictErrorTag)FilesWriteConflictErrorFile";
-    }
-    if (_tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFolder) {
-        return @"(FilesWriteConflictErrorTag)FilesWriteConflictErrorFolder";
-    }
-    if (_tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorFileAncestor) {
-        return @"(FilesWriteConflictErrorTag)FilesWriteConflictErrorFileAncestor";
-    }
-    if (_tag == (FilesWriteConflictErrorTag)FilesWriteConflictErrorOther) {
-        return @"(FilesWriteConflictErrorTag)FilesWriteConflictErrorOther";
+    switch (_tag) {
+        case FilesWriteConflictErrorFile:
+           return @"FilesWriteConflictErrorFile";
+        case FilesWriteConflictErrorFolder:
+           return @"FilesWriteConflictErrorFolder";
+        case FilesWriteConflictErrorFileAncestor:
+           return @"FilesWriteConflictErrorFileAncestor";
+        case FilesWriteConflictErrorOther:
+           return @"FilesWriteConflictErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

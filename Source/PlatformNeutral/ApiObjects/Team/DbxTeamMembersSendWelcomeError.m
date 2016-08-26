@@ -12,7 +12,7 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotFound;
+        _tag = TeamMembersSendWelcomeErrorUserNotFound;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotInTeam;
+        _tag = TeamMembersSendWelcomeErrorUserNotInTeam;
     }
     return self;
 }
@@ -28,32 +28,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorOther;
+        _tag = TeamMembersSendWelcomeErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotFound;
+    return _tag == TeamMembersSendWelcomeErrorUserNotFound;
 }
 
 - (BOOL)isUserNotInTeam {
-    return _tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotInTeam;
+    return _tag == TeamMembersSendWelcomeErrorUserNotInTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorOther;
+    return _tag == TeamMembersSendWelcomeErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotFound) {
-        return @"(TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotFound";
-    }
-    if (_tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotInTeam) {
-        return @"(TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorUserNotInTeam";
-    }
-    if (_tag == (TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorOther) {
-        return @"(TeamMembersSendWelcomeErrorTag)TeamMembersSendWelcomeErrorOther";
+    switch (_tag) {
+        case TeamMembersSendWelcomeErrorUserNotFound:
+           return @"TeamMembersSendWelcomeErrorUserNotFound";
+        case TeamMembersSendWelcomeErrorUserNotInTeam:
+           return @"TeamMembersSendWelcomeErrorUserNotInTeam";
+        case TeamMembersSendWelcomeErrorOther:
+           return @"TeamMembersSendWelcomeErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

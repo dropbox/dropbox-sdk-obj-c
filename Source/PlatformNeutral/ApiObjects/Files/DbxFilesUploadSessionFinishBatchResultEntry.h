@@ -3,48 +3,78 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesFileMetadata;
 @class DbxFilesUploadSessionFinishBatchResultEntry;
 @class DbxFilesUploadSessionFinishError;
 
 /// 
-/// The DbxFilesUploadSessionFinishBatchResultEntry union.
+/// The `DbxFilesUploadSessionFinishBatchResultEntry` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesUploadSessionFinishBatchResultEntry : NSObject <DbxSerializable> 
 
+/// The `FilesUploadSessionFinishBatchResultEntryTag` enum type represents the
+/// possible tag states that the `DbxFilesUploadSessionFinishBatchResultEntry`
+/// union can exist in.
 typedef NS_ENUM(NSInteger, FilesUploadSessionFinishBatchResultEntryTag) {
-    /// (no description)
+    /// (no description).
     FilesUploadSessionFinishBatchResultEntrySuccess,
-    /// (no description)
+
+    /// (no description).
     FilesUploadSessionFinishBatchResultEntryFailure,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesUploadSessionFinishBatchResultEntryTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesFileMetadata * _Nonnull success;
+
+/// (no description).
+@property (nonatomic) DbxFilesUploadSessionFinishError * _Nonnull failure;
+
+
+/// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DbxFilesFileMetadata * _Nonnull)success;
 
+/// Initializes union class with tag state of `Failure`.
 - (nonnull instancetype)initWithFailure:(DbxFilesUploadSessionFinishError * _Nonnull)failure;
 
+/// Returns whether the union's current tag state has value `Success`.
 - (BOOL)isSuccess;
 
+/// Returns whether the union's current tag state has value `Failure`.
 - (BOOL)isFailure;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesUploadSessionFinishBatchResultEntry` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesUploadSessionFinishBatchResultEntry union type.
-@property (nonatomic) FilesUploadSessionFinishBatchResultEntryTag tag;
-@property (nonatomic) DbxFilesFileMetadata * _Nonnull success;
-@property (nonatomic) DbxFilesUploadSessionFinishError * _Nonnull failure;
 
 @end
 
 
+/// 
+/// The serialization class for the
+/// `DbxFilesUploadSessionFinishBatchResultEntry` union.
+/// 
 @interface DbxFilesUploadSessionFinishBatchResultEntrySerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesUploadSessionFinishBatchResultEntry` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesUploadSessionFinishBatchResultEntry * _Nonnull)obj;
 
+/// Returns an instantiation of the
+/// `DbxFilesUploadSessionFinishBatchResultEntry` object from a json-compatible
+/// dictionary representation.
 + (DbxFilesUploadSessionFinishBatchResultEntry * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

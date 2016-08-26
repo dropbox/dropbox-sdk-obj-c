@@ -3,40 +3,60 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamDateRangeError;
 
 /// 
-/// The DbxTeamDateRangeError union.
+/// The `DbxTeamDateRangeError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Errors that can originate from problems in input arguments to reports.
 /// 
 @interface DbxTeamDateRangeError : NSObject <DbxSerializable> 
 
+/// The `TeamDateRangeErrorTag` enum type represents the possible tag states
+/// that the `DbxTeamDateRangeError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamDateRangeErrorTag) {
-    /// (no description)
+    /// (no description).
     TeamDateRangeErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamDateRangeErrorTag tag;
+
+
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamDateRangeError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamDateRangeError union type.
-@property (nonatomic) TeamDateRangeErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamDateRangeError` union.
+/// 
 @interface DbxTeamDateRangeErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamDateRangeError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamDateRangeError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamDateRangeError` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamDateRangeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

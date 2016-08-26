@@ -3,46 +3,70 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesUploadError;
 @class DbxFilesUploadWriteFailed;
 
 /// 
-/// The DbxFilesUploadError union.
+/// The `DbxFilesUploadError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesUploadError : NSObject <DbxSerializable> 
 
+/// The `FilesUploadErrorTag` enum type represents the possible tag states that
+/// the `DbxFilesUploadError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesUploadErrorTag) {
     /// Unable to save the uploaded contents to a file.
     FilesUploadErrorPath,
-    /// (no description)
+
+    /// (no description).
     FilesUploadErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesUploadErrorTag tag;
+
+/// Unable to save the uploaded contents to a file.
+@property (nonatomic) DbxFilesUploadWriteFailed * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesUploadWriteFailed * _Nonnull)path;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesUploadError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesUploadError union type.
-@property (nonatomic) FilesUploadErrorTag tag;
-@property (nonatomic) DbxFilesUploadWriteFailed * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesUploadError` union.
+/// 
 @interface DbxFilesUploadErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesUploadError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesUploadError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesUploadError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesUploadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

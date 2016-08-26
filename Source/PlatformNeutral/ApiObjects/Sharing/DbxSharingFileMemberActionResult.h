@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingFileMemberActionIndividualResult;
 @class DbxSharingFileMemberActionResult;
 @class DbxSharingMemberSelector;
 
 /// 
-/// The DbxSharingFileMemberActionResult struct.
+/// The `DbxSharingFileMemberActionResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Per-member result for removeFileMember2 or addFileMember or
 /// changeFileMemberAccess.
@@ -19,20 +23,32 @@
 
 /// One of specified input members.
 @property (nonatomic) DbxSharingMemberSelector * _Nonnull member;
+
 /// The outcome of the action on this member.
 @property (nonatomic) DbxSharingFileMemberActionIndividualResult * _Nonnull result;
 
+/// Full constructor for the `FileMemberActionResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithMember:(DbxSharingMemberSelector * _Nonnull)member result:(DbxSharingFileMemberActionIndividualResult * _Nonnull)result;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingFileMemberActionResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFileMemberActionResult` struct.
+/// 
 @interface DbxSharingFileMemberActionResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFileMemberActionResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFileMemberActionResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFileMemberActionResult` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingFileMemberActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

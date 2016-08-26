@@ -1,7 +1,3 @@
-///
-/// Code with platform-specific (here, iOS) dependencies. Renders OAuth flow.
-///
-
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>

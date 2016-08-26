@@ -12,7 +12,7 @@
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorMalformedPath;
+        _tag = FilesWriteErrorMalformedPath;
         _malformedPath = malformedPath;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithConflict:(DbxFilesWriteConflictError *)conflict {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorConflict;
+        _tag = FilesWriteErrorConflict;
         _conflict = conflict;
     }
     return self;
@@ -30,7 +30,7 @@
 - (instancetype)initWithNoWritePermission {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorNoWritePermission;
+        _tag = FilesWriteErrorNoWritePermission;
     }
     return self;
 }
@@ -38,7 +38,7 @@
 - (instancetype)initWithInsufficientSpace {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorInsufficientSpace;
+        _tag = FilesWriteErrorInsufficientSpace;
     }
     return self;
 }
@@ -46,7 +46,7 @@
 - (instancetype)initWithDisallowedName {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorDisallowedName;
+        _tag = FilesWriteErrorDisallowedName;
     }
     return self;
 }
@@ -54,68 +54,64 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteErrorTag)FilesWriteErrorOther;
+        _tag = FilesWriteErrorOther;
     }
     return self;
 }
 
 - (BOOL)isMalformedPath {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorMalformedPath;
+    return _tag == FilesWriteErrorMalformedPath;
 }
 
 - (BOOL)isConflict {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorConflict;
+    return _tag == FilesWriteErrorConflict;
 }
 
 - (BOOL)isNoWritePermission {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorNoWritePermission;
+    return _tag == FilesWriteErrorNoWritePermission;
 }
 
 - (BOOL)isInsufficientSpace {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorInsufficientSpace;
+    return _tag == FilesWriteErrorInsufficientSpace;
 }
 
 - (BOOL)isDisallowedName {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorDisallowedName;
+    return _tag == FilesWriteErrorDisallowedName;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesWriteErrorTag)FilesWriteErrorOther;
+    return _tag == FilesWriteErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorMalformedPath) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorMalformedPath";
-    }
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorConflict) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorConflict";
-    }
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorNoWritePermission) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorNoWritePermission";
-    }
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorInsufficientSpace) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorInsufficientSpace";
-    }
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorDisallowedName) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorDisallowedName";
-    }
-    if (_tag == (FilesWriteErrorTag)FilesWriteErrorOther) {
-        return @"(FilesWriteErrorTag)FilesWriteErrorOther";
+    switch (_tag) {
+        case FilesWriteErrorMalformedPath:
+           return @"FilesWriteErrorMalformedPath";
+        case FilesWriteErrorConflict:
+           return @"FilesWriteErrorConflict";
+        case FilesWriteErrorNoWritePermission:
+           return @"FilesWriteErrorNoWritePermission";
+        case FilesWriteErrorInsufficientSpace:
+           return @"FilesWriteErrorInsufficientSpace";
+        case FilesWriteErrorDisallowedName:
+           return @"FilesWriteErrorDisallowedName";
+        case FilesWriteErrorOther:
+           return @"FilesWriteErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)malformedPath {
-    if (_tag != (FilesWriteErrorTag)FilesWriteErrorMalformedPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesWriteErrorTag)FilesWriteErrorMalformedPath, but was %@.", [self getTagName]];
+    if (_tag != FilesWriteErrorMalformedPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesWriteErrorMalformedPath, but was %@.", [self getTagName]];
     }
     return _malformedPath;
 }
 
 - (DbxFilesWriteConflictError *)conflict {
-    if (_tag != (FilesWriteErrorTag)FilesWriteErrorConflict) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesWriteErrorTag)FilesWriteErrorConflict, but was %@.", [self getTagName]];
+    if (_tag != FilesWriteErrorConflict) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesWriteErrorConflict, but was %@.", [self getTagName]];
     }
     return _conflict;
 }

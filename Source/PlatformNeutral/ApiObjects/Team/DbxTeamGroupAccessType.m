@@ -11,7 +11,7 @@
 - (instancetype)initWithMember {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupAccessTypeTag)TeamGroupAccessTypeMember;
+        _tag = TeamGroupAccessTypeMember;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupAccessTypeTag)TeamGroupAccessTypeOwner;
+        _tag = TeamGroupAccessTypeOwner;
     }
     return self;
 }
 
 - (BOOL)isMember {
-    return _tag == (TeamGroupAccessTypeTag)TeamGroupAccessTypeMember;
+    return _tag == TeamGroupAccessTypeMember;
 }
 
 - (BOOL)isOwner {
-    return _tag == (TeamGroupAccessTypeTag)TeamGroupAccessTypeOwner;
+    return _tag == TeamGroupAccessTypeOwner;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupAccessTypeTag)TeamGroupAccessTypeMember) {
-        return @"(TeamGroupAccessTypeTag)TeamGroupAccessTypeMember";
-    }
-    if (_tag == (TeamGroupAccessTypeTag)TeamGroupAccessTypeOwner) {
-        return @"(TeamGroupAccessTypeTag)TeamGroupAccessTypeOwner";
+    switch (_tag) {
+        case TeamGroupAccessTypeMember:
+           return @"TeamGroupAccessTypeMember";
+        case TeamGroupAccessTypeOwner:
+           return @"TeamGroupAccessTypeOwner";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

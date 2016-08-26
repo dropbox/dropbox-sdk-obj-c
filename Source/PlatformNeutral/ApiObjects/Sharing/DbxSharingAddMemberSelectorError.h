@@ -3,80 +3,126 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAddMemberSelectorError;
 
 /// 
-/// The DbxSharingAddMemberSelectorError union.
+/// The `DbxSharingAddMemberSelectorError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingAddMemberSelectorError : NSObject <DbxSerializable> 
 
+/// The `SharingAddMemberSelectorErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingAddMemberSelectorError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingAddMemberSelectorErrorTag) {
     /// Automatically created groups can only be added to team folders.
     SharingAddMemberSelectorErrorAutomaticGroup,
+
     /// The value is the ID that could not be identified.
     SharingAddMemberSelectorErrorInvalidDropboxId,
+
     /// The value is the e-email address that is malformed.
     SharingAddMemberSelectorErrorInvalidEmail,
+
     /// The value is the ID of the Dropbox user with an unverified e-mail
     /// address.  Invite unverified users by e-mail address instead of by their
     /// Dropbox ID.
     SharingAddMemberSelectorErrorUnverifiedDropboxId,
+
     /// At least one of the specified groups in members in AddFolderMemberArg is
     /// deleted.
     SharingAddMemberSelectorErrorGroupDeleted,
+
     /// Sharing to a group that is not on the current user's team.
     SharingAddMemberSelectorErrorGroupNotOnTeam,
-    /// (no description)
+
+    /// (no description).
     SharingAddMemberSelectorErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingAddMemberSelectorErrorTag tag;
+
+/// The value is the ID that could not be identified.
+@property (nonatomic, copy) NSString * _Nonnull invalidDropboxId;
+
+/// The value is the e-email address that is malformed.
+@property (nonatomic, copy) NSString * _Nonnull invalidEmail;
+
+/// The value is the ID of the Dropbox user with an unverified e-mail address.
+/// Invite unverified users by e-mail address instead of by their Dropbox ID.
+@property (nonatomic, copy) NSString * _Nonnull unverifiedDropboxId;
+
+
+/// Initializes union class with tag state of `AutomaticGroup`.
 - (nonnull instancetype)initWithAutomaticGroup;
 
+/// Initializes union class with tag state of `InvalidDropboxId`.
 - (nonnull instancetype)initWithInvalidDropboxId:(NSString * _Nonnull)invalidDropboxId;
 
+/// Initializes union class with tag state of `InvalidEmail`.
 - (nonnull instancetype)initWithInvalidEmail:(NSString * _Nonnull)invalidEmail;
 
+/// Initializes union class with tag state of `UnverifiedDropboxId`.
 - (nonnull instancetype)initWithUnverifiedDropboxId:(NSString * _Nonnull)unverifiedDropboxId;
 
+/// Initializes union class with tag state of `GroupDeleted`.
 - (nonnull instancetype)initWithGroupDeleted;
 
+/// Initializes union class with tag state of `GroupNotOnTeam`.
 - (nonnull instancetype)initWithGroupNotOnTeam;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `AutomaticGroup`.
 - (BOOL)isAutomaticGroup;
 
+/// Returns whether the union's current tag state has value `InvalidDropboxId`.
 - (BOOL)isInvalidDropboxId;
 
+/// Returns whether the union's current tag state has value `InvalidEmail`.
 - (BOOL)isInvalidEmail;
 
+/// Returns whether the union's current tag state has value
+/// `UnverifiedDropboxId`.
 - (BOOL)isUnverifiedDropboxId;
 
+/// Returns whether the union's current tag state has value `GroupDeleted`.
 - (BOOL)isGroupDeleted;
 
+/// Returns whether the union's current tag state has value `GroupNotOnTeam`.
 - (BOOL)isGroupNotOnTeam;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingAddMemberSelectorError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingAddMemberSelectorError union type.
-@property (nonatomic) SharingAddMemberSelectorErrorTag tag;
-@property (nonatomic, copy) NSString * _Nonnull invalidDropboxId;
-@property (nonatomic, copy) NSString * _Nonnull invalidEmail;
-@property (nonatomic, copy) NSString * _Nonnull unverifiedDropboxId;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingAddMemberSelectorError` union.
+/// 
 @interface DbxSharingAddMemberSelectorErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingAddMemberSelectorError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingAddMemberSelectorError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingAddMemberSelectorError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingAddMemberSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

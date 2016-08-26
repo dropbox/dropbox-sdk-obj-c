@@ -3,46 +3,69 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamListMembersDevicesError;
 
 /// 
-/// The DbxTeamListMembersDevicesError union.
+/// The `DbxTeamListMembersDevicesError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamListMembersDevicesError : NSObject <DbxSerializable> 
 
+/// The `TeamListMembersDevicesErrorTag` enum type represents the possible tag
+/// states that the `DbxTeamListMembersDevicesError` union can exist in.
 typedef NS_ENUM(NSInteger, TeamListMembersDevicesErrorTag) {
     /// Indicates that the cursor has been invalidated. Call
     /// devicesListMembersDevices again with an empty cursor to obtain a new
     /// cursor.
     TeamListMembersDevicesErrorReset,
-    /// (no description)
+
+    /// (no description).
     TeamListMembersDevicesErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamListMembersDevicesErrorTag tag;
+
+
+/// Initializes union class with tag state of `Reset`.
 - (nonnull instancetype)initWithReset;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Reset`.
 - (BOOL)isReset;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamListMembersDevicesError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamListMembersDevicesError union type.
-@property (nonatomic) TeamListMembersDevicesErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamListMembersDevicesError` union.
+/// 
 @interface DbxTeamListMembersDevicesErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamListMembersDevicesError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamListMembersDevicesError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamListMembersDevicesError` object from
+/// a json-compatible dictionary representation.
 + (DbxTeamListMembersDevicesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,7 +11,7 @@
 - (instancetype)initWithDropboxId:(NSString *)dropboxId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberSelectorTag)SharingMemberSelectorDropboxId;
+        _tag = SharingMemberSelectorDropboxId;
         _dropboxId = dropboxId;
     }
     return self;
@@ -20,7 +20,7 @@
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberSelectorTag)SharingMemberSelectorEmail;
+        _tag = SharingMemberSelectorEmail;
         _email = email;
     }
     return self;
@@ -29,47 +29,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberSelectorTag)SharingMemberSelectorOther;
+        _tag = SharingMemberSelectorOther;
     }
     return self;
 }
 
 - (BOOL)isDropboxId {
-    return _tag == (SharingMemberSelectorTag)SharingMemberSelectorDropboxId;
+    return _tag == SharingMemberSelectorDropboxId;
 }
 
 - (BOOL)isEmail {
-    return _tag == (SharingMemberSelectorTag)SharingMemberSelectorEmail;
+    return _tag == SharingMemberSelectorEmail;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingMemberSelectorTag)SharingMemberSelectorOther;
+    return _tag == SharingMemberSelectorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingMemberSelectorTag)SharingMemberSelectorDropboxId) {
-        return @"(SharingMemberSelectorTag)SharingMemberSelectorDropboxId";
-    }
-    if (_tag == (SharingMemberSelectorTag)SharingMemberSelectorEmail) {
-        return @"(SharingMemberSelectorTag)SharingMemberSelectorEmail";
-    }
-    if (_tag == (SharingMemberSelectorTag)SharingMemberSelectorOther) {
-        return @"(SharingMemberSelectorTag)SharingMemberSelectorOther";
+    switch (_tag) {
+        case SharingMemberSelectorDropboxId:
+           return @"SharingMemberSelectorDropboxId";
+        case SharingMemberSelectorEmail:
+           return @"SharingMemberSelectorEmail";
+        case SharingMemberSelectorOther:
+           return @"SharingMemberSelectorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)dropboxId {
-    if (_tag != (SharingMemberSelectorTag)SharingMemberSelectorDropboxId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingMemberSelectorTag)SharingMemberSelectorDropboxId, but was %@.", [self getTagName]];
+    if (_tag != SharingMemberSelectorDropboxId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingMemberSelectorDropboxId, but was %@.", [self getTagName]];
     }
     return _dropboxId;
 }
 
 - (NSString *)email {
-    if (_tag != (SharingMemberSelectorTag)SharingMemberSelectorEmail) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingMemberSelectorTag)SharingMemberSelectorEmail, but was %@.", [self getTagName]];
+    if (_tag != SharingMemberSelectorEmail) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingMemberSelectorEmail, but was %@.", [self getTagName]];
     }
     return _email;
 }

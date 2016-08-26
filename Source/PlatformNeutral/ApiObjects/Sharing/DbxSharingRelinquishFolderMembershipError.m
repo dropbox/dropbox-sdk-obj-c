@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError;
+        _tag = SharingRelinquishFolderMembershipErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithFolderOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorFolderOwner;
+        _tag = SharingRelinquishFolderMembershipErrorFolderOwner;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithMounted {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorMounted;
+        _tag = SharingRelinquishFolderMembershipErrorMounted;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithGroupAccess {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorGroupAccess;
+        _tag = SharingRelinquishFolderMembershipErrorGroupAccess;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (instancetype)initWithTeamFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorTeamFolder;
+        _tag = SharingRelinquishFolderMembershipErrorTeamFolder;
     }
     return self;
 }
@@ -53,7 +53,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorNoPermission;
+        _tag = SharingRelinquishFolderMembershipErrorNoPermission;
     }
     return self;
 }
@@ -61,68 +61,63 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorOther;
+        _tag = SharingRelinquishFolderMembershipErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError;
+    return _tag == SharingRelinquishFolderMembershipErrorAccessError;
 }
 
 - (BOOL)isFolderOwner {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorFolderOwner;
+    return _tag == SharingRelinquishFolderMembershipErrorFolderOwner;
 }
 
 - (BOOL)isMounted {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorMounted;
+    return _tag == SharingRelinquishFolderMembershipErrorMounted;
 }
 
 - (BOOL)isGroupAccess {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorGroupAccess;
+    return _tag == SharingRelinquishFolderMembershipErrorGroupAccess;
 }
 
 - (BOOL)isTeamFolder {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorTeamFolder;
+    return _tag == SharingRelinquishFolderMembershipErrorTeamFolder;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorNoPermission;
+    return _tag == SharingRelinquishFolderMembershipErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorOther;
+    return _tag == SharingRelinquishFolderMembershipErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorFolderOwner) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorFolderOwner";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorMounted) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorMounted";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorGroupAccess) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorGroupAccess";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorTeamFolder) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorTeamFolder";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorNoPermission) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorNoPermission";
-    }
-    if (_tag == (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorOther) {
-        return @"(SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorOther";
+    switch (_tag) {
+        case SharingRelinquishFolderMembershipErrorAccessError:
+           return @"SharingRelinquishFolderMembershipErrorAccessError";
+        case SharingRelinquishFolderMembershipErrorFolderOwner:
+           return @"SharingRelinquishFolderMembershipErrorFolderOwner";
+        case SharingRelinquishFolderMembershipErrorMounted:
+           return @"SharingRelinquishFolderMembershipErrorMounted";
+        case SharingRelinquishFolderMembershipErrorGroupAccess:
+           return @"SharingRelinquishFolderMembershipErrorGroupAccess";
+        case SharingRelinquishFolderMembershipErrorTeamFolder:
+           return @"SharingRelinquishFolderMembershipErrorTeamFolder";
+        case SharingRelinquishFolderMembershipErrorNoPermission:
+           return @"SharingRelinquishFolderMembershipErrorNoPermission";
+        case SharingRelinquishFolderMembershipErrorOther:
+           return @"SharingRelinquishFolderMembershipErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingRelinquishFolderMembershipErrorTag)SharingRelinquishFolderMembershipErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingRelinquishFolderMembershipErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingRelinquishFolderMembershipErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

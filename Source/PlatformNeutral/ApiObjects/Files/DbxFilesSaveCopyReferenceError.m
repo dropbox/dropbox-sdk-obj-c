@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesWriteError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath;
+        _tag = FilesSaveCopyReferenceErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithInvalidCopyReference {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorInvalidCopyReference;
+        _tag = FilesSaveCopyReferenceErrorInvalidCopyReference;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNoPermission;
+        _tag = FilesSaveCopyReferenceErrorNoPermission;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (instancetype)initWithNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNotFound;
+        _tag = FilesSaveCopyReferenceErrorNotFound;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (instancetype)initWithTooManyFiles {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorTooManyFiles;
+        _tag = FilesSaveCopyReferenceErrorTooManyFiles;
     }
     return self;
 }
@@ -53,61 +53,57 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorOther;
+        _tag = FilesSaveCopyReferenceErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath;
+    return _tag == FilesSaveCopyReferenceErrorPath;
 }
 
 - (BOOL)isInvalidCopyReference {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorInvalidCopyReference;
+    return _tag == FilesSaveCopyReferenceErrorInvalidCopyReference;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNoPermission;
+    return _tag == FilesSaveCopyReferenceErrorNoPermission;
 }
 
 - (BOOL)isNotFound {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNotFound;
+    return _tag == FilesSaveCopyReferenceErrorNotFound;
 }
 
 - (BOOL)isTooManyFiles {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorTooManyFiles;
+    return _tag == FilesSaveCopyReferenceErrorTooManyFiles;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorOther;
+    return _tag == FilesSaveCopyReferenceErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath";
-    }
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorInvalidCopyReference) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorInvalidCopyReference";
-    }
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNoPermission) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNoPermission";
-    }
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNotFound) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorNotFound";
-    }
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorTooManyFiles) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorTooManyFiles";
-    }
-    if (_tag == (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorOther) {
-        return @"(FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorOther";
+    switch (_tag) {
+        case FilesSaveCopyReferenceErrorPath:
+           return @"FilesSaveCopyReferenceErrorPath";
+        case FilesSaveCopyReferenceErrorInvalidCopyReference:
+           return @"FilesSaveCopyReferenceErrorInvalidCopyReference";
+        case FilesSaveCopyReferenceErrorNoPermission:
+           return @"FilesSaveCopyReferenceErrorNoPermission";
+        case FilesSaveCopyReferenceErrorNotFound:
+           return @"FilesSaveCopyReferenceErrorNotFound";
+        case FilesSaveCopyReferenceErrorTooManyFiles:
+           return @"FilesSaveCopyReferenceErrorTooManyFiles";
+        case FilesSaveCopyReferenceErrorOther:
+           return @"FilesSaveCopyReferenceErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesWriteError *)path {
-    if (_tag != (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesSaveCopyReferenceErrorTag)FilesSaveCopyReferenceErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesSaveCopyReferenceErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesSaveCopyReferenceErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

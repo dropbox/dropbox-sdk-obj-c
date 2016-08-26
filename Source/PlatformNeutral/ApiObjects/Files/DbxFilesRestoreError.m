@@ -13,7 +13,7 @@
 - (instancetype)initWithPathLookup:(DbxFilesLookupError *)pathLookup {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRestoreErrorTag)FilesRestoreErrorPathLookup;
+        _tag = FilesRestoreErrorPathLookup;
         _pathLookup = pathLookup;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithPathWrite:(DbxFilesWriteError *)pathWrite {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRestoreErrorTag)FilesRestoreErrorPathWrite;
+        _tag = FilesRestoreErrorPathWrite;
         _pathWrite = pathWrite;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithInvalidRevision {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRestoreErrorTag)FilesRestoreErrorInvalidRevision;
+        _tag = FilesRestoreErrorInvalidRevision;
     }
     return self;
 }
@@ -39,54 +39,52 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesRestoreErrorTag)FilesRestoreErrorOther;
+        _tag = FilesRestoreErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPathLookup {
-    return _tag == (FilesRestoreErrorTag)FilesRestoreErrorPathLookup;
+    return _tag == FilesRestoreErrorPathLookup;
 }
 
 - (BOOL)isPathWrite {
-    return _tag == (FilesRestoreErrorTag)FilesRestoreErrorPathWrite;
+    return _tag == FilesRestoreErrorPathWrite;
 }
 
 - (BOOL)isInvalidRevision {
-    return _tag == (FilesRestoreErrorTag)FilesRestoreErrorInvalidRevision;
+    return _tag == FilesRestoreErrorInvalidRevision;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesRestoreErrorTag)FilesRestoreErrorOther;
+    return _tag == FilesRestoreErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesRestoreErrorTag)FilesRestoreErrorPathLookup) {
-        return @"(FilesRestoreErrorTag)FilesRestoreErrorPathLookup";
-    }
-    if (_tag == (FilesRestoreErrorTag)FilesRestoreErrorPathWrite) {
-        return @"(FilesRestoreErrorTag)FilesRestoreErrorPathWrite";
-    }
-    if (_tag == (FilesRestoreErrorTag)FilesRestoreErrorInvalidRevision) {
-        return @"(FilesRestoreErrorTag)FilesRestoreErrorInvalidRevision";
-    }
-    if (_tag == (FilesRestoreErrorTag)FilesRestoreErrorOther) {
-        return @"(FilesRestoreErrorTag)FilesRestoreErrorOther";
+    switch (_tag) {
+        case FilesRestoreErrorPathLookup:
+           return @"FilesRestoreErrorPathLookup";
+        case FilesRestoreErrorPathWrite:
+           return @"FilesRestoreErrorPathWrite";
+        case FilesRestoreErrorInvalidRevision:
+           return @"FilesRestoreErrorInvalidRevision";
+        case FilesRestoreErrorOther:
+           return @"FilesRestoreErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)pathLookup {
-    if (_tag != (FilesRestoreErrorTag)FilesRestoreErrorPathLookup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRestoreErrorTag)FilesRestoreErrorPathLookup, but was %@.", [self getTagName]];
+    if (_tag != FilesRestoreErrorPathLookup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRestoreErrorPathLookup, but was %@.", [self getTagName]];
     }
     return _pathLookup;
 }
 
 - (DbxFilesWriteError *)pathWrite {
-    if (_tag != (FilesRestoreErrorTag)FilesRestoreErrorPathWrite) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesRestoreErrorTag)FilesRestoreErrorPathWrite, but was %@.", [self getTagName]];
+    if (_tag != FilesRestoreErrorPathWrite) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesRestoreErrorPathWrite, but was %@.", [self getTagName]];
     }
     return _pathWrite;
 }

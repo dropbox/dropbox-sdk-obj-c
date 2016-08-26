@@ -3,53 +3,81 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamPoliciesSharedFolderJoinPolicy;
 
 /// 
-/// The DbxTeamPoliciesSharedFolderJoinPolicy union.
+/// The `DbxTeamPoliciesSharedFolderJoinPolicy` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Policy governing which shared folders a team member can join.
 /// 
 @interface DbxTeamPoliciesSharedFolderJoinPolicy : NSObject <DbxSerializable> 
 
+/// The `TeamPoliciesSharedFolderJoinPolicyTag` enum type represents the
+/// possible tag states that the `DbxTeamPoliciesSharedFolderJoinPolicy` union
+/// can exist in.
 typedef NS_ENUM(NSInteger, TeamPoliciesSharedFolderJoinPolicyTag) {
     /// Team members can only join folders shared by teammates.
     TeamPoliciesSharedFolderJoinPolicyFromTeamOnly,
+
     /// Team members can join any shared folder, including those shared by users
     /// outside the team.
     TeamPoliciesSharedFolderJoinPolicyFromAnyone,
-    /// (no description)
+
+    /// (no description).
     TeamPoliciesSharedFolderJoinPolicyOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamPoliciesSharedFolderJoinPolicyTag tag;
+
+
+/// Initializes union class with tag state of `FromTeamOnly`.
 - (nonnull instancetype)initWithFromTeamOnly;
 
+/// Initializes union class with tag state of `FromAnyone`.
 - (nonnull instancetype)initWithFromAnyone;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `FromTeamOnly`.
 - (BOOL)isFromTeamOnly;
 
+/// Returns whether the union's current tag state has value `FromAnyone`.
 - (BOOL)isFromAnyone;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamPoliciesSharedFolderJoinPolicy` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamPoliciesSharedFolderJoinPolicy union type.
-@property (nonatomic) TeamPoliciesSharedFolderJoinPolicyTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamPoliciesSharedFolderJoinPolicy`
+/// union.
+/// 
 @interface DbxTeamPoliciesSharedFolderJoinPolicySerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamPoliciesSharedFolderJoinPolicy` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamPoliciesSharedFolderJoinPolicy`
+/// object from a json-compatible dictionary representation.
 + (DbxTeamPoliciesSharedFolderJoinPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

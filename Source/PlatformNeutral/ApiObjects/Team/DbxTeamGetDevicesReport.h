@@ -3,14 +3,18 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamBaseDfbReport.h"
 
 @class DbxTeamDevicesActive;
 @class DbxTeamGetDevicesReport;
 
 /// 
-/// The DbxTeamGetDevicesReport struct.
+/// The `DbxTeamGetDevicesReport` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Devices Report Result. Contains subsections for different time ranges of
 /// activity. Each of the items in each subsection of the storage report is an
@@ -21,22 +25,35 @@
 
 /// Report of the number of devices active in the last day.
 @property (nonatomic) DbxTeamDevicesActive * _Nonnull active1Day;
+
 /// Report of the number of devices active in the last 7 days.
 @property (nonatomic) DbxTeamDevicesActive * _Nonnull active7Day;
+
 /// Report of the number of devices active in the last 28 days.
 @property (nonatomic) DbxTeamDevicesActive * _Nonnull active28Day;
 
+/// Full constructor for the `GetDevicesReport` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DbxTeamDevicesActive * _Nonnull)active1Day active7Day:(DbxTeamDevicesActive * _Nonnull)active7Day active28Day:(DbxTeamDevicesActive * _Nonnull)active28Day;
 
+/// Returns a human-readable representation of the `DbxTeamGetDevicesReport`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGetDevicesReport` struct.
+/// 
 @interface DbxTeamGetDevicesReportSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGetDevicesReport` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGetDevicesReport * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGetDevicesReport` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGetDevicesReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

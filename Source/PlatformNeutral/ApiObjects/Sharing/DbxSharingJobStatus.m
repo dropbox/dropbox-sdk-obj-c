@@ -13,7 +13,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobStatusTag)SharingJobStatusInProgress;
+        _tag = SharingJobStatusInProgress;
     }
     return self;
 }
@@ -21,7 +21,7 @@
 - (instancetype)initWithComplete {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobStatusTag)SharingJobStatusComplete;
+        _tag = SharingJobStatusComplete;
     }
     return self;
 }
@@ -29,41 +29,40 @@
 - (instancetype)initWithFailed:(DbxSharingJobError *)failed {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingJobStatusTag)SharingJobStatusFailed;
+        _tag = SharingJobStatusFailed;
         _failed = failed;
     }
     return self;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (SharingJobStatusTag)SharingJobStatusInProgress;
+    return _tag == SharingJobStatusInProgress;
 }
 
 - (BOOL)isComplete {
-    return _tag == (SharingJobStatusTag)SharingJobStatusComplete;
+    return _tag == SharingJobStatusComplete;
 }
 
 - (BOOL)isFailed {
-    return _tag == (SharingJobStatusTag)SharingJobStatusFailed;
+    return _tag == SharingJobStatusFailed;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingJobStatusTag)SharingJobStatusInProgress) {
-        return @"(SharingJobStatusTag)SharingJobStatusInProgress";
-    }
-    if (_tag == (SharingJobStatusTag)SharingJobStatusComplete) {
-        return @"(SharingJobStatusTag)SharingJobStatusComplete";
-    }
-    if (_tag == (SharingJobStatusTag)SharingJobStatusFailed) {
-        return @"(SharingJobStatusTag)SharingJobStatusFailed";
+    switch (_tag) {
+        case SharingJobStatusInProgress:
+           return @"SharingJobStatusInProgress";
+        case SharingJobStatusComplete:
+           return @"SharingJobStatusComplete";
+        case SharingJobStatusFailed:
+           return @"SharingJobStatusFailed";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingJobError *)failed {
-    if (_tag != (SharingJobStatusTag)SharingJobStatusFailed) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingJobStatusTag)SharingJobStatusFailed, but was %@.", [self getTagName]];
+    if (_tag != SharingJobStatusFailed) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingJobStatusFailed, but was %@.", [self getTagName]];
     }
     return _failed;
 }

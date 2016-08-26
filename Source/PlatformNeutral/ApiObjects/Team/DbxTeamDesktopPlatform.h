@@ -3,56 +3,85 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamDesktopPlatform;
 
 /// 
-/// The DbxTeamDesktopPlatform union.
+/// The `DbxTeamDesktopPlatform` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamDesktopPlatform : NSObject <DbxSerializable> 
 
+/// The `TeamDesktopPlatformTag` enum type represents the possible tag states
+/// that the `DbxTeamDesktopPlatform` union can exist in.
 typedef NS_ENUM(NSInteger, TeamDesktopPlatformTag) {
     /// Official Windows Dropbox desktop client
     TeamDesktopPlatformWindows,
+
     /// Official Mac Dropbox desktop client
     TeamDesktopPlatformMac,
+
     /// Official Linux Dropbox desktop client
     TeamDesktopPlatformLinux,
-    /// (no description)
+
+    /// (no description).
     TeamDesktopPlatformOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamDesktopPlatformTag tag;
+
+
+/// Initializes union class with tag state of `Windows`.
 - (nonnull instancetype)initWithWindows;
 
+/// Initializes union class with tag state of `Mac`.
 - (nonnull instancetype)initWithMac;
 
+/// Initializes union class with tag state of `Linux`.
 - (nonnull instancetype)initWithLinux;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Windows`.
 - (BOOL)isWindows;
 
+/// Returns whether the union's current tag state has value `Mac`.
 - (BOOL)isMac;
 
+/// Returns whether the union's current tag state has value `Linux`.
 - (BOOL)isLinux;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamDesktopPlatform`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamDesktopPlatform union type.
-@property (nonatomic) TeamDesktopPlatformTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamDesktopPlatform` union.
+/// 
 @interface DbxTeamDesktopPlatformSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamDesktopPlatform` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamDesktopPlatform * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamDesktopPlatform` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamDesktopPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

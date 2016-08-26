@@ -3,12 +3,16 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesDimensions;
 
 /// 
-/// The DbxFilesDimensions struct.
+/// The `DbxFilesDimensions` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Dimensions for a photo or video.
 /// 
@@ -16,20 +20,31 @@
 
 /// Height of the photo/video.
 @property (nonatomic, copy) NSNumber * _Nonnull height;
+
 /// Width of the photo/video.
 @property (nonatomic, copy) NSNumber * _Nonnull width;
 
+/// Full constructor for the `Dimensions` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithHeight:(NSNumber * _Nonnull)height width:(NSNumber * _Nonnull)width;
 
+/// Returns a human-readable representation of the `DbxFilesDimensions` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesDimensions` struct.
+/// 
 @interface DbxFilesDimensionsSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesDimensions` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesDimensions * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesDimensions` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesDimensions * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

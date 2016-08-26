@@ -1,7 +1,3 @@
-///
-/// Result types for OAuth linking.
-///
-
 #import "DbxOAuth.h"
 #import "DbxOAuthResult.h"
 

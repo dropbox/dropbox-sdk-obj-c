@@ -3,55 +3,84 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncPollResultBase.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesFileMetadata;
 @class DbxFilesSaveUrlError;
 @class DbxFilesSaveUrlJobStatus;
 
 /// 
-/// The DbxFilesSaveUrlJobStatus union.
+/// The `DbxFilesSaveUrlJobStatus` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSaveUrlJobStatus : NSObject <DbxSerializable> 
 
+/// The `FilesSaveUrlJobStatusTag` enum type represents the possible tag states
+/// that the `DbxFilesSaveUrlJobStatus` union can exist in.
 typedef NS_ENUM(NSInteger, FilesSaveUrlJobStatusTag) {
     /// The asynchronous job is still in progress.
     FilesSaveUrlJobStatusInProgress,
+
     /// Metadata of the file where the URL is saved to.
     FilesSaveUrlJobStatusComplete,
-    /// (no description)
+
+    /// (no description).
     FilesSaveUrlJobStatusFailed,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesSaveUrlJobStatusTag tag;
+
+/// Metadata of the file where the URL is saved to.
+@property (nonatomic) DbxFilesFileMetadata * _Nonnull complete;
+
+/// (no description).
+@property (nonatomic) DbxFilesSaveUrlError * _Nonnull failed;
+
+
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Initializes union class with tag state of `Complete`.
 - (nonnull instancetype)initWithComplete:(DbxFilesFileMetadata * _Nonnull)complete;
 
+/// Initializes union class with tag state of `Failed`.
 - (nonnull instancetype)initWithFailed:(DbxFilesSaveUrlError * _Nonnull)failed;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns whether the union's current tag state has value `Complete`.
 - (BOOL)isComplete;
 
+/// Returns whether the union's current tag state has value `Failed`.
 - (BOOL)isFailed;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesSaveUrlJobStatus`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesSaveUrlJobStatus union type.
-@property (nonatomic) FilesSaveUrlJobStatusTag tag;
-@property (nonatomic) DbxFilesFileMetadata * _Nonnull complete;
-@property (nonatomic) DbxFilesSaveUrlError * _Nonnull failed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSaveUrlJobStatus` union.
+/// 
 @interface DbxFilesSaveUrlJobStatusSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSaveUrlJobStatus` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSaveUrlJobStatus * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSaveUrlJobStatus` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSaveUrlJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

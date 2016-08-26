@@ -3,58 +3,89 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingMemberAccessLevelResult;
 @class DbxSharingSharedFolderMemberError;
 
 /// 
-/// The DbxSharingSharedFolderMemberError union.
+/// The `DbxSharingSharedFolderMemberError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingSharedFolderMemberError : NSObject <DbxSerializable> 
 
+/// The `SharingSharedFolderMemberErrorTag` enum type represents the possible
+/// tag states that the `DbxSharingSharedFolderMemberError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingSharedFolderMemberErrorTag) {
     /// The target dropbox_id is invalid.
     SharingSharedFolderMemberErrorInvalidDropboxId,
+
     /// The target dropbox_id is not a member of the shared folder.
     SharingSharedFolderMemberErrorNotAMember,
+
     /// The target member only has inherited access to the shared folder.
     SharingSharedFolderMemberErrorNoExplicitAccess,
-    /// (no description)
+
+    /// (no description).
     SharingSharedFolderMemberErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingSharedFolderMemberErrorTag tag;
+
+/// The target member only has inherited access to the shared folder.
+@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull noExplicitAccess;
+
+
+/// Initializes union class with tag state of `InvalidDropboxId`.
 - (nonnull instancetype)initWithInvalidDropboxId;
 
+/// Initializes union class with tag state of `NotAMember`.
 - (nonnull instancetype)initWithNotAMember;
 
+/// Initializes union class with tag state of `NoExplicitAccess`.
 - (nonnull instancetype)initWithNoExplicitAccess:(DbxSharingMemberAccessLevelResult * _Nonnull)noExplicitAccess;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `InvalidDropboxId`.
 - (BOOL)isInvalidDropboxId;
 
+/// Returns whether the union's current tag state has value `NotAMember`.
 - (BOOL)isNotAMember;
 
+/// Returns whether the union's current tag state has value `NoExplicitAccess`.
 - (BOOL)isNoExplicitAccess;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingSharedFolderMemberError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingSharedFolderMemberError union type.
-@property (nonatomic) SharingSharedFolderMemberErrorTag tag;
-@property (nonatomic) DbxSharingMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharedFolderMemberError` union.
+/// 
 @interface DbxSharingSharedFolderMemberErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharedFolderMemberError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharedFolderMemberError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharedFolderMemberError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingSharedFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

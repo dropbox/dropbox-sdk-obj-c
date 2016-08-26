@@ -11,7 +11,7 @@
 - (instancetype)initWithEditContents {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionEditContents;
+        _tag = SharingFileActionEditContents;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithInviteViewer {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionInviteViewer;
+        _tag = SharingFileActionInviteViewer;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithInviteViewerNoComment {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionInviteViewerNoComment;
+        _tag = SharingFileActionInviteViewerNoComment;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithUnshare {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionUnshare;
+        _tag = SharingFileActionUnshare;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithRelinquishMembership {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionRelinquishMembership;
+        _tag = SharingFileActionRelinquishMembership;
     }
     return self;
 }
@@ -51,7 +51,7 @@
 - (instancetype)initWithShareLink {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionShareLink;
+        _tag = SharingFileActionShareLink;
     }
     return self;
 }
@@ -59,60 +59,55 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingFileActionTag)SharingFileActionOther;
+        _tag = SharingFileActionOther;
     }
     return self;
 }
 
 - (BOOL)isEditContents {
-    return _tag == (SharingFileActionTag)SharingFileActionEditContents;
+    return _tag == SharingFileActionEditContents;
 }
 
 - (BOOL)isInviteViewer {
-    return _tag == (SharingFileActionTag)SharingFileActionInviteViewer;
+    return _tag == SharingFileActionInviteViewer;
 }
 
 - (BOOL)isInviteViewerNoComment {
-    return _tag == (SharingFileActionTag)SharingFileActionInviteViewerNoComment;
+    return _tag == SharingFileActionInviteViewerNoComment;
 }
 
 - (BOOL)isUnshare {
-    return _tag == (SharingFileActionTag)SharingFileActionUnshare;
+    return _tag == SharingFileActionUnshare;
 }
 
 - (BOOL)isRelinquishMembership {
-    return _tag == (SharingFileActionTag)SharingFileActionRelinquishMembership;
+    return _tag == SharingFileActionRelinquishMembership;
 }
 
 - (BOOL)isShareLink {
-    return _tag == (SharingFileActionTag)SharingFileActionShareLink;
+    return _tag == SharingFileActionShareLink;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingFileActionTag)SharingFileActionOther;
+    return _tag == SharingFileActionOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingFileActionTag)SharingFileActionEditContents) {
-        return @"(SharingFileActionTag)SharingFileActionEditContents";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionInviteViewer) {
-        return @"(SharingFileActionTag)SharingFileActionInviteViewer";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionInviteViewerNoComment) {
-        return @"(SharingFileActionTag)SharingFileActionInviteViewerNoComment";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionUnshare) {
-        return @"(SharingFileActionTag)SharingFileActionUnshare";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionRelinquishMembership) {
-        return @"(SharingFileActionTag)SharingFileActionRelinquishMembership";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionShareLink) {
-        return @"(SharingFileActionTag)SharingFileActionShareLink";
-    }
-    if (_tag == (SharingFileActionTag)SharingFileActionOther) {
-        return @"(SharingFileActionTag)SharingFileActionOther";
+    switch (_tag) {
+        case SharingFileActionEditContents:
+           return @"SharingFileActionEditContents";
+        case SharingFileActionInviteViewer:
+           return @"SharingFileActionInviteViewer";
+        case SharingFileActionInviteViewerNoComment:
+           return @"SharingFileActionInviteViewerNoComment";
+        case SharingFileActionUnshare:
+           return @"SharingFileActionUnshare";
+        case SharingFileActionRelinquishMembership:
+           return @"SharingFileActionRelinquishMembership";
+        case SharingFileActionShareLink:
+           return @"SharingFileActionShareLink";
+        case SharingFileActionOther:
+           return @"SharingFileActionOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

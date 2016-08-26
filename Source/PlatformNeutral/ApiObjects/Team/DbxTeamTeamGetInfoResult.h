@@ -3,39 +3,58 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamPoliciesTeamMemberPolicies;
 @class DbxTeamTeamGetInfoResult;
 
 /// 
-/// The DbxTeamTeamGetInfoResult struct.
+/// The `DbxTeamTeamGetInfoResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamTeamGetInfoResult : NSObject <DbxSerializable> 
 
 /// The name of the team.
 @property (nonatomic, copy) NSString * _Nonnull name;
+
 /// The ID of the team.
 @property (nonatomic, copy) NSString * _Nonnull teamId;
+
 /// The number of licenses available to the team.
 @property (nonatomic, copy) NSNumber * _Nonnull numLicensedUsers;
+
 /// The number of accounts that have been invited or are already active members
 /// of the team.
 @property (nonatomic, copy) NSNumber * _Nonnull numProvisionedUsers;
-/// (no description)
+
+/// (no description).
 @property (nonatomic) DbxTeamPoliciesTeamMemberPolicies * _Nonnull policies;
 
+/// Full constructor for the `TeamGetInfoResult` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name teamId:(NSString * _Nonnull)teamId numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers policies:(DbxTeamPoliciesTeamMemberPolicies * _Nonnull)policies;
 
+/// Returns a human-readable representation of the `DbxTeamTeamGetInfoResult`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamTeamGetInfoResult` struct.
+/// 
 @interface DbxTeamTeamGetInfoResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamTeamGetInfoResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamTeamGetInfoResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamTeamGetInfoResult` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamTeamGetInfoResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidAccessToken {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthAuthErrorTag)AuthAuthErrorInvalidAccessToken;
+        _tag = AuthAuthErrorInvalidAccessToken;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithInvalidSelectUser {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthAuthErrorTag)AuthAuthErrorInvalidSelectUser;
+        _tag = AuthAuthErrorInvalidSelectUser;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithInvalidSelectAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthAuthErrorTag)AuthAuthErrorInvalidSelectAdmin;
+        _tag = AuthAuthErrorInvalidSelectAdmin;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthAuthErrorTag)AuthAuthErrorOther;
+        _tag = AuthAuthErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidAccessToken {
-    return _tag == (AuthAuthErrorTag)AuthAuthErrorInvalidAccessToken;
+    return _tag == AuthAuthErrorInvalidAccessToken;
 }
 
 - (BOOL)isInvalidSelectUser {
-    return _tag == (AuthAuthErrorTag)AuthAuthErrorInvalidSelectUser;
+    return _tag == AuthAuthErrorInvalidSelectUser;
 }
 
 - (BOOL)isInvalidSelectAdmin {
-    return _tag == (AuthAuthErrorTag)AuthAuthErrorInvalidSelectAdmin;
+    return _tag == AuthAuthErrorInvalidSelectAdmin;
 }
 
 - (BOOL)isOther {
-    return _tag == (AuthAuthErrorTag)AuthAuthErrorOther;
+    return _tag == AuthAuthErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AuthAuthErrorTag)AuthAuthErrorInvalidAccessToken) {
-        return @"(AuthAuthErrorTag)AuthAuthErrorInvalidAccessToken";
-    }
-    if (_tag == (AuthAuthErrorTag)AuthAuthErrorInvalidSelectUser) {
-        return @"(AuthAuthErrorTag)AuthAuthErrorInvalidSelectUser";
-    }
-    if (_tag == (AuthAuthErrorTag)AuthAuthErrorInvalidSelectAdmin) {
-        return @"(AuthAuthErrorTag)AuthAuthErrorInvalidSelectAdmin";
-    }
-    if (_tag == (AuthAuthErrorTag)AuthAuthErrorOther) {
-        return @"(AuthAuthErrorTag)AuthAuthErrorOther";
+    switch (_tag) {
+        case AuthAuthErrorInvalidAccessToken:
+           return @"AuthAuthErrorInvalidAccessToken";
+        case AuthAuthErrorInvalidSelectUser:
+           return @"AuthAuthErrorInvalidSelectUser";
+        case AuthAuthErrorInvalidSelectAdmin:
+           return @"AuthAuthErrorInvalidSelectAdmin";
+        case AuthAuthErrorOther:
+           return @"AuthAuthErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

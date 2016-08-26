@@ -11,7 +11,7 @@
 - (instancetype)initWithTooManyRequests {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyRequests;
+        _tag = AuthRateLimitReasonTooManyRequests;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithTooManyWriteOperations {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyWriteOperations;
+        _tag = AuthRateLimitReasonTooManyWriteOperations;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (AuthRateLimitReasonTag)AuthRateLimitReasonOther;
+        _tag = AuthRateLimitReasonOther;
     }
     return self;
 }
 
 - (BOOL)isTooManyRequests {
-    return _tag == (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyRequests;
+    return _tag == AuthRateLimitReasonTooManyRequests;
 }
 
 - (BOOL)isTooManyWriteOperations {
-    return _tag == (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyWriteOperations;
+    return _tag == AuthRateLimitReasonTooManyWriteOperations;
 }
 
 - (BOOL)isOther {
-    return _tag == (AuthRateLimitReasonTag)AuthRateLimitReasonOther;
+    return _tag == AuthRateLimitReasonOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyRequests) {
-        return @"(AuthRateLimitReasonTag)AuthRateLimitReasonTooManyRequests";
-    }
-    if (_tag == (AuthRateLimitReasonTag)AuthRateLimitReasonTooManyWriteOperations) {
-        return @"(AuthRateLimitReasonTag)AuthRateLimitReasonTooManyWriteOperations";
-    }
-    if (_tag == (AuthRateLimitReasonTag)AuthRateLimitReasonOther) {
-        return @"(AuthRateLimitReasonTag)AuthRateLimitReasonOther";
+    switch (_tag) {
+        case AuthRateLimitReasonTooManyRequests:
+           return @"AuthRateLimitReasonTooManyRequests";
+        case AuthRateLimitReasonTooManyWriteOperations:
+           return @"AuthRateLimitReasonTooManyWriteOperations";
+        case AuthRateLimitReasonOther:
+           return @"AuthRateLimitReasonOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

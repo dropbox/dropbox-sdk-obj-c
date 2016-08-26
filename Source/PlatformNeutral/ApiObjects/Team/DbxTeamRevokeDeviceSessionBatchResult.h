@@ -3,30 +3,46 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamRevokeDeviceSessionBatchResult;
 @class DbxTeamRevokeDeviceSessionStatus;
 
 /// 
-/// The DbxTeamRevokeDeviceSessionBatchResult struct.
+/// The `DbxTeamRevokeDeviceSessionBatchResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamRevokeDeviceSessionBatchResult : NSObject <DbxSerializable> 
 
-/// (no description)
+/// (no description).
 @property (nonatomic) NSArray<DbxTeamRevokeDeviceSessionStatus *> * _Nonnull revokeDevicesStatus;
 
+/// Full constructor for the `RevokeDeviceSessionBatchResult` struct (exposes
+/// all instance variables).
 - (nonnull instancetype)initWithRevokeDevicesStatus:(NSArray<DbxTeamRevokeDeviceSessionStatus *> * _Nonnull)revokeDevicesStatus;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamRevokeDeviceSessionBatchResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamRevokeDeviceSessionBatchResult`
+/// struct.
+/// 
 @interface DbxTeamRevokeDeviceSessionBatchResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamRevokeDeviceSessionBatchResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamRevokeDeviceSessionBatchResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamRevokeDeviceSessionBatchResult`
+/// object from a json-compatible dictionary representation.
 + (DbxTeamRevokeDeviceSessionBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

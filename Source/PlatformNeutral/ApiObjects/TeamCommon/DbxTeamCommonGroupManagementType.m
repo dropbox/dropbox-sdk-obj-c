@@ -11,7 +11,7 @@
 - (instancetype)initWithCompanyManaged {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeCompanyManaged;
+        _tag = TeamCommonGroupManagementTypeCompanyManaged;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithUserManaged {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeUserManaged;
+        _tag = TeamCommonGroupManagementTypeUserManaged;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeOther;
+        _tag = TeamCommonGroupManagementTypeOther;
     }
     return self;
 }
 
 - (BOOL)isCompanyManaged {
-    return _tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeCompanyManaged;
+    return _tag == TeamCommonGroupManagementTypeCompanyManaged;
 }
 
 - (BOOL)isUserManaged {
-    return _tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeUserManaged;
+    return _tag == TeamCommonGroupManagementTypeUserManaged;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeOther;
+    return _tag == TeamCommonGroupManagementTypeOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeCompanyManaged) {
-        return @"(TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeCompanyManaged";
-    }
-    if (_tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeUserManaged) {
-        return @"(TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeUserManaged";
-    }
-    if (_tag == (TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeOther) {
-        return @"(TeamCommonGroupManagementTypeTag)TeamCommonGroupManagementTypeOther";
+    switch (_tag) {
+        case TeamCommonGroupManagementTypeCompanyManaged:
+           return @"TeamCommonGroupManagementTypeCompanyManaged";
+        case TeamCommonGroupManagementTypeUserManaged:
+           return @"TeamCommonGroupManagementTypeUserManaged";
+        case TeamCommonGroupManagementTypeOther:
+           return @"TeamCommonGroupManagementTypeOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

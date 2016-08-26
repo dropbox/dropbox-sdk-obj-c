@@ -13,7 +13,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorAccessError;
+        _tag = SharingMountFolderErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithInsideSharedFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorInsideSharedFolder;
+        _tag = SharingMountFolderErrorInsideSharedFolder;
     }
     return self;
 }
@@ -30,7 +30,7 @@
 - (instancetype)initWithInsufficientQuota:(DbxSharingInsufficientQuotaAmounts *)insufficientQuota {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota;
+        _tag = SharingMountFolderErrorInsufficientQuota;
         _insufficientQuota = insufficientQuota;
     }
     return self;
@@ -39,7 +39,7 @@
 - (instancetype)initWithAlreadyMounted {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorAlreadyMounted;
+        _tag = SharingMountFolderErrorAlreadyMounted;
     }
     return self;
 }
@@ -47,7 +47,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorNoPermission;
+        _tag = SharingMountFolderErrorNoPermission;
     }
     return self;
 }
@@ -55,7 +55,7 @@
 - (instancetype)initWithNotMountable {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorNotMountable;
+        _tag = SharingMountFolderErrorNotMountable;
     }
     return self;
 }
@@ -63,75 +63,70 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMountFolderErrorTag)SharingMountFolderErrorOther;
+        _tag = SharingMountFolderErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorAccessError;
+    return _tag == SharingMountFolderErrorAccessError;
 }
 
 - (BOOL)isInsideSharedFolder {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorInsideSharedFolder;
+    return _tag == SharingMountFolderErrorInsideSharedFolder;
 }
 
 - (BOOL)isInsufficientQuota {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota;
+    return _tag == SharingMountFolderErrorInsufficientQuota;
 }
 
 - (BOOL)isAlreadyMounted {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorAlreadyMounted;
+    return _tag == SharingMountFolderErrorAlreadyMounted;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorNoPermission;
+    return _tag == SharingMountFolderErrorNoPermission;
 }
 
 - (BOOL)isNotMountable {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorNotMountable;
+    return _tag == SharingMountFolderErrorNotMountable;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingMountFolderErrorTag)SharingMountFolderErrorOther;
+    return _tag == SharingMountFolderErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorAccessError) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorAccessError";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorInsideSharedFolder) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorInsideSharedFolder";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorAlreadyMounted) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorAlreadyMounted";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorNoPermission) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorNoPermission";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorNotMountable) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorNotMountable";
-    }
-    if (_tag == (SharingMountFolderErrorTag)SharingMountFolderErrorOther) {
-        return @"(SharingMountFolderErrorTag)SharingMountFolderErrorOther";
+    switch (_tag) {
+        case SharingMountFolderErrorAccessError:
+           return @"SharingMountFolderErrorAccessError";
+        case SharingMountFolderErrorInsideSharedFolder:
+           return @"SharingMountFolderErrorInsideSharedFolder";
+        case SharingMountFolderErrorInsufficientQuota:
+           return @"SharingMountFolderErrorInsufficientQuota";
+        case SharingMountFolderErrorAlreadyMounted:
+           return @"SharingMountFolderErrorAlreadyMounted";
+        case SharingMountFolderErrorNoPermission:
+           return @"SharingMountFolderErrorNoPermission";
+        case SharingMountFolderErrorNotMountable:
+           return @"SharingMountFolderErrorNotMountable";
+        case SharingMountFolderErrorOther:
+           return @"SharingMountFolderErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingMountFolderErrorTag)SharingMountFolderErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingMountFolderErrorTag)SharingMountFolderErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingMountFolderErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingMountFolderErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DbxSharingInsufficientQuotaAmounts *)insufficientQuota {
-    if (_tag != (SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingMountFolderErrorTag)SharingMountFolderErrorInsufficientQuota, but was %@.", [self getTagName]];
+    if (_tag != SharingMountFolderErrorInsufficientQuota) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingMountFolderErrorInsufficientQuota, but was %@.", [self getTagName]];
     }
     return _insufficientQuota;
 }

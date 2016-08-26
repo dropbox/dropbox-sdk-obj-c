@@ -13,7 +13,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound;
+        _tag = FilesInvalidPropertyGroupErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorRestrictedContent;
+        _tag = FilesInvalidPropertyGroupErrorRestrictedContent;
     }
     return self;
 }
@@ -30,7 +30,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorOther;
+        _tag = FilesInvalidPropertyGroupErrorOther;
     }
     return self;
 }
@@ -38,7 +38,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath;
+        _tag = FilesInvalidPropertyGroupErrorPath;
         _path = path;
     }
     return self;
@@ -47,7 +47,7 @@
 - (instancetype)initWithPropertyFieldTooLarge {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPropertyFieldTooLarge;
+        _tag = FilesInvalidPropertyGroupErrorPropertyFieldTooLarge;
     }
     return self;
 }
@@ -55,68 +55,64 @@
 - (instancetype)initWithDoesNotFitTemplate {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorDoesNotFitTemplate;
+        _tag = FilesInvalidPropertyGroupErrorDoesNotFitTemplate;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound;
+    return _tag == FilesInvalidPropertyGroupErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorRestrictedContent;
+    return _tag == FilesInvalidPropertyGroupErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorOther;
+    return _tag == FilesInvalidPropertyGroupErrorOther;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath;
+    return _tag == FilesInvalidPropertyGroupErrorPath;
 }
 
 - (BOOL)isPropertyFieldTooLarge {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPropertyFieldTooLarge;
+    return _tag == FilesInvalidPropertyGroupErrorPropertyFieldTooLarge;
 }
 
 - (BOOL)isDoesNotFitTemplate {
-    return _tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorDoesNotFitTemplate;
+    return _tag == FilesInvalidPropertyGroupErrorDoesNotFitTemplate;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound";
-    }
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorRestrictedContent) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorRestrictedContent";
-    }
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorOther) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorOther";
-    }
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath";
-    }
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPropertyFieldTooLarge) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPropertyFieldTooLarge";
-    }
-    if (_tag == (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorDoesNotFitTemplate) {
-        return @"(FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorDoesNotFitTemplate";
+    switch (_tag) {
+        case FilesInvalidPropertyGroupErrorTemplateNotFound:
+           return @"FilesInvalidPropertyGroupErrorTemplateNotFound";
+        case FilesInvalidPropertyGroupErrorRestrictedContent:
+           return @"FilesInvalidPropertyGroupErrorRestrictedContent";
+        case FilesInvalidPropertyGroupErrorOther:
+           return @"FilesInvalidPropertyGroupErrorOther";
+        case FilesInvalidPropertyGroupErrorPath:
+           return @"FilesInvalidPropertyGroupErrorPath";
+        case FilesInvalidPropertyGroupErrorPropertyFieldTooLarge:
+           return @"FilesInvalidPropertyGroupErrorPropertyFieldTooLarge";
+        case FilesInvalidPropertyGroupErrorDoesNotFitTemplate:
+           return @"FilesInvalidPropertyGroupErrorDoesNotFitTemplate";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != FilesInvalidPropertyGroupErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesInvalidPropertyGroupErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesInvalidPropertyGroupErrorTag)FilesInvalidPropertyGroupErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesInvalidPropertyGroupErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesInvalidPropertyGroupErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

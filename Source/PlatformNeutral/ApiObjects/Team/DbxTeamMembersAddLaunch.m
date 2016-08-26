@@ -13,7 +13,7 @@
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId;
+        _tag = TeamMembersAddLaunchAsyncJobId;
         _asyncJobId = asyncJobId;
     }
     return self;
@@ -22,41 +22,41 @@
 - (instancetype)initWithComplete:(NSArray<DbxTeamMemberAddResult *> *)complete {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete;
+        _tag = TeamMembersAddLaunchComplete;
         _complete = complete;
     }
     return self;
 }
 
 - (BOOL)isAsyncJobId {
-    return _tag == (TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId;
+    return _tag == TeamMembersAddLaunchAsyncJobId;
 }
 
 - (BOOL)isComplete {
-    return _tag == (TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete;
+    return _tag == TeamMembersAddLaunchComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId) {
-        return @"(TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId";
-    }
-    if (_tag == (TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete) {
-        return @"(TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete";
+    switch (_tag) {
+        case TeamMembersAddLaunchAsyncJobId:
+           return @"TeamMembersAddLaunchAsyncJobId";
+        case TeamMembersAddLaunchComplete:
+           return @"TeamMembersAddLaunchComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != (TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersAddLaunchTag)TeamMembersAddLaunchAsyncJobId, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersAddLaunchAsyncJobId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersAddLaunchAsyncJobId, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (NSArray<DbxTeamMemberAddResult *> *)complete {
-    if (_tag != (TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersAddLaunchTag)TeamMembersAddLaunchComplete, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersAddLaunchComplete) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersAddLaunchComplete, but was %@.", [self getTagName]];
     }
     return _complete;
 }

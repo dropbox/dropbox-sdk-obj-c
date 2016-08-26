@@ -11,7 +11,7 @@
 - (instancetype)initWithAdd {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteModeTag)FilesWriteModeAdd;
+        _tag = FilesWriteModeAdd;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithOverwrite {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteModeTag)FilesWriteModeOverwrite;
+        _tag = FilesWriteModeOverwrite;
     }
     return self;
 }
@@ -27,41 +27,40 @@
 - (instancetype)initWithUpdate:(NSString *)update {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesWriteModeTag)FilesWriteModeUpdate;
+        _tag = FilesWriteModeUpdate;
         _update = update;
     }
     return self;
 }
 
 - (BOOL)isAdd {
-    return _tag == (FilesWriteModeTag)FilesWriteModeAdd;
+    return _tag == FilesWriteModeAdd;
 }
 
 - (BOOL)isOverwrite {
-    return _tag == (FilesWriteModeTag)FilesWriteModeOverwrite;
+    return _tag == FilesWriteModeOverwrite;
 }
 
 - (BOOL)isUpdate {
-    return _tag == (FilesWriteModeTag)FilesWriteModeUpdate;
+    return _tag == FilesWriteModeUpdate;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesWriteModeTag)FilesWriteModeAdd) {
-        return @"(FilesWriteModeTag)FilesWriteModeAdd";
-    }
-    if (_tag == (FilesWriteModeTag)FilesWriteModeOverwrite) {
-        return @"(FilesWriteModeTag)FilesWriteModeOverwrite";
-    }
-    if (_tag == (FilesWriteModeTag)FilesWriteModeUpdate) {
-        return @"(FilesWriteModeTag)FilesWriteModeUpdate";
+    switch (_tag) {
+        case FilesWriteModeAdd:
+           return @"FilesWriteModeAdd";
+        case FilesWriteModeOverwrite:
+           return @"FilesWriteModeOverwrite";
+        case FilesWriteModeUpdate:
+           return @"FilesWriteModeUpdate";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)update {
-    if (_tag != (FilesWriteModeTag)FilesWriteModeUpdate) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesWriteModeTag)FilesWriteModeUpdate, but was %@.", [self getTagName]];
+    if (_tag != FilesWriteModeUpdate) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesWriteModeUpdate, but was %@.", [self getTagName]];
     }
     return _update;
 }

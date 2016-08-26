@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamDeviceSession.h"
 
 @class DbxTeamActiveWebSession;
 
 /// 
-/// The DbxTeamActiveWebSession struct.
+/// The `DbxTeamActiveWebSession` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Information on active web sessions
 /// 
@@ -17,24 +21,39 @@
 
 /// Information on the hosting device
 @property (nonatomic, copy) NSString * _Nonnull userAgent;
+
 /// Information on the hosting operating system
 @property (nonatomic, copy) NSString * _Nonnull os;
+
 /// Information on the browser used for this web session
 @property (nonatomic, copy) NSString * _Nonnull browser;
 
+/// Full constructor for the `ActiveWebSession` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
+/// Convenience constructor for the `ActiveWebSession` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser;
 
+/// Returns a human-readable representation of the `DbxTeamActiveWebSession`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamActiveWebSession` struct.
+/// 
 @interface DbxTeamActiveWebSessionSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamActiveWebSession` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamActiveWebSession * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamActiveWebSession` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamActiveWebSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

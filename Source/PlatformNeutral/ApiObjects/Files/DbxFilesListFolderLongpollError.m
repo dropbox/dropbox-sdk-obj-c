@@ -11,7 +11,7 @@
 - (instancetype)initWithReset {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorReset;
+        _tag = FilesListFolderLongpollErrorReset;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorOther;
+        _tag = FilesListFolderLongpollErrorOther;
     }
     return self;
 }
 
 - (BOOL)isReset {
-    return _tag == (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorReset;
+    return _tag == FilesListFolderLongpollErrorReset;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorOther;
+    return _tag == FilesListFolderLongpollErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorReset) {
-        return @"(FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorReset";
-    }
-    if (_tag == (FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorOther) {
-        return @"(FilesListFolderLongpollErrorTag)FilesListFolderLongpollErrorOther";
+    switch (_tag) {
+        case FilesListFolderLongpollErrorReset:
+           return @"FilesListFolderLongpollErrorReset";
+        case FilesListFolderLongpollErrorOther:
+           return @"FilesListFolderLongpollErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -13,7 +13,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError;
+        _tag = SharingAddFolderMemberErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithEmailUnverified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorEmailUnverified;
+        _tag = SharingAddFolderMemberErrorEmailUnverified;
     }
     return self;
 }
@@ -30,7 +30,7 @@
 - (instancetype)initWithBadMember:(DbxSharingAddMemberSelectorError *)badMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember;
+        _tag = SharingAddFolderMemberErrorBadMember;
         _badMember = badMember;
     }
     return self;
@@ -39,7 +39,7 @@
 - (instancetype)initWithCantShareOutsideTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorCantShareOutsideTeam;
+        _tag = SharingAddFolderMemberErrorCantShareOutsideTeam;
     }
     return self;
 }
@@ -47,7 +47,7 @@
 - (instancetype)initWithTooManyMembers:(NSNumber *)tooManyMembers {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers;
+        _tag = SharingAddFolderMemberErrorTooManyMembers;
         _tooManyMembers = tooManyMembers;
     }
     return self;
@@ -56,7 +56,7 @@
 - (instancetype)initWithTooManyPendingInvites:(NSNumber *)tooManyPendingInvites {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites;
+        _tag = SharingAddFolderMemberErrorTooManyPendingInvites;
         _tooManyPendingInvites = tooManyPendingInvites;
     }
     return self;
@@ -65,7 +65,7 @@
 - (instancetype)initWithRateLimit {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorRateLimit;
+        _tag = SharingAddFolderMemberErrorRateLimit;
     }
     return self;
 }
@@ -73,7 +73,7 @@
 - (instancetype)initWithTooManyInvitees {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyInvitees;
+        _tag = SharingAddFolderMemberErrorTooManyInvitees;
     }
     return self;
 }
@@ -81,7 +81,7 @@
 - (instancetype)initWithInsufficientPlan {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorInsufficientPlan;
+        _tag = SharingAddFolderMemberErrorInsufficientPlan;
     }
     return self;
 }
@@ -89,7 +89,7 @@
 - (instancetype)initWithTeamFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTeamFolder;
+        _tag = SharingAddFolderMemberErrorTeamFolder;
     }
     return self;
 }
@@ -97,7 +97,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorNoPermission;
+        _tag = SharingAddFolderMemberErrorNoPermission;
     }
     return self;
 }
@@ -105,124 +105,114 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorOther;
+        _tag = SharingAddFolderMemberErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError;
+    return _tag == SharingAddFolderMemberErrorAccessError;
 }
 
 - (BOOL)isEmailUnverified {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorEmailUnverified;
+    return _tag == SharingAddFolderMemberErrorEmailUnverified;
 }
 
 - (BOOL)isBadMember {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember;
+    return _tag == SharingAddFolderMemberErrorBadMember;
 }
 
 - (BOOL)isCantShareOutsideTeam {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorCantShareOutsideTeam;
+    return _tag == SharingAddFolderMemberErrorCantShareOutsideTeam;
 }
 
 - (BOOL)isTooManyMembers {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers;
+    return _tag == SharingAddFolderMemberErrorTooManyMembers;
 }
 
 - (BOOL)isTooManyPendingInvites {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites;
+    return _tag == SharingAddFolderMemberErrorTooManyPendingInvites;
 }
 
 - (BOOL)isRateLimit {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorRateLimit;
+    return _tag == SharingAddFolderMemberErrorRateLimit;
 }
 
 - (BOOL)isTooManyInvitees {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyInvitees;
+    return _tag == SharingAddFolderMemberErrorTooManyInvitees;
 }
 
 - (BOOL)isInsufficientPlan {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorInsufficientPlan;
+    return _tag == SharingAddFolderMemberErrorInsufficientPlan;
 }
 
 - (BOOL)isTeamFolder {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTeamFolder;
+    return _tag == SharingAddFolderMemberErrorTeamFolder;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorNoPermission;
+    return _tag == SharingAddFolderMemberErrorNoPermission;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorOther;
+    return _tag == SharingAddFolderMemberErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorEmailUnverified) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorEmailUnverified";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorCantShareOutsideTeam) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorCantShareOutsideTeam";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorRateLimit) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorRateLimit";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyInvitees) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyInvitees";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorInsufficientPlan) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorInsufficientPlan";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTeamFolder) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTeamFolder";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorNoPermission) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorNoPermission";
-    }
-    if (_tag == (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorOther) {
-        return @"(SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorOther";
+    switch (_tag) {
+        case SharingAddFolderMemberErrorAccessError:
+           return @"SharingAddFolderMemberErrorAccessError";
+        case SharingAddFolderMemberErrorEmailUnverified:
+           return @"SharingAddFolderMemberErrorEmailUnverified";
+        case SharingAddFolderMemberErrorBadMember:
+           return @"SharingAddFolderMemberErrorBadMember";
+        case SharingAddFolderMemberErrorCantShareOutsideTeam:
+           return @"SharingAddFolderMemberErrorCantShareOutsideTeam";
+        case SharingAddFolderMemberErrorTooManyMembers:
+           return @"SharingAddFolderMemberErrorTooManyMembers";
+        case SharingAddFolderMemberErrorTooManyPendingInvites:
+           return @"SharingAddFolderMemberErrorTooManyPendingInvites";
+        case SharingAddFolderMemberErrorRateLimit:
+           return @"SharingAddFolderMemberErrorRateLimit";
+        case SharingAddFolderMemberErrorTooManyInvitees:
+           return @"SharingAddFolderMemberErrorTooManyInvitees";
+        case SharingAddFolderMemberErrorInsufficientPlan:
+           return @"SharingAddFolderMemberErrorInsufficientPlan";
+        case SharingAddFolderMemberErrorTeamFolder:
+           return @"SharingAddFolderMemberErrorTeamFolder";
+        case SharingAddFolderMemberErrorNoPermission:
+           return @"SharingAddFolderMemberErrorNoPermission";
+        case SharingAddFolderMemberErrorOther:
+           return @"SharingAddFolderMemberErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFolderMemberErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFolderMemberErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DbxSharingAddMemberSelectorError *)badMember {
-    if (_tag != (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorBadMember, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFolderMemberErrorBadMember) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFolderMemberErrorBadMember, but was %@.", [self getTagName]];
     }
     return _badMember;
 }
 
 - (NSNumber *)tooManyMembers {
-    if (_tag != (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyMembers, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFolderMemberErrorTooManyMembers) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFolderMemberErrorTooManyMembers, but was %@.", [self getTagName]];
     }
     return _tooManyMembers;
 }
 
 - (NSNumber *)tooManyPendingInvites {
-    if (_tag != (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddFolderMemberErrorTag)SharingAddFolderMemberErrorTooManyPendingInvites, but was %@.", [self getTagName]];
+    if (_tag != SharingAddFolderMemberErrorTooManyPendingInvites) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddFolderMemberErrorTooManyPendingInvites, but was %@.", [self getTagName]];
     }
     return _tooManyPendingInvites;
 }

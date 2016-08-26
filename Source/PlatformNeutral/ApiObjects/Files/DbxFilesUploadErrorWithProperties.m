@@ -14,7 +14,7 @@
 - (instancetype)initWithPath:(DbxFilesUploadWriteFailed *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath;
+        _tag = FilesUploadErrorWithPropertiesPath;
         _path = path;
     }
     return self;
@@ -23,7 +23,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesOther;
+        _tag = FilesUploadErrorWithPropertiesOther;
     }
     return self;
 }
@@ -31,48 +31,47 @@
 - (instancetype)initWithPropertiesError:(DbxFilesInvalidPropertyGroupError *)propertiesError {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError;
+        _tag = FilesUploadErrorWithPropertiesPropertiesError;
         _propertiesError = propertiesError;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath;
+    return _tag == FilesUploadErrorWithPropertiesPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesOther;
+    return _tag == FilesUploadErrorWithPropertiesOther;
 }
 
 - (BOOL)isPropertiesError {
-    return _tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError;
+    return _tag == FilesUploadErrorWithPropertiesPropertiesError;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath) {
-        return @"(FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath";
-    }
-    if (_tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesOther) {
-        return @"(FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesOther";
-    }
-    if (_tag == (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError) {
-        return @"(FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError";
+    switch (_tag) {
+        case FilesUploadErrorWithPropertiesPath:
+           return @"FilesUploadErrorWithPropertiesPath";
+        case FilesUploadErrorWithPropertiesOther:
+           return @"FilesUploadErrorWithPropertiesOther";
+        case FilesUploadErrorWithPropertiesPropertiesError:
+           return @"FilesUploadErrorWithPropertiesPropertiesError";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesUploadWriteFailed *)path {
-    if (_tag != (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPath, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadErrorWithPropertiesPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadErrorWithPropertiesPath, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DbxFilesInvalidPropertyGroupError *)propertiesError {
-    if (_tag != (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesUploadErrorWithPropertiesTag)FilesUploadErrorWithPropertiesPropertiesError, but was %@.", [self getTagName]];
+    if (_tag != FilesUploadErrorWithPropertiesPropertiesError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesUploadErrorWithPropertiesPropertiesError, but was %@.", [self getTagName]];
     }
     return _propertiesError;
 }

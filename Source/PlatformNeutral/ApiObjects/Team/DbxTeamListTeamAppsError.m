@@ -11,7 +11,7 @@
 - (instancetype)initWithReset {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorReset;
+        _tag = TeamListTeamAppsErrorReset;
     }
     return self;
 }
@@ -19,25 +19,25 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorOther;
+        _tag = TeamListTeamAppsErrorOther;
     }
     return self;
 }
 
 - (BOOL)isReset {
-    return _tag == (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorReset;
+    return _tag == TeamListTeamAppsErrorReset;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorOther;
+    return _tag == TeamListTeamAppsErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorReset) {
-        return @"(TeamListTeamAppsErrorTag)TeamListTeamAppsErrorReset";
-    }
-    if (_tag == (TeamListTeamAppsErrorTag)TeamListTeamAppsErrorOther) {
-        return @"(TeamListTeamAppsErrorTag)TeamListTeamAppsErrorOther";
+    switch (_tag) {
+        case TeamListTeamAppsErrorReset:
+           return @"TeamListTeamAppsErrorReset";
+        case TeamListTeamAppsErrorOther:
+           return @"TeamListTeamAppsErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderErrorTag)FilesListFolderErrorPath;
+        _tag = FilesListFolderErrorPath;
         _path = path;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesListFolderErrorTag)FilesListFolderErrorOther;
+        _tag = FilesListFolderErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesListFolderErrorTag)FilesListFolderErrorPath;
+    return _tag == FilesListFolderErrorPath;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesListFolderErrorTag)FilesListFolderErrorOther;
+    return _tag == FilesListFolderErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesListFolderErrorTag)FilesListFolderErrorPath) {
-        return @"(FilesListFolderErrorTag)FilesListFolderErrorPath";
-    }
-    if (_tag == (FilesListFolderErrorTag)FilesListFolderErrorOther) {
-        return @"(FilesListFolderErrorTag)FilesListFolderErrorOther";
+    switch (_tag) {
+        case FilesListFolderErrorPath:
+           return @"FilesListFolderErrorPath";
+        case FilesListFolderErrorOther:
+           return @"FilesListFolderErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesListFolderErrorTag)FilesListFolderErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesListFolderErrorTag)FilesListFolderErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesListFolderErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesListFolderErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

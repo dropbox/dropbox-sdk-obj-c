@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxUsersAccount;
 @class DbxUsersName;
 
 /// 
-/// The DbxUsersAccount struct.
+/// The `DbxUsersAccount` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The amount of detail revealed about an account depends on the user being
 /// queried and the user making the query.
@@ -18,32 +22,48 @@
 
 /// The user's unique Dropbox ID.
 @property (nonatomic, copy) NSString * _Nonnull accountId;
+
 /// Details of a user's name.
 @property (nonatomic) DbxUsersName * _Nonnull name;
+
 /// The user's e-mail address. Do not rely on this without checking the
 /// emailVerified field. Even then, it's possible that the user has since lost
 /// access to their e-mail.
 @property (nonatomic, copy) NSString * _Nonnull email;
+
 /// Whether the user has verified their e-mail address.
 @property (nonatomic, copy) NSNumber * _Nonnull emailVerified;
+
 /// URL for the photo representing the user, if one is set.
 @property (nonatomic, copy) NSString * _Nullable profilePhotoUrl;
+
 /// Whether the user has been disabled.
 @property (nonatomic, copy) NSNumber * _Nonnull disabled;
 
+/// Full constructor for the `Account` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
 
+/// Convenience constructor for the `Account` struct (exposes only non-nullable
+/// instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DbxUsersName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled;
 
+/// Returns a human-readable representation of the `DbxUsersAccount` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxUsersAccount` struct.
+/// 
 @interface DbxUsersAccountSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the `DbxUsersAccount`
+/// object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxUsersAccount * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxUsersAccount` object from a
+/// json-compatible dictionary representation.
 + (DbxUsersAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError;
+        _tag = SharingListFolderMembersContinueErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithInvalidCursor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorInvalidCursor;
+        _tag = SharingListFolderMembersContinueErrorInvalidCursor;
     }
     return self;
 }
@@ -29,40 +29,39 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorOther;
+        _tag = SharingListFolderMembersContinueErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError;
+    return _tag == SharingListFolderMembersContinueErrorAccessError;
 }
 
 - (BOOL)isInvalidCursor {
-    return _tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorInvalidCursor;
+    return _tag == SharingListFolderMembersContinueErrorInvalidCursor;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorOther;
+    return _tag == SharingListFolderMembersContinueErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError) {
-        return @"(SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError";
-    }
-    if (_tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorInvalidCursor) {
-        return @"(SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorInvalidCursor";
-    }
-    if (_tag == (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorOther) {
-        return @"(SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorOther";
+    switch (_tag) {
+        case SharingListFolderMembersContinueErrorAccessError:
+           return @"SharingListFolderMembersContinueErrorAccessError";
+        case SharingListFolderMembersContinueErrorInvalidCursor:
+           return @"SharingListFolderMembersContinueErrorInvalidCursor";
+        case SharingListFolderMembersContinueErrorOther:
+           return @"SharingListFolderMembersContinueErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListFolderMembersContinueErrorTag)SharingListFolderMembersContinueErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingListFolderMembersContinueErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListFolderMembersContinueErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

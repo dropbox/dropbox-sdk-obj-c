@@ -12,7 +12,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError;
+        _tag = SharingUnmountFolderErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNoPermission;
+        _tag = SharingUnmountFolderErrorNoPermission;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithNotUnmountable {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNotUnmountable;
+        _tag = SharingUnmountFolderErrorNotUnmountable;
     }
     return self;
 }
@@ -37,47 +37,45 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorOther;
+        _tag = SharingUnmountFolderErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError;
+    return _tag == SharingUnmountFolderErrorAccessError;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNoPermission;
+    return _tag == SharingUnmountFolderErrorNoPermission;
 }
 
 - (BOOL)isNotUnmountable {
-    return _tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNotUnmountable;
+    return _tag == SharingUnmountFolderErrorNotUnmountable;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorOther;
+    return _tag == SharingUnmountFolderErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError) {
-        return @"(SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError";
-    }
-    if (_tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNoPermission) {
-        return @"(SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNoPermission";
-    }
-    if (_tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNotUnmountable) {
-        return @"(SharingUnmountFolderErrorTag)SharingUnmountFolderErrorNotUnmountable";
-    }
-    if (_tag == (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorOther) {
-        return @"(SharingUnmountFolderErrorTag)SharingUnmountFolderErrorOther";
+    switch (_tag) {
+        case SharingUnmountFolderErrorAccessError:
+           return @"SharingUnmountFolderErrorAccessError";
+        case SharingUnmountFolderErrorNoPermission:
+           return @"SharingUnmountFolderErrorNoPermission";
+        case SharingUnmountFolderErrorNotUnmountable:
+           return @"SharingUnmountFolderErrorNotUnmountable";
+        case SharingUnmountFolderErrorOther:
+           return @"SharingUnmountFolderErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharedFolderAccessError *)accessError {
-    if (_tag != (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingUnmountFolderErrorTag)SharingUnmountFolderErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingUnmountFolderErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingUnmountFolderErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

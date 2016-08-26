@@ -3,49 +3,76 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncLaunchResultBase.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingShareFolderLaunch;
 @class DbxSharingSharedFolderMetadata;
 
 /// 
-/// The DbxSharingShareFolderLaunch union.
+/// The `DbxSharingShareFolderLaunch` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingShareFolderLaunch : NSObject <DbxSerializable> 
 
+/// The `SharingShareFolderLaunchTag` enum type represents the possible tag
+/// states that the `DbxSharingShareFolderLaunch` union can exist in.
 typedef NS_ENUM(NSInteger, SharingShareFolderLaunchTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
     SharingShareFolderLaunchAsyncJobId,
-    /// (no description)
+
+    /// (no description).
     SharingShareFolderLaunchComplete,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingShareFolderLaunchTag tag;
+
+/// This response indicates that the processing is asynchronous. The string is
+/// an id that can be used to obtain the status of the asynchronous job.
+@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
+
+
+/// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
+/// Initializes union class with tag state of `Complete`.
 - (nonnull instancetype)initWithComplete:(DbxSharingSharedFolderMetadata * _Nonnull)complete;
 
+/// Returns whether the union's current tag state has value `AsyncJobId`.
 - (BOOL)isAsyncJobId;
 
+/// Returns whether the union's current tag state has value `Complete`.
 - (BOOL)isComplete;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxSharingShareFolderLaunch`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingShareFolderLaunch union type.
-@property (nonatomic) SharingShareFolderLaunchTag tag;
-@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
-@property (nonatomic) DbxSharingSharedFolderMetadata * _Nonnull complete;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingShareFolderLaunch` union.
+/// 
 @interface DbxSharingShareFolderLaunchSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingShareFolderLaunch` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingShareFolderLaunch * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingShareFolderLaunch` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingShareFolderLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

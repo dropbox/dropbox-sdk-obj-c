@@ -3,38 +3,59 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookUpPropertiesError;
 
 /// 
-/// The DbxFilesLookUpPropertiesError union.
+/// The `DbxFilesLookUpPropertiesError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesLookUpPropertiesError : NSObject <DbxSerializable> 
 
+/// The `FilesLookUpPropertiesErrorTag` enum type represents the possible tag
+/// states that the `DbxFilesLookUpPropertiesError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesLookUpPropertiesErrorTag) {
     /// This property group does not exist for this file.
     FilesLookUpPropertiesErrorPropertyGroupNotFound,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesLookUpPropertiesErrorTag tag;
+
+
+/// Initializes union class with tag state of `PropertyGroupNotFound`.
 - (nonnull instancetype)initWithPropertyGroupNotFound;
 
+/// Returns whether the union's current tag state has value
+/// `PropertyGroupNotFound`.
 - (BOOL)isPropertyGroupNotFound;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesLookUpPropertiesError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesLookUpPropertiesError union type.
-@property (nonatomic) FilesLookUpPropertiesErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesLookUpPropertiesError` union.
+/// 
 @interface DbxFilesLookUpPropertiesErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesLookUpPropertiesError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesLookUpPropertiesError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesLookUpPropertiesError` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesLookUpPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

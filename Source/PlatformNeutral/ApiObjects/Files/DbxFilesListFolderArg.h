@@ -3,42 +3,63 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesListFolderArg;
 
 /// 
-/// The DbxFilesListFolderArg struct.
+/// The `DbxFilesListFolderArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesListFolderArg : NSObject <DbxSerializable> 
 
 /// The path to the folder you want to see the contents of.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// If true, the list folder operation will be applied recursively to all
 /// subfolders and the response will contain contents of all subfolders.
 @property (nonatomic, copy) NSNumber * _Nonnull recursive;
+
 /// If true, mediaInfo in FileMetadata is set for photo and video.
 @property (nonatomic, copy) NSNumber * _Nonnull includeMediaInfo;
+
 /// If true, the results will include entries for files and folders that used to
 /// exist but were deleted.
 @property (nonatomic, copy) NSNumber * _Nonnull includeDeleted;
+
 /// If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
 @property (nonatomic, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
+/// Full constructor for the `ListFolderArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path recursive:(NSNumber * _Nullable)recursive includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
+/// Convenience constructor for the `ListFolderArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
+/// Returns a human-readable representation of the `DbxFilesListFolderArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesListFolderArg` struct.
+/// 
 @interface DbxFilesListFolderArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesListFolderArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesListFolderArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesListFolderArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesListFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

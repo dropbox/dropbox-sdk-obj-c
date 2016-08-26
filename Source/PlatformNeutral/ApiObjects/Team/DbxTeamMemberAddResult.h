@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMemberAddResult;
 @class DbxTeamTeamMemberInfo;
 
 /// 
-/// The DbxTeamMemberAddResult union.
+/// The `DbxTeamMemberAddResult` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Describes the result of attempting to add a single user to the team.
 /// 'success' is the only value indicating that a user was indeed added to the
@@ -18,89 +22,153 @@
 /// 
 @interface DbxTeamMemberAddResult : NSObject <DbxSerializable> 
 
+/// The `TeamMemberAddResultTag` enum type represents the possible tag states
+/// that the `DbxTeamMemberAddResult` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMemberAddResultTag) {
     /// Describes a user that was successfully added to the team.
     TeamMemberAddResultSuccess,
+
     /// Team is already full. The organization has no available licenses.
     TeamMemberAddResultTeamLicenseLimit,
+
     /// Team is already full. The free team member limit has been reached.
     TeamMemberAddResultFreeTeamMemberLimitReached,
+
     /// User is already on this team. The provided email address is associated
     /// with a user who is already a member of or invited to the team.
     TeamMemberAddResultUserAlreadyOnTeam,
+
     /// User is already on another team. The provided email address is
     /// associated with a user that is already a member or invited to another
     /// team.
     TeamMemberAddResultUserOnAnotherTeam,
+
     /// User is already paired.
     TeamMemberAddResultUserAlreadyPaired,
+
     /// User migration has failed.
     TeamMemberAddResultUserMigrationFailed,
+
     /// A user with the given external member ID already exists on the team.
     TeamMemberAddResultDuplicateExternalMemberId,
+
     /// User creation has failed.
     TeamMemberAddResultUserCreationFailed,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMemberAddResultTag tag;
+
+/// Describes a user that was successfully added to the team.
+@property (nonatomic) DbxTeamTeamMemberInfo * _Nonnull success;
+
+/// Team is already full. The organization has no available licenses.
+@property (nonatomic, copy) NSString * _Nonnull teamLicenseLimit;
+
+/// Team is already full. The free team member limit has been reached.
+@property (nonatomic, copy) NSString * _Nonnull freeTeamMemberLimitReached;
+
+/// User is already on this team. The provided email address is associated with
+/// a user who is already a member of or invited to the team.
+@property (nonatomic, copy) NSString * _Nonnull userAlreadyOnTeam;
+
+/// User is already on another team. The provided email address is associated
+/// with a user that is already a member or invited to another team.
+@property (nonatomic, copy) NSString * _Nonnull userOnAnotherTeam;
+
+/// User is already paired.
+@property (nonatomic, copy) NSString * _Nonnull userAlreadyPaired;
+
+/// User migration has failed.
+@property (nonatomic, copy) NSString * _Nonnull userMigrationFailed;
+
+/// A user with the given external member ID already exists on the team.
+@property (nonatomic, copy) NSString * _Nonnull duplicateExternalMemberId;
+
+/// User creation has failed.
+@property (nonatomic, copy) NSString * _Nonnull userCreationFailed;
+
+
+/// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DbxTeamTeamMemberInfo * _Nonnull)success;
 
+/// Initializes union class with tag state of `TeamLicenseLimit`.
 - (nonnull instancetype)initWithTeamLicenseLimit:(NSString * _Nonnull)teamLicenseLimit;
 
+/// Initializes union class with tag state of `FreeTeamMemberLimitReached`.
 - (nonnull instancetype)initWithFreeTeamMemberLimitReached:(NSString * _Nonnull)freeTeamMemberLimitReached;
 
+/// Initializes union class with tag state of `UserAlreadyOnTeam`.
 - (nonnull instancetype)initWithUserAlreadyOnTeam:(NSString * _Nonnull)userAlreadyOnTeam;
 
+/// Initializes union class with tag state of `UserOnAnotherTeam`.
 - (nonnull instancetype)initWithUserOnAnotherTeam:(NSString * _Nonnull)userOnAnotherTeam;
 
+/// Initializes union class with tag state of `UserAlreadyPaired`.
 - (nonnull instancetype)initWithUserAlreadyPaired:(NSString * _Nonnull)userAlreadyPaired;
 
+/// Initializes union class with tag state of `UserMigrationFailed`.
 - (nonnull instancetype)initWithUserMigrationFailed:(NSString * _Nonnull)userMigrationFailed;
 
+/// Initializes union class with tag state of `DuplicateExternalMemberId`.
 - (nonnull instancetype)initWithDuplicateExternalMemberId:(NSString * _Nonnull)duplicateExternalMemberId;
 
+/// Initializes union class with tag state of `UserCreationFailed`.
 - (nonnull instancetype)initWithUserCreationFailed:(NSString * _Nonnull)userCreationFailed;
 
+/// Returns whether the union's current tag state has value `Success`.
 - (BOOL)isSuccess;
 
+/// Returns whether the union's current tag state has value `TeamLicenseLimit`.
 - (BOOL)isTeamLicenseLimit;
 
+/// Returns whether the union's current tag state has value
+/// `FreeTeamMemberLimitReached`.
 - (BOOL)isFreeTeamMemberLimitReached;
 
+/// Returns whether the union's current tag state has value `UserAlreadyOnTeam`.
 - (BOOL)isUserAlreadyOnTeam;
 
+/// Returns whether the union's current tag state has value `UserOnAnotherTeam`.
 - (BOOL)isUserOnAnotherTeam;
 
+/// Returns whether the union's current tag state has value `UserAlreadyPaired`.
 - (BOOL)isUserAlreadyPaired;
 
+/// Returns whether the union's current tag state has value
+/// `UserMigrationFailed`.
 - (BOOL)isUserMigrationFailed;
 
+/// Returns whether the union's current tag state has value
+/// `DuplicateExternalMemberId`.
 - (BOOL)isDuplicateExternalMemberId;
 
+/// Returns whether the union's current tag state has value
+/// `UserCreationFailed`.
 - (BOOL)isUserCreationFailed;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamMemberAddResult`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMemberAddResult union type.
-@property (nonatomic) TeamMemberAddResultTag tag;
-@property (nonatomic) DbxTeamTeamMemberInfo * _Nonnull success;
-@property (nonatomic, copy) NSString * _Nonnull teamLicenseLimit;
-@property (nonatomic, copy) NSString * _Nonnull freeTeamMemberLimitReached;
-@property (nonatomic, copy) NSString * _Nonnull userAlreadyOnTeam;
-@property (nonatomic, copy) NSString * _Nonnull userOnAnotherTeam;
-@property (nonatomic, copy) NSString * _Nonnull userAlreadyPaired;
-@property (nonatomic, copy) NSString * _Nonnull userMigrationFailed;
-@property (nonatomic, copy) NSString * _Nonnull duplicateExternalMemberId;
-@property (nonatomic, copy) NSString * _Nonnull userCreationFailed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMemberAddResult` union.
+/// 
 @interface DbxTeamMemberAddResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMemberAddResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMemberAddResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMemberAddResult` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMemberAddResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

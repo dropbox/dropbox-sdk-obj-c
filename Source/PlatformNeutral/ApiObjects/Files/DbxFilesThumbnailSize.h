@@ -3,62 +3,94 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesThumbnailSize;
 
 /// 
-/// The DbxFilesThumbnailSize union.
+/// The `DbxFilesThumbnailSize` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesThumbnailSize : NSObject <DbxSerializable> 
 
+/// The `FilesThumbnailSizeTag` enum type represents the possible tag states
+/// that the `DbxFilesThumbnailSize` union can exist in.
 typedef NS_ENUM(NSInteger, FilesThumbnailSizeTag) {
     /// 32 by 32 px.
     FilesThumbnailSizeW32h32,
+
     /// 64 by 64 px.
     FilesThumbnailSizeW64h64,
+
     /// 128 by 128 px.
     FilesThumbnailSizeW128h128,
+
     /// 640 by 480 px.
     FilesThumbnailSizeW640h480,
+
     /// 1024 by 768
     FilesThumbnailSizeW1024h768,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesThumbnailSizeTag tag;
+
+
+/// Initializes union class with tag state of `W32h32`.
 - (nonnull instancetype)initWithW32h32;
 
+/// Initializes union class with tag state of `W64h64`.
 - (nonnull instancetype)initWithW64h64;
 
+/// Initializes union class with tag state of `W128h128`.
 - (nonnull instancetype)initWithW128h128;
 
+/// Initializes union class with tag state of `W640h480`.
 - (nonnull instancetype)initWithW640h480;
 
+/// Initializes union class with tag state of `W1024h768`.
 - (nonnull instancetype)initWithW1024h768;
 
+/// Returns whether the union's current tag state has value `W32h32`.
 - (BOOL)isW32h32;
 
+/// Returns whether the union's current tag state has value `W64h64`.
 - (BOOL)isW64h64;
 
+/// Returns whether the union's current tag state has value `W128h128`.
 - (BOOL)isW128h128;
 
+/// Returns whether the union's current tag state has value `W640h480`.
 - (BOOL)isW640h480;
 
+/// Returns whether the union's current tag state has value `W1024h768`.
 - (BOOL)isW1024h768;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesThumbnailSize`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesThumbnailSize union type.
-@property (nonatomic) FilesThumbnailSizeTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesThumbnailSize` union.
+/// 
 @interface DbxFilesThumbnailSizeSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesThumbnailSize` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailSize * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesThumbnailSize` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesThumbnailSize * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

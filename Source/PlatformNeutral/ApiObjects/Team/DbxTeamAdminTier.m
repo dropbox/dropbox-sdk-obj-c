@@ -11,7 +11,7 @@
 - (instancetype)initWithTeamAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamAdminTierTag)TeamAdminTierTeamAdmin;
+        _tag = TeamAdminTierTeamAdmin;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithUserManagementAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamAdminTierTag)TeamAdminTierUserManagementAdmin;
+        _tag = TeamAdminTierUserManagementAdmin;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithSupportAdmin {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamAdminTierTag)TeamAdminTierSupportAdmin;
+        _tag = TeamAdminTierSupportAdmin;
     }
     return self;
 }
@@ -35,39 +35,37 @@
 - (instancetype)initWithMemberOnly {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamAdminTierTag)TeamAdminTierMemberOnly;
+        _tag = TeamAdminTierMemberOnly;
     }
     return self;
 }
 
 - (BOOL)isTeamAdmin {
-    return _tag == (TeamAdminTierTag)TeamAdminTierTeamAdmin;
+    return _tag == TeamAdminTierTeamAdmin;
 }
 
 - (BOOL)isUserManagementAdmin {
-    return _tag == (TeamAdminTierTag)TeamAdminTierUserManagementAdmin;
+    return _tag == TeamAdminTierUserManagementAdmin;
 }
 
 - (BOOL)isSupportAdmin {
-    return _tag == (TeamAdminTierTag)TeamAdminTierSupportAdmin;
+    return _tag == TeamAdminTierSupportAdmin;
 }
 
 - (BOOL)isMemberOnly {
-    return _tag == (TeamAdminTierTag)TeamAdminTierMemberOnly;
+    return _tag == TeamAdminTierMemberOnly;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamAdminTierTag)TeamAdminTierTeamAdmin) {
-        return @"(TeamAdminTierTag)TeamAdminTierTeamAdmin";
-    }
-    if (_tag == (TeamAdminTierTag)TeamAdminTierUserManagementAdmin) {
-        return @"(TeamAdminTierTag)TeamAdminTierUserManagementAdmin";
-    }
-    if (_tag == (TeamAdminTierTag)TeamAdminTierSupportAdmin) {
-        return @"(TeamAdminTierTag)TeamAdminTierSupportAdmin";
-    }
-    if (_tag == (TeamAdminTierTag)TeamAdminTierMemberOnly) {
-        return @"(TeamAdminTierTag)TeamAdminTierMemberOnly";
+    switch (_tag) {
+        case TeamAdminTierTeamAdmin:
+           return @"TeamAdminTierTeamAdmin";
+        case TeamAdminTierUserManagementAdmin:
+           return @"TeamAdminTierUserManagementAdmin";
+        case TeamAdminTierSupportAdmin:
+           return @"TeamAdminTierSupportAdmin";
+        case TeamAdminTierMemberOnly:
+           return @"TeamAdminTierMemberOnly";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

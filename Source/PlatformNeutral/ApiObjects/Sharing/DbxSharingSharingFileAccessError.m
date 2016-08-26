@@ -11,7 +11,7 @@
 - (instancetype)initWithNoPermission {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorNoPermission;
+        _tag = SharingSharingFileAccessErrorNoPermission;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithInvalidFile {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInvalidFile;
+        _tag = SharingSharingFileAccessErrorInvalidFile;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithIsFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorIsFolder;
+        _tag = SharingSharingFileAccessErrorIsFolder;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithInsidePublicFolder {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsidePublicFolder;
+        _tag = SharingSharingFileAccessErrorInsidePublicFolder;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithInsideOsxPackage {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsideOsxPackage;
+        _tag = SharingSharingFileAccessErrorInsideOsxPackage;
     }
     return self;
 }
@@ -51,53 +51,49 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorOther;
+        _tag = SharingSharingFileAccessErrorOther;
     }
     return self;
 }
 
 - (BOOL)isNoPermission {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorNoPermission;
+    return _tag == SharingSharingFileAccessErrorNoPermission;
 }
 
 - (BOOL)isInvalidFile {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInvalidFile;
+    return _tag == SharingSharingFileAccessErrorInvalidFile;
 }
 
 - (BOOL)isIsFolder {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorIsFolder;
+    return _tag == SharingSharingFileAccessErrorIsFolder;
 }
 
 - (BOOL)isInsidePublicFolder {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsidePublicFolder;
+    return _tag == SharingSharingFileAccessErrorInsidePublicFolder;
 }
 
 - (BOOL)isInsideOsxPackage {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsideOsxPackage;
+    return _tag == SharingSharingFileAccessErrorInsideOsxPackage;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorOther;
+    return _tag == SharingSharingFileAccessErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorNoPermission) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorNoPermission";
-    }
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInvalidFile) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInvalidFile";
-    }
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorIsFolder) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorIsFolder";
-    }
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsidePublicFolder) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsidePublicFolder";
-    }
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsideOsxPackage) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorInsideOsxPackage";
-    }
-    if (_tag == (SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorOther) {
-        return @"(SharingSharingFileAccessErrorTag)SharingSharingFileAccessErrorOther";
+    switch (_tag) {
+        case SharingSharingFileAccessErrorNoPermission:
+           return @"SharingSharingFileAccessErrorNoPermission";
+        case SharingSharingFileAccessErrorInvalidFile:
+           return @"SharingSharingFileAccessErrorInvalidFile";
+        case SharingSharingFileAccessErrorIsFolder:
+           return @"SharingSharingFileAccessErrorIsFolder";
+        case SharingSharingFileAccessErrorInsidePublicFolder:
+           return @"SharingSharingFileAccessErrorInsidePublicFolder";
+        case SharingSharingFileAccessErrorInsideOsxPackage:
+           return @"SharingSharingFileAccessErrorInsideOsxPackage";
+        case SharingSharingFileAccessErrorOther:
+           return @"SharingSharingFileAccessErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

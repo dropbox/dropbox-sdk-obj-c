@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxSharingSharedLinkMetadata.h"
 
 @class DbxSharingFolderLinkMetadata;
@@ -12,25 +12,42 @@
 @class DbxUsersTeam;
 
 /// 
-/// The DbxSharingFolderLinkMetadata struct.
+/// The `DbxSharingFolderLinkMetadata` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// The metadata of a folder shared link
 /// 
 @interface DbxSharingFolderLinkMetadata : DbxSharingSharedLinkMetadata <DbxSerializable> 
 
+/// Full constructor for the `FolderLinkMetadata` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DbxSharingTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DbxUsersTeam * _Nullable)contentOwnerTeamInfo;
 
+/// Convenience constructor for the `FolderLinkMetadata` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DbxSharingLinkPermissions * _Nonnull)linkPermissions;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingFolderLinkMetadata` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFolderLinkMetadata` struct.
+/// 
 @interface DbxSharingFolderLinkMetadataSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFolderLinkMetadata` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFolderLinkMetadata * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFolderLinkMetadata` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingFolderLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

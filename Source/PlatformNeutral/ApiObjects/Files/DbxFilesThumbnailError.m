@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailErrorTag)FilesThumbnailErrorPath;
+        _tag = FilesThumbnailErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithUnsupportedExtension {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedExtension;
+        _tag = FilesThumbnailErrorUnsupportedExtension;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithUnsupportedImage {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedImage;
+        _tag = FilesThumbnailErrorUnsupportedImage;
     }
     return self;
 }
@@ -37,47 +37,45 @@
 - (instancetype)initWithConversionError {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesThumbnailErrorTag)FilesThumbnailErrorConversionError;
+        _tag = FilesThumbnailErrorConversionError;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesThumbnailErrorTag)FilesThumbnailErrorPath;
+    return _tag == FilesThumbnailErrorPath;
 }
 
 - (BOOL)isUnsupportedExtension {
-    return _tag == (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedExtension;
+    return _tag == FilesThumbnailErrorUnsupportedExtension;
 }
 
 - (BOOL)isUnsupportedImage {
-    return _tag == (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedImage;
+    return _tag == FilesThumbnailErrorUnsupportedImage;
 }
 
 - (BOOL)isConversionError {
-    return _tag == (FilesThumbnailErrorTag)FilesThumbnailErrorConversionError;
+    return _tag == FilesThumbnailErrorConversionError;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesThumbnailErrorTag)FilesThumbnailErrorPath) {
-        return @"(FilesThumbnailErrorTag)FilesThumbnailErrorPath";
-    }
-    if (_tag == (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedExtension) {
-        return @"(FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedExtension";
-    }
-    if (_tag == (FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedImage) {
-        return @"(FilesThumbnailErrorTag)FilesThumbnailErrorUnsupportedImage";
-    }
-    if (_tag == (FilesThumbnailErrorTag)FilesThumbnailErrorConversionError) {
-        return @"(FilesThumbnailErrorTag)FilesThumbnailErrorConversionError";
+    switch (_tag) {
+        case FilesThumbnailErrorPath:
+           return @"FilesThumbnailErrorPath";
+        case FilesThumbnailErrorUnsupportedExtension:
+           return @"FilesThumbnailErrorUnsupportedExtension";
+        case FilesThumbnailErrorUnsupportedImage:
+           return @"FilesThumbnailErrorUnsupportedImage";
+        case FilesThumbnailErrorConversionError:
+           return @"FilesThumbnailErrorConversionError";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesThumbnailErrorTag)FilesThumbnailErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesThumbnailErrorTag)FilesThumbnailErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesThumbnailErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesThumbnailErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

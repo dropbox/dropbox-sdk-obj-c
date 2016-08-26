@@ -11,18 +11,19 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamRevokeLinkedAppBatchErrorTag)TeamRevokeLinkedAppBatchErrorOther;
+        _tag = TeamRevokeLinkedAppBatchErrorOther;
     }
     return self;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamRevokeLinkedAppBatchErrorTag)TeamRevokeLinkedAppBatchErrorOther;
+    return _tag == TeamRevokeLinkedAppBatchErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamRevokeLinkedAppBatchErrorTag)TeamRevokeLinkedAppBatchErrorOther) {
-        return @"(TeamRevokeLinkedAppBatchErrorTag)TeamRevokeLinkedAppBatchErrorOther";
+    switch (_tag) {
+        case TeamRevokeLinkedAppBatchErrorOther:
+           return @"TeamRevokeLinkedAppBatchErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

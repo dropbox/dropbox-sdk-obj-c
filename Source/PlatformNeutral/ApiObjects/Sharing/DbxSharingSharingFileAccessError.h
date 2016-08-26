@@ -3,73 +3,109 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingSharingFileAccessError;
 
 /// 
-/// The DbxSharingSharingFileAccessError union.
+/// The `DbxSharingSharingFileAccessError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// User could not access this file.
 /// 
 @interface DbxSharingSharingFileAccessError : NSObject <DbxSerializable> 
 
+/// The `SharingSharingFileAccessErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingSharingFileAccessError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingSharingFileAccessErrorTag) {
     /// Current user does not have sufficient privileges to perform the desired
     /// action.
     SharingSharingFileAccessErrorNoPermission,
+
     /// File specified was not found.
     SharingSharingFileAccessErrorInvalidFile,
+
     /// A folder can't be shared this way. Use folder sharing or a shared link
     /// instead.
     SharingSharingFileAccessErrorIsFolder,
+
     /// A file inside a public folder can't be shared this way. Use a public
     /// link instead.
     SharingSharingFileAccessErrorInsidePublicFolder,
+
     /// A Mac OS X package can't be shared this way. Use a shared link instead.
     SharingSharingFileAccessErrorInsideOsxPackage,
-    /// (no description)
+
+    /// (no description).
     SharingSharingFileAccessErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingSharingFileAccessErrorTag tag;
+
+
+/// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
 
+/// Initializes union class with tag state of `InvalidFile`.
 - (nonnull instancetype)initWithInvalidFile;
 
+/// Initializes union class with tag state of `IsFolder`.
 - (nonnull instancetype)initWithIsFolder;
 
+/// Initializes union class with tag state of `InsidePublicFolder`.
 - (nonnull instancetype)initWithInsidePublicFolder;
 
+/// Initializes union class with tag state of `InsideOsxPackage`.
 - (nonnull instancetype)initWithInsideOsxPackage;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `NoPermission`.
 - (BOOL)isNoPermission;
 
+/// Returns whether the union's current tag state has value `InvalidFile`.
 - (BOOL)isInvalidFile;
 
+/// Returns whether the union's current tag state has value `IsFolder`.
 - (BOOL)isIsFolder;
 
+/// Returns whether the union's current tag state has value
+/// `InsidePublicFolder`.
 - (BOOL)isInsidePublicFolder;
 
+/// Returns whether the union's current tag state has value `InsideOsxPackage`.
 - (BOOL)isInsideOsxPackage;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingSharingFileAccessError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingSharingFileAccessError union type.
-@property (nonatomic) SharingSharingFileAccessErrorTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingSharingFileAccessError` union.
+/// 
 @interface DbxSharingSharingFileAccessErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingSharingFileAccessError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingSharingFileAccessError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingSharingFileAccessError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingSharingFileAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

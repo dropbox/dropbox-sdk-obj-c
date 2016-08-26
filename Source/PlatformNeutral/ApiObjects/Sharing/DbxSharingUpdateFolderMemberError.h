@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAddFolderMemberError;
 @class DbxSharingSharedFolderAccessError;
@@ -11,69 +11,111 @@
 @class DbxSharingUpdateFolderMemberError;
 
 /// 
-/// The DbxSharingUpdateFolderMemberError union.
+/// The `DbxSharingUpdateFolderMemberError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingUpdateFolderMemberError : NSObject <DbxSerializable> 
 
+/// The `SharingUpdateFolderMemberErrorTag` enum type represents the possible
+/// tag states that the `DbxSharingUpdateFolderMemberError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingUpdateFolderMemberErrorTag) {
-    /// (no description)
+    /// (no description).
     SharingUpdateFolderMemberErrorAccessError,
-    /// (no description)
+
+    /// (no description).
     SharingUpdateFolderMemberErrorMemberError,
+
     /// If updating the access type required the member to be added to the
     /// shared folder and there was an error when adding the member.
     SharingUpdateFolderMemberErrorNoExplicitAccess,
+
     /// The current user's account doesn't support this action. An example of
     /// this is when downgrading a member from editor to viewer. This action can
     /// only be performed by users that have upgraded to a Pro or Business plan.
     SharingUpdateFolderMemberErrorInsufficientPlan,
+
     /// The current user does not have permission to perform this action.
     SharingUpdateFolderMemberErrorNoPermission,
-    /// (no description)
+
+    /// (no description).
     SharingUpdateFolderMemberErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingUpdateFolderMemberErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
+
+/// (no description).
+@property (nonatomic) DbxSharingSharedFolderMemberError * _Nonnull memberError;
+
+/// If updating the access type required the member to be added to the shared
+/// folder and there was an error when adding the member.
+@property (nonatomic) DbxSharingAddFolderMemberError * _Nonnull noExplicitAccess;
+
+
+/// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DbxSharingSharedFolderAccessError * _Nonnull)accessError;
 
+/// Initializes union class with tag state of `MemberError`.
 - (nonnull instancetype)initWithMemberError:(DbxSharingSharedFolderMemberError * _Nonnull)memberError;
 
+/// Initializes union class with tag state of `NoExplicitAccess`.
 - (nonnull instancetype)initWithNoExplicitAccess:(DbxSharingAddFolderMemberError * _Nonnull)noExplicitAccess;
 
+/// Initializes union class with tag state of `InsufficientPlan`.
 - (nonnull instancetype)initWithInsufficientPlan;
 
+/// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `AccessError`.
 - (BOOL)isAccessError;
 
+/// Returns whether the union's current tag state has value `MemberError`.
 - (BOOL)isMemberError;
 
+/// Returns whether the union's current tag state has value `NoExplicitAccess`.
 - (BOOL)isNoExplicitAccess;
 
+/// Returns whether the union's current tag state has value `InsufficientPlan`.
 - (BOOL)isInsufficientPlan;
 
+/// Returns whether the union's current tag state has value `NoPermission`.
 - (BOOL)isNoPermission;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingUpdateFolderMemberError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingUpdateFolderMemberError union type.
-@property (nonatomic) SharingUpdateFolderMemberErrorTag tag;
-@property (nonatomic) DbxSharingSharedFolderAccessError * _Nonnull accessError;
-@property (nonatomic) DbxSharingSharedFolderMemberError * _Nonnull memberError;
-@property (nonatomic) DbxSharingAddFolderMemberError * _Nonnull noExplicitAccess;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingUpdateFolderMemberError` union.
+/// 
 @interface DbxSharingUpdateFolderMemberErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingUpdateFolderMemberError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingUpdateFolderMemberError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingUpdateFolderMemberError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingUpdateFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

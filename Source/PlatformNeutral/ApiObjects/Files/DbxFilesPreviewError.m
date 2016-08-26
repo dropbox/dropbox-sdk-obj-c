@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPreviewErrorTag)FilesPreviewErrorPath;
+        _tag = FilesPreviewErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPreviewErrorTag)FilesPreviewErrorInProgress;
+        _tag = FilesPreviewErrorInProgress;
     }
     return self;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithUnsupportedExtension {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedExtension;
+        _tag = FilesPreviewErrorUnsupportedExtension;
     }
     return self;
 }
@@ -37,47 +37,45 @@
 - (instancetype)initWithUnsupportedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedContent;
+        _tag = FilesPreviewErrorUnsupportedContent;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesPreviewErrorTag)FilesPreviewErrorPath;
+    return _tag == FilesPreviewErrorPath;
 }
 
 - (BOOL)isInProgress {
-    return _tag == (FilesPreviewErrorTag)FilesPreviewErrorInProgress;
+    return _tag == FilesPreviewErrorInProgress;
 }
 
 - (BOOL)isUnsupportedExtension {
-    return _tag == (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedExtension;
+    return _tag == FilesPreviewErrorUnsupportedExtension;
 }
 
 - (BOOL)isUnsupportedContent {
-    return _tag == (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedContent;
+    return _tag == FilesPreviewErrorUnsupportedContent;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesPreviewErrorTag)FilesPreviewErrorPath) {
-        return @"(FilesPreviewErrorTag)FilesPreviewErrorPath";
-    }
-    if (_tag == (FilesPreviewErrorTag)FilesPreviewErrorInProgress) {
-        return @"(FilesPreviewErrorTag)FilesPreviewErrorInProgress";
-    }
-    if (_tag == (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedExtension) {
-        return @"(FilesPreviewErrorTag)FilesPreviewErrorUnsupportedExtension";
-    }
-    if (_tag == (FilesPreviewErrorTag)FilesPreviewErrorUnsupportedContent) {
-        return @"(FilesPreviewErrorTag)FilesPreviewErrorUnsupportedContent";
+    switch (_tag) {
+        case FilesPreviewErrorPath:
+           return @"FilesPreviewErrorPath";
+        case FilesPreviewErrorInProgress:
+           return @"FilesPreviewErrorInProgress";
+        case FilesPreviewErrorUnsupportedExtension:
+           return @"FilesPreviewErrorUnsupportedExtension";
+        case FilesPreviewErrorUnsupportedContent:
+           return @"FilesPreviewErrorUnsupportedContent";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesPreviewErrorTag)FilesPreviewErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesPreviewErrorTag)FilesPreviewErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesPreviewErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesPreviewErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

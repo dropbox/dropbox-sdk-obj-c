@@ -13,7 +13,7 @@
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound;
+        _tag = FilesPropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithRestrictedContent {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPropertiesErrorTag)FilesPropertiesErrorRestrictedContent;
+        _tag = FilesPropertiesErrorRestrictedContent;
     }
     return self;
 }
@@ -30,7 +30,7 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPropertiesErrorTag)FilesPropertiesErrorOther;
+        _tag = FilesPropertiesErrorOther;
     }
     return self;
 }
@@ -38,55 +38,53 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesPropertiesErrorTag)FilesPropertiesErrorPath;
+        _tag = FilesPropertiesErrorPath;
         _path = path;
     }
     return self;
 }
 
 - (BOOL)isTemplateNotFound {
-    return _tag == (FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound;
+    return _tag == FilesPropertiesErrorTemplateNotFound;
 }
 
 - (BOOL)isRestrictedContent {
-    return _tag == (FilesPropertiesErrorTag)FilesPropertiesErrorRestrictedContent;
+    return _tag == FilesPropertiesErrorRestrictedContent;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesPropertiesErrorTag)FilesPropertiesErrorOther;
+    return _tag == FilesPropertiesErrorOther;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesPropertiesErrorTag)FilesPropertiesErrorPath;
+    return _tag == FilesPropertiesErrorPath;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound) {
-        return @"(FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound";
-    }
-    if (_tag == (FilesPropertiesErrorTag)FilesPropertiesErrorRestrictedContent) {
-        return @"(FilesPropertiesErrorTag)FilesPropertiesErrorRestrictedContent";
-    }
-    if (_tag == (FilesPropertiesErrorTag)FilesPropertiesErrorOther) {
-        return @"(FilesPropertiesErrorTag)FilesPropertiesErrorOther";
-    }
-    if (_tag == (FilesPropertiesErrorTag)FilesPropertiesErrorPath) {
-        return @"(FilesPropertiesErrorTag)FilesPropertiesErrorPath";
+    switch (_tag) {
+        case FilesPropertiesErrorTemplateNotFound:
+           return @"FilesPropertiesErrorTemplateNotFound";
+        case FilesPropertiesErrorRestrictedContent:
+           return @"FilesPropertiesErrorRestrictedContent";
+        case FilesPropertiesErrorOther:
+           return @"FilesPropertiesErrorOther";
+        case FilesPropertiesErrorPath:
+           return @"FilesPropertiesErrorPath";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != (FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesPropertiesErrorTag)FilesPropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
+    if (_tag != FilesPropertiesErrorTemplateNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesPropertiesErrorTemplateNotFound, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesPropertiesErrorTag)FilesPropertiesErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesPropertiesErrorTag)FilesPropertiesErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesPropertiesErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesPropertiesErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

@@ -12,7 +12,7 @@
 - (instancetype)initWithIdNotFound:(NSString *)idNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound;
+        _tag = TeamGroupsGetInfoItemIdNotFound;
         _idNotFound = idNotFound;
     }
     return self;
@@ -21,41 +21,41 @@
 - (instancetype)initWithGroupInfo:(DbxTeamGroupFullInfo *)groupInfo {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo;
+        _tag = TeamGroupsGetInfoItemGroupInfo;
         _groupInfo = groupInfo;
     }
     return self;
 }
 
 - (BOOL)isIdNotFound {
-    return _tag == (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound;
+    return _tag == TeamGroupsGetInfoItemIdNotFound;
 }
 
 - (BOOL)isGroupInfo {
-    return _tag == (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo;
+    return _tag == TeamGroupsGetInfoItemGroupInfo;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound) {
-        return @"(TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound";
-    }
-    if (_tag == (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo) {
-        return @"(TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo";
+    switch (_tag) {
+        case TeamGroupsGetInfoItemIdNotFound:
+           return @"TeamGroupsGetInfoItemIdNotFound";
+        case TeamGroupsGetInfoItemGroupInfo:
+           return @"TeamGroupsGetInfoItemGroupInfo";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)idNotFound {
-    if (_tag != (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemIdNotFound, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupsGetInfoItemIdNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupsGetInfoItemIdNotFound, but was %@.", [self getTagName]];
     }
     return _idNotFound;
 }
 
 - (DbxTeamGroupFullInfo *)groupInfo {
-    if (_tag != (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamGroupsGetInfoItemTag)TeamGroupsGetInfoItemGroupInfo, but was %@.", [self getTagName]];
+    if (_tag != TeamGroupsGetInfoItemGroupInfo) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamGroupsGetInfoItemGroupInfo, but was %@.", [self getTagName]];
     }
     return _groupInfo;
 }

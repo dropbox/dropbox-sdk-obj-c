@@ -3,54 +3,82 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingListFilesContinueError;
 @class DbxSharingSharingUserError;
 
 /// 
-/// The DbxSharingListFilesContinueError union.
+/// The `DbxSharingListFilesContinueError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Error results for listReceivedFilesContinue.
 /// 
 @interface DbxSharingListFilesContinueError : NSObject <DbxSerializable> 
 
+/// The `SharingListFilesContinueErrorTag` enum type represents the possible tag
+/// states that the `DbxSharingListFilesContinueError` union can exist in.
 typedef NS_ENUM(NSInteger, SharingListFilesContinueErrorTag) {
     /// User account had a problem.
     SharingListFilesContinueErrorUserError,
+
     /// cursor in ListFilesContinueArg is invalid.
     SharingListFilesContinueErrorInvalidCursor,
-    /// (no description)
+
+    /// (no description).
     SharingListFilesContinueErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingListFilesContinueErrorTag tag;
+
+/// User account had a problem.
+@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
+
+
+/// Initializes union class with tag state of `UserError`.
 - (nonnull instancetype)initWithUserError:(DbxSharingSharingUserError * _Nonnull)userError;
 
+/// Initializes union class with tag state of `InvalidCursor`.
 - (nonnull instancetype)initWithInvalidCursor;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `UserError`.
 - (BOOL)isUserError;
 
+/// Returns whether the union's current tag state has value `InvalidCursor`.
 - (BOOL)isInvalidCursor;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingListFilesContinueError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingListFilesContinueError union type.
-@property (nonatomic) SharingListFilesContinueErrorTag tag;
-@property (nonatomic) DbxSharingSharingUserError * _Nonnull userError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingListFilesContinueError` union.
+/// 
 @interface DbxSharingListFilesContinueErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingListFilesContinueError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingListFilesContinueError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingListFilesContinueError` object
+/// from a json-compatible dictionary representation.
 + (DbxSharingListFilesContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

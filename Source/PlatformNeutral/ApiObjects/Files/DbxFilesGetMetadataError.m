@@ -12,27 +12,28 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesGetMetadataErrorTag)FilesGetMetadataErrorPath;
+        _tag = FilesGetMetadataErrorPath;
         _path = path;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesGetMetadataErrorTag)FilesGetMetadataErrorPath;
+    return _tag == FilesGetMetadataErrorPath;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesGetMetadataErrorTag)FilesGetMetadataErrorPath) {
-        return @"(FilesGetMetadataErrorTag)FilesGetMetadataErrorPath";
+    switch (_tag) {
+        case FilesGetMetadataErrorPath:
+           return @"FilesGetMetadataErrorPath";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesGetMetadataErrorTag)FilesGetMetadataErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesGetMetadataErrorTag)FilesGetMetadataErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesGetMetadataErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesGetMetadataErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

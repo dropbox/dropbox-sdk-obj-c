@@ -3,7 +3,7 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 #import "DbxTeamGroupMemberSelector.h"
 
 @class DbxTeamGroupAccessType;
@@ -12,30 +12,49 @@
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamGroupMembersSetAccessTypeArg struct.
+/// The `DbxTeamGroupMembersSetAccessTypeArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamGroupMembersSetAccessTypeArg : DbxTeamGroupMemberSelector <DbxSerializable> 
 
 /// New group access type the user will have.
 @property (nonatomic) DbxTeamGroupAccessType * _Nonnull accessType;
+
 /// Whether to return the list of members in the group.  Note that the default
 /// value will cause all the group members  to be returned in the response. This
 /// may take a long time for large groups.
 @property (nonatomic, copy) NSNumber * _Nonnull returnMembers;
 
+/// Full constructor for the `GroupMembersSetAccessTypeArg` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType returnMembers:(NSNumber * _Nullable)returnMembers;
 
+/// Convenience constructor for the `GroupMembersSetAccessTypeArg` struct
+/// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DbxTeamGroupSelector * _Nonnull)group user:(DbxTeamUserSelectorArg * _Nonnull)user accessType:(DbxTeamGroupAccessType * _Nonnull)accessType;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamGroupMembersSetAccessTypeArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupMembersSetAccessTypeArg`
+/// struct.
+/// 
 @interface DbxTeamGroupMembersSetAccessTypeArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupMembersSetAccessTypeArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupMembersSetAccessTypeArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupMembersSetAccessTypeArg` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamGroupMembersSetAccessTypeArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

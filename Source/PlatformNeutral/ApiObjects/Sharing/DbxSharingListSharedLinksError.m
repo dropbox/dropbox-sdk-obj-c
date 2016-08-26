@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath;
+        _tag = SharingListSharedLinksErrorPath;
         _path = path;
     }
     return self;
@@ -21,7 +21,7 @@
 - (instancetype)initWithReset {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorReset;
+        _tag = SharingListSharedLinksErrorReset;
     }
     return self;
 }
@@ -29,40 +29,39 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorOther;
+        _tag = SharingListSharedLinksErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath;
+    return _tag == SharingListSharedLinksErrorPath;
 }
 
 - (BOOL)isReset {
-    return _tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorReset;
+    return _tag == SharingListSharedLinksErrorReset;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorOther;
+    return _tag == SharingListSharedLinksErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath) {
-        return @"(SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath";
-    }
-    if (_tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorReset) {
-        return @"(SharingListSharedLinksErrorTag)SharingListSharedLinksErrorReset";
-    }
-    if (_tag == (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorOther) {
-        return @"(SharingListSharedLinksErrorTag)SharingListSharedLinksErrorOther";
+    switch (_tag) {
+        case SharingListSharedLinksErrorPath:
+           return @"SharingListSharedLinksErrorPath";
+        case SharingListSharedLinksErrorReset:
+           return @"SharingListSharedLinksErrorReset";
+        case SharingListSharedLinksErrorOther:
+           return @"SharingListSharedLinksErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListSharedLinksErrorTag)SharingListSharedLinksErrorPath, but was %@.", [self getTagName]];
+    if (_tag != SharingListSharedLinksErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListSharedLinksErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }

@@ -11,7 +11,7 @@
 - (instancetype)initWithAutomaticGroup {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorAutomaticGroup;
+        _tag = SharingAddMemberSelectorErrorAutomaticGroup;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithInvalidDropboxId:(NSString *)invalidDropboxId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId;
+        _tag = SharingAddMemberSelectorErrorInvalidDropboxId;
         _invalidDropboxId = invalidDropboxId;
     }
     return self;
@@ -28,7 +28,7 @@
 - (instancetype)initWithInvalidEmail:(NSString *)invalidEmail {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail;
+        _tag = SharingAddMemberSelectorErrorInvalidEmail;
         _invalidEmail = invalidEmail;
     }
     return self;
@@ -37,7 +37,7 @@
 - (instancetype)initWithUnverifiedDropboxId:(NSString *)unverifiedDropboxId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId;
+        _tag = SharingAddMemberSelectorErrorUnverifiedDropboxId;
         _unverifiedDropboxId = unverifiedDropboxId;
     }
     return self;
@@ -46,7 +46,7 @@
 - (instancetype)initWithGroupDeleted {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupDeleted;
+        _tag = SharingAddMemberSelectorErrorGroupDeleted;
     }
     return self;
 }
@@ -54,7 +54,7 @@
 - (instancetype)initWithGroupNotOnTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupNotOnTeam;
+        _tag = SharingAddMemberSelectorErrorGroupNotOnTeam;
     }
     return self;
 }
@@ -62,82 +62,77 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorOther;
+        _tag = SharingAddMemberSelectorErrorOther;
     }
     return self;
 }
 
 - (BOOL)isAutomaticGroup {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorAutomaticGroup;
+    return _tag == SharingAddMemberSelectorErrorAutomaticGroup;
 }
 
 - (BOOL)isInvalidDropboxId {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId;
+    return _tag == SharingAddMemberSelectorErrorInvalidDropboxId;
 }
 
 - (BOOL)isInvalidEmail {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail;
+    return _tag == SharingAddMemberSelectorErrorInvalidEmail;
 }
 
 - (BOOL)isUnverifiedDropboxId {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId;
+    return _tag == SharingAddMemberSelectorErrorUnverifiedDropboxId;
 }
 
 - (BOOL)isGroupDeleted {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupDeleted;
+    return _tag == SharingAddMemberSelectorErrorGroupDeleted;
 }
 
 - (BOOL)isGroupNotOnTeam {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupNotOnTeam;
+    return _tag == SharingAddMemberSelectorErrorGroupNotOnTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorOther;
+    return _tag == SharingAddMemberSelectorErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorAutomaticGroup) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorAutomaticGroup";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupDeleted) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupDeleted";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupNotOnTeam) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorGroupNotOnTeam";
-    }
-    if (_tag == (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorOther) {
-        return @"(SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorOther";
+    switch (_tag) {
+        case SharingAddMemberSelectorErrorAutomaticGroup:
+           return @"SharingAddMemberSelectorErrorAutomaticGroup";
+        case SharingAddMemberSelectorErrorInvalidDropboxId:
+           return @"SharingAddMemberSelectorErrorInvalidDropboxId";
+        case SharingAddMemberSelectorErrorInvalidEmail:
+           return @"SharingAddMemberSelectorErrorInvalidEmail";
+        case SharingAddMemberSelectorErrorUnverifiedDropboxId:
+           return @"SharingAddMemberSelectorErrorUnverifiedDropboxId";
+        case SharingAddMemberSelectorErrorGroupDeleted:
+           return @"SharingAddMemberSelectorErrorGroupDeleted";
+        case SharingAddMemberSelectorErrorGroupNotOnTeam:
+           return @"SharingAddMemberSelectorErrorGroupNotOnTeam";
+        case SharingAddMemberSelectorErrorOther:
+           return @"SharingAddMemberSelectorErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)invalidDropboxId {
-    if (_tag != (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidDropboxId, but was %@.", [self getTagName]];
+    if (_tag != SharingAddMemberSelectorErrorInvalidDropboxId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddMemberSelectorErrorInvalidDropboxId, but was %@.", [self getTagName]];
     }
     return _invalidDropboxId;
 }
 
 - (NSString *)invalidEmail {
-    if (_tag != (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorInvalidEmail, but was %@.", [self getTagName]];
+    if (_tag != SharingAddMemberSelectorErrorInvalidEmail) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddMemberSelectorErrorInvalidEmail, but was %@.", [self getTagName]];
     }
     return _invalidEmail;
 }
 
 - (NSString *)unverifiedDropboxId {
-    if (_tag != (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingAddMemberSelectorErrorTag)SharingAddMemberSelectorErrorUnverifiedDropboxId, but was %@.", [self getTagName]];
+    if (_tag != SharingAddMemberSelectorErrorUnverifiedDropboxId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingAddMemberSelectorErrorUnverifiedDropboxId, but was %@.", [self getTagName]];
     }
     return _unverifiedDropboxId;
 }

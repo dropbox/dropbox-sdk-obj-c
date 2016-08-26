@@ -11,7 +11,7 @@
 - (instancetype)initWithTeam {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupTypeTag)TeamCommonGroupTypeTeam;
+        _tag = TeamCommonGroupTypeTeam;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithUserManaged {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupTypeTag)TeamCommonGroupTypeUserManaged;
+        _tag = TeamCommonGroupTypeUserManaged;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamCommonGroupTypeTag)TeamCommonGroupTypeOther;
+        _tag = TeamCommonGroupTypeOther;
     }
     return self;
 }
 
 - (BOOL)isTeam {
-    return _tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeTeam;
+    return _tag == TeamCommonGroupTypeTeam;
 }
 
 - (BOOL)isUserManaged {
-    return _tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeUserManaged;
+    return _tag == TeamCommonGroupTypeUserManaged;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeOther;
+    return _tag == TeamCommonGroupTypeOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeTeam) {
-        return @"(TeamCommonGroupTypeTag)TeamCommonGroupTypeTeam";
-    }
-    if (_tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeUserManaged) {
-        return @"(TeamCommonGroupTypeTag)TeamCommonGroupTypeUserManaged";
-    }
-    if (_tag == (TeamCommonGroupTypeTag)TeamCommonGroupTypeOther) {
-        return @"(TeamCommonGroupTypeTag)TeamCommonGroupTypeOther";
+    switch (_tag) {
+        case TeamCommonGroupTypeTeam:
+           return @"TeamCommonGroupTypeTeam";
+        case TeamCommonGroupTypeUserManaged:
+           return @"TeamCommonGroupTypeUserManaged";
+        case TeamCommonGroupTypeOther:
+           return @"TeamCommonGroupTypeOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

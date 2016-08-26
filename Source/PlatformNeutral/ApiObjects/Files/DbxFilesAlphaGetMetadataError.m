@@ -14,7 +14,7 @@
 - (instancetype)initWithPath:(DbxFilesLookupError *)path {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath;
+        _tag = FilesAlphaGetMetadataErrorPath;
         _path = path;
     }
     return self;
@@ -23,41 +23,41 @@
 - (instancetype)initWithPropertiesError:(DbxFilesLookUpPropertiesError *)propertiesError {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError;
+        _tag = FilesAlphaGetMetadataErrorPropertiesError;
         _propertiesError = propertiesError;
     }
     return self;
 }
 
 - (BOOL)isPath {
-    return _tag == (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath;
+    return _tag == FilesAlphaGetMetadataErrorPath;
 }
 
 - (BOOL)isPropertiesError {
-    return _tag == (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError;
+    return _tag == FilesAlphaGetMetadataErrorPropertiesError;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath) {
-        return @"(FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath";
-    }
-    if (_tag == (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError) {
-        return @"(FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError";
+    switch (_tag) {
+        case FilesAlphaGetMetadataErrorPath:
+           return @"FilesAlphaGetMetadataErrorPath";
+        case FilesAlphaGetMetadataErrorPropertiesError:
+           return @"FilesAlphaGetMetadataErrorPropertiesError";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)path {
-    if (_tag != (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPath, but was %@.", [self getTagName]];
+    if (_tag != FilesAlphaGetMetadataErrorPath) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesAlphaGetMetadataErrorPath, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DbxFilesLookUpPropertiesError *)propertiesError {
-    if (_tag != (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesAlphaGetMetadataErrorTag)FilesAlphaGetMetadataErrorPropertiesError, but was %@.", [self getTagName]];
+    if (_tag != FilesAlphaGetMetadataErrorPropertiesError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesAlphaGetMetadataErrorPropertiesError, but was %@.", [self getTagName]];
     }
     return _propertiesError;
 }

@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMembersUnsuspendArg;
 @class DbxTeamUserSelectorArg;
 
 /// 
-/// The DbxTeamMembersUnsuspendArg struct.
+/// The `DbxTeamMembersUnsuspendArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account.
@@ -19,17 +23,28 @@
 /// Identity of user to unsuspend.
 @property (nonatomic) DbxTeamUserSelectorArg * _Nonnull user;
 
+/// Full constructor for the `MembersUnsuspendArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithUser:(DbxTeamUserSelectorArg * _Nonnull)user;
 
+/// Returns a human-readable representation of the `DbxTeamMembersUnsuspendArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersUnsuspendArg` struct.
+/// 
 @interface DbxTeamMembersUnsuspendArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersUnsuspendArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersUnsuspendArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersUnsuspendArg` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

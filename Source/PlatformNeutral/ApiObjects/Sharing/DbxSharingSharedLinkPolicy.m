@@ -11,7 +11,7 @@
 - (instancetype)initWithAnyone {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyAnyone;
+        _tag = SharingSharedLinkPolicyAnyone;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithMembers {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyMembers;
+        _tag = SharingSharedLinkPolicyMembers;
     }
     return self;
 }
@@ -27,32 +27,31 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyOther;
+        _tag = SharingSharedLinkPolicyOther;
     }
     return self;
 }
 
 - (BOOL)isAnyone {
-    return _tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyAnyone;
+    return _tag == SharingSharedLinkPolicyAnyone;
 }
 
 - (BOOL)isMembers {
-    return _tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyMembers;
+    return _tag == SharingSharedLinkPolicyMembers;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyOther;
+    return _tag == SharingSharedLinkPolicyOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyAnyone) {
-        return @"(SharingSharedLinkPolicyTag)SharingSharedLinkPolicyAnyone";
-    }
-    if (_tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyMembers) {
-        return @"(SharingSharedLinkPolicyTag)SharingSharedLinkPolicyMembers";
-    }
-    if (_tag == (SharingSharedLinkPolicyTag)SharingSharedLinkPolicyOther) {
-        return @"(SharingSharedLinkPolicyTag)SharingSharedLinkPolicyOther";
+    switch (_tag) {
+        case SharingSharedLinkPolicyAnyone:
+           return @"SharingSharedLinkPolicyAnyone";
+        case SharingSharedLinkPolicyMembers:
+           return @"SharingSharedLinkPolicyMembers";
+        case SharingSharedLinkPolicyOther:
+           return @"SharingSharedLinkPolicyOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

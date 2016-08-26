@@ -3,72 +3,110 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSaveCopyReferenceError;
 @class DbxFilesWriteError;
 
 /// 
-/// The DbxFilesSaveCopyReferenceError union.
+/// The `DbxFilesSaveCopyReferenceError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSaveCopyReferenceError : NSObject <DbxSerializable> 
 
+/// The `FilesSaveCopyReferenceErrorTag` enum type represents the possible tag
+/// states that the `DbxFilesSaveCopyReferenceError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesSaveCopyReferenceErrorTag) {
-    /// (no description)
+    /// (no description).
     FilesSaveCopyReferenceErrorPath,
+
     /// The copy reference is invalid.
     FilesSaveCopyReferenceErrorInvalidCopyReference,
+
     /// You don't have permission to save the given copy reference. Please make
     /// sure this app is same app which created the copy reference and the
     /// source user is still linked to the app.
     FilesSaveCopyReferenceErrorNoPermission,
+
     /// The file referenced by the copy reference cannot be found.
     FilesSaveCopyReferenceErrorNotFound,
+
     /// The operation would involve more than 10,000 files and folders.
     FilesSaveCopyReferenceErrorTooManyFiles,
-    /// (no description)
+
+    /// (no description).
     FilesSaveCopyReferenceErrorOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesSaveCopyReferenceErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesWriteError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesWriteError * _Nonnull)path;
 
+/// Initializes union class with tag state of `InvalidCopyReference`.
 - (nonnull instancetype)initWithInvalidCopyReference;
 
+/// Initializes union class with tag state of `NoPermission`.
 - (nonnull instancetype)initWithNoPermission;
 
+/// Initializes union class with tag state of `NotFound`.
 - (nonnull instancetype)initWithNotFound;
 
+/// Initializes union class with tag state of `TooManyFiles`.
 - (nonnull instancetype)initWithTooManyFiles;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value
+/// `InvalidCopyReference`.
 - (BOOL)isInvalidCopyReference;
 
+/// Returns whether the union's current tag state has value `NoPermission`.
 - (BOOL)isNoPermission;
 
+/// Returns whether the union's current tag state has value `NotFound`.
 - (BOOL)isNotFound;
 
+/// Returns whether the union's current tag state has value `TooManyFiles`.
 - (BOOL)isTooManyFiles;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxFilesSaveCopyReferenceError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesSaveCopyReferenceError union type.
-@property (nonatomic) FilesSaveCopyReferenceErrorTag tag;
-@property (nonatomic) DbxFilesWriteError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSaveCopyReferenceError` union.
+/// 
 @interface DbxFilesSaveCopyReferenceErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSaveCopyReferenceError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSaveCopyReferenceError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSaveCopyReferenceError` object from
+/// a json-compatible dictionary representation.
 + (DbxFilesSaveCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

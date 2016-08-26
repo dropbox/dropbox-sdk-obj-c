@@ -3,66 +3,106 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 @class DbxSharingCreateSharedLinkWithSettingsError;
 @class DbxSharingSharedLinkSettingsError;
 
 /// 
-/// The DbxSharingCreateSharedLinkWithSettingsError union.
+/// The `DbxSharingCreateSharedLinkWithSettingsError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingCreateSharedLinkWithSettingsError : NSObject <DbxSerializable> 
 
+/// The `SharingCreateSharedLinkWithSettingsErrorTag` enum type represents the
+/// possible tag states that the `DbxSharingCreateSharedLinkWithSettingsError`
+/// union can exist in.
 typedef NS_ENUM(NSInteger, SharingCreateSharedLinkWithSettingsErrorTag) {
-    /// (no description)
+    /// (no description).
     SharingCreateSharedLinkWithSettingsErrorPath,
+
     /// User's email should be verified
     SharingCreateSharedLinkWithSettingsErrorEmailNotVerified,
+
     /// The shared link already exists
     SharingCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists,
+
     /// There is an error with the given settings
     SharingCreateSharedLinkWithSettingsErrorSettingsError,
+
     /// Access to the requested path is forbidden
     SharingCreateSharedLinkWithSettingsErrorAccessDenied,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingCreateSharedLinkWithSettingsErrorTag tag;
+
+/// (no description).
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+/// There is an error with the given settings
+@property (nonatomic) DbxSharingSharedLinkSettingsError * _Nonnull settingsError;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `EmailNotVerified`.
 - (nonnull instancetype)initWithEmailNotVerified;
 
+/// Initializes union class with tag state of `SharedLinkAlreadyExists`.
 - (nonnull instancetype)initWithSharedLinkAlreadyExists;
 
+/// Initializes union class with tag state of `SettingsError`.
 - (nonnull instancetype)initWithSettingsError:(DbxSharingSharedLinkSettingsError * _Nonnull)settingsError;
 
+/// Initializes union class with tag state of `AccessDenied`.
 - (nonnull instancetype)initWithAccessDenied;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value `EmailNotVerified`.
 - (BOOL)isEmailNotVerified;
 
+/// Returns whether the union's current tag state has value
+/// `SharedLinkAlreadyExists`.
 - (BOOL)isSharedLinkAlreadyExists;
 
+/// Returns whether the union's current tag state has value `SettingsError`.
 - (BOOL)isSettingsError;
 
+/// Returns whether the union's current tag state has value `AccessDenied`.
 - (BOOL)isAccessDenied;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingCreateSharedLinkWithSettingsError` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingCreateSharedLinkWithSettingsError union type.
-@property (nonatomic) SharingCreateSharedLinkWithSettingsErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
-@property (nonatomic) DbxSharingSharedLinkSettingsError * _Nonnull settingsError;
 
 @end
 
 
+/// 
+/// The serialization class for the
+/// `DbxSharingCreateSharedLinkWithSettingsError` union.
+/// 
 @interface DbxSharingCreateSharedLinkWithSettingsErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingCreateSharedLinkWithSettingsError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingCreateSharedLinkWithSettingsError * _Nonnull)obj;
 
+/// Returns an instantiation of the
+/// `DbxSharingCreateSharedLinkWithSettingsError` object from a json-compatible
+/// dictionary representation.
 + (DbxSharingCreateSharedLinkWithSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

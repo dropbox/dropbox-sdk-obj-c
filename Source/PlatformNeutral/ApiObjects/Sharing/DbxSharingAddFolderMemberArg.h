@@ -3,40 +3,60 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAddFolderMemberArg;
 @class DbxSharingAddMember;
 
 /// 
-/// The DbxSharingAddFolderMemberArg struct.
+/// The `DbxSharingAddFolderMemberArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingAddFolderMemberArg : NSObject <DbxSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+
 /// The intended list of members to add.  Added members will receive invites to
 /// join the shared folder.
 @property (nonatomic) NSArray<DbxSharingAddMember *> * _Nonnull members;
+
 /// Whether added members should be notified via email and device notifications
 /// of their invite.
 @property (nonatomic, copy) NSNumber * _Nonnull quiet;
+
 /// Optional message to display to added members in their invitation.
 @property (nonatomic, copy) NSString * _Nullable customMessage;
 
+/// Full constructor for the `AddFolderMemberArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members quiet:(NSNumber * _Nullable)quiet customMessage:(NSString * _Nullable)customMessage;
 
+/// Convenience constructor for the `AddFolderMemberArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DbxSharingAddMember *> * _Nonnull)members;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingAddFolderMemberArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingAddFolderMemberArg` struct.
+/// 
 @interface DbxSharingAddFolderMemberArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingAddFolderMemberArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingAddFolderMemberArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingAddFolderMemberArg` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingAddFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

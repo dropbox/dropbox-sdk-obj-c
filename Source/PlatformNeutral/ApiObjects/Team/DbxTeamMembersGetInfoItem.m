@@ -12,7 +12,7 @@
 - (instancetype)initWithIdNotFound:(NSString *)idNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound;
+        _tag = TeamMembersGetInfoItemIdNotFound;
         _idNotFound = idNotFound;
     }
     return self;
@@ -21,41 +21,41 @@
 - (instancetype)initWithMemberInfo:(DbxTeamTeamMemberInfo *)memberInfo {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo;
+        _tag = TeamMembersGetInfoItemMemberInfo;
         _memberInfo = memberInfo;
     }
     return self;
 }
 
 - (BOOL)isIdNotFound {
-    return _tag == (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound;
+    return _tag == TeamMembersGetInfoItemIdNotFound;
 }
 
 - (BOOL)isMemberInfo {
-    return _tag == (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo;
+    return _tag == TeamMembersGetInfoItemMemberInfo;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound) {
-        return @"(TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound";
-    }
-    if (_tag == (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo) {
-        return @"(TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo";
+    switch (_tag) {
+        case TeamMembersGetInfoItemIdNotFound:
+           return @"TeamMembersGetInfoItemIdNotFound";
+        case TeamMembersGetInfoItemMemberInfo:
+           return @"TeamMembersGetInfoItemMemberInfo";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)idNotFound {
-    if (_tag != (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemIdNotFound, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersGetInfoItemIdNotFound) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersGetInfoItemIdNotFound, but was %@.", [self getTagName]];
     }
     return _idNotFound;
 }
 
 - (DbxTeamTeamMemberInfo *)memberInfo {
-    if (_tag != (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamMembersGetInfoItemTag)TeamMembersGetInfoItemMemberInfo, but was %@.", [self getTagName]];
+    if (_tag != TeamMembersGetInfoItemMemberInfo) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamMembersGetInfoItemMemberInfo, but was %@.", [self getTagName]];
     }
     return _memberInfo;
 }

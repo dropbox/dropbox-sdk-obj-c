@@ -3,44 +3,67 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesThumbnailFormat;
 
 /// 
-/// The DbxFilesThumbnailFormat union.
+/// The `DbxFilesThumbnailFormat` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesThumbnailFormat : NSObject <DbxSerializable> 
 
+/// The `FilesThumbnailFormatTag` enum type represents the possible tag states
+/// that the `DbxFilesThumbnailFormat` union can exist in.
 typedef NS_ENUM(NSInteger, FilesThumbnailFormatTag) {
-    /// (no description)
+    /// (no description).
     FilesThumbnailFormatJpeg,
-    /// (no description)
+
+    /// (no description).
     FilesThumbnailFormatPng,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesThumbnailFormatTag tag;
+
+
+/// Initializes union class with tag state of `Jpeg`.
 - (nonnull instancetype)initWithJpeg;
 
+/// Initializes union class with tag state of `Png`.
 - (nonnull instancetype)initWithPng;
 
+/// Returns whether the union's current tag state has value `Jpeg`.
 - (BOOL)isJpeg;
 
+/// Returns whether the union's current tag state has value `Png`.
 - (BOOL)isPng;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesThumbnailFormat`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesThumbnailFormat union type.
-@property (nonatomic) FilesThumbnailFormatTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesThumbnailFormat` union.
+/// 
 @interface DbxFilesThumbnailFormatSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesThumbnailFormat` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailFormat * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesThumbnailFormat` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesThumbnailFormat * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

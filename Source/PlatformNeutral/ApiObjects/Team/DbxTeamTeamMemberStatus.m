@@ -12,7 +12,7 @@
 - (instancetype)initWithActive {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamTeamMemberStatusTag)TeamTeamMemberStatusActive;
+        _tag = TeamTeamMemberStatusActive;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (instancetype)initWithInvited {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamTeamMemberStatusTag)TeamTeamMemberStatusInvited;
+        _tag = TeamTeamMemberStatusInvited;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (instancetype)initWithSuspended {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamTeamMemberStatusTag)TeamTeamMemberStatusSuspended;
+        _tag = TeamTeamMemberStatusSuspended;
     }
     return self;
 }
@@ -36,48 +36,46 @@
 - (instancetype)initWithRemoved:(DbxTeamRemovedStatus *)removed {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved;
+        _tag = TeamTeamMemberStatusRemoved;
         _removed = removed;
     }
     return self;
 }
 
 - (BOOL)isActive {
-    return _tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusActive;
+    return _tag == TeamTeamMemberStatusActive;
 }
 
 - (BOOL)isInvited {
-    return _tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusInvited;
+    return _tag == TeamTeamMemberStatusInvited;
 }
 
 - (BOOL)isSuspended {
-    return _tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusSuspended;
+    return _tag == TeamTeamMemberStatusSuspended;
 }
 
 - (BOOL)isRemoved {
-    return _tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved;
+    return _tag == TeamTeamMemberStatusRemoved;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusActive) {
-        return @"(TeamTeamMemberStatusTag)TeamTeamMemberStatusActive";
-    }
-    if (_tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusInvited) {
-        return @"(TeamTeamMemberStatusTag)TeamTeamMemberStatusInvited";
-    }
-    if (_tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusSuspended) {
-        return @"(TeamTeamMemberStatusTag)TeamTeamMemberStatusSuspended";
-    }
-    if (_tag == (TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved) {
-        return @"(TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved";
+    switch (_tag) {
+        case TeamTeamMemberStatusActive:
+           return @"TeamTeamMemberStatusActive";
+        case TeamTeamMemberStatusInvited:
+           return @"TeamTeamMemberStatusInvited";
+        case TeamTeamMemberStatusSuspended:
+           return @"TeamTeamMemberStatusSuspended";
+        case TeamTeamMemberStatusRemoved:
+           return @"TeamTeamMemberStatusRemoved";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxTeamRemovedStatus *)removed {
-    if (_tag != (TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (TeamTeamMemberStatusTag)TeamTeamMemberStatusRemoved, but was %@.", [self getTagName]];
+    if (_tag != TeamTeamMemberStatusRemoved) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required TeamTeamMemberStatusRemoved, but was %@.", [self getTagName]];
     }
     return _removed;
 }

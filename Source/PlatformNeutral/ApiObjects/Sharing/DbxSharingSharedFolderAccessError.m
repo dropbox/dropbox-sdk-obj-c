@@ -11,7 +11,7 @@
 - (instancetype)initWithInvalidId {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorInvalidId;
+        _tag = SharingSharedFolderAccessErrorInvalidId;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithNotAMember {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorNotAMember;
+        _tag = SharingSharedFolderAccessErrorNotAMember;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithEmailUnverified {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorEmailUnverified;
+        _tag = SharingSharedFolderAccessErrorEmailUnverified;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithUnmounted {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorUnmounted;
+        _tag = SharingSharedFolderAccessErrorUnmounted;
     }
     return self;
 }
@@ -43,46 +43,43 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorOther;
+        _tag = SharingSharedFolderAccessErrorOther;
     }
     return self;
 }
 
 - (BOOL)isInvalidId {
-    return _tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorInvalidId;
+    return _tag == SharingSharedFolderAccessErrorInvalidId;
 }
 
 - (BOOL)isNotAMember {
-    return _tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorNotAMember;
+    return _tag == SharingSharedFolderAccessErrorNotAMember;
 }
 
 - (BOOL)isEmailUnverified {
-    return _tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorEmailUnverified;
+    return _tag == SharingSharedFolderAccessErrorEmailUnverified;
 }
 
 - (BOOL)isUnmounted {
-    return _tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorUnmounted;
+    return _tag == SharingSharedFolderAccessErrorUnmounted;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorOther;
+    return _tag == SharingSharedFolderAccessErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorInvalidId) {
-        return @"(SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorInvalidId";
-    }
-    if (_tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorNotAMember) {
-        return @"(SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorNotAMember";
-    }
-    if (_tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorEmailUnverified) {
-        return @"(SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorEmailUnverified";
-    }
-    if (_tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorUnmounted) {
-        return @"(SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorUnmounted";
-    }
-    if (_tag == (SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorOther) {
-        return @"(SharingSharedFolderAccessErrorTag)SharingSharedFolderAccessErrorOther";
+    switch (_tag) {
+        case SharingSharedFolderAccessErrorInvalidId:
+           return @"SharingSharedFolderAccessErrorInvalidId";
+        case SharingSharedFolderAccessErrorNotAMember:
+           return @"SharingSharedFolderAccessErrorNotAMember";
+        case SharingSharedFolderAccessErrorEmailUnverified:
+           return @"SharingSharedFolderAccessErrorEmailUnverified";
+        case SharingSharedFolderAccessErrorUnmounted:
+           return @"SharingSharedFolderAccessErrorUnmounted";
+        case SharingSharedFolderAccessErrorOther:
+           return @"SharingSharedFolderAccessErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

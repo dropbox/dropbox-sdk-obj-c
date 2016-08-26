@@ -13,7 +13,7 @@
 - (instancetype)initWithPathLookup:(DbxFilesLookupError *)pathLookup {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesDeleteErrorTag)FilesDeleteErrorPathLookup;
+        _tag = FilesDeleteErrorPathLookup;
         _pathLookup = pathLookup;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithPathWrite:(DbxFilesWriteError *)pathWrite {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesDeleteErrorTag)FilesDeleteErrorPathWrite;
+        _tag = FilesDeleteErrorPathWrite;
         _pathWrite = pathWrite;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (FilesDeleteErrorTag)FilesDeleteErrorOther;
+        _tag = FilesDeleteErrorOther;
     }
     return self;
 }
 
 - (BOOL)isPathLookup {
-    return _tag == (FilesDeleteErrorTag)FilesDeleteErrorPathLookup;
+    return _tag == FilesDeleteErrorPathLookup;
 }
 
 - (BOOL)isPathWrite {
-    return _tag == (FilesDeleteErrorTag)FilesDeleteErrorPathWrite;
+    return _tag == FilesDeleteErrorPathWrite;
 }
 
 - (BOOL)isOther {
-    return _tag == (FilesDeleteErrorTag)FilesDeleteErrorOther;
+    return _tag == FilesDeleteErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (FilesDeleteErrorTag)FilesDeleteErrorPathLookup) {
-        return @"(FilesDeleteErrorTag)FilesDeleteErrorPathLookup";
-    }
-    if (_tag == (FilesDeleteErrorTag)FilesDeleteErrorPathWrite) {
-        return @"(FilesDeleteErrorTag)FilesDeleteErrorPathWrite";
-    }
-    if (_tag == (FilesDeleteErrorTag)FilesDeleteErrorOther) {
-        return @"(FilesDeleteErrorTag)FilesDeleteErrorOther";
+    switch (_tag) {
+        case FilesDeleteErrorPathLookup:
+           return @"FilesDeleteErrorPathLookup";
+        case FilesDeleteErrorPathWrite:
+           return @"FilesDeleteErrorPathWrite";
+        case FilesDeleteErrorOther:
+           return @"FilesDeleteErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxFilesLookupError *)pathLookup {
-    if (_tag != (FilesDeleteErrorTag)FilesDeleteErrorPathLookup) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesDeleteErrorTag)FilesDeleteErrorPathLookup, but was %@.", [self getTagName]];
+    if (_tag != FilesDeleteErrorPathLookup) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesDeleteErrorPathLookup, but was %@.", [self getTagName]];
     }
     return _pathLookup;
 }
 
 - (DbxFilesWriteError *)pathWrite {
-    if (_tag != (FilesDeleteErrorTag)FilesDeleteErrorPathWrite) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (FilesDeleteErrorTag)FilesDeleteErrorPathWrite, but was %@.", [self getTagName]];
+    if (_tag != FilesDeleteErrorPathWrite) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required FilesDeleteErrorPathWrite, but was %@.", [self getTagName]];
     }
     return _pathWrite;
 }

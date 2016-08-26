@@ -11,7 +11,7 @@
 - (instancetype)initWithIphone {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformIphone;
+        _tag = TeamMobileClientPlatformIphone;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithIpad {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformIpad;
+        _tag = TeamMobileClientPlatformIpad;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithAndroid {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformAndroid;
+        _tag = TeamMobileClientPlatformAndroid;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithWindowsPhone {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformWindowsPhone;
+        _tag = TeamMobileClientPlatformWindowsPhone;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithBlackberry {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformBlackberry;
+        _tag = TeamMobileClientPlatformBlackberry;
     }
     return self;
 }
@@ -51,53 +51,49 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamMobileClientPlatformTag)TeamMobileClientPlatformOther;
+        _tag = TeamMobileClientPlatformOther;
     }
     return self;
 }
 
 - (BOOL)isIphone {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformIphone;
+    return _tag == TeamMobileClientPlatformIphone;
 }
 
 - (BOOL)isIpad {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformIpad;
+    return _tag == TeamMobileClientPlatformIpad;
 }
 
 - (BOOL)isAndroid {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformAndroid;
+    return _tag == TeamMobileClientPlatformAndroid;
 }
 
 - (BOOL)isWindowsPhone {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformWindowsPhone;
+    return _tag == TeamMobileClientPlatformWindowsPhone;
 }
 
 - (BOOL)isBlackberry {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformBlackberry;
+    return _tag == TeamMobileClientPlatformBlackberry;
 }
 
 - (BOOL)isOther {
-    return _tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformOther;
+    return _tag == TeamMobileClientPlatformOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformIphone) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformIphone";
-    }
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformIpad) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformIpad";
-    }
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformAndroid) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformAndroid";
-    }
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformWindowsPhone) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformWindowsPhone";
-    }
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformBlackberry) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformBlackberry";
-    }
-    if (_tag == (TeamMobileClientPlatformTag)TeamMobileClientPlatformOther) {
-        return @"(TeamMobileClientPlatformTag)TeamMobileClientPlatformOther";
+    switch (_tag) {
+        case TeamMobileClientPlatformIphone:
+           return @"TeamMobileClientPlatformIphone";
+        case TeamMobileClientPlatformIpad:
+           return @"TeamMobileClientPlatformIpad";
+        case TeamMobileClientPlatformAndroid:
+           return @"TeamMobileClientPlatformAndroid";
+        case TeamMobileClientPlatformWindowsPhone:
+           return @"TeamMobileClientPlatformWindowsPhone";
+        case TeamMobileClientPlatformBlackberry:
+           return @"TeamMobileClientPlatformBlackberry";
+        case TeamMobileClientPlatformOther:
+           return @"TeamMobileClientPlatformOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

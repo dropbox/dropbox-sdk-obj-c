@@ -3,58 +3,90 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesLookupError;
 @class DbxFilesThumbnailError;
 
 /// 
-/// The DbxFilesThumbnailError union.
+/// The `DbxFilesThumbnailError` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesThumbnailError : NSObject <DbxSerializable> 
 
+/// The `FilesThumbnailErrorTag` enum type represents the possible tag states
+/// that the `DbxFilesThumbnailError` union can exist in.
 typedef NS_ENUM(NSInteger, FilesThumbnailErrorTag) {
     /// An error occurs when downloading metadata for the image.
     FilesThumbnailErrorPath,
+
     /// The file extension doesn't allow conversion to a thumbnail.
     FilesThumbnailErrorUnsupportedExtension,
+
     /// The image cannot be converted to a thumbnail.
     FilesThumbnailErrorUnsupportedImage,
+
     /// An error occurs during thumbnail conversion.
     FilesThumbnailErrorConversionError,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) FilesThumbnailErrorTag tag;
+
+/// An error occurs when downloading metadata for the image.
+@property (nonatomic) DbxFilesLookupError * _Nonnull path;
+
+
+/// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DbxFilesLookupError * _Nonnull)path;
 
+/// Initializes union class with tag state of `UnsupportedExtension`.
 - (nonnull instancetype)initWithUnsupportedExtension;
 
+/// Initializes union class with tag state of `UnsupportedImage`.
 - (nonnull instancetype)initWithUnsupportedImage;
 
+/// Initializes union class with tag state of `ConversionError`.
 - (nonnull instancetype)initWithConversionError;
 
+/// Returns whether the union's current tag state has value `Path`.
 - (BOOL)isPath;
 
+/// Returns whether the union's current tag state has value
+/// `UnsupportedExtension`.
 - (BOOL)isUnsupportedExtension;
 
+/// Returns whether the union's current tag state has value `UnsupportedImage`.
 - (BOOL)isUnsupportedImage;
 
+/// Returns whether the union's current tag state has value `ConversionError`.
 - (BOOL)isConversionError;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxFilesThumbnailError`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxFilesThumbnailError union type.
-@property (nonatomic) FilesThumbnailErrorTag tag;
-@property (nonatomic) DbxFilesLookupError * _Nonnull path;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesThumbnailError` union.
+/// 
 @interface DbxFilesThumbnailErrorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesThumbnailError` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesThumbnailError * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesThumbnailError` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesThumbnailError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -3,43 +3,63 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxFilesSearchArg;
 @class DbxFilesSearchMode;
 
 /// 
-/// The DbxFilesSearchArg struct.
+/// The `DbxFilesSearchArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxFilesSearchArg : NSObject <DbxSerializable> 
 
 /// The path in the user's Dropbox to search. Should probably be a folder.
 @property (nonatomic, copy) NSString * _Nonnull path;
+
 /// The string to search for. The search string is split on spaces into multiple
 /// tokens. For file name searching, the last token is used for prefix matching
 /// (i.e. "bat c" matches "bat cave" but not "batman car").
 @property (nonatomic, copy) NSString * _Nonnull query;
+
 /// The starting index within the search results (used for paging).
 @property (nonatomic, copy) NSNumber * _Nonnull start;
+
 /// The maximum number of search results to return.
 @property (nonatomic, copy) NSNumber * _Nonnull maxResults;
+
 /// The search mode (filename, filename_and_content, or deleted_filename). Note
 /// that searching file content is only available for Dropbox Business accounts.
 @property (nonatomic) DbxFilesSearchMode * _Nonnull mode;
 
+/// Full constructor for the `SearchArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DbxFilesSearchMode * _Nullable)mode;
 
+/// Convenience constructor for the `SearchArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
 
+/// Returns a human-readable representation of the `DbxFilesSearchArg` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxFilesSearchArg` struct.
+/// 
 @interface DbxFilesSearchArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxFilesSearchArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxFilesSearchArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxFilesSearchArg` object from a
+/// json-compatible dictionary representation.
 + (DbxFilesSearchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

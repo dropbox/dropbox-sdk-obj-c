@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxPropertiesPropertyFieldTemplate;
 @class DbxPropertiesPropertyGroupTemplate;
 
 /// 
-/// The DbxPropertiesPropertyGroupTemplate struct.
+/// The `DbxPropertiesPropertyGroupTemplate` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Describes property templates that can be filled and associated with a file.
 /// 
@@ -18,24 +22,37 @@
 /// A display name for the property template. Property template names can be up
 /// to 256 bytes.
 @property (nonatomic, copy) NSString * _Nonnull name;
+
 /// Description for new property template. Property template descriptions can be
 /// up to 1024 bytes.
 @property (nonatomic, copy) NSString * _Nonnull description_;
+
 /// This is a list of custom properties associated with a property template.
 /// There can be up to 64 properties in a single property template.
 @property (nonatomic) NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull fields;
 
+/// Full constructor for the `PropertyGroupTemplate` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DbxPropertiesPropertyFieldTemplate *> * _Nonnull)fields;
 
+/// Returns a human-readable representation of the
+/// `DbxPropertiesPropertyGroupTemplate` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxPropertiesPropertyGroupTemplate` struct.
+/// 
 @interface DbxPropertiesPropertyGroupTemplateSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxPropertiesPropertyGroupTemplate` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyGroupTemplate * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxPropertiesPropertyGroupTemplate` object
+/// from a json-compatible dictionary representation.
 + (DbxPropertiesPropertyGroupTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

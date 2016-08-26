@@ -3,35 +3,53 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingUnshareFolderArg;
 
 /// 
-/// The DbxSharingUnshareFolderArg struct.
+/// The `DbxSharingUnshareFolderArg` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingUnshareFolderArg : NSObject <DbxSerializable> 
 
 /// The ID for the shared folder.
 @property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+
 /// If true, members of this shared folder will get a copy of this folder after
 /// it's unshared. Otherwise, it will be removed from their Dropbox. The current
 /// user, who is an owner, will always retain their copy.
 @property (nonatomic, copy) NSNumber * _Nonnull leaveACopy;
 
+/// Full constructor for the `UnshareFolderArg` struct (exposes all instance
+/// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
+/// Convenience constructor for the `UnshareFolderArg` struct (exposes only
+/// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
+/// Returns a human-readable representation of the `DbxSharingUnshareFolderArg`
+/// object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingUnshareFolderArg` struct.
+/// 
 @interface DbxSharingUnshareFolderArgSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingUnshareFolderArg` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingUnshareFolderArg * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingUnshareFolderArg` object from a
+/// json-compatible dictionary representation.
 + (DbxSharingUnshareFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

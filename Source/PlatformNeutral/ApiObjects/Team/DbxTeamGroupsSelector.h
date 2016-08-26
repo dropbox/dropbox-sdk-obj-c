@@ -3,49 +3,76 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamGroupsSelector;
 
 /// 
-/// The DbxTeamGroupsSelector union.
+/// The `DbxTeamGroupsSelector` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Argument for selecting a list of groups, either by group_ids, or external
 /// group IDs.
 /// 
 @interface DbxTeamGroupsSelector : NSObject <DbxSerializable> 
 
+/// The `TeamGroupsSelectorTag` enum type represents the possible tag states
+/// that the `DbxTeamGroupsSelector` union can exist in.
 typedef NS_ENUM(NSInteger, TeamGroupsSelectorTag) {
     /// List of group IDs.
     TeamGroupsSelectorGroupIds,
+
     /// List of external IDs of groups.
     TeamGroupsSelectorGroupExternalIds,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamGroupsSelectorTag tag;
+
+/// List of group IDs.
+@property (nonatomic) NSArray<NSString *> * _Nonnull groupIds;
+
+/// List of external IDs of groups.
+@property (nonatomic) NSArray<NSString *> * _Nonnull groupExternalIds;
+
+
+/// Initializes union class with tag state of `GroupIds`.
 - (nonnull instancetype)initWithGroupIds:(NSArray<NSString *> * _Nonnull)groupIds;
 
+/// Initializes union class with tag state of `GroupExternalIds`.
 - (nonnull instancetype)initWithGroupExternalIds:(NSArray<NSString *> * _Nonnull)groupExternalIds;
 
+/// Returns whether the union's current tag state has value `GroupIds`.
 - (BOOL)isGroupIds;
 
+/// Returns whether the union's current tag state has value `GroupExternalIds`.
 - (BOOL)isGroupExternalIds;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamGroupsSelector`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamGroupsSelector union type.
-@property (nonatomic) TeamGroupsSelectorTag tag;
-@property (nonatomic) NSArray<NSString *> * _Nonnull groupIds;
-@property (nonatomic) NSArray<NSString *> * _Nonnull groupExternalIds;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamGroupsSelector` union.
+/// 
 @interface DbxTeamGroupsSelectorSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamGroupsSelector` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamGroupsSelector * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamGroupsSelector` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamGroupsSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

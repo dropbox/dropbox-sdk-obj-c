@@ -3,29 +3,44 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamAddPropertyTemplateResult;
 
 /// 
-/// The DbxTeamAddPropertyTemplateResult struct.
+/// The `DbxTeamAddPropertyTemplateResult` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamAddPropertyTemplateResult : NSObject <DbxSerializable> 
 
 /// An identifier for property template added by propertiesTemplateAdd.
 @property (nonatomic, copy) NSString * _Nonnull templateId;
 
+/// Full constructor for the `AddPropertyTemplateResult` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
+/// Returns a human-readable representation of the
+/// `DbxTeamAddPropertyTemplateResult` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamAddPropertyTemplateResult` struct.
+/// 
 @interface DbxTeamAddPropertyTemplateResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamAddPropertyTemplateResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamAddPropertyTemplateResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamAddPropertyTemplateResult` object
+/// from a json-compatible dictionary representation.
 + (DbxTeamAddPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

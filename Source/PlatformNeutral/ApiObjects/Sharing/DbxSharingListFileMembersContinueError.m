@@ -13,7 +13,7 @@
 - (instancetype)initWithUserError:(DbxSharingSharingUserError *)userError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError;
+        _tag = SharingListFileMembersContinueErrorUserError;
         _userError = userError;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError;
+        _tag = SharingListFileMembersContinueErrorAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,7 +31,7 @@
 - (instancetype)initWithInvalidCursor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorInvalidCursor;
+        _tag = SharingListFileMembersContinueErrorInvalidCursor;
     }
     return self;
 }
@@ -39,54 +39,52 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorOther;
+        _tag = SharingListFileMembersContinueErrorOther;
     }
     return self;
 }
 
 - (BOOL)isUserError {
-    return _tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError;
+    return _tag == SharingListFileMembersContinueErrorUserError;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError;
+    return _tag == SharingListFileMembersContinueErrorAccessError;
 }
 
 - (BOOL)isInvalidCursor {
-    return _tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorInvalidCursor;
+    return _tag == SharingListFileMembersContinueErrorInvalidCursor;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorOther;
+    return _tag == SharingListFileMembersContinueErrorOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError) {
-        return @"(SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError";
-    }
-    if (_tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError) {
-        return @"(SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError";
-    }
-    if (_tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorInvalidCursor) {
-        return @"(SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorInvalidCursor";
-    }
-    if (_tag == (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorOther) {
-        return @"(SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorOther";
+    switch (_tag) {
+        case SharingListFileMembersContinueErrorUserError:
+           return @"SharingListFileMembersContinueErrorUserError";
+        case SharingListFileMembersContinueErrorAccessError:
+           return @"SharingListFileMembersContinueErrorAccessError";
+        case SharingListFileMembersContinueErrorInvalidCursor:
+           return @"SharingListFileMembersContinueErrorInvalidCursor";
+        case SharingListFileMembersContinueErrorOther:
+           return @"SharingListFileMembersContinueErrorOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingSharingUserError *)userError {
-    if (_tag != (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorUserError, but was %@.", [self getTagName]];
+    if (_tag != SharingListFileMembersContinueErrorUserError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListFileMembersContinueErrorUserError, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListFileMembersContinueErrorTag)SharingListFileMembersContinueErrorAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingListFileMembersContinueErrorAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListFileMembersContinueErrorAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

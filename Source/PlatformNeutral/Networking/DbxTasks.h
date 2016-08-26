@@ -14,13 +14,17 @@
 }
 
 @property (nonatomic) NSURLSession * _Nonnull session;
+
 @property (nonatomic) DbxDelegate * _Nonnull delegate;
+
 @property (nonatomic) DbxRoute * _Nonnull route;
 
 @end
 
 
 @interface DbxRpcTask<TResponse, TError> : DbxTask
+
+@property (nonatomic) NSURLSessionDataTask * _Nonnull task;
 
 - (nonnull instancetype)initWithTask:(NSURLSessionDataTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route;
 
@@ -29,15 +33,17 @@
 - (DbxRpcTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
-- (void)suspend;
-- (void)resume;
 
-@property (nonatomic) NSURLSessionDataTask * _Nonnull task;
+- (void)suspend;
+
+- (void)resume;
 
 @end
 
 
 @interface DbxUploadTask<TResponse, TError> : DbxTask
+
+@property (nonatomic) NSURLSessionUploadTask * _Nonnull task;
 
 - (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route;
 
@@ -46,15 +52,21 @@
 - (DbxUploadTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
-- (void)suspend;
-- (void)resume;
 
-@property (nonatomic) NSURLSessionUploadTask * _Nonnull task;
+- (void)suspend;
+
+- (void)resume;
 
 @end
 
 
 @interface DbxDownloadURLTask<TResponse, TError> : DbxTask
+
+@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
+
+@property (nonatomic) BOOL overwrite;
+
+@property (nonatomic, copy) NSURL * _Nonnull destination;
 
 - (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
 
@@ -63,17 +75,17 @@
 - (DbxDownloadURLTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
-- (void)suspend;
-- (void)resume;
 
-@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
-@property (nonatomic) BOOL overwrite;
-@property (nonatomic) NSURL * _Nonnull destination;
+- (void)suspend;
+
+- (void)resume;
 
 @end
 
 
 @interface DbxDownloadDataTask<TResponse, TError> : DbxTask
+
+@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
 
 - (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DbxDelegate * _Nonnull)delegate route:(DbxRoute * _Nonnull)route;
 
@@ -82,9 +94,9 @@
 - (DbxDownloadDataTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
 
 - (void)cancel;
-- (void)suspend;
-- (void)resume;
 
-@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
+- (void)suspend;
+
+- (void)resume;
 
 @end

@@ -13,7 +13,7 @@
 - (instancetype)initWithResult:(DbxSharingListFileMembersCountResult *)result {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult;
+        _tag = SharingListFileMembersIndividualResultResult;
         _result = result;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithAccessError:(DbxSharingSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError;
+        _tag = SharingListFileMembersIndividualResultAccessError;
         _accessError = accessError;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultOther;
+        _tag = SharingListFileMembersIndividualResultOther;
     }
     return self;
 }
 
 - (BOOL)isResult {
-    return _tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult;
+    return _tag == SharingListFileMembersIndividualResultResult;
 }
 
 - (BOOL)isAccessError {
-    return _tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError;
+    return _tag == SharingListFileMembersIndividualResultAccessError;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultOther;
+    return _tag == SharingListFileMembersIndividualResultOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult) {
-        return @"(SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult";
-    }
-    if (_tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError) {
-        return @"(SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError";
-    }
-    if (_tag == (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultOther) {
-        return @"(SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultOther";
+    switch (_tag) {
+        case SharingListFileMembersIndividualResultResult:
+           return @"SharingListFileMembersIndividualResultResult";
+        case SharingListFileMembersIndividualResultAccessError:
+           return @"SharingListFileMembersIndividualResultAccessError";
+        case SharingListFileMembersIndividualResultOther:
+           return @"SharingListFileMembersIndividualResultOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxSharingListFileMembersCountResult *)result {
-    if (_tag != (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultResult, but was %@.", [self getTagName]];
+    if (_tag != SharingListFileMembersIndividualResultResult) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListFileMembersIndividualResultResult, but was %@.", [self getTagName]];
     }
     return _result;
 }
 
 - (DbxSharingSharingFileAccessError *)accessError {
-    if (_tag != (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (SharingListFileMembersIndividualResultTag)SharingListFileMembersIndividualResultAccessError, but was %@.", [self getTagName]];
+    if (_tag != SharingListFileMembersIndividualResultAccessError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required SharingListFileMembersIndividualResultAccessError, but was %@.", [self getTagName]];
     }
     return _accessError;
 }

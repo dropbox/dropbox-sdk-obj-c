@@ -3,57 +3,89 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
-#import "DbxAsyncPollResultBase.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamMemberAddResult;
 @class DbxTeamMembersAddJobStatus;
 
 /// 
-/// The DbxTeamMembersAddJobStatus union.
+/// The `DbxTeamMembersAddJobStatus` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamMembersAddJobStatus : NSObject <DbxSerializable> 
 
+/// The `TeamMembersAddJobStatusTag` enum type represents the possible tag
+/// states that the `DbxTeamMembersAddJobStatus` union can exist in.
 typedef NS_ENUM(NSInteger, TeamMembersAddJobStatusTag) {
     /// The asynchronous job is still in progress.
     TeamMembersAddJobStatusInProgress,
+
     /// The asynchronous job has finished. For each member that was specified in
     /// the parameter MembersAddArg that was provided to membersAdd, a
     /// corresponding item is returned in this list.
     TeamMembersAddJobStatusComplete,
+
     /// The asynchronous job returned an error. The string contains an error
     /// message.
     TeamMembersAddJobStatusFailed,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamMembersAddJobStatusTag tag;
+
+/// The asynchronous job has finished. For each member that was specified in the
+/// parameter MembersAddArg that was provided to membersAdd, a corresponding
+/// item is returned in this list.
+@property (nonatomic) NSArray<DbxTeamMemberAddResult *> * _Nonnull complete;
+
+/// The asynchronous job returned an error. The string contains an error
+/// message.
+@property (nonatomic, copy) NSString * _Nonnull failed;
+
+
+/// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
 
+/// Initializes union class with tag state of `Complete`.
 - (nonnull instancetype)initWithComplete:(NSArray<DbxTeamMemberAddResult *> * _Nonnull)complete;
 
+/// Initializes union class with tag state of `Failed`.
 - (nonnull instancetype)initWithFailed:(NSString * _Nonnull)failed;
 
+/// Returns whether the union's current tag state has value `InProgress`.
 - (BOOL)isInProgress;
 
+/// Returns whether the union's current tag state has value `Complete`.
 - (BOOL)isComplete;
 
+/// Returns whether the union's current tag state has value `Failed`.
 - (BOOL)isFailed;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamMembersAddJobStatus`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamMembersAddJobStatus union type.
-@property (nonatomic) TeamMembersAddJobStatusTag tag;
-@property (nonatomic) NSArray<DbxTeamMemberAddResult *> * _Nonnull complete;
-@property (nonatomic, copy) NSString * _Nonnull failed;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamMembersAddJobStatus` union.
+/// 
 @interface DbxTeamMembersAddJobStatusSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamMembersAddJobStatus` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamMembersAddJobStatus * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamMembersAddJobStatus` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamMembersAddJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

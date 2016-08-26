@@ -11,18 +11,19 @@
 - (instancetype)initWithUserNotFound {
     self = [super init];
     if (self != nil) {
-        _tag = (TeamUserSelectorErrorTag)TeamUserSelectorErrorUserNotFound;
+        _tag = TeamUserSelectorErrorUserNotFound;
     }
     return self;
 }
 
 - (BOOL)isUserNotFound {
-    return _tag == (TeamUserSelectorErrorTag)TeamUserSelectorErrorUserNotFound;
+    return _tag == TeamUserSelectorErrorUserNotFound;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (TeamUserSelectorErrorTag)TeamUserSelectorErrorUserNotFound) {
-        return @"(TeamUserSelectorErrorTag)TeamUserSelectorErrorUserNotFound";
+    switch (_tag) {
+        case TeamUserSelectorErrorUserNotFound:
+           return @"TeamUserSelectorErrorUserNotFound";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

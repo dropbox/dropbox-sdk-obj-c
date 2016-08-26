@@ -13,7 +13,7 @@
 - (instancetype)initWithIndividual:(DbxUsersIndividualSpaceAllocation *)individual {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersSpaceAllocationTag)UsersSpaceAllocationIndividual;
+        _tag = UsersSpaceAllocationIndividual;
         _individual = individual;
     }
     return self;
@@ -22,7 +22,7 @@
 - (instancetype)initWithTeam:(DbxUsersTeamSpaceAllocation *)team {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersSpaceAllocationTag)UsersSpaceAllocationTeam;
+        _tag = UsersSpaceAllocationTeam;
         _team = team;
     }
     return self;
@@ -31,47 +31,46 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (UsersSpaceAllocationTag)UsersSpaceAllocationOther;
+        _tag = UsersSpaceAllocationOther;
     }
     return self;
 }
 
 - (BOOL)isIndividual {
-    return _tag == (UsersSpaceAllocationTag)UsersSpaceAllocationIndividual;
+    return _tag == UsersSpaceAllocationIndividual;
 }
 
 - (BOOL)isTeam {
-    return _tag == (UsersSpaceAllocationTag)UsersSpaceAllocationTeam;
+    return _tag == UsersSpaceAllocationTeam;
 }
 
 - (BOOL)isOther {
-    return _tag == (UsersSpaceAllocationTag)UsersSpaceAllocationOther;
+    return _tag == UsersSpaceAllocationOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (UsersSpaceAllocationTag)UsersSpaceAllocationIndividual) {
-        return @"(UsersSpaceAllocationTag)UsersSpaceAllocationIndividual";
-    }
-    if (_tag == (UsersSpaceAllocationTag)UsersSpaceAllocationTeam) {
-        return @"(UsersSpaceAllocationTag)UsersSpaceAllocationTeam";
-    }
-    if (_tag == (UsersSpaceAllocationTag)UsersSpaceAllocationOther) {
-        return @"(UsersSpaceAllocationTag)UsersSpaceAllocationOther";
+    switch (_tag) {
+        case UsersSpaceAllocationIndividual:
+           return @"UsersSpaceAllocationIndividual";
+        case UsersSpaceAllocationTeam:
+           return @"UsersSpaceAllocationTeam";
+        case UsersSpaceAllocationOther:
+           return @"UsersSpaceAllocationOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (DbxUsersIndividualSpaceAllocation *)individual {
-    if (_tag != (UsersSpaceAllocationTag)UsersSpaceAllocationIndividual) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (UsersSpaceAllocationTag)UsersSpaceAllocationIndividual, but was %@.", [self getTagName]];
+    if (_tag != UsersSpaceAllocationIndividual) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required UsersSpaceAllocationIndividual, but was %@.", [self getTagName]];
     }
     return _individual;
 }
 
 - (DbxUsersTeamSpaceAllocation *)team {
-    if (_tag != (UsersSpaceAllocationTag)UsersSpaceAllocationTeam) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (UsersSpaceAllocationTag)UsersSpaceAllocationTeam, but was %@.", [self getTagName]];
+    if (_tag != UsersSpaceAllocationTeam) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required UsersSpaceAllocationTeam, but was %@.", [self getTagName]];
     }
     return _team;
 }

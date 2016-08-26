@@ -3,56 +3,85 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxTeamPoliciesEmmState;
 
 /// 
-/// The DbxTeamPoliciesEmmState union.
+/// The `DbxTeamPoliciesEmmState` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxTeamPoliciesEmmState : NSObject <DbxSerializable> 
 
+/// The `TeamPoliciesEmmStateTag` enum type represents the possible tag states
+/// that the `DbxTeamPoliciesEmmState` union can exist in.
 typedef NS_ENUM(NSInteger, TeamPoliciesEmmStateTag) {
     /// Emm token is disabled
     TeamPoliciesEmmStateDisabled,
+
     /// Emm token is optional
     TeamPoliciesEmmStateOptional,
+
     /// Emm token is required
     TeamPoliciesEmmStateRequired,
-    /// (no description)
+
+    /// (no description).
     TeamPoliciesEmmStateOther,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) TeamPoliciesEmmStateTag tag;
+
+
+/// Initializes union class with tag state of `Disabled`.
 - (nonnull instancetype)initWithDisabled;
 
+/// Initializes union class with tag state of `Optional`.
 - (nonnull instancetype)initWithOptional;
 
+/// Initializes union class with tag state of `Required`.
 - (nonnull instancetype)initWithRequired;
 
+/// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
 
+/// Returns whether the union's current tag state has value `Disabled`.
 - (BOOL)isDisabled;
 
+/// Returns whether the union's current tag state has value `Optional`.
 - (BOOL)isOptional;
 
+/// Returns whether the union's current tag state has value `Required`.
 - (BOOL)isRequired;
 
+/// Returns whether the union's current tag state has value `Other`.
 - (BOOL)isOther;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the `DbxTeamPoliciesEmmState`
+/// object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxTeamPoliciesEmmState union type.
-@property (nonatomic) TeamPoliciesEmmStateTag tag;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxTeamPoliciesEmmState` union.
+/// 
 @interface DbxTeamPoliciesEmmStateSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxTeamPoliciesEmmState` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxTeamPoliciesEmmState * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxTeamPoliciesEmmState` object from a
+/// json-compatible dictionary representation.
 + (DbxTeamPoliciesEmmState * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,7 +11,7 @@
 - (instancetype)initWithLeaveACopy {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionLeaveACopy;
+        _tag = SharingMemberActionLeaveACopy;
     }
     return self;
 }
@@ -19,7 +19,7 @@
 - (instancetype)initWithMakeEditor {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionMakeEditor;
+        _tag = SharingMemberActionMakeEditor;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 - (instancetype)initWithMakeOwner {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionMakeOwner;
+        _tag = SharingMemberActionMakeOwner;
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (instancetype)initWithMakeViewer {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionMakeViewer;
+        _tag = SharingMemberActionMakeViewer;
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (instancetype)initWithMakeViewerNoComment {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionMakeViewerNoComment;
+        _tag = SharingMemberActionMakeViewerNoComment;
     }
     return self;
 }
@@ -51,7 +51,7 @@
 - (instancetype)initWithRemove {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionRemove;
+        _tag = SharingMemberActionRemove;
     }
     return self;
 }
@@ -59,60 +59,55 @@
 - (instancetype)initWithOther {
     self = [super init];
     if (self != nil) {
-        _tag = (SharingMemberActionTag)SharingMemberActionOther;
+        _tag = SharingMemberActionOther;
     }
     return self;
 }
 
 - (BOOL)isLeaveACopy {
-    return _tag == (SharingMemberActionTag)SharingMemberActionLeaveACopy;
+    return _tag == SharingMemberActionLeaveACopy;
 }
 
 - (BOOL)isMakeEditor {
-    return _tag == (SharingMemberActionTag)SharingMemberActionMakeEditor;
+    return _tag == SharingMemberActionMakeEditor;
 }
 
 - (BOOL)isMakeOwner {
-    return _tag == (SharingMemberActionTag)SharingMemberActionMakeOwner;
+    return _tag == SharingMemberActionMakeOwner;
 }
 
 - (BOOL)isMakeViewer {
-    return _tag == (SharingMemberActionTag)SharingMemberActionMakeViewer;
+    return _tag == SharingMemberActionMakeViewer;
 }
 
 - (BOOL)isMakeViewerNoComment {
-    return _tag == (SharingMemberActionTag)SharingMemberActionMakeViewerNoComment;
+    return _tag == SharingMemberActionMakeViewerNoComment;
 }
 
 - (BOOL)isRemove {
-    return _tag == (SharingMemberActionTag)SharingMemberActionRemove;
+    return _tag == SharingMemberActionRemove;
 }
 
 - (BOOL)isOther {
-    return _tag == (SharingMemberActionTag)SharingMemberActionOther;
+    return _tag == SharingMemberActionOther;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (SharingMemberActionTag)SharingMemberActionLeaveACopy) {
-        return @"(SharingMemberActionTag)SharingMemberActionLeaveACopy";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionMakeEditor) {
-        return @"(SharingMemberActionTag)SharingMemberActionMakeEditor";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionMakeOwner) {
-        return @"(SharingMemberActionTag)SharingMemberActionMakeOwner";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionMakeViewer) {
-        return @"(SharingMemberActionTag)SharingMemberActionMakeViewer";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionMakeViewerNoComment) {
-        return @"(SharingMemberActionTag)SharingMemberActionMakeViewerNoComment";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionRemove) {
-        return @"(SharingMemberActionTag)SharingMemberActionRemove";
-    }
-    if (_tag == (SharingMemberActionTag)SharingMemberActionOther) {
-        return @"(SharingMemberActionTag)SharingMemberActionOther";
+    switch (_tag) {
+        case SharingMemberActionLeaveACopy:
+           return @"SharingMemberActionLeaveACopy";
+        case SharingMemberActionMakeEditor:
+           return @"SharingMemberActionMakeEditor";
+        case SharingMemberActionMakeOwner:
+           return @"SharingMemberActionMakeOwner";
+        case SharingMemberActionMakeViewer:
+           return @"SharingMemberActionMakeViewer";
+        case SharingMemberActionMakeViewerNoComment:
+           return @"SharingMemberActionMakeViewerNoComment";
+        case SharingMemberActionRemove:
+           return @"SharingMemberActionRemove";
+        case SharingMemberActionOther:
+           return @"SharingMemberActionOther";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);

@@ -12,7 +12,7 @@
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId;
+        _tag = AsyncLaunchEmptyResultAsyncJobId;
         _asyncJobId = asyncJobId;
     }
     return self;
@@ -21,33 +21,33 @@
 - (instancetype)initWithComplete {
     self = [super init];
     if (self != nil) {
-        _tag = (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultComplete;
+        _tag = AsyncLaunchEmptyResultComplete;
     }
     return self;
 }
 
 - (BOOL)isAsyncJobId {
-    return _tag == (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId;
+    return _tag == AsyncLaunchEmptyResultAsyncJobId;
 }
 
 - (BOOL)isComplete {
-    return _tag == (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultComplete;
+    return _tag == AsyncLaunchEmptyResultComplete;
 }
 
 - (NSString *)getTagName {
-    if (_tag == (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId) {
-        return @"(AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId";
-    }
-    if (_tag == (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultComplete) {
-        return @"(AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultComplete";
+    switch (_tag) {
+        case AsyncLaunchEmptyResultAsyncJobId:
+           return @"AsyncLaunchEmptyResultAsyncJobId";
+        case AsyncLaunchEmptyResultComplete:
+           return @"AsyncLaunchEmptyResultComplete";
     }
 
     @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Supplied tag enum has an invalid value." userInfo:nil]);
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required (AsyncLaunchEmptyResultTag)AsyncLaunchEmptyResultAsyncJobId, but was %@.", [self getTagName]];
+    if (_tag != AsyncLaunchEmptyResultAsyncJobId) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required AsyncLaunchEmptyResultAsyncJobId, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }

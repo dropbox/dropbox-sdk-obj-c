@@ -3,13 +3,17 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxPropertiesPropertyFieldTemplate;
 @class DbxPropertiesPropertyType;
 
 /// 
-/// The DbxPropertiesPropertyFieldTemplate struct.
+/// The `DbxPropertiesPropertyFieldTemplate` struct.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 /// Describe a single property field type which that can be part of a property
 /// template.
@@ -19,24 +23,37 @@
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
 @property (nonatomic, copy) NSString * _Nonnull name;
+
 /// This is the description for a custom property in a property template. File
 /// property description can be up to 1024 bytes.
 @property (nonatomic, copy) NSString * _Nonnull description_;
+
 /// This is the data type of the value of this property. This type will be
 /// enforced upon property creation and modifications.
 @property (nonatomic) DbxPropertiesPropertyType * _Nonnull type;
 
+/// Full constructor for the `PropertyFieldTemplate` struct (exposes all
+/// instance variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ type:(DbxPropertiesPropertyType * _Nonnull)type;
 
+/// Returns a human-readable representation of the
+/// `DbxPropertiesPropertyFieldTemplate` object.
 - (NSString * _Nonnull)description;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxPropertiesPropertyFieldTemplate` struct.
+/// 
 @interface DbxPropertiesPropertyFieldTemplateSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxPropertiesPropertyFieldTemplate` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxPropertiesPropertyFieldTemplate * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxPropertiesPropertyFieldTemplate` object
+/// from a json-compatible dictionary representation.
 + (DbxPropertiesPropertyFieldTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

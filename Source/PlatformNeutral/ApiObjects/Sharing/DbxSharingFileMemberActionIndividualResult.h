@@ -3,49 +3,79 @@
 ///
 
 #import <Foundation/Foundation.h>
-#import "DbxStoneSerializers.h"
+#import "DbxSerializable.h"
 
 @class DbxSharingAccessLevel;
 @class DbxSharingFileMemberActionError;
 @class DbxSharingFileMemberActionIndividualResult;
 
 /// 
-/// The DbxSharingFileMemberActionIndividualResult union.
+/// The `DbxSharingFileMemberActionIndividualResult` union.
+/// 
+/// This class implements the `DbxSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DbxSharingFileMemberActionIndividualResult : NSObject <DbxSerializable> 
 
+/// The `SharingFileMemberActionIndividualResultTag` enum type represents the
+/// possible tag states that the `DbxSharingFileMemberActionIndividualResult`
+/// union can exist in.
 typedef NS_ENUM(NSInteger, SharingFileMemberActionIndividualResultTag) {
     /// Member was successfully removed from this file. If AccessLevel is given,
     /// the member still has access via a parent shared folder.
     SharingFileMemberActionIndividualResultSuccess,
+
     /// User was not able to perform this action.
     SharingFileMemberActionIndividualResultMemberError,
+
 };
 
+/// Represents the union's current tag state.
+@property (nonatomic) SharingFileMemberActionIndividualResultTag tag;
+
+/// Member was successfully removed from this file. If AccessLevel is given, the
+/// member still has access via a parent shared folder.
+@property (nonatomic) DbxSharingAccessLevel * _Nullable success;
+
+/// User was not able to perform this action.
+@property (nonatomic) DbxSharingFileMemberActionError * _Nonnull memberError;
+
+
+/// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DbxSharingAccessLevel * _Nullable)success;
 
+/// Initializes union class with tag state of `MemberError`.
 - (nonnull instancetype)initWithMemberError:(DbxSharingFileMemberActionError * _Nonnull)memberError;
 
+/// Returns whether the union's current tag state has value `Success`.
 - (BOOL)isSuccess;
 
+/// Returns whether the union's current tag state has value `MemberError`.
 - (BOOL)isMemberError;
 
+/// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
 
+/// Returns a human-readable representation of the
+/// `DbxSharingFileMemberActionIndividualResult` object.
 - (NSString * _Nonnull)description;
-
-/// Current state of the DbxSharingFileMemberActionIndividualResult union type.
-@property (nonatomic) SharingFileMemberActionIndividualResultTag tag;
-@property (nonatomic) DbxSharingAccessLevel * _Nullable success;
-@property (nonatomic) DbxSharingFileMemberActionError * _Nonnull memberError;
 
 @end
 
 
+/// 
+/// The serialization class for the `DbxSharingFileMemberActionIndividualResult`
+/// union.
+/// 
 @interface DbxSharingFileMemberActionIndividualResultSerializer : NSObject 
 
+/// Returns a json-compatible dictionary representation of the
+/// `DbxSharingFileMemberActionIndividualResult` object from an instantiation.
 + (NSDictionary * _Nonnull)serialize:(DbxSharingFileMemberActionIndividualResult * _Nonnull)obj;
 
+/// Returns an instantiation of the `DbxSharingFileMemberActionIndividualResult`
+/// object from a json-compatible dictionary representation.
 + (DbxSharingFileMemberActionIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end
