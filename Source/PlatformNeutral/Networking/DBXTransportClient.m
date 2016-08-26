@@ -1,7 +1,3 @@
-	///
-/// The networking client for the User and Business API.
-///
-
 #import "DBXAuthAuthError.h"
 #import "DBXAuthRateLimitError.h"
 #import "DBXDelegate.h"
@@ -21,22 +17,22 @@ typedef void(^ErrorBlock)(DBXError * _Nonnull error);
 @implementation DBXTransportClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
-    return [self initWithAccessToken:accessToken andSelectUser:nil];
+    return [self initWithAccessToken:accessToken selectUser:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser {
-    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:nil];
+- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser {
+    return [self initWithAccessToken:accessToken selectUser:selectUser baseHosts:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andBackgroundSessionId:(NSString *)backgroundSessionId {
-    return [self initWithAccessToken:accessToken andSelectUser:nil andBaseHosts:nil andUserAgent:nil andBackgroundSessionId:backgroundSessionId];
+- (instancetype)initWithAccessToken:(NSString *)accessToken backgroundSessionId:(NSString *)backgroundSessionId {
+    return [self initWithAccessToken:accessToken selectUser:nil baseHosts:nil userAgent:nil backgroundSessionId:backgroundSessionId];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
-    return [self initWithAccessToken:accessToken andSelectUser:selectUser andBaseHosts:baseHosts andUserAgent:nil andBackgroundSessionId:nil];
+- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser baseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
+    return [self initWithAccessToken:accessToken selectUser:selectUser baseHosts:baseHosts userAgent:nil backgroundSessionId:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser andBaseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts andUserAgent:(NSString *)userAgent andBackgroundSessionId:(NSString *)backgroundSessionId {
+- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser baseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts userAgent:(NSString *)userAgent backgroundSessionId:(NSString *)backgroundSessionId {
     self = [super init];
     if (self) {
         _delegateQueue = [NSOperationQueue new];

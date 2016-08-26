@@ -22,7 +22,11 @@ static Reachability *internetReachableFoo;
     sharedOAuthManager = sharedManager;
 }
 
-- (instancetype)init:(NSString *)appKey host:(NSString *)host {
+- (instancetype)initWithAppKey:(NSString *)appKey {
+    return [self initWithAppKey:appKey host:@"www.dropbox.com"];
+}
+
+- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host {
     if (self) {
         _appKey = appKey;
         _redirectURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"db-%@://2/token", _appKey]];
@@ -30,10 +34,6 @@ static Reachability *internetReachableFoo;
         _urls = [NSMutableArray arrayWithObjects:_redirectURL, nil];
     }
     return self;
-}
-
-- (instancetype)init:(NSString *)appKey {
-    return [self init:appKey host:@"www.dropbox.com"];
 }
 
 - (DBXOAuthResult *)handleRedirectURL:(NSURL *)url {
@@ -164,7 +164,7 @@ static Reachability *internetReachableFoo;
         return [[DBXOAuthResult alloc] initWithError:results[@"error"] errorDescription:desc];
     } else {
         NSString *uid = results[@"account_id"] ?: results[@"team_id"];
-        DBXAccessToken *accessToken = [[DBXAccessToken alloc] init:results[@"access_token"] uid:uid];
+        DBXAccessToken *accessToken = [[DBXAccessToken alloc] initWithAccessToken:results[@"access_token"] uid:uid];
         return [[DBXOAuthResult alloc] initWithSuccess:accessToken];
     }
 }
@@ -175,39 +175,6 @@ static Reachability *internetReachableFoo;
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id <DBXSharedApplication>)sharedApplication {
     return NO;
-}
-
-- (NSDictionary<NSString *, DBXAccessToken *> *)getAllAccessTokens {
-    NSArray<NSString *> *users = [DBXKeychain getAll];
-    NSMutableDictionary<NSString *, DBXAccessToken *> *result = [[NSMutableDictionary alloc] init];
-    for (NSString *user in users) {
-        NSString *accessToken = [DBXKeychain get:user];
-        if (accessToken != nil) {
-            result[user] = [[DBXAccessToken alloc] init:accessToken uid:user];
-        }
-    }
-    return result;
-}
-
-- (BOOL)hasStoredAccessTokens {
-    return [self getAllAccessTokens].count != 0;
-}
-
-- (DBXAccessToken *)getAccessToken:(NSString *)user {
-    NSString *accessToken = [DBXKeychain get:user];
-    if (accessToken != nil) {
-        return [[DBXAccessToken alloc] init:accessToken uid:user];
-    } else {
-        return nil;
-    }
-}
-
-- (BOOL)clearStoredAccessToken:(DBXAccessToken *)token {
-    return [DBXKeychain delete:token.uid];
-}
-
-- (BOOL)clearStoredAccessTokens {
-    return [DBXKeychain clear];
 }
 
 - (BOOL)storeAccessToken:(DBXAccessToken *)accessToken {
@@ -223,6 +190,39 @@ static Reachability *internetReachableFoo;
     return nil;
 }
 
+- (DBXAccessToken *)getAccessToken:(NSString *)owner {
+    NSString *accessToken = [DBXKeychain get:owner];
+    if (accessToken != nil) {
+        return [[DBXAccessToken alloc] initWithAccessToken:accessToken uid:owner];
+    } else {
+        return nil;
+    }
+}
+
+- (NSDictionary<NSString *, DBXAccessToken *> *)getAllAccessTokens {
+    NSArray<NSString *> *users = [DBXKeychain getAll];
+    NSMutableDictionary<NSString *, DBXAccessToken *> *result = [[NSMutableDictionary alloc] init];
+    for (NSString *user in users) {
+        NSString *accessToken = [DBXKeychain get:user];
+        if (accessToken != nil) {
+            result[user] = [[DBXAccessToken alloc] initWithAccessToken:accessToken uid:user];
+        }
+    }
+    return result;
+}
+
+- (BOOL)hasStoredAccessTokens {
+    return [self getAllAccessTokens].count != 0;
+}
+
+- (BOOL)clearStoredAccessToken:(DBXAccessToken *)token {
+    return [DBXKeychain delete:token.uid];
+}
+
+- (BOOL)clearStoredAccessTokens {
+    return [DBXKeychain clear];
+}
+
 @end
 
 
@@ -231,12 +231,12 @@ static Reachability *internetReachableFoo;
 @end
 
 
-@implementation DBXMobileOAuthManager
-
 static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 
-- (instancetype)init:(NSString *)appKey {
-    self = [super init:appKey];
+@implementation DBXMobileOAuthManager
+
+- (instancetype)initWithAppKey:(NSString *)appKey {
+    self = [super initWithAppKey:appKey];
     if (self) {
         _dauthRedirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://1/connect", appKey]];
         [_urls addObject:_dauthRedirectURL];
@@ -244,8 +244,8 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     return self;
 }
 
-- (instancetype)init:(NSString *)appKey host:(NSString *)host {
-    self = [super init:appKey host:host];
+- (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host {
+    self = [super initWithAppKey:appKey host:host];
     if (self) {
         _dauthRedirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://1/connect", appKey]];
         [_urls addObject:_dauthRedirectURL];
@@ -328,7 +328,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
             if (state.count == 2 && [state[0] isEqualToString:@"oauth2"] && [state[1] isEqualToString:nonce]) {
                 NSString *accessToken = results[@"oauth_token_secret"];
                 NSString *uid = results[@"uid"];
-                return [[DBXOAuthResult alloc] initWithSuccess:[[DBXAccessToken alloc] init:accessToken uid:uid]];
+                return [[DBXOAuthResult alloc] initWithSuccess:[[DBXAccessToken alloc] initWithAccessToken:accessToken uid:uid]];
             } else {
                 return [[DBXOAuthResult alloc] initWithError:@"" errorDescription:@"Unable to verify link request."];
             }

@@ -22,7 +22,7 @@
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser {
-    DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken andSelectUser:selectUser];
+    DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken selectUser:selectUser];
     self = [super init:transportClient];
     if (self != nil) {
         _transportClient = transportClient;

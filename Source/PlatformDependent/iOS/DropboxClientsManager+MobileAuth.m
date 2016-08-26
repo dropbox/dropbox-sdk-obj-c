@@ -22,11 +22,11 @@
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBXMobileOAuthManager alloc] init:appKey]];
+    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBXMobileOAuthManager alloc] initWithAppKey:appKey]];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBXMobileOAuthManager alloc] init:appKey]];
+    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBXMobileOAuthManager alloc] initWithAppKey:appKey]];
 }
 
 @end

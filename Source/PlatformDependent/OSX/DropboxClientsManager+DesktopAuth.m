@@ -1,4 +1,4 @@
-///
+v///
 /// Code with platform-specific (here, iOS) dependencies. Extends logic for the `DropboxClientsManager` class.
 ///
 
@@ -26,11 +26,11 @@
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBXDesktopOAuthManager alloc] init:appKey]];
+    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBXDesktopOAuthManager alloc] initWithAppKey:appKey]];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBXDesktopOAuthManager alloc] init:appKey]];
+    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBXDesktopOAuthManager alloc] initWithAppKey:appKey]];
 }
 
 @end
