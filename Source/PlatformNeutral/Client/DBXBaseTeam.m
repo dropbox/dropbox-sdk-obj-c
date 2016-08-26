@@ -6,7 +6,7 @@
 
 @implementation DBXBaseTeam 
 
-- (instancetype)init:(DBXTransportClient *)client {
+- (instancetype)initWithTransportClient:(DBXTransportClient *)client {
     self = [super init];
     if (self != nil) {
         _teamRoutes = [[DBXTEAMRoutes alloc] init:client];

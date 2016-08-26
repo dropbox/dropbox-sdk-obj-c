@@ -10,8 +10,6 @@
 ///
 @protocol DBXSerializable <NSObject>
 
-@required
-
 ///
 /// Class method which returns a json-compatible dictionary representation of the
 /// supplied object.

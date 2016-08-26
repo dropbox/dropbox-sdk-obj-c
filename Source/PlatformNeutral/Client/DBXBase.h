@@ -28,6 +28,6 @@
 @property (nonatomic) DBXUSERSRoutes * _Nonnull usersRoutes;
 
 /// Initializes the `DBXBase` object with a networking client.
-- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
+- (nonnull instancetype)initWithTransportClient:(DBXTransportClient * _Nonnull)client;
 
 @end

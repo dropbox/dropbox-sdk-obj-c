@@ -6,7 +6,7 @@
 
 @implementation DBXBase 
 
-- (instancetype)init:(DBXTransportClient *)client {
+- (instancetype)initWithTransportClient:(DBXTransportClient *)client {
     self = [super init];
     if (self != nil) {
         _authRoutes = [[DBXAUTHRoutes alloc] init:client];

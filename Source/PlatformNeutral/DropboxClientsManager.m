@@ -82,7 +82,7 @@ static DropboxTeamClient *authorizedTeamClient;
     return nil;
 }
 
-+ (void)unlinkClient {
++ (void)unlinkClients {
     NSAssert([DBXOAuthManager sharedOAuthManager] != nil, @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
     if ([DropboxClientsManager authorizedClient] == nil && [DropboxClientsManager authorizedTeamClient] == nil) {
         // already unlinked

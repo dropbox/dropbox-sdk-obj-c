@@ -37,7 +37,7 @@
     
     void (^unlink)() = ^{
         [TestFormat printAllTestsEnd];
-        [DropboxClientsManager unlinkClient];
+        [DropboxClientsManager unlinkClients];
         [self checkButtons];
         [self.view setNeedsDisplay];
     };
@@ -55,7 +55,7 @@
     }
 }
 - (IBAction)unlinkButtonPressed:(id)sender {
-    [DropboxClientsManager unlinkClient];
+    [DropboxClientsManager unlinkClients];
     [self checkButtons];
 }
 

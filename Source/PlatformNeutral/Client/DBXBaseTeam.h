@@ -16,6 +16,6 @@
 @property (nonatomic) DBXTEAMRoutes * _Nonnull teamRoutes;
 
 /// Initializes the `DBXBaseTeam` object with a networking client.
-- (nonnull instancetype)init:(DBXTransportClient * _Nonnull)client;
+- (nonnull instancetype)initWithTransportClient:(DBXTransportClient * _Nonnull)client;
 
 @end

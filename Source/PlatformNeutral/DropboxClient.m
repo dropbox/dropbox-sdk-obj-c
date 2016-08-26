@@ -4,8 +4,8 @@
 
 @implementation DropboxClient
 
-- (instancetype)init:(DBXTransportClient *)transportClient {
-    self = [super init:transportClient];
+- (instancetype)initWithTransportClient:(DBXTransportClient *)transportClient {
+    self = [super initWithTransportClient:transportClient];
     if (self != nil) {
         _transportClient = transportClient;
     }
@@ -14,16 +14,16 @@
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
     DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken];
-    self = [super init:transportClient];
+    self = [super initWithTransportClient:transportClient];
     if (self != nil) {
         _transportClient = transportClient;
     }
     return self;
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken andSelectUser:(NSString *)selectUser {
+- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser {
     DBXTransportClient *transportClient = [[DBXTransportClient alloc] initWithAccessToken:accessToken selectUser:selectUser];
-    self = [super init:transportClient];
+    self = [super initWithTransportClient:transportClient];
     if (self != nil) {
         _transportClient = transportClient;
     }
