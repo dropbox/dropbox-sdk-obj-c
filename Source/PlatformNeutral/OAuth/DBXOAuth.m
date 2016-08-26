@@ -360,7 +360,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 
 @implementation DBXAccessToken
     
-- (instancetype)init:(NSString *)accessToken uid:(NSString *)uid {
+- (instancetype)initWithAccessToken:(NSString *)accessToken uid:(NSString *)uid {
     self = [super init];
     if (self) {
         _accessToken = accessToken;
