@@ -24,6 +24,8 @@
 /// executed in a thread-safe manner. The `DBXDelegate` class retrieves the appropriate
 /// handler and executes it.
 ///
+/// Argument serialization is performed with this class.
+///
 @interface DBXTransportClient : NSObject
 
 /// The Dropbox OAuth2 access token used to make requests.

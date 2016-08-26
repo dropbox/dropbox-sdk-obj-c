@@ -1,10 +1,4 @@
-///
-/// Classes encapsulating logic for each Dropbox API request type.
-///
-
 #import <Foundation/Foundation.h>
-#import "DBXTasks.h"
-
 #import "DBXAuthAuthError.h"
 #import "DBXAuthRateLimitError.h"
 #import "DBXDelegate.h"
@@ -12,7 +6,6 @@
 #import "DBXStoneBase.h"
 #import "DBXTasks.h"
 #import "DBXTransportClient.h"
-#import "DBXDelegate.h"
 
 @implementation DBXTask
 
