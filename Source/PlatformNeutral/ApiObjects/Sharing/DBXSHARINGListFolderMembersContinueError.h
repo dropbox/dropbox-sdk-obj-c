@@ -9,7 +9,7 @@
 @class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DBXSHARINGListFolderMembersContinueError` union.
+/// The ListFolderMembersContinueError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,8 +18,8 @@
 @interface DBXSHARINGListFolderMembersContinueError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGListFolderMembersContinueErrorTag` enum type represents the
-/// possible tag states that the `DBXSHARINGListFolderMembersContinueError`
-/// union can exist in.
+/// possible tag states with which the
+/// `DBXSHARINGListFolderMembersContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGListFolderMembersContinueErrorTag) {
     /// (no description).
     DBXSHARINGListFolderMembersContinueErrorAccessError,
@@ -38,25 +38,62 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFolderMembersContinueErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGListFolderMembersContinueError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `InvalidCursor`.
+/// 
+/// About the `InvalidCursor` tag state:
+/// :field:`ListFolderMembersContinueArg.cursor` is invalid.
+/// 
+/// - returns: An initialized `DBXSHARINGListFolderMembersContinueError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithInvalidCursor;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGListFolderMembersContinueError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidCursor`.
+/// 
 - (BOOL)isInvalidCursor;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -68,12 +105,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFolderMembersContinueErrorTag) {
 /// 
 @interface DBXSHARINGListFolderMembersContinueErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFolderMembersContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersContinueError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFolderMembersContinueError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGListFolderMembersContinueError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFolderMembersContinueError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersContinueError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFolderMembersContinueError`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFolderMembersContinueError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFolderMembersContinueError` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXSHARINGListFolderMembersContinueError` object.
+/// 
 + (DBXSHARINGListFolderMembersContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

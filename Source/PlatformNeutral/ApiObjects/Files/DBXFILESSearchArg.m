@@ -14,7 +14,7 @@
     [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](maxResults ?: @(100));
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _query = query;
         _start = start ?: @(0);
@@ -28,8 +28,8 @@
     return [self initWithPath:path query:query start:nil maxResults:nil mode:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSearchArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSearchArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

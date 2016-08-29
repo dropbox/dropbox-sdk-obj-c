@@ -13,7 +13,7 @@
 
 - (instancetype)initWithInvalidDropboxId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderMemberErrorInvalidDropboxId;
     }
     return self;
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithNotAMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderMemberErrorNotAMember;
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (instancetype)initWithNoExplicitAccess:(DBXSHARINGMemberAccessLevelResult *)noExplicitAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderMemberErrorOther;
     }
     return self;
@@ -76,14 +76,14 @@
 }
 
 - (DBXSHARINGMemberAccessLevelResult *)noExplicitAccess {
-    if (_tag != DBXSHARINGSharedFolderMemberErrorNoExplicitAccess) {
+    if (![self isNoExplicitAccess]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGSharedFolderMemberErrorNoExplicitAccess`, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedFolderMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedFolderMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

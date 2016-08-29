@@ -11,7 +11,7 @@
 @class DBXTEAMMemberAccess;
 
 /// 
-/// The `DBXTEAMGroupMembersAddArg` struct.
+/// The GroupMembersAddArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -25,28 +25,58 @@
 /// List of users to be added to the group.
 @property (nonatomic, readonly) NSArray<DBXTEAMMemberAccess *> * _Nonnull members;
 
-/// Full constructor for the `GroupMembersAddArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGroupMembersAddArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter group: Group to which users will be added.
+/// - parameter members: List of users to be added to the group.
+/// - parameter returnMembers: Whether to return the list of members in the
+/// group.  Note that the default value will cause all the group members  to be
+/// returned in the response. This may take a long time for large groups.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddArg` instance.
+/// 
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group members:(NSArray<DBXTEAMMemberAccess *> * _Nonnull)members returnMembers:(NSNumber * _Nullable)returnMembers;
 
-/// Convenience constructor for the `GroupMembersAddArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMGroupMembersAddArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter group: Group to which users will be added.
+/// - parameter members: List of users to be added to the group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddArg` instance.
+/// 
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group members:(NSArray<DBXTEAMMemberAccess *> * _Nonnull)members;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupMembersAddArg` struct.
+/// The serialization class for the GroupMembersAddArg struct.
 /// 
 @interface DBXTEAMGroupMembersAddArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMembersAddArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersAddArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMembersAddArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMembersAddArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersAddArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersAddArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMembersAddArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMembersAddArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersAddArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMembersAddArg` object.
+/// 
 + (DBXTEAMGroupMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

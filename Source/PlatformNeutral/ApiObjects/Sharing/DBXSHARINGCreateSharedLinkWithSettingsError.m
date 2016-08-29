@@ -15,7 +15,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGCreateSharedLinkWithSettingsErrorPath;
         _path = path;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithEmailNotVerified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGCreateSharedLinkWithSettingsErrorEmailNotVerified;
     }
     return self;
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithSharedLinkAlreadyExists {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGCreateSharedLinkWithSettingsErrorSharedLinkAlreadyExists;
     }
     return self;
@@ -40,7 +40,7 @@
 
 - (instancetype)initWithSettingsError:(DBXSHARINGSharedLinkSettingsError *)settingsError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGCreateSharedLinkWithSettingsErrorSettingsError;
         _settingsError = settingsError;
     }
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithAccessDenied {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGCreateSharedLinkWithSettingsErrorAccessDenied;
     }
     return self;
@@ -93,21 +93,21 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXSHARINGCreateSharedLinkWithSettingsErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGCreateSharedLinkWithSettingsErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DBXSHARINGSharedLinkSettingsError *)settingsError {
-    if (_tag != DBXSHARINGCreateSharedLinkWithSettingsErrorSettingsError) {
+    if (![self isSettingsError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGCreateSharedLinkWithSettingsErrorSettingsError`, but was %@.", [self getTagName]];
     }
     return _settingsError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGCreateSharedLinkWithSettingsErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGCreateSharedLinkWithSettingsErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,14 +11,14 @@
 - (instancetype)initWithCorrectOffset:(NSNumber *)correctOffset {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _correctOffset = correctOffset;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionOffsetErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionOffsetErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithNoAccount {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSGetAccountErrorNoAccount;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSGetAccountErrorOther;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSGetAccountErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSGetAccountErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

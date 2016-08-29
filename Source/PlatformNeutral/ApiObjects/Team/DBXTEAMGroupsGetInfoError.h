@@ -8,7 +8,7 @@
 @class DBXTEAMGroupsGetInfoError;
 
 /// 
-/// The `DBXTEAMGroupsGetInfoError` union.
+/// The GroupsGetInfoError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMGroupsGetInfoError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupsGetInfoErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMGroupsGetInfoError` union can exist in.
+/// states with which the `DBXTEAMGroupsGetInfoError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoErrorTag) {
     /// The group is not on your team.
     DBXTEAMGroupsGetInfoErrorGroupNotOnTeam,
@@ -30,19 +30,42 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupsGetInfoErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `GroupNotOnTeam`.
+/// 
+/// About the `GroupNotOnTeam` tag state: The group is not on your team.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsGetInfoError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotOnTeam;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsGetInfoError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `GroupNotOnTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotOnTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotOnTeam`.
+/// 
 - (BOOL)isGroupNotOnTeam;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -53,12 +76,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoErrorTag) {
 /// 
 @interface DBXTEAMGroupsGetInfoErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsGetInfoError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsGetInfoError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsGetInfoError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupsGetInfoError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsGetInfoError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsGetInfoError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsGetInfoError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsGetInfoError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsGetInfoError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsGetInfoError` object.
+/// 
 + (DBXTEAMGroupsGetInfoError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

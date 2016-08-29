@@ -13,15 +13,15 @@
 - (instancetype)initWithProfile:(DBXTEAMTeamMemberProfile *)profile role:(DBXTEAMAdminTier *)role {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _profile = profile;
         _role = role;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMTeamMemberInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMTeamMemberInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

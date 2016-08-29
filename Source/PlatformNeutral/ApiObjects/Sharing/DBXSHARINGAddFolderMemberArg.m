@@ -15,7 +15,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](customMessage);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharedFolderId = sharedFolderId;
         _members = members;
         _quiet = quiet ?: @NO;
@@ -28,8 +28,8 @@
     return [self initWithSharedFolderId:sharedFolderId members:members quiet:nil customMessage:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAddFolderMemberArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAddFolderMemberArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

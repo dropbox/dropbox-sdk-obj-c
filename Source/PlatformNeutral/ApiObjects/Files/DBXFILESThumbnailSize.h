@@ -8,7 +8,7 @@
 @class DBXFILESThumbnailSize;
 
 /// 
-/// The `DBXFILESThumbnailSize` union.
+/// The ThumbnailSize union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESThumbnailSize : NSObject <DBXSerializable> 
 
 /// The `DBXFILESThumbnailSizeTag` enum type represents the possible tag states
-/// that the `DBXFILESThumbnailSize` union can exist in.
+/// with which the `DBXFILESThumbnailSize` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
     /// 32 by 32 px.
     DBXFILESThumbnailSizeW32h32,
@@ -39,37 +39,92 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESThumbnailSizeTag tag;
 
+/// 
 /// Initializes union class with tag state of `W32h32`.
+/// 
+/// About the `W32h32` tag state: 32 by 32 px.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailSize` instance.
+/// 
 - (nonnull instancetype)initWithW32h32;
 
+/// 
 /// Initializes union class with tag state of `W64h64`.
+/// 
+/// About the `W64h64` tag state: 64 by 64 px.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailSize` instance.
+/// 
 - (nonnull instancetype)initWithW64h64;
 
+/// 
 /// Initializes union class with tag state of `W128h128`.
+/// 
+/// About the `W128h128` tag state: 128 by 128 px.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailSize` instance.
+/// 
 - (nonnull instancetype)initWithW128h128;
 
+/// 
 /// Initializes union class with tag state of `W640h480`.
+/// 
+/// About the `W640h480` tag state: 640 by 480 px.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailSize` instance.
+/// 
 - (nonnull instancetype)initWithW640h480;
 
+/// 
 /// Initializes union class with tag state of `W1024h768`.
+/// 
+/// About the `W1024h768` tag state: 1024 by 768
+/// 
+/// - returns: An initialized `DBXFILESThumbnailSize` instance.
+/// 
 - (nonnull instancetype)initWithW1024h768;
 
-/// Returns whether the union's current tag state has value `W32h32`.
+/// 
+/// Retrieves whether the union's current tag state has value `W32h32`.
+/// 
+/// - returns: Whether the union's current tag state has value `W32h32`.
+/// 
 - (BOOL)isW32h32;
 
-/// Returns whether the union's current tag state has value `W64h64`.
+/// 
+/// Retrieves whether the union's current tag state has value `W64h64`.
+/// 
+/// - returns: Whether the union's current tag state has value `W64h64`.
+/// 
 - (BOOL)isW64h64;
 
-/// Returns whether the union's current tag state has value `W128h128`.
+/// 
+/// Retrieves whether the union's current tag state has value `W128h128`.
+/// 
+/// - returns: Whether the union's current tag state has value `W128h128`.
+/// 
 - (BOOL)isW128h128;
 
-/// Returns whether the union's current tag state has value `W640h480`.
+/// 
+/// Retrieves whether the union's current tag state has value `W640h480`.
+/// 
+/// - returns: Whether the union's current tag state has value `W640h480`.
+/// 
 - (BOOL)isW640h480;
 
-/// Returns whether the union's current tag state has value `W1024h768`.
+/// 
+/// Retrieves whether the union's current tag state has value `W1024h768`.
+/// 
+/// - returns: Whether the union's current tag state has value `W1024h768`.
+/// 
 - (BOOL)isW1024h768;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -80,12 +135,25 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
 /// 
 @interface DBXFILESThumbnailSizeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESThumbnailSize` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailSize * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESThumbnailSize` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESThumbnailSize` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailSize` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailSize * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESThumbnailSize` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESThumbnailSize` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailSize` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESThumbnailSize` object.
+/// 
 + (DBXFILESThumbnailSize * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

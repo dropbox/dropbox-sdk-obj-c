@@ -15,7 +15,7 @@
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersAddLaunchAsyncJobId;
         _asyncJobId = asyncJobId;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(NSArray<DBXTEAMMemberAddResult *> *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersAddLaunchComplete;
         _complete = complete;
     }
@@ -51,21 +51,21 @@
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != DBXTEAMMembersAddLaunchAsyncJobId) {
+    if (![self isAsyncJobId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersAddLaunchAsyncJobId`, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (NSArray<DBXTEAMMemberAddResult *> *)complete {
-    if (_tag != DBXTEAMMembersAddLaunchComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersAddLaunchComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersAddLaunchSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersAddLaunchSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

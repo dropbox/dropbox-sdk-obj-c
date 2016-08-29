@@ -10,7 +10,7 @@
 @class DBXFILESRemovePropertiesError;
 
 /// 
-/// The `DBXFILESRemovePropertiesError` union.
+/// The RemovePropertiesError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXFILESRemovePropertiesError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESRemovePropertiesErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESRemovePropertiesError` union can exist in.
+/// states with which the `DBXFILESRemovePropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESRemovePropertiesErrorTag) {
     /// Property template does not exist for given identifier.
     DBXFILESRemovePropertiesErrorTemplateNotFound,
@@ -50,38 +50,101 @@ typedef NS_ENUM(NSInteger, DBXFILESRemovePropertiesErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookUpPropertiesError * _Nonnull propertyGroupLookup;
 
+/// 
 /// Initializes union class with tag state of `TemplateNotFound`.
+/// 
+/// About the `TemplateNotFound` tag state: Property template does not exist for
+/// given identifier.
+/// 
+/// - parameter templateNotFound: Property template does not exist for given
+/// identifier.
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `RestrictedContent`.
+/// 
+/// About the `RestrictedContent` tag state: You do not have the permissions to
+/// modify this property template.
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `PropertyGroupLookup`.
+/// 
+/// - parameter propertyGroupLookup: (no description).
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithPropertyGroupLookup:(DBXFILESLookUpPropertiesError * _Nonnull)propertyGroupLookup;
 
-/// Returns whether the union's current tag state has value `TemplateNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
 - (BOOL)isTemplateNotFound;
 
-/// Returns whether the union's current tag state has value `RestrictedContent`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
 - (BOOL)isRestrictedContent;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `PropertyGroupLookup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PropertyGroupLookup`.
+/// 
 - (BOOL)isPropertyGroupLookup;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -92,12 +155,25 @@ typedef NS_ENUM(NSInteger, DBXFILESRemovePropertiesErrorTag) {
 /// 
 @interface DBXFILESRemovePropertiesErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESRemovePropertiesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESRemovePropertiesError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESRemovePropertiesError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESRemovePropertiesError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESRemovePropertiesError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESRemovePropertiesError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESRemovePropertiesError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESRemovePropertiesError` object.
+/// 
 + (DBXFILESRemovePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

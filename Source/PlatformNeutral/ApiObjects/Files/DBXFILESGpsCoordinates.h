@@ -8,13 +8,13 @@
 @class DBXFILESGpsCoordinates;
 
 /// 
-/// The `DBXFILESGpsCoordinates` struct.
+/// The GpsCoordinates struct.
+/// 
+/// GPS coordinates for a photo or video.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// GPS coordinates for a photo or video.
 /// 
 @interface DBXFILESGpsCoordinates : NSObject <DBXSerializable> 
 
@@ -24,24 +24,44 @@
 /// Longitude of the GPS coordinates.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull longitude;
 
-/// Full constructor for the `GpsCoordinates` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESGpsCoordinates` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter latitude: Latitude of the GPS coordinates.
+/// - parameter longitude: Longitude of the GPS coordinates.
+/// 
+/// - returns: An initialized `DBXFILESGpsCoordinates` instance.
+/// 
 - (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGpsCoordinates` struct.
+/// The serialization class for the GpsCoordinates struct.
 /// 
 @interface DBXFILESGpsCoordinatesSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGpsCoordinates` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGpsCoordinates * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGpsCoordinates` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGpsCoordinates` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGpsCoordinates` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGpsCoordinates * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGpsCoordinates` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGpsCoordinates` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGpsCoordinates` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGpsCoordinates` object.
+/// 
 + (DBXFILESGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

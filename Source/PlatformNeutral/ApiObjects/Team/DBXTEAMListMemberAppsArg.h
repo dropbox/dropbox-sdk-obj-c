@@ -8,7 +8,7 @@
 @class DBXTEAMListMemberAppsArg;
 
 /// 
-/// The `DBXTEAMListMemberAppsArg` struct.
+/// The ListMemberAppsArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// The team member id
 @property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
-/// Full constructor for the `ListMemberAppsArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMListMemberAppsArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter teamMemberId: The team member id
+/// 
+/// - returns: An initialized `DBXTEAMListMemberAppsArg` instance.
+/// 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMListMemberAppsArg` struct.
+/// The serialization class for the ListMemberAppsArg struct.
 /// 
 @interface DBXTEAMListMemberAppsArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListMemberAppsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListMemberAppsArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListMemberAppsArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListMemberAppsArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListMemberAppsArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListMemberAppsArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListMemberAppsArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListMemberAppsArg` object.
+/// 
 + (DBXTEAMListMemberAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

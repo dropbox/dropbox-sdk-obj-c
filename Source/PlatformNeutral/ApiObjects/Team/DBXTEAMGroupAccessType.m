@@ -10,7 +10,7 @@
 
 - (instancetype)initWithMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupAccessTypeMember;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupAccessTypeOwner;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupAccessTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupAccessTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

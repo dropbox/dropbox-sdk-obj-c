@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DropboxClientsManager.h"
+@class DBXTransportClient;
 @class NSWorkspace;
 @class NSViewController;
 
@@ -13,6 +14,10 @@
 
 + (void)setupWithAppKey:(NSString * _Nonnull)appKey;
 
++ (void)setupWithAppKey:(NSString * _Nonnull)appKey transportClient:(DBXTransportClient * _Nonnull)transportClient;
+
 + (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey;
+
++ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey transportClient:(DBXTransportClient * _Nonnull)transportClient;
 
 @end

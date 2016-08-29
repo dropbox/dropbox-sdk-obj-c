@@ -13,15 +13,15 @@
 - (instancetype)initWithGroup:(DBXTEAMGroupSelector *)group users:(DBXTEAMUsersSelectorArg *)users {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _group = group;
         _users = users;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMembersSelectorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMembersSelectorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

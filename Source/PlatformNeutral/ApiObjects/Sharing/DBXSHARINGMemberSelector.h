@@ -8,18 +8,18 @@
 @class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DBXSHARINGMemberSelector` union.
+/// The MemberSelector union.
+/// 
+/// Includes different ways to identify a member of a shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Includes different ways to identify a member of a shared folder.
-/// 
 @interface DBXSHARINGMemberSelector : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGMemberSelectorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGMemberSelector` union can exist in.
+/// states with which the `DBXSHARINGMemberSelector` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
     /// Dropbox account, team member, or group ID of member.
     DBXSHARINGMemberSelectorDropboxId,
@@ -41,25 +41,63 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
 /// E-mail address of member.
 @property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
+/// 
 /// Initializes union class with tag state of `DropboxId`.
+/// 
+/// About the `DropboxId` tag state: Dropbox account, team member, or group ID
+/// of member.
+/// 
+/// - parameter dropboxId: Dropbox account, team member, or group ID of member.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberSelector` instance.
+/// 
 - (nonnull instancetype)initWithDropboxId:(NSString * _Nonnull)dropboxId;
 
+/// 
 /// Initializes union class with tag state of `Email`.
+/// 
+/// About the `Email` tag state: E-mail address of member.
+/// 
+/// - parameter email: E-mail address of member.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberSelector` instance.
+/// 
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberSelector` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `DropboxId`.
+/// 
+/// Retrieves whether the union's current tag state has value `DropboxId`.
+/// 
+/// - returns: Whether the union's current tag state has value `DropboxId`.
+/// 
 - (BOOL)isDropboxId;
 
-/// Returns whether the union's current tag state has value `Email`.
+/// 
+/// Retrieves whether the union's current tag state has value `Email`.
+/// 
+/// - returns: Whether the union's current tag state has value `Email`.
+/// 
 - (BOOL)isEmail;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -70,12 +108,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
 /// 
 @interface DBXSHARINGMemberSelectorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGMemberSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberSelector * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGMemberSelector` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGMemberSelector` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberSelector` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberSelector * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGMemberSelector` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGMemberSelector` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberSelector` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGMemberSelector` object.
+/// 
 + (DBXSHARINGMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

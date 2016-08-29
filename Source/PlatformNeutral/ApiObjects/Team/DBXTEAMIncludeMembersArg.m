@@ -11,7 +11,7 @@
 - (instancetype)initWithReturnMembers:(NSNumber *)returnMembers {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _returnMembers = returnMembers ?: @YES;
     }
     return self;
@@ -21,8 +21,8 @@
     return [self initWithReturnMembers:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMIncludeMembersArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMIncludeMembersArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

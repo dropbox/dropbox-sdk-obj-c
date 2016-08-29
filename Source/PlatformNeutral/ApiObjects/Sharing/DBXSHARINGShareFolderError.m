@@ -14,7 +14,7 @@
 
 - (instancetype)initWithEmailUnverified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorEmailUnverified;
     }
     return self;
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithBadPath:(DBXSHARINGSharePathError *)badPath {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorBadPath;
         _badPath = badPath;
     }
@@ -31,7 +31,7 @@
 
 - (instancetype)initWithTeamPolicyDisallowsMemberPolicy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy;
     }
     return self;
@@ -39,7 +39,7 @@
 
 - (instancetype)initWithDisallowedSharedLinkPolicy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorDisallowedSharedLinkPolicy;
     }
     return self;
@@ -47,7 +47,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorOther;
     }
     return self;
@@ -55,7 +55,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderErrorNoPermission;
     }
     return self;
@@ -105,14 +105,14 @@
 }
 
 - (DBXSHARINGSharePathError *)badPath {
-    if (_tag != DBXSHARINGShareFolderErrorBadPath) {
+    if (![self isBadPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGShareFolderErrorBadPath`, but was %@.", [self getTagName]];
     }
     return _badPath;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGShareFolderErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGShareFolderErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

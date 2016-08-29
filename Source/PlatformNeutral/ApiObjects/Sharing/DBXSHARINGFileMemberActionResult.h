@@ -10,14 +10,14 @@
 @class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DBXSHARINGFileMemberActionResult` struct.
+/// The FileMemberActionResult struct.
+/// 
+/// Per-member result for removeFileMember2 or addFileMember or
+/// changeFileMemberAccess.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Per-member result for removeFileMember2 or addFileMember or
-/// changeFileMemberAccess.
 /// 
 @interface DBXSHARINGFileMemberActionResult : NSObject <DBXSerializable> 
 
@@ -27,24 +27,45 @@
 /// The outcome of the action on this member.
 @property (nonatomic, readonly) DBXSHARINGFileMemberActionIndividualResult * _Nonnull result;
 
-/// Full constructor for the `FileMemberActionResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGFileMemberActionResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter member: One of specified input members.
+/// - parameter result: The outcome of the action on this member.
+/// 
+/// - returns: An initialized `DBXSHARINGFileMemberActionResult` instance.
+/// 
 - (nonnull instancetype)initWithMember:(DBXSHARINGMemberSelector * _Nonnull)member result:(DBXSHARINGFileMemberActionIndividualResult * _Nonnull)result;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGFileMemberActionResult` struct.
+/// The serialization class for the FileMemberActionResult struct.
 /// 
 @interface DBXSHARINGFileMemberActionResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFileMemberActionResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileMemberActionResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFileMemberActionResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGFileMemberActionResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileMemberActionResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileMemberActionResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFileMemberActionResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFileMemberActionResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileMemberActionResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFileMemberActionResult`
+/// object.
+/// 
 + (DBXSHARINGFileMemberActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

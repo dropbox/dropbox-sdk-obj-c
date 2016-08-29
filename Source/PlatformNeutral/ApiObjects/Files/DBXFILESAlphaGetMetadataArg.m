@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]]](includePropertyTemplates);
 
     self = [super initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
-    if (self != nil) {
+    if (self) {
         _includePropertyTemplates = includePropertyTemplates;
     }
     return self;
@@ -24,8 +24,8 @@
     return [self initWithPath:path includeMediaInfo:nil includeDeleted:nil includeHasExplicitSharedMembers:nil includePropertyTemplates:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESAlphaGetMetadataArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESAlphaGetMetadataArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

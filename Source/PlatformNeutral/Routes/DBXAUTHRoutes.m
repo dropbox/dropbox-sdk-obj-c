@@ -8,7 +8,7 @@
 
 - (instancetype)init:(DBXTransportClient *)client {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _client = client;
     }
     return self;

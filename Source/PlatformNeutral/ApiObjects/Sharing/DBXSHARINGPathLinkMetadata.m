@@ -13,7 +13,7 @@
 - (instancetype)initWithUrl:(NSString *)url visibility:(DBXSHARINGVisibility *)visibility path:(NSString *)path expires:(NSDate *)expires {
 
     self = [super initWithUrl:url visibility:visibility expires:expires];
-    if (self != nil) {
+    if (self) {
         _path = path;
     }
     return self;
@@ -23,8 +23,8 @@
     return [self initWithUrl:url visibility:visibility path:path expires:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGPathLinkMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGPathLinkMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

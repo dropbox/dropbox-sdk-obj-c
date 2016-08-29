@@ -9,7 +9,7 @@
 @class DBXTEAMRevokeDesktopClientArg;
 
 /// 
-/// The `DBXTEAMRevokeDesktopClientArg` struct.
+/// The RevokeDesktopClientArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,28 +22,58 @@
 /// access the account)
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull deleteOnUnlink;
 
-/// Full constructor for the `RevokeDesktopClientArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXTEAMRevokeDesktopClientArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter teamMemberId: The unique id of the member owning the device
+/// - parameter deleteOnUnlink: Whether to delete all files of the account (this
+/// is possible only if supported by the desktop client and  will be made the
+/// next time the client access the account)
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDesktopClientArg` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId deleteOnUnlink:(NSNumber * _Nullable)deleteOnUnlink;
 
-/// Convenience constructor for the `RevokeDesktopClientArg` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMRevokeDesktopClientArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter teamMemberId: The unique id of the member owning the device
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDesktopClientArg` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeDesktopClientArg` struct.
+/// The serialization class for the RevokeDesktopClientArg struct.
 /// 
 @interface DBXTEAMRevokeDesktopClientArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeDesktopClientArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDesktopClientArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeDesktopClientArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeDesktopClientArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDesktopClientArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDesktopClientArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeDesktopClientArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeDesktopClientArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDesktopClientArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeDesktopClientArg` object.
+/// 
 + (DBXTEAMRevokeDesktopClientArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

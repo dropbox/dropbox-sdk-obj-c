@@ -10,7 +10,7 @@
 @class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DBXSHARINGMountFolderError` union.
+/// The MountFolderError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXSHARINGMountFolderError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGMountFolderErrorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGMountFolderError` union can exist in.
+/// states with which the `DBXSHARINGMountFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
     /// (no description).
     DBXSHARINGMountFolderErrorAccessError,
@@ -56,50 +56,134 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
 /// The current user does not have enough space to mount the shared folder.
 @property (nonatomic, readonly) DBXSHARINGInsufficientQuotaAmounts * _Nonnull insufficientQuota;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `InsideSharedFolder`.
+/// 
+/// About the `InsideSharedFolder` tag state: Mounting would cause a shared
+/// folder to be inside another, which is disallowed.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithInsideSharedFolder;
 
+/// 
 /// Initializes union class with tag state of `InsufficientQuota`.
+/// 
+/// About the `InsufficientQuota` tag state: The current user does not have
+/// enough space to mount the shared folder.
+/// 
+/// - parameter insufficientQuota: The current user does not have enough space
+/// to mount the shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithInsufficientQuota:(DBXSHARINGInsufficientQuotaAmounts * _Nonnull)insufficientQuota;
 
+/// 
 /// Initializes union class with tag state of `AlreadyMounted`.
+/// 
+/// About the `AlreadyMounted` tag state: The shared folder is already mounted.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithAlreadyMounted;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: The current user does not have
+/// permission to perform this action.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `NotMountable`.
+/// 
+/// About the `NotMountable` tag state: The shared folder is not mountable. One
+/// example where this can occur is when the shared folder belongs within a team
+/// folder in the user's Dropbox.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithNotMountable;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGMountFolderError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InsideSharedFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsideSharedFolder`.
+/// 
 - (BOOL)isInsideSharedFolder;
 
-/// Returns whether the union's current tag state has value `InsufficientQuota`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsufficientQuota`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsufficientQuota`.
+/// 
 - (BOOL)isInsufficientQuota;
 
-/// Returns whether the union's current tag state has value `AlreadyMounted`.
+/// 
+/// Retrieves whether the union's current tag state has value `AlreadyMounted`.
+/// 
+/// - returns: Whether the union's current tag state has value `AlreadyMounted`.
+/// 
 - (BOOL)isAlreadyMounted;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `NotMountable`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotMountable`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotMountable`.
+/// 
 - (BOOL)isNotMountable;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -110,12 +194,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
 /// 
 @interface DBXSHARINGMountFolderErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGMountFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMountFolderError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGMountFolderError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGMountFolderError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGMountFolderError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMountFolderError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGMountFolderError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGMountFolderError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGMountFolderError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGMountFolderError` object.
+/// 
 + (DBXSHARINGMountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

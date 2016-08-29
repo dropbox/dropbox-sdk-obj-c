@@ -11,13 +11,13 @@
 @class DBXUSERSName;
 
 /// 
-/// The `DBXTEAMMemberProfile` struct.
+/// The MemberProfile struct.
+/// 
+/// Basic member profile.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Basic member profile.
 /// 
 @interface DBXTEAMMemberProfile : NSObject <DBXSerializable> 
 
@@ -48,28 +48,72 @@
 /// use a license; no access to the team's shared quota).
 @property (nonatomic, readonly) DBXTEAMTeamMembershipType * _Nonnull membershipType;
 
-/// Full constructor for the `MemberProfile` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMMemberProfile` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter teamMemberId: ID of user as a member of a team.
+/// - parameter email: Email address of user.
+/// - parameter emailVerified: Is true if the user's email is verified to be
+/// owned by the user.
+/// - parameter status: The user's status as a member of a specific team.
+/// - parameter name: Representations for a person's name.
+/// - parameter membershipType: The user's membership type: full (normal team
+/// member) vs limited (does not use a license; no access to the team's shared
+/// quota).
+/// - parameter externalId: External ID that a team can attach to the user. An
+/// application using the API may find it easier to use their own IDs instead of
+/// Dropbox IDs like account_id or team_member_id.
+/// - parameter accountId: A user's account identifier.
+/// 
+/// - returns: An initialized `DBXTEAMMemberProfile` instance.
+/// 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DBXTEAMTeamMemberStatus * _Nonnull)status name:(DBXUSERSName * _Nonnull)name membershipType:(DBXTEAMTeamMembershipType * _Nonnull)membershipType externalId:(NSString * _Nullable)externalId accountId:(NSString * _Nullable)accountId;
 
-/// Convenience constructor for the `MemberProfile` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMMemberProfile` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter teamMemberId: ID of user as a member of a team.
+/// - parameter email: Email address of user.
+/// - parameter emailVerified: Is true if the user's email is verified to be
+/// owned by the user.
+/// - parameter status: The user's status as a member of a specific team.
+/// - parameter name: Representations for a person's name.
+/// - parameter membershipType: The user's membership type: full (normal team
+/// member) vs limited (does not use a license; no access to the team's shared
+/// quota).
+/// 
+/// - returns: An initialized `DBXTEAMMemberProfile` instance.
+/// 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DBXTEAMTeamMemberStatus * _Nonnull)status name:(DBXUSERSName * _Nonnull)name membershipType:(DBXTEAMTeamMembershipType * _Nonnull)membershipType;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMemberProfile` struct.
+/// The serialization class for the MemberProfile struct.
 /// 
 @interface DBXTEAMMemberProfileSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMemberProfile` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberProfile * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMemberProfile` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMemberProfile` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberProfile` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberProfile * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMemberProfile` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMemberProfile` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberProfile` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMemberProfile` object.
+/// 
 + (DBXTEAMMemberProfile * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

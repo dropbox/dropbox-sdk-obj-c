@@ -12,7 +12,7 @@
 - (instancetype)initWithUser:(DBXTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _user = user;
         _wipeData = wipeData ?: @YES;
     }
@@ -23,8 +23,8 @@
     return [self initWithUser:user wipeData:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersDeactivateArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersDeactivateArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

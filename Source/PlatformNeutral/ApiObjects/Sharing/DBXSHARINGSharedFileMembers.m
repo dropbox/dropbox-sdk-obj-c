@@ -17,7 +17,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](invitees);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _users = users;
         _groups = groups;
         _invitees = invitees;
@@ -30,8 +30,8 @@
     return [self initWithUsers:users groups:groups invitees:invitees cursor:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedFileMembersSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedFileMembersSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

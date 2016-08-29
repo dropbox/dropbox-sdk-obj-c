@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorAccessError;
         _accessError = accessError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithInvalidDropboxId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorInvalidDropboxId;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithDNewOwnerNotAMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorDNewOwnerNotAMember;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithDNewOwnerUnmounted {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorDNewOwnerUnmounted;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithDNewOwnerEmailUnverified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorDNewOwnerEmailUnverified;
     }
     return self;
@@ -54,7 +54,7 @@
 
 - (instancetype)initWithTeamFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorTeamFolder;
     }
     return self;
@@ -62,7 +62,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorNoPermission;
     }
     return self;
@@ -70,7 +70,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGTransferFolderErrorOther;
     }
     return self;
@@ -132,14 +132,14 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGTransferFolderErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGTransferFolderErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGTransferFolderErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGTransferFolderErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

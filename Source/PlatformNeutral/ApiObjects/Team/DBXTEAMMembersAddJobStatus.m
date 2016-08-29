@@ -15,7 +15,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersAddJobStatusInProgress;
     }
     return self;
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithComplete:(NSArray<DBXTEAMMemberAddResult *> *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersAddJobStatusComplete;
         _complete = complete;
     }
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithFailed:(NSString *)failed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersAddJobStatusFailed;
         _failed = failed;
     }
@@ -65,21 +65,21 @@
 }
 
 - (NSArray<DBXTEAMMemberAddResult *> *)complete {
-    if (_tag != DBXTEAMMembersAddJobStatusComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersAddJobStatusComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (NSString *)failed {
-    if (_tag != DBXTEAMMembersAddJobStatusFailed) {
+    if (![self isFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersAddJobStatusFailed`, but was %@.", [self getTagName]];
     }
     return _failed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersAddJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersAddJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

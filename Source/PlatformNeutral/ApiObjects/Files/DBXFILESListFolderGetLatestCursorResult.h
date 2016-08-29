@@ -8,7 +8,7 @@
 @class DBXFILESListFolderGetLatestCursorResult;
 
 /// 
-/// The `DBXFILESListFolderGetLatestCursorResult` struct.
+/// The ListFolderGetLatestCursorResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,25 +20,46 @@
 /// since your previous query.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Full constructor for the `ListFolderGetLatestCursorResult` struct (exposes
-/// all instance variables).
+/// 
+/// Full constructor for the `DBXFILESListFolderGetLatestCursorResult` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter cursor: Pass the cursor into :route:`list_folder/continue` to
+/// see what's changed in the folder since your previous query.
+/// 
+/// - returns: An initialized `DBXFILESListFolderGetLatestCursorResult`
+/// instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListFolderGetLatestCursorResult`
-/// struct.
+/// The serialization class for the ListFolderGetLatestCursorResult struct.
 /// 
 @interface DBXFILESListFolderGetLatestCursorResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderGetLatestCursorResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderGetLatestCursorResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderGetLatestCursorResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXFILESListFolderGetLatestCursorResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderGetLatestCursorResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderGetLatestCursorResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderGetLatestCursorResult`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderGetLatestCursorResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderGetLatestCursorResult` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXFILESListFolderGetLatestCursorResult` object.
+/// 
 + (DBXFILESListFolderGetLatestCursorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

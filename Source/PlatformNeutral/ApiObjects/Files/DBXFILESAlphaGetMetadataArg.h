@@ -9,7 +9,7 @@
 @class DBXFILESAlphaGetMetadataArg;
 
 /// 
-/// The `DBXFILESAlphaGetMetadataArg` struct.
+/// The AlphaGetMetadataArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -21,28 +21,64 @@
 /// properties.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nullable includePropertyTemplates;
 
-/// Full constructor for the `AlphaGetMetadataArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESAlphaGetMetadataArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path of a file or folder on Dropbox.
+/// - parameter includeMediaInfo: If true, :field:`FileMetadata.media_info` is
+/// set for photo and video.
+/// - parameter includeDeleted: If true, :type:`DeletedMetadata` will be
+/// returned for deleted file or folder, otherwise
+/// :field:`LookupError.not_found` will be returned.
+/// - parameter includeHasExplicitSharedMembers: If true, the results will
+/// include a flag for each file indicating whether or not  that file has any
+/// explicit members.
+/// - parameter includePropertyTemplates: If true,
+/// :field:`FileMetadata.property_groups` is set for files with custom
+/// properties.
+/// 
+/// - returns: An initialized `DBXFILESAlphaGetMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates;
 
-/// Convenience constructor for the `AlphaGetMetadataArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESAlphaGetMetadataArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path of a file or folder on Dropbox.
+/// 
+/// - returns: An initialized `DBXFILESAlphaGetMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESAlphaGetMetadataArg` struct.
+/// The serialization class for the AlphaGetMetadataArg struct.
 /// 
 @interface DBXFILESAlphaGetMetadataArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESAlphaGetMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESAlphaGetMetadataArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESAlphaGetMetadataArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESAlphaGetMetadataArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESAlphaGetMetadataArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESAlphaGetMetadataArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESAlphaGetMetadataArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESAlphaGetMetadataArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESAlphaGetMetadataArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESAlphaGetMetadataArg` object.
+/// 
 + (DBXFILESAlphaGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

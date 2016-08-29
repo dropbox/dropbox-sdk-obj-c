@@ -8,7 +8,7 @@
 @class DBXPROPERTIESModifyPropertyTemplateError;
 
 /// 
-/// The `DBXPROPERTIESModifyPropertyTemplateError` union.
+/// The ModifyPropertyTemplateError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXPROPERTIESModifyPropertyTemplateError : NSObject <DBXSerializable> 
 
 /// The `DBXPROPERTIESModifyPropertyTemplateErrorTag` enum type represents the
-/// possible tag states that the `DBXPROPERTIESModifyPropertyTemplateError`
-/// union can exist in.
+/// possible tag states with which the
+/// `DBXPROPERTIESModifyPropertyTemplateError` union can exist.
 typedef NS_ENUM(NSInteger, DBXPROPERTIESModifyPropertyTemplateErrorTag) {
     /// Property template does not exist for given identifier.
     DBXPROPERTIESModifyPropertyTemplateErrorTemplateNotFound,
@@ -50,51 +50,150 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESModifyPropertyTemplateErrorTag) {
 /// Property template does not exist for given identifier.
 @property (nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `TemplateNotFound`.
+/// 
+/// About the `TemplateNotFound` tag state: Property template does not exist for
+/// given identifier.
+/// 
+/// - parameter templateNotFound: Property template does not exist for given
+/// identifier.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `RestrictedContent`.
+/// 
+/// About the `RestrictedContent` tag state: You do not have the permissions to
+/// modify this property template.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `ConflictingPropertyNames`.
+/// 
+/// About the `ConflictingPropertyNames` tag state: A property field name
+/// already exists in the template.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithConflictingPropertyNames;
 
+/// 
 /// Initializes union class with tag state of `TooManyProperties`.
+/// 
+/// About the `TooManyProperties` tag state: There are too many properties in
+/// the changed template. The maximum number of properties per template is 32.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithTooManyProperties;
 
+/// 
 /// Initializes union class with tag state of `TooManyTemplates`.
+/// 
+/// About the `TooManyTemplates` tag state: There are too many templates for the
+/// team.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithTooManyTemplates;
 
+/// 
 /// Initializes union class with tag state of `TemplateAttributeTooLarge`.
+/// 
+/// About the `TemplateAttributeTooLarge` tag state: The template name,
+/// description or field names is too large.
+/// 
+/// - returns: An initialized `DBXPROPERTIESModifyPropertyTemplateError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithTemplateAttributeTooLarge;
 
-/// Returns whether the union's current tag state has value `TemplateNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
 - (BOOL)isTemplateNotFound;
 
-/// Returns whether the union's current tag state has value `RestrictedContent`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
 - (BOOL)isRestrictedContent;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `ConflictingPropertyNames`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `ConflictingPropertyNames`.
+/// 
 - (BOOL)isConflictingPropertyNames;
 
-/// Returns whether the union's current tag state has value `TooManyProperties`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TooManyProperties`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TooManyProperties`.
+/// 
 - (BOOL)isTooManyProperties;
 
-/// Returns whether the union's current tag state has value `TooManyTemplates`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TooManyTemplates`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TooManyTemplates`.
+/// 
 - (BOOL)isTooManyTemplates;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `TemplateAttributeTooLarge`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TemplateAttributeTooLarge`.
+/// 
 - (BOOL)isTemplateAttributeTooLarge;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -106,12 +205,26 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESModifyPropertyTemplateErrorTag) {
 /// 
 @interface DBXPROPERTIESModifyPropertyTemplateErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESModifyPropertyTemplateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESModifyPropertyTemplateError * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESModifyPropertyTemplateError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESModifyPropertyTemplateError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESModifyPropertyTemplateError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESModifyPropertyTemplateError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESModifyPropertyTemplateError`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESModifyPropertyTemplateError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESModifyPropertyTemplateError` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXPROPERTIESModifyPropertyTemplateError` object.
+/// 
 + (DBXPROPERTIESModifyPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

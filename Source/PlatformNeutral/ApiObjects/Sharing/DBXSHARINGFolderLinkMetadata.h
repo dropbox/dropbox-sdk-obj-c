@@ -12,38 +12,81 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXSHARINGFolderLinkMetadata` struct.
+/// The FolderLinkMetadata struct.
+/// 
+/// The metadata of a folder shared link
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// The metadata of a folder shared link
-/// 
 @interface DBXSHARINGFolderLinkMetadata : DBXSHARINGSharedLinkMetadata <DBXSerializable> 
 
-/// Full constructor for the `FolderLinkMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGFolderLinkMetadata` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter url: URL of the shared link.
+/// - parameter name: The linked file name (including extension). This never
+/// contains a slash.
+/// - parameter linkPermissions: The link's access permissions.
+/// - parameter id_: A unique identifier for the linked file.
+/// - parameter expires: Expiration time, if set. By default the link won't
+/// expire.
+/// - parameter pathLower: The lowercased full path in the user's Dropbox. This
+/// always starts with a slash. This field will only be present only if the
+/// linked file is in the authenticated user's  dropbox.
+/// - parameter teamMemberInfo: The team membership information of the link's
+/// owner.  This field will only be present  if the link's owner is a team
+/// member.
+/// - parameter contentOwnerTeamInfo: The team information of the content's
+/// owner. This field will only be present if the content's owner is a team
+/// member and the content's owner team is different from the link's owner team.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderLinkMetadata` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
-/// Convenience constructor for the `FolderLinkMetadata` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGFolderLinkMetadata` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter url: URL of the shared link.
+/// - parameter name: The linked file name (including extension). This never
+/// contains a slash.
+/// - parameter linkPermissions: The link's access permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderLinkMetadata` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGFolderLinkMetadata` struct.
+/// The serialization class for the FolderLinkMetadata struct.
 /// 
 @interface DBXSHARINGFolderLinkMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFolderLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderLinkMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFolderLinkMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGFolderLinkMetadata` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderLinkMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderLinkMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFolderLinkMetadata` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFolderLinkMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderLinkMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFolderLinkMetadata` object.
+/// 
 + (DBXSHARINGFolderLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithAnyone {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkPolicyAnyone;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithMembers {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkPolicyMembers;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkPolicyOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedLinkPolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedLinkPolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

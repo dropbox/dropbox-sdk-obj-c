@@ -12,15 +12,15 @@
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId role:(DBXTEAMAdminTier *)role {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _teamMemberId = teamMemberId;
         _role = role;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersSetPermissionsResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersSetPermissionsResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

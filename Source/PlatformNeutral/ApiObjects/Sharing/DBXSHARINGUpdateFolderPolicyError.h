@@ -9,7 +9,7 @@
 @class DBXSHARINGUpdateFolderPolicyError;
 
 /// 
-/// The `DBXSHARINGUpdateFolderPolicyError` union.
+/// The UpdateFolderPolicyError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,8 @@
 @interface DBXSHARINGUpdateFolderPolicyError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGUpdateFolderPolicyErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGUpdateFolderPolicyError` union can exist in.
+/// tag states with which the `DBXSHARINGUpdateFolderPolicyError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderPolicyErrorTag) {
     /// (no description).
     DBXSHARINGUpdateFolderPolicyErrorAccessError,
@@ -48,45 +49,115 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderPolicyErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `NotOnTeam`.
+/// 
+/// About the `NotOnTeam` tag state:
+/// :field:`UpdateFolderPolicyArg.member_policy` was set even though user is not
+/// on a team.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithNotOnTeam;
 
+/// 
 /// Initializes union class with tag state of `TeamPolicyDisallowsMemberPolicy`.
+/// 
+/// About the `TeamPolicyDisallowsMemberPolicy` tag state: Team policy is more
+/// restrictive than :field:`ShareFolderArg.member_policy`.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithTeamPolicyDisallowsMemberPolicy;
 
+/// 
 /// Initializes union class with tag state of `DisallowedSharedLinkPolicy`.
+/// 
+/// About the `DisallowedSharedLinkPolicy` tag state: The current account is not
+/// allowed to select the specified :field:`ShareFolderArg.shared_link_policy`.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithDisallowedSharedLinkPolicy;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: The current user does not have
+/// permission to perform this action.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderPolicyError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `NotOnTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotOnTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotOnTeam`.
+/// 
 - (BOOL)isNotOnTeam;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `TeamPolicyDisallowsMemberPolicy`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TeamPolicyDisallowsMemberPolicy`.
+/// 
 - (BOOL)isTeamPolicyDisallowsMemberPolicy;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `DisallowedSharedLinkPolicy`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `DisallowedSharedLinkPolicy`.
+/// 
 - (BOOL)isDisallowedSharedLinkPolicy;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -97,12 +168,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderPolicyErrorTag) {
 /// 
 @interface DBXSHARINGUpdateFolderPolicyErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUpdateFolderPolicyError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderPolicyError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUpdateFolderPolicyError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGUpdateFolderPolicyError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderPolicyError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderPolicyError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUpdateFolderPolicyError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUpdateFolderPolicyError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderPolicyError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUpdateFolderPolicyError`
+/// object.
+/// 
 + (DBXSHARINGUpdateFolderPolicyError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

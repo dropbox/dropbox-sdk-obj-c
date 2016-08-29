@@ -10,13 +10,13 @@
 @class DBXTEAMPOLICIESTeamSharingPolicies;
 
 /// 
-/// The `DBXTEAMPOLICIESTeamMemberPolicies` struct.
+/// The TeamMemberPolicies struct.
+/// 
+/// Policies governing team members.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Policies governing team members.
 /// 
 @interface DBXTEAMPOLICIESTeamMemberPolicies : NSObject <DBXSerializable> 
 
@@ -30,24 +30,50 @@
 /// future we'll be adding more new fields and additional documentation.
 @property (nonatomic, readonly) DBXTEAMPOLICIESEmmState * _Nonnull emmState;
 
-/// Full constructor for the `TeamMemberPolicies` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMPOLICIESTeamMemberPolicies` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter sharing: Policies governing sharing.
+/// - parameter emmState: This describes the Enterprise Mobility Management
+/// (EMM) state for this team. This information can be used to understand if an
+/// organization is integrating with a third-party EMM vendor to further manage
+/// and apply restrictions upon the team's Dropbox usage on mobile devices. This
+/// is a new feature and in the future we'll be adding more new fields and
+/// additional documentation.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESTeamMemberPolicies` instance.
+/// 
 - (nonnull instancetype)initWithSharing:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharing emmState:(DBXTEAMPOLICIESEmmState * _Nonnull)emmState;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMPOLICIESTeamMemberPolicies` struct.
+/// The serialization class for the TeamMemberPolicies struct.
 /// 
 @interface DBXTEAMPOLICIESTeamMemberPoliciesSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMPOLICIESTeamMemberPolicies` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMPOLICIESTeamMemberPolicies` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMPOLICIESTeamMemberPolicies` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESTeamMemberPolicies` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMPOLICIESTeamMemberPolicies` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMPOLICIESTeamMemberPolicies` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESTeamMemberPolicies` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMPOLICIESTeamMemberPolicies`
+/// object.
+/// 
 + (DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

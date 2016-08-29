@@ -8,18 +8,18 @@
 @class DBXSHARINGFileAction;
 
 /// 
-/// The `DBXSHARINGFileAction` union.
+/// The FileAction union.
+/// 
+/// Sharing actions that may be taken on files.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Sharing actions that may be taken on files.
-/// 
 @interface DBXSHARINGFileAction : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGFileActionTag` enum type represents the possible tag states
-/// that the `DBXSHARINGFileAction` union can exist in.
+/// with which the `DBXSHARINGFileAction` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
     /// Change or edit contents of the file.
     DBXSHARINGFileActionEditContents,
@@ -47,51 +47,128 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGFileActionTag tag;
 
+/// 
 /// Initializes union class with tag state of `EditContents`.
+/// 
+/// About the `EditContents` tag state: Change or edit contents of the file.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithEditContents;
 
+/// 
 /// Initializes union class with tag state of `InviteViewer`.
+/// 
+/// About the `InviteViewer` tag state: Add a member with view permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithInviteViewer;
 
+/// 
 /// Initializes union class with tag state of `InviteViewerNoComment`.
+/// 
+/// About the `InviteViewerNoComment` tag state: Add a member with view
+/// permissions but no comment permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithInviteViewerNoComment;
 
+/// 
 /// Initializes union class with tag state of `Unshare`.
+/// 
+/// About the `Unshare` tag state: Stop sharing this file.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithUnshare;
 
+/// 
 /// Initializes union class with tag state of `RelinquishMembership`.
+/// 
+/// About the `RelinquishMembership` tag state: Relinquish one's own membership
+/// to the file.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithRelinquishMembership;
 
+/// 
 /// Initializes union class with tag state of `ShareLink`.
+/// 
+/// About the `ShareLink` tag state: Create a shared link to the file.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithShareLink;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGFileAction` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `EditContents`.
+/// 
+/// Retrieves whether the union's current tag state has value `EditContents`.
+/// 
+/// - returns: Whether the union's current tag state has value `EditContents`.
+/// 
 - (BOOL)isEditContents;
 
-/// Returns whether the union's current tag state has value `InviteViewer`.
+/// 
+/// Retrieves whether the union's current tag state has value `InviteViewer`.
+/// 
+/// - returns: Whether the union's current tag state has value `InviteViewer`.
+/// 
 - (BOOL)isInviteViewer;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InviteViewerNoComment`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InviteViewerNoComment`.
+/// 
 - (BOOL)isInviteViewerNoComment;
 
-/// Returns whether the union's current tag state has value `Unshare`.
+/// 
+/// Retrieves whether the union's current tag state has value `Unshare`.
+/// 
+/// - returns: Whether the union's current tag state has value `Unshare`.
+/// 
 - (BOOL)isUnshare;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `RelinquishMembership`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RelinquishMembership`.
+/// 
 - (BOOL)isRelinquishMembership;
 
-/// Returns whether the union's current tag state has value `ShareLink`.
+/// 
+/// Retrieves whether the union's current tag state has value `ShareLink`.
+/// 
+/// - returns: Whether the union's current tag state has value `ShareLink`.
+/// 
 - (BOOL)isShareLink;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -102,12 +179,24 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
 /// 
 @interface DBXSHARINGFileActionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFileAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileAction * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFileAction` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGFileAction` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileAction` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileAction * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFileAction` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFileAction` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileAction` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFileAction` object.
+/// 
 + (DBXSHARINGFileAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

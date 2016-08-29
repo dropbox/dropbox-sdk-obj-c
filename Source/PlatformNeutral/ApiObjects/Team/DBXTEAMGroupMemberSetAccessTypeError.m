@@ -11,7 +11,7 @@
 
 - (instancetype)initWithGroupNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSetAccessTypeErrorGroupNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSetAccessTypeErrorOther;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithMemberNotInGroup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup;
     }
     return self;
@@ -72,8 +72,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMemberSetAccessTypeErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMemberSetAccessTypeErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

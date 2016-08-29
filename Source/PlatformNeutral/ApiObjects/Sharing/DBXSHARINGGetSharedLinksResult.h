@@ -9,7 +9,7 @@
 @class DBXSHARINGLinkMetadata;
 
 /// 
-/// The `DBXSHARINGGetSharedLinksResult` struct.
+/// The GetSharedLinksResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,43 @@
 /// Shared links applicable to the path argument.
 @property (nonatomic, readonly) NSArray<DBXSHARINGLinkMetadata *> * _Nonnull links;
 
-/// Full constructor for the `GetSharedLinksResult` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGGetSharedLinksResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter links: Shared links applicable to the path argument.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinksResult` instance.
+/// 
 - (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGLinkMetadata *> * _Nonnull)links;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGGetSharedLinksResult` struct.
+/// The serialization class for the GetSharedLinksResult struct.
 /// 
 @interface DBXSHARINGGetSharedLinksResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetSharedLinksResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetSharedLinksResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGGetSharedLinksResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinksResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetSharedLinksResult` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetSharedLinksResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinksResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGetSharedLinksResult` object.
+/// 
 + (DBXSHARINGGetSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

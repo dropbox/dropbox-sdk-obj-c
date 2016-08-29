@@ -8,18 +8,19 @@
 @class DBXTEAMCOMMONGroupManagementType;
 
 /// 
-/// The `DBXTEAMCOMMONGroupManagementType` union.
+/// The GroupManagementType union.
+/// 
+/// The group type determines how a group is managed.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// The group type determines how a group is managed.
-/// 
 @interface DBXTEAMCOMMONGroupManagementType : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMCOMMONGroupManagementTypeTag` enum type represents the possible
-/// tag states that the `DBXTEAMCOMMONGroupManagementType` union can exist in.
+/// tag states with which the `DBXTEAMCOMMONGroupManagementType` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupManagementTypeTag) {
     /// A group which is managed by team admins only.
     DBXTEAMCOMMONGroupManagementTypeCompanyManaged,
@@ -35,25 +36,60 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupManagementTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMCOMMONGroupManagementTypeTag tag;
 
+/// 
 /// Initializes union class with tag state of `CompanyManaged`.
+/// 
+/// About the `CompanyManaged` tag state: A group which is managed by team
+/// admins only.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupManagementType` instance.
+/// 
 - (nonnull instancetype)initWithCompanyManaged;
 
+/// 
 /// Initializes union class with tag state of `UserManaged`.
+/// 
+/// About the `UserManaged` tag state: A group which is managed by selected
+/// users.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupManagementType` instance.
+/// 
 - (nonnull instancetype)initWithUserManaged;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupManagementType` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `CompanyManaged`.
+/// 
+/// Retrieves whether the union's current tag state has value `CompanyManaged`.
+/// 
+/// - returns: Whether the union's current tag state has value `CompanyManaged`.
+/// 
 - (BOOL)isCompanyManaged;
 
-/// Returns whether the union's current tag state has value `UserManaged`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserManaged`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserManaged`.
+/// 
 - (BOOL)isUserManaged;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -64,12 +100,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupManagementTypeTag) {
 /// 
 @interface DBXTEAMCOMMONGroupManagementTypeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMCOMMONGroupManagementType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupManagementType * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMCOMMONGroupManagementType` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMCOMMONGroupManagementType`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMCOMMONGroupManagementType` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupManagementType * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMCOMMONGroupManagementType` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMCOMMONGroupManagementType` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMCOMMONGroupManagementType` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMCOMMONGroupManagementType`
+/// object.
+/// 
 + (DBXTEAMCOMMONGroupManagementType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

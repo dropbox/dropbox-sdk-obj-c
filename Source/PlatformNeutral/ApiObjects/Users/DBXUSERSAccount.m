@@ -13,7 +13,7 @@
     [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _accountId = accountId;
         _name = name;
         _email = email;
@@ -28,8 +28,8 @@
     return [self initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSAccountSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSAccountSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

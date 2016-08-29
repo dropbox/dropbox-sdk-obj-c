@@ -15,7 +15,7 @@
 
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFileMembersErrorUserError;
         _userError = userError;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFileMembersErrorAccessError;
         _accessError = accessError;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFileMembersErrorOther;
     }
     return self;
@@ -65,21 +65,21 @@
 }
 
 - (DBXSHARINGSharingUserError *)userError {
-    if (_tag != DBXSHARINGListFileMembersErrorUserError) {
+    if (![self isUserError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGListFileMembersErrorUserError`, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DBXSHARINGSharingFileAccessError *)accessError {
-    if (_tag != DBXSHARINGListFileMembersErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGListFileMembersErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFileMembersErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFileMembersErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

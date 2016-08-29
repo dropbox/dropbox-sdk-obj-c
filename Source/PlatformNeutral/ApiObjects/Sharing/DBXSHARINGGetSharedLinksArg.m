@@ -11,7 +11,7 @@
 - (instancetype)initWithPath:(NSString *)path {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
     }
     return self;
@@ -21,8 +21,8 @@
     return [self initWithPath:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGetSharedLinksArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGetSharedLinksArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

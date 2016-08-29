@@ -9,7 +9,7 @@
 @class DBXFILESPreviewError;
 
 /// 
-/// The `DBXFILESPreviewError` union.
+/// The PreviewError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESPreviewError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESPreviewErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESPreviewError` union can exist in.
+/// with which the `DBXFILESPreviewError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESPreviewErrorTag) {
     /// An error occurs when downloading metadata for the file.
     DBXFILESPreviewErrorPath,
@@ -41,33 +41,86 @@ typedef NS_ENUM(NSInteger, DBXFILESPreviewErrorTag) {
 /// An error occurs when downloading metadata for the file.
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// About the `Path` tag state: An error occurs when downloading metadata for
+/// the file.
+/// 
+/// - parameter path: An error occurs when downloading metadata for the file.
+/// 
+/// - returns: An initialized `DBXFILESPreviewError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: This preview generation is still in
+/// progress and the file is not ready  for preview yet.
+/// 
+/// - returns: An initialized `DBXFILESPreviewError` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `UnsupportedExtension`.
+/// 
+/// About the `UnsupportedExtension` tag state: The file extension is not
+/// supported preview generation.
+/// 
+/// - returns: An initialized `DBXFILESPreviewError` instance.
+/// 
 - (nonnull instancetype)initWithUnsupportedExtension;
 
+/// 
 /// Initializes union class with tag state of `UnsupportedContent`.
+/// 
+/// About the `UnsupportedContent` tag state: The file content is not supported
+/// for preview generation.
+/// 
+/// - returns: An initialized `DBXFILESPreviewError` instance.
+/// 
 - (nonnull instancetype)initWithUnsupportedContent;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UnsupportedExtension`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UnsupportedExtension`.
+/// 
 - (BOOL)isUnsupportedExtension;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UnsupportedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UnsupportedContent`.
+/// 
 - (BOOL)isUnsupportedContent;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -78,12 +131,24 @@ typedef NS_ENUM(NSInteger, DBXFILESPreviewErrorTag) {
 /// 
 @interface DBXFILESPreviewErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESPreviewError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESPreviewError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESPreviewError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESPreviewError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESPreviewError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPreviewError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESPreviewError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESPreviewError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESPreviewError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESPreviewError` object.
+/// 
 + (DBXFILESPreviewError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

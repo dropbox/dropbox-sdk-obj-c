@@ -11,13 +11,13 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXSHARINGSharedFolderMetadataBase` struct.
+/// The SharedFolderMetadataBase struct.
+/// 
+/// Properties of the shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Properties of the shared folder.
 /// 
 @interface DBXSHARINGSharedFolderMetadataBase : NSObject <DBXSerializable> 
 
@@ -38,28 +38,67 @@
 /// is contained within another shared folder.
 @property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
-/// Full constructor for the `SharedFolderMetadataBase` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGSharedFolderMetadataBase` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter accessType: The current user's access level for this shared
+/// folder.
+/// - parameter isTeamFolder: Whether this folder is a :link:`team folder
+/// https://www.dropbox.com/en/help/986`.
+/// - parameter policy: Policies governing this shared folder.
+/// - parameter ownerTeam: The team that owns the folder. This field is not
+/// present if the folder is not owned by a team.
+/// - parameter parentSharedFolderId: The ID of the parent shared folder. This
+/// field is present only if the folder is contained within another shared
+/// folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderMetadataBase` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy ownerTeam:(DBXUSERSTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
-/// Convenience constructor for the `SharedFolderMetadataBase` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGSharedFolderMetadataBase` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter accessType: The current user's access level for this shared
+/// folder.
+/// - parameter isTeamFolder: Whether this folder is a :link:`team folder
+/// https://www.dropbox.com/en/help/986`.
+/// - parameter policy: Policies governing this shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderMetadataBase` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGSharedFolderMetadataBase` struct.
+/// The serialization class for the SharedFolderMetadataBase struct.
 /// 
 @interface DBXSHARINGSharedFolderMetadataBaseSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedFolderMetadataBase` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMetadataBase * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedFolderMetadataBase` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGSharedFolderMetadataBase` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderMetadataBase` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMetadataBase * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedFolderMetadataBase` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedFolderMetadataBase` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderMetadataBase` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedFolderMetadataBase`
+/// object.
+/// 
 + (DBXSHARINGSharedFolderMetadataBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

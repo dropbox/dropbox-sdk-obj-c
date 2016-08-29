@@ -18,7 +18,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](memberStorageMap);
 
     self = [super initWithStartDate:startDate];
-    if (self != nil) {
+    if (self) {
         _totalUsage = totalUsage;
         _sharedUsage = sharedUsage;
         _unsharedUsage = unsharedUsage;
@@ -28,8 +28,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGetStorageReportSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGetStorageReportSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -16,7 +16,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](propertyGroups);
 
     self = [super initWithPath:path mode:mode autorename:autorename clientModified:clientModified mute:mute];
-    if (self != nil) {
+    if (self) {
         _propertyGroups = propertyGroups;
     }
     return self;
@@ -26,8 +26,8 @@
     return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil propertyGroups:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESCommitInfoWithPropertiesSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESCommitInfoWithPropertiesSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

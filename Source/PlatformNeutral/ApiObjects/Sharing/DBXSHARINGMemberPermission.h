@@ -10,13 +10,13 @@
 @class DBXSHARINGPermissionDeniedReason;
 
 /// 
-/// The `DBXSHARINGMemberPermission` struct.
+/// The MemberPermission struct.
+/// 
+/// Whether the user is allowed to take the action on the associated member.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Whether the user is allowed to take the action on the associated member.
 /// 
 @interface DBXSHARINGMemberPermission : NSObject <DBXSerializable> 
 
@@ -30,28 +30,57 @@
 /// is allowed
 @property (nonatomic, readonly) DBXSHARINGPermissionDeniedReason * _Nullable reason;
 
-/// Full constructor for the `MemberPermission` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGMemberPermission` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter action: The action that the user may wish to take on the member.
+/// - parameter allow: True if the user is allowed to take the action.
+/// - parameter reason: The reason why the user is denied the permission. Not
+/// present if the action is allowed
+/// 
+/// - returns: An initialized `DBXSHARINGMemberPermission` instance.
+/// 
 - (nonnull instancetype)initWithAction:(DBXSHARINGMemberAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow reason:(DBXSHARINGPermissionDeniedReason * _Nullable)reason;
 
-/// Convenience constructor for the `MemberPermission` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGMemberPermission` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter action: The action that the user may wish to take on the member.
+/// - parameter allow: True if the user is allowed to take the action.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberPermission` instance.
+/// 
 - (nonnull instancetype)initWithAction:(DBXSHARINGMemberAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGMemberPermission` struct.
+/// The serialization class for the MemberPermission struct.
 /// 
 @interface DBXSHARINGMemberPermissionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGMemberPermission` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberPermission * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGMemberPermission` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGMemberPermission` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberPermission` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberPermission * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGMemberPermission` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGMemberPermission` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberPermission` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGMemberPermission` object.
+/// 
 + (DBXSHARINGMemberPermission * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

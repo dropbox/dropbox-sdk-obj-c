@@ -16,7 +16,7 @@
 
 - (instancetype)initWithPath:(DBXFILESUploadWriteFailed *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadErrorWithPropertiesPath;
         _path = path;
     }
@@ -25,7 +25,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadErrorWithPropertiesOther;
     }
     return self;
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithPropertiesError:(DBXFILESInvalidPropertyGroupError *)propertiesError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadErrorWithPropertiesPropertiesError;
         _propertiesError = propertiesError;
     }
@@ -66,21 +66,21 @@
 }
 
 - (DBXFILESUploadWriteFailed *)path {
-    if (_tag != DBXFILESUploadErrorWithPropertiesPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadErrorWithPropertiesPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DBXFILESInvalidPropertyGroupError *)propertiesError {
-    if (_tag != DBXFILESUploadErrorWithPropertiesPropertiesError) {
+    if (![self isPropertiesError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadErrorWithPropertiesPropertiesError`, but was %@.", [self getTagName]];
     }
     return _propertiesError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadErrorWithPropertiesSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadErrorWithPropertiesSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

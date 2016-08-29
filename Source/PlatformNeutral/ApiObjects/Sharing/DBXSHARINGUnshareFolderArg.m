@@ -12,7 +12,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharedFolderId = sharedFolderId;
         _leaveACopy = leaveACopy ?: @NO;
     }
@@ -23,8 +23,8 @@
     return [self initWithSharedFolderId:sharedFolderId leaveACopy:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUnshareFolderArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUnshareFolderArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,13 +8,13 @@
 @class DBXTEAMStorageBucket;
 
 /// 
-/// The `DBXTEAMStorageBucket` struct.
+/// The StorageBucket struct.
+/// 
+/// Describes the number of users in a specific storage bucket.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Describes the number of users in a specific storage bucket.
 /// 
 @interface DBXTEAMStorageBucket : NSObject <DBXSerializable> 
 
@@ -25,24 +25,45 @@
 /// The number of people whose storage is in the range of this storage bucket.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull users;
 
-/// Full constructor for the `StorageBucket` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMStorageBucket` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter bucket: The name of the storage bucket. For example, '1G' is a
+/// bucket of users with storage size up to 1 Giga.
+/// - parameter users: The number of people whose storage is in the range of
+/// this storage bucket.
+/// 
+/// - returns: An initialized `DBXTEAMStorageBucket` instance.
+/// 
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMStorageBucket` struct.
+/// The serialization class for the StorageBucket struct.
 /// 
 @interface DBXTEAMStorageBucketSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMStorageBucket` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMStorageBucket * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMStorageBucket` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMStorageBucket` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMStorageBucket` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMStorageBucket * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMStorageBucket` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMStorageBucket` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMStorageBucket` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMStorageBucket` object.
+/// 
 + (DBXTEAMStorageBucket * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -8,11 +8,7 @@
 @class DBXSHARINGRequestedVisibility;
 
 /// 
-/// The `DBXSHARINGRequestedVisibility` union.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The RequestedVisibility union.
 /// 
 /// The access permission that can be requested by the caller for the shared
 /// link. Note that the final resolved visibility of the shared link takes into
@@ -20,10 +16,14 @@
 /// ResolvedVisibility for more info on the possible resolved visibility values
 /// of shared links.
 /// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
+/// 
 @interface DBXSHARINGRequestedVisibility : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGRequestedVisibilityTag` enum type represents the possible tag
-/// states that the `DBXSHARINGRequestedVisibility` union can exist in.
+/// states with which the `DBXSHARINGRequestedVisibility` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGRequestedVisibilityTag) {
     /// Anyone who has received the link can access it. No login required.
     DBXSHARINGRequestedVisibilityPublic,
@@ -40,25 +40,63 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRequestedVisibilityTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGRequestedVisibilityTag tag;
 
+/// 
 /// Initializes union class with tag state of `Public`.
+/// 
+/// About the `Public` tag state: Anyone who has received the link can access
+/// it. No login required.
+/// 
+/// - returns: An initialized `DBXSHARINGRequestedVisibility` instance.
+/// 
 - (nonnull instancetype)initWithPublic;
 
+/// 
 /// Initializes union class with tag state of `TeamOnly`.
+/// 
+/// About the `TeamOnly` tag state: Only members of the same team can access the
+/// link. Login is required.
+/// 
+/// - returns: An initialized `DBXSHARINGRequestedVisibility` instance.
+/// 
 - (nonnull instancetype)initWithTeamOnly;
 
+/// 
 /// Initializes union class with tag state of `Password`.
+/// 
+/// About the `Password` tag state: A link-specific password is required to
+/// access the link. Login is not required.
+/// 
+/// - returns: An initialized `DBXSHARINGRequestedVisibility` instance.
+/// 
 - (nonnull instancetype)initWithPassword;
 
-/// Returns whether the union's current tag state has value `Public`.
+/// 
+/// Retrieves whether the union's current tag state has value `Public`.
+/// 
+/// - returns: Whether the union's current tag state has value `Public`.
+/// 
 - (BOOL)isPublic;
 
-/// Returns whether the union's current tag state has value `TeamOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamOnly`.
+/// 
 - (BOOL)isTeamOnly;
 
-/// Returns whether the union's current tag state has value `Password`.
+/// 
+/// Retrieves whether the union's current tag state has value `Password`.
+/// 
+/// - returns: Whether the union's current tag state has value `Password`.
+/// 
 - (BOOL)isPassword;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -69,12 +107,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRequestedVisibilityTag) {
 /// 
 @interface DBXSHARINGRequestedVisibilitySerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRequestedVisibility` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRequestedVisibility * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRequestedVisibility` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGRequestedVisibility`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRequestedVisibility` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRequestedVisibility * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRequestedVisibility` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRequestedVisibility` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRequestedVisibility` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRequestedVisibility` object.
+/// 
 + (DBXSHARINGRequestedVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

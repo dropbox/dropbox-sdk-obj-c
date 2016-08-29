@@ -10,7 +10,7 @@
 
 - (instancetype)initWithUserNotSameTeamAsOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithUserNotAllowedByOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonUserNotAllowedByOwner;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithTargetIsIndirectMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonTargetIsIndirectMember;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithTargetIsOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonTargetIsOwner;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithTargetIsSelf {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonTargetIsSelf;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithTargetNotActive {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonTargetNotActive;
     }
     return self;
@@ -58,7 +58,7 @@
 
 - (instancetype)initWithFolderIsLimitedTeamFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonFolderIsLimitedTeamFolder;
     }
     return self;
@@ -66,7 +66,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPermissionDeniedReasonOther;
     }
     return self;
@@ -127,8 +127,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGPermissionDeniedReasonSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGPermissionDeniedReasonSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

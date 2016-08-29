@@ -10,7 +10,7 @@
 
 - (instancetype)initWithInvalidSettings {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkSettingsErrorInvalidSettings;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithNotAuthorized {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkSettingsErrorNotAuthorized;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedLinkSettingsErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedLinkSettingsErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

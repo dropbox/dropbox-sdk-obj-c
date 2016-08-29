@@ -10,7 +10,7 @@
 
 - (instancetype)initWithBasic {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSAccountTypeBasic;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithPro {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSAccountTypePro;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithBusiness {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSAccountTypeBusiness;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSAccountTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSAccountTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

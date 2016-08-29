@@ -10,18 +10,18 @@
 @class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DBXSHARINGGetFileMetadataError` union.
+/// The GetFileMetadataError union.
+/// 
+/// Error result for getFileMetadata.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error result for getFileMetadata.
-/// 
 @interface DBXSHARINGGetFileMetadataError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGGetFileMetadataErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGGetFileMetadataError` union can exist in.
+/// tag states with which the `DBXSHARINGGetFileMetadataError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataErrorTag) {
     /// (no description).
     DBXSHARINGGetFileMetadataErrorUserError,
@@ -43,25 +43,58 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
+/// 
 /// Initializes union class with tag state of `UserError`.
+/// 
+/// - parameter userError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataError` instance.
+/// 
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserError`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserError`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserError`.
+/// 
 - (BOOL)isUserError;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +105,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataErrorTag) {
 /// 
 @interface DBXSHARINGGetFileMetadataErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetFileMetadataError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetFileMetadataError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGGetFileMetadataError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetFileMetadataError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetFileMetadataError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetFileMetadataError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetFileMetadataError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGetFileMetadataError` object.
+/// 
 + (DBXSHARINGGetFileMetadataError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

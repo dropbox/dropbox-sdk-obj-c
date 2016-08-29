@@ -10,7 +10,7 @@
 
 - (instancetype)initWithAppNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeLinkedAppErrorAppNotFound;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithMemberNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeLinkedAppErrorMemberNotFound;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeLinkedAppErrorOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeLinkedAppErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeLinkedAppErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

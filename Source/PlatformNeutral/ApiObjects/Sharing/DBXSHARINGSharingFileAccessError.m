@@ -10,7 +10,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorNoPermission;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithInvalidFile {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorInvalidFile;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithIsFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorIsFolder;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithInsidePublicFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorInsidePublicFolder;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithInsideOsxPackage {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorInsideOsxPackage;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharingFileAccessErrorOther;
     }
     return self;
@@ -99,8 +99,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharingFileAccessErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharingFileAccessErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

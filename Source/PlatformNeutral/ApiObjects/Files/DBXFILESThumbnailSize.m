@@ -10,7 +10,7 @@
 
 - (instancetype)initWithW32h32 {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailSizeW32h32;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithW64h64 {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailSizeW64h64;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithW128h128 {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailSizeW128h128;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithW640h480 {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailSizeW640h480;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithW1024h768 {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailSizeW1024h768;
     }
     return self;
@@ -85,8 +85,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESThumbnailSizeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESThumbnailSizeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

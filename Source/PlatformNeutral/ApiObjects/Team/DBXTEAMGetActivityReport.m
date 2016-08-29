@@ -26,7 +26,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](sharedLinksViewedTotal);
 
     self = [super initWithStartDate:startDate];
-    if (self != nil) {
+    if (self) {
         _adds = adds;
         _edits = edits;
         _deletes = deletes;
@@ -45,8 +45,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGetActivityReportSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGetActivityReportSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

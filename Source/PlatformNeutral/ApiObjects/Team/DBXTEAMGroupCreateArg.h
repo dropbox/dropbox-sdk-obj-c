@@ -9,7 +9,7 @@
 @class DBXTEAMGroupCreateArg;
 
 /// 
-/// The `DBXTEAMGroupCreateArg` struct.
+/// The GroupCreateArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -26,28 +26,57 @@
 /// Whether the team can be managed by selected users, or only by team admins
 @property (nonatomic, readonly) DBXTEAMCOMMONGroupManagementType * _Nullable groupManagementType;
 
-/// Full constructor for the `GroupCreateArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGroupCreateArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter groupName: Group name.
+/// - parameter groupExternalId: The creator of a team can associate an
+/// arbitrary external ID to the group.
+/// - parameter groupManagementType: Whether the team can be managed by selected
+/// users, or only by team admins
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateArg` instance.
+/// 
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupExternalId:(NSString * _Nullable)groupExternalId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nullable)groupManagementType;
 
-/// Convenience constructor for the `GroupCreateArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMGroupCreateArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter groupName: Group name.
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateArg` instance.
+/// 
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupCreateArg` struct.
+/// The serialization class for the GroupCreateArg struct.
 /// 
 @interface DBXTEAMGroupCreateArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupCreateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupCreateArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupCreateArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupCreateArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupCreateArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupCreateArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupCreateArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupCreateArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupCreateArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupCreateArg` object.
+/// 
 + (DBXTEAMGroupCreateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

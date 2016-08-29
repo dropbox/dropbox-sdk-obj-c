@@ -10,7 +10,7 @@
 
 - (instancetype)initWithString {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESPropertyTypeString;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESPropertyTypeOther;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXPROPERTIESPropertyTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXPROPERTIESPropertyTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

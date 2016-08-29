@@ -9,7 +9,7 @@
 @class DBXSHARINGSharedLinkSettingsError;
 
 /// 
-/// The `DBXSHARINGModifySharedLinkSettingsError` union.
+/// The ModifySharedLinkSettingsError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,8 +18,8 @@
 @interface DBXSHARINGModifySharedLinkSettingsError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGModifySharedLinkSettingsErrorTag` enum type represents the
-/// possible tag states that the `DBXSHARINGModifySharedLinkSettingsError` union
-/// can exist in.
+/// possible tag states with which the `DBXSHARINGModifySharedLinkSettingsError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGModifySharedLinkSettingsErrorTag) {
     /// The shared link wasn't found
     DBXSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
@@ -44,39 +44,106 @@ typedef NS_ENUM(NSInteger, DBXSHARINGModifySharedLinkSettingsErrorTag) {
 /// There is an error with the given settings
 @property (nonatomic, readonly) DBXSHARINGSharedLinkSettingsError * _Nonnull settingsError;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
+/// 
+/// About the `SharedLinkNotFound` tag state: The shared link wasn't found
+/// 
+/// - returns: An initialized `DBXSHARINGModifySharedLinkSettingsError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkAccessDenied`.
+/// 
+/// About the `SharedLinkAccessDenied` tag state: The caller is not allowed to
+/// access this shared link
+/// 
+/// - returns: An initialized `DBXSHARINGModifySharedLinkSettingsError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGModifySharedLinkSettingsError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `SettingsError`.
+/// 
+/// About the `SettingsError` tag state: There is an error with the given
+/// settings
+/// 
+/// - parameter settingsError: There is an error with the given settings
+/// 
+/// - returns: An initialized `DBXSHARINGModifySharedLinkSettingsError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithSettingsError:(DBXSHARINGSharedLinkSettingsError * _Nonnull)settingsError;
 
+/// 
 /// Initializes union class with tag state of `EmailNotVerified`.
+/// 
+/// About the `EmailNotVerified` tag state: The caller's email should be
+/// verified
+/// 
+/// - returns: An initialized `DBXSHARINGModifySharedLinkSettingsError`
+/// instance.
+/// 
 - (nonnull instancetype)initWithEmailNotVerified;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkNotFound`.
+/// 
 - (BOOL)isSharedLinkNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkAccessDenied`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkAccessDenied`.
+/// 
 - (BOOL)isSharedLinkAccessDenied;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `SettingsError`.
+/// 
+/// Retrieves whether the union's current tag state has value `SettingsError`.
+/// 
+/// - returns: Whether the union's current tag state has value `SettingsError`.
+/// 
 - (BOOL)isSettingsError;
 
-/// Returns whether the union's current tag state has value `EmailNotVerified`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `EmailNotVerified`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `EmailNotVerified`.
+/// 
 - (BOOL)isEmailNotVerified;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -88,12 +155,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGModifySharedLinkSettingsErrorTag) {
 /// 
 @interface DBXSHARINGModifySharedLinkSettingsErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGModifySharedLinkSettingsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGModifySharedLinkSettingsError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGModifySharedLinkSettingsError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGModifySharedLinkSettingsError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGModifySharedLinkSettingsError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGModifySharedLinkSettingsError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGModifySharedLinkSettingsError`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGModifySharedLinkSettingsError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGModifySharedLinkSettingsError` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXSHARINGModifySharedLinkSettingsError` object.
+/// 
 + (DBXSHARINGModifySharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

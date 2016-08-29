@@ -8,7 +8,7 @@
 @class DBXUSERSGetAccountArg;
 
 /// 
-/// The `DBXUSERSGetAccountArg` struct.
+/// The GetAccountArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// A user's account identifier.
 @property (nonatomic, readonly, copy) NSString * _Nonnull accountId;
 
-/// Full constructor for the `GetAccountArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXUSERSGetAccountArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter accountId: A user's account identifier.
+/// 
+/// - returns: An initialized `DBXUSERSGetAccountArg` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSGetAccountArg` struct.
+/// The serialization class for the GetAccountArg struct.
 /// 
 @interface DBXUSERSGetAccountArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSGetAccountArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSGetAccountArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSGetAccountArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSGetAccountArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSGetAccountArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSGetAccountArg` object.
+/// 
 + (DBXUSERSGetAccountArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

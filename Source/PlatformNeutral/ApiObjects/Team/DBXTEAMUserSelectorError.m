@@ -10,7 +10,7 @@
 
 - (instancetype)initWithUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMUserSelectorErrorUserNotFound;
     }
     return self;
@@ -29,8 +29,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMUserSelectorErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMUserSelectorErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

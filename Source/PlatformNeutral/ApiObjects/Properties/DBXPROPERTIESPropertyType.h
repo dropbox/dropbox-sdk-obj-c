@@ -8,19 +8,19 @@
 @class DBXPROPERTIESPropertyType;
 
 /// 
-/// The `DBXPROPERTIESPropertyType` union.
+/// The PropertyType union.
+/// 
+/// Data type of the given property added. This endpoint is in beta and  only
+/// properties of type strings is supported.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Data type of the given property added. This endpoint is in beta and  only
-/// properties of type strings is supported.
-/// 
 @interface DBXPROPERTIESPropertyType : NSObject <DBXSerializable> 
 
 /// The `DBXPROPERTIESPropertyTypeTag` enum type represents the possible tag
-/// states that the `DBXPROPERTIESPropertyType` union can exist in.
+/// states with which the `DBXPROPERTIESPropertyType` union can exist.
 typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
     /// The associated property will be of type string. Unicode is supported.
     DBXPROPERTIESPropertyTypeString,
@@ -33,19 +33,43 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXPROPERTIESPropertyTypeTag tag;
 
+/// 
 /// Initializes union class with tag state of `String`.
+/// 
+/// About the `String` tag state: The associated property will be of type
+/// string. Unicode is supported.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyType` instance.
+/// 
 - (nonnull instancetype)initWithString;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyType` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `String`.
+/// 
+/// Retrieves whether the union's current tag state has value `String`.
+/// 
+/// - returns: Whether the union's current tag state has value `String`.
+/// 
 - (BOOL)isString;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -56,12 +80,25 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
 /// 
 @interface DBXPROPERTIESPropertyTypeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESPropertyType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyType * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESPropertyType` instances.
+/// 
+///  - parameter instance: An instance of the `DBXPROPERTIESPropertyType` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyType` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyType * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESPropertyType` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESPropertyType` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyType` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESPropertyType` object.
+/// 
 + (DBXPROPERTIESPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

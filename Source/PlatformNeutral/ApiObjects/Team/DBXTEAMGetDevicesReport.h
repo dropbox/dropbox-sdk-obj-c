@@ -10,16 +10,16 @@
 @class DBXTEAMGetDevicesReport;
 
 /// 
-/// The `DBXTEAMGetDevicesReport` struct.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The GetDevicesReport struct.
 /// 
 /// Devices Report Result. Contains subsections for different time ranges of
 /// activity. Each of the items in each subsection of the storage report is an
 /// array of values, one value per day. If there is no data for a day, then the
 /// value will be None.
+/// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DBXTEAMGetDevicesReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
@@ -32,24 +32,50 @@
 /// Report of the number of devices active in the last 28 days.
 @property (nonatomic, readonly) DBXTEAMDevicesActive * _Nonnull active28Day;
 
-/// Full constructor for the `GetDevicesReport` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGetDevicesReport` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter startDate: First date present in the results as 'YYYY-MM-DD' or
+/// None.
+/// - parameter active1Day: Report of the number of devices active in the last
+/// day.
+/// - parameter active7Day: Report of the number of devices active in the last 7
+/// days.
+/// - parameter active28Day: Report of the number of devices active in the last
+/// 28 days.
+/// 
+/// - returns: An initialized `DBXTEAMGetDevicesReport` instance.
+/// 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DBXTEAMDevicesActive * _Nonnull)active1Day active7Day:(DBXTEAMDevicesActive * _Nonnull)active7Day active28Day:(DBXTEAMDevicesActive * _Nonnull)active28Day;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGetDevicesReport` struct.
+/// The serialization class for the GetDevicesReport struct.
 /// 
 @interface DBXTEAMGetDevicesReportSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGetDevicesReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetDevicesReport * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGetDevicesReport` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGetDevicesReport` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGetDevicesReport` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetDevicesReport * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGetDevicesReport` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGetDevicesReport` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGetDevicesReport` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGetDevicesReport` object.
+/// 
 + (DBXTEAMGetDevicesReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

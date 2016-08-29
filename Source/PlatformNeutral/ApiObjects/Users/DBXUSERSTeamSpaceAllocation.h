@@ -8,7 +8,7 @@
 @class DBXUSERSTeamSpaceAllocation;
 
 /// 
-/// The `DBXUSERSTeamSpaceAllocation` struct.
+/// The TeamSpaceAllocation struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,44 @@
 /// The total space allocated to the user's team (bytes).
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull allocated;
 
-/// Full constructor for the `TeamSpaceAllocation` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXUSERSTeamSpaceAllocation` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter used: The total space currently used by the user's team (bytes).
+/// - parameter allocated: The total space allocated to the user's team (bytes).
+/// 
+/// - returns: An initialized `DBXUSERSTeamSpaceAllocation` instance.
+/// 
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocated:(NSNumber * _Nonnull)allocated;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSTeamSpaceAllocation` struct.
+/// The serialization class for the TeamSpaceAllocation struct.
 /// 
 @interface DBXUSERSTeamSpaceAllocationSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSTeamSpaceAllocation` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSTeamSpaceAllocation * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSTeamSpaceAllocation` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSTeamSpaceAllocation` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSTeamSpaceAllocation` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSTeamSpaceAllocation * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSTeamSpaceAllocation` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSTeamSpaceAllocation` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSTeamSpaceAllocation` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSTeamSpaceAllocation` object.
+/// 
 + (DBXUSERSTeamSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

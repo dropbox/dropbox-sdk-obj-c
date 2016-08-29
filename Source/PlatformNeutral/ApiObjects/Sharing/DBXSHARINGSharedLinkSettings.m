@@ -12,7 +12,7 @@
 - (instancetype)initWithRequestedVisibility:(DBXSHARINGRequestedVisibility *)requestedVisibility linkPassword:(NSString *)linkPassword expires:(NSDate *)expires {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _requestedVisibility = requestedVisibility;
         _linkPassword = linkPassword;
         _expires = expires;
@@ -24,8 +24,8 @@
     return [self initWithRequestedVisibility:nil linkPassword:nil expires:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedLinkSettingsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedLinkSettingsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

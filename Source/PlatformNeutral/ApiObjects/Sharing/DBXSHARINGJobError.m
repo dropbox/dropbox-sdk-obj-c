@@ -17,7 +17,7 @@
 
 - (instancetype)initWithUnshareFolderError:(DBXSHARINGUnshareFolderError *)unshareFolderError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobErrorUnshareFolderError;
         _unshareFolderError = unshareFolderError;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithRemoveFolderMemberError:(DBXSHARINGRemoveFolderMemberError *)removeFolderMemberError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobErrorRemoveFolderMemberError;
         _removeFolderMemberError = removeFolderMemberError;
     }
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithRelinquishFolderMembershipError:(DBXSHARINGRelinquishFolderMembershipError *)relinquishFolderMembershipError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobErrorRelinquishFolderMembershipError;
         _relinquishFolderMembershipError = relinquishFolderMembershipError;
     }
@@ -44,7 +44,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobErrorOther;
     }
     return self;
@@ -82,28 +82,28 @@
 }
 
 - (DBXSHARINGUnshareFolderError *)unshareFolderError {
-    if (_tag != DBXSHARINGJobErrorUnshareFolderError) {
+    if (![self isUnshareFolderError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGJobErrorUnshareFolderError`, but was %@.", [self getTagName]];
     }
     return _unshareFolderError;
 }
 
 - (DBXSHARINGRemoveFolderMemberError *)removeFolderMemberError {
-    if (_tag != DBXSHARINGJobErrorRemoveFolderMemberError) {
+    if (![self isRemoveFolderMemberError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGJobErrorRemoveFolderMemberError`, but was %@.", [self getTagName]];
     }
     return _removeFolderMemberError;
 }
 
 - (DBXSHARINGRelinquishFolderMembershipError *)relinquishFolderMembershipError {
-    if (_tag != DBXSHARINGJobErrorRelinquishFolderMembershipError) {
+    if (![self isRelinquishFolderMembershipError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGJobErrorRelinquishFolderMembershipError`, but was %@.", [self getTagName]];
     }
     return _relinquishFolderMembershipError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGJobErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGJobErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

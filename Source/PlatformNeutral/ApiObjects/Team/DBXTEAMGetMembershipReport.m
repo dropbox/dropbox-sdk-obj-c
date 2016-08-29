@@ -17,7 +17,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](licenses);
 
     self = [super initWithStartDate:startDate];
-    if (self != nil) {
+    if (self) {
         _teamSize = teamSize;
         _pendingInvites = pendingInvites;
         _membersJoined = membersJoined;
@@ -27,8 +27,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGetMembershipReportSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGetMembershipReportSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionBatchErrorOther;
     }
     return self;
@@ -29,8 +29,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDeviceSessionBatchErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDeviceSessionBatchErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

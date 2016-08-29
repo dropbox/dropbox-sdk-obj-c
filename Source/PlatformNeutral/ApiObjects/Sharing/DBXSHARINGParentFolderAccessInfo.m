@@ -14,7 +14,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](permissions);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _folderName = folderName;
         _sharedFolderId = sharedFolderId;
         _permissions = permissions;
@@ -22,8 +22,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGParentFolderAccessInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGParentFolderAccessInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

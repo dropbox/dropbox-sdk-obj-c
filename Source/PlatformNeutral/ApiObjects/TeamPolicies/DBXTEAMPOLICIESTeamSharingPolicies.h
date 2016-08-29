@@ -11,13 +11,13 @@
 @class DBXTEAMPOLICIESTeamSharingPolicies;
 
 /// 
-/// The `DBXTEAMPOLICIESTeamSharingPolicies` struct.
+/// The TeamSharingPolicies struct.
+/// 
+/// Policies governing sharing within and outside of the team.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Policies governing sharing within and outside of the team.
 /// 
 @interface DBXTEAMPOLICIESTeamSharingPolicies : NSObject <DBXSerializable> 
 
@@ -30,24 +30,49 @@
 /// What is the visibility of newly created shared links.
 @property (nonatomic, readonly) DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
 
-/// Full constructor for the `TeamSharingPolicies` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMPOLICIESTeamSharingPolicies` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter sharedFolderMemberPolicy: Who can join folders shared by team
+/// members.
+/// - parameter sharedFolderJoinPolicy: Which shared folders team members can
+/// join.
+/// - parameter sharedLinkCreatePolicy: What is the visibility of newly created
+/// shared links.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESTeamSharingPolicies` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderMemberPolicy:(DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMPOLICIESTeamSharingPolicies` struct.
+/// The serialization class for the TeamSharingPolicies struct.
 /// 
 @interface DBXTEAMPOLICIESTeamSharingPoliciesSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMPOLICIESTeamSharingPolicies` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMPOLICIESTeamSharingPolicies` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMPOLICIESTeamSharingPolicies` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESTeamSharingPolicies` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMPOLICIESTeamSharingPolicies` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMPOLICIESTeamSharingPolicies` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESTeamSharingPolicies` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMPOLICIESTeamSharingPolicies`
+/// object.
+/// 
 + (DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

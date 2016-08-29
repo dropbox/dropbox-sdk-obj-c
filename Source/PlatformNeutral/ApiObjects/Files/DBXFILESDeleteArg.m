@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESDeleteArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESDeleteArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

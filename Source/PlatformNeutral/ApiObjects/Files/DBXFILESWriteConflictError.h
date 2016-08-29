@@ -8,7 +8,7 @@
 @class DBXFILESWriteConflictError;
 
 /// 
-/// The `DBXFILESWriteConflictError` union.
+/// The WriteConflictError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESWriteConflictError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESWriteConflictErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESWriteConflictError` union can exist in.
+/// states with which the `DBXFILESWriteConflictError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESWriteConflictErrorTag) {
     /// There's a file in the way.
     DBXFILESWriteConflictErrorFile,
@@ -37,31 +37,75 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteConflictErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESWriteConflictErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `File`.
+/// 
+/// About the `File` tag state: There's a file in the way.
+/// 
+/// - returns: An initialized `DBXFILESWriteConflictError` instance.
+/// 
 - (nonnull instancetype)initWithFile;
 
+/// 
 /// Initializes union class with tag state of `Folder`.
+/// 
+/// About the `Folder` tag state: There's a folder in the way.
+/// 
+/// - returns: An initialized `DBXFILESWriteConflictError` instance.
+/// 
 - (nonnull instancetype)initWithFolder;
 
+/// 
 /// Initializes union class with tag state of `FileAncestor`.
+/// 
+/// About the `FileAncestor` tag state: There's a file at an ancestor path, so
+/// we couldn't create the required parent folders.
+/// 
+/// - returns: An initialized `DBXFILESWriteConflictError` instance.
+/// 
 - (nonnull instancetype)initWithFileAncestor;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESWriteConflictError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `File`.
+/// 
+/// Retrieves whether the union's current tag state has value `File`.
+/// 
+/// - returns: Whether the union's current tag state has value `File`.
+/// 
 - (BOOL)isFile;
 
-/// Returns whether the union's current tag state has value `Folder`.
+/// 
+/// Retrieves whether the union's current tag state has value `Folder`.
+/// 
+/// - returns: Whether the union's current tag state has value `Folder`.
+/// 
 - (BOOL)isFolder;
 
-/// Returns whether the union's current tag state has value `FileAncestor`.
+/// 
+/// Retrieves whether the union's current tag state has value `FileAncestor`.
+/// 
+/// - returns: Whether the union's current tag state has value `FileAncestor`.
+/// 
 - (BOOL)isFileAncestor;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +116,25 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteConflictErrorTag) {
 /// 
 @interface DBXFILESWriteConflictErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESWriteConflictError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteConflictError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESWriteConflictError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESWriteConflictError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESWriteConflictError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteConflictError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESWriteConflictError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESWriteConflictError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESWriteConflictError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESWriteConflictError` object.
+/// 
 + (DBXFILESWriteConflictError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

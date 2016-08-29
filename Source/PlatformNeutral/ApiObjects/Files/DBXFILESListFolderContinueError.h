@@ -9,7 +9,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESListFolderContinueError` union.
+/// The ListFolderContinueError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESListFolderContinueError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESListFolderContinueErrorTag` enum type represents the possible
-/// tag states that the `DBXFILESListFolderContinueError` union can exist in.
+/// tag states with which the `DBXFILESListFolderContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
     /// (no description).
     DBXFILESListFolderContinueErrorPath,
@@ -38,25 +38,59 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESListFolderContinueError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Reset`.
+/// 
+/// About the `Reset` tag state: Indicates that the cursor has been invalidated.
+/// Call :route:`list_folder` to obtain a new cursor.
+/// 
+/// - returns: An initialized `DBXFILESListFolderContinueError` instance.
+/// 
 - (nonnull instancetype)initWithReset;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESListFolderContinueError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Reset`.
+/// 
+/// Retrieves whether the union's current tag state has value `Reset`.
+/// 
+/// - returns: Whether the union's current tag state has value `Reset`.
+/// 
 - (BOOL)isReset;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -67,12 +101,26 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
 /// 
 @interface DBXFILESListFolderContinueErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderContinueError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderContinueError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderContinueError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderContinueError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderContinueError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderContinueError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderContinueError`
+/// object.
+/// 
 + (DBXFILESListFolderContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

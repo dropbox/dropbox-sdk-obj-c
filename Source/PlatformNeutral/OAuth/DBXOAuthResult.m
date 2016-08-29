@@ -3,6 +3,10 @@
 
 @implementation DBXOAuthResult
 
+@synthesize accessToken = _accessToken;
+@synthesize errorType = _errorType;
+@synthesize errorDescription = _errorDescription;
+
 static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 
 + (DBXAuthErrorType)getErrorType:(NSString *) errorDescription {
@@ -20,7 +24,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
     return (DBXAuthErrorType)errorTypeLookup[errorDescription] ?: DBXAuthUnknown;
 }
 
-- (nonnull instancetype)initWithSuccess:(DBXAccessToken *)accessToken {
+- (instancetype)initWithSuccess:(DBXAccessToken *)accessToken {
     self = [super init];
     if (self) {
         _tag = DBXAuthSuccess;
@@ -29,7 +33,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
     return self;
 }
 
-- (nonnull instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription {
+- (instancetype)initWithError:(NSString *)errorType errorDescription:(NSString *)errorDescription {
     self = [super init];
     if (self) {
         _tag = DBXAuthError;
@@ -39,7 +43,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
     return self;
 }
 
-- (nonnull instancetype)initWithCancel {
+- (instancetype)initWithCancel {
     self = [super init];
     if (self) {
         _tag = DBXAuthCancel;
@@ -79,18 +83,18 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
     return _accessToken;
 }
 
-- (NSString *)errorMessage {
-    if (_tag != DBXAuthError) {
-        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthError`, but was %@.", [self getTagName]];
-    }
-    return _errorDescription;
-}
-
 - (DBXAuthErrorType)errorType {
     if (_tag != DBXAuthError) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthError`, but was %@.", [self getTagName]];
     }
     return _errorType;
+}
+
+- (NSString *)errorDescription {
+    if (_tag != DBXAuthError) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXAuthError`, but was %@.", [self getTagName]];
+    }
+    return _errorDescription;
 }
 
 - (NSString *)description {

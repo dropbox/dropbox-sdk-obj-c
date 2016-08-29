@@ -13,15 +13,15 @@
 - (instancetype)initWithCursor:(DBXFILESUploadSessionCursor *)cursor commit:(DBXFILESCommitInfo *)commit {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
         _commit = commit;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionFinishArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionFinishArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

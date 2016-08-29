@@ -10,7 +10,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESAlphaGetMetadataError` union.
+/// The AlphaGetMetadataError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXFILESAlphaGetMetadataError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESAlphaGetMetadataErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESAlphaGetMetadataError` union can exist in.
+/// states with which the `DBXFILESAlphaGetMetadataError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESAlphaGetMetadataErrorTag) {
     /// (no description).
     DBXFILESAlphaGetMetadataErrorPath,
@@ -38,19 +38,45 @@ typedef NS_ENUM(NSInteger, DBXFILESAlphaGetMetadataErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookUpPropertiesError * _Nonnull propertiesError;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESAlphaGetMetadataError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `PropertiesError`.
+/// 
+/// - parameter propertiesError: (no description).
+/// 
+/// - returns: An initialized `DBXFILESAlphaGetMetadataError` instance.
+/// 
 - (nonnull instancetype)initWithPropertiesError:(DBXFILESLookUpPropertiesError * _Nonnull)propertiesError;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `PropertiesError`.
+/// 
+/// Retrieves whether the union's current tag state has value `PropertiesError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PropertiesError`.
+/// 
 - (BOOL)isPropertiesError;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -61,12 +87,25 @@ typedef NS_ENUM(NSInteger, DBXFILESAlphaGetMetadataErrorTag) {
 /// 
 @interface DBXFILESAlphaGetMetadataErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESAlphaGetMetadataError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESAlphaGetMetadataError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESAlphaGetMetadataError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESAlphaGetMetadataError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESAlphaGetMetadataError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESAlphaGetMetadataError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESAlphaGetMetadataError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESAlphaGetMetadataError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESAlphaGetMetadataError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESAlphaGetMetadataError` object.
+/// 
 + (DBXFILESAlphaGetMetadataError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

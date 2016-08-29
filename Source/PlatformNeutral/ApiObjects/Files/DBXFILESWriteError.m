@@ -14,7 +14,7 @@
 
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorMalformedPath;
         _malformedPath = malformedPath;
     }
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithConflict:(DBXFILESWriteConflictError *)conflict {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorConflict;
         _conflict = conflict;
     }
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithNoWritePermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorNoWritePermission;
     }
     return self;
@@ -40,7 +40,7 @@
 
 - (instancetype)initWithInsufficientSpace {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorInsufficientSpace;
     }
     return self;
@@ -48,7 +48,7 @@
 
 - (instancetype)initWithDisallowedName {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorDisallowedName;
     }
     return self;
@@ -56,7 +56,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteErrorOther;
     }
     return self;
@@ -106,21 +106,21 @@
 }
 
 - (NSString *)malformedPath {
-    if (_tag != DBXFILESWriteErrorMalformedPath) {
+    if (![self isMalformedPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESWriteErrorMalformedPath`, but was %@.", [self getTagName]];
     }
     return _malformedPath;
 }
 
 - (DBXFILESWriteConflictError *)conflict {
-    if (_tag != DBXFILESWriteErrorConflict) {
+    if (![self isConflict]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESWriteErrorConflict`, but was %@.", [self getTagName]];
     }
     return _conflict;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESWriteErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESWriteErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

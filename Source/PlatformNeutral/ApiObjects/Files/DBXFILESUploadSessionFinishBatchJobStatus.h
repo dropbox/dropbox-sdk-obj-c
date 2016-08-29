@@ -9,7 +9,7 @@
 @class DBXFILESUploadSessionFinishBatchResult;
 
 /// 
-/// The `DBXFILESUploadSessionFinishBatchJobStatus` union.
+/// The UploadSessionFinishBatchJobStatus union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,8 +18,8 @@
 @interface DBXFILESUploadSessionFinishBatchJobStatus : NSObject <DBXSerializable> 
 
 /// The `DBXFILESUploadSessionFinishBatchJobStatusTag` enum type represents the
-/// possible tag states that the `DBXFILESUploadSessionFinishBatchJobStatus`
-/// union can exist in.
+/// possible tag states with which the
+/// `DBXFILESUploadSessionFinishBatchJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
     /// The asynchronous job is still in progress.
     DBXFILESUploadSessionFinishBatchJobStatusInProgress,
@@ -35,19 +35,49 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
 /// The uploadSessionFinishBatch has finished.
 @property (nonatomic, readonly) DBXFILESUploadSessionFinishBatchResult * _Nonnull complete;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionFinishBatchJobStatus`
+/// instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: The :route:`upload_session/finish_batch` has
+/// finished.
+/// 
+/// - parameter complete: The :route:`upload_session/finish_batch` has finished.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionFinishBatchJobStatus`
+/// instance.
+/// 
 - (nonnull instancetype)initWithComplete:(DBXFILESUploadSessionFinishBatchResult * _Nonnull)complete;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -59,12 +89,26 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
 /// 
 @interface DBXFILESUploadSessionFinishBatchJobStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadSessionFinishBatchJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishBatchJobStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadSessionFinishBatchJobStatus` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXFILESUploadSessionFinishBatchJobStatus` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionFinishBatchJobStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishBatchJobStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadSessionFinishBatchJobStatus`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadSessionFinishBatchJobStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionFinishBatchJobStatus` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXFILESUploadSessionFinishBatchJobStatus` object.
+/// 
 + (DBXFILESUploadSessionFinishBatchJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

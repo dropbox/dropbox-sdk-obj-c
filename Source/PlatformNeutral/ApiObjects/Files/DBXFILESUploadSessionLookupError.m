@@ -13,7 +13,7 @@
 
 - (instancetype)initWithNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionLookupErrorNotFound;
     }
     return self;
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithIncorrectOffset:(DBXFILESUploadSessionOffsetError *)incorrectOffset {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionLookupErrorIncorrectOffset;
         _incorrectOffset = incorrectOffset;
     }
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithClosed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionLookupErrorClosed;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithNotClosed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionLookupErrorNotClosed;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionLookupErrorOther;
     }
     return self;
@@ -90,14 +90,14 @@
 }
 
 - (DBXFILESUploadSessionOffsetError *)incorrectOffset {
-    if (_tag != DBXFILESUploadSessionLookupErrorIncorrectOffset) {
+    if (![self isIncorrectOffset]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionLookupErrorIncorrectOffset`, but was %@.", [self getTagName]];
     }
     return _incorrectOffset;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionLookupErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionLookupErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

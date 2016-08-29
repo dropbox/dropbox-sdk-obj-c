@@ -10,7 +10,7 @@
 
 - (instancetype)initWithLeaveACopy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionLeaveACopy;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithMakeEditor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionMakeEditor;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithMakeOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionMakeOwner;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithMakeViewer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionMakeViewer;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithMakeViewerNoComment {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionMakeViewerNoComment;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithRemove {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionRemove;
     }
     return self;
@@ -58,7 +58,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberActionOther;
     }
     return self;
@@ -113,8 +113,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMemberActionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMemberActionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

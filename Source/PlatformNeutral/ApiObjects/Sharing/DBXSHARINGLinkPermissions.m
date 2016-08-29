@@ -14,7 +14,7 @@
 - (instancetype)initWithCanRevoke:(NSNumber *)canRevoke resolvedVisibility:(DBXSHARINGResolvedVisibility *)resolvedVisibility requestedVisibility:(DBXSHARINGRequestedVisibility *)requestedVisibility revokeFailureReason:(DBXSHARINGSharedLinkAccessFailureReason *)revokeFailureReason {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _resolvedVisibility = resolvedVisibility;
         _requestedVisibility = requestedVisibility;
         _canRevoke = canRevoke;
@@ -27,8 +27,8 @@
     return [self initWithCanRevoke:canRevoke resolvedVisibility:nil requestedVisibility:nil revokeFailureReason:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGLinkPermissionsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGLinkPermissionsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

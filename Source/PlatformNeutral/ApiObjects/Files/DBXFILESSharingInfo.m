@@ -11,14 +11,14 @@
 - (instancetype)initWithReadOnly:(NSNumber *)readOnly {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _readOnly = readOnly;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSharingInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSharingInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

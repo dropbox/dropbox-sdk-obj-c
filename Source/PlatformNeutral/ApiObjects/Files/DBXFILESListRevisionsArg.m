@@ -13,7 +13,7 @@
     [DBXStoneValidators numericValidator:@(1) maxValue:@(100)](limit ?: @(10));
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _limit = limit ?: @(10);
     }
@@ -24,8 +24,8 @@
     return [self initWithPath:path limit:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListRevisionsArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListRevisionsArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

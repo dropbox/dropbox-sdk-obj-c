@@ -8,7 +8,7 @@
 @class DBXTEAMPOLICIESEmmState;
 
 /// 
-/// The `DBXTEAMPOLICIESEmmState` union.
+/// The EmmState union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMPOLICIESEmmState : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMPOLICIESEmmStateTag` enum type represents the possible tag
-/// states that the `DBXTEAMPOLICIESEmmState` union can exist in.
+/// states with which the `DBXTEAMPOLICIESEmmState` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
     /// Emm token is disabled
     DBXTEAMPOLICIESEmmStateDisabled,
@@ -36,31 +36,74 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMPOLICIESEmmStateTag tag;
 
+/// 
 /// Initializes union class with tag state of `Disabled`.
+/// 
+/// About the `Disabled` tag state: Emm token is disabled
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESEmmState` instance.
+/// 
 - (nonnull instancetype)initWithDisabled;
 
+/// 
 /// Initializes union class with tag state of `Optional`.
+/// 
+/// About the `Optional` tag state: Emm token is optional
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESEmmState` instance.
+/// 
 - (nonnull instancetype)initWithOptional;
 
+/// 
 /// Initializes union class with tag state of `Required`.
+/// 
+/// About the `Required` tag state: Emm token is required
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESEmmState` instance.
+/// 
 - (nonnull instancetype)initWithRequired;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESEmmState` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Disabled`.
+/// 
+/// Retrieves whether the union's current tag state has value `Disabled`.
+/// 
+/// - returns: Whether the union's current tag state has value `Disabled`.
+/// 
 - (BOOL)isDisabled;
 
-/// Returns whether the union's current tag state has value `Optional`.
+/// 
+/// Retrieves whether the union's current tag state has value `Optional`.
+/// 
+/// - returns: Whether the union's current tag state has value `Optional`.
+/// 
 - (BOOL)isOptional;
 
-/// Returns whether the union's current tag state has value `Required`.
+/// 
+/// Retrieves whether the union's current tag state has value `Required`.
+/// 
+/// - returns: Whether the union's current tag state has value `Required`.
+/// 
 - (BOOL)isRequired;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -71,12 +114,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
 /// 
 @interface DBXTEAMPOLICIESEmmStateSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMPOLICIESEmmState` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESEmmState * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMPOLICIESEmmState` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMPOLICIESEmmState` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESEmmState` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESEmmState * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMPOLICIESEmmState` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMPOLICIESEmmState` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESEmmState` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMPOLICIESEmmState` object.
+/// 
 + (DBXTEAMPOLICIESEmmState * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

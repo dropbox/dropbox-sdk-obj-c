@@ -12,14 +12,14 @@
 - (instancetype)initWithMetadata:(DBXFILESMetadata *)metadata {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _metadata = metadata;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveCopyReferenceResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveCopyReferenceResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

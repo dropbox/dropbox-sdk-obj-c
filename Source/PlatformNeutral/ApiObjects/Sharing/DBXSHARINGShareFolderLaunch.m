@@ -15,7 +15,7 @@
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderLaunchAsyncJobId;
         _asyncJobId = asyncJobId;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(DBXSHARINGSharedFolderMetadata *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderLaunchComplete;
         _complete = complete;
     }
@@ -51,21 +51,21 @@
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != DBXSHARINGShareFolderLaunchAsyncJobId) {
+    if (![self isAsyncJobId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGShareFolderLaunchAsyncJobId`, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (DBXSHARINGSharedFolderMetadata *)complete {
-    if (_tag != DBXSHARINGShareFolderLaunchComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGShareFolderLaunchComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGShareFolderLaunchSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGShareFolderLaunchSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

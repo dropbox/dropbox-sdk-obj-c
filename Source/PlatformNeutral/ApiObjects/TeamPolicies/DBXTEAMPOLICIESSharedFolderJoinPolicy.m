@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFromTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFromAnyone {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedFolderJoinPolicyFromAnyone;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedFolderJoinPolicyOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMPOLICIESSharedFolderJoinPolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMPOLICIESSharedFolderJoinPolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

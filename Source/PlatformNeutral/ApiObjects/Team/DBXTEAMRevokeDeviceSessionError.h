@@ -8,7 +8,7 @@
 @class DBXTEAMRevokeDeviceSessionError;
 
 /// 
-/// The `DBXTEAMRevokeDeviceSessionError` union.
+/// The RevokeDeviceSessionError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMRevokeDeviceSessionError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMRevokeDeviceSessionErrorTag` enum type represents the possible
-/// tag states that the `DBXTEAMRevokeDeviceSessionError` union can exist in.
+/// tag states with which the `DBXTEAMRevokeDeviceSessionError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionErrorTag) {
     /// Device session not found.
     DBXTEAMRevokeDeviceSessionErrorDeviceSessionNotFound,
@@ -33,26 +33,60 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMRevokeDeviceSessionErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `DeviceSessionNotFound`.
+/// 
+/// About the `DeviceSessionNotFound` tag state: Device session not found.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionError` instance.
+/// 
 - (nonnull instancetype)initWithDeviceSessionNotFound;
 
+/// 
 /// Initializes union class with tag state of `MemberNotFound`.
+/// 
+/// About the `MemberNotFound` tag state: Member not found.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionError` instance.
+/// 
 - (nonnull instancetype)initWithMemberNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `DeviceSessionNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `DeviceSessionNotFound`.
+/// 
 - (BOOL)isDeviceSessionNotFound;
 
-/// Returns whether the union's current tag state has value `MemberNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberNotFound`.
+/// 
 - (BOOL)isMemberNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -63,12 +97,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionErrorTag) {
 /// 
 @interface DBXTEAMRevokeDeviceSessionErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeDeviceSessionError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeDeviceSessionError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeDeviceSessionError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeDeviceSessionError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeDeviceSessionError`
+/// object.
+/// 
 + (DBXTEAMRevokeDeviceSessionError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

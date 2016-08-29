@@ -11,13 +11,7 @@
 ///
 /// Platform-neutral manager for performing OAuth linking.
 ///
-@interface DBXOAuthManager : NSObject {
-    // properties included here for subclass inheritence
-    NSString *_appKey;
-    NSURL *_redirectURL;
-    NSString *_host;
-    NSMutableArray<NSURL *> *_urls;
-}
+@interface DBXOAuthManager : NSObject
 
 ///
 /// Accessor method for `DBXOAuthManager` shared instance, which is used to authenticate
@@ -144,12 +138,7 @@
 ///
 /// Platform-specific (iOS) manager for performing OAuth linking.
 ///
-@interface DBXMobileOAuthManager : DBXOAuthManager {
-    /// The redirect url from the mobile "direct auth" flow, wherein
-    /// authorization is received from an official Dropbox mobile app,
-    /// if one exists.
-    NSURL *_dauthRedirectURL;
-}
+@interface DBXMobileOAuthManager : DBXOAuthManager
 
 @end
 
@@ -161,11 +150,11 @@
 @interface DBXAccessToken : NSObject
 
 /// The OAuth2 access token.
-@property (nonatomic) NSString * _Nonnull accessToken;
+@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
 
 /// The unique identifier of the access token used for storing in `DBXKeychain`.
 /// Either the account_id (if user app) or the team_id if (team app).
-@property (nonatomic) NSString * _Nonnull uid;
+@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
 
 ///
 /// `DBXAccessToken` full constructor.

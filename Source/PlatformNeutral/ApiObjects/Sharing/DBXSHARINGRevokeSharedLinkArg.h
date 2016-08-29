@@ -8,7 +8,7 @@
 @class DBXSHARINGRevokeSharedLinkArg;
 
 /// 
-/// The `DBXSHARINGRevokeSharedLinkArg` struct.
+/// The RevokeSharedLinkArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// URL of the shared link.
 @property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
-/// Full constructor for the `RevokeSharedLinkArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGRevokeSharedLinkArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter url: URL of the shared link.
+/// 
+/// - returns: An initialized `DBXSHARINGRevokeSharedLinkArg` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGRevokeSharedLinkArg` struct.
+/// The serialization class for the RevokeSharedLinkArg struct.
 /// 
 @interface DBXSHARINGRevokeSharedLinkArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRevokeSharedLinkArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRevokeSharedLinkArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRevokeSharedLinkArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGRevokeSharedLinkArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRevokeSharedLinkArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRevokeSharedLinkArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRevokeSharedLinkArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRevokeSharedLinkArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRevokeSharedLinkArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRevokeSharedLinkArg` object.
+/// 
 + (DBXSHARINGRevokeSharedLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

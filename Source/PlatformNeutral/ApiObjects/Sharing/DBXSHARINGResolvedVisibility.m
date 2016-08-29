@@ -11,7 +11,7 @@
 
 - (instancetype)initWithPublic {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilityPublic;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilityTeamOnly;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithPassword {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilityPassword;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithTeamAndPassword {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilityTeamAndPassword;
     }
     return self;
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithSharedFolderOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilitySharedFolderOnly;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGResolvedVisibilityOther;
     }
     return self;
@@ -100,8 +100,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGResolvedVisibilitySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGResolvedVisibilitySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

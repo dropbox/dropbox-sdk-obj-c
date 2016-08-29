@@ -7,12 +7,14 @@
 #import "DBXTransportClient.h"
 
 static NSString * const version = @"1.0.0";
-static DBXDelegate *_delegate;
-static NSURLSession *_session;
-static NSURLSession *_backgroundSession;
 static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
-typedef void(^ErrorBlock)(DBXError * _Nonnull error);
+@interface DBXTransportClient ()
+
+@property (nonatomic, readonly) NSDictionary <NSString *, NSString *> * _Nonnull baseHosts;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
+
+@end
 
 @implementation DBXTransportClient
 
@@ -25,18 +27,16 @@ typedef void(^ErrorBlock)(DBXError * _Nonnull error);
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken backgroundSessionId:(NSString *)backgroundSessionId {
-    return [self initWithAccessToken:accessToken selectUser:nil baseHosts:nil userAgent:nil backgroundSessionId:backgroundSessionId];
+    return [self initWithAccessToken:accessToken selectUser:nil baseHosts:nil userAgent:nil backgroundSessionId:backgroundSessionId  delegateQueue:nil];
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser baseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts {
-    return [self initWithAccessToken:accessToken selectUser:selectUser baseHosts:baseHosts userAgent:nil backgroundSessionId:nil];
+    return [self initWithAccessToken:accessToken selectUser:selectUser baseHosts:baseHosts userAgent:nil backgroundSessionId:nil delegateQueue:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser baseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts userAgent:(NSString *)userAgent backgroundSessionId:(NSString *)backgroundSessionId {
+- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser baseHosts:(NSDictionary <NSString *, NSString *> *)baseHosts userAgent:(NSString *)userAgent backgroundSessionId:(NSString *)backgroundSessionId delegateQueue:(NSOperationQueue *)delegateQueue {
     self = [super init];
     if (self) {
-        _delegateQueue = [NSOperationQueue new];
-        [_delegateQueue setMaxConcurrentOperationCount:1];
         _delegate = [[DBXDelegate alloc] initWithQueue:_delegateQueue];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:_delegate delegateQueue:_delegateQueue];
         NSString *backgroundId = backgroundSessionId ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionId, (long long)[[NSDate date] timeIntervalSince1970] * 1000];
@@ -256,25 +256,25 @@ typedef void(^ErrorBlock)(DBXError * _Nonnull error);
     return result;
 }
 
-+ (NSURLSession *)session {
+- (NSURLSession *)session {
     @synchronized (self) {
         return _session;
     }
 }
 
-+ (void)setSession:(NSURLSession *)session {
+- (void)session:(NSURLSession *)session {
     @synchronized (self) {
         _session = session;
     }
 }
 
-+ (NSURLSession *)backgroundSession {
+- (NSURLSession *)backgroundSession {
     @synchronized (self) {
         return _backgroundSession;
     }
 }
 
-+ (void)setBackgroundSession:(NSURLSession *)backgroundSession {
+- (void)backgroundSession:(NSURLSession *)backgroundSession {
     @synchronized (self) {
         _backgroundSession = backgroundSession;
     }

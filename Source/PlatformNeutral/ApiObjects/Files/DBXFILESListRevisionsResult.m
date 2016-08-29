@@ -13,15 +13,15 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](entries);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _isDeleted = isDeleted;
         _entries = entries;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListRevisionsResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListRevisionsResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

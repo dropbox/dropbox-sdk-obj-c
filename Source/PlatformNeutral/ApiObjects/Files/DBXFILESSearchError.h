@@ -9,7 +9,7 @@
 @class DBXFILESSearchError;
 
 /// 
-/// The `DBXFILESSearchError` union.
+/// The SearchError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESSearchError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESSearchErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESSearchError` union can exist in.
+/// with which the `DBXFILESSearchError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESSearchErrorTag) {
     /// (no description).
     DBXFILESSearchErrorPath,
@@ -34,19 +34,42 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESSearchError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESSearchError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -57,12 +80,24 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchErrorTag) {
 /// 
 @interface DBXFILESSearchErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSearchError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSearchError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSearchError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSearchError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSearchError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSearchError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSearchError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSearchError` object.
+/// 
 + (DBXFILESSearchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

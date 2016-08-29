@@ -6,9 +6,9 @@
 
 @interface DBXMobileSharedApplication ()
 
-@property (nonatomic) UIApplication * _Nullable sharedApplication;
-@property (nonatomic) UIViewController * _Nullable controller;
-@property (nonatomic, nullable) void (^openURL)(NSURL * _Nullable);
+@property (nonatomic, readonly) UIApplication * _Nullable sharedApplication;
+@property (nonatomic, readonly) UIViewController * _Nullable controller;
+@property (nonatomic, readonly, nullable) void (^openURL)(NSURL * _Nullable);
 
 @end
 
@@ -69,13 +69,13 @@
 
 @interface DBXWebViewController ()
 
-@property (nonatomic) WKWebView * _Nullable webView;
-@property (nonatomic, nullable) void (^onWillDismiss)(BOOL);
-@property (nonatomic, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
-@property (nonatomic) UIBarButtonItem * _Nullable cancelButton;
-@property (nonatomic, nullable) void (^cancelHandler)(void);
-@property (nonatomic) UIActivityIndicatorView * _Nullable indicator;
-@property (nonatomic, copy) NSURL * _Nullable startURL;
+@property (nonatomic, readonly) WKWebView * _Nullable webView;
+@property (nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
+@property (nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
+@property (nonatomic, readonly, nullable) void (^cancelHandler)(void);
+@property (nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
+@property (nonatomic, readonly, copy) NSURL * _Nullable startURL;
 
 @end
 

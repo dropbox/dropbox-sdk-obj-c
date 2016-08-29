@@ -13,7 +13,7 @@
 - (instancetype)initWithMember:(DBXSHARINGMemberSelector *)member accessLevel:(DBXSHARINGAccessLevel *)accessLevel {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _member = member;
         _accessLevel = accessLevel ?: [[DBXSHARINGAccessLevel alloc] initWithViewer];
     }
@@ -24,8 +24,8 @@
     return [self initWithMember:member accessLevel:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAddMemberSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAddMemberSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

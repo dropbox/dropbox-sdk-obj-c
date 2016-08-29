@@ -12,7 +12,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _includeMediaInfo = includeMediaInfo ?: @NO;
         _includeDeleted = includeDeleted ?: @NO;
@@ -25,8 +25,8 @@
     return [self initWithPath:path includeMediaInfo:nil includeDeleted:nil includeHasExplicitSharedMembers:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGetMetadataArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGetMetadataArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

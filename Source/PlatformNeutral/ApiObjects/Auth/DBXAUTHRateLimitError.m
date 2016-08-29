@@ -12,7 +12,7 @@
 - (instancetype)initWithReason:(DBXAUTHRateLimitReason *)reason retryAfter:(NSNumber *)retryAfter {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _reason = reason;
         _retryAfter = retryAfter ?: @(1);
     }
@@ -23,8 +23,8 @@
     return [self initWithReason:reason retryAfter:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXAUTHRateLimitErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXAUTHRateLimitErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

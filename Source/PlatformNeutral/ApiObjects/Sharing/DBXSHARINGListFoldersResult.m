@@ -13,7 +13,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](entries);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _entries = entries;
         _cursor = cursor;
     }
@@ -24,8 +24,8 @@
     return [self initWithEntries:entries cursor:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFoldersResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFoldersResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESWriteError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithInvalidCopyReference {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorInvalidCopyReference;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorNoPermission;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorNotFound;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithTooManyFiles {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorTooManyFiles;
     }
     return self;
@@ -54,7 +54,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveCopyReferenceErrorOther;
     }
     return self;
@@ -104,14 +104,14 @@
 }
 
 - (DBXFILESWriteError *)path {
-    if (_tag != DBXFILESSaveCopyReferenceErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveCopyReferenceErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveCopyReferenceErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveCopyReferenceErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

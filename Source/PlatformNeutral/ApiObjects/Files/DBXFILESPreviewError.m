@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPreviewErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPreviewErrorInProgress;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithUnsupportedExtension {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPreviewErrorUnsupportedExtension;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithUnsupportedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPreviewErrorUnsupportedContent;
     }
     return self;
@@ -76,14 +76,14 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESPreviewErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESPreviewErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESPreviewErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESPreviewErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

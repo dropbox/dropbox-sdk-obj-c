@@ -14,7 +14,7 @@
 - (instancetype)initWithSharedFolderMemberPolicy:(DBXTEAMPOLICIESSharedFolderMemberPolicy *)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DBXTEAMPOLICIESSharedFolderJoinPolicy *)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DBXTEAMPOLICIESSharedLinkCreatePolicy *)sharedLinkCreatePolicy {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharedFolderMemberPolicy = sharedFolderMemberPolicy;
         _sharedFolderJoinPolicy = sharedFolderJoinPolicy;
         _sharedLinkCreatePolicy = sharedLinkCreatePolicy;
@@ -22,8 +22,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMPOLICIESTeamSharingPoliciesSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMPOLICIESTeamSharingPoliciesSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

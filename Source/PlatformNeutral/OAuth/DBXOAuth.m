@@ -12,6 +12,15 @@
 static DBXOAuthManager *sharedOAuthManager;
 static Reachability *internetReachableFoo;
 
+@interface DBXOAuthManager ()
+
+@property (nonatomic, copy) NSString * _Nullable appKey;
+@property (nonatomic, copy) NSURL * _Nullable redirectURL;
+@property (nonatomic, copy) NSString * _Nullable host;
+@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+
+@end
+
 @implementation DBXOAuthManager
 
 + (DBXOAuthManager *)sharedOAuthManager {
@@ -233,13 +242,33 @@ static Reachability *internetReachableFoo;
 
 static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 
+@interface DBXMobileOAuthManager ()
+
+// "re-declaring" private variables from parent (with @dynamic tag in @implementation)
+@property (nonatomic, copy) NSString * _Nullable appKey;
+@property (nonatomic, copy) NSURL * _Nullable redirectURL;
+@property (nonatomic, copy) NSString * _Nullable host;
+@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+
+/// The redirect url from the mobile "direct auth" flow, wherein
+/// authorization is received from an official Dropbox mobile app,
+/// if one exists.
+@property (nonatomic, copy) NSURL * _Nullable dauthRedirectURL;
+
+@end
+
 @implementation DBXMobileOAuthManager
+
+@dynamic appKey;
+@dynamic redirectURL;
+@dynamic host;
+@dynamic urls;
 
 - (instancetype)initWithAppKey:(NSString *)appKey {
     self = [super initWithAppKey:appKey];
     if (self) {
         _dauthRedirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://1/connect", appKey]];
-        [_urls addObject:_dauthRedirectURL];
+        [self.urls addObject:_dauthRedirectURL];
     }
     return self;
 }
@@ -248,7 +277,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     self = [super initWithAppKey:appKey host:host];
     if (self) {
         _dauthRedirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://1/connect", appKey]];
-        [_urls addObject:_dauthRedirectURL];
+        [self.urls addObject:_dauthRedirectURL];
     }
     return self;
 }
@@ -293,7 +322,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     if (nonce != nil) {
         NSString *state = [NSString stringWithFormat:@"oauth2:%@", nonce];
         components.queryItems = @[
-          [NSURLQueryItem queryItemWithName:@"k" value:_appKey],
+          [NSURLQueryItem queryItemWithName:@"k" value:self.appKey],
           [NSURLQueryItem queryItemWithName:@"s" value:@""],
           [NSURLQueryItem queryItemWithName:@"state" value:state],
         ];

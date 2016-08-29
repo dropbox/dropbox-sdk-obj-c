@@ -8,7 +8,7 @@
 @class DBXFILESSaveUrlArg;
 
 /// 
-/// The `DBXFILESSaveUrlArg` struct.
+/// The SaveUrlArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,43 @@
 /// The URL to be saved.
 @property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
-/// Full constructor for the `SaveUrlArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESSaveUrlArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: The path in Dropbox where the URL will be saved to.
+/// - parameter url: The URL to be saved.
+/// 
+/// - returns: An initialized `DBXFILESSaveUrlArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSaveUrlArg` struct.
+/// The serialization class for the SaveUrlArg struct.
 /// 
 @interface DBXFILESSaveUrlArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSaveUrlArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveUrlArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSaveUrlArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSaveUrlArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSaveUrlArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveUrlArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSaveUrlArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSaveUrlArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSaveUrlArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSaveUrlArg` object.
+/// 
 + (DBXFILESSaveUrlArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

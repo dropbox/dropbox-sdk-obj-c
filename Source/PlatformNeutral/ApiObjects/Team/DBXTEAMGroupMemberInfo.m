@@ -13,15 +13,15 @@
 - (instancetype)initWithProfile:(DBXTEAMMemberProfile *)profile accessType:(DBXTEAMGroupAccessType *)accessType {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _profile = profile;
         _accessType = accessType;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMemberInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMemberInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

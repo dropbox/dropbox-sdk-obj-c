@@ -13,7 +13,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorRestrictedContent;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorOther;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithConflictingPropertyNames {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorConflictingPropertyNames;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithTooManyProperties {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorTooManyProperties;
     }
     return self;
@@ -54,7 +54,7 @@
 
 - (instancetype)initWithTooManyTemplates {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorTooManyTemplates;
     }
     return self;
@@ -62,7 +62,7 @@
 
 - (instancetype)initWithTemplateAttributeTooLarge {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESModifyPropertyTemplateErrorTemplateAttributeTooLarge;
     }
     return self;
@@ -118,14 +118,14 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXPROPERTIESModifyPropertyTemplateErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXPROPERTIESModifyPropertyTemplateErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXPROPERTIESModifyPropertyTemplateErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXPROPERTIESModifyPropertyTemplateErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

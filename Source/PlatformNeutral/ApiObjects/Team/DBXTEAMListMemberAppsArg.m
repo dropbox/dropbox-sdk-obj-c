@@ -11,14 +11,14 @@
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _teamMemberId = teamMemberId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListMemberAppsArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListMemberAppsArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

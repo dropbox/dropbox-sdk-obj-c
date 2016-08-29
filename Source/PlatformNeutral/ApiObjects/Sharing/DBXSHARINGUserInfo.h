@@ -8,14 +8,14 @@
 @class DBXSHARINGUserInfo;
 
 /// 
-/// The `DBXSHARINGUserInfo` struct.
+/// The UserInfo struct.
+/// 
+/// Basic information about a user. Use usersAccount and usersAccountBatch to
+/// obtain more detailed information.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Basic information about a user. Use usersAccount and usersAccountBatch to
-/// obtain more detailed information.
 /// 
 @interface DBXSHARINGUserInfo : NSObject <DBXSerializable> 
 
@@ -29,27 +29,56 @@
 /// true.
 @property (nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
 
-/// Full constructor for the `UserInfo` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGUserInfo` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter accountId: The account ID of the user.
+/// - parameter sameTeam: If the user is in the same team as current user.
+/// - parameter teamMemberId: The team member ID of the shared folder member.
+/// Only present if :field:`same_team` is true.
+/// 
+/// - returns: An initialized `DBXSHARINGUserInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam teamMemberId:(NSString * _Nullable)teamMemberId;
 
-/// Convenience constructor for the `UserInfo` struct (exposes only non-nullable
-/// instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGUserInfo` struct (exposes only
+/// non-nullable instance variables with no default value).
+/// 
+/// - parameter accountId: The account ID of the user.
+/// - parameter sameTeam: If the user is in the same team as current user.
+/// 
+/// - returns: An initialized `DBXSHARINGUserInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGUserInfo` struct.
+/// The serialization class for the UserInfo struct.
 /// 
 @interface DBXSHARINGUserInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUserInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUserInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUserInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGUserInfo` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUserInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUserInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUserInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUserInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUserInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUserInfo` object.
+/// 
 + (DBXSHARINGUserInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

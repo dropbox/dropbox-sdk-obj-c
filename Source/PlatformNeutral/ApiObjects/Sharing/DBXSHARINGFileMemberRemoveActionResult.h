@@ -10,7 +10,7 @@
 @class DBXSHARINGMemberAccessLevelResult;
 
 /// 
-/// The `DBXSHARINGFileMemberRemoveActionResult` union.
+/// The FileMemberRemoveActionResult union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,8 +19,8 @@
 @interface DBXSHARINGFileMemberRemoveActionResult : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGFileMemberRemoveActionResultTag` enum type represents the
-/// possible tag states that the `DBXSHARINGFileMemberRemoveActionResult` union
-/// can exist in.
+/// possible tag states with which the `DBXSHARINGFileMemberRemoveActionResult`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberRemoveActionResultTag) {
     /// Member was successfully removed from this file.
     DBXSHARINGFileMemberRemoveActionResultSuccess,
@@ -42,25 +42,63 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberRemoveActionResultTag) {
 /// User was not able to remove this member.
 @property (nonatomic, readonly) DBXSHARINGFileMemberActionError * _Nonnull memberError;
 
+/// 
 /// Initializes union class with tag state of `Success`.
+/// 
+/// About the `Success` tag state: Member was successfully removed from this
+/// file.
+/// 
+/// - parameter success: Member was successfully removed from this file.
+/// 
+/// - returns: An initialized `DBXSHARINGFileMemberRemoveActionResult` instance.
+/// 
 - (nonnull instancetype)initWithSuccess:(DBXSHARINGMemberAccessLevelResult * _Nonnull)success;
 
+/// 
 /// Initializes union class with tag state of `MemberError`.
+/// 
+/// About the `MemberError` tag state: User was not able to remove this member.
+/// 
+/// - parameter memberError: User was not able to remove this member.
+/// 
+/// - returns: An initialized `DBXSHARINGFileMemberRemoveActionResult` instance.
+/// 
 - (nonnull instancetype)initWithMemberError:(DBXSHARINGFileMemberActionError * _Nonnull)memberError;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGFileMemberRemoveActionResult` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Success`.
+/// 
+/// Retrieves whether the union's current tag state has value `Success`.
+/// 
+/// - returns: Whether the union's current tag state has value `Success`.
+/// 
 - (BOOL)isSuccess;
 
-/// Returns whether the union's current tag state has value `MemberError`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberError`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberError`.
+/// 
 - (BOOL)isMemberError;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +110,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberRemoveActionResultTag) {
 /// 
 @interface DBXSHARINGFileMemberRemoveActionResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFileMemberRemoveActionResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileMemberRemoveActionResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFileMemberRemoveActionResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGFileMemberRemoveActionResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileMemberRemoveActionResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFileMemberRemoveActionResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFileMemberRemoveActionResult`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFileMemberRemoveActionResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFileMemberRemoveActionResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFileMemberRemoveActionResult`
+/// object.
+/// 
 + (DBXSHARINGFileMemberRemoveActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

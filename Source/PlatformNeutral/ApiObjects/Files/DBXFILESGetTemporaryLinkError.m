@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESGetTemporaryLinkErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESGetTemporaryLinkErrorOther;
     }
     return self;
@@ -48,14 +48,14 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESGetTemporaryLinkErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESGetTemporaryLinkErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGetTemporaryLinkErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGetTemporaryLinkErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

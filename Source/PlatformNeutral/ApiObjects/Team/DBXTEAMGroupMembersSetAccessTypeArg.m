@@ -15,7 +15,7 @@
 - (instancetype)initWithGroup:(DBXTEAMGroupSelector *)group user:(DBXTEAMUserSelectorArg *)user accessType:(DBXTEAMGroupAccessType *)accessType returnMembers:(NSNumber *)returnMembers {
 
     self = [super initWithGroup:group user:user];
-    if (self != nil) {
+    if (self) {
         _accessType = accessType;
         _returnMembers = returnMembers ?: @YES;
     }
@@ -26,8 +26,8 @@
     return [self initWithGroup:group user:user accessType:accessType returnMembers:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMembersSetAccessTypeArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMembersSetAccessTypeArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

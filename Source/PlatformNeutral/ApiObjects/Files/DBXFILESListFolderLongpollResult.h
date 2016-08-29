@@ -8,7 +8,7 @@
 @class DBXFILESListFolderLongpollResult;
 
 /// 
-/// The `DBXFILESListFolderLongpollResult` struct.
+/// The ListFolderLongpollResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -24,28 +24,58 @@
 /// listFolderLongpoll again.
 @property (nonatomic, readonly, copy) NSNumber * _Nullable backoff;
 
-/// Full constructor for the `ListFolderLongpollResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESListFolderLongpollResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter changes: Indicates whether new changes are available. If true,
+/// call :route:`list_folder/continue` to retrieve the changes.
+/// - parameter backoff: If present, backoff for at least this many seconds
+/// before calling :route:`list_folder/longpoll` again.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollResult` instance.
+/// 
 - (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes backoff:(NSNumber * _Nullable)backoff;
 
-/// Convenience constructor for the `ListFolderLongpollResult` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESListFolderLongpollResult` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter changes: Indicates whether new changes are available. If true,
+/// call :route:`list_folder/continue` to retrieve the changes.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollResult` instance.
+/// 
 - (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListFolderLongpollResult` struct.
+/// The serialization class for the ListFolderLongpollResult struct.
 /// 
 @interface DBXFILESListFolderLongpollResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderLongpollResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderLongpollResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderLongpollResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderLongpollResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderLongpollResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderLongpollResult`
+/// object.
+/// 
 + (DBXFILESListFolderLongpollResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

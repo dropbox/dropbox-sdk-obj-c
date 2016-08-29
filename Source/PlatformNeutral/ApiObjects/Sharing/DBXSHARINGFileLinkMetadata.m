@@ -17,7 +17,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](id_);
 
     self = [super initWithUrl:url name:name linkPermissions:linkPermissions id_:id_ expires:expires pathLower:pathLower teamMemberInfo:teamMemberInfo contentOwnerTeamInfo:contentOwnerTeamInfo];
-    if (self != nil) {
+    if (self) {
         _clientModified = clientModified;
         _serverModified = serverModified;
         _rev = rev;
@@ -30,8 +30,8 @@
     return [self initWithUrl:url name:name linkPermissions:linkPermissions clientModified:clientModified serverModified:serverModified rev:rev size:size id_:nil expires:nil pathLower:nil teamMemberInfo:nil contentOwnerTeamInfo:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFileLinkMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFileLinkMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

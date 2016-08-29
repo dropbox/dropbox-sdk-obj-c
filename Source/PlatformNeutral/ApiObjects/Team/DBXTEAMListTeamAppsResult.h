@@ -9,13 +9,13 @@
 @class DBXTEAMMemberLinkedApps;
 
 /// 
-/// The `DBXTEAMListTeamAppsResult` struct.
+/// The ListTeamAppsResult struct.
+/// 
+/// Information returned by linkedAppsListTeamLinkedApps.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information returned by linkedAppsListTeamLinkedApps.
 /// 
 @interface DBXTEAMListTeamAppsResult : NSObject <DBXSerializable> 
 
@@ -30,28 +30,60 @@
 /// list of team's applications.
 @property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
-/// Full constructor for the `ListTeamAppsResult` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMListTeamAppsResult` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter apps: The linked applications of each member of the team
+/// - parameter hasMore: If true, then there are more apps available. Pass the
+/// cursor to :route:`linked_apps/list_team_linked_apps` to retrieve the rest.
+/// - parameter cursor: Pass the cursor into
+/// :route:`linked_apps/list_team_linked_apps` to receive the next sub list of
+/// team's applications.
+/// 
+/// - returns: An initialized `DBXTEAMListTeamAppsResult` instance.
+/// 
 - (nonnull instancetype)initWithApps:(NSArray<DBXTEAMMemberLinkedApps *> * _Nonnull)apps hasMore:(NSNumber * _Nonnull)hasMore cursor:(NSString * _Nullable)cursor;
 
-/// Convenience constructor for the `ListTeamAppsResult` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMListTeamAppsResult` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter apps: The linked applications of each member of the team
+/// - parameter hasMore: If true, then there are more apps available. Pass the
+/// cursor to :route:`linked_apps/list_team_linked_apps` to retrieve the rest.
+/// 
+/// - returns: An initialized `DBXTEAMListTeamAppsResult` instance.
+/// 
 - (nonnull instancetype)initWithApps:(NSArray<DBXTEAMMemberLinkedApps *> * _Nonnull)apps hasMore:(NSNumber * _Nonnull)hasMore;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMListTeamAppsResult` struct.
+/// The serialization class for the ListTeamAppsResult struct.
 /// 
 @interface DBXTEAMListTeamAppsResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListTeamAppsResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamAppsResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListTeamAppsResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListTeamAppsResult` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamAppsResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamAppsResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListTeamAppsResult` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListTeamAppsResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamAppsResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListTeamAppsResult` object.
+/// 
 + (DBXTEAMListTeamAppsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

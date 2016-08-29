@@ -8,7 +8,7 @@
 @class DBXTEAMMembersListError;
 
 /// 
-/// The `DBXTEAMMembersListError` union.
+/// The MembersListError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMMembersListError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersListErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMMembersListError` union can exist in.
+/// states with which the `DBXTEAMMembersListError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersListErrorTag) {
     /// (no description).
     DBXTEAMMembersListErrorOther,
@@ -27,13 +27,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersListErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMMembersListErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMMembersListError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -44,12 +57,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersListErrorTag) {
 /// 
 @interface DBXTEAMMembersListErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersListError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersListError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersListError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersListError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersListError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersListError` object.
+/// 
 + (DBXTEAMMembersListError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

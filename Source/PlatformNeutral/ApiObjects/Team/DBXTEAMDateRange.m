@@ -11,7 +11,7 @@
 - (instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _startDate = startDate;
         _endDate = endDate;
     }
@@ -22,8 +22,8 @@
     return [self initWithStartDate:nil endDate:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDateRangeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDateRangeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

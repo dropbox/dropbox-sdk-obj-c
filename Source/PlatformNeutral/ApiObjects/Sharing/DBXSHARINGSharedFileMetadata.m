@@ -17,7 +17,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentSharedFolderId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _policy = policy;
         _permissions = permissions;
         _ownerTeam = ownerTeam;
@@ -35,8 +35,8 @@
     return [self initWithPolicy:policy previewUrl:previewUrl name:name id_:id_ permissions:nil ownerTeam:nil parentSharedFolderId:nil pathLower:nil pathDisplay:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedFileMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedFileMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

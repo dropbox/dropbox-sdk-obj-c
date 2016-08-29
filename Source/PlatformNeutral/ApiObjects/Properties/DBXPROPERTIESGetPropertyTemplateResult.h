@@ -10,35 +10,60 @@
 @class DBXPROPERTIESPropertyFieldTemplate;
 
 /// 
-/// The `DBXPROPERTIESGetPropertyTemplateResult` struct.
+/// The GetPropertyTemplateResult struct.
+/// 
+/// The Property template for the specified template.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// The Property template for the specified template.
-/// 
 @interface DBXPROPERTIESGetPropertyTemplateResult : DBXPROPERTIESPropertyGroupTemplate <DBXSerializable> 
 
-/// Full constructor for the `GetPropertyTemplateResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXPROPERTIESGetPropertyTemplateResult` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter name: A display name for the property template. Property
+/// template names can be up to 256 bytes.
+/// - parameter description_: Description for new property template. Property
+/// template descriptions can be up to 1024 bytes.
+/// - parameter fields: This is a list of custom properties associated with a
+/// property template. There can be up to 64 properties in a single property
+/// template.
+/// 
+/// - returns: An initialized `DBXPROPERTIESGetPropertyTemplateResult` instance.
+/// 
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXPROPERTIESGetPropertyTemplateResult`
-/// struct.
+/// The serialization class for the GetPropertyTemplateResult struct.
 /// 
 @interface DBXPROPERTIESGetPropertyTemplateResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESGetPropertyTemplateResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESGetPropertyTemplateResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESGetPropertyTemplateResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESGetPropertyTemplateResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESGetPropertyTemplateResult`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESGetPropertyTemplateResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESGetPropertyTemplateResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESGetPropertyTemplateResult`
+/// object.
+/// 
 + (DBXPROPERTIESGetPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

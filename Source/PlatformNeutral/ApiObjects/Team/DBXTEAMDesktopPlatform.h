@@ -8,7 +8,7 @@
 @class DBXTEAMDesktopPlatform;
 
 /// 
-/// The `DBXTEAMDesktopPlatform` union.
+/// The DesktopPlatform union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMDesktopPlatform : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMDesktopPlatformTag` enum type represents the possible tag states
-/// that the `DBXTEAMDesktopPlatform` union can exist in.
+/// with which the `DBXTEAMDesktopPlatform` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMDesktopPlatformTag) {
     /// Official Windows Dropbox desktop client
     DBXTEAMDesktopPlatformWindows,
@@ -36,31 +36,74 @@ typedef NS_ENUM(NSInteger, DBXTEAMDesktopPlatformTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMDesktopPlatformTag tag;
 
+/// 
 /// Initializes union class with tag state of `Windows`.
+/// 
+/// About the `Windows` tag state: Official Windows Dropbox desktop client
+/// 
+/// - returns: An initialized `DBXTEAMDesktopPlatform` instance.
+/// 
 - (nonnull instancetype)initWithWindows;
 
+/// 
 /// Initializes union class with tag state of `Mac`.
+/// 
+/// About the `Mac` tag state: Official Mac Dropbox desktop client
+/// 
+/// - returns: An initialized `DBXTEAMDesktopPlatform` instance.
+/// 
 - (nonnull instancetype)initWithMac;
 
+/// 
 /// Initializes union class with tag state of `Linux`.
+/// 
+/// About the `Linux` tag state: Official Linux Dropbox desktop client
+/// 
+/// - returns: An initialized `DBXTEAMDesktopPlatform` instance.
+/// 
 - (nonnull instancetype)initWithLinux;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMDesktopPlatform` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Windows`.
+/// 
+/// Retrieves whether the union's current tag state has value `Windows`.
+/// 
+/// - returns: Whether the union's current tag state has value `Windows`.
+/// 
 - (BOOL)isWindows;
 
-/// Returns whether the union's current tag state has value `Mac`.
+/// 
+/// Retrieves whether the union's current tag state has value `Mac`.
+/// 
+/// - returns: Whether the union's current tag state has value `Mac`.
+/// 
 - (BOOL)isMac;
 
-/// Returns whether the union's current tag state has value `Linux`.
+/// 
+/// Retrieves whether the union's current tag state has value `Linux`.
+/// 
+/// - returns: Whether the union's current tag state has value `Linux`.
+/// 
 - (BOOL)isLinux;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -71,12 +114,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMDesktopPlatformTag) {
 /// 
 @interface DBXTEAMDesktopPlatformSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMDesktopPlatform` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMDesktopPlatform * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMDesktopPlatform` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMDesktopPlatform` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMDesktopPlatform` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDesktopPlatform * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMDesktopPlatform` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMDesktopPlatform` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMDesktopPlatform` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMDesktopPlatform` object.
+/// 
 + (DBXTEAMDesktopPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

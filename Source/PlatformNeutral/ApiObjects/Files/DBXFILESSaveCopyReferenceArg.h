@@ -8,7 +8,7 @@
 @class DBXFILESSaveCopyReferenceArg;
 
 /// 
-/// The `DBXFILESSaveCopyReferenceArg` struct.
+/// The SaveCopyReferenceArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,45 @@
 /// Path in the user's Dropbox that is the destination.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Full constructor for the `SaveCopyReferenceArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESSaveCopyReferenceArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter dCopyReference: A copy reference returned by
+/// :route:`copy_reference/get`.
+/// - parameter path: Path in the user's Dropbox that is the destination.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceArg` instance.
+/// 
 - (nonnull instancetype)initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSaveCopyReferenceArg` struct.
+/// The serialization class for the SaveCopyReferenceArg struct.
 /// 
 @interface DBXFILESSaveCopyReferenceArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSaveCopyReferenceArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSaveCopyReferenceArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSaveCopyReferenceArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSaveCopyReferenceArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSaveCopyReferenceArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSaveCopyReferenceArg` object.
+/// 
 + (DBXFILESSaveCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

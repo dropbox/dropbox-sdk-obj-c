@@ -8,7 +8,7 @@
 @class DBXTEAMListTeamDevicesArg;
 
 /// 
-/// The `DBXTEAMListTeamDevicesArg` struct.
+/// The ListTeamDevicesArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -31,28 +31,62 @@
 /// Whether to list mobile clients of the team members
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull includeMobileClients;
 
-/// Full constructor for the `ListTeamDevicesArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMListTeamDevicesArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter cursor: At the first call to the
+/// :route:`devices/list_team_devices` the cursor shouldn't be passed. Then, if
+/// the result of the call includes a cursor, the following requests should
+/// include the received cursors in order to receive the next sub list of team
+/// devices
+/// - parameter includeWebSessions: Whether to list web sessions of the team
+/// members
+/// - parameter includeDesktopClients: Whether to list desktop clients of the
+/// team members
+/// - parameter includeMobileClients: Whether to list mobile clients of the team
+/// members
+/// 
+/// - returns: An initialized `DBXTEAMListTeamDevicesArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nullable)cursor includeWebSessions:(NSNumber * _Nullable)includeWebSessions includeDesktopClients:(NSNumber * _Nullable)includeDesktopClients includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
-/// Convenience constructor for the `ListTeamDevicesArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMListTeamDevicesArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXTEAMListTeamDevicesArg` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMListTeamDevicesArg` struct.
+/// The serialization class for the ListTeamDevicesArg struct.
 /// 
 @interface DBXTEAMListTeamDevicesArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListTeamDevicesArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamDevicesArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListTeamDevicesArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListTeamDevicesArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamDevicesArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamDevicesArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListTeamDevicesArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListTeamDevicesArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamDevicesArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListTeamDevicesArg` object.
+/// 
 + (DBXTEAMListTeamDevicesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -9,13 +9,13 @@
 @class DBXTEAMActiveWebSession;
 
 /// 
-/// The `DBXTEAMActiveWebSession` struct.
+/// The ActiveWebSession struct.
+/// 
+/// Information on active web sessions
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information on active web sessions
 /// 
 @interface DBXTEAMActiveWebSession : DBXTEAMDeviceSession <DBXSerializable> 
 
@@ -28,28 +28,64 @@
 /// Information on the browser used for this web session
 @property (nonatomic, readonly, copy) NSString * _Nonnull browser;
 
-/// Full constructor for the `ActiveWebSession` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMActiveWebSession` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter userAgent: Information on the hosting device
+/// - parameter os: Information on the hosting operating system
+/// - parameter browser: Information on the browser used for this web session
+/// - parameter ipAddress: The IP address of the last activity from this session
+/// - parameter country: The country from which the last activity from this
+/// session was made
+/// - parameter created: The time this session was created
+/// - parameter updated: The time of the last activity from this session
+/// 
+/// - returns: An initialized `DBXTEAMActiveWebSession` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
-/// Convenience constructor for the `ActiveWebSession` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMActiveWebSession` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter userAgent: Information on the hosting device
+/// - parameter os: Information on the hosting operating system
+/// - parameter browser: Information on the browser used for this web session
+/// 
+/// - returns: An initialized `DBXTEAMActiveWebSession` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMActiveWebSession` struct.
+/// The serialization class for the ActiveWebSession struct.
 /// 
 @interface DBXTEAMActiveWebSessionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMActiveWebSession` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMActiveWebSession * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMActiveWebSession` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMActiveWebSession` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMActiveWebSession` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMActiveWebSession * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMActiveWebSession` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMActiveWebSession` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMActiveWebSession` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMActiveWebSession` object.
+/// 
 + (DBXTEAMActiveWebSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

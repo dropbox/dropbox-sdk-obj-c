@@ -13,7 +13,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](dNewMembers);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _dNewMembers = dNewMembers;
         _forceAsync = forceAsync ?: @NO;
     }
@@ -24,8 +24,8 @@
     return [self initWithDNewMembers:dNewMembers forceAsync:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersAddArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersAddArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

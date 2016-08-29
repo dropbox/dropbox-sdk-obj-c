@@ -14,7 +14,7 @@
 
 - (instancetype)initWithFileNotFoundError:(NSString *)fileNotFoundError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileErrorResultFileNotFoundError;
         _fileNotFoundError = fileNotFoundError;
     }
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithInvalidFileActionError:(NSString *)invalidFileActionError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileErrorResultInvalidFileActionError;
         _invalidFileActionError = invalidFileActionError;
     }
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithPermissionDeniedError:(NSString *)permissionDeniedError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileErrorResultPermissionDeniedError;
         _permissionDeniedError = permissionDeniedError;
     }
@@ -41,7 +41,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileErrorResultOther;
     }
     return self;
@@ -79,28 +79,28 @@
 }
 
 - (NSString *)fileNotFoundError {
-    if (_tag != DBXSHARINGFileErrorResultFileNotFoundError) {
+    if (![self isFileNotFoundError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGFileErrorResultFileNotFoundError`, but was %@.", [self getTagName]];
     }
     return _fileNotFoundError;
 }
 
 - (NSString *)invalidFileActionError {
-    if (_tag != DBXSHARINGFileErrorResultInvalidFileActionError) {
+    if (![self isInvalidFileActionError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGFileErrorResultInvalidFileActionError`, but was %@.", [self getTagName]];
     }
     return _invalidFileActionError;
 }
 
 - (NSString *)permissionDeniedError {
-    if (_tag != DBXSHARINGFileErrorResultPermissionDeniedError) {
+    if (![self isPermissionDeniedError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGFileErrorResultPermissionDeniedError`, but was %@.", [self getTagName]];
     }
     return _permissionDeniedError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFileErrorResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFileErrorResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

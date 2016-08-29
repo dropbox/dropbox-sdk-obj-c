@@ -12,15 +12,15 @@
 - (instancetype)initWithReason:(DBXFILESWriteError *)reason uploadSessionId:(NSString *)uploadSessionId {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _reason = reason;
         _uploadSessionId = uploadSessionId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadWriteFailedSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadWriteFailedSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

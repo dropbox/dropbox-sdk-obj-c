@@ -12,41 +12,73 @@
 @class DBXSHARINGUserMembershipInfo;
 
 /// 
-/// The `DBXSHARINGUserMembershipInfo` struct.
+/// The UserMembershipInfo struct.
+/// 
+/// The information about a user member of the shared content.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// The information about a user member of the shared content.
 /// 
 @interface DBXSHARINGUserMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// The account information for the membership user.
 @property (nonatomic, readonly) DBXSHARINGUserInfo * _Nonnull user;
 
-/// Full constructor for the `UserMembershipInfo` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGUserMembershipInfo` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter accessType: The access type for this member.
+/// - parameter user: The account information for the membership user.
+/// - parameter permissions: The permissions that requesting user has on this
+/// member. The set of permissions corresponds to the MemberActions in the
+/// request.
+/// - parameter initials: Suggested name initials for a member.
+/// - parameter isInherited: True if the member has access from a parent folder.
+/// 
+/// - returns: An initialized `DBXSHARINGUserMembershipInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType user:(DBXSHARINGUserInfo * _Nonnull)user permissions:(NSArray<DBXSHARINGMemberPermission *> * _Nullable)permissions initials:(NSString * _Nullable)initials isInherited:(NSNumber * _Nullable)isInherited;
 
-/// Convenience constructor for the `UserMembershipInfo` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGUserMembershipInfo` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter accessType: The access type for this member.
+/// - parameter user: The account information for the membership user.
+/// 
+/// - returns: An initialized `DBXSHARINGUserMembershipInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType user:(DBXSHARINGUserInfo * _Nonnull)user;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGUserMembershipInfo` struct.
+/// The serialization class for the UserMembershipInfo struct.
 /// 
 @interface DBXSHARINGUserMembershipInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUserMembershipInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUserMembershipInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUserMembershipInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGUserMembershipInfo` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUserMembershipInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUserMembershipInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUserMembershipInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUserMembershipInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUserMembershipInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUserMembershipInfo` object.
+/// 
 + (DBXSHARINGUserMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

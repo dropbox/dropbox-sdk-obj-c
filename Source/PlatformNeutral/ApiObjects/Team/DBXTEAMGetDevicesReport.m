@@ -13,7 +13,7 @@
 - (instancetype)initWithStartDate:(NSString *)startDate active1Day:(DBXTEAMDevicesActive *)active1Day active7Day:(DBXTEAMDevicesActive *)active7Day active28Day:(DBXTEAMDevicesActive *)active28Day {
 
     self = [super initWithStartDate:startDate];
-    if (self != nil) {
+    if (self) {
         _active1Day = active1Day;
         _active7Day = active7Day;
         _active28Day = active28Day;
@@ -21,8 +21,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGetDevicesReportSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGetDevicesReportSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

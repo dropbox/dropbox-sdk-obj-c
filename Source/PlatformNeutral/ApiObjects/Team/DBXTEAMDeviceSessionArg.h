@@ -8,7 +8,7 @@
 @class DBXTEAMDeviceSessionArg;
 
 /// 
-/// The `DBXTEAMDeviceSessionArg` struct.
+/// The DeviceSessionArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,44 @@
 /// The unique id of the member owning the device
 @property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
-/// Full constructor for the `DeviceSessionArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMDeviceSessionArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter teamMemberId: The unique id of the member owning the device
+/// 
+/// - returns: An initialized `DBXTEAMDeviceSessionArg` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMDeviceSessionArg` struct.
+/// The serialization class for the DeviceSessionArg struct.
 /// 
 @interface DBXTEAMDeviceSessionArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMDeviceSessionArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSessionArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMDeviceSessionArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMDeviceSessionArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMDeviceSessionArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSessionArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMDeviceSessionArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMDeviceSessionArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMDeviceSessionArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMDeviceSessionArg` object.
+/// 
 + (DBXTEAMDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

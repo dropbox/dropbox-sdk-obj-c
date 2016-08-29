@@ -8,7 +8,7 @@
 @class DBXTEAMMembersDeactivateError;
 
 /// 
-/// The `DBXTEAMMembersDeactivateError` union.
+/// The MembersDeactivateError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMMembersDeactivateError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersDeactivateErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMMembersDeactivateError` union can exist in.
+/// states with which the `DBXTEAMMembersDeactivateError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersDeactivateErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
@@ -34,25 +34,59 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersDeactivateErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMMembersDeactivateErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotFound`.
+/// 
+/// About the `UserNotFound` tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersDeactivateError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotFound;
 
+/// 
 /// Initializes union class with tag state of `UserNotInTeam`.
+/// 
+/// About the `UserNotInTeam` tag state: The user is not a member of the team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersDeactivateError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMMembersDeactivateError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotFound`.
+/// 
 - (BOOL)isUserNotFound;
 
-/// Returns whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotInTeam`.
+/// 
 - (BOOL)isUserNotInTeam;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -63,12 +97,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersDeactivateErrorTag) {
 /// 
 @interface DBXTEAMMembersDeactivateErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersDeactivateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersDeactivateError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersDeactivateError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersDeactivateError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersDeactivateError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersDeactivateError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersDeactivateError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersDeactivateError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersDeactivateError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersDeactivateError` object.
+/// 
 + (DBXTEAMMembersDeactivateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

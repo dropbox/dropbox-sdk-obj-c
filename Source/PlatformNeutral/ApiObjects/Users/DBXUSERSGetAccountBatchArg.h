@@ -8,7 +8,7 @@
 @class DBXUSERSGetAccountBatchArg;
 
 /// 
-/// The `DBXUSERSGetAccountBatchArg` struct.
+/// The GetAccountBatchArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,44 @@
 /// IDs.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nonnull accountIds;
 
-/// Full constructor for the `GetAccountBatchArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXUSERSGetAccountBatchArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter accountIds: List of user account identifiers.  Should not
+/// contain any duplicate account IDs.
+/// 
+/// - returns: An initialized `DBXUSERSGetAccountBatchArg` instance.
+/// 
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSGetAccountBatchArg` struct.
+/// The serialization class for the GetAccountBatchArg struct.
 /// 
 @interface DBXUSERSGetAccountBatchArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSGetAccountBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountBatchArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSGetAccountBatchArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSGetAccountBatchArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountBatchArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountBatchArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSGetAccountBatchArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSGetAccountBatchArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountBatchArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSGetAccountBatchArg` object.
+/// 
 + (DBXUSERSGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

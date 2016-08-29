@@ -8,7 +8,7 @@
 @class DBXTEAMRevokeLinkedApiAppArg;
 
 /// 
-/// The `DBXTEAMRevokeLinkedApiAppArg` struct.
+/// The RevokeLinkedApiAppArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -26,28 +26,57 @@
 /// uses  one)
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull keepAppFolder;
 
-/// Full constructor for the `RevokeLinkedApiAppArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXTEAMRevokeLinkedApiAppArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter appId: The application's unique id
+/// - parameter teamMemberId: The unique id of the member owning the device
+/// - parameter keepAppFolder: Whether to keep the application dedicated folder
+/// (in case the application uses  one)
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedApiAppArg` instance.
+/// 
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId keepAppFolder:(NSNumber * _Nullable)keepAppFolder;
 
-/// Convenience constructor for the `RevokeLinkedApiAppArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMRevokeLinkedApiAppArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter appId: The application's unique id
+/// - parameter teamMemberId: The unique id of the member owning the device
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedApiAppArg` instance.
+/// 
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeLinkedApiAppArg` struct.
+/// The serialization class for the RevokeLinkedApiAppArg struct.
 /// 
 @interface DBXTEAMRevokeLinkedApiAppArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeLinkedApiAppArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeLinkedApiAppArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeLinkedApiAppArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedApiAppArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeLinkedApiAppArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeLinkedApiAppArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedApiAppArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeLinkedApiAppArg` object.
+/// 
 + (DBXTEAMRevokeLinkedApiAppArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

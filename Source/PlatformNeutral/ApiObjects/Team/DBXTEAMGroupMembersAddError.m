@@ -15,7 +15,7 @@
 
 - (instancetype)initWithGroupNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorGroupNotFound;
     }
     return self;
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorOther;
     }
     return self;
@@ -31,7 +31,7 @@
 
 - (instancetype)initWithDuplicateUser {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorDuplicateUser;
     }
     return self;
@@ -39,7 +39,7 @@
 
 - (instancetype)initWithGroupNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorGroupNotInTeam;
     }
     return self;
@@ -47,7 +47,7 @@
 
 - (instancetype)initWithMembersNotInTeam:(NSArray<NSString *> *)membersNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorMembersNotInTeam;
         _membersNotInTeam = membersNotInTeam;
     }
@@ -56,7 +56,7 @@
 
 - (instancetype)initWithUsersNotFound:(NSArray<NSString *> *)usersNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorUsersNotFound;
         _usersNotFound = usersNotFound;
     }
@@ -65,7 +65,7 @@
 
 - (instancetype)initWithUserMustBeActiveToBeOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorUserMustBeActiveToBeOwner;
     }
     return self;
@@ -73,7 +73,7 @@
 
 - (instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup:(NSArray<NSString *> *)userCannotBeManagerOfCompanyManagedGroup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup;
         _userCannotBeManagerOfCompanyManagedGroup = userCannotBeManagerOfCompanyManagedGroup;
     }
@@ -136,28 +136,28 @@
 }
 
 - (NSArray<NSString *> *)membersNotInTeam {
-    if (_tag != DBXTEAMGroupMembersAddErrorMembersNotInTeam) {
+    if (![self isMembersNotInTeam]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupMembersAddErrorMembersNotInTeam`, but was %@.", [self getTagName]];
     }
     return _membersNotInTeam;
 }
 
 - (NSArray<NSString *> *)usersNotFound {
-    if (_tag != DBXTEAMGroupMembersAddErrorUsersNotFound) {
+    if (![self isUsersNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupMembersAddErrorUsersNotFound`, but was %@.", [self getTagName]];
     }
     return _usersNotFound;
 }
 
 - (NSArray<NSString *> *)userCannotBeManagerOfCompanyManagedGroup {
-    if (_tag != DBXTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup) {
+    if (![self isUserCannotBeManagerOfCompanyManagedGroup]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup`, but was %@.", [self getTagName]];
     }
     return _userCannotBeManagerOfCompanyManagedGroup;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMembersAddErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMembersAddErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -15,7 +15,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPropertiesErrorRestrictedContent;
     }
     return self;
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPropertiesErrorOther;
     }
     return self;
@@ -40,7 +40,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESPropertiesErrorPath;
         _path = path;
     }
@@ -79,21 +79,21 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXFILESPropertiesErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESPropertiesErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESPropertiesErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESPropertiesErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESPropertiesErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESPropertiesErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -9,7 +9,7 @@
 @class DBXSHARINGPendingUploadMode;
 
 /// 
-/// The `DBXSHARINGCreateSharedLinkArg` struct.
+/// The CreateSharedLinkArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,28 +28,58 @@
 /// to assume it's a file or folder.
 @property (nonatomic, readonly) DBXSHARINGPendingUploadMode * _Nullable pendingUpload;
 
-/// Full constructor for the `CreateSharedLinkArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGCreateSharedLinkArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path to share.
+/// - parameter shortUrl: Whether to return a shortened URL.
+/// - parameter pendingUpload: If it's okay to share a path that does not yet
+/// exist, set this to either :field:`PendingUploadMode.file` or
+/// :field:`PendingUploadMode.folder` to indicate whether to assume it's a file
+/// or folder.
+/// 
+/// - returns: An initialized `DBXSHARINGCreateSharedLinkArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path shortUrl:(NSNumber * _Nullable)shortUrl pendingUpload:(DBXSHARINGPendingUploadMode * _Nullable)pendingUpload;
 
-/// Convenience constructor for the `CreateSharedLinkArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGCreateSharedLinkArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path to share.
+/// 
+/// - returns: An initialized `DBXSHARINGCreateSharedLinkArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGCreateSharedLinkArg` struct.
+/// The serialization class for the CreateSharedLinkArg struct.
 /// 
 @interface DBXSHARINGCreateSharedLinkArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGCreateSharedLinkArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGCreateSharedLinkArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGCreateSharedLinkArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGCreateSharedLinkArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGCreateSharedLinkArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGCreateSharedLinkArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGCreateSharedLinkArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGCreateSharedLinkArg` object.
+/// 
 + (DBXSHARINGCreateSharedLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

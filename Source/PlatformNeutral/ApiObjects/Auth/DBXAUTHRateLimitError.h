@@ -9,13 +9,13 @@
 @class DBXAUTHRateLimitReason;
 
 /// 
-/// The `DBXAUTHRateLimitError` struct.
+/// The RateLimitError struct.
+/// 
+/// Error occurred because the app is being rate limited.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Error occurred because the app is being rate limited.
 /// 
 @interface DBXAUTHRateLimitError : NSObject <DBXSerializable> 
 
@@ -26,28 +26,55 @@
 /// request.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull retryAfter;
 
-/// Full constructor for the `RateLimitError` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXAUTHRateLimitError` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter reason: The reason why the app is being rate limited.
+/// - parameter retryAfter: The number of seconds that the app should wait
+/// before making another request.
+/// 
+/// - returns: An initialized `DBXAUTHRateLimitError` instance.
+/// 
 - (nonnull instancetype)initWithReason:(DBXAUTHRateLimitReason * _Nonnull)reason retryAfter:(NSNumber * _Nullable)retryAfter;
 
-/// Convenience constructor for the `RateLimitError` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXAUTHRateLimitError` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter reason: The reason why the app is being rate limited.
+/// 
+/// - returns: An initialized `DBXAUTHRateLimitError` instance.
+/// 
 - (nonnull instancetype)initWithReason:(DBXAUTHRateLimitReason * _Nonnull)reason;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXAUTHRateLimitError` struct.
+/// The serialization class for the RateLimitError struct.
 /// 
 @interface DBXAUTHRateLimitErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXAUTHRateLimitError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXAUTHRateLimitError * _Nonnull)obj;
+/// 
+/// Serializes `DBXAUTHRateLimitError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXAUTHRateLimitError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXAUTHRateLimitError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXAUTHRateLimitError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXAUTHRateLimitError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXAUTHRateLimitError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXAUTHRateLimitError` API object.
+/// 
+///  - returns: An instantiation of the `DBXAUTHRateLimitError` object.
+/// 
 + (DBXAUTHRateLimitError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

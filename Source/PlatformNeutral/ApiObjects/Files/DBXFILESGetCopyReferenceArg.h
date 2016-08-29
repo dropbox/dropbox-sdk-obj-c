@@ -8,7 +8,7 @@
 @class DBXFILESGetCopyReferenceArg;
 
 /// 
-/// The `DBXFILESGetCopyReferenceArg` struct.
+/// The GetCopyReferenceArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,44 @@
 /// The path to the file or folder you want to get a copy reference to.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Full constructor for the `GetCopyReferenceArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESGetCopyReferenceArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path to the file or folder you want to get a copy
+/// reference to.
+/// 
+/// - returns: An initialized `DBXFILESGetCopyReferenceArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGetCopyReferenceArg` struct.
+/// The serialization class for the GetCopyReferenceArg struct.
 /// 
 @interface DBXFILESGetCopyReferenceArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGetCopyReferenceArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGetCopyReferenceArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGetCopyReferenceArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGetCopyReferenceArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGetCopyReferenceArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetCopyReferenceArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGetCopyReferenceArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGetCopyReferenceArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGetCopyReferenceArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGetCopyReferenceArg` object.
+/// 
 + (DBXFILESGetCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

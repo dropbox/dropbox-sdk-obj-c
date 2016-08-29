@@ -11,7 +11,7 @@
 - (instancetype)initWithChanges:(NSNumber *)changes backoff:(NSNumber *)backoff {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _changes = changes;
         _backoff = backoff;
     }
@@ -22,8 +22,8 @@
     return [self initWithChanges:changes backoff:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListFolderLongpollResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListFolderLongpollResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

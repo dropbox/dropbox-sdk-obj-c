@@ -11,7 +11,7 @@
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId includeWebSessions:(NSNumber *)includeWebSessions includeDesktopClients:(NSNumber *)includeDesktopClients includeMobileClients:(NSNumber *)includeMobileClients {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _teamMemberId = teamMemberId;
         _includeWebSessions = includeWebSessions ?: @YES;
         _includeDesktopClients = includeDesktopClients ?: @YES;
@@ -24,8 +24,8 @@
     return [self initWithTeamMemberId:teamMemberId includeWebSessions:nil includeDesktopClients:nil includeMobileClients:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListMemberDevicesArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListMemberDevicesArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

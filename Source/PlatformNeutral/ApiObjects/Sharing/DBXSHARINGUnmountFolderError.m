@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUnmountFolderErrorAccessError;
         _accessError = accessError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUnmountFolderErrorNoPermission;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithNotUnmountable {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUnmountFolderErrorNotUnmountable;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUnmountFolderErrorOther;
     }
     return self;
@@ -76,14 +76,14 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGUnmountFolderErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGUnmountFolderErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUnmountFolderErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUnmountFolderErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

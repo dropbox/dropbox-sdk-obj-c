@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithUnsupportedExtension {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailErrorUnsupportedExtension;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithUnsupportedImage {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailErrorUnsupportedImage;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithConversionError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailErrorConversionError;
     }
     return self;
@@ -76,14 +76,14 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESThumbnailErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESThumbnailErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESThumbnailErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESThumbnailErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -14,7 +14,7 @@
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMUserSelectorArgTeamMemberId;
         _teamMemberId = teamMemberId;
     }
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithExternalId:(NSString *)externalId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMUserSelectorArgExternalId;
         _externalId = externalId;
     }
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMUserSelectorArgEmail;
         _email = email;
     }
@@ -65,28 +65,28 @@
 }
 
 - (NSString *)teamMemberId {
-    if (_tag != DBXTEAMUserSelectorArgTeamMemberId) {
+    if (![self isTeamMemberId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMUserSelectorArgTeamMemberId`, but was %@.", [self getTagName]];
     }
     return _teamMemberId;
 }
 
 - (NSString *)externalId {
-    if (_tag != DBXTEAMUserSelectorArgExternalId) {
+    if (![self isExternalId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMUserSelectorArgExternalId`, but was %@.", [self getTagName]];
     }
     return _externalId;
 }
 
 - (NSString *)email {
-    if (_tag != DBXTEAMUserSelectorArgEmail) {
+    if (![self isEmail]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMUserSelectorArgEmail`, but was %@.", [self getTagName]];
     }
     return _email;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMUserSelectorArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMUserSelectorArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

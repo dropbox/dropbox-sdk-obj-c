@@ -8,7 +8,7 @@
 @class DBXTEAMGroupMembersAddError;
 
 /// 
-/// The `DBXTEAMGroupMembersAddError` union.
+/// The GroupMembersAddError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMGroupMembersAddError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupMembersAddErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMGroupMembersAddError` union can exist in.
+/// states with which the `DBXTEAMGroupMembersAddError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     DBXTEAMGroupMembersAddErrorGroupNotFound,
@@ -65,58 +65,164 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
 /// A company-managed group cannot be managed by a user.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nonnull userCannotBeManagerOfCompanyManagedGroup;
 
+/// 
 /// Initializes union class with tag state of `GroupNotFound`.
+/// 
+/// About the `GroupNotFound` tag state: No matching group found. No groups
+/// match the specified group ID.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `DuplicateUser`.
+/// 
+/// About the `DuplicateUser` tag state: You cannot add duplicate users. One or
+/// more of the members you are trying to add is already a member of the group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithDuplicateUser;
 
+/// 
 /// Initializes union class with tag state of `GroupNotInTeam`.
+/// 
+/// About the `GroupNotInTeam` tag state: Group is not in this team. You cannot
+/// add members to a group that is outside of your team.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `MembersNotInTeam`.
+/// 
+/// About the `MembersNotInTeam` tag state: These members are not part of your
+/// team. Currently, you cannot add members to a group if they are not part of
+/// your team, though this may change in a subsequent version. To add new
+/// members to your Dropbox Business team, use the :route:`members/add`
+/// endpoint.
+/// 
+/// - parameter membersNotInTeam: These members are not part of your team.
+/// Currently, you cannot add members to a group if they are not part of your
+/// team, though this may change in a subsequent version. To add new members to
+/// your Dropbox Business team, use the :route:`members/add` endpoint.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithMembersNotInTeam:(NSArray<NSString *> * _Nonnull)membersNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `UsersNotFound`.
+/// 
+/// About the `UsersNotFound` tag state: These users were not found in Dropbox.
+/// 
+/// - parameter usersNotFound: These users were not found in Dropbox.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithUsersNotFound:(NSArray<NSString *> * _Nonnull)usersNotFound;
 
+/// 
 /// Initializes union class with tag state of `UserMustBeActiveToBeOwner`.
+/// 
+/// About the `UserMustBeActiveToBeOwner` tag state: A suspended user cannot be
+/// added to a group as :field:`GroupAccessType.owner`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithUserMustBeActiveToBeOwner;
 
+/// 
 /// Initializes union class with tag state of
 /// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
+/// About the `UserCannotBeManagerOfCompanyManagedGroup` tag state: A
+/// company-managed group cannot be managed by a user.
+/// 
+/// - parameter userCannotBeManagerOfCompanyManagedGroup: A company-managed
+/// group cannot be managed by a user.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersAddError` instance.
+/// 
 - (nonnull instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup:(NSArray<NSString *> * _Nonnull)userCannotBeManagerOfCompanyManagedGroup;
 
-/// Returns whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotFound`.
+/// 
 - (BOOL)isGroupNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `DuplicateUser`.
+/// 
+/// Retrieves whether the union's current tag state has value `DuplicateUser`.
+/// 
+/// - returns: Whether the union's current tag state has value `DuplicateUser`.
+/// 
 - (BOOL)isDuplicateUser;
 
-/// Returns whether the union's current tag state has value `GroupNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotInTeam`.
+/// 
 - (BOOL)isGroupNotInTeam;
 
-/// Returns whether the union's current tag state has value `MembersNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `MembersNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `MembersNotInTeam`.
+/// 
 - (BOOL)isMembersNotInTeam;
 
-/// Returns whether the union's current tag state has value `UsersNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UsersNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UsersNotFound`.
+/// 
 - (BOOL)isUsersNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserMustBeActiveToBeOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserMustBeActiveToBeOwner`.
+/// 
 - (BOOL)isUserMustBeActiveToBeOwner;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
 - (BOOL)isUserCannotBeManagerOfCompanyManagedGroup;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -127,12 +233,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
 /// 
 @interface DBXTEAMGroupMembersAddErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMembersAddError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersAddError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMembersAddError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMembersAddError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersAddError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersAddError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMembersAddError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMembersAddError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersAddError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMembersAddError` object.
+/// 
 + (DBXTEAMGroupMembersAddError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -9,7 +9,7 @@
 @class DBXFILESUploadSessionOffsetError;
 
 /// 
-/// The `DBXFILESUploadSessionLookupError` union.
+/// The UploadSessionLookupError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,8 @@
 @interface DBXFILESUploadSessionLookupError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESUploadSessionLookupErrorTag` enum type represents the possible
-/// tag states that the `DBXFILESUploadSessionLookupError` union can exist in.
+/// tag states with which the `DBXFILESUploadSessionLookupError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
     /// The upload session id was not found.
     DBXFILESUploadSessionLookupErrorNotFound,
@@ -50,37 +51,101 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
 /// network error.)
 @property (nonatomic, readonly) DBXFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
 
+/// 
 /// Initializes union class with tag state of `NotFound`.
+/// 
+/// About the `NotFound` tag state: The upload session id was not found.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionLookupError` instance.
+/// 
 - (nonnull instancetype)initWithNotFound;
 
+/// 
 /// Initializes union class with tag state of `IncorrectOffset`.
+/// 
+/// About the `IncorrectOffset` tag state: The specified offset was incorrect.
+/// See the value for the correct offset. (This error may occur when a previous
+/// request was received and processed successfully but the client did not
+/// receive the response, e.g. due to a network error.)
+/// 
+/// - parameter incorrectOffset: The specified offset was incorrect. See the
+/// value for the correct offset. (This error may occur when a previous request
+/// was received and processed successfully but the client did not receive the
+/// response, e.g. due to a network error.)
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionLookupError` instance.
+/// 
 - (nonnull instancetype)initWithIncorrectOffset:(DBXFILESUploadSessionOffsetError * _Nonnull)incorrectOffset;
 
+/// 
 /// Initializes union class with tag state of `Closed`.
+/// 
+/// About the `Closed` tag state: You are attempting to append data to an upload
+/// session that has alread been closed (i.e. committed).
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionLookupError` instance.
+/// 
 - (nonnull instancetype)initWithClosed;
 
+/// 
 /// Initializes union class with tag state of `NotClosed`.
+/// 
+/// About the `NotClosed` tag state: The session must be closed before calling
+/// upload_session/finish_batch.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionLookupError` instance.
+/// 
 - (nonnull instancetype)initWithNotClosed;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionLookupError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `NotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotFound`.
+/// 
 - (BOOL)isNotFound;
 
-/// Returns whether the union's current tag state has value `IncorrectOffset`.
+/// 
+/// Retrieves whether the union's current tag state has value `IncorrectOffset`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `IncorrectOffset`.
+/// 
 - (BOOL)isIncorrectOffset;
 
-/// Returns whether the union's current tag state has value `Closed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Closed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Closed`.
+/// 
 - (BOOL)isClosed;
 
-/// Returns whether the union's current tag state has value `NotClosed`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotClosed`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotClosed`.
+/// 
 - (BOOL)isNotClosed;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -91,12 +156,26 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
 /// 
 @interface DBXFILESUploadSessionLookupErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadSessionLookupError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionLookupError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadSessionLookupError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESUploadSessionLookupError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionLookupError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionLookupError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadSessionLookupError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadSessionLookupError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionLookupError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadSessionLookupError`
+/// object.
+/// 
 + (DBXFILESUploadSessionLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

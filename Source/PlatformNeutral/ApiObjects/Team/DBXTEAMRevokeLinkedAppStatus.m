@@ -12,7 +12,7 @@
 - (instancetype)initWithSuccess:(NSNumber *)success errorType:(DBXTEAMRevokeLinkedAppError *)errorType {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _success = success;
         _errorType = errorType;
     }
@@ -23,8 +23,8 @@
     return [self initWithSuccess:success errorType:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeLinkedAppStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeLinkedAppStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

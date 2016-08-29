@@ -9,7 +9,7 @@
 @class DBXTEAMMembersAddJobStatus;
 
 /// 
-/// The `DBXTEAMMembersAddJobStatus` union.
+/// The MembersAddJobStatus union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXTEAMMembersAddJobStatus : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersAddJobStatusTag` enum type represents the possible tag
-/// states that the `DBXTEAMMembersAddJobStatus` union can exist in.
+/// states with which the `DBXTEAMMembersAddJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersAddJobStatusTag) {
     /// The asynchronous job is still in progress.
     DBXTEAMMembersAddJobStatusInProgress,
@@ -46,25 +46,71 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersAddJobStatusTag) {
 /// message.
 @property (nonatomic, readonly, copy) NSString * _Nonnull failed;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXTEAMMembersAddJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: The asynchronous job has finished. For each
+/// member that was specified in the parameter :type:`MembersAddArg` that was
+/// provided to :route:`members/add`, a corresponding item is returned in this
+/// list.
+/// 
+/// - parameter complete: The asynchronous job has finished. For each member
+/// that was specified in the parameter :type:`MembersAddArg` that was provided
+/// to :route:`members/add`, a corresponding item is returned in this list.
+/// 
+/// - returns: An initialized `DBXTEAMMembersAddJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithComplete:(NSArray<DBXTEAMMemberAddResult *> * _Nonnull)complete;
 
+/// 
 /// Initializes union class with tag state of `Failed`.
+/// 
+/// About the `Failed` tag state: The asynchronous job returned an error. The
+/// string contains an error message.
+/// 
+/// - parameter failed: The asynchronous job returned an error. The string
+/// contains an error message.
+/// 
+/// - returns: An initialized `DBXTEAMMembersAddJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithFailed:(NSString * _Nonnull)failed;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns whether the union's current tag state has value `Failed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Failed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Failed`.
+/// 
 - (BOOL)isFailed;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -75,12 +121,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersAddJobStatusTag) {
 /// 
 @interface DBXTEAMMembersAddJobStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersAddJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddJobStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersAddJobStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersAddJobStatus` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersAddJobStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddJobStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersAddJobStatus` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersAddJobStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersAddJobStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersAddJobStatus` object.
+/// 
 + (DBXTEAMMembersAddJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

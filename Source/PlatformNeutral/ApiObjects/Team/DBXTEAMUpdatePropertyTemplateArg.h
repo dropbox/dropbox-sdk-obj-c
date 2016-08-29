@@ -9,7 +9,7 @@
 @class DBXTEAMUpdatePropertyTemplateArg;
 
 /// 
-/// The `DBXTEAMUpdatePropertyTemplateArg` struct.
+/// The UpdatePropertyTemplateArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -32,28 +32,63 @@
 /// can be up to 64 properties in a single property template.
 @property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable addFields;
 
-/// Full constructor for the `UpdatePropertyTemplateArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMUpdatePropertyTemplateArg` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter templateId: An identifier for property template added by
+/// :route:`properties/template/add`.
+/// - parameter name: A display name for the property template. Property
+/// template names can be up to 256 bytes.
+/// - parameter description_: Description for new property template. Property
+/// template descriptions can be up to 1024 bytes.
+/// - parameter addFields: This is a list of custom properties to add to the
+/// property template. There can be up to 64 properties in a single property
+/// template.
+/// 
+/// - returns: An initialized `DBXTEAMUpdatePropertyTemplateArg` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId name:(NSString * _Nullable)name description_:(NSString * _Nullable)description_ addFields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable)addFields;
 
-/// Convenience constructor for the `UpdatePropertyTemplateArg` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMUpdatePropertyTemplateArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter templateId: An identifier for property template added by
+/// :route:`properties/template/add`.
+/// 
+/// - returns: An initialized `DBXTEAMUpdatePropertyTemplateArg` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMUpdatePropertyTemplateArg` struct.
+/// The serialization class for the UpdatePropertyTemplateArg struct.
 /// 
 @interface DBXTEAMUpdatePropertyTemplateArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMUpdatePropertyTemplateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMUpdatePropertyTemplateArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMUpdatePropertyTemplateArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMUpdatePropertyTemplateArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMUpdatePropertyTemplateArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUpdatePropertyTemplateArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMUpdatePropertyTemplateArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMUpdatePropertyTemplateArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMUpdatePropertyTemplateArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMUpdatePropertyTemplateArg`
+/// object.
+/// 
 + (DBXTEAMUpdatePropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

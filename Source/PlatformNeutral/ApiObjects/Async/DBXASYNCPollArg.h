@@ -8,13 +8,13 @@
 @class DBXASYNCPollArg;
 
 /// 
-/// The `DBXASYNCPollArg` struct.
+/// The PollArg struct.
+/// 
+/// Arguments for methods that poll the status of an asynchronous job.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for methods that poll the status of an asynchronous job.
 /// 
 @interface DBXASYNCPollArg : NSObject <DBXSerializable> 
 
@@ -22,23 +22,43 @@
 /// the method that launched the job.
 @property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
-/// Full constructor for the `PollArg` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXASYNCPollArg` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter asyncJobId: Id of the asynchronous job. This is the value of a
+/// response returned from the method that launched the job.
+/// 
+/// - returns: An initialized `DBXASYNCPollArg` instance.
+/// 
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXASYNCPollArg` struct.
+/// The serialization class for the PollArg struct.
 /// 
 @interface DBXASYNCPollArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DBXASYNCPollArg`
-/// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXASYNCPollArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXASYNCPollArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXASYNCPollArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXASYNCPollArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXASYNCPollArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXASYNCPollArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXASYNCPollArg` object.
+/// 
 + (DBXASYNCPollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

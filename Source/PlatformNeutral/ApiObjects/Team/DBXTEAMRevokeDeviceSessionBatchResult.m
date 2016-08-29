@@ -13,14 +13,14 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeDevicesStatus);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _revokeDevicesStatus = revokeDevicesStatus;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDeviceSessionBatchResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDeviceSessionBatchResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithPublic {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRequestedVisibilityPublic;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRequestedVisibilityTeamOnly;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithPassword {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRequestedVisibilityPassword;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRequestedVisibilitySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRequestedVisibilitySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

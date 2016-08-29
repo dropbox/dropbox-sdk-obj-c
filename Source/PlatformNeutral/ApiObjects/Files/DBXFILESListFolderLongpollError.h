@@ -8,7 +8,7 @@
 @class DBXFILESListFolderLongpollError;
 
 /// 
-/// The `DBXFILESListFolderLongpollError` union.
+/// The ListFolderLongpollError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESListFolderLongpollError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESListFolderLongpollErrorTag` enum type represents the possible
-/// tag states that the `DBXFILESListFolderLongpollError` union can exist in.
+/// tag states with which the `DBXFILESListFolderLongpollError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESListFolderLongpollErrorTag) {
     /// Indicates that the cursor has been invalidated. Call listFolder to
     /// obtain a new cursor.
@@ -31,19 +31,43 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderLongpollErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESListFolderLongpollErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `Reset`.
+/// 
+/// About the `Reset` tag state: Indicates that the cursor has been invalidated.
+/// Call :route:`list_folder` to obtain a new cursor.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollError` instance.
+/// 
 - (nonnull instancetype)initWithReset;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Reset`.
+/// 
+/// Retrieves whether the union's current tag state has value `Reset`.
+/// 
+/// - returns: Whether the union's current tag state has value `Reset`.
+/// 
 - (BOOL)isReset;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -54,12 +78,26 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderLongpollErrorTag) {
 /// 
 @interface DBXFILESListFolderLongpollErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderLongpollError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderLongpollError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderLongpollError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderLongpollError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderLongpollError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderLongpollError`
+/// object.
+/// 
 + (DBXFILESListFolderLongpollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

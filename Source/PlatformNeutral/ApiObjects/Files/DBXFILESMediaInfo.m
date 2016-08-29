@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPending {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESMediaInfoPending;
     }
     return self;
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithMetadata:(DBXFILESMediaMetadata *)metadata {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESMediaInfoMetadata;
         _metadata = metadata;
     }
@@ -48,14 +48,14 @@
 }
 
 - (DBXFILESMediaMetadata *)metadata {
-    if (_tag != DBXFILESMediaInfoMetadata) {
+    if (![self isMetadata]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESMediaInfoMetadata`, but was %@.", [self getTagName]];
     }
     return _metadata;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESMediaInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESMediaInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

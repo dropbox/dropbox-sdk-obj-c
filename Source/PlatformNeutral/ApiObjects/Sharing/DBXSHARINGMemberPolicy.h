@@ -8,19 +8,19 @@
 @class DBXSHARINGMemberPolicy;
 
 /// 
-/// The `DBXSHARINGMemberPolicy` union.
+/// The MemberPolicy union.
+/// 
+/// Policy governing who can be a member of a shared folder. Only applicable to
+/// folders owned by a user on a team.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Policy governing who can be a member of a shared folder. Only applicable to
-/// folders owned by a user on a team.
-/// 
 @interface DBXSHARINGMemberPolicy : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGMemberPolicyTag` enum type represents the possible tag states
-/// that the `DBXSHARINGMemberPolicy` union can exist in.
+/// with which the `DBXSHARINGMemberPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGMemberPolicyTag) {
     /// Only a teammate can become a member.
     DBXSHARINGMemberPolicyTeam,
@@ -36,25 +36,58 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberPolicyTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGMemberPolicyTag tag;
 
+/// 
 /// Initializes union class with tag state of `Team`.
+/// 
+/// About the `Team` tag state: Only a teammate can become a member.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberPolicy` instance.
+/// 
 - (nonnull instancetype)initWithTeam;
 
+/// 
 /// Initializes union class with tag state of `Anyone`.
+/// 
+/// About the `Anyone` tag state: Anyone can become a member.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberPolicy` instance.
+/// 
 - (nonnull instancetype)initWithAnyone;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberPolicy` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Team`.
+/// 
+/// Retrieves whether the union's current tag state has value `Team`.
+/// 
+/// - returns: Whether the union's current tag state has value `Team`.
+/// 
 - (BOOL)isTeam;
 
-/// Returns whether the union's current tag state has value `Anyone`.
+/// 
+/// Retrieves whether the union's current tag state has value `Anyone`.
+/// 
+/// - returns: Whether the union's current tag state has value `Anyone`.
+/// 
 - (BOOL)isAnyone;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -65,12 +98,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberPolicyTag) {
 /// 
 @interface DBXSHARINGMemberPolicySerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGMemberPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberPolicy * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGMemberPolicy` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGMemberPolicy` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberPolicy` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberPolicy * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGMemberPolicy` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGMemberPolicy` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberPolicy` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGMemberPolicy` object.
+/// 
 + (DBXSHARINGMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

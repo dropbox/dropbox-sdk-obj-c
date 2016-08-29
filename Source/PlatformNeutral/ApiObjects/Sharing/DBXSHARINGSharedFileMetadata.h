@@ -11,13 +11,13 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXSHARINGSharedFileMetadata` struct.
+/// The SharedFileMetadata struct.
+/// 
+/// Properties of the shared file.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Properties of the shared file.
 /// 
 @interface DBXSHARINGSharedFileMetadata : NSObject <DBXSerializable> 
 
@@ -54,28 +54,73 @@
 /// The ID of the file.
 @property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
-/// Full constructor for the `SharedFileMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGSharedFileMetadata` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter policy: Policies governing this shared file.
+/// - parameter previewUrl: URL for displaying a web preview of the shared file.
+/// - parameter name: The name of this file.
+/// - parameter id_: The ID of the file.
+/// - parameter permissions: The sharing permissions that requesting user has on
+/// this file. This corresponds to the entries given in
+/// :field:`GetFileMetadataBatchArg.actions` or
+/// :field:`GetFileMetadataArg.actions`.
+/// - parameter ownerTeam: The team that owns the file. This field is not
+/// present if the file is not owned by a team.
+/// - parameter parentSharedFolderId: The ID of the parent shared folder. This
+/// field is present only if the file is contained within a shared folder.
+/// - parameter pathLower: The lower-case full path of this file. Absent for
+/// unmounted files.
+/// - parameter pathDisplay: The cased path to be used for display purposes
+/// only. In rare instances the casing will not correctly match the user's
+/// filesystem, but this behavior will match the path provided in the Core API
+/// v1. Absent for unmounted files.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFileMetadata` instance.
+/// 
 - (nonnull instancetype)initWithPolicy:(DBXSHARINGFolderPolicy * _Nonnull)policy previewUrl:(NSString * _Nonnull)previewUrl name:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ permissions:(NSArray<DBXSHARINGFilePermission *> * _Nullable)permissions ownerTeam:(DBXUSERSTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId pathLower:(NSString * _Nullable)pathLower pathDisplay:(NSString * _Nullable)pathDisplay;
 
-/// Convenience constructor for the `SharedFileMetadata` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGSharedFileMetadata` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter policy: Policies governing this shared file.
+/// - parameter previewUrl: URL for displaying a web preview of the shared file.
+/// - parameter name: The name of this file.
+/// - parameter id_: The ID of the file.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFileMetadata` instance.
+/// 
 - (nonnull instancetype)initWithPolicy:(DBXSHARINGFolderPolicy * _Nonnull)policy previewUrl:(NSString * _Nonnull)previewUrl name:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGSharedFileMetadata` struct.
+/// The serialization class for the SharedFileMetadata struct.
 /// 
 @interface DBXSHARINGSharedFileMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedFileMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFileMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedFileMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedFileMetadata` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFileMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFileMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedFileMetadata` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedFileMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFileMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedFileMetadata` object.
+/// 
 + (DBXSHARINGSharedFileMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

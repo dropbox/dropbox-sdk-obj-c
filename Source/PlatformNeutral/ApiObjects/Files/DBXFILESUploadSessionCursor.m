@@ -11,15 +11,15 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId offset:(NSNumber *)offset {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sessionId = sessionId;
         _offset = offset;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionCursorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionCursorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

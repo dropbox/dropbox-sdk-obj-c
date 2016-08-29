@@ -15,7 +15,7 @@
 
 - (instancetype)initWithPathLookup:(DBXFILESLookupError *)pathLookup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESDeleteErrorPathLookup;
         _pathLookup = pathLookup;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithPathWrite:(DBXFILESWriteError *)pathWrite {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESDeleteErrorPathWrite;
         _pathWrite = pathWrite;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESDeleteErrorOther;
     }
     return self;
@@ -65,21 +65,21 @@
 }
 
 - (DBXFILESLookupError *)pathLookup {
-    if (_tag != DBXFILESDeleteErrorPathLookup) {
+    if (![self isPathLookup]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESDeleteErrorPathLookup`, but was %@.", [self getTagName]];
     }
     return _pathLookup;
 }
 
 - (DBXFILESWriteError *)pathWrite {
-    if (_tag != DBXFILESDeleteErrorPathWrite) {
+    if (![self isPathWrite]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESDeleteErrorPathWrite`, but was %@.", [self getTagName]];
     }
     return _pathWrite;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESDeleteErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESDeleteErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

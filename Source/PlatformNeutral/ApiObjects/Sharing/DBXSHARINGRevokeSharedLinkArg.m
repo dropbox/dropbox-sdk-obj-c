@@ -11,14 +11,14 @@
 - (instancetype)initWithUrl:(NSString *)url {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _url = url;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRevokeSharedLinkArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRevokeSharedLinkArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

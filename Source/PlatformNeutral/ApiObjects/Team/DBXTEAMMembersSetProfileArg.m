@@ -16,7 +16,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _user = user;
         _dNewEmail = dNewEmail;
         _dNewExternalId = dNewExternalId;
@@ -30,8 +30,8 @@
     return [self initWithUser:user dNewEmail:nil dNewExternalId:nil dNewGivenName:nil dNewSurname:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersSetProfileArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersSetProfileArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

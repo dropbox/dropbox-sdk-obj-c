@@ -11,15 +11,15 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId teamMemberId:(NSString *)teamMemberId {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sessionId = sessionId;
         _teamMemberId = teamMemberId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDeviceSessionArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDeviceSessionArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -9,7 +9,7 @@
 @class DBXSHARINGSharedFileMembers;
 
 /// 
-/// The `DBXSHARINGListFileMembersCountResult` struct.
+/// The ListFileMembersCountResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,25 +23,46 @@
 /// The number of members on this file. This does not include inherited members
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull memberCount;
 
-/// Full constructor for the `ListFileMembersCountResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGListFileMembersCountResult` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter members: A list of members on this file.
+/// - parameter memberCount: The number of members on this file. This does not
+/// include inherited members
+/// 
+/// - returns: An initialized `DBXSHARINGListFileMembersCountResult` instance.
+/// 
 - (nonnull instancetype)initWithMembers:(DBXSHARINGSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGListFileMembersCountResult`
-/// struct.
+/// The serialization class for the ListFileMembersCountResult struct.
 /// 
 @interface DBXSHARINGListFileMembersCountResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFileMembersCountResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersCountResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFileMembersCountResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGListFileMembersCountResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersCountResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersCountResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFileMembersCountResult`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFileMembersCountResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersCountResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFileMembersCountResult`
+/// object.
+/// 
 + (DBXSHARINGListFileMembersCountResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -13,15 +13,15 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](toDropboxId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharedFolderId = sharedFolderId;
         _toDropboxId = toDropboxId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGTransferFolderArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGTransferFolderArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

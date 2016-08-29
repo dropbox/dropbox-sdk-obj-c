@@ -9,15 +9,15 @@
 @class DBXTEAMGetActivityReport;
 
 /// 
-/// The `DBXTEAMGetActivityReport` struct.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The GetActivityReport struct.
 /// 
 /// Activity Report Result. Each of the items in the storage report is an array
 /// of values, one value per day. If there is no data for a day, then the value
 /// will be None.
+/// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DBXTEAMGetActivityReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
@@ -68,24 +68,69 @@
 /// Array of the total number of views to shared links created by the team.
 @property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull sharedLinksViewedTotal;
 
-/// Full constructor for the `GetActivityReport` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGetActivityReport` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter startDate: First date present in the results as 'YYYY-MM-DD' or
+/// None.
+/// - parameter adds: Array of total number of adds by team members.
+/// - parameter edits: Array of number of edits by team members. If the same
+/// user edits the same file multiple times this is counted as a single edit.
+/// - parameter deletes: Array of total number of deletes by team members.
+/// - parameter activeUsers28Day: Array of the number of users who have been
+/// active in the last 28 days.
+/// - parameter activeUsers7Day: Array of the number of users who have been
+/// active in the last week.
+/// - parameter activeUsers1Day: Array of the number of users who have been
+/// active in the last day.
+/// - parameter activeSharedFolders28Day: Array of the number of shared folders
+/// with some activity in the last 28 days.
+/// - parameter activeSharedFolders7Day: Array of the number of shared folders
+/// with some activity in the last week.
+/// - parameter activeSharedFolders1Day: Array of the number of shared folders
+/// with some activity in the last day.
+/// - parameter sharedLinksCreated: Array of the number of shared links created.
+/// - parameter sharedLinksViewedByTeam: Array of the number of views by team
+/// users to shared links created by the team.
+/// - parameter sharedLinksViewedByOutsideUser: Array of the number of views by
+/// users outside of the team to shared links created by the team.
+/// - parameter sharedLinksViewedByNotLoggedIn: Array of the number of views by
+/// non-logged-in users to shared links created by the team.
+/// - parameter sharedLinksViewedTotal: Array of the total number of views to
+/// shared links created by the team.
+/// 
+/// - returns: An initialized `DBXTEAMGetActivityReport` instance.
+/// 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate adds:(NSArray<NSNumber *> * _Nonnull)adds edits:(NSArray<NSNumber *> * _Nonnull)edits deletes:(NSArray<NSNumber *> * _Nonnull)deletes activeUsers28Day:(NSArray<NSNumber *> * _Nonnull)activeUsers28Day activeUsers7Day:(NSArray<NSNumber *> * _Nonnull)activeUsers7Day activeUsers1Day:(NSArray<NSNumber *> * _Nonnull)activeUsers1Day activeSharedFolders28Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders28Day activeSharedFolders7Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders7Day activeSharedFolders1Day:(NSArray<NSNumber *> * _Nonnull)activeSharedFolders1Day sharedLinksCreated:(NSArray<NSNumber *> * _Nonnull)sharedLinksCreated sharedLinksViewedByTeam:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByTeam sharedLinksViewedByOutsideUser:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByOutsideUser sharedLinksViewedByNotLoggedIn:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedByNotLoggedIn sharedLinksViewedTotal:(NSArray<NSNumber *> * _Nonnull)sharedLinksViewedTotal;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGetActivityReport` struct.
+/// The serialization class for the GetActivityReport struct.
 /// 
 @interface DBXTEAMGetActivityReportSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGetActivityReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetActivityReport * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGetActivityReport` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGetActivityReport` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGetActivityReport` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGetActivityReport * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGetActivityReport` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGetActivityReport` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGetActivityReport` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGetActivityReport` object.
+/// 
 + (DBXTEAMGetActivityReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

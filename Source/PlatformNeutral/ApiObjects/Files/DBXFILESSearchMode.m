@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFilename {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchModeFilename;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFilenameAndContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchModeFilenameAndContent;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithDeletedFilename {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchModeDeletedFilename;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSearchModeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSearchModeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

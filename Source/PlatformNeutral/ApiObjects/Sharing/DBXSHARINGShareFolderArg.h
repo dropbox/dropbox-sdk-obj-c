@@ -11,7 +11,7 @@
 @class DBXSHARINGSharedLinkPolicy;
 
 /// 
-/// The `DBXSHARINGShareFolderArg` struct.
+/// The ShareFolderArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -38,28 +38,63 @@
 /// Whether to force the share to happen asynchronously.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
 
-/// Full constructor for the `ShareFolderArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGShareFolderArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path to the folder to share. If it does not exist,
+/// then a new one is created.
+/// - parameter memberPolicy: Who can be a member of this shared folder. Only
+/// applicable if the current user is on a team.
+/// - parameter aclUpdatePolicy: Who can add and remove members of this shared
+/// folder.
+/// - parameter sharedLinkPolicy: The policy to apply to shared links created
+/// for content inside this shared folder.  The current user must be on a team
+/// to set this policy to :field:`SharedLinkPolicy.members`.
+/// - parameter forceAsync: Whether to force the share to happen asynchronously.
+/// 
+/// - returns: An initialized `DBXSHARINGShareFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path memberPolicy:(DBXSHARINGMemberPolicy * _Nullable)memberPolicy aclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy forceAsync:(NSNumber * _Nullable)forceAsync;
 
-/// Convenience constructor for the `ShareFolderArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGShareFolderArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path to the folder to share. If it does not exist,
+/// then a new one is created.
+/// 
+/// - returns: An initialized `DBXSHARINGShareFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGShareFolderArg` struct.
+/// The serialization class for the ShareFolderArg struct.
 /// 
 @interface DBXSHARINGShareFolderArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGShareFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGShareFolderArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGShareFolderArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGShareFolderArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGShareFolderArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGShareFolderArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGShareFolderArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGShareFolderArg` object.
+/// 
 + (DBXSHARINGShareFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

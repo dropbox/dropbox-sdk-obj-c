@@ -21,7 +21,7 @@
 
 - (instancetype)initWithSuccess:(DBXTEAMTeamMemberInfo *)success {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultSuccess;
         _success = success;
     }
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithTeamLicenseLimit:(NSString *)teamLicenseLimit {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultTeamLicenseLimit;
         _teamLicenseLimit = teamLicenseLimit;
     }
@@ -39,7 +39,7 @@
 
 - (instancetype)initWithFreeTeamMemberLimitReached:(NSString *)freeTeamMemberLimitReached {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultFreeTeamMemberLimitReached;
         _freeTeamMemberLimitReached = freeTeamMemberLimitReached;
     }
@@ -48,7 +48,7 @@
 
 - (instancetype)initWithUserAlreadyOnTeam:(NSString *)userAlreadyOnTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultUserAlreadyOnTeam;
         _userAlreadyOnTeam = userAlreadyOnTeam;
     }
@@ -57,7 +57,7 @@
 
 - (instancetype)initWithUserOnAnotherTeam:(NSString *)userOnAnotherTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultUserOnAnotherTeam;
         _userOnAnotherTeam = userOnAnotherTeam;
     }
@@ -66,7 +66,7 @@
 
 - (instancetype)initWithUserAlreadyPaired:(NSString *)userAlreadyPaired {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultUserAlreadyPaired;
         _userAlreadyPaired = userAlreadyPaired;
     }
@@ -75,7 +75,7 @@
 
 - (instancetype)initWithUserMigrationFailed:(NSString *)userMigrationFailed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultUserMigrationFailed;
         _userMigrationFailed = userMigrationFailed;
     }
@@ -84,7 +84,7 @@
 
 - (instancetype)initWithDuplicateExternalMemberId:(NSString *)duplicateExternalMemberId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultDuplicateExternalMemberId;
         _duplicateExternalMemberId = duplicateExternalMemberId;
     }
@@ -93,7 +93,7 @@
 
 - (instancetype)initWithUserCreationFailed:(NSString *)userCreationFailed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMemberAddResultUserCreationFailed;
         _userCreationFailed = userCreationFailed;
     }
@@ -162,70 +162,70 @@
 }
 
 - (DBXTEAMTeamMemberInfo *)success {
-    if (_tag != DBXTEAMMemberAddResultSuccess) {
+    if (![self isSuccess]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultSuccess`, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (NSString *)teamLicenseLimit {
-    if (_tag != DBXTEAMMemberAddResultTeamLicenseLimit) {
+    if (![self isTeamLicenseLimit]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultTeamLicenseLimit`, but was %@.", [self getTagName]];
     }
     return _teamLicenseLimit;
 }
 
 - (NSString *)freeTeamMemberLimitReached {
-    if (_tag != DBXTEAMMemberAddResultFreeTeamMemberLimitReached) {
+    if (![self isFreeTeamMemberLimitReached]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultFreeTeamMemberLimitReached`, but was %@.", [self getTagName]];
     }
     return _freeTeamMemberLimitReached;
 }
 
 - (NSString *)userAlreadyOnTeam {
-    if (_tag != DBXTEAMMemberAddResultUserAlreadyOnTeam) {
+    if (![self isUserAlreadyOnTeam]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultUserAlreadyOnTeam`, but was %@.", [self getTagName]];
     }
     return _userAlreadyOnTeam;
 }
 
 - (NSString *)userOnAnotherTeam {
-    if (_tag != DBXTEAMMemberAddResultUserOnAnotherTeam) {
+    if (![self isUserOnAnotherTeam]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultUserOnAnotherTeam`, but was %@.", [self getTagName]];
     }
     return _userOnAnotherTeam;
 }
 
 - (NSString *)userAlreadyPaired {
-    if (_tag != DBXTEAMMemberAddResultUserAlreadyPaired) {
+    if (![self isUserAlreadyPaired]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultUserAlreadyPaired`, but was %@.", [self getTagName]];
     }
     return _userAlreadyPaired;
 }
 
 - (NSString *)userMigrationFailed {
-    if (_tag != DBXTEAMMemberAddResultUserMigrationFailed) {
+    if (![self isUserMigrationFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultUserMigrationFailed`, but was %@.", [self getTagName]];
     }
     return _userMigrationFailed;
 }
 
 - (NSString *)duplicateExternalMemberId {
-    if (_tag != DBXTEAMMemberAddResultDuplicateExternalMemberId) {
+    if (![self isDuplicateExternalMemberId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultDuplicateExternalMemberId`, but was %@.", [self getTagName]];
     }
     return _duplicateExternalMemberId;
 }
 
 - (NSString *)userCreationFailed {
-    if (_tag != DBXTEAMMemberAddResultUserCreationFailed) {
+    if (![self isUserCreationFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMemberAddResultUserCreationFailed`, but was %@.", [self getTagName]];
     }
     return _userCreationFailed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMemberAddResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMemberAddResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

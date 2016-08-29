@@ -10,13 +10,13 @@
 @class DBXSHARINGPermissionDeniedReason;
 
 /// 
-/// The `DBXSHARINGFolderPermission` struct.
+/// The FolderPermission struct.
+/// 
+/// Whether the user is allowed to take the action on the shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Whether the user is allowed to take the action on the shared folder.
 /// 
 @interface DBXSHARINGFolderPermission : NSObject <DBXSerializable> 
 
@@ -30,28 +30,57 @@
 /// is allowed, or if no reason is available.
 @property (nonatomic, readonly) DBXSHARINGPermissionDeniedReason * _Nullable reason;
 
-/// Full constructor for the `FolderPermission` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGFolderPermission` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter action: The action that the user may wish to take on the folder.
+/// - parameter allow: True if the user is allowed to take the action.
+/// - parameter reason: The reason why the user is denied the permission. Not
+/// present if the action is allowed, or if no reason is available.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderPermission` instance.
+/// 
 - (nonnull instancetype)initWithAction:(DBXSHARINGFolderAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow reason:(DBXSHARINGPermissionDeniedReason * _Nullable)reason;
 
-/// Convenience constructor for the `FolderPermission` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGFolderPermission` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter action: The action that the user may wish to take on the folder.
+/// - parameter allow: True if the user is allowed to take the action.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderPermission` instance.
+/// 
 - (nonnull instancetype)initWithAction:(DBXSHARINGFolderAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGFolderPermission` struct.
+/// The serialization class for the FolderPermission struct.
 /// 
 @interface DBXSHARINGFolderPermissionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFolderPermission` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderPermission * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFolderPermission` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGFolderPermission` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderPermission` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderPermission * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFolderPermission` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFolderPermission` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderPermission` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFolderPermission` object.
+/// 
 + (DBXSHARINGFolderPermission * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

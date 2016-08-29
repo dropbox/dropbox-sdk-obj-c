@@ -10,18 +10,18 @@
 @class DBXUSERSTeamSpaceAllocation;
 
 /// 
-/// The `DBXUSERSSpaceAllocation` union.
+/// The SpaceAllocation union.
+/// 
+/// Space is allocated differently based on the type of account.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Space is allocated differently based on the type of account.
-/// 
 @interface DBXUSERSSpaceAllocation : NSObject <DBXSerializable> 
 
 /// The `DBXUSERSSpaceAllocationTag` enum type represents the possible tag
-/// states that the `DBXUSERSSpaceAllocation` union can exist in.
+/// states with which the `DBXUSERSSpaceAllocation` union can exist.
 typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
     /// The user's space allocation applies only to their individual account.
     DBXUSERSSpaceAllocationIndividual,
@@ -43,25 +43,65 @@ typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
 /// The user shares space with other members of their team.
 @property (nonatomic, readonly) DBXUSERSTeamSpaceAllocation * _Nonnull team;
 
+/// 
 /// Initializes union class with tag state of `Individual`.
+/// 
+/// About the `Individual` tag state: The user's space allocation applies only
+/// to their individual account.
+/// 
+/// - parameter individual: The user's space allocation applies only to their
+/// individual account.
+/// 
+/// - returns: An initialized `DBXUSERSSpaceAllocation` instance.
+/// 
 - (nonnull instancetype)initWithIndividual:(DBXUSERSIndividualSpaceAllocation * _Nonnull)individual;
 
+/// 
 /// Initializes union class with tag state of `Team`.
+/// 
+/// About the `Team` tag state: The user shares space with other members of
+/// their team.
+/// 
+/// - parameter team: The user shares space with other members of their team.
+/// 
+/// - returns: An initialized `DBXUSERSSpaceAllocation` instance.
+/// 
 - (nonnull instancetype)initWithTeam:(DBXUSERSTeamSpaceAllocation * _Nonnull)team;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXUSERSSpaceAllocation` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Individual`.
+/// 
+/// Retrieves whether the union's current tag state has value `Individual`.
+/// 
+/// - returns: Whether the union's current tag state has value `Individual`.
+/// 
 - (BOOL)isIndividual;
 
-/// Returns whether the union's current tag state has value `Team`.
+/// 
+/// Retrieves whether the union's current tag state has value `Team`.
+/// 
+/// - returns: Whether the union's current tag state has value `Team`.
+/// 
 - (BOOL)isTeam;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +112,25 @@ typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
 /// 
 @interface DBXUSERSSpaceAllocationSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSSpaceAllocation` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSSpaceAllocation * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSSpaceAllocation` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSSpaceAllocation` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSSpaceAllocation` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSSpaceAllocation * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSSpaceAllocation` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSSpaceAllocation` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSSpaceAllocation` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSSpaceAllocation` object.
+/// 
 + (DBXUSERSSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -15,7 +15,7 @@
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlResultAsyncJobId;
         _asyncJobId = asyncJobId;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(DBXFILESFileMetadata *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlResultComplete;
         _complete = complete;
     }
@@ -51,21 +51,21 @@
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != DBXFILESSaveUrlResultAsyncJobId) {
+    if (![self isAsyncJobId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveUrlResultAsyncJobId`, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
 - (DBXFILESFileMetadata *)complete {
-    if (_tag != DBXFILESSaveUrlResultComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveUrlResultComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveUrlResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveUrlResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

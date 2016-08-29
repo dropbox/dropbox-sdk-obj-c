@@ -11,7 +11,7 @@
 
 - (instancetype)initWithUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorUserNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithLastAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorLastAdmin;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorUserNotInTeam;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithCannotSetPermissions {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorCannotSetPermissions;
     }
     return self;
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithTeamLicenseLimit {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorTeamLicenseLimit;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetPermissionsErrorOther;
     }
     return self;
@@ -100,8 +100,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersSetPermissionsErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersSetPermissionsErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

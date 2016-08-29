@@ -15,7 +15,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorRestrictedContent;
     }
     return self;
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorOther;
     }
     return self;
@@ -40,7 +40,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorPath;
         _path = path;
     }
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithPropertyFieldTooLarge {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorPropertyFieldTooLarge;
     }
     return self;
@@ -57,7 +57,7 @@
 
 - (instancetype)initWithDoesNotFitTemplate {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorDoesNotFitTemplate;
     }
     return self;
@@ -65,7 +65,7 @@
 
 - (instancetype)initWithPropertyGroupAlreadyExists {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAddPropertiesErrorPropertyGroupAlreadyExists;
     }
     return self;
@@ -121,21 +121,21 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXFILESAddPropertiesErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESAddPropertiesErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESAddPropertiesErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESAddPropertiesErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESAddPropertiesErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESAddPropertiesErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

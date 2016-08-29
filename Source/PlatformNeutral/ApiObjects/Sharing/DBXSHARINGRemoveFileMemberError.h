@@ -11,18 +11,18 @@
 @class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DBXSHARINGRemoveFileMemberError` union.
+/// The RemoveFileMemberError union.
+/// 
+/// Errors for removeFileMember2.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Errors for removeFileMember2.
-/// 
 @interface DBXSHARINGRemoveFileMemberError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGRemoveFileMemberErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGRemoveFileMemberError` union can exist in.
+/// tag states with which the `DBXSHARINGRemoveFileMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFileMemberErrorTag) {
     /// (no description).
     DBXSHARINGRemoveFileMemberErrorUserError,
@@ -54,31 +54,82 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFileMemberErrorTag) {
 /// file from a parent folder.
 @property (nonatomic, readonly) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
+/// 
 /// Initializes union class with tag state of `UserError`.
+/// 
+/// - parameter userError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `NoExplicitAccess`.
+/// 
+/// About the `NoExplicitAccess` tag state: This member does not have explicit
+/// access to the file and therefore cannot be removed. The return value is the
+/// access that a user might have to the file from a parent folder.
+/// 
+/// - parameter noExplicitAccess: This member does not have explicit access to
+/// the file and therefore cannot be removed. The return value is the access
+/// that a user might have to the file from a parent folder.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithNoExplicitAccess:(DBXSHARINGMemberAccessLevelResult * _Nonnull)noExplicitAccess;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserError`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserError`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserError`.
+/// 
 - (BOOL)isUserError;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `NoExplicitAccess`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `NoExplicitAccess`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `NoExplicitAccess`.
+/// 
 - (BOOL)isNoExplicitAccess;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -89,12 +140,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFileMemberErrorTag) {
 /// 
 @interface DBXSHARINGRemoveFileMemberErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRemoveFileMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFileMemberError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRemoveFileMemberError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGRemoveFileMemberError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveFileMemberError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFileMemberError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRemoveFileMemberError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRemoveFileMemberError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveFileMemberError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRemoveFileMemberError`
+/// object.
+/// 
 + (DBXSHARINGRemoveFileMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

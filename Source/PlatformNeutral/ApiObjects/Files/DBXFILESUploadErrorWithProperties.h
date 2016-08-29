@@ -10,7 +10,7 @@
 @class DBXFILESUploadWriteFailed;
 
 /// 
-/// The `DBXFILESUploadErrorWithProperties` union.
+/// The UploadErrorWithProperties union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,8 @@
 @interface DBXFILESUploadErrorWithProperties : NSObject <DBXSerializable> 
 
 /// The `DBXFILESUploadErrorWithPropertiesTag` enum type represents the possible
-/// tag states that the `DBXFILESUploadErrorWithProperties` union can exist in.
+/// tag states with which the `DBXFILESUploadErrorWithProperties` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXFILESUploadErrorWithPropertiesTag) {
     /// Unable to save the uploaded contents to a file.
     DBXFILESUploadErrorWithPropertiesPath,
@@ -41,25 +42,61 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorWithPropertiesTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESInvalidPropertyGroupError * _Nonnull propertiesError;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// About the `Path` tag state: Unable to save the uploaded contents to a file.
+/// 
+/// - parameter path: Unable to save the uploaded contents to a file.
+/// 
+/// - returns: An initialized `DBXFILESUploadErrorWithProperties` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESUploadWriteFailed * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESUploadErrorWithProperties` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `PropertiesError`.
+/// 
+/// - parameter propertiesError: (no description).
+/// 
+/// - returns: An initialized `DBXFILESUploadErrorWithProperties` instance.
+/// 
 - (nonnull instancetype)initWithPropertiesError:(DBXFILESInvalidPropertyGroupError * _Nonnull)propertiesError;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `PropertiesError`.
+/// 
+/// Retrieves whether the union's current tag state has value `PropertiesError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PropertiesError`.
+/// 
 - (BOOL)isPropertiesError;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -70,12 +107,26 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorWithPropertiesTag) {
 /// 
 @interface DBXFILESUploadErrorWithPropertiesSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadErrorWithProperties` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadErrorWithProperties * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadErrorWithProperties` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXFILESUploadErrorWithProperties` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadErrorWithProperties` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadErrorWithProperties * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadErrorWithProperties` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadErrorWithProperties` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadErrorWithProperties` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadErrorWithProperties`
+/// object.
+/// 
 + (DBXFILESUploadErrorWithProperties * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

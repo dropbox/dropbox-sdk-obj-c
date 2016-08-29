@@ -9,7 +9,7 @@
 @class DBXTEAMMembersAddArg;
 
 /// 
-/// The `DBXTEAMMembersAddArg` struct.
+/// The MembersAddArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,28 +23,53 @@
 /// Whether to force the add to happen asynchronously.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
 
-/// Full constructor for the `MembersAddArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMMembersAddArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter dNewMembers: Details of new members to be added to the team.
+/// - parameter forceAsync: Whether to force the add to happen asynchronously.
+/// 
+/// - returns: An initialized `DBXTEAMMembersAddArg` instance.
+/// 
 - (nonnull instancetype)initWithDNewMembers:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers forceAsync:(NSNumber * _Nullable)forceAsync;
 
-/// Convenience constructor for the `MembersAddArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMMembersAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter dNewMembers: Details of new members to be added to the team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersAddArg` instance.
+/// 
 - (nonnull instancetype)initWithDNewMembers:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersAddArg` struct.
+/// The serialization class for the MembersAddArg struct.
 /// 
 @interface DBXTEAMMembersAddArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersAddArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersAddArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersAddArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersAddArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersAddArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersAddArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersAddArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersAddArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersAddArg` object.
+/// 
 + (DBXTEAMMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

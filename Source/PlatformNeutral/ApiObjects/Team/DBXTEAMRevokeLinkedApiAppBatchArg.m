@@ -13,14 +13,14 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](revokeLinkedApp);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _revokeLinkedApp = revokeLinkedApp;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeLinkedApiAppBatchArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeLinkedApiAppBatchArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

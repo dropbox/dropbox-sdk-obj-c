@@ -12,7 +12,7 @@
 - (instancetype)initWithUrl:(NSString *)url settings:(DBXSHARINGSharedLinkSettings *)settings removeExpiration:(NSNumber *)removeExpiration {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _url = url;
         _settings = settings;
         _removeExpiration = removeExpiration ?: @NO;
@@ -24,8 +24,8 @@
     return [self initWithUrl:url settings:settings removeExpiration:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGModifySharedLinkSettingsArgsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGModifySharedLinkSettingsArgsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

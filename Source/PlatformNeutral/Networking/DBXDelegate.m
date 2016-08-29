@@ -1,20 +1,32 @@
-///
-/// Delegate class to manage background session downloads / uploads.
-///
-
 #import <Foundation/Foundation.h>
 #import "DBXDelegate.h"
 
 static NSString *kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
 static NSString *kProgressHandlerKey = @"progressHandler";
-static NSString *kCompletionHandlerKey = @"completionHandler";
+static NSString *kResponseHandlerKey = @"responseHandler";
+
+@interface DBXDelegate ()
+
+@property (nonatomic) NSOperationQueue * _Nonnull delegateQueue;
+@property (nonatomic, copy) NSString * _Nonnull foregroundIdentifier;
+@property (nonatomic) NSMutableDictionary * _Nonnull responsesData;
+@property (nonatomic) NSMutableDictionary * _Nonnull rpcTasks;
+@property (nonatomic) NSMutableDictionary * _Nonnull uploadTasks;
+@property (nonatomic) NSMutableDictionary * _Nonnull downloadTasks;
+
+@end
 
 @implementation DBXDelegate
 
 - (instancetype)initWithQueue:(NSOperationQueue *)delegateQueue {
     self = [super init];
     if (self) {
-        _delegateQueue = delegateQueue;
+        if (delegateQueue) {
+            _delegateQueue = delegateQueue;
+        } else {
+            _delegateQueue = [NSOperationQueue mainQueue];
+            [_delegateQueue setMaxConcurrentOperationCount:1];
+        }
         _responsesData = [NSMutableDictionary new];
         _rpcTasks = [NSMutableDictionary new];
         _uploadTasks = [NSMutableDictionary new];
@@ -50,19 +62,21 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
     } else if ([task isKindOfClass:[NSURLSessionUploadTask class]]) {
         NSMutableData *responseData = _responsesData[sessionId][taskId];
 
-        void (^completionHandler)(NSData *, NSURLResponse *, NSError *) = _uploadTasks[sessionId][taskId][kCompletionHandlerKey];
-        completionHandler(responseData, task.response, error);
+        void (^responseHandler)(NSData *, NSURLResponse *, NSError *) = _uploadTasks[sessionId][taskId][kResponseHandlerKey];
+        if (responseHandler) {
+            responseHandler(responseData, task.response, error);
+        }
         [_uploadTasks removeObjectForKey:taskId];
-        [self.responsesData[sessionId] removeObjectForKey:taskId];
-
+        [_responsesData[sessionId] removeObjectForKey:taskId];
     } else if ([task isKindOfClass:[NSURLSessionDataTask class]]) {
         NSMutableData *responseData = _responsesData[sessionId][taskId];
 
-        void (^completionHandler)(NSData *, NSURLResponse *, NSError *) = _rpcTasks[sessionId][taskId][kCompletionHandlerKey];
-        completionHandler(responseData, task.response, error);
+        void (^responseHandler)(NSData *, NSURLResponse *, NSError *) = _rpcTasks[sessionId][taskId][kResponseHandlerKey];
+        if (responseHandler) {
+            responseHandler(responseData, task.response, error);
+        }
         [_rpcTasks removeObjectForKey:taskId];
-        [self.responsesData[sessionId] removeObjectForKey:taskId];
-        
+        [_responsesData[sessionId] removeObjectForKey:taskId];
     }
 }
 
@@ -100,8 +114,10 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSString *sessionId = [self getSessionId:session];
     NSNumber *taskId = [NSNumber numberWithUnsignedInteger:downloadTask.taskIdentifier];
-    void (^completionHandler)(NSURL *, NSURLResponse *, NSError *) = _downloadTasks[sessionId][taskId][kCompletionHandlerKey];
-    completionHandler(location, downloadTask.response, nil);
+    void (^responseHandler)(NSURL *, NSURLResponse *, NSError *) = _downloadTasks[sessionId][taskId][kResponseHandlerKey];
+    if (responseHandler) {
+        responseHandler(location, downloadTask.response, nil);
+    }
     [_downloadTasks[sessionId] removeObjectForKey:taskId];
 }
 
@@ -111,7 +127,7 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
     [_downloadTasks[sessionId] removeAllObjects];
 }
 
-- (void)addRpcCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
+- (void)addRpcResponseHandler:(NSURLSessionTask *)task session:(NSURLSession *)session responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
     NSString *sessionId = [self getSessionId:session];
     NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
     [_delegateQueue addOperationWithBlock:^{
@@ -121,8 +137,7 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_rpcTasks[sessionId][taskId]) {
             [_rpcTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-
-        [_rpcTasks[sessionId][taskId] setObject:handler forKey:kCompletionHandlerKey];
+        [_rpcTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
     }];
 }
 
@@ -136,12 +151,11 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_rpcTasks[sessionId][taskId]) {
             [_rpcTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-        
         [_rpcTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
     }];
 }
 
-- (void)addUploadCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
+- (void)addUploadResponseHandler:(NSURLSessionTask *)task session:(NSURLSession *)session responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
     NSString *sessionId = [self getSessionId:session];
     NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
     [_delegateQueue addOperationWithBlock:^{
@@ -151,8 +165,7 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_uploadTasks[sessionId][taskId]) {
             [_uploadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-        
-        [_uploadTasks[sessionId][taskId] setObject:handler forKey:kCompletionHandlerKey];
+        [_uploadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
     }];
 }
 
@@ -166,12 +179,11 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_uploadTasks[sessionId][taskId]) {
             [_uploadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-        
         [_uploadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
     }];
 }
 
-- (void)addDownloadCompletionHandler:(NSURLSessionTask *)task session:(NSURLSession *)session completionHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler {
+- (void)addDownloadResponseHandler:(NSURLSessionTask *)task session:(NSURLSession *)session responseHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler {
     NSString *sessionId = [self getSessionId:session];
     NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
     [_delegateQueue addOperationWithBlock:^{
@@ -181,8 +193,7 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_downloadTasks[sessionId][taskId]) {
             [_downloadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-        
-        [_downloadTasks[sessionId][taskId] setObject:handler forKey:kCompletionHandlerKey];
+        [_downloadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
     }];
 }
 
@@ -196,7 +207,6 @@ static NSString *kCompletionHandlerKey = @"completionHandler";
         if (!_downloadTasks[sessionId][taskId]) {
             [_downloadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
         }
-        
         [_downloadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
     }];
 }

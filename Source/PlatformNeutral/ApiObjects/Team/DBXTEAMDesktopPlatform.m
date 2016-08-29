@@ -10,7 +10,7 @@
 
 - (instancetype)initWithWindows {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMDesktopPlatformWindows;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithMac {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMDesktopPlatformMac;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithLinux {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMDesktopPlatformLinux;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMDesktopPlatformOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDesktopPlatformSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDesktopPlatformSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

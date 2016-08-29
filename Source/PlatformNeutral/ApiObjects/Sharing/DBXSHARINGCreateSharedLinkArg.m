@@ -12,7 +12,7 @@
 - (instancetype)initWithPath:(NSString *)path shortUrl:(NSNumber *)shortUrl pendingUpload:(DBXSHARINGPendingUploadMode *)pendingUpload {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _shortUrl = shortUrl ?: @NO;
         _pendingUpload = pendingUpload;
@@ -24,8 +24,8 @@
     return [self initWithPath:path shortUrl:nil pendingUpload:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGCreateSharedLinkArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGCreateSharedLinkArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

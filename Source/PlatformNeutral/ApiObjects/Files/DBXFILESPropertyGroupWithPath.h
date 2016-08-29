@@ -9,7 +9,7 @@
 @class DBXPROPERTIESPropertyGroup;
 
 /// 
-/// The `DBXFILESPropertyGroupWithPath` struct.
+/// The PropertyGroupWithPath struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,24 +23,45 @@
 /// Filled custom property templates associated with a file.
 @property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull propertyGroups;
 
-/// Full constructor for the `PropertyGroupWithPath` struct (exposes all
+/// 
+/// Full constructor for the `DBXFILESPropertyGroupWithPath` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter path: A unique identifier for the file.
+/// - parameter propertyGroups: Filled custom property templates associated with
+/// a file.
+/// 
+/// - returns: An initialized `DBXFILESPropertyGroupWithPath` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESPropertyGroupWithPath` struct.
+/// The serialization class for the PropertyGroupWithPath struct.
 /// 
 @interface DBXFILESPropertyGroupWithPathSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESPropertyGroupWithPath` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESPropertyGroupWithPath * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESPropertyGroupWithPath` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESPropertyGroupWithPath`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESPropertyGroupWithPath` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPropertyGroupWithPath * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESPropertyGroupWithPath` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESPropertyGroupWithPath` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESPropertyGroupWithPath` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESPropertyGroupWithPath` object.
+/// 
 + (DBXFILESPropertyGroupWithPath * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

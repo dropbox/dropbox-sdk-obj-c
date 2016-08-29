@@ -10,7 +10,7 @@
 
 - (instancetype)initWithCompanyManaged {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMCOMMONGroupManagementTypeCompanyManaged;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithUserManaged {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMCOMMONGroupManagementTypeUserManaged;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMCOMMONGroupManagementTypeOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMCOMMONGroupManagementTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMCOMMONGroupManagementTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

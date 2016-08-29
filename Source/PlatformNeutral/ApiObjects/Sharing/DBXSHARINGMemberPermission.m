@@ -13,7 +13,7 @@
 - (instancetype)initWithAction:(DBXSHARINGMemberAction *)action allow:(NSNumber *)allow reason:(DBXSHARINGPermissionDeniedReason *)reason {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _action = action;
         _allow = allow;
         _reason = reason;
@@ -25,8 +25,8 @@
     return [self initWithAction:action allow:allow reason:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMemberPermissionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMemberPermissionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

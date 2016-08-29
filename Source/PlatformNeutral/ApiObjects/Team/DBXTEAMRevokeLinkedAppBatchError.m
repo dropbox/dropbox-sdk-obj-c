@@ -10,7 +10,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeLinkedAppBatchErrorOther;
     }
     return self;
@@ -29,8 +29,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeLinkedAppBatchErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeLinkedAppBatchErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

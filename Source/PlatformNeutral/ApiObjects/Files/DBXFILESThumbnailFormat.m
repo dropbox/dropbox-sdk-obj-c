@@ -10,7 +10,7 @@
 
 - (instancetype)initWithJpeg {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailFormatJpeg;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithPng {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESThumbnailFormatPng;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESThumbnailFormatSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESThumbnailFormatSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

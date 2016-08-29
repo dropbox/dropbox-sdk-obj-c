@@ -19,7 +19,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](permissions);
 
     self = [super initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy ownerTeam:ownerTeam parentSharedFolderId:parentSharedFolderId];
-    if (self != nil) {
+    if (self) {
         _pathLower = pathLower;
         _name = name;
         _sharedFolderId = sharedFolderId;
@@ -34,8 +34,8 @@
     return [self initWithAccessType:accessType isTeamFolder:isTeamFolder policy:policy name:name sharedFolderId:sharedFolderId timeInvited:timeInvited previewUrl:previewUrl ownerTeam:nil parentSharedFolderId:nil pathLower:nil permissions:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedFolderMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedFolderMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

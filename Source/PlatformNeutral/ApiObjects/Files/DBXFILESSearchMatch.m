@@ -13,15 +13,15 @@
 - (instancetype)initWithMatchType:(DBXFILESSearchMatchType *)matchType metadata:(DBXFILESMetadata *)metadata {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _matchType = matchType;
         _metadata = metadata;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSearchMatchSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSearchMatchSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,15 +11,15 @@
 - (instancetype)initWithUsed:(NSNumber *)used allocated:(NSNumber *)allocated {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _used = used;
         _allocated = allocated;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSTeamSpaceAllocationSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSTeamSpaceAllocationSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

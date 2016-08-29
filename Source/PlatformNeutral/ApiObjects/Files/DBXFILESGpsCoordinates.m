@@ -11,15 +11,15 @@
 - (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _latitude = latitude;
         _longitude = longitude;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGpsCoordinatesSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGpsCoordinatesSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

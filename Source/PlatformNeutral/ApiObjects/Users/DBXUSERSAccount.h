@@ -9,14 +9,14 @@
 @class DBXUSERSName;
 
 /// 
-/// The `DBXUSERSAccount` struct.
+/// The Account struct.
+/// 
+/// The amount of detail revealed about an account depends on the user being
+/// queried and the user making the query.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// The amount of detail revealed about an account depends on the user being
-/// queried and the user making the query.
 /// 
 @interface DBXUSERSAccount : NSObject <DBXSerializable> 
 
@@ -40,27 +40,68 @@
 /// Whether the user has been disabled.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull disabled;
 
-/// Full constructor for the `Account` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXUSERSAccount` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter accountId: The user's unique Dropbox ID.
+/// - parameter name: Details of a user's name.
+/// - parameter email: The user's e-mail address. Do not rely on this without
+/// checking the :field:`email_verified` field. Even then, it's possible that
+/// the user has since lost access to their e-mail.
+/// - parameter emailVerified: Whether the user has verified their e-mail
+/// address.
+/// - parameter disabled: Whether the user has been disabled.
+/// - parameter profilePhotoUrl: URL for the photo representing the user, if one
+/// is set.
+/// 
+/// - returns: An initialized `DBXUSERSAccount` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
 
-/// Convenience constructor for the `Account` struct (exposes only non-nullable
-/// instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXUSERSAccount` struct (exposes only
+/// non-nullable instance variables with no default value).
+/// 
+/// - parameter accountId: The user's unique Dropbox ID.
+/// - parameter name: Details of a user's name.
+/// - parameter email: The user's e-mail address. Do not rely on this without
+/// checking the :field:`email_verified` field. Even then, it's possible that
+/// the user has since lost access to their e-mail.
+/// - parameter emailVerified: Whether the user has verified their e-mail
+/// address.
+/// - parameter disabled: Whether the user has been disabled.
+/// 
+/// - returns: An initialized `DBXUSERSAccount` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSAccount` struct.
+/// The serialization class for the Account struct.
 /// 
 @interface DBXUSERSAccountSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DBXUSERSAccount`
-/// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSAccount * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSAccount` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSAccount` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSAccount` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSAccount * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSAccount` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSAccount` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSAccount` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSAccount` object.
+/// 
 + (DBXUSERSAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

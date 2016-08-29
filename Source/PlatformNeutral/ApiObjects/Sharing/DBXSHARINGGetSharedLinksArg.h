@@ -8,7 +8,7 @@
 @class DBXSHARINGGetSharedLinksArg;
 
 /// 
-/// The `DBXSHARINGGetSharedLinksArg` struct.
+/// The GetSharedLinksArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,28 +19,52 @@
 /// See getSharedLinks description.
 @property (nonatomic, readonly, copy) NSString * _Nullable path;
 
-/// Full constructor for the `GetSharedLinksArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGGetSharedLinksArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: See :route:`get_shared_links` description.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinksArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nullable)path;
 
-/// Convenience constructor for the `GetSharedLinksArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGGetSharedLinksArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinksArg` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGGetSharedLinksArg` struct.
+/// The serialization class for the GetSharedLinksArg struct.
 /// 
 @interface DBXSHARINGGetSharedLinksArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetSharedLinksArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetSharedLinksArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGGetSharedLinksArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinksArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinksArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetSharedLinksArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetSharedLinksArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinksArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGetSharedLinksArg` object.
+/// 
 + (DBXSHARINGGetSharedLinksArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

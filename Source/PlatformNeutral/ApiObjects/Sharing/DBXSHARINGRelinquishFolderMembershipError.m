@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorAccessError;
         _accessError = accessError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithFolderOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorFolderOwner;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithMounted {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorMounted;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithGroupAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorGroupAccess;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithTeamFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorTeamFolder;
     }
     return self;
@@ -54,7 +54,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorNoPermission;
     }
     return self;
@@ -62,7 +62,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFolderMembershipErrorOther;
     }
     return self;
@@ -118,14 +118,14 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGRelinquishFolderMembershipErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRelinquishFolderMembershipErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRelinquishFolderMembershipErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRelinquishFolderMembershipErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

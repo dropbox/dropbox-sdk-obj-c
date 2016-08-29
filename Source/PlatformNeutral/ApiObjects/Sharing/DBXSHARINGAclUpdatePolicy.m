@@ -10,7 +10,7 @@
 
 - (instancetype)initWithOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAclUpdatePolicyOwner;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithEditors {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAclUpdatePolicyEditors;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAclUpdatePolicyOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAclUpdatePolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAclUpdatePolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

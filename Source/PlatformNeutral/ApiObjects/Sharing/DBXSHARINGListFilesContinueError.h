@@ -9,18 +9,19 @@
 @class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DBXSHARINGListFilesContinueError` union.
+/// The ListFilesContinueError union.
+/// 
+/// Error results for listReceivedFilesContinue.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error results for listReceivedFilesContinue.
-/// 
 @interface DBXSHARINGListFilesContinueError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGListFilesContinueErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGListFilesContinueError` union can exist in.
+/// tag states with which the `DBXSHARINGListFilesContinueError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGListFilesContinueErrorTag) {
     /// User account had a problem.
     DBXSHARINGListFilesContinueErrorUserError,
@@ -39,25 +40,61 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFilesContinueErrorTag) {
 /// User account had a problem.
 @property (nonatomic, readonly) DBXSHARINGSharingUserError * _Nonnull userError;
 
+/// 
 /// Initializes union class with tag state of `UserError`.
+/// 
+/// About the `UserError` tag state: User account had a problem.
+/// 
+/// - parameter userError: User account had a problem.
+/// 
+/// - returns: An initialized `DBXSHARINGListFilesContinueError` instance.
+/// 
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
+/// 
 /// Initializes union class with tag state of `InvalidCursor`.
+/// 
+/// About the `InvalidCursor` tag state: :field:`ListFilesContinueArg.cursor` is
+/// invalid.
+/// 
+/// - returns: An initialized `DBXSHARINGListFilesContinueError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidCursor;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGListFilesContinueError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserError`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserError`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserError`.
+/// 
 - (BOOL)isUserError;
 
-/// Returns whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidCursor`.
+/// 
 - (BOOL)isInvalidCursor;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -68,12 +105,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFilesContinueErrorTag) {
 /// 
 @interface DBXSHARINGListFilesContinueErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFilesContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesContinueError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFilesContinueError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGListFilesContinueError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFilesContinueError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFilesContinueError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFilesContinueError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFilesContinueError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFilesContinueError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFilesContinueError`
+/// object.
+/// 
 + (DBXSHARINGListFilesContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

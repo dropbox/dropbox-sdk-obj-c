@@ -13,7 +13,7 @@
     [DBXStoneValidators numericValidator:nil maxValue:@(20)](limit ?: @(10));
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _files = files;
         _limit = limit ?: @(10);
     }
@@ -24,8 +24,8 @@
     return [self initWithFiles:files limit:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFileMembersBatchArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFileMembersBatchArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

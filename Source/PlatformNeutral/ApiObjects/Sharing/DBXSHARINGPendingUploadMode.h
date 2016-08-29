@@ -8,19 +8,19 @@
 @class DBXSHARINGPendingUploadMode;
 
 /// 
-/// The `DBXSHARINGPendingUploadMode` union.
+/// The PendingUploadMode union.
+/// 
+/// Flag to indicate pending upload default (for linking to not-yet-existing
+/// paths).
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Flag to indicate pending upload default (for linking to not-yet-existing
-/// paths).
-/// 
 @interface DBXSHARINGPendingUploadMode : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGPendingUploadModeTag` enum type represents the possible tag
-/// states that the `DBXSHARINGPendingUploadMode` union can exist in.
+/// states with which the `DBXSHARINGPendingUploadMode` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
     /// Assume pending uploads are files.
     DBXSHARINGPendingUploadModeFile,
@@ -33,19 +33,44 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGPendingUploadModeTag tag;
 
+/// 
 /// Initializes union class with tag state of `File`.
+/// 
+/// About the `File` tag state: Assume pending uploads are files.
+/// 
+/// - returns: An initialized `DBXSHARINGPendingUploadMode` instance.
+/// 
 - (nonnull instancetype)initWithFile;
 
+/// 
 /// Initializes union class with tag state of `Folder`.
+/// 
+/// About the `Folder` tag state: Assume pending uploads are folders.
+/// 
+/// - returns: An initialized `DBXSHARINGPendingUploadMode` instance.
+/// 
 - (nonnull instancetype)initWithFolder;
 
-/// Returns whether the union's current tag state has value `File`.
+/// 
+/// Retrieves whether the union's current tag state has value `File`.
+/// 
+/// - returns: Whether the union's current tag state has value `File`.
+/// 
 - (BOOL)isFile;
 
-/// Returns whether the union's current tag state has value `Folder`.
+/// 
+/// Retrieves whether the union's current tag state has value `Folder`.
+/// 
+/// - returns: Whether the union's current tag state has value `Folder`.
+/// 
 - (BOOL)isFolder;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -56,12 +81,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
 /// 
 @interface DBXSHARINGPendingUploadModeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGPendingUploadMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPendingUploadMode * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGPendingUploadMode` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGPendingUploadMode` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGPendingUploadMode` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPendingUploadMode * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGPendingUploadMode` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGPendingUploadMode` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGPendingUploadMode` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGPendingUploadMode` object.
+/// 
 + (DBXSHARINGPendingUploadMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

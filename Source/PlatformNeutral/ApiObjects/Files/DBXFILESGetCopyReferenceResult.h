@@ -9,7 +9,7 @@
 @class DBXFILESMetadata;
 
 /// 
-/// The `DBXFILESGetCopyReferenceResult` struct.
+/// The GetCopyReferenceResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -27,24 +27,47 @@
 /// far enough in the future so that expiration is effectively not an issue.
 @property (nonatomic, readonly) NSDate * _Nonnull expires;
 
-/// Full constructor for the `GetCopyReferenceResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESGetCopyReferenceResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter metadata: Metadata of the file or folder.
+/// - parameter dCopyReference: A copy reference to the file or folder.
+/// - parameter expires: The expiration date of the copy reference. This value
+/// is currently set to be far enough in the future so that expiration is
+/// effectively not an issue.
+/// 
+/// - returns: An initialized `DBXFILESGetCopyReferenceResult` instance.
+/// 
 - (nonnull instancetype)initWithMetadata:(DBXFILESMetadata * _Nonnull)metadata dCopyReference:(NSString * _Nonnull)dCopyReference expires:(NSDate * _Nonnull)expires;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGetCopyReferenceResult` struct.
+/// The serialization class for the GetCopyReferenceResult struct.
 /// 
 @interface DBXFILESGetCopyReferenceResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGetCopyReferenceResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGetCopyReferenceResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGetCopyReferenceResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGetCopyReferenceResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGetCopyReferenceResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetCopyReferenceResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGetCopyReferenceResult` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGetCopyReferenceResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGetCopyReferenceResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGetCopyReferenceResult` object.
+/// 
 + (DBXFILESGetCopyReferenceResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -14,7 +14,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobStatusInProgress;
     }
     return self;
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithComplete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobStatusComplete;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithFailed:(DBXSHARINGJobError *)failed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGJobStatusFailed;
         _failed = failed;
     }
@@ -63,14 +63,14 @@
 }
 
 - (DBXSHARINGJobError *)failed {
-    if (_tag != DBXSHARINGJobStatusFailed) {
+    if (![self isFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGJobStatusFailed`, but was %@.", [self getTagName]];
     }
     return _failed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

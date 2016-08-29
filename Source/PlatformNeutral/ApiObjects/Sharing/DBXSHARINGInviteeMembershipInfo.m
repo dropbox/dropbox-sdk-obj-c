@@ -17,7 +17,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](permissions);
 
     self = [super initWithAccessType:accessType permissions:permissions initials:initials isInherited:isInherited];
-    if (self != nil) {
+    if (self) {
         _invitee = invitee;
         _user = user;
     }
@@ -28,8 +28,8 @@
     return [self initWithAccessType:accessType invitee:invitee permissions:nil initials:nil isInherited:nil user:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGInviteeMembershipInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGInviteeMembershipInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

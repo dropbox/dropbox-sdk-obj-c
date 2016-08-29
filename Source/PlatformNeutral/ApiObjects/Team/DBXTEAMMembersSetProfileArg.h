@@ -9,15 +9,15 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMMembersSetProfileArg` struct.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The MembersSetProfileArg struct.
 /// 
 /// Exactly one of team_member_id, email, or external_id must be provided to
 /// identify the user account. At least one of new_email, new_external_id,
 /// new_given_name, and/or new_surname must be provided.
+/// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DBXTEAMMembersSetProfileArg : NSObject <DBXSerializable> 
 
@@ -36,28 +36,57 @@
 /// New surname for member.
 @property (nonatomic, readonly, copy) NSString * _Nullable dNewSurname;
 
-/// Full constructor for the `MembersSetProfileArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMMembersSetProfileArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter user: Identity of user whose profile will be set.
+/// - parameter dNewEmail: New email for member.
+/// - parameter dNewExternalId: New external ID for member.
+/// - parameter dNewGivenName: New given name for member.
+/// - parameter dNewSurname: New surname for member.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetProfileArg` instance.
+/// 
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user dNewEmail:(NSString * _Nullable)dNewEmail dNewExternalId:(NSString * _Nullable)dNewExternalId dNewGivenName:(NSString * _Nullable)dNewGivenName dNewSurname:(NSString * _Nullable)dNewSurname;
 
-/// Convenience constructor for the `MembersSetProfileArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMMembersSetProfileArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter user: Identity of user whose profile will be set.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetProfileArg` instance.
+/// 
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersSetProfileArg` struct.
+/// The serialization class for the MembersSetProfileArg struct.
 /// 
 @interface DBXTEAMMembersSetProfileArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersSetProfileArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetProfileArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersSetProfileArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersSetProfileArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetProfileArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetProfileArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersSetProfileArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersSetProfileArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetProfileArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersSetProfileArg` object.
+/// 
 + (DBXTEAMMembersSetProfileArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

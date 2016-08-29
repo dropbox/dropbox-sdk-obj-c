@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESListFolderContinueErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithReset {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESListFolderContinueErrorReset;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESListFolderContinueErrorOther;
     }
     return self;
@@ -62,14 +62,14 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESListFolderContinueErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESListFolderContinueErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListFolderContinueErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListFolderContinueErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

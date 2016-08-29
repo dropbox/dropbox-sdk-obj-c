@@ -9,7 +9,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESListRevisionsError` union.
+/// The ListRevisionsError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESListRevisionsError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESListRevisionsErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESListRevisionsError` union can exist in.
+/// states with which the `DBXFILESListRevisionsError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESListRevisionsErrorTag) {
     /// (no description).
     DBXFILESListRevisionsErrorPath,
@@ -34,19 +34,42 @@ typedef NS_ENUM(NSInteger, DBXFILESListRevisionsErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESListRevisionsError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESListRevisionsError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -57,12 +80,25 @@ typedef NS_ENUM(NSInteger, DBXFILESListRevisionsErrorTag) {
 /// 
 @interface DBXFILESListRevisionsErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListRevisionsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListRevisionsError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListRevisionsError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListRevisionsError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListRevisionsError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListRevisionsError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListRevisionsError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListRevisionsError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListRevisionsError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListRevisionsError` object.
+/// 
 + (DBXFILESListRevisionsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -1,7 +1,3 @@
-///
-/// Classes for possible SDK errors.
-///
-
 #import <Foundation/Foundation.h>
 #import "DBXOAuth.h"
 #import "DBXAuthAuthError.h"
@@ -10,18 +6,18 @@
 
 @implementation DBXRequestHttpError
 
-- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody {
+- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent {
     self = [super init];
     if (self) {
         _requestId = requestId;
         _statusCode = statusCode;
-        _errorBody = errorBody;
+        _errorContent = errorContent;
     }
     return self;
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil"};
+    NSDictionary *values = @{@"RequestId": _requestId ?: @"nil", @"StatusCode": _statusCode ?: @"nil", @"ErrorContent": _errorContent ?: @"nil"};
     return [NSString stringWithFormat:@"DropboxHttpError[%@];", values];
 }
 
@@ -30,16 +26,12 @@
 
 @implementation DBXRequestBadInputError
 
-- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody errorMessage:(NSString *)errorMessage {
-    self = [super init:requestId statusCode:statusCode errorBody:errorBody];
-    if (self) {
-        _errorMessage = errorMessage;
-    }
-    return self;
+- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent errorMessage:(NSString *)errorMessage {
+    return [super init:requestId statusCode:statusCode errorContent:errorContent];
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"ErrorMessage": _errorMessage ?: @"nil"};
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorContent": self.errorContent ?: @"nil"};
     return [NSString stringWithFormat:@"DropboxBadInputError[%@];", values];
 }
 
@@ -48,8 +40,8 @@
 
 @implementation DBXRequestAuthError
 
-- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody structuredAuthError:(DBXAUTHAuthError *)structuredAuthError {
-    self = [super init:requestId statusCode:statusCode errorBody:errorBody];
+- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent structuredAuthError:(DBXAUTHAuthError *)structuredAuthError {
+    self = [super init:requestId statusCode:statusCode errorContent:errorContent];
     if (self) {
         _structuredAuthError = structuredAuthError;
     }
@@ -57,7 +49,7 @@
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"StructuredAuthError": [NSString stringWithFormat:@"%@", _structuredAuthError] ?: @"nil"};
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorContent": self.errorContent ?: @"nil", @"StructuredAuthError": [NSString stringWithFormat:@"%@", _structuredAuthError] ?: @"nil"};
     return [NSString stringWithFormat:@"DropboxAuthError[%@];", values];
 }
 
@@ -66,8 +58,8 @@
 
 @implementation DBXRequestRateLimitError
 
-- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody structuredRateLimitError:(DBXAUTHRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff {
-    self = [super init:requestId statusCode:statusCode errorBody:errorBody];
+- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent structuredRateLimitError:(DBXAUTHRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff {
+    self = [super init:requestId statusCode:statusCode errorContent:errorContent];
     if (self) {
         _structuredRateLimitError = structuredRateLimitError;
         _backoff = backoff;
@@ -76,7 +68,7 @@
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil", @"StructuredRateLimitError": _structuredRateLimitError ?: @"nil", @"BackOff": _backoff ?: @"nil"};
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorContent": self.errorContent ?: @"nil", @"StructuredRateLimitError": _structuredRateLimitError ?: @"nil", @"BackOff": _backoff ?: @"nil"};
     return [NSString stringWithFormat:@"DropboxRateLimitError[%@];", values];
 }
 
@@ -85,12 +77,12 @@
 
 @implementation DBXRequestInternalServerError
 
-- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody {
-    return [super init:requestId statusCode:statusCode errorBody:errorBody];
+- (instancetype)init:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent {
+    return [super init:requestId statusCode:statusCode errorContent:errorContent];
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorBody": self.errorBody ?: @"nil"};
+    NSDictionary *values = @{@"RequestId": self.requestId ?: @"nil", @"StatusCode": self.statusCode ?: @"nil", @"ErrorContent": self.errorContent ?: @"nil"};
     return [NSString stringWithFormat:@"DropboxInternalServerError[%@];", values];
 }
 
@@ -99,16 +91,16 @@
 
 @implementation DBXRequestOsError
 
-- (instancetype)init:(NSString *)errorDescription {
+- (instancetype)init:(NSString *)errorContent {
     self = [super init];
     if (self) {
-        _errorDescription = errorDescription;
+        _errorContent = errorContent;
     }
     return self;
 }
 
 - (NSString *)description {
-    NSDictionary *values = @{@"ErrorDescription": _errorDescription ?: @"nil"};
+    NSDictionary *values = @{@"ErrorContent": _errorContent ?: @"nil"};
     return [NSString stringWithFormat:@"DBXOsError[%@];", values];
 }
 
@@ -117,44 +109,66 @@
 
 @implementation DBXError
 
-- (instancetype)init:(DBXRequestErrorType)tag requestId:(NSString *)requestId statusCode:(NSNumber *)statusCode errorBody:(NSString *)errorBody errorMessage:(NSString *)errorMessage structuredAuthError:(DBXAUTHAuthError *)structuredAuthError structuredRateLimitError:(DBXAUTHRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff errorDescription:(NSString *)errorDescription {
+- (instancetype)initAsHttpError:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent {
+    return [self init:DBXRequestHttpErrorType requestId:requestId statusCode:statusCode errorContent:errorContent structuredAuthError:nil structuredRateLimitError:nil backoff:nil];
+}
+
+- (instancetype)initAsBadInputError:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent {
+    return [self init:DBXRequestBadInputErrorType requestId:requestId statusCode:statusCode errorContent:errorContent structuredAuthError:nil structuredRateLimitError:nil backoff:nil];
+}
+
+- (instancetype)initAsAuthError:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent structuredAuthError:(DBXAUTHAuthError *)structuredAuthError {
+    return [self init:DBXRequestAuthErrorType requestId:requestId statusCode:statusCode errorContent:errorContent structuredAuthError:structuredAuthError structuredRateLimitError:nil backoff:nil];
+}
+
+- (instancetype)initAsRateLimitError:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent structuredRateLimitError:(DBXAUTHRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff {
+    return [self init:DBXRequestRateLimitErrorType requestId:requestId statusCode:statusCode errorContent:errorContent structuredAuthError:nil structuredRateLimitError:structuredRateLimitError backoff:backoff];
+}
+
+- (instancetype)initAsInternalServerError:requestId:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent {
+    return [self init:DBXRequestInternalServerErrorType requestId:requestId statusCode:statusCode errorContent:errorContent structuredAuthError:nil structuredRateLimitError:nil backoff:nil];
+}
+
+- (instancetype)initAsOSError:(NSString *)errorContent {
+    return [self init:DBXRequestOsErrorType requestId:nil statusCode:nil errorContent:errorContent structuredAuthError:nil structuredRateLimitError:nil backoff:nil];
+}
+
+- (instancetype)init:(DBXRequestErrorType)tag requestId:(NSString *)requestId statusCode:(NSNumber *)statusCode errorContent:(NSString *)errorContent structuredAuthError:(DBXAUTHAuthError *)structuredAuthError structuredRateLimitError:(DBXAUTHRateLimitError *)structuredRateLimitError backoff:(NSNumber *)backoff {
     self = [super init];
     if (self) {
-        self.tag = tag;
+        _tag = tag;
         _requestId = requestId;
         _statusCode = statusCode;
-        _errorBody = errorBody;
-        _errorMessage = errorMessage;
+        _errorContent = errorContent;
         _structuredAuthError = structuredAuthError;
         _structuredRateLimitError = structuredRateLimitError;
         _backoff = backoff;
-        _errorDescription = errorDescription;
     }
     return self;
 }
 
-- (BOOL)isHTTPError {
-    return _tag == (DBXRequestErrorType)DBXRequestHttpErrorType;
+- (BOOL)isHttpError {
+    return _tag == DBXRequestHttpErrorType;
 }
 
 - (BOOL)isBadInputError {
-    return _tag == (DBXRequestErrorType)DBXRequestBadInputErrorType;
+    return _tag == DBXRequestBadInputErrorType;
 }
 
 - (BOOL)isAuthError {
-    return _tag == (DBXRequestErrorType)DBXRequestAuthErrorType;
+    return _tag == DBXRequestAuthErrorType;
 }
 
 - (BOOL)isRateLimitError {
-    return _tag == (DBXRequestErrorType)DBXRequestRateLimitErrorType;
+    return _tag == DBXRequestRateLimitErrorType;
 }
 
 - (BOOL)isInternalServerError {
-    return _tag == (DBXRequestErrorType)DBXRequestInternalServerErrorType;
+    return _tag == DBXRequestInternalServerErrorType;
 }
 
-- (BOOL)isOSError {
-    return _tag == (DBXRequestErrorType)DBXRequestOsErrorType;
+- (BOOL)isOsError {
+    return _tag == DBXRequestOsErrorType;
 }
 
 - (NSString *)description {
@@ -177,27 +191,45 @@
 }
 
 - (DBXRequestHttpError * _Nonnull)asHttpError {
-    return [[DBXRequestHttpError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+    if (![self isHttpError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestHttpErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestHttpError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
 
 - (DBXRequestBadInputError * _Nonnull)asBadInputError {
-    return [[DBXRequestBadInputError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+    if (![self isBadInputError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestBadInputErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestBadInputError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
 
 - (DBXRequestAuthError * _Nonnull)asAuthError {
-    return [[DBXRequestAuthError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredAuthError:_structuredAuthError];
+    if (![self isAuthError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestAuthErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestAuthError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent structuredAuthError:_structuredAuthError];
 }
 
 - (DBXRequestRateLimitError * _Nonnull)asRateLimitError {
-    return [[DBXRequestRateLimitError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody structuredRateLimitError:_structuredRateLimitError backoff:_backoff];
+    if (![self isRateLimitError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestRateLimitErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestRateLimitError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent structuredRateLimitError:_structuredRateLimitError backoff:_backoff];
 }
 
 - (DBXRequestInternalServerError * _Nonnull)asInternalServerError {
-    return [[DBXRequestInternalServerError alloc] init:_requestId statusCode:_statusCode errorBody:_errorBody];
+    if (![self isInternalServerError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestInternalServerErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestInternalServerError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
 
 - (DBXRequestOsError * _Nonnull)asOsError {
-    return [[DBXRequestOsError alloc] init:_errorDescription];
+    if (![self isOsError]) {
+        [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXRequestOsErrorType`, but was %@.", [self getTagName]];
+    }
+    return [[DBXRequestOsError alloc] init:_errorContent];
 }
 
 - (NSString *)getTagName {

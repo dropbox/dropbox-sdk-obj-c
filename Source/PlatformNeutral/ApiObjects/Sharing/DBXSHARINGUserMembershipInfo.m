@@ -16,7 +16,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](permissions);
 
     self = [super initWithAccessType:accessType permissions:permissions initials:initials isInherited:isInherited];
-    if (self != nil) {
+    if (self) {
         _user = user;
     }
     return self;
@@ -26,8 +26,8 @@
     return [self initWithAccessType:accessType user:user permissions:nil initials:nil isInherited:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUserMembershipInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUserMembershipInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

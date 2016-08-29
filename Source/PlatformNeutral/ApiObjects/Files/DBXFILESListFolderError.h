@@ -9,7 +9,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESListFolderError` union.
+/// The ListFolderError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESListFolderError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESListFolderErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESListFolderError` union can exist in.
+/// states with which the `DBXFILESListFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESListFolderErrorTag) {
     /// (no description).
     DBXFILESListFolderErrorPath,
@@ -34,19 +34,42 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESListFolderError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESListFolderError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -57,12 +80,25 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderErrorTag) {
 /// 
 @interface DBXFILESListFolderErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderError` object.
+/// 
 + (DBXFILESListFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -13,7 +13,7 @@
 
 - (instancetype)initWithIsFile {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorIsFile;
     }
     return self;
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithInsideSharedFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorInsideSharedFolder;
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (instancetype)initWithContainsSharedFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorContainsSharedFolder;
     }
     return self;
@@ -37,7 +37,7 @@
 
 - (instancetype)initWithIsAppFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorIsAppFolder;
     }
     return self;
@@ -45,7 +45,7 @@
 
 - (instancetype)initWithInsideAppFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorInsideAppFolder;
     }
     return self;
@@ -53,7 +53,7 @@
 
 - (instancetype)initWithIsPublicFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorIsPublicFolder;
     }
     return self;
@@ -61,7 +61,7 @@
 
 - (instancetype)initWithInsidePublicFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorInsidePublicFolder;
     }
     return self;
@@ -69,7 +69,7 @@
 
 - (instancetype)initWithAlreadyShared:(DBXSHARINGSharedFolderMetadata *)alreadyShared {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorAlreadyShared;
         _alreadyShared = alreadyShared;
     }
@@ -78,7 +78,7 @@
 
 - (instancetype)initWithInvalidPath {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorInvalidPath;
     }
     return self;
@@ -86,7 +86,7 @@
 
 - (instancetype)initWithIsOsxPackage {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorIsOsxPackage;
     }
     return self;
@@ -94,7 +94,7 @@
 
 - (instancetype)initWithInsideOsxPackage {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorInsideOsxPackage;
     }
     return self;
@@ -102,7 +102,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharePathErrorOther;
     }
     return self;
@@ -188,14 +188,14 @@
 }
 
 - (DBXSHARINGSharedFolderMetadata *)alreadyShared {
-    if (_tag != DBXSHARINGSharePathErrorAlreadyShared) {
+    if (![self isAlreadyShared]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGSharePathErrorAlreadyShared`, but was %@.", [self getTagName]];
     }
     return _alreadyShared;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharePathErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharePathErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,7 +8,7 @@
 @class DBXSHARINGGetSharedLinkFileError;
 
 /// 
-/// The `DBXSHARINGGetSharedLinkFileError` union.
+/// The GetSharedLinkFileError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,8 @@
 @interface DBXSHARINGGetSharedLinkFileError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGGetSharedLinkFileErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGGetSharedLinkFileError` union can exist in.
+/// tag states with which the `DBXSHARINGGetSharedLinkFileError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGGetSharedLinkFileErrorTag) {
     /// The shared link wasn't found
     DBXSHARINGGetSharedLinkFileErrorSharedLinkNotFound,
@@ -36,34 +37,82 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetSharedLinkFileErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGGetSharedLinkFileErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
+/// 
+/// About the `SharedLinkNotFound` tag state: The shared link wasn't found
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkFileError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkAccessDenied`.
+/// 
+/// About the `SharedLinkAccessDenied` tag state: The caller is not allowed to
+/// access this shared link
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkFileError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkFileError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkIsDirectory`.
+/// 
+/// About the `SharedLinkIsDirectory` tag state: Directories cannot be retrieved
+/// by this endpoint.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkFileError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkIsDirectory;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkNotFound`.
+/// 
 - (BOOL)isSharedLinkNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkAccessDenied`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkAccessDenied`.
+/// 
 - (BOOL)isSharedLinkAccessDenied;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkIsDirectory`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkIsDirectory`.
+/// 
 - (BOOL)isSharedLinkIsDirectory;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -74,12 +123,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetSharedLinkFileErrorTag) {
 /// 
 @interface DBXSHARINGGetSharedLinkFileErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetSharedLinkFileError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkFileError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetSharedLinkFileError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGGetSharedLinkFileError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinkFileError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkFileError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetSharedLinkFileError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetSharedLinkFileError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinkFileError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGetSharedLinkFileError`
+/// object.
+/// 
 + (DBXSHARINGGetSharedLinkFileError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

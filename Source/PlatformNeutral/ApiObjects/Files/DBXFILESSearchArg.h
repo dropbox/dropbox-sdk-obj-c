@@ -9,7 +9,7 @@
 @class DBXFILESSearchMode;
 
 /// 
-/// The `DBXFILESSearchArg` struct.
+/// The SearchArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -35,28 +35,66 @@
 /// that searching file content is only available for Dropbox Business accounts.
 @property (nonatomic, readonly) DBXFILESSearchMode * _Nonnull mode;
 
-/// Full constructor for the `SearchArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESSearchArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: The path in the user's Dropbox to search. Should probably
+/// be a folder.
+/// - parameter query: The string to search for. The search string is split on
+/// spaces into multiple tokens. For file name searching, the last token is used
+/// for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
+/// - parameter start: The starting index within the search results (used for
+/// paging).
+/// - parameter maxResults: The maximum number of search results to return.
+/// - parameter mode: The search mode (filename, filename_and_content, or
+/// deleted_filename). Note that searching file content is only available for
+/// Dropbox Business accounts.
+/// 
+/// - returns: An initialized `DBXFILESSearchArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query start:(NSNumber * _Nullable)start maxResults:(NSNumber * _Nullable)maxResults mode:(DBXFILESSearchMode * _Nullable)mode;
 
-/// Convenience constructor for the `SearchArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXFILESSearchArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path in the user's Dropbox to search. Should probably
+/// be a folder.
+/// - parameter query: The string to search for. The search string is split on
+/// spaces into multiple tokens. For file name searching, the last token is used
+/// for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
+/// 
+/// - returns: An initialized `DBXFILESSearchArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSearchArg` struct.
+/// The serialization class for the SearchArg struct.
 /// 
 @interface DBXFILESSearchArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSearchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSearchArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSearchArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSearchArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSearchArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSearchArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSearchArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSearchArg` object.
+/// 
 + (DBXFILESSearchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

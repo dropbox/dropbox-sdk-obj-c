@@ -8,18 +8,18 @@
 @class DBXUSERSAccountType;
 
 /// 
-/// The `DBXUSERSAccountType` union.
+/// The AccountType union.
+/// 
+/// What type of account this user has.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// What type of account this user has.
-/// 
 @interface DBXUSERSAccountType : NSObject <DBXSerializable> 
 
 /// The `DBXUSERSAccountTypeTag` enum type represents the possible tag states
-/// that the `DBXUSERSAccountType` union can exist in.
+/// with which the `DBXUSERSAccountType` union can exist.
 typedef NS_ENUM(NSInteger, DBXUSERSAccountTypeTag) {
     /// The basic account type.
     DBXUSERSAccountTypeBasic,
@@ -35,25 +35,60 @@ typedef NS_ENUM(NSInteger, DBXUSERSAccountTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXUSERSAccountTypeTag tag;
 
+/// 
 /// Initializes union class with tag state of `Basic`.
+/// 
+/// About the `Basic` tag state: The basic account type.
+/// 
+/// - returns: An initialized `DBXUSERSAccountType` instance.
+/// 
 - (nonnull instancetype)initWithBasic;
 
+/// 
 /// Initializes union class with tag state of `Pro`.
+/// 
+/// About the `Pro` tag state: The Dropbox Pro account type.
+/// 
+/// - returns: An initialized `DBXUSERSAccountType` instance.
+/// 
 - (nonnull instancetype)initWithPro;
 
+/// 
 /// Initializes union class with tag state of `Business`.
+/// 
+/// About the `Business` tag state: The Dropbox Business account type.
+/// 
+/// - returns: An initialized `DBXUSERSAccountType` instance.
+/// 
 - (nonnull instancetype)initWithBusiness;
 
-/// Returns whether the union's current tag state has value `Basic`.
+/// 
+/// Retrieves whether the union's current tag state has value `Basic`.
+/// 
+/// - returns: Whether the union's current tag state has value `Basic`.
+/// 
 - (BOOL)isBasic;
 
-/// Returns whether the union's current tag state has value `Pro`.
+/// 
+/// Retrieves whether the union's current tag state has value `Pro`.
+/// 
+/// - returns: Whether the union's current tag state has value `Pro`.
+/// 
 - (BOOL)isPro;
 
-/// Returns whether the union's current tag state has value `Business`.
+/// 
+/// Retrieves whether the union's current tag state has value `Business`.
+/// 
+/// - returns: Whether the union's current tag state has value `Business`.
+/// 
 - (BOOL)isBusiness;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -64,12 +99,24 @@ typedef NS_ENUM(NSInteger, DBXUSERSAccountTypeTag) {
 /// 
 @interface DBXUSERSAccountTypeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSAccountType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSAccountType * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSAccountType` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSAccountType` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSAccountType` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSAccountType * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSAccountType` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSAccountType` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSAccountType` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSAccountType` object.
+/// 
 + (DBXUSERSAccountType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

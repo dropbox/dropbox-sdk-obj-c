@@ -8,7 +8,7 @@
 @class DBXFILESLookUpPropertiesError;
 
 /// 
-/// The `DBXFILESLookUpPropertiesError` union.
+/// The LookUpPropertiesError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESLookUpPropertiesError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESLookUpPropertiesErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESLookUpPropertiesError` union can exist in.
+/// states with which the `DBXFILESLookUpPropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESLookUpPropertiesErrorTag) {
     /// This property group does not exist for this file.
     DBXFILESLookUpPropertiesErrorPropertyGroupNotFound,
@@ -27,14 +27,31 @@ typedef NS_ENUM(NSInteger, DBXFILESLookUpPropertiesErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESLookUpPropertiesErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `PropertyGroupNotFound`.
+/// 
+/// About the `PropertyGroupNotFound` tag state: This property group does not
+/// exist for this file.
+/// 
+/// - returns: An initialized `DBXFILESLookUpPropertiesError` instance.
+/// 
 - (nonnull instancetype)initWithPropertyGroupNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `PropertyGroupNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PropertyGroupNotFound`.
+/// 
 - (BOOL)isPropertyGroupNotFound;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -45,12 +62,25 @@ typedef NS_ENUM(NSInteger, DBXFILESLookUpPropertiesErrorTag) {
 /// 
 @interface DBXFILESLookUpPropertiesErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESLookUpPropertiesError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESLookUpPropertiesError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESLookUpPropertiesError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESLookUpPropertiesError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESLookUpPropertiesError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESLookUpPropertiesError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESLookUpPropertiesError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESLookUpPropertiesError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESLookUpPropertiesError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESLookUpPropertiesError` object.
+/// 
 + (DBXFILESLookUpPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

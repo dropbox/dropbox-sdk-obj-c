@@ -12,7 +12,7 @@
 
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorMalformedPath;
         _malformedPath = malformedPath;
     }
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorNotFound;
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (instancetype)initWithNotFile {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorNotFile;
     }
     return self;
@@ -37,7 +37,7 @@
 
 - (instancetype)initWithNotFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorNotFolder;
     }
     return self;
@@ -45,7 +45,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorRestrictedContent;
     }
     return self;
@@ -53,7 +53,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESLookupErrorOther;
     }
     return self;
@@ -103,14 +103,14 @@
 }
 
 - (NSString *)malformedPath {
-    if (_tag != DBXFILESLookupErrorMalformedPath) {
+    if (![self isMalformedPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESLookupErrorMalformedPath`, but was %@.", [self getTagName]];
     }
     return _malformedPath;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESLookupErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESLookupErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

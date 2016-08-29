@@ -9,7 +9,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESInvalidPropertyGroupError` union.
+/// The InvalidPropertyGroupError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,8 @@
 @interface DBXFILESInvalidPropertyGroupError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESInvalidPropertyGroupErrorTag` enum type represents the possible
-/// tag states that the `DBXFILESInvalidPropertyGroupError` union can exist in.
+/// tag states with which the `DBXFILESInvalidPropertyGroupError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXFILESInvalidPropertyGroupErrorTag) {
     /// Property template does not exist for given identifier.
     DBXFILESInvalidPropertyGroupErrorTemplateNotFound,
@@ -49,45 +50,121 @@ typedef NS_ENUM(NSInteger, DBXFILESInvalidPropertyGroupErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `TemplateNotFound`.
+/// 
+/// About the `TemplateNotFound` tag state: Property template does not exist for
+/// given identifier.
+/// 
+/// - parameter templateNotFound: Property template does not exist for given
+/// identifier.
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `RestrictedContent`.
+/// 
+/// About the `RestrictedContent` tag state: You do not have the permissions to
+/// modify this property template.
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `PropertyFieldTooLarge`.
+/// 
+/// About the `PropertyFieldTooLarge` tag state: A field value in this property
+/// group is too large.
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
 
+/// 
 /// Initializes union class with tag state of `DoesNotFitTemplate`.
+/// 
+/// About the `DoesNotFitTemplate` tag state: The property group specified does
+/// not conform to the property template.
+/// 
+/// - returns: An initialized `DBXFILESInvalidPropertyGroupError` instance.
+/// 
 - (nonnull instancetype)initWithDoesNotFitTemplate;
 
-/// Returns whether the union's current tag state has value `TemplateNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
 - (BOOL)isTemplateNotFound;
 
-/// Returns whether the union's current tag state has value `RestrictedContent`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
 - (BOOL)isRestrictedContent;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `PropertyFieldTooLarge`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PropertyFieldTooLarge`.
+/// 
 - (BOOL)isPropertyFieldTooLarge;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `DoesNotFitTemplate`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `DoesNotFitTemplate`.
+/// 
 - (BOOL)isDoesNotFitTemplate;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -98,12 +175,26 @@ typedef NS_ENUM(NSInteger, DBXFILESInvalidPropertyGroupErrorTag) {
 /// 
 @interface DBXFILESInvalidPropertyGroupErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESInvalidPropertyGroupError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESInvalidPropertyGroupError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESInvalidPropertyGroupError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXFILESInvalidPropertyGroupError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESInvalidPropertyGroupError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESInvalidPropertyGroupError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESInvalidPropertyGroupError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESInvalidPropertyGroupError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESInvalidPropertyGroupError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESInvalidPropertyGroupError`
+/// object.
+/// 
 + (DBXFILESInvalidPropertyGroupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

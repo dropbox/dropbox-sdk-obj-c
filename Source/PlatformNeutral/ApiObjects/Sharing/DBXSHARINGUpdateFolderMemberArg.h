@@ -10,7 +10,7 @@
 @class DBXSHARINGUpdateFolderMemberArg;
 
 /// 
-/// The `DBXSHARINGUpdateFolderMemberArg` struct.
+/// The UpdateFolderMemberArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,24 +28,48 @@
 /// The new access level for member. owner in AccessLevel is disallowed.
 @property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
-/// Full constructor for the `UpdateFolderMemberArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGUpdateFolderMemberArg` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// - parameter member: The member of the shared folder to update.  Only the
+/// :field:`MemberSelector.dropbox_id` may be set at this time.
+/// - parameter accessLevel: The new access level for :field:`member`.
+/// :field:`AccessLevel.owner` is disallowed.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberArg` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGUpdateFolderMemberArg` struct.
+/// The serialization class for the UpdateFolderMemberArg struct.
 /// 
 @interface DBXSHARINGUpdateFolderMemberArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUpdateFolderMemberArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderMemberArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUpdateFolderMemberArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGUpdateFolderMemberArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderMemberArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderMemberArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUpdateFolderMemberArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUpdateFolderMemberArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderMemberArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUpdateFolderMemberArg`
+/// object.
+/// 
 + (DBXSHARINGUpdateFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -8,13 +8,13 @@
 @class DBXTEAMDateRange;
 
 /// 
-/// The `DBXTEAMDateRange` struct.
+/// The DateRange struct.
+/// 
+/// Input arguments that can be provided for most reports.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Input arguments that can be provided for most reports.
 /// 
 @interface DBXTEAMDateRange : NSObject <DBXSerializable> 
 
@@ -24,28 +24,52 @@
 /// Optional ending date (exclusive)
 @property (nonatomic, readonly) NSDate * _Nullable endDate;
 
-/// Full constructor for the `DateRange` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMDateRange` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter startDate: Optional starting date (inclusive)
+/// - parameter endDate: Optional ending date (exclusive)
+/// 
+/// - returns: An initialized `DBXTEAMDateRange` instance.
+/// 
 - (nonnull instancetype)initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
-/// Convenience constructor for the `DateRange` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMDateRange` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXTEAMDateRange` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMDateRange` struct.
+/// The serialization class for the DateRange struct.
 /// 
 @interface DBXTEAMDateRangeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMDateRange` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMDateRange * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMDateRange` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMDateRange` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMDateRange` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDateRange * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMDateRange` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMDateRange` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMDateRange` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMDateRange` object.
+/// 
 + (DBXTEAMDateRange * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

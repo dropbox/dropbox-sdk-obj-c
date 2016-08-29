@@ -11,7 +11,7 @@
 @class DBXSHARINGSharedLinkAccessFailureReason;
 
 /// 
-/// The `DBXSHARINGLinkPermissions` struct.
+/// The LinkPermissions struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -39,28 +39,65 @@
 /// the canRevoke is false.
 @property (nonatomic, readonly) DBXSHARINGSharedLinkAccessFailureReason * _Nullable revokeFailureReason;
 
-/// Full constructor for the `LinkPermissions` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGLinkPermissions` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter canRevoke: Whether the caller can revoke the shared link
+/// - parameter resolvedVisibility: The current visibility of the link after
+/// considering the shared links policies of the the team (in case the link's
+/// owner is part of a team) and the shared folder (in case the linked file is
+/// part of a shared folder). This field is shown only if the caller has access
+/// to this info (the link's owner always has access to this data).
+/// - parameter requestedVisibility: The shared link's requested visibility.
+/// This can be overridden by the team and shared folder policies. The final
+/// visibility, after considering these policies, can be found in
+/// :field:`resolved_visibility`. This is shown only if the caller is the link's
+/// owner.
+/// - parameter revokeFailureReason: The failure reason for revoking the link.
+/// This field will only be present if the :field:`can_revoke` is :val:`false`.
+/// 
+/// - returns: An initialized `DBXSHARINGLinkPermissions` instance.
+/// 
 - (nonnull instancetype)initWithCanRevoke:(NSNumber * _Nonnull)canRevoke resolvedVisibility:(DBXSHARINGResolvedVisibility * _Nullable)resolvedVisibility requestedVisibility:(DBXSHARINGRequestedVisibility * _Nullable)requestedVisibility revokeFailureReason:(DBXSHARINGSharedLinkAccessFailureReason * _Nullable)revokeFailureReason;
 
-/// Convenience constructor for the `LinkPermissions` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGLinkPermissions` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter canRevoke: Whether the caller can revoke the shared link
+/// 
+/// - returns: An initialized `DBXSHARINGLinkPermissions` instance.
+/// 
 - (nonnull instancetype)initWithCanRevoke:(NSNumber * _Nonnull)canRevoke;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGLinkPermissions` struct.
+/// The serialization class for the LinkPermissions struct.
 /// 
 @interface DBXSHARINGLinkPermissionsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGLinkPermissions` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGLinkPermissions * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGLinkPermissions` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGLinkPermissions` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGLinkPermissions` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGLinkPermissions * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGLinkPermissions` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGLinkPermissions` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGLinkPermissions` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGLinkPermissions` object.
+/// 
 + (DBXSHARINGLinkPermissions * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

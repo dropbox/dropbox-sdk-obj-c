@@ -10,7 +10,7 @@
 
 - (instancetype)initWithLoginRequired {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonLoginRequired;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithEmailVerifyRequired {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonEmailVerifyRequired;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithPasswordRequired {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonPasswordRequired;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonTeamOnly;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithOwnerOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonOwnerOnly;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedLinkAccessFailureReasonOther;
     }
     return self;
@@ -99,8 +99,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedLinkAccessFailureReasonSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedLinkAccessFailureReasonSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

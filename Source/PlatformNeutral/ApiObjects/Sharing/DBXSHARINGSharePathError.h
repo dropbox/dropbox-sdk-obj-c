@@ -9,7 +9,7 @@
 @class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DBXSHARINGSharePathError` union.
+/// The SharePathError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXSHARINGSharePathError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharePathErrorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGSharePathError` union can exist in.
+/// states with which the `DBXSHARINGSharePathError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
     /// A file is at the specified path.
     DBXSHARINGSharePathErrorIsFile,
@@ -67,82 +67,222 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
 /// folder.
 @property (nonatomic, readonly) DBXSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
 
+/// 
 /// Initializes union class with tag state of `IsFile`.
+/// 
+/// About the `IsFile` tag state: A file is at the specified path.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithIsFile;
 
+/// 
 /// Initializes union class with tag state of `InsideSharedFolder`.
+/// 
+/// About the `InsideSharedFolder` tag state: We do not support sharing a folder
+/// inside a shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithInsideSharedFolder;
 
+/// 
 /// Initializes union class with tag state of `ContainsSharedFolder`.
+/// 
+/// About the `ContainsSharedFolder` tag state: We do not support shared folders
+/// that contain shared folders.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithContainsSharedFolder;
 
+/// 
 /// Initializes union class with tag state of `IsAppFolder`.
+/// 
+/// About the `IsAppFolder` tag state: We do not support sharing an app folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithIsAppFolder;
 
+/// 
 /// Initializes union class with tag state of `InsideAppFolder`.
+/// 
+/// About the `InsideAppFolder` tag state: We do not support sharing a folder
+/// inside an app folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithInsideAppFolder;
 
+/// 
 /// Initializes union class with tag state of `IsPublicFolder`.
+/// 
+/// About the `IsPublicFolder` tag state: A public folder can't be shared this
+/// way. Use a public link instead.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithIsPublicFolder;
 
+/// 
 /// Initializes union class with tag state of `InsidePublicFolder`.
+/// 
+/// About the `InsidePublicFolder` tag state: A folder inside a public folder
+/// can't be shared this way. Use a public link instead.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithInsidePublicFolder;
 
+/// 
 /// Initializes union class with tag state of `AlreadyShared`.
+/// 
+/// About the `AlreadyShared` tag state: Folder is already shared. Contains
+/// metadata about the existing shared folder.
+/// 
+/// - parameter alreadyShared: Folder is already shared. Contains metadata about
+/// the existing shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithAlreadyShared:(DBXSHARINGSharedFolderMetadata * _Nonnull)alreadyShared;
 
+/// 
 /// Initializes union class with tag state of `InvalidPath`.
+/// 
+/// About the `InvalidPath` tag state: Path is not valid.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidPath;
 
+/// 
 /// Initializes union class with tag state of `IsOsxPackage`.
+/// 
+/// About the `IsOsxPackage` tag state: We do not support sharing a Mac OS X
+/// package.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithIsOsxPackage;
 
+/// 
 /// Initializes union class with tag state of `InsideOsxPackage`.
+/// 
+/// About the `InsideOsxPackage` tag state: We do not support sharing a folder
+/// inside a Mac OS X package.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithInsideOsxPackage;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharePathError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `IsFile`.
+/// 
+/// Retrieves whether the union's current tag state has value `IsFile`.
+/// 
+/// - returns: Whether the union's current tag state has value `IsFile`.
+/// 
 - (BOOL)isIsFile;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InsideSharedFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsideSharedFolder`.
+/// 
 - (BOOL)isInsideSharedFolder;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `ContainsSharedFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `ContainsSharedFolder`.
+/// 
 - (BOOL)isContainsSharedFolder;
 
-/// Returns whether the union's current tag state has value `IsAppFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `IsAppFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `IsAppFolder`.
+/// 
 - (BOOL)isIsAppFolder;
 
-/// Returns whether the union's current tag state has value `InsideAppFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `InsideAppFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsideAppFolder`.
+/// 
 - (BOOL)isInsideAppFolder;
 
-/// Returns whether the union's current tag state has value `IsPublicFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `IsPublicFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `IsPublicFolder`.
+/// 
 - (BOOL)isIsPublicFolder;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InsidePublicFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsidePublicFolder`.
+/// 
 - (BOOL)isInsidePublicFolder;
 
-/// Returns whether the union's current tag state has value `AlreadyShared`.
+/// 
+/// Retrieves whether the union's current tag state has value `AlreadyShared`.
+/// 
+/// - returns: Whether the union's current tag state has value `AlreadyShared`.
+/// 
 - (BOOL)isAlreadyShared;
 
-/// Returns whether the union's current tag state has value `InvalidPath`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidPath`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidPath`.
+/// 
 - (BOOL)isInvalidPath;
 
-/// Returns whether the union's current tag state has value `IsOsxPackage`.
+/// 
+/// Retrieves whether the union's current tag state has value `IsOsxPackage`.
+/// 
+/// - returns: Whether the union's current tag state has value `IsOsxPackage`.
+/// 
 - (BOOL)isIsOsxPackage;
 
-/// Returns whether the union's current tag state has value `InsideOsxPackage`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsideOsxPackage`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsideOsxPackage`.
+/// 
 - (BOOL)isInsideOsxPackage;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -153,12 +293,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
 /// 
 @interface DBXSHARINGSharePathErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharePathError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharePathError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharePathError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharePathError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharePathError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharePathError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharePathError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharePathError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharePathError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharePathError` object.
+/// 
 + (DBXSHARINGSharePathError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

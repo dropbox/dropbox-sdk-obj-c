@@ -11,7 +11,7 @@
 - (instancetype)initWithSpaceNeeded:(NSNumber *)spaceNeeded spaceShortage:(NSNumber *)spaceShortage spaceLeft:(NSNumber *)spaceLeft {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _spaceNeeded = spaceNeeded;
         _spaceShortage = spaceShortage;
         _spaceLeft = spaceLeft;
@@ -19,8 +19,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGInsufficientQuotaAmountsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGInsufficientQuotaAmountsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

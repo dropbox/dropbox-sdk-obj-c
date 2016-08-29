@@ -10,13 +10,13 @@
 @class DBXTEAMMemberProfile;
 
 /// 
-/// The `DBXTEAMGroupMemberInfo` struct.
+/// The GroupMemberInfo struct.
+/// 
+/// Profile of group member, and role in group.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Profile of group member, and role in group.
 /// 
 @interface DBXTEAMGroupMemberInfo : NSObject <DBXSerializable> 
 
@@ -26,24 +26,44 @@
 /// The role that the user has in the group.
 @property (nonatomic, readonly) DBXTEAMGroupAccessType * _Nonnull accessType;
 
-/// Full constructor for the `GroupMemberInfo` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGroupMemberInfo` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter profile: Profile of group member.
+/// - parameter accessType: The role that the user has in the group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberInfo` instance.
+/// 
 - (nonnull instancetype)initWithProfile:(DBXTEAMMemberProfile * _Nonnull)profile accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupMemberInfo` struct.
+/// The serialization class for the GroupMemberInfo struct.
 /// 
 @interface DBXTEAMGroupMemberInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMemberInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMemberInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMemberInfo` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMemberInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMemberInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMemberInfo` object.
+/// 
 + (DBXTEAMGroupMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -9,7 +9,7 @@
 @class DBXFILESSaveCopyReferenceResult;
 
 /// 
-/// The `DBXFILESSaveCopyReferenceResult` struct.
+/// The SaveCopyReferenceResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,45 @@
 /// The metadata of the saved file or folder in the user's Dropbox.
 @property (nonatomic, readonly) DBXFILESMetadata * _Nonnull metadata;
 
-/// Full constructor for the `SaveCopyReferenceResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESSaveCopyReferenceResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter metadata: The metadata of the saved file or folder in the user's
+/// Dropbox.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceResult` instance.
+/// 
 - (nonnull instancetype)initWithMetadata:(DBXFILESMetadata * _Nonnull)metadata;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSaveCopyReferenceResult` struct.
+/// The serialization class for the SaveCopyReferenceResult struct.
 /// 
 @interface DBXFILESSaveCopyReferenceResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSaveCopyReferenceResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSaveCopyReferenceResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSaveCopyReferenceResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSaveCopyReferenceResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSaveCopyReferenceResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSaveCopyReferenceResult`
+/// object.
+/// 
 + (DBXFILESSaveCopyReferenceResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

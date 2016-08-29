@@ -8,7 +8,7 @@
 @class DBXFILESListRevisionsArg;
 
 /// 
-/// The `DBXFILESListRevisionsArg` struct.
+/// The ListRevisionsArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,28 +22,54 @@
 /// The maximum number of revision entries returned.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
-/// Full constructor for the `ListRevisionsArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESListRevisionsArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path to the file you want to see the revisions of.
+/// - parameter limit: The maximum number of revision entries returned.
+/// 
+/// - returns: An initialized `DBXFILESListRevisionsArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
 
-/// Convenience constructor for the `ListRevisionsArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESListRevisionsArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path to the file you want to see the revisions of.
+/// 
+/// - returns: An initialized `DBXFILESListRevisionsArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListRevisionsArg` struct.
+/// The serialization class for the ListRevisionsArg struct.
 /// 
 @interface DBXFILESListRevisionsArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListRevisionsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListRevisionsArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListRevisionsArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListRevisionsArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListRevisionsArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListRevisionsArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListRevisionsArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListRevisionsArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListRevisionsArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListRevisionsArg` object.
+/// 
 + (DBXFILESListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

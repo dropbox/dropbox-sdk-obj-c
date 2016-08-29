@@ -10,7 +10,7 @@
 @class DBXFILESWriteError;
 
 /// 
-/// The `DBXFILESDeleteError` union.
+/// The DeleteError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXFILESDeleteError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESDeleteErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESDeleteError` union can exist in.
+/// with which the `DBXFILESDeleteError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
     /// (no description).
     DBXFILESDeleteErrorPathLookup,
@@ -41,25 +41,58 @@ typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESWriteError * _Nonnull pathWrite;
 
+/// 
 /// Initializes union class with tag state of `PathLookup`.
+/// 
+/// - parameter pathLookup: (no description).
+/// 
+/// - returns: An initialized `DBXFILESDeleteError` instance.
+/// 
 - (nonnull instancetype)initWithPathLookup:(DBXFILESLookupError * _Nonnull)pathLookup;
 
+/// 
 /// Initializes union class with tag state of `PathWrite`.
+/// 
+/// - parameter pathWrite: (no description).
+/// 
+/// - returns: An initialized `DBXFILESDeleteError` instance.
+/// 
 - (nonnull instancetype)initWithPathWrite:(DBXFILESWriteError * _Nonnull)pathWrite;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESDeleteError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `PathLookup`.
+/// 
+/// Retrieves whether the union's current tag state has value `PathLookup`.
+/// 
+/// - returns: Whether the union's current tag state has value `PathLookup`.
+/// 
 - (BOOL)isPathLookup;
 
-/// Returns whether the union's current tag state has value `PathWrite`.
+/// 
+/// Retrieves whether the union's current tag state has value `PathWrite`.
+/// 
+/// - returns: Whether the union's current tag state has value `PathWrite`.
+/// 
 - (BOOL)isPathWrite;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -70,12 +103,24 @@ typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
 /// 
 @interface DBXFILESDeleteErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESDeleteError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESDeleteError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESDeleteError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESDeleteError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESDeleteError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESDeleteError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESDeleteError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESDeleteError` object.
+/// 
 + (DBXFILESDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

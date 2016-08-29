@@ -9,7 +9,7 @@
 @class DBXTEAMRevokeLinkedAppStatus;
 
 /// 
-/// The `DBXTEAMRevokeLinkedAppBatchResult` struct.
+/// The RevokeLinkedAppBatchResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,44 @@
 /// (no description).
 @property (nonatomic, readonly) NSArray<DBXTEAMRevokeLinkedAppStatus *> * _Nonnull revokeLinkedAppStatus;
 
-/// Full constructor for the `RevokeLinkedAppBatchResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMRevokeLinkedAppBatchResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter revokeLinkedAppStatus: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedAppBatchResult` instance.
+/// 
 - (nonnull instancetype)initWithRevokeLinkedAppStatus:(NSArray<DBXTEAMRevokeLinkedAppStatus *> * _Nonnull)revokeLinkedAppStatus;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeLinkedAppBatchResult` struct.
+/// The serialization class for the RevokeLinkedAppBatchResult struct.
 /// 
 @interface DBXTEAMRevokeLinkedAppBatchResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeLinkedAppBatchResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppBatchResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeLinkedAppBatchResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMRevokeLinkedAppBatchResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedAppBatchResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppBatchResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeLinkedAppBatchResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeLinkedAppBatchResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedAppBatchResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeLinkedAppBatchResult`
+/// object.
+/// 
 + (DBXTEAMRevokeLinkedAppBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

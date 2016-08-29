@@ -8,11 +8,7 @@
 @class DBXFILESWriteMode;
 
 /// 
-/// The `DBXFILESWriteMode` union.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The WriteMode union.
 /// 
 /// Your intent when writing a file to some path. This is used to determine what
 /// constitutes a conflict and what the autorename strategy is. In some
@@ -24,10 +20,14 @@
 /// the target path with contents different from the contents you're trying to
 /// write.
 /// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
+/// 
 @interface DBXFILESWriteMode : NSObject <DBXSerializable> 
 
-/// The `DBXFILESWriteModeTag` enum type represents the possible tag states that
-/// the `DBXFILESWriteMode` union can exist in.
+/// The `DBXFILESWriteModeTag` enum type represents the possible tag states with
+/// which the `DBXFILESWriteMode` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
     /// Never overwrite the existing file. The autorename strategy is to append
     /// a number to the file name. For example, "document.txt" might become
@@ -55,25 +55,72 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
 /// copy).txt" or "document (Panda's conflicted copy).txt".
 @property (nonatomic, readonly, copy) NSString * _Nonnull update;
 
+/// 
 /// Initializes union class with tag state of `Add`.
+/// 
+/// About the `Add` tag state: Never overwrite the existing file. The autorename
+/// strategy is to append a number to the file name. For example, "document.txt"
+/// might become "document (2).txt".
+/// 
+/// - returns: An initialized `DBXFILESWriteMode` instance.
+/// 
 - (nonnull instancetype)initWithAdd;
 
+/// 
 /// Initializes union class with tag state of `Overwrite`.
+/// 
+/// About the `Overwrite` tag state: Always overwrite the existing file. The
+/// autorename strategy is the same as it is for :field:`add`.
+/// 
+/// - returns: An initialized `DBXFILESWriteMode` instance.
+/// 
 - (nonnull instancetype)initWithOverwrite;
 
+/// 
 /// Initializes union class with tag state of `Update`.
+/// 
+/// About the `Update` tag state: Overwrite if the given "rev" matches the
+/// existing file's "rev". The autorename strategy is to append the string
+/// "conflicted copy" to the file name. For example, "document.txt" might become
+/// "document (conflicted copy).txt" or "document (Panda's conflicted
+/// copy).txt".
+/// 
+/// - parameter update: Overwrite if the given "rev" matches the existing file's
+/// "rev". The autorename strategy is to append the string "conflicted copy" to
+/// the file name. For example, "document.txt" might become "document
+/// (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
+/// 
+/// - returns: An initialized `DBXFILESWriteMode` instance.
+/// 
 - (nonnull instancetype)initWithUpdate:(NSString * _Nonnull)update;
 
-/// Returns whether the union's current tag state has value `Add`.
+/// 
+/// Retrieves whether the union's current tag state has value `Add`.
+/// 
+/// - returns: Whether the union's current tag state has value `Add`.
+/// 
 - (BOOL)isAdd;
 
-/// Returns whether the union's current tag state has value `Overwrite`.
+/// 
+/// Retrieves whether the union's current tag state has value `Overwrite`.
+/// 
+/// - returns: Whether the union's current tag state has value `Overwrite`.
+/// 
 - (BOOL)isOverwrite;
 
-/// Returns whether the union's current tag state has value `Update`.
+/// 
+/// Retrieves whether the union's current tag state has value `Update`.
+/// 
+/// - returns: Whether the union's current tag state has value `Update`.
+/// 
 - (BOOL)isUpdate;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -84,12 +131,24 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
 /// 
 @interface DBXFILESWriteModeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESWriteMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteMode * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESWriteMode` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESWriteMode` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESWriteMode` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteMode * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESWriteMode` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESWriteMode` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESWriteMode` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESWriteMode` object.
+/// 
 + (DBXFILESWriteMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

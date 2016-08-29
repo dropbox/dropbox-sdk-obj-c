@@ -9,7 +9,7 @@
 @class DBXPROPERTIESPropertyField;
 
 /// 
-/// The `DBXFILESPropertyGroupUpdate` struct.
+/// The PropertyGroupUpdate struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,28 +28,58 @@
 /// exists.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nullable removeFields;
 
-/// Full constructor for the `PropertyGroupUpdate` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESPropertyGroupUpdate` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter templateId: A unique identifier for a property template.
+/// - parameter addOrUpdateFields: List of property fields to update if the
+/// field already exists. If the field doesn't exist, add the field to the
+/// property group.
+/// - parameter removeFields: List of property field names to remove from
+/// property group if the field exists.
+/// 
+/// - returns: An initialized `DBXFILESPropertyGroupUpdate` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId addOrUpdateFields:(NSArray<DBXPROPERTIESPropertyField *> * _Nullable)addOrUpdateFields removeFields:(NSArray<NSString *> * _Nullable)removeFields;
 
-/// Convenience constructor for the `PropertyGroupUpdate` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESPropertyGroupUpdate` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter templateId: A unique identifier for a property template.
+/// 
+/// - returns: An initialized `DBXFILESPropertyGroupUpdate` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESPropertyGroupUpdate` struct.
+/// The serialization class for the PropertyGroupUpdate struct.
 /// 
 @interface DBXFILESPropertyGroupUpdateSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESPropertyGroupUpdate` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESPropertyGroupUpdate * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESPropertyGroupUpdate` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESPropertyGroupUpdate` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESPropertyGroupUpdate` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPropertyGroupUpdate * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESPropertyGroupUpdate` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESPropertyGroupUpdate` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESPropertyGroupUpdate` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESPropertyGroupUpdate` object.
+/// 
 + (DBXFILESPropertyGroupUpdate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

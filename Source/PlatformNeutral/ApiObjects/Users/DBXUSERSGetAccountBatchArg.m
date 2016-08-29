@@ -12,14 +12,14 @@
     [DBXStoneValidators arrayValidator:@(1) maxItems:nil itemValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountIds);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _accountIds = accountIds;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSGetAccountBatchArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSGetAccountBatchArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

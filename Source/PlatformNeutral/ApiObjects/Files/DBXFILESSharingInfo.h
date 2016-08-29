@@ -8,37 +8,56 @@
 @class DBXFILESSharingInfo;
 
 /// 
-/// The `DBXFILESSharingInfo` struct.
+/// The SharingInfo struct.
+/// 
+/// Sharing info for a file or folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Sharing info for a file or folder.
 /// 
 @interface DBXFILESSharingInfo : NSObject <DBXSerializable> 
 
 /// True if the file or folder is inside a read-only shared folder.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull readOnly;
 
-/// Full constructor for the `SharingInfo` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESSharingInfo` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter readOnly: True if the file or folder is inside a read-only
+/// shared folder.
+/// 
+/// - returns: An initialized `DBXFILESSharingInfo` instance.
+/// 
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSharingInfo` struct.
+/// The serialization class for the SharingInfo struct.
 /// 
 @interface DBXFILESSharingInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSharingInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSharingInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSharingInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSharingInfo` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSharingInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSharingInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSharingInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSharingInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSharingInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSharingInfo` object.
+/// 
 + (DBXFILESSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

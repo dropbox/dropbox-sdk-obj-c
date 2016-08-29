@@ -8,7 +8,7 @@
 @class DBXFILESRemovePropertiesArg;
 
 /// 
-/// The `DBXFILESRemovePropertiesArg` struct.
+/// The RemovePropertiesArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,24 +23,45 @@
 /// properties/template/add.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nonnull propertyTemplateIds;
 
-/// Full constructor for the `RemovePropertiesArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESRemovePropertiesArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: A unique identifier for the file.
+/// - parameter propertyTemplateIds: A list of identifiers for a property
+/// template created by route properties/template/add.
+/// 
+/// - returns: An initialized `DBXFILESRemovePropertiesArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESRemovePropertiesArg` struct.
+/// The serialization class for the RemovePropertiesArg struct.
 /// 
 @interface DBXFILESRemovePropertiesArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESRemovePropertiesArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESRemovePropertiesArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESRemovePropertiesArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESRemovePropertiesArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRemovePropertiesArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESRemovePropertiesArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESRemovePropertiesArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESRemovePropertiesArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESRemovePropertiesArg` object.
+/// 
 + (DBXFILESRemovePropertiesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

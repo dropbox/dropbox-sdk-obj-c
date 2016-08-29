@@ -11,15 +11,15 @@
 - (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _id_ = id_;
         _name = name;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSTeamSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSTeamSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 @class DBXTEAMRevokeDeviceSessionArg;
 
 /// 
-/// The `DBXTEAMRevokeDeviceSessionArg` union.
+/// The RevokeDeviceSessionArg union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXTEAMRevokeDeviceSessionArg : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMRevokeDeviceSessionArgTag` enum type represents the possible tag
-/// states that the `DBXTEAMRevokeDeviceSessionArg` union can exist in.
+/// states with which the `DBXTEAMRevokeDeviceSessionArg` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
     /// End an active session
     DBXTEAMRevokeDeviceSessionArgWebSession,
@@ -44,25 +44,66 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
 /// Unlink a linked mobile device
 @property (nonatomic, readonly) DBXTEAMDeviceSessionArg * _Nonnull mobileClient;
 
+/// 
 /// Initializes union class with tag state of `WebSession`.
+/// 
+/// About the `WebSession` tag state: End an active session
+/// 
+/// - parameter webSession: End an active session
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionArg` instance.
+/// 
 - (nonnull instancetype)initWithWebSession:(DBXTEAMDeviceSessionArg * _Nonnull)webSession;
 
+/// 
 /// Initializes union class with tag state of `DesktopClient`.
+/// 
+/// About the `DesktopClient` tag state: Unlink a linked desktop device
+/// 
+/// - parameter desktopClient: Unlink a linked desktop device
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionArg` instance.
+/// 
 - (nonnull instancetype)initWithDesktopClient:(DBXTEAMRevokeDesktopClientArg * _Nonnull)desktopClient;
 
+/// 
 /// Initializes union class with tag state of `MobileClient`.
+/// 
+/// About the `MobileClient` tag state: Unlink a linked mobile device
+/// 
+/// - parameter mobileClient: Unlink a linked mobile device
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionArg` instance.
+/// 
 - (nonnull instancetype)initWithMobileClient:(DBXTEAMDeviceSessionArg * _Nonnull)mobileClient;
 
-/// Returns whether the union's current tag state has value `WebSession`.
+/// 
+/// Retrieves whether the union's current tag state has value `WebSession`.
+/// 
+/// - returns: Whether the union's current tag state has value `WebSession`.
+/// 
 - (BOOL)isWebSession;
 
-/// Returns whether the union's current tag state has value `DesktopClient`.
+/// 
+/// Retrieves whether the union's current tag state has value `DesktopClient`.
+/// 
+/// - returns: Whether the union's current tag state has value `DesktopClient`.
+/// 
 - (BOOL)isDesktopClient;
 
-/// Returns whether the union's current tag state has value `MobileClient`.
+/// 
+/// Retrieves whether the union's current tag state has value `MobileClient`.
+/// 
+/// - returns: Whether the union's current tag state has value `MobileClient`.
+/// 
 - (BOOL)isMobileClient;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -73,12 +114,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
 /// 
 @interface DBXTEAMRevokeDeviceSessionArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeDeviceSessionArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeDeviceSessionArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeDeviceSessionArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeDeviceSessionArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeDeviceSessionArg` object.
+/// 
 + (DBXTEAMRevokeDeviceSessionArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

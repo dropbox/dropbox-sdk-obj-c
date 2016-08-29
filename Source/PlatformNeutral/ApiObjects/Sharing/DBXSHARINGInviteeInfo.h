@@ -8,18 +8,18 @@
 @class DBXSHARINGInviteeInfo;
 
 /// 
-/// The `DBXSHARINGInviteeInfo` union.
+/// The InviteeInfo union.
+/// 
+/// Information about the recipient of a shared content invitation.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Information about the recipient of a shared content invitation.
-/// 
 @interface DBXSHARINGInviteeInfo : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGInviteeInfoTag` enum type represents the possible tag states
-/// that the `DBXSHARINGInviteeInfo` union can exist in.
+/// with which the `DBXSHARINGInviteeInfo` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
     /// E-mail address of invited user.
     DBXSHARINGInviteeInfoEmail,
@@ -35,19 +35,44 @@ typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
 /// E-mail address of invited user.
 @property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
+/// 
 /// Initializes union class with tag state of `Email`.
+/// 
+/// About the `Email` tag state: E-mail address of invited user.
+/// 
+/// - parameter email: E-mail address of invited user.
+/// 
+/// - returns: An initialized `DBXSHARINGInviteeInfo` instance.
+/// 
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGInviteeInfo` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Email`.
+/// 
+/// Retrieves whether the union's current tag state has value `Email`.
+/// 
+/// - returns: Whether the union's current tag state has value `Email`.
+/// 
 - (BOOL)isEmail;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -58,12 +83,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
 /// 
 @interface DBXSHARINGInviteeInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGInviteeInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInviteeInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGInviteeInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGInviteeInfo` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGInviteeInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInviteeInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGInviteeInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGInviteeInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGInviteeInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGInviteeInfo` object.
+/// 
 + (DBXSHARINGInviteeInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

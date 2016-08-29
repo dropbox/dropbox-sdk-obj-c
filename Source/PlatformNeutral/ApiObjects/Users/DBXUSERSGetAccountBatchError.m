@@ -12,7 +12,7 @@
 
 - (instancetype)initWithNoAccount:(NSString *)noAccount {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSGetAccountBatchErrorNoAccount;
         _noAccount = noAccount;
     }
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSGetAccountBatchErrorOther;
     }
     return self;
@@ -47,14 +47,14 @@
 }
 
 - (NSString *)noAccount {
-    if (_tag != DBXUSERSGetAccountBatchErrorNoAccount) {
+    if (![self isNoAccount]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXUSERSGetAccountBatchErrorNoAccount`, but was %@.", [self getTagName]];
     }
     return _noAccount;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSGetAccountBatchErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSGetAccountBatchErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

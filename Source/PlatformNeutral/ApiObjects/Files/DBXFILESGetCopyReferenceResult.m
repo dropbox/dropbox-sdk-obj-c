@@ -12,7 +12,7 @@
 - (instancetype)initWithMetadata:(DBXFILESMetadata *)metadata dCopyReference:(NSString *)dCopyReference expires:(NSDate *)expires {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _metadata = metadata;
         _dCopyReference = dCopyReference;
         _expires = expires;
@@ -20,8 +20,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGetCopyReferenceResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGetCopyReferenceResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -9,7 +9,7 @@
 @class DBXFILESWriteError;
 
 /// 
-/// The `DBXFILESWriteError` union.
+/// The WriteError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESWriteError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESWriteErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESWriteError` union can exist in.
+/// with which the `DBXFILESWriteError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
     /// (no description).
     DBXFILESWriteErrorMalformedPath,
@@ -50,43 +50,117 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
 /// Couldn't write to the target path because there was something in the way.
 @property (nonatomic, readonly) DBXFILESWriteConflictError * _Nonnull conflict;
 
+/// 
 /// Initializes union class with tag state of `MalformedPath`.
+/// 
+/// - parameter malformedPath: (no description).
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
 
+/// 
 /// Initializes union class with tag state of `Conflict`.
+/// 
+/// About the `Conflict` tag state: Couldn't write to the target path because
+/// there was something in the way.
+/// 
+/// - parameter conflict: Couldn't write to the target path because there was
+/// something in the way.
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithConflict:(DBXFILESWriteConflictError * _Nonnull)conflict;
 
+/// 
 /// Initializes union class with tag state of `NoWritePermission`.
+/// 
+/// About the `NoWritePermission` tag state: The user doesn't have permissions
+/// to write to the target location.
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithNoWritePermission;
 
+/// 
 /// Initializes union class with tag state of `InsufficientSpace`.
+/// 
+/// About the `InsufficientSpace` tag state: The user doesn't have enough
+/// available space (bytes) to write more data.
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithInsufficientSpace;
 
+/// 
 /// Initializes union class with tag state of `DisallowedName`.
+/// 
+/// About the `DisallowedName` tag state: Dropbox will not save the file or
+/// folder because of its name.
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithDisallowedName;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESWriteError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `MalformedPath`.
+/// 
+/// Retrieves whether the union's current tag state has value `MalformedPath`.
+/// 
+/// - returns: Whether the union's current tag state has value `MalformedPath`.
+/// 
 - (BOOL)isMalformedPath;
 
-/// Returns whether the union's current tag state has value `Conflict`.
+/// 
+/// Retrieves whether the union's current tag state has value `Conflict`.
+/// 
+/// - returns: Whether the union's current tag state has value `Conflict`.
+/// 
 - (BOOL)isConflict;
 
-/// Returns whether the union's current tag state has value `NoWritePermission`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `NoWritePermission`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `NoWritePermission`.
+/// 
 - (BOOL)isNoWritePermission;
 
-/// Returns whether the union's current tag state has value `InsufficientSpace`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsufficientSpace`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsufficientSpace`.
+/// 
 - (BOOL)isInsufficientSpace;
 
-/// Returns whether the union's current tag state has value `DisallowedName`.
+/// 
+/// Retrieves whether the union's current tag state has value `DisallowedName`.
+/// 
+/// - returns: Whether the union's current tag state has value `DisallowedName`.
+/// 
 - (BOOL)isDisallowedName;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -97,12 +171,24 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
 /// 
 @interface DBXFILESWriteErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESWriteError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESWriteError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESWriteError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESWriteError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESWriteError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESWriteError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESWriteError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESWriteError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESWriteError` object.
+/// 
 + (DBXFILESWriteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

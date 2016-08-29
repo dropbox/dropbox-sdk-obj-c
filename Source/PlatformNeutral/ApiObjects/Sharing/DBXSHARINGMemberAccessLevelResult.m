@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](accessDetails);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _accessLevel = accessLevel;
         _warning = warning;
         _accessDetails = accessDetails;
@@ -26,8 +26,8 @@
     return [self initWithAccessLevel:nil warning:nil accessDetails:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMemberAccessLevelResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMemberAccessLevelResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

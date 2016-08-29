@@ -11,7 +11,7 @@
 
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRevokeSharedLinkErrorSharedLinkNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithSharedLinkAccessDenied {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRevokeSharedLinkErrorSharedLinkAccessDenied;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRevokeSharedLinkErrorOther;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithSharedLinkMalformed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRevokeSharedLinkErrorSharedLinkMalformed;
     }
     return self;
@@ -72,8 +72,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRevokeSharedLinkErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRevokeSharedLinkErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

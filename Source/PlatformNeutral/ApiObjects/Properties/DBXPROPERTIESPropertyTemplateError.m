@@ -12,7 +12,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESPropertyTemplateErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESPropertyTemplateErrorRestrictedContent;
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXPROPERTIESPropertyTemplateErrorOther;
     }
     return self;
@@ -61,14 +61,14 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXPROPERTIESPropertyTemplateErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXPROPERTIESPropertyTemplateErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXPROPERTIESPropertyTemplateErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXPROPERTIESPropertyTemplateErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -17,7 +17,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorRestrictedContent;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorOther;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorPath;
         _path = path;
     }
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithPropertyFieldTooLarge {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorPropertyFieldTooLarge;
     }
     return self;
@@ -59,7 +59,7 @@
 
 - (instancetype)initWithDoesNotFitTemplate {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorDoesNotFitTemplate;
     }
     return self;
@@ -67,7 +67,7 @@
 
 - (instancetype)initWithPropertyGroupLookup:(DBXFILESLookUpPropertiesError *)propertyGroupLookup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUpdatePropertiesErrorPropertyGroupLookup;
         _propertyGroupLookup = propertyGroupLookup;
     }
@@ -124,28 +124,28 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXFILESUpdatePropertiesErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUpdatePropertiesErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESUpdatePropertiesErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUpdatePropertiesErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DBXFILESLookUpPropertiesError *)propertyGroupLookup {
-    if (_tag != DBXFILESUpdatePropertiesErrorPropertyGroupLookup) {
+    if (![self isPropertyGroupLookup]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUpdatePropertiesErrorPropertyGroupLookup`, but was %@.", [self getTagName]];
     }
     return _propertyGroupLookup;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUpdatePropertiesErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUpdatePropertiesErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

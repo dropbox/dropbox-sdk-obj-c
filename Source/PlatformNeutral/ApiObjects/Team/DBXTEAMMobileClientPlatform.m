@@ -10,7 +10,7 @@
 
 - (instancetype)initWithIphone {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformIphone;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithIpad {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformIpad;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithAndroid {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformAndroid;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithWindowsPhone {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformWindowsPhone;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithBlackberry {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformBlackberry;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMobileClientPlatformOther;
     }
     return self;
@@ -99,8 +99,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMobileClientPlatformSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMobileClientPlatformSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

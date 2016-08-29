@@ -8,7 +8,7 @@
 @class DBXSHARINGRevokeSharedLinkError;
 
 /// 
-/// The `DBXSHARINGRevokeSharedLinkError` union.
+/// The RevokeSharedLinkError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXSHARINGRevokeSharedLinkError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGRevokeSharedLinkErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGRevokeSharedLinkError` union can exist in.
+/// tag states with which the `DBXSHARINGRevokeSharedLinkError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
     /// The shared link wasn't found
     DBXSHARINGRevokeSharedLinkErrorSharedLinkNotFound,
@@ -36,34 +36,81 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGRevokeSharedLinkErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
+/// 
+/// About the `SharedLinkNotFound` tag state: The shared link wasn't found
+/// 
+/// - returns: An initialized `DBXSHARINGRevokeSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkAccessDenied`.
+/// 
+/// About the `SharedLinkAccessDenied` tag state: The caller is not allowed to
+/// access this shared link
+/// 
+/// - returns: An initialized `DBXSHARINGRevokeSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGRevokeSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkMalformed`.
+/// 
+/// About the `SharedLinkMalformed` tag state: Shared link is malformed.
+/// 
+/// - returns: An initialized `DBXSHARINGRevokeSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkMalformed;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkNotFound`.
+/// 
 - (BOOL)isSharedLinkNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkAccessDenied`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkAccessDenied`.
+/// 
 - (BOOL)isSharedLinkAccessDenied;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkMalformed`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkMalformed`.
+/// 
 - (BOOL)isSharedLinkMalformed;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -74,12 +121,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
 /// 
 @interface DBXSHARINGRevokeSharedLinkErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRevokeSharedLinkError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRevokeSharedLinkError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRevokeSharedLinkError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGRevokeSharedLinkError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRevokeSharedLinkError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRevokeSharedLinkError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRevokeSharedLinkError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRevokeSharedLinkError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRevokeSharedLinkError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRevokeSharedLinkError`
+/// object.
+/// 
 + (DBXSHARINGRevokeSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

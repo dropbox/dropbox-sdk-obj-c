@@ -8,7 +8,7 @@
 @class DBXTEAMTeamMembershipType;
 
 /// 
-/// The `DBXTEAMTeamMembershipType` union.
+/// The TeamMembershipType union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMTeamMembershipType : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMTeamMembershipTypeTag` enum type represents the possible tag
-/// states that the `DBXTEAMTeamMembershipType` union can exist in.
+/// states with which the `DBXTEAMTeamMembershipType` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMTeamMembershipTypeTag) {
     /// User uses a license and has full access to team resources like the
     /// shared quota.
@@ -32,19 +32,46 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMembershipTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMTeamMembershipTypeTag tag;
 
+/// 
 /// Initializes union class with tag state of `Full`.
+/// 
+/// About the `Full` tag state: User uses a license and has full access to team
+/// resources like the shared quota.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMembershipType` instance.
+/// 
 - (nonnull instancetype)initWithFull;
 
+/// 
 /// Initializes union class with tag state of `Limited`.
+/// 
+/// About the `Limited` tag state: User does not have access to the shared quota
+/// and team admins have restricted administrative control.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMembershipType` instance.
+/// 
 - (nonnull instancetype)initWithLimited;
 
-/// Returns whether the union's current tag state has value `Full`.
+/// 
+/// Retrieves whether the union's current tag state has value `Full`.
+/// 
+/// - returns: Whether the union's current tag state has value `Full`.
+/// 
 - (BOOL)isFull;
 
-/// Returns whether the union's current tag state has value `Limited`.
+/// 
+/// Retrieves whether the union's current tag state has value `Limited`.
+/// 
+/// - returns: Whether the union's current tag state has value `Limited`.
+/// 
 - (BOOL)isLimited;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -55,12 +82,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMembershipTypeTag) {
 /// 
 @interface DBXTEAMTeamMembershipTypeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMTeamMembershipType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMembershipType * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMTeamMembershipType` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMTeamMembershipType` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMTeamMembershipType` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMembershipType * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMTeamMembershipType` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMTeamMembershipType` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMTeamMembershipType` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMTeamMembershipType` object.
+/// 
 + (DBXTEAMTeamMembershipType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

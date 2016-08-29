@@ -12,7 +12,7 @@
 - (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType *)groupManagementType groupExternalId:(NSString *)groupExternalId memberCount:(NSNumber *)memberCount {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _groupName = groupName;
         _groupId = groupId;
         _groupExternalId = groupExternalId;
@@ -26,8 +26,8 @@
     return [self initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupExternalId:nil memberCount:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMCOMMONGroupSummarySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMCOMMONGroupSummarySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

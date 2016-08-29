@@ -8,7 +8,7 @@
 @class DBXFILESUploadSessionStartResult;
 
 /// 
-/// The `DBXFILESUploadSessionStartResult` struct.
+/// The UploadSessionStartResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,45 @@
 /// uploadSessionAppendV2 and uploadSessionFinish.
 @property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
-/// Full constructor for the `UploadSessionStartResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESUploadSessionStartResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter sessionId: A unique identifier for the upload session. Pass this
+/// to :route:`upload_session/append_v2` and :route:`upload_session/finish`.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionStartResult` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESUploadSessionStartResult` struct.
+/// The serialization class for the UploadSessionStartResult struct.
 /// 
 @interface DBXFILESUploadSessionStartResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadSessionStartResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionStartResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadSessionStartResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESUploadSessionStartResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionStartResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionStartResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadSessionStartResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadSessionStartResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionStartResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadSessionStartResult`
+/// object.
+/// 
 + (DBXFILESUploadSessionStartResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

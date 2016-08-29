@@ -8,20 +8,20 @@
 @class DBXASYNCLaunchEmptyResult;
 
 /// 
-/// The `DBXASYNCLaunchEmptyResult` union.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The LaunchEmptyResult union.
 /// 
 /// Result returned by methods that may either launch an asynchronous job or
 /// complete synchronously. Upon synchronous completion of the job, no
 /// additional information is returned.
 /// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
+/// 
 @interface DBXASYNCLaunchEmptyResult : NSObject <DBXSerializable> 
 
 /// The `DBXASYNCLaunchEmptyResultTag` enum type represents the possible tag
-/// states that the `DBXASYNCLaunchEmptyResult` union can exist in.
+/// states with which the `DBXASYNCLaunchEmptyResult` union can exist.
 typedef NS_ENUM(NSInteger, DBXASYNCLaunchEmptyResultTag) {
     /// This response indicates that the processing is asynchronous. The string
     /// is an id that can be used to obtain the status of the asynchronous job.
@@ -39,19 +39,51 @@ typedef NS_ENUM(NSInteger, DBXASYNCLaunchEmptyResultTag) {
 /// an id that can be used to obtain the status of the asynchronous job.
 @property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
+/// 
 /// Initializes union class with tag state of `AsyncJobId`.
+/// 
+/// About the `AsyncJobId` tag state: This response indicates that the
+/// processing is asynchronous. The string is an id that can be used to obtain
+/// the status of the asynchronous job.
+/// 
+/// - parameter asyncJobId: This response indicates that the processing is
+/// asynchronous. The string is an id that can be used to obtain the status of
+/// the asynchronous job.
+/// 
+/// - returns: An initialized `DBXASYNCLaunchEmptyResult` instance.
+/// 
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: The job finished synchronously and
+/// successfully.
+/// 
+/// - returns: An initialized `DBXASYNCLaunchEmptyResult` instance.
+/// 
 - (nonnull instancetype)initWithComplete;
 
-/// Returns whether the union's current tag state has value `AsyncJobId`.
+/// 
+/// Retrieves whether the union's current tag state has value `AsyncJobId`.
+/// 
+/// - returns: Whether the union's current tag state has value `AsyncJobId`.
+/// 
 - (BOOL)isAsyncJobId;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -62,12 +94,25 @@ typedef NS_ENUM(NSInteger, DBXASYNCLaunchEmptyResultTag) {
 /// 
 @interface DBXASYNCLaunchEmptyResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXASYNCLaunchEmptyResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXASYNCLaunchEmptyResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXASYNCLaunchEmptyResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXASYNCLaunchEmptyResult` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXASYNCLaunchEmptyResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCLaunchEmptyResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXASYNCLaunchEmptyResult` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXASYNCLaunchEmptyResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXASYNCLaunchEmptyResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXASYNCLaunchEmptyResult` object.
+/// 
 + (DBXASYNCLaunchEmptyResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

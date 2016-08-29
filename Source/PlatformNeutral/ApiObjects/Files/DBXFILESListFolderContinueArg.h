@@ -8,7 +8,7 @@
 @class DBXFILESListFolderContinueArg;
 
 /// 
-/// The `DBXFILESListFolderContinueArg` struct.
+/// The ListFolderContinueArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,44 @@
 /// The cursor returned by your last call to listFolder or listFolderContinue.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Full constructor for the `ListFolderContinueArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXFILESListFolderContinueArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter cursor: The cursor returned by your last call to
+/// :route:`list_folder` or :route:`list_folder/continue`.
+/// 
+/// - returns: An initialized `DBXFILESListFolderContinueArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListFolderContinueArg` struct.
+/// The serialization class for the ListFolderContinueArg struct.
 /// 
 @interface DBXFILESListFolderContinueArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderContinueArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderContinueArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderContinueArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderContinueArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderContinueArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderContinueArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderContinueArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderContinueArg` object.
+/// 
 + (DBXFILESListFolderContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

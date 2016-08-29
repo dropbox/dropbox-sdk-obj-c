@@ -15,7 +15,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _file = file;
         _members = members;
         _customMessage = customMessage;
@@ -30,8 +30,8 @@
     return [self initWithFile:file members:members customMessage:nil quiet:nil accessLevel:nil addMessageAsComment:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAddFileMemberArgsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAddFileMemberArgsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -13,7 +13,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](groups);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _groups = groups;
         _cursor = cursor;
         _hasMore = hasMore;
@@ -21,8 +21,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupsListResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupsListResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

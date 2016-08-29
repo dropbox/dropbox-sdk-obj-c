@@ -8,18 +8,18 @@
 @class DBXTEAMCOMMONGroupType;
 
 /// 
-/// The `DBXTEAMCOMMONGroupType` union.
+/// The GroupType union.
+/// 
+/// The group type determines how a group is created and managed.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// The group type determines how a group is created and managed.
-/// 
 @interface DBXTEAMCOMMONGroupType : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMCOMMONGroupTypeTag` enum type represents the possible tag states
-/// that the `DBXTEAMCOMMONGroupType` union can exist in.
+/// with which the `DBXTEAMCOMMONGroupType` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupTypeTag) {
     /// A group to which team members are automatically added. Applicable to
     /// team folders https://www.dropbox.com/help/986 only.
@@ -36,25 +36,60 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupTypeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMCOMMONGroupTypeTag tag;
 
+/// 
 /// Initializes union class with tag state of `Team`.
+/// 
+/// About the `Team` tag state: A group to which team members are automatically
+/// added. Applicable to :link:`team folders https://www.dropbox.com/help/986`
+/// only.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupType` instance.
+/// 
 - (nonnull instancetype)initWithTeam;
 
+/// 
 /// Initializes union class with tag state of `UserManaged`.
+/// 
+/// About the `UserManaged` tag state: A group is created and managed by a user.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupType` instance.
+/// 
 - (nonnull instancetype)initWithUserManaged;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMCOMMONGroupType` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Team`.
+/// 
+/// Retrieves whether the union's current tag state has value `Team`.
+/// 
+/// - returns: Whether the union's current tag state has value `Team`.
+/// 
 - (BOOL)isTeam;
 
-/// Returns whether the union's current tag state has value `UserManaged`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserManaged`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserManaged`.
+/// 
 - (BOOL)isUserManaged;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -65,12 +100,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupTypeTag) {
 /// 
 @interface DBXTEAMCOMMONGroupTypeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMCOMMONGroupType` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupType * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMCOMMONGroupType` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMCOMMONGroupType` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMCOMMONGroupType` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMCOMMONGroupType * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMCOMMONGroupType` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMCOMMONGroupType` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMCOMMONGroupType` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMCOMMONGroupType` object.
+/// 
 + (DBXTEAMCOMMONGroupType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _files = files;
         _actions = actions;
     }
@@ -25,8 +25,8 @@
     return [self initWithFiles:files actions:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGetFileMetadataBatchArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGetFileMetadataBatchArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

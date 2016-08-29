@@ -8,18 +8,19 @@
 @class DBXSHARINGPermissionDeniedReason;
 
 /// 
-/// The `DBXSHARINGPermissionDeniedReason` union.
+/// The PermissionDeniedReason union.
+/// 
+/// Possible reasons the user is denied a permission.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Possible reasons the user is denied a permission.
-/// 
 @interface DBXSHARINGPermissionDeniedReason : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGPermissionDeniedReasonTag` enum type represents the possible
-/// tag states that the `DBXSHARINGPermissionDeniedReason` union can exist in.
+/// tag states with which the `DBXSHARINGPermissionDeniedReason` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
     /// User is not on the same team as the folder owner.
     DBXSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner,
@@ -51,59 +52,152 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGPermissionDeniedReasonTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotSameTeamAsOwner`.
+/// 
+/// About the `UserNotSameTeamAsOwner` tag state: User is not on the same team
+/// as the folder owner.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithUserNotSameTeamAsOwner;
 
+/// 
 /// Initializes union class with tag state of `UserNotAllowedByOwner`.
+/// 
+/// About the `UserNotAllowedByOwner` tag state: User is prohibited by the owner
+/// from taking the action.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithUserNotAllowedByOwner;
 
+/// 
 /// Initializes union class with tag state of `TargetIsIndirectMember`.
+/// 
+/// About the `TargetIsIndirectMember` tag state: Target is indirectly a member
+/// of the folder, for example by being part of a group.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithTargetIsIndirectMember;
 
+/// 
 /// Initializes union class with tag state of `TargetIsOwner`.
+/// 
+/// About the `TargetIsOwner` tag state: Target is the owner of the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithTargetIsOwner;
 
+/// 
 /// Initializes union class with tag state of `TargetIsSelf`.
+/// 
+/// About the `TargetIsSelf` tag state: Target is the user itself.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithTargetIsSelf;
 
+/// 
 /// Initializes union class with tag state of `TargetNotActive`.
+/// 
+/// About the `TargetNotActive` tag state: Target is not an active member of the
+/// team.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithTargetNotActive;
 
+/// 
 /// Initializes union class with tag state of `FolderIsLimitedTeamFolder`.
+/// 
+/// About the `FolderIsLimitedTeamFolder` tag state: Folder is team folder for a
+/// limited team.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithFolderIsLimitedTeamFolder;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGPermissionDeniedReason` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserNotSameTeamAsOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserNotSameTeamAsOwner`.
+/// 
 - (BOOL)isUserNotSameTeamAsOwner;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserNotAllowedByOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserNotAllowedByOwner`.
+/// 
 - (BOOL)isUserNotAllowedByOwner;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `TargetIsIndirectMember`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TargetIsIndirectMember`.
+/// 
 - (BOOL)isTargetIsIndirectMember;
 
-/// Returns whether the union's current tag state has value `TargetIsOwner`.
+/// 
+/// Retrieves whether the union's current tag state has value `TargetIsOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value `TargetIsOwner`.
+/// 
 - (BOOL)isTargetIsOwner;
 
-/// Returns whether the union's current tag state has value `TargetIsSelf`.
+/// 
+/// Retrieves whether the union's current tag state has value `TargetIsSelf`.
+/// 
+/// - returns: Whether the union's current tag state has value `TargetIsSelf`.
+/// 
 - (BOOL)isTargetIsSelf;
 
-/// Returns whether the union's current tag state has value `TargetNotActive`.
+/// 
+/// Retrieves whether the union's current tag state has value `TargetNotActive`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TargetNotActive`.
+/// 
 - (BOOL)isTargetNotActive;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `FolderIsLimitedTeamFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `FolderIsLimitedTeamFolder`.
+/// 
 - (BOOL)isFolderIsLimitedTeamFolder;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -114,12 +208,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
 /// 
 @interface DBXSHARINGPermissionDeniedReasonSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGPermissionDeniedReason` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPermissionDeniedReason * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGPermissionDeniedReason` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGPermissionDeniedReason`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGPermissionDeniedReason` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGPermissionDeniedReason * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGPermissionDeniedReason` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGPermissionDeniedReason` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGPermissionDeniedReason` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGPermissionDeniedReason`
+/// object.
+/// 
 + (DBXSHARINGPermissionDeniedReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

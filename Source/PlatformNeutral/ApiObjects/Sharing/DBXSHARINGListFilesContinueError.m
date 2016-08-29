@@ -13,7 +13,7 @@
 
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFilesContinueErrorUserError;
         _userError = userError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithInvalidCursor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFilesContinueErrorInvalidCursor;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFilesContinueErrorOther;
     }
     return self;
@@ -62,14 +62,14 @@
 }
 
 - (DBXSHARINGSharingUserError *)userError {
-    if (_tag != DBXSHARINGListFilesContinueErrorUserError) {
+    if (![self isUserError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGListFilesContinueErrorUserError`, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFilesContinueErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFilesContinueErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

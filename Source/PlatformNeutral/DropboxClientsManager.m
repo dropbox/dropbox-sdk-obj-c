@@ -28,23 +28,41 @@ static DropboxTeamClient *authorizedTeamClient;
     authorizedTeamClient = client;
 }
 
-+ (void)setupWithAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager {
++ (void)setupWithAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager transportClient:(DBXTransportClient *)transportClient {
     NSAssert([DBXOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
     [DBXOAuthManager sharedOAuthManager:sharedOAuthManager];
     
     DBXAccessToken *accessToken = [[DBXOAuthManager sharedOAuthManager] getFirstAccessToken];
     if (accessToken) {
-        authorizedClient = [[DropboxClient alloc] initWithAccessToken:accessToken.accessToken];
+        if (transportClient) {
+            transportClient.accessToken = accessToken.accessToken;
+            authorizedClient = [[DropboxClient alloc] initWithTransportClient:transportClient];
+        } else {
+            authorizedClient = [[DropboxClient alloc] initWithAccessToken:accessToken.accessToken];
+        }
+    } else {
+        if (transportClient) {
+            authorizedClient = [[DropboxClient alloc] initWithTransportClient:transportClient];
+        }
     }
 }
 
-+ (void)setupWithTeamAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager {
++ (void)setupWithTeamAppKey:(NSString *)appKey sharedOAuthManager:(DBXOAuthManager *)sharedOAuthManager transportClient:(DBXTransportClient *)transportClient {
     NSAssert([DBXOAuthManager sharedOAuthManager] == nil, @"Only call `DropboxManager.setupWithAppKey` or `DropboxManager.setupWithTeamAppKey` once");
     [DBXOAuthManager sharedOAuthManager:sharedOAuthManager];
     
     DBXAccessToken *accessToken = [[DBXOAuthManager sharedOAuthManager] getFirstAccessToken];
     if (accessToken) {
-        authorizedTeamClient = [[DropboxTeamClient alloc] initWithAccessToken:accessToken.accessToken];
+        if (transportClient) {
+            transportClient.accessToken = accessToken.accessToken;
+            authorizedTeamClient = [[DropboxTeamClient alloc] initWithTransportClient:transportClient];
+        } else {
+            authorizedTeamClient = [[DropboxTeamClient alloc] initWithAccessToken:accessToken.accessToken];
+        }
+    } else {
+        if (transportClient) {
+            authorizedTeamClient = [[DropboxTeamClient alloc] initWithTransportClient:transportClient];
+        }
     }
 }
 
@@ -55,7 +73,11 @@ static DropboxTeamClient *authorizedTeamClient;
     DBXOAuthResult *result = [[DBXOAuthManager sharedOAuthManager] handleRedirectURL:url];
     
     if ([result isSuccess]) {
-        [DropboxClientsManager authorizedClient:[[DropboxClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+        if (authorizedClient) {
+            authorizedClient.transportClient.accessToken = result.accessToken.accessToken;
+        } else {
+            [DropboxClientsManager authorizedClient:[[DropboxClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+        }
     } else if ([result isCancel]) {
         return result;
     } else if ([result isError]) {
@@ -72,7 +94,11 @@ static DropboxTeamClient *authorizedTeamClient;
     DBXOAuthResult *result = [[DBXOAuthManager sharedOAuthManager] handleRedirectURL:url];
     
     if ([result isSuccess]) {
-        [DropboxClientsManager authorizedTeamClient:[[DropboxTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+        if (authorizedTeamClient) {
+            authorizedTeamClient.transportClient.accessToken = result.accessToken.accessToken;
+        } else {
+            [DropboxClientsManager authorizedTeamClient:[[DropboxTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+        }
     } else if ([result isCancel]) {
         return result;
     } else if ([result isError]) {

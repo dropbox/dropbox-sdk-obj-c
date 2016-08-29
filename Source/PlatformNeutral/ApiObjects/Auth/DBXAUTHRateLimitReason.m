@@ -10,7 +10,7 @@
 
 - (instancetype)initWithTooManyRequests {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHRateLimitReasonTooManyRequests;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithTooManyWriteOperations {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHRateLimitReasonTooManyWriteOperations;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHRateLimitReasonOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXAUTHRateLimitReasonSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXAUTHRateLimitReasonSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

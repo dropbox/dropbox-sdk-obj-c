@@ -10,13 +10,13 @@
 @class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DBXSHARINGAddFileMemberArgs` struct.
+/// The AddFileMemberArgs struct.
+/// 
+/// Arguments for addFileMember.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for addFileMember.
 /// 
 @interface DBXSHARINGAddFileMemberArgs : NSObject <DBXSerializable> 
 
@@ -42,28 +42,67 @@
 /// If the custom message should be added as a comment on the file.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull addMessageAsComment;
 
-/// Full constructor for the `AddFileMemberArgs` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGAddFileMemberArgs` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter file: File to which to add members.
+/// - parameter members: Members to add. Note that even an email address is
+/// given, this may result in a user being directy added to the membership if
+/// that email is the user's main account email.
+/// - parameter customMessage: Message to send to added members in their
+/// invitation.
+/// - parameter quiet: Whether added members should be notified via device
+/// notifications of their invitation.
+/// - parameter accessLevel: AccessLevel union object, describing what access
+/// level we want to give new members.
+/// - parameter addMessageAsComment: If the custom message should be added as a
+/// comment on the file.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberArgs` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members customMessage:(NSString * _Nullable)customMessage quiet:(NSNumber * _Nullable)quiet accessLevel:(DBXSHARINGAccessLevel * _Nullable)accessLevel addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
 
-/// Convenience constructor for the `AddFileMemberArgs` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGAddFileMemberArgs` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter file: File to which to add members.
+/// - parameter members: Members to add. Note that even an email address is
+/// given, this may result in a user being directy added to the membership if
+/// that email is the user's main account email.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberArgs` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGAddFileMemberArgs` struct.
+/// The serialization class for the AddFileMemberArgs struct.
 /// 
 @interface DBXSHARINGAddFileMemberArgsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGAddFileMemberArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberArgs * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGAddFileMemberArgs` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGAddFileMemberArgs` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFileMemberArgs` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberArgs * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGAddFileMemberArgs` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGAddFileMemberArgs` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFileMemberArgs` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGAddFileMemberArgs` object.
+/// 
 + (DBXSHARINGAddFileMemberArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -10,7 +10,7 @@
 @class DBXSHARINGSharedFolderMemberError;
 
 /// 
-/// The `DBXSHARINGRemoveFolderMemberError` union.
+/// The RemoveFolderMemberError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,8 @@
 @interface DBXSHARINGRemoveFolderMemberError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGRemoveFolderMemberErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGRemoveFolderMemberError` union can exist in.
+/// tag states with which the `DBXSHARINGRemoveFolderMemberError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFolderMemberErrorTag) {
     /// (no description).
     DBXSHARINGRemoveFolderMemberErrorAccessError,
@@ -54,49 +55,127 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFolderMemberErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGSharedFolderMemberError * _Nonnull memberError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `MemberError`.
+/// 
+/// - parameter memberError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithMemberError:(DBXSHARINGSharedFolderMemberError * _Nonnull)memberError;
 
+/// 
 /// Initializes union class with tag state of `FolderOwner`.
+/// 
+/// About the `FolderOwner` tag state: The target user is the owner of the
+/// shared folder. You can't remove this user until ownership has been
+/// transferred to another member.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithFolderOwner;
 
+/// 
 /// Initializes union class with tag state of `GroupAccess`.
+/// 
+/// About the `GroupAccess` tag state: The target user has access to the shared
+/// folder via a group.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithGroupAccess;
 
+/// 
 /// Initializes union class with tag state of `TeamFolder`.
+/// 
+/// About the `TeamFolder` tag state: This action cannot be performed on a team
+/// shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithTeamFolder;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: The current user does not have
+/// permission to perform this action.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `MemberError`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberError`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberError`.
+/// 
 - (BOOL)isMemberError;
 
-/// Returns whether the union's current tag state has value `FolderOwner`.
+/// 
+/// Retrieves whether the union's current tag state has value `FolderOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value `FolderOwner`.
+/// 
 - (BOOL)isFolderOwner;
 
-/// Returns whether the union's current tag state has value `GroupAccess`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupAccess`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupAccess`.
+/// 
 - (BOOL)isGroupAccess;
 
-/// Returns whether the union's current tag state has value `TeamFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamFolder`.
+/// 
 - (BOOL)isTeamFolder;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -107,12 +186,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFolderMemberErrorTag) {
 /// 
 @interface DBXSHARINGRemoveFolderMemberErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRemoveFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFolderMemberError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRemoveFolderMemberError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGRemoveFolderMemberError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveFolderMemberError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveFolderMemberError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRemoveFolderMemberError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRemoveFolderMemberError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveFolderMemberError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRemoveFolderMemberError`
+/// object.
+/// 
 + (DBXSHARINGRemoveFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

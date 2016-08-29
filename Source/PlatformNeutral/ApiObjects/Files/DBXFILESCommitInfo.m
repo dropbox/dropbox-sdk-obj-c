@@ -13,7 +13,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _mode = mode ?: [[DBXFILESWriteMode alloc] initWithAdd];
         _autorename = autorename ?: @NO;
@@ -27,8 +27,8 @@
     return [self initWithPath:path mode:nil autorename:nil clientModified:nil mute:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESCommitInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESCommitInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

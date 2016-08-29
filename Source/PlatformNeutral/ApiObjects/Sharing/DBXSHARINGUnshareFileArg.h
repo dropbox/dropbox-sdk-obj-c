@@ -8,37 +8,56 @@
 @class DBXSHARINGUnshareFileArg;
 
 /// 
-/// The `DBXSHARINGUnshareFileArg` struct.
+/// The UnshareFileArg struct.
+/// 
+/// Arguments for unshareFile.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for unshareFile.
 /// 
 @interface DBXSHARINGUnshareFileArg : NSObject <DBXSerializable> 
 
 /// The file to unshare.
 @property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
-/// Full constructor for the `UnshareFileArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGUnshareFileArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter file: The file to unshare.
+/// 
+/// - returns: An initialized `DBXSHARINGUnshareFileArg` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGUnshareFileArg` struct.
+/// The serialization class for the UnshareFileArg struct.
 /// 
 @interface DBXSHARINGUnshareFileArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUnshareFileArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFileArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUnshareFileArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGUnshareFileArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUnshareFileArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFileArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUnshareFileArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUnshareFileArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUnshareFileArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUnshareFileArg` object.
+/// 
 + (DBXSHARINGUnshareFileArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

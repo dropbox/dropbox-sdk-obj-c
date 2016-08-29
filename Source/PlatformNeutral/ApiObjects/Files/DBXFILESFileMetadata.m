@@ -19,7 +19,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](propertyGroups);
 
     self = [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
-    if (self != nil) {
+    if (self) {
         _id_ = id_;
         _clientModified = clientModified;
         _serverModified = serverModified;
@@ -37,8 +37,8 @@
     return [self initWithName:name id_:id_ clientModified:clientModified serverModified:serverModified rev:rev size:size pathLower:nil pathDisplay:nil parentSharedFolderId:nil mediaInfo:nil sharingInfo:nil propertyGroups:nil hasExplicitSharedMembers:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESFileMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESFileMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

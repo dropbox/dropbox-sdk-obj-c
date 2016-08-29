@@ -12,14 +12,14 @@
 - (instancetype)initWithUser:(DBXTEAMUserSelectorArg *)user {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _user = user;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersRecoverArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersRecoverArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

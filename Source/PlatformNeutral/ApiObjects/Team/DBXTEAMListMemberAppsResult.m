@@ -13,14 +13,14 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](linkedApiApps);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _linkedApiApps = linkedApiApps;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListMemberAppsResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListMemberAppsResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharedFolderId = sharedFolderId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUnmountFolderArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUnmountFolderArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,18 +8,19 @@
 @class DBXSHARINGSharingFileAccessError;
 
 /// 
-/// The `DBXSHARINGSharingFileAccessError` union.
+/// The SharingFileAccessError union.
+/// 
+/// User could not access this file.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// User could not access this file.
-/// 
 @interface DBXSHARINGSharingFileAccessError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharingFileAccessErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGSharingFileAccessError` union can exist in.
+/// tag states with which the `DBXSHARINGSharingFileAccessError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharingFileAccessErrorTag) {
     /// Current user does not have sufficient privileges to perform the desired
     /// action.
@@ -47,44 +48,114 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingFileAccessErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharingFileAccessErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: Current user does not have sufficient
+/// privileges to perform the desired action.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `InvalidFile`.
+/// 
+/// About the `InvalidFile` tag state: File specified was not found.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidFile;
 
+/// 
 /// Initializes union class with tag state of `IsFolder`.
+/// 
+/// About the `IsFolder` tag state: A folder can't be shared this way. Use
+/// folder sharing or a shared link instead.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithIsFolder;
 
+/// 
 /// Initializes union class with tag state of `InsidePublicFolder`.
+/// 
+/// About the `InsidePublicFolder` tag state: A file inside a public folder
+/// can't be shared this way. Use a public link instead.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithInsidePublicFolder;
 
+/// 
 /// Initializes union class with tag state of `InsideOsxPackage`.
+/// 
+/// About the `InsideOsxPackage` tag state: A Mac OS X package can't be shared
+/// this way. Use a shared link instead.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithInsideOsxPackage;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingFileAccessError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `InvalidFile`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidFile`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidFile`.
+/// 
 - (BOOL)isInvalidFile;
 
-/// Returns whether the union's current tag state has value `IsFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `IsFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `IsFolder`.
+/// 
 - (BOOL)isIsFolder;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InsidePublicFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsidePublicFolder`.
+/// 
 - (BOOL)isInsidePublicFolder;
 
-/// Returns whether the union's current tag state has value `InsideOsxPackage`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsideOsxPackage`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsideOsxPackage`.
+/// 
 - (BOOL)isInsideOsxPackage;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -95,12 +166,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingFileAccessErrorTag) {
 /// 
 @interface DBXSHARINGSharingFileAccessErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharingFileAccessError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingFileAccessError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharingFileAccessError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharingFileAccessError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharingFileAccessError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingFileAccessError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharingFileAccessError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharingFileAccessError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharingFileAccessError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharingFileAccessError`
+/// object.
+/// 
 + (DBXSHARINGSharingFileAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

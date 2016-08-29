@@ -9,7 +9,7 @@
 @class DBXFILESUpdatePropertyGroupArg;
 
 /// 
-/// The `DBXFILESUpdatePropertyGroupArg` struct.
+/// The UpdatePropertyGroupArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,24 +23,45 @@
 /// Filled custom property templates associated with a file.
 @property (nonatomic, readonly) NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull updatePropertyGroups;
 
-/// Full constructor for the `UpdatePropertyGroupArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESUpdatePropertyGroupArg` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter path: A unique identifier for the file.
+/// - parameter updatePropertyGroups: Filled custom property templates
+/// associated with a file.
+/// 
+/// - returns: An initialized `DBXFILESUpdatePropertyGroupArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESUpdatePropertyGroupArg` struct.
+/// The serialization class for the UpdatePropertyGroupArg struct.
 /// 
 @interface DBXFILESUpdatePropertyGroupArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUpdatePropertyGroupArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUpdatePropertyGroupArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUpdatePropertyGroupArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESUpdatePropertyGroupArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUpdatePropertyGroupArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUpdatePropertyGroupArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUpdatePropertyGroupArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUpdatePropertyGroupArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUpdatePropertyGroupArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUpdatePropertyGroupArg` object.
+/// 
 + (DBXFILESUpdatePropertyGroupArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

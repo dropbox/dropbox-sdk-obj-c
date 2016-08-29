@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESUploadWriteFailed *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadErrorOther;
     }
     return self;
@@ -48,14 +48,14 @@
 }
 
 - (DBXFILESUploadWriteFailed *)path {
-    if (_tag != DBXFILESUploadErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

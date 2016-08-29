@@ -8,7 +8,7 @@
 @class DBXTEAMMembersListArg;
 
 /// 
-/// The `DBXTEAMMembersListArg` struct.
+/// The MembersListArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,28 +22,53 @@
 /// Whether to return removed members.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull includeRemoved;
 
-/// Full constructor for the `MembersListArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMMembersListArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter limit: Number of results to return per call.
+/// - parameter includeRemoved: Whether to return removed members.
+/// 
+/// - returns: An initialized `DBXTEAMMembersListArg` instance.
+/// 
 - (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit includeRemoved:(NSNumber * _Nullable)includeRemoved;
 
-/// Convenience constructor for the `MembersListArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMMembersListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXTEAMMembersListArg` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersListArg` struct.
+/// The serialization class for the MembersListArg struct.
 /// 
 @interface DBXTEAMMembersListArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersListArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersListArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersListArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersListArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersListArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersListArg` object.
+/// 
 + (DBXTEAMMembersListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

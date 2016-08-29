@@ -8,19 +8,19 @@
 @class DBXTEAMUserSelectorError;
 
 /// 
-/// The `DBXTEAMUserSelectorError` union.
+/// The UserSelectorError union.
+/// 
+/// Error that can be returned whenever a struct derived from UserSelectorArg is
+/// used.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error that can be returned whenever a struct derived from UserSelectorArg is
-/// used.
-/// 
 @interface DBXTEAMUserSelectorError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMUserSelectorErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMUserSelectorError` union can exist in.
+/// states with which the `DBXTEAMUserSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
@@ -31,13 +31,29 @@ typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMUserSelectorErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotFound`.
+/// 
+/// About the `UserNotFound` tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
+/// 
+/// - returns: An initialized `DBXTEAMUserSelectorError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotFound;
 
-/// Returns whether the union's current tag state has value `UserNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotFound`.
+/// 
 - (BOOL)isUserNotFound;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -48,12 +64,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorErrorTag) {
 /// 
 @interface DBXTEAMUserSelectorErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMUserSelectorError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMUserSelectorError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMUserSelectorError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMUserSelectorError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMUserSelectorError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUserSelectorError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMUserSelectorError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMUserSelectorError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMUserSelectorError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMUserSelectorError` object.
+/// 
 + (DBXTEAMUserSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

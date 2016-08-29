@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXASYNCLaunchEmptyResultAsyncJobId;
         _asyncJobId = asyncJobId;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithComplete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXASYNCLaunchEmptyResultComplete;
     }
     return self;
@@ -48,14 +48,14 @@
 }
 
 - (NSString *)asyncJobId {
-    if (_tag != DBXASYNCLaunchEmptyResultAsyncJobId) {
+    if (![self isAsyncJobId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXASYNCLaunchEmptyResultAsyncJobId`, but was %@.", [self getTagName]];
     }
     return _asyncJobId;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXASYNCLaunchEmptyResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXASYNCLaunchEmptyResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

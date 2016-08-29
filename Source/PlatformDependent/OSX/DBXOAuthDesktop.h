@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 #import "DBXOAuth.h"
+#import "DBXSharedApplicationProtocol.h"
 
 @interface DBXDesktopSharedApplication : NSObject <DBXSharedApplication>
 

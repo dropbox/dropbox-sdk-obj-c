@@ -8,7 +8,7 @@
 @class DBXSHARINGSharedLinkError;
 
 /// 
-/// The `DBXSHARINGSharedLinkError` union.
+/// The SharedLinkError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXSHARINGSharedLinkError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharedLinkErrorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGSharedLinkError` union can exist in.
+/// states with which the `DBXSHARINGSharedLinkError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkErrorTag) {
     /// The shared link wasn't found
     DBXSHARINGSharedLinkErrorSharedLinkNotFound,
@@ -33,27 +33,63 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharedLinkErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
+/// 
+/// About the `SharedLinkNotFound` tag state: The shared link wasn't found
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
+/// 
 /// Initializes union class with tag state of `SharedLinkAccessDenied`.
+/// 
+/// About the `SharedLinkAccessDenied` tag state: The caller is not allowed to
+/// access this shared link
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkNotFound`.
+/// 
 - (BOOL)isSharedLinkNotFound;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SharedLinkAccessDenied`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedLinkAccessDenied`.
+/// 
 - (BOOL)isSharedLinkAccessDenied;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -64,12 +100,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkErrorTag) {
 /// 
 @interface DBXSHARINGSharedLinkErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedLinkError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedLinkError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedLinkError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedLinkError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedLinkError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedLinkError` object.
+/// 
 + (DBXSHARINGSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

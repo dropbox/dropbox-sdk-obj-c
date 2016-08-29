@@ -11,13 +11,13 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXSHARINGSharedLinkMetadata` struct.
+/// The SharedLinkMetadata struct.
+/// 
+/// The metadata of a shared link
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// The metadata of a shared link
 /// 
 @interface DBXSHARINGSharedLinkMetadata : NSObject <DBXSerializable> 
 
@@ -50,28 +50,71 @@
 /// different from the link's owner team.
 @property (nonatomic, readonly) DBXUSERSTeam * _Nullable contentOwnerTeamInfo;
 
-/// Full constructor for the `SharedLinkMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGSharedLinkMetadata` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter url: URL of the shared link.
+/// - parameter name: The linked file name (including extension). This never
+/// contains a slash.
+/// - parameter linkPermissions: The link's access permissions.
+/// - parameter id_: A unique identifier for the linked file.
+/// - parameter expires: Expiration time, if set. By default the link won't
+/// expire.
+/// - parameter pathLower: The lowercased full path in the user's Dropbox. This
+/// always starts with a slash. This field will only be present only if the
+/// linked file is in the authenticated user's  dropbox.
+/// - parameter teamMemberInfo: The team membership information of the link's
+/// owner.  This field will only be present  if the link's owner is a team
+/// member.
+/// - parameter contentOwnerTeamInfo: The team information of the content's
+/// owner. This field will only be present if the content's owner is a team
+/// member and the content's owner team is different from the link's owner team.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkMetadata` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions id_:(NSString * _Nullable)id_ expires:(NSDate * _Nullable)expires pathLower:(NSString * _Nullable)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo * _Nullable)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
-/// Convenience constructor for the `SharedLinkMetadata` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGSharedLinkMetadata` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter url: URL of the shared link.
+/// - parameter name: The linked file name (including extension). This never
+/// contains a slash.
+/// - parameter linkPermissions: The link's access permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkMetadata` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGSharedLinkMetadata` struct.
+/// The serialization class for the SharedLinkMetadata struct.
 /// 
 @interface DBXSHARINGSharedLinkMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedLinkMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedLinkMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedLinkMetadata` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedLinkMetadata` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedLinkMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedLinkMetadata` object.
+/// 
 + (DBXSHARINGSharedLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

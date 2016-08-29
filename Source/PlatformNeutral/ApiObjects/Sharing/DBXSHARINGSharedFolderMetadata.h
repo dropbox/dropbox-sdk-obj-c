@@ -13,13 +13,13 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXSHARINGSharedFolderMetadata` struct.
+/// The SharedFolderMetadata struct.
+/// 
+/// The metadata which includes basic information about the shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// The metadata which includes basic information about the shared folder.
 /// 
 @interface DBXSHARINGSharedFolderMetadata : DBXSHARINGSharedFolderMetadataBase <DBXSerializable> 
 
@@ -44,28 +44,83 @@
 /// URL for displaying a web preview of the shared folder.
 @property (nonatomic, readonly, copy) NSString * _Nonnull previewUrl;
 
-/// Full constructor for the `SharedFolderMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGSharedFolderMetadata` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter accessType: The current user's access level for this shared
+/// folder.
+/// - parameter isTeamFolder: Whether this folder is a :link:`team folder
+/// https://www.dropbox.com/en/help/986`.
+/// - parameter policy: Policies governing this shared folder.
+/// - parameter name: The name of the this shared folder.
+/// - parameter sharedFolderId: The ID of the shared folder.
+/// - parameter timeInvited: Timestamp indicating when the current user was
+/// invited to this shared folder.
+/// - parameter previewUrl: URL for displaying a web preview of the shared
+/// folder.
+/// - parameter ownerTeam: The team that owns the folder. This field is not
+/// present if the folder is not owned by a team.
+/// - parameter parentSharedFolderId: The ID of the parent shared folder. This
+/// field is present only if the folder is contained within another shared
+/// folder.
+/// - parameter pathLower: The lower-cased full path of this shared folder.
+/// Absent for unmounted folders.
+/// - parameter permissions: Actions the current user may perform on the folder
+/// and its contents. The set of permissions corresponds to the FolderActions in
+/// the request.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderMetadata` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl ownerTeam:(DBXUSERSTeam * _Nullable)ownerTeam parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId pathLower:(NSString * _Nullable)pathLower permissions:(NSArray<DBXSHARINGFolderPermission *> * _Nullable)permissions;
 
-/// Convenience constructor for the `SharedFolderMetadata` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGSharedFolderMetadata` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter accessType: The current user's access level for this shared
+/// folder.
+/// - parameter isTeamFolder: Whether this folder is a :link:`team folder
+/// https://www.dropbox.com/en/help/986`.
+/// - parameter policy: Policies governing this shared folder.
+/// - parameter name: The name of the this shared folder.
+/// - parameter sharedFolderId: The ID of the shared folder.
+/// - parameter timeInvited: Timestamp indicating when the current user was
+/// invited to this shared folder.
+/// - parameter previewUrl: URL for displaying a web preview of the shared
+/// folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderMetadata` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGSharedFolderMetadata` struct.
+/// The serialization class for the SharedFolderMetadata struct.
 /// 
 @interface DBXSHARINGSharedFolderMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedFolderMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedFolderMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedFolderMetadata`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedFolderMetadata` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedFolderMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedFolderMetadata` object.
+/// 
 + (DBXSHARINGSharedFolderMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -10,13 +10,13 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMMemberAccess` struct.
+/// The MemberAccess struct.
+/// 
+/// Specify access type a member should have when joined to a group.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Specify access type a member should have when joined to a group.
 /// 
 @interface DBXTEAMMemberAccess : NSObject <DBXSerializable> 
 
@@ -26,24 +26,43 @@
 /// Access type.
 @property (nonatomic, readonly) DBXTEAMGroupAccessType * _Nonnull accessType;
 
-/// Full constructor for the `MemberAccess` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMMemberAccess` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter user: Identity of a user.
+/// - parameter accessType: Access type.
+/// 
+/// - returns: An initialized `DBXTEAMMemberAccess` instance.
+/// 
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMemberAccess` struct.
+/// The serialization class for the MemberAccess struct.
 /// 
 @interface DBXTEAMMemberAccessSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMemberAccess` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAccess * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMemberAccess` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMemberAccess` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberAccess` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAccess * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMemberAccess` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMemberAccess` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberAccess` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMemberAccess` object.
+/// 
 + (DBXTEAMMemberAccess * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

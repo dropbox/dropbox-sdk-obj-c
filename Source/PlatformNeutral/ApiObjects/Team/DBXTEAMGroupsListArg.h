@@ -8,7 +8,7 @@
 @class DBXTEAMGroupsListArg;
 
 /// 
-/// The `DBXTEAMGroupsListArg` struct.
+/// The GroupsListArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,28 +19,51 @@
 /// Number of results to return per call.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
-/// Full constructor for the `GroupsListArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMGroupsListArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter limit: Number of results to return per call.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsListArg` instance.
+/// 
 - (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit;
 
-/// Convenience constructor for the `GroupsListArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMGroupsListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXTEAMGroupsListArg` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupsListArg` struct.
+/// The serialization class for the GroupsListArg struct.
 /// 
 @interface DBXTEAMGroupsListArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsListArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsListArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupsListArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsListArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsListArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsListArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsListArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsListArg` object.
+/// 
 + (DBXTEAMGroupsListArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

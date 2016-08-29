@@ -18,7 +18,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(2) maxLength:@(2) pattern:nil]](country);
 
     self = [super initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
-    if (self != nil) {
+    if (self) {
         _country = country;
         _locale = locale;
         _referralLink = referralLink;
@@ -34,8 +34,8 @@
     return [self initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled locale:locale referralLink:referralLink isPaired:isPaired accountType:accountType profilePhotoUrl:nil country:nil team:nil teamMemberId:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSFullAccountSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSFullAccountSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

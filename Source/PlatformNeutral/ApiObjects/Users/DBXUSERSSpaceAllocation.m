@@ -15,7 +15,7 @@
 
 - (instancetype)initWithIndividual:(DBXUSERSIndividualSpaceAllocation *)individual {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSSpaceAllocationIndividual;
         _individual = individual;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithTeam:(DBXUSERSTeamSpaceAllocation *)team {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSSpaceAllocationTeam;
         _team = team;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXUSERSSpaceAllocationOther;
     }
     return self;
@@ -65,21 +65,21 @@
 }
 
 - (DBXUSERSIndividualSpaceAllocation *)individual {
-    if (_tag != DBXUSERSSpaceAllocationIndividual) {
+    if (![self isIndividual]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXUSERSSpaceAllocationIndividual`, but was %@.", [self getTagName]];
     }
     return _individual;
 }
 
 - (DBXUSERSTeamSpaceAllocation *)team {
-    if (_tag != DBXUSERSSpaceAllocationTeam) {
+    if (![self isTeam]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXUSERSSpaceAllocationTeam`, but was %@.", [self getTagName]];
     }
     return _team;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSSpaceAllocationSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSSpaceAllocationSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

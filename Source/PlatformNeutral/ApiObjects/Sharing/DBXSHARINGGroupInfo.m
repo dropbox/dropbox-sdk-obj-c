@@ -14,7 +14,7 @@
 - (instancetype)initWithGroupName:(NSString *)groupName groupId:(NSString *)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType *)groupManagementType groupType:(DBXTEAMCOMMONGroupType *)groupType isOwner:(NSNumber *)isOwner sameTeam:(NSNumber *)sameTeam groupExternalId:(NSString *)groupExternalId memberCount:(NSNumber *)memberCount {
 
     self = [super initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupExternalId:groupExternalId memberCount:memberCount];
-    if (self != nil) {
+    if (self) {
         _groupType = groupType;
         _isOwner = isOwner;
         _sameTeam = sameTeam;
@@ -26,8 +26,8 @@
     return [self initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupType:groupType isOwner:isOwner sameTeam:sameTeam groupExternalId:nil memberCount:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGroupInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGroupInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,7 +11,7 @@
 - (instancetype)initWithClose:(NSNumber *)close {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _close = close ?: @NO;
     }
     return self;
@@ -21,8 +21,8 @@
     return [self initWithClose:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionStartArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionStartArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

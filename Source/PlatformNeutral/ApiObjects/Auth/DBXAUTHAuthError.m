@@ -10,7 +10,7 @@
 
 - (instancetype)initWithInvalidAccessToken {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHAuthErrorInvalidAccessToken;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithInvalidSelectUser {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHAuthErrorInvalidSelectUser;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithInvalidSelectAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHAuthErrorInvalidSelectAdmin;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXAUTHAuthErrorOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXAUTHAuthErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXAUTHAuthErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

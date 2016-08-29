@@ -16,7 +16,7 @@
 
 - (instancetype)initWithFromLookup:(DBXFILESLookupError *)fromLookup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorFromLookup;
         _fromLookup = fromLookup;
     }
@@ -25,7 +25,7 @@
 
 - (instancetype)initWithFromWrite:(DBXFILESWriteError *)fromWrite {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorFromWrite;
         _fromWrite = fromWrite;
     }
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithTo:(DBXFILESWriteError *)to {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorTo;
         _to = to;
     }
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithCantCopySharedFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorCantCopySharedFolder;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithCantNestSharedFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorCantNestSharedFolder;
     }
     return self;
@@ -59,7 +59,7 @@
 
 - (instancetype)initWithCantMoveFolderIntoItself {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorCantMoveFolderIntoItself;
     }
     return self;
@@ -67,7 +67,7 @@
 
 - (instancetype)initWithTooManyFiles {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorTooManyFiles;
     }
     return self;
@@ -75,7 +75,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRelocationErrorOther;
     }
     return self;
@@ -137,28 +137,28 @@
 }
 
 - (DBXFILESLookupError *)fromLookup {
-    if (_tag != DBXFILESRelocationErrorFromLookup) {
+    if (![self isFromLookup]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRelocationErrorFromLookup`, but was %@.", [self getTagName]];
     }
     return _fromLookup;
 }
 
 - (DBXFILESWriteError *)fromWrite {
-    if (_tag != DBXFILESRelocationErrorFromWrite) {
+    if (![self isFromWrite]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRelocationErrorFromWrite`, but was %@.", [self getTagName]];
     }
     return _fromWrite;
 }
 
 - (DBXFILESWriteError *)to {
-    if (_tag != DBXFILESRelocationErrorTo) {
+    if (![self isTo]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRelocationErrorTo`, but was %@.", [self getTagName]];
     }
     return _to;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESRelocationErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESRelocationErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

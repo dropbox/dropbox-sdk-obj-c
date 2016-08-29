@@ -11,28 +11,34 @@
 
 - (DBXError *)getDBXError:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error statusCode:(int)statusCode httpHeaders:(NSDictionary *)httpHeaders {
     DBXError *dbxError = nil;
+    
+    if (statusCode == 200) {
+        return dbxError;
+    }
 
-    if (error || statusCode != 200) {
-        NSDictionary *deserializedData = [self deserializeHttpData:data];
-        
-        NSString *requestId = httpHeaders[@"X-Dropbox-Request-Id"];
-        NSString *errorSummary = deserializedData ? deserializedData[@"error_summary"] : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *deserializedData = [self deserializeHttpData:data];
+    
+    NSString *requestId = httpHeaders[@"X-Dropbox-Request-Id"];
+    NSString *errorContent = deserializedData ? deserializedData[@"error_summary"] : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-        if (statusCode >= 500 && statusCode < 600) {
-            dbxError = [[DBXError alloc] init:DBXRequestInternalServerErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
-        } else if (statusCode == 400) {
-            dbxError = [[DBXError alloc] init:DBXRequestBadInputErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:errorSummary structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
-        } else if (statusCode == 401) {
-            dbxError = [[DBXError alloc] init:DBXRequestAuthErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:[DBXAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]] structuredRateLimitError:nil backoff:nil errorDescription:nil];
-        } else if (statusCode == 429) {
-            NSString *retryAfter = httpHeaders[@"Retry-After"];
-            double retryAfterSeconds = retryAfter.doubleValue;
-            dbxError = [[DBXError alloc] init:DBXRequestRateLimitErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:[DBXAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]] backoff:[NSNumber numberWithInt:retryAfterSeconds] errorDescription:nil];
-        } else if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
-            dbxError = [[DBXError alloc] init:DBXRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
-        } else {
-            dbxError = [[DBXError alloc] init:DBXRequestHttpErrorType requestId:requestId statusCode:[NSNumber numberWithInteger:statusCode] errorBody:errorSummary errorMessage:nil structuredAuthError:nil structuredRateLimitError:nil backoff:nil errorDescription:nil];
-        }
+    if (statusCode >= 500 && statusCode < 600) {
+        dbxError = [[DBXError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    } else if (statusCode == 400) {
+        dbxError = [[DBXError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    } else if (statusCode == 401) {
+        DBXAUTHAuthError *authError = [DBXAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]];
+        dbxError = [[DBXError alloc] initAsAuthError:requestId statusCode:@(statusCode) errorContent:errorContent structuredAuthError:authError];
+    } else if (statusCode == 429) {
+        DBXAUTHRateLimitError *rateLimitError = [DBXAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
+        NSString *retryAfter = httpHeaders[@"Retry-After"];
+        double retryAfterSeconds = retryAfter.doubleValue;
+        dbxError = [[DBXError alloc] initAsRateLimitError:requestId statusCode:@(statusCode) errorContent:errorContent structuredRateLimitError:rateLimitError backoff:@(retryAfterSeconds)];
+    } else if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
+        dbxError = [[DBXError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    } else if (!response) {
+        dbxError = [[DBXError alloc] initAsOSError:errorContent];
+    } else {
+        dbxError = [[DBXError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
     }
     
     return dbxError;
@@ -106,7 +112,7 @@
         responseBlock(result, nil, nil);
     };
     
-    [_delegate addRpcCompletionHandler:_task session:_session completionHandler:handler];
+    [_delegate addRpcResponseHandler:_task session:_session responseHandler:handler];
     
     return self;
 }
@@ -161,7 +167,7 @@
         responseBlock(result, nil, nil);
     };
     
-    [_delegate addUploadCompletionHandler:_task session:_session completionHandler:handler];
+    [_delegate addUploadResponseHandler:_task session:_session responseHandler:handler];
     
     return self;
 }
@@ -236,7 +242,7 @@
         responseBlock(result, nil, nil, _destination);
     };
     
-    [_delegate addDownloadCompletionHandler:_task session:_session completionHandler:handler];
+    [_delegate addDownloadResponseHandler:_task session:_session responseHandler:handler];
     
     return self;
 }
@@ -292,7 +298,7 @@
         responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
     };
     
-    [_delegate addDownloadCompletionHandler:_task session:_session completionHandler:handler];
+    [_delegate addDownloadResponseHandler:_task session:_session responseHandler:handler];
     
     return self;
 }

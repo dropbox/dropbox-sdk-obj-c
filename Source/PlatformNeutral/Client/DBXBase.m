@@ -8,7 +8,7 @@
 
 - (instancetype)initWithTransportClient:(DBXTransportClient *)client {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _authRoutes = [[DBXAUTHRoutes alloc] init:client];
         _filesRoutes = [[DBXFILESRoutes alloc] init:client];
         _sharingRoutes = [[DBXSHARINGRoutes alloc] init:client];

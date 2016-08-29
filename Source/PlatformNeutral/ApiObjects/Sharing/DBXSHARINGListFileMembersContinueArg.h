@@ -8,13 +8,13 @@
 @class DBXSHARINGListFileMembersContinueArg;
 
 /// 
-/// The `DBXSHARINGListFileMembersContinueArg` struct.
+/// The ListFileMembersContinueArg struct.
+/// 
+/// Arguments for listFileMembersContinue.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for listFileMembersContinue.
 /// 
 @interface DBXSHARINGListFileMembersContinueArg : NSObject <DBXSerializable> 
 
@@ -22,25 +22,46 @@
 /// listFileMembersContinue, or listFileMembersBatch.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Full constructor for the `ListFileMembersContinueArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGListFileMembersContinueArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter cursor: The cursor returned by your last call to
+/// :route:`list_file_members`, :route:`list_file_members/continue`, or
+/// :route:`list_file_members/batch`.
+/// 
+/// - returns: An initialized `DBXSHARINGListFileMembersContinueArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGListFileMembersContinueArg`
-/// struct.
+/// The serialization class for the ListFileMembersContinueArg struct.
 /// 
 @interface DBXSHARINGListFileMembersContinueArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFileMembersContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersContinueArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFileMembersContinueArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGListFileMembersContinueArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersContinueArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersContinueArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFileMembersContinueArg`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFileMembersContinueArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersContinueArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFileMembersContinueArg`
+/// object.
+/// 
 + (DBXSHARINGListFileMembersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

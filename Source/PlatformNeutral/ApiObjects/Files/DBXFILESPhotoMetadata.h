@@ -11,38 +11,64 @@
 @class DBXFILESPhotoMetadata;
 
 /// 
-/// The `DBXFILESPhotoMetadata` struct.
+/// The PhotoMetadata struct.
+/// 
+/// Metadata for a photo.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Metadata for a photo.
-/// 
 @interface DBXFILESPhotoMetadata : DBXFILESMediaMetadata <DBXSerializable> 
 
-/// Full constructor for the `PhotoMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESPhotoMetadata` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter dimensions: Dimension of the photo/video.
+/// - parameter location: The GPS coordinate of the photo/video.
+/// - parameter timeTaken: The timestamp when the photo/video is taken.
+/// 
+/// - returns: An initialized `DBXFILESPhotoMetadata` instance.
+/// 
 - (nonnull instancetype)initWithDimensions:(DBXFILESDimensions * _Nullable)dimensions location:(DBXFILESGpsCoordinates * _Nullable)location timeTaken:(NSDate * _Nullable)timeTaken;
 
-/// Convenience constructor for the `PhotoMetadata` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXFILESPhotoMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXFILESPhotoMetadata` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESPhotoMetadata` struct.
+/// The serialization class for the PhotoMetadata struct.
 /// 
 @interface DBXFILESPhotoMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESPhotoMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESPhotoMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESPhotoMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESPhotoMetadata` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESPhotoMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPhotoMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESPhotoMetadata` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESPhotoMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESPhotoMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESPhotoMetadata` object.
+/// 
 + (DBXFILESPhotoMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

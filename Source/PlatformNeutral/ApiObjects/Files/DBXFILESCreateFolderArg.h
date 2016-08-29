@@ -8,7 +8,7 @@
 @class DBXFILESCreateFolderArg;
 
 /// 
-/// The `DBXFILESCreateFolderArg` struct.
+/// The CreateFolderArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// Path in the user's Dropbox to create.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Full constructor for the `CreateFolderArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESCreateFolderArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: Path in the user's Dropbox to create.
+/// 
+/// - returns: An initialized `DBXFILESCreateFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESCreateFolderArg` struct.
+/// The serialization class for the CreateFolderArg struct.
 /// 
 @interface DBXFILESCreateFolderArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESCreateFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESCreateFolderArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESCreateFolderArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESCreateFolderArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESCreateFolderArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCreateFolderArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESCreateFolderArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESCreateFolderArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESCreateFolderArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESCreateFolderArg` object.
+/// 
 + (DBXFILESCreateFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

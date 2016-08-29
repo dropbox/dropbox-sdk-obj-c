@@ -10,7 +10,7 @@
 
 - (instancetype)initWithChangeOptions {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionChangeOptions;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithEditContents {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionEditContents;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithInviteEditor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionInviteEditor;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithInviteViewer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionInviteViewer;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithInviteViewerNoComment {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionInviteViewerNoComment;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithRelinquishMembership {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionRelinquishMembership;
     }
     return self;
@@ -58,7 +58,7 @@
 
 - (instancetype)initWithUnmount {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionUnmount;
     }
     return self;
@@ -66,7 +66,7 @@
 
 - (instancetype)initWithUnshare {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionUnshare;
     }
     return self;
@@ -74,7 +74,7 @@
 
 - (instancetype)initWithLeaveACopy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionLeaveACopy;
     }
     return self;
@@ -82,7 +82,7 @@
 
 - (instancetype)initWithShareLink {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionShareLink;
     }
     return self;
@@ -90,7 +90,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFolderActionOther;
     }
     return self;
@@ -169,8 +169,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFolderActionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFolderActionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

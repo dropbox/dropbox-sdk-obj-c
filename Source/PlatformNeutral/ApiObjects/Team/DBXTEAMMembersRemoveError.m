@@ -11,7 +11,7 @@
 
 - (instancetype)initWithUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorUserNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorUserNotInTeam;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorOther;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithRemoveLastAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorRemoveLastAdmin;
     }
     return self;
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithRemovedAndTransferDestShouldDiffer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithRemovedAndTransferAdminShouldDiffer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer;
     }
     return self;
@@ -59,7 +59,7 @@
 
 - (instancetype)initWithTransferDestUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorTransferDestUserNotFound;
     }
     return self;
@@ -67,7 +67,7 @@
 
 - (instancetype)initWithTransferDestUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorTransferDestUserNotInTeam;
     }
     return self;
@@ -75,7 +75,7 @@
 
 - (instancetype)initWithTransferAdminUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorTransferAdminUserNotFound;
     }
     return self;
@@ -83,7 +83,7 @@
 
 - (instancetype)initWithTransferAdminUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorTransferAdminUserNotInTeam;
     }
     return self;
@@ -91,7 +91,7 @@
 
 - (instancetype)initWithUnspecifiedTransferAdminId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorUnspecifiedTransferAdminId;
     }
     return self;
@@ -99,7 +99,7 @@
 
 - (instancetype)initWithTransferAdminIsNotAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorTransferAdminIsNotAdmin;
     }
     return self;
@@ -107,7 +107,7 @@
 
 - (instancetype)initWithCannotKeepAccountAndTransfer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorCannotKeepAccountAndTransfer;
     }
     return self;
@@ -115,7 +115,7 @@
 
 - (instancetype)initWithCannotKeepAccountAndDeleteData {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData;
     }
     return self;
@@ -123,7 +123,7 @@
 
 - (instancetype)initWithEmailAddressTooLongToBeDisabled {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled;
     }
     return self;
@@ -226,8 +226,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersRemoveErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersRemoveErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,7 +8,7 @@
 @class DBXUSERSIndividualSpaceAllocation;
 
 /// 
-/// The `DBXUSERSIndividualSpaceAllocation` struct.
+/// The IndividualSpaceAllocation struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,45 @@
 /// The total space allocated to the user's account (bytes).
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull allocated;
 
-/// Full constructor for the `IndividualSpaceAllocation` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXUSERSIndividualSpaceAllocation` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter allocated: The total space allocated to the user's account
+/// (bytes).
+/// 
+/// - returns: An initialized `DBXUSERSIndividualSpaceAllocation` instance.
+/// 
 - (nonnull instancetype)initWithAllocated:(NSNumber * _Nonnull)allocated;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSIndividualSpaceAllocation` struct.
+/// The serialization class for the IndividualSpaceAllocation struct.
 /// 
 @interface DBXUSERSIndividualSpaceAllocationSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSIndividualSpaceAllocation` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSIndividualSpaceAllocation * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSIndividualSpaceAllocation` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXUSERSIndividualSpaceAllocation` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSIndividualSpaceAllocation` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSIndividualSpaceAllocation * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSIndividualSpaceAllocation` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSIndividualSpaceAllocation` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSIndividualSpaceAllocation` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSIndividualSpaceAllocation`
+/// object.
+/// 
 + (DBXUSERSIndividualSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

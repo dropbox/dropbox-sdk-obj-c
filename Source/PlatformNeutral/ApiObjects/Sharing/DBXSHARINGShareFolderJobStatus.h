@@ -10,7 +10,7 @@
 @class DBXSHARINGSharedFolderMetadata;
 
 /// 
-/// The `DBXSHARINGShareFolderJobStatus` union.
+/// The ShareFolderJobStatus union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXSHARINGShareFolderJobStatus : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGShareFolderJobStatusTag` enum type represents the possible
-/// tag states that the `DBXSHARINGShareFolderJobStatus` union can exist in.
+/// tag states with which the `DBXSHARINGShareFolderJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
     /// The asynchronous job is still in progress.
     DBXSHARINGShareFolderJobStatusInProgress,
@@ -41,25 +41,64 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGShareFolderError * _Nonnull failed;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXSHARINGShareFolderJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: The share job has finished. The value is the
+/// metadata for the folder.
+/// 
+/// - parameter complete: The share job has finished. The value is the metadata
+/// for the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGShareFolderJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithComplete:(DBXSHARINGSharedFolderMetadata * _Nonnull)complete;
 
+/// 
 /// Initializes union class with tag state of `Failed`.
+/// 
+/// - parameter failed: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGShareFolderJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithFailed:(DBXSHARINGShareFolderError * _Nonnull)failed;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns whether the union's current tag state has value `Failed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Failed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Failed`.
+/// 
 - (BOOL)isFailed;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -70,12 +109,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
 /// 
 @interface DBXSHARINGShareFolderJobStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGShareFolderJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderJobStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGShareFolderJobStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGShareFolderJobStatus`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGShareFolderJobStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGShareFolderJobStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGShareFolderJobStatus` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGShareFolderJobStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGShareFolderJobStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGShareFolderJobStatus` object.
+/// 
 + (DBXSHARINGShareFolderJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

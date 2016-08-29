@@ -8,7 +8,7 @@
 @class DBXFILESSearchMode;
 
 /// 
-/// The `DBXFILESSearchMode` union.
+/// The SearchMode union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESSearchMode : NSObject <DBXSerializable> 
 
 /// The `DBXFILESSearchModeTag` enum type represents the possible tag states
-/// that the `DBXFILESSearchMode` union can exist in.
+/// with which the `DBXFILESSearchMode` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
     /// Search file and folder names.
     DBXFILESSearchModeFilename,
@@ -33,26 +33,65 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESSearchModeTag tag;
 
+/// 
 /// Initializes union class with tag state of `Filename`.
+/// 
+/// About the `Filename` tag state: Search file and folder names.
+/// 
+/// - returns: An initialized `DBXFILESSearchMode` instance.
+/// 
 - (nonnull instancetype)initWithFilename;
 
+/// 
 /// Initializes union class with tag state of `FilenameAndContent`.
+/// 
+/// About the `FilenameAndContent` tag state: Search file and folder names as
+/// well as file contents.
+/// 
+/// - returns: An initialized `DBXFILESSearchMode` instance.
+/// 
 - (nonnull instancetype)initWithFilenameAndContent;
 
+/// 
 /// Initializes union class with tag state of `DeletedFilename`.
+/// 
+/// About the `DeletedFilename` tag state: Search for deleted file and folder
+/// names.
+/// 
+/// - returns: An initialized `DBXFILESSearchMode` instance.
+/// 
 - (nonnull instancetype)initWithDeletedFilename;
 
-/// Returns whether the union's current tag state has value `Filename`.
+/// 
+/// Retrieves whether the union's current tag state has value `Filename`.
+/// 
+/// - returns: Whether the union's current tag state has value `Filename`.
+/// 
 - (BOOL)isFilename;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `FilenameAndContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `FilenameAndContent`.
+/// 
 - (BOOL)isFilenameAndContent;
 
-/// Returns whether the union's current tag state has value `DeletedFilename`.
+/// 
+/// Retrieves whether the union's current tag state has value `DeletedFilename`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `DeletedFilename`.
+/// 
 - (BOOL)isDeletedFilename;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -63,12 +102,24 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
 /// 
 @interface DBXFILESSearchModeSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSearchMode` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchMode * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSearchMode` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSearchMode` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSearchMode` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchMode * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSearchMode` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSearchMode` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSearchMode` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSearchMode` object.
+/// 
 + (DBXFILESSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

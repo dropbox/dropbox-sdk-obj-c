@@ -9,7 +9,7 @@
 @class DBXFILESWriteError;
 
 /// 
-/// The `DBXFILESSaveCopyReferenceError` union.
+/// The SaveCopyReferenceError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESSaveCopyReferenceError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESSaveCopyReferenceErrorTag` enum type represents the possible
-/// tag states that the `DBXFILESSaveCopyReferenceError` union can exist in.
+/// tag states with which the `DBXFILESSaveCopyReferenceError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
     /// (no description).
     DBXFILESSaveCopyReferenceErrorPath,
@@ -48,44 +48,112 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESWriteError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `InvalidCopyReference`.
+/// 
+/// About the `InvalidCopyReference` tag state: The copy reference is invalid.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidCopyReference;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: You don't have permission to save the
+/// given copy reference. Please make sure this app is same app which created
+/// the copy reference and the source user is still linked to the app.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `NotFound`.
+/// 
+/// About the `NotFound` tag state: The file referenced by the copy reference
+/// cannot be found.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithNotFound;
 
+/// 
 /// Initializes union class with tag state of `TooManyFiles`.
+/// 
+/// About the `TooManyFiles` tag state: The operation would involve more than
+/// 10,000 files and folders.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithTooManyFiles;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESSaveCopyReferenceError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InvalidCopyReference`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InvalidCopyReference`.
+/// 
 - (BOOL)isInvalidCopyReference;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `NotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotFound`.
+/// 
 - (BOOL)isNotFound;
 
-/// Returns whether the union's current tag state has value `TooManyFiles`.
+/// 
+/// Retrieves whether the union's current tag state has value `TooManyFiles`.
+/// 
+/// - returns: Whether the union's current tag state has value `TooManyFiles`.
+/// 
 - (BOOL)isTooManyFiles;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -96,12 +164,25 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
 /// 
 @interface DBXFILESSaveCopyReferenceErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSaveCopyReferenceError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSaveCopyReferenceError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSaveCopyReferenceError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSaveCopyReferenceError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSaveCopyReferenceError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSaveCopyReferenceError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSaveCopyReferenceError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSaveCopyReferenceError` object.
+/// 
 + (DBXFILESSaveCopyReferenceError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

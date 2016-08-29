@@ -11,15 +11,15 @@
 - (instancetype)initWithBucket:(NSString *)bucket users:(NSNumber *)users {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _bucket = bucket;
         _users = users;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMStorageBucketSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMStorageBucketSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

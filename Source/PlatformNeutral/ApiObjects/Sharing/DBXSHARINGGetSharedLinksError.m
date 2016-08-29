@@ -12,7 +12,7 @@
 
 - (instancetype)initWithPath:(NSString *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGGetSharedLinksErrorPath;
         _path = path;
     }
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGGetSharedLinksErrorOther;
     }
     return self;
@@ -47,14 +47,14 @@
 }
 
 - (NSString *)path {
-    if (_tag != DBXSHARINGGetSharedLinksErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGGetSharedLinksErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGetSharedLinksErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGetSharedLinksErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

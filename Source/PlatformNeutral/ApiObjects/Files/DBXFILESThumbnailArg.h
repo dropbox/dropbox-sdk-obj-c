@@ -10,7 +10,7 @@
 @class DBXFILESThumbnailSize;
 
 /// 
-/// The `DBXFILESThumbnailArg` struct.
+/// The ThumbnailArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -29,28 +29,56 @@
 /// The size for the thumbnail image.
 @property (nonatomic, readonly) DBXFILESThumbnailSize * _Nonnull size;
 
-/// Full constructor for the `ThumbnailArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESThumbnailArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: The path to the image file you want to thumbnail.
+/// - parameter format: The format for the thumbnail image, jpeg (default) or
+/// png. For  images that are photos, jpeg should be preferred, while png is
+/// better for screenshots and digital arts.
+/// - parameter size: The size for the thumbnail image.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path format:(DBXFILESThumbnailFormat * _Nullable)format size:(DBXFILESThumbnailSize * _Nullable)size;
 
-/// Convenience constructor for the `ThumbnailArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXFILESThumbnailArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path to the image file you want to thumbnail.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESThumbnailArg` struct.
+/// The serialization class for the ThumbnailArg struct.
 /// 
 @interface DBXFILESThumbnailArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESThumbnailArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESThumbnailArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESThumbnailArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESThumbnailArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESThumbnailArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESThumbnailArg` object.
+/// 
 + (DBXFILESThumbnailArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -13,15 +13,15 @@
 - (instancetype)initWithSharing:(DBXTEAMPOLICIESTeamSharingPolicies *)sharing emmState:(DBXTEAMPOLICIESEmmState *)emmState {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sharing = sharing;
         _emmState = emmState;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMPOLICIESTeamMemberPoliciesSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMPOLICIESTeamMemberPoliciesSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 @class DBXFILESSearchMatchType;
 
 /// 
-/// The `DBXFILESSearchMatch` struct.
+/// The SearchMatch struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -24,24 +24,43 @@
 /// The metadata for the matched file or folder.
 @property (nonatomic, readonly) DBXFILESMetadata * _Nonnull metadata;
 
-/// Full constructor for the `SearchMatch` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESSearchMatch` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter matchType: The type of the match.
+/// - parameter metadata: The metadata for the matched file or folder.
+/// 
+/// - returns: An initialized `DBXFILESSearchMatch` instance.
+/// 
 - (nonnull instancetype)initWithMatchType:(DBXFILESSearchMatchType * _Nonnull)matchType metadata:(DBXFILESMetadata * _Nonnull)metadata;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSearchMatch` struct.
+/// The serialization class for the SearchMatch struct.
 /// 
 @interface DBXFILESSearchMatchSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSearchMatch` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchMatch * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSearchMatch` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSearchMatch` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSearchMatch` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchMatch * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSearchMatch` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSearchMatch` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSearchMatch` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSearchMatch` object.
+/// 
 + (DBXFILESSearchMatch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -10,36 +10,57 @@
 @class DBXUSERSFullTeam;
 
 /// 
-/// The `DBXUSERSFullTeam` struct.
+/// The FullTeam struct.
+/// 
+/// Detailed information about a team.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Detailed information about a team.
 /// 
 @interface DBXUSERSFullTeam : DBXUSERSTeam <DBXSerializable> 
 
 /// Team policies governing sharing.
 @property (nonatomic, readonly) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharingPolicies;
 
-/// Full constructor for the `FullTeam` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXUSERSFullTeam` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter id_: The team's unique ID.
+/// - parameter name: The name of the team.
+/// - parameter sharingPolicies: Team policies governing sharing.
+/// 
+/// - returns: An initialized `DBXUSERSFullTeam` instance.
+/// 
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name sharingPolicies:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharingPolicies;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSFullTeam` struct.
+/// The serialization class for the FullTeam struct.
 /// 
 @interface DBXUSERSFullTeamSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSFullTeam` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullTeam * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSFullTeam` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSFullTeam` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSFullTeam` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullTeam * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSFullTeam` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSFullTeam` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSFullTeam` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSFullTeam` object.
+/// 
 + (DBXUSERSFullTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

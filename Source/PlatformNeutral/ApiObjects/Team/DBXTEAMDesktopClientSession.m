@@ -13,7 +13,7 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId hostName:(NSString *)hostName clientType:(DBXTEAMDesktopPlatform *)clientType clientVersion:(NSString *)clientVersion platform:(NSString *)platform isDeleteOnUnlinkSupported:(NSNumber *)isDeleteOnUnlinkSupported ipAddress:(NSString *)ipAddress country:(NSString *)country created:(NSDate *)created updated:(NSDate *)updated {
 
     self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
-    if (self != nil) {
+    if (self) {
         _hostName = hostName;
         _clientType = clientType;
         _clientVersion = clientVersion;
@@ -27,8 +27,8 @@
     return [self initWithSessionId:sessionId hostName:hostName clientType:clientType clientVersion:clientVersion platform:platform isDeleteOnUnlinkSupported:isDeleteOnUnlinkSupported ipAddress:nil country:nil created:nil updated:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDesktopClientSessionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDesktopClientSessionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](modifiedBy);
 
     self = [super initWithReadOnly:readOnly];
-    if (self != nil) {
+    if (self) {
         _parentSharedFolderId = parentSharedFolderId;
         _modifiedBy = modifiedBy;
     }
@@ -25,8 +25,8 @@
     return [self initWithReadOnly:readOnly parentSharedFolderId:parentSharedFolderId modifiedBy:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESFileSharingInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESFileSharingInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

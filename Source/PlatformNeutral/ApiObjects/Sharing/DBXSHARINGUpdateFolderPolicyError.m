@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorAccessError;
         _accessError = accessError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithNotOnTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorNotOnTeam;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithTeamPolicyDisallowsMemberPolicy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorTeamPolicyDisallowsMemberPolicy;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithDisallowedSharedLinkPolicy {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorDisallowedSharedLinkPolicy;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorNoPermission;
     }
     return self;
@@ -54,7 +54,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderPolicyErrorOther;
     }
     return self;
@@ -104,14 +104,14 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGUpdateFolderPolicyErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGUpdateFolderPolicyErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUpdateFolderPolicyErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUpdateFolderPolicyErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithInvalidCursor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFoldersContinueErrorInvalidCursor;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGListFoldersContinueErrorOther;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFoldersContinueErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFoldersContinueErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

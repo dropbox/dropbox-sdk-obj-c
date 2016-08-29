@@ -1,5 +1,5 @@
 ///
-/// Class for storing OAuth tokens.
+/// Keychain class for storing OAuth tokens.
 ///
 
 #import <Foundation/Foundation.h>

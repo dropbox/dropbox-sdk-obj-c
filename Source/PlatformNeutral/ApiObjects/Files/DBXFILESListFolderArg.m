@@ -12,7 +12,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _recursive = recursive ?: @NO;
         _includeMediaInfo = includeMediaInfo ?: @NO;
@@ -26,8 +26,8 @@
     return [self initWithPath:path recursive:nil includeMediaInfo:nil includeDeleted:nil includeHasExplicitSharedMembers:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListFolderArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListFolderArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,7 +11,7 @@
 - (instancetype)initWithAppId:(NSString *)appId appName:(NSString *)appName isAppFolder:(NSNumber *)isAppFolder publisher:(NSString *)publisher publisherUrl:(NSString *)publisherUrl linked:(NSDate *)linked {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _appId = appId;
         _appName = appName;
         _publisher = publisher;
@@ -26,8 +26,8 @@
     return [self initWithAppId:appId appName:appName isAppFolder:isAppFolder publisher:nil publisherUrl:nil linked:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMApiAppSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMApiAppSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

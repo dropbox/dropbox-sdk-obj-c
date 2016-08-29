@@ -9,7 +9,7 @@
 @class DBXTEAMGroupsMembersListResult;
 
 /// 
-/// The `DBXTEAMGroupsMembersListResult` struct.
+/// The GroupsMembersListResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,24 +28,48 @@
 /// yet. An additional call to groupsMembersListContinue can retrieve them.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
-/// Full constructor for the `GroupsMembersListResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMGroupsMembersListResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter members: (no description).
+/// - parameter cursor: Pass the cursor into
+/// :route:`groups/members/list/continue` to obtain additional group members.
+/// - parameter hasMore: Is true if there are additional group members that have
+/// not been returned yet. An additional call to
+/// :route:`groups/members/list/continue` can retrieve them.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsMembersListResult` instance.
+/// 
 - (nonnull instancetype)initWithMembers:(NSArray<DBXTEAMGroupMemberInfo *> * _Nonnull)members cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupsMembersListResult` struct.
+/// The serialization class for the GroupsMembersListResult struct.
 /// 
 @interface DBXTEAMGroupsMembersListResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsMembersListResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsMembersListResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupsMembersListResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsMembersListResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsMembersListResult` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsMembersListResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsMembersListResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsMembersListResult` object.
+/// 
 + (DBXTEAMGroupsMembersListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

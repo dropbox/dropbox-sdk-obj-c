@@ -8,7 +8,7 @@
 @class DBXTEAMMembersSetPermissionsError;
 
 /// 
-/// The `DBXTEAMMembersSetPermissionsError` union.
+/// The MembersSetPermissionsError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,8 @@
 @interface DBXTEAMMembersSetPermissionsError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersSetPermissionsErrorTag` enum type represents the possible
-/// tag states that the `DBXTEAMMembersSetPermissionsError` union can exist in.
+/// tag states with which the `DBXTEAMMembersSetPermissionsError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersSetPermissionsErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
@@ -43,44 +44,113 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSetPermissionsErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMMembersSetPermissionsErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotFound`.
+/// 
+/// About the `UserNotFound` tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotFound;
 
+/// 
 /// Initializes union class with tag state of `LastAdmin`.
+/// 
+/// About the `LastAdmin` tag state: Cannot remove the admin setting of the last
+/// admin.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithLastAdmin;
 
+/// 
 /// Initializes union class with tag state of `UserNotInTeam`.
+/// 
+/// About the `UserNotInTeam` tag state: The user is not a member of the team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `CannotSetPermissions`.
+/// 
+/// About the `CannotSetPermissions` tag state: Cannot remove/grant permissions.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithCannotSetPermissions;
 
+/// 
 /// Initializes union class with tag state of `TeamLicenseLimit`.
+/// 
+/// About the `TeamLicenseLimit` tag state: Team is full. The organization has
+/// no available licenses.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithTeamLicenseLimit;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotFound`.
+/// 
 - (BOOL)isUserNotFound;
 
-/// Returns whether the union's current tag state has value `LastAdmin`.
+/// 
+/// Retrieves whether the union's current tag state has value `LastAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value `LastAdmin`.
+/// 
 - (BOOL)isLastAdmin;
 
-/// Returns whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotInTeam`.
+/// 
 - (BOOL)isUserNotInTeam;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `CannotSetPermissions`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `CannotSetPermissions`.
+/// 
 - (BOOL)isCannotSetPermissions;
 
-/// Returns whether the union's current tag state has value `TeamLicenseLimit`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TeamLicenseLimit`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TeamLicenseLimit`.
+/// 
 - (BOOL)isTeamLicenseLimit;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -91,12 +161,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSetPermissionsErrorTag) {
 /// 
 @interface DBXTEAMMembersSetPermissionsErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersSetPermissionsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetPermissionsError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersSetPermissionsError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMMembersSetPermissionsError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetPermissionsError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetPermissionsError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersSetPermissionsError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersSetPermissionsError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetPermissionsError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersSetPermissionsError`
+/// object.
+/// 
 + (DBXTEAMMembersSetPermissionsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

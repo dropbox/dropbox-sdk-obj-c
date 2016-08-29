@@ -11,7 +11,7 @@
 @class DBXPROPERTIESPropertyGroup;
 
 /// 
-/// The `DBXFILESFolderMetadata` struct.
+/// The FolderMetadata struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -33,28 +33,75 @@
 /// template specified.
 @property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
-/// Full constructor for the `FolderMetadata` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESFolderMetadata` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter name: The last component of the path (including extension). This
+/// never contains a slash.
+/// - parameter id_: A unique identifier for the folder.
+/// - parameter pathLower: The lowercased full path in the user's Dropbox. This
+/// always starts with a slash. This field will be null if the file or folder is
+/// not mounted.
+/// - parameter pathDisplay: The cased path to be used for display purposes
+/// only. In rare instances the casing will not correctly match the user's
+/// filesystem, but this behavior will match the path provided in the Core API
+/// v1. Changes to the casing of paths won't be returned by
+/// :route:`list_folder/continue`. This field will be null if the file or folder
+/// is not mounted.
+/// - parameter parentSharedFolderId: Deprecated. Please use
+/// :field:`FileSharingInfo.parent_shared_folder_id` or
+/// :field:`FolderSharingInfo.parent_shared_folder_id` instead.
+/// - parameter sharedFolderId: Deprecated. Please use :field:`sharing_info`
+/// instead.
+/// - parameter sharingInfo: Set if the folder is contained in a shared folder
+/// or is a shared folder mount point.
+/// - parameter propertyGroups: Additional information if the file has custom
+/// properties with the property template specified.
+/// 
+/// - returns: An initialized `DBXFILESFolderMetadata` instance.
+/// 
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ pathLower:(NSString * _Nullable)pathLower pathDisplay:(NSString * _Nullable)pathDisplay parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId sharedFolderId:(NSString * _Nullable)sharedFolderId sharingInfo:(DBXFILESFolderSharingInfo * _Nullable)sharingInfo propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable)propertyGroups;
 
-/// Convenience constructor for the `FolderMetadata` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESFolderMetadata` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter name: The last component of the path (including extension). This
+/// never contains a slash.
+/// - parameter id_: A unique identifier for the folder.
+/// 
+/// - returns: An initialized `DBXFILESFolderMetadata` instance.
+/// 
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESFolderMetadata` struct.
+/// The serialization class for the FolderMetadata struct.
 /// 
 @interface DBXFILESFolderMetadataSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESFolderMetadata` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESFolderMetadata * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESFolderMetadata` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESFolderMetadata` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESFolderMetadata` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESFolderMetadata * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESFolderMetadata` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESFolderMetadata` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESFolderMetadata` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESFolderMetadata` object.
+/// 
 + (DBXFILESFolderMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

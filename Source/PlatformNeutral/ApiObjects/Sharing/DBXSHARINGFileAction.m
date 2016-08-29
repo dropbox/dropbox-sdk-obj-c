@@ -10,7 +10,7 @@
 
 - (instancetype)initWithEditContents {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionEditContents;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithInviteViewer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionInviteViewer;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithInviteViewerNoComment {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionInviteViewerNoComment;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithUnshare {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionUnshare;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithRelinquishMembership {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionRelinquishMembership;
     }
     return self;
@@ -50,7 +50,7 @@
 
 - (instancetype)initWithShareLink {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionShareLink;
     }
     return self;
@@ -58,7 +58,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileActionOther;
     }
     return self;
@@ -113,8 +113,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFileActionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFileActionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

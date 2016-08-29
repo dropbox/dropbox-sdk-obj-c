@@ -12,7 +12,7 @@
     [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _accountId = accountId;
         _sameTeam = sameTeam;
         _teamMemberId = teamMemberId;
@@ -24,8 +24,8 @@
     return [self initWithAccountId:accountId sameTeam:sameTeam teamMemberId:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUserInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUserInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -13,7 +13,7 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId deviceName:(NSString *)deviceName clientType:(DBXTEAMMobileClientPlatform *)clientType ipAddress:(NSString *)ipAddress country:(NSString *)country created:(NSDate *)created updated:(NSDate *)updated clientVersion:(NSString *)clientVersion osVersion:(NSString *)osVersion lastCarrier:(NSString *)lastCarrier {
 
     self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
-    if (self != nil) {
+    if (self) {
         _deviceName = deviceName;
         _clientType = clientType;
         _clientVersion = clientVersion;
@@ -27,8 +27,8 @@
     return [self initWithSessionId:sessionId deviceName:deviceName clientType:clientType ipAddress:nil country:nil created:nil updated:nil clientVersion:nil osVersion:nil lastCarrier:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMobileClientSessionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMobileClientSessionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

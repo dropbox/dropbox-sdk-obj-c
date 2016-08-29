@@ -8,13 +8,13 @@
 @class DBXUSERSName;
 
 /// 
-/// The `DBXUSERSName` struct.
+/// The Name struct.
+/// 
+/// Representations for a person's name to assist with internationalization.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Representations for a person's name to assist with internationalization.
 /// 
 @interface DBXUSERSName : NSObject <DBXSerializable> 
 
@@ -33,23 +33,48 @@
 /// account.
 @property (nonatomic, readonly, copy) NSString * _Nonnull displayName;
 
-/// Full constructor for the `Name` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXUSERSName` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter givenName: Also known as a first name.
+/// - parameter surname: Also known as a last name or family name.
+/// - parameter familiarName: Locale-dependent name. In the US, a person's
+/// familiar name is their :field:`given_name`, but elsewhere, it could be any
+/// combination of a person's :field:`given_name` and :field:`surname`.
+/// - parameter displayName: A name that can be used directly to represent the
+/// name of a user's Dropbox account.
+/// 
+/// - returns: An initialized `DBXUSERSName` instance.
+/// 
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName surname:(NSString * _Nonnull)surname familiarName:(NSString * _Nonnull)familiarName displayName:(NSString * _Nonnull)displayName;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSName` struct.
+/// The serialization class for the Name struct.
 /// 
 @interface DBXUSERSNameSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DBXUSERSName`
-/// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSName * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSName` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSName` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSName` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSName * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSName` object from a json-compatible
-/// dictionary representation.
+/// 
+/// Deserializes `DBXUSERSName` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSName` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSName` object.
+/// 
 + (DBXUSERSName * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

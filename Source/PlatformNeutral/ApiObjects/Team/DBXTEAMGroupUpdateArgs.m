@@ -14,7 +14,7 @@
 - (instancetype)initWithGroup:(DBXTEAMGroupSelector *)group returnMembers:(NSNumber *)returnMembers dNewGroupName:(NSString *)dNewGroupName dNewGroupExternalId:(NSString *)dNewGroupExternalId dNewGroupManagementType:(DBXTEAMCOMMONGroupManagementType *)dNewGroupManagementType {
 
     self = [super initWithReturnMembers:returnMembers];
-    if (self != nil) {
+    if (self) {
         _group = group;
         _dNewGroupName = dNewGroupName;
         _dNewGroupExternalId = dNewGroupExternalId;
@@ -27,8 +27,8 @@
     return [self initWithGroup:group returnMembers:nil dNewGroupName:nil dNewGroupExternalId:nil dNewGroupManagementType:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupUpdateArgsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupUpdateArgsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -14,13 +14,13 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
 
     self = [super initWithName:name description_:description_ fields:fields];
-    if (self != nil) {
+    if (self) {
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXPROPERTIESGetPropertyTemplateResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXPROPERTIESGetPropertyTemplateResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

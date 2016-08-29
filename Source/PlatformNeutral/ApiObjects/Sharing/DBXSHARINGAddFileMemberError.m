@@ -15,7 +15,7 @@
 
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFileMemberErrorUserError;
         _userError = userError;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFileMemberErrorAccessError;
         _accessError = accessError;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithRateLimit {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFileMemberErrorRateLimit;
     }
     return self;
@@ -41,7 +41,7 @@
 
 - (instancetype)initWithInvalidComment {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFileMemberErrorInvalidComment;
     }
     return self;
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFileMemberErrorOther;
     }
     return self;
@@ -93,21 +93,21 @@
 }
 
 - (DBXSHARINGSharingUserError *)userError {
-    if (_tag != DBXSHARINGAddFileMemberErrorUserError) {
+    if (![self isUserError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFileMemberErrorUserError`, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DBXSHARINGSharingFileAccessError *)accessError {
-    if (_tag != DBXSHARINGAddFileMemberErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFileMemberErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAddFileMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAddFileMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

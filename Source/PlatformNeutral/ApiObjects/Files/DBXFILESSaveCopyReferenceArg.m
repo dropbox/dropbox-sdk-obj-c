@@ -12,15 +12,15 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _dCopyReference = dCopyReference;
         _path = path;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveCopyReferenceArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveCopyReferenceArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

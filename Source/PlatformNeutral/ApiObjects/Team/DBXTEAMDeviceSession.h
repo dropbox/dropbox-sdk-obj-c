@@ -8,7 +8,7 @@
 @class DBXTEAMDeviceSession;
 
 /// 
-/// The `DBXTEAMDeviceSession` struct.
+/// The DeviceSession struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -31,28 +31,57 @@
 /// The time of the last activity from this session
 @property (nonatomic, readonly) NSDate * _Nullable updated;
 
-/// Full constructor for the `DeviceSession` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMDeviceSession` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter sessionId: The session id
+/// - parameter ipAddress: The IP address of the last activity from this session
+/// - parameter country: The country from which the last activity from this
+/// session was made
+/// - parameter created: The time this session was created
+/// - parameter updated: The time of the last activity from this session
+/// 
+/// - returns: An initialized `DBXTEAMDeviceSession` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId ipAddress:(NSString * _Nullable)ipAddress country:(NSString * _Nullable)country created:(NSDate * _Nullable)created updated:(NSDate * _Nullable)updated;
 
-/// Convenience constructor for the `DeviceSession` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMDeviceSession` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter sessionId: The session id
+/// 
+/// - returns: An initialized `DBXTEAMDeviceSession` instance.
+/// 
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMDeviceSession` struct.
+/// The serialization class for the DeviceSession struct.
 /// 
 @interface DBXTEAMDeviceSessionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMDeviceSession` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSession * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMDeviceSession` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMDeviceSession` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMDeviceSession` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDeviceSession * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMDeviceSession` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMDeviceSession` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMDeviceSession` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMDeviceSession` object.
+/// 
 + (DBXTEAMDeviceSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

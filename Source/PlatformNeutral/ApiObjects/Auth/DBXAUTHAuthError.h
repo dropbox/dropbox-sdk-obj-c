@@ -8,18 +8,18 @@
 @class DBXAUTHAuthError;
 
 /// 
-/// The `DBXAUTHAuthError` union.
+/// The AuthError union.
+/// 
+/// Errors occurred during authentication.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Errors occurred during authentication.
-/// 
 @interface DBXAUTHAuthError : NSObject <DBXSerializable> 
 
-/// The `DBXAUTHAuthErrorTag` enum type represents the possible tag states that
-/// the `DBXAUTHAuthError` union can exist in.
+/// The `DBXAUTHAuthErrorTag` enum type represents the possible tag states with
+/// which the `DBXAUTHAuthError` union can exist.
 typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
     /// The access token is invalid.
     DBXAUTHAuthErrorInvalidAccessToken,
@@ -40,33 +40,82 @@ typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXAUTHAuthErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `InvalidAccessToken`.
+/// 
+/// About the `InvalidAccessToken` tag state: The access token is invalid.
+/// 
+/// - returns: An initialized `DBXAUTHAuthError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidAccessToken;
 
+/// 
 /// Initializes union class with tag state of `InvalidSelectUser`.
+/// 
+/// About the `InvalidSelectUser` tag state: The user specified in
+/// 'Dropbox-API-Select-User' is no longer on the team.
+/// 
+/// - returns: An initialized `DBXAUTHAuthError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidSelectUser;
 
+/// 
 /// Initializes union class with tag state of `InvalidSelectAdmin`.
+/// 
+/// About the `InvalidSelectAdmin` tag state: The user specified in
+/// 'Dropbox-API-Select-Admin' is not a Dropbox Business team admin.
+/// 
+/// - returns: An initialized `DBXAUTHAuthError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidSelectAdmin;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXAUTHAuthError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InvalidAccessToken`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InvalidAccessToken`.
+/// 
 - (BOOL)isInvalidAccessToken;
 
-/// Returns whether the union's current tag state has value `InvalidSelectUser`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InvalidSelectUser`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InvalidSelectUser`.
+/// 
 - (BOOL)isInvalidSelectUser;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InvalidSelectAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InvalidSelectAdmin`.
+/// 
 - (BOOL)isInvalidSelectAdmin;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -77,12 +126,24 @@ typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
 /// 
 @interface DBXAUTHAuthErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXAUTHAuthError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXAUTHAuthError * _Nonnull)obj;
+/// 
+/// Serializes `DBXAUTHAuthError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXAUTHAuthError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXAUTHAuthError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXAUTHAuthError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXAUTHAuthError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXAUTHAuthError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXAUTHAuthError` API object.
+/// 
+///  - returns: An instantiation of the `DBXAUTHAuthError` object.
+/// 
 + (DBXAUTHAuthError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

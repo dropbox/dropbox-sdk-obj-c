@@ -8,7 +8,7 @@
 @class DBXFILESRestoreArg;
 
 /// 
-/// The `DBXFILESRestoreArg` struct.
+/// The RestoreArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,43 @@
 /// The revision to restore for the file.
 @property (nonatomic, readonly, copy) NSString * _Nonnull rev;
 
-/// Full constructor for the `RestoreArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESRestoreArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: The path to the file you want to restore.
+/// - parameter rev: The revision to restore for the file.
+/// 
+/// - returns: An initialized `DBXFILESRestoreArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESRestoreArg` struct.
+/// The serialization class for the RestoreArg struct.
 /// 
 @interface DBXFILESRestoreArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESRestoreArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESRestoreArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESRestoreArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESRestoreArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESRestoreArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRestoreArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESRestoreArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESRestoreArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESRestoreArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESRestoreArg` object.
+/// 
 + (DBXFILESRestoreArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

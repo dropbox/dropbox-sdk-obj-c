@@ -11,7 +11,7 @@
 
 - (instancetype)initWithInvalidAsyncJobId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsPollErrorInvalidAsyncJobId;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithInternalError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsPollErrorInternalError;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsPollErrorOther;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithAccessDenied {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsPollErrorAccessDenied;
     }
     return self;
@@ -72,8 +72,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupsPollErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupsPollErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

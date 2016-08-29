@@ -14,7 +14,7 @@
     [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
-    if (self != nil) {
+    if (self) {
         _isTeammate = isTeammate;
         _teamMemberId = teamMemberId;
     }
@@ -25,8 +25,8 @@
     return [self initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled isTeammate:isTeammate profilePhotoUrl:nil teamMemberId:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSBasicAccountSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSBasicAccountSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,7 +8,7 @@
 @class DBXFILESThumbnailFormat;
 
 /// 
-/// The `DBXFILESThumbnailFormat` union.
+/// The ThumbnailFormat union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESThumbnailFormat : NSObject <DBXSerializable> 
 
 /// The `DBXFILESThumbnailFormatTag` enum type represents the possible tag
-/// states that the `DBXFILESThumbnailFormat` union can exist in.
+/// states with which the `DBXFILESThumbnailFormat` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
     /// (no description).
     DBXFILESThumbnailFormatJpeg,
@@ -30,19 +30,40 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXFILESThumbnailFormatTag tag;
 
+/// 
 /// Initializes union class with tag state of `Jpeg`.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailFormat` instance.
+/// 
 - (nonnull instancetype)initWithJpeg;
 
+/// 
 /// Initializes union class with tag state of `Png`.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailFormat` instance.
+/// 
 - (nonnull instancetype)initWithPng;
 
-/// Returns whether the union's current tag state has value `Jpeg`.
+/// 
+/// Retrieves whether the union's current tag state has value `Jpeg`.
+/// 
+/// - returns: Whether the union's current tag state has value `Jpeg`.
+/// 
 - (BOOL)isJpeg;
 
-/// Returns whether the union's current tag state has value `Png`.
+/// 
+/// Retrieves whether the union's current tag state has value `Png`.
+/// 
+/// - returns: Whether the union's current tag state has value `Png`.
+/// 
 - (BOOL)isPng;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -53,12 +74,25 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
 /// 
 @interface DBXFILESThumbnailFormatSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESThumbnailFormat` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailFormat * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESThumbnailFormat` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESThumbnailFormat` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailFormat` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailFormat * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESThumbnailFormat` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESThumbnailFormat` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailFormat` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESThumbnailFormat` object.
+/// 
 + (DBXFILESThumbnailFormat * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

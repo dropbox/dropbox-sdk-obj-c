@@ -11,15 +11,15 @@
 - (instancetype)initWithHeight:(NSNumber *)height width:(NSNumber *)width {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _height = height;
         _width = width;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESDimensionsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESDimensionsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

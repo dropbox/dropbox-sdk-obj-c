@@ -10,7 +10,7 @@
 
 - (instancetype)initWithInvalidMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileMemberActionErrorInvalidMember;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileMemberActionErrorNoPermission;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGFileMemberActionErrorOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFileMemberActionErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFileMemberActionErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

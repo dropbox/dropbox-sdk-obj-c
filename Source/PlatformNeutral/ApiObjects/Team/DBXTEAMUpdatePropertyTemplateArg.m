@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](addFields);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _templateId = templateId;
         _name = name;
         _description_ = description_;
@@ -27,8 +27,8 @@
     return [self initWithTemplateId:templateId name:nil description_:nil addFields:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMUpdatePropertyTemplateArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMUpdatePropertyTemplateArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

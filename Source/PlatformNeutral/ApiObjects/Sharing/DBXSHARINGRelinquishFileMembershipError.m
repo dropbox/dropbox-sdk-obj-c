@@ -13,7 +13,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFileMembershipErrorAccessError;
         _accessError = accessError;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithGroupAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFileMembershipErrorGroupAccess;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFileMembershipErrorNoPermission;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRelinquishFileMembershipErrorOther;
     }
     return self;
@@ -76,14 +76,14 @@
 }
 
 - (DBXSHARINGSharingFileAccessError *)accessError {
-    if (_tag != DBXSHARINGRelinquishFileMembershipErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRelinquishFileMembershipErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRelinquishFileMembershipErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRelinquishFileMembershipErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -17,7 +17,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRemovePropertiesErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRemovePropertiesErrorRestrictedContent;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRemovePropertiesErrorOther;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRemovePropertiesErrorPath;
         _path = path;
     }
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithPropertyGroupLookup:(DBXFILESLookUpPropertiesError *)propertyGroupLookup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESRemovePropertiesErrorPropertyGroupLookup;
         _propertyGroupLookup = propertyGroupLookup;
     }
@@ -96,28 +96,28 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXFILESRemovePropertiesErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRemovePropertiesErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESRemovePropertiesErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRemovePropertiesErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DBXFILESLookUpPropertiesError *)propertyGroupLookup {
-    if (_tag != DBXFILESRemovePropertiesErrorPropertyGroupLookup) {
+    if (![self isPropertyGroupLookup]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESRemovePropertiesErrorPropertyGroupLookup`, but was %@.", [self getTagName]];
     }
     return _propertyGroupLookup;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESRemovePropertiesErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESRemovePropertiesErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

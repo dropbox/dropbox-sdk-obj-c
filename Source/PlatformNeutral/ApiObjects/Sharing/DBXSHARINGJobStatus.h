@@ -9,7 +9,7 @@
 @class DBXSHARINGJobStatus;
 
 /// 
-/// The `DBXSHARINGJobStatus` union.
+/// The JobStatus union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXSHARINGJobStatus : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGJobStatusTag` enum type represents the possible tag states
-/// that the `DBXSHARINGJobStatus` union can exist in.
+/// with which the `DBXSHARINGJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGJobStatusTag) {
     /// The asynchronous job is still in progress.
     DBXSHARINGJobStatusInProgress,
@@ -37,25 +37,62 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobStatusTag) {
 /// The asynchronous job returned an error.
 @property (nonatomic, readonly) DBXSHARINGJobError * _Nonnull failed;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXSHARINGJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: The asynchronous job has finished.
+/// 
+/// - returns: An initialized `DBXSHARINGJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithComplete;
 
+/// 
 /// Initializes union class with tag state of `Failed`.
+/// 
+/// About the `Failed` tag state: The asynchronous job returned an error.
+/// 
+/// - parameter failed: The asynchronous job returned an error.
+/// 
+/// - returns: An initialized `DBXSHARINGJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithFailed:(DBXSHARINGJobError * _Nonnull)failed;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns whether the union's current tag state has value `Failed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Failed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Failed`.
+/// 
 - (BOOL)isFailed;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -66,12 +103,24 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobStatusTag) {
 /// 
 @interface DBXSHARINGJobStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGJobStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGJobStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGJobStatus` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGJobStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGJobStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGJobStatus` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGJobStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGJobStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGJobStatus` object.
+/// 
 + (DBXSHARINGJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

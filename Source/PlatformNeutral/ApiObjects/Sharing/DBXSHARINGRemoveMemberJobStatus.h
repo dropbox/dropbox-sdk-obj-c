@@ -10,7 +10,7 @@
 @class DBXSHARINGRemoveMemberJobStatus;
 
 /// 
-/// The `DBXSHARINGRemoveMemberJobStatus` union.
+/// The RemoveMemberJobStatus union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXSHARINGRemoveMemberJobStatus : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGRemoveMemberJobStatusTag` enum type represents the possible
-/// tag states that the `DBXSHARINGRemoveMemberJobStatus` union can exist in.
+/// tag states with which the `DBXSHARINGRemoveMemberJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGRemoveMemberJobStatusTag) {
     /// The asynchronous job is still in progress.
     DBXSHARINGRemoveMemberJobStatusInProgress,
@@ -43,25 +43,64 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveMemberJobStatusTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGRemoveFolderMemberError * _Nonnull failed;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveMemberJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
+/// 
 /// Initializes union class with tag state of `Complete`.
+/// 
+/// About the `Complete` tag state: Removing the folder member has finished. The
+/// value is information about whether the member has another form of access.
+/// 
+/// - parameter complete: Removing the folder member has finished. The value is
+/// information about whether the member has another form of access.
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveMemberJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithComplete:(DBXSHARINGMemberAccessLevelResult * _Nonnull)complete;
 
+/// 
 /// Initializes union class with tag state of `Failed`.
+/// 
+/// - parameter failed: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGRemoveMemberJobStatus` instance.
+/// 
 - (nonnull instancetype)initWithFailed:(DBXSHARINGRemoveFolderMemberError * _Nonnull)failed;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns whether the union's current tag state has value `Complete`.
+/// 
+/// Retrieves whether the union's current tag state has value `Complete`.
+/// 
+/// - returns: Whether the union's current tag state has value `Complete`.
+/// 
 - (BOOL)isComplete;
 
-/// Returns whether the union's current tag state has value `Failed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Failed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Failed`.
+/// 
 - (BOOL)isFailed;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +111,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveMemberJobStatusTag) {
 /// 
 @interface DBXSHARINGRemoveMemberJobStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGRemoveMemberJobStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveMemberJobStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGRemoveMemberJobStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGRemoveMemberJobStatus`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveMemberJobStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGRemoveMemberJobStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGRemoveMemberJobStatus` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGRemoveMemberJobStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGRemoveMemberJobStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGRemoveMemberJobStatus`
+/// object.
+/// 
 + (DBXSHARINGRemoveMemberJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

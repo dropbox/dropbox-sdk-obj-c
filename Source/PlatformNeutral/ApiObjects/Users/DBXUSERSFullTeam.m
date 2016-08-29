@@ -13,14 +13,14 @@
 - (instancetype)initWithId_:(NSString *)id_ name:(NSString *)name sharingPolicies:(DBXTEAMPOLICIESTeamSharingPolicies *)sharingPolicies {
 
     self = [super initWithId_:id_ name:name];
-    if (self != nil) {
+    if (self) {
         _sharingPolicies = sharingPolicies;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSFullTeamSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSFullTeamSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

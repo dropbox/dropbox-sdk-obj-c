@@ -16,7 +16,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveMemberJobStatusInProgress;
     }
     return self;
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(DBXSHARINGMemberAccessLevelResult *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveMemberJobStatusComplete;
         _complete = complete;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithFailed:(DBXSHARINGRemoveFolderMemberError *)failed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveMemberJobStatusFailed;
         _failed = failed;
     }
@@ -66,21 +66,21 @@
 }
 
 - (DBXSHARINGMemberAccessLevelResult *)complete {
-    if (_tag != DBXSHARINGRemoveMemberJobStatusComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveMemberJobStatusComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DBXSHARINGRemoveFolderMemberError *)failed {
-    if (_tag != DBXSHARINGRemoveMemberJobStatusFailed) {
+    if (![self isFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveMemberJobStatusFailed`, but was %@.", [self getTagName]];
     }
     return _failed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRemoveMemberJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRemoveMemberJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

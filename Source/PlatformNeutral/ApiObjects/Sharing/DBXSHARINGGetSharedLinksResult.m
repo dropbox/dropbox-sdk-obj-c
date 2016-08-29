@@ -13,14 +13,14 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](links);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _links = links;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGetSharedLinksResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGetSharedLinksResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

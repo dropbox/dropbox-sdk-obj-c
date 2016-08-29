@@ -8,18 +8,18 @@
 @class DBXSHARINGFolderAction;
 
 /// 
-/// The `DBXSHARINGFolderAction` union.
+/// The FolderAction union.
+/// 
+/// Actions that may be taken on shared folders.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Actions that may be taken on shared folders.
-/// 
 @interface DBXSHARINGFolderAction : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGFolderActionTag` enum type represents the possible tag states
-/// that the `DBXSHARINGFolderAction` union can exist in.
+/// with which the `DBXSHARINGFolderAction` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
     /// Change folder options, such as who can be invited to join the folder.
     DBXSHARINGFolderActionChangeOptions,
@@ -62,75 +62,196 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGFolderActionTag tag;
 
+/// 
 /// Initializes union class with tag state of `ChangeOptions`.
+/// 
+/// About the `ChangeOptions` tag state: Change folder options, such as who can
+/// be invited to join the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithChangeOptions;
 
+/// 
 /// Initializes union class with tag state of `EditContents`.
+/// 
+/// About the `EditContents` tag state: Change or edit contents of the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithEditContents;
 
+/// 
 /// Initializes union class with tag state of `InviteEditor`.
+/// 
+/// About the `InviteEditor` tag state: Invite a user or group to join the
+/// folder with read and write permission.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithInviteEditor;
 
+/// 
 /// Initializes union class with tag state of `InviteViewer`.
+/// 
+/// About the `InviteViewer` tag state: Invite a user or group to join the
+/// folder with read permission.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithInviteViewer;
 
+/// 
 /// Initializes union class with tag state of `InviteViewerNoComment`.
+/// 
+/// About the `InviteViewerNoComment` tag state: Invite a user or group to join
+/// the folder with read permission but no comment permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithInviteViewerNoComment;
 
+/// 
 /// Initializes union class with tag state of `RelinquishMembership`.
+/// 
+/// About the `RelinquishMembership` tag state: Relinquish one's own membership
+/// in the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithRelinquishMembership;
 
+/// 
 /// Initializes union class with tag state of `Unmount`.
+/// 
+/// About the `Unmount` tag state: Unmount the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithUnmount;
 
+/// 
 /// Initializes union class with tag state of `Unshare`.
+/// 
+/// About the `Unshare` tag state: Stop sharing this folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithUnshare;
 
+/// 
 /// Initializes union class with tag state of `LeaveACopy`.
+/// 
+/// About the `LeaveACopy` tag state: Keep a copy of the contents upon leaving
+/// or being kicked from the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithLeaveACopy;
 
+/// 
 /// Initializes union class with tag state of `ShareLink`.
+/// 
+/// About the `ShareLink` tag state: Create a shared link for folder.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithShareLink;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGFolderAction` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `ChangeOptions`.
+/// 
+/// Retrieves whether the union's current tag state has value `ChangeOptions`.
+/// 
+/// - returns: Whether the union's current tag state has value `ChangeOptions`.
+/// 
 - (BOOL)isChangeOptions;
 
-/// Returns whether the union's current tag state has value `EditContents`.
+/// 
+/// Retrieves whether the union's current tag state has value `EditContents`.
+/// 
+/// - returns: Whether the union's current tag state has value `EditContents`.
+/// 
 - (BOOL)isEditContents;
 
-/// Returns whether the union's current tag state has value `InviteEditor`.
+/// 
+/// Retrieves whether the union's current tag state has value `InviteEditor`.
+/// 
+/// - returns: Whether the union's current tag state has value `InviteEditor`.
+/// 
 - (BOOL)isInviteEditor;
 
-/// Returns whether the union's current tag state has value `InviteViewer`.
+/// 
+/// Retrieves whether the union's current tag state has value `InviteViewer`.
+/// 
+/// - returns: Whether the union's current tag state has value `InviteViewer`.
+/// 
 - (BOOL)isInviteViewer;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `InviteViewerNoComment`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InviteViewerNoComment`.
+/// 
 - (BOOL)isInviteViewerNoComment;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `RelinquishMembership`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RelinquishMembership`.
+/// 
 - (BOOL)isRelinquishMembership;
 
-/// Returns whether the union's current tag state has value `Unmount`.
+/// 
+/// Retrieves whether the union's current tag state has value `Unmount`.
+/// 
+/// - returns: Whether the union's current tag state has value `Unmount`.
+/// 
 - (BOOL)isUnmount;
 
-/// Returns whether the union's current tag state has value `Unshare`.
+/// 
+/// Retrieves whether the union's current tag state has value `Unshare`.
+/// 
+/// - returns: Whether the union's current tag state has value `Unshare`.
+/// 
 - (BOOL)isUnshare;
 
-/// Returns whether the union's current tag state has value `LeaveACopy`.
+/// 
+/// Retrieves whether the union's current tag state has value `LeaveACopy`.
+/// 
+/// - returns: Whether the union's current tag state has value `LeaveACopy`.
+/// 
 - (BOOL)isLeaveACopy;
 
-/// Returns whether the union's current tag state has value `ShareLink`.
+/// 
+/// Retrieves whether the union's current tag state has value `ShareLink`.
+/// 
+/// - returns: Whether the union's current tag state has value `ShareLink`.
+/// 
 - (BOOL)isShareLink;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -141,12 +262,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
 /// 
 @interface DBXSHARINGFolderActionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGFolderAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderAction * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGFolderAction` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGFolderAction` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderAction` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGFolderAction * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGFolderAction` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGFolderAction` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGFolderAction` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGFolderAction` object.
+/// 
 + (DBXSHARINGFolderAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -9,7 +9,7 @@
 @class DBXSHARINGListSharedLinksError;
 
 /// 
-/// The `DBXSHARINGListSharedLinksError` union.
+/// The ListSharedLinksError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXSHARINGListSharedLinksError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGListSharedLinksErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGListSharedLinksError` union can exist in.
+/// tag states with which the `DBXSHARINGListSharedLinksError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGListSharedLinksErrorTag) {
     /// (no description).
     DBXSHARINGListSharedLinksErrorPath,
@@ -38,25 +38,59 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListSharedLinksErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGListSharedLinksError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Reset`.
+/// 
+/// About the `Reset` tag state: Indicates that the cursor has been invalidated.
+/// Call :route:`list_shared_links` to obtain a new cursor.
+/// 
+/// - returns: An initialized `DBXSHARINGListSharedLinksError` instance.
+/// 
 - (nonnull instancetype)initWithReset;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGListSharedLinksError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Reset`.
+/// 
+/// Retrieves whether the union's current tag state has value `Reset`.
+/// 
+/// - returns: Whether the union's current tag state has value `Reset`.
+/// 
 - (BOOL)isReset;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -67,12 +101,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListSharedLinksErrorTag) {
 /// 
 @interface DBXSHARINGListSharedLinksErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListSharedLinksError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListSharedLinksError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListSharedLinksError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGListSharedLinksError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListSharedLinksError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListSharedLinksError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListSharedLinksError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListSharedLinksError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListSharedLinksError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListSharedLinksError` object.
+/// 
 + (DBXSHARINGListSharedLinksError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

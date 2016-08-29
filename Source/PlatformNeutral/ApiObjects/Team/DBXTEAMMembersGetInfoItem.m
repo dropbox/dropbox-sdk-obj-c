@@ -14,7 +14,7 @@
 
 - (instancetype)initWithIdNotFound:(NSString *)idNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersGetInfoItemIdNotFound;
         _idNotFound = idNotFound;
     }
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithMemberInfo:(DBXTEAMTeamMemberInfo *)memberInfo {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersGetInfoItemMemberInfo;
         _memberInfo = memberInfo;
     }
@@ -50,21 +50,21 @@
 }
 
 - (NSString *)idNotFound {
-    if (_tag != DBXTEAMMembersGetInfoItemIdNotFound) {
+    if (![self isIdNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersGetInfoItemIdNotFound`, but was %@.", [self getTagName]];
     }
     return _idNotFound;
 }
 
 - (DBXTEAMTeamMemberInfo *)memberInfo {
-    if (_tag != DBXTEAMMembersGetInfoItemMemberInfo) {
+    if (![self isMemberInfo]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMMembersGetInfoItemMemberInfo`, but was %@.", [self getTagName]];
     }
     return _memberInfo;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersGetInfoItemSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersGetInfoItemSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

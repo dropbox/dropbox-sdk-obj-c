@@ -13,7 +13,7 @@
 
 - (instancetype)initWithActive {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMemberStatusActive;
     }
     return self;
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithInvited {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMemberStatusInvited;
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (instancetype)initWithSuspended {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMemberStatusSuspended;
     }
     return self;
@@ -37,7 +37,7 @@
 
 - (instancetype)initWithRemoved:(DBXTEAMRemovedStatus *)removed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMemberStatusRemoved;
         _removed = removed;
     }
@@ -76,14 +76,14 @@
 }
 
 - (DBXTEAMRemovedStatus *)removed {
-    if (_tag != DBXTEAMTeamMemberStatusRemoved) {
+    if (![self isRemoved]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMTeamMemberStatusRemoved`, but was %@.", [self getTagName]];
     }
     return _removed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMTeamMemberStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMTeamMemberStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

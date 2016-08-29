@@ -9,7 +9,7 @@
 @class DBXTEAMRevokeLinkedApiAppBatchArg;
 
 /// 
-/// The `DBXTEAMRevokeLinkedApiAppBatchArg` struct.
+/// The RevokeLinkedApiAppBatchArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,44 @@
 /// (no description).
 @property (nonatomic, readonly) NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull revokeLinkedApp;
 
-/// Full constructor for the `RevokeLinkedApiAppBatchArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMRevokeLinkedApiAppBatchArg` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter revokeLinkedApp: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedApiAppBatchArg` instance.
+/// 
 - (nonnull instancetype)initWithRevokeLinkedApp:(NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeLinkedApiAppBatchArg` struct.
+/// The serialization class for the RevokeLinkedApiAppBatchArg struct.
 /// 
 @interface DBXTEAMRevokeLinkedApiAppBatchArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeLinkedApiAppBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppBatchArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeLinkedApiAppBatchArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMRevokeLinkedApiAppBatchArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedApiAppBatchArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedApiAppBatchArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeLinkedApiAppBatchArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeLinkedApiAppBatchArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedApiAppBatchArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeLinkedApiAppBatchArg`
+/// object.
+/// 
 + (DBXTEAMRevokeLinkedApiAppBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

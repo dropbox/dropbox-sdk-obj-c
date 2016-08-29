@@ -9,18 +9,18 @@
 @class DBXTEAMTeamMemberStatus;
 
 /// 
-/// The `DBXTEAMTeamMemberStatus` union.
+/// The TeamMemberStatus union.
+/// 
+/// The user's status as a member of a specific team.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// The user's status as a member of a specific team.
-/// 
 @interface DBXTEAMTeamMemberStatus : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMTeamMemberStatusTag` enum type represents the possible tag
-/// states that the `DBXTEAMTeamMemberStatus` union can exist in.
+/// states with which the `DBXTEAMTeamMemberStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
     /// User has successfully joined the team.
     DBXTEAMTeamMemberStatusActive,
@@ -45,31 +45,82 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
 /// include_removed is true in members/list.
 @property (nonatomic, readonly) DBXTEAMRemovedStatus * _Nonnull removed;
 
+/// 
 /// Initializes union class with tag state of `Active`.
+/// 
+/// About the `Active` tag state: User has successfully joined the team.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMemberStatus` instance.
+/// 
 - (nonnull instancetype)initWithActive;
 
+/// 
 /// Initializes union class with tag state of `Invited`.
+/// 
+/// About the `Invited` tag state: User has been invited to a team, but has not
+/// joined the team yet.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMemberStatus` instance.
+/// 
 - (nonnull instancetype)initWithInvited;
 
+/// 
 /// Initializes union class with tag state of `Suspended`.
+/// 
+/// About the `Suspended` tag state: User is no longer a member of the team, but
+/// the account can be un-suspended, re-establishing the user as a team member.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMemberStatus` instance.
+/// 
 - (nonnull instancetype)initWithSuspended;
 
+/// 
 /// Initializes union class with tag state of `Removed`.
+/// 
+/// About the `Removed` tag state: User is no longer a member of the team.
+/// Removed users are only listed when include_removed is true in members/list.
+/// 
+/// - parameter removed: User is no longer a member of the team. Removed users
+/// are only listed when include_removed is true in members/list.
+/// 
+/// - returns: An initialized `DBXTEAMTeamMemberStatus` instance.
+/// 
 - (nonnull instancetype)initWithRemoved:(DBXTEAMRemovedStatus * _Nonnull)removed;
 
-/// Returns whether the union's current tag state has value `Active`.
+/// 
+/// Retrieves whether the union's current tag state has value `Active`.
+/// 
+/// - returns: Whether the union's current tag state has value `Active`.
+/// 
 - (BOOL)isActive;
 
-/// Returns whether the union's current tag state has value `Invited`.
+/// 
+/// Retrieves whether the union's current tag state has value `Invited`.
+/// 
+/// - returns: Whether the union's current tag state has value `Invited`.
+/// 
 - (BOOL)isInvited;
 
-/// Returns whether the union's current tag state has value `Suspended`.
+/// 
+/// Retrieves whether the union's current tag state has value `Suspended`.
+/// 
+/// - returns: Whether the union's current tag state has value `Suspended`.
+/// 
 - (BOOL)isSuspended;
 
-/// Returns whether the union's current tag state has value `Removed`.
+/// 
+/// Retrieves whether the union's current tag state has value `Removed`.
+/// 
+/// - returns: Whether the union's current tag state has value `Removed`.
+/// 
 - (BOOL)isRemoved;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -80,12 +131,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
 /// 
 @interface DBXTEAMTeamMemberStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMTeamMemberStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMemberStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMTeamMemberStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMTeamMemberStatus` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMTeamMemberStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMTeamMemberStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMTeamMemberStatus` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMTeamMemberStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMTeamMemberStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMTeamMemberStatus` object.
+/// 
 + (DBXTEAMTeamMemberStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

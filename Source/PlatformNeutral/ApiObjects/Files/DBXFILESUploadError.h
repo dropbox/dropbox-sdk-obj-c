@@ -9,7 +9,7 @@
 @class DBXFILESUploadWriteFailed;
 
 /// 
-/// The `DBXFILESUploadError` union.
+/// The UploadError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESUploadError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESUploadErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESUploadError` union can exist in.
+/// with which the `DBXFILESUploadError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
     /// Unable to save the uploaded contents to a file.
     DBXFILESUploadErrorPath,
@@ -34,19 +34,44 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
 /// Unable to save the uploaded contents to a file.
 @property (nonatomic, readonly) DBXFILESUploadWriteFailed * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// About the `Path` tag state: Unable to save the uploaded contents to a file.
+/// 
+/// - parameter path: Unable to save the uploaded contents to a file.
+/// 
+/// - returns: An initialized `DBXFILESUploadError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESUploadWriteFailed * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESUploadError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -57,12 +82,24 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
 /// 
 @interface DBXFILESUploadErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESUploadError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadError` object.
+/// 
 + (DBXFILESUploadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

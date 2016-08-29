@@ -11,7 +11,7 @@
 
 - (instancetype)initWithUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRecoverErrorUserNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithUserUnrecoverable {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRecoverErrorUserUnrecoverable;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRecoverErrorUserNotInTeam;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersRecoverErrorOther;
     }
     return self;
@@ -72,8 +72,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersRecoverErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersRecoverErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

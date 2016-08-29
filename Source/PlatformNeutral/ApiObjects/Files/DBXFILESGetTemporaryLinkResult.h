@@ -9,7 +9,7 @@
 @class DBXFILESGetTemporaryLinkResult;
 
 /// 
-/// The `DBXFILESGetTemporaryLinkResult` struct.
+/// The GetTemporaryLinkResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,24 +23,45 @@
 /// The temporary link which can be used to stream content the file.
 @property (nonatomic, readonly, copy) NSString * _Nonnull link;
 
-/// Full constructor for the `GetTemporaryLinkResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESGetTemporaryLinkResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter metadata: Metadata of the file.
+/// - parameter link: The temporary link which can be used to stream content the
+/// file.
+/// 
+/// - returns: An initialized `DBXFILESGetTemporaryLinkResult` instance.
+/// 
 - (nonnull instancetype)initWithMetadata:(DBXFILESFileMetadata * _Nonnull)metadata link:(NSString * _Nonnull)link;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGetTemporaryLinkResult` struct.
+/// The serialization class for the GetTemporaryLinkResult struct.
 /// 
 @interface DBXFILESGetTemporaryLinkResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGetTemporaryLinkResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGetTemporaryLinkResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGetTemporaryLinkResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGetTemporaryLinkResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGetTemporaryLinkResult` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGetTemporaryLinkResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGetTemporaryLinkResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGetTemporaryLinkResult` object.
+/// 
 + (DBXFILESGetTemporaryLinkResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

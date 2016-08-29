@@ -3,28 +3,28 @@
 @class DBXRoute;
 
 ///
-/// Dropbox Network Task base class.
+/// Base class for network task wrappers.
 ///
 /// After a network request is made via `DBXTransportClient`, a subclass
 /// of `DBXTask` is returned, from which response and progress handlers
 /// can be installed, and the network response paused or cancelled.
 ///
 @interface DBXTask : NSObject {
-    // re-declared here for inheritence
+    @protected
     NSURLSession *_session;
     DBXDelegate *_delegate;
     DBXRoute *_route;
 }
 
 /// The session that was used to make to the request.
-@property (nonatomic) NSURLSession * _Nonnull session;
+@property (nonatomic, readonly) NSURLSession * _Nonnull session;
 
 /// The delegate used manage handler code.
-@property (nonatomic) DBXDelegate * _Nonnull delegate;
+@property (nonatomic, readonly) DBXDelegate * _Nonnull delegate;
 
 /// Information about the route to which the request
 /// was made.
-@property (nonatomic) DBXRoute * _Nonnull route;
+@property (nonatomic, readonly) DBXRoute * _Nonnull route;
 
 @end
 
@@ -40,10 +40,13 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
+/// For client-side handling of failed requests / application crashes, use this class
+/// to reinstall response / progress handlers for the restarted tasks.
+///
 @interface DBXRpcTask<TResponse, TError> : DBXTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic) NSURLSessionDataTask * _Nonnull task;
+@property (nonatomic, readonly) NSURLSessionDataTask * _Nonnull task;
 
 ///
 /// `DBXRpcTask` full constructor.
@@ -53,7 +56,7 @@
 /// - parameter delegate: The delegate that manages and executes response code.
 /// - parameter backgroundSessionId: The background session identifier used to make background request
 /// - parameter route: The static `DBXRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc. This is used in the deserialization
+/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
 ///
 /// - returns: An initialized instance.
@@ -66,7 +69,7 @@
 /// - parameter response: The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
-/// error (which includes information like Dropbox request ID, http status code, etc.
+/// error (which includes information like Dropbox request ID, http status code, etc.).
 ///
 /// - returns: The current `DBXRpcTask` instance.
 ///
@@ -112,10 +115,13 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
+/// For client-side handling of failed requests / application crashes, use this class
+/// to reinstall response / progress handlers for the restarted tasks.
+///
 @interface DBXUploadTask<TResponse, TError> : DBXTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic) NSURLSessionUploadTask * _Nonnull task;
+@property (nonatomic, readonly) NSURLSessionUploadTask * _Nonnull task;
 
 ///
 /// `DBXUploadTask` full constructor.
@@ -125,7 +131,7 @@
 /// - parameter delegate: The delegate that manages and executes response code.
 /// - parameter backgroundSessionId: The background session identifier used to make background request
 /// - parameter route: The static `DBXRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc. This is used in the deserialization
+/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
 ///
 /// - returns: An initialized instance.
@@ -138,7 +144,7 @@
 /// - parameter response: The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
-/// error (which includes information like Dropbox request ID, http status code, etc.
+/// error (which includes information like Dropbox request ID, http status code, etc.).
 ///
 /// - returns: The current `DBXUploadTask` instance.
 ///
@@ -185,16 +191,19 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
+/// For client-side handling of failed requests / application crashes, use this class
+/// to reinstall response / progress handlers for the restarted tasks.
+///
 @interface DBXDownloadURLTask<TResponse, TError> : DBXTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
+@property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
 
 /// Whether the outputted file should overwrite in the event of a name collision.
-@property (nonatomic) BOOL overwrite;
+@property (nonatomic, readonly) BOOL overwrite;
 
 /// Location to which output content should be downloaded.
-@property (nonatomic, copy) NSURL * _Nonnull destination;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull destination;
 
 ///
 /// `DBXDownloadURLTask` full constructor.
@@ -204,7 +213,7 @@
 /// - parameter delegate: The delegate that manages and executes response code.
 /// - parameter backgroundSessionId: The background session identifier used to make background request
 /// - parameter route: The static `DBXRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc. This is used in the deserialization
+/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
 /// - parameter overwrite: Whether the outputted file should overwrite in the event of a name collision.
 /// - parameter destination: Location to which output content should be downloaded.
@@ -219,7 +228,7 @@
 /// - parameter response: The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
-/// error (which includes information like Dropbox request ID, http status code, etc. The fourth
+/// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
 /// argument is the output destination to which the file was downloaded.
 ///
 /// - returns: The current `DBXDownloadURLTask` instance.
@@ -267,10 +276,13 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
+/// For client-side handling of failed requests / application crashes, use this class
+/// to reinstall response / progress handlers for the restarted tasks.
+///
 @interface DBXDownloadDataTask<TResponse, TError> : DBXTask
 
 /// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic) NSURLSessionDownloadTask * _Nonnull task;
+@property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
 
 ///
 /// `DBXDownloadDataTask` full constructor.
@@ -280,7 +292,7 @@
 /// - parameter delegate: The delegate that manages and executes response code.
 /// - parameter backgroundSessionId: The background session identifier used to make background request
 /// - parameter route: The static `DBXRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc. This is used in the deserialization
+/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
 ///
 /// - returns: An initialized instance.
@@ -293,7 +305,7 @@
 /// - parameter response: The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
-/// error (which includes information like Dropbox request ID, http status code, etc. The fourth
+/// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
 /// argument is the output `NSData` object in memory, to which the file was downloaded.
 ///
 /// - returns: The current `DBXDownloadURLTask` instance.

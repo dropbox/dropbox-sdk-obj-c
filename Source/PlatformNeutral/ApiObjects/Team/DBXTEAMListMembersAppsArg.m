@@ -11,7 +11,7 @@
 - (instancetype)initWithCursor:(NSString *)cursor {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
     }
     return self;
@@ -21,8 +21,8 @@
     return [self initWithCursor:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListMembersAppsArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListMembersAppsArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

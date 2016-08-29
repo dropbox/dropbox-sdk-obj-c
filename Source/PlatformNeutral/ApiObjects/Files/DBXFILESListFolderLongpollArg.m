@@ -13,7 +13,7 @@
     [DBXStoneValidators numericValidator:@(30) maxValue:@(480)](timeout ?: @(30));
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
         _timeout = timeout ?: @(30);
     }
@@ -24,8 +24,8 @@
     return [self initWithCursor:cursor timeout:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListFolderLongpollArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListFolderLongpollArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

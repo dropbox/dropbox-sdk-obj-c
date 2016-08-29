@@ -8,7 +8,7 @@
 @class DBXSHARINGListFoldersContinueError;
 
 /// 
-/// The `DBXSHARINGListFoldersContinueError` union.
+/// The ListFoldersContinueError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXSHARINGListFoldersContinueError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGListFoldersContinueErrorTag` enum type represents the
-/// possible tag states that the `DBXSHARINGListFoldersContinueError` union can
-/// exist in.
+/// possible tag states with which the `DBXSHARINGListFoldersContinueError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGListFoldersContinueErrorTag) {
     /// cursor in ListFoldersContinueArg is invalid.
     DBXSHARINGListFoldersContinueErrorInvalidCursor,
@@ -31,19 +31,43 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFoldersContinueErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGListFoldersContinueErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `InvalidCursor`.
+/// 
+/// About the `InvalidCursor` tag state: :field:`ListFoldersContinueArg.cursor`
+/// is invalid.
+/// 
+/// - returns: An initialized `DBXSHARINGListFoldersContinueError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidCursor;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGListFoldersContinueError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidCursor`.
+/// 
 - (BOOL)isInvalidCursor;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -54,12 +78,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFoldersContinueErrorTag) {
 /// 
 @interface DBXSHARINGListFoldersContinueErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFoldersContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFoldersContinueError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFoldersContinueError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGListFoldersContinueError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFoldersContinueError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFoldersContinueError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFoldersContinueError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFoldersContinueError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFoldersContinueError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFoldersContinueError`
+/// object.
+/// 
 + (DBXSHARINGListFoldersContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

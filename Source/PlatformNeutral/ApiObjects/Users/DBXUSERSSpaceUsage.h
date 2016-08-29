@@ -9,13 +9,13 @@
 @class DBXUSERSSpaceUsage;
 
 /// 
-/// The `DBXUSERSSpaceUsage` struct.
+/// The SpaceUsage struct.
+/// 
+/// Information about a user's space usage and quota.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information about a user's space usage and quota.
 /// 
 @interface DBXUSERSSpaceUsage : NSObject <DBXSerializable> 
 
@@ -25,24 +25,43 @@
 /// The user's space allocation.
 @property (nonatomic, readonly) DBXUSERSSpaceAllocation * _Nonnull allocation;
 
-/// Full constructor for the `SpaceUsage` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXUSERSSpaceUsage` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter used: The user's total space usage (bytes).
+/// - parameter allocation: The user's space allocation.
+/// 
+/// - returns: An initialized `DBXUSERSSpaceUsage` instance.
+/// 
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocation:(DBXUSERSSpaceAllocation * _Nonnull)allocation;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSSpaceUsage` struct.
+/// The serialization class for the SpaceUsage struct.
 /// 
 @interface DBXUSERSSpaceUsageSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSSpaceUsage` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSSpaceUsage * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSSpaceUsage` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSSpaceUsage` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSSpaceUsage` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSSpaceUsage * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSSpaceUsage` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSSpaceUsage` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSSpaceUsage` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSSpaceUsage` object.
+/// 
 + (DBXUSERSSpaceUsage * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

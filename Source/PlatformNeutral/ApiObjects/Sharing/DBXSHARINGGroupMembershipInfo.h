@@ -12,41 +12,73 @@
 @class DBXSHARINGMemberPermission;
 
 /// 
-/// The `DBXSHARINGGroupMembershipInfo` struct.
+/// The GroupMembershipInfo struct.
+/// 
+/// The information about a group member of the shared content.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// The information about a group member of the shared content.
 /// 
 @interface DBXSHARINGGroupMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// The information about the membership group.
 @property (nonatomic, readonly) DBXSHARINGGroupInfo * _Nonnull group;
 
-/// Full constructor for the `GroupMembershipInfo` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGGroupMembershipInfo` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter accessType: The access type for this member.
+/// - parameter group: The information about the membership group.
+/// - parameter permissions: The permissions that requesting user has on this
+/// member. The set of permissions corresponds to the MemberActions in the
+/// request.
+/// - parameter initials: Suggested name initials for a member.
+/// - parameter isInherited: True if the member has access from a parent folder.
+/// 
+/// - returns: An initialized `DBXSHARINGGroupMembershipInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType group:(DBXSHARINGGroupInfo * _Nonnull)group permissions:(NSArray<DBXSHARINGMemberPermission *> * _Nullable)permissions initials:(NSString * _Nullable)initials isInherited:(NSNumber * _Nullable)isInherited;
 
-/// Convenience constructor for the `GroupMembershipInfo` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGGroupMembershipInfo` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter accessType: The access type for this member.
+/// - parameter group: The information about the membership group.
+/// 
+/// - returns: An initialized `DBXSHARINGGroupMembershipInfo` instance.
+/// 
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType group:(DBXSHARINGGroupInfo * _Nonnull)group;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGGroupMembershipInfo` struct.
+/// The serialization class for the GroupMembershipInfo struct.
 /// 
 @interface DBXSHARINGGroupMembershipInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGroupMembershipInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGroupMembershipInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGroupMembershipInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGGroupMembershipInfo`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGroupMembershipInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGroupMembershipInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGroupMembershipInfo` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGroupMembershipInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGroupMembershipInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGroupMembershipInfo` object.
+/// 
 + (DBXSHARINGGroupMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

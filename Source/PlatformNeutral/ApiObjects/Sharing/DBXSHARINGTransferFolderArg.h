@@ -8,7 +8,7 @@
 @class DBXSHARINGTransferFolderArg;
 
 /// 
-/// The `DBXSHARINGTransferFolderArg` struct.
+/// The TransferFolderArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,45 @@
 /// A account or team member ID to transfer ownership to.
 @property (nonatomic, readonly, copy) NSString * _Nonnull toDropboxId;
 
-/// Full constructor for the `TransferFolderArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGTransferFolderArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// - parameter toDropboxId: A account or team member ID to transfer ownership
+/// to.
+/// 
+/// - returns: An initialized `DBXSHARINGTransferFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGTransferFolderArg` struct.
+/// The serialization class for the TransferFolderArg struct.
 /// 
 @interface DBXSHARINGTransferFolderArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGTransferFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGTransferFolderArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGTransferFolderArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGTransferFolderArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGTransferFolderArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGTransferFolderArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGTransferFolderArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGTransferFolderArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGTransferFolderArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGTransferFolderArg` object.
+/// 
 + (DBXSHARINGTransferFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

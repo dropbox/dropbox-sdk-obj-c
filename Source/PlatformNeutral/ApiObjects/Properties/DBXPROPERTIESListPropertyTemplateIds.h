@@ -8,7 +8,7 @@
 @class DBXPROPERTIESListPropertyTemplateIds;
 
 /// 
-/// The `DBXPROPERTIESListPropertyTemplateIds` struct.
+/// The ListPropertyTemplateIds struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,25 +19,45 @@
 /// List of identifiers for templates added by route properties/template/add.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nonnull templateIds;
 
-/// Full constructor for the `ListPropertyTemplateIds` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXPROPERTIESListPropertyTemplateIds` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter templateIds: List of identifiers for templates added by route
+/// properties/template/add.
+/// 
+/// - returns: An initialized `DBXPROPERTIESListPropertyTemplateIds` instance.
+/// 
 - (nonnull instancetype)initWithTemplateIds:(NSArray<NSString *> * _Nonnull)templateIds;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXPROPERTIESListPropertyTemplateIds`
-/// struct.
+/// The serialization class for the ListPropertyTemplateIds struct.
 /// 
 @interface DBXPROPERTIESListPropertyTemplateIdsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESListPropertyTemplateIds` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESListPropertyTemplateIds * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESListPropertyTemplateIds` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESListPropertyTemplateIds` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESListPropertyTemplateIds` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESListPropertyTemplateIds * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESListPropertyTemplateIds`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESListPropertyTemplateIds` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESListPropertyTemplateIds` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESListPropertyTemplateIds`
+/// object.
+/// 
 + (DBXPROPERTIESListPropertyTemplateIds * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -9,7 +9,7 @@
 @class DBXTEAMRevokeDeviceSessionStatus;
 
 /// 
-/// The `DBXTEAMRevokeDeviceSessionStatus` struct.
+/// The RevokeDeviceSessionStatus struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,28 +23,55 @@
 /// The error cause in case of a failure
 @property (nonatomic, readonly) DBXTEAMRevokeDeviceSessionError * _Nullable errorType;
 
-/// Full constructor for the `RevokeDeviceSessionStatus` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMRevokeDeviceSessionStatus` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter success: Result of the revoking request
+/// - parameter errorType: The error cause in case of a failure
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionStatus` instance.
+/// 
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success errorType:(DBXTEAMRevokeDeviceSessionError * _Nullable)errorType;
 
-/// Convenience constructor for the `RevokeDeviceSessionStatus` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMRevokeDeviceSessionStatus` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter success: Result of the revoking request
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionStatus` instance.
+/// 
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeDeviceSessionStatus` struct.
+/// The serialization class for the RevokeDeviceSessionStatus struct.
 /// 
 @interface DBXTEAMRevokeDeviceSessionStatusSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeDeviceSessionStatus` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionStatus * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeDeviceSessionStatus` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeDeviceSessionStatus`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionStatus` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionStatus * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionStatus` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeDeviceSessionStatus` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionStatus` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeDeviceSessionStatus`
+/// object.
+/// 
 + (DBXTEAMRevokeDeviceSessionStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

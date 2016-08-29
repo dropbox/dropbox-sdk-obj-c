@@ -8,7 +8,7 @@
 @class DBXTEAMGroupMemberSetAccessTypeError;
 
 /// 
-/// The `DBXTEAMGroupMemberSetAccessTypeError` union.
+/// The GroupMemberSetAccessTypeError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXTEAMGroupMemberSetAccessTypeError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupMemberSetAccessTypeErrorTag` enum type represents the
-/// possible tag states that the `DBXTEAMGroupMemberSetAccessTypeError` union
-/// can exist in.
+/// possible tag states with which the `DBXTEAMGroupMemberSetAccessTypeError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupMemberSetAccessTypeErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     DBXTEAMGroupMemberSetAccessTypeErrorGroupNotFound,
@@ -37,33 +37,82 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMemberSetAccessTypeErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupMemberSetAccessTypeErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `GroupNotFound`.
+/// 
+/// About the `GroupNotFound` tag state: No matching group found. No groups
+/// match the specified group ID.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberSetAccessTypeError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberSetAccessTypeError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `MemberNotInGroup`.
+/// 
+/// About the `MemberNotInGroup` tag state: The specified user is not a member
+/// of this group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberSetAccessTypeError` instance.
+/// 
 - (nonnull instancetype)initWithMemberNotInGroup;
 
+/// 
 /// Initializes union class with tag state of
 /// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
+/// About the `UserCannotBeManagerOfCompanyManagedGroup` tag state: A company
+/// managed group cannot be managed by a user.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberSetAccessTypeError` instance.
+/// 
 - (nonnull instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup;
 
-/// Returns whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotFound`.
+/// 
 - (BOOL)isGroupNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `MemberNotInGroup`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
 - (BOOL)isMemberNotInGroup;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserCannotBeManagerOfCompanyManagedGroup`.
+/// 
 - (BOOL)isUserCannotBeManagerOfCompanyManagedGroup;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -75,12 +124,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMemberSetAccessTypeErrorTag) {
 /// 
 @interface DBXTEAMGroupMemberSetAccessTypeErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMemberSetAccessTypeError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSetAccessTypeError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMemberSetAccessTypeError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMGroupMemberSetAccessTypeError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberSetAccessTypeError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSetAccessTypeError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMemberSetAccessTypeError`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMemberSetAccessTypeError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberSetAccessTypeError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMemberSetAccessTypeError`
+/// object.
+/// 
 + (DBXTEAMGroupMemberSetAccessTypeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

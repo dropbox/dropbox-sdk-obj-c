@@ -8,7 +8,7 @@
 @class DBXUSERSGetAccountBatchError;
 
 /// 
-/// The `DBXUSERSGetAccountBatchError` union.
+/// The GetAccountBatchError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXUSERSGetAccountBatchError : NSObject <DBXSerializable> 
 
 /// The `DBXUSERSGetAccountBatchErrorTag` enum type represents the possible tag
-/// states that the `DBXUSERSGetAccountBatchError` union can exist in.
+/// states with which the `DBXUSERSGetAccountBatchError` union can exist.
 typedef NS_ENUM(NSInteger, DBXUSERSGetAccountBatchErrorTag) {
     /// The value is an account ID specified in accountIds in GetAccountBatchArg
     /// that does not exist.
@@ -35,19 +35,46 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountBatchErrorTag) {
 /// that does not exist.
 @property (nonatomic, readonly, copy) NSString * _Nonnull noAccount;
 
+/// 
 /// Initializes union class with tag state of `NoAccount`.
+/// 
+/// About the `NoAccount` tag state: The value is an account ID specified in
+/// :field:`GetAccountBatchArg.account_ids` that does not exist.
+/// 
+/// - parameter noAccount: The value is an account ID specified in
+/// :field:`GetAccountBatchArg.account_ids` that does not exist.
+/// 
+/// - returns: An initialized `DBXUSERSGetAccountBatchError` instance.
+/// 
 - (nonnull instancetype)initWithNoAccount:(NSString * _Nonnull)noAccount;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXUSERSGetAccountBatchError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `NoAccount`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoAccount`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoAccount`.
+/// 
 - (BOOL)isNoAccount;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -58,12 +85,25 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountBatchErrorTag) {
 /// 
 @interface DBXUSERSGetAccountBatchErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSGetAccountBatchError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountBatchError * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSGetAccountBatchError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSGetAccountBatchError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountBatchError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSGetAccountBatchError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSGetAccountBatchError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSGetAccountBatchError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSGetAccountBatchError` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSGetAccountBatchError` object.
+/// 
 + (DBXUSERSGetAccountBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

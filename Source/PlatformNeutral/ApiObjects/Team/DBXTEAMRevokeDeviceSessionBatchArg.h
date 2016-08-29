@@ -9,7 +9,7 @@
 @class DBXTEAMRevokeDeviceSessionBatchArg;
 
 /// 
-/// The `DBXTEAMRevokeDeviceSessionBatchArg` struct.
+/// The RevokeDeviceSessionBatchArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,44 @@
 /// (no description).
 @property (nonatomic, readonly) NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull revokeDevices;
 
-/// Full constructor for the `RevokeDeviceSessionBatchArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMRevokeDeviceSessionBatchArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter revokeDevices: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMRevokeDeviceSessionBatchArg` instance.
+/// 
 - (nonnull instancetype)initWithRevokeDevices:(NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMRevokeDeviceSessionBatchArg` struct.
+/// The serialization class for the RevokeDeviceSessionBatchArg struct.
 /// 
 @interface DBXTEAMRevokeDeviceSessionBatchArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeDeviceSessionBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionBatchArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeDeviceSessionBatchArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMRevokeDeviceSessionBatchArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionBatchArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeDeviceSessionBatchArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeDeviceSessionBatchArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeDeviceSessionBatchArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeDeviceSessionBatchArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeDeviceSessionBatchArg`
+/// object.
+/// 
 + (DBXTEAMRevokeDeviceSessionBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

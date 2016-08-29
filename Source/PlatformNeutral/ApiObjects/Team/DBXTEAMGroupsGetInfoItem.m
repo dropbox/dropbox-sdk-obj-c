@@ -14,7 +14,7 @@
 
 - (instancetype)initWithIdNotFound:(NSString *)idNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsGetInfoItemIdNotFound;
         _idNotFound = idNotFound;
     }
@@ -23,7 +23,7 @@
 
 - (instancetype)initWithGroupInfo:(DBXTEAMGroupFullInfo *)groupInfo {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsGetInfoItemGroupInfo;
         _groupInfo = groupInfo;
     }
@@ -50,21 +50,21 @@
 }
 
 - (NSString *)idNotFound {
-    if (_tag != DBXTEAMGroupsGetInfoItemIdNotFound) {
+    if (![self isIdNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupsGetInfoItemIdNotFound`, but was %@.", [self getTagName]];
     }
     return _idNotFound;
 }
 
 - (DBXTEAMGroupFullInfo *)groupInfo {
-    if (_tag != DBXTEAMGroupsGetInfoItemGroupInfo) {
+    if (![self isGroupInfo]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupsGetInfoItemGroupInfo`, but was %@.", [self getTagName]];
     }
     return _groupInfo;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupsGetInfoItemSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupsGetInfoItemSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

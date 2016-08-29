@@ -8,7 +8,7 @@
 @class DBXPROPERTIESPropertyTemplateError;
 
 /// 
-/// The `DBXPROPERTIESPropertyTemplateError` union.
+/// The PropertyTemplateError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXPROPERTIESPropertyTemplateError : NSObject <DBXSerializable> 
 
 /// The `DBXPROPERTIESPropertyTemplateErrorTag` enum type represents the
-/// possible tag states that the `DBXPROPERTIESPropertyTemplateError` union can
-/// exist in.
+/// possible tag states with which the `DBXPROPERTIESPropertyTemplateError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTemplateErrorTag) {
     /// Property template does not exist for given identifier.
     DBXPROPERTIESPropertyTemplateErrorTemplateNotFound,
@@ -37,25 +37,67 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTemplateErrorTag) {
 /// Property template does not exist for given identifier.
 @property (nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `TemplateNotFound`.
+/// 
+/// About the `TemplateNotFound` tag state: Property template does not exist for
+/// given identifier.
+/// 
+/// - parameter templateNotFound: Property template does not exist for given
+/// identifier.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyTemplateError` instance.
+/// 
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
+/// 
 /// Initializes union class with tag state of `RestrictedContent`.
+/// 
+/// About the `RestrictedContent` tag state: You do not have the permissions to
+/// modify this property template.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyTemplateError` instance.
+/// 
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyTemplateError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `TemplateNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TemplateNotFound`.
+/// 
 - (BOOL)isTemplateNotFound;
 
-/// Returns whether the union's current tag state has value `RestrictedContent`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
 - (BOOL)isRestrictedContent;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -66,12 +108,26 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTemplateErrorTag) {
 /// 
 @interface DBXPROPERTIESPropertyTemplateErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESPropertyTemplateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyTemplateError * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESPropertyTemplateError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESPropertyTemplateError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyTemplateError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyTemplateError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESPropertyTemplateError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESPropertyTemplateError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyTemplateError` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESPropertyTemplateError`
+/// object.
+/// 
 + (DBXPROPERTIESPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

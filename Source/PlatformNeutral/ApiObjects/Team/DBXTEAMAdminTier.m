@@ -10,7 +10,7 @@
 
 - (instancetype)initWithTeamAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMAdminTierTeamAdmin;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithUserManagementAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMAdminTierUserManagementAdmin;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithSupportAdmin {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMAdminTierSupportAdmin;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithMemberOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMAdminTierMemberOnly;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMAdminTierSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMAdminTierSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

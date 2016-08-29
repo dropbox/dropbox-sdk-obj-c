@@ -9,13 +9,13 @@
 @class DBXTEAMMemberLinkedApps;
 
 /// 
-/// The `DBXTEAMMemberLinkedApps` struct.
+/// The MemberLinkedApps struct.
+/// 
+/// Information on linked applications of a team member.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information on linked applications of a team member.
 /// 
 @interface DBXTEAMMemberLinkedApps : NSObject <DBXSerializable> 
 
@@ -25,24 +25,45 @@
 /// List of third party applications linked by this team member
 @property (nonatomic, readonly) NSArray<DBXTEAMApiApp *> * _Nonnull linkedApiApps;
 
-/// Full constructor for the `MemberLinkedApps` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMMemberLinkedApps` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter teamMemberId: The member unique Id
+/// - parameter linkedApiApps: List of third party applications linked by this
+/// team member
+/// 
+/// - returns: An initialized `DBXTEAMMemberLinkedApps` instance.
+/// 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId linkedApiApps:(NSArray<DBXTEAMApiApp *> * _Nonnull)linkedApiApps;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMemberLinkedApps` struct.
+/// The serialization class for the MemberLinkedApps struct.
 /// 
 @interface DBXTEAMMemberLinkedAppsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMemberLinkedApps` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberLinkedApps * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMemberLinkedApps` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMemberLinkedApps` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberLinkedApps` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberLinkedApps * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMemberLinkedApps` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMemberLinkedApps` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberLinkedApps` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMemberLinkedApps` object.
+/// 
 + (DBXTEAMMemberLinkedApps * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

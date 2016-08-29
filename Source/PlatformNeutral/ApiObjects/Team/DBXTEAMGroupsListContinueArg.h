@@ -8,7 +8,7 @@
 @class DBXTEAMGroupsListContinueArg;
 
 /// 
-/// The `DBXTEAMGroupsListContinueArg` struct.
+/// The GroupsListContinueArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// Indicates from what point to get the next set of groups.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Full constructor for the `GroupsListContinueArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXTEAMGroupsListContinueArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter cursor: Indicates from what point to get the next set of groups.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsListContinueArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupsListContinueArg` struct.
+/// The serialization class for the GroupsListContinueArg struct.
 /// 
 @interface DBXTEAMGroupsListContinueArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsListContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListContinueArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsListContinueArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupsListContinueArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsListContinueArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsListContinueArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsListContinueArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsListContinueArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsListContinueArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsListContinueArg` object.
+/// 
 + (DBXTEAMGroupsListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -15,7 +15,7 @@
 
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorTemplateNotFound;
         _templateNotFound = templateNotFound;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithRestrictedContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorRestrictedContent;
     }
     return self;
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorOther;
     }
     return self;
@@ -40,7 +40,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorPath;
         _path = path;
     }
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithPropertyFieldTooLarge {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorPropertyFieldTooLarge;
     }
     return self;
@@ -57,7 +57,7 @@
 
 - (instancetype)initWithDoesNotFitTemplate {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESInvalidPropertyGroupErrorDoesNotFitTemplate;
     }
     return self;
@@ -107,21 +107,21 @@
 }
 
 - (NSString *)templateNotFound {
-    if (_tag != DBXFILESInvalidPropertyGroupErrorTemplateNotFound) {
+    if (![self isTemplateNotFound]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESInvalidPropertyGroupErrorTemplateNotFound`, but was %@.", [self getTagName]];
     }
     return _templateNotFound;
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESInvalidPropertyGroupErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESInvalidPropertyGroupErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESInvalidPropertyGroupErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESInvalidPropertyGroupErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

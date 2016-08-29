@@ -8,7 +8,7 @@
 @class DBXTEAMGroupsMembersListContinueError;
 
 /// 
-/// The `DBXTEAMGroupsMembersListContinueError` union.
+/// The GroupsMembersListContinueError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXTEAMGroupsMembersListContinueError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupsMembersListContinueErrorTag` enum type represents the
-/// possible tag states that the `DBXTEAMGroupsMembersListContinueError` union
-/// can exist in.
+/// possible tag states with which the `DBXTEAMGroupsMembersListContinueError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupsMembersListContinueErrorTag) {
     /// The cursor is invalid.
     DBXTEAMGroupsMembersListContinueErrorInvalidCursor,
@@ -31,19 +31,42 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsMembersListContinueErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupsMembersListContinueErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `InvalidCursor`.
+/// 
+/// About the `InvalidCursor` tag state: The cursor is invalid.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsMembersListContinueError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidCursor;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsMembersListContinueError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidCursor`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidCursor`.
+/// 
 - (BOOL)isInvalidCursor;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -55,12 +78,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsMembersListContinueErrorTag) {
 /// 
 @interface DBXTEAMGroupsMembersListContinueErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsMembersListContinueError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListContinueError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsMembersListContinueError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMGroupsMembersListContinueError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsMembersListContinueError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsMembersListContinueError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsMembersListContinueError`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsMembersListContinueError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsMembersListContinueError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsMembersListContinueError`
+/// object.
+/// 
 + (DBXTEAMGroupsMembersListContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -12,7 +12,7 @@
 
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGInviteeInfoEmail;
         _email = email;
     }
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGInviteeInfoOther;
     }
     return self;
@@ -47,14 +47,14 @@
 }
 
 - (NSString *)email {
-    if (_tag != DBXSHARINGInviteeInfoEmail) {
+    if (![self isEmail]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGInviteeInfoEmail`, but was %@.", [self getTagName]];
     }
     return _email;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGInviteeInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGInviteeInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

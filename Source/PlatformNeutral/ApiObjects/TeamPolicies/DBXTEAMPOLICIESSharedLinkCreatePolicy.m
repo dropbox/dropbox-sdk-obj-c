@@ -10,7 +10,7 @@
 
 - (instancetype)initWithDefaultPublic {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithDefaultTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithTeamOnly {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedLinkCreatePolicyTeamOnly;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESSharedLinkCreatePolicyOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMPOLICIESSharedLinkCreatePolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMPOLICIESSharedLinkCreatePolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

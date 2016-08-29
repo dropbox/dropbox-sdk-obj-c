@@ -14,7 +14,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _format = format ?: [[DBXFILESThumbnailFormat alloc] initWithJpeg];
         _size = size ?: [[DBXFILESThumbnailSize alloc] initWithW64h64];
@@ -26,8 +26,8 @@
     return [self initWithPath:path format:nil size:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESThumbnailArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESThumbnailArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

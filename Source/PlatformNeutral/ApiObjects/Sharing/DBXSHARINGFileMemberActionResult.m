@@ -13,15 +13,15 @@
 - (instancetype)initWithMember:(DBXSHARINGMemberSelector *)member result:(DBXSHARINGFileMemberActionIndividualResult *)result {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _member = member;
         _result = result;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFileMemberActionResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFileMemberActionResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

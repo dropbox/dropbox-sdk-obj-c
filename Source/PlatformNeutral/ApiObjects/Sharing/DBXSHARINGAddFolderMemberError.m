@@ -17,7 +17,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorAccessError;
         _accessError = accessError;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithEmailUnverified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorEmailUnverified;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithBadMember:(DBXSHARINGAddMemberSelectorError *)badMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorBadMember;
         _badMember = badMember;
     }
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithCantShareOutsideTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorCantShareOutsideTeam;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithTooManyMembers:(NSNumber *)tooManyMembers {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorTooManyMembers;
         _tooManyMembers = tooManyMembers;
     }
@@ -60,7 +60,7 @@
 
 - (instancetype)initWithTooManyPendingInvites:(NSNumber *)tooManyPendingInvites {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorTooManyPendingInvites;
         _tooManyPendingInvites = tooManyPendingInvites;
     }
@@ -69,7 +69,7 @@
 
 - (instancetype)initWithRateLimit {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorRateLimit;
     }
     return self;
@@ -77,7 +77,7 @@
 
 - (instancetype)initWithTooManyInvitees {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorTooManyInvitees;
     }
     return self;
@@ -85,7 +85,7 @@
 
 - (instancetype)initWithInsufficientPlan {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorInsufficientPlan;
     }
     return self;
@@ -93,7 +93,7 @@
 
 - (instancetype)initWithTeamFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorTeamFolder;
     }
     return self;
@@ -101,7 +101,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorNoPermission;
     }
     return self;
@@ -109,7 +109,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAddFolderMemberErrorOther;
     }
     return self;
@@ -195,35 +195,35 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGAddFolderMemberErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFolderMemberErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DBXSHARINGAddMemberSelectorError *)badMember {
-    if (_tag != DBXSHARINGAddFolderMemberErrorBadMember) {
+    if (![self isBadMember]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFolderMemberErrorBadMember`, but was %@.", [self getTagName]];
     }
     return _badMember;
 }
 
 - (NSNumber *)tooManyMembers {
-    if (_tag != DBXSHARINGAddFolderMemberErrorTooManyMembers) {
+    if (![self isTooManyMembers]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFolderMemberErrorTooManyMembers`, but was %@.", [self getTagName]];
     }
     return _tooManyMembers;
 }
 
 - (NSNumber *)tooManyPendingInvites {
-    if (_tag != DBXSHARINGAddFolderMemberErrorTooManyPendingInvites) {
+    if (![self isTooManyPendingInvites]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGAddFolderMemberErrorTooManyPendingInvites`, but was %@.", [self getTagName]];
     }
     return _tooManyPendingInvites;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAddFolderMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAddFolderMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

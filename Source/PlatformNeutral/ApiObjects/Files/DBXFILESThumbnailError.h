@@ -9,7 +9,7 @@
 @class DBXFILESThumbnailError;
 
 /// 
-/// The `DBXFILESThumbnailError` union.
+/// The ThumbnailError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESThumbnailError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESThumbnailErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESThumbnailError` union can exist in.
+/// with which the `DBXFILESThumbnailError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESThumbnailErrorTag) {
     /// An error occurs when downloading metadata for the image.
     DBXFILESThumbnailErrorPath,
@@ -40,32 +40,87 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailErrorTag) {
 /// An error occurs when downloading metadata for the image.
 @property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// About the `Path` tag state: An error occurs when downloading metadata for
+/// the image.
+/// 
+/// - parameter path: An error occurs when downloading metadata for the image.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
 
+/// 
 /// Initializes union class with tag state of `UnsupportedExtension`.
+/// 
+/// About the `UnsupportedExtension` tag state: The file extension doesn't allow
+/// conversion to a thumbnail.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailError` instance.
+/// 
 - (nonnull instancetype)initWithUnsupportedExtension;
 
+/// 
 /// Initializes union class with tag state of `UnsupportedImage`.
+/// 
+/// About the `UnsupportedImage` tag state: The image cannot be converted to a
+/// thumbnail.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailError` instance.
+/// 
 - (nonnull instancetype)initWithUnsupportedImage;
 
+/// 
 /// Initializes union class with tag state of `ConversionError`.
+/// 
+/// About the `ConversionError` tag state: An error occurs during thumbnail
+/// conversion.
+/// 
+/// - returns: An initialized `DBXFILESThumbnailError` instance.
+/// 
 - (nonnull instancetype)initWithConversionError;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UnsupportedExtension`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UnsupportedExtension`.
+/// 
 - (BOOL)isUnsupportedExtension;
 
-/// Returns whether the union's current tag state has value `UnsupportedImage`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `UnsupportedImage`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UnsupportedImage`.
+/// 
 - (BOOL)isUnsupportedImage;
 
-/// Returns whether the union's current tag state has value `ConversionError`.
+/// 
+/// Retrieves whether the union's current tag state has value `ConversionError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `ConversionError`.
+/// 
 - (BOOL)isConversionError;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -76,12 +131,25 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailErrorTag) {
 /// 
 @interface DBXFILESThumbnailErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESThumbnailError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESThumbnailError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESThumbnailError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESThumbnailError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESThumbnailError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESThumbnailError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESThumbnailError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESThumbnailError` object.
+/// 
 + (DBXFILESThumbnailError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

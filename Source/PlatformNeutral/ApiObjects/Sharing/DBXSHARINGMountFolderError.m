@@ -15,7 +15,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorAccessError;
         _accessError = accessError;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithInsideSharedFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorInsideSharedFolder;
     }
     return self;
@@ -32,7 +32,7 @@
 
 - (instancetype)initWithInsufficientQuota:(DBXSHARINGInsufficientQuotaAmounts *)insufficientQuota {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorInsufficientQuota;
         _insufficientQuota = insufficientQuota;
     }
@@ -41,7 +41,7 @@
 
 - (instancetype)initWithAlreadyMounted {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorAlreadyMounted;
     }
     return self;
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorNoPermission;
     }
     return self;
@@ -57,7 +57,7 @@
 
 - (instancetype)initWithNotMountable {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorNotMountable;
     }
     return self;
@@ -65,7 +65,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMountFolderErrorOther;
     }
     return self;
@@ -121,21 +121,21 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGMountFolderErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGMountFolderErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DBXSHARINGInsufficientQuotaAmounts *)insufficientQuota {
-    if (_tag != DBXSHARINGMountFolderErrorInsufficientQuota) {
+    if (![self isInsufficientQuota]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGMountFolderErrorInsufficientQuota`, but was %@.", [self getTagName]];
     }
     return _insufficientQuota;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMountFolderErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMountFolderErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

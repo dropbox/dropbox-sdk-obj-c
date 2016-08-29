@@ -11,14 +11,14 @@
 - (instancetype)initWithIsRecoverable:(NSNumber *)isRecoverable {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _isRecoverable = isRecoverable;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRemovedStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRemovedStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

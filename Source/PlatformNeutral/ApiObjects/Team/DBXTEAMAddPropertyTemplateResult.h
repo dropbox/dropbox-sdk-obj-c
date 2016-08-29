@@ -8,7 +8,7 @@
 @class DBXTEAMAddPropertyTemplateResult;
 
 /// 
-/// The `DBXTEAMAddPropertyTemplateResult` struct.
+/// The AddPropertyTemplateResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,45 @@
 /// An identifier for property template added by propertiesTemplateAdd.
 @property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
-/// Full constructor for the `AddPropertyTemplateResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMAddPropertyTemplateResult` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter templateId: An identifier for property template added by
+/// :route:`properties/template/add`.
+/// 
+/// - returns: An initialized `DBXTEAMAddPropertyTemplateResult` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMAddPropertyTemplateResult` struct.
+/// The serialization class for the AddPropertyTemplateResult struct.
 /// 
 @interface DBXTEAMAddPropertyTemplateResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMAddPropertyTemplateResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMAddPropertyTemplateResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMAddPropertyTemplateResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMAddPropertyTemplateResult`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMAddPropertyTemplateResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMAddPropertyTemplateResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMAddPropertyTemplateResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMAddPropertyTemplateResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMAddPropertyTemplateResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMAddPropertyTemplateResult`
+/// object.
+/// 
 + (DBXTEAMAddPropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

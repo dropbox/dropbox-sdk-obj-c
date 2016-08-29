@@ -12,15 +12,15 @@
 - (instancetype)initWithMembers:(DBXSHARINGSharedFileMembers *)members memberCount:(NSNumber *)memberCount {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _members = members;
         _memberCount = memberCount;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFileMembersCountResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFileMembersCountResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

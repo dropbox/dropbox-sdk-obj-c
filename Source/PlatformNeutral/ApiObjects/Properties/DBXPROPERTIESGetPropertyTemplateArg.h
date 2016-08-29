@@ -8,7 +8,7 @@
 @class DBXPROPERTIESGetPropertyTemplateArg;
 
 /// 
-/// The `DBXPROPERTIESGetPropertyTemplateArg` struct.
+/// The GetPropertyTemplateArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,25 +19,45 @@
 /// An identifier for property template added by route properties/template/add.
 @property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
-/// Full constructor for the `GetPropertyTemplateArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXPROPERTIESGetPropertyTemplateArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter templateId: An identifier for property template added by route
+/// properties/template/add.
+/// 
+/// - returns: An initialized `DBXPROPERTIESGetPropertyTemplateArg` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXPROPERTIESGetPropertyTemplateArg`
-/// struct.
+/// The serialization class for the GetPropertyTemplateArg struct.
 /// 
 @interface DBXPROPERTIESGetPropertyTemplateArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESGetPropertyTemplateArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESGetPropertyTemplateArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESGetPropertyTemplateArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESGetPropertyTemplateArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESGetPropertyTemplateArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESGetPropertyTemplateArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESGetPropertyTemplateArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESGetPropertyTemplateArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESGetPropertyTemplateArg`
+/// object.
+/// 
 + (DBXPROPERTIESGetPropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

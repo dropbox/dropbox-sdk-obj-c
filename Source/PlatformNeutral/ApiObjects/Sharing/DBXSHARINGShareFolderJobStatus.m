@@ -16,7 +16,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderJobStatusInProgress;
     }
     return self;
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(DBXSHARINGSharedFolderMetadata *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderJobStatusComplete;
         _complete = complete;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithFailed:(DBXSHARINGShareFolderError *)failed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGShareFolderJobStatusFailed;
         _failed = failed;
     }
@@ -66,21 +66,21 @@
 }
 
 - (DBXSHARINGSharedFolderMetadata *)complete {
-    if (_tag != DBXSHARINGShareFolderJobStatusComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGShareFolderJobStatusComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DBXSHARINGShareFolderError *)failed {
-    if (_tag != DBXSHARINGShareFolderJobStatusFailed) {
+    if (![self isFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGShareFolderJobStatusFailed`, but was %@.", [self getTagName]];
     }
     return _failed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGShareFolderJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGShareFolderJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

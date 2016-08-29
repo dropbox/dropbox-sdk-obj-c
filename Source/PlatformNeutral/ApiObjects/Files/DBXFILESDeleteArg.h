@@ -8,7 +8,7 @@
 @class DBXFILESDeleteArg;
 
 /// 
-/// The `DBXFILESDeleteArg` struct.
+/// The DeleteArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,42 @@
 /// Path in the user's Dropbox to delete.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Full constructor for the `DeleteArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESDeleteArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: Path in the user's Dropbox to delete.
+/// 
+/// - returns: An initialized `DBXFILESDeleteArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESDeleteArg` struct.
+/// The serialization class for the DeleteArg struct.
 /// 
 @interface DBXFILESDeleteArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESDeleteArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESDeleteArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESDeleteArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESDeleteArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDeleteArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESDeleteArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESDeleteArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESDeleteArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESDeleteArg` object.
+/// 
 + (DBXFILESDeleteArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

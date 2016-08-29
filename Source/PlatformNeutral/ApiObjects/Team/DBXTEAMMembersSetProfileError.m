@@ -11,7 +11,7 @@
 
 - (instancetype)initWithUserNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorUserNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithUserNotInTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorUserNotInTeam;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithExternalIdAndNewExternalIdUnsafe {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe;
     }
     return self;
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithNoNewDataSpecified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorNoNewDataSpecified;
     }
     return self;
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithEmailReservedForOtherUser {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorEmailReservedForOtherUser;
     }
     return self;
@@ -51,7 +51,7 @@
 
 - (instancetype)initWithExternalIdUsedByOtherUser {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorExternalIdUsedByOtherUser;
     }
     return self;
@@ -59,7 +59,7 @@
 
 - (instancetype)initWithSetProfileDisallowed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorSetProfileDisallowed;
     }
     return self;
@@ -67,7 +67,7 @@
 
 - (instancetype)initWithParamCannotBeEmpty {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorParamCannotBeEmpty;
     }
     return self;
@@ -75,7 +75,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMMembersSetProfileErrorOther;
     }
     return self;
@@ -142,8 +142,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersSetProfileErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersSetProfileErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

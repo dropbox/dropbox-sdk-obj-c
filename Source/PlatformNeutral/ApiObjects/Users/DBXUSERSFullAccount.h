@@ -12,13 +12,13 @@
 @class DBXUSERSName;
 
 /// 
-/// The `DBXUSERSFullAccount` struct.
+/// The FullAccount struct.
+/// 
+/// Detailed information about the current user's account.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Detailed information about the current user's account.
 /// 
 @interface DBXUSERSFullAccount : DBXUSERSAccount <DBXSerializable> 
 
@@ -48,28 +48,95 @@
 /// What type of account this user has.
 @property (nonatomic, readonly) DBXUSERSAccountType * _Nonnull accountType;
 
-/// Full constructor for the `FullAccount` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXUSERSFullAccount` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter accountId: The user's unique Dropbox ID.
+/// - parameter name: Details of a user's name.
+/// - parameter email: The user's e-mail address. Do not rely on this without
+/// checking the :field:`email_verified` field. Even then, it's possible that
+/// the user has since lost access to their e-mail.
+/// - parameter emailVerified: Whether the user has verified their e-mail
+/// address.
+/// - parameter disabled: Whether the user has been disabled.
+/// - parameter locale: The language that the user specified. Locale tags will
+/// be :link:`IETF language tags
+/// http://en.wikipedia.org/wiki/IETF_language_tag`.
+/// - parameter referralLink: The user's :link:`referral link
+/// https://www.dropbox.com/referrals`.
+/// - parameter isPaired: Whether the user has a personal and work account. If
+/// the current account is personal, then :field:`team` will always be
+/// :val:`null`, but :field:`is_paired` will indicate if a work account is
+/// linked.
+/// - parameter accountType: What type of account this user has.
+/// - parameter profilePhotoUrl: URL for the photo representing the user, if one
+/// is set.
+/// - parameter country: The user's two-letter country code, if available.
+/// Country codes are based on :link:`ISO 3166-1
+/// http://en.wikipedia.org/wiki/ISO_3166-1`.
+/// - parameter team: If this account is a member of a team, information about
+/// that team.
+/// - parameter teamMemberId: This account's unique team member id. This field
+/// will only be present if :field:`team` is present.
+/// 
+/// - returns: An initialized `DBXUSERSFullAccount` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DBXUSERSAccountType * _Nonnull)accountType profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl country:(NSString * _Nullable)country team:(DBXUSERSFullTeam * _Nullable)team teamMemberId:(NSString * _Nullable)teamMemberId;
 
-/// Convenience constructor for the `FullAccount` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXUSERSFullAccount` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter accountId: The user's unique Dropbox ID.
+/// - parameter name: Details of a user's name.
+/// - parameter email: The user's e-mail address. Do not rely on this without
+/// checking the :field:`email_verified` field. Even then, it's possible that
+/// the user has since lost access to their e-mail.
+/// - parameter emailVerified: Whether the user has verified their e-mail
+/// address.
+/// - parameter disabled: Whether the user has been disabled.
+/// - parameter locale: The language that the user specified. Locale tags will
+/// be :link:`IETF language tags
+/// http://en.wikipedia.org/wiki/IETF_language_tag`.
+/// - parameter referralLink: The user's :link:`referral link
+/// https://www.dropbox.com/referrals`.
+/// - parameter isPaired: Whether the user has a personal and work account. If
+/// the current account is personal, then :field:`team` will always be
+/// :val:`null`, but :field:`is_paired` will indicate if a work account is
+/// linked.
+/// - parameter accountType: What type of account this user has.
+/// 
+/// - returns: An initialized `DBXUSERSFullAccount` instance.
+/// 
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled locale:(NSString * _Nonnull)locale referralLink:(NSString * _Nonnull)referralLink isPaired:(NSNumber * _Nonnull)isPaired accountType:(DBXUSERSAccountType * _Nonnull)accountType;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSFullAccount` struct.
+/// The serialization class for the FullAccount struct.
 /// 
 @interface DBXUSERSFullAccountSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXUSERSFullAccount` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullAccount * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSFullAccount` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSFullAccount` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSFullAccount` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSFullAccount * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSFullAccount` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXUSERSFullAccount` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSFullAccount` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSFullAccount` object.
+/// 
 + (DBXUSERSFullAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

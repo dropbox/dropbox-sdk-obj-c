@@ -14,7 +14,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _limit = limit ?: @(100);
         _actions = actions;
     }
@@ -25,8 +25,8 @@
     return [self initWithLimit:nil actions:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListFilesArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListFilesArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

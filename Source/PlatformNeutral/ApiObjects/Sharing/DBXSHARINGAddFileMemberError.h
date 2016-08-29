@@ -10,18 +10,18 @@
 @class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DBXSHARINGAddFileMemberError` union.
+/// The AddFileMemberError union.
+/// 
+/// Errors for addFileMember.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Errors for addFileMember.
-/// 
 @interface DBXSHARINGAddFileMemberError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGAddFileMemberErrorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGAddFileMemberError` union can exist in.
+/// states with which the `DBXSHARINGAddFileMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGAddFileMemberErrorTag) {
     /// (no description).
     DBXSHARINGAddFileMemberErrorUserError,
@@ -49,37 +49,92 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFileMemberErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
+/// 
 /// Initializes union class with tag state of `UserError`.
+/// 
+/// - parameter userError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `RateLimit`.
+/// 
+/// About the `RateLimit` tag state: The user has reached the rate limit for
+/// invitations.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithRateLimit;
 
+/// 
 /// Initializes union class with tag state of `InvalidComment`.
+/// 
+/// About the `InvalidComment` tag state: The custom message did not pass
+/// comment permissions checks.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidComment;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFileMemberError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserError`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserError`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserError`.
+/// 
 - (BOOL)isUserError;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `RateLimit`.
+/// 
+/// Retrieves whether the union's current tag state has value `RateLimit`.
+/// 
+/// - returns: Whether the union's current tag state has value `RateLimit`.
+/// 
 - (BOOL)isRateLimit;
 
-/// Returns whether the union's current tag state has value `InvalidComment`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidComment`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidComment`.
+/// 
 - (BOOL)isInvalidComment;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -90,12 +145,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFileMemberErrorTag) {
 /// 
 @interface DBXSHARINGAddFileMemberErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGAddFileMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGAddFileMemberError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGAddFileMemberError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFileMemberError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFileMemberError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGAddFileMemberError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGAddFileMemberError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFileMemberError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGAddFileMemberError` object.
+/// 
 + (DBXSHARINGAddFileMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

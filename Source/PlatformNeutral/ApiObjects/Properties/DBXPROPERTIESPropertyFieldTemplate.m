@@ -12,7 +12,7 @@
 - (instancetype)initWithName:(NSString *)name description_:(NSString *)description_ type:(DBXPROPERTIESPropertyType *)type {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _name = name;
         _description_ = description_;
         _type = type;
@@ -20,8 +20,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXPROPERTIESPropertyFieldTemplateSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXPROPERTIESPropertyFieldTemplateSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

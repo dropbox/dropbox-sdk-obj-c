@@ -12,7 +12,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"]](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _url = url;
         _path = path;
         _linkPassword = linkPassword;
@@ -24,8 +24,8 @@
     return [self initWithUrl:url path:nil linkPassword:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGGetSharedLinkMetadataArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGGetSharedLinkMetadataArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

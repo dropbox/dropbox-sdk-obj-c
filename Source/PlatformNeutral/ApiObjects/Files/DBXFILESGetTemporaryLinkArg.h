@@ -8,7 +8,7 @@
 @class DBXFILESGetTemporaryLinkArg;
 
 /// 
-/// The `DBXFILESGetTemporaryLinkArg` struct.
+/// The GetTemporaryLinkArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,43 @@
 /// The path to the file you want a temporary link to.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Full constructor for the `GetTemporaryLinkArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESGetTemporaryLinkArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path to the file you want a temporary link to.
+/// 
+/// - returns: An initialized `DBXFILESGetTemporaryLinkArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGetTemporaryLinkArg` struct.
+/// The serialization class for the GetTemporaryLinkArg struct.
 /// 
 @interface DBXFILESGetTemporaryLinkArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGetTemporaryLinkArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGetTemporaryLinkArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGetTemporaryLinkArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGetTemporaryLinkArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetTemporaryLinkArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGetTemporaryLinkArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGetTemporaryLinkArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGetTemporaryLinkArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGetTemporaryLinkArg` object.
+/// 
 + (DBXFILESGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

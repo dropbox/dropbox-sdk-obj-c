@@ -13,7 +13,7 @@
 - (instancetype)initWithUser:(DBXTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData transferDestId:(DBXTEAMUserSelectorArg *)transferDestId transferAdminId:(DBXTEAMUserSelectorArg *)transferAdminId keepAccount:(NSNumber *)keepAccount {
 
     self = [super initWithUser:user wipeData:wipeData];
-    if (self != nil) {
+    if (self) {
         _transferDestId = transferDestId;
         _transferAdminId = transferAdminId;
         _keepAccount = keepAccount ?: @NO;
@@ -25,8 +25,8 @@
     return [self initWithUser:user wipeData:nil transferDestId:nil transferAdminId:nil keepAccount:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersRemoveArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersRemoveArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

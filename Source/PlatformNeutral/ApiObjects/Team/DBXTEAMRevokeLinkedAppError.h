@@ -8,18 +8,18 @@
 @class DBXTEAMRevokeLinkedAppError;
 
 /// 
-/// The `DBXTEAMRevokeLinkedAppError` union.
+/// The RevokeLinkedAppError union.
+/// 
+/// Error returned by linkedAppsRevokeLinkedApp.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error returned by linkedAppsRevokeLinkedApp.
-/// 
 @interface DBXTEAMRevokeLinkedAppError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMRevokeLinkedAppErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMRevokeLinkedAppError` union can exist in.
+/// states with which the `DBXTEAMRevokeLinkedAppError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
     /// Application not found.
     DBXTEAMRevokeLinkedAppErrorAppNotFound,
@@ -35,25 +35,58 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMRevokeLinkedAppErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `AppNotFound`.
+/// 
+/// About the `AppNotFound` tag state: Application not found.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedAppError` instance.
+/// 
 - (nonnull instancetype)initWithAppNotFound;
 
+/// 
 /// Initializes union class with tag state of `MemberNotFound`.
+/// 
+/// About the `MemberNotFound` tag state: Member not found.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedAppError` instance.
+/// 
 - (nonnull instancetype)initWithMemberNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMRevokeLinkedAppError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AppNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `AppNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `AppNotFound`.
+/// 
 - (BOOL)isAppNotFound;
 
-/// Returns whether the union's current tag state has value `MemberNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberNotFound`.
+/// 
 - (BOOL)isMemberNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -64,12 +97,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
 /// 
 @interface DBXTEAMRevokeLinkedAppErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMRevokeLinkedAppError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMRevokeLinkedAppError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMRevokeLinkedAppError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedAppError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMRevokeLinkedAppError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMRevokeLinkedAppError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMRevokeLinkedAppError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMRevokeLinkedAppError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMRevokeLinkedAppError` object.
+/// 
 + (DBXTEAMRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

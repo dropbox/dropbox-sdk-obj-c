@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _templateId = templateId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMUpdatePropertyTemplateResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMUpdatePropertyTemplateResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

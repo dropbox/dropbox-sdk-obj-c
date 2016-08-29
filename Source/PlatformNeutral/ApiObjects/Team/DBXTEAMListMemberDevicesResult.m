@@ -17,7 +17,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](mobileClientSessions);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _activeWebSessions = activeWebSessions;
         _desktopClientSessions = desktopClientSessions;
         _mobileClientSessions = mobileClientSessions;
@@ -29,8 +29,8 @@
     return [self initWithActiveWebSessions:nil desktopClientSessions:nil mobileClientSessions:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListMemberDevicesResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListMemberDevicesResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

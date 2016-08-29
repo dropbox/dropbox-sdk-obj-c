@@ -8,7 +8,7 @@
 @class DBXSHARINGUnshareFolderArg;
 
 /// 
-/// The `DBXSHARINGUnshareFolderArg` struct.
+/// The UnshareFolderArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -24,28 +24,57 @@
 /// user, who is an owner, will always retain their copy.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
 
-/// Full constructor for the `UnshareFolderArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGUnshareFolderArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// - parameter leaveACopy: If true, members of this shared folder will get a
+/// copy of this folder after it's unshared. Otherwise, it will be removed from
+/// their Dropbox. The current user, who is an owner, will always retain their
+/// copy.
+/// 
+/// - returns: An initialized `DBXSHARINGUnshareFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
-/// Convenience constructor for the `UnshareFolderArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGUnshareFolderArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGUnshareFolderArg` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGUnshareFolderArg` struct.
+/// The serialization class for the UnshareFolderArg struct.
 /// 
 @interface DBXSHARINGUnshareFolderArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUnshareFolderArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFolderArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUnshareFolderArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGUnshareFolderArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUnshareFolderArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUnshareFolderArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUnshareFolderArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUnshareFolderArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUnshareFolderArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUnshareFolderArg` object.
+/// 
 + (DBXSHARINGUnshareFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

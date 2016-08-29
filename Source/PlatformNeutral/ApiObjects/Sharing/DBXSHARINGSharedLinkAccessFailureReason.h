@@ -8,7 +8,7 @@
 @class DBXSHARINGSharedLinkAccessFailureReason;
 
 /// 
-/// The `DBXSHARINGSharedLinkAccessFailureReason` union.
+/// The SharedLinkAccessFailureReason union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 @interface DBXSHARINGSharedLinkAccessFailureReason : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharedLinkAccessFailureReasonTag` enum type represents the
-/// possible tag states that the `DBXSHARINGSharedLinkAccessFailureReason` union
-/// can exist in.
+/// possible tag states with which the `DBXSHARINGSharedLinkAccessFailureReason`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
     /// User is not logged in.
     DBXSHARINGSharedLinkAccessFailureReasonLoginRequired,
@@ -43,44 +43,117 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharedLinkAccessFailureReasonTag tag;
 
+/// 
 /// Initializes union class with tag state of `LoginRequired`.
+/// 
+/// About the `LoginRequired` tag state: User is not logged in.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithLoginRequired;
 
+/// 
 /// Initializes union class with tag state of `EmailVerifyRequired`.
+/// 
+/// About the `EmailVerifyRequired` tag state: User's email is not verified.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithEmailVerifyRequired;
 
+/// 
 /// Initializes union class with tag state of `PasswordRequired`.
+/// 
+/// About the `PasswordRequired` tag state: The link is password protected.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithPasswordRequired;
 
+/// 
 /// Initializes union class with tag state of `TeamOnly`.
+/// 
+/// About the `TeamOnly` tag state: Access is allowed for team members only.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithTeamOnly;
 
+/// 
 /// Initializes union class with tag state of `OwnerOnly`.
+/// 
+/// About the `OwnerOnly` tag state: Access is allowed for the shared link's
+/// owner only.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOwnerOnly;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkAccessFailureReason`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `LoginRequired`.
+/// 
+/// Retrieves whether the union's current tag state has value `LoginRequired`.
+/// 
+/// - returns: Whether the union's current tag state has value `LoginRequired`.
+/// 
 - (BOOL)isLoginRequired;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `EmailVerifyRequired`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `EmailVerifyRequired`.
+/// 
 - (BOOL)isEmailVerifyRequired;
 
-/// Returns whether the union's current tag state has value `PasswordRequired`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `PasswordRequired`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `PasswordRequired`.
+/// 
 - (BOOL)isPasswordRequired;
 
-/// Returns whether the union's current tag state has value `TeamOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamOnly`.
+/// 
 - (BOOL)isTeamOnly;
 
-/// Returns whether the union's current tag state has value `OwnerOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `OwnerOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `OwnerOnly`.
+/// 
 - (BOOL)isOwnerOnly;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -92,12 +165,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
 /// 
 @interface DBXSHARINGSharedLinkAccessFailureReasonSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedLinkAccessFailureReason` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkAccessFailureReason * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedLinkAccessFailureReason` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGSharedLinkAccessFailureReason` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkAccessFailureReason` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkAccessFailureReason * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedLinkAccessFailureReason`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedLinkAccessFailureReason` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkAccessFailureReason` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXSHARINGSharedLinkAccessFailureReason` object.
+/// 
 + (DBXSHARINGSharedLinkAccessFailureReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

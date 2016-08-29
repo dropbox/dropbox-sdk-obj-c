@@ -8,7 +8,7 @@
 @class DBXSHARINGGetSharedLinkMetadataArg;
 
 /// 
-/// The `DBXSHARINGGetSharedLinkMetadataArg` struct.
+/// The GetSharedLinkMetadataArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -27,28 +27,59 @@
 /// If the shared link has a password, this parameter can be used.
 @property (nonatomic, readonly, copy) NSString * _Nullable linkPassword;
 
-/// Full constructor for the `GetSharedLinkMetadataArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGGetSharedLinkMetadataArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter url: URL of the shared link.
+/// - parameter path: If the shared link is to a folder, this parameter can be
+/// used to retrieve the metadata for a specific file or sub-folder in this
+/// folder. A relative path should be used.
+/// - parameter linkPassword: If the shared link has a password, this parameter
+/// can be used.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url path:(NSString * _Nullable)path linkPassword:(NSString * _Nullable)linkPassword;
 
-/// Convenience constructor for the `GetSharedLinkMetadataArg` struct (exposes
-/// only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGGetSharedLinkMetadataArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter url: URL of the shared link.
+/// 
+/// - returns: An initialized `DBXSHARINGGetSharedLinkMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGGetSharedLinkMetadataArg` struct.
+/// The serialization class for the GetSharedLinkMetadataArg struct.
 /// 
 @interface DBXSHARINGGetSharedLinkMetadataArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetSharedLinkMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkMetadataArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetSharedLinkMetadataArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGGetSharedLinkMetadataArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinkMetadataArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetSharedLinkMetadataArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetSharedLinkMetadataArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetSharedLinkMetadataArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetSharedLinkMetadataArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGGetSharedLinkMetadataArg`
+/// object.
+/// 
 + (DBXSHARINGGetSharedLinkMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

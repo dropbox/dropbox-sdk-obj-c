@@ -8,7 +8,7 @@
 @class DBXTEAMMembersSuspendError;
 
 /// 
-/// The `DBXTEAMMembersSuspendError` union.
+/// The MembersSuspendError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMMembersSuspendError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersSuspendErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMMembersSuspendError` union can exist in.
+/// states with which the `DBXTEAMMembersSuspendError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersSuspendErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
@@ -43,44 +43,116 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSuspendErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMMembersSuspendErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotFound`.
+/// 
+/// About the `UserNotFound` tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotFound;
 
+/// 
 /// Initializes union class with tag state of `UserNotInTeam`.
+/// 
+/// About the `UserNotInTeam` tag state: The user is not a member of the team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `SuspendInactiveUser`.
+/// 
+/// About the `SuspendInactiveUser` tag state: The user is not active, so it
+/// cannot be suspended.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithSuspendInactiveUser;
 
+/// 
 /// Initializes union class with tag state of `SuspendLastAdmin`.
+/// 
+/// About the `SuspendLastAdmin` tag state: The user is the last admin of the
+/// team, so it cannot be suspended.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithSuspendLastAdmin;
 
+/// 
 /// Initializes union class with tag state of `TeamLicenseLimit`.
+/// 
+/// About the `TeamLicenseLimit` tag state: Team is full. The organization has
+/// no available licenses.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSuspendError` instance.
+/// 
 - (nonnull instancetype)initWithTeamLicenseLimit;
 
-/// Returns whether the union's current tag state has value `UserNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotFound`.
+/// 
 - (BOOL)isUserNotFound;
 
-/// Returns whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotInTeam`.
+/// 
 - (BOOL)isUserNotInTeam;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `SuspendInactiveUser`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SuspendInactiveUser`.
+/// 
 - (BOOL)isSuspendInactiveUser;
 
-/// Returns whether the union's current tag state has value `SuspendLastAdmin`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `SuspendLastAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SuspendLastAdmin`.
+/// 
 - (BOOL)isSuspendLastAdmin;
 
-/// Returns whether the union's current tag state has value `TeamLicenseLimit`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `TeamLicenseLimit`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TeamLicenseLimit`.
+/// 
 - (BOOL)isTeamLicenseLimit;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -91,12 +163,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSuspendErrorTag) {
 /// 
 @interface DBXTEAMMembersSuspendErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersSuspendError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSuspendError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersSuspendError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersSuspendError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSuspendError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSuspendError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersSuspendError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersSuspendError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSuspendError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersSuspendError` object.
+/// 
 + (DBXTEAMMembersSuspendError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

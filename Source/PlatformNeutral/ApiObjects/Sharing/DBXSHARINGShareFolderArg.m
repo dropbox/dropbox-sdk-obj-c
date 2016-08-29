@@ -15,7 +15,7 @@
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _memberPolicy = memberPolicy ?: [[DBXSHARINGMemberPolicy alloc] initWithAnyone];
         _aclUpdatePolicy = aclUpdatePolicy ?: [[DBXSHARINGAclUpdatePolicy alloc] initWithOwner];
@@ -29,8 +29,8 @@
     return [self initWithPath:path memberPolicy:nil aclUpdatePolicy:nil sharedLinkPolicy:nil forceAsync:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGShareFolderArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGShareFolderArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

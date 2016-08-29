@@ -12,7 +12,7 @@
 
 - (instancetype)initWithAdd {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteModeAdd;
     }
     return self;
@@ -20,7 +20,7 @@
 
 - (instancetype)initWithOverwrite {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteModeOverwrite;
     }
     return self;
@@ -28,7 +28,7 @@
 
 - (instancetype)initWithUpdate:(NSString *)update {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteModeUpdate;
         _update = update;
     }
@@ -61,14 +61,14 @@
 }
 
 - (NSString *)update {
-    if (_tag != DBXFILESWriteModeUpdate) {
+    if (![self isUpdate]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESWriteModeUpdate`, but was %@.", [self getTagName]];
     }
     return _update;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESWriteModeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESWriteModeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

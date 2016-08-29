@@ -10,13 +10,13 @@
 @class DBXSHARINGMemberSelector;
 
 /// 
-/// The `DBXSHARINGChangeFileMemberAccessArgs` struct.
+/// The ChangeFileMemberAccessArgs struct.
+/// 
+/// Arguments for changeFileMemberAccess.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for changeFileMemberAccess.
 /// 
 @interface DBXSHARINGChangeFileMemberAccessArgs : NSObject <DBXSerializable> 
 
@@ -29,25 +29,46 @@
 /// The new access level for the member.
 @property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
-/// Full constructor for the `ChangeFileMemberAccessArgs` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGChangeFileMemberAccessArgs` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter file: File for which we are changing a member's access.
+/// - parameter member: The member whose access we are changing.
+/// - parameter accessLevel: The new access level for the member.
+/// 
+/// - returns: An initialized `DBXSHARINGChangeFileMemberAccessArgs` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGChangeFileMemberAccessArgs`
-/// struct.
+/// The serialization class for the ChangeFileMemberAccessArgs struct.
 /// 
 @interface DBXSHARINGChangeFileMemberAccessArgsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGChangeFileMemberAccessArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGChangeFileMemberAccessArgs * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGChangeFileMemberAccessArgs` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGChangeFileMemberAccessArgs` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGChangeFileMemberAccessArgs` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGChangeFileMemberAccessArgs * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGChangeFileMemberAccessArgs`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGChangeFileMemberAccessArgs` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGChangeFileMemberAccessArgs` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGChangeFileMemberAccessArgs`
+/// object.
+/// 
 + (DBXSHARINGChangeFileMemberAccessArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

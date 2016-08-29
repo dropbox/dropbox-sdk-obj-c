@@ -13,7 +13,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](devices);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _devices = devices;
         _hasMore = hasMore;
         _cursor = cursor;
@@ -25,8 +25,8 @@
     return [self initWithDevices:devices hasMore:hasMore cursor:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMListTeamDevicesResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMListTeamDevicesResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

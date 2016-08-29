@@ -8,13 +8,13 @@
 @class DBXTEAMApiApp;
 
 /// 
-/// The `DBXTEAMApiApp` struct.
+/// The ApiApp struct.
+/// 
+/// Information on linked third party applications
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information on linked third party applications
 /// 
 @interface DBXTEAMApiApp : NSObject <DBXSerializable> 
 
@@ -36,27 +36,61 @@
 /// Whether the linked application uses a dedicated folder
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull isAppFolder;
 
-/// Full constructor for the `ApiApp` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXTEAMApiApp` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter appId: The application unique id
+/// - parameter appName: The application name
+/// - parameter isAppFolder: Whether the linked application uses a dedicated
+/// folder
+/// - parameter publisher: The application publisher name
+/// - parameter publisherUrl: The publisher's URL
+/// - parameter linked: The time this application was linked
+/// 
+/// - returns: An initialized `DBXTEAMApiApp` instance.
+/// 
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder publisher:(NSString * _Nullable)publisher publisherUrl:(NSString * _Nullable)publisherUrl linked:(NSDate * _Nullable)linked;
 
-/// Convenience constructor for the `ApiApp` struct (exposes only non-nullable
-/// instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMApiApp` struct (exposes only
+/// non-nullable instance variables with no default value).
+/// 
+/// - parameter appId: The application unique id
+/// - parameter appName: The application name
+/// - parameter isAppFolder: Whether the linked application uses a dedicated
+/// folder
+/// 
+/// - returns: An initialized `DBXTEAMApiApp` instance.
+/// 
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMApiApp` struct.
+/// The serialization class for the ApiApp struct.
 /// 
 @interface DBXTEAMApiAppSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DBXTEAMApiApp`
-/// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMApiApp * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMApiApp` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMApiApp` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMApiApp` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMApiApp * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMApiApp` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMApiApp` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMApiApp` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMApiApp` object.
+/// 
 + (DBXTEAMApiApp * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -8,7 +8,7 @@
 @class DBXFILESLookupError;
 
 /// 
-/// The `DBXFILESLookupError` union.
+/// The LookupError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXFILESLookupError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESLookupErrorTag` enum type represents the possible tag states
-/// that the `DBXFILESLookupError` union can exist in.
+/// with which the `DBXFILESLookupError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESLookupErrorTag) {
     /// (no description).
     DBXFILESLookupErrorMalformedPath,
@@ -48,43 +48,112 @@ typedef NS_ENUM(NSInteger, DBXFILESLookupErrorTag) {
 /// (no description).
 @property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
 
+/// 
 /// Initializes union class with tag state of `MalformedPath`.
+/// 
+/// - parameter malformedPath: (no description).
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
 
+/// 
 /// Initializes union class with tag state of `NotFound`.
+/// 
+/// About the `NotFound` tag state: There is nothing at the given path.
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithNotFound;
 
+/// 
 /// Initializes union class with tag state of `NotFile`.
+/// 
+/// About the `NotFile` tag state: We were expecting a file, but the given path
+/// refers to something that isn't a file.
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithNotFile;
 
+/// 
 /// Initializes union class with tag state of `NotFolder`.
+/// 
+/// About the `NotFolder` tag state: We were expecting a folder, but the given
+/// path refers to something that isn't a folder.
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithNotFolder;
 
+/// 
 /// Initializes union class with tag state of `RestrictedContent`.
+/// 
+/// About the `RestrictedContent` tag state: The file cannot be transferred
+/// because the content is restricted.  For example, sometimes there are legal
+/// restrictions due to copyright claims.
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithRestrictedContent;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXFILESLookupError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `MalformedPath`.
+/// 
+/// Retrieves whether the union's current tag state has value `MalformedPath`.
+/// 
+/// - returns: Whether the union's current tag state has value `MalformedPath`.
+/// 
 - (BOOL)isMalformedPath;
 
-/// Returns whether the union's current tag state has value `NotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotFound`.
+/// 
 - (BOOL)isNotFound;
 
-/// Returns whether the union's current tag state has value `NotFile`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotFile`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotFile`.
+/// 
 - (BOOL)isNotFile;
 
-/// Returns whether the union's current tag state has value `NotFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotFolder`.
+/// 
 - (BOOL)isNotFolder;
 
-/// Returns whether the union's current tag state has value `RestrictedContent`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RestrictedContent`.
+/// 
 - (BOOL)isRestrictedContent;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -95,12 +164,24 @@ typedef NS_ENUM(NSInteger, DBXFILESLookupErrorTag) {
 /// 
 @interface DBXFILESLookupErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESLookupError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESLookupError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESLookupError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESLookupError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESLookupError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESLookupError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESLookupError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESLookupError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESLookupError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESLookupError` object.
+/// 
 + (DBXFILESLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

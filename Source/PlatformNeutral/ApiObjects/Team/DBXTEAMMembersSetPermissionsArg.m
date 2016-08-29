@@ -13,15 +13,15 @@
 - (instancetype)initWithUser:(DBXTEAMUserSelectorArg *)user dNewRole:(DBXTEAMAdminTier *)dNewRole {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _user = user;
         _dNewRole = dNewRole;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersSetPermissionsArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersSetPermissionsArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

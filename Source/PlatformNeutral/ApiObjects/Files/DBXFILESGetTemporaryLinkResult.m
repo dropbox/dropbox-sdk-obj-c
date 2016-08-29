@@ -12,15 +12,15 @@
 - (instancetype)initWithMetadata:(DBXFILESFileMetadata *)metadata link:(NSString *)link {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _metadata = metadata;
         _link = link;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGetTemporaryLinkResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGetTemporaryLinkResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

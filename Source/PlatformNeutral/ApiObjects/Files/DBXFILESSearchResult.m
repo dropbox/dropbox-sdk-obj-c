@@ -13,7 +13,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](matches);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _matches = matches;
         _more = more;
         _start = start;
@@ -21,8 +21,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSearchResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSearchResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

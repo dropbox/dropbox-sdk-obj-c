@@ -8,7 +8,7 @@
 @class DBXTEAMUpdatePropertyTemplateResult;
 
 /// 
-/// The `DBXTEAMUpdatePropertyTemplateResult` struct.
+/// The UpdatePropertyTemplateResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,25 +19,45 @@
 /// An identifier for property template added by propertiesTemplateAdd.
 @property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
-/// Full constructor for the `UpdatePropertyTemplateResult` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMUpdatePropertyTemplateResult` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter templateId: An identifier for property template added by
+/// :route:`properties/template/add`.
+/// 
+/// - returns: An initialized `DBXTEAMUpdatePropertyTemplateResult` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMUpdatePropertyTemplateResult`
-/// struct.
+/// The serialization class for the UpdatePropertyTemplateResult struct.
 /// 
 @interface DBXTEAMUpdatePropertyTemplateResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMUpdatePropertyTemplateResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMUpdatePropertyTemplateResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMUpdatePropertyTemplateResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMUpdatePropertyTemplateResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMUpdatePropertyTemplateResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUpdatePropertyTemplateResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMUpdatePropertyTemplateResult` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMUpdatePropertyTemplateResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMUpdatePropertyTemplateResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMUpdatePropertyTemplateResult`
+/// object.
+/// 
 + (DBXTEAMUpdatePropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -11,19 +11,19 @@
 @class DBXSHARINGUnshareFolderError;
 
 /// 
-/// The `DBXSHARINGJobError` union.
+/// The JobError union.
+/// 
+/// Error occurred while performing an asynchronous job from unshareFolder or
+/// removeFolderMember.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error occurred while performing an asynchronous job from unshareFolder or
-/// removeFolderMember.
-/// 
 @interface DBXSHARINGJobError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGJobErrorTag` enum type represents the possible tag states
-/// that the `DBXSHARINGJobError` union can exist in.
+/// with which the `DBXSHARINGJobError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGJobErrorTag) {
     /// Error occurred while performing unshareFolder action.
     DBXSHARINGJobErrorUnshareFolderError,
@@ -51,34 +51,92 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobErrorTag) {
 /// Error occurred while performing relinquishFolderMembership action.
 @property (nonatomic, readonly) DBXSHARINGRelinquishFolderMembershipError * _Nonnull relinquishFolderMembershipError;
 
+/// 
 /// Initializes union class with tag state of `UnshareFolderError`.
+/// 
+/// About the `UnshareFolderError` tag state: Error occurred while performing
+/// :route:`unshare_folder` action.
+/// 
+/// - parameter unshareFolderError: Error occurred while performing
+/// :route:`unshare_folder` action.
+/// 
+/// - returns: An initialized `DBXSHARINGJobError` instance.
+/// 
 - (nonnull instancetype)initWithUnshareFolderError:(DBXSHARINGUnshareFolderError * _Nonnull)unshareFolderError;
 
+/// 
 /// Initializes union class with tag state of `RemoveFolderMemberError`.
+/// 
+/// About the `RemoveFolderMemberError` tag state: Error occurred while
+/// performing :route:`remove_folder_member` action.
+/// 
+/// - parameter removeFolderMemberError: Error occurred while performing
+/// :route:`remove_folder_member` action.
+/// 
+/// - returns: An initialized `DBXSHARINGJobError` instance.
+/// 
 - (nonnull instancetype)initWithRemoveFolderMemberError:(DBXSHARINGRemoveFolderMemberError * _Nonnull)removeFolderMemberError;
 
+/// 
 /// Initializes union class with tag state of `RelinquishFolderMembershipError`.
+/// 
+/// About the `RelinquishFolderMembershipError` tag state: Error occurred while
+/// performing :route:`relinquish_folder_membership` action.
+/// 
+/// - parameter relinquishFolderMembershipError: Error occurred while performing
+/// :route:`relinquish_folder_membership` action.
+/// 
+/// - returns: An initialized `DBXSHARINGJobError` instance.
+/// 
 - (nonnull instancetype)initWithRelinquishFolderMembershipError:(DBXSHARINGRelinquishFolderMembershipError * _Nonnull)relinquishFolderMembershipError;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGJobError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UnshareFolderError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UnshareFolderError`.
+/// 
 - (BOOL)isUnshareFolderError;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `RemoveFolderMemberError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RemoveFolderMemberError`.
+/// 
 - (BOOL)isRemoveFolderMemberError;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `RelinquishFolderMembershipError`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `RelinquishFolderMembershipError`.
+/// 
 - (BOOL)isRelinquishFolderMembershipError;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -89,12 +147,24 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobErrorTag) {
 /// 
 @interface DBXSHARINGJobErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGJobError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGJobError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGJobError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGJobError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGJobError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGJobError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGJobError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGJobError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGJobError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGJobError` object.
+/// 
 + (DBXSHARINGJobError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

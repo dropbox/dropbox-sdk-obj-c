@@ -11,15 +11,15 @@
 @class DBXSHARINGUserMembershipInfo;
 
 /// 
-/// The `DBXSHARINGSharedFileMembers` struct.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The SharedFileMembers struct.
 /// 
 /// Shared file user, group, and invitee membership. Used for the results of
 /// listFileMembers and listFileMembersContinue, and used as part of the results
 /// for listFileMembersBatch.
+/// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DBXSHARINGSharedFileMembers : NSObject <DBXSerializable> 
 
@@ -38,28 +38,62 @@
 /// additional members.
 @property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
-/// Full constructor for the `SharedFileMembers` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGSharedFileMembers` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter users: The list of user members of the shared file.
+/// - parameter groups: The list of group members of the shared file.
+/// - parameter invitees: The list of invited members of a file, but have not
+/// logged in and claimed this.
+/// - parameter cursor: Present if there are additional shared file members that
+/// have not been returned yet. Pass the cursor into
+/// :route:`list_file_members/continue` to list additional members.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFileMembers` instance.
+/// 
 - (nonnull instancetype)initWithUsers:(NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull)invitees cursor:(NSString * _Nullable)cursor;
 
-/// Convenience constructor for the `SharedFileMembers` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGSharedFileMembers` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter users: The list of user members of the shared file.
+/// - parameter groups: The list of group members of the shared file.
+/// - parameter invitees: The list of invited members of a file, but have not
+/// logged in and claimed this.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFileMembers` instance.
+/// 
 - (nonnull instancetype)initWithUsers:(NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull)invitees;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGSharedFileMembers` struct.
+/// The serialization class for the SharedFileMembers struct.
 /// 
 @interface DBXSHARINGSharedFileMembersSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedFileMembers` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFileMembers * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedFileMembers` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedFileMembers` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFileMembers` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFileMembers * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedFileMembers` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedFileMembers` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFileMembers` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedFileMembers` object.
+/// 
 + (DBXSHARINGSharedFileMembers * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

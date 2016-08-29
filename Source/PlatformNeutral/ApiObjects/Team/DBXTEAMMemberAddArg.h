@@ -9,7 +9,7 @@
 @class DBXTEAMMemberAddArg;
 
 /// 
-/// The `DBXTEAMMemberAddArg` struct.
+/// The MemberAddArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -38,28 +38,62 @@
 /// (no description).
 @property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull role;
 
-/// Full constructor for the `MemberAddArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMMemberAddArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter memberEmail: (no description).
+/// - parameter memberGivenName: Member's first name.
+/// - parameter memberSurname: Member's last name.
+/// - parameter memberExternalId: External ID for member.
+/// - parameter sendWelcomeEmail: Whether to send a welcome email to the member.
+/// If send_welcome_email is false, no email invitation will be sent to the
+/// user. This may be useful for apps using single sign-on (SSO) flows for
+/// onboarding that want to handle announcements themselves.
+/// - parameter role: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMMemberAddArg` instance.
+/// 
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname memberExternalId:(NSString * _Nullable)memberExternalId sendWelcomeEmail:(NSNumber * _Nullable)sendWelcomeEmail role:(DBXTEAMAdminTier * _Nullable)role;
 
-/// Convenience constructor for the `MemberAddArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXTEAMMemberAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter memberEmail: (no description).
+/// - parameter memberGivenName: Member's first name.
+/// - parameter memberSurname: Member's last name.
+/// 
+/// - returns: An initialized `DBXTEAMMemberAddArg` instance.
+/// 
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMemberAddArg` struct.
+/// The serialization class for the MemberAddArg struct.
 /// 
 @interface DBXTEAMMemberAddArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMemberAddArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAddArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMemberAddArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMemberAddArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberAddArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMemberAddArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMemberAddArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMemberAddArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMemberAddArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMemberAddArg` object.
+/// 
 + (DBXTEAMMemberAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

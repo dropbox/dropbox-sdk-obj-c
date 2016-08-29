@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESWriteError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESCreateFolderErrorPath;
         _path = path;
     }
@@ -34,14 +34,14 @@
 }
 
 - (DBXFILESWriteError *)path {
-    if (_tag != DBXFILESCreateFolderErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESCreateFolderErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESCreateFolderErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESCreateFolderErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFilename {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchMatchTypeFilename;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithContent {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchMatchTypeContent;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithBoth {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSearchMatchTypeBoth;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSearchMatchTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSearchMatchTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

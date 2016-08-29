@@ -11,7 +11,7 @@
 - (instancetype)initWithAppId:(NSString *)appId teamMemberId:(NSString *)teamMemberId keepAppFolder:(NSNumber *)keepAppFolder {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _appId = appId;
         _teamMemberId = teamMemberId;
         _keepAppFolder = keepAppFolder ?: @YES;
@@ -23,8 +23,8 @@
     return [self initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeLinkedApiAppArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeLinkedApiAppArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

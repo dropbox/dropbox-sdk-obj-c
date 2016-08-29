@@ -8,7 +8,7 @@
 @class DBXTEAMMembersListContinueArg;
 
 /// 
-/// The `DBXTEAMMembersListContinueArg` struct.
+/// The MembersListContinueArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,24 +19,44 @@
 /// Indicates from what point to get the next set of members.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Full constructor for the `MembersListContinueArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXTEAMMembersListContinueArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter cursor: Indicates from what point to get the next set of
+/// members.
+/// 
+/// - returns: An initialized `DBXTEAMMembersListContinueArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersListContinueArg` struct.
+/// The serialization class for the MembersListContinueArg struct.
 /// 
 @interface DBXTEAMMembersListContinueArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersListContinueArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListContinueArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersListContinueArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersListContinueArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListContinueArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersListContinueArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersListContinueArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersListContinueArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersListContinueArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersListContinueArg` object.
+/// 
 + (DBXTEAMMembersListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

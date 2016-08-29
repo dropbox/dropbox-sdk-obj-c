@@ -8,18 +8,18 @@
 @class DBXSHARINGMemberAction;
 
 /// 
-/// The `DBXSHARINGMemberAction` union.
+/// The MemberAction union.
+/// 
+/// Actions that may be taken on members of a shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Actions that may be taken on members of a shared folder.
-/// 
 @interface DBXSHARINGMemberAction : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGMemberActionTag` enum type represents the possible tag states
-/// that the `DBXSHARINGMemberAction` union can exist in.
+/// with which the `DBXSHARINGMemberAction` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGMemberActionTag) {
     /// Allow the member to keep a copy of the folder when removing.
     DBXSHARINGMemberActionLeaveACopy,
@@ -47,50 +47,126 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberActionTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGMemberActionTag tag;
 
+/// 
 /// Initializes union class with tag state of `LeaveACopy`.
+/// 
+/// About the `LeaveACopy` tag state: Allow the member to keep a copy of the
+/// folder when removing.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithLeaveACopy;
 
+/// 
 /// Initializes union class with tag state of `MakeEditor`.
+/// 
+/// About the `MakeEditor` tag state: Make the member an editor of the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithMakeEditor;
 
+/// 
 /// Initializes union class with tag state of `MakeOwner`.
+/// 
+/// About the `MakeOwner` tag state: Make the member an owner of the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithMakeOwner;
 
+/// 
 /// Initializes union class with tag state of `MakeViewer`.
+/// 
+/// About the `MakeViewer` tag state: Make the member a viewer of the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithMakeViewer;
 
+/// 
 /// Initializes union class with tag state of `MakeViewerNoComment`.
+/// 
+/// About the `MakeViewerNoComment` tag state: Make the member a viewer of the
+/// folder without commenting permissions.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithMakeViewerNoComment;
 
+/// 
 /// Initializes union class with tag state of `Remove`.
+/// 
+/// About the `Remove` tag state: Remove the member from the folder.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithRemove;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGMemberAction` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `LeaveACopy`.
+/// 
+/// Retrieves whether the union's current tag state has value `LeaveACopy`.
+/// 
+/// - returns: Whether the union's current tag state has value `LeaveACopy`.
+/// 
 - (BOOL)isLeaveACopy;
 
-/// Returns whether the union's current tag state has value `MakeEditor`.
+/// 
+/// Retrieves whether the union's current tag state has value `MakeEditor`.
+/// 
+/// - returns: Whether the union's current tag state has value `MakeEditor`.
+/// 
 - (BOOL)isMakeEditor;
 
-/// Returns whether the union's current tag state has value `MakeOwner`.
+/// 
+/// Retrieves whether the union's current tag state has value `MakeOwner`.
+/// 
+/// - returns: Whether the union's current tag state has value `MakeOwner`.
+/// 
 - (BOOL)isMakeOwner;
 
-/// Returns whether the union's current tag state has value `MakeViewer`.
+/// 
+/// Retrieves whether the union's current tag state has value `MakeViewer`.
+/// 
+/// - returns: Whether the union's current tag state has value `MakeViewer`.
+/// 
 - (BOOL)isMakeViewer;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `MakeViewerNoComment`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `MakeViewerNoComment`.
+/// 
 - (BOOL)isMakeViewerNoComment;
 
-/// Returns whether the union's current tag state has value `Remove`.
+/// 
+/// Retrieves whether the union's current tag state has value `Remove`.
+/// 
+/// - returns: Whether the union's current tag state has value `Remove`.
+/// 
 - (BOOL)isRemove;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -101,12 +177,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberActionTag) {
 /// 
 @interface DBXSHARINGMemberActionSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGMemberAction` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberAction * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGMemberAction` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGMemberAction` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberAction` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGMemberAction * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGMemberAction` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGMemberAction` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGMemberAction` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGMemberAction` object.
+/// 
 + (DBXSHARINGMemberAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

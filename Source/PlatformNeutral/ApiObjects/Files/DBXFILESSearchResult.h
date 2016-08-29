@@ -9,7 +9,7 @@
 @class DBXFILESSearchResult;
 
 /// 
-/// The `DBXFILESSearchResult` struct.
+/// The SearchResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,24 +28,46 @@
 /// fetch the next page of results.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull start;
 
-/// Full constructor for the `SearchResult` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESSearchResult` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter matches: A list (possibly empty) of matches for the query.
+/// - parameter more: Used for paging. If true, indicates there is another page
+/// of results available that can be fetched by calling :route:`search` again.
+/// - parameter start: Used for paging. Value to set the start argument to when
+/// calling :route:`search` to fetch the next page of results.
+/// 
+/// - returns: An initialized `DBXFILESSearchResult` instance.
+/// 
 - (nonnull instancetype)initWithMatches:(NSArray<DBXFILESSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESSearchResult` struct.
+/// The serialization class for the SearchResult struct.
 /// 
 @interface DBXFILESSearchResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESSearchResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESSearchResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESSearchResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESSearchResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESSearchResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESSearchResult` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESSearchResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESSearchResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESSearchResult` object.
+/// 
 + (DBXFILESSearchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -8,19 +8,19 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMUserSelectorArg` union.
+/// The UserSelectorArg union.
+/// 
+/// Argument for selecting a single user, either by team_member_id, external_id
+/// or email.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Argument for selecting a single user, either by team_member_id, external_id
-/// or email.
-/// 
 @interface DBXTEAMUserSelectorArg : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMUserSelectorArgTag` enum type represents the possible tag states
-/// that the `DBXTEAMUserSelectorArg` union can exist in.
+/// with which the `DBXTEAMUserSelectorArg` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorArgTag) {
     /// (no description).
     DBXTEAMUserSelectorArgTeamMemberId,
@@ -45,25 +45,60 @@ typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorArgTag) {
 /// (no description).
 @property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
+/// 
 /// Initializes union class with tag state of `TeamMemberId`.
+/// 
+/// - parameter teamMemberId: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMUserSelectorArg` instance.
+/// 
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
+/// 
 /// Initializes union class with tag state of `ExternalId`.
+/// 
+/// - parameter externalId: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMUserSelectorArg` instance.
+/// 
 - (nonnull instancetype)initWithExternalId:(NSString * _Nonnull)externalId;
 
+/// 
 /// Initializes union class with tag state of `Email`.
+/// 
+/// - parameter email: (no description).
+/// 
+/// - returns: An initialized `DBXTEAMUserSelectorArg` instance.
+/// 
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
 
-/// Returns whether the union's current tag state has value `TeamMemberId`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamMemberId`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamMemberId`.
+/// 
 - (BOOL)isTeamMemberId;
 
-/// Returns whether the union's current tag state has value `ExternalId`.
+/// 
+/// Retrieves whether the union's current tag state has value `ExternalId`.
+/// 
+/// - returns: Whether the union's current tag state has value `ExternalId`.
+/// 
 - (BOOL)isExternalId;
 
-/// Returns whether the union's current tag state has value `Email`.
+/// 
+/// Retrieves whether the union's current tag state has value `Email`.
+/// 
+/// - returns: Whether the union's current tag state has value `Email`.
+/// 
 - (BOOL)isEmail;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -74,12 +109,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMUserSelectorArgTag) {
 /// 
 @interface DBXTEAMUserSelectorArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMUserSelectorArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMUserSelectorArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMUserSelectorArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMUserSelectorArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMUserSelectorArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMUserSelectorArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMUserSelectorArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMUserSelectorArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMUserSelectorArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMUserSelectorArg` object.
+/// 
 + (DBXTEAMUserSelectorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

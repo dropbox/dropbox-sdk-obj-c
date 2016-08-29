@@ -14,7 +14,7 @@
 - (instancetype)initWithUrl:(NSString *)url visibility:(DBXSHARINGVisibility *)visibility expires:(NSDate *)expires {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _url = url;
         _visibility = visibility;
         _expires = expires;
@@ -26,8 +26,8 @@
     return [self initWithUrl:url visibility:visibility expires:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGLinkMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGLinkMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

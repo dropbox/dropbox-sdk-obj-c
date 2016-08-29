@@ -8,7 +8,7 @@
 @class DBXSHARINGInsufficientQuotaAmounts;
 
 /// 
-/// The `DBXSHARINGInsufficientQuotaAmounts` struct.
+/// The InsufficientQuotaAmounts struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -25,24 +25,48 @@
 /// The amount of space left in the user's Dropbox, less than space_needed.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull spaceLeft;
 
-/// Full constructor for the `InsufficientQuotaAmounts` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGInsufficientQuotaAmounts` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter spaceNeeded: The amount of space needed to add the item (the
+/// size of the item).
+/// - parameter spaceShortage: The amount of extra space needed to add the item.
+/// - parameter spaceLeft: The amount of space left in the user's Dropbox, less
+/// than space_needed.
+/// 
+/// - returns: An initialized `DBXSHARINGInsufficientQuotaAmounts` instance.
+/// 
 - (nonnull instancetype)initWithSpaceNeeded:(NSNumber * _Nonnull)spaceNeeded spaceShortage:(NSNumber * _Nonnull)spaceShortage spaceLeft:(NSNumber * _Nonnull)spaceLeft;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGInsufficientQuotaAmounts` struct.
+/// The serialization class for the InsufficientQuotaAmounts struct.
 /// 
 @interface DBXSHARINGInsufficientQuotaAmountsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGInsufficientQuotaAmounts` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInsufficientQuotaAmounts * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGInsufficientQuotaAmounts` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGInsufficientQuotaAmounts` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGInsufficientQuotaAmounts` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGInsufficientQuotaAmounts * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGInsufficientQuotaAmounts` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGInsufficientQuotaAmounts` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGInsufficientQuotaAmounts` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGInsufficientQuotaAmounts`
+/// object.
+/// 
 + (DBXSHARINGInsufficientQuotaAmounts * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

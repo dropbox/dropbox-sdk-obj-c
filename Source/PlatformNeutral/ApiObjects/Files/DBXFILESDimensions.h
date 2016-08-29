@@ -8,13 +8,13 @@
 @class DBXFILESDimensions;
 
 /// 
-/// The `DBXFILESDimensions` struct.
+/// The Dimensions struct.
+/// 
+/// Dimensions for a photo or video.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Dimensions for a photo or video.
 /// 
 @interface DBXFILESDimensions : NSObject <DBXSerializable> 
 
@@ -24,24 +24,43 @@
 /// Width of the photo/video.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull width;
 
-/// Full constructor for the `Dimensions` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESDimensions` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter height: Height of the photo/video.
+/// - parameter width: Width of the photo/video.
+/// 
+/// - returns: An initialized `DBXFILESDimensions` instance.
+/// 
 - (nonnull instancetype)initWithHeight:(NSNumber * _Nonnull)height width:(NSNumber * _Nonnull)width;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESDimensions` struct.
+/// The serialization class for the Dimensions struct.
 /// 
 @interface DBXFILESDimensionsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESDimensions` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESDimensions * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESDimensions` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESDimensions` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESDimensions` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESDimensions * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESDimensions` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESDimensions` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESDimensions` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESDimensions` object.
+/// 
 + (DBXFILESDimensions * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

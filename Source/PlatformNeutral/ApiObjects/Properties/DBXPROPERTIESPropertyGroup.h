@@ -9,13 +9,13 @@
 @class DBXPROPERTIESPropertyGroup;
 
 /// 
-/// The `DBXPROPERTIESPropertyGroup` struct.
+/// The PropertyGroup struct.
+/// 
+/// Collection of custom properties in filled property templates.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Collection of custom properties in filled property templates.
 /// 
 @interface DBXPROPERTIESPropertyGroup : NSObject <DBXSerializable> 
 
@@ -26,24 +26,45 @@
 /// to 32 properties for a template.
 @property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyField *> * _Nonnull fields;
 
-/// Full constructor for the `PropertyGroup` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXPROPERTIESPropertyGroup` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter templateId: A unique identifier for a property template type.
+/// - parameter fields: This is a list of custom properties associated with a
+/// file. There can be up to 32 properties for a template.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyGroup` instance.
+/// 
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId fields:(NSArray<DBXPROPERTIESPropertyField *> * _Nonnull)fields;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXPROPERTIESPropertyGroup` struct.
+/// The serialization class for the PropertyGroup struct.
 /// 
 @interface DBXPROPERTIESPropertyGroupSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESPropertyGroup` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyGroup * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESPropertyGroup` instances.
+/// 
+///  - parameter instance: An instance of the `DBXPROPERTIESPropertyGroup` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyGroup` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyGroup * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESPropertyGroup` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESPropertyGroup` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyGroup` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESPropertyGroup` object.
+/// 
 + (DBXPROPERTIESPropertyGroup * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

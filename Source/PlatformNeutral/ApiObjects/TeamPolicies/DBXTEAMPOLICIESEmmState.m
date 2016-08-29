@@ -10,7 +10,7 @@
 
 - (instancetype)initWithDisabled {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESEmmStateDisabled;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithOptional {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESEmmStateOptional;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithRequired {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESEmmStateRequired;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMPOLICIESEmmStateOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMPOLICIESEmmStateSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMPOLICIESEmmStateSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

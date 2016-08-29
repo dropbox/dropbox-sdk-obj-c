@@ -8,18 +8,18 @@
 @class DBXTEAMAdminTier;
 
 /// 
-/// The `DBXTEAMAdminTier` union.
+/// The AdminTier union.
+/// 
+/// Describes which team-related admin permissions a user has.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Describes which team-related admin permissions a user has.
-/// 
 @interface DBXTEAMAdminTier : NSObject <DBXSerializable> 
 
-/// The `DBXTEAMAdminTierTag` enum type represents the possible tag states that
-/// the `DBXTEAMAdminTier` union can exist in.
+/// The `DBXTEAMAdminTierTag` enum type represents the possible tag states with
+/// which the `DBXTEAMAdminTier` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
     /// User is an administrator of the team - has all permissions.
     DBXTEAMAdminTierTeamAdmin,
@@ -38,32 +38,81 @@ typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMAdminTierTag tag;
 
+/// 
 /// Initializes union class with tag state of `TeamAdmin`.
+/// 
+/// About the `TeamAdmin` tag state: User is an administrator of the team - has
+/// all permissions.
+/// 
+/// - returns: An initialized `DBXTEAMAdminTier` instance.
+/// 
 - (nonnull instancetype)initWithTeamAdmin;
 
+/// 
 /// Initializes union class with tag state of `UserManagementAdmin`.
+/// 
+/// About the `UserManagementAdmin` tag state: User can do most user
+/// provisioning, de-provisioning and management.
+/// 
+/// - returns: An initialized `DBXTEAMAdminTier` instance.
+/// 
 - (nonnull instancetype)initWithUserManagementAdmin;
 
+/// 
 /// Initializes union class with tag state of `SupportAdmin`.
+/// 
+/// About the `SupportAdmin` tag state: User can do a limited set of common
+/// support tasks for existing users.
+/// 
+/// - returns: An initialized `DBXTEAMAdminTier` instance.
+/// 
 - (nonnull instancetype)initWithSupportAdmin;
 
+/// 
 /// Initializes union class with tag state of `MemberOnly`.
+/// 
+/// About the `MemberOnly` tag state: User is not an admin of the team.
+/// 
+/// - returns: An initialized `DBXTEAMAdminTier` instance.
+/// 
 - (nonnull instancetype)initWithMemberOnly;
 
-/// Returns whether the union's current tag state has value `TeamAdmin`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamAdmin`.
+/// 
 - (BOOL)isTeamAdmin;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `UserManagementAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `UserManagementAdmin`.
+/// 
 - (BOOL)isUserManagementAdmin;
 
-/// Returns whether the union's current tag state has value `SupportAdmin`.
+/// 
+/// Retrieves whether the union's current tag state has value `SupportAdmin`.
+/// 
+/// - returns: Whether the union's current tag state has value `SupportAdmin`.
+/// 
 - (BOOL)isSupportAdmin;
 
-/// Returns whether the union's current tag state has value `MemberOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberOnly`.
+/// 
 - (BOOL)isMemberOnly;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -74,12 +123,24 @@ typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
 /// 
 @interface DBXTEAMAdminTierSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMAdminTier` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMAdminTier * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMAdminTier` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMAdminTier` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMAdminTier` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMAdminTier * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMAdminTier` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMAdminTier` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMAdminTier` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMAdminTier` object.
+/// 
 + (DBXTEAMAdminTier * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

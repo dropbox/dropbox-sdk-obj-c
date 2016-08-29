@@ -12,7 +12,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"]](path);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _cursor = cursor;
         _directOnly = directOnly;
@@ -24,8 +24,8 @@
     return [self initWithPath:nil cursor:nil directOnly:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGListSharedLinksArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGListSharedLinksArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

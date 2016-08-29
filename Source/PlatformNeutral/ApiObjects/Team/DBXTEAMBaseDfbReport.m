@@ -11,14 +11,14 @@
 - (instancetype)initWithStartDate:(NSString *)startDate {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _startDate = startDate;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMBaseDfbReportSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMBaseDfbReportSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

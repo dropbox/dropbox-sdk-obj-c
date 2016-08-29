@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESWriteError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlErrorPath;
         _path = path;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithDownloadFailed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlErrorDownloadFailed;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithInvalidUrl {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlErrorInvalidUrl;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlErrorNotFound;
     }
     return self;
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlErrorOther;
     }
     return self;
@@ -90,14 +90,14 @@
 }
 
 - (DBXFILESWriteError *)path {
-    if (_tag != DBXFILESSaveUrlErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveUrlErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveUrlErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveUrlErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -15,7 +15,7 @@
 - (instancetype)initWithDimensions:(DBXFILESDimensions *)dimensions location:(DBXFILESGpsCoordinates *)location timeTaken:(NSDate *)timeTaken {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _dimensions = dimensions;
         _location = location;
         _timeTaken = timeTaken;
@@ -27,8 +27,8 @@
     return [self initWithDimensions:nil location:nil timeTaken:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESMediaMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESMediaMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,14 +11,14 @@
 - (instancetype)initWithCursor:(NSString *)cursor {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersListContinueArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersListContinueArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

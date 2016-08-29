@@ -9,7 +9,7 @@
 @class DBXFILESWriteError;
 
 /// 
-/// The `DBXFILESCreateFolderError` union.
+/// The CreateFolderError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -18,7 +18,7 @@
 @interface DBXFILESCreateFolderError : NSObject <DBXSerializable> 
 
 /// The `DBXFILESCreateFolderErrorTag` enum type represents the possible tag
-/// states that the `DBXFILESCreateFolderError` union can exist in.
+/// states with which the `DBXFILESCreateFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESCreateFolderErrorTag) {
     /// (no description).
     DBXFILESCreateFolderErrorPath,
@@ -31,13 +31,28 @@ typedef NS_ENUM(NSInteger, DBXFILESCreateFolderErrorTag) {
 /// (no description).
 @property (nonatomic, readonly) DBXFILESWriteError * _Nonnull path;
 
+/// 
 /// Initializes union class with tag state of `Path`.
+/// 
+/// - parameter path: (no description).
+/// 
+/// - returns: An initialized `DBXFILESCreateFolderError` instance.
+/// 
 - (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
 
-/// Returns whether the union's current tag state has value `Path`.
+/// 
+/// Retrieves whether the union's current tag state has value `Path`.
+/// 
+/// - returns: Whether the union's current tag state has value `Path`.
+/// 
 - (BOOL)isPath;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -48,12 +63,25 @@ typedef NS_ENUM(NSInteger, DBXFILESCreateFolderErrorTag) {
 /// 
 @interface DBXFILESCreateFolderErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESCreateFolderError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESCreateFolderError * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESCreateFolderError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESCreateFolderError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESCreateFolderError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCreateFolderError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESCreateFolderError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESCreateFolderError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESCreateFolderError` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESCreateFolderError` object.
+/// 
 + (DBXFILESCreateFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

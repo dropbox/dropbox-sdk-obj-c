@@ -10,7 +10,7 @@
 
 - (instancetype)initWithTeam {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberPolicyTeam;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithAnyone {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberPolicyAnyone;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberPolicyOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMemberPolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMemberPolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

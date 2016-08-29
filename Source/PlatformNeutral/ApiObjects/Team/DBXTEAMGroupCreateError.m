@@ -10,7 +10,7 @@
 
 - (instancetype)initWithGroupNameAlreadyUsed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupCreateErrorGroupNameAlreadyUsed;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithGroupNameInvalid {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupCreateErrorGroupNameInvalid;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithExternalIdAlreadyInUse {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupCreateErrorExternalIdAlreadyInUse;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupCreateErrorOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupCreateErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupCreateErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

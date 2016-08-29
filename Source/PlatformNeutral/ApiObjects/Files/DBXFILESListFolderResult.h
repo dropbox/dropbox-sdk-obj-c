@@ -9,7 +9,7 @@
 @class DBXFILESMetadata;
 
 /// 
-/// The `DBXFILESListFolderResult` struct.
+/// The ListFolderResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -28,24 +28,47 @@
 /// listFolderContinue to retrieve the rest.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
-/// Full constructor for the `ListFolderResult` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESListFolderResult` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter entries: The files and (direct) subfolders in the folder.
+/// - parameter cursor: Pass the cursor into :route:`list_folder/continue` to
+/// see what's changed in the folder since your previous query.
+/// - parameter hasMore: If true, then there are more entries available. Pass
+/// the cursor to :route:`list_folder/continue` to retrieve the rest.
+/// 
+/// - returns: An initialized `DBXFILESListFolderResult` instance.
+/// 
 - (nonnull instancetype)initWithEntries:(NSArray<DBXFILESMetadata *> * _Nonnull)entries cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListFolderResult` struct.
+/// The serialization class for the ListFolderResult struct.
 /// 
 @interface DBXFILESListFolderResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderResult` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderResult` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderResult` object.
+/// 
 + (DBXFILESListFolderResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

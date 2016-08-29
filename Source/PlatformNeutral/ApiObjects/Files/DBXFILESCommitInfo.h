@@ -9,7 +9,7 @@
 @class DBXFILESWriteMode;
 
 /// 
-/// The `DBXFILESCommitInfo` struct.
+/// The CommitInfo struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -39,28 +39,65 @@
 /// clients that this modification shouldn't result in a user notification.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull mute;
 
-/// Full constructor for the `CommitInfo` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESCommitInfo` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: Path in the user's Dropbox to save the file.
+/// - parameter mode: Selects what to do if the file already exists.
+/// - parameter autorename: If there's a conflict, as determined by
+/// :field:`mode`, have the Dropbox server try to autorename the file to avoid
+/// conflict.
+/// - parameter clientModified: The value to store as the
+/// :field:`client_modified` timestamp. Dropbox automatically records the time
+/// at which the file was written to the Dropbox servers. It can also record an
+/// additional timestamp, provided by Dropbox desktop clients, mobile clients,
+/// and API apps of when the file was actually created or modified.
+/// - parameter mute: Normally, users are made aware of any file modifications
+/// in their Dropbox account via notifications in the client software. If
+/// :val:`true`, this tells the clients that this modification shouldn't result
+/// in a user notification.
+/// 
+/// - returns: An initialized `DBXFILESCommitInfo` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path mode:(DBXFILESWriteMode * _Nullable)mode autorename:(NSNumber * _Nullable)autorename clientModified:(NSDate * _Nullable)clientModified mute:(NSNumber * _Nullable)mute;
 
-/// Convenience constructor for the `CommitInfo` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXFILESCommitInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter path: Path in the user's Dropbox to save the file.
+/// 
+/// - returns: An initialized `DBXFILESCommitInfo` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESCommitInfo` struct.
+/// The serialization class for the CommitInfo struct.
 /// 
 @interface DBXFILESCommitInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESCommitInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESCommitInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESCommitInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESCommitInfo` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESCommitInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESCommitInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESCommitInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESCommitInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESCommitInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESCommitInfo` object.
+/// 
 + (DBXFILESCommitInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -8,18 +8,18 @@
 @class DBXSHARINGAccessLevel;
 
 /// 
-/// The `DBXSHARINGAccessLevel` union.
+/// The AccessLevel union.
+/// 
+/// Defines the access levels for collaborators.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Defines the access levels for collaborators.
-/// 
 @interface DBXSHARINGAccessLevel : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGAccessLevelTag` enum type represents the possible tag states
-/// that the `DBXSHARINGAccessLevel` union can exist in.
+/// with which the `DBXSHARINGAccessLevel` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
     /// The collaborator is the owner of the shared folder. Owners can view and
     /// edit the shared folder as well as set the folder's policies using
@@ -44,37 +44,96 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGAccessLevelTag tag;
 
+/// 
 /// Initializes union class with tag state of `Owner`.
+/// 
+/// About the `Owner` tag state: The collaborator is the owner of the shared
+/// folder. Owners can view and edit the shared folder as well as set the
+/// folder's policies using :route:`update_folder_policy`.
+/// 
+/// - returns: An initialized `DBXSHARINGAccessLevel` instance.
+/// 
 - (nonnull instancetype)initWithOwner;
 
+/// 
 /// Initializes union class with tag state of `Editor`.
+/// 
+/// About the `Editor` tag state: The collaborator can both view and edit the
+/// shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGAccessLevel` instance.
+/// 
 - (nonnull instancetype)initWithEditor;
 
+/// 
 /// Initializes union class with tag state of `Viewer`.
+/// 
+/// About the `Viewer` tag state: The collaborator can only view the shared
+/// folder.
+/// 
+/// - returns: An initialized `DBXSHARINGAccessLevel` instance.
+/// 
 - (nonnull instancetype)initWithViewer;
 
+/// 
 /// Initializes union class with tag state of `ViewerNoComment`.
+/// 
+/// About the `ViewerNoComment` tag state: The collaborator can only view the
+/// shared folder and does not have any access to comments.
+/// 
+/// - returns: An initialized `DBXSHARINGAccessLevel` instance.
+/// 
 - (nonnull instancetype)initWithViewerNoComment;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGAccessLevel` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Owner`.
+/// 
+/// Retrieves whether the union's current tag state has value `Owner`.
+/// 
+/// - returns: Whether the union's current tag state has value `Owner`.
+/// 
 - (BOOL)isOwner;
 
-/// Returns whether the union's current tag state has value `Editor`.
+/// 
+/// Retrieves whether the union's current tag state has value `Editor`.
+/// 
+/// - returns: Whether the union's current tag state has value `Editor`.
+/// 
 - (BOOL)isEditor;
 
-/// Returns whether the union's current tag state has value `Viewer`.
+/// 
+/// Retrieves whether the union's current tag state has value `Viewer`.
+/// 
+/// - returns: Whether the union's current tag state has value `Viewer`.
+/// 
 - (BOOL)isViewer;
 
-/// Returns whether the union's current tag state has value `ViewerNoComment`.
+/// 
+/// Retrieves whether the union's current tag state has value `ViewerNoComment`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `ViewerNoComment`.
+/// 
 - (BOOL)isViewerNoComment;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -85,12 +144,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
 /// 
 @interface DBXSHARINGAccessLevelSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGAccessLevel` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAccessLevel * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGAccessLevel` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGAccessLevel` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGAccessLevel` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAccessLevel * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGAccessLevel` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGAccessLevel` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGAccessLevel` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGAccessLevel` object.
+/// 
 + (DBXSHARINGAccessLevel * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

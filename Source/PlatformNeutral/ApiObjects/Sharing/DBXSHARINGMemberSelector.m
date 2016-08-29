@@ -13,7 +13,7 @@
 
 - (instancetype)initWithDropboxId:(NSString *)dropboxId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberSelectorDropboxId;
         _dropboxId = dropboxId;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberSelectorEmail;
         _email = email;
     }
@@ -31,7 +31,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGMemberSelectorOther;
     }
     return self;
@@ -63,21 +63,21 @@
 }
 
 - (NSString *)dropboxId {
-    if (_tag != DBXSHARINGMemberSelectorDropboxId) {
+    if (![self isDropboxId]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGMemberSelectorDropboxId`, but was %@.", [self getTagName]];
     }
     return _dropboxId;
 }
 
 - (NSString *)email {
-    if (_tag != DBXSHARINGMemberSelectorEmail) {
+    if (![self isEmail]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGMemberSelectorEmail`, but was %@.", [self getTagName]];
     }
     return _email;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGMemberSelectorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGMemberSelectorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

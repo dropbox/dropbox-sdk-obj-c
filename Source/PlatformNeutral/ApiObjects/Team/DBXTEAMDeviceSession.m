@@ -11,7 +11,7 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId ipAddress:(NSString *)ipAddress country:(NSString *)country created:(NSDate *)created updated:(NSDate *)updated {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sessionId = sessionId;
         _ipAddress = ipAddress;
         _country = country;
@@ -25,8 +25,8 @@
     return [self initWithSessionId:sessionId ipAddress:nil country:nil created:nil updated:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDeviceSessionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDeviceSessionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -11,7 +11,7 @@
 
 - (instancetype)initWithGroupNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSelectorErrorGroupNotFound;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSelectorErrorOther;
     }
     return self;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithMemberNotInGroup {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupMemberSelectorErrorMemberNotInGroup;
     }
     return self;
@@ -58,8 +58,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMemberSelectorErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMemberSelectorErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

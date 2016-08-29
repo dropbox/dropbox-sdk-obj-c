@@ -17,7 +17,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorAccessError;
         _accessError = accessError;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithMemberError:(DBXSHARINGSharedFolderMemberError *)memberError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorMemberError;
         _memberError = memberError;
     }
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithNoExplicitAccess:(DBXSHARINGAddFolderMemberError *)noExplicitAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
@@ -44,7 +44,7 @@
 
 - (instancetype)initWithInsufficientPlan {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorInsufficientPlan;
     }
     return self;
@@ -52,7 +52,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorNoPermission;
     }
     return self;
@@ -60,7 +60,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGUpdateFolderMemberErrorOther;
     }
     return self;
@@ -110,28 +110,28 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGUpdateFolderMemberErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGUpdateFolderMemberErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DBXSHARINGSharedFolderMemberError *)memberError {
-    if (_tag != DBXSHARINGUpdateFolderMemberErrorMemberError) {
+    if (![self isMemberError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGUpdateFolderMemberErrorMemberError`, but was %@.", [self getTagName]];
     }
     return _memberError;
 }
 
 - (DBXSHARINGAddFolderMemberError *)noExplicitAccess {
-    if (_tag != DBXSHARINGUpdateFolderMemberErrorNoExplicitAccess) {
+    if (![self isNoExplicitAccess]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGUpdateFolderMemberErrorNoExplicitAccess`, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGUpdateFolderMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGUpdateFolderMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

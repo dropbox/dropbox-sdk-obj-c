@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFile {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPendingUploadModeFile;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGPendingUploadModeFolder;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGPendingUploadModeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGPendingUploadModeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

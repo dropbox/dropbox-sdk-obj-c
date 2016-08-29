@@ -12,7 +12,7 @@
 - (instancetype)initWithName:(NSString *)name teamId:(NSString *)teamId numLicensedUsers:(NSNumber *)numLicensedUsers numProvisionedUsers:(NSNumber *)numProvisionedUsers policies:(DBXTEAMPOLICIESTeamMemberPolicies *)policies {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _name = name;
         _teamId = teamId;
         _numLicensedUsers = numLicensedUsers;
@@ -22,8 +22,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMTeamGetInfoResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMTeamGetInfoResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

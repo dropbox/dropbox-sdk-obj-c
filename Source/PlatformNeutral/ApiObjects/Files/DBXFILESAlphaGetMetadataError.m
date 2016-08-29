@@ -16,7 +16,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAlphaGetMetadataErrorPath;
         _path = path;
     }
@@ -25,7 +25,7 @@
 
 - (instancetype)initWithPropertiesError:(DBXFILESLookUpPropertiesError *)propertiesError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESAlphaGetMetadataErrorPropertiesError;
         _propertiesError = propertiesError;
     }
@@ -52,21 +52,21 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESAlphaGetMetadataErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESAlphaGetMetadataErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
 - (DBXFILESLookUpPropertiesError *)propertiesError {
-    if (_tag != DBXFILESAlphaGetMetadataErrorPropertiesError) {
+    if (![self isPropertiesError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESAlphaGetMetadataErrorPropertiesError`, but was %@.", [self getTagName]];
     }
     return _propertiesError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESAlphaGetMetadataErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESAlphaGetMetadataErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

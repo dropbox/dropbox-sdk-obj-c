@@ -12,7 +12,7 @@
 - (instancetype)initWithSuccess:(NSNumber *)success errorType:(DBXTEAMRevokeDeviceSessionError *)errorType {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _success = success;
         _errorType = errorType;
     }
@@ -23,8 +23,8 @@
     return [self initWithSuccess:success errorType:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDeviceSessionStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDeviceSessionStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

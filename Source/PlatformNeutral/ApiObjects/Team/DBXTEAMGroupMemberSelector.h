@@ -10,13 +10,13 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMGroupMemberSelector` struct.
+/// The GroupMemberSelector struct.
+/// 
+/// Argument for selecting a group and a single user.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Argument for selecting a group and a single user.
 /// 
 @interface DBXTEAMGroupMemberSelector : NSObject <DBXSerializable> 
 
@@ -26,24 +26,44 @@
 /// Identity of a user that is a member of group.
 @property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
-/// Full constructor for the `GroupMemberSelector` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMGroupMemberSelector` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter group: Specify a group.
+/// - parameter user: Identity of a user that is a member of :field:`group`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMemberSelector` instance.
+/// 
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group user:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMGroupMemberSelector` struct.
+/// The serialization class for the GroupMemberSelector struct.
 /// 
 @interface DBXTEAMGroupMemberSelectorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMemberSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSelector * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMemberSelector` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMemberSelector` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberSelector` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMemberSelector * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMemberSelector` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMemberSelector` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMemberSelector` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMemberSelector` object.
+/// 
 + (DBXTEAMGroupMemberSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

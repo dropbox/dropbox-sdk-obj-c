@@ -8,21 +8,21 @@
 @class DBXASYNCPollResultBase;
 
 /// 
-/// The `DBXASYNCPollResultBase` union.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The PollResultBase union.
 /// 
 /// Result returned by methods that poll for the status of an asynchronous job.
 /// Unions that extend this union should add a 'complete' field with a type of
 /// the information returned upon job completion. See PollEmptyResult for an
 /// example.
 /// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
+/// 
 @interface DBXASYNCPollResultBase : NSObject <DBXSerializable> 
 
 /// The `DBXASYNCPollResultBaseTag` enum type represents the possible tag states
-/// that the `DBXASYNCPollResultBase` union can exist in.
+/// with which the `DBXASYNCPollResultBase` union can exist.
 typedef NS_ENUM(NSInteger, DBXASYNCPollResultBaseTag) {
     /// The asynchronous job is still in progress.
     DBXASYNCPollResultBaseInProgress,
@@ -32,13 +32,28 @@ typedef NS_ENUM(NSInteger, DBXASYNCPollResultBaseTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXASYNCPollResultBaseTag tag;
 
+/// 
 /// Initializes union class with tag state of `InProgress`.
+/// 
+/// About the `InProgress` tag state: The asynchronous job is still in progress.
+/// 
+/// - returns: An initialized `DBXASYNCPollResultBase` instance.
+/// 
 - (nonnull instancetype)initWithInProgress;
 
-/// Returns whether the union's current tag state has value `InProgress`.
+/// 
+/// Retrieves whether the union's current tag state has value `InProgress`.
+/// 
+/// - returns: Whether the union's current tag state has value `InProgress`.
+/// 
 - (BOOL)isInProgress;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -49,12 +64,25 @@ typedef NS_ENUM(NSInteger, DBXASYNCPollResultBaseTag) {
 /// 
 @interface DBXASYNCPollResultBaseSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXASYNCPollResultBase` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollResultBase * _Nonnull)obj;
+/// 
+/// Serializes `DBXASYNCPollResultBase` instances.
+/// 
+///  - parameter instance: An instance of the `DBXASYNCPollResultBase` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXASYNCPollResultBase` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXASYNCPollResultBase * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXASYNCPollResultBase` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXASYNCPollResultBase` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXASYNCPollResultBase` API object.
+/// 
+///  - returns: An instantiation of the `DBXASYNCPollResultBase` object.
+/// 
 + (DBXASYNCPollResultBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

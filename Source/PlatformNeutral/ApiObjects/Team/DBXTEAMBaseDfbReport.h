@@ -8,37 +8,56 @@
 @class DBXTEAMBaseDfbReport;
 
 /// 
-/// The `DBXTEAMBaseDfbReport` struct.
+/// The BaseDfbReport struct.
+/// 
+/// Base report structure.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Base report structure.
 /// 
 @interface DBXTEAMBaseDfbReport : NSObject <DBXSerializable> 
 
 /// First date present in the results as 'YYYY-MM-DD' or None.
 @property (nonatomic, readonly, copy) NSString * _Nonnull startDate;
 
-/// Full constructor for the `BaseDfbReport` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMBaseDfbReport` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter startDate: First date present in the results as 'YYYY-MM-DD' or
+/// None.
+/// 
+/// - returns: An initialized `DBXTEAMBaseDfbReport` instance.
+/// 
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMBaseDfbReport` struct.
+/// The serialization class for the BaseDfbReport struct.
 /// 
 @interface DBXTEAMBaseDfbReportSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMBaseDfbReport` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMBaseDfbReport * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMBaseDfbReport` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMBaseDfbReport` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMBaseDfbReport` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMBaseDfbReport * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMBaseDfbReport` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMBaseDfbReport` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMBaseDfbReport` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMBaseDfbReport` object.
+/// 
 + (DBXTEAMBaseDfbReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -15,7 +15,7 @@
 
 - (instancetype)initWithSuccess:(DBXFILESFileMetadata *)success {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishBatchResultEntrySuccess;
         _success = success;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithFailure:(DBXFILESUploadSessionFinishError *)failure {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishBatchResultEntryFailure;
         _failure = failure;
     }
@@ -51,21 +51,21 @@
 }
 
 - (DBXFILESFileMetadata *)success {
-    if (_tag != DBXFILESUploadSessionFinishBatchResultEntrySuccess) {
+    if (![self isSuccess]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionFinishBatchResultEntrySuccess`, but was %@.", [self getTagName]];
     }
     return _success;
 }
 
 - (DBXFILESUploadSessionFinishError *)failure {
-    if (_tag != DBXFILESUploadSessionFinishBatchResultEntryFailure) {
+    if (![self isFailure]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionFinishBatchResultEntryFailure`, but was %@.", [self getTagName]];
     }
     return _failure;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionFinishBatchResultEntrySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionFinishBatchResultEntrySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

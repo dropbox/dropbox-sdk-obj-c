@@ -9,7 +9,7 @@
 @class DBXFILESMediaMetadata;
 
 /// 
-/// The `DBXFILESMediaInfo` union.
+/// The MediaInfo union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,8 +17,8 @@
 /// 
 @interface DBXFILESMediaInfo : NSObject <DBXSerializable> 
 
-/// The `DBXFILESMediaInfoTag` enum type represents the possible tag states that
-/// the `DBXFILESMediaInfo` union can exist in.
+/// The `DBXFILESMediaInfoTag` enum type represents the possible tag states with
+/// which the `DBXFILESMediaInfo` union can exist.
 typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
     /// Indicate the photo/video is still under processing and metadata is not
     /// available yet.
@@ -35,19 +35,47 @@ typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
 /// The metadata for the photo/video.
 @property (nonatomic, readonly) DBXFILESMediaMetadata * _Nonnull metadata;
 
+/// 
 /// Initializes union class with tag state of `Pending`.
+/// 
+/// About the `Pending` tag state: Indicate the photo/video is still under
+/// processing and metadata is not available yet.
+/// 
+/// - returns: An initialized `DBXFILESMediaInfo` instance.
+/// 
 - (nonnull instancetype)initWithPending;
 
+/// 
 /// Initializes union class with tag state of `Metadata`.
+/// 
+/// About the `Metadata` tag state: The metadata for the photo/video.
+/// 
+/// - parameter metadata: The metadata for the photo/video.
+/// 
+/// - returns: An initialized `DBXFILESMediaInfo` instance.
+/// 
 - (nonnull instancetype)initWithMetadata:(DBXFILESMediaMetadata * _Nonnull)metadata;
 
-/// Returns whether the union's current tag state has value `Pending`.
+/// 
+/// Retrieves whether the union's current tag state has value `Pending`.
+/// 
+/// - returns: Whether the union's current tag state has value `Pending`.
+/// 
 - (BOOL)isPending;
 
-/// Returns whether the union's current tag state has value `Metadata`.
+/// 
+/// Retrieves whether the union's current tag state has value `Metadata`.
+/// 
+/// - returns: Whether the union's current tag state has value `Metadata`.
+/// 
 - (BOOL)isMetadata;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -58,12 +86,24 @@ typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
 /// 
 @interface DBXFILESMediaInfoSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESMediaInfo` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESMediaInfo * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESMediaInfo` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESMediaInfo` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESMediaInfo` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESMediaInfo * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESMediaInfo` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESMediaInfo` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESMediaInfo` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESMediaInfo` object.
+/// 
 + (DBXFILESMediaInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

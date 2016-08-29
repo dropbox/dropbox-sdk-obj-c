@@ -9,38 +9,57 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMMembersUnsuspendArg` struct.
+/// The MembersUnsuspendArg struct.
+/// 
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Exactly one of team_member_id, email, or external_id must be provided to
-/// identify the user account.
 /// 
 @interface DBXTEAMMembersUnsuspendArg : NSObject <DBXSerializable> 
 
 /// Identity of user to unsuspend.
 @property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
-/// Full constructor for the `MembersUnsuspendArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMMembersUnsuspendArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter user: Identity of user to unsuspend.
+/// 
+/// - returns: An initialized `DBXTEAMMembersUnsuspendArg` instance.
+/// 
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersUnsuspendArg` struct.
+/// The serialization class for the MembersUnsuspendArg struct.
 /// 
 @interface DBXTEAMMembersUnsuspendArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersUnsuspendArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersUnsuspendArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersUnsuspendArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersUnsuspendArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersUnsuspendArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersUnsuspendArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersUnsuspendArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersUnsuspendArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersUnsuspendArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersUnsuspendArg` object.
+/// 
 + (DBXTEAMMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

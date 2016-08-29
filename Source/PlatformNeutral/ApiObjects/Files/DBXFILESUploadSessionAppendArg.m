@@ -12,7 +12,7 @@
 - (instancetype)initWithCursor:(DBXFILESUploadSessionCursor *)cursor close:(NSNumber *)close {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
         _close = close ?: @NO;
     }
@@ -23,8 +23,8 @@
     return [self initWithCursor:cursor close:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionAppendArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionAppendArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

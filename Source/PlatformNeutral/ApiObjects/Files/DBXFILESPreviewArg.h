@@ -8,7 +8,7 @@
 @class DBXFILESPreviewArg;
 
 /// 
-/// The `DBXFILESPreviewArg` struct.
+/// The PreviewArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,28 +22,54 @@
 /// Deprecated. Please specify revision in path instead
 @property (nonatomic, readonly, copy) NSString * _Nullable rev;
 
-/// Full constructor for the `PreviewArg` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXFILESPreviewArg` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter path: The path of the file to preview.
+/// - parameter rev: Deprecated. Please specify revision in :field:`path`
+/// instead
+/// 
+/// - returns: An initialized `DBXFILESPreviewArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
 
-/// Convenience constructor for the `PreviewArg` struct (exposes only
+/// 
+/// Convenience constructor for the `DBXFILESPreviewArg` struct (exposes only
 /// non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path of the file to preview.
+/// 
+/// - returns: An initialized `DBXFILESPreviewArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESPreviewArg` struct.
+/// The serialization class for the PreviewArg struct.
 /// 
 @interface DBXFILESPreviewArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESPreviewArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESPreviewArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESPreviewArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESPreviewArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESPreviewArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESPreviewArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESPreviewArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESPreviewArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESPreviewArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESPreviewArg` object.
+/// 
 + (DBXFILESPreviewArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

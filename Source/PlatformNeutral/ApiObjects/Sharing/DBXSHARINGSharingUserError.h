@@ -8,18 +8,18 @@
 @class DBXSHARINGSharingUserError;
 
 /// 
-/// The `DBXSHARINGSharingUserError` union.
+/// The SharingUserError union.
+/// 
+/// User account had a problem preventing this action.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// User account had a problem preventing this action.
-/// 
 @interface DBXSHARINGSharingUserError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharingUserErrorTag` enum type represents the possible tag
-/// states that the `DBXSHARINGSharingUserError` union can exist in.
+/// states with which the `DBXSHARINGSharingUserError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
     /// The current user must verify the account e-mail address before
     /// performing this action.
@@ -33,19 +33,44 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharingUserErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `EmailUnverified`.
+/// 
+/// About the `EmailUnverified` tag state: The current user must verify the
+/// account e-mail address before performing this action.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingUserError` instance.
+/// 
 - (nonnull instancetype)initWithEmailUnverified;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharingUserError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// Retrieves whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `EmailUnverified`.
+/// 
 - (BOOL)isEmailUnverified;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -56,12 +81,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
 /// 
 @interface DBXSHARINGSharingUserErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharingUserError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingUserError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharingUserError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharingUserError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharingUserError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharingUserError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharingUserError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharingUserError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharingUserError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharingUserError` object.
+/// 
 + (DBXSHARINGSharingUserError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

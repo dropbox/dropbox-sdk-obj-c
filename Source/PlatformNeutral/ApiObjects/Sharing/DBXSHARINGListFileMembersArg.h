@@ -9,13 +9,13 @@
 @class DBXSHARINGMemberAction;
 
 /// 
-/// The `DBXSHARINGListFileMembersArg` struct.
+/// The ListFileMembersArg struct.
+/// 
+/// Arguments for listFileMembers.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for listFileMembers.
 /// 
 @interface DBXSHARINGListFileMembersArg : NSObject <DBXSerializable> 
 
@@ -32,28 +32,58 @@
 /// specified.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
-/// Full constructor for the `ListFileMembersArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXSHARINGListFileMembersArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter file: The file for which you want to see members.
+/// - parameter actions: The actions for which to return permissions on a member
+/// - parameter includeInherited: Whether to include members who only have
+/// access from a parent shared folder.
+/// - parameter limit: Number of members to return max per query. Defaults to
+/// 100 if no limit is specified.
+/// 
+/// - returns: An initialized `DBXSHARINGListFileMembersArg` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file actions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions includeInherited:(NSNumber * _Nullable)includeInherited limit:(NSNumber * _Nullable)limit;
 
-/// Convenience constructor for the `ListFileMembersArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGListFileMembersArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter file: The file for which you want to see members.
+/// 
+/// - returns: An initialized `DBXSHARINGListFileMembersArg` instance.
+/// 
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGListFileMembersArg` struct.
+/// The serialization class for the ListFileMembersArg struct.
 /// 
 @interface DBXSHARINGListFileMembersArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFileMembersArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFileMembersArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGListFileMembersArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFileMembersArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFileMembersArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFileMembersArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFileMembersArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFileMembersArg` object.
+/// 
 + (DBXSHARINGListFileMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

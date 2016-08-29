@@ -16,7 +16,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlJobStatusInProgress;
     }
     return self;
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithComplete:(DBXFILESFileMetadata *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlJobStatusComplete;
         _complete = complete;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithFailed:(DBXFILESSaveUrlError *)failed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESSaveUrlJobStatusFailed;
         _failed = failed;
     }
@@ -66,21 +66,21 @@
 }
 
 - (DBXFILESFileMetadata *)complete {
-    if (_tag != DBXFILESSaveUrlJobStatusComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveUrlJobStatusComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
 - (DBXFILESSaveUrlError *)failed {
-    if (_tag != DBXFILESSaveUrlJobStatusFailed) {
+    if (![self isFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESSaveUrlJobStatusFailed`, but was %@.", [self getTagName]];
     }
     return _failed;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESSaveUrlJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESSaveUrlJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

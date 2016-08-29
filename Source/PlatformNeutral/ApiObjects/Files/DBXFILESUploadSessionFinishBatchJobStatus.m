@@ -14,7 +14,7 @@
 
 - (instancetype)initWithInProgress {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishBatchJobStatusInProgress;
     }
     return self;
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithComplete:(DBXFILESUploadSessionFinishBatchResult *)complete {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishBatchJobStatusComplete;
         _complete = complete;
     }
@@ -49,14 +49,14 @@
 }
 
 - (DBXFILESUploadSessionFinishBatchResult *)complete {
-    if (_tag != DBXFILESUploadSessionFinishBatchJobStatusComplete) {
+    if (![self isComplete]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionFinishBatchJobStatusComplete`, but was %@.", [self getTagName]];
     }
     return _complete;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionFinishBatchJobStatusSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionFinishBatchJobStatusSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

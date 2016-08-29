@@ -8,13 +8,13 @@
 @class DBXTEAMListMembersAppsArg;
 
 /// 
-/// The `DBXTEAMListMembersAppsArg` struct.
+/// The ListMembersAppsArg struct.
+/// 
+/// Arguments for linkedAppsListMembersLinkedApps.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Arguments for linkedAppsListMembersLinkedApps.
 /// 
 @interface DBXTEAMListMembersAppsArg : NSObject <DBXSerializable> 
 
@@ -24,28 +24,56 @@
 /// the next sub list of the team applications
 @property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
-/// Full constructor for the `ListMembersAppsArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMListMembersAppsArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter cursor: At the first call to the
+/// :route:`linked_apps/list_members_linked_apps` the cursor shouldn't be
+/// passed. Then, if the result of the call includes a cursor, the following
+/// requests should include the received cursors in order to receive the next
+/// sub list of the team applications
+/// 
+/// - returns: An initialized `DBXTEAMListMembersAppsArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nullable)cursor;
 
-/// Convenience constructor for the `ListMembersAppsArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXTEAMListMembersAppsArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// 
+/// - returns: An initialized `DBXTEAMListMembersAppsArg` instance.
+/// 
 - (nonnull instancetype)init;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMListMembersAppsArg` struct.
+/// The serialization class for the ListMembersAppsArg struct.
 /// 
 @interface DBXTEAMListMembersAppsArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListMembersAppsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMembersAppsArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListMembersAppsArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListMembersAppsArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListMembersAppsArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMembersAppsArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListMembersAppsArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListMembersAppsArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListMembersAppsArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListMembersAppsArg` object.
+/// 
 + (DBXTEAMListMembersAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

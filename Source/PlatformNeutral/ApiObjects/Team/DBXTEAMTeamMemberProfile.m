@@ -17,7 +17,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
     self = [super initWithTeamMemberId:teamMemberId email:email emailVerified:emailVerified status:status name:name membershipType:membershipType externalId:externalId accountId:accountId];
-    if (self != nil) {
+    if (self) {
         _groups = groups;
     }
     return self;
@@ -27,8 +27,8 @@
     return [self initWithTeamMemberId:teamMemberId email:email emailVerified:emailVerified status:status name:name membershipType:membershipType groups:groups externalId:nil accountId:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMTeamMemberProfileSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMTeamMemberProfileSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

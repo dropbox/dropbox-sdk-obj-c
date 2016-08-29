@@ -8,20 +8,20 @@
 @class DBXSHARINGVisibility;
 
 /// 
-/// The `DBXSHARINGVisibility` union.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The Visibility union.
 /// 
 /// Who can access a shared link. The most open visibility is public. The
 /// default depends on many aspects, such as team and user preferences and
 /// shared folder settings.
 /// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
+/// 
 @interface DBXSHARINGVisibility : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGVisibilityTag` enum type represents the possible tag states
-/// that the `DBXSHARINGVisibility` union can exist in.
+/// with which the `DBXSHARINGVisibility` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGVisibilityTag) {
     /// Anyone who has received the link can access it. No login required.
     DBXSHARINGVisibilityPublic,
@@ -49,43 +49,114 @@ typedef NS_ENUM(NSInteger, DBXSHARINGVisibilityTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGVisibilityTag tag;
 
+/// 
 /// Initializes union class with tag state of `Public`.
+/// 
+/// About the `Public` tag state: Anyone who has received the link can access
+/// it. No login required.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithPublic;
 
+/// 
 /// Initializes union class with tag state of `TeamOnly`.
+/// 
+/// About the `TeamOnly` tag state: Only members of the same team can access the
+/// link. Login is required.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithTeamOnly;
 
+/// 
 /// Initializes union class with tag state of `Password`.
+/// 
+/// About the `Password` tag state: A link-specific password is required to
+/// access the link. Login is not required.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithPassword;
 
+/// 
 /// Initializes union class with tag state of `TeamAndPassword`.
+/// 
+/// About the `TeamAndPassword` tag state: Only members of the same team who
+/// have the link-specific password can access the link.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithTeamAndPassword;
 
+/// 
 /// Initializes union class with tag state of `SharedFolderOnly`.
+/// 
+/// About the `SharedFolderOnly` tag state: Only members of the shared folder
+/// containing the linked file can access the link. Login is required.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderOnly;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGVisibility` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Public`.
+/// 
+/// Retrieves whether the union's current tag state has value `Public`.
+/// 
+/// - returns: Whether the union's current tag state has value `Public`.
+/// 
 - (BOOL)isPublic;
 
-/// Returns whether the union's current tag state has value `TeamOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamOnly`.
+/// 
 - (BOOL)isTeamOnly;
 
-/// Returns whether the union's current tag state has value `Password`.
+/// 
+/// Retrieves whether the union's current tag state has value `Password`.
+/// 
+/// - returns: Whether the union's current tag state has value `Password`.
+/// 
 - (BOOL)isPassword;
 
-/// Returns whether the union's current tag state has value `TeamAndPassword`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamAndPassword`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TeamAndPassword`.
+/// 
 - (BOOL)isTeamAndPassword;
 
-/// Returns whether the union's current tag state has value `SharedFolderOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `SharedFolderOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `SharedFolderOnly`.
+/// 
 - (BOOL)isSharedFolderOnly;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -96,12 +167,24 @@ typedef NS_ENUM(NSInteger, DBXSHARINGVisibilityTag) {
 /// 
 @interface DBXSHARINGVisibilitySerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGVisibility` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGVisibility * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGVisibility` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGVisibility` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGVisibility` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGVisibility * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGVisibility` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGVisibility` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGVisibility` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGVisibility` object.
+/// 
 + (DBXSHARINGVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

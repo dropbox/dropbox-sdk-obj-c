@@ -13,7 +13,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentSharedFolderId);
 
     self = [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
-    if (self != nil) {
+    if (self) {
     }
     return self;
 }
@@ -22,8 +22,8 @@
     return [self initWithName:name pathLower:nil pathDisplay:nil parentSharedFolderId:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESDeletedMetadataSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESDeletedMetadataSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithDeviceSessionNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionErrorDeviceSessionNotFound;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithMemberNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionErrorMemberNotFound;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionErrorOther;
     }
     return self;
@@ -57,8 +57,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDeviceSessionErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDeviceSessionErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

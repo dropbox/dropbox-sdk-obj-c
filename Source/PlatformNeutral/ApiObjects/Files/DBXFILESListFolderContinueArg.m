@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](cursor);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _cursor = cursor;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESListFolderContinueArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESListFolderContinueArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

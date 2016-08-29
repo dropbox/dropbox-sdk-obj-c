@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](asyncJobId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _asyncJobId = asyncJobId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXASYNCPollArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXASYNCPollArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

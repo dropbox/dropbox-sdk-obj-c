@@ -12,7 +12,7 @@
     [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _limit = limit ?: @(1000);
     }
     return self;
@@ -22,8 +22,8 @@
     return [self initWithLimit:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupsListArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupsListArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

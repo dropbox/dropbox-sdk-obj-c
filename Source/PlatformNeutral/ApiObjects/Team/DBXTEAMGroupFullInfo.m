@@ -15,7 +15,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](members);
 
     self = [super initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType groupExternalId:groupExternalId memberCount:memberCount];
-    if (self != nil) {
+    if (self) {
         _members = members;
         _created = created;
     }
@@ -26,8 +26,8 @@
     return [self initWithGroupName:groupName groupId:groupId groupManagementType:groupManagementType created:created groupExternalId:nil memberCount:nil members:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupFullInfoSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupFullInfoSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

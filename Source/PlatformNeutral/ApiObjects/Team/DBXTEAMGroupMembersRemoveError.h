@@ -8,7 +8,7 @@
 @class DBXTEAMGroupMembersRemoveError;
 
 /// 
-/// The `DBXTEAMGroupMembersRemoveError` union.
+/// The GroupMembersRemoveError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMGroupMembersRemoveError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupMembersRemoveErrorTag` enum type represents the possible
-/// tag states that the `DBXTEAMGroupMembersRemoveError` union can exist in.
+/// tag states with which the `DBXTEAMGroupMembersRemoveError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersRemoveErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     DBXTEAMGroupMembersRemoveErrorGroupNotFound,
@@ -37,31 +37,79 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersRemoveErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupMembersRemoveErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `GroupNotFound`.
+/// 
+/// About the `GroupNotFound` tag state: No matching group found. No groups
+/// match the specified group ID.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersRemoveError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersRemoveError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `MemberNotInGroup`.
+/// 
+/// About the `MemberNotInGroup` tag state: At least one of the specified users
+/// is not a member of the group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersRemoveError` instance.
+/// 
 - (nonnull instancetype)initWithMemberNotInGroup;
 
+/// 
 /// Initializes union class with tag state of `GroupNotInTeam`.
+/// 
+/// About the `GroupNotInTeam` tag state: Group is not in this team. You cannot
+/// remove members from a group that is outside of your team.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersRemoveError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotInTeam;
 
-/// Returns whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotFound`.
+/// 
 - (BOOL)isGroupNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `MemberNotInGroup`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
 - (BOOL)isMemberNotInGroup;
 
-/// Returns whether the union's current tag state has value `GroupNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotInTeam`.
+/// 
 - (BOOL)isGroupNotInTeam;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +120,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersRemoveErrorTag) {
 /// 
 @interface DBXTEAMGroupMembersRemoveErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMembersRemoveError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersRemoveError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMembersRemoveError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMembersRemoveError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersRemoveError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersRemoveError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMembersRemoveError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMembersRemoveError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersRemoveError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMembersRemoveError` object.
+/// 
 + (DBXTEAMGroupMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

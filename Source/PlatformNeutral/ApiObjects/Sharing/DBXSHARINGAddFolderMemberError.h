@@ -10,7 +10,7 @@
 @class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DBXSHARINGAddFolderMemberError` union.
+/// The AddFolderMemberError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,7 +19,7 @@
 @interface DBXSHARINGAddFolderMemberError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGAddFolderMemberErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGAddFolderMemberError` union can exist in.
+/// tag states with which the `DBXSHARINGAddFolderMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
     /// Unable to access shared folder.
     DBXSHARINGAddFolderMemberErrorAccessError,
@@ -77,81 +77,232 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
 /// The value is the pending invite limit that was reached.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull tooManyPendingInvites;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// About the `AccessError` tag state: Unable to access shared folder.
+/// 
+/// - parameter accessError: Unable to access shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `EmailUnverified`.
+/// 
+/// About the `EmailUnverified` tag state: The current user's e-mail address is
+/// unverified.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithEmailUnverified;
 
+/// 
 /// Initializes union class with tag state of `BadMember`.
+/// 
+/// About the `BadMember` tag state: :field:`AddFolderMemberArg.members`
+/// contains a bad invitation recipient.
+/// 
+/// - parameter badMember: :field:`AddFolderMemberArg.members` contains a bad
+/// invitation recipient.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithBadMember:(DBXSHARINGAddMemberSelectorError * _Nonnull)badMember;
 
+/// 
 /// Initializes union class with tag state of `CantShareOutsideTeam`.
+/// 
+/// About the `CantShareOutsideTeam` tag state: Your team policy does not allow
+/// sharing outside of the team.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithCantShareOutsideTeam;
 
+/// 
 /// Initializes union class with tag state of `TooManyMembers`.
+/// 
+/// About the `TooManyMembers` tag state: The value is the member limit that was
+/// reached.
+/// 
+/// - parameter tooManyMembers: The value is the member limit that was reached.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithTooManyMembers:(NSNumber * _Nonnull)tooManyMembers;
 
+/// 
 /// Initializes union class with tag state of `TooManyPendingInvites`.
+/// 
+/// About the `TooManyPendingInvites` tag state: The value is the pending invite
+/// limit that was reached.
+/// 
+/// - parameter tooManyPendingInvites: The value is the pending invite limit
+/// that was reached.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithTooManyPendingInvites:(NSNumber * _Nonnull)tooManyPendingInvites;
 
+/// 
 /// Initializes union class with tag state of `RateLimit`.
+/// 
+/// About the `RateLimit` tag state: The current user has hit the limit of
+/// invites they can send per day. Try again in 24 hours.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithRateLimit;
 
+/// 
 /// Initializes union class with tag state of `TooManyInvitees`.
+/// 
+/// About the `TooManyInvitees` tag state: The current user is trying to share
+/// with too many people at once.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithTooManyInvitees;
 
+/// 
 /// Initializes union class with tag state of `InsufficientPlan`.
+/// 
+/// About the `InsufficientPlan` tag state: The current user's account doesn't
+/// support this action. An example of this is when adding a read-only member.
+/// This action can only be performed by users that have upgraded to a Pro or
+/// Business plan.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithInsufficientPlan;
 
+/// 
 /// Initializes union class with tag state of `TeamFolder`.
+/// 
+/// About the `TeamFolder` tag state: This action cannot be performed on a team
+/// shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithTeamFolder;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: The current user does not have
+/// permission to perform this action.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGAddFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// Retrieves whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `EmailUnverified`.
+/// 
 - (BOOL)isEmailUnverified;
 
-/// Returns whether the union's current tag state has value `BadMember`.
+/// 
+/// Retrieves whether the union's current tag state has value `BadMember`.
+/// 
+/// - returns: Whether the union's current tag state has value `BadMember`.
+/// 
 - (BOOL)isBadMember;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `CantShareOutsideTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `CantShareOutsideTeam`.
+/// 
 - (BOOL)isCantShareOutsideTeam;
 
-/// Returns whether the union's current tag state has value `TooManyMembers`.
+/// 
+/// Retrieves whether the union's current tag state has value `TooManyMembers`.
+/// 
+/// - returns: Whether the union's current tag state has value `TooManyMembers`.
+/// 
 - (BOOL)isTooManyMembers;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `TooManyPendingInvites`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TooManyPendingInvites`.
+/// 
 - (BOOL)isTooManyPendingInvites;
 
-/// Returns whether the union's current tag state has value `RateLimit`.
+/// 
+/// Retrieves whether the union's current tag state has value `RateLimit`.
+/// 
+/// - returns: Whether the union's current tag state has value `RateLimit`.
+/// 
 - (BOOL)isRateLimit;
 
-/// Returns whether the union's current tag state has value `TooManyInvitees`.
+/// 
+/// Retrieves whether the union's current tag state has value `TooManyInvitees`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `TooManyInvitees`.
+/// 
 - (BOOL)isTooManyInvitees;
 
-/// Returns whether the union's current tag state has value `InsufficientPlan`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsufficientPlan`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsufficientPlan`.
+/// 
 - (BOOL)isInsufficientPlan;
 
-/// Returns whether the union's current tag state has value `TeamFolder`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamFolder`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamFolder`.
+/// 
 - (BOOL)isTeamFolder;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -162,12 +313,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
 /// 
 @interface DBXSHARINGAddFolderMemberErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGAddFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFolderMemberError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGAddFolderMemberError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGAddFolderMemberError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFolderMemberError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGAddFolderMemberError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGAddFolderMemberError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGAddFolderMemberError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGAddFolderMemberError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGAddFolderMemberError` object.
+/// 
 + (DBXSHARINGAddFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

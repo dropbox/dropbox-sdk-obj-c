@@ -12,7 +12,7 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId userAgent:(NSString *)userAgent os:(NSString *)os browser:(NSString *)browser ipAddress:(NSString *)ipAddress country:(NSString *)country created:(NSDate *)created updated:(NSDate *)updated {
 
     self = [super initWithSessionId:sessionId ipAddress:ipAddress country:country created:created updated:updated];
-    if (self != nil) {
+    if (self) {
         _userAgent = userAgent;
         _os = os;
         _browser = browser;
@@ -24,8 +24,8 @@
     return [self initWithSessionId:sessionId userAgent:userAgent os:os browser:browser ipAddress:nil country:nil created:nil updated:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMActiveWebSessionSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMActiveWebSessionSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

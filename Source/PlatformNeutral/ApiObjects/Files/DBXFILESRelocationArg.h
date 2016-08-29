@@ -8,7 +8,7 @@
 @class DBXFILESRelocationArg;
 
 /// 
-/// The `DBXFILESRelocationArg` struct.
+/// The RelocationArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -22,24 +22,44 @@
 /// Path in the user's Dropbox that is the destination.
 @property (nonatomic, readonly, copy) NSString * _Nonnull toPath;
 
-/// Full constructor for the `RelocationArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESRelocationArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter fromPath: Path in the user's Dropbox to be copied or moved.
+/// - parameter toPath: Path in the user's Dropbox that is the destination.
+/// 
+/// - returns: An initialized `DBXFILESRelocationArg` instance.
+/// 
 - (nonnull instancetype)initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESRelocationArg` struct.
+/// The serialization class for the RelocationArg struct.
 /// 
 @interface DBXFILESRelocationArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESRelocationArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESRelocationArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESRelocationArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESRelocationArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESRelocationArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESRelocationArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESRelocationArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESRelocationArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESRelocationArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESRelocationArg` object.
+/// 
 + (DBXFILESRelocationArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

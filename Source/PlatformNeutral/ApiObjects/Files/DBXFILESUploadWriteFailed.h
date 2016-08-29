@@ -9,7 +9,7 @@
 @class DBXFILESWriteError;
 
 /// 
-/// The `DBXFILESUploadWriteFailed` struct.
+/// The UploadWriteFailed struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,24 +23,45 @@
 /// The upload session ID; this may be used to retry the commit.
 @property (nonatomic, readonly, copy) NSString * _Nonnull uploadSessionId;
 
-/// Full constructor for the `UploadWriteFailed` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESUploadWriteFailed` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter reason: The reason why the file couldn't be saved.
+/// - parameter uploadSessionId: The upload session ID; this may be used to
+/// retry the commit.
+/// 
+/// - returns: An initialized `DBXFILESUploadWriteFailed` instance.
+/// 
 - (nonnull instancetype)initWithReason:(DBXFILESWriteError * _Nonnull)reason uploadSessionId:(NSString * _Nonnull)uploadSessionId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESUploadWriteFailed` struct.
+/// The serialization class for the UploadWriteFailed struct.
 /// 
 @interface DBXFILESUploadWriteFailedSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadWriteFailed` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadWriteFailed * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadWriteFailed` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESUploadWriteFailed` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadWriteFailed` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadWriteFailed * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadWriteFailed` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadWriteFailed` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadWriteFailed` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadWriteFailed` object.
+/// 
 + (DBXFILESUploadWriteFailed * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

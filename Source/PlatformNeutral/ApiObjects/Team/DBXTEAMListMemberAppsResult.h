@@ -9,7 +9,7 @@
 @class DBXTEAMListMemberAppsResult;
 
 /// 
-/// The `DBXTEAMListMemberAppsResult` struct.
+/// The ListMemberAppsResult struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,44 @@
 /// List of third party applications linked by this team member
 @property (nonatomic, readonly) NSArray<DBXTEAMApiApp *> * _Nonnull linkedApiApps;
 
-/// Full constructor for the `ListMemberAppsResult` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMListMemberAppsResult` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter linkedApiApps: List of third party applications linked by this
+/// team member
+/// 
+/// - returns: An initialized `DBXTEAMListMemberAppsResult` instance.
+/// 
 - (nonnull instancetype)initWithLinkedApiApps:(NSArray<DBXTEAMApiApp *> * _Nonnull)linkedApiApps;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMListMemberAppsResult` struct.
+/// The serialization class for the ListMemberAppsResult struct.
 /// 
 @interface DBXTEAMListMemberAppsResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListMemberAppsResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListMemberAppsResult` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListMemberAppsResult` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListMemberAppsResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListMemberAppsResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListMemberAppsResult` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListMemberAppsResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListMemberAppsResult` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListMemberAppsResult` object.
+/// 
 + (DBXTEAMListMemberAppsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

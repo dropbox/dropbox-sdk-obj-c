@@ -14,7 +14,7 @@
 - (instancetype)initWithAclUpdatePolicy:(DBXSHARINGAclUpdatePolicy *)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy *)sharedLinkPolicy memberPolicy:(DBXSHARINGMemberPolicy *)memberPolicy resolvedMemberPolicy:(DBXSHARINGMemberPolicy *)resolvedMemberPolicy {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _memberPolicy = memberPolicy;
         _resolvedMemberPolicy = resolvedMemberPolicy;
         _aclUpdatePolicy = aclUpdatePolicy;
@@ -27,8 +27,8 @@
     return [self initWithAclUpdatePolicy:aclUpdatePolicy sharedLinkPolicy:sharedLinkPolicy memberPolicy:nil resolvedMemberPolicy:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGFolderPolicySerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGFolderPolicySerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

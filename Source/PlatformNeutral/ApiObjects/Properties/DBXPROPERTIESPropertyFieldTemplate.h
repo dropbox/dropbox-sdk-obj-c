@@ -9,14 +9,14 @@
 @class DBXPROPERTIESPropertyType;
 
 /// 
-/// The `DBXPROPERTIESPropertyFieldTemplate` struct.
+/// The PropertyFieldTemplate struct.
+/// 
+/// Describe a single property field type which that can be part of a property
+/// template.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Describe a single property field type which that can be part of a property
-/// template.
 /// 
 @interface DBXPROPERTIESPropertyFieldTemplate : NSObject <DBXSerializable> 
 
@@ -32,24 +32,49 @@
 /// enforced upon property creation and modifications.
 @property (nonatomic, readonly) DBXPROPERTIESPropertyType * _Nonnull type;
 
-/// Full constructor for the `PropertyFieldTemplate` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXPROPERTIESPropertyFieldTemplate` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter name: This is the name or key of a custom property in a property
+/// template. File property names can be up to 256 bytes.
+/// - parameter description_: This is the description for a custom property in a
+/// property template. File property description can be up to 1024 bytes.
+/// - parameter type: This is the data type of the value of this property. This
+/// type will be enforced upon property creation and modifications.
+/// 
+/// - returns: An initialized `DBXPROPERTIESPropertyFieldTemplate` instance.
+/// 
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ type:(DBXPROPERTIESPropertyType * _Nonnull)type;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXPROPERTIESPropertyFieldTemplate` struct.
+/// The serialization class for the PropertyFieldTemplate struct.
 /// 
 @interface DBXPROPERTIESPropertyFieldTemplateSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXPROPERTIESPropertyFieldTemplate` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyFieldTemplate * _Nonnull)obj;
+/// 
+/// Serializes `DBXPROPERTIESPropertyFieldTemplate` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXPROPERTIESPropertyFieldTemplate` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyFieldTemplate` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXPROPERTIESPropertyFieldTemplate * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXPROPERTIESPropertyFieldTemplate` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXPROPERTIESPropertyFieldTemplate` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXPROPERTIESPropertyFieldTemplate` API object.
+/// 
+///  - returns: An instantiation of the `DBXPROPERTIESPropertyFieldTemplate`
+/// object.
+/// 
 + (DBXPROPERTIESPropertyFieldTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

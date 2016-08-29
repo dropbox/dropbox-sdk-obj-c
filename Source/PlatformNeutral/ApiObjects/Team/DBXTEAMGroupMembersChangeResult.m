@@ -13,15 +13,15 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](asyncJobId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _groupInfo = groupInfo;
         _asyncJobId = asyncJobId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupMembersChangeResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupMembersChangeResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

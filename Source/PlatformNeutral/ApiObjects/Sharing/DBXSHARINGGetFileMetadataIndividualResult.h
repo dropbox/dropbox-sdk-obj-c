@@ -10,7 +10,7 @@
 @class DBXSHARINGSharingFileAccessError;
 
 /// 
-/// The `DBXSHARINGGetFileMetadataIndividualResult` union.
+/// The GetFileMetadataIndividualResult union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -19,8 +19,8 @@
 @interface DBXSHARINGGetFileMetadataIndividualResult : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGGetFileMetadataIndividualResultTag` enum type represents the
-/// possible tag states that the `DBXSHARINGGetFileMetadataIndividualResult`
-/// union can exist in.
+/// possible tag states with which the
+/// `DBXSHARINGGetFileMetadataIndividualResult` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataIndividualResultTag) {
     /// The result for this file if it was successful.
     DBXSHARINGGetFileMetadataIndividualResultMetadata,
@@ -42,25 +42,67 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataIndividualResultTag) {
 /// The result for this file if it was an error.
 @property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
+/// 
 /// Initializes union class with tag state of `Metadata`.
+/// 
+/// About the `Metadata` tag state: The result for this file if it was
+/// successful.
+/// 
+/// - parameter metadata: The result for this file if it was successful.
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataIndividualResult`
+/// instance.
+/// 
 - (nonnull instancetype)initWithMetadata:(DBXSHARINGSharedFileMetadata * _Nonnull)metadata;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// About the `AccessError` tag state: The result for this file if it was an
+/// error.
+/// 
+/// - parameter accessError: The result for this file if it was an error.
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataIndividualResult`
+/// instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGGetFileMetadataIndividualResult`
+/// instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Metadata`.
+/// 
+/// Retrieves whether the union's current tag state has value `Metadata`.
+/// 
+/// - returns: Whether the union's current tag state has value `Metadata`.
+/// 
 - (BOOL)isMetadata;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -72,12 +114,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGGetFileMetadataIndividualResultTag) {
 /// 
 @interface DBXSHARINGGetFileMetadataIndividualResultSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGGetFileMetadataIndividualResult` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataIndividualResult * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGGetFileMetadataIndividualResult` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGGetFileMetadataIndividualResult` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetFileMetadataIndividualResult` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGGetFileMetadataIndividualResult * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGGetFileMetadataIndividualResult`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGGetFileMetadataIndividualResult` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGGetFileMetadataIndividualResult` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXSHARINGGetFileMetadataIndividualResult` object.
+/// 
 + (DBXSHARINGGetFileMetadataIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

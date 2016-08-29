@@ -14,15 +14,15 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](propertyGroups);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _propertyGroups = propertyGroups;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESPropertyGroupWithPathSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESPropertyGroupWithPathSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

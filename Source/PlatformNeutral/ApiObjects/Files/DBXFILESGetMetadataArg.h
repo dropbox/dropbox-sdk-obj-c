@@ -8,7 +8,7 @@
 @class DBXFILESGetMetadataArg;
 
 /// 
-/// The `DBXFILESGetMetadataArg` struct.
+/// The GetMetadataArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -30,28 +30,61 @@
 /// not  that file has any explicit members.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
-/// Full constructor for the `GetMetadataArg` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXFILESGetMetadataArg` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter path: The path of a file or folder on Dropbox.
+/// - parameter includeMediaInfo: If true, :field:`FileMetadata.media_info` is
+/// set for photo and video.
+/// - parameter includeDeleted: If true, :type:`DeletedMetadata` will be
+/// returned for deleted file or folder, otherwise
+/// :field:`LookupError.not_found` will be returned.
+/// - parameter includeHasExplicitSharedMembers: If true, the results will
+/// include a flag for each file indicating whether or not  that file has any
+/// explicit members.
+/// 
+/// - returns: An initialized `DBXFILESGetMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo includeDeleted:(NSNumber * _Nullable)includeDeleted includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
-/// Convenience constructor for the `GetMetadataArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESGetMetadataArg` struct (exposes
+/// only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path of a file or folder on Dropbox.
+/// 
+/// - returns: An initialized `DBXFILESGetMetadataArg` instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESGetMetadataArg` struct.
+/// The serialization class for the GetMetadataArg struct.
 /// 
 @interface DBXFILESGetMetadataArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESGetMetadataArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESGetMetadataArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESGetMetadataArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESGetMetadataArg` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESGetMetadataArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESGetMetadataArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESGetMetadataArg` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESGetMetadataArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESGetMetadataArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESGetMetadataArg` object.
+/// 
 + (DBXFILESGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

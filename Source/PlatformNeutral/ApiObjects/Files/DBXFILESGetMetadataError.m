@@ -13,7 +13,7 @@
 
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESGetMetadataErrorPath;
         _path = path;
     }
@@ -34,14 +34,14 @@
 }
 
 - (DBXFILESLookupError *)path {
-    if (_tag != DBXFILESGetMetadataErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESGetMetadataErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESGetMetadataErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESGetMetadataErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

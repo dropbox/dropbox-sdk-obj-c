@@ -16,7 +16,7 @@
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _memberEmail = memberEmail;
         _memberGivenName = memberGivenName;
         _memberSurname = memberSurname;
@@ -31,8 +31,8 @@
     return [self initWithMemberEmail:memberEmail memberGivenName:memberGivenName memberSurname:memberSurname memberExternalId:nil sendWelcomeEmail:nil role:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMemberAddArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMemberAddArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

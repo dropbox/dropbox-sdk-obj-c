@@ -8,7 +8,7 @@
 @class DBXTEAMMembersSendWelcomeError;
 
 /// 
-/// The `DBXTEAMMembersSendWelcomeError` union.
+/// The MembersSendWelcomeError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMMembersSendWelcomeError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMMembersSendWelcomeErrorTag` enum type represents the possible
-/// tag states that the `DBXTEAMMembersSendWelcomeError` union can exist in.
+/// tag states with which the `DBXTEAMMembersSendWelcomeError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMMembersSendWelcomeErrorTag) {
     /// No matching user found. The provided team_member_id, email, or
     /// external_id does not exist on this team.
@@ -34,25 +34,59 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSendWelcomeErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMMembersSendWelcomeErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `UserNotFound`.
+/// 
+/// About the `UserNotFound` tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSendWelcomeError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotFound;
 
+/// 
 /// Initializes union class with tag state of `UserNotInTeam`.
+/// 
+/// About the `UserNotInTeam` tag state: The user is not a member of the team.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSendWelcomeError` instance.
+/// 
 - (nonnull instancetype)initWithUserNotInTeam;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSendWelcomeError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `UserNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotFound`.
+/// 
 - (BOOL)isUserNotFound;
 
-/// Returns whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// Retrieves whether the union's current tag state has value `UserNotInTeam`.
+/// 
+/// - returns: Whether the union's current tag state has value `UserNotInTeam`.
+/// 
 - (BOOL)isUserNotInTeam;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -63,12 +97,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSendWelcomeErrorTag) {
 /// 
 @interface DBXTEAMMembersSendWelcomeErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersSendWelcomeError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSendWelcomeError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersSendWelcomeError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersSendWelcomeError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSendWelcomeError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSendWelcomeError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersSendWelcomeError` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersSendWelcomeError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSendWelcomeError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersSendWelcomeError` object.
+/// 
 + (DBXTEAMMembersSendWelcomeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

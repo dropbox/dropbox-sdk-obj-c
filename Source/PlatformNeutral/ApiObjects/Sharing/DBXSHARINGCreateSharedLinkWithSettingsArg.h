@@ -9,7 +9,7 @@
 @class DBXSHARINGSharedLinkSettings;
 
 /// 
-/// The `DBXSHARINGCreateSharedLinkWithSettingsArg` struct.
+/// The CreateSharedLinkWithSettingsArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -23,29 +23,58 @@
 /// The requested settings for the newly created shared link
 @property (nonatomic, readonly) DBXSHARINGSharedLinkSettings * _Nullable settings;
 
-/// Full constructor for the `CreateSharedLinkWithSettingsArg` struct (exposes
-/// all instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGCreateSharedLinkWithSettingsArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter path: The path to be shared by the shared link
+/// - parameter settings: The requested settings for the newly created shared
+/// link
+/// 
+/// - returns: An initialized `DBXSHARINGCreateSharedLinkWithSettingsArg`
+/// instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path settings:(DBXSHARINGSharedLinkSettings * _Nullable)settings;
 
-/// Convenience constructor for the `CreateSharedLinkWithSettingsArg` struct
-/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGCreateSharedLinkWithSettingsArg`
+/// struct (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter path: The path to be shared by the shared link
+/// 
+/// - returns: An initialized `DBXSHARINGCreateSharedLinkWithSettingsArg`
+/// instance.
+/// 
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGCreateSharedLinkWithSettingsArg`
-/// struct.
+/// The serialization class for the CreateSharedLinkWithSettingsArg struct.
 /// 
 @interface DBXSHARINGCreateSharedLinkWithSettingsArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGCreateSharedLinkWithSettingsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkWithSettingsArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGCreateSharedLinkWithSettingsArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGCreateSharedLinkWithSettingsArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGCreateSharedLinkWithSettingsArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGCreateSharedLinkWithSettingsArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGCreateSharedLinkWithSettingsArg`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGCreateSharedLinkWithSettingsArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGCreateSharedLinkWithSettingsArg` API object.
+/// 
+///  - returns: An instantiation of the
+/// `DBXSHARINGCreateSharedLinkWithSettingsArg` object.
+/// 
 + (DBXSHARINGCreateSharedLinkWithSettingsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

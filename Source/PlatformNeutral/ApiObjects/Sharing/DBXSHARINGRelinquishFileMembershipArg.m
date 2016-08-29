@@ -12,14 +12,14 @@
     [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _file = file;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRelinquishFileMembershipArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRelinquishFileMembershipArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

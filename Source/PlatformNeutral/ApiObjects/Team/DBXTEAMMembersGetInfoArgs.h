@@ -9,7 +9,7 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMMembersGetInfoArgs` struct.
+/// The MembersGetInfoArgs struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,24 +20,43 @@
 /// List of team members.
 @property (nonatomic, readonly) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull members;
 
-/// Full constructor for the `MembersGetInfoArgs` struct (exposes all instance
-/// variables).
+/// 
+/// Full constructor for the `DBXTEAMMembersGetInfoArgs` struct (exposes all
+/// instance variables).
+/// 
+/// - parameter members: List of team members.
+/// 
+/// - returns: An initialized `DBXTEAMMembersGetInfoArgs` instance.
+/// 
 - (nonnull instancetype)initWithMembers:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)members;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersGetInfoArgs` struct.
+/// The serialization class for the MembersGetInfoArgs struct.
 /// 
 @interface DBXTEAMMembersGetInfoArgsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersGetInfoArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersGetInfoArgs * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersGetInfoArgs` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersGetInfoArgs` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersGetInfoArgs` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersGetInfoArgs * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersGetInfoArgs` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersGetInfoArgs` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersGetInfoArgs` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersGetInfoArgs` object.
+/// 
 + (DBXTEAMMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

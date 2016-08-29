@@ -17,7 +17,7 @@
 
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFileMemberErrorUserError;
         _userError = userError;
     }
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFileMemberErrorAccessError;
         _accessError = accessError;
     }
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithNoExplicitAccess:(DBXSHARINGMemberAccessLevelResult *)noExplicitAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFileMemberErrorNoExplicitAccess;
         _noExplicitAccess = noExplicitAccess;
     }
@@ -44,7 +44,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFileMemberErrorOther;
     }
     return self;
@@ -82,28 +82,28 @@
 }
 
 - (DBXSHARINGSharingUserError *)userError {
-    if (_tag != DBXSHARINGRemoveFileMemberErrorUserError) {
+    if (![self isUserError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveFileMemberErrorUserError`, but was %@.", [self getTagName]];
     }
     return _userError;
 }
 
 - (DBXSHARINGSharingFileAccessError *)accessError {
-    if (_tag != DBXSHARINGRemoveFileMemberErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveFileMemberErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DBXSHARINGMemberAccessLevelResult *)noExplicitAccess {
-    if (_tag != DBXSHARINGRemoveFileMemberErrorNoExplicitAccess) {
+    if (![self isNoExplicitAccess]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveFileMemberErrorNoExplicitAccess`, but was %@.", [self getTagName]];
     }
     return _noExplicitAccess;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRemoveFileMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRemoveFileMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

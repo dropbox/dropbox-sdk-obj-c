@@ -10,7 +10,7 @@
 
 - (instancetype)initWithOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAccessLevelOwner;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithEditor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAccessLevelEditor;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithViewer {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAccessLevelViewer;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithViewerNoComment {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAccessLevelViewerNoComment;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGAccessLevelOther;
     }
     return self;
@@ -85,8 +85,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGAccessLevelSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGAccessLevelSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

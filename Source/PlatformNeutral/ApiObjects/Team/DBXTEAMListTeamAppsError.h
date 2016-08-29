@@ -8,18 +8,18 @@
 @class DBXTEAMListTeamAppsError;
 
 /// 
-/// The `DBXTEAMListTeamAppsError` union.
+/// The ListTeamAppsError union.
+/// 
+/// Error returned by linkedAppsListTeamLinkedApps
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error returned by linkedAppsListTeamLinkedApps
-/// 
 @interface DBXTEAMListTeamAppsError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMListTeamAppsErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMListTeamAppsError` union can exist in.
+/// states with which the `DBXTEAMListTeamAppsError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMListTeamAppsErrorTag) {
     /// Indicates that the cursor has been invalidated. Call
     /// linkedAppsListTeamLinkedApps again with an empty cursor to obtain a new
@@ -34,19 +34,44 @@ typedef NS_ENUM(NSInteger, DBXTEAMListTeamAppsErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMListTeamAppsErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `Reset`.
+/// 
+/// About the `Reset` tag state: Indicates that the cursor has been invalidated.
+/// Call :route:`linked_apps/list_team_linked_apps` again with an empty cursor
+/// to obtain a new cursor.
+/// 
+/// - returns: An initialized `DBXTEAMListTeamAppsError` instance.
+/// 
 - (nonnull instancetype)initWithReset;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMListTeamAppsError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Reset`.
+/// 
+/// Retrieves whether the union's current tag state has value `Reset`.
+/// 
+/// - returns: Whether the union's current tag state has value `Reset`.
+/// 
 - (BOOL)isReset;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -57,12 +82,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMListTeamAppsErrorTag) {
 /// 
 @interface DBXTEAMListTeamAppsErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMListTeamAppsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamAppsError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMListTeamAppsError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMListTeamAppsError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamAppsError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMListTeamAppsError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMListTeamAppsError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMListTeamAppsError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMListTeamAppsError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMListTeamAppsError` object.
+/// 
 + (DBXTEAMListTeamAppsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

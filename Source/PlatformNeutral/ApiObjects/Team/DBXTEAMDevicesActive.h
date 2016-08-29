@@ -8,15 +8,15 @@
 @class DBXTEAMDevicesActive;
 
 /// 
-/// The `DBXTEAMDevicesActive` struct.
-/// 
-/// This class implements the `DBXSerializable` protocol (`serialize` and
-/// `deserialize` instance methods), which is required for all Obj-C SDK API
-/// route objects.
+/// The DevicesActive struct.
 /// 
 /// Each of the items is an array of values, one value per day. The value is the
 /// number of devices active within a time window, ending with that day. If
 /// there is no data for a day, then the value will be None.
+/// 
+/// This class implements the `DBXSerializable` protocol (`serialize` and
+/// `deserialize` instance methods), which is required for all Obj-C SDK API
+/// route objects.
 /// 
 @interface DBXTEAMDevicesActive : NSObject <DBXSerializable> 
 
@@ -42,24 +42,53 @@
 /// Array of total number of linked clients with activity.
 @property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull total;
 
-/// Full constructor for the `DevicesActive` struct (exposes all instance
+/// 
+/// Full constructor for the `DBXTEAMDevicesActive` struct (exposes all instance
 /// variables).
+/// 
+/// - parameter windows: Array of number of linked windows (desktop) clients
+/// with activity.
+/// - parameter macos: Array of number of linked mac (desktop) clients with
+/// activity.
+/// - parameter linux: Array of number of linked linus (desktop) clients with
+/// activity.
+/// - parameter ios: Array of number of linked ios devices with activity.
+/// - parameter android: Array of number of linked android devices with
+/// activity.
+/// - parameter other: Array of number of other linked devices (blackberry,
+/// windows phone, etc)  with activity.
+/// - parameter total: Array of total number of linked clients with activity.
+/// 
+/// - returns: An initialized `DBXTEAMDevicesActive` instance.
+/// 
 - (nonnull instancetype)initWithWindows:(NSArray<NSNumber *> * _Nonnull)windows macos:(NSArray<NSNumber *> * _Nonnull)macos linux:(NSArray<NSNumber *> * _Nonnull)linux ios:(NSArray<NSNumber *> * _Nonnull)ios android:(NSArray<NSNumber *> * _Nonnull)android other:(NSArray<NSNumber *> * _Nonnull)other total:(NSArray<NSNumber *> * _Nonnull)total;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMDevicesActive` struct.
+/// The serialization class for the DevicesActive struct.
 /// 
 @interface DBXTEAMDevicesActiveSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMDevicesActive` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMDevicesActive * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMDevicesActive` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMDevicesActive` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMDevicesActive` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMDevicesActive * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMDevicesActive` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMDevicesActive` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMDevicesActive` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMDevicesActive` object.
+/// 
 + (DBXTEAMDevicesActive * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

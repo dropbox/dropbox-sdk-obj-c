@@ -8,7 +8,7 @@
 @class DBXSHARINGSharedLinkSettingsError;
 
 /// 
-/// The `DBXSHARINGSharedLinkSettingsError` union.
+/// The SharedLinkSettingsError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,8 @@
 @interface DBXSHARINGSharedLinkSettingsError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharedLinkSettingsErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGSharedLinkSettingsError` union can exist in.
+/// tag states with which the `DBXSHARINGSharedLinkSettingsError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkSettingsErrorTag) {
     /// The given settings are invalid (for example, all attributes of the
     /// SharedLinkSettings are empty, the requested visibility is password in
@@ -36,19 +37,53 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkSettingsErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharedLinkSettingsErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `InvalidSettings`.
+/// 
+/// About the `InvalidSettings` tag state: The given settings are invalid (for
+/// example, all attributes of the :type:`SharedLinkSettings` are empty, the
+/// requested visibility is :field:`RequestedVisibility.password` but the
+/// :field:`SharedLinkSettings.link_password` is missing,
+/// :field:`SharedLinkSettings.expires` is set to the past, etc.)
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkSettingsError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidSettings;
 
+/// 
 /// Initializes union class with tag state of `NotAuthorized`.
+/// 
+/// About the `NotAuthorized` tag state: User is not allowed to modify the
+/// settings of this link. Note that basic users can only set
+/// :field:`RequestedVisibility.public` as the
+/// :field:`SharedLinkSettings.requested_visibility` and cannot set
+/// :field:`SharedLinkSettings.expires`
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkSettingsError` instance.
+/// 
 - (nonnull instancetype)initWithNotAuthorized;
 
-/// Returns whether the union's current tag state has value `InvalidSettings`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidSettings`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InvalidSettings`.
+/// 
 - (BOOL)isInvalidSettings;
 
-/// Returns whether the union's current tag state has value `NotAuthorized`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotAuthorized`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotAuthorized`.
+/// 
 - (BOOL)isNotAuthorized;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -59,12 +94,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkSettingsErrorTag) {
 /// 
 @interface DBXSHARINGSharedLinkSettingsErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedLinkSettingsError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkSettingsError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedLinkSettingsError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGSharedLinkSettingsError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkSettingsError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkSettingsError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedLinkSettingsError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedLinkSettingsError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkSettingsError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedLinkSettingsError`
+/// object.
+/// 
 + (DBXSHARINGSharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

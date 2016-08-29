@@ -11,7 +11,7 @@
 @class DBXSHARINGUpdateFolderMemberError;
 
 /// 
-/// The `DBXSHARINGUpdateFolderMemberError` union.
+/// The UpdateFolderMemberError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,7 +20,8 @@
 @interface DBXSHARINGUpdateFolderMemberError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGUpdateFolderMemberErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGUpdateFolderMemberError` union can exist in.
+/// tag states with which the `DBXSHARINGUpdateFolderMemberError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderMemberErrorTag) {
     /// (no description).
     DBXSHARINGUpdateFolderMemberErrorAccessError,
@@ -58,43 +59,120 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderMemberErrorTag) {
 /// folder and there was an error when adding the member.
 @property (nonatomic, readonly) DBXSHARINGAddFolderMemberError * _Nonnull noExplicitAccess;
 
+/// 
 /// Initializes union class with tag state of `AccessError`.
+/// 
+/// - parameter accessError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
+/// 
 /// Initializes union class with tag state of `MemberError`.
+/// 
+/// - parameter memberError: (no description).
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithMemberError:(DBXSHARINGSharedFolderMemberError * _Nonnull)memberError;
 
+/// 
 /// Initializes union class with tag state of `NoExplicitAccess`.
+/// 
+/// About the `NoExplicitAccess` tag state: If updating the access type required
+/// the member to be added to the shared folder and there was an error when
+/// adding the member.
+/// 
+/// - parameter noExplicitAccess: If updating the access type required the
+/// member to be added to the shared folder and there was an error when adding
+/// the member.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithNoExplicitAccess:(DBXSHARINGAddFolderMemberError * _Nonnull)noExplicitAccess;
 
+/// 
 /// Initializes union class with tag state of `InsufficientPlan`.
+/// 
+/// About the `InsufficientPlan` tag state: The current user's account doesn't
+/// support this action. An example of this is when downgrading a member from
+/// editor to viewer. This action can only be performed by users that have
+/// upgraded to a Pro or Business plan.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithInsufficientPlan;
 
+/// 
 /// Initializes union class with tag state of `NoPermission`.
+/// 
+/// About the `NoPermission` tag state: The current user does not have
+/// permission to perform this action.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithNoPermission;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGUpdateFolderMemberError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `AccessError`.
+/// 
+/// Retrieves whether the union's current tag state has value `AccessError`.
+/// 
+/// - returns: Whether the union's current tag state has value `AccessError`.
+/// 
 - (BOOL)isAccessError;
 
-/// Returns whether the union's current tag state has value `MemberError`.
+/// 
+/// Retrieves whether the union's current tag state has value `MemberError`.
+/// 
+/// - returns: Whether the union's current tag state has value `MemberError`.
+/// 
 - (BOOL)isMemberError;
 
-/// Returns whether the union's current tag state has value `NoExplicitAccess`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `NoExplicitAccess`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `NoExplicitAccess`.
+/// 
 - (BOOL)isNoExplicitAccess;
 
-/// Returns whether the union's current tag state has value `InsufficientPlan`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `InsufficientPlan`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `InsufficientPlan`.
+/// 
 - (BOOL)isInsufficientPlan;
 
-/// Returns whether the union's current tag state has value `NoPermission`.
+/// 
+/// Retrieves whether the union's current tag state has value `NoPermission`.
+/// 
+/// - returns: Whether the union's current tag state has value `NoPermission`.
+/// 
 - (BOOL)isNoPermission;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -105,12 +183,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderMemberErrorTag) {
 /// 
 @interface DBXSHARINGUpdateFolderMemberErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGUpdateFolderMemberError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderMemberError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGUpdateFolderMemberError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGUpdateFolderMemberError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderMemberError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGUpdateFolderMemberError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGUpdateFolderMemberError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGUpdateFolderMemberError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGUpdateFolderMemberError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGUpdateFolderMemberError`
+/// object.
+/// 
 + (DBXSHARINGUpdateFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

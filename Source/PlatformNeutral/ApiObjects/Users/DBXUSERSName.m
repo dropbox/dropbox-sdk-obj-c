@@ -11,7 +11,7 @@
 - (instancetype)initWithGivenName:(NSString *)givenName surname:(NSString *)surname familiarName:(NSString *)familiarName displayName:(NSString *)displayName {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _givenName = givenName;
         _surname = surname;
         _familiarName = familiarName;
@@ -20,8 +20,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXUSERSNameSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXUSERSNameSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

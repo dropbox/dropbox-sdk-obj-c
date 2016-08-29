@@ -16,7 +16,7 @@
 
 - (instancetype)initWithWebSession:(DBXTEAMDeviceSessionArg *)webSession {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionArgWebSession;
         _webSession = webSession;
     }
@@ -25,7 +25,7 @@
 
 - (instancetype)initWithDesktopClient:(DBXTEAMRevokeDesktopClientArg *)desktopClient {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionArgDesktopClient;
         _desktopClient = desktopClient;
     }
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithMobileClient:(DBXTEAMDeviceSessionArg *)mobileClient {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMRevokeDeviceSessionArgMobileClient;
         _mobileClient = mobileClient;
     }
@@ -67,28 +67,28 @@
 }
 
 - (DBXTEAMDeviceSessionArg *)webSession {
-    if (_tag != DBXTEAMRevokeDeviceSessionArgWebSession) {
+    if (![self isWebSession]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMRevokeDeviceSessionArgWebSession`, but was %@.", [self getTagName]];
     }
     return _webSession;
 }
 
 - (DBXTEAMRevokeDesktopClientArg *)desktopClient {
-    if (_tag != DBXTEAMRevokeDeviceSessionArgDesktopClient) {
+    if (![self isDesktopClient]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMRevokeDeviceSessionArgDesktopClient`, but was %@.", [self getTagName]];
     }
     return _desktopClient;
 }
 
 - (DBXTEAMDeviceSessionArg *)mobileClient {
-    if (_tag != DBXTEAMRevokeDeviceSessionArgMobileClient) {
+    if (![self isMobileClient]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMRevokeDeviceSessionArgMobileClient`, but was %@.", [self getTagName]];
     }
     return _mobileClient;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDeviceSessionArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDeviceSessionArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

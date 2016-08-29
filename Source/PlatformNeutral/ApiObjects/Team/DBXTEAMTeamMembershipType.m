@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFull {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMembershipTypeFull;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithLimited {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMTeamMembershipTypeLimited;
     }
     return self;
@@ -43,8 +43,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMTeamMembershipTypeSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMTeamMembershipTypeSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

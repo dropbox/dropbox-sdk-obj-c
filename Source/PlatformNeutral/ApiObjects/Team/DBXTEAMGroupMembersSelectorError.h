@@ -8,19 +8,20 @@
 @class DBXTEAMGroupMembersSelectorError;
 
 /// 
-/// The `DBXTEAMGroupMembersSelectorError` union.
+/// The GroupMembersSelectorError union.
+/// 
+/// Error that can be raised when GroupMembersSelector is used, and the users
+/// are required to be members of the specified group.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Error that can be raised when GroupMembersSelector is used, and the users
-/// are required to be members of the specified group.
-/// 
 @interface DBXTEAMGroupMembersSelectorError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupMembersSelectorErrorTag` enum type represents the possible
-/// tag states that the `DBXTEAMGroupMembersSelectorError` union can exist in.
+/// tag states with which the `DBXTEAMGroupMembersSelectorError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersSelectorErrorTag) {
     /// No matching group found. No groups match the specified group ID.
     DBXTEAMGroupMembersSelectorErrorGroupNotFound,
@@ -36,25 +37,62 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersSelectorErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupMembersSelectorErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `GroupNotFound`.
+/// 
+/// About the `GroupNotFound` tag state: No matching group found. No groups
+/// match the specified group ID.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersSelectorError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNotFound;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersSelectorError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
+/// 
 /// Initializes union class with tag state of `MemberNotInGroup`.
+/// 
+/// About the `MemberNotInGroup` tag state: At least one of the specified users
+/// is not a member of the group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupMembersSelectorError` instance.
+/// 
 - (nonnull instancetype)initWithMemberNotInGroup;
 
-/// Returns whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupNotFound`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupNotFound`.
+/// 
 - (BOOL)isGroupNotFound;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns whether the union's current tag state has value `MemberNotInGroup`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `MemberNotInGroup`.
+/// 
 - (BOOL)isMemberNotInGroup;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -65,12 +103,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersSelectorErrorTag) {
 /// 
 @interface DBXTEAMGroupMembersSelectorErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupMembersSelectorError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersSelectorError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupMembersSelectorError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupMembersSelectorError`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersSelectorError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupMembersSelectorError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupMembersSelectorError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupMembersSelectorError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupMembersSelectorError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupMembersSelectorError`
+/// object.
+/// 
 + (DBXTEAMGroupMembersSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

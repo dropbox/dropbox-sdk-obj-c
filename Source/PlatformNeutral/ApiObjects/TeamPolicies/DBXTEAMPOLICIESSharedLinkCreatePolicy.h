@@ -8,19 +8,19 @@
 @class DBXTEAMPOLICIESSharedLinkCreatePolicy;
 
 /// 
-/// The `DBXTEAMPOLICIESSharedLinkCreatePolicy` union.
+/// The SharedLinkCreatePolicy union.
+/// 
+/// Policy governing the visibility of newly created shared links.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Policy governing the visibility of newly created shared links.
-/// 
 @interface DBXTEAMPOLICIESSharedLinkCreatePolicy : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMPOLICIESSharedLinkCreatePolicyTag` enum type represents the
-/// possible tag states that the `DBXTEAMPOLICIESSharedLinkCreatePolicy` union
-/// can exist in.
+/// possible tag states with which the `DBXTEAMPOLICIESSharedLinkCreatePolicy`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
     /// By default, anyone can access newly created shared links. No login will
     /// be required to access the shared links unless overridden.
@@ -43,31 +43,81 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMPOLICIESSharedLinkCreatePolicyTag tag;
 
+/// 
 /// Initializes union class with tag state of `DefaultPublic`.
+/// 
+/// About the `DefaultPublic` tag state: By default, anyone can access newly
+/// created shared links. No login will be required to access the shared links
+/// unless overridden.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESSharedLinkCreatePolicy` instance.
+/// 
 - (nonnull instancetype)initWithDefaultPublic;
 
+/// 
 /// Initializes union class with tag state of `DefaultTeamOnly`.
+/// 
+/// About the `DefaultTeamOnly` tag state: By default, only members of the same
+/// team can access newly created shared links. Login will be required to access
+/// the shared links unless overridden.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESSharedLinkCreatePolicy` instance.
+/// 
 - (nonnull instancetype)initWithDefaultTeamOnly;
 
+/// 
 /// Initializes union class with tag state of `TeamOnly`.
+/// 
+/// About the `TeamOnly` tag state: Only members of the same team can access
+/// newly created shared links. Login will be required to access the shared
+/// links.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESSharedLinkCreatePolicy` instance.
+/// 
 - (nonnull instancetype)initWithTeamOnly;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMPOLICIESSharedLinkCreatePolicy` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `DefaultPublic`.
+/// 
+/// Retrieves whether the union's current tag state has value `DefaultPublic`.
+/// 
+/// - returns: Whether the union's current tag state has value `DefaultPublic`.
+/// 
 - (BOOL)isDefaultPublic;
 
-/// Returns whether the union's current tag state has value `DefaultTeamOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `DefaultTeamOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `DefaultTeamOnly`.
+/// 
 - (BOOL)isDefaultTeamOnly;
 
-/// Returns whether the union's current tag state has value `TeamOnly`.
+/// 
+/// Retrieves whether the union's current tag state has value `TeamOnly`.
+/// 
+/// - returns: Whether the union's current tag state has value `TeamOnly`.
+/// 
 - (BOOL)isTeamOnly;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -79,12 +129,26 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
 /// 
 @interface DBXTEAMPOLICIESSharedLinkCreatePolicySerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMPOLICIESSharedLinkCreatePolicy` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMPOLICIESSharedLinkCreatePolicy`
-/// object from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMPOLICIESSharedLinkCreatePolicy` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMPOLICIESSharedLinkCreatePolicy`
+/// object.
+/// 
 + (DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

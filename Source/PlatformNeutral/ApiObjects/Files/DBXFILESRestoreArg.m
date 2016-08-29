@@ -13,15 +13,15 @@
     [DBXStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"](rev);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _path = path;
         _rev = rev;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESRestoreArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESRestoreArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

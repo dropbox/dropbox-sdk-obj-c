@@ -10,7 +10,7 @@
 @class DBXSHARINGMemberAction;
 
 /// 
-/// The `DBXSHARINGListFolderMembersArgs` struct.
+/// The ListFolderMembersArgs struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -21,28 +21,59 @@
 /// The ID for the shared folder.
 @property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
-/// Full constructor for the `ListFolderMembersArgs` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXSHARINGListFolderMembersArgs` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// - parameter actions: This is a list indicating whether each returned member
+/// will include a boolean value :field:`MemberPermission.allow` that describes
+/// whether the current user can perform the MemberAction on the member.
+/// - parameter limit: The maximum number of results that include members,
+/// groups and invitees to return per request.
+/// 
+/// - returns: An initialized `DBXSHARINGListFolderMembersArgs` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId actions:(NSArray<DBXSHARINGMemberAction *> * _Nullable)actions limit:(NSNumber * _Nullable)limit;
 
-/// Convenience constructor for the `ListFolderMembersArgs` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXSHARINGListFolderMembersArgs` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter sharedFolderId: The ID for the shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGListFolderMembersArgs` instance.
+/// 
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXSHARINGListFolderMembersArgs` struct.
+/// The serialization class for the ListFolderMembersArgs struct.
 /// 
 @interface DBXSHARINGListFolderMembersArgsSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGListFolderMembersArgs` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersArgs * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGListFolderMembersArgs` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGListFolderMembersArgs`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFolderMembersArgs` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGListFolderMembersArgs * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGListFolderMembersArgs` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGListFolderMembersArgs` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGListFolderMembersArgs` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGListFolderMembersArgs`
+/// object.
+/// 
 + (DBXSHARINGListFolderMembersArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithInvalidId {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderAccessErrorInvalidId;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithNotAMember {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderAccessErrorNotAMember;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithEmailUnverified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderAccessErrorEmailUnverified;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithUnmounted {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderAccessErrorUnmounted;
     }
     return self;
@@ -42,7 +42,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGSharedFolderAccessErrorOther;
     }
     return self;
@@ -85,8 +85,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGSharedFolderAccessErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGSharedFolderAccessErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

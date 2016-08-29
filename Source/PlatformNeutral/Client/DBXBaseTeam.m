@@ -8,7 +8,7 @@
 
 - (instancetype)initWithTransportClient:(DBXTransportClient *)client {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _teamRoutes = [[DBXTEAMRoutes alloc] init:client];
     }
     return self;

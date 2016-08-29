@@ -9,7 +9,7 @@
 @class DBXFILESUploadSessionFinishBatchArg;
 
 /// 
-/// The `DBXFILESUploadSessionFinishBatchArg` struct.
+/// The UploadSessionFinishBatchArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -20,25 +20,44 @@
 /// Commit information for each file in the batch.
 @property (nonatomic, readonly) NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull entries;
 
-/// Full constructor for the `UploadSessionFinishBatchArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXFILESUploadSessionFinishBatchArg` struct
+/// (exposes all instance variables).
+/// 
+/// - parameter entries: Commit information for each file in the batch.
+/// 
+/// - returns: An initialized `DBXFILESUploadSessionFinishBatchArg` instance.
+/// 
 - (nonnull instancetype)initWithEntries:(NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull)entries;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESUploadSessionFinishBatchArg`
-/// struct.
+/// The serialization class for the UploadSessionFinishBatchArg struct.
 /// 
 @interface DBXFILESUploadSessionFinishBatchArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESUploadSessionFinishBatchArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishBatchArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESUploadSessionFinishBatchArg` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXFILESUploadSessionFinishBatchArg` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionFinishBatchArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESUploadSessionFinishBatchArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESUploadSessionFinishBatchArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESUploadSessionFinishBatchArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESUploadSessionFinishBatchArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESUploadSessionFinishBatchArg`
+/// object.
+/// 
 + (DBXFILESUploadSessionFinishBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

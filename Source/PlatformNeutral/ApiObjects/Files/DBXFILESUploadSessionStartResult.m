@@ -11,14 +11,14 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId {
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _sessionId = sessionId;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionStartResultSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionStartResultSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

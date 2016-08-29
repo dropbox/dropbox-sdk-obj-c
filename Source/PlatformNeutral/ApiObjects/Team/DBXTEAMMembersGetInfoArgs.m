@@ -13,14 +13,14 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _members = members;
     }
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMMembersGetInfoArgsSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMMembersGetInfoArgsSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

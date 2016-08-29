@@ -8,7 +8,7 @@
 @class DBXFILESListFolderLongpollArg;
 
 /// 
-/// The `DBXFILESListFolderLongpollArg` struct.
+/// The ListFolderLongpollArg struct.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -26,28 +26,61 @@
 /// network infrastructure does not support long timeouts.
 @property (nonatomic, readonly, copy) NSNumber * _Nonnull timeout;
 
-/// Full constructor for the `ListFolderLongpollArg` struct (exposes all
+/// 
+/// Full constructor for the `DBXFILESListFolderLongpollArg` struct (exposes all
 /// instance variables).
+/// 
+/// - parameter cursor: A cursor as returned by :route:`list_folder` or
+/// :route:`list_folder/continue`. Cursors retrieved by setting
+/// :field:`ListFolderArg.include_media_info` to :val:`true` are not supported.
+/// - parameter timeout: A timeout in seconds. The request will block for at
+/// most this length of time, plus up to 90 seconds of random jitter added to
+/// avoid the thundering herd problem. Care should be taken when using this
+/// parameter, as some network infrastructure does not support long timeouts.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout;
 
-/// Convenience constructor for the `ListFolderLongpollArg` struct (exposes only
-/// non-nullable instance variables with no default value).
+/// 
+/// Convenience constructor for the `DBXFILESListFolderLongpollArg` struct
+/// (exposes only non-nullable instance variables with no default value).
+/// 
+/// - parameter cursor: A cursor as returned by :route:`list_folder` or
+/// :route:`list_folder/continue`. Cursors retrieved by setting
+/// :field:`ListFolderArg.include_media_info` to :val:`true` are not supported.
+/// 
+/// - returns: An initialized `DBXFILESListFolderLongpollArg` instance.
+/// 
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXFILESListFolderLongpollArg` struct.
+/// The serialization class for the ListFolderLongpollArg struct.
 /// 
 @interface DBXFILESListFolderLongpollArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXFILESListFolderLongpollArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXFILESListFolderLongpollArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXFILESListFolderLongpollArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXFILESListFolderLongpollArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXFILESListFolderLongpollArg` object from
-/// a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXFILESListFolderLongpollArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXFILESListFolderLongpollArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXFILESListFolderLongpollArg` object.
+/// 
 + (DBXFILESListFolderLongpollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

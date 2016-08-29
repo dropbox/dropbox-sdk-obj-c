@@ -8,18 +8,18 @@
 @class DBXSHARINGSharedLinkPolicy;
 
 /// 
-/// The `DBXSHARINGSharedLinkPolicy` union.
+/// The SharedLinkPolicy union.
+/// 
+/// Policy governing who can view shared links.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Policy governing who can view shared links.
-/// 
 @interface DBXSHARINGSharedLinkPolicy : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharedLinkPolicyTag` enum type represents the possible tag
-/// states that the `DBXSHARINGSharedLinkPolicy` union can exist in.
+/// states with which the `DBXSHARINGSharedLinkPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkPolicyTag) {
     /// Links can be shared with anyone.
     DBXSHARINGSharedLinkPolicyAnyone,
@@ -35,25 +35,59 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkPolicyTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharedLinkPolicyTag tag;
 
+/// 
 /// Initializes union class with tag state of `Anyone`.
+/// 
+/// About the `Anyone` tag state: Links can be shared with anyone.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkPolicy` instance.
+/// 
 - (nonnull instancetype)initWithAnyone;
 
+/// 
 /// Initializes union class with tag state of `Members`.
+/// 
+/// About the `Members` tag state: Links can only be shared among members of the
+/// shared folder.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkPolicy` instance.
+/// 
 - (nonnull instancetype)initWithMembers;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedLinkPolicy` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `Anyone`.
+/// 
+/// Retrieves whether the union's current tag state has value `Anyone`.
+/// 
+/// - returns: Whether the union's current tag state has value `Anyone`.
+/// 
 - (BOOL)isAnyone;
 
-/// Returns whether the union's current tag state has value `Members`.
+/// 
+/// Retrieves whether the union's current tag state has value `Members`.
+/// 
+/// - returns: Whether the union's current tag state has value `Members`.
+/// 
 - (BOOL)isMembers;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -64,12 +98,25 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkPolicyTag) {
 /// 
 @interface DBXSHARINGSharedLinkPolicySerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedLinkPolicy` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkPolicy * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedLinkPolicy` instances.
+/// 
+///  - parameter instance: An instance of the `DBXSHARINGSharedLinkPolicy` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkPolicy` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedLinkPolicy * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedLinkPolicy` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedLinkPolicy` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedLinkPolicy` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedLinkPolicy` object.
+/// 
 + (DBXSHARINGSharedLinkPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

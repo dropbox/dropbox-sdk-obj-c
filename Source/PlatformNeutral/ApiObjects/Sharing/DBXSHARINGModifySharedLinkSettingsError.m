@@ -14,7 +14,7 @@
 
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound;
     }
     return self;
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithSharedLinkAccessDenied {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied;
     }
     return self;
@@ -30,7 +30,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGModifySharedLinkSettingsErrorOther;
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (instancetype)initWithSettingsError:(DBXSHARINGSharedLinkSettingsError *)settingsError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGModifySharedLinkSettingsErrorSettingsError;
         _settingsError = settingsError;
     }
@@ -47,7 +47,7 @@
 
 - (instancetype)initWithEmailNotVerified {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGModifySharedLinkSettingsErrorEmailNotVerified;
     }
     return self;
@@ -91,14 +91,14 @@
 }
 
 - (DBXSHARINGSharedLinkSettingsError *)settingsError {
-    if (_tag != DBXSHARINGModifySharedLinkSettingsErrorSettingsError) {
+    if (![self isSettingsError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGModifySharedLinkSettingsErrorSettingsError`, but was %@.", [self getTagName]];
     }
     return _settingsError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGModifySharedLinkSettingsErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGModifySharedLinkSettingsErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

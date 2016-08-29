@@ -8,19 +8,19 @@
 @class DBXTEAMGroupsSelector;
 
 /// 
-/// The `DBXTEAMGroupsSelector` union.
+/// The GroupsSelector union.
+/// 
+/// Argument for selecting a list of groups, either by group_ids, or external
+/// group IDs.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// Argument for selecting a list of groups, either by group_ids, or external
-/// group IDs.
-/// 
 @interface DBXTEAMGroupsSelector : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupsSelectorTag` enum type represents the possible tag states
-/// that the `DBXTEAMGroupsSelector` union can exist in.
+/// with which the `DBXTEAMGroupsSelector` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupsSelectorTag) {
     /// List of group IDs.
     DBXTEAMGroupsSelectorGroupIds,
@@ -39,19 +39,50 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsSelectorTag) {
 /// List of external IDs of groups.
 @property (nonatomic, readonly) NSArray<NSString *> * _Nonnull groupExternalIds;
 
+/// 
 /// Initializes union class with tag state of `GroupIds`.
+/// 
+/// About the `GroupIds` tag state: List of group IDs.
+/// 
+/// - parameter groupIds: List of group IDs.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsSelector` instance.
+/// 
 - (nonnull instancetype)initWithGroupIds:(NSArray<NSString *> * _Nonnull)groupIds;
 
+/// 
 /// Initializes union class with tag state of `GroupExternalIds`.
+/// 
+/// About the `GroupExternalIds` tag state: List of external IDs of groups.
+/// 
+/// - parameter groupExternalIds: List of external IDs of groups.
+/// 
+/// - returns: An initialized `DBXTEAMGroupsSelector` instance.
+/// 
 - (nonnull instancetype)initWithGroupExternalIds:(NSArray<NSString *> * _Nonnull)groupExternalIds;
 
-/// Returns whether the union's current tag state has value `GroupIds`.
+/// 
+/// Retrieves whether the union's current tag state has value `GroupIds`.
+/// 
+/// - returns: Whether the union's current tag state has value `GroupIds`.
+/// 
 - (BOOL)isGroupIds;
 
-/// Returns whether the union's current tag state has value `GroupExternalIds`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `GroupExternalIds`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `GroupExternalIds`.
+/// 
 - (BOOL)isGroupExternalIds;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -62,12 +93,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsSelectorTag) {
 /// 
 @interface DBXTEAMGroupsSelectorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupsSelector` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsSelector * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupsSelector` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupsSelector` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsSelector` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupsSelector * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupsSelector` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupsSelector` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupsSelector` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupsSelector` object.
+/// 
 + (DBXTEAMGroupsSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

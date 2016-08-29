@@ -13,7 +13,7 @@
 
 - (instancetype)initWithGroupIds:(NSArray<NSString *> *)groupIds {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsSelectorGroupIds;
         _groupIds = groupIds;
     }
@@ -22,7 +22,7 @@
 
 - (instancetype)initWithGroupExternalIds:(NSArray<NSString *> *)groupExternalIds {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXTEAMGroupsSelectorGroupExternalIds;
         _groupExternalIds = groupExternalIds;
     }
@@ -49,21 +49,21 @@
 }
 
 - (NSArray<NSString *> *)groupIds {
-    if (_tag != DBXTEAMGroupsSelectorGroupIds) {
+    if (![self isGroupIds]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupsSelectorGroupIds`, but was %@.", [self getTagName]];
     }
     return _groupIds;
 }
 
 - (NSArray<NSString *> *)groupExternalIds {
-    if (_tag != DBXTEAMGroupsSelectorGroupExternalIds) {
+    if (![self isGroupExternalIds]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXTEAMGroupsSelectorGroupExternalIds`, but was %@.", [self getTagName]];
     }
     return _groupExternalIds;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMGroupsSelectorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMGroupsSelectorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

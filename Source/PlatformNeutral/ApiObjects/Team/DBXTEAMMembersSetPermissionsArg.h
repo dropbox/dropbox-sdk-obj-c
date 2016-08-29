@@ -10,14 +10,14 @@
 @class DBXTEAMUserSelectorArg;
 
 /// 
-/// The `DBXTEAMMembersSetPermissionsArg` struct.
+/// The MembersSetPermissionsArg struct.
+/// 
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Exactly one of team_member_id, email, or external_id must be provided to
-/// identify the user account.
 /// 
 @interface DBXTEAMMembersSetPermissionsArg : NSObject <DBXSerializable> 
 
@@ -27,24 +27,45 @@
 /// The new role of the member.
 @property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull dNewRole;
 
-/// Full constructor for the `MembersSetPermissionsArg` struct (exposes all
-/// instance variables).
+/// 
+/// Full constructor for the `DBXTEAMMembersSetPermissionsArg` struct (exposes
+/// all instance variables).
+/// 
+/// - parameter user: Identity of user whose role will be set.
+/// - parameter dNewRole: The new role of the member.
+/// 
+/// - returns: An initialized `DBXTEAMMembersSetPermissionsArg` instance.
+/// 
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user dNewRole:(DBXTEAMAdminTier * _Nonnull)dNewRole;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXTEAMMembersSetPermissionsArg` struct.
+/// The serialization class for the MembersSetPermissionsArg struct.
 /// 
 @interface DBXTEAMMembersSetPermissionsArgSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMMembersSetPermissionsArg` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetPermissionsArg * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMMembersSetPermissionsArg` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMMembersSetPermissionsArg`
+/// API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetPermissionsArg` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMMembersSetPermissionsArg * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMMembersSetPermissionsArg` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMMembersSetPermissionsArg` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMMembersSetPermissionsArg` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMMembersSetPermissionsArg`
+/// object.
+/// 
 + (DBXTEAMMembersSetPermissionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

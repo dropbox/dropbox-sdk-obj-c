@@ -18,7 +18,7 @@
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](total);
 
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _windows = windows;
         _macos = macos;
         _linux = linux;
@@ -30,8 +30,8 @@
     return self;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMDevicesActiveSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMDevicesActiveSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

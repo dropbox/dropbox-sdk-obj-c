@@ -8,7 +8,7 @@
 @class DBXTEAMGroupCreateError;
 
 /// 
-/// The `DBXTEAMGroupCreateError` union.
+/// The GroupCreateError union.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
@@ -17,7 +17,7 @@
 @interface DBXTEAMGroupCreateError : NSObject <DBXSerializable> 
 
 /// The `DBXTEAMGroupCreateErrorTag` enum type represents the possible tag
-/// states that the `DBXTEAMGroupCreateError` union can exist in.
+/// states with which the `DBXTEAMGroupCreateError` union can exist.
 typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
     /// There is already an existing group with the requested name.
     DBXTEAMGroupCreateErrorGroupNameAlreadyUsed,
@@ -36,33 +36,83 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXTEAMGroupCreateErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `GroupNameAlreadyUsed`.
+/// 
+/// About the `GroupNameAlreadyUsed` tag state: There is already an existing
+/// group with the requested name.
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNameAlreadyUsed;
 
+/// 
 /// Initializes union class with tag state of `GroupNameInvalid`.
+/// 
+/// About the `GroupNameInvalid` tag state: Group name is empty or has invalid
+/// characters.
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateError` instance.
+/// 
 - (nonnull instancetype)initWithGroupNameInvalid;
 
+/// 
 /// Initializes union class with tag state of `ExternalIdAlreadyInUse`.
+/// 
+/// About the `ExternalIdAlreadyInUse` tag state: The new external ID is already
+/// being used by another group.
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateError` instance.
+/// 
 - (nonnull instancetype)initWithExternalIdAlreadyInUse;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXTEAMGroupCreateError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `GroupNameAlreadyUsed`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `GroupNameAlreadyUsed`.
+/// 
 - (BOOL)isGroupNameAlreadyUsed;
 
-/// Returns whether the union's current tag state has value `GroupNameInvalid`.
+/// 
+/// Retrieves whether the union's current tag state has value
+/// `GroupNameInvalid`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `GroupNameInvalid`.
+/// 
 - (BOOL)isGroupNameInvalid;
 
-/// Returns whether the union's current tag state has value
+/// 
+/// Retrieves whether the union's current tag state has value
 /// `ExternalIdAlreadyInUse`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `ExternalIdAlreadyInUse`.
+/// 
 - (BOOL)isExternalIdAlreadyInUse;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -73,12 +123,25 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
 /// 
 @interface DBXTEAMGroupCreateErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXTEAMGroupCreateError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupCreateError * _Nonnull)obj;
+/// 
+/// Serializes `DBXTEAMGroupCreateError` instances.
+/// 
+///  - parameter instance: An instance of the `DBXTEAMGroupCreateError` API
+/// object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupCreateError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXTEAMGroupCreateError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXTEAMGroupCreateError` object from a
-/// json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXTEAMGroupCreateError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXTEAMGroupCreateError` API object.
+/// 
+///  - returns: An instantiation of the `DBXTEAMGroupCreateError` object.
+/// 
 + (DBXTEAMGroupCreateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

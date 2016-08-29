@@ -8,18 +8,19 @@
 @class DBXSHARINGSharedFolderAccessError;
 
 /// 
-/// The `DBXSHARINGSharedFolderAccessError` union.
+/// The SharedFolderAccessError union.
+/// 
+/// There is an error accessing the shared folder.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
 /// 
-/// There is an error accessing the shared folder.
-/// 
 @interface DBXSHARINGSharedFolderAccessError : NSObject <DBXSerializable> 
 
 /// The `DBXSHARINGSharedFolderAccessErrorTag` enum type represents the possible
-/// tag states that the `DBXSHARINGSharedFolderAccessError` union can exist in.
+/// tag states with which the `DBXSHARINGSharedFolderAccessError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderAccessErrorTag) {
     /// This shared folder ID is invalid.
     DBXSHARINGSharedFolderAccessErrorInvalidId,
@@ -41,37 +42,93 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderAccessErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBXSHARINGSharedFolderAccessErrorTag tag;
 
+/// 
 /// Initializes union class with tag state of `InvalidId`.
+/// 
+/// About the `InvalidId` tag state: This shared folder ID is invalid.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderAccessError` instance.
+/// 
 - (nonnull instancetype)initWithInvalidId;
 
+/// 
 /// Initializes union class with tag state of `NotAMember`.
+/// 
+/// About the `NotAMember` tag state: The user is not a member of the shared
+/// folder thus cannot access it.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderAccessError` instance.
+/// 
 - (nonnull instancetype)initWithNotAMember;
 
+/// 
 /// Initializes union class with tag state of `EmailUnverified`.
+/// 
+/// About the `EmailUnverified` tag state: The current user's e-mail address is
+/// unverified.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderAccessError` instance.
+/// 
 - (nonnull instancetype)initWithEmailUnverified;
 
+/// 
 /// Initializes union class with tag state of `Unmounted`.
+/// 
+/// About the `Unmounted` tag state: The shared folder is unmounted.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderAccessError` instance.
+/// 
 - (nonnull instancetype)initWithUnmounted;
 
+/// 
 /// Initializes union class with tag state of `Other`.
+/// 
+/// - returns: An initialized `DBXSHARINGSharedFolderAccessError` instance.
+/// 
 - (nonnull instancetype)initWithOther;
 
-/// Returns whether the union's current tag state has value `InvalidId`.
+/// 
+/// Retrieves whether the union's current tag state has value `InvalidId`.
+/// 
+/// - returns: Whether the union's current tag state has value `InvalidId`.
+/// 
 - (BOOL)isInvalidId;
 
-/// Returns whether the union's current tag state has value `NotAMember`.
+/// 
+/// Retrieves whether the union's current tag state has value `NotAMember`.
+/// 
+/// - returns: Whether the union's current tag state has value `NotAMember`.
+/// 
 - (BOOL)isNotAMember;
 
-/// Returns whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// Retrieves whether the union's current tag state has value `EmailUnverified`.
+/// 
+/// - returns: Whether the union's current tag state has value
+/// `EmailUnverified`.
+/// 
 - (BOOL)isEmailUnverified;
 
-/// Returns whether the union's current tag state has value `Unmounted`.
+/// 
+/// Retrieves whether the union's current tag state has value `Unmounted`.
+/// 
+/// - returns: Whether the union's current tag state has value `Unmounted`.
+/// 
 - (BOOL)isUnmounted;
 
-/// Returns whether the union's current tag state has value `Other`.
+/// 
+/// Retrieves whether the union's current tag state has value `Other`.
+/// 
+/// - returns: Whether the union's current tag state has value `Other`.
+/// 
 - (BOOL)isOther;
 
-/// Returns a human-readable string representing the union's current tag state.
+/// 
+/// Retrieves string value of union's current tag state.
+/// 
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+/// 
 - (NSString * _Nonnull)getTagName;
 
 @end
@@ -82,12 +139,26 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderAccessErrorTag) {
 /// 
 @interface DBXSHARINGSharedFolderAccessErrorSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the
-/// `DBXSHARINGSharedFolderAccessError` object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderAccessError * _Nonnull)obj;
+/// 
+/// Serializes `DBXSHARINGSharedFolderAccessError` instances.
+/// 
+///  - parameter instance: An instance of the
+/// `DBXSHARINGSharedFolderAccessError` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderAccessError` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXSHARINGSharedFolderAccessError * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXSHARINGSharedFolderAccessError` object
-/// from a json-compatible dictionary representation.
+/// 
+/// Deserializes `DBXSHARINGSharedFolderAccessError` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXSHARINGSharedFolderAccessError` API object.
+/// 
+///  - returns: An instantiation of the `DBXSHARINGSharedFolderAccessError`
+/// object.
+/// 
 + (DBXSHARINGSharedFolderAccessError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

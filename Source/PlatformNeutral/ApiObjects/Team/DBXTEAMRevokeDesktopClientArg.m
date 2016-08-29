@@ -12,7 +12,7 @@
 - (instancetype)initWithSessionId:(NSString *)sessionId teamMemberId:(NSString *)teamMemberId deleteOnUnlink:(NSNumber *)deleteOnUnlink {
 
     self = [super initWithSessionId:sessionId teamMemberId:teamMemberId];
-    if (self != nil) {
+    if (self) {
         _deleteOnUnlink = deleteOnUnlink ?: @NO;
     }
     return self;
@@ -22,8 +22,8 @@
     return [self initWithSessionId:sessionId teamMemberId:teamMemberId deleteOnUnlink:nil];
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXTEAMRevokeDesktopClientArgSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXTEAMRevokeDesktopClientArgSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

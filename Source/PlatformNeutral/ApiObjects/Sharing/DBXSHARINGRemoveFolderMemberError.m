@@ -15,7 +15,7 @@
 
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorAccessError;
         _accessError = accessError;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithMemberError:(DBXSHARINGSharedFolderMemberError *)memberError {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorMemberError;
         _memberError = memberError;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithFolderOwner {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorFolderOwner;
     }
     return self;
@@ -41,7 +41,7 @@
 
 - (instancetype)initWithGroupAccess {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorGroupAccess;
     }
     return self;
@@ -49,7 +49,7 @@
 
 - (instancetype)initWithTeamFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorTeamFolder;
     }
     return self;
@@ -57,7 +57,7 @@
 
 - (instancetype)initWithNoPermission {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorNoPermission;
     }
     return self;
@@ -65,7 +65,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXSHARINGRemoveFolderMemberErrorOther;
     }
     return self;
@@ -121,21 +121,21 @@
 }
 
 - (DBXSHARINGSharedFolderAccessError *)accessError {
-    if (_tag != DBXSHARINGRemoveFolderMemberErrorAccessError) {
+    if (![self isAccessError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveFolderMemberErrorAccessError`, but was %@.", [self getTagName]];
     }
     return _accessError;
 }
 
 - (DBXSHARINGSharedFolderMemberError *)memberError {
-    if (_tag != DBXSHARINGRemoveFolderMemberErrorMemberError) {
+    if (![self isMemberError]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXSHARINGRemoveFolderMemberErrorMemberError`, but was %@.", [self getTagName]];
     }
     return _memberError;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXSHARINGRemoveFolderMemberErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXSHARINGRemoveFolderMemberErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

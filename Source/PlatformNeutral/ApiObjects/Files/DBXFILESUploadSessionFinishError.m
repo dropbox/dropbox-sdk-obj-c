@@ -15,7 +15,7 @@
 
 - (instancetype)initWithLookupFailed:(DBXFILESUploadSessionLookupError *)lookupFailed {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishErrorLookupFailed;
         _lookupFailed = lookupFailed;
     }
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithPath:(DBXFILESWriteError *)path {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishErrorPath;
         _path = path;
     }
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithTooManySharedFolderTargets {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishErrorTooManySharedFolderTargets;
     }
     return self;
@@ -41,7 +41,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESUploadSessionFinishErrorOther;
     }
     return self;
@@ -79,21 +79,21 @@
 }
 
 - (DBXFILESUploadSessionLookupError *)lookupFailed {
-    if (_tag != DBXFILESUploadSessionFinishErrorLookupFailed) {
+    if (![self isLookupFailed]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionFinishErrorLookupFailed`, but was %@.", [self getTagName]];
     }
     return _lookupFailed;
 }
 
 - (DBXFILESWriteError *)path {
-    if (_tag != DBXFILESUploadSessionFinishErrorPath) {
+    if (![self isPath]) {
         [NSException raise:@"IllegalStateException" format:@"Invalid tag: required `DBXFILESUploadSessionFinishErrorPath`, but was %@.", [self getTagName]];
     }
     return _path;
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESUploadSessionFinishErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESUploadSessionFinishErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {

@@ -8,13 +8,13 @@
 @class DBXUSERSTeam;
 
 /// 
-/// The `DBXUSERSTeam` struct.
+/// The Team struct.
+/// 
+/// Information about a team.
 /// 
 /// This class implements the `DBXSerializable` protocol (`serialize` and
 /// `deserialize` instance methods), which is required for all Obj-C SDK API
 /// route objects.
-/// 
-/// Information about a team.
 /// 
 @interface DBXUSERSTeam : NSObject <DBXSerializable> 
 
@@ -24,23 +24,43 @@
 /// The name of the team.
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
-/// Full constructor for the `Team` struct (exposes all instance variables).
+/// 
+/// Full constructor for the `DBXUSERSTeam` struct (exposes all instance
+/// variables).
+/// 
+/// - parameter id_: The team's unique ID.
+/// - parameter name: The name of the team.
+/// 
+/// - returns: An initialized `DBXUSERSTeam` instance.
+/// 
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
 
 @end
 
 
 /// 
-/// The serialization class for the `DBXUSERSTeam` struct.
+/// The serialization class for the Team struct.
 /// 
 @interface DBXUSERSTeamSerializer : NSObject 
 
-/// Returns a json-compatible dictionary representation of the `DBXUSERSTeam`
-/// object from an instantiation.
-+ (NSDictionary * _Nonnull)serialize:(DBXUSERSTeam * _Nonnull)obj;
+/// 
+/// Serializes `DBXUSERSTeam` instances.
+/// 
+///  - parameter instance: An instance of the `DBXUSERSTeam` API object.
+/// 
+///  - returns: A json-compatible dictionary representation of the
+/// `DBXUSERSTeam` API object.
+/// 
++ (NSDictionary * _Nonnull)serialize:(DBXUSERSTeam * _Nonnull)instance;
 
-/// Returns an instantiation of the `DBXUSERSTeam` object from a json-compatible
-/// dictionary representation.
+/// 
+/// Deserializes `DBXUSERSTeam` instances.
+/// 
+///  - parameter dict: A json-compatible dictionary representation of the
+/// `DBXUSERSTeam` API object.
+/// 
+///  - returns: An instantiation of the `DBXUSERSTeam` object.
+/// 
 + (DBXUSERSTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
 @end

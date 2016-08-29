@@ -49,43 +49,82 @@ typedef NS_ENUM(NSInteger, DBXAuthErrorType) {
 };
 
 /// Represents the `DBXOAuthResult` object's current tag state.
-@property (nonatomic) DBXAuthResultTag tag;
+@property (nonatomic, readonly) DBXAuthResultTag tag;
 
 /// The access token that is retrieved in the event of a successful OAuth authorization.
-@property (nonatomic, nonnull) DBXAccessToken *accessToken;
+@property (nonatomic, readonly) DBXAccessToken * _Nonnull accessToken;
 
 /// The type of OAuth error that is returned in the event of an unsuccessful OAuth
 /// authorization.
-@property (nonatomic) DBXAuthErrorType errorType;
+@property (nonatomic, readonly) DBXAuthErrorType errorType;
 
 /// The error description string associated with the `DBXAuthErrorType` that is returned
 /// in the event of an unsuccessful OAuth authorization.
-@property (nonatomic, nonnull) NSString *errorDescription;
+@property (nonatomic, readonly, copy) NSString * _Nonnull errorDescription;
 
-
-/// Initializes the `DBXOAuthResult` object with data from a successful OAuth linking attempt.
+///
+/// Initializes union class with tag state of `Success`.
+///
+/// - parameter accessToken: The `DBXAccessToken` (account_id / team_id and OAuth token pair)
+/// retrieved from the authorization flow.
+///
+/// - returns: An initialized `DBXOAuthResult` instance.
+///
 - (nonnull instancetype)initWithSuccess:(DBXAccessToken * _Nonnull)accessToken;
 
-/// Initializes the `DBXOAuthResult` object with data from an unsuccessful OAuth linking attempt.
+///
+/// Initializes union class with tag state of `Error`.
+///
+/// - parameter errorType: The string identifier of the OAuth error type
+/// (lookup performed in `errorTypeLookup` dict).
+/// - parameter errorDescription: A short description of the error that
+/// occured during the authorization flow.
+///
+/// - returns: An initialized `DBXOAuthResult` instance.
+///
 - (nonnull instancetype)initWithError:(NSString * _Nonnull)errorType errorDescription:(NSString * _Nonnull)errorDescription;
 
-/// Initializes the `DBXOAuthResult` object with data from a cancelled OAuth linking attempt.
+///
+/// Initializes union class with tag state of `Cancel`.
+///
+/// - returns: An initialized `DBXOAuthResult` instance.
+///
 - (nonnull instancetype)initWithCancel;
 
-/// Returns whether the union's current tag state has value `Success`.
+///
+/// Retrieves whether the union's current tag state has value `Success`.
+///
+/// - returns: Whether the union's current tag state has value `Success`.
+///
 - (BOOL)isSuccess;
 
-/// Returns whether the union's current tag state has value `Error`.
+///
+/// Retrieves whether the union's current tag state has value `Error`.
+///
+/// - returns: Whether the union's current tag state has value `Error`.
+///
 - (BOOL)isError;
 
-/// Returns whether the union's current tag state has value `Cancel`.
+///
+/// Retrieves whether the union's current tag state has value `Cancel`.
+///
+/// - returns: Whether the union's current tag state has value `Cancel`.
+///
 - (BOOL)isCancel;
 
-/// Returns a human-readable string representing the union's current tag state.
+///
+/// Retrieves string value of union's current tag state.
+///
+/// - returns: A human-readable string representing the union's current tag
+/// state.
+///
 - (NSString * _Nonnull)getTagName;
 
-/// Returns a human-readable representation of the
-/// `DBXOAuthResult` object.
+///
+/// Description method.
+///
+/// - returns: A human-readable representation of the current object.
+///
 - (NSString * _Nonnull)description;
 
 @end

@@ -10,7 +10,7 @@
 
 - (instancetype)initWithFile {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteConflictErrorFile;
     }
     return self;
@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFolder {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteConflictErrorFolder;
     }
     return self;
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithFileAncestor {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteConflictErrorFileAncestor;
     }
     return self;
@@ -34,7 +34,7 @@
 
 - (instancetype)initWithOther {
     self = [super init];
-    if (self != nil) {
+    if (self) {
         _tag = DBXFILESWriteConflictErrorOther;
     }
     return self;
@@ -71,8 +71,8 @@
     @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
 }
 
-+ (NSDictionary *)serialize:(id)obj {
-    return [DBXFILESWriteConflictErrorSerializer serialize:obj];
++ (NSDictionary *)serialize:(id)instance {
+    return [DBXFILESWriteConflictErrorSerializer serialize:instance];
 }
 
 + (id)deserialize:(NSDictionary *)dict {
