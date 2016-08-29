@@ -20,13 +20,13 @@
 @interface DBXTEAMListMemberDevicesResult : NSObject <DBXSerializable> 
 
 /// List of web sessions made by this team member
-@property (nonatomic) NSArray<DBXTEAMActiveWebSession *> * _Nullable activeWebSessions;
+@property (nonatomic, readonly) NSArray<DBXTEAMActiveWebSession *> * _Nullable activeWebSessions;
 
 /// List of desktop clients used by this team member
-@property (nonatomic) NSArray<DBXTEAMDesktopClientSession *> * _Nullable desktopClientSessions;
+@property (nonatomic, readonly) NSArray<DBXTEAMDesktopClientSession *> * _Nullable desktopClientSessions;
 
 /// List of mobile client used by this team member
-@property (nonatomic) NSArray<DBXTEAMMobileClientSession *> * _Nullable mobileClientSessions;
+@property (nonatomic, readonly) NSArray<DBXTEAMMobileClientSession *> * _Nullable mobileClientSessions;
 
 /// Full constructor for the `ListMemberDevicesResult` struct (exposes all
 /// instance variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `ListMemberDevicesResult` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMListMemberDevicesResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

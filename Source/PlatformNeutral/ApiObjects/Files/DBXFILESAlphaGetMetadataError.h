@@ -30,13 +30,13 @@ typedef NS_ENUM(NSInteger, DBXFILESAlphaGetMetadataErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESAlphaGetMetadataErrorTag tag;
+@property (nonatomic, readonly) DBXFILESAlphaGetMetadataErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookUpPropertiesError * _Nonnull propertiesError;
+@property (nonatomic, readonly) DBXFILESLookUpPropertiesError * _Nonnull propertiesError;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
@@ -52,10 +52,6 @@ typedef NS_ENUM(NSInteger, DBXFILESAlphaGetMetadataErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESAlphaGetMetadataError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -21,17 +21,17 @@
 @interface DBXSHARINGMembershipInfo : NSObject <DBXSerializable> 
 
 /// The access type for this member.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessType;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessType;
 
 /// The permissions that requesting user has on this member. The set of
 /// permissions corresponds to the MemberActions in the request.
-@property (nonatomic) NSArray<DBXSHARINGMemberPermission *> * _Nullable permissions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGMemberPermission *> * _Nullable permissions;
 
 /// Suggested name initials for a member.
-@property (nonatomic, copy) NSString * _Nullable initials;
+@property (nonatomic, readonly, copy) NSString * _Nullable initials;
 
 /// True if the member has access from a parent folder.
-@property (nonatomic, copy) NSNumber * _Nonnull isInherited;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isInherited;
 
 /// Full constructor for the `MembershipInfo` struct (exposes all instance
 /// variables).
@@ -40,10 +40,6 @@
 /// Convenience constructor for the `MembershipInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType;
-
-/// Returns a human-readable representation of the `DBXSHARINGMembershipInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

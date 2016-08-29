@@ -35,13 +35,13 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFileMembersErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGListFileMembersErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGListFileMembersErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharingUserError * _Nonnull userError;
+@property (nonatomic, readonly) DBXSHARINGSharingUserError * _Nonnull userError;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `UserError`.
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
@@ -63,10 +63,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFileMembersErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

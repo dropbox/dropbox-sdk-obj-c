@@ -19,16 +19,13 @@
 @interface DBXUSERSTeam : NSObject <DBXSerializable> 
 
 /// The team's unique ID.
-@property (nonatomic, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
 /// The name of the team.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// Full constructor for the `Team` struct (exposes all instance variables).
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
-
-/// Returns a human-readable representation of the `DBXUSERSTeam` object.
-- (NSString * _Nonnull)description;
 
 @end
 

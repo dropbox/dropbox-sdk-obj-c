@@ -18,15 +18,11 @@
 @interface DBXTEAMRevokeDeviceSessionBatchArg : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull revokeDevices;
+@property (nonatomic, readonly) NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull revokeDevices;
 
 /// Full constructor for the `RevokeDeviceSessionBatchArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithRevokeDevices:(NSArray<DBXTEAMRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeDeviceSessionBatchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

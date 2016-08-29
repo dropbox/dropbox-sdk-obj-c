@@ -21,13 +21,10 @@
 @interface DBXUSERSFullTeam : DBXUSERSTeam <DBXSerializable> 
 
 /// Team policies governing sharing.
-@property (nonatomic) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharingPolicies;
+@property (nonatomic, readonly) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharingPolicies;
 
 /// Full constructor for the `FullTeam` struct (exposes all instance variables).
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name sharingPolicies:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharingPolicies;
-
-/// Returns a human-readable representation of the `DBXUSERSFullTeam` object.
-- (NSString * _Nonnull)description;
 
 @end
 

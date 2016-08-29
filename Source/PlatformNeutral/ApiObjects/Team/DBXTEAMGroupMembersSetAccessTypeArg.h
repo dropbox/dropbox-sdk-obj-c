@@ -21,12 +21,12 @@
 @interface DBXTEAMGroupMembersSetAccessTypeArg : DBXTEAMGroupMemberSelector <DBXSerializable> 
 
 /// New group access type the user will have.
-@property (nonatomic) DBXTEAMGroupAccessType * _Nonnull accessType;
+@property (nonatomic, readonly) DBXTEAMGroupAccessType * _Nonnull accessType;
 
 /// Whether to return the list of members in the group.  Note that the default
 /// value will cause all the group members  to be returned in the response. This
 /// may take a long time for large groups.
-@property (nonatomic, copy) NSNumber * _Nonnull returnMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull returnMembers;
 
 /// Full constructor for the `GroupMembersSetAccessTypeArg` struct (exposes all
 /// instance variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `GroupMembersSetAccessTypeArg` struct
 /// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group user:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMGroupMembersSetAccessTypeArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

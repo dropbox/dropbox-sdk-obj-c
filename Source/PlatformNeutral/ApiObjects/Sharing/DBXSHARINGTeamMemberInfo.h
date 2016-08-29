@@ -20,14 +20,14 @@
 @interface DBXSHARINGTeamMemberInfo : NSObject <DBXSerializable> 
 
 /// Information about the member's team
-@property (nonatomic) DBXUSERSTeam * _Nonnull teamInfo;
+@property (nonatomic, readonly) DBXUSERSTeam * _Nonnull teamInfo;
 
 /// The display name of the user.
-@property (nonatomic, copy) NSString * _Nonnull displayName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull displayName;
 
 /// ID of user as a member of a team. This field will only be present if the
 /// member is in the same team as current user.
-@property (nonatomic, copy) NSString * _Nullable memberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable memberId;
 
 /// Full constructor for the `TeamMemberInfo` struct (exposes all instance
 /// variables).
@@ -36,10 +36,6 @@
 /// Convenience constructor for the `TeamMemberInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamInfo:(DBXUSERSTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName;
-
-/// Returns a human-readable representation of the `DBXSHARINGTeamMemberInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

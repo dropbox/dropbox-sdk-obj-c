@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFoldersContinueErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGListFoldersContinueErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGListFoldersContinueErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidCursor`.
 - (nonnull instancetype)initWithInvalidCursor;
@@ -45,10 +45,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFoldersContinueErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFoldersContinueError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

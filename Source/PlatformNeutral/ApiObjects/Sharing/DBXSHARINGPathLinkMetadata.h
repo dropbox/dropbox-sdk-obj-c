@@ -21,7 +21,7 @@
 @interface DBXSHARINGPathLinkMetadata : DBXSHARINGLinkMetadata <DBXSerializable> 
 
 /// Path in user's Dropbox.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `PathLinkMetadata` struct (exposes all instance
 /// variables).
@@ -30,10 +30,6 @@
 /// Convenience constructor for the `PathLinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility path:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXSHARINGPathLinkMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

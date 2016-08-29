@@ -9,7 +9,7 @@
 @implementation DBXTEAMAddPropertyTemplateResult 
 
 - (instancetype)initWithTemplateId:(NSString *)templateId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
 
     self = [super init];
     if (self != nil) {

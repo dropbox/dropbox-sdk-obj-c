@@ -8,6 +8,9 @@
 
 @implementation DBXTEAMGroupsSelector 
 
+@synthesize groupIds = _groupIds;
+@synthesize groupExternalIds = _groupExternalIds;
+
 - (instancetype)initWithGroupIds:(NSArray<NSString *> *)groupIds {
     self = [super init];
     if (self != nil) {

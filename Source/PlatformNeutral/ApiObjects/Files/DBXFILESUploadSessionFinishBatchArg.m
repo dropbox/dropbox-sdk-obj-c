@@ -10,7 +10,7 @@
 @implementation DBXFILESUploadSessionFinishBatchArg 
 
 - (instancetype)initWithEntries:(NSArray<DBXFILESUploadSessionFinishArg *> *)entries {
-    [DBXStoneValidators arrayValidator:nil maxItems:[NSNumber numberWithInt:1000] itemValidator:nil](entries);
+    [DBXStoneValidators arrayValidator:nil maxItems:@(1000) itemValidator:nil](entries);
 
     self = [super init];
     if (self != nil) {

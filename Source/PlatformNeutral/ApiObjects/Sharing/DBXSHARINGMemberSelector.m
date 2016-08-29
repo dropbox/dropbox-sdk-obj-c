@@ -8,6 +8,9 @@
 
 @implementation DBXSHARINGMemberSelector 
 
+@synthesize dropboxId = _dropboxId;
+@synthesize email = _email;
+
 - (instancetype)initWithDropboxId:(NSString *)dropboxId {
     self = [super init];
     if (self != nil) {

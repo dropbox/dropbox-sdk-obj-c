@@ -20,10 +20,10 @@
 @interface DBXSHARINGGetFileMetadataBatchArg : NSObject <DBXSerializable> 
 
 /// The files to query.
-@property (nonatomic) NSArray<NSString *> * _Nonnull files;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull files;
 
 /// File actions to query.
-@property (nonatomic) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
 
 /// Full constructor for the `GetFileMetadataBatchArg` struct (exposes all
 /// instance variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `GetFileMetadataBatchArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGGetFileMetadataBatchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

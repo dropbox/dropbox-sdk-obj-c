@@ -33,13 +33,13 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGMemberSelectorTag tag;
+@property (nonatomic, readonly) DBXSHARINGMemberSelectorTag tag;
 
 /// Dropbox account, team member, or group ID of member.
-@property (nonatomic, copy) NSString * _Nonnull dropboxId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull dropboxId;
 
 /// E-mail address of member.
-@property (nonatomic, copy) NSString * _Nonnull email;
+@property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Initializes union class with tag state of `DropboxId`.
 - (nonnull instancetype)initWithDropboxId:(NSString * _Nonnull)dropboxId;
@@ -61,10 +61,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMemberSelectorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGMemberSelector`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, DBXFILESLookUpPropertiesErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESLookUpPropertiesErrorTag tag;
+@property (nonatomic, readonly) DBXFILESLookUpPropertiesErrorTag tag;
 
 /// Initializes union class with tag state of `PropertyGroupNotFound`.
 - (nonnull instancetype)initWithPropertyGroupNotFound;
@@ -36,10 +36,6 @@ typedef NS_ENUM(NSInteger, DBXFILESLookUpPropertiesErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESLookUpPropertiesError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

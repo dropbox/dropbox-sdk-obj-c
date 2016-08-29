@@ -20,7 +20,7 @@
 @interface DBXFILESCommitInfoWithProperties : DBXFILESCommitInfo <DBXSerializable> 
 
 /// List of custom properties to add to file.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
 /// Full constructor for the `CommitInfoWithProperties` struct (exposes all
 /// instance variables).
@@ -29,10 +29,6 @@
 /// Convenience constructor for the `CommitInfoWithProperties` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESCommitInfoWithProperties` object.
-- (NSString * _Nonnull)description;
 
 @end
 

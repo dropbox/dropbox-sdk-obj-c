@@ -10,6 +10,8 @@
 
 @implementation DBXSHARINGJobStatus 
 
+@synthesize failed = _failed;
+
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {

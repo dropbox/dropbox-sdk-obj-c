@@ -18,15 +18,15 @@
 @interface DBXSHARINGListSharedLinksResult : NSObject <DBXSerializable> 
 
 /// Shared links applicable to the path argument.
-@property (nonatomic) NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull links;
+@property (nonatomic, readonly) NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull links;
 
 /// Is true if there are additional shared links that have not been returned
 /// yet. Pass the cursor into listSharedLinks to retrieve them.
-@property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into listSharedLinks to obtain the additional links. Cursor
 /// is returned only if no path is given or the path is empty.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListSharedLinksResult` struct (exposes all
 /// instance variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `ListSharedLinksResult` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGSharedLinkMetadata *> * _Nonnull)links hasMore:(NSNumber * _Nonnull)hasMore;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListSharedLinksResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -20,17 +20,17 @@
 @interface DBXSHARINGListFileMembersArg : NSObject <DBXSerializable> 
 
 /// The file for which you want to see members.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// The actions for which to return permissions on a member
-@property (nonatomic) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
 
 /// Whether to include members who only have access from a parent shared folder.
-@property (nonatomic, copy) NSNumber * _Nonnull includeInherited;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeInherited;
 
 /// Number of members to return max per query. Defaults to 100 if no limit is
 /// specified.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `ListFileMembersArg` struct (exposes all instance
 /// variables).
@@ -39,10 +39,6 @@
 /// Convenience constructor for the `ListFileMembersArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

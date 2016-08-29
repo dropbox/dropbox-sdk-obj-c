@@ -24,19 +24,19 @@
 /// Who can be a member of this shared folder, as set on the folder itself. The
 /// effective policy may differ from this value if the team-wide policy is more
 /// restrictive. Present only if the folder is owned by a team.
-@property (nonatomic) DBXSHARINGMemberPolicy * _Nullable memberPolicy;
+@property (nonatomic, readonly) DBXSHARINGMemberPolicy * _Nullable memberPolicy;
 
 /// Who can be a member of this shared folder, taking into account both the
 /// folder and the team-wide policy. This value may differ from that of
 /// member_policy if the team-wide policy is more restrictive than the folder
 /// policy. Present only if the folder is owned by a team.
-@property (nonatomic) DBXSHARINGMemberPolicy * _Nullable resolvedMemberPolicy;
+@property (nonatomic, readonly) DBXSHARINGMemberPolicy * _Nullable resolvedMemberPolicy;
 
 /// Who can add and remove members from this shared folder.
-@property (nonatomic) DBXSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
+@property (nonatomic, readonly) DBXSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
 
 /// Who links can be shared with.
-@property (nonatomic) DBXSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
 /// Full constructor for the `FolderPolicy` struct (exposes all instance
 /// variables).
@@ -45,10 +45,6 @@
 /// Convenience constructor for the `FolderPolicy` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAclUpdatePolicy:(DBXSHARINGAclUpdatePolicy * _Nonnull)aclUpdatePolicy sharedLinkPolicy:(DBXSHARINGSharedLinkPolicy * _Nonnull)sharedLinkPolicy;
-
-/// Returns a human-readable representation of the `DBXSHARINGFolderPolicy`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

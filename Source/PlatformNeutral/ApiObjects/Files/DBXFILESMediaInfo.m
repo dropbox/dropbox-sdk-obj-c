@@ -9,6 +9,8 @@
 
 @implementation DBXFILESMediaInfo 
 
+@synthesize metadata = _metadata;
+
 - (instancetype)initWithPending {
     self = [super init];
     if (self != nil) {

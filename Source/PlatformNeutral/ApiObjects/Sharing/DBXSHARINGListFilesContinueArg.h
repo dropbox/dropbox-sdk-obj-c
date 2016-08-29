@@ -19,15 +19,11 @@
 @interface DBXSHARINGListFilesContinueArg : NSObject <DBXSerializable> 
 
 /// Cursor in cursor in ListFilesResult
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `ListFilesContinueArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFilesContinueArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -9,6 +9,8 @@
 
 @implementation DBXSHARINGSharePathError 
 
+@synthesize alreadyShared = _alreadyShared;
+
 - (instancetype)initWithIsFile {
     self = [super init];
     if (self != nil) {

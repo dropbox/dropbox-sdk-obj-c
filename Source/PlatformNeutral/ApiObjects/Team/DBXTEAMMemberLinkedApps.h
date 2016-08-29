@@ -20,18 +20,14 @@
 @interface DBXTEAMMemberLinkedApps : NSObject <DBXSerializable> 
 
 /// The member unique Id
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// List of third party applications linked by this team member
-@property (nonatomic) NSArray<DBXTEAMApiApp *> * _Nonnull linkedApiApps;
+@property (nonatomic, readonly) NSArray<DBXTEAMApiApp *> * _Nonnull linkedApiApps;
 
 /// Full constructor for the `MemberLinkedApps` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId linkedApiApps:(NSArray<DBXTEAMApiApp *> * _Nonnull)linkedApiApps;
-
-/// Returns a human-readable representation of the `DBXTEAMMemberLinkedApps`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

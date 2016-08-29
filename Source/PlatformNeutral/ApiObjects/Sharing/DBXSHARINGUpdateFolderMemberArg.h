@@ -19,22 +19,18 @@
 @interface DBXSHARINGUpdateFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// The member of the shared folder to update.  Only the dropboxId in
 /// MemberSelector may be set at this time.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The new access level for member. owner in AccessLevel is disallowed.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// Full constructor for the `UpdateFolderMemberArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGUpdateFolderMemberArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

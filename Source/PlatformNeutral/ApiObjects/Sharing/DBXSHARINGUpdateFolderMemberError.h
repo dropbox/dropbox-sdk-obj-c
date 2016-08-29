@@ -46,17 +46,17 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderMemberErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGUpdateFolderMemberErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGUpdateFolderMemberErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharedFolderMemberError * _Nonnull memberError;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderMemberError * _Nonnull memberError;
 
 /// If updating the access type required the member to be added to the shared
 /// folder and there was an error when adding the member.
-@property (nonatomic) DBXSHARINGAddFolderMemberError * _Nonnull noExplicitAccess;
+@property (nonatomic, readonly) DBXSHARINGAddFolderMemberError * _Nonnull noExplicitAccess;
 
 /// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
@@ -96,10 +96,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGUpdateFolderMemberErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGUpdateFolderMemberError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

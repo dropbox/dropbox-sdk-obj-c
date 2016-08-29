@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGCreateSharedLinkWithSettingsError 
 
+@synthesize path = _path;
+@synthesize settingsError = _settingsError;
+
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
     if (self != nil) {

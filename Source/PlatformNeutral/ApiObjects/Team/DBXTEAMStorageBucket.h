@@ -20,18 +20,14 @@
 
 /// The name of the storage bucket. For example, '1G' is a bucket of users with
 /// storage size up to 1 Giga.
-@property (nonatomic, copy) NSString * _Nonnull bucket;
+@property (nonatomic, readonly, copy) NSString * _Nonnull bucket;
 
 /// The number of people whose storage is in the range of this storage bucket.
-@property (nonatomic, copy) NSNumber * _Nonnull users;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull users;
 
 /// Full constructor for the `StorageBucket` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
-
-/// Returns a human-readable representation of the `DBXTEAMStorageBucket`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

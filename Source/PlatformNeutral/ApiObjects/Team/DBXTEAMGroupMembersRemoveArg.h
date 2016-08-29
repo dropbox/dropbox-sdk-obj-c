@@ -20,10 +20,10 @@
 @interface DBXTEAMGroupMembersRemoveArg : DBXTEAMIncludeMembersArg <DBXSerializable> 
 
 /// Group from which users will be removed.
-@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBXTEAMGroupSelector * _Nonnull group;
 
 /// List of users to be removed from the group.
-@property (nonatomic) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull users;
+@property (nonatomic, readonly) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull users;
 
 /// Full constructor for the `GroupMembersRemoveArg` struct (exposes all
 /// instance variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `GroupMembersRemoveArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group users:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)users;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMGroupMembersRemoveArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -9,13 +9,13 @@
 @implementation DBXSHARINGListFileMembersBatchArg 
 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files limit:(NSNumber *)limit {
-    [DBXStoneValidators arrayValidator:nil maxItems:[NSNumber numberWithInt:100] itemValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
-    [DBXStoneValidators numericValidator:nil maxValue:[NSNumber numberWithInt:20]](limit ?: [NSNumber numberWithUnsignedInt:10]);
+    [DBXStoneValidators arrayValidator:nil maxItems:@(100) itemValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
+    [DBXStoneValidators numericValidator:nil maxValue:@(20)](limit ?: @(10));
 
     self = [super init];
     if (self != nil) {
         _files = files;
-        _limit = limit ?: [NSNumber numberWithUnsignedInt:10];
+        _limit = limit ?: @(10);
     }
     return self;
 }

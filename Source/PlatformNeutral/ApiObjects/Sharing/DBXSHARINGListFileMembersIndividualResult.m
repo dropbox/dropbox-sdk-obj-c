@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGListFileMembersIndividualResult 
 
+@synthesize result = _result;
+@synthesize accessError = _accessError;
+
 - (instancetype)initWithResult:(DBXSHARINGListFileMembersCountResult *)result {
     self = [super init];
     if (self != nil) {

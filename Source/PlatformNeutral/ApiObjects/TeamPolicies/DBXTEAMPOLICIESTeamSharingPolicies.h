@@ -22,21 +22,17 @@
 @interface DBXTEAMPOLICIESTeamSharingPolicies : NSObject <DBXSerializable> 
 
 /// Who can join folders shared by team members.
-@property (nonatomic) DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull sharedFolderMemberPolicy;
+@property (nonatomic, readonly) DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull sharedFolderMemberPolicy;
 
 /// Which shared folders team members can join.
-@property (nonatomic) DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
+@property (nonatomic, readonly) DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
 
 /// What is the visibility of newly created shared links.
-@property (nonatomic) DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
+@property (nonatomic, readonly) DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
 
 /// Full constructor for the `TeamSharingPolicies` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSharedFolderMemberPolicy:(DBXTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy sharedFolderJoinPolicy:(DBXTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)sharedFolderJoinPolicy sharedLinkCreatePolicy:(DBXTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull)sharedLinkCreatePolicy;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMPOLICIESTeamSharingPolicies` object.
-- (NSString * _Nonnull)description;
 
 @end
 

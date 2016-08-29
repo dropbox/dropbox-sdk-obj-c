@@ -61,11 +61,11 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGSharePathErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGSharePathErrorTag tag;
 
 /// Folder is already shared. Contains metadata about the existing shared
 /// folder.
-@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
 
 /// Initializes union class with tag state of `IsFile`.
 - (nonnull instancetype)initWithIsFile;
@@ -144,10 +144,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharePathErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGSharePathError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

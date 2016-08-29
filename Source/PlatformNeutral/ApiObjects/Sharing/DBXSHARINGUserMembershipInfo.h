@@ -23,7 +23,7 @@
 @interface DBXSHARINGUserMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// The account information for the membership user.
-@property (nonatomic) DBXSHARINGUserInfo * _Nonnull user;
+@property (nonatomic, readonly) DBXSHARINGUserInfo * _Nonnull user;
 
 /// Full constructor for the `UserMembershipInfo` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `UserMembershipInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType user:(DBXSHARINGUserInfo * _Nonnull)user;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGUserMembershipInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

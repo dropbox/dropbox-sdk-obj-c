@@ -8,6 +8,8 @@
 
 @implementation DBXUSERSGetAccountBatchError 
 
+@synthesize noAccount = _noAccount;
+
 - (instancetype)initWithNoAccount:(NSString *)noAccount {
     self = [super init];
     if (self != nil) {

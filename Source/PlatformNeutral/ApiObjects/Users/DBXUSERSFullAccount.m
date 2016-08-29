@@ -13,9 +13,9 @@
 @implementation DBXUSERSFullAccount 
 
 - (instancetype)initWithAccountId:(NSString *)accountId name:(DBXUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled locale:(NSString *)locale referralLink:(NSString *)referralLink isPaired:(NSNumber *)isPaired accountType:(DBXUSERSAccountType *)accountType profilePhotoUrl:(NSString *)profilePhotoUrl country:(NSString *)country team:(DBXUSERSFullTeam *)team teamMemberId:(NSString *)teamMemberId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil](accountId);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:2] maxLength:nil pattern:nil](locale);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:2] maxLength:[NSNumber numberWithInt:2] pattern:nil]](country);
+    [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
+    [DBXStoneValidators stringValidator:@(2) maxLength:nil pattern:nil](locale);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(2) maxLength:@(2) pattern:nil]](country);
 
     self = [super initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
     if (self != nil) {

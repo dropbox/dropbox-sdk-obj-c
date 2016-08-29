@@ -17,15 +17,11 @@
 @interface DBXFILESUploadSessionOffsetError : NSObject <DBXSerializable> 
 
 /// The offset up to which data has been collected.
-@property (nonatomic, copy) NSNumber * _Nonnull correctOffset;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull correctOffset;
 
 /// Full constructor for the `UploadSessionOffsetError` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCorrectOffset:(NSNumber * _Nonnull)correctOffset;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionOffsetError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

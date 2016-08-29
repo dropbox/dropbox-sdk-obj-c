@@ -17,10 +17,10 @@
 @interface DBXTEAMMembersListArg : NSObject <DBXSerializable> 
 
 /// Number of results to return per call.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Whether to return removed members.
-@property (nonatomic, copy) NSNumber * _Nonnull includeRemoved;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeRemoved;
 
 /// Full constructor for the `MembersListArg` struct (exposes all instance
 /// variables).
@@ -29,10 +29,6 @@
 /// Convenience constructor for the `MembersListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersListArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

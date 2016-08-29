@@ -43,10 +43,10 @@ typedef NS_ENUM(NSInteger, DBXFILESLookupErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESLookupErrorTag tag;
+@property (nonatomic, readonly) DBXFILESLookupErrorTag tag;
 
 /// (no description).
-@property (nonatomic, copy) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
 
 /// Initializes union class with tag state of `MalformedPath`.
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
@@ -86,9 +86,6 @@ typedef NS_ENUM(NSInteger, DBXFILESLookupErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESLookupError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

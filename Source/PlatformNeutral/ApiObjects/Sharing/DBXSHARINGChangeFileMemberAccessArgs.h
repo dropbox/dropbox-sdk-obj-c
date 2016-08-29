@@ -21,21 +21,17 @@
 @interface DBXSHARINGChangeFileMemberAccessArgs : NSObject <DBXSerializable> 
 
 /// File for which we are changing a member's access.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// The member whose access we are changing.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The new access level for the member.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// Full constructor for the `ChangeFileMemberAccessArgs` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member accessLevel:(DBXSHARINGAccessLevel * _Nonnull)accessLevel;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGChangeFileMemberAccessArgs` object.
-- (NSString * _Nonnull)description;
 
 @end
 

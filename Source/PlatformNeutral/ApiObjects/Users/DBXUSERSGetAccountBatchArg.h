@@ -18,15 +18,11 @@
 
 /// List of user account identifiers.  Should not contain any duplicate account
 /// IDs.
-@property (nonatomic) NSArray<NSString *> * _Nonnull accountIds;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull accountIds;
 
 /// Full constructor for the `GetAccountBatchArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
-
-/// Returns a human-readable representation of the `DBXUSERSGetAccountBatchArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -18,14 +18,14 @@
 @interface DBXSHARINGSharedLinkSettings : NSObject <DBXSerializable> 
 
 /// The requested access for this shared link.
-@property (nonatomic) DBXSHARINGRequestedVisibility * _Nullable requestedVisibility;
+@property (nonatomic, readonly) DBXSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
 /// If requestedVisibility is password in RequestedVisibility this is needed to
 /// specify the password to access the link.
-@property (nonatomic, copy) NSString * _Nullable linkPassword;
+@property (nonatomic, readonly, copy) NSString * _Nullable linkPassword;
 
 /// Expiration time of the shared link. By default the link won't expire.
-@property (nonatomic) NSDate * _Nullable expires;
+@property (nonatomic, readonly) NSDate * _Nullable expires;
 
 /// Full constructor for the `SharedLinkSettings` struct (exposes all instance
 /// variables).
@@ -34,10 +34,6 @@
 /// Convenience constructor for the `SharedLinkSettings` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedLinkSettings` object.
-- (NSString * _Nonnull)description;
 
 @end
 

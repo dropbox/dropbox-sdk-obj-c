@@ -21,19 +21,19 @@
 @interface DBXTEAMMobileClientSession : DBXTEAMDeviceSession <DBXSerializable> 
 
 /// The device name
-@property (nonatomic, copy) NSString * _Nonnull deviceName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull deviceName;
 
 /// The mobile application type
-@property (nonatomic) DBXTEAMMobileClientPlatform * _Nonnull clientType;
+@property (nonatomic, readonly) DBXTEAMMobileClientPlatform * _Nonnull clientType;
 
 /// The dropbox client version
-@property (nonatomic, copy) NSString * _Nullable clientVersion;
+@property (nonatomic, readonly, copy) NSString * _Nullable clientVersion;
 
 /// The hosting OS version
-@property (nonatomic, copy) NSString * _Nullable osVersion;
+@property (nonatomic, readonly, copy) NSString * _Nullable osVersion;
 
 /// last carrier used by the device
-@property (nonatomic, copy) NSString * _Nullable lastCarrier;
+@property (nonatomic, readonly, copy) NSString * _Nullable lastCarrier;
 
 /// Full constructor for the `MobileClientSession` struct (exposes all instance
 /// variables).
@@ -42,10 +42,6 @@
 /// Convenience constructor for the `MobileClientSession` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId deviceName:(NSString * _Nonnull)deviceName clientType:(DBXTEAMMobileClientPlatform * _Nonnull)clientType;
-
-/// Returns a human-readable representation of the `DBXTEAMMobileClientSession`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

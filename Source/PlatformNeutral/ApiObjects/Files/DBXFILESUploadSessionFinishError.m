@@ -10,6 +10,9 @@
 
 @implementation DBXFILESUploadSessionFinishError 
 
+@synthesize lookupFailed = _lookupFailed;
+@synthesize path = _path;
+
 - (instancetype)initWithLookupFailed:(DBXFILESUploadSessionLookupError *)lookupFailed {
     self = [super init];
     if (self != nil) {

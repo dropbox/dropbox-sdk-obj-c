@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXUSERSGetAccountErrorTag tag;
+@property (nonatomic, readonly) DBXUSERSGetAccountErrorTag tag;
 
 /// Initializes union class with tag state of `NoAccount`.
 - (nonnull instancetype)initWithNoAccount;
@@ -44,10 +44,6 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXUSERSGetAccountError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

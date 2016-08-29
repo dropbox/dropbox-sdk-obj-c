@@ -9,6 +9,8 @@
 
 @implementation DBXSHARINGRelinquishFileMembershipError 
 
+@synthesize accessError = _accessError;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharingFileAccessError *)accessError {
     self = [super init];
     if (self != nil) {

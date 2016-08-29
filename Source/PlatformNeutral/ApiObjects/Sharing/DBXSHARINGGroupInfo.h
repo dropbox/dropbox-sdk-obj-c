@@ -23,13 +23,13 @@
 @interface DBXSHARINGGroupInfo : DBXTEAMCOMMONGroupSummary <DBXSerializable> 
 
 /// The type of group.
-@property (nonatomic) DBXTEAMCOMMONGroupType * _Nonnull groupType;
+@property (nonatomic, readonly) DBXTEAMCOMMONGroupType * _Nonnull groupType;
 
 /// If the current user is an owner of the group.
-@property (nonatomic, copy) NSNumber * _Nonnull isOwner;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isOwner;
 
 /// If the group is owned by the current user's team.
-@property (nonatomic, copy) NSNumber * _Nonnull sameTeam;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull sameTeam;
 
 /// Full constructor for the `GroupInfo` struct (exposes all instance
 /// variables).
@@ -38,9 +38,6 @@
 /// Convenience constructor for the `GroupInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType groupType:(DBXTEAMCOMMONGroupType * _Nonnull)groupType isOwner:(NSNumber * _Nonnull)isOwner sameTeam:(NSNumber * _Nonnull)sameTeam;
-
-/// Returns a human-readable representation of the `DBXSHARINGGroupInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

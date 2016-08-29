@@ -43,10 +43,10 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESSaveCopyReferenceErrorTag tag;
+@property (nonatomic, readonly) DBXFILESSaveCopyReferenceErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESWriteError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
@@ -87,10 +87,6 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveCopyReferenceErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESSaveCopyReferenceError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

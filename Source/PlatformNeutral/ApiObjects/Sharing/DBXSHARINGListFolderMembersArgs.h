@@ -19,7 +19,7 @@
 @interface DBXSHARINGListFolderMembersArgs : DBXSHARINGListFolderMembersCursorArg <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Full constructor for the `ListFolderMembersArgs` struct (exposes all
 /// instance variables).
@@ -28,10 +28,6 @@
 /// Convenience constructor for the `ListFolderMembersArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFolderMembersArgs` object.
-- (NSString * _Nonnull)description;
 
 @end
 

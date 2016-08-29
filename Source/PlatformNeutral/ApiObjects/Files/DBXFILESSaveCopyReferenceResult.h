@@ -18,15 +18,11 @@
 @interface DBXFILESSaveCopyReferenceResult : NSObject <DBXSerializable> 
 
 /// The metadata of the saved file or folder in the user's Dropbox.
-@property (nonatomic) DBXFILESMetadata * _Nonnull metadata;
+@property (nonatomic, readonly) DBXFILESMetadata * _Nonnull metadata;
 
 /// Full constructor for the `SaveCopyReferenceResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMetadata:(DBXFILESMetadata * _Nonnull)metadata;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESSaveCopyReferenceResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -22,21 +22,21 @@
 @interface DBXSHARINGSharedFolderMetadataBase : NSObject <DBXSerializable> 
 
 /// The current user's access level for this shared folder.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessType;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessType;
 
 /// Whether this folder is a team folder https://www.dropbox.com/en/help/986.
-@property (nonatomic, copy) NSNumber * _Nonnull isTeamFolder;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isTeamFolder;
 
 /// Policies governing this shared folder.
-@property (nonatomic) DBXSHARINGFolderPolicy * _Nonnull policy;
+@property (nonatomic, readonly) DBXSHARINGFolderPolicy * _Nonnull policy;
 
 /// The team that owns the folder. This field is not present if the folder is
 /// not owned by a team.
-@property (nonatomic) DBXUSERSTeam * _Nullable ownerTeam;
+@property (nonatomic, readonly) DBXUSERSTeam * _Nullable ownerTeam;
 
 /// The ID of the parent shared folder. This field is present only if the folder
 /// is contained within another shared folder.
-@property (nonatomic, copy) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// Full constructor for the `SharedFolderMetadataBase` struct (exposes all
 /// instance variables).
@@ -45,10 +45,6 @@
 /// Convenience constructor for the `SharedFolderMetadataBase` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedFolderMetadataBase` object.
-- (NSString * _Nonnull)description;
 
 @end
 

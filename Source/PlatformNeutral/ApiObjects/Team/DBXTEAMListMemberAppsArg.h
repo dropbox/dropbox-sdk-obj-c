@@ -17,15 +17,11 @@
 @interface DBXTEAMListMemberAppsArg : NSObject <DBXSerializable> 
 
 /// The team member id
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Full constructor for the `ListMemberAppsArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
-
-/// Returns a human-readable representation of the `DBXTEAMListMemberAppsArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -31,13 +31,13 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchResultEntryTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESUploadSessionFinishBatchResultEntryTag tag;
+@property (nonatomic, readonly) DBXFILESUploadSessionFinishBatchResultEntryTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESFileMetadata * _Nonnull success;
+@property (nonatomic, readonly) DBXFILESFileMetadata * _Nonnull success;
 
 /// (no description).
-@property (nonatomic) DBXFILESUploadSessionFinishError * _Nonnull failure;
+@property (nonatomic, readonly) DBXFILESUploadSessionFinishError * _Nonnull failure;
 
 /// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DBXFILESFileMetadata * _Nonnull)success;
@@ -53,10 +53,6 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchResultEntryTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionFinishBatchResultEntry` object.
-- (NSString * _Nonnull)description;
 
 @end
 

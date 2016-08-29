@@ -22,11 +22,11 @@
 @interface DBXSHARINGAddMember : NSObject <DBXSerializable> 
 
 /// The member to add to the shared folder.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The access level to grant member to the shared folder.  owner in AccessLevel
 /// is disallowed.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// Full constructor for the `AddMember` struct (exposes all instance
 /// variables).
@@ -35,9 +35,6 @@
 /// Convenience constructor for the `AddMember` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithMember:(DBXSHARINGMemberSelector * _Nonnull)member;
-
-/// Returns a human-readable representation of the `DBXSHARINGAddMember` object.
-- (NSString * _Nonnull)description;
 
 @end
 

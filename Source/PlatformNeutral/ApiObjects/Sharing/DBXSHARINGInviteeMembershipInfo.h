@@ -24,10 +24,10 @@
 @interface DBXSHARINGInviteeMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// Recipient of the invitation.
-@property (nonatomic) DBXSHARINGInviteeInfo * _Nonnull invitee;
+@property (nonatomic, readonly) DBXSHARINGInviteeInfo * _Nonnull invitee;
 
 /// The user this invitation is tied to, if available.
-@property (nonatomic) DBXSHARINGUserInfo * _Nullable user;
+@property (nonatomic, readonly) DBXSHARINGUserInfo * _Nullable user;
 
 /// Full constructor for the `InviteeMembershipInfo` struct (exposes all
 /// instance variables).
@@ -36,10 +36,6 @@
 /// Convenience constructor for the `InviteeMembershipInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType invitee:(DBXSHARINGInviteeInfo * _Nonnull)invitee;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGInviteeMembershipInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

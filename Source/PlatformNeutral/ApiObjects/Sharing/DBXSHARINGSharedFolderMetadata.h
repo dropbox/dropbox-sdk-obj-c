@@ -25,24 +25,24 @@
 
 /// The lower-cased full path of this shared folder. Absent for unmounted
 /// folders.
-@property (nonatomic, copy) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
 
 /// The name of the this shared folder.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// The ID of the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Actions the current user may perform on the folder and its contents. The set
 /// of permissions corresponds to the FolderActions in the request.
-@property (nonatomic) NSArray<DBXSHARINGFolderPermission *> * _Nullable permissions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFolderPermission *> * _Nullable permissions;
 
 /// Timestamp indicating when the current user was invited to this shared
 /// folder.
-@property (nonatomic) NSDate * _Nonnull timeInvited;
+@property (nonatomic, readonly) NSDate * _Nonnull timeInvited;
 
 /// URL for displaying a web preview of the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull previewUrl;
+@property (nonatomic, readonly, copy) NSString * _Nonnull previewUrl;
 
 /// Full constructor for the `SharedFolderMetadata` struct (exposes all instance
 /// variables).
@@ -51,10 +51,6 @@
 /// Convenience constructor for the `SharedFolderMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType isTeamFolder:(NSNumber * _Nonnull)isTeamFolder policy:(DBXSHARINGFolderPolicy * _Nonnull)policy name:(NSString * _Nonnull)name sharedFolderId:(NSString * _Nonnull)sharedFolderId timeInvited:(NSDate * _Nonnull)timeInvited previewUrl:(NSString * _Nonnull)previewUrl;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedFolderMetadata` object.
-- (NSString * _Nonnull)description;
 
 @end
 

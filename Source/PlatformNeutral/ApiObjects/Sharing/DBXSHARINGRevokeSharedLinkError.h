@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGRevokeSharedLinkErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGRevokeSharedLinkErrorTag tag;
 
 /// Initializes union class with tag state of `SharedLinkNotFound`.
 - (nonnull instancetype)initWithSharedLinkNotFound;
@@ -65,10 +65,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRevokeSharedLinkErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRevokeSharedLinkError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

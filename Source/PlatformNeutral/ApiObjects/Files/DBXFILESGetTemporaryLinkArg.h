@@ -17,15 +17,11 @@
 @interface DBXFILESGetTemporaryLinkArg : NSObject <DBXSerializable> 
 
 /// The path to the file you want a temporary link to.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `GetTemporaryLinkArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESGetTemporaryLinkArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -21,34 +21,30 @@
 @interface DBXTEAMDevicesActive : NSObject <DBXSerializable> 
 
 /// Array of number of linked windows (desktop) clients with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull windows;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull windows;
 
 /// Array of number of linked mac (desktop) clients with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull macos;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull macos;
 
 /// Array of number of linked linus (desktop) clients with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull linux;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull linux;
 
 /// Array of number of linked ios devices with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull ios;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull ios;
 
 /// Array of number of linked android devices with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull android;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull android;
 
 /// Array of number of other linked devices (blackberry, windows phone, etc)
 /// with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull other;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull other;
 
 /// Array of total number of linked clients with activity.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull total;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull total;
 
 /// Full constructor for the `DevicesActive` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithWindows:(NSArray<NSNumber *> * _Nonnull)windows macos:(NSArray<NSNumber *> * _Nonnull)macos linux:(NSArray<NSNumber *> * _Nonnull)linux ios:(NSArray<NSNumber *> * _Nonnull)ios android:(NSArray<NSNumber *> * _Nonnull)android other:(NSArray<NSNumber *> * _Nonnull)other total:(NSArray<NSNumber *> * _Nonnull)total;
-
-/// Returns a human-readable representation of the `DBXTEAMDevicesActive`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

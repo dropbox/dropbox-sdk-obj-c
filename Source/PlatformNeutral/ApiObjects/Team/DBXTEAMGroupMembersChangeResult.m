@@ -10,7 +10,7 @@
 @implementation DBXTEAMGroupMembersChangeResult 
 
 - (instancetype)initWithGroupInfo:(DBXTEAMGroupFullInfo *)groupInfo asyncJobId:(NSString *)asyncJobId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](asyncJobId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](asyncJobId);
 
     self = [super init];
     if (self != nil) {

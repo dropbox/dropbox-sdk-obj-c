@@ -36,10 +36,10 @@ typedef NS_ENUM(NSInteger, DBXFILESPreviewErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESPreviewErrorTag tag;
+@property (nonatomic, readonly) DBXFILESPreviewErrorTag tag;
 
 /// An error occurs when downloading metadata for the file.
-@property (nonatomic) DBXFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
@@ -69,10 +69,6 @@ typedef NS_ENUM(NSInteger, DBXFILESPreviewErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESPreviewError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

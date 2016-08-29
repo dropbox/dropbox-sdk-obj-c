@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteConflictErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESWriteConflictErrorTag tag;
+@property (nonatomic, readonly) DBXFILESWriteConflictErrorTag tag;
 
 /// Initializes union class with tag state of `File`.
 - (nonnull instancetype)initWithFile;
@@ -63,10 +63,6 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteConflictErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESWriteConflictError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -10,12 +10,12 @@
 @implementation DBXSHARINGListFilesArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit actions:(NSArray<DBXSHARINGFileAction *> *)actions {
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithUnsignedInt:100]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(300)](limit ?: @(100));
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithUnsignedInt:100];
+        _limit = limit ?: @(100);
         _actions = actions;
     }
     return self;

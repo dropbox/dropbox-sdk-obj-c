@@ -20,14 +20,14 @@
 @interface DBXSHARINGUserInfo : NSObject <DBXSerializable> 
 
 /// The account ID of the user.
-@property (nonatomic, copy) NSString * _Nonnull accountId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull accountId;
 
 /// If the user is in the same team as current user.
-@property (nonatomic, copy) NSNumber * _Nonnull sameTeam;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull sameTeam;
 
 /// The team member ID of the shared folder member. Only present if sameTeam is
 /// true.
-@property (nonatomic, copy) NSString * _Nullable teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
 
 /// Full constructor for the `UserInfo` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam teamMemberId:(NSString * _Nullable)teamMemberId;
@@ -35,9 +35,6 @@
 /// Convenience constructor for the `UserInfo` struct (exposes only non-nullable
 /// instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam;
-
-/// Returns a human-readable representation of the `DBXSHARINGUserInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

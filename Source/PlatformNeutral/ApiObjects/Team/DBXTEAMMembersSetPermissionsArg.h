@@ -22,18 +22,14 @@
 @interface DBXTEAMMembersSetPermissionsArg : NSObject <DBXSerializable> 
 
 /// Identity of user whose role will be set.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// The new role of the member.
-@property (nonatomic) DBXTEAMAdminTier * _Nonnull dNewRole;
+@property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull dNewRole;
 
 /// Full constructor for the `MembersSetPermissionsArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user dNewRole:(DBXTEAMAdminTier * _Nonnull)dNewRole;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMMembersSetPermissionsArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

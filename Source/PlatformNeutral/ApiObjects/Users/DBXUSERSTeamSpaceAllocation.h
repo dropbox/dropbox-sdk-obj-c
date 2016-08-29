@@ -17,18 +17,14 @@
 @interface DBXUSERSTeamSpaceAllocation : NSObject <DBXSerializable> 
 
 /// The total space currently used by the user's team (bytes).
-@property (nonatomic, copy) NSNumber * _Nonnull used;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull used;
 
 /// The total space allocated to the user's team (bytes).
-@property (nonatomic, copy) NSNumber * _Nonnull allocated;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull allocated;
 
 /// Full constructor for the `TeamSpaceAllocation` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocated:(NSNumber * _Nonnull)allocated;
-
-/// Returns a human-readable representation of the `DBXUSERSTeamSpaceAllocation`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

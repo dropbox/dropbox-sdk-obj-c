@@ -17,19 +17,19 @@
 @interface DBXTEAMDeviceSession : NSObject <DBXSerializable> 
 
 /// The session id
-@property (nonatomic, copy) NSString * _Nonnull sessionId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// The IP address of the last activity from this session
-@property (nonatomic, copy) NSString * _Nullable ipAddress;
+@property (nonatomic, readonly, copy) NSString * _Nullable ipAddress;
 
 /// The country from which the last activity from this session was made
-@property (nonatomic, copy) NSString * _Nullable country;
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
 
 /// The time this session was created
-@property (nonatomic) NSDate * _Nullable created;
+@property (nonatomic, readonly) NSDate * _Nullable created;
 
 /// The time of the last activity from this session
-@property (nonatomic) NSDate * _Nullable updated;
+@property (nonatomic, readonly) NSDate * _Nullable updated;
 
 /// Full constructor for the `DeviceSession` struct (exposes all instance
 /// variables).
@@ -38,10 +38,6 @@
 /// Convenience constructor for the `DeviceSession` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
-
-/// Returns a human-readable representation of the `DBXTEAMDeviceSession`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

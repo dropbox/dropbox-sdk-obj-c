@@ -10,7 +10,7 @@
 @implementation DBXFILESPropertyGroupUpdate 
 
 - (instancetype)initWithTemplateId:(NSString *)templateId addOrUpdateFields:(NSArray<DBXPROPERTIESPropertyField *> *)addOrUpdateFields removeFields:(NSArray<NSString *> *)removeFields {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](addOrUpdateFields);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](removeFields);
 

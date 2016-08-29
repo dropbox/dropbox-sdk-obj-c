@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGAccessLevelTag tag;
+@property (nonatomic, readonly) DBXSHARINGAccessLevelTag tag;
 
 /// Initializes union class with tag state of `Owner`.
 - (nonnull instancetype)initWithOwner;
@@ -76,10 +76,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAccessLevelTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGAccessLevel`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

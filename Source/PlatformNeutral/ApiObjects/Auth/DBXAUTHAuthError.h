@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXAUTHAuthErrorTag tag;
+@property (nonatomic, readonly) DBXAUTHAuthErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidAccessToken`.
 - (nonnull instancetype)initWithInvalidAccessToken;
@@ -68,9 +68,6 @@ typedef NS_ENUM(NSInteger, DBXAUTHAuthErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXAUTHAuthError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

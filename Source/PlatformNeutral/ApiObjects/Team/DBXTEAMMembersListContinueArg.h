@@ -17,15 +17,11 @@
 @interface DBXTEAMMembersListContinueArg : NSObject <DBXSerializable> 
 
 /// Indicates from what point to get the next set of members.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `MembersListContinueArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMMembersListContinueArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

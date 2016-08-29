@@ -20,10 +20,10 @@
 @interface DBXSHARINGListFilesResult : NSObject <DBXSerializable> 
 
 /// Information about the files shared with current user.
-@property (nonatomic) NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull entries;
 
 /// Cursor used to obtain additional shared files.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListFilesResult` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `ListFilesResult` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFileMetadata *> * _Nonnull)entries;
-
-/// Returns a human-readable representation of the `DBXSHARINGListFilesResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

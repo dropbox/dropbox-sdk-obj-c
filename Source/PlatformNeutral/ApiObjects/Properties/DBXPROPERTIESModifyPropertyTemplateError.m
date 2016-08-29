@@ -9,6 +9,8 @@
 
 @implementation DBXPROPERTIESModifyPropertyTemplateError 
 
+@synthesize templateNotFound = _templateNotFound;
+
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {

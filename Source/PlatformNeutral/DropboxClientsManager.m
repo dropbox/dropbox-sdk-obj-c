@@ -6,10 +6,10 @@
 
 @implementation DropboxClientsManager
 
-/// An authorized client. This will be set to nil if unlinked.
+/// An authorized client. This will be set to `nil` if unlinked.
 static DropboxClient *authorizedClient;
 
-/// An authorized team client. This will be set to nil if unlinked.
+/// An authorized team client. This will be set to `nil` if unlinked.
 static DropboxTeamClient *authorizedTeamClient;
 
 + (DropboxClient *)authorizedClient {

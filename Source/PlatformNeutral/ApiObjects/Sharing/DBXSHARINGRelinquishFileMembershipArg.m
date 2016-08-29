@@ -9,7 +9,7 @@
 @implementation DBXSHARINGRelinquishFileMembershipArg 
 
 - (instancetype)initWithFile:(NSString *)file {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
 
     self = [super init];
     if (self != nil) {

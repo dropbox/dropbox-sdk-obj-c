@@ -21,17 +21,14 @@
 @interface DBXTEAMMemberAccess : NSObject <DBXSerializable> 
 
 /// Identity of a user.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Access type.
-@property (nonatomic) DBXTEAMGroupAccessType * _Nonnull accessType;
+@property (nonatomic, readonly) DBXTEAMGroupAccessType * _Nonnull accessType;
 
 /// Full constructor for the `MemberAccess` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
-
-/// Returns a human-readable representation of the `DBXTEAMMemberAccess` object.
-- (NSString * _Nonnull)description;
 
 @end
 

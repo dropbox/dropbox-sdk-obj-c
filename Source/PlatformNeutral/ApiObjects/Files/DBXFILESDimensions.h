@@ -19,17 +19,14 @@
 @interface DBXFILESDimensions : NSObject <DBXSerializable> 
 
 /// Height of the photo/video.
-@property (nonatomic, copy) NSNumber * _Nonnull height;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull height;
 
 /// Width of the photo/video.
-@property (nonatomic, copy) NSNumber * _Nonnull width;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull width;
 
 /// Full constructor for the `Dimensions` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithHeight:(NSNumber * _Nonnull)height width:(NSNumber * _Nonnull)width;
-
-/// Returns a human-readable representation of the `DBXFILESDimensions` object.
-- (NSString * _Nonnull)description;
 
 @end
 

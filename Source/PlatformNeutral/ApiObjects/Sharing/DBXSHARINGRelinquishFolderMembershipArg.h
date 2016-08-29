@@ -17,10 +17,10 @@
 @interface DBXSHARINGRelinquishFolderMembershipArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Keep a copy of the folder's contents upon relinquishing membership.
-@property (nonatomic, copy) NSNumber * _Nonnull leaveACopy;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
 
 /// Full constructor for the `RelinquishFolderMembershipArg` struct (exposes all
 /// instance variables).
@@ -29,10 +29,6 @@
 /// Convenience constructor for the `RelinquishFolderMembershipArg` struct
 /// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRelinquishFolderMembershipArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

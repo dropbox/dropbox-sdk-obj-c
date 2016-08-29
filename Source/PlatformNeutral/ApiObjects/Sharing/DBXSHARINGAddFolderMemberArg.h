@@ -18,18 +18,18 @@
 @interface DBXSHARINGAddFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// The intended list of members to add.  Added members will receive invites to
 /// join the shared folder.
-@property (nonatomic) NSArray<DBXSHARINGAddMember *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBXSHARINGAddMember *> * _Nonnull members;
 
 /// Whether added members should be notified via email and device notifications
 /// of their invite.
-@property (nonatomic, copy) NSNumber * _Nonnull quiet;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull quiet;
 
 /// Optional message to display to added members in their invitation.
-@property (nonatomic, copy) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
 
 /// Full constructor for the `AddFolderMemberArg` struct (exposes all instance
 /// variables).
@@ -38,10 +38,6 @@
 /// Convenience constructor for the `AddFolderMemberArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> * _Nonnull)members;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGAddFolderMemberArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -18,18 +18,14 @@
 @interface DBXFILESUploadWriteFailed : NSObject <DBXSerializable> 
 
 /// The reason why the file couldn't be saved.
-@property (nonatomic) DBXFILESWriteError * _Nonnull reason;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull reason;
 
 /// The upload session ID; this may be used to retry the commit.
-@property (nonatomic, copy) NSString * _Nonnull uploadSessionId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull uploadSessionId;
 
 /// Full constructor for the `UploadWriteFailed` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithReason:(DBXFILESWriteError * _Nonnull)reason uploadSessionId:(NSString * _Nonnull)uploadSessionId;
-
-/// Returns a human-readable representation of the `DBXFILESUploadWriteFailed`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

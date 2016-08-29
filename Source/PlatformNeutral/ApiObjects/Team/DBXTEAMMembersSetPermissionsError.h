@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSetPermissionsErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMembersSetPermissionsErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMMembersSetPermissionsErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -82,10 +82,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersSetPermissionsErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMMembersSetPermissionsError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -18,15 +18,11 @@
 
 /// A unique identifier for the upload session. Pass this to
 /// uploadSessionAppendV2 and uploadSessionFinish.
-@property (nonatomic, copy) NSString * _Nonnull sessionId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// Full constructor for the `UploadSessionStartResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionStartResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

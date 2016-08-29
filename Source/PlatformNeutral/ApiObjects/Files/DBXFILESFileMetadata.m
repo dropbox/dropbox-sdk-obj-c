@@ -13,8 +13,8 @@
 @implementation DBXFILESFileMetadata 
 
 - (instancetype)initWithName:(NSString *)name id_:(NSString *)id_ clientModified:(NSDate *)clientModified serverModified:(NSDate *)serverModified rev:(NSString *)rev size:(NSNumber *)size pathLower:(NSString *)pathLower pathDisplay:(NSString *)pathDisplay parentSharedFolderId:(NSString *)parentSharedFolderId mediaInfo:(DBXFILESMediaInfo *)mediaInfo sharingInfo:(DBXFILESFileSharingInfo *)sharingInfo propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> *)propertyGroups hasExplicitSharedMembers:(NSNumber *)hasExplicitSharedMembers {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](id_);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:9] maxLength:nil pattern:@"[0-9a-f]+"](rev);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](id_);
+    [DBXStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"](rev);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentSharedFolderId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](propertyGroups);
 

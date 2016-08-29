@@ -33,13 +33,13 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGShareFolderJobStatusTag tag;
+@property (nonatomic, readonly) DBXSHARINGShareFolderJobStatusTag tag;
 
 /// The share job has finished. The value is the metadata for the folder.
-@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGShareFolderError * _Nonnull failed;
+@property (nonatomic, readonly) DBXSHARINGShareFolderError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -61,10 +61,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGShareFolderJobStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

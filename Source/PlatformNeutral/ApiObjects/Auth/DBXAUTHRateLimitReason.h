@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, DBXAUTHRateLimitReasonTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXAUTHRateLimitReasonTag tag;
+@property (nonatomic, readonly) DBXAUTHRateLimitReasonTag tag;
 
 /// Initializes union class with tag state of `TooManyRequests`.
 - (nonnull instancetype)initWithTooManyRequests;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXAUTHRateLimitReasonTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXAUTHRateLimitReason`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

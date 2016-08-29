@@ -21,15 +21,11 @@
 @interface DBXTEAMMembersRecoverArg : NSObject <DBXSerializable> 
 
 /// Identity of user to recover.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Full constructor for the `MembersRecoverArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersRecoverArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

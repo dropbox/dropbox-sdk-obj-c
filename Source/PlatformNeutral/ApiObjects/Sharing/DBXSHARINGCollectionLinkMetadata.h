@@ -28,10 +28,6 @@
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility;
 
-/// Returns a human-readable representation of the
-/// `DBXSHARINGCollectionLinkMetadata` object.
-- (NSString * _Nonnull)description;
-
 @end
 
 

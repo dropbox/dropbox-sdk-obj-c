@@ -9,7 +9,7 @@
 @implementation DBXFILESListFolderContinueArg 
 
 - (instancetype)initWithCursor:(NSString *)cursor {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](cursor);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](cursor);
 
     self = [super init];
     if (self != nil) {

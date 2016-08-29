@@ -20,11 +20,11 @@
 @interface DBXAUTHRateLimitError : NSObject <DBXSerializable> 
 
 /// The reason why the app is being rate limited.
-@property (nonatomic) DBXAUTHRateLimitReason * _Nonnull reason;
+@property (nonatomic, readonly) DBXAUTHRateLimitReason * _Nonnull reason;
 
 /// The number of seconds that the app should wait before making another
 /// request.
-@property (nonatomic, copy) NSNumber * _Nonnull retryAfter;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull retryAfter;
 
 /// Full constructor for the `RateLimitError` struct (exposes all instance
 /// variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `RateLimitError` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithReason:(DBXAUTHRateLimitReason * _Nonnull)reason;
-
-/// Returns a human-readable representation of the `DBXAUTHRateLimitError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

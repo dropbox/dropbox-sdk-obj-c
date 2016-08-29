@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMPOLICIESEmmStateTag tag;
+@property (nonatomic, readonly) DBXTEAMPOLICIESEmmStateTag tag;
 
 /// Initializes union class with tag state of `Disabled`.
 - (nonnull instancetype)initWithDisabled;
@@ -62,10 +62,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESEmmStateTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMPOLICIESEmmState`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

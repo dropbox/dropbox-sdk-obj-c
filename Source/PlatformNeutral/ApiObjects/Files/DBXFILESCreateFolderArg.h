@@ -17,15 +17,11 @@
 @interface DBXFILESCreateFolderArg : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to create.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `CreateFolderArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESCreateFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

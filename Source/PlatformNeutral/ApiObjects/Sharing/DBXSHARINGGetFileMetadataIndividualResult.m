@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGGetFileMetadataIndividualResult 
 
+@synthesize metadata = _metadata;
+@synthesize accessError = _accessError;
+
 - (instancetype)initWithMetadata:(DBXSHARINGSharedFileMetadata *)metadata {
     self = [super init];
     if (self != nil) {

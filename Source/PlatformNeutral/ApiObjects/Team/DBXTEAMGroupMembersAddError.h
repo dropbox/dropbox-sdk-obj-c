@@ -51,19 +51,19 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupMembersAddErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupMembersAddErrorTag tag;
 
 /// These members are not part of your team. Currently, you cannot add members
 /// to a group if they are not part of your team, though this may change in a
 /// subsequent version. To add new members to your Dropbox Business team, use
 /// the membersAdd endpoint.
-@property (nonatomic) NSArray<NSString *> * _Nonnull membersNotInTeam;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull membersNotInTeam;
 
 /// These users were not found in Dropbox.
-@property (nonatomic) NSArray<NSString *> * _Nonnull usersNotFound;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull usersNotFound;
 
 /// A company-managed group cannot be managed by a user.
-@property (nonatomic) NSArray<NSString *> * _Nonnull userCannotBeManagerOfCompanyManagedGroup;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull userCannotBeManagerOfCompanyManagedGroup;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -118,10 +118,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupMembersAddErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupMembersAddError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

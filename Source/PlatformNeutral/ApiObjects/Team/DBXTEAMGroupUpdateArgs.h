@@ -20,18 +20,18 @@
 @interface DBXTEAMGroupUpdateArgs : DBXTEAMIncludeMembersArg <DBXSerializable> 
 
 /// Specify a group.
-@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBXTEAMGroupSelector * _Nonnull group;
 
 /// Optional argument. Set group name to this if provided.
-@property (nonatomic, copy) NSString * _Nullable dNewGroupName;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGroupName;
 
 /// Optional argument. New group external ID. If the argument is None, the
 /// group's external_id won't be updated. If the argument is empty string, the
 /// group's external id will be cleared.
-@property (nonatomic, copy) NSString * _Nullable dNewGroupExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGroupExternalId;
 
 /// Set new group management type, if provided.
-@property (nonatomic) DBXTEAMCOMMONGroupManagementType * _Nullable dNewGroupManagementType;
+@property (nonatomic, readonly) DBXTEAMCOMMONGroupManagementType * _Nullable dNewGroupManagementType;
 
 /// Full constructor for the `GroupUpdateArgs` struct (exposes all instance
 /// variables).
@@ -40,10 +40,6 @@
 /// Convenience constructor for the `GroupUpdateArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupUpdateArgs`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

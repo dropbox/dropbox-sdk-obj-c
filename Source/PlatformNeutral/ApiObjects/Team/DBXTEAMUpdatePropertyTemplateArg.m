@@ -10,7 +10,7 @@
 @implementation DBXTEAMUpdatePropertyTemplateArg 
 
 - (instancetype)initWithTemplateId:(NSString *)templateId name:(NSString *)name description_:(NSString *)description_ addFields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> *)addFields {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](addFields);
 
     self = [super init];

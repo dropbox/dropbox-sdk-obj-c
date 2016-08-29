@@ -21,22 +21,18 @@
 @interface DBXTEAMPOLICIESTeamMemberPolicies : NSObject <DBXSerializable> 
 
 /// Policies governing sharing.
-@property (nonatomic) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharing;
+@property (nonatomic, readonly) DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull sharing;
 
 /// This describes the Enterprise Mobility Management (EMM) state for this team.
 /// This information can be used to understand if an organization is integrating
 /// with a third-party EMM vendor to further manage and apply restrictions upon
 /// the team's Dropbox usage on mobile devices. This is a new feature and in the
 /// future we'll be adding more new fields and additional documentation.
-@property (nonatomic) DBXTEAMPOLICIESEmmState * _Nonnull emmState;
+@property (nonatomic, readonly) DBXTEAMPOLICIESEmmState * _Nonnull emmState;
 
 /// Full constructor for the `TeamMemberPolicies` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSharing:(DBXTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharing emmState:(DBXTEAMPOLICIESEmmState * _Nonnull)emmState;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMPOLICIESTeamMemberPolicies` object.
-- (NSString * _Nonnull)description;
 
 @end
 

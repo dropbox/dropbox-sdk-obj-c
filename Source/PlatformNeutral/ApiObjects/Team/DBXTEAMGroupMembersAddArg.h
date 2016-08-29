@@ -20,10 +20,10 @@
 @interface DBXTEAMGroupMembersAddArg : DBXTEAMIncludeMembersArg <DBXSerializable> 
 
 /// Group to which users will be added.
-@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBXTEAMGroupSelector * _Nonnull group;
 
 /// List of users to be added to the group.
-@property (nonatomic) NSArray<DBXTEAMMemberAccess *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBXTEAMMemberAccess *> * _Nonnull members;
 
 /// Full constructor for the `GroupMembersAddArg` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `GroupMembersAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group members:(NSArray<DBXTEAMMemberAccess *> * _Nonnull)members;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupMembersAddArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

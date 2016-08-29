@@ -17,15 +17,11 @@
 @interface DBXPROPERTIESListPropertyTemplateIds : NSObject <DBXSerializable> 
 
 /// List of identifiers for templates added by route properties/template/add.
-@property (nonatomic) NSArray<NSString *> * _Nonnull templateIds;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull templateIds;
 
 /// Full constructor for the `ListPropertyTemplateIds` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithTemplateIds:(NSArray<NSString *> * _Nonnull)templateIds;
-
-/// Returns a human-readable representation of the
-/// `DBXPROPERTIESListPropertyTemplateIds` object.
-- (NSString * _Nonnull)description;
 
 @end
 

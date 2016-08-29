@@ -21,22 +21,22 @@
 
 /// The path to the folder to share. If it does not exist, then a new one is
 /// created.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Who can be a member of this shared folder. Only applicable if the current
 /// user is on a team.
-@property (nonatomic) DBXSHARINGMemberPolicy * _Nonnull memberPolicy;
+@property (nonatomic, readonly) DBXSHARINGMemberPolicy * _Nonnull memberPolicy;
 
 /// Who can add and remove members of this shared folder.
-@property (nonatomic) DBXSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
+@property (nonatomic, readonly) DBXSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
 
 /// The policy to apply to shared links created for content inside this shared
 /// folder.  The current user must be on a team to set this policy to members in
 /// SharedLinkPolicy.
-@property (nonatomic) DBXSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
 /// Whether to force the share to happen asynchronously.
-@property (nonatomic, copy) NSNumber * _Nonnull forceAsync;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
 
 /// Full constructor for the `ShareFolderArg` struct (exposes all instance
 /// variables).
@@ -45,10 +45,6 @@
 /// Convenience constructor for the `ShareFolderArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXSHARINGShareFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

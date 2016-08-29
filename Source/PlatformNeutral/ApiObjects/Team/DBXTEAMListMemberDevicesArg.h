@@ -17,16 +17,16 @@
 @interface DBXTEAMListMemberDevicesArg : NSObject <DBXSerializable> 
 
 /// The team's member id
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Whether to list web sessions of the team's member
-@property (nonatomic, copy) NSNumber * _Nonnull includeWebSessions;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeWebSessions;
 
 /// Whether to list linked desktop devices of the team's member
-@property (nonatomic, copy) NSNumber * _Nonnull includeDesktopClients;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeDesktopClients;
 
 /// Whether to list linked mobile devices of the team's member
-@property (nonatomic, copy) NSNumber * _Nonnull includeMobileClients;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeMobileClients;
 
 /// Full constructor for the `ListMemberDevicesArg` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `ListMemberDevicesArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
-
-/// Returns a human-readable representation of the `DBXTEAMListMemberDevicesArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

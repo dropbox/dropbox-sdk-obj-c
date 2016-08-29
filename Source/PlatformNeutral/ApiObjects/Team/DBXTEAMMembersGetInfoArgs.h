@@ -18,15 +18,11 @@
 @interface DBXTEAMMembersGetInfoArgs : NSObject <DBXSerializable> 
 
 /// List of team members.
-@property (nonatomic) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBXTEAMUserSelectorArg *> * _Nonnull members;
 
 /// Full constructor for the `MembersGetInfoArgs` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithMembers:(NSArray<DBXTEAMUserSelectorArg *> * _Nonnull)members;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersGetInfoArgs`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

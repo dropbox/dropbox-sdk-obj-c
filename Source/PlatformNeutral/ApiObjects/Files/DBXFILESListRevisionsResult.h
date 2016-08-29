@@ -18,18 +18,14 @@
 @interface DBXFILESListRevisionsResult : NSObject <DBXSerializable> 
 
 /// If the file is deleted.
-@property (nonatomic, copy) NSNumber * _Nonnull isDeleted;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isDeleted;
 
 /// The revisions for the file. Only non-delete revisions will show up here.
-@property (nonatomic) NSArray<DBXFILESFileMetadata *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBXFILESFileMetadata *> * _Nonnull entries;
 
 /// Full constructor for the `ListRevisionsResult` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithIsDeleted:(NSNumber * _Nonnull)isDeleted entries:(NSArray<DBXFILESFileMetadata *> * _Nonnull)entries;
-
-/// Returns a human-readable representation of the `DBXFILESListRevisionsResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -17,17 +17,14 @@
 @interface DBXFILESSaveUrlArg : NSObject <DBXSerializable> 
 
 /// The path in Dropbox where the URL will be saved to.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The URL to be saved.
-@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
 /// Full constructor for the `SaveUrlArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path url:(NSString * _Nonnull)url;
-
-/// Returns a human-readable representation of the `DBXFILESSaveUrlArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -18,11 +18,11 @@
 @interface DBXFILESUploadSessionAppendArg : NSObject <DBXSerializable> 
 
 /// Contains the upload session ID and the offset.
-@property (nonatomic) DBXFILESUploadSessionCursor * _Nonnull cursor;
+@property (nonatomic, readonly) DBXFILESUploadSessionCursor * _Nonnull cursor;
 
 /// If true, the current session will be closed, at which point you won't be
 /// able to call uploadSessionAppendV2 anymore with the current session.
-@property (nonatomic, copy) NSNumber * _Nonnull close;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull close;
 
 /// Full constructor for the `UploadSessionAppendArg` struct (exposes all
 /// instance variables).
@@ -31,10 +31,6 @@
 /// Convenience constructor for the `UploadSessionAppendArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithCursor:(DBXFILESUploadSessionCursor * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionAppendArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -17,18 +17,14 @@
 @interface DBXFILESSaveCopyReferenceArg : NSObject <DBXSerializable> 
 
 /// A copy reference returned by dCopyReferenceGet.
-@property (nonatomic, copy) NSString * _Nonnull dCopyReference;
+@property (nonatomic, readonly, copy) NSString * _Nonnull dCopyReference;
 
 /// Path in the user's Dropbox that is the destination.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `SaveCopyReferenceArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESSaveCopyReferenceArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

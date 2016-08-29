@@ -18,23 +18,19 @@
 @interface DBXTEAMGroupsMembersListResult : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DBXTEAMGroupMemberInfo *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBXTEAMGroupMemberInfo *> * _Nonnull members;
 
 /// Pass the cursor into groupsMembersListContinue to obtain additional group
 /// members.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Is true if there are additional group members that have not been returned
 /// yet. An additional call to groupsMembersListContinue can retrieve them.
-@property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
 /// Full constructor for the `GroupsMembersListResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMembers:(NSArray<DBXTEAMGroupMemberInfo *> * _Nonnull)members cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMGroupsMembersListResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

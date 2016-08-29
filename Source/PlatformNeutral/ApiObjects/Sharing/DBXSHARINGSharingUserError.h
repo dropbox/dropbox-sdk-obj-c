@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGSharingUserErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGSharingUserErrorTag tag;
 
 /// Initializes union class with tag state of `EmailUnverified`.
 - (nonnull instancetype)initWithEmailUnverified;
@@ -47,10 +47,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharingUserErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGSharingUserError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

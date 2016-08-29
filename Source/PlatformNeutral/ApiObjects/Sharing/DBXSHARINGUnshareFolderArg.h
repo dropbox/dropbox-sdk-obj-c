@@ -17,12 +17,12 @@
 @interface DBXSHARINGUnshareFolderArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// If true, members of this shared folder will get a copy of this folder after
 /// it's unshared. Otherwise, it will be removed from their Dropbox. The current
 /// user, who is an owner, will always retain their copy.
-@property (nonatomic, copy) NSNumber * _Nonnull leaveACopy;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
 
 /// Full constructor for the `UnshareFolderArg` struct (exposes all instance
 /// variables).
@@ -31,10 +31,6 @@
 /// Convenience constructor for the `UnshareFolderArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the `DBXSHARINGUnshareFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

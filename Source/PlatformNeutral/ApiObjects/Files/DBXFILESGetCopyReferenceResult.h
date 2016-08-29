@@ -18,22 +18,18 @@
 @interface DBXFILESGetCopyReferenceResult : NSObject <DBXSerializable> 
 
 /// Metadata of the file or folder.
-@property (nonatomic) DBXFILESMetadata * _Nonnull metadata;
+@property (nonatomic, readonly) DBXFILESMetadata * _Nonnull metadata;
 
 /// A copy reference to the file or folder.
-@property (nonatomic, copy) NSString * _Nonnull dCopyReference;
+@property (nonatomic, readonly, copy) NSString * _Nonnull dCopyReference;
 
 /// The expiration date of the copy reference. This value is currently set to be
 /// far enough in the future so that expiration is effectively not an issue.
-@property (nonatomic) NSDate * _Nonnull expires;
+@property (nonatomic, readonly) NSDate * _Nonnull expires;
 
 /// Full constructor for the `GetCopyReferenceResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMetadata:(DBXFILESMetadata * _Nonnull)metadata dCopyReference:(NSString * _Nonnull)dCopyReference expires:(NSDate * _Nonnull)expires;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESGetCopyReferenceResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

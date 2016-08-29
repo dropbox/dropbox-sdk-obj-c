@@ -12,7 +12,7 @@
 @implementation DBXFILESFolderMetadata 
 
 - (instancetype)initWithName:(NSString *)name id_:(NSString *)id_ pathLower:(NSString *)pathLower pathDisplay:(NSString *)pathDisplay parentSharedFolderId:(NSString *)parentSharedFolderId sharedFolderId:(NSString *)sharedFolderId sharingInfo:(DBXFILESFolderSharingInfo *)sharingInfo propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> *)propertyGroups {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](id_);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](id_);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentSharedFolderId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](sharedFolderId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](propertyGroups);

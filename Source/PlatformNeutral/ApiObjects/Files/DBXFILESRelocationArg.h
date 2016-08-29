@@ -17,18 +17,14 @@
 @interface DBXFILESRelocationArg : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to be copied or moved.
-@property (nonatomic, copy) NSString * _Nonnull fromPath;
+@property (nonatomic, readonly, copy) NSString * _Nonnull fromPath;
 
 /// Path in the user's Dropbox that is the destination.
-@property (nonatomic, copy) NSString * _Nonnull toPath;
+@property (nonatomic, readonly, copy) NSString * _Nonnull toPath;
 
 /// Full constructor for the `RelocationArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
-
-/// Returns a human-readable representation of the `DBXFILESRelocationArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

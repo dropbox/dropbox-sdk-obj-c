@@ -8,6 +8,10 @@
 
 @implementation DBXTEAMUserSelectorArg 
 
+@synthesize teamMemberId = _teamMemberId;
+@synthesize externalId = _externalId;
+@synthesize email = _email;
+
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId {
     self = [super init];
     if (self != nil) {

@@ -19,10 +19,10 @@
 @interface DBXTEAMDateRange : NSObject <DBXSerializable> 
 
 /// Optional starting date (inclusive)
-@property (nonatomic) NSDate * _Nullable startDate;
+@property (nonatomic, readonly) NSDate * _Nullable startDate;
 
 /// Optional ending date (exclusive)
-@property (nonatomic) NSDate * _Nullable endDate;
+@property (nonatomic, readonly) NSDate * _Nullable endDate;
 
 /// Full constructor for the `DateRange` struct (exposes all instance
 /// variables).
@@ -31,9 +31,6 @@
 /// Convenience constructor for the `DateRange` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMDateRange` object.
-- (NSString * _Nonnull)description;
 
 @end
 

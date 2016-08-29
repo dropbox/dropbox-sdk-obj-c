@@ -10,6 +10,9 @@
 
 @implementation DBXUSERSSpaceAllocation 
 
+@synthesize individual = _individual;
+@synthesize team = _team;
+
 - (instancetype)initWithIndividual:(DBXUSERSIndividualSpaceAllocation *)individual {
     self = [super init];
     if (self != nil) {

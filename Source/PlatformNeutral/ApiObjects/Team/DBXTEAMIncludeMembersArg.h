@@ -19,7 +19,7 @@
 /// Whether to return the list of members in the group.  Note that the default
 /// value will cause all the group members  to be returned in the response. This
 /// may take a long time for large groups.
-@property (nonatomic, copy) NSNumber * _Nonnull returnMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull returnMembers;
 
 /// Full constructor for the `IncludeMembersArg` struct (exposes all instance
 /// variables).
@@ -28,10 +28,6 @@
 /// Convenience constructor for the `IncludeMembersArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMIncludeMembersArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

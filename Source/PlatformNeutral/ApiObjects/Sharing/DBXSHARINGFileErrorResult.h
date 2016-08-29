@@ -34,16 +34,16 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileErrorResultTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGFileErrorResultTag tag;
+@property (nonatomic, readonly) DBXSHARINGFileErrorResultTag tag;
 
 /// File specified by id was not found.
-@property (nonatomic, copy) NSString * _Nonnull fileNotFoundError;
+@property (nonatomic, readonly, copy) NSString * _Nonnull fileNotFoundError;
 
 /// User does not have permission to take the specified action on the file.
-@property (nonatomic, copy) NSString * _Nonnull invalidFileActionError;
+@property (nonatomic, readonly, copy) NSString * _Nonnull invalidFileActionError;
 
 /// User does not have permission to access file specified by file.Id.
-@property (nonatomic, copy) NSString * _Nonnull permissionDeniedError;
+@property (nonatomic, readonly, copy) NSString * _Nonnull permissionDeniedError;
 
 /// Initializes union class with tag state of `FileNotFoundError`.
 - (nonnull instancetype)initWithFileNotFoundError:(NSString * _Nonnull)fileNotFoundError;
@@ -73,10 +73,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileErrorResultTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGFileErrorResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

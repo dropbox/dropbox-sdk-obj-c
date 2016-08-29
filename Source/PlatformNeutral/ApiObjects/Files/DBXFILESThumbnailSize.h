@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESThumbnailSizeTag tag;
+@property (nonatomic, readonly) DBXFILESThumbnailSizeTag tag;
 
 /// Initializes union class with tag state of `W32h32`.
 - (nonnull instancetype)initWithW32h32;
@@ -71,10 +71,6 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailSizeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESThumbnailSize`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

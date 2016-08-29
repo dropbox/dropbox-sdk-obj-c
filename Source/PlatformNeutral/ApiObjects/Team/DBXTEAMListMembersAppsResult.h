@@ -20,15 +20,15 @@
 @interface DBXTEAMListMembersAppsResult : NSObject <DBXSerializable> 
 
 /// The linked applications of each member of the team
-@property (nonatomic) NSArray<DBXTEAMMemberLinkedApps *> * _Nonnull apps;
+@property (nonatomic, readonly) NSArray<DBXTEAMMemberLinkedApps *> * _Nonnull apps;
 
 /// If true, then there are more apps available. Pass the cursor to
 /// linkedAppsListMembersLinkedApps to retrieve the rest.
-@property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into linkedAppsListMembersLinkedApps to receive the next sub
 /// list of team's applications.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListMembersAppsResult` struct (exposes all
 /// instance variables).
@@ -37,10 +37,6 @@
 /// Convenience constructor for the `ListMembersAppsResult` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithApps:(NSArray<DBXTEAMMemberLinkedApps *> * _Nonnull)apps hasMore:(NSNumber * _Nonnull)hasMore;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMListMembersAppsResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGFileActionTag tag;
+@property (nonatomic, readonly) DBXSHARINGFileActionTag tag;
 
 /// Initializes union class with tag state of `EditContents`.
 - (nonnull instancetype)initWithEditContents;
@@ -93,10 +93,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileActionTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGFileAction`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

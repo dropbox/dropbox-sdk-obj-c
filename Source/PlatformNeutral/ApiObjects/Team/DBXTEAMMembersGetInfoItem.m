@@ -9,6 +9,9 @@
 
 @implementation DBXTEAMMembersGetInfoItem 
 
+@synthesize idNotFound = _idNotFound;
+@synthesize memberInfo = _memberInfo;
+
 - (instancetype)initWithIdNotFound:(NSString *)idNotFound {
     self = [super init];
     if (self != nil) {

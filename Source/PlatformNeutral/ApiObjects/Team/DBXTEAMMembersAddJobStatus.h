@@ -35,16 +35,16 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersAddJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMembersAddJobStatusTag tag;
+@property (nonatomic, readonly) DBXTEAMMembersAddJobStatusTag tag;
 
 /// The asynchronous job has finished. For each member that was specified in the
 /// parameter MembersAddArg that was provided to membersAdd, a corresponding
 /// item is returned in this list.
-@property (nonatomic) NSArray<DBXTEAMMemberAddResult *> * _Nonnull complete;
+@property (nonatomic, readonly) NSArray<DBXTEAMMemberAddResult *> * _Nonnull complete;
 
 /// The asynchronous job returned an error. The string contains an error
 /// message.
-@property (nonatomic, copy) NSString * _Nonnull failed;
+@property (nonatomic, readonly, copy) NSString * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -66,10 +66,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersAddJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersAddJobStatus`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

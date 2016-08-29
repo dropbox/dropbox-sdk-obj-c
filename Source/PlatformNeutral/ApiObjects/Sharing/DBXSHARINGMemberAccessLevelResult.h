@@ -23,15 +23,15 @@
 
 /// The member still has this level of access to the content through a parent
 /// folder.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nullable accessLevel;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nullable accessLevel;
 
 /// A localized string with additional information about why the user has this
 /// access level to the content.
-@property (nonatomic, copy) NSString * _Nullable warning;
+@property (nonatomic, readonly, copy) NSString * _Nullable warning;
 
 /// The parent folders that a member has access to. The field is present if the
 /// user has access to the first parent folder where the member gains access.
-@property (nonatomic) NSArray<DBXSHARINGParentFolderAccessInfo *> * _Nullable accessDetails;
+@property (nonatomic, readonly) NSArray<DBXSHARINGParentFolderAccessInfo *> * _Nullable accessDetails;
 
 /// Full constructor for the `MemberAccessLevelResult` struct (exposes all
 /// instance variables).
@@ -40,10 +40,6 @@
 /// Convenience constructor for the `MemberAccessLevelResult` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGMemberAccessLevelResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -32,10 +32,10 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGJobStatusTag tag;
+@property (nonatomic, readonly) DBXSHARINGJobStatusTag tag;
 
 /// The asynchronous job returned an error.
-@property (nonatomic) DBXSHARINGJobError * _Nonnull failed;
+@property (nonatomic, readonly) DBXSHARINGJobError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -57,9 +57,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGJobStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

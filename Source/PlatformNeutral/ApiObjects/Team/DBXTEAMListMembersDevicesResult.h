@@ -18,15 +18,15 @@
 @interface DBXTEAMListMembersDevicesResult : NSObject <DBXSerializable> 
 
 /// The devices of each member of the team
-@property (nonatomic) NSArray<DBXTEAMMemberDevices *> * _Nonnull devices;
+@property (nonatomic, readonly) NSArray<DBXTEAMMemberDevices *> * _Nonnull devices;
 
 /// If true, then there are more devices available. Pass the cursor to
 /// devicesListMembersDevices to retrieve the rest.
-@property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into devicesListMembersDevices to receive the next sub list
 /// of team's devices.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListMembersDevicesResult` struct (exposes all
 /// instance variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `ListMembersDevicesResult` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithDevices:(NSArray<DBXTEAMMemberDevices *> * _Nonnull)devices hasMore:(NSNumber * _Nonnull)hasMore;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMListMembersDevicesResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

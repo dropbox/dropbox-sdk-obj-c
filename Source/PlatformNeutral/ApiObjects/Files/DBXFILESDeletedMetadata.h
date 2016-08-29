@@ -28,10 +28,6 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name;
 
-/// Returns a human-readable representation of the `DBXFILESDeletedMetadata`
-/// object.
-- (NSString * _Nonnull)description;
-
 @end
 
 

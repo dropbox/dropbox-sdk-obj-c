@@ -10,7 +10,7 @@
 @implementation DBXSHARINGGetFileMetadataArg 
 
 - (instancetype)initWithFile:(NSString *)file actions:(NSArray<DBXSHARINGFileAction *> *)actions {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];

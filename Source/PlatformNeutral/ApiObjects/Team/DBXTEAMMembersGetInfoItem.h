@@ -34,15 +34,15 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersGetInfoItemTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMembersGetInfoItemTag tag;
+@property (nonatomic, readonly) DBXTEAMMembersGetInfoItemTag tag;
 
 /// An ID that was provided as a parameter to membersGetInfo, and did not match
 /// a corresponding user. This might be a team_member_id, an email, or an
 /// external ID, depending on how the method was called.
-@property (nonatomic, copy) NSString * _Nonnull idNotFound;
+@property (nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
 
 /// Info about a team member.
-@property (nonatomic) DBXTEAMTeamMemberInfo * _Nonnull memberInfo;
+@property (nonatomic, readonly) DBXTEAMTeamMemberInfo * _Nonnull memberInfo;
 
 /// Initializes union class with tag state of `IdNotFound`.
 - (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
@@ -58,10 +58,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersGetInfoItemTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersGetInfoItem`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

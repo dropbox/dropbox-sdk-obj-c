@@ -18,25 +18,25 @@
 @interface DBXTEAMMemberAddArg : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic, copy) NSString * _Nonnull memberEmail;
+@property (nonatomic, readonly, copy) NSString * _Nonnull memberEmail;
 
 /// Member's first name.
-@property (nonatomic, copy) NSString * _Nonnull memberGivenName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull memberGivenName;
 
 /// Member's last name.
-@property (nonatomic, copy) NSString * _Nonnull memberSurname;
+@property (nonatomic, readonly, copy) NSString * _Nonnull memberSurname;
 
 /// External ID for member.
-@property (nonatomic, copy) NSString * _Nullable memberExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable memberExternalId;
 
 /// Whether to send a welcome email to the member. If send_welcome_email is
 /// false, no email invitation will be sent to the user. This may be useful for
 /// apps using single sign-on (SSO) flows for onboarding that want to handle
 /// announcements themselves.
-@property (nonatomic, copy) NSNumber * _Nonnull sendWelcomeEmail;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull sendWelcomeEmail;
 
 /// (no description).
-@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
+@property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `MemberAddArg` struct (exposes all instance
 /// variables).
@@ -45,9 +45,6 @@
 /// Convenience constructor for the `MemberAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail memberGivenName:(NSString * _Nonnull)memberGivenName memberSurname:(NSString * _Nonnull)memberSurname;
-
-/// Returns a human-readable representation of the `DBXTEAMMemberAddArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

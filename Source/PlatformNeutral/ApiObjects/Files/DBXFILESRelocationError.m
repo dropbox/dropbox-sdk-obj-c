@@ -10,6 +10,10 @@
 
 @implementation DBXFILESRelocationError 
 
+@synthesize fromLookup = _fromLookup;
+@synthesize fromWrite = _fromWrite;
+@synthesize to = _to;
+
 - (instancetype)initWithFromLookup:(DBXFILESLookupError *)fromLookup {
     self = [super init];
     if (self != nil) {

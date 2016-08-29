@@ -17,14 +17,11 @@
 @interface DBXFILESDeleteArg : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to delete.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `DeleteArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESDeleteArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

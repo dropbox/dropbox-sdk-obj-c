@@ -17,13 +17,13 @@
 @interface DBXSHARINGListSharedLinksArg : NSObject <DBXSerializable> 
 
 /// See listSharedLinks description.
-@property (nonatomic, copy) NSString * _Nullable path;
+@property (nonatomic, readonly, copy) NSString * _Nullable path;
 
 /// The cursor returned by your last call to listSharedLinks.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// See listSharedLinks description.
-@property (nonatomic, copy) NSNumber * _Nullable directOnly;
+@property (nonatomic, readonly, copy) NSNumber * _Nullable directOnly;
 
 /// Full constructor for the `ListSharedLinksArg` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `ListSharedLinksArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListSharedLinksArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

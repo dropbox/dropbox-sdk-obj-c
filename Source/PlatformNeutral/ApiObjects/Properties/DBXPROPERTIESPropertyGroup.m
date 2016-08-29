@@ -10,7 +10,7 @@
 @implementation DBXPROPERTIESPropertyGroup 
 
 - (instancetype)initWithTemplateId:(NSString *)templateId fields:(NSArray<DBXPROPERTIESPropertyField *> *)fields {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"](templateId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"](templateId);
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](fields);
 
     self = [super init];

@@ -22,7 +22,7 @@
 @interface DBXFILESVideoMetadata : DBXFILESMediaMetadata <DBXSerializable> 
 
 /// The duration of the video in milliseconds.
-@property (nonatomic, copy) NSNumber * _Nullable duration;
+@property (nonatomic, readonly, copy) NSNumber * _Nullable duration;
 
 /// Full constructor for the `VideoMetadata` struct (exposes all instance
 /// variables).
@@ -31,10 +31,6 @@
 /// Convenience constructor for the `VideoMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXFILESVideoMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

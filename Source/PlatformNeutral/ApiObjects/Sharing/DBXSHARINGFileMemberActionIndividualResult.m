@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGFileMemberActionIndividualResult 
 
+@synthesize success = _success;
+@synthesize memberError = _memberError;
+
 - (instancetype)initWithSuccess:(DBXSHARINGAccessLevel *)success {
     self = [super init];
     if (self != nil) {

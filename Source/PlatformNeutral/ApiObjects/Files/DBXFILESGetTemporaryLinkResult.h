@@ -18,18 +18,14 @@
 @interface DBXFILESGetTemporaryLinkResult : NSObject <DBXSerializable> 
 
 /// Metadata of the file.
-@property (nonatomic) DBXFILESFileMetadata * _Nonnull metadata;
+@property (nonatomic, readonly) DBXFILESFileMetadata * _Nonnull metadata;
 
 /// The temporary link which can be used to stream content the file.
-@property (nonatomic, copy) NSString * _Nonnull link;
+@property (nonatomic, readonly, copy) NSString * _Nonnull link;
 
 /// Full constructor for the `GetTemporaryLinkResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMetadata:(DBXFILESFileMetadata * _Nonnull)metadata link:(NSString * _Nonnull)link;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESGetTemporaryLinkResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

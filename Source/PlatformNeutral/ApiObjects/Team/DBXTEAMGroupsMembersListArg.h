@@ -18,10 +18,10 @@
 @interface DBXTEAMGroupsMembersListArg : NSObject <DBXSerializable> 
 
 /// The group whose members are to be listed.
-@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBXTEAMGroupSelector * _Nonnull group;
 
 /// Number of results to return per call.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `GroupsMembersListArg` struct (exposes all instance
 /// variables).
@@ -30,10 +30,6 @@
 /// Convenience constructor for the `GroupsMembersListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupsMembersListArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

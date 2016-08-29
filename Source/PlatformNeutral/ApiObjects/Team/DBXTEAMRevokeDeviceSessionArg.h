@@ -33,16 +33,16 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMRevokeDeviceSessionArgTag tag;
+@property (nonatomic, readonly) DBXTEAMRevokeDeviceSessionArgTag tag;
 
 /// End an active session
-@property (nonatomic) DBXTEAMDeviceSessionArg * _Nonnull webSession;
+@property (nonatomic, readonly) DBXTEAMDeviceSessionArg * _Nonnull webSession;
 
 /// Unlink a linked desktop device
-@property (nonatomic) DBXTEAMRevokeDesktopClientArg * _Nonnull desktopClient;
+@property (nonatomic, readonly) DBXTEAMRevokeDesktopClientArg * _Nonnull desktopClient;
 
 /// Unlink a linked mobile device
-@property (nonatomic) DBXTEAMDeviceSessionArg * _Nonnull mobileClient;
+@property (nonatomic, readonly) DBXTEAMDeviceSessionArg * _Nonnull mobileClient;
 
 /// Initializes union class with tag state of `WebSession`.
 - (nonnull instancetype)initWithWebSession:(DBXTEAMDeviceSessionArg * _Nonnull)webSession;
@@ -64,10 +64,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionArgTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeDeviceSessionArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -18,19 +18,19 @@
 @interface DBXTEAMUpdatePropertyTemplateArg : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by propertiesTemplateAdd.
-@property (nonatomic, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 /// A display name for the property template. Property template names can be up
 /// to 256 bytes.
-@property (nonatomic, copy) NSString * _Nullable name;
+@property (nonatomic, readonly, copy) NSString * _Nullable name;
 
 /// Description for new property template. Property template descriptions can be
 /// up to 1024 bytes.
-@property (nonatomic, copy) NSString * _Nullable description_;
+@property (nonatomic, readonly, copy) NSString * _Nullable description_;
 
 /// This is a list of custom properties to add to the property template. There
 /// can be up to 64 properties in a single property template.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable addFields;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nullable addFields;
 
 /// Full constructor for the `UpdatePropertyTemplateArg` struct (exposes all
 /// instance variables).
@@ -39,10 +39,6 @@
 /// Convenience constructor for the `UpdatePropertyTemplateArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMUpdatePropertyTemplateArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

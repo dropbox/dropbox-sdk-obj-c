@@ -24,21 +24,17 @@
 @interface DBXTEAMGetDevicesReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
 /// Report of the number of devices active in the last day.
-@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active1Day;
+@property (nonatomic, readonly) DBXTEAMDevicesActive * _Nonnull active1Day;
 
 /// Report of the number of devices active in the last 7 days.
-@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active7Day;
+@property (nonatomic, readonly) DBXTEAMDevicesActive * _Nonnull active7Day;
 
 /// Report of the number of devices active in the last 28 days.
-@property (nonatomic) DBXTEAMDevicesActive * _Nonnull active28Day;
+@property (nonatomic, readonly) DBXTEAMDevicesActive * _Nonnull active28Day;
 
 /// Full constructor for the `GetDevicesReport` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate active1Day:(DBXTEAMDevicesActive * _Nonnull)active1Day active7Day:(DBXTEAMDevicesActive * _Nonnull)active7Day active28Day:(DBXTEAMDevicesActive * _Nonnull)active28Day;
-
-/// Returns a human-readable representation of the `DBXTEAMGetDevicesReport`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -35,10 +35,10 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESThumbnailErrorTag tag;
+@property (nonatomic, readonly) DBXFILESThumbnailErrorTag tag;
 
 /// An error occurs when downloading metadata for the image.
-@property (nonatomic) DBXFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
@@ -67,10 +67,6 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESThumbnailError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

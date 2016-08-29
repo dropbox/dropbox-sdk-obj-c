@@ -58,36 +58,36 @@ typedef NS_ENUM(NSInteger, DBXTEAMMemberAddResultTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMemberAddResultTag tag;
+@property (nonatomic, readonly) DBXTEAMMemberAddResultTag tag;
 
 /// Describes a user that was successfully added to the team.
-@property (nonatomic) DBXTEAMTeamMemberInfo * _Nonnull success;
+@property (nonatomic, readonly) DBXTEAMTeamMemberInfo * _Nonnull success;
 
 /// Team is already full. The organization has no available licenses.
-@property (nonatomic, copy) NSString * _Nonnull teamLicenseLimit;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamLicenseLimit;
 
 /// Team is already full. The free team member limit has been reached.
-@property (nonatomic, copy) NSString * _Nonnull freeTeamMemberLimitReached;
+@property (nonatomic, readonly, copy) NSString * _Nonnull freeTeamMemberLimitReached;
 
 /// User is already on this team. The provided email address is associated with
 /// a user who is already a member of or invited to the team.
-@property (nonatomic, copy) NSString * _Nonnull userAlreadyOnTeam;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userAlreadyOnTeam;
 
 /// User is already on another team. The provided email address is associated
 /// with a user that is already a member or invited to another team.
-@property (nonatomic, copy) NSString * _Nonnull userOnAnotherTeam;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userOnAnotherTeam;
 
 /// User is already paired.
-@property (nonatomic, copy) NSString * _Nonnull userAlreadyPaired;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userAlreadyPaired;
 
 /// User migration has failed.
-@property (nonatomic, copy) NSString * _Nonnull userMigrationFailed;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userMigrationFailed;
 
 /// A user with the given external member ID already exists on the team.
-@property (nonatomic, copy) NSString * _Nonnull duplicateExternalMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull duplicateExternalMemberId;
 
 /// User creation has failed.
-@property (nonatomic, copy) NSString * _Nonnull userCreationFailed;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userCreationFailed;
 
 /// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DBXTEAMTeamMemberInfo * _Nonnull)success;
@@ -149,10 +149,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMemberAddResultTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMMemberAddResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

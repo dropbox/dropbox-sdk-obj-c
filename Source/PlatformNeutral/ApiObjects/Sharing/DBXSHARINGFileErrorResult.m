@@ -8,6 +8,10 @@
 
 @implementation DBXSHARINGFileErrorResult 
 
+@synthesize fileNotFoundError = _fileNotFoundError;
+@synthesize invalidFileActionError = _invalidFileActionError;
+@synthesize permissionDeniedError = _permissionDeniedError;
+
 - (instancetype)initWithFileNotFoundError:(NSString *)fileNotFoundError {
     self = [super init];
     if (self != nil) {

@@ -32,14 +32,14 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberActionIndividualResultTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGFileMemberActionIndividualResultTag tag;
+@property (nonatomic, readonly) DBXSHARINGFileMemberActionIndividualResultTag tag;
 
 /// Member was successfully removed from this file. If AccessLevel is given, the
 /// member still has access via a parent shared folder.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nullable success;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nullable success;
 
 /// User was not able to perform this action.
-@property (nonatomic) DBXSHARINGFileMemberActionError * _Nonnull memberError;
+@property (nonatomic, readonly) DBXSHARINGFileMemberActionError * _Nonnull memberError;
 
 /// Initializes union class with tag state of `Success`.
 - (nonnull instancetype)initWithSuccess:(DBXSHARINGAccessLevel * _Nullable)success;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFileMemberActionIndividualResultTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGFileMemberActionIndividualResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

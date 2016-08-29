@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DBXUSERSAccountTypeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXUSERSAccountTypeTag tag;
+@property (nonatomic, readonly) DBXUSERSAccountTypeTag tag;
 
 /// Initializes union class with tag state of `Basic`.
 - (nonnull instancetype)initWithBasic;
@@ -55,9 +55,6 @@ typedef NS_ENUM(NSInteger, DBXUSERSAccountTypeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXUSERSAccountType` object.
-- (NSString * _Nonnull)description;
 
 @end
 

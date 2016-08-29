@@ -30,14 +30,14 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderLaunchTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGShareFolderLaunchTag tag;
+@property (nonatomic, readonly) DBXSHARINGShareFolderLaunchTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is
 /// an id that can be used to obtain the status of the asynchronous job.
-@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderMetadata * _Nonnull complete;
 
 /// Initializes union class with tag state of `AsyncJobId`.
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
@@ -53,10 +53,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGShareFolderLaunchTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGShareFolderLaunch`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -14,7 +14,7 @@
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId email:(NSString *)email emailVerified:(NSNumber *)emailVerified status:(DBXTEAMTeamMemberStatus *)status name:(DBXUSERSName *)name membershipType:(DBXTEAMTeamMembershipType *)membershipType groups:(NSArray<NSString *> *)groups externalId:(NSString *)externalId accountId:(NSString *)accountId {
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](groups);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil]](accountId);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
     self = [super initWithTeamMemberId:teamMemberId email:email emailVerified:emailVerified status:status name:name membershipType:membershipType externalId:externalId accountId:accountId];
     if (self != nil) {

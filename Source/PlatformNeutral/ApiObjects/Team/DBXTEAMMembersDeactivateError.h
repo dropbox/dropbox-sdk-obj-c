@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersDeactivateErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMembersDeactivateErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMMembersDeactivateErrorTag tag;
 
 /// Initializes union class with tag state of `UserNotFound`.
 - (nonnull instancetype)initWithUserNotFound;
@@ -54,10 +54,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMembersDeactivateErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMMembersDeactivateError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

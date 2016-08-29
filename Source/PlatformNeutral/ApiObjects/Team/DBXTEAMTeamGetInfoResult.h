@@ -18,28 +18,24 @@
 @interface DBXTEAMTeamGetInfoResult : NSObject <DBXSerializable> 
 
 /// The name of the team.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// The ID of the team.
-@property (nonatomic, copy) NSString * _Nonnull teamId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamId;
 
 /// The number of licenses available to the team.
-@property (nonatomic, copy) NSNumber * _Nonnull numLicensedUsers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull numLicensedUsers;
 
 /// The number of accounts that have been invited or are already active members
 /// of the team.
-@property (nonatomic, copy) NSNumber * _Nonnull numProvisionedUsers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull numProvisionedUsers;
 
 /// (no description).
-@property (nonatomic) DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull policies;
+@property (nonatomic, readonly) DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull policies;
 
 /// Full constructor for the `TeamGetInfoResult` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name teamId:(NSString * _Nonnull)teamId numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers policies:(DBXTEAMPOLICIESTeamMemberPolicies * _Nonnull)policies;
-
-/// Returns a human-readable representation of the `DBXTEAMTeamGetInfoResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

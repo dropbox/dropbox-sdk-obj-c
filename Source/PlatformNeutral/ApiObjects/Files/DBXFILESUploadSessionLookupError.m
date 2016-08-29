@@ -9,6 +9,8 @@
 
 @implementation DBXFILESUploadSessionLookupError 
 
+@synthesize incorrectOffset = _incorrectOffset;
+
 - (instancetype)initWithNotFound {
     self = [super init];
     if (self != nil) {

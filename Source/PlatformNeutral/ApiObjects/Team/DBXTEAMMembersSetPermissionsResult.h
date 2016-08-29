@@ -18,18 +18,14 @@
 @interface DBXTEAMMembersSetPermissionsResult : NSObject <DBXSerializable> 
 
 /// The member ID of the user to which the change was applied.
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// The role after the change.
-@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
+@property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `MembersSetPermissionsResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId role:(DBXTEAMAdminTier * _Nonnull)role;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMMembersSetPermissionsResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

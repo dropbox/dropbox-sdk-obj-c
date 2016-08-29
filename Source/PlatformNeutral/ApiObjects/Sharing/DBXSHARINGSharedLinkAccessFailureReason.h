@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGSharedLinkAccessFailureReasonTag tag;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkAccessFailureReasonTag tag;
 
 /// Initializes union class with tag state of `LoginRequired`.
 - (nonnull instancetype)initWithLoginRequired;
@@ -82,10 +82,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedLinkAccessFailureReasonTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedLinkAccessFailureReason` object.
-- (NSString * _Nonnull)description;
 
 @end
 

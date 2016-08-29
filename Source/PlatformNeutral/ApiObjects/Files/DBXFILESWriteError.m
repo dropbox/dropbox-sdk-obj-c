@@ -9,6 +9,9 @@
 
 @implementation DBXFILESWriteError 
 
+@synthesize malformedPath = _malformedPath;
+@synthesize conflict = _conflict;
+
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
     if (self != nil) {

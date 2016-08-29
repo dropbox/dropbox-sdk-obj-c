@@ -18,26 +18,26 @@
 @interface DBXFILESCommitInfo : NSObject <DBXSerializable> 
 
 /// Path in the user's Dropbox to save the file.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Selects what to do if the file already exists.
-@property (nonatomic) DBXFILESWriteMode * _Nonnull mode;
+@property (nonatomic, readonly) DBXFILESWriteMode * _Nonnull mode;
 
 /// If there's a conflict, as determined by mode, have the Dropbox server try to
 /// autorename the file to avoid conflict.
-@property (nonatomic, copy) NSNumber * _Nonnull autorename;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull autorename;
 
 /// The value to store as the clientModified timestamp. Dropbox automatically
 /// records the time at which the file was written to the Dropbox servers. It
 /// can also record an additional timestamp, provided by Dropbox desktop
 /// clients, mobile clients, and API apps of when the file was actually created
 /// or modified.
-@property (nonatomic) NSDate * _Nullable clientModified;
+@property (nonatomic, readonly) NSDate * _Nullable clientModified;
 
 /// Normally, users are made aware of any file modifications in their Dropbox
 /// account via notifications in the client software. If true, this tells the
 /// clients that this modification shouldn't result in a user notification.
-@property (nonatomic, copy) NSNumber * _Nonnull mute;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull mute;
 
 /// Full constructor for the `CommitInfo` struct (exposes all instance
 /// variables).
@@ -46,9 +46,6 @@
 /// Convenience constructor for the `CommitInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESCommitInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

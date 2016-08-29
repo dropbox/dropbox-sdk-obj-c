@@ -20,19 +20,15 @@
 @interface DBXPROPERTIESPropertyGroup : NSObject <DBXSerializable> 
 
 /// A unique identifier for a property template type.
-@property (nonatomic, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 /// This is a list of custom properties associated with a file. There can be up
 /// to 32 properties for a template.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyField *> * _Nonnull fields;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyField *> * _Nonnull fields;
 
 /// Full constructor for the `PropertyGroup` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId fields:(NSArray<DBXPROPERTIESPropertyField *> * _Nonnull)fields;
-
-/// Returns a human-readable representation of the `DBXPROPERTIESPropertyGroup`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

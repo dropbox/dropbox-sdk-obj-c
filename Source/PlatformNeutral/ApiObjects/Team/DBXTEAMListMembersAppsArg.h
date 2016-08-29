@@ -22,7 +22,7 @@
 /// shouldn't be passed. Then, if the result of the call includes a cursor, the
 /// following requests should include the received cursors in order to receive
 /// the next sub list of the team applications
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListMembersAppsArg` struct (exposes all instance
 /// variables).
@@ -31,10 +31,6 @@
 /// Convenience constructor for the `ListMembersAppsArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMListMembersAppsArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

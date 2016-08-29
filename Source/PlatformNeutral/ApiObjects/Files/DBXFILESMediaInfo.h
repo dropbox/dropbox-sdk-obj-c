@@ -30,10 +30,10 @@ typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESMediaInfoTag tag;
+@property (nonatomic, readonly) DBXFILESMediaInfoTag tag;
 
 /// The metadata for the photo/video.
-@property (nonatomic) DBXFILESMediaMetadata * _Nonnull metadata;
+@property (nonatomic, readonly) DBXFILESMediaMetadata * _Nonnull metadata;
 
 /// Initializes union class with tag state of `Pending`.
 - (nonnull instancetype)initWithPending;
@@ -49,9 +49,6 @@ typedef NS_ENUM(NSInteger, DBXFILESMediaInfoTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESMediaInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

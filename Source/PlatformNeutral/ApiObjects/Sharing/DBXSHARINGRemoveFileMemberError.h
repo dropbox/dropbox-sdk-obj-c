@@ -41,18 +41,18 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFileMemberErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGRemoveFileMemberErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGRemoveFileMemberErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharingUserError * _Nonnull userError;
+@property (nonatomic, readonly) DBXSHARINGSharingUserError * _Nonnull userError;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// This member does not have explicit access to the file and therefore cannot
 /// be removed. The return value is the access that a user might have to the
 /// file from a parent folder.
-@property (nonatomic) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
+@property (nonatomic, readonly) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 /// Initializes union class with tag state of `UserError`.
 - (nonnull instancetype)initWithUserError:(DBXSHARINGSharingUserError * _Nonnull)userError;
@@ -80,10 +80,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveFileMemberErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRemoveFileMemberError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

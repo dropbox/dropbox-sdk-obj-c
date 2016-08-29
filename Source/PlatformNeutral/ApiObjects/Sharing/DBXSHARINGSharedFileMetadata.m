@@ -12,7 +12,7 @@
 @implementation DBXSHARINGSharedFileMetadata 
 
 - (instancetype)initWithPolicy:(DBXSHARINGFolderPolicy *)policy previewUrl:(NSString *)previewUrl name:(NSString *)name id_:(NSString *)id_ permissions:(NSArray<DBXSHARINGFilePermission *> *)permissions ownerTeam:(DBXUSERSTeam *)ownerTeam parentSharedFolderId:(NSString *)parentSharedFolderId pathLower:(NSString *)pathLower pathDisplay:(NSString *)pathDisplay {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"id:.*"](id_);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"id:.*"](id_);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](permissions);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](parentSharedFolderId);
 

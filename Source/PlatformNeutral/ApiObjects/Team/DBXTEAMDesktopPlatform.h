@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMDesktopPlatformTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMDesktopPlatformTag tag;
+@property (nonatomic, readonly) DBXTEAMDesktopPlatformTag tag;
 
 /// Initializes union class with tag state of `Windows`.
 - (nonnull instancetype)initWithWindows;
@@ -62,10 +62,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMDesktopPlatformTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMDesktopPlatform`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

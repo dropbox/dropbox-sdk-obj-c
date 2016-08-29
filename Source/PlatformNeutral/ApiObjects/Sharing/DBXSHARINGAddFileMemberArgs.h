@@ -21,26 +21,26 @@
 @interface DBXSHARINGAddFileMemberArgs : NSObject <DBXSerializable> 
 
 /// File to which to add members.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// Members to add. Note that even an email address is given, this may result in
 /// a user being directy added to the membership if that email is the user's
 /// main account email.
-@property (nonatomic) NSArray<DBXSHARINGMemberSelector *> * _Nonnull members;
+@property (nonatomic, readonly) NSArray<DBXSHARINGMemberSelector *> * _Nonnull members;
 
 /// Message to send to added members in their invitation.
-@property (nonatomic, copy) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
 
 /// Whether added members should be notified via device notifications of their
 /// invitation.
-@property (nonatomic, copy) NSNumber * _Nonnull quiet;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull quiet;
 
 /// AccessLevel union object, describing what access level we want to give new
 /// members.
-@property (nonatomic) DBXSHARINGAccessLevel * _Nonnull accessLevel;
+@property (nonatomic, readonly) DBXSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// If the custom message should be added as a comment on the file.
-@property (nonatomic, copy) NSNumber * _Nonnull addMessageAsComment;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull addMessageAsComment;
 
 /// Full constructor for the `AddFileMemberArgs` struct (exposes all instance
 /// variables).
@@ -49,10 +49,6 @@
 /// Convenience constructor for the `AddFileMemberArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file members:(NSArray<DBXSHARINGMemberSelector *> * _Nonnull)members;
-
-/// Returns a human-readable representation of the `DBXSHARINGAddFileMemberArgs`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

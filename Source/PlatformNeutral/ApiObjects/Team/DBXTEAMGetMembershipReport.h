@@ -22,27 +22,23 @@
 @interface DBXTEAMGetMembershipReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
 /// Team size, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull teamSize;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull teamSize;
 
 /// The number of pending invites to the team, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull pendingInvites;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull pendingInvites;
 
 /// The number of members that joined the team, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull membersJoined;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull membersJoined;
 
 /// The number of suspended team members, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull suspendedMembers;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull suspendedMembers;
 
 /// The total number of licenses the team has, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull licenses;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull licenses;
 
 /// Full constructor for the `GetMembershipReport` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate teamSize:(NSArray<NSNumber *> * _Nonnull)teamSize pendingInvites:(NSArray<NSNumber *> * _Nonnull)pendingInvites membersJoined:(NSArray<NSNumber *> * _Nonnull)membersJoined suspendedMembers:(NSArray<NSNumber *> * _Nonnull)suspendedMembers licenses:(NSArray<NSNumber *> * _Nonnull)licenses;
-
-/// Returns a human-readable representation of the `DBXTEAMGetMembershipReport`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -8,6 +8,17 @@
 #import "DBXOAuth.h"
 #import "DBXOAuthDesktop.h"
 
+@interface DBXDesktopSharedApplication ()
+
+@property (nonatomic) NSWorkspace * _Nullable sharedWorkspace;
+@property (nonatomic) NSViewController * _Nullable controller;
+@property (nonatomic) void (^openURL)(NSURL * _Nullable);
+
+- (nonnull instancetype)init:(NSWorkspace * _Nonnull)sharedApplication controller:(NSViewController * _Nonnull)controller openURL:(void(^_Nonnull)(NSURL * _Nonnull))openURL;
+
+@end
+
+
 @implementation DBXDesktopSharedApplication
 
 - (instancetype)init:(NSWorkspace *)sharedWorkspace controller:(NSViewController *)controller openURL:(void(^)(NSURL *))openURL {
@@ -35,8 +46,8 @@
     return NO;
 }
 
-- (void)presentWebViewAuth:(NSURL * _Nonnull)authURL tryIntercept:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryIntercept cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-    DBXWebViewController *webViewController = [[DBXWebViewController alloc] init:authURL tryIntercept:tryIntercept cancelHandler:cancelHandler];
+- (void)presentWebViewAuth:(NSURL * _Nonnull)authURL tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler cancelHandler:(void (^_Nonnull)(void))cancelHandler {
+    DBXWebViewController *webViewController = [[DBXWebViewController alloc] init:authURL tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
     [_controller presentViewControllerAsModalWindow:webViewController];
 }
 
@@ -55,6 +66,17 @@
 @end
 
 
+@interface DBXWebViewController ()
+
+@property (nonatomic) WKWebView * _Nullable webView;
+@property (nonatomic) void (^_Nullable onWillDismiss)(BOOL);
+@property (nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic) void (^_Nullable cancelHandler)(void);
+@property (nonatomic) NSProgressIndicator * _Nullable indicator;
+@property (nonatomic, copy) NSURL * _Nullable startURL;
+
+@end
+
 @implementation DBXWebViewController
 
 - (instancetype)init {
@@ -65,10 +87,10 @@
     return [super initWithCoder:coder];
 }
 
-- (instancetype)init:(NSURL *)URL tryIntercept:(BOOL (^)(NSURL *))tryIntercept cancelHandler:(void (^)(void))cancelHandler {
+- (instancetype)init:(NSURL *)URL tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler cancelHandler:(void (^)(void))cancelHandler {
     self = [super initWithNibName: nil bundle:nil];
     if (self) {
-        _tryIntercept = tryIntercept;
+        _tryInterceptHandler = tryInterceptHandler;
         _cancelHandler = cancelHandler;
         _indicator = [[NSProgressIndicator alloc] init];
         [_indicator setFrame:NSMakeRect(20, 20, 30, 30)];
@@ -122,8 +144,8 @@
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (navigationAction.request.URL != nil && _tryIntercept != nil) {
-        if (_tryIntercept(navigationAction.request.URL)) {
+    if (navigationAction.request.URL != nil && _tryInterceptHandler != nil) {
+        if (_tryInterceptHandler(navigationAction.request.URL)) {
             [self dismiss:YES];
             return decisionHandler((WKNavigationActionPolicy)WKNavigationActionPolicyCancel);
         }

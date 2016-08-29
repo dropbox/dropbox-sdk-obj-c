@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRequestedVisibilityTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGRequestedVisibilityTag tag;
+@property (nonatomic, readonly) DBXSHARINGRequestedVisibilityTag tag;
 
 /// Initializes union class with tag state of `Public`.
 - (nonnull instancetype)initWithPublic;
@@ -60,10 +60,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRequestedVisibilityTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRequestedVisibility` object.
-- (NSString * _Nonnull)description;
 
 @end
 

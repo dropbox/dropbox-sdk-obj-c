@@ -21,18 +21,14 @@
 @interface DBXTEAMGroupMemberInfo : NSObject <DBXSerializable> 
 
 /// Profile of group member.
-@property (nonatomic) DBXTEAMMemberProfile * _Nonnull profile;
+@property (nonatomic, readonly) DBXTEAMMemberProfile * _Nonnull profile;
 
 /// The role that the user has in the group.
-@property (nonatomic) DBXTEAMGroupAccessType * _Nonnull accessType;
+@property (nonatomic, readonly) DBXTEAMGroupAccessType * _Nonnull accessType;
 
 /// Full constructor for the `GroupMemberInfo` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithProfile:(DBXTEAMMemberProfile * _Nonnull)profile accessType:(DBXTEAMGroupAccessType * _Nonnull)accessType;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupMemberInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

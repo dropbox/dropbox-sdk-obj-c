@@ -11,7 +11,7 @@
 
 - (instancetype)initWithPath:(NSString *)path includeMediaInfo:(NSNumber *)includeMediaInfo includeDeleted:(NSNumber *)includeDeleted includeHasExplicitSharedMembers:(NSNumber *)includeHasExplicitSharedMembers includePropertyTemplates:(NSArray<NSString *> *)includePropertyTemplates {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"](path);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"]]](includePropertyTemplates);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]]](includePropertyTemplates);
 
     self = [super initWithPath:path includeMediaInfo:includeMediaInfo includeDeleted:includeDeleted includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
     if (self != nil) {

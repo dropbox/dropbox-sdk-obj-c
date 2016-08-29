@@ -40,16 +40,16 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGJobErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGJobErrorTag tag;
 
 /// Error occurred while performing unshareFolder action.
-@property (nonatomic) DBXSHARINGUnshareFolderError * _Nonnull unshareFolderError;
+@property (nonatomic, readonly) DBXSHARINGUnshareFolderError * _Nonnull unshareFolderError;
 
 /// Error occurred while performing removeFolderMember action.
-@property (nonatomic) DBXSHARINGRemoveFolderMemberError * _Nonnull removeFolderMemberError;
+@property (nonatomic, readonly) DBXSHARINGRemoveFolderMemberError * _Nonnull removeFolderMemberError;
 
 /// Error occurred while performing relinquishFolderMembership action.
-@property (nonatomic) DBXSHARINGRelinquishFolderMembershipError * _Nonnull relinquishFolderMembershipError;
+@property (nonatomic, readonly) DBXSHARINGRelinquishFolderMembershipError * _Nonnull relinquishFolderMembershipError;
 
 /// Initializes union class with tag state of `UnshareFolderError`.
 - (nonnull instancetype)initWithUnshareFolderError:(DBXSHARINGUnshareFolderError * _Nonnull)unshareFolderError;
@@ -80,9 +80,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGJobErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGJobError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

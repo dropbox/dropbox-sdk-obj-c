@@ -9,13 +9,13 @@
 @implementation DBXFILESListFolderLongpollArg 
 
 - (instancetype)initWithCursor:(NSString *)cursor timeout:(NSNumber *)timeout {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](cursor);
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:30] maxValue:[NSNumber numberWithInt:480]](timeout ?: [NSNumber numberWithUnsignedLong:30]);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](cursor);
+    [DBXStoneValidators numericValidator:@(30) maxValue:@(480)](timeout ?: @(30));
 
     self = [super init];
     if (self != nil) {
         _cursor = cursor;
-        _timeout = timeout ?: [NSNumber numberWithUnsignedLong:30];
+        _timeout = timeout ?: @(30);
     }
     return self;
 }

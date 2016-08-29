@@ -19,15 +19,11 @@
 @interface DBXSHARINGUnshareFileArg : NSObject <DBXSerializable> 
 
 /// The file to unshare.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// Full constructor for the `UnshareFileArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
-
-/// Returns a human-readable representation of the `DBXSHARINGUnshareFileArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

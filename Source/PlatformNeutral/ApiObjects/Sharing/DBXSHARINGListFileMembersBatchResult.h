@@ -20,18 +20,14 @@
 @interface DBXSHARINGListFileMembersBatchResult : NSObject <DBXSerializable> 
 
 /// This is the input file identifier, whether an ID or a path.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// The result for this particular file
-@property (nonatomic) DBXSHARINGListFileMembersIndividualResult * _Nonnull result;
+@property (nonatomic, readonly) DBXSHARINGListFileMembersIndividualResult * _Nonnull result;
 
 /// Full constructor for the `ListFileMembersBatchResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file result:(DBXSHARINGListFileMembersIndividualResult * _Nonnull)result;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersBatchResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

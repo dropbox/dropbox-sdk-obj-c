@@ -33,13 +33,13 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveUrlJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESSaveUrlJobStatusTag tag;
+@property (nonatomic, readonly) DBXFILESSaveUrlJobStatusTag tag;
 
 /// Metadata of the file where the URL is saved to.
-@property (nonatomic) DBXFILESFileMetadata * _Nonnull complete;
+@property (nonatomic, readonly) DBXFILESFileMetadata * _Nonnull complete;
 
 /// (no description).
-@property (nonatomic) DBXFILESSaveUrlError * _Nonnull failed;
+@property (nonatomic, readonly) DBXFILESSaveUrlError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -61,10 +61,6 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveUrlJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESSaveUrlJobStatus`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

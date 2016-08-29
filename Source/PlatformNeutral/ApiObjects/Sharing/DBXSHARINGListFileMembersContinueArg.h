@@ -20,15 +20,11 @@
 
 /// The cursor returned by your last call to listFileMembers,
 /// listFileMembersContinue, or listFileMembersBatch.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `ListFileMembersContinueArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersContinueArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

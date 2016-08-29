@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupAccessTypeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupAccessTypeTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupAccessTypeTag tag;
 
 /// Initializes union class with tag state of `Member`.
 - (nonnull instancetype)initWithMember;
@@ -46,10 +46,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupAccessTypeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupAccessType`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

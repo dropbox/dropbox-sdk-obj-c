@@ -18,15 +18,11 @@
 @interface DBXSHARINGGetSharedLinksResult : NSObject <DBXSerializable> 
 
 /// Shared links applicable to the path argument.
-@property (nonatomic) NSArray<DBXSHARINGLinkMetadata *> * _Nonnull links;
+@property (nonatomic, readonly) NSArray<DBXSHARINGLinkMetadata *> * _Nonnull links;
 
 /// Full constructor for the `GetSharedLinksResult` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithLinks:(NSArray<DBXSHARINGLinkMetadata *> * _Nonnull)links;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGGetSharedLinksResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

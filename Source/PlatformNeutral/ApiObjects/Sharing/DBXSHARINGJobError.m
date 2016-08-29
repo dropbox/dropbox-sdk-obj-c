@@ -11,6 +11,10 @@
 
 @implementation DBXSHARINGJobError 
 
+@synthesize unshareFolderError = _unshareFolderError;
+@synthesize removeFolderMemberError = _removeFolderMemberError;
+@synthesize relinquishFolderMembershipError = _relinquishFolderMembershipError;
+
 - (instancetype)initWithUnshareFolderError:(DBXSHARINGUnshareFolderError *)unshareFolderError {
     self = [super init];
     if (self != nil) {

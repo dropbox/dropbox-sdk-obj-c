@@ -18,10 +18,10 @@
 @interface DBXTEAMRevokeDeviceSessionStatus : NSObject <DBXSerializable> 
 
 /// Result of the revoking request
-@property (nonatomic, copy) NSNumber * _Nonnull success;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull success;
 
 /// The error cause in case of a failure
-@property (nonatomic) DBXTEAMRevokeDeviceSessionError * _Nullable errorType;
+@property (nonatomic, readonly) DBXTEAMRevokeDeviceSessionError * _Nullable errorType;
 
 /// Full constructor for the `RevokeDeviceSessionStatus` struct (exposes all
 /// instance variables).
@@ -30,10 +30,6 @@
 /// Convenience constructor for the `RevokeDeviceSessionStatus` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeDeviceSessionStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

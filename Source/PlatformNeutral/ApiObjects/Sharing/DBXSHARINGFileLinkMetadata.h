@@ -27,18 +27,18 @@
 /// the desktop client sends up), this should only be used for display purposes
 /// (such as sorting) and not, for example, to determine if a file has changed
 /// or not.
-@property (nonatomic) NSDate * _Nonnull clientModified;
+@property (nonatomic, readonly) NSDate * _Nonnull clientModified;
 
 /// The last time the file was modified on Dropbox.
-@property (nonatomic) NSDate * _Nonnull serverModified;
+@property (nonatomic, readonly) NSDate * _Nonnull serverModified;
 
 /// A unique identifier for the current revision of a file. This field is the
 /// same rev as elsewhere in the API and can be used to detect changes and avoid
 /// conflicts.
-@property (nonatomic, copy) NSString * _Nonnull rev;
+@property (nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
-@property (nonatomic, copy) NSNumber * _Nonnull size;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull size;
 
 /// Full constructor for the `FileLinkMetadata` struct (exposes all instance
 /// variables).
@@ -47,10 +47,6 @@
 /// Convenience constructor for the `FileLinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
-
-/// Returns a human-readable representation of the `DBXSHARINGFileLinkMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

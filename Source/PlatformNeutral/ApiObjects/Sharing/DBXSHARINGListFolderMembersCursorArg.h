@@ -20,11 +20,11 @@
 /// This is a list indicating whether each returned member will include a
 /// boolean value allow in MemberPermission that describes whether the current
 /// user can perform the MemberAction on the member.
-@property (nonatomic) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGMemberAction *> * _Nullable actions;
 
 /// The maximum number of results that include members, groups and invitees to
 /// return per request.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `ListFolderMembersCursorArg` struct (exposes all
 /// instance variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `ListFolderMembersCursorArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFolderMembersCursorArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMMobileClientPlatformTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMMobileClientPlatformTag tag;
+@property (nonatomic, readonly) DBXTEAMMobileClientPlatformTag tag;
 
 /// Initializes union class with tag state of `Iphone`.
 - (nonnull instancetype)initWithIphone;
@@ -80,10 +80,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMMobileClientPlatformTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMMobileClientPlatform`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -17,15 +17,11 @@
 @interface DBXPROPERTIESGetPropertyTemplateArg : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by route properties/template/add.
-@property (nonatomic, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 /// Full constructor for the `GetPropertyTemplateArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
-
-/// Returns a human-readable representation of the
-/// `DBXPROPERTIESGetPropertyTemplateArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

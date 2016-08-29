@@ -29,10 +29,10 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESUploadErrorTag tag;
+@property (nonatomic, readonly) DBXFILESUploadErrorTag tag;
 
 /// Unable to save the uploaded contents to a file.
-@property (nonatomic) DBXFILESUploadWriteFailed * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESUploadWriteFailed * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESUploadWriteFailed * _Nonnull)path;
@@ -48,9 +48,6 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESUploadError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

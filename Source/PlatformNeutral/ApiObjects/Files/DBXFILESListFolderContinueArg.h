@@ -17,15 +17,11 @@
 @interface DBXFILESListFolderContinueArg : NSObject <DBXSerializable> 
 
 /// The cursor returned by your last call to listFolder or listFolderContinue.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `ListFolderContinueArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESListFolderContinueArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

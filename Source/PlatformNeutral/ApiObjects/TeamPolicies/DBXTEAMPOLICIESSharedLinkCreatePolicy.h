@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMPOLICIESSharedLinkCreatePolicyTag tag;
+@property (nonatomic, readonly) DBXTEAMPOLICIESSharedLinkCreatePolicyTag tag;
 
 /// Initializes union class with tag state of `DefaultPublic`.
 - (nonnull instancetype)initWithDefaultPublic;
@@ -69,10 +69,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedLinkCreatePolicyTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMPOLICIESSharedLinkCreatePolicy` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGShareFolderLaunch 
 
+@synthesize asyncJobId = _asyncJobId;
+@synthesize complete = _complete;
+
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {

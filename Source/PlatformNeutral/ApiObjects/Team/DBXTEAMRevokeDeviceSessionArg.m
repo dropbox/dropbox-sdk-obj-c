@@ -10,6 +10,10 @@
 
 @implementation DBXTEAMRevokeDeviceSessionArg 
 
+@synthesize webSession = _webSession;
+@synthesize desktopClient = _desktopClient;
+@synthesize mobileClient = _mobileClient;
+
 - (instancetype)initWithWebSession:(DBXTEAMDeviceSessionArg *)webSession {
     self = [super init];
     if (self != nil) {

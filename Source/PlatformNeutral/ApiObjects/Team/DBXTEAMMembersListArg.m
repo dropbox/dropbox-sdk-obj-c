@@ -9,11 +9,11 @@
 @implementation DBXTEAMMembersListArg 
 
 - (instancetype)initWithLimit:(NSNumber *)limit includeRemoved:(NSNumber *)includeRemoved {
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
+        _limit = limit ?: @(1000);
         _includeRemoved = includeRemoved ?: @NO;
     }
     return self;

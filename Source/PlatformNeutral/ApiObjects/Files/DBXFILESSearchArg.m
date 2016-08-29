@@ -11,14 +11,14 @@
 
 - (instancetype)initWithPath:(NSString *)path query:(NSString *)query start:(NSNumber *)start maxResults:(NSNumber *)maxResults mode:(DBXFILESSearchMode *)mode {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)"](path);
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](maxResults ?: [NSNumber numberWithUnsignedLong:100]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](maxResults ?: @(100));
 
     self = [super init];
     if (self != nil) {
         _path = path;
         _query = query;
-        _start = start ?: [NSNumber numberWithUnsignedLong:0];
-        _maxResults = maxResults ?: [NSNumber numberWithUnsignedLong:100];
+        _start = start ?: @(0);
+        _maxResults = maxResults ?: @(100);
         _mode = mode ?: [[DBXFILESSearchMode alloc] initWithFilename];
     }
     return self;

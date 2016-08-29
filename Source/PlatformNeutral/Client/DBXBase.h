@@ -16,16 +16,16 @@
 @interface DBXBase : NSObject 
 
 /// Routes within the `auth` namespace.
-@property (nonatomic) DBXAUTHRoutes * _Nonnull authRoutes;
+@property (nonatomic, readonly) DBXAUTHRoutes * _Nonnull authRoutes;
 
 /// Routes within the `files` namespace.
-@property (nonatomic) DBXFILESRoutes * _Nonnull filesRoutes;
+@property (nonatomic, readonly) DBXFILESRoutes * _Nonnull filesRoutes;
 
 /// Routes within the `sharing` namespace.
-@property (nonatomic) DBXSHARINGRoutes * _Nonnull sharingRoutes;
+@property (nonatomic, readonly) DBXSHARINGRoutes * _Nonnull sharingRoutes;
 
 /// Routes within the `users` namespace.
-@property (nonatomic) DBXUSERSRoutes * _Nonnull usersRoutes;
+@property (nonatomic, readonly) DBXUSERSRoutes * _Nonnull usersRoutes;
 
 /// Initializes the `DBXBase` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(DBXTransportClient * _Nonnull)client;

@@ -18,18 +18,14 @@
 @interface DBXSHARINGListFileMembersCountResult : NSObject <DBXSerializable> 
 
 /// A list of members on this file.
-@property (nonatomic) DBXSHARINGSharedFileMembers * _Nonnull members;
+@property (nonatomic, readonly) DBXSHARINGSharedFileMembers * _Nonnull members;
 
 /// The number of members on this file. This does not include inherited members
-@property (nonatomic, copy) NSNumber * _Nonnull memberCount;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull memberCount;
 
 /// Full constructor for the `ListFileMembersCountResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMembers:(DBXSHARINGSharedFileMembers * _Nonnull)members memberCount:(NSNumber * _Nonnull)memberCount;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersCountResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

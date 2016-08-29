@@ -9,6 +9,8 @@
 
 @implementation DBXSHARINGSharedFolderMemberError 
 
+@synthesize noExplicitAccess = _noExplicitAccess;
+
 - (instancetype)initWithInvalidDropboxId {
     self = [super init];
     if (self != nil) {

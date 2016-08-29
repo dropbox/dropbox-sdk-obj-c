@@ -19,11 +19,11 @@
 @interface DBXSHARINGListFileMembersBatchArg : NSObject <DBXSerializable> 
 
 /// Files for which to return members.
-@property (nonatomic) NSArray<NSString *> * _Nonnull files;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull files;
 
 /// Number of members to return max per query. Defaults to 10 if no limit is
 /// specified.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `ListFileMembersBatchArg` struct (exposes all
 /// instance variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `ListFileMembersBatchArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersBatchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

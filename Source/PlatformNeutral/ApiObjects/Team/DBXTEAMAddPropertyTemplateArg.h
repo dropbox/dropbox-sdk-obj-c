@@ -24,10 +24,6 @@
 /// instance variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
 
-/// Returns a human-readable representation of the
-/// `DBXTEAMAddPropertyTemplateArg` object.
-- (NSString * _Nonnull)description;
-
 @end
 
 

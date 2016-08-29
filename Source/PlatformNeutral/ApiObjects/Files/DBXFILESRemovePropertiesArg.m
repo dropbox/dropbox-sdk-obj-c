@@ -10,7 +10,7 @@
 
 - (instancetype)initWithPath:(NSString *)path propertyTemplateIds:(NSArray<NSString *> *)propertyTemplateIds {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-    [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"(/|ptid:).*"]](propertyTemplateIds);
+    [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"(/|ptid:).*"]](propertyTemplateIds);
 
     self = [super init];
     if (self != nil) {

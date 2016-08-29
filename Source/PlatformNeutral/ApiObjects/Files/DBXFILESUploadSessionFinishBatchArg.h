@@ -18,15 +18,11 @@
 @interface DBXFILESUploadSessionFinishBatchArg : NSObject <DBXSerializable> 
 
 /// Commit information for each file in the batch.
-@property (nonatomic) NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull entries;
 
 /// Full constructor for the `UploadSessionFinishBatchArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithEntries:(NSArray<DBXFILESUploadSessionFinishArg *> * _Nonnull)entries;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionFinishBatchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

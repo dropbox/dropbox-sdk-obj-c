@@ -17,14 +17,14 @@
 @interface DBXTEAMRevokeLinkedApiAppArg : NSObject <DBXSerializable> 
 
 /// The application's unique id
-@property (nonatomic, copy) NSString * _Nonnull appId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull appId;
 
 /// The unique id of the member owning the device
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Whether to keep the application dedicated folder (in case the application
 /// uses  one)
-@property (nonatomic, copy) NSNumber * _Nonnull keepAppFolder;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull keepAppFolder;
 
 /// Full constructor for the `RevokeLinkedApiAppArg` struct (exposes all
 /// instance variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `RevokeLinkedApiAppArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeLinkedApiAppArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

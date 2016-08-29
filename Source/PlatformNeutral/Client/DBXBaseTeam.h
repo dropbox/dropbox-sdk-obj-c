@@ -13,7 +13,7 @@
 @interface DBXBaseTeam : NSObject 
 
 /// Routes within the `team` namespace.
-@property (nonatomic) DBXTEAMRoutes * _Nonnull teamRoutes;
+@property (nonatomic, readonly) DBXTEAMRoutes * _Nonnull teamRoutes;
 
 /// Initializes the `DBXBaseTeam` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(DBXTransportClient * _Nonnull)client;

@@ -20,17 +20,14 @@
 @interface DBXUSERSSpaceUsage : NSObject <DBXSerializable> 
 
 /// The user's total space usage (bytes).
-@property (nonatomic, copy) NSNumber * _Nonnull used;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull used;
 
 /// The user's space allocation.
-@property (nonatomic) DBXUSERSSpaceAllocation * _Nonnull allocation;
+@property (nonatomic, readonly) DBXUSERSSpaceAllocation * _Nonnull allocation;
 
 /// Full constructor for the `SpaceUsage` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocation:(DBXUSERSSpaceAllocation * _Nonnull)allocation;
-
-/// Returns a human-readable representation of the `DBXUSERSSpaceUsage` object.
-- (NSString * _Nonnull)description;
 
 @end
 

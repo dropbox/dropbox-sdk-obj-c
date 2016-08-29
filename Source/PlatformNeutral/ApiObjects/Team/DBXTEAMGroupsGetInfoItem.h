@@ -31,15 +31,15 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoItemTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupsGetInfoItemTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupsGetInfoItemTag tag;
 
 /// An ID that was provided as a parameter to groupsGetInfo, and did not match a
 /// corresponding group. The ID can be a group ID, or an external ID, depending
 /// on how the method was called.
-@property (nonatomic, copy) NSString * _Nonnull idNotFound;
+@property (nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
 
 /// Info about a group.
-@property (nonatomic) DBXTEAMGroupFullInfo * _Nonnull groupInfo;
+@property (nonatomic, readonly) DBXTEAMGroupFullInfo * _Nonnull groupInfo;
 
 /// Initializes union class with tag state of `IdNotFound`.
 - (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsGetInfoItemTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupsGetInfoItem`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

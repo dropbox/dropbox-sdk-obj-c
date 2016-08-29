@@ -17,22 +17,22 @@
 @interface DBXFILESListFolderArg : NSObject <DBXSerializable> 
 
 /// The path to the folder you want to see the contents of.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// If true, the list folder operation will be applied recursively to all
 /// subfolders and the response will contain contents of all subfolders.
-@property (nonatomic, copy) NSNumber * _Nonnull recursive;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull recursive;
 
 /// If true, mediaInfo in FileMetadata is set for photo and video.
-@property (nonatomic, copy) NSNumber * _Nonnull includeMediaInfo;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeMediaInfo;
 
 /// If true, the results will include entries for files and folders that used to
 /// exist but were deleted.
-@property (nonatomic, copy) NSNumber * _Nonnull includeDeleted;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
-@property (nonatomic, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
 /// Full constructor for the `ListFolderArg` struct (exposes all instance
 /// variables).
@@ -41,10 +41,6 @@
 /// Convenience constructor for the `ListFolderArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESListFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

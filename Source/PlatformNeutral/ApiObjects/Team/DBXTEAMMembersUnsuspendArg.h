@@ -21,15 +21,11 @@
 @interface DBXTEAMMembersUnsuspendArg : NSObject <DBXSerializable> 
 
 /// Identity of user to unsuspend.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// Full constructor for the `MembersUnsuspendArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersUnsuspendArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

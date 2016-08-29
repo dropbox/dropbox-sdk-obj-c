@@ -30,10 +30,6 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url name:(NSString * _Nonnull)name linkPermissions:(DBXSHARINGLinkPermissions * _Nonnull)linkPermissions;
 
-/// Returns a human-readable representation of the
-/// `DBXSHARINGFolderLinkMetadata` object.
-- (NSString * _Nonnull)description;
-
 @end
 
 

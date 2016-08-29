@@ -17,7 +17,7 @@
 @interface DBXTEAMGroupsListArg : NSObject <DBXSerializable> 
 
 /// Number of results to return per call.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `GroupsListArg` struct (exposes all instance
 /// variables).
@@ -26,10 +26,6 @@
 /// Convenience constructor for the `GroupsListArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupsListArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

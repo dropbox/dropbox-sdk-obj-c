@@ -29,10 +29,6 @@
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
 
-/// Returns a human-readable representation of the `DBXFILESPhotoMetadata`
-/// object.
-- (NSString * _Nonnull)description;
-
 @end
 
 

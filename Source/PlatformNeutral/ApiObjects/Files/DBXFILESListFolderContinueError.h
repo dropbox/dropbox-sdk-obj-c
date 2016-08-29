@@ -33,10 +33,10 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESListFolderContinueErrorTag tag;
+@property (nonatomic, readonly) DBXFILESListFolderContinueErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESLookupError * _Nonnull)path;
@@ -58,10 +58,6 @@ typedef NS_ENUM(NSInteger, DBXFILESListFolderContinueErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESListFolderContinueError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

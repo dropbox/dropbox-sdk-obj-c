@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupSelectorErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupSelectorErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupSelectorErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNotFound`.
 - (nonnull instancetype)initWithGroupNotFound;
@@ -46,10 +46,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupSelectorErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupSelectorError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

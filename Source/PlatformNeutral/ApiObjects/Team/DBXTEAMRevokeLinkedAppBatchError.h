@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppBatchErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMRevokeLinkedAppBatchErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMRevokeLinkedAppBatchErrorTag tag;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -37,10 +37,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppBatchErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeLinkedAppBatchError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

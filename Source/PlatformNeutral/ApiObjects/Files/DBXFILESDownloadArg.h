@@ -17,10 +17,10 @@
 @interface DBXFILESDownloadArg : NSObject <DBXSerializable> 
 
 /// The path of the file to download.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Deprecated. Please specify revision in path instead
-@property (nonatomic, copy) NSString * _Nullable rev;
+@property (nonatomic, readonly, copy) NSString * _Nullable rev;
 
 /// Full constructor for the `DownloadArg` struct (exposes all instance
 /// variables).
@@ -29,9 +29,6 @@
 /// Convenience constructor for the `DownloadArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESDownloadArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

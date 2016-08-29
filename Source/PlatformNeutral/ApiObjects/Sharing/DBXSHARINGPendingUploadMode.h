@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGPendingUploadModeTag tag;
+@property (nonatomic, readonly) DBXSHARINGPendingUploadModeTag tag;
 
 /// Initializes union class with tag state of `File`.
 - (nonnull instancetype)initWithFile;
@@ -47,10 +47,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPendingUploadModeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGPendingUploadMode`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

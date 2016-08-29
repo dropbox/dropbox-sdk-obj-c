@@ -17,21 +17,17 @@
 @interface DBXSHARINGInsufficientQuotaAmounts : NSObject <DBXSerializable> 
 
 /// The amount of space needed to add the item (the size of the item).
-@property (nonatomic, copy) NSNumber * _Nonnull spaceNeeded;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull spaceNeeded;
 
 /// The amount of extra space needed to add the item.
-@property (nonatomic, copy) NSNumber * _Nonnull spaceShortage;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull spaceShortage;
 
 /// The amount of space left in the user's Dropbox, less than space_needed.
-@property (nonatomic, copy) NSNumber * _Nonnull spaceLeft;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull spaceLeft;
 
 /// Full constructor for the `InsufficientQuotaAmounts` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithSpaceNeeded:(NSNumber * _Nonnull)spaceNeeded spaceShortage:(NSNumber * _Nonnull)spaceShortage spaceLeft:(NSNumber * _Nonnull)spaceLeft;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGInsufficientQuotaAmounts` object.
-- (NSString * _Nonnull)description;
 
 @end
 

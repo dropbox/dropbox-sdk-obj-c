@@ -20,11 +20,11 @@
 @interface DBXFILESFileSharingInfo : DBXFILESSharingInfo <DBXSerializable> 
 
 /// ID of shared folder that holds this file.
-@property (nonatomic, copy) NSString * _Nonnull parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull parentSharedFolderId;
 
 /// The last user who modified the file. This field will be null if the user's
 /// account has been deleted.
-@property (nonatomic, copy) NSString * _Nullable modifiedBy;
+@property (nonatomic, readonly, copy) NSString * _Nullable modifiedBy;
 
 /// Full constructor for the `FileSharingInfo` struct (exposes all instance
 /// variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `FileSharingInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly parentSharedFolderId:(NSString * _Nonnull)parentSharedFolderId;
-
-/// Returns a human-readable representation of the `DBXFILESFileSharingInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

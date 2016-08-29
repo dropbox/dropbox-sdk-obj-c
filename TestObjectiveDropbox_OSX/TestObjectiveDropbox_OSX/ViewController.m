@@ -33,7 +33,7 @@
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
-    [DropboxClientsManager unlinkClient];
+    [DropboxClientsManager unlinkClients];
     [self checkButtons];
 }
 

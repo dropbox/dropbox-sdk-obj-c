@@ -20,19 +20,15 @@
 @interface DBXTEAMGroupMembersChangeResult : NSObject <DBXSerializable> 
 
 /// The group info after member change operation has been performed.
-@property (nonatomic) DBXTEAMGroupFullInfo * _Nonnull groupInfo;
+@property (nonatomic, readonly) DBXTEAMGroupFullInfo * _Nonnull groupInfo;
 
 /// An ID that can be used to obtain the status of granting/revoking group-owned
 /// resources.
-@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
 /// Full constructor for the `GroupMembersChangeResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithGroupInfo:(DBXTEAMGroupFullInfo * _Nonnull)groupInfo asyncJobId:(NSString * _Nonnull)asyncJobId;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMGroupMembersChangeResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

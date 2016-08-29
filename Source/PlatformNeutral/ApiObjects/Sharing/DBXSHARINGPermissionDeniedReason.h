@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGPermissionDeniedReasonTag tag;
+@property (nonatomic, readonly) DBXSHARINGPermissionDeniedReasonTag tag;
 
 /// Initializes union class with tag state of `UserNotSameTeamAsOwner`.
 - (nonnull instancetype)initWithUserNotSameTeamAsOwner;
@@ -105,10 +105,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGPermissionDeniedReasonTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGPermissionDeniedReason` object.
-- (NSString * _Nonnull)description;
 
 @end
 

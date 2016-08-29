@@ -11,7 +11,7 @@
 @implementation DBXUSERSBasicAccount 
 
 - (instancetype)initWithAccountId:(NSString *)accountId name:(DBXUSERSName *)name email:(NSString *)email emailVerified:(NSNumber *)emailVerified disabled:(NSNumber *)disabled isTeammate:(NSNumber *)isTeammate profilePhotoUrl:(NSString *)profilePhotoUrl teamMemberId:(NSString *)teamMemberId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil](accountId);
+    [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super initWithAccountId:accountId name:name email:email emailVerified:emailVerified disabled:disabled profilePhotoUrl:profilePhotoUrl];
     if (self != nil) {

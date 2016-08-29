@@ -9,6 +9,10 @@
 
 @implementation DBXTEAMGroupMembersAddError 
 
+@synthesize membersNotInTeam = _membersNotInTeam;
+@synthesize usersNotFound = _usersNotFound;
+@synthesize userCannotBeManagerOfCompanyManagedGroup = _userCannotBeManagerOfCompanyManagedGroup;
+
 - (instancetype)initWithGroupNotFound {
     self = [super init];
     if (self != nil) {

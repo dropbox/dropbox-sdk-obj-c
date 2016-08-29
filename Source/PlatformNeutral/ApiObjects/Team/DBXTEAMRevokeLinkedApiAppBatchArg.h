@@ -18,15 +18,11 @@
 @interface DBXTEAMRevokeLinkedApiAppBatchArg : NSObject <DBXSerializable> 
 
 /// (no description).
-@property (nonatomic) NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull revokeLinkedApp;
+@property (nonatomic, readonly) NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull revokeLinkedApp;
 
 /// Full constructor for the `RevokeLinkedApiAppBatchArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithRevokeLinkedApp:(NSArray<DBXTEAMRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeLinkedApiAppBatchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -19,14 +19,11 @@
 @interface DBXFILESSharingInfo : NSObject <DBXSerializable> 
 
 /// True if the file or folder is inside a read-only shared folder.
-@property (nonatomic, copy) NSNumber * _Nonnull readOnly;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull readOnly;
 
 /// Full constructor for the `SharingInfo` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
-
-/// Returns a human-readable representation of the `DBXFILESSharingInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

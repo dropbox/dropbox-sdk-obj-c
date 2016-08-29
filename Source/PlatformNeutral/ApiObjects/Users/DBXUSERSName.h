@@ -19,25 +19,22 @@
 @interface DBXUSERSName : NSObject <DBXSerializable> 
 
 /// Also known as a first name.
-@property (nonatomic, copy) NSString * _Nonnull givenName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull givenName;
 
 /// Also known as a last name or family name.
-@property (nonatomic, copy) NSString * _Nonnull surname;
+@property (nonatomic, readonly, copy) NSString * _Nonnull surname;
 
 /// Locale-dependent name. In the US, a person's familiar name is their
 /// givenName, but elsewhere, it could be any combination of a person's
 /// givenName and surname.
-@property (nonatomic, copy) NSString * _Nonnull familiarName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull familiarName;
 
 /// A name that can be used directly to represent the name of a user's Dropbox
 /// account.
-@property (nonatomic, copy) NSString * _Nonnull displayName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull displayName;
 
 /// Full constructor for the `Name` struct (exposes all instance variables).
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName surname:(NSString * _Nonnull)surname familiarName:(NSString * _Nonnull)familiarName displayName:(NSString * _Nonnull)displayName;
-
-/// Returns a human-readable representation of the `DBXUSERSName` object.
-- (NSString * _Nonnull)description;
 
 @end
 

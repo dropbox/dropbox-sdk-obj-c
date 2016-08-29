@@ -44,13 +44,13 @@ typedef NS_ENUM(NSInteger, DBXFILESAddPropertiesErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESAddPropertiesErrorTag tag;
+@property (nonatomic, readonly) DBXFILESAddPropertiesErrorTag tag;
 
 /// Property template does not exist for given identifier.
-@property (nonatomic, copy) NSString * _Nonnull templateNotFound;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookupError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull path;
 
 /// Initializes union class with tag state of `TemplateNotFound`.
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
@@ -99,10 +99,6 @@ typedef NS_ENUM(NSInteger, DBXFILESAddPropertiesErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESAddPropertiesError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -21,11 +21,11 @@
 @interface DBXTEAMMembersDeactivateArg : NSObject <DBXSerializable> 
 
 /// Identity of user to remove/suspend.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// If provided, controls if the user's data will be deleted on their linked
 /// devices.
-@property (nonatomic, copy) NSNumber * _Nonnull wipeData;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull wipeData;
 
 /// Full constructor for the `MembersDeactivateArg` struct (exposes all instance
 /// variables).
@@ -34,10 +34,6 @@
 /// Convenience constructor for the `MembersDeactivateArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersDeactivateArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

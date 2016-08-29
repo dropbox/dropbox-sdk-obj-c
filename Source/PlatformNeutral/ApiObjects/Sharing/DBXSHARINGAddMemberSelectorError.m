@@ -8,6 +8,10 @@
 
 @implementation DBXSHARINGAddMemberSelectorError 
 
+@synthesize invalidDropboxId = _invalidDropboxId;
+@synthesize invalidEmail = _invalidEmail;
+@synthesize unverifiedDropboxId = _unverifiedDropboxId;
+
 - (instancetype)initWithAutomaticGroup {
     self = [super init];
     if (self != nil) {

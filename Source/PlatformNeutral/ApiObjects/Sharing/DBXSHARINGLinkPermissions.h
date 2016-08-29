@@ -24,20 +24,20 @@
 /// the shared folder (in case the linked file is part of a shared folder). This
 /// field is shown only if the caller has access to this info (the link's owner
 /// always has access to this data).
-@property (nonatomic) DBXSHARINGResolvedVisibility * _Nullable resolvedVisibility;
+@property (nonatomic, readonly) DBXSHARINGResolvedVisibility * _Nullable resolvedVisibility;
 
 /// The shared link's requested visibility. This can be overridden by the team
 /// and shared folder policies. The final visibility, after considering these
 /// policies, can be found in resolvedVisibility. This is shown only if the
 /// caller is the link's owner.
-@property (nonatomic) DBXSHARINGRequestedVisibility * _Nullable requestedVisibility;
+@property (nonatomic, readonly) DBXSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
 /// Whether the caller can revoke the shared link
-@property (nonatomic, copy) NSNumber * _Nonnull canRevoke;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull canRevoke;
 
 /// The failure reason for revoking the link. This field will only be present if
 /// the canRevoke is false.
-@property (nonatomic) DBXSHARINGSharedLinkAccessFailureReason * _Nullable revokeFailureReason;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkAccessFailureReason * _Nullable revokeFailureReason;
 
 /// Full constructor for the `LinkPermissions` struct (exposes all instance
 /// variables).
@@ -46,10 +46,6 @@
 /// Convenience constructor for the `LinkPermissions` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithCanRevoke:(NSNumber * _Nonnull)canRevoke;
-
-/// Returns a human-readable representation of the `DBXSHARINGLinkPermissions`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

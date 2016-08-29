@@ -24,19 +24,19 @@
 @interface DBXSHARINGSharedFileMembers : NSObject <DBXSerializable> 
 
 /// The list of user members of the shared file.
-@property (nonatomic) NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull users;
+@property (nonatomic, readonly) NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull users;
 
 /// The list of group members of the shared file.
-@property (nonatomic) NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull groups;
+@property (nonatomic, readonly) NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull groups;
 
 /// The list of invited members of a file, but have not logged in and claimed
 /// this.
-@property (nonatomic) NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull invitees;
+@property (nonatomic, readonly) NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull invitees;
 
 /// Present if there are additional shared file members that have not been
 /// returned yet. Pass the cursor into listFileMembersContinue to list
 /// additional members.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `SharedFileMembers` struct (exposes all instance
 /// variables).
@@ -45,10 +45,6 @@
 /// Convenience constructor for the `SharedFileMembers` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUsers:(NSArray<DBXSHARINGUserMembershipInfo *> * _Nonnull)users groups:(NSArray<DBXSHARINGGroupMembershipInfo *> * _Nonnull)groups invitees:(NSArray<DBXSHARINGInviteeMembershipInfo *> * _Nonnull)invitees;
-
-/// Returns a human-readable representation of the `DBXSHARINGSharedFileMembers`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -9,7 +9,7 @@
 @implementation DBXUSERSGetAccountArg 
 
 - (instancetype)initWithAccountId:(NSString *)accountId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil](accountId);
+    [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super init];
     if (self != nil) {

@@ -10,10 +10,10 @@
 @implementation DBXTEAMMembersSetProfileArg 
 
 - (instancetype)initWithUser:(DBXTEAMUserSelectorArg *)user dNewEmail:(NSString *)dNewEmail dNewExternalId:(NSString *)dNewExternalId dNewGivenName:(NSString *)dNewGivenName dNewSurname:(NSString *)dNewSurname {
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:[NSNumber numberWithInt:255] pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"]](dNewEmail);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:[NSNumber numberWithInt:64] pattern:nil]](dNewExternalId);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:[NSNumber numberWithInt:100] pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:[NSNumber numberWithInt:100] pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:@(255) pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"]](dNewEmail);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](dNewExternalId);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewGivenName);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"]](dNewSurname);
 
     self = [super init];
     if (self != nil) {

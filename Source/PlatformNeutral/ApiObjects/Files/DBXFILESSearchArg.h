@@ -18,22 +18,22 @@
 @interface DBXFILESSearchArg : NSObject <DBXSerializable> 
 
 /// The path in the user's Dropbox to search. Should probably be a folder.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The string to search for. The search string is split on spaces into multiple
 /// tokens. For file name searching, the last token is used for prefix matching
 /// (i.e. "bat c" matches "bat cave" but not "batman car").
-@property (nonatomic, copy) NSString * _Nonnull query;
+@property (nonatomic, readonly, copy) NSString * _Nonnull query;
 
 /// The starting index within the search results (used for paging).
-@property (nonatomic, copy) NSNumber * _Nonnull start;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull start;
 
 /// The maximum number of search results to return.
-@property (nonatomic, copy) NSNumber * _Nonnull maxResults;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull maxResults;
 
 /// The search mode (filename, filename_and_content, or deleted_filename). Note
 /// that searching file content is only available for Dropbox Business accounts.
-@property (nonatomic) DBXFILESSearchMode * _Nonnull mode;
+@property (nonatomic, readonly) DBXFILESSearchMode * _Nonnull mode;
 
 /// Full constructor for the `SearchArg` struct (exposes all instance
 /// variables).
@@ -42,9 +42,6 @@
 /// Convenience constructor for the `SearchArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
-
-/// Returns a human-readable representation of the `DBXFILESSearchArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

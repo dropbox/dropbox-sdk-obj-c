@@ -17,18 +17,18 @@
 @interface DBXFILESGetMetadataArg : NSObject <DBXSerializable> 
 
 /// The path of a file or folder on Dropbox.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// If true, mediaInfo in FileMetadata is set for photo and video.
-@property (nonatomic, copy) NSNumber * _Nonnull includeMediaInfo;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeMediaInfo;
 
 /// If true, DeletedMetadata will be returned for deleted file or folder,
 /// otherwise notFound in LookupError will be returned.
-@property (nonatomic, copy) NSNumber * _Nonnull includeDeleted;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
-@property (nonatomic, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
 /// Full constructor for the `GetMetadataArg` struct (exposes all instance
 /// variables).
@@ -37,10 +37,6 @@
 /// Convenience constructor for the `GetMetadataArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESGetMetadataArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

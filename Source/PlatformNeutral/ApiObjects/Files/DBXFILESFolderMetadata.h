@@ -20,18 +20,18 @@
 @interface DBXFILESFolderMetadata : DBXFILESMetadata <DBXSerializable> 
 
 /// A unique identifier for the folder.
-@property (nonatomic, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
 /// Deprecated. Please use sharingInfo instead.
-@property (nonatomic, copy) NSString * _Nullable sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable sharedFolderId;
 
 /// Set if the folder is contained in a shared folder or is a shared folder
 /// mount point.
-@property (nonatomic) DBXFILESFolderSharingInfo * _Nullable sharingInfo;
+@property (nonatomic, readonly) DBXFILESFolderSharingInfo * _Nullable sharingInfo;
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
 /// Full constructor for the `FolderMetadata` struct (exposes all instance
 /// variables).
@@ -40,10 +40,6 @@
 /// Convenience constructor for the `FolderMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_;
-
-/// Returns a human-readable representation of the `DBXFILESFolderMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

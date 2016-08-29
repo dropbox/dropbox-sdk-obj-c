@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupManagementTypeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMCOMMONGroupManagementTypeTag tag;
+@property (nonatomic, readonly) DBXTEAMCOMMONGroupManagementTypeTag tag;
 
 /// Initializes union class with tag state of `CompanyManaged`.
 - (nonnull instancetype)initWithCompanyManaged;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMCOMMONGroupManagementTypeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMCOMMONGroupManagementType` object.
-- (NSString * _Nonnull)description;
 
 @end
 

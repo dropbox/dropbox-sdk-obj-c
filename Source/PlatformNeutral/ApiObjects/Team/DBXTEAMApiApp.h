@@ -19,22 +19,22 @@
 @interface DBXTEAMApiApp : NSObject <DBXSerializable> 
 
 /// The application unique id
-@property (nonatomic, copy) NSString * _Nonnull appId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull appId;
 
 /// The application name
-@property (nonatomic, copy) NSString * _Nonnull appName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull appName;
 
 /// The application publisher name
-@property (nonatomic, copy) NSString * _Nullable publisher;
+@property (nonatomic, readonly, copy) NSString * _Nullable publisher;
 
 /// The publisher's URL
-@property (nonatomic, copy) NSString * _Nullable publisherUrl;
+@property (nonatomic, readonly, copy) NSString * _Nullable publisherUrl;
 
 /// The time this application was linked
-@property (nonatomic) NSDate * _Nullable linked;
+@property (nonatomic, readonly) NSDate * _Nullable linked;
 
 /// Whether the linked application uses a dedicated folder
-@property (nonatomic, copy) NSNumber * _Nonnull isAppFolder;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isAppFolder;
 
 /// Full constructor for the `ApiApp` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder publisher:(NSString * _Nullable)publisher publisherUrl:(NSString * _Nullable)publisherUrl linked:(NSDate * _Nullable)linked;
@@ -42,9 +42,6 @@
 /// Convenience constructor for the `ApiApp` struct (exposes only non-nullable
 /// instance variables with no default value).
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId appName:(NSString * _Nonnull)appName isAppFolder:(NSNumber * _Nonnull)isAppFolder;
-
-/// Returns a human-readable representation of the `DBXTEAMApiApp` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -10,6 +10,8 @@
 
 @implementation DBXSHARINGModifySharedLinkSettingsError 
 
+@synthesize settingsError = _settingsError;
+
 - (instancetype)initWithSharedLinkNotFound {
     self = [super init];
     if (self != nil) {

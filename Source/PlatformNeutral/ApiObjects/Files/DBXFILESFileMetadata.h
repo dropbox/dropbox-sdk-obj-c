@@ -21,42 +21,42 @@
 @interface DBXFILESFileMetadata : DBXFILESMetadata <DBXSerializable> 
 
 /// A unique identifier for the file.
-@property (nonatomic, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
 /// For files, this is the modification time set by the desktop client when the
 /// file was added to Dropbox. Since this time is not verified (the Dropbox
 /// server stores whatever the desktop client sends up), this should only be
 /// used for display purposes (such as sorting) and not, for example, to
 /// determine if a file has changed or not.
-@property (nonatomic) NSDate * _Nonnull clientModified;
+@property (nonatomic, readonly) NSDate * _Nonnull clientModified;
 
 /// The last time the file was modified on Dropbox.
-@property (nonatomic) NSDate * _Nonnull serverModified;
+@property (nonatomic, readonly) NSDate * _Nonnull serverModified;
 
 /// A unique identifier for the current revision of a file. This field is the
 /// same rev as elsewhere in the API and can be used to detect changes and avoid
 /// conflicts.
-@property (nonatomic, copy) NSString * _Nonnull rev;
+@property (nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
-@property (nonatomic, copy) NSNumber * _Nonnull size;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull size;
 
 /// Additional information if the file is a photo or video.
-@property (nonatomic) DBXFILESMediaInfo * _Nullable mediaInfo;
+@property (nonatomic, readonly) DBXFILESMediaInfo * _Nullable mediaInfo;
 
 /// Set if this file is contained in a shared folder.
-@property (nonatomic) DBXFILESFileSharingInfo * _Nullable sharingInfo;
+@property (nonatomic, readonly) DBXFILESFileSharingInfo * _Nullable sharingInfo;
 
 /// Additional information if the file has custom properties with the property
 /// template specified.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
 /// This flag will only be present if include_has_explicit_shared_members  is
 /// true in listFolder or getMetadata. If this  flag is present, it will be true
 /// if this file has any explicit shared  members. This is different from
 /// sharing_info in that this could be true  in the case where a file has
 /// explicit members but is not contained within  a shared folder.
-@property (nonatomic, copy) NSNumber * _Nullable hasExplicitSharedMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nullable hasExplicitSharedMembers;
 
 /// Full constructor for the `FileMetadata` struct (exposes all instance
 /// variables).
@@ -65,10 +65,6 @@
 /// Convenience constructor for the `FileMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_ clientModified:(NSDate * _Nonnull)clientModified serverModified:(NSDate * _Nonnull)serverModified rev:(NSString * _Nonnull)rev size:(NSNumber * _Nonnull)size;
-
-/// Returns a human-readable representation of the `DBXFILESFileMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

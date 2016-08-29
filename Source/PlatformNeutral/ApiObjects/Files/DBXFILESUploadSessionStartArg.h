@@ -18,7 +18,7 @@
 
 /// If true, the current session will be closed, at which point you won't be
 /// able to call uploadSessionAppendV2 anymore with the current session.
-@property (nonatomic, copy) NSNumber * _Nonnull close;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull close;
 
 /// Full constructor for the `UploadSessionStartArg` struct (exposes all
 /// instance variables).
@@ -27,10 +27,6 @@
 /// Convenience constructor for the `UploadSessionStartArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionStartArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

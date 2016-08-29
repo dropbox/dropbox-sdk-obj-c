@@ -30,10 +30,10 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESUploadSessionFinishBatchJobStatusTag tag;
+@property (nonatomic, readonly) DBXFILESUploadSessionFinishBatchJobStatusTag tag;
 
 /// The uploadSessionFinishBatch has finished.
-@property (nonatomic) DBXFILESUploadSessionFinishBatchResult * _Nonnull complete;
+@property (nonatomic, readonly) DBXFILESUploadSessionFinishBatchResult * _Nonnull complete;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -49,10 +49,6 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishBatchJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionFinishBatchJobStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

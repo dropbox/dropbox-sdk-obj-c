@@ -18,15 +18,15 @@
 @interface DBXFILESPropertyGroupUpdate : NSObject <DBXSerializable> 
 
 /// A unique identifier for a property template.
-@property (nonatomic, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 /// List of property fields to update if the field already exists. If the field
 /// doesn't exist, add the field to the property group.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyField *> * _Nullable addOrUpdateFields;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyField *> * _Nullable addOrUpdateFields;
 
 /// List of property field names to remove from property group if the field
 /// exists.
-@property (nonatomic) NSArray<NSString *> * _Nullable removeFields;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nullable removeFields;
 
 /// Full constructor for the `PropertyGroupUpdate` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `PropertyGroupUpdate` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
-
-/// Returns a human-readable representation of the `DBXFILESPropertyGroupUpdate`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

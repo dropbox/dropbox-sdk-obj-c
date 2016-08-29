@@ -13,7 +13,7 @@
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId actions:(NSArray<DBXSHARINGMemberAction *> *)actions limit:(NSNumber *)limit {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
 
     self = [super initWithActions:actions limit:limit];
     if (self != nil) {

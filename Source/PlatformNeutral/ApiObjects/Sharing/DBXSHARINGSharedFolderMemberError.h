@@ -35,10 +35,10 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderMemberErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGSharedFolderMemberErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderMemberErrorTag tag;
 
 /// The target member only has inherited access to the shared folder.
-@property (nonatomic) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
+@property (nonatomic, readonly) DBXSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 /// Initializes union class with tag state of `InvalidDropboxId`.
 - (nonnull instancetype)initWithInvalidDropboxId;
@@ -66,10 +66,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGSharedFolderMemberErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedFolderMemberError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

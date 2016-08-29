@@ -21,14 +21,14 @@
 @interface DBXSHARINGMemberPermission : NSObject <DBXSerializable> 
 
 /// The action that the user may wish to take on the member.
-@property (nonatomic) DBXSHARINGMemberAction * _Nonnull action;
+@property (nonatomic, readonly) DBXSHARINGMemberAction * _Nonnull action;
 
 /// True if the user is allowed to take the action.
-@property (nonatomic, copy) NSNumber * _Nonnull allow;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull allow;
 
 /// The reason why the user is denied the permission. Not present if the action
 /// is allowed
-@property (nonatomic) DBXSHARINGPermissionDeniedReason * _Nullable reason;
+@property (nonatomic, readonly) DBXSHARINGPermissionDeniedReason * _Nullable reason;
 
 /// Full constructor for the `MemberPermission` struct (exposes all instance
 /// variables).
@@ -37,10 +37,6 @@
 /// Convenience constructor for the `MemberPermission` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAction:(DBXSHARINGMemberAction * _Nonnull)action allow:(NSNumber * _Nonnull)allow;
-
-/// Returns a human-readable representation of the `DBXSHARINGMemberPermission`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

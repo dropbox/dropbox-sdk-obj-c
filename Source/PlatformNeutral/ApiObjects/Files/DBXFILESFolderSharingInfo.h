@@ -21,11 +21,11 @@
 @interface DBXFILESFolderSharingInfo : DBXFILESSharingInfo <DBXSerializable> 
 
 /// Set if the folder is contained by a shared folder.
-@property (nonatomic, copy) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// If this folder is a shared folder mount point, the ID of the shared folder
 /// mounted at this location.
-@property (nonatomic, copy) NSString * _Nullable sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable sharedFolderId;
 
 /// Full constructor for the `FolderSharingInfo` struct (exposes all instance
 /// variables).
@@ -34,10 +34,6 @@
 /// Convenience constructor for the `FolderSharingInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
-
-/// Returns a human-readable representation of the `DBXFILESFolderSharingInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

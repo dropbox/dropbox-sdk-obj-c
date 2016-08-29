@@ -10,6 +10,11 @@
 
 @implementation DBXSHARINGAddFolderMemberError 
 
+@synthesize accessError = _accessError;
+@synthesize badMember = _badMember;
+@synthesize tooManyMembers = _tooManyMembers;
+@synthesize tooManyPendingInvites = _tooManyPendingInvites;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {

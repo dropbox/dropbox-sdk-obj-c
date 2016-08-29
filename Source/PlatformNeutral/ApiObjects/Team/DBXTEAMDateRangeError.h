@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMDateRangeErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMDateRangeErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMDateRangeErrorTag tag;
 
 /// Initializes union class with tag state of `Other`.
 - (nonnull instancetype)initWithOther;
@@ -37,10 +37,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMDateRangeErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMDateRangeError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

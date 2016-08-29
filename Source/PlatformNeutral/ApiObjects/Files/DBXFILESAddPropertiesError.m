@@ -10,6 +10,9 @@
 
 @implementation DBXFILESAddPropertiesError 
 
+@synthesize templateNotFound = _templateNotFound;
+@synthesize path = _path;
+
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {

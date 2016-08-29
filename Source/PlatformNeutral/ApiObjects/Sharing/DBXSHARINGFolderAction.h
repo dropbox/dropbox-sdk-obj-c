@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGFolderActionTag tag;
+@property (nonatomic, readonly) DBXSHARINGFolderActionTag tag;
 
 /// Initializes union class with tag state of `ChangeOptions`.
 - (nonnull instancetype)initWithChangeOptions;
@@ -132,10 +132,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGFolderActionTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGFolderAction`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

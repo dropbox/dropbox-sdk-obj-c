@@ -19,7 +19,7 @@
 
 /// If true, propertyGroups in FileMetadata is set for files with custom
 /// properties.
-@property (nonatomic) NSArray<NSString *> * _Nullable includePropertyTemplates;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nullable includePropertyTemplates;
 
 /// Full constructor for the `AlphaGetMetadataArg` struct (exposes all instance
 /// variables).
@@ -28,10 +28,6 @@
 /// Convenience constructor for the `AlphaGetMetadataArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESAlphaGetMetadataArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

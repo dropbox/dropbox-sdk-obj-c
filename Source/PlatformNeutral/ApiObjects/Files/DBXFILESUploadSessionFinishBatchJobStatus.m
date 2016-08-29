@@ -10,6 +10,8 @@
 
 @implementation DBXFILESUploadSessionFinishBatchJobStatus 
 
+@synthesize complete = _complete;
+
 - (instancetype)initWithInProgress {
     self = [super init];
     if (self != nil) {

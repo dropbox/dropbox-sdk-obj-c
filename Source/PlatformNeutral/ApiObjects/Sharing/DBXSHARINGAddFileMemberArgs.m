@@ -11,7 +11,7 @@
 @implementation DBXSHARINGAddFileMemberArgs 
 
 - (instancetype)initWithFile:(NSString *)file members:(NSArray<DBXSHARINGMemberSelector *> *)members customMessage:(NSString *)customMessage quiet:(NSNumber *)quiet accessLevel:(DBXSHARINGAccessLevel *)accessLevel addMessageAsComment:(NSNumber *)addMessageAsComment {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
 
     self = [super init];

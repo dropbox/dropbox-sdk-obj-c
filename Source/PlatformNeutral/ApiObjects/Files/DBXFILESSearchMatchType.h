@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchMatchTypeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESSearchMatchTypeTag tag;
+@property (nonatomic, readonly) DBXFILESSearchMatchTypeTag tag;
 
 /// Initializes union class with tag state of `Filename`.
 - (nonnull instancetype)initWithFilename;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchMatchTypeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESSearchMatchType`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

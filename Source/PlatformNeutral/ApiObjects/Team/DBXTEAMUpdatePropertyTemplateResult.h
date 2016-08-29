@@ -17,15 +17,11 @@
 @interface DBXTEAMUpdatePropertyTemplateResult : NSObject <DBXSerializable> 
 
 /// An identifier for property template added by propertiesTemplateAdd.
-@property (nonatomic, copy) NSString * _Nonnull templateId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 /// Full constructor for the `UpdatePropertyTemplateResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMUpdatePropertyTemplateResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

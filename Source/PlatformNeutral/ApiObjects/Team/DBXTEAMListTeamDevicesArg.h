@@ -20,16 +20,16 @@
 /// passed. Then, if the result of the call includes a cursor, the following
 /// requests should include the received cursors in order to receive the next
 /// sub list of team devices
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Whether to list web sessions of the team members
-@property (nonatomic, copy) NSNumber * _Nonnull includeWebSessions;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeWebSessions;
 
 /// Whether to list desktop clients of the team members
-@property (nonatomic, copy) NSNumber * _Nonnull includeDesktopClients;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeDesktopClients;
 
 /// Whether to list mobile clients of the team members
-@property (nonatomic, copy) NSNumber * _Nonnull includeMobileClients;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull includeMobileClients;
 
 /// Full constructor for the `ListTeamDevicesArg` struct (exposes all instance
 /// variables).
@@ -38,10 +38,6 @@
 /// Convenience constructor for the `ListTeamDevicesArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXTEAMListTeamDevicesArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

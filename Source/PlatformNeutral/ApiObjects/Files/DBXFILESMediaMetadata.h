@@ -21,13 +21,13 @@
 @interface DBXFILESMediaMetadata : NSObject <DBXSerializable> 
 
 /// Dimension of the photo/video.
-@property (nonatomic) DBXFILESDimensions * _Nullable dimensions;
+@property (nonatomic, readonly) DBXFILESDimensions * _Nullable dimensions;
 
 /// The GPS coordinate of the photo/video.
-@property (nonatomic) DBXFILESGpsCoordinates * _Nullable location;
+@property (nonatomic, readonly) DBXFILESGpsCoordinates * _Nullable location;
 
 /// The timestamp when the photo/video is taken.
-@property (nonatomic) NSDate * _Nullable timeTaken;
+@property (nonatomic, readonly) NSDate * _Nullable timeTaken;
 
 /// Full constructor for the `MediaMetadata` struct (exposes all instance
 /// variables).
@@ -36,10 +36,6 @@
 /// Convenience constructor for the `MediaMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXFILESMediaMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

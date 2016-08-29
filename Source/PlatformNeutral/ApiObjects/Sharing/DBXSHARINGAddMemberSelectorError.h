@@ -46,17 +46,17 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddMemberSelectorErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGAddMemberSelectorErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGAddMemberSelectorErrorTag tag;
 
 /// The value is the ID that could not be identified.
-@property (nonatomic, copy) NSString * _Nonnull invalidDropboxId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull invalidDropboxId;
 
 /// The value is the e-email address that is malformed.
-@property (nonatomic, copy) NSString * _Nonnull invalidEmail;
+@property (nonatomic, readonly, copy) NSString * _Nonnull invalidEmail;
 
 /// The value is the ID of the Dropbox user with an unverified e-mail address.
 /// Invite unverified users by e-mail address instead of by their Dropbox ID.
-@property (nonatomic, copy) NSString * _Nonnull unverifiedDropboxId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull unverifiedDropboxId;
 
 /// Initializes union class with tag state of `AutomaticGroup`.
 - (nonnull instancetype)initWithAutomaticGroup;
@@ -103,10 +103,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddMemberSelectorErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGAddMemberSelectorError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

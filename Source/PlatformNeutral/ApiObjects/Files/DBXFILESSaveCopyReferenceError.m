@@ -9,6 +9,8 @@
 
 @implementation DBXFILESSaveCopyReferenceError 
 
+@synthesize path = _path;
+
 - (instancetype)initWithPath:(DBXFILESWriteError *)path {
     self = [super init];
     if (self != nil) {

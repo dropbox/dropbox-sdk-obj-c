@@ -18,10 +18,10 @@
 @interface DBXTEAMMembersAddArg : NSObject <DBXSerializable> 
 
 /// Details of new members to be added to the team.
-@property (nonatomic) NSArray<DBXTEAMMemberAddArg *> * _Nonnull dNewMembers;
+@property (nonatomic, readonly) NSArray<DBXTEAMMemberAddArg *> * _Nonnull dNewMembers;
 
 /// Whether to force the add to happen asynchronously.
-@property (nonatomic, copy) NSNumber * _Nonnull forceAsync;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
 
 /// Full constructor for the `MembersAddArg` struct (exposes all instance
 /// variables).
@@ -30,10 +30,6 @@
 /// Convenience constructor for the `MembersAddArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithDNewMembers:(NSArray<DBXTEAMMemberAddArg *> * _Nonnull)dNewMembers;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersAddArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

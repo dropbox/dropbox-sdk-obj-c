@@ -17,15 +17,11 @@
 @interface DBXSHARINGUnmountFolderArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Full constructor for the `UnmountFolderArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the `DBXSHARINGUnmountFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

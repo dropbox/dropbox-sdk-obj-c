@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsListContinueErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupsListContinueErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupsListContinueErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidCursor`.
 - (nonnull instancetype)initWithInvalidCursor;
@@ -44,10 +44,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsListContinueErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMGroupsListContinueError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

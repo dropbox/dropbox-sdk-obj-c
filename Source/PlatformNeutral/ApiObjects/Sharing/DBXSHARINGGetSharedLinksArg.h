@@ -17,7 +17,7 @@
 @interface DBXSHARINGGetSharedLinksArg : NSObject <DBXSerializable> 
 
 /// See getSharedLinks description.
-@property (nonatomic, copy) NSString * _Nullable path;
+@property (nonatomic, readonly, copy) NSString * _Nullable path;
 
 /// Full constructor for the `GetSharedLinksArg` struct (exposes all instance
 /// variables).
@@ -26,10 +26,6 @@
 /// Convenience constructor for the `GetSharedLinksArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXSHARINGGetSharedLinksArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

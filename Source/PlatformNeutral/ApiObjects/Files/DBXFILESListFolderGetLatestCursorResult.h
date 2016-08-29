@@ -18,15 +18,11 @@
 
 /// Pass the cursor into listFolderContinue to see what's changed in the folder
 /// since your previous query.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `ListFolderGetLatestCursorResult` struct (exposes
 /// all instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESListFolderGetLatestCursorResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

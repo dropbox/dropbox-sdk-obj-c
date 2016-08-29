@@ -18,13 +18,13 @@
 
 /// A cursor as returned by listFolder or listFolderContinue. Cursors retrieved
 /// by setting includeMediaInfo in ListFolderArg to true are not supported.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// A timeout in seconds. The request will block for at most this length of
 /// time, plus up to 90 seconds of random jitter added to avoid the thundering
 /// herd problem. Care should be taken when using this parameter, as some
 /// network infrastructure does not support long timeouts.
-@property (nonatomic, copy) NSNumber * _Nonnull timeout;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull timeout;
 
 /// Full constructor for the `ListFolderLongpollArg` struct (exposes all
 /// instance variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `ListFolderLongpollArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESListFolderLongpollArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -9,6 +9,8 @@
 
 @implementation DBXFILESUploadError 
 
+@synthesize path = _path;
+
 - (instancetype)initWithPath:(DBXFILESUploadWriteFailed *)path {
     self = [super init];
     if (self != nil) {

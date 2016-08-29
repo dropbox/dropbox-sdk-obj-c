@@ -18,11 +18,11 @@
 
 /// Indicates whether new changes are available. If true, call
 /// listFolderContinue to retrieve the changes.
-@property (nonatomic, copy) NSNumber * _Nonnull changes;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull changes;
 
 /// If present, backoff for at least this many seconds before calling
 /// listFolderLongpoll again.
-@property (nonatomic, copy) NSNumber * _Nullable backoff;
+@property (nonatomic, readonly, copy) NSNumber * _Nullable backoff;
 
 /// Full constructor for the `ListFolderLongpollResult` struct (exposes all
 /// instance variables).
@@ -31,10 +31,6 @@
 /// Convenience constructor for the `ListFolderLongpollResult` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithChanges:(NSNumber * _Nonnull)changes;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESListFolderLongpollResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

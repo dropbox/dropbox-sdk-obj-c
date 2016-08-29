@@ -34,13 +34,13 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFileMembersIndividualResultTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGListFileMembersIndividualResultTag tag;
+@property (nonatomic, readonly) DBXSHARINGListFileMembersIndividualResultTag tag;
 
 /// The results of the query for this file if it was successful
-@property (nonatomic) DBXSHARINGListFileMembersCountResult * _Nonnull result;
+@property (nonatomic, readonly) DBXSHARINGListFileMembersCountResult * _Nonnull result;
 
 /// The result of the query for this file if it was an error.
-@property (nonatomic) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharingFileAccessError * _Nonnull accessError;
 
 /// Initializes union class with tag state of `Result`.
 - (nonnull instancetype)initWithResult:(DBXSHARINGListFileMembersCountResult * _Nonnull)result;
@@ -62,10 +62,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGListFileMembersIndividualResultTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFileMembersIndividualResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXASYNCPollEmptyResultTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXASYNCPollEmptyResultTag tag;
+@property (nonatomic, readonly) DBXASYNCPollEmptyResultTag tag;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -47,10 +47,6 @@ typedef NS_ENUM(NSInteger, DBXASYNCPollEmptyResultTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXASYNCPollEmptyResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

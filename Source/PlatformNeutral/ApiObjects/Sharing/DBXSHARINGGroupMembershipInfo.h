@@ -23,7 +23,7 @@
 @interface DBXSHARINGGroupMembershipInfo : DBXSHARINGMembershipInfo <DBXSerializable> 
 
 /// The information about the membership group.
-@property (nonatomic) DBXSHARINGGroupInfo * _Nonnull group;
+@property (nonatomic, readonly) DBXSHARINGGroupInfo * _Nonnull group;
 
 /// Full constructor for the `GroupMembershipInfo` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `GroupMembershipInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccessType:(DBXSHARINGAccessLevel * _Nonnull)accessType group:(DBXSHARINGGroupInfo * _Nonnull)group;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGGroupMembershipInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

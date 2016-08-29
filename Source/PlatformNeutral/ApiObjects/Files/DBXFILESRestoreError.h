@@ -36,13 +36,13 @@ typedef NS_ENUM(NSInteger, DBXFILESRestoreErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESRestoreErrorTag tag;
+@property (nonatomic, readonly) DBXFILESRestoreErrorTag tag;
 
 /// An error occurs when downloading metadata for the file.
-@property (nonatomic) DBXFILESLookupError * _Nonnull pathLookup;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull pathLookup;
 
 /// An error occurs when trying to restore the file to that path.
-@property (nonatomic) DBXFILESWriteError * _Nonnull pathWrite;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull pathWrite;
 
 /// Initializes union class with tag state of `PathLookup`.
 - (nonnull instancetype)initWithPathLookup:(DBXFILESLookupError * _Nonnull)pathLookup;
@@ -70,10 +70,6 @@ typedef NS_ENUM(NSInteger, DBXFILESRestoreErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESRestoreError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

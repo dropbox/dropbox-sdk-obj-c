@@ -17,17 +17,14 @@
 @interface DBXFILESRestoreArg : NSObject <DBXSerializable> 
 
 /// The path to the file you want to restore.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The revision to restore for the file.
-@property (nonatomic, copy) NSString * _Nonnull rev;
+@property (nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// Full constructor for the `RestoreArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nonnull)rev;
-
-/// Returns a human-readable representation of the `DBXFILESRestoreArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

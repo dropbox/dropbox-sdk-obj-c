@@ -12,7 +12,7 @@
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId members:(NSArray<DBXSHARINGAddMember *> *)members quiet:(NSNumber *)quiet customMessage:(NSString *)customMessage {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil]](customMessage);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](customMessage);
 
     self = [super init];
     if (self != nil) {

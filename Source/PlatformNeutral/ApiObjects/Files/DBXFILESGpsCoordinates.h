@@ -19,18 +19,14 @@
 @interface DBXFILESGpsCoordinates : NSObject <DBXSerializable> 
 
 /// Latitude of the GPS coordinates.
-@property (nonatomic, copy) NSNumber * _Nonnull latitude;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull latitude;
 
 /// Longitude of the GPS coordinates.
-@property (nonatomic, copy) NSNumber * _Nonnull longitude;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull longitude;
 
 /// Full constructor for the `GpsCoordinates` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
-
-/// Returns a human-readable representation of the `DBXFILESGpsCoordinates`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

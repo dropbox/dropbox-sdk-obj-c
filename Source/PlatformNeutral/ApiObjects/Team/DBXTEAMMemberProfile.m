@@ -12,7 +12,7 @@
 @implementation DBXTEAMMemberProfile 
 
 - (instancetype)initWithTeamMemberId:(NSString *)teamMemberId email:(NSString *)email emailVerified:(NSNumber *)emailVerified status:(DBXTEAMTeamMemberStatus *)status name:(DBXUSERSName *)name membershipType:(DBXTEAMTeamMembershipType *)membershipType externalId:(NSString *)externalId accountId:(NSString *)accountId {
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil]](accountId);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
     self = [super init];
     if (self != nil) {

@@ -17,15 +17,11 @@
 @interface DBXUSERSGetAccountArg : NSObject <DBXSerializable> 
 
 /// A user's account identifier.
-@property (nonatomic, copy) NSString * _Nonnull accountId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull accountId;
 
 /// Full constructor for the `GetAccountArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId;
-
-/// Returns a human-readable representation of the `DBXUSERSGetAccountArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

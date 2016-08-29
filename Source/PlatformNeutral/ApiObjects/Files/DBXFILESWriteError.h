@@ -42,13 +42,13 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESWriteErrorTag tag;
+@property (nonatomic, readonly) DBXFILESWriteErrorTag tag;
 
 /// (no description).
-@property (nonatomic, copy) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
 
 /// Couldn't write to the target path because there was something in the way.
-@property (nonatomic) DBXFILESWriteConflictError * _Nonnull conflict;
+@property (nonatomic, readonly) DBXFILESWriteConflictError * _Nonnull conflict;
 
 /// Initializes union class with tag state of `MalformedPath`.
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
@@ -88,9 +88,6 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESWriteError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

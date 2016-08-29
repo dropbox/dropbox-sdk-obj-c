@@ -22,19 +22,19 @@
 @interface DBXSHARINGUpdateFolderPolicyArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Who can be a member of this shared folder. Only applicable if the current
 /// user is on a team.
-@property (nonatomic) DBXSHARINGMemberPolicy * _Nullable memberPolicy;
+@property (nonatomic, readonly) DBXSHARINGMemberPolicy * _Nullable memberPolicy;
 
 /// Who can add and remove members of this shared folder.
-@property (nonatomic) DBXSHARINGAclUpdatePolicy * _Nullable aclUpdatePolicy;
+@property (nonatomic, readonly) DBXSHARINGAclUpdatePolicy * _Nullable aclUpdatePolicy;
 
 /// The policy to apply to shared links created for content inside this shared
 /// folder. The current user must be on a team to set this policy to members in
 /// SharedLinkPolicy.
-@property (nonatomic) DBXSHARINGSharedLinkPolicy * _Nullable sharedLinkPolicy;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkPolicy * _Nullable sharedLinkPolicy;
 
 /// Full constructor for the `UpdateFolderPolicyArg` struct (exposes all
 /// instance variables).
@@ -43,10 +43,6 @@
 /// Convenience constructor for the `UpdateFolderPolicyArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGUpdateFolderPolicyArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

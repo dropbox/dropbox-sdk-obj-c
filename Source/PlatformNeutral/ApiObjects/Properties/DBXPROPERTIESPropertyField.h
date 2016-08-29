@@ -18,19 +18,15 @@
 
 /// This is the name or key of a custom property in a property template. File
 /// property names can be up to 256 bytes.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// Value of a custom property attached to a file. Values can be up to 1024
 /// bytes.
-@property (nonatomic, copy) NSString * _Nonnull value;
+@property (nonatomic, readonly, copy) NSString * _Nonnull value;
 
 /// Full constructor for the `PropertyField` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name value:(NSString * _Nonnull)value;
-
-/// Returns a human-readable representation of the `DBXPROPERTIESPropertyField`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

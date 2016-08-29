@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXPROPERTIESPropertyTypeTag tag;
+@property (nonatomic, readonly) DBXPROPERTIESPropertyTypeTag tag;
 
 /// Initializes union class with tag state of `String`.
 - (nonnull instancetype)initWithString;
@@ -47,10 +47,6 @@ typedef NS_ENUM(NSInteger, DBXPROPERTIESPropertyTypeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXPROPERTIESPropertyType`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

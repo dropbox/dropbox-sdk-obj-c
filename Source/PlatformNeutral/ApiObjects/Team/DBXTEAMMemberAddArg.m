@@ -10,10 +10,10 @@
 @implementation DBXTEAMMemberAddArg 
 
 - (instancetype)initWithMemberEmail:(NSString *)memberEmail memberGivenName:(NSString *)memberGivenName memberSurname:(NSString *)memberSurname memberExternalId:(NSString *)memberExternalId sendWelcomeEmail:(NSNumber *)sendWelcomeEmail role:(DBXTEAMAdminTier *)role {
-    [DBXStoneValidators stringValidator:nil maxLength:[NSNumber numberWithInt:255] pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"](memberEmail);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:[NSNumber numberWithInt:100] pattern:@"[^/:?*<>\"|]*"](memberGivenName);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:[NSNumber numberWithInt:100] pattern:@"[^/:?*<>\"|]*"](memberSurname);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:[NSNumber numberWithInt:64] pattern:nil]](memberExternalId);
+    [DBXStoneValidators stringValidator:nil maxLength:@(255) pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$"](memberEmail);
+    [DBXStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"](memberGivenName);
+    [DBXStoneValidators stringValidator:@(1) maxLength:@(100) pattern:@"[^/:?*<>\"|]*"](memberSurname);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:nil maxLength:@(64) pattern:nil]](memberExternalId);
 
     self = [super init];
     if (self != nil) {

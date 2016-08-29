@@ -11,7 +11,7 @@
 
 - (instancetype)initWithEntries:(NSArray<DBXFILESMetadata *> *)entries cursor:(NSString *)cursor hasMore:(NSNumber *)hasMore {
     [DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](entries);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](cursor);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](cursor);
 
     self = [super init];
     if (self != nil) {

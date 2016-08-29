@@ -10,7 +10,7 @@
 @implementation DBXSHARINGGetFileMetadataBatchArg 
 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files actions:(NSArray<DBXSHARINGFileAction *> *)actions {
-    [DBXStoneValidators arrayValidator:nil maxItems:[NSNumber numberWithInt:100] itemValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
+    [DBXStoneValidators arrayValidator:nil maxItems:@(100) itemValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];

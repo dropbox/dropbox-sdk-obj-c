@@ -38,13 +38,13 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESUploadSessionFinishErrorTag tag;
+@property (nonatomic, readonly) DBXFILESUploadSessionFinishErrorTag tag;
 
 /// The session arguments are incorrect; the value explains the reason.
-@property (nonatomic) DBXFILESUploadSessionLookupError * _Nonnull lookupFailed;
+@property (nonatomic, readonly) DBXFILESUploadSessionLookupError * _Nonnull lookupFailed;
 
 /// Unable to save the uploaded contents to a file.
-@property (nonatomic) DBXFILESWriteError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `LookupFailed`.
 - (nonnull instancetype)initWithLookupFailed:(DBXFILESUploadSessionLookupError * _Nonnull)lookupFailed;
@@ -73,10 +73,6 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionFinishErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionFinishError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedFolderMemberPolicyTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMPOLICIESSharedFolderMemberPolicyTag tag;
+@property (nonatomic, readonly) DBXTEAMPOLICIESSharedFolderMemberPolicyTag tag;
 
 /// Initializes union class with tag state of `Team`.
 - (nonnull instancetype)initWithTeam;
@@ -56,10 +56,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMPOLICIESSharedFolderMemberPolicyTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMPOLICIESSharedFolderMemberPolicy` object.
-- (NSString * _Nonnull)description;
 
 @end
 

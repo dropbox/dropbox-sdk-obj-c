@@ -9,6 +9,8 @@
 
 @implementation DBXTEAMTeamMemberStatus 
 
+@synthesize removed = _removed;
+
 - (instancetype)initWithActive {
     self = [super init];
     if (self != nil) {

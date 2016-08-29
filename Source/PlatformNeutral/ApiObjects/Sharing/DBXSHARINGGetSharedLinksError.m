@@ -8,6 +8,8 @@
 
 @implementation DBXSHARINGGetSharedLinksError 
 
+@synthesize path = _path;
+
 - (instancetype)initWithPath:(NSString *)path {
     self = [super init];
     if (self != nil) {

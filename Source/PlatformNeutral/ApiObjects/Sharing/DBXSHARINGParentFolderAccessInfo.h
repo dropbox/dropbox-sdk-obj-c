@@ -20,21 +20,17 @@
 @interface DBXSHARINGParentFolderAccessInfo : NSObject <DBXSerializable> 
 
 /// Display name for the folder.
-@property (nonatomic, copy) NSString * _Nonnull folderName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull folderName;
 
 /// The identifier of the parent shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// The user's permissions for the parent shared folder.
-@property (nonatomic) NSArray<DBXSHARINGMemberPermission *> * _Nonnull permissions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGMemberPermission *> * _Nonnull permissions;
 
 /// Full constructor for the `ParentFolderAccessInfo` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName sharedFolderId:(NSString * _Nonnull)sharedFolderId permissions:(NSArray<DBXSHARINGMemberPermission *> * _Nonnull)permissions;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGParentFolderAccessInfo` object.
-- (NSString * _Nonnull)description;
 
 @end
 

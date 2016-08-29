@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMRevokeDeviceSessionErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMRevokeDeviceSessionErrorTag tag;
 
 /// Initializes union class with tag state of `DeviceSessionNotFound`.
 - (nonnull instancetype)initWithDeviceSessionNotFound;
@@ -54,10 +54,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeDeviceSessionErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeDeviceSessionError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

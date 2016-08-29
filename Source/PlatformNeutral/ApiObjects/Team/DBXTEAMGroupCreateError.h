@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupCreateErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupCreateErrorTag tag;
 
 /// Initializes union class with tag state of `GroupNameAlreadyUsed`.
 - (nonnull instancetype)initWithGroupNameAlreadyUsed;
@@ -64,10 +64,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupCreateErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupCreateError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -19,15 +19,11 @@
 @interface DBXTEAMBaseDfbReport : NSObject <DBXSerializable> 
 
 /// First date present in the results as 'YYYY-MM-DD' or None.
-@property (nonatomic, copy) NSString * _Nonnull startDate;
+@property (nonatomic, readonly, copy) NSString * _Nonnull startDate;
 
 /// Full constructor for the `BaseDfbReport` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate;
-
-/// Returns a human-readable representation of the `DBXTEAMBaseDfbReport`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

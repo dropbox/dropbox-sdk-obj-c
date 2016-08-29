@@ -17,18 +17,14 @@
 @interface DBXTEAMDeviceSessionArg : NSObject <DBXSerializable> 
 
 /// The session id
-@property (nonatomic, copy) NSString * _Nonnull sessionId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// The unique id of the member owning the device
-@property (nonatomic, copy) NSString * _Nonnull teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Full constructor for the `DeviceSessionArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
-
-/// Returns a human-readable representation of the `DBXTEAMDeviceSessionArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

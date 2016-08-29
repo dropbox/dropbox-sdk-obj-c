@@ -21,24 +21,24 @@
 @interface DBXUSERSAccount : NSObject <DBXSerializable> 
 
 /// The user's unique Dropbox ID.
-@property (nonatomic, copy) NSString * _Nonnull accountId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull accountId;
 
 /// Details of a user's name.
-@property (nonatomic) DBXUSERSName * _Nonnull name;
+@property (nonatomic, readonly) DBXUSERSName * _Nonnull name;
 
 /// The user's e-mail address. Do not rely on this without checking the
 /// emailVerified field. Even then, it's possible that the user has since lost
 /// access to their e-mail.
-@property (nonatomic, copy) NSString * _Nonnull email;
+@property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Whether the user has verified their e-mail address.
-@property (nonatomic, copy) NSNumber * _Nonnull emailVerified;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull emailVerified;
 
 /// URL for the photo representing the user, if one is set.
-@property (nonatomic, copy) NSString * _Nullable profilePhotoUrl;
+@property (nonatomic, readonly, copy) NSString * _Nullable profilePhotoUrl;
 
 /// Whether the user has been disabled.
-@property (nonatomic, copy) NSNumber * _Nonnull disabled;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull disabled;
 
 /// Full constructor for the `Account` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
@@ -46,9 +46,6 @@
 /// Convenience constructor for the `Account` struct (exposes only non-nullable
 /// instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled;
-
-/// Returns a human-readable representation of the `DBXUSERSAccount` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -17,19 +17,15 @@
 @interface DBXFILESRemovePropertiesArg : NSObject <DBXSerializable> 
 
 /// A unique identifier for the file.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// A list of identifiers for a property template created by route
 /// properties/template/add.
-@property (nonatomic) NSArray<NSString *> * _Nonnull propertyTemplateIds;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull propertyTemplateIds;
 
 /// Full constructor for the `RemovePropertiesArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyTemplateIds:(NSArray<NSString *> * _Nonnull)propertyTemplateIds;
-
-/// Returns a human-readable representation of the `DBXFILESRemovePropertiesArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

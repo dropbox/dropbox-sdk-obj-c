@@ -11,6 +11,10 @@
 
 @implementation DBXSHARINGUpdateFolderMemberError 
 
+@synthesize accessError = _accessError;
+@synthesize memberError = _memberError;
+@synthesize noExplicitAccess = _noExplicitAccess;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {

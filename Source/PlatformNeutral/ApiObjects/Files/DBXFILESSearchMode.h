@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESSearchModeTag tag;
+@property (nonatomic, readonly) DBXFILESSearchModeTag tag;
 
 /// Initializes union class with tag state of `Filename`.
 - (nonnull instancetype)initWithFilename;
@@ -54,9 +54,6 @@ typedef NS_ENUM(NSInteger, DBXFILESSearchModeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESSearchMode` object.
-- (NSString * _Nonnull)description;
 
 @end
 

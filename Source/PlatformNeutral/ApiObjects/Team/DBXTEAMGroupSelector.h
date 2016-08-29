@@ -31,13 +31,13 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupSelectorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupSelectorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupSelectorTag tag;
 
 /// Group ID.
-@property (nonatomic, copy) NSString * _Nonnull groupId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull groupId;
 
 /// External ID of the group.
-@property (nonatomic, copy) NSString * _Nonnull groupExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull groupExternalId;
 
 /// Initializes union class with tag state of `GroupId`.
 - (nonnull instancetype)initWithGroupId:(NSString * _Nonnull)groupId;
@@ -53,10 +53,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupSelectorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupSelector`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -22,37 +22,37 @@
 @interface DBXSHARINGSharedFileMetadata : NSObject <DBXSerializable> 
 
 /// Policies governing this shared file.
-@property (nonatomic) DBXSHARINGFolderPolicy * _Nonnull policy;
+@property (nonatomic, readonly) DBXSHARINGFolderPolicy * _Nonnull policy;
 
 /// The sharing permissions that requesting user has on this file. This
 /// corresponds to the entries given in actions in GetFileMetadataBatchArg or
 /// actions in GetFileMetadataArg.
-@property (nonatomic) NSArray<DBXSHARINGFilePermission *> * _Nullable permissions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFilePermission *> * _Nullable permissions;
 
 /// The team that owns the file. This field is not present if the file is not
 /// owned by a team.
-@property (nonatomic) DBXUSERSTeam * _Nullable ownerTeam;
+@property (nonatomic, readonly) DBXUSERSTeam * _Nullable ownerTeam;
 
 /// The ID of the parent shared folder. This field is present only if the file
 /// is contained within a shared folder.
-@property (nonatomic, copy) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// URL for displaying a web preview of the shared file.
-@property (nonatomic, copy) NSString * _Nonnull previewUrl;
+@property (nonatomic, readonly, copy) NSString * _Nonnull previewUrl;
 
 /// The lower-case full path of this file. Absent for unmounted files.
-@property (nonatomic, copy) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
 
 /// The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior
 /// will match the path provided in the Core API v1. Absent for unmounted files.
-@property (nonatomic, copy) NSString * _Nullable pathDisplay;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathDisplay;
 
 /// The name of this file.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// The ID of the file.
-@property (nonatomic, copy) NSString * _Nonnull id_;
+@property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
 /// Full constructor for the `SharedFileMetadata` struct (exposes all instance
 /// variables).
@@ -61,10 +61,6 @@
 /// Convenience constructor for the `SharedFileMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPolicy:(DBXSHARINGFolderPolicy * _Nonnull)policy previewUrl:(NSString * _Nonnull)previewUrl name:(NSString * _Nonnull)name id_:(NSString * _Nonnull)id_;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGSharedFileMetadata` object.
-- (NSString * _Nonnull)description;
 
 @end
 

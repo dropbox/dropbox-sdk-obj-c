@@ -18,18 +18,14 @@
 @interface DBXFILESUpdatePropertyGroupArg : NSObject <DBXSerializable> 
 
 /// A unique identifier for the file.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Filled custom property templates associated with a file.
-@property (nonatomic) NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull updatePropertyGroups;
+@property (nonatomic, readonly) NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull updatePropertyGroups;
 
 /// Full constructor for the `UpdatePropertyGroupArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path updatePropertyGroups:(NSArray<DBXFILESPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUpdatePropertyGroupArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

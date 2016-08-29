@@ -18,15 +18,15 @@
 @interface DBXSHARINGCreateSharedLinkArg : NSObject <DBXSerializable> 
 
 /// The path to share.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Whether to return a shortened URL.
-@property (nonatomic, copy) NSNumber * _Nonnull shortUrl;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull shortUrl;
 
 /// If it's okay to share a path that does not yet exist, set this to either
 /// file in PendingUploadMode or folder in PendingUploadMode to indicate whether
 /// to assume it's a file or folder.
-@property (nonatomic) DBXSHARINGPendingUploadMode * _Nullable pendingUpload;
+@property (nonatomic, readonly) DBXSHARINGPendingUploadMode * _Nullable pendingUpload;
 
 /// Full constructor for the `CreateSharedLinkArg` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `CreateSharedLinkArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGCreateSharedLinkArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

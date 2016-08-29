@@ -10,7 +10,7 @@
 
 - (instancetype)initWithPath:(NSString *)path rev:(NSString *)rev {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)"](path);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:9] maxLength:nil pattern:@"[0-9a-f]+"]](rev);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"]](rev);
 
     self = [super init];
     if (self != nil) {

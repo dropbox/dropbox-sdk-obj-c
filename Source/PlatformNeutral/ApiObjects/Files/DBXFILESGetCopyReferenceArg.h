@@ -17,15 +17,11 @@
 @interface DBXFILESGetCopyReferenceArg : NSObject <DBXSerializable> 
 
 /// The path to the file or folder you want to get a copy reference to.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Full constructor for the `GetCopyReferenceArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESGetCopyReferenceArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

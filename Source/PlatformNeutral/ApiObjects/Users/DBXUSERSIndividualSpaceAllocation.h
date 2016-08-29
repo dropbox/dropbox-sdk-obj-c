@@ -17,15 +17,11 @@
 @interface DBXUSERSIndividualSpaceAllocation : NSObject <DBXSerializable> 
 
 /// The total space allocated to the user's account (bytes).
-@property (nonatomic, copy) NSNumber * _Nonnull allocated;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull allocated;
 
 /// Full constructor for the `IndividualSpaceAllocation` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithAllocated:(NSNumber * _Nonnull)allocated;
-
-/// Returns a human-readable representation of the
-/// `DBXUSERSIndividualSpaceAllocation` object.
-- (NSString * _Nonnull)description;
 
 @end
 

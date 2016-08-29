@@ -60,7 +60,7 @@ static ViewController *viewController = nil;
     switch (appPermission) {
         case FullDropbox:
         {
-            DbxOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
+            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");
@@ -74,7 +74,7 @@ static ViewController *viewController = nil;
         }
         case TeamMemberFileAccess:
         {
-            DbxOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");
@@ -88,7 +88,7 @@ static ViewController *viewController = nil;
         }
         case TeamMemberManagement:
         {
-            DbxOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");

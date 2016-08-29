@@ -20,20 +20,16 @@
 @interface DBXSHARINGRemoveFileMemberArg : NSObject <DBXSerializable> 
 
 /// File from which to remove members.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// Member to remove from this file. Note that even if an email is specified, it
 /// may result in the removal of a user (not an invitee) if the user's main
 /// account corresponds to that email address.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// Full constructor for the `RemoveFileMemberArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file member:(DBXSHARINGMemberSelector * _Nonnull)member;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRemoveFileMemberArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

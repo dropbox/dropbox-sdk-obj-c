@@ -17,15 +17,11 @@
 @interface DBXTEAMRemovedStatus : NSObject <DBXSerializable> 
 
 /// True if the removed team member is recoverable
-@property (nonatomic, copy) NSNumber * _Nonnull isRecoverable;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isRecoverable;
 
 /// Full constructor for the `RemovedStatus` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithIsRecoverable:(NSNumber * _Nonnull)isRecoverable;
-
-/// Returns a human-readable representation of the `DBXTEAMRemovedStatus`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

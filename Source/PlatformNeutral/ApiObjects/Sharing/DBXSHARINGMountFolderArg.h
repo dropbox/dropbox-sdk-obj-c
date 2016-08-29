@@ -17,15 +17,11 @@
 @interface DBXSHARINGMountFolderArg : NSObject <DBXSerializable> 
 
 /// The ID of the shared folder to mount.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Full constructor for the `MountFolderArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the `DBXSHARINGMountFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

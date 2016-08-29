@@ -8,6 +8,8 @@
 
 @implementation DBXFILESLookupError 
 
+@synthesize malformedPath = _malformedPath;
+
 - (instancetype)initWithMalformedPath:(NSString *)malformedPath {
     self = [super init];
     if (self != nil) {

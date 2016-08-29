@@ -13,8 +13,8 @@
 @implementation DBXSHARINGFileLinkMetadata 
 
 - (instancetype)initWithUrl:(NSString *)url name:(NSString *)name linkPermissions:(DBXSHARINGLinkPermissions *)linkPermissions clientModified:(NSDate *)clientModified serverModified:(NSDate *)serverModified rev:(NSString *)rev size:(NSNumber *)size id_:(NSString *)id_ expires:(NSDate *)expires pathLower:(NSString *)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo *)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam *)contentOwnerTeamInfo {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:9] maxLength:nil pattern:@"[0-9a-f]+"](rev);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil]](id_);
+    [DBXStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"](rev);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](id_);
 
     self = [super initWithUrl:url name:name linkPermissions:linkPermissions id_:id_ expires:expires pathLower:pathLower teamMemberInfo:teamMemberInfo contentOwnerTeamInfo:contentOwnerTeamInfo];
     if (self != nil) {

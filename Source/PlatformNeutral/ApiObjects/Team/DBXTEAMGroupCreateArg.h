@@ -18,13 +18,13 @@
 @interface DBXTEAMGroupCreateArg : NSObject <DBXSerializable> 
 
 /// Group name.
-@property (nonatomic, copy) NSString * _Nonnull groupName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull groupName;
 
 /// The creator of a team can associate an arbitrary external ID to the group.
-@property (nonatomic, copy) NSString * _Nullable groupExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable groupExternalId;
 
 /// Whether the team can be managed by selected users, or only by team admins
-@property (nonatomic) DBXTEAMCOMMONGroupManagementType * _Nullable groupManagementType;
+@property (nonatomic, readonly) DBXTEAMCOMMONGroupManagementType * _Nullable groupManagementType;
 
 /// Full constructor for the `GroupCreateArg` struct (exposes all instance
 /// variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `GroupCreateArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupCreateArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

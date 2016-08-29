@@ -9,7 +9,7 @@
 @implementation DBXSHARINGUserInfo 
 
 - (instancetype)initWithAccountId:(NSString *)accountId sameTeam:(NSNumber *)sameTeam teamMemberId:(NSString *)teamMemberId {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil](accountId);
+    [DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil](accountId);
 
     self = [super init];
     if (self != nil) {

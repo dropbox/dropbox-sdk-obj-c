@@ -63,19 +63,19 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGAddFolderMemberErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGAddFolderMemberErrorTag tag;
 
 /// Unable to access shared folder.
-@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// members in AddFolderMemberArg contains a bad invitation recipient.
-@property (nonatomic) DBXSHARINGAddMemberSelectorError * _Nonnull badMember;
+@property (nonatomic, readonly) DBXSHARINGAddMemberSelectorError * _Nonnull badMember;
 
 /// The value is the member limit that was reached.
-@property (nonatomic, copy) NSNumber * _Nonnull tooManyMembers;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull tooManyMembers;
 
 /// The value is the pending invite limit that was reached.
-@property (nonatomic, copy) NSNumber * _Nonnull tooManyPendingInvites;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull tooManyPendingInvites;
 
 /// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
@@ -153,10 +153,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGAddFolderMemberErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGAddFolderMemberError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

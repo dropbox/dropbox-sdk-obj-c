@@ -18,10 +18,10 @@
 @interface DBXTEAMRevokeLinkedAppStatus : NSObject <DBXSerializable> 
 
 /// Result of the revoking request
-@property (nonatomic, copy) NSNumber * _Nonnull success;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull success;
 
 /// The error cause in case of a failure
-@property (nonatomic) DBXTEAMRevokeLinkedAppError * _Nullable errorType;
+@property (nonatomic, readonly) DBXTEAMRevokeLinkedAppError * _Nullable errorType;
 
 /// Full constructor for the `RevokeLinkedAppStatus` struct (exposes all
 /// instance variables).
@@ -30,10 +30,6 @@
 /// Convenience constructor for the `RevokeLinkedAppStatus` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeLinkedAppStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -21,10 +21,10 @@
 
 /// Number of files to return max per query. Defaults to 100 if no limit is
 /// specified.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// File actions to query.
-@property (nonatomic) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFileAction *> * _Nullable actions;
 
 /// Full constructor for the `ListFilesArg` struct (exposes all instance
 /// variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `ListFilesArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXSHARINGListFilesArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

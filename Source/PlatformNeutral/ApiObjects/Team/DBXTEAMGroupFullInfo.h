@@ -22,11 +22,11 @@
 @interface DBXTEAMGroupFullInfo : DBXTEAMCOMMONGroupSummary <DBXSerializable> 
 
 /// List of group members.
-@property (nonatomic) NSArray<DBXTEAMGroupMemberInfo *> * _Nullable members;
+@property (nonatomic, readonly) NSArray<DBXTEAMGroupMemberInfo *> * _Nullable members;
 
 /// The group creation time as a UTC timestamp in milliseconds since the Unix
 /// epoch.
-@property (nonatomic, copy) NSNumber * _Nonnull created;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull created;
 
 /// Full constructor for the `GroupFullInfo` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `GroupFullInfo` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName groupId:(NSString * _Nonnull)groupId groupManagementType:(DBXTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType created:(NSNumber * _Nonnull)created;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupFullInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

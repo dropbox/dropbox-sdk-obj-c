@@ -11,6 +11,9 @@
 
 @implementation DBXFILESAlphaGetMetadataError 
 
+@synthesize path = _path;
+@synthesize propertiesError = _propertiesError;
+
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
     if (self != nil) {

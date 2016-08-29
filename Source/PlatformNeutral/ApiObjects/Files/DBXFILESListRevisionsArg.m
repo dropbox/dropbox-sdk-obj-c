@@ -10,12 +10,12 @@
 
 - (instancetype)initWithPath:(NSString *)path limit:(NSNumber *)limit {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)"](path);
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:100]](limit ?: [NSNumber numberWithUnsignedLong:10]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(100)](limit ?: @(10));
 
     self = [super init];
     if (self != nil) {
         _path = path;
-        _limit = limit ?: [NSNumber numberWithUnsignedLong:10];
+        _limit = limit ?: @(10);
     }
     return self;
 }

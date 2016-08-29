@@ -10,16 +10,16 @@
 @implementation DBXSHARINGListFileMembersArg 
 
 - (instancetype)initWithFile:(NSString *)file actions:(NSArray<DBXSHARINGMemberAction *> *)actions includeInherited:(NSNumber *)includeInherited limit:(NSNumber *)limit {
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:300]](limit ?: [NSNumber numberWithUnsignedInt:100]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(300)](limit ?: @(100));
 
     self = [super init];
     if (self != nil) {
         _file = file;
         _actions = actions;
         _includeInherited = includeInherited ?: @YES;
-        _limit = limit ?: [NSNumber numberWithUnsignedInt:100];
+        _limit = limit ?: @(100);
     }
     return self;
 }

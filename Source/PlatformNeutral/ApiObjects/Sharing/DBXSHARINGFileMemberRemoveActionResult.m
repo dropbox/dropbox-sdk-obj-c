@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGFileMemberRemoveActionResult 
 
+@synthesize success = _success;
+@synthesize memberError = _memberError;
+
 - (instancetype)initWithSuccess:(DBXSHARINGMemberAccessLevelResult *)success {
     self = [super init];
     if (self != nil) {

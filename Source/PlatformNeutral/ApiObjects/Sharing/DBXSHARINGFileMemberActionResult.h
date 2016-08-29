@@ -22,18 +22,14 @@
 @interface DBXSHARINGFileMemberActionResult : NSObject <DBXSerializable> 
 
 /// One of specified input members.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// The outcome of the action on this member.
-@property (nonatomic) DBXSHARINGFileMemberActionIndividualResult * _Nonnull result;
+@property (nonatomic, readonly) DBXSHARINGFileMemberActionIndividualResult * _Nonnull result;
 
 /// Full constructor for the `FileMemberActionResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithMember:(DBXSHARINGMemberSelector * _Nonnull)member result:(DBXSHARINGFileMemberActionIndividualResult * _Nonnull)result;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGFileMemberActionResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

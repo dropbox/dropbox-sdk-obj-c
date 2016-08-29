@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsPollErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMGroupsPollErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMGroupsPollErrorTag tag;
 
 /// Initializes union class with tag state of `InvalidAsyncJobId`.
 - (nonnull instancetype)initWithInvalidAsyncJobId;
@@ -64,10 +64,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMGroupsPollErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupsPollError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

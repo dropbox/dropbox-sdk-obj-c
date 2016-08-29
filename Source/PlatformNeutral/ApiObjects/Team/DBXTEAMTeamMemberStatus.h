@@ -39,11 +39,11 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMTeamMemberStatusTag tag;
+@property (nonatomic, readonly) DBXTEAMTeamMemberStatusTag tag;
 
 /// User is no longer a member of the team. Removed users are only listed when
 /// include_removed is true in members/list.
-@property (nonatomic) DBXTEAMRemovedStatus * _Nonnull removed;
+@property (nonatomic, readonly) DBXTEAMRemovedStatus * _Nonnull removed;
 
 /// Initializes union class with tag state of `Active`.
 - (nonnull instancetype)initWithActive;
@@ -71,10 +71,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMTeamMemberStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMTeamMemberStatus`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

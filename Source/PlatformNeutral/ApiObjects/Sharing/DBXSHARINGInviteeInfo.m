@@ -8,6 +8,8 @@
 
 @implementation DBXSHARINGInviteeInfo 
 
+@synthesize email = _email;
+
 - (instancetype)initWithEmail:(NSString *)email {
     self = [super init];
     if (self != nil) {

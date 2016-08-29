@@ -19,17 +19,14 @@
 @interface DBXFILESSearchMatch : NSObject <DBXSerializable> 
 
 /// The type of the match.
-@property (nonatomic) DBXFILESSearchMatchType * _Nonnull matchType;
+@property (nonatomic, readonly) DBXFILESSearchMatchType * _Nonnull matchType;
 
 /// The metadata for the matched file or folder.
-@property (nonatomic) DBXFILESMetadata * _Nonnull metadata;
+@property (nonatomic, readonly) DBXFILESMetadata * _Nonnull metadata;
 
 /// Full constructor for the `SearchMatch` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithMatchType:(DBXFILESSearchMatchType * _Nonnull)matchType metadata:(DBXFILESMetadata * _Nonnull)metadata;
-
-/// Returns a human-readable representation of the `DBXFILESSearchMatch` object.
-- (NSString * _Nonnull)description;
 
 @end
 

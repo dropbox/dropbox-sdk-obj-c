@@ -11,6 +11,9 @@
 
 @implementation DBXFILESUploadErrorWithProperties 
 
+@synthesize path = _path;
+@synthesize propertiesError = _propertiesError;
+
 - (instancetype)initWithPath:(DBXFILESUploadWriteFailed *)path {
     self = [super init];
     if (self != nil) {

@@ -9,6 +9,16 @@
 
 @implementation DBXTEAMMemberAddResult 
 
+@synthesize success = _success;
+@synthesize teamLicenseLimit = _teamLicenseLimit;
+@synthesize freeTeamMemberLimitReached = _freeTeamMemberLimitReached;
+@synthesize userAlreadyOnTeam = _userAlreadyOnTeam;
+@synthesize userOnAnotherTeam = _userOnAnotherTeam;
+@synthesize userAlreadyPaired = _userAlreadyPaired;
+@synthesize userMigrationFailed = _userMigrationFailed;
+@synthesize duplicateExternalMemberId = _duplicateExternalMemberId;
+@synthesize userCreationFailed = _userCreationFailed;
+
 - (instancetype)initWithSuccess:(DBXTEAMTeamMemberInfo *)success {
     self = [super init];
     if (self != nil) {

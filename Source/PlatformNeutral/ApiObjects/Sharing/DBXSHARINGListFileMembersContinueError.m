@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGListFileMembersContinueError 
 
+@synthesize userError = _userError;
+@synthesize accessError = _accessError;
+
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
     if (self != nil) {

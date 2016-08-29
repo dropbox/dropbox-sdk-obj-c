@@ -18,15 +18,11 @@
 
 /// The cursor returned by your last call to listFolderMembers or
 /// listFolderMembersContinue.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Full constructor for the `ListFolderMembersContinueArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGListFolderMembersContinueArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

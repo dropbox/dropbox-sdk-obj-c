@@ -18,12 +18,12 @@
 @interface DBXSHARINGListFoldersArgs : NSObject <DBXSerializable> 
 
 /// The maximum number of results to return per request.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// This is a list indicating whether each returned folder data entry will
 /// include a boolean field allow in FolderPermission that describes whether the
 /// current user can perform the `FolderAction` on the folder.
-@property (nonatomic) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
 
 /// Full constructor for the `ListFoldersArgs` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `ListFoldersArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)init;
-
-/// Returns a human-readable representation of the `DBXSHARINGListFoldersArgs`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

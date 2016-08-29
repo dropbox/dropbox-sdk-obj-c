@@ -9,6 +9,8 @@
 
 @implementation DBXFILESListFolderError 
 
+@synthesize path = _path;
+
 - (instancetype)initWithPath:(DBXFILESLookupError *)path {
     self = [super init];
     if (self != nil) {

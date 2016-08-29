@@ -11,7 +11,7 @@
 
 - (instancetype)initWithReadOnly:(NSNumber *)readOnly parentSharedFolderId:(NSString *)parentSharedFolderId modifiedBy:(NSString *)modifiedBy {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](parentSharedFolderId);
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:40] maxLength:[NSNumber numberWithInt:40] pattern:nil]](modifiedBy);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](modifiedBy);
 
     self = [super initWithReadOnly:readOnly];
     if (self != nil) {

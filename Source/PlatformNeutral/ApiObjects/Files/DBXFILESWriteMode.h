@@ -47,13 +47,13 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESWriteModeTag tag;
+@property (nonatomic, readonly) DBXFILESWriteModeTag tag;
 
 /// Overwrite if the given "rev" matches the existing file's "rev". The
 /// autorename strategy is to append the string "conflicted copy" to the file
 /// name. For example, "document.txt" might become "document (conflicted
 /// copy).txt" or "document (Panda's conflicted copy).txt".
-@property (nonatomic, copy) NSString * _Nonnull update;
+@property (nonatomic, readonly, copy) NSString * _Nonnull update;
 
 /// Initializes union class with tag state of `Add`.
 - (nonnull instancetype)initWithAdd;
@@ -75,9 +75,6 @@ typedef NS_ENUM(NSInteger, DBXFILESWriteModeTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESWriteMode` object.
-- (NSString * _Nonnull)description;
 
 @end
 

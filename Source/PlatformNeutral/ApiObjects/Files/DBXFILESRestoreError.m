@@ -10,6 +10,9 @@
 
 @implementation DBXFILESRestoreError 
 
+@synthesize pathLookup = _pathLookup;
+@synthesize pathWrite = _pathWrite;
+
 - (instancetype)initWithPathLookup:(DBXFILESLookupError *)pathLookup {
     self = [super init];
     if (self != nil) {

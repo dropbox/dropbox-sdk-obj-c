@@ -21,23 +21,19 @@
 
 /// A display name for the property template. Property template names can be up
 /// to 256 bytes.
-@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
 
 /// Description for new property template. Property template descriptions can be
 /// up to 1024 bytes.
-@property (nonatomic, copy) NSString * _Nonnull description_;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description_;
 
 /// This is a list of custom properties associated with a property template.
 /// There can be up to 64 properties in a single property template.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull fields;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull fields;
 
 /// Full constructor for the `PropertyGroupTemplate` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name description_:(NSString * _Nonnull)description_ fields:(NSArray<DBXPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
-
-/// Returns a human-readable representation of the
-/// `DBXPROPERTIESPropertyGroupTemplate` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -34,14 +34,14 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveMemberJobStatusTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGRemoveMemberJobStatusTag tag;
+@property (nonatomic, readonly) DBXSHARINGRemoveMemberJobStatusTag tag;
 
 /// Removing the folder member has finished. The value is information about
 /// whether the member has another form of access.
-@property (nonatomic) DBXSHARINGMemberAccessLevelResult * _Nonnull complete;
+@property (nonatomic, readonly) DBXSHARINGMemberAccessLevelResult * _Nonnull complete;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGRemoveFolderMemberError * _Nonnull failed;
+@property (nonatomic, readonly) DBXSHARINGRemoveFolderMemberError * _Nonnull failed;
 
 /// Initializes union class with tag state of `InProgress`.
 - (nonnull instancetype)initWithInProgress;
@@ -63,10 +63,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGRemoveMemberJobStatusTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRemoveMemberJobStatus` object.
-- (NSString * _Nonnull)description;
 
 @end
 

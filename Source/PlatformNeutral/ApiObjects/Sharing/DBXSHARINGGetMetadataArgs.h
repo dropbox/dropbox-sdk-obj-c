@@ -18,12 +18,12 @@
 @interface DBXSHARINGGetMetadataArgs : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// This is a list indicating whether the returned folder data will include a
 /// boolean value  allow in FolderPermission that describes whether the current
 /// user can perform the  FolderAction on the folder.
-@property (nonatomic) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
+@property (nonatomic, readonly) NSArray<DBXSHARINGFolderAction *> * _Nullable actions;
 
 /// Full constructor for the `GetMetadataArgs` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `GetMetadataArgs` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
-
-/// Returns a human-readable representation of the `DBXSHARINGGetMetadataArgs`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

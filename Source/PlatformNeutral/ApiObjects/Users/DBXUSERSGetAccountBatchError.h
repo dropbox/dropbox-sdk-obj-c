@@ -29,11 +29,11 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountBatchErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXUSERSGetAccountBatchErrorTag tag;
+@property (nonatomic, readonly) DBXUSERSGetAccountBatchErrorTag tag;
 
 /// The value is an account ID specified in accountIds in GetAccountBatchArg
 /// that does not exist.
-@property (nonatomic, copy) NSString * _Nonnull noAccount;
+@property (nonatomic, readonly, copy) NSString * _Nonnull noAccount;
 
 /// Initializes union class with tag state of `NoAccount`.
 - (nonnull instancetype)initWithNoAccount:(NSString * _Nonnull)noAccount;
@@ -49,10 +49,6 @@ typedef NS_ENUM(NSInteger, DBXUSERSGetAccountBatchErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXUSERSGetAccountBatchError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

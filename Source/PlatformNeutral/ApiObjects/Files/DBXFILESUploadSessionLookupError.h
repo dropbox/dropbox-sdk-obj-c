@@ -42,13 +42,13 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESUploadSessionLookupErrorTag tag;
+@property (nonatomic, readonly) DBXFILESUploadSessionLookupErrorTag tag;
 
 /// The specified offset was incorrect. See the value for the correct offset.
 /// (This error may occur when a previous request was received and processed
 /// successfully but the client did not receive the response, e.g. due to a
 /// network error.)
-@property (nonatomic) DBXFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
+@property (nonatomic, readonly) DBXFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
 
 /// Initializes union class with tag state of `NotFound`.
 - (nonnull instancetype)initWithNotFound;
@@ -82,10 +82,6 @@ typedef NS_ENUM(NSInteger, DBXFILESUploadSessionLookupErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionLookupError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -49,16 +49,16 @@ typedef NS_ENUM(NSInteger, DBXFILESRelocationErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESRelocationErrorTag tag;
+@property (nonatomic, readonly) DBXFILESRelocationErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookupError * _Nonnull fromLookup;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull fromLookup;
 
 /// (no description).
-@property (nonatomic) DBXFILESWriteError * _Nonnull fromWrite;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull fromWrite;
 
 /// (no description).
-@property (nonatomic) DBXFILESWriteError * _Nonnull to;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull to;
 
 /// Initializes union class with tag state of `FromLookup`.
 - (nonnull instancetype)initWithFromLookup:(DBXFILESLookupError * _Nonnull)fromLookup;
@@ -113,10 +113,6 @@ typedef NS_ENUM(NSInteger, DBXFILESRelocationErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESRelocationError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

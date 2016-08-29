@@ -38,10 +38,10 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveUrlErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESSaveUrlErrorTag tag;
+@property (nonatomic, readonly) DBXFILESSaveUrlErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESWriteError * _Nonnull path;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull path;
 
 /// Initializes union class with tag state of `Path`.
 - (nonnull instancetype)initWithPath:(DBXFILESWriteError * _Nonnull)path;
@@ -75,10 +75,6 @@ typedef NS_ENUM(NSInteger, DBXFILESSaveUrlErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESSaveUrlError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

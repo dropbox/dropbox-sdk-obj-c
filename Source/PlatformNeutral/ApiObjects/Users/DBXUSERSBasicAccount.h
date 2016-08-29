@@ -22,11 +22,11 @@
 
 /// Whether this user is a teammate of the current user. If this account is the
 /// current user's account, then this will be true.
-@property (nonatomic, copy) NSNumber * _Nonnull isTeammate;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isTeammate;
 
 /// The user's unique team member id. This field will only be present if the
 /// user is part of a team and isTeammate is true.
-@property (nonatomic, copy) NSString * _Nullable teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
 
 /// Full constructor for the `BasicAccount` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `BasicAccount` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId name:(DBXUSERSName * _Nonnull)name email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified disabled:(NSNumber * _Nonnull)disabled isTeammate:(NSNumber * _Nonnull)isTeammate;
-
-/// Returns a human-readable representation of the `DBXUSERSBasicAccount`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

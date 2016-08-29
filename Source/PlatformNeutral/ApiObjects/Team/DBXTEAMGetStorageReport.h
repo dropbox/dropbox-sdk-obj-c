@@ -23,33 +23,29 @@
 @interface DBXTEAMGetStorageReport : DBXTEAMBaseDfbReport <DBXSerializable> 
 
 /// Sum of the shared, unshared, and datastore usages, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull totalUsage;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull totalUsage;
 
 /// Array of the combined size (bytes) of team members' shared folders, for each
 /// day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull sharedUsage;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull sharedUsage;
 
 /// Array of the combined size (bytes) of team members' root namespaces, for
 /// each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull unsharedUsage;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull unsharedUsage;
 
 /// Array of the number of shared folders owned by team members, for each day.
-@property (nonatomic) NSArray<NSNumber *> * _Nonnull sharedFolders;
+@property (nonatomic, readonly) NSArray<NSNumber *> * _Nonnull sharedFolders;
 
 /// Array of storage summaries of team members' account sizes. Each storage
 /// summary is an array of key, value pairs, where each pair describes a storage
 /// bucket. The key indicates the upper bound of the bucket and the value is the
 /// number of users in that bucket. There is one such summary per day. If there
 /// is no data for a day, the storage summary will be empty.
-@property (nonatomic) NSArray<NSArray<DBXTEAMStorageBucket *> *> * _Nonnull memberStorageMap;
+@property (nonatomic, readonly) NSArray<NSArray<DBXTEAMStorageBucket *> *> * _Nonnull memberStorageMap;
 
 /// Full constructor for the `GetStorageReport` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate totalUsage:(NSArray<NSNumber *> * _Nonnull)totalUsage sharedUsage:(NSArray<NSNumber *> * _Nonnull)sharedUsage unsharedUsage:(NSArray<NSNumber *> * _Nonnull)unsharedUsage sharedFolders:(NSArray<NSNumber *> * _Nonnull)sharedFolders memberStorageMap:(NSArray<NSArray<DBXTEAMStorageBucket *> *> * _Nonnull)memberStorageMap;
-
-/// Returns a human-readable representation of the `DBXTEAMGetStorageReport`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

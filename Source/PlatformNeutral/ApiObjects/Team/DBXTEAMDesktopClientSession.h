@@ -21,19 +21,19 @@
 @interface DBXTEAMDesktopClientSession : DBXTEAMDeviceSession <DBXSerializable> 
 
 /// Name of the hosting desktop
-@property (nonatomic, copy) NSString * _Nonnull hostName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull hostName;
 
 /// The Dropbox desktop client type
-@property (nonatomic) DBXTEAMDesktopPlatform * _Nonnull clientType;
+@property (nonatomic, readonly) DBXTEAMDesktopPlatform * _Nonnull clientType;
 
 /// The Dropbox client version
-@property (nonatomic, copy) NSString * _Nonnull clientVersion;
+@property (nonatomic, readonly, copy) NSString * _Nonnull clientVersion;
 
 /// Information on the hosting platform
-@property (nonatomic, copy) NSString * _Nonnull platform;
+@property (nonatomic, readonly, copy) NSString * _Nonnull platform;
 
 /// Whether it's possible to delete all of the account files upon unlinking
-@property (nonatomic, copy) NSNumber * _Nonnull isDeleteOnUnlinkSupported;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull isDeleteOnUnlinkSupported;
 
 /// Full constructor for the `DesktopClientSession` struct (exposes all instance
 /// variables).
@@ -42,10 +42,6 @@
 /// Convenience constructor for the `DesktopClientSession` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId hostName:(NSString * _Nonnull)hostName clientType:(DBXTEAMDesktopPlatform * _Nonnull)clientType clientVersion:(NSString * _Nonnull)clientVersion platform:(NSString * _Nonnull)platform isDeleteOnUnlinkSupported:(NSNumber * _Nonnull)isDeleteOnUnlinkSupported;
-
-/// Returns a human-readable representation of the `DBXTEAMDesktopClientSession`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

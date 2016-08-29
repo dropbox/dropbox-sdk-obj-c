@@ -19,15 +19,15 @@
 @interface DBXFILESThumbnailArg : NSObject <DBXSerializable> 
 
 /// The path to the image file you want to thumbnail.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The format for the thumbnail image, jpeg (default) or png. For  images that
 /// are photos, jpeg should be preferred, while png is  better for screenshots
 /// and digital arts.
-@property (nonatomic) DBXFILESThumbnailFormat * _Nonnull format;
+@property (nonatomic, readonly) DBXFILESThumbnailFormat * _Nonnull format;
 
 /// The size for the thumbnail image.
-@property (nonatomic) DBXFILESThumbnailSize * _Nonnull size;
+@property (nonatomic, readonly) DBXFILESThumbnailSize * _Nonnull size;
 
 /// Full constructor for the `ThumbnailArg` struct (exposes all instance
 /// variables).
@@ -36,10 +36,6 @@
 /// Convenience constructor for the `ThumbnailArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESThumbnailArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

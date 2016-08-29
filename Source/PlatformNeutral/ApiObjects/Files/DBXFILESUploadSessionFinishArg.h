@@ -19,18 +19,14 @@
 @interface DBXFILESUploadSessionFinishArg : NSObject <DBXSerializable> 
 
 /// Contains the upload session ID and the offset.
-@property (nonatomic) DBXFILESUploadSessionCursor * _Nonnull cursor;
+@property (nonatomic, readonly) DBXFILESUploadSessionCursor * _Nonnull cursor;
 
 /// Contains the path and other optional modifiers for the commit.
-@property (nonatomic) DBXFILESCommitInfo * _Nonnull commit;
+@property (nonatomic, readonly) DBXFILESCommitInfo * _Nonnull commit;
 
 /// Full constructor for the `UploadSessionFinishArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithCursor:(DBXFILESUploadSessionCursor * _Nonnull)cursor commit:(DBXFILESCommitInfo * _Nonnull)commit;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESUploadSessionFinishArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

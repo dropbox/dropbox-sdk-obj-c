@@ -9,6 +9,8 @@
 
 @implementation DBXASYNCLaunchEmptyResult 
 
+@synthesize asyncJobId = _asyncJobId;
+
 - (instancetype)initWithAsyncJobId:(NSString *)asyncJobId {
     self = [super init];
     if (self != nil) {

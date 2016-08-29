@@ -18,23 +18,19 @@
 @interface DBXSHARINGRemoveFolderMemberArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// The member to remove from the folder.
-@property (nonatomic) DBXSHARINGMemberSelector * _Nonnull member;
+@property (nonatomic, readonly) DBXSHARINGMemberSelector * _Nonnull member;
 
 /// If true, the removed user will keep their copy of the folder after it's
 /// unshared, assuming it was mounted. Otherwise, it will be removed from their
 /// Dropbox. Also, this must be set to false when kicking a group.
-@property (nonatomic, copy) NSNumber * _Nonnull leaveACopy;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
 
 /// Full constructor for the `RemoveFolderMemberArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId member:(DBXSHARINGMemberSelector * _Nonnull)member leaveACopy:(NSNumber * _Nonnull)leaveACopy;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRemoveFolderMemberArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

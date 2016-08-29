@@ -48,13 +48,13 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGMountFolderErrorTag tag;
+@property (nonatomic, readonly) DBXSHARINGMountFolderErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
+@property (nonatomic, readonly) DBXSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 /// The current user does not have enough space to mount the shared folder.
-@property (nonatomic) DBXSHARINGInsufficientQuotaAmounts * _Nonnull insufficientQuota;
+@property (nonatomic, readonly) DBXSHARINGInsufficientQuotaAmounts * _Nonnull insufficientQuota;
 
 /// Initializes union class with tag state of `AccessError`.
 - (nonnull instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError * _Nonnull)accessError;
@@ -101,10 +101,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGMountFolderErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGMountFolderError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

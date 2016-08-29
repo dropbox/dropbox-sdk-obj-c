@@ -8,6 +8,10 @@
 
 @implementation DBXTEAMUsersSelectorArg 
 
+@synthesize teamMemberIds = _teamMemberIds;
+@synthesize externalIds = _externalIds;
+@synthesize emails = _emails;
+
 - (instancetype)initWithTeamMemberIds:(NSArray<NSString *> *)teamMemberIds {
     self = [super init];
     if (self != nil) {

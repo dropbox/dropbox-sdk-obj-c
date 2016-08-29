@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGRemoveFolderMemberError 
 
+@synthesize accessError = _accessError;
+@synthesize memberError = _memberError;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {

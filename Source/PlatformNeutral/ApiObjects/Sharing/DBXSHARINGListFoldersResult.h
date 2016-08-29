@@ -22,13 +22,13 @@
 @interface DBXSHARINGListFoldersResult : NSObject <DBXSerializable> 
 
 /// List of all shared folders the authenticated user has access to.
-@property (nonatomic) NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull entries;
 
 /// Present if there are additional shared folders that have not been returned
 /// yet. Pass the cursor into the corresponding continue endpoint (either
 /// listFoldersContinue or listMountableFoldersContinue) to list additional
 /// folders.
-@property (nonatomic, copy) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Full constructor for the `ListFoldersResult` struct (exposes all instance
 /// variables).
@@ -37,10 +37,6 @@
 /// Convenience constructor for the `ListFoldersResult` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithEntries:(NSArray<DBXSHARINGSharedFolderMetadata *> * _Nonnull)entries;
-
-/// Returns a human-readable representation of the `DBXSHARINGListFoldersResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

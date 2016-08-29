@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESThumbnailFormatTag tag;
+@property (nonatomic, readonly) DBXFILESThumbnailFormatTag tag;
 
 /// Initializes union class with tag state of `Jpeg`.
 - (nonnull instancetype)initWithJpeg;
@@ -44,10 +44,6 @@ typedef NS_ENUM(NSInteger, DBXFILESThumbnailFormatTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESThumbnailFormat`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

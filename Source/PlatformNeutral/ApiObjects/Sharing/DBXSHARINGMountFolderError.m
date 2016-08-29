@@ -10,6 +10,9 @@
 
 @implementation DBXSHARINGMountFolderError 
 
+@synthesize accessError = _accessError;
+@synthesize insufficientQuota = _insufficientQuota;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {

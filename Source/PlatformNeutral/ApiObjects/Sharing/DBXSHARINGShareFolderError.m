@@ -10,6 +10,8 @@
 
 @implementation DBXSHARINGShareFolderError 
 
+@synthesize badPath = _badPath;
+
 - (instancetype)initWithEmailUnverified {
     self = [super init];
     if (self != nil) {

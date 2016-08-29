@@ -10,12 +10,12 @@
 @implementation DBXSHARINGListFoldersArgs 
 
 - (instancetype)initWithLimit:(NSNumber *)limit actions:(NSArray<DBXSHARINGFolderAction *> *)actions {
-    [DBXStoneValidators numericValidator:[NSNumber numberWithInt:1] maxValue:[NSNumber numberWithInt:1000]](limit ?: [NSNumber numberWithUnsignedInt:1000]);
+    [DBXStoneValidators numericValidator:@(1) maxValue:@(1000)](limit ?: @(1000));
     [DBXStoneValidators nullableValidator:[DBXStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
     self = [super init];
     if (self != nil) {
-        _limit = limit ?: [NSNumber numberWithUnsignedInt:1000];
+        _limit = limit ?: @(1000);
         _actions = actions;
     }
     return self;

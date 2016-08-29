@@ -4,6 +4,14 @@
 #import "DBXOAuth.h"
 #import "DBXOAuthMobile.h"
 
+@interface DBXMobileSharedApplication ()
+
+@property (nonatomic) UIApplication * _Nullable sharedApplication;
+@property (nonatomic) UIViewController * _Nullable controller;
+@property (nonatomic, nullable) void (^openURL)(NSURL * _Nullable);
+
+@end
+
 @implementation DBXMobileSharedApplication
 
 - (instancetype)init:(UIApplication *)sharedApplication controller:(UIViewController *)controller openURL:(void(^)(NSURL *))openURL {
@@ -55,6 +63,19 @@
     return [_sharedApplication canOpenURL:url];
 }
 
+
+@end
+
+
+@interface DBXWebViewController ()
+
+@property (nonatomic) WKWebView * _Nullable webView;
+@property (nonatomic, nullable) void (^onWillDismiss)(BOOL);
+@property (nonatomic, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic) UIBarButtonItem * _Nullable cancelButton;
+@property (nonatomic, nullable) void (^cancelHandler)(void);
+@property (nonatomic) UIActivityIndicatorView * _Nullable indicator;
+@property (nonatomic, copy) NSURL * _Nullable startURL;
 
 @end
 

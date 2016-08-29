@@ -14,7 +14,7 @@
     self = [super init];
     if (self != nil) {
         _reason = reason;
-        _retryAfter = retryAfter ?: [NSNumber numberWithUnsignedLong:1];
+        _retryAfter = retryAfter ?: @(1);
     }
     return self;
 }

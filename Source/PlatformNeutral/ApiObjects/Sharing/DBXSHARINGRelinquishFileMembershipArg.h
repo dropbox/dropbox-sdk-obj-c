@@ -17,15 +17,11 @@
 @interface DBXSHARINGRelinquishFileMembershipArg : NSObject <DBXSerializable> 
 
 /// The path or id for the file.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// Full constructor for the `RelinquishFileMembershipArg` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRelinquishFileMembershipArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

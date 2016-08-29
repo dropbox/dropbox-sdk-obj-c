@@ -9,6 +9,8 @@
 
 @implementation DBXSHARINGListFolderMembersContinueError 
 
+@synthesize accessError = _accessError;
+
 - (instancetype)initWithAccessError:(DBXSHARINGSharedFolderAccessError *)accessError {
     self = [super init];
     if (self != nil) {

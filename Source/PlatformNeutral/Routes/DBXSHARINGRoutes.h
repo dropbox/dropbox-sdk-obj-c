@@ -146,7 +146,7 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic) DBXTransportClient * _Nonnull client;
+@property (nonatomic, readonly) DBXTransportClient * _Nonnull client;
 
 /// Initializes the `DBXSHARINGRoutes` namespace container object with a
 /// networking client.

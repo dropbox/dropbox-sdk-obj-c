@@ -21,18 +21,14 @@
 
 /// This is the input file identifier corresponding to one of files in
 /// GetFileMetadataBatchArg.
-@property (nonatomic, copy) NSString * _Nonnull file;
+@property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
 /// The result for this particular file
-@property (nonatomic) DBXSHARINGGetFileMetadataIndividualResult * _Nonnull result;
+@property (nonatomic, readonly) DBXSHARINGGetFileMetadataIndividualResult * _Nonnull result;
 
 /// Full constructor for the `GetFileMetadataBatchResult` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file result:(DBXSHARINGGetFileMetadataIndividualResult * _Nonnull)result;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGGetFileMetadataBatchResult` object.
-- (NSString * _Nonnull)description;
 
 @end
 

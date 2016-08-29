@@ -1,4 +1,4 @@
-v///
+///
 /// Code with platform-specific (here, iOS) dependencies. Extends logic for the `DropboxClientsManager` class.
 ///
 

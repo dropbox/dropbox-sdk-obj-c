@@ -21,13 +21,13 @@
 @interface DBXSHARINGLinkMetadata : NSObject <DBXSerializable> 
 
 /// URL of the shared link.
-@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
 /// Who can access the link.
-@property (nonatomic) DBXSHARINGVisibility * _Nonnull visibility;
+@property (nonatomic, readonly) DBXSHARINGVisibility * _Nonnull visibility;
 
 /// Expiration time, if set. By default the link won't expire.
-@property (nonatomic) NSDate * _Nullable expires;
+@property (nonatomic, readonly) NSDate * _Nullable expires;
 
 /// Full constructor for the `LinkMetadata` struct (exposes all instance
 /// variables).
@@ -36,10 +36,6 @@
 /// Convenience constructor for the `LinkMetadata` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url visibility:(DBXSHARINGVisibility * _Nonnull)visibility;
-
-/// Returns a human-readable representation of the `DBXSHARINGLinkMetadata`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

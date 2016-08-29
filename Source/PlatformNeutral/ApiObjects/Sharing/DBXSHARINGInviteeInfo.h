@@ -30,10 +30,10 @@ typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXSHARINGInviteeInfoTag tag;
+@property (nonatomic, readonly) DBXSHARINGInviteeInfoTag tag;
 
 /// E-mail address of invited user.
-@property (nonatomic, copy) NSString * _Nonnull email;
+@property (nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Initializes union class with tag state of `Email`.
 - (nonnull instancetype)initWithEmail:(NSString * _Nonnull)email;
@@ -49,10 +49,6 @@ typedef NS_ENUM(NSInteger, DBXSHARINGInviteeInfoTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXSHARINGInviteeInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

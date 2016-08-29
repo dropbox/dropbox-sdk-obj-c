@@ -21,18 +21,14 @@
 @interface DBXTEAMTeamMemberInfo : NSObject <DBXSerializable> 
 
 /// Profile of a user as a member of a team.
-@property (nonatomic) DBXTEAMTeamMemberProfile * _Nonnull profile;
+@property (nonatomic, readonly) DBXTEAMTeamMemberProfile * _Nonnull profile;
 
 /// The user's role in the team.
-@property (nonatomic) DBXTEAMAdminTier * _Nonnull role;
+@property (nonatomic, readonly) DBXTEAMAdminTier * _Nonnull role;
 
 /// Full constructor for the `TeamMemberInfo` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithProfile:(DBXTEAMTeamMemberProfile * _Nonnull)profile role:(DBXTEAMAdminTier * _Nonnull)role;
-
-/// Returns a human-readable representation of the `DBXTEAMTeamMemberInfo`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

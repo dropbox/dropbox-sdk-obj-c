@@ -18,13 +18,13 @@
 @interface DBXSHARINGModifySharedLinkSettingsArgs : NSObject <DBXSerializable> 
 
 /// URL of the shared link to change its settings
-@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
 /// Set of settings for the shared link.
-@property (nonatomic) DBXSHARINGSharedLinkSettings * _Nonnull settings;
+@property (nonatomic, readonly) DBXSHARINGSharedLinkSettings * _Nonnull settings;
 
 /// If set to true, removes the expiration of the shared link.
-@property (nonatomic, copy) NSNumber * _Nonnull removeExpiration;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull removeExpiration;
 
 /// Full constructor for the `ModifySharedLinkSettingsArgs` struct (exposes all
 /// instance variables).
@@ -33,10 +33,6 @@
 /// Convenience constructor for the `ModifySharedLinkSettingsArgs` struct
 /// (exposes only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DBXSHARINGSharedLinkSettings * _Nonnull)settings;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGModifySharedLinkSettingsArgs` object.
-- (NSString * _Nonnull)description;
 
 @end
 

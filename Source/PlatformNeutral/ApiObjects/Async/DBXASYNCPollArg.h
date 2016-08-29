@@ -20,13 +20,10 @@
 
 /// Id of the asynchronous job. This is the value of a response returned from
 /// the method that launched the job.
-@property (nonatomic, copy) NSString * _Nonnull asyncJobId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
 /// Full constructor for the `PollArg` struct (exposes all instance variables).
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
-
-/// Returns a human-readable representation of the `DBXASYNCPollArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

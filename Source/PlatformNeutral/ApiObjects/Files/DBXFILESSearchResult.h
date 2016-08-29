@@ -18,23 +18,19 @@
 @interface DBXFILESSearchResult : NSObject <DBXSerializable> 
 
 /// A list (possibly empty) of matches for the query.
-@property (nonatomic) NSArray<DBXFILESSearchMatch *> * _Nonnull matches;
+@property (nonatomic, readonly) NSArray<DBXFILESSearchMatch *> * _Nonnull matches;
 
 /// Used for paging. If true, indicates there is another page of results
 /// available that can be fetched by calling search again.
-@property (nonatomic, copy) NSNumber * _Nonnull more;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull more;
 
 /// Used for paging. Value to set the start argument to when calling search to
 /// fetch the next page of results.
-@property (nonatomic, copy) NSNumber * _Nonnull start;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull start;
 
 /// Full constructor for the `SearchResult` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithMatches:(NSArray<DBXFILESSearchMatch *> * _Nonnull)matches more:(NSNumber * _Nonnull)more start:(NSNumber * _Nonnull)start;
-
-/// Returns a human-readable representation of the `DBXFILESSearchResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

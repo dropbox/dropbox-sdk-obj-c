@@ -18,23 +18,19 @@
 @interface DBXFILESListFolderResult : NSObject <DBXSerializable> 
 
 /// The files and (direct) subfolders in the folder.
-@property (nonatomic) NSArray<DBXFILESMetadata *> * _Nonnull entries;
+@property (nonatomic, readonly) NSArray<DBXFILESMetadata *> * _Nonnull entries;
 
 /// Pass the cursor into listFolderContinue to see what's changed in the folder
 /// since your previous query.
-@property (nonatomic, copy) NSString * _Nonnull cursor;
+@property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// If true, then there are more entries available. Pass the cursor to
 /// listFolderContinue to retrieve the rest.
-@property (nonatomic, copy) NSNumber * _Nonnull hasMore;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
 
 /// Full constructor for the `ListFolderResult` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithEntries:(NSArray<DBXFILESMetadata *> * _Nonnull)entries cursor:(NSString * _Nonnull)cursor hasMore:(NSNumber * _Nonnull)hasMore;
-
-/// Returns a human-readable representation of the `DBXFILESListFolderResult`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

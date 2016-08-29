@@ -20,7 +20,7 @@
 /// Whether to delete all files of the account (this is possible only if
 /// supported by the desktop client and  will be made the next time the client
 /// access the account)
-@property (nonatomic, copy) NSNumber * _Nonnull deleteOnUnlink;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull deleteOnUnlink;
 
 /// Full constructor for the `RevokeDesktopClientArg` struct (exposes all
 /// instance variables).
@@ -29,10 +29,6 @@
 /// Convenience constructor for the `RevokeDesktopClientArg` struct (exposes
 /// only non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
-
-/// Returns a human-readable representation of the
-/// `DBXTEAMRevokeDesktopClientArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 

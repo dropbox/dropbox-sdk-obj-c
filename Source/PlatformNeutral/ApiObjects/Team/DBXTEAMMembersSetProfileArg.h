@@ -22,19 +22,19 @@
 @interface DBXTEAMMembersSetProfileArg : NSObject <DBXSerializable> 
 
 /// Identity of user whose profile will be set.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nonnull user;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nonnull user;
 
 /// New email for member.
-@property (nonatomic, copy) NSString * _Nullable dNewEmail;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewEmail;
 
 /// New external ID for member.
-@property (nonatomic, copy) NSString * _Nullable dNewExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewExternalId;
 
 /// New given name for member.
-@property (nonatomic, copy) NSString * _Nullable dNewGivenName;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGivenName;
 
 /// New surname for member.
-@property (nonatomic, copy) NSString * _Nullable dNewSurname;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewSurname;
 
 /// Full constructor for the `MembersSetProfileArg` struct (exposes all instance
 /// variables).
@@ -43,10 +43,6 @@
 /// Convenience constructor for the `MembersSetProfileArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersSetProfileArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

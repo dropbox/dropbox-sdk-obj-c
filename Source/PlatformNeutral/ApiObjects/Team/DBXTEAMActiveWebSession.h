@@ -20,13 +20,13 @@
 @interface DBXTEAMActiveWebSession : DBXTEAMDeviceSession <DBXSerializable> 
 
 /// Information on the hosting device
-@property (nonatomic, copy) NSString * _Nonnull userAgent;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
 
 /// Information on the hosting operating system
-@property (nonatomic, copy) NSString * _Nonnull os;
+@property (nonatomic, readonly, copy) NSString * _Nonnull os;
 
 /// Information on the browser used for this web session
-@property (nonatomic, copy) NSString * _Nonnull browser;
+@property (nonatomic, readonly, copy) NSString * _Nonnull browser;
 
 /// Full constructor for the `ActiveWebSession` struct (exposes all instance
 /// variables).
@@ -35,10 +35,6 @@
 /// Convenience constructor for the `ActiveWebSession` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId userAgent:(NSString * _Nonnull)userAgent os:(NSString * _Nonnull)os browser:(NSString * _Nonnull)browser;
-
-/// Returns a human-readable representation of the `DBXTEAMActiveWebSession`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

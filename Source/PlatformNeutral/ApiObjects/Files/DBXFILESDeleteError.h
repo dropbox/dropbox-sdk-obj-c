@@ -33,13 +33,13 @@ typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXFILESDeleteErrorTag tag;
+@property (nonatomic, readonly) DBXFILESDeleteErrorTag tag;
 
 /// (no description).
-@property (nonatomic) DBXFILESLookupError * _Nonnull pathLookup;
+@property (nonatomic, readonly) DBXFILESLookupError * _Nonnull pathLookup;
 
 /// (no description).
-@property (nonatomic) DBXFILESWriteError * _Nonnull pathWrite;
+@property (nonatomic, readonly) DBXFILESWriteError * _Nonnull pathWrite;
 
 /// Initializes union class with tag state of `PathLookup`.
 - (nonnull instancetype)initWithPathLookup:(DBXFILESLookupError * _Nonnull)pathLookup;
@@ -61,9 +61,6 @@ typedef NS_ENUM(NSInteger, DBXFILESDeleteErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXFILESDeleteError` object.
-- (NSString * _Nonnull)description;
 
 @end
 

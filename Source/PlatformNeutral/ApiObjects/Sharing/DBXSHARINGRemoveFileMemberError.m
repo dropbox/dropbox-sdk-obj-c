@@ -11,6 +11,10 @@
 
 @implementation DBXSHARINGRemoveFileMemberError 
 
+@synthesize userError = _userError;
+@synthesize accessError = _accessError;
+@synthesize noExplicitAccess = _noExplicitAccess;
+
 - (instancetype)initWithUserError:(DBXSHARINGSharingUserError *)userError {
     self = [super init];
     if (self != nil) {

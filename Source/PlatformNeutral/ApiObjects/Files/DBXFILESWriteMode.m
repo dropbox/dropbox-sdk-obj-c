@@ -8,6 +8,8 @@
 
 @implementation DBXFILESWriteMode 
 
+@synthesize update = _update;
+
 - (instancetype)initWithAdd {
     self = [super init];
     if (self != nil) {

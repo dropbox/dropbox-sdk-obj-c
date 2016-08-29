@@ -35,13 +35,13 @@ typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXUSERSSpaceAllocationTag tag;
+@property (nonatomic, readonly) DBXUSERSSpaceAllocationTag tag;
 
 /// The user's space allocation applies only to their individual account.
-@property (nonatomic) DBXUSERSIndividualSpaceAllocation * _Nonnull individual;
+@property (nonatomic, readonly) DBXUSERSIndividualSpaceAllocation * _Nonnull individual;
 
 /// The user shares space with other members of their team.
-@property (nonatomic) DBXUSERSTeamSpaceAllocation * _Nonnull team;
+@property (nonatomic, readonly) DBXUSERSTeamSpaceAllocation * _Nonnull team;
 
 /// Initializes union class with tag state of `Individual`.
 - (nonnull instancetype)initWithIndividual:(DBXUSERSIndividualSpaceAllocation * _Nonnull)individual;
@@ -63,10 +63,6 @@ typedef NS_ENUM(NSInteger, DBXUSERSSpaceAllocationTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXUSERSSpaceAllocation`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

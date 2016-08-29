@@ -21,18 +21,14 @@
 @interface DBXTEAMGroupMembersSelector : NSObject <DBXSerializable> 
 
 /// Specify a group.
-@property (nonatomic) DBXTEAMGroupSelector * _Nonnull group;
+@property (nonatomic, readonly) DBXTEAMGroupSelector * _Nonnull group;
 
 /// A list of users that are members of group.
-@property (nonatomic) DBXTEAMUsersSelectorArg * _Nonnull users;
+@property (nonatomic, readonly) DBXTEAMUsersSelectorArg * _Nonnull users;
 
 /// Full constructor for the `GroupMembersSelector` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithGroup:(DBXTEAMGroupSelector * _Nonnull)group users:(DBXTEAMUsersSelectorArg * _Nonnull)users;
-
-/// Returns a human-readable representation of the `DBXTEAMGroupMembersSelector`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

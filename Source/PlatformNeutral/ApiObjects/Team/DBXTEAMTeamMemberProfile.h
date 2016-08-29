@@ -23,7 +23,7 @@
 @interface DBXTEAMTeamMemberProfile : DBXTEAMMemberProfile <DBXSerializable> 
 
 /// List of group IDs of groups that the user belongs to.
-@property (nonatomic) NSArray<NSString *> * _Nonnull groups;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull groups;
 
 /// Full constructor for the `TeamMemberProfile` struct (exposes all instance
 /// variables).
@@ -32,10 +32,6 @@
 /// Convenience constructor for the `TeamMemberProfile` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId email:(NSString * _Nonnull)email emailVerified:(NSNumber * _Nonnull)emailVerified status:(DBXTEAMTeamMemberStatus * _Nonnull)status name:(DBXUSERSName * _Nonnull)name membershipType:(DBXTEAMTeamMembershipType * _Nonnull)membershipType groups:(NSArray<NSString *> * _Nonnull)groups;
-
-/// Returns a human-readable representation of the `DBXTEAMTeamMemberProfile`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

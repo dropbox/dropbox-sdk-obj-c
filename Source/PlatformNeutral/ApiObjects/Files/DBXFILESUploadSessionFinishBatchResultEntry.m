@@ -10,6 +10,9 @@
 
 @implementation DBXFILESUploadSessionFinishBatchResultEntry 
 
+@synthesize success = _success;
+@synthesize failure = _failure;
+
 - (instancetype)initWithSuccess:(DBXFILESFileMetadata *)success {
     self = [super init];
     if (self != nil) {

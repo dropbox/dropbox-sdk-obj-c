@@ -17,19 +17,15 @@
 @interface DBXFILESUploadSessionCursor : NSObject <DBXSerializable> 
 
 /// The upload session ID (returned by uploadSessionStart).
-@property (nonatomic, copy) NSString * _Nonnull sessionId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// The amount of data that has been uploaded so far. We use this to make sure
 /// upload data isn't lost or duplicated in the event of a network error.
-@property (nonatomic, copy) NSNumber * _Nonnull offset;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull offset;
 
 /// Full constructor for the `UploadSessionCursor` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset;
-
-/// Returns a human-readable representation of the `DBXFILESUploadSessionCursor`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

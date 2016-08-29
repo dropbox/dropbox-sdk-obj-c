@@ -11,6 +11,10 @@
 
 @implementation DBXFILESUpdatePropertiesError 
 
+@synthesize templateNotFound = _templateNotFound;
+@synthesize path = _path;
+@synthesize propertyGroupLookup = _propertyGroupLookup;
+
 - (instancetype)initWithTemplateNotFound:(NSString *)templateNotFound {
     self = [super init];
     if (self != nil) {

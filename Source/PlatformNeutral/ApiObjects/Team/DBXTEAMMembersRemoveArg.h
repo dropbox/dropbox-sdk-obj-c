@@ -20,17 +20,17 @@
 
 /// If provided, files from the deleted member account will be transferred to
 /// this user.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nullable transferDestId;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nullable transferDestId;
 
 /// If provided, errors during the transfer process will be sent via email to
 /// this user. If the transfer_dest_id argument was provided, then this argument
 /// must be provided as well.
-@property (nonatomic) DBXTEAMUserSelectorArg * _Nullable transferAdminId;
+@property (nonatomic, readonly) DBXTEAMUserSelectorArg * _Nullable transferAdminId;
 
 /// Downgrade the member to a Basic account. The user will retain the email
 /// address associated with their Dropbox  account and data in their account
 /// that is not restricted to team members.
-@property (nonatomic, copy) NSNumber * _Nonnull keepAccount;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull keepAccount;
 
 /// Full constructor for the `MembersRemoveArg` struct (exposes all instance
 /// variables).
@@ -39,10 +39,6 @@
 /// Convenience constructor for the `MembersRemoveArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithUser:(DBXTEAMUserSelectorArg * _Nonnull)user;
-
-/// Returns a human-readable representation of the `DBXTEAMMembersRemoveArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

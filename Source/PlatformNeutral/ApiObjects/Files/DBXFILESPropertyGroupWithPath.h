@@ -18,18 +18,14 @@
 @interface DBXFILESPropertyGroupWithPath : NSObject <DBXSerializable> 
 
 /// A unique identifier for the file.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Filled custom property templates associated with a file.
-@property (nonatomic) NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull propertyGroups;
+@property (nonatomic, readonly) NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull propertyGroups;
 
 /// Full constructor for the `PropertyGroupWithPath` struct (exposes all
 /// instance variables).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path propertyGroups:(NSArray<DBXPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
-
-/// Returns a human-readable representation of the
-/// `DBXFILESPropertyGroupWithPath` object.
-- (NSString * _Nonnull)description;
 
 @end
 

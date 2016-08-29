@@ -10,7 +10,7 @@
 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId toDropboxId:(NSString *)toDropboxId {
     [DBXStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"](sharedFolderId);
-    [DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil](toDropboxId);
+    [DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](toDropboxId);
 
     self = [super init];
     if (self != nil) {

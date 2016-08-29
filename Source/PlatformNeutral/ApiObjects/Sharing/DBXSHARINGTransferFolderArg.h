@@ -17,18 +17,14 @@
 @interface DBXSHARINGTransferFolderArg : NSObject <DBXSerializable> 
 
 /// The ID for the shared folder.
-@property (nonatomic, copy) NSString * _Nonnull sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// A account or team member ID to transfer ownership to.
-@property (nonatomic, copy) NSString * _Nonnull toDropboxId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull toDropboxId;
 
 /// Full constructor for the `TransferFolderArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId toDropboxId:(NSString * _Nonnull)toDropboxId;
-
-/// Returns a human-readable representation of the `DBXSHARINGTransferFolderArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMRevokeLinkedAppErrorTag tag;
+@property (nonatomic, readonly) DBXTEAMRevokeLinkedAppErrorTag tag;
 
 /// Initializes union class with tag state of `AppNotFound`.
 - (nonnull instancetype)initWithAppNotFound;
@@ -55,10 +55,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMRevokeLinkedAppErrorTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMRevokeLinkedAppError`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMAdminTierTag tag;
+@property (nonatomic, readonly) DBXTEAMAdminTierTag tag;
 
 /// Initializes union class with tag state of `TeamAdmin`.
 - (nonnull instancetype)initWithTeamAdmin;
@@ -65,9 +65,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMAdminTierTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMAdminTier` object.
-- (NSString * _Nonnull)description;
 
 @end
 

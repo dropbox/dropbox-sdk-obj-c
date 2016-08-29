@@ -17,10 +17,10 @@
 @interface DBXFILESListRevisionsArg : NSObject <DBXSerializable> 
 
 /// The path to the file you want to see the revisions of.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The maximum number of revision entries returned.
-@property (nonatomic, copy) NSNumber * _Nonnull limit;
+@property (nonatomic, readonly, copy) NSNumber * _Nonnull limit;
 
 /// Full constructor for the `ListRevisionsArg` struct (exposes all instance
 /// variables).
@@ -29,10 +29,6 @@
 /// Convenience constructor for the `ListRevisionsArg` struct (exposes only
 /// non-nullable instance variables with no default value).
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
-
-/// Returns a human-readable representation of the `DBXFILESListRevisionsArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

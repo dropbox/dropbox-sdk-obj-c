@@ -34,16 +34,16 @@ typedef NS_ENUM(NSInteger, DBXTEAMUsersSelectorArgTag) {
 };
 
 /// Represents the union's current tag state.
-@property (nonatomic) DBXTEAMUsersSelectorArgTag tag;
+@property (nonatomic, readonly) DBXTEAMUsersSelectorArgTag tag;
 
 /// List of member IDs.
-@property (nonatomic) NSArray<NSString *> * _Nonnull teamMemberIds;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull teamMemberIds;
 
 /// List of external user IDs.
-@property (nonatomic) NSArray<NSString *> * _Nonnull externalIds;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull externalIds;
 
 /// List of email addresses.
-@property (nonatomic) NSArray<NSString *> * _Nonnull emails;
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull emails;
 
 /// Initializes union class with tag state of `TeamMemberIds`.
 - (nonnull instancetype)initWithTeamMemberIds:(NSArray<NSString *> * _Nonnull)teamMemberIds;
@@ -65,10 +65,6 @@ typedef NS_ENUM(NSInteger, DBXTEAMUsersSelectorArgTag) {
 
 /// Returns a human-readable string representing the union's current tag state.
 - (NSString * _Nonnull)getTagName;
-
-/// Returns a human-readable representation of the `DBXTEAMUsersSelectorArg`
-/// object.
-- (NSString * _Nonnull)description;
 
 @end
 

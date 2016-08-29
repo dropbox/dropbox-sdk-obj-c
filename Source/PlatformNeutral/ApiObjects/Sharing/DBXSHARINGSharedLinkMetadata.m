@@ -14,7 +14,7 @@
 @implementation DBXSHARINGSharedLinkMetadata 
 
 - (instancetype)initWithUrl:(NSString *)url name:(NSString *)name linkPermissions:(DBXSHARINGLinkPermissions *)linkPermissions id_:(NSString *)id_ expires:(NSDate *)expires pathLower:(NSString *)pathLower teamMemberInfo:(DBXSHARINGTeamMemberInfo *)teamMemberInfo contentOwnerTeamInfo:(DBXUSERSTeam *)contentOwnerTeamInfo {
-    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:[NSNumber numberWithInt:1] maxLength:nil pattern:nil]](id_);
+    [DBXStoneValidators nullableValidator:[DBXStoneValidators stringValidator:@(1) maxLength:nil pattern:nil]](id_);
 
     self = [super init];
     if (self != nil) {

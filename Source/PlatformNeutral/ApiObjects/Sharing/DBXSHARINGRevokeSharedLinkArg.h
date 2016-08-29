@@ -17,15 +17,11 @@
 @interface DBXSHARINGRevokeSharedLinkArg : NSObject <DBXSerializable> 
 
 /// URL of the shared link.
-@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 
 /// Full constructor for the `RevokeSharedLinkArg` struct (exposes all instance
 /// variables).
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url;
-
-/// Returns a human-readable representation of the
-/// `DBXSHARINGRevokeSharedLinkArg` object.
-- (NSString * _Nonnull)description;
 
 @end
 
