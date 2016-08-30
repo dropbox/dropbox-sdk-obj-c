@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DbxOAuthResult.h"
+#import "DBOAuthResult.h"
 #import "DropboxClientsManager+MobileAuth.h"
 #import "ViewController.h"
 
@@ -38,7 +38,7 @@
     switch (appPermission) {
         case FullDropbox:
         {
-            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
+            DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");
@@ -52,7 +52,7 @@
         }
         case TeamMemberFileAccess:
         {
-            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+            DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");
@@ -66,7 +66,7 @@
         }
         case TeamMemberManagement:
         {
-            DBXOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+            DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
             if (authResult != nil) {
                 if ([authResult isSuccess]) {
                     NSLog(@"Success! User is logged into Dropbox.");

@@ -53,7 +53,7 @@ def main():
         stone_path = args.stone
 
     dropbox_pkg_path = os.path.abspath('./Source/PlatformNeutral')
-    dropbox_tests_path = os.path.abspath('./ObjectiveDropbox/DBXSerializationTests')
+    dropbox_tests_path = os.path.abspath('./ObjectiveDropbox/DBSerializationTests')
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
@@ -74,15 +74,15 @@ def main():
         print('Generating Obj C user and team clients')
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-b', 'team', '--', '-m', 'DBXBase', '-c', 'DBXBase',
-         '-t', 'DBXTransportClient', '-y', client_args, '-z', style_to_request]),
+         specs + ['-b', 'team', '--', '-m', 'DBBase', '-c', 'DBBase',
+         '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-w', 'team', '--', '-m', 'DBXBaseTeam', '-c', 'DBXBaseTeam',
-         '-t', 'DBXTransportClient', '-y', client_args, '-z', style_to_request]),
+         specs + ['-w', 'team', '--', '-m', 'DBBaseTeam', '-c', 'DBBaseTeam',
+         '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
@@ -119,10 +119,10 @@ def _get_client_args():
 
 def _get_style_to_request():
     style_to_request = {
-        'rpc': 'DBXRpcTask',
-        'upload': 'DBXUploadTask',
-        'download_url': 'DBXDownloadURLTask',
-        'download_data': 'DBXDownloadDataTask',
+        'rpc': 'DBRpcTask',
+        'upload': 'DBUploadTask',
+        'download_url': 'DBDownloadURLTask',
+        'download_data': 'DBDownloadDataTask',
     }
 
     return json.dumps(style_to_request)
