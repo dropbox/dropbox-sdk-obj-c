@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6AB2F7B78FD52BD731576189 /* libPods-TestObjectiveDropbox_OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BF23ACC165B9449EAC8B49 /* libPods-TestObjectiveDropbox_OSX.a */; };
+		F23C5DE31D763C9700D24CCD /* TestClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = F23C5DE01D763C9700D24CCD /* TestClasses.m */; };
+		F23C5DE41D763C9700D24CCD /* TestData.m in Sources */ = {isa = PBXBuildFile; fileRef = F23C5DE21D763C9700D24CCD /* TestData.m */; };
 		F27BA82C1D63BBC100FB7864 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F27BA82B1D63BBC100FB7864 /* AppDelegate.m */; };
 		F27BA82F1D63BBC100FB7864 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F27BA82E1D63BBC100FB7864 /* main.m */; };
 		F27BA8321D63BBC100FB7864 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27BA8311D63BBC100FB7864 /* ViewController.m */; };
@@ -19,6 +21,10 @@
 		35BF23ACC165B9449EAC8B49 /* libPods-TestObjectiveDropbox_OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestObjectiveDropbox_OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		740DC527DE5FC11F07E15E1C /* Pods-TestObjectiveDropbox_OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_OSX/Pods-TestObjectiveDropbox_OSX.debug.xcconfig"; sourceTree = "<group>"; };
 		9EF4960B85799FE2BAA861A7 /* Pods-TestObjectiveDropbox_OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestObjectiveDropbox_OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestObjectiveDropbox_OSX/Pods-TestObjectiveDropbox_OSX.release.xcconfig"; sourceTree = "<group>"; };
+		F23C5DDF1D763C9700D24CCD /* TestClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClasses.h; sourceTree = "<group>"; };
+		F23C5DE01D763C9700D24CCD /* TestClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClasses.m; sourceTree = "<group>"; };
+		F23C5DE11D763C9700D24CCD /* TestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestData.h; sourceTree = "<group>"; };
+		F23C5DE21D763C9700D24CCD /* TestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestData.m; sourceTree = "<group>"; };
 		F27BA8271D63BBC100FB7864 /* TestObjectiveDropbox_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjectiveDropbox_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27BA82A1D63BBC100FB7864 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F27BA82B1D63BBC100FB7864 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +90,10 @@
 				F27BA82B1D63BBC100FB7864 /* AppDelegate.m */,
 				F27BA8301D63BBC100FB7864 /* ViewController.h */,
 				F27BA8311D63BBC100FB7864 /* ViewController.m */,
+				F23C5DDF1D763C9700D24CCD /* TestClasses.h */,
+				F23C5DE01D763C9700D24CCD /* TestClasses.m */,
+				F23C5DE11D763C9700D24CCD /* TestData.h */,
+				F23C5DE21D763C9700D24CCD /* TestData.m */,
 				F27BA8331D63BBC100FB7864 /* Assets.xcassets */,
 				F27BA8351D63BBC100FB7864 /* Main.storyboard */,
 				F27BA8381D63BBC100FB7864 /* Info.plist */,
@@ -222,6 +232,8 @@
 			files = (
 				F27BA8321D63BBC100FB7864 /* ViewController.m in Sources */,
 				F27BA82F1D63BBC100FB7864 /* main.m in Sources */,
+				F23C5DE41D763C9700D24CCD /* TestData.m in Sources */,
+				F23C5DE31D763C9700D24CCD /* TestClasses.m in Sources */,
 				F27BA82C1D63BBC100FB7864 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
