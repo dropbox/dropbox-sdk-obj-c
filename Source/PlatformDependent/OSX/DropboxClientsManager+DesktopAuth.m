@@ -27,19 +27,19 @@
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey] transportClient:nil];
+    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey] transportClient:nil];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
-    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey] transportClient:transportClient];
+    [DropboxClientsManager setupWithAppKey:appKey sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey] transportClient:transportClient];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey {
-    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey] transportClient:nil];
+    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey] transportClient:nil];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
-    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey] transportClient:transportClient];
+    [DropboxClientsManager setupWithTeamAppKey:appKey sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey] transportClient:transportClient];
 }
 
 @end

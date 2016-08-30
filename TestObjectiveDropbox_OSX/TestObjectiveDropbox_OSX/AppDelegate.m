@@ -6,18 +6,11 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+
 #import "DBOAuthResult.h"
 #import "DBOAuthDesktop.h"
 #import "DropboxClientsManager+DesktopAuth.h"
-#import "ViewController.h"
-
-typedef NS_ENUM(NSInteger, ApiAppPermissionType) {
-    FullDropbox,
-    TeamMemberFileAccess,
-    TeamMemberManagement,
-};
-
-static ApiAppPermissionType appPermission = (ApiAppPermissionType)FullDropbox;
 
 @interface AppDelegate ()
 

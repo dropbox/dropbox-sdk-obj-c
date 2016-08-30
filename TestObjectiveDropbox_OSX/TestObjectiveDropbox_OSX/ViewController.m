@@ -40,7 +40,6 @@
         [TestFormat printAllTestsEnd];
         [DropboxClientsManager unlinkClients];
         [self checkButtons];
-        [self.view setNeedsDisplay];
     };
     
     switch(appPermission) {

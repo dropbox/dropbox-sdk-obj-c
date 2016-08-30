@@ -6,9 +6,10 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+
 #import "DBOAuthResult.h"
 #import "DropboxClientsManager+MobileAuth.h"
-#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,6 @@
 
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     switch (appPermission) {
