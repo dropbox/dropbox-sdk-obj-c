@@ -105,7 +105,7 @@
  
  Once you have these apps, you will need to do the following:
  
- 1.) Fill in user-specific data in `TestData`in TestData.m.
+ 1.) Fill in personal data in `TestData`in TestData.m.
  2.) For each of the above apps, you will need to add a user-specific app key. For each test run, you
  will need to call `[DropboxClientsManager setupWithAppKey]` (or `[DropboxClientsManager setupWithTeamAppKey]`) and supply the
  appropriate app key value, in AppDelegate.m.

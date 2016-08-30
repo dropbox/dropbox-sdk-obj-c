@@ -13,6 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        // generic user data
         _testId = [NSString stringWithFormat:@"%d", arc4random_uniform(1000)];
         _baseFolder = @"/Testing/ObjectiveDropboxTests";
         _testFolderName = @"testFolder";
@@ -28,18 +29,18 @@
         _destURL = [_directoryURL URLByAppendingPathComponent:_testFileName];
         _destURLException = [_directoryURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", _testFileName, @"_does_not_exist"]];
         
-        // team data
+        // generic team data
         _testIdTeam = [NSString stringWithFormat:@"%d", arc4random_uniform(1000)];
         _groupName = [NSString stringWithFormat:@"%@%@", @"GroupName", _testIdTeam];
         _groupExternalId = [NSString stringWithFormat:@"%@%@", @"group-", _testIdTeam];
         
-        // user-specific information
+        // personal user data
         _accountId = @"dbid:<ID1>";
         _accountId2 = @"dbid:<ID2>";
         _accountId3 = @"dbid:<ID3>";
         _accountId3Email = @"<EMAIL1>";
         
-        // team data
+        // personal team data
         _teamMemberEmail = @"<EMAIL2>";
         _teamMemberNewEmail = @"<EMAIL3>";
     }
