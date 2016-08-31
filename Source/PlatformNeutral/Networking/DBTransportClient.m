@@ -10,8 +10,9 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString *const version = @"1.0.0";
-static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
+static NSString const * const kVersion = @"1.0.0";
+static NSString const * const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
+static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 @interface DBTransportClient ()
 
@@ -78,7 +79,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
       @"notify" : @"https://notify.dropboxapi.com/2",
     };
 
-    NSString *defaultUserAgent = [NSString stringWithFormat:@"OfficialDropboxObjCSDKv2/%@", version];
+    NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kDefaultUserAgentPrefix, kVersion];
 
     _accessToken = accessToken;
     _selectUser = selectUser;
@@ -92,7 +93,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
 #pragma mark - RPC-style request
 
 - (DBRpcTask *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -112,7 +113,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
 #pragma mark - Upload-style request (NSURL)
 
 - (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputURL:(NSURL *)input {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -130,7 +131,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
 #pragma mark - Upload-style request (NSData)
 
 - (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -147,7 +148,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
 #pragma mark - Upload-style request (NSInputStream)
 
 - (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -167,7 +168,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
                                    arg:(id<DBSerializable>)arg
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -189,7 +190,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
 #pragma mark - Download-style request (NSData)
 
 - (DBDownloadDataTask *)requestDownload:(DBRoute *)route arg:(id<DBSerializable>)arg {
-  NSURL *requestUrl = [self getUrl:route];
+  NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs[@"style"] serializedArg:serializedArg host:route.attrs[@"host"]];
@@ -224,7 +225,7 @@ static NSString *kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_backgrou
   return request;
 }
 
-- (NSURL *)getUrl:(DBRoute *)route {
+- (NSURL *)urlWithRoute:(DBRoute *)route {
   return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", _baseHosts[route.attrs[@"host"]],
                                                          route.namespace_, route.name]];
 }

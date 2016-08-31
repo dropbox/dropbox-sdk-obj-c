@@ -5,9 +5,9 @@
 #import "DBDelegate.h"
 #import <Foundation/Foundation.h>
 
-static NSString *kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
-static NSString *kProgressHandlerKey = @"progressHandler";
-static NSString *kResponseHandlerKey = @"responseHandler";
+static NSString const * const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
+static NSString const * const kProgressHandlerKey = @"progressHandler";
+static NSString const * const kResponseHandlerKey = @"responseHandler";
 
 @interface DBDelegate ()
 
