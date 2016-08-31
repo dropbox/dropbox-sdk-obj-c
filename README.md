@@ -1,6 +1,6 @@
 # Dropbox for Objective-C
 
-The Official Dropbox Objective-C SDK for integrating with Dropbox API v2 on iOS or OS X.
+The Official Dropbox Objective-C SDK for integrating with Dropbox [API v2](https://www.dropbox.com/developers/documentation/http/documentation) on iOS or OS X.
 
 ## Requirements
 
@@ -19,10 +19,10 @@ Before using this SDK, register your application in the [Dropbox App Console](ht
 All requests need to be made with an OAuth2 access token. An OAuth token represents an authenticated link between a Dropbox app and
 a Dropbox user account or team.
 
-Once you've created an app, you can go to the App Console and manually generate an access token for your own Dropbox account.
-Otherwise, you can obtain an OAuth token programmatically using the SDK's pre-defined auth flow. For more information, see below.
+Once you've created an app, you can go to the App Console and manually generate an access token to authorize your app to access your own Dropbox account.
+Otherwise, you can obtain an OAuth token programmatically using the SDK's pre-defined auth flow. For more information, [see below](https://github.com/dropbox/dropbox-sdk-obj-c#handling-authorization-flow).
 
-## Integrate with your project
+## SDK Distribution
 
 ### CocoaPods
 
@@ -81,7 +81,7 @@ Then, navigate to the **Input Files** section and add the following path:
 $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 ```
 
-### Manually add
+### Manually add framework
 
 Finally, you can also integrate the Dropbox Objective-C SDK into your project manually without using a dependency manager.
 
@@ -91,7 +91,7 @@ In the Project Navigator in XCode, select your project, and then navigate to you
 
 ## Configure your project
 
-Once you have checkedout and integrated the Dropbox Objective-C SDK into your project, there are a few changes that you should make to your project.
+Once you have integrated the Dropbox Objective-C SDK into your project, there are a few additional steps to take before you can begin making API calls.
 
 ### Application .plist file
 
@@ -108,7 +108,9 @@ add the following code to your application's .plist file:
 This allows the Objective-C SDK to determine if the official Dropbox iOS app is installed on the current device. If it is installed, then the official Dropbox iOS app can be used to programmatically obtain an OAuth2 access token.
 
 Additionally, your application needs to register to handle a unique Dropbox URL scheme for redirect following completion of the OAuth2 authorization flow. This URL scheme should have the format `db-<APP_KEY>`, where `<APP_KEY>` is your
-Dropbox app's app key, which can be found in the [Dropbox App Console](https://dropbox.com/developers/apps). You should add the following code to your .plist file (but be sure to replace `<APP_KEY>` with your app's app key):
+Dropbox app's app key, which can be found in the [App Console](https://dropbox.com/developers/apps).
+
+You should add the following code to your .plist file (but be sure to replace `<APP_KEY>` with your app's app key):
 
 ```
 <key>CFBundleURLTypes</key>
@@ -124,15 +126,21 @@ Dropbox app's app key, which can be found in the [Dropbox App Console](https://d
     </array>
 ```
 
-After these changes, your application's .plist file should look something like this:
+After you've made the above changes, your application's .plist file should look something like this:
 
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/InfoPlistExample.png?raw=true" alt="Info .plist Example"/>
 </p>
 
-### Handling authorization flow
+### Handling the authorization flow
 
-To facilitate the authorization flow to programmatically retrieve an OAuth2 access token, you should take the following steps:
+There are three methods of programmatically retrieving an OAuth2 access token:
+
+* Direct auth (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
+* In-app webview auth (iOS, OS X): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
+* External browser auth (iOS, OS X): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+
+To facilitate the above authorization flows, you should take the following steps:
 
 Initialize a `DropboxClient` instance in your application's delegate:
 
@@ -140,7 +148,7 @@ Initialize a `DropboxClient` instance in your application's delegate:
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DropboxClientsManager setupWithAppKey:@"<APP_KEY>"];
     return YES;
@@ -152,24 +160,25 @@ Initialize a `DropboxClient` instance in your application's delegate:
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [DropboxClientsManager setupWithAppKey:@"<APP_KEY>"];
 }
 ```
 
-To begin the authorization flow, from your application's view controller, call the `authorizeFromController:controller:openURL:browserAuth` method:
+To begin the authorization flow, from your application's view controller, call the `authorizeFromController:controller:openURL:browserAuth` method. If you wish
+to authenticate via the in-app web view, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
 
 (for iOS)
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (void)viewDidLoad {
     [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
                                         controller:self
                                            openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; }
-                                       browserAuth:NO];
+                                       browserAuth:YES];
 }
 
 ```
@@ -178,7 +187,7 @@ To begin the authorization flow, from your application's view controller, call t
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (void)viewDidLoad {
     [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
                                         controller:self
@@ -187,13 +196,13 @@ To begin the authorization flow, from your application's view controller, call t
 }
 ```
 
-Then, to handle the redirection back into the Objective-C SDK, setup the following handler in your application's delegate:
+Then, to handle the redirection back into the Objective-C SDK, add the following code in your application's delegate:
 
 (for iOS)
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
     if (authResult != nil) {
@@ -214,7 +223,7 @@ Then, to handle the redirection back into the Objective-C SDK, setup the followi
 
 ```objective-c
 #import "Dropbox.h"
-....
+
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
     if (authResult != nil) {
@@ -229,16 +238,20 @@ Then, to handle the redirection back into the Objective-C SDK, setup the followi
 }
 ```
 
+Now you're ready to begin making API requests!
+
 ## Try some API requests
 
-### Access your Dropbox client
+Once you have obtained an OAuth2 token, you can try some API v2 calls using the Objective-C SDK.
 
-Once you have obtained an OAuth2 token, you can try some API v2 calls using the Objective-C SDK:
+### Retrieve your Dropbox client instance
+
+Start by creating a reference to the `DropboxClient` or `DropboxTeamClient` instance that you will use to make your API calls.
 
 ```objective-c
 #import "Dropbox.h"
-....
-// Access DropboxClient after programmatic auth flow 
+
+// Reference after programmatic auth flow 
 DropboxClient *client = [DropboxClientsManager authorizedClient];
 ```
 
@@ -246,8 +259,8 @@ or
 
 ```objective-c
 #import "Dropbox.h"
-....
-// Access DropboxClient with manually retrieved auth token
+
+// Initialize with manually retrieved auth token
 DropboxClient *client = [DropboxClient initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
 ```
 
@@ -255,11 +268,13 @@ DropboxClient *client = [DropboxClient initWithAccessToken:@"<MY_ACCESS_TOKEN>"]
 
 The Dropbox [User API](https://www.dropbox.com/developers/documentation/http/documentation) and [Business API](https://www.dropbox.com/developers/documentation/http/teams) have three types of requests: RPC, Upload and Download.
 
-The response handlers for each of the request types are similar to one another. The response handler arguments are:
-* the result type from the route (`DBNilObject` if the route does not have a return type)
-* the route-specific error (usually a union type)
-* the generic network request error (with information like request ID, HTTP status code, etc.)
-* `NSURL` / `NSData` reference to ouput (for Download-style endpoints)
+The response handlers for each request type are similar to one another. The arguments for the handler blocks are as follows:
+* result type from the route (`DBNilObject` if the route does not have a return type)
+* route-specific error (usually a union type)
+* generic network request error (with information like request ID, HTTP status code, etc.)
+* `NSURL` / `NSData` reference to downloaded ouput (for Download-style endpoints only)
+
+Response handlers and progress handlers are optional for all endpoints.
 
 ### Request types
 
@@ -269,10 +284,6 @@ The response handlers for each of the request types are similar to one another. 
     if (result) {
         NSLog(@"%@\n", result);
     } else {
-        // Error is with the route specifically (403, 404, 409)
-        if (routeError) {
-
-        }
         NSLog(@"%@\n%@\n", routeError, error);
     }
 }];
@@ -329,15 +340,19 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 
 ### Handling responses and errors
 
-Dropbox API v2 deals largely with two data types: structs and unions. Broadly speaking, most route arguments are struct types and most route errors are union types.
+Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route arguments are struct types and most route errors are union types.
 
-Struct types are traditional composite types made up of a collection of instance fields, which can exist in only one state. Union types, on the other hand, are singular types that can take on multiple value type states (called "tags").
+**Struct types** are "traditional" object types, that is, composite types made up of a collection of one or more instance fields. All public instance fields are accessible at runtime, regardless of state.
 
-For example, the /delete endpoint returns a union type error, `DeleteError`. The `DeleteError` union can take on different states, including `path_lookup` – if there is a problem looking up the path – and `path_write` – if there is a
-problem writing (or in this case deleting) to the path. Each tag may or may not have an associated value. In this way, one union type can encapsulate a multitude of scenarios.
+**Union types**, on the other hand, represent a single value that can take on multiple value types, depending on state. Each union state, or "tag", may have an associated value type or it may not (in which case, the union type is said to be "void").
+Associated value types can be either primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at run time, depending on the tag state of the union.
 
-To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the associated value with that tag state (if there is one). If at 
-runtime you attempt to access an instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
+For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns an error, `DeleteError`, which is a union type. The `DeleteError` union can take on two different tag states: `path_lookup`
+(if there is a problem looking up the path) or `path_write` (if there is a problem writing – or in this case deleting – to the path). In this case, both tag states have non-void associated values (`DBFILESLookupError` and `DBFILESWriteError`, respectively).
+In this way, one union object is able to capture a multitude of scenarios, each of which has their own value type.
+
+To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the associated value with that tag state (if there is one, i.e., if 
+it is non-void). If at runtime you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
 
 #### Route-specific errors
 ```objective-c
@@ -367,7 +382,7 @@ runtime you attempt to access an instance field that is not associated with the 
 #### Generic network request errors
 
 Regardless of whether the error is with the route specifically, a generic `DBError` type will be returned, which includes information like Dropbox request ID and HTTP status code. The `DBError` type is a special union type which is similar to the
-standard API v2 union type, but also includes a collection of `as<TAG_STATE>` methods, which return an instance of a particular error sub type. As with accessing normal union associated values, the `as<TAG_STATE>` should only be called after the
+standard API v2 union type, but also includes a collection of `as<TAG_STATE>` methods, each of which returns an instance of a particular error sub type. As with accessing regular union associated values, the `as<TAG_STATE>` should only be called after the
 corresponding `is<TAG_STATE>` method returns true. See below:
 
 ```objective-c
@@ -406,8 +421,13 @@ corresponding `is<TAG_STATE>` method returns true. See below:
 
 #### Response handling edge cases
 
-Occasionally, routes will return non-error types that are union types or structs with union characteristics. For example, the /delete endpoint returns a generic `Metadata` type, which can exist either as a `FileMetadata` struct, a `FolderMetadata` struct,
-or a `DeletedMetadata` struct. To determine which subtype the `Metadata` type currently exists as, perform an `isKindOfClass` check for each possible class, and then cast the result. See below:
+Some routes return union types as result types (i.e., non-error responses), so you should be prepared to handle these results in the same way that you handle errors that are union types. Please consult the [documentation](https://www.dropbox.com/developers/documentation/http/documentation)
+for each endpoint that you use.
+
+A few routes return result types that are "datatypes with subtypes", that is, structs that can take on multiple states.
+
+For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns a generic `Metadata` type, which can exist either as a `FileMetadata` struct, a `FolderMetadata` struct, or a `DeletedMetadata` struct.
+To determine which subtype the `Metadata` type currently exists as, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
 
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
@@ -432,11 +452,12 @@ or a `DeletedMetadata` struct. To determine which subtype the `Metadata` type cu
 }];
 ```
 
-These structs with union characteristics are listed as "datatype with subtypes" on our API v2 documentation. Only a few routes return result types like this.
+This `Metadata` object is known as a "datatype with subtypes" in our API v2 documentation. The difference between these datatypes with subtypes and union types, is that union types can exist as only one instance value at a time, whereas these datatypes with subtypes exist
+as sets of multiple instance values at a time. Only a few routes return result types like this.
 
 ### Customizing network calls
 
-By default, all response handler code is executed via the Main Queue (which makes UI updating convenient). However, if additional customization is necessary
+By default, all response handler code is executed via the main queue (which makes UI updating convenient). However, if additional customization is necessary
 (like handling responses on a custom queue), you can initialize your `DropboxClient` with a customized `DBTransportClient` in your application delegate. See below:
 
 ```objective-c
@@ -455,17 +476,21 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 
 ## Documentation
 
-Find complete documention on our [GitHub Pages site]().
+* [Dropbox API v2 Objective-C SDK]().
+* [Dropbox API v2](https://www.dropbox.com/developers/documentation/http/documentation)
 
 ## Modifications
 
-If you're interested in modifying the SDK codebase, clone the GitHub repository to your local filesystem
-and run `git submodule init` and then `git submodule update`, then navigate to ./TestObjectiveDropbox_[iOS,OSX] and run `pod install`.
-Once this is complete, open the ./TestObjectiveDropbox_[iOS,OSX]/TestObjectiveDropbox_[iOS,OSX].xcworkspace file with XCode and proceed to implement your
-changes to the SDK source code.
+If you're interested in modifying the SDK codebase, you should take the following steps:
+
+* clone this GitHub repository to your local filesystem
+* run `git submodule init` and then `git submodule update`
+* navigate to ./TestObjectiveDropbox_[iOS|OSX] and run `pod install`
+* Open ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace in XCode
+* implement your changes to the SDK source code.
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
-following the instructions listed in the ./TestObjectiveDropbox_[iOS,OSX]/TestObjectiveDropbox_[iOS,OSX]/ViewController.m file.
+following the instructions listed in the ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX]/ViewController.m file.
 
 ## Bugs
 
