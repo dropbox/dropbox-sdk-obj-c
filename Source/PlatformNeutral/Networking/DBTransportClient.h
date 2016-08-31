@@ -78,7 +78,7 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken selectUser:(NSString * _Nullable)selectUser;
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken selectUser:(NSString * _Nullable)selectUser;
 
 ///
 /// DBTransportClient convenience constructor.
@@ -90,7 +90,7 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
                         backgroundSessionId:(NSString * _Nullable)backgroundSessionId;
 
 ///
@@ -104,7 +104,7 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
                                  selectUser:(NSString * _Nullable)selectUser
                                   baseHosts:(NSDictionary<NSString *, NSString *> * _Nullable)baseHosts;
 
@@ -125,7 +125,7 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
                                  selectUser:(NSString * _Nullable)selectUser
                                   baseHosts:(NSDictionary<NSString *, NSString *> * _Nullable)baseHosts
                                   userAgent:(NSString * _Nullable)userAgent

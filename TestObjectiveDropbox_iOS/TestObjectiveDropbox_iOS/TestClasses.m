@@ -8,9 +8,7 @@
 #import "TestData.h"
 #import "TestClasses.h"
 
-#import "DropboxClient.h"
-#import "DropboxTeamClient.h"
-#import "DropboxClientsManager+MobileAUTH.h"
+#import "Dropbox.h"
 
 void MyLog(NSString *format, ...) {
     va_list args;

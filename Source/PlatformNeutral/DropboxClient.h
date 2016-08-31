@@ -3,6 +3,7 @@
 ///
 
 #import "DBBase.h"
+#import "DBTransportClient.h"
 #import <Foundation/Foundation.h>
 
 ///

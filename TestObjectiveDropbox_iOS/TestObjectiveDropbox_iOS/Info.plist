@@ -12,7 +12,9 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>db-12345678</string>
+				<string>db-&lt;APP_KEY&gt;</string>
+				<string>db-&lt;APP_KEY&gt;</string>
+				<string>db-&lt;APP_KEY&gt;</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>

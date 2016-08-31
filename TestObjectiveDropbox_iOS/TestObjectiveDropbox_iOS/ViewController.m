@@ -9,10 +9,7 @@
 #import "TestData.h"
 #import "TestClasses.h"
 
-#import "DropboxClient.h"
-#import "DropboxTeamClient.h"
-#import "DropboxClientsManager+MobileAuth.h"
-
+#import "Dropbox.h"
 
 @interface ViewController ()
 

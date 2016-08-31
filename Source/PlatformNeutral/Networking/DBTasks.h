@@ -48,9 +48,6 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
-/// For client-side handling of failed requests / application crashes, use this class
-/// to reinstall response / progress handlers for the restarted tasks.
-///
 @interface DBRpcTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
@@ -128,9 +125,6 @@
 /// TError is the generic representation of the route-specific error.
 ///
 /// Response / error deserialization is performed with this class.
-///
-/// For client-side handling of failed requests / application crashes, use this class
-/// to reinstall response / progress handlers for the restarted tasks.
 ///
 @interface DBUploadTask <TResponse, TError> : DBTask
 
@@ -210,9 +204,6 @@
 /// TError is the generic representation of the route-specific error.
 ///
 /// Response / error deserialization is performed with this class.
-///
-/// For client-side handling of failed requests / application crashes, use this class
-/// to reinstall response / progress handlers for the restarted tasks.
 ///
 @interface DBDownloadURLTask <TResponse, TError> : DBTask
 
@@ -303,9 +294,6 @@
 /// TError is the generic representation of the route-specific error.
 ///
 /// Response / error deserialization is performed with this class.
-///
-/// For client-side handling of failed requests / application crashes, use this class
-/// to reinstall response / progress handlers for the restarted tasks.
 ///
 @interface DBDownloadDataTask <TResponse, TError> : DBTask
 
