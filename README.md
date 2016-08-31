@@ -198,7 +198,8 @@ view controller. If you wish to authenticate via the in-app web view, then set `
 }
 ```
 
-Authentication via in-app web view will look something like this:
+Beginning the authentication flow via in-app web view will launch a window like this:
+
 
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowInit.png?raw=true" alt="Auth Flow Init Example"/>
@@ -206,7 +207,7 @@ Authentication via in-app web view will look something like this:
 
 #### Handle redirect back into SDK
 
-You can handle the redirection back into the Objective-C SDK by adding the following code in your application's delegate:
+To handle the redirection back into the Objective-C SDK once the authentication flow is complete, you should add the following code in your application's delegate:
 
 (for iOS)
 
@@ -248,13 +249,14 @@ You can handle the redirection back into the Objective-C SDK by adding the follo
 }
 ```
 
-Once the end user signs in with their Dropbox login credentials via in-app web view, they will see a window like this:
+After the end user signs in with their Dropbox login credentials via the in-app web view, they will see a window like this:
+
 
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowApproval.png?raw=true" alt="Auth Flow Approval Example"/>
 </p>
 
-If they press "Allow" or "Cancel", the db-<APP_KEY> redirect URL will be launched from the web view, and will be handled in your application
+If they press "Allow" or "Cancel", the `db-<APP_KEY>` redirect URL will be launched from the web view, and will be handled in your application
 delegate's `application:handleOpenURL` method, from which the result of the authorization can be parsed.
 
 Now you're ready to begin making API requests!
@@ -288,10 +290,10 @@ DropboxClient *client = [DropboxClient initWithAccessToken:@"<MY_ACCESS_TOKEN>"]
 The Dropbox [User API](https://www.dropbox.com/developers/documentation/http/documentation) and [Business API](https://www.dropbox.com/developers/documentation/http/teams) have three types of requests: RPC, Upload and Download.
 
 The response handlers for each request type are similar to one another. The arguments for the handler blocks are as follows:
-* result type from the route (`DBNilObject` if the route does not have a return type)
-* route-specific error (usually a union type)
-* generic network request error (with information like request ID, HTTP status code, etc.)
-* `NSURL` / `NSData` reference to downloaded ouput (for Download-style endpoints only)
+* **route result type** (`DBNilObject` if the route does not have a return type)
+* **route-specific error** (usually a union type)
+* **network request error** (generic to all request, and contains information like request ID, HTTP status code, etc.)
+* **output content** (`NSURL` / `NSData` reference to downloaded ouput for Download-style endpoints only)
 
 Response handlers and progress handlers are optional for all endpoints.
 
@@ -359,19 +361,20 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 
 ### Handling responses and errors
 
-Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route arguments are struct types and most route errors are union types.
+Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route **arguments** are struct types and most route **errors** are union types.
 
 **Struct types** are "traditional" object types, that is, composite types made up of a collection of one or more instance fields. All public instance fields are accessible at runtime, regardless of state.
 
-**Union types**, on the other hand, represent a single value that can take on multiple value types, depending on state. Each union state, or "tag", may have an associated value type or it may not (in which case, the union type is said to be "void").
-Associated value types can be either primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at run time, depending on the tag state of the union.
+**Union types**, on the other hand, represent a single value that can take on multiple value types, depending on state. Each union state, or "tag", may have an associated value type (or it may not, in which case, the union type is said to be "void").
+Associated value types can either be primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at run time, depending on the tag state of the union.
 
 For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns an error, `DeleteError`, which is a union type. The `DeleteError` union can take on two different tag states: `path_lookup`
-(if there is a problem looking up the path) or `path_write` (if there is a problem writing – or in this case deleting – to the path). In this case, both tag states have non-void associated values (`DBFILESLookupError` and `DBFILESWriteError`, respectively).
+(if there is a problem looking up the path) or `path_write` (if there is a problem writing – or in this case deleting – to the path). Here, both tag states have non-void associated values (`DBFILESLookupError` and `DBFILESWriteError`, respectively).
+
 In this way, one union object is able to capture a multitude of scenarios, each of which has their own value type.
 
-To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the associated value with that tag state (if there is one, i.e., if 
-it is non-void). If at runtime you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
+To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the value associated with that tag state (provided the value type is not "void").
+If at run time you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
 
 #### Route-specific errors
 ```objective-c
@@ -400,9 +403,10 @@ it is non-void). If at runtime you attempt to access a union instance field that
 
 #### Generic network request errors
 
-Regardless of whether the error is with the route specifically, a generic `DBError` type will be returned, which includes information like Dropbox request ID and HTTP status code. The `DBError` type is a special union type which is similar to the
-standard API v2 union type, but also includes a collection of `as<TAG_STATE>` methods, each of which returns an instance of a particular error sub type. As with accessing regular union associated values, the `as<TAG_STATE>` should only be called after the
-corresponding `is<TAG_STATE>` method returns true. See below:
+In the case of an error, regardless of whether the error is with the route specifically, a generic `DBError` type will be returned, which includes information like Dropbox request ID and HTTP status code.
+
+The `DBError` type is a special union type which is similar to the standard API v2 union type, but also includes a collection of `as<TAG_STATE>` methods, each of which returns a new instance of a particular error sub type.
+As with accessing associated values in regular unions, the `as<TAG_STATE>` should only be called after the corresponding `is<TAG_STATE>` method returns true. See below:
 
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
@@ -440,13 +444,13 @@ corresponding `is<TAG_STATE>` method returns true. See below:
 
 #### Response handling edge cases
 
-Some routes return union types as result types (i.e., non-error responses), so you should be prepared to handle these results in the same way that you handle errors that are union types. Please consult the [documentation](https://www.dropbox.com/developers/documentation/http/documentation)
+Some routes return union types as result types (i.e., non-error responses), so you should be prepared to handle these results in the same way that you handle union type route errors. Please consult the [documentation](https://www.dropbox.com/developers/documentation/http/documentation)
 for each endpoint that you use.
 
-A few routes return result types that are "datatypes with subtypes", that is, structs that can take on multiple states.
+A few routes return result types that are "datatypes with subtypes", that is, structs that can take on multiple states like unions.
 
 For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns a generic `Metadata` type, which can exist either as a `FileMetadata` struct, a `FolderMetadata` struct, or a `DeletedMetadata` struct.
-To determine which subtype the `Metadata` type currently exists as, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
+To determine which subtype the `Metadata` type exists as at runtime, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
 
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
@@ -471,8 +475,8 @@ To determine which subtype the `Metadata` type currently exists as, perform an `
 }];
 ```
 
-This `Metadata` object is known as a "datatype with subtypes" in our API v2 documentation. The difference between these datatypes with subtypes and union types, is that union types can exist as only one instance value at a time, whereas these datatypes with subtypes exist
-as sets of multiple instance values at a time. Only a few routes return result types like this.
+This `Metadata` object is known as a "datatype with subtypes" in our API v2 documentation. The difference between these "datatypes with subtypes" and union types, is that union types can exist as only one instance value at a time, whereas these "datatypes with subtypes" can exist
+as multiple instance values at a time. Only a few routes return result types like this.
 
 ### Customizing network calls
 
@@ -481,11 +485,11 @@ By default, all response handler code is executed via the main queue (which make
 
 ```objective-c
 DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:nil
-                                                                             selectUser:nil
-                                                                              baseHosts:nil
-                                                                              userAgent:@"CustomUserAgent"
-                                                                    backgroundSessionId:@"com.custom.background.session.id"
-                                                                          delegateQueue:[NSOperationQueue new]];
+                                                                         selectUser:nil
+                                                                          baseHosts:nil
+                                                                          userAgent:@"CustomUserAgent"
+                                                                backgroundSessionId:@"com.custom.background.session.id"
+                                                                      delegateQueue:[NSOperationQueue new]];
 [DropboxClientsManager setupWithAppKey:@"<APP_KEY>" transportClient:transportClient];
 ```
 
@@ -495,8 +499,15 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 
 ## Documentation
 
-* [Dropbox API v2 Objective-C SDK]().
+* [Dropbox API v2 Objective-C SDK]()
 * [Dropbox API v2](https://www.dropbox.com/developers/documentation/http/documentation)
+
+## Stone
+
+All of our routes and data types are auto-generated using a framework called [Stone](https://github.com/dropbox/stone).
+
+The `stone` repo contains all of the Objective-C specific generation logic, and the `spec` repo contains the language-neutral API endpoint specifications which serve
+as input to the language-specific generators.
 
 ## Modifications
 
@@ -505,11 +516,11 @@ If you're interested in modifying the SDK codebase, you should take the followin
 * clone this GitHub repository to your local filesystem
 * run `git submodule init` and then `git submodule update`
 * navigate to ./TestObjectiveDropbox_[iOS|OSX] and run `pod install`
-* Open ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace in XCode
+* open ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace in XCode
 * implement your changes to the SDK source code.
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
-following the instructions listed in the ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX]/ViewController.m file.
+following the instructions listed in the ViewController.m file.
 
 ## Bugs
 
