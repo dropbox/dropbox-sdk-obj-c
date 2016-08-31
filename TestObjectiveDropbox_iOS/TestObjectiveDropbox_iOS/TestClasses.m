@@ -119,6 +119,26 @@ void MyLog(NSString *format, ...) {
     }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         [TestFormat printSentProgress:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
     }];
+    
+    
+    [[_tester.files createFolder:_tester.testData.testFolderPath] response:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBError *error) {
+        if (result) {
+            NSLog(@"%@\n", result);
+        } else {
+            // Error is with the route specifically (403, 404, 409)
+            if (routeError) {
+                NSLog(@"%@\n", routeError);
+                if ([routeError isPath]) {
+                    DBFILESWriteError *writeError = routeError.path;
+                    if ([writeError isConflict]) {
+                        // handle
+                    }
+                }
+            } else {
+            }
+            NSLog(@"%@\n%@\n", routeError, error);
+        }
+    }];
 }
 
 - (void)listFolderError:(void (^)())nextTest {
