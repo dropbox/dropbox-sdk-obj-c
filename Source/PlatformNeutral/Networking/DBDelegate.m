@@ -71,7 +71,7 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (responseHandler) {
       responseHandler(responseData, task.response, error);
     }
-    [_uploadTasks removeObjectForKey:taskId];
+    [_uploadTasks[sessionId] removeObjectForKey:taskId];
     [_responsesData[sessionId] removeObjectForKey:taskId];
   } else if ([task isKindOfClass:[NSURLSessionDataTask class]]) {
     NSMutableData *responseData = _responsesData[sessionId][taskId];
@@ -80,7 +80,7 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (responseHandler) {
       responseHandler(responseData, task.response, error);
     }
-    [_rpcTasks removeObjectForKey:taskId];
+    [_rpcTasks[sessionId] removeObjectForKey:taskId];
     [_responsesData[sessionId] removeObjectForKey:taskId];
   }
 }
