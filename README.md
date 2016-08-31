@@ -147,7 +147,7 @@ To facilitate the above authorization flows, you should take the following steps
 (for iOS)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DropboxClientsManager setupWithAppKey:@"<APP_KEY>"];
@@ -159,7 +159,7 @@ To facilitate the above authorization flows, you should take the following steps
 (for OS X)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [DropboxClientsManager setupWithAppKey:@"<APP_KEY>"];
@@ -174,7 +174,7 @@ view controller. If you wish to authenticate via the in-app web view, then set `
 (for iOS)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (void)viewDidLoad {
     [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
@@ -188,7 +188,7 @@ view controller. If you wish to authenticate via the in-app web view, then set `
 (for OS X)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (void)viewDidLoad {
     [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
@@ -212,7 +212,7 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 (for iOS)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
@@ -233,7 +233,7 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 (for OS X)
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
@@ -270,7 +270,7 @@ Once you have obtained an OAuth2 token, you can try some API v2 calls using the 
 Start by creating a reference to the `DropboxClient` or `DropboxTeamClient` instance that you will use to make your API calls.
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 // Reference after programmatic auth flow 
 DropboxClient *client = [DropboxClientsManager authorizedClient];
@@ -279,7 +279,7 @@ DropboxClient *client = [DropboxClientsManager authorizedClient];
 or
 
 ```objective-c
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 // Initialize with manually retrieved auth token
 DropboxClient *client = [DropboxClient initWithAccessToken:@"<MY_ACCESS_TOKEN>"];

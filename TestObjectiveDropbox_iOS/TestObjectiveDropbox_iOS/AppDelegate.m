@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "Dropbox.h"
+#import "DropboxSDKImports.h"
 
 @interface AppDelegate ()
 
@@ -20,13 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     switch (appPermission) {
         case FullDropbox:
-            [DropboxClientsManager setupWithAppKey:@"<APP_KEY1>"];
+            [DropboxClientsManager setupWithAppKey:@"<FULL_DROPBOX_APP_KEY>"];
             break;
         case TeamMemberFileAccess:
-            [DropboxClientsManager setupWithTeamAppKey:@"<APP_KEY2>"];
+            [DropboxClientsManager setupWithTeamAppKey:@"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>"];
             break;
         case TeamMemberManagement:
-            [DropboxClientsManager setupWithTeamAppKey:@"<APP_KEY3>"];
+            [DropboxClientsManager setupWithTeamAppKey:@"<TEAM_MEMBER_MANAGEMENT_APP_KEY>"];
             break;
     }
     return YES;
