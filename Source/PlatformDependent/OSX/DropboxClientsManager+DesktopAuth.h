@@ -2,8 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DropboxClientsManager.h"
 #import <Foundation/Foundation.h>
+#import "DBOAuthResult.h"
+#import "DBOAuthDesktop.h"
+#import "DropboxClientsManager.h"
 @class DBTransportClient;
 @class NSWorkspace;
 @class NSViewController;

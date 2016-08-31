@@ -26,11 +26,16 @@
 @implementation ViewController
 
 - (IBAction)linkButtonPressed:(id)sender {
-    [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace] controller:self openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; } browserAuth:NO];
+    [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
+                                        controller:self openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
+                                       browserAuth:NO];
 }
 
 - (IBAction)linkBrowserButtonPressed:(id)sender {
-    [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace] controller:self openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; } browserAuth:YES];
+    [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
+                                        controller:self
+                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
+                                       browserAuth:YES];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {

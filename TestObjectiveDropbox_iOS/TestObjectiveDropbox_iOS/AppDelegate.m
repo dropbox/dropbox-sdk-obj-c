@@ -8,7 +8,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "DBOAuthResult.h"
 #import "DropboxClientsManager+MobileAuth.h"
 
 @interface AppDelegate ()

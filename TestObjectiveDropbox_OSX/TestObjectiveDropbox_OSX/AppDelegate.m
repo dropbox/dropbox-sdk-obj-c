@@ -8,8 +8,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "DBOAuthResult.h"
-#import "DBOAuthDesktop.h"
 #import "DropboxClientsManager+DesktopAuth.h"
 
 @interface AppDelegate ()
@@ -35,7 +33,9 @@ static ViewController *viewController = nil;
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
+                                                       andSelector:@selector(handleAppleEvent:withReplyEvent:)
+                                                     forEventClass:kInternetEventClass andEventID:kAEGetURL];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
