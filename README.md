@@ -134,15 +134,15 @@ After you've made the above changes, your application's .plist file should look 
 
 ### Handling the authorization flow
 
-There are three methods of programmatically retrieving an OAuth2 access token:
+There are three methods to programmatically retrieve an OAuth2 access token:
 
-* Direct auth (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* In-app webview auth (iOS, OS X): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
-* External browser auth (iOS, OS X): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
+* **In-app webview auth** (iOS, OS X): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
+* **External browser auth** (iOS, OS X): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
-Initialize a `DropboxClient` instance in your application's delegate:
+#### Initialize a `DropboxClient` instance from application delegate
 
 (for iOS)
 
@@ -166,8 +166,10 @@ Initialize a `DropboxClient` instance in your application's delegate:
 }
 ```
 
-To begin the authorization flow, from your application's view controller, call the `authorizeFromController:controller:openURL:browserAuth` method. If you wish
-to authenticate via the in-app web view, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
+#### Begin the authorization flow from view controller
+
+You can commence the auth flow by calling `authorizeFromController:controller:openURL:browserAuth` method in your application's
+view controller. If you wish to authenticate via the in-app web view, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
 
 (for iOS)
 
@@ -196,7 +198,15 @@ to authenticate via the in-app web view, then set `browserAuth` to `NO`. Otherwi
 }
 ```
 
-Then, to handle the redirection back into the Objective-C SDK, add the following code in your application's delegate:
+Authentication via in-app web view will look something like this:
+
+<p align="center">
+  <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowInit.png?raw=true" alt="Auth Flow Init Example"/>
+</p>
+
+#### Handle redirect back into SDK
+
+You can handle the redirection back into the Objective-C SDK by adding the following code in your application's delegate:
 
 (for iOS)
 
@@ -237,6 +247,15 @@ Then, to handle the redirection back into the Objective-C SDK, add the following
     }
 }
 ```
+
+Once the end user signs in with their Dropbox login credentials via in-app web view, they will see a window like this:
+
+<p align="center">
+  <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowApproval.png?raw=true" alt="Auth Flow Approval Example"/>
+</p>
+
+If they press "Allow" or "Cancel", the db-<APP_KEY> redirect URL will be launched from the web view, and will be handled in your application
+delegate's `application:handleOpenURL` method, from which the result of the authorization can be parsed.
 
 Now you're ready to begin making API requests!
 
