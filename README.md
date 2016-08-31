@@ -329,11 +329,12 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 
 ### Handling responses and errors
 
-Dropbox API v2 deals largely with two data types: structs and unions. Broadly speaking, most route arguments are struct types and most route errors are union types. Struct types are traditional composite types made up of a collection
-of instance fields, which can exist in only one state. Union types, on the other hand, are singular types that can take on multiple value type states (called "tags"). For example, the /delete endpoint returns a union type error, `DeleteError`.
-The `DeleteError` union can take on different states, including `path_lookup` – if there is a problem looking up the path – and `path_write` – if there is a problem writing (or in this case deleting) to the path. Each tag may or
-may not have an associated value. In this way, one union type can encapsulate a multitude of
-scenarios.
+Dropbox API v2 deals largely with two data types: structs and unions. Broadly speaking, most route arguments are struct types and most route errors are union types.
+
+Struct types are traditional composite types made up of a collection of instance fields, which can exist in only one state. Union types, on the other hand, are singular types that can take on multiple value type states (called "tags").
+
+For example, the /delete endpoint returns a union type error, `DeleteError`. The `DeleteError` union can take on different states, including `path_lookup` – if there is a problem looking up the path – and `path_write` – if there is a
+problem writing (or in this case deleting) to the path. Each tag may or may not have an associated value. In this way, one union type can encapsulate a multitude of scenarios.
 
 To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the associated value with that tag state (if there is one). If at 
 runtime you attempt to access an instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
@@ -436,7 +437,7 @@ These structs with union characteristics are listed as "datatype with subtypes" 
 ### Customizing network calls
 
 By default, all response handler code is executed via the Main Queue (which makes UI updating convenient). However, if additional customization is necessary
-(like handling responses on a custom queue), you can initialize your DropboxClient with a customized DBTransportClient in your application delegate. See below:
+(like handling responses on a custom queue), you can initialize your `DropboxClient` with a customized `DBTransportClient` in your application delegate. See below:
 
 ```objective-c
 DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:nil
