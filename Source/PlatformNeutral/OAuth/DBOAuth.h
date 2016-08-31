@@ -71,7 +71,8 @@
 /// @param browserAuth Whether the auth flow should use an external web browser for auth or not. If not,
 /// then an in-app webview is used instead.
 ///
-- (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication browserAuth:(BOOL)browserAuth;
+- (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication
+                           browserAuth:(BOOL)browserAuth;
 
 ///
 /// Handles a redirect back into the application (from whichever auth flow was being used).
@@ -141,7 +142,6 @@
 
 @end
 
-
 #pragma mark - OAuth manager base (OS X)
 
 ///
@@ -151,7 +151,6 @@
 
 @end
 
-
 #pragma mark - OAuth manager base (iOS)
 
 ///
@@ -160,7 +159,6 @@
 @interface DBMobileOAuthManager : DBOAuthManager
 
 @end
-
 
 #pragma mark - Access token class
 
@@ -173,11 +171,11 @@
 @interface DBAccessToken : NSObject
 
 /// The OAuth2 access token.
-@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
+@property(nonatomic, readonly, copy) NSString * _Nonnull accessToken;
 
 /// The unique identifier of the access token used for storing in DBKeychain.
 /// Either the account_id (if user app) or the team_id if (team app).
-@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
+@property(nonatomic, readonly, copy) NSString * _Nonnull uid;
 
 ///
 /// DBAccessToken full constructor.
@@ -190,5 +188,3 @@
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken uid:(NSString * _Nonnull)uid;
 
 @end
-
-

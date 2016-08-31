@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
 #import "DBSerializableProtocol.h"
+#import <Foundation/Foundation.h>
 
 @class DBDelegate;
 @class DBDownloadDataTask;
@@ -36,27 +36,27 @@
 
 /// The delegate used to manage execution of all response / error code. By default, this
 /// is an instance of DBDelegate with the main thread queue as delegate queue.
-@property (nonatomic) DBDelegate * _Nonnull delegate;
+@property(nonatomic) DBDelegate * _Nonnull delegate;
 
 /// A serial delegate queue used for executing blocks of code that touch state
 /// shared across threads (mainly the request handlers storage).
-@property (nonatomic) NSOperationQueue * _Nonnull delegateQueue;
+@property(nonatomic) NSOperationQueue * _Nonnull delegateQueue;
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload
 /// from NSData and NSInputStream, and download to NSData).
-@property (nonatomic) NSURLSession * _Nonnull session;
+@property(nonatomic) NSURLSession * _Nonnull session;
 
 /// The background session used to make all background requests (Upload and Download style
 /// requests, except for upload from NSData and NSInputStream, and download to NSData).
-@property (nonatomic) NSURLSession * _Nonnull backgroundSession;
+@property(nonatomic) NSURLSession * _Nonnull backgroundSession;
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy) NSString * _Nonnull accessToken;
+@property(nonatomic, copy) NSString * _Nonnull accessToken;
 
 /// An additional authentication header field used when a team app with
 /// the appropriate permissions "performs" user actions on behalf of
 /// a team member.
-@property (nonatomic, copy) NSString * _Nullable selectUser;
+@property(nonatomic, copy) NSString * _Nullable selectUser;
 
 #pragma mark - Constructors
 
@@ -90,7 +90,8 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken backgroundSessionId:(NSString * _Nullable)backgroundSessionId;
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+                        backgroundSessionId:(NSString * _Nullable)backgroundSessionId;
 
 ///
 /// DBTransportClient convenience constructor.
@@ -103,7 +104,9 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken selectUser:(NSString * _Nullable)selectUser baseHosts:(NSDictionary <NSString *, NSString *> * _Nullable)baseHosts;
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+                                 selectUser:(NSString * _Nullable)selectUser
+                                  baseHosts:(NSDictionary<NSString *, NSString *> * _Nullable)baseHosts;
 
 ///
 /// DBTransportClient full constructor.
@@ -122,7 +125,12 @@
 ///
 /// @return An initialized DBTransportClient instance.
 ///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken selectUser:(NSString * _Nullable)selectUser baseHosts:(NSDictionary <NSString *, NSString *> * _Nullable)baseHosts userAgent:(NSString * _Nullable)userAgent backgroundSessionId:(NSString * _Nullable)backgroundSessionId delegateQueue:(NSOperationQueue * _Nullable)delegateQueue;
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+                                 selectUser:(NSString * _Nullable)selectUser
+                                  baseHosts:(NSDictionary<NSString *, NSString *> * _Nullable)baseHosts
+                                  userAgent:(NSString * _Nullable)userAgent
+                        backgroundSessionId:(NSString * _Nullable)backgroundSessionId
+                              delegateQueue:(NSOperationQueue * _Nullable)delegateQueue;
 
 #pragma mark - RPC-style request
 
@@ -154,7 +162,9 @@
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
 /// be halted or cancelled.
 ///
-- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route arg:(id<DBSerializable> _Nullable)arg inputURL:(NSURL * _Nonnull)input;
+- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route
+                                    arg:(id<DBSerializable> _Nullable)arg
+                               inputURL:(NSURL * _Nonnull)input;
 
 #pragma mark - Upload-style request (NSData)
 
@@ -171,7 +181,9 @@
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
 /// be halted or cancelled.
 ///
-- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route arg:(id<DBSerializable> _Nullable)arg inputData:(NSData * _Nonnull)input;
+- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route
+                                    arg:(id<DBSerializable> _Nullable)arg
+                              inputData:(NSData * _Nonnull)input;
 
 #pragma mark - Upload-style request (NSInputStream)
 
@@ -188,7 +200,9 @@
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
 /// be halted or cancelled.
 ///
-- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route arg:(id<DBSerializable> _Nullable)arg inputStream:(NSInputStream * _Nonnull)input;
+- (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route
+                                    arg:(id<DBSerializable> _Nullable)arg
+                            inputStream:(NSInputStream * _Nonnull)input;
 
 #pragma mark - Download-style request (NSURL)
 
@@ -205,7 +219,10 @@
 /// @return A DBDownloadURLTask where response and progress handlers can be added, and the request can
 /// be halted or cancelled.
 ///
-- (DBDownloadURLTask * _Nonnull)requestDownload:(DBRoute * _Nonnull)route arg:(id<DBSerializable> _Nullable)arg overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (DBDownloadURLTask * _Nonnull)requestDownload:(DBRoute * _Nonnull)route
+                                           arg:(id<DBSerializable> _Nullable)arg
+                                     overwrite:(BOOL)overwrite
+                                   destination:(NSURL * _Nonnull)destination;
 
 #pragma mark - Download-style request (NSData)
 

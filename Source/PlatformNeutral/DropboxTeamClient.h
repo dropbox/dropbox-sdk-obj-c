@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
 #import "DBBaseTeam.h"
+#import <Foundation/Foundation.h>
 
 ///
 /// Dropbox Business (Team) API Client.
@@ -17,10 +17,10 @@
 @interface DropboxTeamClient : DBBaseTeam
 
 /// The transport client to use to make all networking requests
-@property (nonatomic) DBTransportClient * _Nonnull transportClient;
+@property(nonatomic) DBTransportClient * _Nonnull transportClient;
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic) NSString * _Nullable accessToken;
+@property(nonatomic) NSString * _Nullable accessToken;
 
 ///
 /// DropboxTeamClient convenience constructor.

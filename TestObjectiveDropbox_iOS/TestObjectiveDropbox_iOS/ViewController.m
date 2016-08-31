@@ -25,11 +25,15 @@
 
 @implementation ViewController
 - (IBAction)linkButtonPressed:(id)sender {
-    [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication] controller:self openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; } browserAuth:NO];
+    [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                        controller:self
+                                           openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; } browserAuth:NO];
 }
 
 - (IBAction)linkBrowserButtonPressed:(id)sender {
-    [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication] controller:self openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; } browserAuth:YES];
+    [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                        controller:self
+                                           openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; } browserAuth:YES];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {

@@ -39,7 +39,10 @@
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///
-- (void)addRpcResponseHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session responseHandler:(void (^ _Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
+- (void)addRpcResponseHandler:(NSURLSessionTask * _Nonnull)task
+                      session:(NSURLSession * _Nonnull)session
+              responseHandler:
+                  (void (^_Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
 
 ///
 /// Enqueues a handler to be executed periodically to retrieve information on the progress of
@@ -51,7 +54,9 @@
 /// The first argument is the number of bytes sent. The second argument is the number of total
 /// bytes sent. And the third argument is the number of total bytes expected to be sent.
 ///
-- (void)addRpcProgressHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session progressHandler:(void (^ _Nonnull)(int64_t, int64_t, int64_t))handler;
+- (void)addRpcProgressHandler:(NSURLSessionTask * _Nonnull)task
+                      session:(NSURLSession * _Nonnull)session
+              progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
 
 #pragma mark - Add Upload-style handlers
 
@@ -64,7 +69,10 @@
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///
-- (void)addUploadResponseHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session responseHandler:(void (^ _Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
+- (void)addUploadResponseHandler:(NSURLSessionTask * _Nonnull)task
+                         session:(NSURLSession * _Nonnull)session
+                 responseHandler:
+                     (void (^_Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
 
 ///
 /// Enqueues a handler to be executed periodically to retrieve information on the progress of
@@ -76,7 +84,9 @@
 /// The first argument is the number of bytes uploaded. The second argument is the number of total
 /// bytes uploaded. And the third argument is the number of total bytes expected to be uploaded.
 ///
-- (void)addUploadProgressHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session progressHandler:(void (^ _Nonnull)(int64_t, int64_t, int64_t))handler;
+- (void)addUploadProgressHandler:(NSURLSessionTask * _Nonnull)task
+                         session:(NSURLSession * _Nonnull)session
+                 progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
 
 #pragma mark - Add Download-style handlers
 
@@ -89,7 +99,10 @@
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///
-- (void)addDownloadResponseHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session responseHandler:(void (^ _Nonnull)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
+- (void)addDownloadResponseHandler:(NSURLSessionTask * _Nonnull)task
+                           session:(NSURLSession * _Nonnull)session
+                   responseHandler:
+                       (void (^_Nonnull)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
 
 ///
 /// Enqueues a handler to be executed periodically to retrieve information on the progress of
@@ -101,6 +114,8 @@
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///
-- (void)addDownloadProgressHandler:(NSURLSessionTask * _Nonnull)task session:(NSURLSession * _Nonnull)session progressHandler:(void (^ _Nonnull)(int64_t, int64_t, int64_t))handler;
+- (void)addDownloadProgressHandler:(NSURLSessionTask * _Nonnull)task
+                           session:(NSURLSession * _Nonnull)session
+                   progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
 
 @end

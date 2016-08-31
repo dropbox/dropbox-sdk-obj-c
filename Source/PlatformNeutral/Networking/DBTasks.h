@@ -16,24 +16,23 @@
 /// can be installed, and the network response paused or cancelled.
 ///
 @interface DBTask : NSObject {
-    @protected
-    NSURLSession *_session;
-    DBDelegate *_delegate;
-    DBRoute *_route;
+@protected
+  NSURLSession *_session;
+  DBDelegate *_delegate;
+  DBRoute *_route;
 }
 
 /// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * _Nonnull session;
+@property(nonatomic, readonly) NSURLSession * _Nonnull session;
 
 /// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
+@property(nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
 /// Information about the route to which the request
 /// was made.
-@property (nonatomic, readonly) DBRoute * _Nonnull route;
+@property(nonatomic, readonly) DBRoute * _Nonnull route;
 
 @end
-
 
 #pragma mark - RPC-style network task
 
@@ -52,7 +51,7 @@
 /// For client-side handling of failed requests / application crashes, use this class
 /// to reinstall response / progress handlers for the restarted tasks.
 ///
-@interface DBRpcTask<TResponse, TError> : DBTask
+@interface DBRpcTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
 @property (nonatomic, readonly) NSURLSessionDataTask * _Nonnull task;
@@ -70,7 +69,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTask:(NSURLSessionDataTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DBDelegate * _Nonnull)delegate route:(DBRoute * _Nonnull)route;
+- (nonnull instancetype)initWithTask:(NSURLSessionDataTask * _Nonnull)task
+                             session:(NSURLSession * _Nonnull)session
+                            delegate:(DBDelegate * _Nonnull)delegate
+                               route:(DBRoute * _Nonnull)route;
 
 ///
 /// Installs a response handler for the current request.
@@ -82,7 +84,8 @@
 ///
 /// @return The current DBRpcTask instance.
 ///
-- (DBRpcTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable))responseBlock;
+- (DBRpcTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                                                                     DBError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -112,7 +115,6 @@
 
 @end
 
-
 #pragma mark - Upload-style network task
 
 ///
@@ -130,7 +132,7 @@
 /// For client-side handling of failed requests / application crashes, use this class
 /// to reinstall response / progress handlers for the restarted tasks.
 ///
-@interface DBUploadTask<TResponse, TError> : DBTask
+@interface DBUploadTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
 @property (nonatomic, readonly) NSURLSessionUploadTask * _Nonnull task;
@@ -148,7 +150,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DBDelegate * _Nonnull)delegate route:(DBRoute * _Nonnull)route;
+- (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task
+                             session:(NSURLSession * _Nonnull)session
+                            delegate:(DBDelegate * _Nonnull)delegate
+                               route:(DBRoute * _Nonnull)route;
 
 ///
 /// Installs a response handler for the current request.
@@ -160,7 +165,8 @@
 ///
 /// @return The current DBUploadTask instance.
 ///
-- (DBUploadTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable))responseBlock;
+- (DBUploadTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                                                                        DBError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -190,7 +196,6 @@
 
 @end
 
-
 #pragma mark - Download-style network task (NSURL)
 
 ///
@@ -209,16 +214,16 @@
 /// For client-side handling of failed requests / application crashes, use this class
 /// to reinstall response / progress handlers for the restarted tasks.
 ///
-@interface DBDownloadURLTask<TResponse, TError> : DBTask
+@interface DBDownloadURLTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
 @property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
 
 /// Whether the outputted file should overwrite in the event of a name collision.
-@property (nonatomic, readonly) BOOL overwrite;
+@property(nonatomic, readonly) BOOL overwrite;
 
 /// Location to which output content should be downloaded.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull destination;
+@property(nonatomic, readonly, copy) NSURL * _Nonnull destination;
 
 ///
 /// DBDownloadURLTask full constructor.
@@ -235,7 +240,12 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DBDelegate * _Nonnull)delegate route:(DBRoute * _Nonnull)route overwrite:(BOOL)overwrite destination:(NSURL * _Nonnull)destination;
+- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task
+                             session:(NSURLSession * _Nonnull)session
+                            delegate:(DBDelegate * _Nonnull)delegate
+                               route:(DBRoute * _Nonnull)route
+                           overwrite:(BOOL)overwrite
+                         destination:(NSURL * _Nonnull)destination;
 
 ///
 /// Installs a response handler for the current request.
@@ -248,7 +258,8 @@
 ///
 /// @return The current DBDownloadURLTask instance.
 ///
-- (DBDownloadURLTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSURL * _Nonnull))responseBlock;
+- (DBDownloadURLTask<TResponse, TError> * _Nonnull)response:
+    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -278,7 +289,6 @@
 
 @end
 
-
 #pragma mark - Download-style network task (NSData)
 
 ///
@@ -297,7 +307,7 @@
 /// For client-side handling of failed requests / application crashes, use this class
 /// to reinstall response / progress handlers for the restarted tasks.
 ///
-@interface DBDownloadDataTask<TResponse, TError> : DBTask
+@interface DBDownloadDataTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
 @property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
@@ -315,7 +325,10 @@
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task session:(NSURLSession * _Nonnull)session delegate:(DBDelegate * _Nonnull)delegate route:(DBRoute * _Nonnull)route;
+- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task
+                             session:(NSURLSession * _Nonnull)session
+                            delegate:(DBDelegate * _Nonnull)delegate
+                               route:(DBRoute * _Nonnull)route;
 
 ///
 /// Installs a response handler for the current request.
@@ -328,7 +341,8 @@
 ///
 /// @return The current DBDownloadURLTask instance.
 ///
-- (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:(void (^ _Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSData * _Nonnull))responseBlock;
+- (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:
+    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSData * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
