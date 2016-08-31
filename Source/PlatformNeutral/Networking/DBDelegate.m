@@ -160,7 +160,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_rpcTasks[sessionId][taskId]) {
       [_rpcTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_rpcTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    if (handler) {
+      [_rpcTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    }
   }];
 }
 
@@ -176,7 +178,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_rpcTasks[sessionId][taskId]) {
       [_rpcTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_rpcTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    if (handler) {
+      [_rpcTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    }
   }];
 }
 
@@ -194,7 +198,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_uploadTasks[sessionId][taskId]) {
       [_uploadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_uploadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    if (handler) {
+      [_uploadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    }
   }];
 }
 
@@ -210,7 +216,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_uploadTasks[sessionId][taskId]) {
       [_uploadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_uploadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    if (handler) {
+      [_uploadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    }
   }];
 }
 
@@ -228,7 +236,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_downloadTasks[sessionId][taskId]) {
       [_downloadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_downloadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    if (handler) {
+      [_downloadTasks[sessionId][taskId] setObject:handler forKey:kResponseHandlerKey];
+    }
   }];
 }
 
@@ -244,7 +254,9 @@ static NSString *kResponseHandlerKey = @"responseHandler";
     if (!_downloadTasks[sessionId][taskId]) {
       [_downloadTasks[sessionId] setObject:[NSMutableDictionary new] forKey:taskId];
     }
-    [_downloadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    if (handler) {
+      [_downloadTasks[sessionId][taskId] setObject:handler forKey:kProgressHandlerKey];
+    }
   }];
 }
 
