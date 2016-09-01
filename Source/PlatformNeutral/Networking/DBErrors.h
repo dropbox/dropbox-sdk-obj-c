@@ -13,7 +13,7 @@
 /// Http request error.
 ///
 /// Contains relevant information regarding a failed network
-/// request. All error types except for DBOsError extend this
+/// request. All error types except for DBClientError extend this
 /// class as children. Initialized in the event of a generic,
 /// unidentified HTTP error.
 ///
@@ -26,7 +26,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull requestId;
 
 /// The HTTP response status code of the request.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull statusCode;
+@property(nonatomic, readonly) NSNumber * _Nonnull statusCode;
 
 /// A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the
@@ -151,7 +151,7 @@
 
 /// The number of seconds to wait before making any additional requests in the
 /// event of a rate-limit error.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull backoff;
+@property(nonatomic, readonly) NSNumber * _Nonnull backoff;
 
 ///
 /// DBRequestRateLimitError full constructor.
@@ -203,32 +203,29 @@
 
 @end
 
-#pragma mark - OS error
+#pragma mark - Client error
 
-@interface DBRequestOsError : NSObject
+@interface DBRequestClientError : NSObject
 
-/// A string representation of the error body received in the reponse.
-/// If for a route-specific error, this field will be the value of the
-/// "error_summary" key.
-@property(nonatomic, readonly, copy) NSString * _Nonnull errorContent;
+/// The client-side NSError object returned from the failed response.
+@property(nonatomic, readonly) NSError * _Nonnull nsError;
 
 ///
-/// DBRequestOsError full constructor.
+/// DBRequestClientError full constructor.
 ///
 /// An example of such an error might be if you attempt to make a request and are
 /// not connected to the internet.
 ///
-/// @param errorContent A string representation of the error body received in the reponse.
-/// If for a route-specific error, this field will be the value of the "error_summary" key.
+/// @param nsError The client-side NSError object returned from the failed response.
 ///
-/// @return An initialized DBRequestOsError instance.
+/// @return An initialized DBRequestClientError instance.
 ///
-- (nonnull instancetype)init:(NSString * _Nonnull)errorContent;
+- (nonnull instancetype)init:(NSError * _Nonnull)nsError;
 
 ///
 /// Description method.
 ///
-/// @return A human-readable representation of the current DBRequestOsError object.
+/// @return A human-readable representation of the current DBRequestClientError object.
 ///
 - (NSString * _Nonnull)description;
 
@@ -278,7 +275,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
   DBRequestInternalServerErrorType,
 
   /// Errors due to a problem on the local operating system.
-  DBRequestOsErrorType,
+  DBRequestClientErrorType,
 };
 
 #pragma mark - Instance variables
@@ -293,7 +290,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 @property(nonatomic, readonly, copy) NSString * _Nonnull requestId;
 
 /// The HTTP response status code of the request.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull statusCode;
+@property(nonatomic, readonly) NSNumber * _Nonnull statusCode;
 
 /// A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the
@@ -310,7 +307,10 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 
 /// The number of seconds to wait before making any additional requests in the
 /// event of a rate-limit error.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull backoff;
+@property(nonatomic, readonly) NSNumber * _Nonnull backoff;
+
+/// The client-side NSError object returned from the failed response.
+@property(nonatomic, readonly) NSError * _Nonnull nsError;
 
 #pragma mark - Constructors
 
@@ -420,12 +420,12 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// An example of such an error might be if you attempt to make a request and are not
 /// connected to the internet.
 ///
-/// @param errorContent A string representation of the error body received in the reponse.
-/// If for a route-specific error, this field will be the value of the "error_summary" key.
+/// @param nsError The client-side NSError object returned from the failed response.
+///
 ///
 /// @return An initialized DBError instance with OS error state.
 ///
-- (nonnull instancetype)initAsOSError:(NSString * _Nullable)errorContent;
+- (nonnull instancetype)initAsClientError:(NSError * _Nullable)nsError;
 
 ///
 /// DBError full constructor.
@@ -441,6 +441,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// event of a 429 rate-limit error.
 /// @param backoff The number of seconds to wait before making any additional requests in the
 /// event of a rate-limit error.
+/// @param nsError The client-side NSError object returned from the failed response.
 ///
 /// @return An initialized DBError instance.
 ///
@@ -450,7 +451,8 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
                 errorContent:(NSString * _Nullable)errorContent
          structuredAuthError:(DBAUTHAuthError * _Nullable)structuredAuthError
     structuredRateLimitError:(DBAUTHRateLimitError * _Nullable)structuredRateLimitError
-                     backoff:(NSNumber * _Nullable)backoff;
+                     backoff:(NSNumber * _Nullable)backoff
+                     nsError:(NSError * _Nullable)nsError;
 
 #pragma mark - Tag state methods
 
@@ -490,11 +492,11 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 - (BOOL)isInternalServerError;
 
 ///
-/// Retrieves whether the error's current tag state has value OSError.
+/// Retrieves whether the error's current tag state has value ClientError.
 ///
-/// @return Whether the union's current tag state has value OSError.
+/// @return Whether the union's current tag state has value ClientError.
 ///
-- (BOOL)isOsError;
+- (BOOL)isClientError;
 
 #pragma mark - Error subtype retrieval methods
 
@@ -559,16 +561,16 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 - (DBRequestInternalServerError * _Nonnull)asInternalServerError;
 
 ///
-/// Creates a DBRequestOsError instance based on the data in the current DBError
+/// Creates a DBRequestClientError instance based on the data in the current DBError
 /// instance.
 ///
 /// @note Will throw error if current DBError instance tag state is not
-/// OsError. Should only use after checking if isOsError returns true
+/// ClientError. Should only use after checking if isClientError returns true
 /// for the current DBError instance.
 ///
-/// @return An initialized DBRequestOsError instance.
+/// @return An initialized DBRequestClientError instance.
 ///
-- (DBRequestOsError * _Nonnull)asOsError;
+- (DBRequestClientError * _Nonnull)asClientError;
 
 #pragma mark - Tag name method
 

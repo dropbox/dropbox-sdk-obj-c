@@ -63,7 +63,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
                       delegateQueue:(NSOperationQueue *)delegateQueue {
   self = [super init];
   if (self) {
-    _delegateQueue = delegateQueue;
+    _delegateQueue = delegateQueue ?: [NSOperationQueue mainQueue];
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
     _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                              delegate:_delegate

@@ -43,7 +43,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 #pragma mark - Delegate protocol methods
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:dataTask.taskIdentifier];
   NSMutableData *responseData = _responsesData[sessionId][taskId];
   if (!responseData) {
@@ -58,18 +58,15 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   if (error && [task isKindOfClass:[NSURLSessionDownloadTask class]]) {
-    NSMutableData *responseData = _responsesData[sessionId][taskId];
-
     void (^responseHandler)(NSURL *, NSURLResponse *, NSError *) =
-    _downloadTasks[sessionId][taskId][kResponseHandlerKey];
+        _downloadTasks[sessionId][taskId][kResponseHandlerKey];
     if (responseHandler) {
-      responseHandler(responseData, task.response, error);
+      responseHandler(nil, task.response, error);
     }
     [_downloadTasks[sessionId] removeObjectForKey:taskId];
-    [_responsesData[sessionId] removeObjectForKey:taskId];
   } else if ([task isKindOfClass:[NSURLSessionUploadTask class]]) {
     NSMutableData *responseData = _responsesData[sessionId][taskId];
 
@@ -97,7 +94,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
              didSendBodyData:(int64_t)bytesSent
               totalBytesSent:(int64_t)totalBytesSent
     totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   if ([task isKindOfClass:[NSURLSessionUploadTask class]]) {
     if (_uploadTasks[sessionId][taskId]) {
@@ -121,7 +118,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
                  didWriteData:(int64_t)bytesWritten
             totalBytesWritten:(int64_t)totalBytesWritten
     totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:downloadTask.taskIdentifier];
   if (_downloadTasks[sessionId][taskId]) {
     void (^progressHandler)(int64_t, int64_t, int64_t) = _downloadTasks[sessionId][taskId][kProgressHandlerKey];
@@ -134,7 +131,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)URLSession:(NSURLSession *)session
                  downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didFinishDownloadingToURL:(NSURL *)location {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:downloadTask.taskIdentifier];
   void (^responseHandler)(NSURL *, NSURLResponse *, NSError *) = _downloadTasks[sessionId][taskId][kResponseHandlerKey];
   if (responseHandler) {
@@ -144,12 +141,12 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 }
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   [_uploadTasks[sessionId] removeAllObjects];
   [_downloadTasks[sessionId] removeAllObjects];
 }
 
-- (NSString *)getSessionId:(NSURLSession *)session {
+- (NSString *)sessionIdWithSession:(NSURLSession *)session {
   return session.configuration.identifier ?: kForegroundId;
 }
 
@@ -158,7 +155,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addRpcResponseHandler:(NSURLSessionTask *)task
                       session:(NSURLSession *)session
               responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_rpcTasks[sessionId]) {
@@ -176,7 +173,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addRpcProgressHandler:(NSURLSessionTask *)task
                       session:(NSURLSession *)session
               progressHandler:(void (^)(int64_t, int64_t, int64_t))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_rpcTasks[sessionId]) {
@@ -196,7 +193,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addUploadResponseHandler:(NSURLSessionTask *)task
                          session:(NSURLSession *)session
                  responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_uploadTasks[sessionId]) {
@@ -214,7 +211,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addUploadProgressHandler:(NSURLSessionTask *)task
                          session:(NSURLSession *)session
                  progressHandler:(void (^)(int64_t, int64_t, int64_t))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_uploadTasks[sessionId]) {
@@ -234,7 +231,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addDownloadResponseHandler:(NSURLSessionTask *)task
                            session:(NSURLSession *)session
                    responseHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_downloadTasks[sessionId]) {
@@ -252,7 +249,7 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 - (void)addDownloadProgressHandler:(NSURLSessionTask *)task
                            session:(NSURLSession *)session
                    progressHandler:(void (^)(int64_t, int64_t, int64_t))handler {
-  NSString *sessionId = [self getSessionId:session];
+  NSString *sessionId = [self sessionIdWithSession:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   [_delegateQueue addOperationWithBlock:^{
     if (!_downloadTasks[sessionId]) {

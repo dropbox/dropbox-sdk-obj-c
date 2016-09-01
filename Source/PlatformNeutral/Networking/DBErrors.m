@@ -128,21 +128,21 @@
 
 @end
 
-#pragma mark - OS error
+#pragma mark - Client error
 
-@implementation DBRequestOsError
+@implementation DBRequestClientError
 
-- (instancetype)init:(NSString *)errorContent {
+- (instancetype)init:(NSError *)nsError {
   self = [super init];
   if (self) {
-    _errorContent = errorContent;
+    _nsError = nsError;
   }
   return self;
 }
 
 - (NSString *)description {
-  NSDictionary *values = @{ @"ErrorContent" : _errorContent ?: @"nil" };
-  return [NSString stringWithFormat:@"DBOsError[%@];", values];
+  NSDictionary *values = @{ @"NSError" : _nsError ?: @"nil" };
+  return [NSString stringWithFormat:@"DBClientError[%@];", values];
 }
 
 @end
@@ -162,7 +162,8 @@
                   errorContent:errorContent
            structuredAuthError:nil
       structuredRateLimitError:nil
-                       backoff:nil];
+                       backoff:nil
+                       nsError:nil];
 }
 
 - (instancetype)initAsBadInputError:(NSString *)requestId
@@ -174,7 +175,8 @@
                   errorContent:errorContent
            structuredAuthError:nil
       structuredRateLimitError:nil
-                       backoff:nil];
+                       backoff:nil
+                       nsError:nil];
 }
 
 - (instancetype)initAsAuthError:(NSString *)requestId
@@ -187,7 +189,8 @@
                   errorContent:errorContent
            structuredAuthError:structuredAuthError
       structuredRateLimitError:nil
-                       backoff:nil];
+                       backoff:nil
+                       nsError:nil];
 }
 
 - (instancetype)initAsRateLimitError:(NSString *)requestId
@@ -201,7 +204,8 @@
                   errorContent:errorContent
            structuredAuthError:nil
       structuredRateLimitError:structuredRateLimitError
-                       backoff:backoff];
+                       backoff:backoff
+                       nsError:nil];
 }
 
 - (instancetype)initAsInternalServerError:(NSString *)requestId
@@ -213,17 +217,19 @@
                   errorContent:errorContent
            structuredAuthError:nil
       structuredRateLimitError:nil
-                       backoff:nil];
+                       backoff:nil
+                       nsError:nil];
 }
 
-- (instancetype)initAsOSError:(NSString *)errorContent {
-  return [self init:DBRequestOsErrorType
+- (instancetype)initAsClientError:(NSError *)nsError {
+  return [self init:DBRequestClientErrorType
                      requestId:nil
                     statusCode:nil
-                  errorContent:errorContent
+                  errorContent:nil
            structuredAuthError:nil
       structuredRateLimitError:nil
-                       backoff:nil];
+                       backoff:nil
+                       nsError:nsError];
 }
 
 - (instancetype)init:(DBRequestErrorType)tag
@@ -232,7 +238,8 @@
                 errorContent:(NSString *)errorContent
          structuredAuthError:(DBAUTHAuthError *)structuredAuthError
     structuredRateLimitError:(DBAUTHRateLimitError *)structuredRateLimitError
-                     backoff:(NSNumber *)backoff {
+                     backoff:(NSNumber *)backoff
+                     nsError:(NSError *)nsError {
   self = [super init];
   if (self) {
     _tag = tag;
@@ -242,6 +249,7 @@
     _structuredAuthError = structuredAuthError;
     _structuredRateLimitError = structuredRateLimitError;
     _backoff = backoff;
+    _nsError = nsError;
   }
   return self;
 }
@@ -268,8 +276,8 @@
   return _tag == DBRequestInternalServerErrorType;
 }
 
-- (BOOL)isOsError {
-  return _tag == DBRequestOsErrorType;
+- (BOOL)isClientError {
+  return _tag == DBRequestClientErrorType;
 }
 
 #pragma mark - Error subtype retrieval methods
@@ -321,12 +329,12 @@
   return [[DBRequestInternalServerError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
 
-- (DBRequestOsError * _Nonnull)asOsError {
-  if (![self isOsError]) {
+- (DBRequestClientError * _Nonnull)asClientError {
+  if (![self isClientError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestOsErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestClientErrorType`, but was %@.", [self tagName]];
   }
-  return [[DBRequestOsError alloc] init:_errorContent];
+  return [[DBRequestClientError alloc] init:_nsError];
 }
 
 #pragma mark - Tag name method
@@ -343,8 +351,8 @@
     return @"DBRequestRateLimitErrorType";
   case DBRequestInternalServerErrorType:
     return @"DBRequestInternalServerErrorType";
-  case DBRequestOsErrorType:
-    return @"DBRequestOsErrorType";
+  case DBRequestClientErrorType:
+    return @"DBRequestClientErrorType";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Tag has an invalid value." userInfo:nil]);
@@ -364,8 +372,8 @@
     return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
   case DBRequestInternalServerErrorType:
     return @"DBRequestInternalServerErrorType";
-  case DBRequestOsErrorType:
-    return [NSString stringWithFormat:@"%@", [self asOsError]];
+  case DBRequestClientErrorType:
+    return [NSString stringWithFormat:@"%@", [self asClientError]];
   }
 
   return [NSString stringWithFormat:@"GenericDropboxError[%@];", [self tagName]];

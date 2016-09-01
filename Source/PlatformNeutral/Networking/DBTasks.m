@@ -15,22 +15,36 @@
 
 @implementation DBTask
 
-- (DBError *)getDBError:(NSData *)data
+- (DBError *)getDBError:(NSData *)errorData
                response:(NSURLResponse *)response
                   error:(NSError *)error
              statusCode:(int)statusCode
             httpHeaders:(NSDictionary *)httpHeaders {
-  DBError *dbxError = nil;
+  DBError *dbxError;
 
   if (statusCode == 200) {
-    return dbxError;
+    return nil;
   }
 
-  NSDictionary *deserializedData = [self deserializeHttpData:data];
+  if (error) {
+    return [[DBError alloc] initAsClientError:error];
+  }
+
+  NSDictionary *deserializedData = [self deserializeHttpData:errorData];
 
   NSString *requestId = httpHeaders[@"X-Dropbox-Request-Id"];
-  NSString *errorContent = deserializedData ? deserializedData[@"error_summary"]
-                                            : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  NSString *errorContent;
+  if (deserializedData) {
+    if (deserializedData[@"error_summary"]) {
+      errorContent = deserializedData[@"error_summary"];
+    } else if (deserializedData[@"error"]) {
+      errorContent = deserializedData[@"error"];
+    } else {
+      errorContent = errorData ? [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding] : nil;
+    }
+  } else {
+    errorContent = errorData ? [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding] : nil;
+  }
 
   if (statusCode >= 500 && statusCode < 600) {
     dbxError = [[DBError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
@@ -51,10 +65,8 @@
                                         errorContent:errorContent
                             structuredRateLimitError:rateLimitError
                                              backoff:@(retryAfterSeconds)];
-  } else if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
+  } else if ([self statusCodeIsRouteError:statusCode]) {
     dbxError = [[DBError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
-  } else if (!response) {
-    dbxError = [[DBError alloc] initAsOSError:errorContent];
   } else {
     dbxError = [[DBError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
   }
@@ -63,16 +75,19 @@
 }
 
 - (id)routeErrorWithData:(NSData *)data statusCode:(int)statusCode {
-  id routeError = nil;
+  if (!data) {
+    return nil;
+  }
+  id routeError;
   NSDictionary *deserializedData = [self deserializeHttpData:data];
-  if (statusCode == 403 || statusCode == 404 || statusCode == 409) {
+  if ([self statusCodeIsRouteError:statusCode]) {
     routeError = [_route.errorType deserialize:deserializedData[@"error"]];
   }
   return routeError;
 }
 
 - (NSDictionary *)deserializeHttpData:(NSData *)data {
-  NSError *error = nil;
+  NSError *error;
   return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 }
 
@@ -97,6 +112,10 @@
   }
 
   return nil;
+}
+
+- (BOOL)statusCodeIsRouteError:(int)statusCode {
+  return statusCode == 409;
 }
 
 @end
@@ -128,7 +147,7 @@
     DBError *dbxError =
         [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [self routeErrorWithData:data statusCode:statusCode];
+      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError);
     }
 
@@ -188,7 +207,7 @@
     DBError *dbxError =
         [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [self routeErrorWithData:data statusCode:statusCode];
+      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError);
     }
 
@@ -252,10 +271,10 @@
 
     if (!resultData) {
       // error data is in response body (downloaded to output tmp file)
-      NSData *errorData = [NSData dataWithContentsOfFile:[location path]];
+      NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       DBError *dbxError =
           [self getDBError:errorData response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
-      id routeError = [self routeErrorWithData:errorData statusCode:statusCode];
+      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, _destination);
     }
 
@@ -329,16 +348,18 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSData *data = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *resultData = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
 
-    DBError *dbxError =
-        [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
-    if (dbxError) {
-      id routeError = [self routeErrorWithData:data statusCode:statusCode];
+    if (!resultData) {
+      // error data is in response body (downloaded to output tmp file)
+      NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
+      DBError *dbxError =
+          [self getDBError:errorData response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, nil);
     }
 
-    id result = [self routeResultWithData:data];
+    id result = [self routeResultWithData:resultData];
     responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
   };
 
