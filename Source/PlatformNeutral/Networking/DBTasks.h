@@ -74,6 +74,8 @@
 ///
 /// Installs a response handler for the current request.
 ///
+/// @note: Any existing handlers are replaced by the supplied handler.
+///
 /// @param response The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
@@ -151,6 +153,8 @@
 
 ///
 /// Installs a response handler for the current request.
+///
+/// @note: Any existing handlers are replaced by the supplied handler.
 ///
 /// @param response The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
@@ -241,6 +245,8 @@
 ///
 /// Installs a response handler for the current request.
 ///
+/// @note: Any existing handlers are replaced by the supplied handler.
+///
 /// @param response The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
@@ -320,6 +326,8 @@
 
 ///
 /// Installs a response handler for the current request.
+///
+/// @note: Any existing handlers are replaced by the supplied handler.
 ///
 /// @param response The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second

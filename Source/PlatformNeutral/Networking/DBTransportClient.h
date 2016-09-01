@@ -36,11 +36,11 @@
 
 /// The delegate used to manage execution of all response / error code. By default, this
 /// is an instance of DBDelegate with the main thread queue as delegate queue.
-@property(nonatomic) DBDelegate * _Nonnull delegate;
+@property(nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
 /// A serial delegate queue used for executing blocks of code that touch state
 /// shared across threads (mainly the request handlers storage).
-@property(nonatomic) NSOperationQueue * _Nonnull delegateQueue;
+@property(nonatomic, readonly) NSOperationQueue * _Nonnull delegateQueue;
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload
 /// from NSData and NSInputStream, and download to NSData).
@@ -56,7 +56,7 @@
 /// An additional authentication header field used when a team app with
 /// the appropriate permissions "performs" user actions on behalf of
 /// a team member.
-@property(nonatomic, copy) NSString * _Nullable selectUser;
+@property(nonatomic, readonly, copy) NSString * _Nullable selectUser;
 
 #pragma mark - Constructors
 
@@ -121,7 +121,7 @@
 /// @param backgroundSessionId The background session identifier used to make background request
 /// calls. If no identifier is supplied, a default, timestamp-based identifier is used.
 /// @param delegateQueue The queue used by DBDelegate for safely executing response code. If
-/// nil, then DBTransportClient defaults to using the main queue.
+/// nil, then DBTransportClient defaults to using the main queue. This must be a serial queue.
 ///
 /// @return An initialized DBTransportClient instance.
 ///

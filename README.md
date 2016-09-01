@@ -283,7 +283,7 @@ or
 #import "DropboxSDKImports.h"
 
 // Initialize with manually retrieved auth token
-DropboxClient *client = [DropboxClient initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
+DropboxClient *client = [[DropboxClient alloc] initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
 ```
 
 ### Handle the API response

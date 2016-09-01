@@ -12,7 +12,6 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
 @interface DBDelegate ()
 
 @property(nonatomic) NSOperationQueue * _Nonnull delegateQueue;
-@property(nonatomic, copy) NSString * _Nonnull foregroundIdentifier;
 @property(nonatomic) NSMutableDictionary * _Nonnull responsesData;
 @property(nonatomic) NSMutableDictionary * _Nonnull rpcTasks;
 @property(nonatomic) NSMutableDictionary * _Nonnull uploadTasks;
@@ -62,7 +61,15 @@ static NSString const * const kResponseHandlerKey = @"responseHandler";
   NSString *sessionId = [self getSessionId:session];
   NSNumber *taskId = [NSNumber numberWithUnsignedInteger:task.taskIdentifier];
   if (error && [task isKindOfClass:[NSURLSessionDownloadTask class]]) {
+    NSMutableData *responseData = _responsesData[sessionId][taskId];
+
+    void (^responseHandler)(NSURL *, NSURLResponse *, NSError *) =
+    _downloadTasks[sessionId][taskId][kResponseHandlerKey];
+    if (responseHandler) {
+      responseHandler(responseData, task.response, error);
+    }
     [_downloadTasks[sessionId] removeObjectForKey:taskId];
+    [_responsesData[sessionId] removeObjectForKey:taskId];
   } else if ([task isKindOfClass:[NSURLSessionUploadTask class]]) {
     NSMutableData *responseData = _responsesData[sessionId][taskId];
 

@@ -248,12 +248,14 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSData *data = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *resultData = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
 
-    DBError *dbxError =
-        [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
-    if (dbxError) {
-      id routeError = [self routeErrorWithData:data statusCode:statusCode];
+    if (!resultData) {
+      // error data is in response body (downloaded to output tmp file)
+      NSData *errorData = [NSData dataWithContentsOfFile:[location path]];
+      DBError *dbxError =
+          [self getDBError:errorData response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
+      id routeError = [self routeErrorWithData:errorData statusCode:statusCode];
       return responseBlock(nil, routeError, dbxError, _destination);
     }
 
@@ -275,7 +277,7 @@
       [fileManager moveItemAtPath:[location path] toPath:path error:&fileMoveError];
     }
 
-    id result = [self routeResultWithData:data];
+    id result = [self routeResultWithData:resultData];
     responseBlock(result, nil, nil, _destination);
   };
 

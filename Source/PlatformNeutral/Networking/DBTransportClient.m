@@ -23,6 +23,8 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
 
 @implementation DBTransportClient
 
+@synthesize backgroundSession = _backgroundSession;
+
 #pragma mark - Constructors
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
@@ -61,6 +63,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
                       delegateQueue:(NSOperationQueue *)delegateQueue {
   self = [super init];
   if (self) {
+    _delegateQueue = delegateQueue;
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
     _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                              delegate:_delegate
@@ -346,7 +349,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
   }
 }
 
-- (void)backgroundSession:(NSURLSession *)backgroundSession {
+- (void)setBackgroundSession:(NSURLSession *)backgroundSession {
   @synchronized(self) {
     _backgroundSession = backgroundSession;
   }
