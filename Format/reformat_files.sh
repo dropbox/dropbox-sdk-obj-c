@@ -2,7 +2,7 @@
 #
 # Run the following command to retrieve all filenames
 #
-# `find ../Source/PlatformNeutral/ApiObjects ../Source/PlatformNeutral/Client ../Source/PlatformNeutral/Routes -name "*.[mh]" > list_files_reform.txt`
+# `find ../Source/PlatformNeutral/ApiObjects ../Source/PlatformNeutral/Client ../Source/PlatformNeutral/Routes -name "*.[mh]" > list_files_reformat.txt`
 #
 # and then:
 #
@@ -17,10 +17,14 @@ files=$(cat $1)
 
 for item in $files ; do
 
-  cp $item $item.tmp
-  clang\-format $item.tmp > $item
-  rm $item.tmp
-  sed -i -e 's/*_Nonnull/* _Nonnull/g' $item
-  sed -i -e 's/*_Nullable/* _Nullable/g' $item
-
+    cp $item $item.tmp
+    
+    clang\-format $item.tmp > $item
+    
+    sed -i -e 's/*_Nonnull/* _Nonnull/g' $item
+    sed -i -e 's/*_Nullable/* _Nullable/g' $item
+    
+    rm $item.tmp
 done
+
+find ../ -type f -name '*-e' -delete

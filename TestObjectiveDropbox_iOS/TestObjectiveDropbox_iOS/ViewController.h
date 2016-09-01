@@ -8,9 +8,9 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ApiAppPermissionType) {
-    FullDropbox,
-    TeamMemberFileAccess,
-    TeamMemberManagement,
+  FullDropbox,
+  TeamMemberFileAccess,
+  TeamMemberManagement,
 };
 
 /// Toggle this variable depending on which set of tests you are running.
