@@ -191,7 +191,9 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 ```objective-c
 #import "DropboxSDKImports.h"
 
-- (void)viewDidLoad {
+// By default, view controller executes before app delegate, so you should trigger the auth flow
+// manually, via a button or the like.
+- (void)myButtonPressed {
     [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
                                         controller:self
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
@@ -236,6 +238,15 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 ```objective-c
 #import "DropboxSDKImports.h"
 
+// generic launch handler
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+  [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
+                                                     andSelector:@selector(handleAppleEvent:withReplyEvent:)
+                                                   forEventClass:kInternetEventClass
+                                                      andEventID:kAEGetURL];
+}
+
+// custom handler
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
     NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
