@@ -237,6 +237,7 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 #import "DropboxSDKImports.h"
 
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
+    NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
     if (authResult != nil) {
         if ([authResult isSuccess]) {
@@ -383,7 +384,7 @@ If at run time you attempt to access a union instance field that is not associat
     if (result) {
         NSLog(@"%@\n", result);
     } else {
-        // Error is with the route specifically (status code 403, 404, 409)
+        // Error is with the route specifically (status code 409)
         if (routeError) {
             if ([routeError isPathLookup]) {
                 // Can safely access this field
