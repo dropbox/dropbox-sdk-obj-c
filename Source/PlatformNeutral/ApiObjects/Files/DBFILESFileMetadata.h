@@ -42,7 +42,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull size;
+@property(nonatomic, readonly) NSNumber * _Nonnull size;
 
 /// Additional information if the file is a photo or video.
 @property(nonatomic, readonly) DBFILESMediaInfo * _Nullable mediaInfo;
@@ -57,7 +57,7 @@
 /// getMetadata. If this  flag is present, it will be true if this file has any explicit shared
 /// members. This is different from sharing_info in that this could be true  in the case where a
 /// file has explicit members but is not contained within  a shared folder.
-@property(nonatomic, readonly, copy) NSNumber * _Nullable hasExplicitSharedMembers;
+@property(nonatomic, readonly) NSNumber * _Nullable hasExplicitSharedMembers;
 
 #pragma mark - Constructors
 

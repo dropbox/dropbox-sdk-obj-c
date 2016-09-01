@@ -32,12 +32,12 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull memberSurname;
 
 /// External ID for member.
-@property(nonatomic, readonly, copy) NSString * _Nullable memberExternalId;
+@property(nonatomic, readonly) NSString * _Nullable memberExternalId;
 
 /// Whether to send a welcome email to the member. If send_welcome_email is false, no email
 /// invitation will be sent to the user. This may be useful for apps using single sign-on (SSO)
 /// flows for onboarding that want to handle announcements themselves.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull sendWelcomeEmail;
+@property(nonatomic, readonly) NSNumber * _Nonnull sendWelcomeEmail;
 
 /// (no description).
 @property(nonatomic, readonly) DBTEAMAdminTier * _Nonnull role;

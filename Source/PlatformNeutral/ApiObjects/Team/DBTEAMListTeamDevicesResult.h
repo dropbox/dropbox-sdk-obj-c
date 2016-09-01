@@ -27,10 +27,10 @@
 
 /// If true, then there are more devices available. Pass the cursor to devicesListTeamDevices to
 /// retrieve the rest.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
+@property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into devicesListTeamDevices to receive the next sub list of team's devices.
-@property(nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

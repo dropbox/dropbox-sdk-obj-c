@@ -26,11 +26,11 @@
 #pragma mark - Instance fields
 
 /// Set if the folder is contained by a shared folder.
-@property(nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
+@property(nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
 /// If this folder is a shared folder mount point, the ID of the shared folder mounted at this
 /// location.
-@property(nonatomic, readonly, copy) NSString * _Nullable sharedFolderId;
+@property(nonatomic, readonly) NSString * _Nullable sharedFolderId;
 
 #pragma mark - Constructors
 

@@ -31,10 +31,10 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGMemberAction *> * _Nullable actions;
 
 /// Whether to include members who only have access from a parent shared folder.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeInherited;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeInherited;
 
 /// Number of members to return max per query. Defaults to 100 if no limit is specified.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
 

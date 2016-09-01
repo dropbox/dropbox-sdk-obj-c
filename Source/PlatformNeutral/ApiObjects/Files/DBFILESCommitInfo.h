@@ -30,7 +30,7 @@
 
 /// If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file
 /// to avoid conflict.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull autorename;
+@property(nonatomic, readonly) NSNumber * _Nonnull autorename;
 
 /// The value to store as the clientModified timestamp. Dropbox automatically records the time at
 /// which the file was written to the Dropbox servers. It can also record an additional timestamp,
@@ -41,7 +41,7 @@
 /// Normally, users are made aware of any file modifications in their Dropbox account via
 /// notifications in the client software. If true, this tells the clients that this modification
 /// shouldn't result in a user notification.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull mute;
+@property(nonatomic, readonly) NSNumber * _Nonnull mute;
 
 #pragma mark - Constructors
 

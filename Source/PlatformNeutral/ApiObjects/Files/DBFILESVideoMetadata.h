@@ -27,7 +27,7 @@
 #pragma mark - Instance fields
 
 /// The duration of the video in milliseconds.
-@property(nonatomic, readonly, copy) NSNumber * _Nullable duration;
+@property(nonatomic, readonly) NSNumber * _Nullable duration;
 
 #pragma mark - Constructors
 

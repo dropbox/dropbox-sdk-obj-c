@@ -28,7 +28,7 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGMemberAction *> * _Nullable actions;
 
 /// The maximum number of results that include members, groups and invitees to return per request.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
 

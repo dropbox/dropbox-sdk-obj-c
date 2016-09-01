@@ -25,15 +25,15 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// If true, mediaInfo in FileMetadata is set for photo and video.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeMediaInfo;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeMediaInfo;
 
 /// If true, DeletedMetadata will be returned for deleted file or folder, otherwise notFound in
 /// LookupError will be returned.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeDeleted;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or not  that file has
 /// any explicit members.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
 #pragma mark - Constructors
 

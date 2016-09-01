@@ -28,7 +28,7 @@
 /// A timeout in seconds. The request will block for at most this length of time, plus up to 90
 /// seconds of random jitter added to avoid the thundering herd problem. Care should be taken when
 /// using this parameter, as some network infrastructure does not support long timeouts.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull timeout;
+@property(nonatomic, readonly) NSNumber * _Nonnull timeout;
 
 #pragma mark - Constructors
 

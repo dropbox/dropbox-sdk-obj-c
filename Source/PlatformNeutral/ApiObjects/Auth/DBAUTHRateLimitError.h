@@ -28,7 +28,7 @@
 @property(nonatomic, readonly) DBAUTHRateLimitReason * _Nonnull reason;
 
 /// The number of seconds that the app should wait before making another request.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull retryAfter;
+@property(nonatomic, readonly) NSNumber * _Nonnull retryAfter;
 
 #pragma mark - Constructors
 

@@ -30,10 +30,10 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGAddMember *> * _Nonnull members;
 
 /// Whether added members should be notified via email and device notifications of their invite.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull quiet;
+@property(nonatomic, readonly) NSNumber * _Nonnull quiet;
 
 /// Optional message to display to added members in their invitation.
-@property(nonatomic, readonly, copy) NSString * _Nullable customMessage;
+@property(nonatomic, readonly) NSString * _Nullable customMessage;
 
 #pragma mark - Constructors
 

@@ -29,7 +29,7 @@
 @property(nonatomic, readonly) DBSHARINGFolderAction * _Nonnull action;
 
 /// True if the user is allowed to take the action.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull allow;
+@property(nonatomic, readonly) NSNumber * _Nonnull allow;
 
 /// The reason why the user is denied the permission. Not present if the action is allowed, or if no
 /// reason is available.

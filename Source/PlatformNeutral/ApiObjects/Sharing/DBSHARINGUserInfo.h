@@ -28,10 +28,10 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull accountId;
 
 /// If the user is in the same team as current user.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull sameTeam;
+@property(nonatomic, readonly) NSNumber * _Nonnull sameTeam;
 
 /// The team member ID of the shared folder member. Only present if sameTeam is true.
-@property(nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
+@property(nonatomic, readonly) NSString * _Nullable teamMemberId;
 
 #pragma mark - Constructors
 

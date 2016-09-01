@@ -27,7 +27,7 @@
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull files;
 
 /// Number of members to return max per query. Defaults to 10 if no limit is specified.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
 

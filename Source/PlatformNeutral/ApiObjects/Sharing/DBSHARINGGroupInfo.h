@@ -31,10 +31,10 @@
 @property(nonatomic, readonly) DBTEAMCOMMONGroupType * _Nonnull groupType;
 
 /// If the current user is an owner of the group.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull isOwner;
+@property(nonatomic, readonly) NSNumber * _Nonnull isOwner;
 
 /// If the group is owned by the current user's team.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull sameTeam;
+@property(nonatomic, readonly) NSNumber * _Nonnull sameTeam;
 
 #pragma mark - Constructors
 

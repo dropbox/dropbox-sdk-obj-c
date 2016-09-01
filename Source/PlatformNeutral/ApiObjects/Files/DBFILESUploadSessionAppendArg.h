@@ -27,7 +27,7 @@
 
 /// If true, the current session will be closed, at which point you won't be able to call
 /// uploadSessionAppendV2 anymore with the current session.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull close;
+@property(nonatomic, readonly) NSNumber * _Nonnull close;
 
 #pragma mark - Constructors
 

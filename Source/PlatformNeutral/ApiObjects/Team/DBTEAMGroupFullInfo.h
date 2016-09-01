@@ -30,7 +30,7 @@
 @property(nonatomic, readonly) NSArray<DBTEAMGroupMemberInfo *> * _Nullable members;
 
 /// The group creation time as a UTC timestamp in milliseconds since the Unix epoch.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull created;
+@property(nonatomic, readonly) NSNumber * _Nonnull created;
 
 #pragma mark - Constructors
 

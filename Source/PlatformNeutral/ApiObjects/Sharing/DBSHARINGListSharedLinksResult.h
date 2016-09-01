@@ -27,11 +27,11 @@
 
 /// Is true if there are additional shared links that have not been returned yet. Pass the cursor
 /// into listSharedLinks to retrieve them.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
+@property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into listSharedLinks to obtain the additional links. Cursor is returned only if
 /// no path is given or the path is empty.
-@property(nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

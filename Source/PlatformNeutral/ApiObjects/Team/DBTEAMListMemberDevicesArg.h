@@ -25,13 +25,13 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Whether to list web sessions of the team's member
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeWebSessions;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeWebSessions;
 
 /// Whether to list linked desktop devices of the team's member
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeDesktopClients;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeDesktopClients;
 
 /// Whether to list linked mobile devices of the team's member
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeMobileClients;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeMobileClients;
 
 #pragma mark - Constructors
 

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetSharedLinksErrorTag) {
 
 /// (no description). Ensure the isPath method returns true before accessing, otherwise a runtime
 /// exception will be raised.
-@property(nonatomic, readonly, copy) NSString * _Nullable path;
+@property(nonatomic, readonly) NSString * _Nullable path;
 
 #pragma mark - Constructors
 

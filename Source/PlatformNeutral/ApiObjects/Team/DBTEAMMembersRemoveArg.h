@@ -32,7 +32,7 @@
 
 /// Downgrade the member to a Basic account. The user will retain the email address associated with
 /// their Dropbox  account and data in their account that is not restricted to team members.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull keepAccount;
+@property(nonatomic, readonly) NSNumber * _Nonnull keepAccount;
 
 #pragma mark - Constructors
 

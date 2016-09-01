@@ -26,18 +26,18 @@
 
 /// If true, the list folder operation will be applied recursively to all subfolders and the
 /// response will contain contents of all subfolders.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull recursive;
+@property(nonatomic, readonly) NSNumber * _Nonnull recursive;
 
 /// If true, mediaInfo in FileMetadata is set for photo and video.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeMediaInfo;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeMediaInfo;
 
 /// If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeDeleted;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or not  that file has
 /// any explicit members.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeHasExplicitSharedMembers;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
 #pragma mark - Constructors
 

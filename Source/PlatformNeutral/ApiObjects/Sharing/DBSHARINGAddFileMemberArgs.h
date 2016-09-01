@@ -33,16 +33,16 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGMemberSelector *> * _Nonnull members;
 
 /// Message to send to added members in their invitation.
-@property(nonatomic, readonly, copy) NSString * _Nullable customMessage;
+@property(nonatomic, readonly) NSString * _Nullable customMessage;
 
 /// Whether added members should be notified via device notifications of their invitation.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull quiet;
+@property(nonatomic, readonly) NSNumber * _Nonnull quiet;
 
 /// AccessLevel union object, describing what access level we want to give new members.
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessLevel;
 
 /// If the custom message should be added as a comment on the file.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull addMessageAsComment;
+@property(nonatomic, readonly) NSNumber * _Nonnull addMessageAsComment;
 
 #pragma mark - Constructors
 

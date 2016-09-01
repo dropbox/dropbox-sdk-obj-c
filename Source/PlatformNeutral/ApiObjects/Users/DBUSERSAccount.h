@@ -36,13 +36,13 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Whether the user has verified their e-mail address.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull emailVerified;
+@property(nonatomic, readonly) NSNumber * _Nonnull emailVerified;
 
 /// URL for the photo representing the user, if one is set.
-@property(nonatomic, readonly, copy) NSString * _Nullable profilePhotoUrl;
+@property(nonatomic, readonly) NSString * _Nullable profilePhotoUrl;
 
 /// Whether the user has been disabled.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull disabled;
+@property(nonatomic, readonly) NSNumber * _Nonnull disabled;
 
 #pragma mark - Constructors
 

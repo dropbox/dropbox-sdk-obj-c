@@ -22,7 +22,7 @@
 #pragma mark - Instance fields
 
 /// Number of results to return per call.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
 

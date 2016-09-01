@@ -30,16 +30,16 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull appName;
 
 /// The application publisher name
-@property(nonatomic, readonly, copy) NSString * _Nullable publisher;
+@property(nonatomic, readonly) NSString * _Nullable publisher;
 
 /// The publisher's URL
-@property(nonatomic, readonly, copy) NSString * _Nullable publisherUrl;
+@property(nonatomic, readonly) NSString * _Nullable publisherUrl;
 
 /// The time this application was linked
 @property(nonatomic, readonly) NSDate * _Nullable linked;
 
 /// Whether the linked application uses a dedicated folder
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull isAppFolder;
+@property(nonatomic, readonly) NSNumber * _Nonnull isAppFolder;
 
 #pragma mark - Constructors
 

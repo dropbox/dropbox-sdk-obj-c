@@ -24,16 +24,16 @@
 /// At the first call to the devicesListMembersDevices the cursor shouldn't be passed. Then, if the
 /// result of the call includes a cursor, the following requests should include the received cursors
 /// in order to receive the next sub list of team devices
-@property(nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property(nonatomic, readonly) NSString * _Nullable cursor;
 
 /// Whether to list web sessions of the team members
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeWebSessions;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeWebSessions;
 
 /// Whether to list desktop clients of the team members
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeDesktopClients;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeDesktopClients;
 
 /// Whether to list mobile clients of the team members
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeMobileClients;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeMobileClients;
 
 #pragma mark - Constructors
 

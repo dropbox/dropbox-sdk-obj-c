@@ -23,10 +23,10 @@
 
 /// Indicates whether new changes are available. If true, call listFolderContinue to retrieve the
 /// changes.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull changes;
+@property(nonatomic, readonly) NSNumber * _Nonnull changes;
 
 /// If present, backoff for at least this many seconds before calling listFolderLongpoll again.
-@property(nonatomic, readonly, copy) NSNumber * _Nullable backoff;
+@property(nonatomic, readonly) NSNumber * _Nullable backoff;
 
 #pragma mark - Constructors
 

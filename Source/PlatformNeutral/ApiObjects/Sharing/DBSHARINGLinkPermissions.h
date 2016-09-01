@@ -36,7 +36,7 @@
 @property(nonatomic, readonly) DBSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
 /// Whether the caller can revoke the shared link
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull canRevoke;
+@property(nonatomic, readonly) NSNumber * _Nonnull canRevoke;
 
 /// The failure reason for revoking the link. This field will only be present if the canRevoke is
 /// false.

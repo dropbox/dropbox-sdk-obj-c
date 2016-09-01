@@ -25,7 +25,7 @@
 #pragma mark - Instance fields
 
 /// Number of files to return max per query. Defaults to 100 if no limit is specified.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 /// File actions to query.
 @property(nonatomic, readonly) NSArray<DBSHARINGFileAction *> * _Nullable actions;

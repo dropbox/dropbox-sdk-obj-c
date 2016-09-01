@@ -29,11 +29,11 @@
 
 /// If true, then there are more apps available. Pass the cursor to linkedAppsListMembersLinkedApps
 /// to retrieve the rest.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull hasMore;
+@property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into linkedAppsListMembersLinkedApps to receive the next sub list of team's
 /// applications.
-@property(nonatomic, readonly, copy) NSString * _Nullable cursor;
+@property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

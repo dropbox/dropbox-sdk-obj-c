@@ -28,7 +28,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
 /// Whether to keep the application dedicated folder (in case the application uses  one)
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull keepAppFolder;
+@property(nonatomic, readonly) NSNumber * _Nonnull keepAppFolder;
 
 #pragma mark - Constructors
 

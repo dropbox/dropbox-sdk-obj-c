@@ -25,7 +25,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// The maximum number of revision entries returned.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
 

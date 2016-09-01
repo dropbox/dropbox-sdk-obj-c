@@ -29,7 +29,7 @@
 @property(nonatomic, readonly) DBSHARINGSharedLinkSettings * _Nonnull settings;
 
 /// If set to true, removes the expiration of the shared link.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull removeExpiration;
+@property(nonatomic, readonly) NSNumber * _Nonnull removeExpiration;
 
 #pragma mark - Constructors
 

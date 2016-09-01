@@ -27,11 +27,11 @@
 
 /// Whether this user is a teammate of the current user. If this account is the current user's
 /// account, then this will be true.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull isTeammate;
+@property(nonatomic, readonly) NSNumber * _Nonnull isTeammate;
 
 /// The user's unique team member id. This field will only be present if the user is part of a team
 /// and isTeammate is true.
-@property(nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
+@property(nonatomic, readonly) NSString * _Nullable teamMemberId;
 
 #pragma mark - Constructors
 

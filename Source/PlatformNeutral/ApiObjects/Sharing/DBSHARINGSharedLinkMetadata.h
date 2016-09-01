@@ -30,7 +30,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull url;
 
 /// A unique identifier for the linked file.
-@property(nonatomic, readonly, copy) NSString * _Nullable id_;
+@property(nonatomic, readonly) NSString * _Nullable id_;
 
 /// The linked file name (including extension). This never contains a slash.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;
@@ -40,7 +40,7 @@
 
 /// The lowercased full path in the user's Dropbox. This always starts with a slash. This field will
 /// only be present only if the linked file is in the authenticated user's  dropbox.
-@property(nonatomic, readonly, copy) NSString * _Nullable pathLower;
+@property(nonatomic, readonly) NSString * _Nullable pathLower;
 
 /// The link's access permissions.
 @property(nonatomic, readonly) DBSHARINGLinkPermissions * _Nonnull linkPermissions;

@@ -22,10 +22,10 @@
 #pragma mark - Instance fields
 
 /// Number of results to return per call.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 /// Whether to return removed members.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull includeRemoved;
+@property(nonatomic, readonly) NSNumber * _Nonnull includeRemoved;
 
 #pragma mark - Constructors
 

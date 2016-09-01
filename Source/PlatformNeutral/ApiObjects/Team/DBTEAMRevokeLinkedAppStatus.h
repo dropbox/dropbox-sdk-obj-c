@@ -23,7 +23,7 @@
 #pragma mark - Instance fields
 
 /// Result of the revoking request
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull success;
+@property(nonatomic, readonly) NSNumber * _Nonnull success;
 
 /// The error cause in case of a failure
 @property(nonatomic, readonly) DBTEAMRevokeLinkedAppError * _Nullable errorType;

@@ -23,7 +23,7 @@
 #pragma mark - Instance fields
 
 /// The maximum number of results to return per request.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull limit;
+@property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 /// This is a list indicating whether each returned folder data entry will include a boolean field
 /// allow in FolderPermission that describes whether the current user can perform the `FolderAction`

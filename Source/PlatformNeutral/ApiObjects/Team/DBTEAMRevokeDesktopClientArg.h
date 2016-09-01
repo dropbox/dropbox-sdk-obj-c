@@ -24,7 +24,7 @@
 
 /// Whether to delete all files of the account (this is possible only if supported by the desktop
 /// client and  will be made the next time the client access the account)
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull deleteOnUnlink;
+@property(nonatomic, readonly) NSNumber * _Nonnull deleteOnUnlink;
 
 #pragma mark - Constructors
 

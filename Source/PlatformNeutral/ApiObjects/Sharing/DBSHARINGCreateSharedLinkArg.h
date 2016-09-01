@@ -26,7 +26,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Whether to return a shortened URL.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull shortUrl;
+@property(nonatomic, readonly) NSNumber * _Nonnull shortUrl;
 
 /// If it's okay to share a path that does not yet exist, set this to either file in
 /// PendingUploadMode or folder in PendingUploadMode to indicate whether to assume it's a file or

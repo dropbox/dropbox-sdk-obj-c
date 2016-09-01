@@ -38,7 +38,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull platform;
 
 /// Whether it's possible to delete all of the account files upon unlinking
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull isDeleteOnUnlinkSupported;
+@property(nonatomic, readonly) NSNumber * _Nonnull isDeleteOnUnlinkSupported;
 
 #pragma mark - Constructors
 

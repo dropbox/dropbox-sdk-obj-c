@@ -31,10 +31,10 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull query;
 
 /// The starting index within the search results (used for paging).
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull start;
+@property(nonatomic, readonly) NSNumber * _Nonnull start;
 
 /// The maximum number of search results to return.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull maxResults;
+@property(nonatomic, readonly) NSNumber * _Nonnull maxResults;
 
 /// The search mode (filename, filename_and_content, or deleted_filename). Note that searching file
 /// content is only available for Dropbox Business accounts.

@@ -31,16 +31,16 @@
 
 /// External ID that a team can attach to the user. An application using the API may find it easier
 /// to use their own IDs instead of Dropbox IDs like account_id or team_member_id.
-@property(nonatomic, readonly, copy) NSString * _Nullable externalId;
+@property(nonatomic, readonly) NSString * _Nullable externalId;
 
 /// A user's account identifier.
-@property(nonatomic, readonly, copy) NSString * _Nullable accountId;
+@property(nonatomic, readonly) NSString * _Nullable accountId;
 
 /// Email address of user.
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Is true if the user's email is verified to be owned by the user.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull emailVerified;
+@property(nonatomic, readonly) NSNumber * _Nonnull emailVerified;
 
 /// The user's status as a member of a specific team.
 @property(nonatomic, readonly) DBTEAMTeamMemberStatus * _Nonnull status;

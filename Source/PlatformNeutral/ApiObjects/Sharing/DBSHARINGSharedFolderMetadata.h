@@ -29,7 +29,7 @@
 #pragma mark - Instance fields
 
 /// The lower-cased full path of this shared folder. Absent for unmounted folders.
-@property(nonatomic, readonly, copy) NSString * _Nullable pathLower;
+@property(nonatomic, readonly) NSString * _Nullable pathLower;
 
 /// The name of the this shared folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;

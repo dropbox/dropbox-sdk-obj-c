@@ -30,16 +30,16 @@
 @property(nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
 
 /// New email for member.
-@property(nonatomic, readonly, copy) NSString * _Nullable dNewEmail;
+@property(nonatomic, readonly) NSString * _Nullable dNewEmail;
 
 /// New external ID for member.
-@property(nonatomic, readonly, copy) NSString * _Nullable dNewExternalId;
+@property(nonatomic, readonly) NSString * _Nullable dNewExternalId;
 
 /// New given name for member.
-@property(nonatomic, readonly, copy) NSString * _Nullable dNewGivenName;
+@property(nonatomic, readonly) NSString * _Nullable dNewGivenName;
 
 /// New surname for member.
-@property(nonatomic, readonly, copy) NSString * _Nullable dNewSurname;
+@property(nonatomic, readonly) NSString * _Nullable dNewSurname;
 
 #pragma mark - Constructors
 

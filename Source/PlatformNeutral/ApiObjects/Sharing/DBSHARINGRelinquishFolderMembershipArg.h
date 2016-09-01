@@ -25,7 +25,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
 /// Keep a copy of the folder's contents upon relinquishing membership.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
+@property(nonatomic, readonly) NSNumber * _Nonnull leaveACopy;
 
 #pragma mark - Constructors
 

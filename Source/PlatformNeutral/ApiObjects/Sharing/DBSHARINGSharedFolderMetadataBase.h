@@ -30,7 +30,7 @@
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessType;
 
 /// Whether this folder is a team folder https://www.dropbox.com/en/help/986.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull isTeamFolder;
+@property(nonatomic, readonly) NSNumber * _Nonnull isTeamFolder;
 
 /// Policies governing this shared folder.
 @property(nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
@@ -40,7 +40,7 @@
 
 /// The ID of the parent shared folder. This field is present only if the folder is contained within
 /// another shared folder.
-@property(nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
+@property(nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
 #pragma mark - Constructors
 

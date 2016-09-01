@@ -38,7 +38,7 @@
 @property(nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
 /// Whether to force the share to happen asynchronously.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
+@property(nonatomic, readonly) NSNumber * _Nonnull forceAsync;
 
 #pragma mark - Constructors
 

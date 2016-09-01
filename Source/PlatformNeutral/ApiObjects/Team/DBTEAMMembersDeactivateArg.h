@@ -29,7 +29,7 @@
 @property(nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
 
 /// If provided, controls if the user's data will be deleted on their linked devices.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull wipeData;
+@property(nonatomic, readonly) NSNumber * _Nonnull wipeData;
 
 #pragma mark - Constructors
 

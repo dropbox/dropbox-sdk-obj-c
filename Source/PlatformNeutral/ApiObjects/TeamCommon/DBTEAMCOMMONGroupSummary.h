@@ -31,10 +31,10 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull groupId;
 
 /// External ID of group. This is an arbitrary ID that an admin can attach to a group.
-@property(nonatomic, readonly, copy) NSString * _Nullable groupExternalId;
+@property(nonatomic, readonly) NSString * _Nullable groupExternalId;
 
 /// The number of members in the group.
-@property(nonatomic, readonly, copy) NSNumber * _Nullable memberCount;
+@property(nonatomic, readonly) NSNumber * _Nullable memberCount;
 
 /// Who is allowed to manage the group.
 @property(nonatomic, readonly) DBTEAMCOMMONGroupManagementType * _Nonnull groupManagementType;

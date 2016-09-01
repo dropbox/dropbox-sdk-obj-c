@@ -30,7 +30,7 @@
 
 /// Whether to return the list of members in the group.  Note that the default value will cause all
 /// the group members  to be returned in the response. This may take a long time for large groups.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull returnMembers;
+@property(nonatomic, readonly) NSNumber * _Nonnull returnMembers;
 
 #pragma mark - Constructors
 

@@ -41,7 +41,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull size;
+@property(nonatomic, readonly) NSNumber * _Nonnull size;
 
 #pragma mark - Constructors
 

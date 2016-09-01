@@ -26,7 +26,7 @@
 @property(nonatomic, readonly) NSArray<DBTEAMMemberAddArg *> * _Nonnull dNewMembers;
 
 /// Whether to force the add to happen asynchronously.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull forceAsync;
+@property(nonatomic, readonly) NSNumber * _Nonnull forceAsync;
 
 #pragma mark - Constructors
 

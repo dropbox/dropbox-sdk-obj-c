@@ -27,7 +27,7 @@
 /// If true, members of this shared folder will get a copy of this folder after it's unshared.
 /// Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always
 /// retain their copy.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull leaveACopy;
+@property(nonatomic, readonly) NSNumber * _Nonnull leaveACopy;
 
 #pragma mark - Constructors
 
