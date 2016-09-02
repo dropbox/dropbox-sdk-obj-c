@@ -2,6 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBHandlerTypes.h"
+#import <Foundation/Foundation.h>
+
 @class DBRpcData;
 @class DBUploadData;
 @class DBDownloadData;
@@ -13,6 +16,12 @@
 /// By default, this delegate is instantiated in the constructor of the
 /// DBTransportClient class, and uses the main delegate queue, so all handler
 /// code will be executed serially and on the main thread.
+///
+/// Progress and response handlers can be added after the request is initiated.
+/// If a handler does not exist at the time the network response is received,
+/// progress data and/or response data will be saved until a handler is queued up
+/// to the corresponding task ID. This gives the client the flexibility to install
+/// handlers when convenient.
 ///
 @interface DBDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
@@ -28,6 +37,20 @@
 ///
 - (nonnull instancetype)initWithQueue:(NSOperationQueue * _Nonnull)delegateQueue;
 
+///
+/// Enqueues a handler to be executed periodically to retrieve information on the progress of
+/// the supplied NSURLSessionTask task for the corresponding Upload-style request.
+///
+/// @param task The NSURLSessionTask task associated with the API request.
+/// @param session The NSURLSession session associated with the API request.
+/// @param progress The progress block to be executed in the event of a request update.
+/// The first argument is the number of bytes downloaded. The second argument is the number of total
+/// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
+///
+- (void)addProgressHandler:(NSURLSessionTask * _Nonnull)task
+                   session:(NSURLSession * _Nonnull)session
+           progressHandler:(DBProgressBlock _Nonnull)handler;
+
 #pragma mark - Add RPC-style handlers
 
 ///
@@ -41,22 +64,7 @@
 ///
 - (void)addRpcResponseHandler:(NSURLSessionTask * _Nonnull)task
                       session:(NSURLSession * _Nonnull)session
-              responseHandler:
-                  (void (^_Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
-
-///
-/// Enqueues a handler to be executed periodically to retrieve information on the progress of
-/// the supplied NSURLSessionTask task for the corresponding RPC-style request.
-///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
-/// @param progress The progress block to be executed in the event of a request update.
-/// The first argument is the number of bytes sent. The second argument is the number of total
-/// bytes sent. And the third argument is the number of total bytes expected to be sent.
-///
-- (void)addRpcProgressHandler:(NSURLSessionTask * _Nonnull)task
-                      session:(NSURLSession * _Nonnull)session
-              progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
+              responseHandler:(DBRpcResponseBlock _Nonnull)handler;
 
 #pragma mark - Add Upload-style handlers
 
@@ -71,22 +79,7 @@
 ///
 - (void)addUploadResponseHandler:(NSURLSessionTask * _Nonnull)task
                          session:(NSURLSession * _Nonnull)session
-                 responseHandler:
-                     (void (^_Nonnull)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
-
-///
-/// Enqueues a handler to be executed periodically to retrieve information on the progress of
-/// the supplied NSURLSessionTask task for the corresponding Upload-style request.
-///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
-/// @param progress The progress block to be executed in the event of a request update.
-/// The first argument is the number of bytes uploaded. The second argument is the number of total
-/// bytes uploaded. And the third argument is the number of total bytes expected to be uploaded.
-///
-- (void)addUploadProgressHandler:(NSURLSessionTask * _Nonnull)task
-                         session:(NSURLSession * _Nonnull)session
-                 progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
+                 responseHandler:(DBUploadResponseBlock _Nonnull)handler;
 
 #pragma mark - Add Download-style handlers
 
@@ -101,21 +94,6 @@
 ///
 - (void)addDownloadResponseHandler:(NSURLSessionTask * _Nonnull)task
                            session:(NSURLSession * _Nonnull)session
-                   responseHandler:
-                       (void (^_Nonnull)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))handler;
-
-///
-/// Enqueues a handler to be executed periodically to retrieve information on the progress of
-/// the supplied NSURLSessionTask task for the corresponding Upload-style request.
-///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
-/// @param progress The progress block to be executed in the event of a request update.
-/// The first argument is the number of bytes downloaded. The second argument is the number of total
-/// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
-///
-- (void)addDownloadProgressHandler:(NSURLSessionTask * _Nonnull)task
-                           session:(NSURLSession * _Nonnull)session
-                   progressHandler:(void (^_Nonnull)(int64_t, int64_t, int64_t))handler;
+                   responseHandler:(DBDownloadResponseBlock _Nonnull)handler;
 
 @end

@@ -424,8 +424,8 @@ getFolderMetadata:(NSString * _Nonnull)sharedFolderId
 /// @return Through the response callback, the caller will receive a DBSHARINGSharedLinkMetadata object on success or a
 /// DBSHARINGGetSharedLinkFileError object on failure.
 ///
-- (DBDownloadURLTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileURL:(NSString * _Nonnull)url
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
+getSharedLinkFileUrl:(NSString * _Nonnull)url
            overwrite:(BOOL)overwrite
          destination:(NSURL * _Nonnull)destination;
 
@@ -444,8 +444,8 @@ getSharedLinkFileURL:(NSString * _Nonnull)url
 /// @return Through the response callback, the caller will receive a DBSHARINGSharedLinkMetadata object on success or a
 /// DBSHARINGGetSharedLinkFileError object on failure.
 ///
-- (DBDownloadURLTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
-getSharedLinkFileURL:(NSString * _Nonnull)url
+- (DBDownloadUrlTask<DBSHARINGSharedLinkMetadata *, DBSHARINGGetSharedLinkFileError *> * _Nonnull)
+getSharedLinkFileUrl:(NSString * _Nonnull)url
                 path:(NSString * _Nullable)path
         linkPassword:(NSString * _Nullable)linkPassword
            overwrite:(BOOL)overwrite

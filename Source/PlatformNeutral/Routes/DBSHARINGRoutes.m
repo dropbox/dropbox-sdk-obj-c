@@ -150,13 +150,13 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBDownloadURLTask *)getSharedLinkFileURL:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination {
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url overwrite:(BOOL)overwrite destination:(NSURL *)destination {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinkFile;
   DBSHARINGGetSharedLinkMetadataArg *arg = [[DBSHARINGGetSharedLinkMetadataArg alloc] initWithUrl:url];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
-- (DBDownloadURLTask *)getSharedLinkFileURL:(NSString *)url
+- (DBDownloadUrlTask *)getSharedLinkFileUrl:(NSString *)url
                                        path:(NSString *)path
                                linkPassword:(NSString *)linkPassword
                                   overwrite:(BOOL)overwrite

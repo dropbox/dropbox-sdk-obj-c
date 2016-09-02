@@ -10,9 +10,9 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString const * const kVersion = @"1.0.0";
-static NSString const * const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
-static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
+static NSString const *const kVersion = @"1.0.0";
+static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
+static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 @interface DBTransportClient ()
 
@@ -115,7 +115,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
 
 #pragma mark - Upload-style request (NSURL)
 
-- (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputURL:(NSURL *)input {
+- (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputUrl:(NSURL *)input {
   NSURL *requestUrl = [self urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
   NSDictionary *headers =
@@ -167,7 +167,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
 
 #pragma mark - Download-style request (NSURL)
 
-- (DBDownloadURLTask *)requestDownload:(DBRoute *)route
+- (DBDownloadUrlTask *)requestDownload:(DBRoute *)route
                                    arg:(id<DBSerializable>)arg
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination {
@@ -179,7 +179,7 @@ static NSString const * const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_o
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
   NSURLSessionDownloadTask *task = [_backgroundSession downloadTaskWithRequest:request];
-  DBDownloadURLTask *downloadTask = [[DBDownloadURLTask alloc] initWithTask:task
+  DBDownloadUrlTask *downloadTask = [[DBDownloadUrlTask alloc] initWithTask:task
                                                                     session:_backgroundSession
                                                                    delegate:_delegate
                                                                       route:route

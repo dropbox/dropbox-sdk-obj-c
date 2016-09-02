@@ -429,7 +429,7 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
         if (routeError) {
             // see handling above
         } 
-        // Error not specific to the route (status code > 500, 400, 401, 429)
+        // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
         else {
             if ([error isInternalServerError]) {
                 DBRequestInternalServerError *internalServerError = [error asInternalServerError];

@@ -7,7 +7,7 @@
 
 @class DBDelegate;
 @class DBDownloadDataTask;
-@class DBDownloadURLTask;
+@class DBDownloadUrlTask;
 @class DBError;
 @class DBRoute;
 @class DBRpcTask;
@@ -156,7 +156,7 @@
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the DBSerializable
 /// protocol.
-/// @param inputURL The location of the file to upload. NSURLSession supports background uploads
+/// @param inputUrl The location of the file to upload. NSURLSession supports background uploads
 /// for this input type, so by default, all requests of this type will be made in the background.
 ///
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
@@ -164,7 +164,7 @@
 ///
 - (DBUploadTask * _Nonnull)requestUpload:(DBRoute * _Nonnull)route
                                     arg:(id<DBSerializable> _Nullable)arg
-                               inputURL:(NSURL * _Nonnull)input;
+                               inputUrl:(NSURL * _Nonnull)input;
 
 #pragma mark - Upload-style request (NSData)
 
@@ -175,7 +175,7 @@
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the DBSerializable
 /// protocol.
-/// @param inputURL The location of the file to upload. NSURLSession does not support background
+/// @param inputUrl The location of the file to upload. NSURLSession does not support background
 /// uploads for this input type, so by default, all requests of this type will be made in the foreground.
 ///
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
@@ -194,7 +194,7 @@
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the DBSerializable
 /// protocol.
-/// @param inputURL The location of the file to upload. NSURLSession does not support background
+/// @param inputUrl The location of the file to upload. NSURLSession does not support background
 /// uploads for this input type, so by default, all requests of this type will be made in the foreground.
 ///
 /// @return A DBUploadTask where response and progress handlers can be added, and the request can
@@ -216,10 +216,10 @@
 /// @param overwrite Whether the outputted file should overwrite in the event of a name collision.
 /// @param destination Location to which output content should be downloaded.
 ///
-/// @return A DBDownloadURLTask where response and progress handlers can be added, and the request can
+/// @return A DBDownloadUrlTask where response and progress handlers can be added, and the request can
 /// be halted or cancelled.
 ///
-- (DBDownloadURLTask * _Nonnull)requestDownload:(DBRoute * _Nonnull)route
+- (DBDownloadUrlTask * _Nonnull)requestDownload:(DBRoute * _Nonnull)route
                                            arg:(id<DBSerializable> _Nullable)arg
                                      overwrite:(BOOL)overwrite
                                    destination:(NSURL * _Nonnull)destination;

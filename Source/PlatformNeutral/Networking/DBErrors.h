@@ -3,7 +3,6 @@
 ///
 
 #import <Foundation/Foundation.h>
-@class DBAccessToken;
 @class DBAUTHAuthError;
 @class DBAUTHRateLimitError;
 

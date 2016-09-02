@@ -104,12 +104,12 @@ def _get_client_args():
 
     client_args = {
         'upload': [
-            ('upload', ['URL', [('inputURL', 'inputURL', 'NSURL * _Nonnull', input_doc.format('NSURL *')),],]),
+            ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSURL * _Nonnull', input_doc.format('NSURL *')),],]),
             ('upload', ['Data', [('inputData', 'inputData', 'NSData * _Nonnull', input_doc.format('NSData *')),],]),
             ('upload', ['Stream', [('inputStream', 'inputStream', 'NSInputStream * _Nonnull', input_doc.format('NSInputStream *')),],]),
         ],
         'download': [
-            ('download_url', ['URL', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
+            ('download_url', ['Url', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
                 ('destination', 'destination', 'NSURL * _Nonnull', dest_doc),],]),
             ('download_data', ['Data', []]),
         ],
@@ -121,7 +121,7 @@ def _get_style_to_request():
     style_to_request = {
         'rpc': 'DBRpcTask',
         'upload': 'DBUploadTask',
-        'download_url': 'DBDownloadURLTask',
+        'download_url': 'DBDownloadUrlTask',
         'download_data': 'DBDownloadDataTask',
     }
 

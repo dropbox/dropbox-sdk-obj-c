@@ -6,6 +6,7 @@
 #import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
 #import "DBErrors.h"
+#import "DBHandlerTypes.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
 #import "DBTransportClient.h"
@@ -139,7 +140,7 @@
 }
 
 - (DBRpcTask *)response:(void (^)(id, id, DBError *))responseBlock {
-  void (^handler)(NSData *, NSURLResponse *, NSError *) = ^(NSData *data, NSURLResponse *response, NSError *error) {
+  DBRpcResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *error) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -147,7 +148,8 @@
     DBError *dbxError =
         [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
+      id routeError =
+          [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError);
     }
 
@@ -155,14 +157,13 @@
     responseBlock(result, nil, nil);
   };
 
-  [_delegate addRpcResponseHandler:_task session:_session responseHandler:handler];
+  [_delegate addRpcResponseHandler:_task session:_session responseHandler:wrapperBlock];
 
   return self;
 }
 
-- (DBRpcTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
-  [_delegate addRpcProgressHandler:_task session:_session progressHandler:progressBlock];
-
+- (DBRpcTask *)progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
   return self;
 }
 
@@ -199,7 +200,7 @@
 }
 
 - (DBUploadTask *)response:(void (^)(id, id, DBError *))responseBlock {
-  void (^handler)(NSData *, NSURLResponse *, NSError *) = ^(NSData *data, NSURLResponse *response, NSError *error) {
+  DBUploadResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *error) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -207,7 +208,8 @@
     DBError *dbxError =
         [self getDBError:data response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
+      id routeError =
+          [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError);
     }
 
@@ -215,14 +217,13 @@
     responseBlock(result, nil, nil);
   };
 
-  [_delegate addUploadResponseHandler:_task session:_session responseHandler:handler];
+  [_delegate addUploadResponseHandler:_task session:_session responseHandler:wrapperBlock];
 
   return self;
 }
 
-- (DBUploadTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
-  [_delegate addUploadProgressHandler:_task session:_session progressHandler:progressBlock];
-
+- (DBUploadTask *)progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
   return self;
 }
 
@@ -242,7 +243,7 @@
 
 #pragma mark - Download-style network task (NSURL)
 
-@implementation DBDownloadURLTask
+@implementation DBDownloadUrlTask
 
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
                      session:(NSURLSession *)session
@@ -262,8 +263,8 @@
   return self;
 }
 
-- (DBDownloadURLTask *)response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
-  void (^handler)(NSURL *, NSURLResponse *, NSError *) = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+- (DBDownloadUrlTask *)response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
+  DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *error) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -274,7 +275,8 @@
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       DBError *dbxError =
           [self getDBError:errorData response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
-      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
+      id routeError =
+          [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, _destination);
     }
 
@@ -294,20 +296,22 @@
     } else {
       NSError *fileMoveError;
       [fileManager moveItemAtPath:[location path] toPath:path error:&fileMoveError];
+      if (fileMoveError) {
+        NSLog(@"Error moving file: %@", fileMoveError);
+      }
     }
 
     id result = [self routeResultWithData:resultData];
     responseBlock(result, nil, nil, _destination);
   };
 
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:handler];
+  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock];
 
   return self;
 }
 
-- (DBDownloadURLTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
-  [_delegate addDownloadProgressHandler:_task session:_session progressHandler:progressBlock];
-
+- (DBDownloadUrlTask *)progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
   return self;
 }
 
@@ -344,7 +348,7 @@
 }
 
 - (DBDownloadDataTask *)response:(void (^)(id, id, DBError *dbxError, NSData *))responseBlock {
-  void (^handler)(NSURL *, NSURLResponse *, NSError *) = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+  DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *error) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -355,7 +359,8 @@
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       DBError *dbxError =
           [self getDBError:errorData response:response error:error statusCode:statusCode httpHeaders:httpHeaders];
-      id routeError = [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
+      id routeError =
+          [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, nil);
     }
 
@@ -363,14 +368,13 @@
     responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
   };
 
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:handler];
+  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock];
 
   return self;
 }
 
-- (DBDownloadDataTask *)progress:(void (^)(int64_t, int64_t, int64_t))progressBlock {
-  [_delegate addDownloadProgressHandler:_task session:_session progressHandler:progressBlock];
-
+- (DBDownloadDataTask *)progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
   return self;
 }
 

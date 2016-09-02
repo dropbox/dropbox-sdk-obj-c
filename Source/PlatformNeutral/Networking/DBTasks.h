@@ -2,6 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBHandlerTypes.h"
 @class DBDelegate;
 @class DBError;
 @class DBRoute;
@@ -95,7 +96,7 @@
 ///
 /// @return The current DBRpcTask instance.
 ///
-- (DBRpcTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
+- (DBRpcTask * _Nonnull)progress:(DBProgressBlock _Nullable)progressBlock;
 
 ///
 /// Cancels the current request.
@@ -175,7 +176,7 @@
 ///
 /// @return The current DBUploadTask instance.
 ///
-- (DBUploadTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
+- (DBUploadTask * _Nonnull)progress:(DBProgressBlock _Nullable)progressBlock;
 
 ///
 /// Cancels the current request.
@@ -200,7 +201,7 @@
 /// Dropbox Download-style Network Task (download to NSURL).
 ///
 /// After an Upload network request is made via DBTransportClient, a subclass
-/// of DBDownloadURLTask is returned, from which response and progress handlers
+/// of DBDownloadUrlTask is returned, from which response and progress handlers
 /// can be installed, and the network response paused or cancelled. Note, this class
 /// is returned only for download requests with an NSURL output.
 ///
@@ -209,7 +210,7 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
-@interface DBDownloadURLTask <TResponse, TError> : DBTask
+@interface DBDownloadUrlTask <TResponse, TError> : DBTask
 
 /// The NSURLSessionTask that was used to make the request.
 @property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
@@ -221,7 +222,7 @@
 @property(nonatomic, readonly, copy) NSURL * _Nonnull destination;
 
 ///
-/// DBDownloadURLTask full constructor.
+/// DBDownloadUrlTask full constructor.
 ///
 /// @param task The NSURLSessionDataTask task that initialized the network request.
 /// @param session The NSURLSession used to make the network request.
@@ -253,9 +254,9 @@
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
 /// argument is the output destination to which the file was downloaded.
 ///
-/// @return The current DBDownloadURLTask instance.
+/// @return The current DBDownloadUrlTask instance.
 ///
-- (DBDownloadURLTask<TResponse, TError> * _Nonnull)response:
+- (DBDownloadUrlTask<TResponse, TError> * _Nonnull)response:
     (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
@@ -265,9 +266,9 @@
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///
-/// @return The current DBDownloadURLTask instance.
+/// @return The current DBDownloadUrlTask instance.
 ///
-- (DBDownloadURLTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
+- (DBDownloadUrlTask * _Nonnull)progress:(DBProgressBlock _Nullable)progressBlock;
 
 ///
 /// Cancels the current request.
@@ -335,7 +336,7 @@
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
 /// argument is the output NSData object in memory, to which the file was downloaded.
 ///
-/// @return The current DBDownloadURLTask instance.
+/// @return The current DBDownloadUrlTask instance.
 ///
 - (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:
     (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSData * _Nonnull))responseBlock;
@@ -349,7 +350,7 @@
 ///
 /// @return The current DBDownloadDataTask instance.
 ///
-- (DBDownloadDataTask * _Nonnull)progress:(void (^_Nullable)(int64_t, int64_t, int64_t))progressBlock;
+- (DBDownloadDataTask * _Nonnull)progress:(DBProgressBlock _Nullable)progressBlock;
 
 ///
 /// Cancels the current request.

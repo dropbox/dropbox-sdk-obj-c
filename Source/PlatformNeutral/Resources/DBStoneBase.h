@@ -18,7 +18,7 @@
 @property(nonatomic, readonly, copy) NSString * _Nonnull namespace_;
 
 /// Whether the route is deprecated.
-@property(nonatomic, readonly, copy) NSNumber * _Nonnull deprecated;
+@property(nonatomic, readonly) NSNumber * _Nonnull deprecated;
 
 /// Class of the route's result object type (must implement DBSerializable
 /// protocol).
