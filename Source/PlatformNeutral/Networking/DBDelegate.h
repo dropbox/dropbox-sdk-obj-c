@@ -2,6 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <Foundation/Foundation.h>
+
 @class DBRpcData;
 @class DBUploadData;
 @class DBDownloadData;
