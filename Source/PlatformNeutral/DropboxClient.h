@@ -10,7 +10,7 @@
 /// Dropbox User API Client.
 ///
 /// This is the SDK user's primary interface with the Dropbox API. Routes can be accessed
-/// via each "namespace" object in the instance fields of its parent, DBBase. To see a
+/// via each "namespace" object in the instance fields of its parent, `DBBase`. To see a
 /// full list of the User API endpoints available, please visit:
 /// https://www.dropbox.com/developers/documentation/http/documentation.
 ///

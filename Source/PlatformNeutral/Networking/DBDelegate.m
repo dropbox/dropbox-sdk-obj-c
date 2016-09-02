@@ -25,8 +25,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
       _delegateQueue = delegateQueue;
     } else {
       _delegateQueue = [NSOperationQueue mainQueue];
-      [_delegateQueue setMaxConcurrentOperationCount:1];
     }
+    [_delegateQueue setMaxConcurrentOperationCount:1];
     _sessionData = [NSMutableDictionary new];
   }
   return self;

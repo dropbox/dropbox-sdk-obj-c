@@ -13,6 +13,8 @@
 /// Delegate class used to manage the execution of handler code for
 /// RPC, Upload and Download style requests.
 ///
+/// @note This delegate forces all supplied delegate queues to be serial.
+///
 /// By default, this delegate is instantiated in the constructor of the
 /// DBTransportClient class, and uses the main delegate queue, so all handler
 /// code will be executed serially and on the main thread.
@@ -29,6 +31,8 @@
 
 ///
 /// DBDelegate full constructor.
+///
+/// @note The supplied queue must be serial.
 ///
 /// @param delegateQueue The queue used to execute handler code. By defaut, this
 /// is the main queue, so all handler code will be executed on the main thread.

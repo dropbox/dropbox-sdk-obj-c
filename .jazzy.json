@@ -1,0 +1,78 @@
+{
+  "skip_undocumented": true, 
+  "author": "Dropbox, Inc.", 
+  "custom_categories": [
+    {
+      "name": "Clients", 
+      "children": [
+        "DropboxClient", 
+        "DropboxTeamClient", 
+        "DropboxClientsManager", 
+        "AuthRoutes", 
+        "FilesRoutes", 
+        "SharingRoutes", 
+        "TeamRoutes", 
+        "UsersRoutes"
+      ]
+    }, 
+    {
+      "name": "Routes", 
+      "children": [
+        "Async", 
+        "Auth", 
+        "Common", 
+        "Files", 
+        "Properties", 
+        "Sharing", 
+        "Team", 
+        "TeamCommon", 
+        "TeamPolicies", 
+        "Users"
+      ]
+    }, 
+    {
+      "name": "Data Types", 
+      "children": []
+    }, 
+    {
+      "name": "Networking", 
+      "children": [
+        "DBTransportClient", 
+        "DBDelegate", 
+        "DBRpcTask", 
+        "DBUploadTask", 
+        "DBDownloadURLTask", 
+        "DBDownloadDataTask", 
+        "DBError", 
+        "DBRequestHttpError", 
+        "DBRequestBadInputError", 
+        "DBRequestAuthError", 
+        "DBRequestRateLimitError", 
+        "DBRequestInternalServerError", 
+        "DBRequestOsError", 
+        "DBSessionData", 
+        "DBProgressData", 
+        "DBCompletionData"
+      ]
+    }, 
+    {
+      "name": "OAuth", 
+      "children": [
+        "DBMobileSharedApplication", 
+        "DBOAuthManager", 
+        "DBDesktopOAuthManager", 
+        "DBMobileOAuthManager", 
+        "DBAccessToken", 
+        "DBOAuthResult", 
+        "DBSharedApplication"
+      ]
+    }
+  ], 
+  "author_url": "https://dropbox.com/developers", 
+  "hide_documentation_coverage": true, 
+  "exclude": [
+    "Source/PlatformNeutral/Resources/DBStoneValidators.h", 
+    "Source/PlatformNeutral/Resources/DBStoneSerializers.h", 
+    "Source/PlatformNeutral/OAuth/DBKeychain.h"
+  ]
+}

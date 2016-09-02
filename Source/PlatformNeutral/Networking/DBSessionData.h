@@ -46,7 +46,7 @@
 ///
 /// Completion data storage.
 ///
-/// @note: For Download-style requests, in the event a response handler is not set up when the
+/// @note For Download-style requests, in the event a response handler is not set up when the
 /// network response is received, file output content will be moved from a temporary location
 /// managed by NSURLSession to a temporary location managed by the SDK stored in urlOutput.
 ///
