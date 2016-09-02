@@ -308,7 +308,7 @@ The response handlers for each request type are similar to one another. The argu
 * **network request error** (generic to all requests – contains information like request ID, HTTP status code, etc.)
 * **output content** (`NSURL` / `NSData` reference to downloaded ouput for Download-style endpoints only)
 
-Response handlers and progress handlers are optional for all endpoints.
+Note: Response handlers are required for all endpoints. Progress handlers, on the other hand, are optional for all endpoints.
 
 ### Request types
 

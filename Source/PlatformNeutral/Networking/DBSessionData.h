@@ -51,10 +51,6 @@
 ///
 /// Completion data storage.
 ///
-/// @note For Download-style requests, in the event a response handler is not set up when the
-/// network response is received, file output content will be moved from a temporary location
-/// managed by NSURLSession to a temporary location managed by the SDK stored in urlOutput.
-///
 /// Progress and response handlers can be added to `DBDelegate` after a request is initiated.
 /// If a handler does not exist at the time the network response is received,
 /// progress data and/or response data will be saved until a handler is queued up
