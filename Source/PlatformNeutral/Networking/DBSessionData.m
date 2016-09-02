@@ -4,6 +4,8 @@
 
 #import "DBSessionData.h"
 
+#pragma mark - Progress data
+
 @implementation DBProgressData
 
 - (instancetype)initWithProgressData:(int64_t)committed
@@ -19,6 +21,9 @@
 }
 
 @end
+
+
+#pragma mark - Completion data
 
 @implementation DBCompletionData
 
@@ -37,6 +42,9 @@
 }
 
 @end
+
+
+#pragma mark - Session data
 
 @implementation DBSessionData
 

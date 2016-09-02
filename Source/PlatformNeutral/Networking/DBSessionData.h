@@ -5,6 +5,8 @@
 #import "DBHandlerTypes.h"
 #import <Foundation/Foundation.h>
 
+#pragma mark - Progress data
+
 ///
 /// Progress data storage.
 ///
@@ -42,6 +44,9 @@
                             expectedToCommit:(int64_t)expectedToCommit;
 
 @end
+
+
+#pragma mark - Completion data
 
 ///
 /// Completion data storage.
@@ -86,6 +91,9 @@
                              urlOutput:(NSURL *)urlOutput;
 
 @end
+
+
+#pragma mark - Session data
 
 ///
 /// Session data storage.

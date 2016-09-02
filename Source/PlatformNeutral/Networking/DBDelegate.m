@@ -55,6 +55,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
       responseHandler(nil, task.response, error);
       [sessionData.downloadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
+      [sessionData.progressData removeObjectForKey:taskId];
+      [sessionData.responsesData removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:nil
                                                                                responseMetadata:task.response
@@ -69,6 +71,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.uploadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
+      [sessionData.progressData removeObjectForKey:taskId];
+      [sessionData.responsesData removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:responseData
                                                                                responseMetadata:task.response
@@ -83,6 +87,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.rpcHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
+      [sessionData.progressData removeObjectForKey:taskId];
+      [sessionData.responsesData removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:responseData
                                                                                responseMetadata:task.response
@@ -150,6 +156,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     responseHandler(location, downloadTask.response, nil);
     [sessionData.downloadHandlers removeObjectForKey:taskId];
     [sessionData.progressHandlers removeObjectForKey:taskId];
+    [sessionData.progressData removeObjectForKey:taskId];
+    [sessionData.responsesData removeObjectForKey:taskId];
   } else {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *tmpOutputPath = [NSTemporaryDirectory()
@@ -204,6 +212,7 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.rpcHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
@@ -225,6 +234,7 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.uploadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
@@ -246,7 +256,7 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
-
+      [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.downloadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
