@@ -81,7 +81,7 @@
 /// @return An initialized DBCompletionData instance.
 ///
 - (instancetype)initWithCompletionData:(NSData * _Nullable)responseBody
-                          responseMetaData:(NSURLResponse * _Nullable)responseMetadata
+                          responseMetadata:(NSURLResponse * _Nullable)responseMetadata
                          responseError:(NSError * _Nullable)responseError
                              urlOutput:(NSURL *)urlOutput;
 
@@ -98,7 +98,7 @@
 
 /// The unique identifier of the session. Data is stored by session (rather than
 /// task id, because task ids are not unique across sessions.
-@property(nonatomic) NSString * _Nonnull sessionid;
+@property(nonatomic) NSString * _Nonnull sessionId;
 
 /// Map from task id to response body data (for RPC and Upload style requests).
 @property(nonatomic) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
@@ -131,6 +131,6 @@
 ///
 /// @return An initialized DBSessionData instance.
 ///
-- (nonnull instancetype)initWithSessionid:(NSString * _Nonnull)sessionid;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionid;
 
 @end

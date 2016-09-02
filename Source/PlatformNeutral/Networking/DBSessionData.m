@@ -23,13 +23,13 @@
 @implementation DBCompletionData
 
 - (instancetype)initWithCompletionData:(NSData *)responseBody
-                          responseData:(NSURLResponse *)responseData
+                          responseMetadata:(NSURLResponse *)responseMetadata
                          responseError:(NSError *)responseError
                              urlOutput:(NSURL *)urlOutput {
   self = [super init];
   if (self) {
     _responseBody = responseBody;
-    _responseData = responseData;
+    _responseMetadata = responseMetadata;
     _responseError = responseError;
     _urlOutput = urlOutput;
   }
