@@ -2,6 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <Foundation/Foundation.h>
+
 /// These are internal handler block types used by the SDK. The client-facing handler blocks
 /// look somewhat different.
 
