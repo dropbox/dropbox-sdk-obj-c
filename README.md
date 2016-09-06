@@ -36,7 +36,7 @@ To use [CocoaPods](http://cocoapods.org), a dependency manager for Cocoa project
 $ gem install cocoapods
 ```
 
-Then navigate to the directory that contains your project and create a new **Podfile** with `pod init`, or open an existing one, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
+Then navigate to the directory that contains your project and create a new file called **Podfile**. You can either do this with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
 
 ```ruby
 target '<YOUR_PROJECT_NAME>' do
@@ -512,7 +512,9 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 
 ## Examples
 
-* [DBRoulette]() - Play roulette.
+Example projects that demonstrate how to integrate your app with the SDK can be found in the ./Examples/ folder.
+
+* [DBRoulette](https://github.com/dropbox/dropbox-sdk-obj-c/tree/master/Examples/DBRoulette/) - Play a fun game of photo roulette with the image files in your Dropbox!
 
 ## Documentation
 
