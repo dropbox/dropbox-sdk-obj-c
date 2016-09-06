@@ -24,7 +24,7 @@ else
         mkdir $tmp_location
 
         echo "Copying all sdk files to tmp directory..."
-        find ../Source -name \*.[h,m] -exec cp {} $tmp_location \;
+        find ../Source/ObjectiveDropboxOfficial/ -name \*.[h,m] -exec cp {} $tmp_location \;
         cp ../README.md $tmp_location
 
         echo "Copying umbrella header..."

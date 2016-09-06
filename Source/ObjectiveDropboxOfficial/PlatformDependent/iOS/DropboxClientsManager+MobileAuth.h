@@ -18,7 +18,7 @@
 @interface DropboxClientsManager (MobileAuth)
 
 ///
-/// Commences OAuth flow from supplied view controller.
+/// Commences OAuth mobile flow from supplied view controller.
 ///
 /// @param sharedApplication The `UIApplication` with which to render the
 /// OAuth flow.
@@ -39,7 +39,8 @@
                     browserAuth:(BOOL)browserAuth;
 
 ///
-/// Initializes a `DropboxClient` shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key to save
+/// in the current mobile clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Use `setupWithAppKey:transportClient`, if additional customization
@@ -53,7 +54,8 @@
 + (void)setupWithAppKey:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a `DropboxClient` shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key to save
+/// in the current mobile clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different
@@ -70,7 +72,8 @@
 + (void)setupWithAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nonnull)transportClient;
 
 ///
-/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key to save
+/// in the current mobile clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Use `setupWithAppKey:transportClient`, if additional customization
@@ -84,7 +87,8 @@
 + (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key to save
+/// in the current mobile clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different

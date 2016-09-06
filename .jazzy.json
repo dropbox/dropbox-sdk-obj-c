@@ -1,5 +1,6 @@
 {
   "module_version": "1.0", 
+  "skip_undocumented": true, 
   "author": "Dropbox, Inc.", 
   "module": "ObjectiveDropboxOfficial", 
   "custom_categories": [

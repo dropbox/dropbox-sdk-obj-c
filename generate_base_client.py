@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 cmdline_desc = """\
-Runs Stone to generate Obj C types and client for the Dropbox client. 
+Runs Stone to generate Obj-C types and client for the Dropbox client. 
 """
 
 _cmdline_parser = argparse.ArgumentParser(description=cmdline_desc)
@@ -52,14 +52,14 @@ def main():
     if args.stone:
         stone_path = args.stone
 
-    dropbox_pkg_path = os.path.abspath('./Source/PlatformNeutral')
+    dropbox_pkg_path = os.path.abspath('./Source/ObjectiveDropboxOfficial/PlatformNeutral')
     dropbox_tests_path = os.path.abspath('./ObjectiveDropbox/DBSerializationTests')
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
 
     if verbose:
-        print('Generating Obj C types')
+        print('Generating Obj-C types')
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_types', dropbox_pkg_path] +
          specs),
@@ -71,7 +71,7 @@ def main():
     style_to_request = _get_style_to_request()
 
     if verbose:
-        print('Generating Obj C user and team clients')
+        print('Generating Obj-C user and team clients')
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_client', dropbox_pkg_path] +
          specs + ['-b', 'team', '--', '-m', 'DBBase', '-c', 'DBBase',

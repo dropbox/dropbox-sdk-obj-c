@@ -6,12 +6,12 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "Stephen Cobbe" => "scobbe@dropbox.com" }
   s.source    = { :git => "https://github.com/dropbox/dropbox-sdk-obj-c.git", :tag => s.version }
-  s.osx.source_files = 'Source/PlatformNeutral/**/*.{h,m}', 'Source/PlatformDependent/OSX/*.{h,m}'
-  s.ios.source_files = 'Source/PlatformNeutral/**/*.{h,m}', 'Source/PlatformDependent/iOS/*.{h,m}'
+  s.osx.source_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.{h,m}', 'Source/ObjectiveDropboxOfficial/PlatformDependent/OSX/*.{h,m}'
+  s.ios.source_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.{h,m}', 'Source/ObjectiveDropboxOfficial/PlatformDependent/iOS/*.{h,m}'
   s.requires_arc = true
   s.osx.deployment_target = "10.10"
   s.ios.deployment_target = "8.0"
-  s.public_header_files = 'Source/**/*.h'
+  s.public_header_files = 'Source/ObjectiveDropboxOfficial/**/*.h'
   s.osx.frameworks = 'AppKit', 'Foundation'
   s.ios.frameworks = 'UIKit', 'Webkit', 'Foundation'
 end

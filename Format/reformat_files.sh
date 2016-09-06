@@ -2,7 +2,7 @@
 #
 # Run the following command to retrieve all filenames
 #
-# `find ../Source -name "*.[mh]" > list_files_reformat.txt`
+# `find ../Source/ObjectiveDropboxOfficial/ -name "*.[mh]" > list_files_reformat.txt`
 #
 # and then:
 #

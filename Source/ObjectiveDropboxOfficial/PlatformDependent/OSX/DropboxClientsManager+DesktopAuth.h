@@ -18,7 +18,7 @@
 @interface DropboxClientsManager (DesktopAuth)
 
 ///
-/// Commences OAuth flow from supplied view controller.
+/// Commences OAuth desktop flow from supplied view controller.
 ///
 /// @param sharedApplication The `NSWorkspace` with which to render the
 /// OAuth flow.
@@ -39,7 +39,8 @@
                            browserAuth:(BOOL)browserAuth;
 
 ///
-/// Initializes a `DropboxClient` shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key to save
+/// in the current desktop clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Use `setupWithAppKeyDesktop:transportClient`, if additional customization
@@ -53,7 +54,8 @@
 + (void)setupWithAppKeyDesktop:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a `DropboxClient` shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key to save
+/// in the current desktop clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different
@@ -70,7 +72,8 @@
 + (void)setupWithAppKeyDesktop:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nonnull)transportClient;
 
 ///
-/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key to save
+/// in the current desktop clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Use `setupWithAppKeyDesktop:transportClient`, if additional customization
@@ -84,7 +87,8 @@
 + (void)setupWithTeamAppKeyDesktop:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key to save
+/// in the current desktop clients manager.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different

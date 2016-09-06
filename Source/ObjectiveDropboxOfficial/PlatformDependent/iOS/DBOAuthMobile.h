@@ -18,7 +18,7 @@
 @interface DBMobileSharedApplication : NSObject <DBSharedApplication>
 
 ///
-/// DBMobileSharedApplication full constructor.
+/// Full constructor.
 ///
 /// @param sharedApplication The `UIApplication` with which to render the
 /// OAuth flow.
@@ -42,7 +42,7 @@
 @interface DBMobileWebViewController : UIViewController <WKNavigationDelegate>
 
 ///
-/// DBWebViewController full constructor.
+/// Full constructor.
 ///
 /// @param tryInterceptHandler The navigation handler for the view controller.
 /// Will check if exit URL (for redirect back to main app) can be successfully

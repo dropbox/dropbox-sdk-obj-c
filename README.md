@@ -61,7 +61,7 @@ brew install carthage
  To install the Dropbox Objective-C SDK via Carthage, you need to create a `Cartfile` in your project with the following contents:
 
 ```
-# ObjectiveDropboxOfficial 
+# ObjectiveDropboxOfficial
 github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0
 ```
 
@@ -287,7 +287,7 @@ Start by creating a reference to the `DropboxClient` or `DropboxTeamClient` inst
 ```objective-c
 #import "DropboxSDKImports.h"
 
-// Reference after programmatic auth flow 
+// Reference after programmatic auth flow
 DropboxClient *client = [DropboxClientsManager authorizedClient];
 ```
 
@@ -307,8 +307,8 @@ The Dropbox [User API](https://www.dropbox.com/developers/documentation/http/doc
 The response handlers for each request type are similar to one another. The arguments for the handler blocks are as follows:
 * **route result type** (`DBNilObject` if the route does not have a return type)
 * **route-specific error** (usually a union type)
-* **network request error** (generic to all requests – contains information like request ID, HTTP status code, etc.)
-* **output content** (`NSURL` / `NSData` reference to downloaded ouput for Download-style endpoints only)
+* **network request error** (generic to all requests -- contains information like request ID, HTTP status code, etc.)
+* **output content** (`NSURL` / `NSData` reference to downloaded output for Download-style endpoints only)
 
 Note: Response handlers are required for all endpoints. Progress handlers, on the other hand, are optional for all endpoints.
 
@@ -384,7 +384,7 @@ Dropbox API v2 deals largely with two data types: **structs** and **unions**. Br
 Associated value types can either be primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at run time, depending on the tag state of the union.
 
 For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns an error, `DeleteError`, which is a union type. The `DeleteError` union can take on two different tag states: `path_lookup`
-(if there is a problem looking up the path) or `path_write` (if there is a problem writing – or in this case deleting – to the path). Here, both tag states have non-void associated values (of types `DBFILESLookupError` and `DBFILESWriteError`, respectively).
+(if there is a problem looking up the path) or `path_write` (if there is a problem writing -- or in this case deleting -- to the path). Here, both tag states have non-void associated values (of types `DBFILESLookupError` and `DBFILESWriteError`, respectively).
 
 In this way, one union object is able to capture a multitude of scenarios, each of which has their own value type.
 
@@ -406,7 +406,7 @@ If at run time you attempt to access a union instance field that is not associat
             } else if ([routeError isPathWrite]) {
                 DBFILESWriteError *pathWrite = routeError.pathWrite;
                 NSLog(@"%@\n", pathWrite);
-                
+
                 // This would cause a runtime error
                 // DBFILESLookupError *pathLookup = routeError.pathLookup;
             }
@@ -430,7 +430,7 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
     } else {
         if (routeError) {
             // see handling above
-        } 
+        }
         // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
         else {
             if ([error isInternalServerError]) {

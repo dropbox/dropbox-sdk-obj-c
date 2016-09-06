@@ -15,7 +15,7 @@
 @interface DBDesktopSharedApplication : NSObject <DBSharedApplication>
 
 ///
-/// DBDesktopSharedApplication full constructor.
+/// Full constructor.
 ///
 /// @param sharedApplication The `NSWorkspace` with which to render the
 /// OAuth flow.
@@ -37,7 +37,7 @@
 @interface DBDesktopWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate>
 
 ///
-/// DBWebViewController full constructor.
+/// Full constructor.
 ///
 /// @param tryInterceptHandler The navigation handler for the view controller.
 /// Will check if exit url (for redirect back to main app) can be successfully
