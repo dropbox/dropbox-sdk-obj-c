@@ -7,27 +7,26 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMemberAddResult;
 @class DBTEAMTeamMemberInfo;
 
 #pragma mark - API Object
 
 ///
-/// The MemberAddResult union.
+/// The `MemberAddResult` union.
 ///
 /// Describes the result of attempting to add a single user to the team. 'success' is the only value
 /// indicating that a user was indeed added to the team - the other values explain the type of
 /// failure that occurred, and include the email of the user for which the operation has failed.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberAddResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMemberAddResultTag enum type represents the possible tag states with which the
-/// DBTEAMMemberAddResult union can exist.
+/// The `DBTEAMMemberAddResultTag` enum type represents the possible tag states with which the
+/// `DBTEAMMemberAddResult` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
   /// Describes a user that was successfully added to the team.
   DBTEAMMemberAddResultSuccess,
@@ -63,245 +62,248 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMMemberAddResultTag tag;
 
-/// Describes a user that was successfully added to the team. Ensure the isSuccess method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// Describes a user that was successfully added to the team. @note Ensure the `isSuccess` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMTeamMemberInfo * _Nonnull success;
 
-/// Team is already full. The organization has no available licenses. Ensure the isTeamLicenseLimit
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// Team is already full. The organization has no available licenses. @note Ensure the
+/// `isTeamLicenseLimit` method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull teamLicenseLimit;
 
-/// Team is already full. The free team member limit has been reached. Ensure the
-/// isFreeTeamMemberLimitReached method returns true before accessing, otherwise a runtime exception
-/// will be raised.
+/// Team is already full. The free team member limit has been reached. @note Ensure the
+/// `isFreeTeamMemberLimitReached` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull freeTeamMemberLimitReached;
 
 /// User is already on this team. The provided email address is associated with a user who is
-/// already a member of or invited to the team. Ensure the isUserAlreadyOnTeam method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// already a member of or invited to the team. @note Ensure the `isUserAlreadyOnTeam` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull userAlreadyOnTeam;
 
 /// User is already on another team. The provided email address is associated with a user that is
-/// already a member or invited to another team. Ensure the isUserOnAnotherTeam method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// already a member or invited to another team. @note Ensure the `isUserOnAnotherTeam` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull userOnAnotherTeam;
 
-/// User is already paired. Ensure the isUserAlreadyPaired method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// User is already paired. @note Ensure the `isUserAlreadyPaired` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull userAlreadyPaired;
 
-/// User migration has failed. Ensure the isUserMigrationFailed method returns true before
+/// User migration has failed. @note Ensure the `isUserMigrationFailed` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull userMigrationFailed;
 
-/// A user with the given external member ID already exists on the team. Ensure the
-/// isDuplicateExternalMemberId method returns true before accessing, otherwise a runtime exception
-/// will be raised.
+/// A user with the given external member ID already exists on the team. @note Ensure the
+/// `isDuplicateExternalMemberId` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull duplicateExternalMemberId;
 
-/// User creation has failed. Ensure the isUserCreationFailed method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// User creation has failed. @note Ensure the `isUserCreationFailed` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull userCreationFailed;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Success.
+/// Initializes union class with tag state of "success".
 ///
-/// About the Success tag state: Describes a user that was successfully added to the team.
+/// Description of the "success" tag state: Describes a user that was successfully added to the
+/// team.
 ///
 /// @param success Describes a user that was successfully added to the team.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(DBTEAMTeamMemberInfo * _Nonnull)success;
 
 ///
-/// Initializes union class with tag state of TeamLicenseLimit.
+/// Initializes union class with tag state of "team_license_limit".
 ///
-/// About the TeamLicenseLimit tag state: Team is already full. The organization has no available
-/// licenses.
+/// Description of the "team_license_limit" tag state: Team is already full. The organization has no
+/// available licenses.
 ///
 /// @param teamLicenseLimit Team is already full. The organization has no available licenses.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamLicenseLimit:(NSString * _Nonnull)teamLicenseLimit;
 
 ///
-/// Initializes union class with tag state of FreeTeamMemberLimitReached.
+/// Initializes union class with tag state of "free_team_member_limit_reached".
 ///
-/// About the FreeTeamMemberLimitReached tag state: Team is already full. The free team member limit
-/// has been reached.
+/// Description of the "free_team_member_limit_reached" tag state: Team is already full. The free
+/// team member limit has been reached.
 ///
 /// @param freeTeamMemberLimitReached Team is already full. The free team member limit has been
 /// reached.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFreeTeamMemberLimitReached:(NSString * _Nonnull)freeTeamMemberLimitReached;
 
 ///
-/// Initializes union class with tag state of UserAlreadyOnTeam.
+/// Initializes union class with tag state of "user_already_on_team".
 ///
-/// About the UserAlreadyOnTeam tag state: User is already on this team. The provided email address
-/// is associated with a user who is already a member of or invited to the team.
+/// Description of the "user_already_on_team" tag state: User is already on this team. The provided
+/// email address is associated with a user who is already a member of or invited to the team.
 ///
 /// @param userAlreadyOnTeam User is already on this team. The provided email address is associated
 /// with a user who is already a member of or invited to the team.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserAlreadyOnTeam:(NSString * _Nonnull)userAlreadyOnTeam;
 
 ///
-/// Initializes union class with tag state of UserOnAnotherTeam.
+/// Initializes union class with tag state of "user_on_another_team".
 ///
-/// About the UserOnAnotherTeam tag state: User is already on another team. The provided email
-/// address is associated with a user that is already a member or invited to another team.
+/// Description of the "user_on_another_team" tag state: User is already on another team. The
+/// provided email address is associated with a user that is already a member or invited to another
+/// team.
 ///
 /// @param userOnAnotherTeam User is already on another team. The provided email address is
 /// associated with a user that is already a member or invited to another team.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserOnAnotherTeam:(NSString * _Nonnull)userOnAnotherTeam;
 
 ///
-/// Initializes union class with tag state of UserAlreadyPaired.
+/// Initializes union class with tag state of "user_already_paired".
 ///
-/// About the UserAlreadyPaired tag state: User is already paired.
+/// Description of the "user_already_paired" tag state: User is already paired.
 ///
 /// @param userAlreadyPaired User is already paired.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserAlreadyPaired:(NSString * _Nonnull)userAlreadyPaired;
 
 ///
-/// Initializes union class with tag state of UserMigrationFailed.
+/// Initializes union class with tag state of "user_migration_failed".
 ///
-/// About the UserMigrationFailed tag state: User migration has failed.
+/// Description of the "user_migration_failed" tag state: User migration has failed.
 ///
 /// @param userMigrationFailed User migration has failed.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserMigrationFailed:(NSString * _Nonnull)userMigrationFailed;
 
 ///
-/// Initializes union class with tag state of DuplicateExternalMemberId.
+/// Initializes union class with tag state of "duplicate_external_member_id".
 ///
-/// About the DuplicateExternalMemberId tag state: A user with the given external member ID already
-/// exists on the team.
+/// Description of the "duplicate_external_member_id" tag state: A user with the given external
+/// member ID already exists on the team.
 ///
 /// @param duplicateExternalMemberId A user with the given external member ID already exists on the
 /// team.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDuplicateExternalMemberId:(NSString * _Nonnull)duplicateExternalMemberId;
 
 ///
-/// Initializes union class with tag state of UserCreationFailed.
+/// Initializes union class with tag state of "user_creation_failed".
 ///
-/// About the UserCreationFailed tag state: User creation has failed.
+/// Description of the "user_creation_failed" tag state: User creation has failed.
 ///
 /// @param userCreationFailed User creation has failed.
 ///
-/// @return An initialized DBTEAMMemberAddResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserCreationFailed:(NSString * _Nonnull)userCreationFailed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Success.
+/// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the success property,
+/// @note Call this method and ensure it returns true before accessing the `success` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Success.
+/// @return Whether the union's current tag state has value "success".
 ///
 - (BOOL)isSuccess;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamLicenseLimit.
+/// Retrieves whether the union's current tag state has value "team_license_limit".
 ///
-/// @note Call this method and ensure it returns true before accessing the teamLicenseLimit
+/// @note Call this method and ensure it returns true before accessing the `teamLicenseLimit`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value TeamLicenseLimit.
+/// @return Whether the union's current tag state has value "team_license_limit".
 ///
 - (BOOL)isTeamLicenseLimit;
 
 ///
-/// Retrieves whether the union's current tag state has value FreeTeamMemberLimitReached.
+/// Retrieves whether the union's current tag state has value "free_team_member_limit_reached".
 ///
 /// @note Call this method and ensure it returns true before accessing the
-/// freeTeamMemberLimitReached property, otherwise a runtime exception will be thrown.
+/// `freeTeamMemberLimitReached` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value FreeTeamMemberLimitReached.
+/// @return Whether the union's current tag state has value "free_team_member_limit_reached".
 ///
 - (BOOL)isFreeTeamMemberLimitReached;
 
 ///
-/// Retrieves whether the union's current tag state has value UserAlreadyOnTeam.
+/// Retrieves whether the union's current tag state has value "user_already_on_team".
 ///
-/// @note Call this method and ensure it returns true before accessing the userAlreadyOnTeam
+/// @note Call this method and ensure it returns true before accessing the `userAlreadyOnTeam`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserAlreadyOnTeam.
+/// @return Whether the union's current tag state has value "user_already_on_team".
 ///
 - (BOOL)isUserAlreadyOnTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value UserOnAnotherTeam.
+/// Retrieves whether the union's current tag state has value "user_on_another_team".
 ///
-/// @note Call this method and ensure it returns true before accessing the userOnAnotherTeam
+/// @note Call this method and ensure it returns true before accessing the `userOnAnotherTeam`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserOnAnotherTeam.
+/// @return Whether the union's current tag state has value "user_on_another_team".
 ///
 - (BOOL)isUserOnAnotherTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value UserAlreadyPaired.
+/// Retrieves whether the union's current tag state has value "user_already_paired".
 ///
-/// @note Call this method and ensure it returns true before accessing the userAlreadyPaired
+/// @note Call this method and ensure it returns true before accessing the `userAlreadyPaired`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserAlreadyPaired.
+/// @return Whether the union's current tag state has value "user_already_paired".
 ///
 - (BOOL)isUserAlreadyPaired;
 
 ///
-/// Retrieves whether the union's current tag state has value UserMigrationFailed.
+/// Retrieves whether the union's current tag state has value "user_migration_failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the userMigrationFailed
+/// @note Call this method and ensure it returns true before accessing the `userMigrationFailed`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserMigrationFailed.
+/// @return Whether the union's current tag state has value "user_migration_failed".
 ///
 - (BOOL)isUserMigrationFailed;
 
 ///
-/// Retrieves whether the union's current tag state has value DuplicateExternalMemberId.
+/// Retrieves whether the union's current tag state has value "duplicate_external_member_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the duplicateExternalMemberId
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `duplicateExternalMemberId` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value DuplicateExternalMemberId.
+/// @return Whether the union's current tag state has value "duplicate_external_member_id".
 ///
 - (BOOL)isDuplicateExternalMemberId;
 
 ///
-/// Retrieves whether the union's current tag state has value UserCreationFailed.
+/// Retrieves whether the union's current tag state has value "user_creation_failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the userCreationFailed
+/// @note Call this method and ensure it returns true before accessing the `userCreationFailed`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserCreationFailed.
+/// @return Whether the union's current tag state has value "user_creation_failed".
 ///
 - (BOOL)isUserCreationFailed;
 
@@ -317,25 +319,26 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMemberAddResult union.
+/// The serialization class for the `DBTEAMMemberAddResult` union.
 ///
 @interface DBTEAMMemberAddResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberAddResult instances.
+/// Serializes `DBTEAMMemberAddResult` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberAddResult API object.
+/// @param instance An instance of the `DBTEAMMemberAddResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberAddResult API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberAddResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAddResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberAddResult instances.
+/// Deserializes `DBTEAMMemberAddResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberAddResult API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberAddResult` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMMemberAddResult object.
+/// @return An instantiation of the `DBTEAMMemberAddResult` object.
 ///
 + (DBTEAMMemberAddResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

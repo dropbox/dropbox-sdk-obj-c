@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESSearchArg;
 @class DBFILESSearchMode;
 
 #pragma mark - API Object
 
 ///
-/// The SearchArg struct.
+/// The `SearchArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSearchArg : NSObject <DBSerializable>
 
@@ -43,7 +42,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESSearchArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path in the user's Dropbox to search. Should probably be a folder.
 /// @param query The string to search for. The search string is split on spaces into multiple
@@ -54,7 +53,7 @@
 /// @param mode The search mode (filename, filename_and_content, or deleted_filename). Note that
 /// searching file content is only available for Dropbox Business accounts.
 ///
-/// @return An initialized DBFILESSearchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
                                query:(NSString * _Nonnull)query
@@ -63,15 +62,14 @@
                                 mode:(DBFILESSearchMode * _Nullable)mode;
 
 ///
-/// Convenience constructor for the DBFILESSearchArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param path The path in the user's Dropbox to search. Should probably be a folder.
 /// @param query The string to search for. The search string is split on spaces into multiple
 /// tokens. For file name searching, the last token is used for prefix matching (i.e. "bat c"
 /// matches "bat cave" but not "batman car").
 ///
-/// @return An initialized DBFILESSearchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path query:(NSString * _Nonnull)query;
 
@@ -80,25 +78,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SearchArg struct.
+/// The serialization class for the `SearchArg` struct.
 ///
 @interface DBFILESSearchArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESSearchArg instances.
+/// Serializes `DBFILESSearchArg` instances.
 ///
-/// @param instance An instance of the DBFILESSearchArg API object.
+/// @param instance An instance of the `DBFILESSearchArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSearchArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSearchArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSearchArg instances.
+/// Deserializes `DBFILESSearchArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSearchArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESSearchArg` API object.
 ///
-/// @return An instantiation of the DBFILESSearchArg object.
+/// @return An instantiation of the `DBFILESSearchArg` object.
 ///
 + (DBFILESSearchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGShareFolderLaunch;
 @class DBSHARINGSharedFolderMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The ShareFolderLaunch union.
+/// The `ShareFolderLaunch` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGShareFolderLaunch : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGShareFolderLaunchTag enum type represents the possible tag states with which the
-/// DBSHARINGShareFolderLaunch union can exist.
+/// The `DBSHARINGShareFolderLaunchTag` enum type represents the possible tag states with which the
+/// `DBSHARINGShareFolderLaunch` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGShareFolderLaunchTag) {
   /// This response indicates that the processing is asynchronous. The string is an id that can be
   /// used to obtain the status of the asynchronous job.
@@ -38,57 +37,57 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderLaunchTag) {
 @property(nonatomic, readonly) DBSHARINGShareFolderLaunchTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is an id that can be
-/// used to obtain the status of the asynchronous job. Ensure the isAsyncJobId method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// used to obtain the status of the asynchronous job. @note Ensure the `isAsyncJobId` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
-/// (no description). Ensure the isComplete method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isComplete` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderMetadata * _Nonnull complete;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AsyncJobId.
+/// Initializes union class with tag state of "async_job_id".
 ///
-/// About the AsyncJobId tag state: This response indicates that the processing is asynchronous. The
-/// string is an id that can be used to obtain the status of the asynchronous job.
+/// Description of the "async_job_id" tag state: This response indicates that the processing is
+/// asynchronous. The string is an id that can be used to obtain the status of the asynchronous job.
 ///
 /// @param asyncJobId This response indicates that the processing is asynchronous. The string is an
 /// id that can be used to obtain the status of the asynchronous job.
 ///
-/// @return An initialized DBSHARINGShareFolderLaunch instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 ///
-/// Initializes union class with tag state of Complete.
+/// Initializes union class with tag state of "complete".
 ///
 /// @param complete (no description).
 ///
-/// @return An initialized DBSHARINGShareFolderLaunch instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(DBSHARINGSharedFolderMetadata * _Nonnull)complete;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AsyncJobId.
+/// Retrieves whether the union's current tag state has value "async_job_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the asyncJobId property,
+/// @note Call this method and ensure it returns true before accessing the `asyncJobId` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AsyncJobId.
+/// @return Whether the union's current tag state has value "async_job_id".
 ///
 - (BOOL)isAsyncJobId;
 
 ///
-/// Retrieves whether the union's current tag state has value Complete.
+/// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the complete property,
+/// @note Call this method and ensure it returns true before accessing the `complete` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Complete.
+/// @return Whether the union's current tag state has value "complete".
 ///
 - (BOOL)isComplete;
 
@@ -104,27 +103,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderLaunchTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGShareFolderLaunch union.
+/// The serialization class for the `DBSHARINGShareFolderLaunch` union.
 ///
 @interface DBSHARINGShareFolderLaunchSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGShareFolderLaunch instances.
+/// Serializes `DBSHARINGShareFolderLaunch` instances.
 ///
-/// @param instance An instance of the DBSHARINGShareFolderLaunch API object.
+/// @param instance An instance of the `DBSHARINGShareFolderLaunch` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGShareFolderLaunch API
+/// @return A json-compatible dictionary representation of the `DBSHARINGShareFolderLaunch` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGShareFolderLaunch * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGShareFolderLaunch instances.
+/// Deserializes `DBSHARINGShareFolderLaunch` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGShareFolderLaunch API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGShareFolderLaunch` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGShareFolderLaunch object.
+/// @return An instantiation of the `DBSHARINGShareFolderLaunch` object.
 ///
 + (DBSHARINGShareFolderLaunch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

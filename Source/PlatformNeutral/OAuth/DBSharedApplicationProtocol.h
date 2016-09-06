@@ -37,7 +37,7 @@
 /// auth or external browser auth). For example, in the mobile case, the Obj-C SDK will use a direct
 /// authorization route with the Dropbox mobile app, if it is installed on the current device.
 ///
-/// @param authURL Gateway URL to commence auth flow.
+/// @param authURL Gateway url to commence auth flow.
 ///
 - (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL;
 
@@ -48,7 +48,7 @@
 /// the user never leaves the app during the auth process. The disadvantage is that session data is
 /// not retrieved, so the user must enter their login credentials manually, which can be cumbersome.
 ///
-/// @param authURL Gateway URL to commence auth flow.
+/// @param authURL Gateway url to commence auth flow.
 /// @param tryInterceptHandler Navigation handler for redirect from webview back to normal app view.
 /// @param cancelHandler Handler for cancelling auth flow. Opens "cancel" url to signal cancellation.
 ///
@@ -65,7 +65,7 @@
 /// is that the user is redirected outside of the app, which can require multiple confirmations and is
 /// generally not the smoothest experience.
 ///
-/// @param authURL Gateway URL to commence auth flow.
+/// @param authURL Gateway url to commence auth flow.
 ///
 - (void)presentBrowserAuth:(NSURL * _Nonnull)authURL;
 
@@ -75,14 +75,14 @@
 /// This method opens whichever app is registered to handle the type of the supplied url, and then passes
 /// the supplied url into the newly opened app.
 ///
-/// @param url URL to open with external app.
+/// @param url Url to open with external app.
 ///
 - (void)presentExternalApp:(NSURL * _Nonnull)url;
 
 ///
 /// Checks whether there is an external app registered to open the url type.
 ///
-/// @param url URL to check.
+/// @param url Url to check.
 ///
 /// @return Whether there is an external app registered to open the url type.
 ///

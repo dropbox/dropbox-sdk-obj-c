@@ -7,25 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGVisibility;
-
 #pragma mark - API Object
 
 ///
-/// The Visibility union.
+/// The `Visibility` union.
 ///
 /// Who can access a shared link. The most open visibility is public. The default depends on many
 /// aspects, such as team and user preferences and shared folder settings.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGVisibility : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGVisibilityTag enum type represents the possible tag states with which the
-/// DBSHARINGVisibility union can exist.
+/// The `DBSHARINGVisibilityTag` enum type represents the possible tag states with which the
+/// `DBSHARINGVisibility` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
   /// Anyone who has received the link can access it. No login required.
   DBSHARINGVisibilityPublic,
@@ -54,102 +52,103 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Public.
+/// Initializes union class with tag state of "public".
 ///
-/// About the Public tag state: Anyone who has received the link can access it. No login required.
+/// Description of the "public" tag state: Anyone who has received the link can access it. No login
+/// required.
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPublic;
 
 ///
-/// Initializes union class with tag state of TeamOnly.
+/// Initializes union class with tag state of "team_only".
 ///
-/// About the TeamOnly tag state: Only members of the same team can access the link. Login is
-/// required.
+/// Description of the "team_only" tag state: Only members of the same team can access the link.
+/// Login is required.
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamOnly;
 
 ///
-/// Initializes union class with tag state of Password.
+/// Initializes union class with tag state of "password".
 ///
-/// About the Password tag state: A link-specific password is required to access the link. Login is
-/// not required.
+/// Description of the "password" tag state: A link-specific password is required to access the
+/// link. Login is not required.
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPassword;
 
 ///
-/// Initializes union class with tag state of TeamAndPassword.
+/// Initializes union class with tag state of "team_and_password".
 ///
-/// About the TeamAndPassword tag state: Only members of the same team who have the link-specific
-/// password can access the link.
+/// Description of the "team_and_password" tag state: Only members of the same team who have the
+/// link-specific password can access the link.
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamAndPassword;
 
 ///
-/// Initializes union class with tag state of SharedFolderOnly.
+/// Initializes union class with tag state of "shared_folder_only".
 ///
-/// About the SharedFolderOnly tag state: Only members of the shared folder containing the linked
-/// file can access the link. Login is required.
+/// Description of the "shared_folder_only" tag state: Only members of the shared folder containing
+/// the linked file can access the link. Login is required.
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderOnly;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGVisibility instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Public.
+/// Retrieves whether the union's current tag state has value "public".
 ///
-/// @return Whether the union's current tag state has value Public.
+/// @return Whether the union's current tag state has value "public".
 ///
 - (BOOL)isPublic;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamOnly.
+/// Retrieves whether the union's current tag state has value "team_only".
 ///
-/// @return Whether the union's current tag state has value TeamOnly.
+/// @return Whether the union's current tag state has value "team_only".
 ///
 - (BOOL)isTeamOnly;
 
 ///
-/// Retrieves whether the union's current tag state has value Password.
+/// Retrieves whether the union's current tag state has value "password".
 ///
-/// @return Whether the union's current tag state has value Password.
+/// @return Whether the union's current tag state has value "password".
 ///
 - (BOOL)isPassword;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamAndPassword.
+/// Retrieves whether the union's current tag state has value "team_and_password".
 ///
-/// @return Whether the union's current tag state has value TeamAndPassword.
+/// @return Whether the union's current tag state has value "team_and_password".
 ///
 - (BOOL)isTeamAndPassword;
 
 ///
-/// Retrieves whether the union's current tag state has value SharedFolderOnly.
+/// Retrieves whether the union's current tag state has value "shared_folder_only".
 ///
-/// @return Whether the union's current tag state has value SharedFolderOnly.
+/// @return Whether the union's current tag state has value "shared_folder_only".
 ///
 - (BOOL)isSharedFolderOnly;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -165,25 +164,25 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGVisibility union.
+/// The serialization class for the `DBSHARINGVisibility` union.
 ///
 @interface DBSHARINGVisibilitySerializer : NSObject
 
 ///
-/// Serializes DBSHARINGVisibility instances.
+/// Serializes `DBSHARINGVisibility` instances.
 ///
-/// @param instance An instance of the DBSHARINGVisibility API object.
+/// @param instance An instance of the `DBSHARINGVisibility` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGVisibility API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGVisibility` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGVisibility * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGVisibility instances.
+/// Deserializes `DBSHARINGVisibility` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGVisibility API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGVisibility` API object.
 ///
-/// @return An instantiation of the DBSHARINGVisibility object.
+/// @return An instantiation of the `DBSHARINGVisibility` object.
 ///
 + (DBSHARINGVisibility * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

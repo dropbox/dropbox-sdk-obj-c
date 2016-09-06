@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESAddPropertiesError;
 @class DBFILESLookupError;
 
 #pragma mark - API Object
 
 ///
-/// The AddPropertiesError union.
+/// The `AddPropertiesError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESAddPropertiesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESAddPropertiesErrorTag enum type represents the possible tag states with which the
-/// DBFILESAddPropertiesError union can exist.
+/// The `DBFILESAddPropertiesErrorTag` enum type represents the possible tag states with which the
+/// `DBFILESAddPropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESAddPropertiesErrorTag) {
   /// Property template does not exist for given identifier.
   DBFILESAddPropertiesErrorTemplateNotFound,
@@ -51,136 +50,138 @@ typedef NS_ENUM(NSInteger, DBFILESAddPropertiesErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESAddPropertiesErrorTag tag;
 
-/// Property template does not exist for given identifier. Ensure the isTemplateNotFound method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// Property template does not exist for given identifier. @note Ensure the `isTemplateNotFound`
+/// method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
-/// (no description). Ensure the isPath method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TemplateNotFound.
+/// Initializes union class with tag state of "template_not_found".
 ///
-/// About the TemplateNotFound tag state: Property template does not exist for given identifier.
+/// Description of the "template_not_found" tag state: Property template does not exist for given
+/// identifier.
 ///
 /// @param templateNotFound Property template does not exist for given identifier.
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
 ///
-/// Initializes union class with tag state of RestrictedContent.
+/// Initializes union class with tag state of "restricted_content".
 ///
-/// About the RestrictedContent tag state: You do not have the permissions to modify this property
-/// template.
+/// Description of the "restricted_content" tag state: You do not have the permissions to modify
+/// this property template.
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRestrictedContent;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of Path.
+/// Initializes union class with tag state of "path".
 ///
 /// @param path (no description).
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
 
 ///
-/// Initializes union class with tag state of PropertyFieldTooLarge.
+/// Initializes union class with tag state of "property_field_too_large".
 ///
-/// About the PropertyFieldTooLarge tag state: A field value in this property group is too large.
+/// Description of the "property_field_too_large" tag state: A field value in this property group is
+/// too large.
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPropertyFieldTooLarge;
 
 ///
-/// Initializes union class with tag state of DoesNotFitTemplate.
+/// Initializes union class with tag state of "does_not_fit_template".
 ///
-/// About the DoesNotFitTemplate tag state: The property group specified does not conform to the
-/// property template.
+/// Description of the "does_not_fit_template" tag state: The property group specified does not
+/// conform to the property template.
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDoesNotFitTemplate;
 
 ///
-/// Initializes union class with tag state of PropertyGroupAlreadyExists.
+/// Initializes union class with tag state of "property_group_already_exists".
 ///
-/// About the PropertyGroupAlreadyExists tag state: This property group already exists for this
-/// file.
+/// Description of the "property_group_already_exists" tag state: This property group already exists
+/// for this file.
 ///
-/// @return An initialized DBFILESAddPropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPropertyGroupAlreadyExists;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TemplateNotFound.
+/// Retrieves whether the union's current tag state has value "template_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the templateNotFound
+/// @note Call this method and ensure it returns true before accessing the `templateNotFound`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value TemplateNotFound.
+/// @return Whether the union's current tag state has value "template_not_found".
 ///
 - (BOOL)isTemplateNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value RestrictedContent.
+/// Retrieves whether the union's current tag state has value "restricted_content".
 ///
-/// @return Whether the union's current tag state has value RestrictedContent.
+/// @return Whether the union's current tag state has value "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value Path.
+/// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the path property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `path` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Path.
+/// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value PropertyFieldTooLarge.
+/// Retrieves whether the union's current tag state has value "property_field_too_large".
 ///
-/// @return Whether the union's current tag state has value PropertyFieldTooLarge.
+/// @return Whether the union's current tag state has value "property_field_too_large".
 ///
 - (BOOL)isPropertyFieldTooLarge;
 
 ///
-/// Retrieves whether the union's current tag state has value DoesNotFitTemplate.
+/// Retrieves whether the union's current tag state has value "does_not_fit_template".
 ///
-/// @return Whether the union's current tag state has value DoesNotFitTemplate.
+/// @return Whether the union's current tag state has value "does_not_fit_template".
 ///
 - (BOOL)isDoesNotFitTemplate;
 
 ///
-/// Retrieves whether the union's current tag state has value PropertyGroupAlreadyExists.
+/// Retrieves whether the union's current tag state has value "property_group_already_exists".
 ///
-/// @return Whether the union's current tag state has value PropertyGroupAlreadyExists.
+/// @return Whether the union's current tag state has value "property_group_already_exists".
 ///
 - (BOOL)isPropertyGroupAlreadyExists;
 
@@ -196,26 +197,27 @@ typedef NS_ENUM(NSInteger, DBFILESAddPropertiesErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESAddPropertiesError union.
+/// The serialization class for the `DBFILESAddPropertiesError` union.
 ///
 @interface DBFILESAddPropertiesErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESAddPropertiesError instances.
+/// Serializes `DBFILESAddPropertiesError` instances.
 ///
-/// @param instance An instance of the DBFILESAddPropertiesError API object.
+/// @param instance An instance of the `DBFILESAddPropertiesError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESAddPropertiesError API object.
+/// @return A json-compatible dictionary representation of the `DBFILESAddPropertiesError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESAddPropertiesError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESAddPropertiesError instances.
+/// Deserializes `DBFILESAddPropertiesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESAddPropertiesError API
+/// @param dict A json-compatible dictionary representation of the `DBFILESAddPropertiesError` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESAddPropertiesError object.
+/// @return An instantiation of the `DBFILESAddPropertiesError` object.
 ///
 + (DBFILESAddPropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

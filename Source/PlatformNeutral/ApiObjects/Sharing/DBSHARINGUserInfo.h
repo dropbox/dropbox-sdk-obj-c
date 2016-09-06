@@ -7,18 +7,16 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGUserInfo;
-
 #pragma mark - API Object
 
 ///
-/// The UserInfo struct.
+/// The `UserInfo` struct.
 ///
-/// Basic information about a user. Use usersAccount and usersAccountBatch to obtain more detailed
-/// information.
+/// Basic information about a user. Use `usersAccount` and `usersAccountBatch` to obtain more
+/// detailed information.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGUserInfo : NSObject <DBSerializable>
 
@@ -36,27 +34,26 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGUserInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accountId The account ID of the user.
 /// @param sameTeam If the user is in the same team as current user.
-/// @param teamMemberId The team member ID of the shared folder member. Only present if
-/// :field:`same_team` is true.
+/// @param teamMemberId The team member ID of the shared folder member. Only present if sameTeam is
+/// true.
 ///
-/// @return An initialized DBSHARINGUserInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId
                                  sameTeam:(NSNumber * _Nonnull)sameTeam
                              teamMemberId:(NSString * _Nullable)teamMemberId;
 
 ///
-/// Convenience constructor for the DBSHARINGUserInfo struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param accountId The account ID of the user.
 /// @param sameTeam If the user is in the same team as current user.
 ///
-/// @return An initialized DBSHARINGUserInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId sameTeam:(NSNumber * _Nonnull)sameTeam;
 
@@ -65,25 +62,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UserInfo struct.
+/// The serialization class for the `UserInfo` struct.
 ///
 @interface DBSHARINGUserInfoSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGUserInfo instances.
+/// Serializes `DBSHARINGUserInfo` instances.
 ///
-/// @param instance An instance of the DBSHARINGUserInfo API object.
+/// @param instance An instance of the `DBSHARINGUserInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGUserInfo API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGUserInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUserInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGUserInfo instances.
+/// Deserializes `DBSHARINGUserInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGUserInfo API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGUserInfo` API object.
 ///
-/// @return An instantiation of the DBSHARINGUserInfo object.
+/// @return An instantiation of the `DBSHARINGUserInfo` object.
 ///
 + (DBSHARINGUserInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

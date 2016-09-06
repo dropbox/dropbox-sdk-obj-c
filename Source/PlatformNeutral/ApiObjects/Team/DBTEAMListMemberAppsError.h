@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListMemberAppsError;
-
 #pragma mark - API Object
 
 ///
-/// The ListMemberAppsError union.
+/// The `ListMemberAppsError` union.
 ///
-/// Error returned by linkedAppsListMemberLinkedApps.
+/// Error returned by `linkedAppsListMemberLinkedApps`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMemberAppsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMListMemberAppsErrorTag enum type represents the possible tag states with which the
-/// DBTEAMListMemberAppsError union can exist.
+/// The `DBTEAMListMemberAppsErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMListMemberAppsError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
   /// Member not found.
   DBTEAMListMemberAppsErrorMemberNotFound,
@@ -40,34 +38,34 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of MemberNotFound.
+/// Initializes union class with tag state of "member_not_found".
 ///
-/// About the MemberNotFound tag state: Member not found.
+/// Description of the "member_not_found" tag state: Member not found.
 ///
-/// @return An initialized DBTEAMListMemberAppsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMListMemberAppsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value MemberNotFound.
+/// Retrieves whether the union's current tag state has value "member_not_found".
 ///
-/// @return Whether the union's current tag state has value MemberNotFound.
+/// @return Whether the union's current tag state has value "member_not_found".
 ///
 - (BOOL)isMemberNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -83,26 +81,27 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMListMemberAppsError union.
+/// The serialization class for the `DBTEAMListMemberAppsError` union.
 ///
 @interface DBTEAMListMemberAppsErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMemberAppsError instances.
+/// Serializes `DBTEAMListMemberAppsError` instances.
 ///
-/// @param instance An instance of the DBTEAMListMemberAppsError API object.
+/// @param instance An instance of the `DBTEAMListMemberAppsError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMemberAppsError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMListMemberAppsError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberAppsError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMemberAppsError instances.
+/// Deserializes `DBTEAMListMemberAppsError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMemberAppsError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberAppsError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMListMemberAppsError object.
+/// @return An instantiation of the `DBTEAMListMemberAppsError` object.
 ///
 + (DBTEAMListMemberAppsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

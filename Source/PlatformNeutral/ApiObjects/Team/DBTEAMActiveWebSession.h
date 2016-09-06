@@ -8,17 +8,15 @@
 #import "DBTEAMDeviceSession.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMActiveWebSession;
-
 #pragma mark - API Object
 
 ///
-/// The ActiveWebSession struct.
+/// The `ActiveWebSession` struct.
 ///
 /// Information on active web sessions
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMActiveWebSession : DBTEAMDeviceSession <DBSerializable>
 
@@ -36,7 +34,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMActiveWebSession struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The session id
 /// @param userAgent Information on the hosting device
@@ -47,7 +45,7 @@
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
 ///
-/// @return An initialized DBTEAMActiveWebSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                 userAgent:(NSString * _Nonnull)userAgent
@@ -59,15 +57,14 @@
                                   updated:(NSDate * _Nullable)updated;
 
 ///
-/// Convenience constructor for the DBTEAMActiveWebSession struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sessionId The session id
 /// @param userAgent Information on the hosting device
 /// @param os Information on the hosting operating system
 /// @param browser Information on the browser used for this web session
 ///
-/// @return An initialized DBTEAMActiveWebSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                 userAgent:(NSString * _Nonnull)userAgent
@@ -79,26 +76,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ActiveWebSession struct.
+/// The serialization class for the `ActiveWebSession` struct.
 ///
 @interface DBTEAMActiveWebSessionSerializer : NSObject
 
 ///
-/// Serializes DBTEAMActiveWebSession instances.
+/// Serializes `DBTEAMActiveWebSession` instances.
 ///
-/// @param instance An instance of the DBTEAMActiveWebSession API object.
+/// @param instance An instance of the `DBTEAMActiveWebSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMActiveWebSession API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMActiveWebSession` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMActiveWebSession * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMActiveWebSession instances.
+/// Deserializes `DBTEAMActiveWebSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMActiveWebSession API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMActiveWebSession` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMActiveWebSession object.
+/// @return An instantiation of the `DBTEAMActiveWebSession` object.
 ///
 + (DBTEAMActiveWebSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

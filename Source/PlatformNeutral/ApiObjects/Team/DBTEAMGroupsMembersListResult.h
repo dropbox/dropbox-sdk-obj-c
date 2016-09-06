@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMGroupMemberInfo;
-@class DBTEAMGroupsMembersListResult;
 
 #pragma mark - API Object
 
 ///
-/// The GroupsMembersListResult struct.
+/// The `GroupsMembersListResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupsMembersListResult : NSObject <DBSerializable>
 
@@ -25,25 +24,25 @@
 /// (no description).
 @property(nonatomic, readonly) NSArray<DBTEAMGroupMemberInfo *> * _Nonnull members;
 
-/// Pass the cursor into groupsMembersListContinue to obtain additional group members.
+/// Pass the cursor into `groupsMembersListContinue` to obtain additional group members.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Is true if there are additional group members that have not been returned yet. An additional
-/// call to groupsMembersListContinue can retrieve them.
+/// call to `groupsMembersListContinue` can retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupsMembersListResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param members (no description).
-/// @param cursor Pass the cursor into :route:`groups/members/list/continue` to obtain additional
-/// group members.
+/// @param cursor Pass the cursor into `groupsMembersListContinue` to obtain additional group
+/// members.
 /// @param hasMore Is true if there are additional group members that have not been returned yet. An
-/// additional call to :route:`groups/members/list/continue` can retrieve them.
+/// additional call to `groupsMembersListContinue` can retrieve them.
 ///
-/// @return An initialized DBTEAMGroupsMembersListResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMembers:(NSArray<DBTEAMGroupMemberInfo *> * _Nonnull)members
                                  cursor:(NSString * _Nonnull)cursor
@@ -54,27 +53,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupsMembersListResult struct.
+/// The serialization class for the `GroupsMembersListResult` struct.
 ///
 @interface DBTEAMGroupsMembersListResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupsMembersListResult instances.
+/// Serializes `DBTEAMGroupsMembersListResult` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupsMembersListResult API object.
+/// @param instance An instance of the `DBTEAMGroupsMembersListResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupsMembersListResult API
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupsMembersListResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsMembersListResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupsMembersListResult instances.
+/// Deserializes `DBTEAMGroupsMembersListResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupsMembersListResult API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsMembersListResult`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMGroupsMembersListResult object.
+/// @return An instantiation of the `DBTEAMGroupsMembersListResult` object.
 ///
 + (DBTEAMGroupsMembersListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

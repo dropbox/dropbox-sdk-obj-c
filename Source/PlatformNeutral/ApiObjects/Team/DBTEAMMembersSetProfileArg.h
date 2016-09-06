@@ -7,20 +7,19 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersSetProfileArg;
 @class DBTEAMUserSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The MembersSetProfileArg struct.
+/// The `MembersSetProfileArg` struct.
 ///
 /// Exactly one of team_member_id, email, or external_id must be provided to identify the user
 /// account. At least one of new_email, new_external_id, new_given_name, and/or new_surname must be
 /// provided.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersSetProfileArg : NSObject <DBSerializable>
 
@@ -44,7 +43,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersSetProfileArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of user whose profile will be set.
 /// @param dNewEmail New email for member.
@@ -52,7 +51,7 @@
 /// @param dNewGivenName New given name for member.
 /// @param dNewSurname New surname for member.
 ///
-/// @return An initialized DBTEAMMembersSetProfileArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user
                            dNewEmail:(NSString * _Nullable)dNewEmail
@@ -61,12 +60,11 @@
                          dNewSurname:(NSString * _Nullable)dNewSurname;
 
 ///
-/// Convenience constructor for the DBTEAMMembersSetProfileArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param user Identity of user whose profile will be set.
 ///
-/// @return An initialized DBTEAMMembersSetProfileArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user;
 
@@ -75,27 +73,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersSetProfileArg struct.
+/// The serialization class for the `MembersSetProfileArg` struct.
 ///
 @interface DBTEAMMembersSetProfileArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersSetProfileArg instances.
+/// Serializes `DBTEAMMembersSetProfileArg` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersSetProfileArg API object.
+/// @param instance An instance of the `DBTEAMMembersSetProfileArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersSetProfileArg API
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetProfileArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetProfileArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersSetProfileArg instances.
+/// Deserializes `DBTEAMMembersSetProfileArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersSetProfileArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersSetProfileArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersSetProfileArg object.
+/// @return An instantiation of the `DBTEAMMembersSetProfileArg` object.
 ///
 + (DBTEAMMembersSetProfileArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

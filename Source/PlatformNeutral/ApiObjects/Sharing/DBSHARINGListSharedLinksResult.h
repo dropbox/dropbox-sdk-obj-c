@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListSharedLinksResult;
 @class DBSHARINGSharedLinkMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The ListSharedLinksResult struct.
+/// The `ListSharedLinksResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListSharedLinksResult : NSObject <DBSerializable>
 
@@ -26,39 +25,38 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGSharedLinkMetadata *> * _Nonnull links;
 
 /// Is true if there are additional shared links that have not been returned yet. Pass the cursor
-/// into listSharedLinks to retrieve them.
+/// into `listSharedLinks` to retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
-/// Pass the cursor into listSharedLinks to obtain the additional links. Cursor is returned only if
-/// no path is given or the path is empty.
+/// Pass the cursor into `listSharedLinks` to obtain the additional links. Cursor is returned only
+/// if no path is given or the path is empty.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListSharedLinksResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param links Shared links applicable to the path argument.
 /// @param hasMore Is true if there are additional shared links that have not been returned yet.
-/// Pass the cursor into :route:`list_shared_links` to retrieve them.
-/// @param cursor Pass the cursor into :route:`list_shared_links` to obtain the additional links.
-/// Cursor is returned only if no path is given or the path is empty.
+/// Pass the cursor into `listSharedLinks` to retrieve them.
+/// @param cursor Pass the cursor into `listSharedLinks` to obtain the additional links. Cursor is
+/// returned only if no path is given or the path is empty.
 ///
-/// @return An initialized DBSHARINGListSharedLinksResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLinks:(NSArray<DBSHARINGSharedLinkMetadata *> * _Nonnull)links
                               hasMore:(NSNumber * _Nonnull)hasMore
                                cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor for the DBSHARINGListSharedLinksResult struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param links Shared links applicable to the path argument.
 /// @param hasMore Is true if there are additional shared links that have not been returned yet.
-/// Pass the cursor into :route:`list_shared_links` to retrieve them.
+/// Pass the cursor into `listSharedLinks` to retrieve them.
 ///
-/// @return An initialized DBSHARINGListSharedLinksResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLinks:(NSArray<DBSHARINGSharedLinkMetadata *> * _Nonnull)links
                               hasMore:(NSNumber * _Nonnull)hasMore;
@@ -68,27 +66,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListSharedLinksResult struct.
+/// The serialization class for the `ListSharedLinksResult` struct.
 ///
 @interface DBSHARINGListSharedLinksResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListSharedLinksResult instances.
+/// Serializes `DBSHARINGListSharedLinksResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGListSharedLinksResult API object.
+/// @param instance An instance of the `DBSHARINGListSharedLinksResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListSharedLinksResult API
+/// @return A json-compatible dictionary representation of the `DBSHARINGListSharedLinksResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListSharedLinksResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListSharedLinksResult instances.
+/// Deserializes `DBSHARINGListSharedLinksResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListSharedLinksResult
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListSharedLinksResult`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGListSharedLinksResult object.
+/// @return An instantiation of the `DBSHARINGListSharedLinksResult` object.
 ///
 + (DBSHARINGListSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

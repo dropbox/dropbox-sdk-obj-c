@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGAccessLevel;
-@class DBSHARINGChangeFileMemberAccessArgs;
 @class DBSHARINGMemberSelector;
 
 #pragma mark - API Object
 
 ///
-/// The ChangeFileMemberAccessArgs struct.
+/// The `ChangeFileMemberAccessArgs` struct.
 ///
-/// Arguments for changeFileMemberAccess.
+/// Arguments for `changeFileMemberAccess`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGChangeFileMemberAccessArgs : NSObject <DBSerializable>
 
@@ -37,14 +36,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGChangeFileMemberAccessArgs struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file File for which we are changing a member's access.
 /// @param member The member whose access we are changing.
 /// @param accessLevel The new access level for the member.
 ///
-/// @return An initialized DBSHARINGChangeFileMemberAccessArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                               member:(DBSHARINGMemberSelector * _Nonnull)member
@@ -55,27 +53,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ChangeFileMemberAccessArgs struct.
+/// The serialization class for the `ChangeFileMemberAccessArgs` struct.
 ///
 @interface DBSHARINGChangeFileMemberAccessArgsSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGChangeFileMemberAccessArgs instances.
+/// Serializes `DBSHARINGChangeFileMemberAccessArgs` instances.
 ///
-/// @param instance An instance of the DBSHARINGChangeFileMemberAccessArgs API object.
+/// @param instance An instance of the `DBSHARINGChangeFileMemberAccessArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGChangeFileMemberAccessArgs
+/// @return A json-compatible dictionary representation of the `DBSHARINGChangeFileMemberAccessArgs`
 /// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGChangeFileMemberAccessArgs * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGChangeFileMemberAccessArgs instances.
+/// Deserializes `DBSHARINGChangeFileMemberAccessArgs` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGChangeFileMemberAccessArgs API object.
+/// `DBSHARINGChangeFileMemberAccessArgs` API object.
 ///
-/// @return An instantiation of the DBSHARINGChangeFileMemberAccessArgs object.
+/// @return An instantiation of the `DBSHARINGChangeFileMemberAccessArgs` object.
 ///
 + (DBSHARINGChangeFileMemberAccessArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -9,18 +9,17 @@
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGFolderPolicy;
-@class DBSHARINGSharedFolderMetadataBase;
 @class DBUSERSTeam;
 
 #pragma mark - API Object
 
 ///
-/// The SharedFolderMetadataBase struct.
+/// The `SharedFolderMetadataBase` struct.
 ///
 /// Properties of the shared folder.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedFolderMetadataBase : NSObject <DBSerializable>
 
@@ -45,19 +44,17 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGSharedFolderMetadataBase struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accessType The current user's access level for this shared folder.
-/// @param isTeamFolder Whether this folder is a :link:`team folder
-/// https://www.dropbox.com/en/help/986`.
+/// @param isTeamFolder Whether this folder is a team folder https://www.dropbox.com/en/help/986.
 /// @param policy Policies governing this shared folder.
 /// @param ownerTeam The team that owns the folder. This field is not present if the folder is not
 /// owned by a team.
 /// @param parentSharedFolderId The ID of the parent shared folder. This field is present only if
 /// the folder is contained within another shared folder.
 ///
-/// @return An initialized DBSHARINGSharedFolderMetadataBase instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
                               isTeamFolder:(NSNumber * _Nonnull)isTeamFolder
@@ -66,15 +63,13 @@
                       parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
 ///
-/// Convenience constructor for the DBSHARINGSharedFolderMetadataBase struct (exposes only
-/// non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param accessType The current user's access level for this shared folder.
-/// @param isTeamFolder Whether this folder is a :link:`team folder
-/// https://www.dropbox.com/en/help/986`.
+/// @param isTeamFolder Whether this folder is a team folder https://www.dropbox.com/en/help/986.
 /// @param policy Policies governing this shared folder.
 ///
-/// @return An initialized DBSHARINGSharedFolderMetadataBase instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
                               isTeamFolder:(NSNumber * _Nonnull)isTeamFolder
@@ -85,27 +80,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SharedFolderMetadataBase struct.
+/// The serialization class for the `SharedFolderMetadataBase` struct.
 ///
 @interface DBSHARINGSharedFolderMetadataBaseSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedFolderMetadataBase instances.
+/// Serializes `DBSHARINGSharedFolderMetadataBase` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedFolderMetadataBase API object.
+/// @param instance An instance of the `DBSHARINGSharedFolderMetadataBase` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharedFolderMetadataBase API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderMetadataBase`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMetadataBase * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedFolderMetadataBase instances.
+/// Deserializes `DBSHARINGSharedFolderMetadataBase` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharedFolderMetadataBase
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMetadataBase` API object.
 ///
-/// @return An instantiation of the DBSHARINGSharedFolderMetadataBase object.
+/// @return An instantiation of the `DBSHARINGSharedFolderMetadataBase` object.
 ///
 + (DBSHARINGSharedFolderMetadataBase * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

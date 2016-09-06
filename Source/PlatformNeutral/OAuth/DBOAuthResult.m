@@ -15,7 +15,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
 
 #pragma mark - Constructors
 
-+ (DBAuthErrorType)getErrorType:(NSString *)errorDescription {
++ (DBOAuthErrorType)getErrorType:(NSString *)errorDescription {
   if (!errorTypeLookup) {
     errorTypeLookup = @{
       @"unauthorized_client" : [NSNumber numberWithInt:DBAuthUnauthorizedClient],
@@ -27,7 +27,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
       @"" : [NSNumber numberWithInt:DBAuthUnknown],
     };
   }
-  return (DBAuthErrorType)errorTypeLookup[errorDescription] ?: DBAuthUnknown;
+  return (DBOAuthErrorType)errorTypeLookup[errorDescription] ?: DBAuthUnknown;
 }
 
 - (instancetype)initWithSuccess:(DBAccessToken *)accessToken {
@@ -96,7 +96,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
   return _accessToken;
 }
 
-- (DBAuthErrorType)errorType {
+- (DBOAuthErrorType)errorType {
   if (_tag != DBAuthError) {
     [NSException raise:@"IllegalStateException"
                 format:@"Invalid tag: required `DBAuthError`, but was %@.", [self tagName]];

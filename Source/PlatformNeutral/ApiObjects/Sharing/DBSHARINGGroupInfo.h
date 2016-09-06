@@ -8,20 +8,19 @@
 #import "DBTEAMCOMMONGroupSummary.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGGroupInfo;
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupType;
 
 #pragma mark - API Object
 
 ///
-/// The GroupInfo struct.
+/// The `GroupInfo` struct.
 ///
 /// The information about a group. Groups is a way to manage a list of users  who need same access
 /// permission to the shared folder.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGGroupInfo : DBTEAMCOMMONGroupSummary <DBSerializable>
 
@@ -39,7 +38,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGGroupInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
@@ -51,7 +50,7 @@
 /// a group.
 /// @param memberCount The number of members in the group.
 ///
-/// @return An initialized DBSHARINGGroupInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName
                                   groupId:(NSString * _Nonnull)groupId
@@ -63,8 +62,7 @@
                               memberCount:(NSNumber * _Nullable)memberCount;
 
 ///
-/// Convenience constructor for the DBSHARINGGroupInfo struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
@@ -73,7 +71,7 @@
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
 ///
-/// @return An initialized DBSHARINGGroupInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName
                                   groupId:(NSString * _Nonnull)groupId
@@ -87,25 +85,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupInfo struct.
+/// The serialization class for the `GroupInfo` struct.
 ///
 @interface DBSHARINGGroupInfoSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGGroupInfo instances.
+/// Serializes `DBSHARINGGroupInfo` instances.
 ///
-/// @param instance An instance of the DBSHARINGGroupInfo API object.
+/// @param instance An instance of the `DBSHARINGGroupInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGGroupInfo API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGGroupInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGroupInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGGroupInfo instances.
+/// Deserializes `DBSHARINGGroupInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGGroupInfo API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGGroupInfo` API object.
 ///
-/// @return An instantiation of the DBSHARINGGroupInfo object.
+/// @return An instantiation of the `DBSHARINGGroupInfo` object.
 ///
 + (DBSHARINGGroupInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

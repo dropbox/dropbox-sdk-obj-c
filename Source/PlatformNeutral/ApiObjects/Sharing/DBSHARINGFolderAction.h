@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGFolderAction;
-
 #pragma mark - API Object
 
 ///
-/// The FolderAction union.
+/// The `FolderAction` union.
 ///
 /// Actions that may be taken on shared folders.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFolderAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFolderActionTag enum type represents the possible tag states with which the
-/// DBSHARINGFolderAction union can exist.
+/// The `DBSHARINGFolderActionTag` enum type represents the possible tag states with which the
+/// `DBSHARINGFolderAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// Change folder options, such as who can be invited to join the folder.
   DBSHARINGFolderActionChangeOptions,
@@ -67,183 +65,184 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of ChangeOptions.
+/// Initializes union class with tag state of "change_options".
 ///
-/// About the ChangeOptions tag state: Change folder options, such as who can be invited to join the
-/// folder.
+/// Description of the "change_options" tag state: Change folder options, such as who can be invited
+/// to join the folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithChangeOptions;
 
 ///
-/// Initializes union class with tag state of EditContents.
+/// Initializes union class with tag state of "edit_contents".
 ///
-/// About the EditContents tag state: Change or edit contents of the folder.
+/// Description of the "edit_contents" tag state: Change or edit contents of the folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEditContents;
 
 ///
-/// Initializes union class with tag state of InviteEditor.
+/// Initializes union class with tag state of "invite_editor".
 ///
-/// About the InviteEditor tag state: Invite a user or group to join the folder with read and write
-/// permission.
+/// Description of the "invite_editor" tag state: Invite a user or group to join the folder with
+/// read and write permission.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInviteEditor;
 
 ///
-/// Initializes union class with tag state of InviteViewer.
+/// Initializes union class with tag state of "invite_viewer".
 ///
-/// About the InviteViewer tag state: Invite a user or group to join the folder with read
-/// permission.
+/// Description of the "invite_viewer" tag state: Invite a user or group to join the folder with
+/// read permission.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInviteViewer;
 
 ///
-/// Initializes union class with tag state of InviteViewerNoComment.
+/// Initializes union class with tag state of "invite_viewer_no_comment".
 ///
-/// About the InviteViewerNoComment tag state: Invite a user or group to join the folder with read
-/// permission but no comment permissions.
+/// Description of the "invite_viewer_no_comment" tag state: Invite a user or group to join the
+/// folder with read permission but no comment permissions.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInviteViewerNoComment;
 
 ///
-/// Initializes union class with tag state of RelinquishMembership.
+/// Initializes union class with tag state of "relinquish_membership".
 ///
-/// About the RelinquishMembership tag state: Relinquish one's own membership in the folder.
+/// Description of the "relinquish_membership" tag state: Relinquish one's own membership in the
+/// folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRelinquishMembership;
 
 ///
-/// Initializes union class with tag state of Unmount.
+/// Initializes union class with tag state of "unmount".
 ///
-/// About the Unmount tag state: Unmount the folder.
+/// Description of the "unmount" tag state: Unmount the folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnmount;
 
 ///
-/// Initializes union class with tag state of Unshare.
+/// Initializes union class with tag state of "unshare".
 ///
-/// About the Unshare tag state: Stop sharing this folder.
+/// Description of the "unshare" tag state: Stop sharing this folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnshare;
 
 ///
-/// Initializes union class with tag state of LeaveACopy.
+/// Initializes union class with tag state of "leave_a_copy".
 ///
-/// About the LeaveACopy tag state: Keep a copy of the contents upon leaving or being kicked from
-/// the folder.
+/// Description of the "leave_a_copy" tag state: Keep a copy of the contents upon leaving or being
+/// kicked from the folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLeaveACopy;
 
 ///
-/// Initializes union class with tag state of ShareLink.
+/// Initializes union class with tag state of "share_link".
 ///
-/// About the ShareLink tag state: Create a shared link for folder.
+/// Description of the "share_link" tag state: Create a shared link for folder.
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithShareLink;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGFolderAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value ChangeOptions.
+/// Retrieves whether the union's current tag state has value "change_options".
 ///
-/// @return Whether the union's current tag state has value ChangeOptions.
+/// @return Whether the union's current tag state has value "change_options".
 ///
 - (BOOL)isChangeOptions;
 
 ///
-/// Retrieves whether the union's current tag state has value EditContents.
+/// Retrieves whether the union's current tag state has value "edit_contents".
 ///
-/// @return Whether the union's current tag state has value EditContents.
+/// @return Whether the union's current tag state has value "edit_contents".
 ///
 - (BOOL)isEditContents;
 
 ///
-/// Retrieves whether the union's current tag state has value InviteEditor.
+/// Retrieves whether the union's current tag state has value "invite_editor".
 ///
-/// @return Whether the union's current tag state has value InviteEditor.
+/// @return Whether the union's current tag state has value "invite_editor".
 ///
 - (BOOL)isInviteEditor;
 
 ///
-/// Retrieves whether the union's current tag state has value InviteViewer.
+/// Retrieves whether the union's current tag state has value "invite_viewer".
 ///
-/// @return Whether the union's current tag state has value InviteViewer.
+/// @return Whether the union's current tag state has value "invite_viewer".
 ///
 - (BOOL)isInviteViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value InviteViewerNoComment.
+/// Retrieves whether the union's current tag state has value "invite_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value InviteViewerNoComment.
+/// @return Whether the union's current tag state has value "invite_viewer_no_comment".
 ///
 - (BOOL)isInviteViewerNoComment;
 
 ///
-/// Retrieves whether the union's current tag state has value RelinquishMembership.
+/// Retrieves whether the union's current tag state has value "relinquish_membership".
 ///
-/// @return Whether the union's current tag state has value RelinquishMembership.
+/// @return Whether the union's current tag state has value "relinquish_membership".
 ///
 - (BOOL)isRelinquishMembership;
 
 ///
-/// Retrieves whether the union's current tag state has value Unmount.
+/// Retrieves whether the union's current tag state has value "unmount".
 ///
-/// @return Whether the union's current tag state has value Unmount.
+/// @return Whether the union's current tag state has value "unmount".
 ///
 - (BOOL)isUnmount;
 
 ///
-/// Retrieves whether the union's current tag state has value Unshare.
+/// Retrieves whether the union's current tag state has value "unshare".
 ///
-/// @return Whether the union's current tag state has value Unshare.
+/// @return Whether the union's current tag state has value "unshare".
 ///
 - (BOOL)isUnshare;
 
 ///
-/// Retrieves whether the union's current tag state has value LeaveACopy.
+/// Retrieves whether the union's current tag state has value "leave_a_copy".
 ///
-/// @return Whether the union's current tag state has value LeaveACopy.
+/// @return Whether the union's current tag state has value "leave_a_copy".
 ///
 - (BOOL)isLeaveACopy;
 
 ///
-/// Retrieves whether the union's current tag state has value ShareLink.
+/// Retrieves whether the union's current tag state has value "share_link".
 ///
-/// @return Whether the union's current tag state has value ShareLink.
+/// @return Whether the union's current tag state has value "share_link".
 ///
 - (BOOL)isShareLink;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -259,25 +258,26 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFolderAction union.
+/// The serialization class for the `DBSHARINGFolderAction` union.
 ///
 @interface DBSHARINGFolderActionSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFolderAction instances.
+/// Serializes `DBSHARINGFolderAction` instances.
 ///
-/// @param instance An instance of the DBSHARINGFolderAction API object.
+/// @param instance An instance of the `DBSHARINGFolderAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFolderAction API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGFolderAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFolderAction * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFolderAction instances.
+/// Deserializes `DBSHARINGFolderAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFolderAction API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFolderAction` API
+/// object.
 ///
-/// @return An instantiation of the DBSHARINGFolderAction object.
+/// @return An instantiation of the `DBSHARINGFolderAction` object.
 ///
 + (DBSHARINGFolderAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

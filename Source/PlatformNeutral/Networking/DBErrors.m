@@ -156,7 +156,7 @@
 - (instancetype)initAsHttpError:(NSString *)requestId
                      statusCode:(NSNumber *)statusCode
                    errorContent:(NSString *)errorContent {
-  return [self init:DBRequestHttpErrorType
+  return [self init:DBRequestErrorHttp
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
@@ -169,7 +169,7 @@
 - (instancetype)initAsBadInputError:(NSString *)requestId
                          statusCode:(NSNumber *)statusCode
                        errorContent:(NSString *)errorContent {
-  return [self init:DBRequestBadInputErrorType
+  return [self init:DBRequestErrorBadInput
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
@@ -183,7 +183,7 @@
                      statusCode:(NSNumber *)statusCode
                    errorContent:(NSString *)errorContent
             structuredAuthError:(DBAUTHAuthError *)structuredAuthError {
-  return [self init:DBRequestAuthErrorType
+  return [self init:DBRequestErrorAuth
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
@@ -198,7 +198,7 @@
                         errorContent:(NSString *)errorContent
             structuredRateLimitError:(DBAUTHRateLimitError *)structuredRateLimitError
                              backoff:(NSNumber *)backoff {
-  return [self init:DBRequestRateLimitErrorType
+  return [self init:DBRequestErrorRateLimit
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
@@ -211,7 +211,7 @@
 - (instancetype)initAsInternalServerError:(NSString *)requestId
                                statusCode:(NSNumber *)statusCode
                              errorContent:(NSString *)errorContent {
-  return [self init:DBRequestInternalServerErrorType
+  return [self init:DBRequestErrorInternalServer
                      requestId:requestId
                     statusCode:statusCode
                   errorContent:errorContent
@@ -222,7 +222,7 @@
 }
 
 - (instancetype)initAsClientError:(NSError *)nsError {
-  return [self init:DBRequestClientErrorType
+  return [self init:DBRequestErrorClient
                      requestId:nil
                     statusCode:nil
                   errorContent:nil
@@ -232,7 +232,7 @@
                        nsError:nsError];
 }
 
-- (instancetype)init:(DBRequestErrorType)tag
+- (instancetype)init:(DBRequestErrorTag)tag
                    requestId:(NSString *)requestId
                   statusCode:(NSNumber *)statusCode
                 errorContent:(NSString *)errorContent
@@ -257,27 +257,27 @@
 #pragma mark - Tag state methods
 
 - (BOOL)isHttpError {
-  return _tag == DBRequestHttpErrorType;
+  return _tag == DBRequestErrorHttp;
 }
 
 - (BOOL)isBadInputError {
-  return _tag == DBRequestBadInputErrorType;
+  return _tag == DBRequestErrorBadInput;
 }
 
 - (BOOL)isAuthError {
-  return _tag == DBRequestAuthErrorType;
+  return _tag == DBRequestErrorAuth;
 }
 
 - (BOOL)isRateLimitError {
-  return _tag == DBRequestRateLimitErrorType;
+  return _tag == DBRequestErrorRateLimit;
 }
 
 - (BOOL)isInternalServerError {
-  return _tag == DBRequestInternalServerErrorType;
+  return _tag == DBRequestErrorInternalServer;
 }
 
 - (BOOL)isClientError {
-  return _tag == DBRequestClientErrorType;
+  return _tag == DBRequestErrorClient;
 }
 
 #pragma mark - Error subtype retrieval methods
@@ -285,7 +285,7 @@
 - (DBRequestHttpError * _Nonnull)asHttpError {
   if (![self isHttpError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestHttpErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorHttp`, but was %@.", [self tagName]];
   }
   return [[DBRequestHttpError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
@@ -293,7 +293,7 @@
 - (DBRequestBadInputError * _Nonnull)asBadInputError {
   if (![self isBadInputError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestBadInputErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorBadInput`, but was %@.", [self tagName]];
   }
   return [[DBRequestBadInputError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
@@ -301,7 +301,7 @@
 - (DBRequestAuthError * _Nonnull)asAuthError {
   if (![self isAuthError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestAuthErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorAuth`, but was %@.", [self tagName]];
   }
   return [[DBRequestAuthError alloc] init:_requestId
                                statusCode:_statusCode
@@ -312,7 +312,7 @@
 - (DBRequestRateLimitError * _Nonnull)asRateLimitError {
   if (![self isRateLimitError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestRateLimitErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorRateLimit`, but was %@.", [self tagName]];
   }
   return [[DBRequestRateLimitError alloc] init:_requestId
                                     statusCode:_statusCode
@@ -324,7 +324,7 @@
 - (DBRequestInternalServerError * _Nonnull)asInternalServerError {
   if (![self isInternalServerError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestInternalServerErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorInternalServer`, but was %@.", [self tagName]];
   }
   return [[DBRequestInternalServerError alloc] init:_requestId statusCode:_statusCode errorContent:_errorContent];
 }
@@ -332,7 +332,7 @@
 - (DBRequestClientError * _Nonnull)asClientError {
   if (![self isClientError]) {
     [NSException raise:@"IllegalStateException"
-                format:@"Invalid tag: required `DBRequestClientErrorType`, but was %@.", [self tagName]];
+                format:@"Invalid tag: required `DBRequestErrorClient`, but was %@.", [self tagName]];
   }
   return [[DBRequestClientError alloc] init:_nsError];
 }
@@ -341,18 +341,18 @@
 
 - (NSString *)tagName {
   switch (_tag) {
-  case DBRequestHttpErrorType:
-    return @"DBRequestHttpErrorType";
-  case DBRequestBadInputErrorType:
-    return @"DBRequestBadInputErrorType";
-  case DBRequestAuthErrorType:
-    return @"DBRequestAuthErrorType";
-  case DBRequestRateLimitErrorType:
-    return @"DBRequestRateLimitErrorType";
-  case DBRequestInternalServerErrorType:
-    return @"DBRequestInternalServerErrorType";
-  case DBRequestClientErrorType:
-    return @"DBRequestClientErrorType";
+  case DBRequestErrorHttp:
+    return @"DBRequestErrorHttp";
+  case DBRequestErrorBadInput:
+    return @"DBRequestErrorBadInput";
+  case DBRequestErrorAuth:
+    return @"DBRequestErrorAuth";
+  case DBRequestErrorRateLimit:
+    return @"DBRequestErrorRateLimit";
+  case DBRequestErrorInternalServer:
+    return @"DBRequestErrorInternalServer";
+  case DBRequestErrorClient:
+    return @"DBRequestErrorClient";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTagEnum" reason:@"Tag has an invalid value." userInfo:nil]);
@@ -362,17 +362,17 @@
 
 - (NSString *)description {
   switch (_tag) {
-  case DBRequestHttpErrorType:
+  case DBRequestErrorHttp:
     return [NSString stringWithFormat:@"%@", [self asHttpError]];
-  case DBRequestBadInputErrorType:
+  case DBRequestErrorBadInput:
     return [NSString stringWithFormat:@"%@", [self asBadInputError]];
-  case DBRequestAuthErrorType:
+  case DBRequestErrorAuth:
     return [NSString stringWithFormat:@"%@", [self asAuthError]];
-  case DBRequestRateLimitErrorType:
+  case DBRequestErrorRateLimit:
     return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
-  case DBRequestInternalServerErrorType:
-    return @"DBRequestInternalServerErrorType";
-  case DBRequestClientErrorType:
+  case DBRequestErrorInternalServer:
+    return @"DBRequestErrorInternalServer";
+  case DBRequestErrorClient:
     return [NSString stringWithFormat:@"%@", [self asClientError]];
   }
 

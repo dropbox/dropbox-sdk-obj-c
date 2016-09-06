@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGSharedLinkAccessFailureReason;
-
 #pragma mark - API Object
 
 ///
-/// The SharedLinkAccessFailureReason union.
+/// The `SharedLinkAccessFailureReason` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedLinkAccessFailureReason : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGSharedLinkAccessFailureReasonTag enum type represents the possible tag states with
-/// which the DBSHARINGSharedLinkAccessFailureReason union can exist.
+/// The `DBSHARINGSharedLinkAccessFailureReasonTag` enum type represents the possible tag states
+/// with which the `DBSHARINGSharedLinkAccessFailureReason` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
   /// User is not logged in.
   DBSHARINGSharedLinkAccessFailureReasonLoginRequired,
@@ -50,98 +48,98 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of LoginRequired.
+/// Initializes union class with tag state of "login_required".
 ///
-/// About the LoginRequired tag state: User is not logged in.
+/// Description of the "login_required" tag state: User is not logged in.
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLoginRequired;
 
 ///
-/// Initializes union class with tag state of EmailVerifyRequired.
+/// Initializes union class with tag state of "email_verify_required".
 ///
-/// About the EmailVerifyRequired tag state: User's email is not verified.
+/// Description of the "email_verify_required" tag state: User's email is not verified.
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmailVerifyRequired;
 
 ///
-/// Initializes union class with tag state of PasswordRequired.
+/// Initializes union class with tag state of "password_required".
 ///
-/// About the PasswordRequired tag state: The link is password protected.
+/// Description of the "password_required" tag state: The link is password protected.
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPasswordRequired;
 
 ///
-/// Initializes union class with tag state of TeamOnly.
+/// Initializes union class with tag state of "team_only".
 ///
-/// About the TeamOnly tag state: Access is allowed for team members only.
+/// Description of the "team_only" tag state: Access is allowed for team members only.
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamOnly;
 
 ///
-/// Initializes union class with tag state of OwnerOnly.
+/// Initializes union class with tag state of "owner_only".
 ///
-/// About the OwnerOnly tag state: Access is allowed for the shared link's owner only.
+/// Description of the "owner_only" tag state: Access is allowed for the shared link's owner only.
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOwnerOnly;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGSharedLinkAccessFailureReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value LoginRequired.
+/// Retrieves whether the union's current tag state has value "login_required".
 ///
-/// @return Whether the union's current tag state has value LoginRequired.
+/// @return Whether the union's current tag state has value "login_required".
 ///
 - (BOOL)isLoginRequired;
 
 ///
-/// Retrieves whether the union's current tag state has value EmailVerifyRequired.
+/// Retrieves whether the union's current tag state has value "email_verify_required".
 ///
-/// @return Whether the union's current tag state has value EmailVerifyRequired.
+/// @return Whether the union's current tag state has value "email_verify_required".
 ///
 - (BOOL)isEmailVerifyRequired;
 
 ///
-/// Retrieves whether the union's current tag state has value PasswordRequired.
+/// Retrieves whether the union's current tag state has value "password_required".
 ///
-/// @return Whether the union's current tag state has value PasswordRequired.
+/// @return Whether the union's current tag state has value "password_required".
 ///
 - (BOOL)isPasswordRequired;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamOnly.
+/// Retrieves whether the union's current tag state has value "team_only".
 ///
-/// @return Whether the union's current tag state has value TeamOnly.
+/// @return Whether the union's current tag state has value "team_only".
 ///
 - (BOOL)isTeamOnly;
 
 ///
-/// Retrieves whether the union's current tag state has value OwnerOnly.
+/// Retrieves whether the union's current tag state has value "owner_only".
 ///
-/// @return Whether the union's current tag state has value OwnerOnly.
+/// @return Whether the union's current tag state has value "owner_only".
 ///
 - (BOOL)isOwnerOnly;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -157,27 +155,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGSharedLinkAccessFailureReason union.
+/// The serialization class for the `DBSHARINGSharedLinkAccessFailureReason` union.
 ///
 @interface DBSHARINGSharedLinkAccessFailureReasonSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedLinkAccessFailureReason instances.
+/// Serializes `DBSHARINGSharedLinkAccessFailureReason` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedLinkAccessFailureReason API object.
+/// @param instance An instance of the `DBSHARINGSharedLinkAccessFailureReason` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGSharedLinkAccessFailureReason API object.
+/// `DBSHARINGSharedLinkAccessFailureReason` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkAccessFailureReason * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedLinkAccessFailureReason instances.
+/// Deserializes `DBSHARINGSharedLinkAccessFailureReason` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGSharedLinkAccessFailureReason API object.
+/// `DBSHARINGSharedLinkAccessFailureReason` API object.
 ///
-/// @return An instantiation of the DBSHARINGSharedLinkAccessFailureReason object.
+/// @return An instantiation of the `DBSHARINGSharedLinkAccessFailureReason` object.
 ///
 + (DBSHARINGSharedLinkAccessFailureReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

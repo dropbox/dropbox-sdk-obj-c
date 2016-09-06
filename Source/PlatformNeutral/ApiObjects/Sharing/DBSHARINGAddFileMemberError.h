@@ -7,26 +7,25 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGAddFileMemberError;
 @class DBSHARINGSharingFileAccessError;
 @class DBSHARINGSharingUserError;
 
 #pragma mark - API Object
 
 ///
-/// The AddFileMemberError union.
+/// The `AddFileMemberError` union.
 ///
-/// Errors for addFileMember.
+/// Errors for `addFileMember`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGAddFileMemberError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGAddFileMemberErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGAddFileMemberError union can exist.
+/// The `DBSHARINGAddFileMemberErrorTag` enum type represents the possible tag states with which the
+/// `DBSHARINGAddFileMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
   /// (no description).
   DBSHARINGAddFileMemberErrorUserError,
@@ -48,99 +47,100 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGAddFileMemberErrorTag tag;
 
-/// (no description). Ensure the isUserError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isUserError` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
-/// (no description). Ensure the isAccessError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserError.
+/// Initializes union class with tag state of "user_error".
 ///
 /// @param userError (no description).
 ///
-/// @return An initialized DBSHARINGAddFileMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserError:(DBSHARINGSharingUserError * _Nonnull)userError;
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
 /// @param accessError (no description).
 ///
-/// @return An initialized DBSHARINGAddFileMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of RateLimit.
+/// Initializes union class with tag state of "rate_limit".
 ///
-/// About the RateLimit tag state: The user has reached the rate limit for invitations.
+/// Description of the "rate_limit" tag state: The user has reached the rate limit for invitations.
 ///
-/// @return An initialized DBSHARINGAddFileMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRateLimit;
 
 ///
-/// Initializes union class with tag state of InvalidComment.
+/// Initializes union class with tag state of "invalid_comment".
 ///
-/// About the InvalidComment tag state: The custom message did not pass comment permissions checks.
+/// Description of the "invalid_comment" tag state: The custom message did not pass comment
+/// permissions checks.
 ///
-/// @return An initialized DBSHARINGAddFileMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidComment;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGAddFileMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserError.
+/// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the userError property,
+/// @note Call this method and ensure it returns true before accessing the `userError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserError.
+/// @return Whether the union's current tag state has value "user_error".
 ///
 - (BOOL)isUserError;
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value RateLimit.
+/// Retrieves whether the union's current tag state has value "rate_limit".
 ///
-/// @return Whether the union's current tag state has value RateLimit.
+/// @return Whether the union's current tag state has value "rate_limit".
 ///
 - (BOOL)isRateLimit;
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidComment.
+/// Retrieves whether the union's current tag state has value "invalid_comment".
 ///
-/// @return Whether the union's current tag state has value InvalidComment.
+/// @return Whether the union's current tag state has value "invalid_comment".
 ///
 - (BOOL)isInvalidComment;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -156,27 +156,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGAddFileMemberError union.
+/// The serialization class for the `DBSHARINGAddFileMemberError` union.
 ///
 @interface DBSHARINGAddFileMemberErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGAddFileMemberError instances.
+/// Serializes `DBSHARINGAddFileMemberError` instances.
 ///
-/// @param instance An instance of the DBSHARINGAddFileMemberError API object.
+/// @param instance An instance of the `DBSHARINGAddFileMemberError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGAddFileMemberError API
+/// @return A json-compatible dictionary representation of the `DBSHARINGAddFileMemberError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddFileMemberError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGAddFileMemberError instances.
+/// Deserializes `DBSHARINGAddFileMemberError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGAddFileMemberError API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddFileMemberError` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGAddFileMemberError object.
+/// @return An instantiation of the `DBSHARINGAddFileMemberError` object.
 ///
 + (DBSHARINGAddFileMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

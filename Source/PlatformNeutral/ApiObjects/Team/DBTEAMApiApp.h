@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMApiApp;
-
 #pragma mark - API Object
 
 ///
-/// The ApiApp struct.
+/// The `ApiApp` struct.
 ///
 /// Information on linked third party applications
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMApiApp : NSObject <DBSerializable>
 
@@ -44,7 +42,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMApiApp struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param appId The application unique id
 /// @param appName The application name
@@ -53,7 +51,7 @@
 /// @param publisherUrl The publisher's URL
 /// @param linked The time this application was linked
 ///
-/// @return An initialized DBTEAMApiApp instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId
                               appName:(NSString * _Nonnull)appName
@@ -63,14 +61,13 @@
                                linked:(NSDate * _Nullable)linked;
 
 ///
-/// Convenience constructor for the DBTEAMApiApp struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param appId The application unique id
 /// @param appName The application name
 /// @param isAppFolder Whether the linked application uses a dedicated folder
 ///
-/// @return An initialized DBTEAMApiApp instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId
                               appName:(NSString * _Nonnull)appName
@@ -81,25 +78,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ApiApp struct.
+/// The serialization class for the `ApiApp` struct.
 ///
 @interface DBTEAMApiAppSerializer : NSObject
 
 ///
-/// Serializes DBTEAMApiApp instances.
+/// Serializes `DBTEAMApiApp` instances.
 ///
-/// @param instance An instance of the DBTEAMApiApp API object.
+/// @param instance An instance of the `DBTEAMApiApp` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMApiApp API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMApiApp` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMApiApp * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMApiApp instances.
+/// Deserializes `DBTEAMApiApp` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMApiApp API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMApiApp` API object.
 ///
-/// @return An instantiation of the DBTEAMApiApp object.
+/// @return An instantiation of the `DBTEAMApiApp` object.
 ///
 + (DBTEAMApiApp * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

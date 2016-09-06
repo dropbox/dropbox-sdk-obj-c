@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGRelinquishFolderMembershipArg;
-
 #pragma mark - API Object
 
 ///
-/// The RelinquishFolderMembershipArg struct.
+/// The `RelinquishFolderMembershipArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRelinquishFolderMembershipArg : NSObject <DBSerializable>
 
@@ -30,24 +28,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGRelinquishFolderMembershipArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param leaveACopy Keep a copy of the folder's contents upon relinquishing membership.
 ///
-/// @return An initialized DBSHARINGRelinquishFolderMembershipArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                     leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
 ///
-/// Convenience constructor for the DBSHARINGRelinquishFolderMembershipArg struct (exposes only
-/// non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
-/// @return An initialized DBSHARINGRelinquishFolderMembershipArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
@@ -56,27 +52,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RelinquishFolderMembershipArg struct.
+/// The serialization class for the `RelinquishFolderMembershipArg` struct.
 ///
 @interface DBSHARINGRelinquishFolderMembershipArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRelinquishFolderMembershipArg instances.
+/// Serializes `DBSHARINGRelinquishFolderMembershipArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGRelinquishFolderMembershipArg API object.
+/// @param instance An instance of the `DBSHARINGRelinquishFolderMembershipArg` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGRelinquishFolderMembershipArg API object.
+/// `DBSHARINGRelinquishFolderMembershipArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRelinquishFolderMembershipArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRelinquishFolderMembershipArg instances.
+/// Deserializes `DBSHARINGRelinquishFolderMembershipArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGRelinquishFolderMembershipArg API object.
+/// `DBSHARINGRelinquishFolderMembershipArg` API object.
 ///
-/// @return An instantiation of the DBSHARINGRelinquishFolderMembershipArg object.
+/// @return An instantiation of the `DBSHARINGRelinquishFolderMembershipArg` object.
 ///
 + (DBSHARINGRelinquishFolderMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGFileAction;
-@class DBSHARINGListFilesArg;
 
 #pragma mark - API Object
 
 ///
-/// The ListFilesArg struct.
+/// The `ListFilesArg` struct.
 ///
-/// Arguments for listReceivedFiles.
+/// Arguments for `listReceivedFiles`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFilesArg : NSObject <DBSerializable>
 
@@ -33,22 +32,21 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFilesArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param limit Number of files to return max per query. Defaults to 100 if no limit is specified.
 /// @param actions File actions to query.
 ///
-/// @return An initialized DBSHARINGListFilesArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLimit:(NSNumber * _Nullable)limit
                               actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor for the DBSHARINGListFilesArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 ///
-/// @return An initialized DBSHARINGListFilesArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)init;
 
@@ -57,25 +55,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFilesArg struct.
+/// The serialization class for the `ListFilesArg` struct.
 ///
 @interface DBSHARINGListFilesArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFilesArg instances.
+/// Serializes `DBSHARINGListFilesArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFilesArg API object.
+/// @param instance An instance of the `DBSHARINGListFilesArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFilesArg API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFilesArg instances.
+/// Deserializes `DBSHARINGListFilesArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFilesArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesArg` API
+/// object.
 ///
-/// @return An instantiation of the DBSHARINGListFilesArg object.
+/// @return An instantiation of the `DBSHARINGListFilesArg` object.
 ///
 + (DBSHARINGListFilesArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

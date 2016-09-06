@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListMemberDevicesError;
-
 #pragma mark - API Object
 
 ///
-/// The ListMemberDevicesError union.
+/// The `ListMemberDevicesError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMemberDevicesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMListMemberDevicesErrorTag enum type represents the possible tag states with which the
-/// DBTEAMListMemberDevicesError union can exist.
+/// The `DBTEAMListMemberDevicesErrorTag` enum type represents the possible tag states with which
+/// the `DBTEAMListMemberDevicesError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
   /// Member not found.
   DBTEAMListMemberDevicesErrorMemberNotFound,
@@ -38,34 +36,34 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of MemberNotFound.
+/// Initializes union class with tag state of "member_not_found".
 ///
-/// About the MemberNotFound tag state: Member not found.
+/// Description of the "member_not_found" tag state: Member not found.
 ///
-/// @return An initialized DBTEAMListMemberDevicesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMListMemberDevicesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value MemberNotFound.
+/// Retrieves whether the union's current tag state has value "member_not_found".
 ///
-/// @return Whether the union's current tag state has value MemberNotFound.
+/// @return Whether the union's current tag state has value "member_not_found".
 ///
 - (BOOL)isMemberNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -81,27 +79,27 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMListMemberDevicesError union.
+/// The serialization class for the `DBTEAMListMemberDevicesError` union.
 ///
 @interface DBTEAMListMemberDevicesErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMemberDevicesError instances.
+/// Serializes `DBTEAMListMemberDevicesError` instances.
 ///
-/// @param instance An instance of the DBTEAMListMemberDevicesError API object.
+/// @param instance An instance of the `DBTEAMListMemberDevicesError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMemberDevicesError API
+/// @return A json-compatible dictionary representation of the `DBTEAMListMemberDevicesError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberDevicesError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMemberDevicesError instances.
+/// Deserializes `DBTEAMListMemberDevicesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMemberDevicesError API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberDevicesError`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMListMemberDevicesError object.
+/// @return An instantiation of the `DBTEAMListMemberDevicesError` object.
 ///
 + (DBTEAMListMemberDevicesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

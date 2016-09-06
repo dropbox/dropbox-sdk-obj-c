@@ -7,19 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMDevicesActive;
-
 #pragma mark - API Object
 
 ///
-/// The DevicesActive struct.
+/// The `DevicesActive` struct.
 ///
 /// Each of the items is an array of values, one value per day. The value is the number of devices
 /// active within a time window, ending with that day. If there is no data for a day, then the value
 /// will be None.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMDevicesActive : NSObject <DBSerializable>
 
@@ -49,7 +47,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMDevicesActive struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param windows Array of number of linked windows (desktop) clients with activity.
 /// @param macos Array of number of linked mac (desktop) clients with activity.
@@ -60,7 +58,7 @@
 /// activity.
 /// @param total Array of total number of linked clients with activity.
 ///
-/// @return An initialized DBTEAMDevicesActive instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithWindows:(NSArray<NSNumber *> * _Nonnull)windows
                                   macos:(NSArray<NSNumber *> * _Nonnull)macos
@@ -75,25 +73,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DevicesActive struct.
+/// The serialization class for the `DevicesActive` struct.
 ///
 @interface DBTEAMDevicesActiveSerializer : NSObject
 
 ///
-/// Serializes DBTEAMDevicesActive instances.
+/// Serializes `DBTEAMDevicesActive` instances.
 ///
-/// @param instance An instance of the DBTEAMDevicesActive API object.
+/// @param instance An instance of the `DBTEAMDevicesActive` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMDevicesActive API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMDevicesActive` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDevicesActive * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMDevicesActive instances.
+/// Deserializes `DBTEAMDevicesActive` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMDevicesActive API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMDevicesActive` API object.
 ///
-/// @return An instantiation of the DBTEAMDevicesActive object.
+/// @return An instantiation of the `DBTEAMDevicesActive` object.
 ///
 + (DBTEAMDevicesActive * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGShareFolderError;
-@class DBSHARINGShareFolderJobStatus;
 @class DBSHARINGSharedFolderMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The ShareFolderJobStatus union.
+/// The `ShareFolderJobStatus` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGShareFolderJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGShareFolderJobStatusTag enum type represents the possible tag states with which the
-/// DBSHARINGShareFolderJobStatus union can exist.
+/// The `DBSHARINGShareFolderJobStatusTag` enum type represents the possible tag states with which
+/// the `DBSHARINGShareFolderJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGShareFolderJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBSHARINGShareFolderJobStatusInProgress,
@@ -40,72 +39,72 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderJobStatusTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGShareFolderJobStatusTag tag;
 
-/// The share job has finished. The value is the metadata for the folder. Ensure the isComplete
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// The share job has finished. The value is the metadata for the folder. @note Ensure the
+/// `isComplete` method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderMetadata * _Nonnull complete;
 
-/// (no description). Ensure the isFailed method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isFailed` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGShareFolderError * _Nonnull failed;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InProgress.
+/// Initializes union class with tag state of "in_progress".
 ///
-/// About the InProgress tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
 ///
-/// @return An initialized DBSHARINGShareFolderJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInProgress;
 
 ///
-/// Initializes union class with tag state of Complete.
+/// Initializes union class with tag state of "complete".
 ///
-/// About the Complete tag state: The share job has finished. The value is the metadata for the
-/// folder.
+/// Description of the "complete" tag state: The share job has finished. The value is the metadata
+/// for the folder.
 ///
 /// @param complete The share job has finished. The value is the metadata for the folder.
 ///
-/// @return An initialized DBSHARINGShareFolderJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(DBSHARINGSharedFolderMetadata * _Nonnull)complete;
 
 ///
-/// Initializes union class with tag state of Failed.
+/// Initializes union class with tag state of "failed".
 ///
 /// @param failed (no description).
 ///
-/// @return An initialized DBSHARINGShareFolderJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFailed:(DBSHARINGShareFolderError * _Nonnull)failed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InProgress.
+/// Retrieves whether the union's current tag state has value "in_progress".
 ///
-/// @return Whether the union's current tag state has value InProgress.
+/// @return Whether the union's current tag state has value "in_progress".
 ///
 - (BOOL)isInProgress;
 
 ///
-/// Retrieves whether the union's current tag state has value Complete.
+/// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the complete property,
+/// @note Call this method and ensure it returns true before accessing the `complete` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Complete.
+/// @return Whether the union's current tag state has value "complete".
 ///
 - (BOOL)isComplete;
 
 ///
-/// Retrieves whether the union's current tag state has value Failed.
+/// Retrieves whether the union's current tag state has value "failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the failed property,
+/// @note Call this method and ensure it returns true before accessing the `failed` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Failed.
+/// @return Whether the union's current tag state has value "failed".
 ///
 - (BOOL)isFailed;
 
@@ -121,27 +120,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderJobStatusTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGShareFolderJobStatus union.
+/// The serialization class for the `DBSHARINGShareFolderJobStatus` union.
 ///
 @interface DBSHARINGShareFolderJobStatusSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGShareFolderJobStatus instances.
+/// Serializes `DBSHARINGShareFolderJobStatus` instances.
 ///
-/// @param instance An instance of the DBSHARINGShareFolderJobStatus API object.
+/// @param instance An instance of the `DBSHARINGShareFolderJobStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGShareFolderJobStatus API
+/// @return A json-compatible dictionary representation of the `DBSHARINGShareFolderJobStatus` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGShareFolderJobStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGShareFolderJobStatus instances.
+/// Deserializes `DBSHARINGShareFolderJobStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGShareFolderJobStatus API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGShareFolderJobStatus`
+/// API object.
 ///
-/// @return An instantiation of the DBSHARINGShareFolderJobStatus object.
+/// @return An instantiation of the `DBSHARINGShareFolderJobStatus` object.
 ///
 + (DBSHARINGShareFolderJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

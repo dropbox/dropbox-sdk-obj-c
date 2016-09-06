@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupDeleteError;
-
 #pragma mark - API Object
 
 ///
-/// The GroupDeleteError union.
+/// The `GroupDeleteError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupDeleteError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMGroupDeleteErrorTag enum type represents the possible tag states with which the
-/// DBTEAMGroupDeleteError union can exist.
+/// The `DBTEAMGroupDeleteErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMGroupDeleteError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupDeleteErrorGroupNotFound,
@@ -41,51 +39,51 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of GroupNotFound.
+/// Initializes union class with tag state of "group_not_found".
 ///
-/// About the GroupNotFound tag state: No matching group found. No groups match the specified group
-/// ID.
+/// Description of the "group_not_found" tag state: No matching group found. No groups match the
+/// specified group ID.
 ///
-/// @return An initialized DBTEAMGroupDeleteError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMGroupDeleteError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of GroupAlreadyDeleted.
+/// Initializes union class with tag state of "group_already_deleted".
 ///
-/// About the GroupAlreadyDeleted tag state: This group has already been deleted.
+/// Description of the "group_already_deleted" tag state: This group has already been deleted.
 ///
-/// @return An initialized DBTEAMGroupDeleteError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupAlreadyDeleted;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value GroupNotFound.
+/// Retrieves whether the union's current tag state has value "group_not_found".
 ///
-/// @return Whether the union's current tag state has value GroupNotFound.
+/// @return Whether the union's current tag state has value "group_not_found".
 ///
 - (BOOL)isGroupNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value GroupAlreadyDeleted.
+/// Retrieves whether the union's current tag state has value "group_already_deleted".
 ///
-/// @return Whether the union's current tag state has value GroupAlreadyDeleted.
+/// @return Whether the union's current tag state has value "group_already_deleted".
 ///
 - (BOOL)isGroupAlreadyDeleted;
 
@@ -101,26 +99,26 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMGroupDeleteError union.
+/// The serialization class for the `DBTEAMGroupDeleteError` union.
 ///
 @interface DBTEAMGroupDeleteErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupDeleteError instances.
+/// Serializes `DBTEAMGroupDeleteError` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupDeleteError API object.
+/// @param instance An instance of the `DBTEAMGroupDeleteError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupDeleteError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupDeleteError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupDeleteError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupDeleteError instances.
+/// Deserializes `DBTEAMGroupDeleteError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupDeleteError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupDeleteError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupDeleteError object.
+/// @return An instantiation of the `DBTEAMGroupDeleteError` object.
 ///
 + (DBTEAMGroupDeleteError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

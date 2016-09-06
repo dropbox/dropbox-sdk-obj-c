@@ -7,28 +7,27 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESListFolderContinueError;
 @class DBFILESLookupError;
 
 #pragma mark - API Object
 
 ///
-/// The ListFolderContinueError union.
+/// The `ListFolderContinueError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESListFolderContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESListFolderContinueErrorTag enum type represents the possible tag states with which
-/// the DBFILESListFolderContinueError union can exist.
+/// The `DBFILESListFolderContinueErrorTag` enum type represents the possible tag states with which
+/// the `DBFILESListFolderContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESListFolderContinueErrorTag) {
   /// (no description).
   DBFILESListFolderContinueErrorPath,
 
-  /// Indicates that the cursor has been invalidated. Call listFolder to obtain a new cursor.
+  /// Indicates that the cursor has been invalidated. Call `listFolder` to obtain a new cursor.
   DBFILESListFolderContinueErrorReset,
 
   /// (no description).
@@ -39,61 +38,61 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderContinueErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESListFolderContinueErrorTag tag;
 
-/// (no description). Ensure the isPath method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Path.
+/// Initializes union class with tag state of "path".
 ///
 /// @param path (no description).
 ///
-/// @return An initialized DBFILESListFolderContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
 
 ///
-/// Initializes union class with tag state of Reset.
+/// Initializes union class with tag state of "reset".
 ///
-/// About the Reset tag state: Indicates that the cursor has been invalidated. Call
-/// :route:`list_folder` to obtain a new cursor.
+/// Description of the "reset" tag state: Indicates that the cursor has been invalidated. Call
+/// `listFolder` to obtain a new cursor.
 ///
-/// @return An initialized DBFILESListFolderContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReset;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESListFolderContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Path.
+/// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the path property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `path` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Path.
+/// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value Reset.
+/// Retrieves whether the union's current tag state has value "reset".
 ///
-/// @return Whether the union's current tag state has value Reset.
+/// @return Whether the union's current tag state has value "reset".
 ///
 - (BOOL)isReset;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -109,27 +108,27 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderContinueErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESListFolderContinueError union.
+/// The serialization class for the `DBFILESListFolderContinueError` union.
 ///
 @interface DBFILESListFolderContinueErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESListFolderContinueError instances.
+/// Serializes `DBFILESListFolderContinueError` instances.
 ///
-/// @param instance An instance of the DBFILESListFolderContinueError API object.
+/// @param instance An instance of the `DBFILESListFolderContinueError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESListFolderContinueError API
+/// @return A json-compatible dictionary representation of the `DBFILESListFolderContinueError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListFolderContinueError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESListFolderContinueError instances.
+/// Deserializes `DBFILESListFolderContinueError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESListFolderContinueError
+/// @param dict A json-compatible dictionary representation of the `DBFILESListFolderContinueError`
 /// API object.
 ///
-/// @return An instantiation of the DBFILESListFolderContinueError object.
+/// @return An instantiation of the `DBFILESListFolderContinueError` object.
 ///
 + (DBFILESListFolderContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

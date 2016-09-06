@@ -14,10 +14,10 @@
 ///
 @interface DBBaseTeam : NSObject
 
-/// Routes within the team namespace.
+/// Routes within the `team` namespace.
 @property(nonatomic, readonly) DBTEAMRoutes * _Nonnull teamRoutes;
 
-/// Initializes the DBBaseTeam object with a networking client.
+/// Initializes the `DBBaseTeam` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)client;
 
 @end

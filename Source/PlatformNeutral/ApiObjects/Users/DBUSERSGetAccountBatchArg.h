@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSGetAccountBatchArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetAccountBatchArg struct.
+/// The `GetAccountBatchArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSGetAccountBatchArg : NSObject <DBSerializable>
 
@@ -27,12 +25,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSGetAccountBatchArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accountIds List of user account identifiers.  Should not contain any duplicate account
 /// IDs.
 ///
-/// @return An initialized DBUSERSGetAccountBatchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
 
@@ -41,26 +39,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetAccountBatchArg struct.
+/// The serialization class for the `GetAccountBatchArg` struct.
 ///
 @interface DBUSERSGetAccountBatchArgSerializer : NSObject
 
 ///
-/// Serializes DBUSERSGetAccountBatchArg instances.
+/// Serializes `DBUSERSGetAccountBatchArg` instances.
 ///
-/// @param instance An instance of the DBUSERSGetAccountBatchArg API object.
+/// @param instance An instance of the `DBUSERSGetAccountBatchArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSGetAccountBatchArg API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountBatchArg` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountBatchArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSGetAccountBatchArg instances.
+/// Deserializes `DBUSERSGetAccountBatchArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSGetAccountBatchArg API
+/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountBatchArg` API
 /// object.
 ///
-/// @return An instantiation of the DBUSERSGetAccountBatchArg object.
+/// @return An instantiation of the `DBUSERSGetAccountBatchArg` object.
 ///
 + (DBUSERSGetAccountBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

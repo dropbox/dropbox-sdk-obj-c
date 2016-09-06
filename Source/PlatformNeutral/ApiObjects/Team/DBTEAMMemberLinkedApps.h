@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMApiApp;
-@class DBTEAMMemberLinkedApps;
 
 #pragma mark - API Object
 
 ///
-/// The MemberLinkedApps struct.
+/// The `MemberLinkedApps` struct.
 ///
 /// Information on linked applications of a team member.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberLinkedApps : NSObject <DBSerializable>
 
@@ -33,12 +32,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMemberLinkedApps struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamMemberId The member unique Id
 /// @param linkedApiApps List of third party applications linked by this team member
 ///
-/// @return An initialized DBTEAMMemberLinkedApps instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId
                                linkedApiApps:(NSArray<DBTEAMApiApp *> * _Nonnull)linkedApiApps;
@@ -48,26 +47,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MemberLinkedApps struct.
+/// The serialization class for the `MemberLinkedApps` struct.
 ///
 @interface DBTEAMMemberLinkedAppsSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberLinkedApps instances.
+/// Serializes `DBTEAMMemberLinkedApps` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberLinkedApps API object.
+/// @param instance An instance of the `DBTEAMMemberLinkedApps` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberLinkedApps API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberLinkedApps` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberLinkedApps * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberLinkedApps instances.
+/// Deserializes `DBTEAMMemberLinkedApps` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberLinkedApps API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberLinkedApps` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMemberLinkedApps object.
+/// @return An instantiation of the `DBTEAMMemberLinkedApps` object.
 ///
 + (DBTEAMMemberLinkedApps * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

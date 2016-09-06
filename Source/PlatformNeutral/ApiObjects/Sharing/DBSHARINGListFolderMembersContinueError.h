@@ -7,28 +7,27 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFolderMembersContinueError;
 @class DBSHARINGSharedFolderAccessError;
 
 #pragma mark - API Object
 
 ///
-/// The ListFolderMembersContinueError union.
+/// The `ListFolderMembersContinueError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFolderMembersContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGListFolderMembersContinueErrorTag enum type represents the possible tag states with
-/// which the DBSHARINGListFolderMembersContinueError union can exist.
+/// The `DBSHARINGListFolderMembersContinueErrorTag` enum type represents the possible tag states
+/// with which the `DBSHARINGListFolderMembersContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
   /// (no description).
   DBSHARINGListFolderMembersContinueErrorAccessError,
 
-  /// cursor in ListFolderMembersContinueArg is invalid.
+  /// `cursor` in `DBSHARINGListFolderMembersContinueArg` is invalid.
   DBSHARINGListFolderMembersContinueErrorInvalidCursor,
 
   /// (no description).
@@ -39,60 +38,61 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListFolderMembersContinueErrorTag tag;
 
-/// (no description). Ensure the isAccessError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
 /// @param accessError (no description).
 ///
-/// @return An initialized DBSHARINGListFolderMembersContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of InvalidCursor.
+/// Initializes union class with tag state of "invalid_cursor".
 ///
-/// About the InvalidCursor tag state: :field:`ListFolderMembersContinueArg.cursor` is invalid.
+/// Description of the "invalid_cursor" tag state: `cursor` in
+/// `DBSHARINGListFolderMembersContinueArg` is invalid.
 ///
-/// @return An initialized DBSHARINGListFolderMembersContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidCursor;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGListFolderMembersContinueError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidCursor.
+/// Retrieves whether the union's current tag state has value "invalid_cursor".
 ///
-/// @return Whether the union's current tag state has value InvalidCursor.
+/// @return Whether the union's current tag state has value "invalid_cursor".
 ///
 - (BOOL)isInvalidCursor;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -108,27 +108,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGListFolderMembersContinueError union.
+/// The serialization class for the `DBSHARINGListFolderMembersContinueError` union.
 ///
 @interface DBSHARINGListFolderMembersContinueErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFolderMembersContinueError instances.
+/// Serializes `DBSHARINGListFolderMembersContinueError` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFolderMembersContinueError API object.
+/// @param instance An instance of the `DBSHARINGListFolderMembersContinueError` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGListFolderMembersContinueError API object.
+/// `DBSHARINGListFolderMembersContinueError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersContinueError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFolderMembersContinueError instances.
+/// Deserializes `DBSHARINGListFolderMembersContinueError` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGListFolderMembersContinueError API object.
+/// `DBSHARINGListFolderMembersContinueError` API object.
 ///
-/// @return An instantiation of the DBSHARINGListFolderMembersContinueError object.
+/// @return An instantiation of the `DBSHARINGListFolderMembersContinueError` object.
 ///
 + (DBSHARINGListFolderMembersContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

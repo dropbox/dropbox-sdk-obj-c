@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESListRevisionsArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListRevisionsArg struct.
+/// The `ListRevisionsArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESListRevisionsArg : NSObject <DBSerializable>
 
@@ -30,22 +28,21 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESListRevisionsArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path to the file you want to see the revisions of.
 /// @param limit The maximum number of revision entries returned.
 ///
-/// @return An initialized DBFILESListRevisionsArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor for the DBFILESListRevisionsArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param path The path to the file you want to see the revisions of.
 ///
-/// @return An initialized DBFILESListRevisionsArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -54,26 +51,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListRevisionsArg struct.
+/// The serialization class for the `ListRevisionsArg` struct.
 ///
 @interface DBFILESListRevisionsArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESListRevisionsArg instances.
+/// Serializes `DBFILESListRevisionsArg` instances.
 ///
-/// @param instance An instance of the DBFILESListRevisionsArg API object.
+/// @param instance An instance of the `DBFILESListRevisionsArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESListRevisionsArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESListRevisionsArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListRevisionsArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESListRevisionsArg instances.
+/// Deserializes `DBFILESListRevisionsArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESListRevisionsArg API
+/// @param dict A json-compatible dictionary representation of the `DBFILESListRevisionsArg` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESListRevisionsArg object.
+/// @return An instantiation of the `DBFILESListRevisionsArg` object.
 ///
 + (DBFILESListRevisionsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

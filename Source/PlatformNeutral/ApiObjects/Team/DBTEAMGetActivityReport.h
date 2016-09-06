@@ -8,18 +8,16 @@
 #import "DBTEAMBaseDfbReport.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGetActivityReport;
-
 #pragma mark - API Object
 
 ///
-/// The GetActivityReport struct.
+/// The `GetActivityReport` struct.
 ///
 /// Activity Report Result. Each of the items in the storage report is an array of values, one value
 /// per day. If there is no data for a day, then the value will be None.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGetActivityReport : DBTEAMBaseDfbReport <DBSerializable>
 
@@ -71,7 +69,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGetActivityReport struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param adds Array of total number of adds by team members.
@@ -97,7 +95,7 @@
 /// @param sharedLinksViewedTotal Array of the total number of views to shared links created by the
 /// team.
 ///
-/// @return An initialized DBTEAMGetActivityReport instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate
                                      adds:(NSArray<NSNumber *> * _Nonnull)adds
@@ -120,26 +118,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetActivityReport struct.
+/// The serialization class for the `GetActivityReport` struct.
 ///
 @interface DBTEAMGetActivityReportSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGetActivityReport instances.
+/// Serializes `DBTEAMGetActivityReport` instances.
 ///
-/// @param instance An instance of the DBTEAMGetActivityReport API object.
+/// @param instance An instance of the `DBTEAMGetActivityReport` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGetActivityReport API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGetActivityReport` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGetActivityReport * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGetActivityReport instances.
+/// Deserializes `DBTEAMGetActivityReport` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGetActivityReport API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGetActivityReport` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGetActivityReport object.
+/// @return An instantiation of the `DBTEAMGetActivityReport` object.
 ///
 + (DBTEAMGetActivityReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

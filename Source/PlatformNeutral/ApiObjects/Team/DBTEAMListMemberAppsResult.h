@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMApiApp;
-@class DBTEAMListMemberAppsResult;
 
 #pragma mark - API Object
 
 ///
-/// The ListMemberAppsResult struct.
+/// The `ListMemberAppsResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMemberAppsResult : NSObject <DBSerializable>
 
@@ -28,11 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMListMemberAppsResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param linkedApiApps List of third party applications linked by this team member
 ///
-/// @return An initialized DBTEAMListMemberAppsResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLinkedApiApps:(NSArray<DBTEAMApiApp *> * _Nonnull)linkedApiApps;
 
@@ -41,27 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListMemberAppsResult struct.
+/// The serialization class for the `ListMemberAppsResult` struct.
 ///
 @interface DBTEAMListMemberAppsResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMemberAppsResult instances.
+/// Serializes `DBTEAMListMemberAppsResult` instances.
 ///
-/// @param instance An instance of the DBTEAMListMemberAppsResult API object.
+/// @param instance An instance of the `DBTEAMListMemberAppsResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMemberAppsResult API
+/// @return A json-compatible dictionary representation of the `DBTEAMListMemberAppsResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberAppsResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMemberAppsResult instances.
+/// Deserializes `DBTEAMListMemberAppsResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMemberAppsResult API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberAppsResult` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMListMemberAppsResult object.
+/// @return An instantiation of the `DBTEAMListMemberAppsResult` object.
 ///
 + (DBTEAMListMemberAppsResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

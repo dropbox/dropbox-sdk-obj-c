@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMRevokeDeviceSessionError;
-@class DBTEAMRevokeDeviceSessionStatus;
 
 #pragma mark - API Object
 
 ///
-/// The RevokeDeviceSessionStatus struct.
+/// The `RevokeDeviceSessionStatus` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeDeviceSessionStatus : NSObject <DBSerializable>
 
@@ -31,24 +30,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeDeviceSessionStatus struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param success Result of the revoking request
 /// @param errorType The error cause in case of a failure
 ///
-/// @return An initialized DBTEAMRevokeDeviceSessionStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success
                               errorType:(DBTEAMRevokeDeviceSessionError * _Nullable)errorType;
 
 ///
-/// Convenience constructor for the DBTEAMRevokeDeviceSessionStatus struct (exposes only
-/// non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param success Result of the revoking request
 ///
-/// @return An initialized DBTEAMRevokeDeviceSessionStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success;
 
@@ -57,27 +54,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeDeviceSessionStatus struct.
+/// The serialization class for the `RevokeDeviceSessionStatus` struct.
 ///
 @interface DBTEAMRevokeDeviceSessionStatusSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeDeviceSessionStatus instances.
+/// Serializes `DBTEAMRevokeDeviceSessionStatus` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeDeviceSessionStatus API object.
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeDeviceSessionStatus API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionStatus` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeDeviceSessionStatus instances.
+/// Deserializes `DBTEAMRevokeDeviceSessionStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeDeviceSessionStatus
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionStatus`
 /// API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeDeviceSessionStatus object.
+/// @return An instantiation of the `DBTEAMRevokeDeviceSessionStatus` object.
 ///
 + (DBTEAMRevokeDeviceSessionStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

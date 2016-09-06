@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESPreviewArg;
-
 #pragma mark - API Object
 
 ///
-/// The PreviewArg struct.
+/// The `PreviewArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESPreviewArg : NSObject <DBSerializable>
 
@@ -30,22 +28,21 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESPreviewArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in :field:`path` instead
+/// @param rev Deprecated. Please specify revision in path instead
 ///
-/// @return An initialized DBFILESPreviewArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
 
 ///
-/// Convenience constructor for the DBFILESPreviewArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param path The path of the file to preview.
 ///
-/// @return An initialized DBFILESPreviewArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -54,25 +51,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the PreviewArg struct.
+/// The serialization class for the `PreviewArg` struct.
 ///
 @interface DBFILESPreviewArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESPreviewArg instances.
+/// Serializes `DBFILESPreviewArg` instances.
 ///
-/// @param instance An instance of the DBFILESPreviewArg API object.
+/// @param instance An instance of the `DBFILESPreviewArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESPreviewArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESPreviewArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPreviewArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESPreviewArg instances.
+/// Deserializes `DBFILESPreviewArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESPreviewArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESPreviewArg` API object.
 ///
-/// @return An instantiation of the DBFILESPreviewArg object.
+/// @return An instantiation of the `DBFILESPreviewArg` object.
 ///
 + (DBFILESPreviewArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

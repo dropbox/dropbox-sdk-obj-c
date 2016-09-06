@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMCOMMONGroupManagementType;
-@class DBTEAMCOMMONGroupSummary;
 
 #pragma mark - API Object
 
 ///
-/// The GroupSummary struct.
+/// The `GroupSummary` struct.
 ///
 /// Information about a group.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMCOMMONGroupSummary : NSObject <DBSerializable>
 
@@ -42,7 +41,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMCOMMONGroupSummary struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
@@ -51,7 +50,7 @@
 /// a group.
 /// @param memberCount The number of members in the group.
 ///
-/// @return An initialized DBTEAMCOMMONGroupSummary instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName
                                   groupId:(NSString * _Nonnull)groupId
@@ -60,14 +59,13 @@
                               memberCount:(NSNumber * _Nullable)memberCount;
 
 ///
-/// Convenience constructor for the DBTEAMCOMMONGroupSummary struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
 ///
-/// @return An initialized DBTEAMCOMMONGroupSummary instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupName:(NSString * _Nonnull)groupName
                                   groupId:(NSString * _Nonnull)groupId
@@ -78,26 +76,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupSummary struct.
+/// The serialization class for the `GroupSummary` struct.
 ///
 @interface DBTEAMCOMMONGroupSummarySerializer : NSObject
 
 ///
-/// Serializes DBTEAMCOMMONGroupSummary instances.
+/// Serializes `DBTEAMCOMMONGroupSummary` instances.
 ///
-/// @param instance An instance of the DBTEAMCOMMONGroupSummary API object.
+/// @param instance An instance of the `DBTEAMCOMMONGroupSummary` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMCOMMONGroupSummary API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMCOMMONGroupSummary` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMCOMMONGroupSummary * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMCOMMONGroupSummary instances.
+/// Deserializes `DBTEAMCOMMONGroupSummary` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMCOMMONGroupSummary API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMCOMMONGroupSummary` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMCOMMONGroupSummary object.
+/// @return An instantiation of the `DBTEAMCOMMONGroupSummary` object.
 ///
 + (DBTEAMCOMMONGroupSummary * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

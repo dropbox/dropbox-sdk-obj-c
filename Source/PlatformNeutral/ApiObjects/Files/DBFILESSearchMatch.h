@@ -8,16 +8,15 @@
 #import <Foundation/Foundation.h>
 
 @class DBFILESMetadata;
-@class DBFILESSearchMatch;
 @class DBFILESSearchMatchType;
 
 #pragma mark - API Object
 
 ///
-/// The SearchMatch struct.
+/// The `SearchMatch` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSearchMatch : NSObject <DBSerializable>
 
@@ -32,12 +31,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESSearchMatch struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param matchType The type of the match.
 /// @param metadata The metadata for the matched file or folder.
 ///
-/// @return An initialized DBFILESSearchMatch instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMatchType:(DBFILESSearchMatchType * _Nonnull)matchType
                                  metadata:(DBFILESMetadata * _Nonnull)metadata;
@@ -47,25 +46,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SearchMatch struct.
+/// The serialization class for the `SearchMatch` struct.
 ///
 @interface DBFILESSearchMatchSerializer : NSObject
 
 ///
-/// Serializes DBFILESSearchMatch instances.
+/// Serializes `DBFILESSearchMatch` instances.
 ///
-/// @param instance An instance of the DBFILESSearchMatch API object.
+/// @param instance An instance of the `DBFILESSearchMatch` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSearchMatch API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSearchMatch` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMatch * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSearchMatch instances.
+/// Deserializes `DBFILESSearchMatch` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSearchMatch API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMatch` API object.
 ///
-/// @return An instantiation of the DBFILESSearchMatch object.
+/// @return An instantiation of the `DBFILESSearchMatch` object.
 ///
 + (DBFILESSearchMatch * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

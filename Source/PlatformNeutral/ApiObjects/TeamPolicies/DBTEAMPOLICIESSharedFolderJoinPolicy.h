@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMPOLICIESSharedFolderJoinPolicy;
-
 #pragma mark - API Object
 
 ///
-/// The SharedFolderJoinPolicy union.
+/// The `SharedFolderJoinPolicy` union.
 ///
 /// Policy governing which shared folders a team member can join.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMPOLICIESSharedFolderJoinPolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMPOLICIESSharedFolderJoinPolicyTag enum type represents the possible tag states with
-/// which the DBTEAMPOLICIESSharedFolderJoinPolicy union can exist.
+/// The `DBTEAMPOLICIESSharedFolderJoinPolicyTag` enum type represents the possible tag states with
+/// which the `DBTEAMPOLICIESSharedFolderJoinPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderJoinPolicyTag) {
   /// Team members can only join folders shared by teammates.
   DBTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly,
@@ -43,51 +41,52 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderJoinPolicyTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of FromTeamOnly.
+/// Initializes union class with tag state of "from_team_only".
 ///
-/// About the FromTeamOnly tag state: Team members can only join folders shared by teammates.
+/// Description of the "from_team_only" tag state: Team members can only join folders shared by
+/// teammates.
 ///
-/// @return An initialized DBTEAMPOLICIESSharedFolderJoinPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFromTeamOnly;
 
 ///
-/// Initializes union class with tag state of FromAnyone.
+/// Initializes union class with tag state of "from_anyone".
 ///
-/// About the FromAnyone tag state: Team members can join any shared folder, including those shared
-/// by users outside the team.
+/// Description of the "from_anyone" tag state: Team members can join any shared folder, including
+/// those shared by users outside the team.
 ///
-/// @return An initialized DBTEAMPOLICIESSharedFolderJoinPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFromAnyone;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMPOLICIESSharedFolderJoinPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value FromTeamOnly.
+/// Retrieves whether the union's current tag state has value "from_team_only".
 ///
-/// @return Whether the union's current tag state has value FromTeamOnly.
+/// @return Whether the union's current tag state has value "from_team_only".
 ///
 - (BOOL)isFromTeamOnly;
 
 ///
-/// Retrieves whether the union's current tag state has value FromAnyone.
+/// Retrieves whether the union's current tag state has value "from_anyone".
 ///
-/// @return Whether the union's current tag state has value FromAnyone.
+/// @return Whether the union's current tag state has value "from_anyone".
 ///
 - (BOOL)isFromAnyone;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -103,27 +102,27 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSharedFolderJoinPolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMPOLICIESSharedFolderJoinPolicy union.
+/// The serialization class for the `DBTEAMPOLICIESSharedFolderJoinPolicy` union.
 ///
 @interface DBTEAMPOLICIESSharedFolderJoinPolicySerializer : NSObject
 
 ///
-/// Serializes DBTEAMPOLICIESSharedFolderJoinPolicy instances.
+/// Serializes `DBTEAMPOLICIESSharedFolderJoinPolicy` instances.
 ///
-/// @param instance An instance of the DBTEAMPOLICIESSharedFolderJoinPolicy API object.
+/// @param instance An instance of the `DBTEAMPOLICIESSharedFolderJoinPolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMPOLICIESSharedFolderJoinPolicy
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESSharedFolderJoinPolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMPOLICIESSharedFolderJoinPolicy instances.
+/// Deserializes `DBTEAMPOLICIESSharedFolderJoinPolicy` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBTEAMPOLICIESSharedFolderJoinPolicy API object.
+/// `DBTEAMPOLICIESSharedFolderJoinPolicy` API object.
 ///
-/// @return An instantiation of the DBTEAMPOLICIESSharedFolderJoinPolicy object.
+/// @return An instantiation of the `DBTEAMPOLICIESSharedFolderJoinPolicy` object.
 ///
 + (DBTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

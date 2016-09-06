@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadWriteFailed;
 @class DBFILESWriteError;
 
 #pragma mark - API Object
 
 ///
-/// The UploadWriteFailed struct.
+/// The `UploadWriteFailed` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadWriteFailed : NSObject <DBSerializable>
 
@@ -31,12 +30,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESUploadWriteFailed struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param reason The reason why the file couldn't be saved.
 /// @param uploadSessionId The upload session ID; this may be used to retry the commit.
 ///
-/// @return An initialized DBFILESUploadWriteFailed instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReason:(DBFILESWriteError * _Nonnull)reason
                        uploadSessionId:(NSString * _Nonnull)uploadSessionId;
@@ -46,26 +45,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UploadWriteFailed struct.
+/// The serialization class for the `UploadWriteFailed` struct.
 ///
 @interface DBFILESUploadWriteFailedSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadWriteFailed instances.
+/// Serializes `DBFILESUploadWriteFailed` instances.
 ///
-/// @param instance An instance of the DBFILESUploadWriteFailed API object.
+/// @param instance An instance of the `DBFILESUploadWriteFailed` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadWriteFailed API object.
+/// @return A json-compatible dictionary representation of the `DBFILESUploadWriteFailed` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadWriteFailed * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadWriteFailed instances.
+/// Deserializes `DBFILESUploadWriteFailed` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadWriteFailed API
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadWriteFailed` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESUploadWriteFailed object.
+/// @return An instantiation of the `DBFILESUploadWriteFailed` object.
 ///
 + (DBFILESUploadWriteFailed * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

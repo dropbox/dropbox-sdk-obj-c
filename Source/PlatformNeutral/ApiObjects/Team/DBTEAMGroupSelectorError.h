@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupSelectorError;
-
 #pragma mark - API Object
 
 ///
-/// The GroupSelectorError union.
+/// The `GroupSelectorError` union.
 ///
 /// Error that can be raised when GroupSelector is used.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMGroupSelectorErrorTag enum type represents the possible tag states with which the
-/// DBTEAMGroupSelectorError union can exist.
+/// The `DBTEAMGroupSelectorErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMGroupSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupSelectorErrorGroupNotFound,
@@ -40,35 +38,35 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of GroupNotFound.
+/// Initializes union class with tag state of "group_not_found".
 ///
-/// About the GroupNotFound tag state: No matching group found. No groups match the specified group
-/// ID.
+/// Description of the "group_not_found" tag state: No matching group found. No groups match the
+/// specified group ID.
 ///
-/// @return An initialized DBTEAMGroupSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMGroupSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value GroupNotFound.
+/// Retrieves whether the union's current tag state has value "group_not_found".
 ///
-/// @return Whether the union's current tag state has value GroupNotFound.
+/// @return Whether the union's current tag state has value "group_not_found".
 ///
 - (BOOL)isGroupNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -84,26 +82,27 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMGroupSelectorError union.
+/// The serialization class for the `DBTEAMGroupSelectorError` union.
 ///
 @interface DBTEAMGroupSelectorErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupSelectorError instances.
+/// Serializes `DBTEAMGroupSelectorError` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupSelectorError API object.
+/// @param instance An instance of the `DBTEAMGroupSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupSelectorError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupSelectorError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupSelectorError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupSelectorError instances.
+/// Deserializes `DBTEAMGroupSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupSelectorError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupSelectorError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupSelectorError object.
+/// @return An instantiation of the `DBTEAMGroupSelectorError` object.
 ///
 + (DBTEAMGroupSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

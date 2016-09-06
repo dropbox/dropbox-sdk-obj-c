@@ -8,15 +8,13 @@
 #import "DBTEAMDeviceSessionArg.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeDesktopClientArg;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeDesktopClientArg struct.
+/// The `RevokeDesktopClientArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeDesktopClientArg : DBTEAMDeviceSessionArg <DBSerializable>
 
@@ -29,27 +27,26 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeDesktopClientArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The session id
 /// @param teamMemberId The unique id of the member owning the device
 /// @param deleteOnUnlink Whether to delete all files of the account (this is possible only if
 /// supported by the desktop client and  will be made the next time the client access the account)
 ///
-/// @return An initialized DBTEAMRevokeDesktopClientArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                              teamMemberId:(NSString * _Nonnull)teamMemberId
                            deleteOnUnlink:(NSNumber * _Nullable)deleteOnUnlink;
 
 ///
-/// Convenience constructor for the DBTEAMRevokeDesktopClientArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sessionId The session id
 /// @param teamMemberId The unique id of the member owning the device
 ///
-/// @return An initialized DBTEAMRevokeDesktopClientArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
@@ -58,27 +55,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeDesktopClientArg struct.
+/// The serialization class for the `RevokeDesktopClientArg` struct.
 ///
 @interface DBTEAMRevokeDesktopClientArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeDesktopClientArg instances.
+/// Serializes `DBTEAMRevokeDesktopClientArg` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeDesktopClientArg API object.
+/// @param instance An instance of the `DBTEAMRevokeDesktopClientArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeDesktopClientArg API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDesktopClientArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDesktopClientArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeDesktopClientArg instances.
+/// Deserializes `DBTEAMRevokeDesktopClientArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeDesktopClientArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDesktopClientArg`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeDesktopClientArg object.
+/// @return An instantiation of the `DBTEAMRevokeDesktopClientArg` object.
 ///
 + (DBTEAMRevokeDesktopClientArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

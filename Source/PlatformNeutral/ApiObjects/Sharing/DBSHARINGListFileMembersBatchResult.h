@@ -7,18 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFileMembersBatchResult;
 @class DBSHARINGListFileMembersIndividualResult;
 
 #pragma mark - API Object
 
 ///
-/// The ListFileMembersBatchResult struct.
+/// The `ListFileMembersBatchResult` struct.
 ///
-/// Per-file result for listFileMembersBatch.
+/// Per-file result for `listFileMembersBatch`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFileMembersBatchResult : NSObject <DBSerializable>
 
@@ -33,13 +32,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFileMembersBatchResult struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file This is the input file identifier, whether an ID or a path.
 /// @param result The result for this particular file
 ///
-/// @return An initialized DBSHARINGListFileMembersBatchResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                               result:(DBSHARINGListFileMembersIndividualResult * _Nonnull)result;
@@ -49,27 +47,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFileMembersBatchResult struct.
+/// The serialization class for the `ListFileMembersBatchResult` struct.
 ///
 @interface DBSHARINGListFileMembersBatchResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFileMembersBatchResult instances.
+/// Serializes `DBSHARINGListFileMembersBatchResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFileMembersBatchResult API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersBatchResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFileMembersBatchResult
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersBatchResult`
 /// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersBatchResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFileMembersBatchResult instances.
+/// Deserializes `DBSHARINGListFileMembersBatchResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGListFileMembersBatchResult API object.
+/// `DBSHARINGListFileMembersBatchResult` API object.
 ///
-/// @return An instantiation of the DBSHARINGListFileMembersBatchResult object.
+/// @return An instantiation of the `DBSHARINGListFileMembersBatchResult` object.
 ///
 + (DBSHARINGListFileMembersBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

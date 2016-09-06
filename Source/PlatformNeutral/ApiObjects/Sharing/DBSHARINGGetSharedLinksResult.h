@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGGetSharedLinksResult;
 @class DBSHARINGLinkMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The GetSharedLinksResult struct.
+/// The `GetSharedLinksResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGGetSharedLinksResult : NSObject <DBSerializable>
 
@@ -28,11 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGGetSharedLinksResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param links Shared links applicable to the path argument.
 ///
-/// @return An initialized DBSHARINGGetSharedLinksResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLinks:(NSArray<DBSHARINGLinkMetadata *> * _Nonnull)links;
 
@@ -41,27 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetSharedLinksResult struct.
+/// The serialization class for the `GetSharedLinksResult` struct.
 ///
 @interface DBSHARINGGetSharedLinksResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGGetSharedLinksResult instances.
+/// Serializes `DBSHARINGGetSharedLinksResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGGetSharedLinksResult API object.
+/// @param instance An instance of the `DBSHARINGGetSharedLinksResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGGetSharedLinksResult API
+/// @return A json-compatible dictionary representation of the `DBSHARINGGetSharedLinksResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetSharedLinksResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGGetSharedLinksResult instances.
+/// Deserializes `DBSHARINGGetSharedLinksResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGGetSharedLinksResult API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetSharedLinksResult`
+/// API object.
 ///
-/// @return An instantiation of the DBSHARINGGetSharedLinksResult object.
+/// @return An instantiation of the `DBSHARINGGetSharedLinksResult` object.
 ///
 + (DBSHARINGGetSharedLinksResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

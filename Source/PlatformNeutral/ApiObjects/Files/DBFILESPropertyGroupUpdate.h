@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESPropertyGroupUpdate;
 @class DBPROPERTIESPropertyField;
 
 #pragma mark - API Object
 
 ///
-/// The PropertyGroupUpdate struct.
+/// The `PropertyGroupUpdate` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESPropertyGroupUpdate : NSObject <DBSerializable>
 
@@ -35,7 +34,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESPropertyGroupUpdate struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param templateId A unique identifier for a property template.
 /// @param addOrUpdateFields List of property fields to update if the field already exists. If the
@@ -43,19 +42,18 @@
 /// @param removeFields List of property field names to remove from property group if the field
 /// exists.
 ///
-/// @return An initialized DBFILESPropertyGroupUpdate instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId
                          addOrUpdateFields:(NSArray<DBPROPERTIESPropertyField *> * _Nullable)addOrUpdateFields
                               removeFields:(NSArray<NSString *> * _Nullable)removeFields;
 
 ///
-/// Convenience constructor for the DBFILESPropertyGroupUpdate struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param templateId A unique identifier for a property template.
 ///
-/// @return An initialized DBFILESPropertyGroupUpdate instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
@@ -64,27 +62,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the PropertyGroupUpdate struct.
+/// The serialization class for the `PropertyGroupUpdate` struct.
 ///
 @interface DBFILESPropertyGroupUpdateSerializer : NSObject
 
 ///
-/// Serializes DBFILESPropertyGroupUpdate instances.
+/// Serializes `DBFILESPropertyGroupUpdate` instances.
 ///
-/// @param instance An instance of the DBFILESPropertyGroupUpdate API object.
+/// @param instance An instance of the `DBFILESPropertyGroupUpdate` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESPropertyGroupUpdate API
+/// @return A json-compatible dictionary representation of the `DBFILESPropertyGroupUpdate` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPropertyGroupUpdate * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESPropertyGroupUpdate instances.
+/// Deserializes `DBFILESPropertyGroupUpdate` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESPropertyGroupUpdate API
+/// @param dict A json-compatible dictionary representation of the `DBFILESPropertyGroupUpdate` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESPropertyGroupUpdate object.
+/// @return An instantiation of the `DBFILESPropertyGroupUpdate` object.
 ///
 + (DBFILESPropertyGroupUpdate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

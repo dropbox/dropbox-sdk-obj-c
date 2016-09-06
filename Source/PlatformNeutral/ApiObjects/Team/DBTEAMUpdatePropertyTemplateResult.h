@@ -7,32 +7,29 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMUpdatePropertyTemplateResult;
-
 #pragma mark - API Object
 
 ///
-/// The UpdatePropertyTemplateResult struct.
+/// The `UpdatePropertyTemplateResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMUpdatePropertyTemplateResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// An identifier for property template added by propertiesTemplateAdd.
+/// An identifier for property template added by `propertiesTemplateAdd`.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMUpdatePropertyTemplateResult struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param templateId An identifier for property template added by :route:`properties/template/add`.
+/// @param templateId An identifier for property template added by `propertiesTemplateAdd`.
 ///
-/// @return An initialized DBTEAMUpdatePropertyTemplateResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UpdatePropertyTemplateResult struct.
+/// The serialization class for the `UpdatePropertyTemplateResult` struct.
 ///
 @interface DBTEAMUpdatePropertyTemplateResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMUpdatePropertyTemplateResult instances.
+/// Serializes `DBTEAMUpdatePropertyTemplateResult` instances.
 ///
-/// @param instance An instance of the DBTEAMUpdatePropertyTemplateResult API object.
+/// @param instance An instance of the `DBTEAMUpdatePropertyTemplateResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMUpdatePropertyTemplateResult
+/// @return A json-compatible dictionary representation of the `DBTEAMUpdatePropertyTemplateResult`
 /// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMUpdatePropertyTemplateResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMUpdatePropertyTemplateResult instances.
+/// Deserializes `DBTEAMUpdatePropertyTemplateResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBTEAMUpdatePropertyTemplateResult API object.
+/// `DBTEAMUpdatePropertyTemplateResult` API object.
 ///
-/// @return An instantiation of the DBTEAMUpdatePropertyTemplateResult object.
+/// @return An instantiation of the `DBTEAMUpdatePropertyTemplateResult` object.
 ///
 + (DBTEAMUpdatePropertyTemplateResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,25 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGMemberPolicy;
-
 #pragma mark - API Object
 
 ///
-/// The MemberPolicy union.
+/// The `MemberPolicy` union.
 ///
 /// Policy governing who can be a member of a shared folder. Only applicable to folders owned by a
 /// user on a team.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGMemberPolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGMemberPolicyTag enum type represents the possible tag states with which the
-/// DBSHARINGMemberPolicy union can exist.
+/// The `DBSHARINGMemberPolicyTag` enum type represents the possible tag states with which the
+/// `DBSHARINGMemberPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
   /// Only a teammate can become a member.
   DBSHARINGMemberPolicyTeam,
@@ -44,50 +42,50 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Team.
+/// Initializes union class with tag state of "team".
 ///
-/// About the Team tag state: Only a teammate can become a member.
+/// Description of the "team" tag state: Only a teammate can become a member.
 ///
-/// @return An initialized DBSHARINGMemberPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeam;
 
 ///
-/// Initializes union class with tag state of Anyone.
+/// Initializes union class with tag state of "anyone".
 ///
-/// About the Anyone tag state: Anyone can become a member.
+/// Description of the "anyone" tag state: Anyone can become a member.
 ///
-/// @return An initialized DBSHARINGMemberPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAnyone;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGMemberPolicy instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Team.
+/// Retrieves whether the union's current tag state has value "team".
 ///
-/// @return Whether the union's current tag state has value Team.
+/// @return Whether the union's current tag state has value "team".
 ///
 - (BOOL)isTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Anyone.
+/// Retrieves whether the union's current tag state has value "anyone".
 ///
-/// @return Whether the union's current tag state has value Anyone.
+/// @return Whether the union's current tag state has value "anyone".
 ///
 - (BOOL)isAnyone;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -103,25 +101,26 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGMemberPolicy union.
+/// The serialization class for the `DBSHARINGMemberPolicy` union.
 ///
 @interface DBSHARINGMemberPolicySerializer : NSObject
 
 ///
-/// Serializes DBSHARINGMemberPolicy instances.
+/// Serializes `DBSHARINGMemberPolicy` instances.
 ///
-/// @param instance An instance of the DBSHARINGMemberPolicy API object.
+/// @param instance An instance of the `DBSHARINGMemberPolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGMemberPolicy API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGMemberPolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMemberPolicy * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGMemberPolicy instances.
+/// Deserializes `DBSHARINGMemberPolicy` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGMemberPolicy API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGMemberPolicy` API
+/// object.
 ///
-/// @return An instantiation of the DBSHARINGMemberPolicy object.
+/// @return An instantiation of the `DBSHARINGMemberPolicy` object.
 ///
 + (DBSHARINGMemberPolicy * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

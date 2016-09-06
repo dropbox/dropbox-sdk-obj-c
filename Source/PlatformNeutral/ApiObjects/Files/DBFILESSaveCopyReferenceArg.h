@@ -7,21 +7,19 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESSaveCopyReferenceArg;
-
 #pragma mark - API Object
 
 ///
-/// The SaveCopyReferenceArg struct.
+/// The `SaveCopyReferenceArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSaveCopyReferenceArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// A copy reference returned by dCopyReferenceGet.
+/// A copy reference returned by `dCopyReferenceGet`.
 @property(nonatomic, readonly, copy) NSString * _Nonnull dCopyReference;
 
 /// Path in the user's Dropbox that is the destination.
@@ -30,12 +28,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESSaveCopyReferenceArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param dCopyReference A copy reference returned by :route:`copy_reference/get`.
+/// @param dCopyReference A copy reference returned by `dCopyReferenceGet`.
 /// @param path Path in the user's Dropbox that is the destination.
 ///
-/// @return An initialized DBFILESSaveCopyReferenceArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDCopyReference:(NSString * _Nonnull)dCopyReference path:(NSString * _Nonnull)path;
 
@@ -44,27 +42,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SaveCopyReferenceArg struct.
+/// The serialization class for the `SaveCopyReferenceArg` struct.
 ///
 @interface DBFILESSaveCopyReferenceArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESSaveCopyReferenceArg instances.
+/// Serializes `DBFILESSaveCopyReferenceArg` instances.
 ///
-/// @param instance An instance of the DBFILESSaveCopyReferenceArg API object.
+/// @param instance An instance of the `DBFILESSaveCopyReferenceArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSaveCopyReferenceArg API
+/// @return A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveCopyReferenceArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSaveCopyReferenceArg instances.
+/// Deserializes `DBFILESSaveCopyReferenceArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSaveCopyReferenceArg API
+/// @param dict A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceArg` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESSaveCopyReferenceArg object.
+/// @return An instantiation of the `DBFILESSaveCopyReferenceArg` object.
 ///
 + (DBFILESSaveCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

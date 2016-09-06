@@ -7,18 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFileMembersArg;
 @class DBSHARINGMemberAction;
 
 #pragma mark - API Object
 
 ///
-/// The ListFileMembersArg struct.
+/// The `ListFileMembersArg` struct.
 ///
-/// Arguments for listFileMembers.
+/// Arguments for `listFileMembers`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFileMembersArg : NSObject <DBSerializable>
 
@@ -39,7 +38,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFileMembersArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file The file for which you want to see members.
 /// @param actions The actions for which to return permissions on a member
@@ -48,7 +47,7 @@
 /// @param limit Number of members to return max per query. Defaults to 100 if no limit is
 /// specified.
 ///
-/// @return An initialized DBSHARINGListFileMembersArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                              actions:(NSArray<DBSHARINGMemberAction *> * _Nullable)actions
@@ -56,12 +55,11 @@
                                limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor for the DBSHARINGListFileMembersArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param file The file for which you want to see members.
 ///
-/// @return An initialized DBSHARINGListFileMembersArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
@@ -70,27 +68,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFileMembersArg struct.
+/// The serialization class for the `ListFileMembersArg` struct.
 ///
 @interface DBSHARINGListFileMembersArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFileMembersArg instances.
+/// Serializes `DBSHARINGListFileMembersArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFileMembersArg API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFileMembersArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFileMembersArg instances.
+/// Deserializes `DBSHARINGListFileMembersArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFileMembersArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFileMembersArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGListFileMembersArg object.
+/// @return An instantiation of the `DBSHARINGListFileMembersArg` object.
 ///
 + (DBSHARINGListFileMembersArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -4,6 +4,7 @@
 
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
+#import <Foundation/Foundation.h>
 
 #if TARGET_OS_IPHONE
 #import "DropboxClientsManager+MobileAuth.h"

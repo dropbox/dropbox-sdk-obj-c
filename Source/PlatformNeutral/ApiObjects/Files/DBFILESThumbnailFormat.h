@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESThumbnailFormat;
-
 #pragma mark - API Object
 
 ///
-/// The ThumbnailFormat union.
+/// The `ThumbnailFormat` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESThumbnailFormat : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESThumbnailFormatTag enum type represents the possible tag states with which the
-/// DBFILESThumbnailFormat union can exist.
+/// The `DBFILESThumbnailFormatTag` enum type represents the possible tag states with which the
+/// `DBFILESThumbnailFormat` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
   /// (no description).
   DBFILESThumbnailFormatJpeg,
@@ -38,32 +36,32 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Jpeg.
+/// Initializes union class with tag state of "jpeg".
 ///
-/// @return An initialized DBFILESThumbnailFormat instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithJpeg;
 
 ///
-/// Initializes union class with tag state of Png.
+/// Initializes union class with tag state of "png".
 ///
-/// @return An initialized DBFILESThumbnailFormat instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPng;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Jpeg.
+/// Retrieves whether the union's current tag state has value "jpeg".
 ///
-/// @return Whether the union's current tag state has value Jpeg.
+/// @return Whether the union's current tag state has value "jpeg".
 ///
 - (BOOL)isJpeg;
 
 ///
-/// Retrieves whether the union's current tag state has value Png.
+/// Retrieves whether the union's current tag state has value "png".
 ///
-/// @return Whether the union's current tag state has value Png.
+/// @return Whether the union's current tag state has value "png".
 ///
 - (BOOL)isPng;
 
@@ -79,26 +77,26 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESThumbnailFormat union.
+/// The serialization class for the `DBFILESThumbnailFormat` union.
 ///
 @interface DBFILESThumbnailFormatSerializer : NSObject
 
 ///
-/// Serializes DBFILESThumbnailFormat instances.
+/// Serializes `DBFILESThumbnailFormat` instances.
 ///
-/// @param instance An instance of the DBFILESThumbnailFormat API object.
+/// @param instance An instance of the `DBFILESThumbnailFormat` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESThumbnailFormat API object.
+/// @return A json-compatible dictionary representation of the `DBFILESThumbnailFormat` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailFormat * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESThumbnailFormat instances.
+/// Deserializes `DBFILESThumbnailFormat` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESThumbnailFormat API
+/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailFormat` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESThumbnailFormat object.
+/// @return An instantiation of the `DBFILESThumbnailFormat` object.
 ///
 + (DBFILESThumbnailFormat * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

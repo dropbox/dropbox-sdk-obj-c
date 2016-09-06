@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGMemberPermission;
-@class DBSHARINGParentFolderAccessInfo;
 
 #pragma mark - API Object
 
 ///
-/// The ParentFolderAccessInfo struct.
+/// The `ParentFolderAccessInfo` struct.
 ///
 /// Contains information about a parent folder that a member has access to.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGParentFolderAccessInfo : NSObject <DBSerializable>
 
@@ -36,14 +35,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGParentFolderAccessInfo struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param folderName Display name for the folder.
 /// @param sharedFolderId The identifier of the parent shared folder.
 /// @param permissions The user's permissions for the parent shared folder.
 ///
-/// @return An initialized DBSHARINGParentFolderAccessInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName
                             sharedFolderId:(NSString * _Nonnull)sharedFolderId
@@ -54,27 +52,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ParentFolderAccessInfo struct.
+/// The serialization class for the `ParentFolderAccessInfo` struct.
 ///
 @interface DBSHARINGParentFolderAccessInfoSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGParentFolderAccessInfo instances.
+/// Serializes `DBSHARINGParentFolderAccessInfo` instances.
 ///
-/// @param instance An instance of the DBSHARINGParentFolderAccessInfo API object.
+/// @param instance An instance of the `DBSHARINGParentFolderAccessInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGParentFolderAccessInfo API
+/// @return A json-compatible dictionary representation of the `DBSHARINGParentFolderAccessInfo` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGParentFolderAccessInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGParentFolderAccessInfo instances.
+/// Deserializes `DBSHARINGParentFolderAccessInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGParentFolderAccessInfo
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGParentFolderAccessInfo`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGParentFolderAccessInfo object.
+/// @return An instantiation of the `DBSHARINGParentFolderAccessInfo` object.
 ///
 + (DBSHARINGParentFolderAccessInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

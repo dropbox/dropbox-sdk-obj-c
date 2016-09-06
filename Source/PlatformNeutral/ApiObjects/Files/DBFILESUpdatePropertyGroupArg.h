@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBFILESPropertyGroupUpdate;
-@class DBFILESUpdatePropertyGroupArg;
 
 #pragma mark - API Object
 
 ///
-/// The UpdatePropertyGroupArg struct.
+/// The `UpdatePropertyGroupArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUpdatePropertyGroupArg : NSObject <DBSerializable>
 
@@ -31,12 +30,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESUpdatePropertyGroupArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path A unique identifier for the file.
 /// @param updatePropertyGroups Filled custom property templates associated with a file.
 ///
-/// @return An initialized DBFILESUpdatePropertyGroupArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
                 updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
@@ -46,27 +45,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UpdatePropertyGroupArg struct.
+/// The serialization class for the `UpdatePropertyGroupArg` struct.
 ///
 @interface DBFILESUpdatePropertyGroupArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESUpdatePropertyGroupArg instances.
+/// Serializes `DBFILESUpdatePropertyGroupArg` instances.
 ///
-/// @param instance An instance of the DBFILESUpdatePropertyGroupArg API object.
+/// @param instance An instance of the `DBFILESUpdatePropertyGroupArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUpdatePropertyGroupArg API
+/// @return A json-compatible dictionary representation of the `DBFILESUpdatePropertyGroupArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUpdatePropertyGroupArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUpdatePropertyGroupArg instances.
+/// Deserializes `DBFILESUpdatePropertyGroupArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUpdatePropertyGroupArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESUpdatePropertyGroupArg`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESUpdatePropertyGroupArg object.
+/// @return An instantiation of the `DBFILESUpdatePropertyGroupArg` object.
 ///
 + (DBFILESUpdatePropertyGroupArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

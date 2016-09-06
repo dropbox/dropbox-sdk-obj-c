@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 
 @class DBFILESFileMetadata;
-@class DBFILESUploadSessionFinishBatchResultEntry;
 @class DBFILESUploadSessionFinishError;
 
 #pragma mark - API Object
 
 ///
-/// The UploadSessionFinishBatchResultEntry union.
+/// The `UploadSessionFinishBatchResultEntry` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadSessionFinishBatchResultEntry : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESUploadSessionFinishBatchResultEntryTag enum type represents the possible tag states
-/// with which the DBFILESUploadSessionFinishBatchResultEntry union can exist.
+/// The `DBFILESUploadSessionFinishBatchResultEntryTag` enum type represents the possible tag states
+/// with which the `DBFILESUploadSessionFinishBatchResultEntry` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
   /// (no description).
   DBFILESUploadSessionFinishBatchResultEntrySuccess,
@@ -37,53 +36,53 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishBatchResultEntryTag tag;
 
-/// (no description). Ensure the isSuccess method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isSuccess` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESFileMetadata * _Nonnull success;
 
-/// (no description). Ensure the isFailure method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isFailure` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishError * _Nonnull failure;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Success.
+/// Initializes union class with tag state of "success".
 ///
 /// @param success (no description).
 ///
-/// @return An initialized DBFILESUploadSessionFinishBatchResultEntry instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(DBFILESFileMetadata * _Nonnull)success;
 
 ///
-/// Initializes union class with tag state of Failure.
+/// Initializes union class with tag state of "failure".
 ///
 /// @param failure (no description).
 ///
-/// @return An initialized DBFILESUploadSessionFinishBatchResultEntry instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFailure:(DBFILESUploadSessionFinishError * _Nonnull)failure;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Success.
+/// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the success property,
+/// @note Call this method and ensure it returns true before accessing the `success` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Success.
+/// @return Whether the union's current tag state has value "success".
 ///
 - (BOOL)isSuccess;
 
 ///
-/// Retrieves whether the union's current tag state has value Failure.
+/// Retrieves whether the union's current tag state has value "failure".
 ///
-/// @note Call this method and ensure it returns true before accessing the failure property,
+/// @note Call this method and ensure it returns true before accessing the `failure` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Failure.
+/// @return Whether the union's current tag state has value "failure".
 ///
 - (BOOL)isFailure;
 
@@ -99,27 +98,27 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESUploadSessionFinishBatchResultEntry union.
+/// The serialization class for the `DBFILESUploadSessionFinishBatchResultEntry` union.
 ///
 @interface DBFILESUploadSessionFinishBatchResultEntrySerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadSessionFinishBatchResultEntry instances.
+/// Serializes `DBFILESUploadSessionFinishBatchResultEntry` instances.
 ///
-/// @param instance An instance of the DBFILESUploadSessionFinishBatchResultEntry API object.
+/// @param instance An instance of the `DBFILESUploadSessionFinishBatchResultEntry` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBFILESUploadSessionFinishBatchResultEntry API object.
+/// `DBFILESUploadSessionFinishBatchResultEntry` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionFinishBatchResultEntry * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadSessionFinishBatchResultEntry instances.
+/// Deserializes `DBFILESUploadSessionFinishBatchResultEntry` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBFILESUploadSessionFinishBatchResultEntry API object.
+/// `DBFILESUploadSessionFinishBatchResultEntry` API object.
 ///
-/// @return An instantiation of the DBFILESUploadSessionFinishBatchResultEntry object.
+/// @return An instantiation of the `DBFILESUploadSessionFinishBatchResultEntry` object.
 ///
 + (DBFILESUploadSessionFinishBatchResultEntry * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBFILESFileMetadata;
-@class DBFILESGetTemporaryLinkResult;
 
 #pragma mark - API Object
 
 ///
-/// The GetTemporaryLinkResult struct.
+/// The `GetTemporaryLinkResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESGetTemporaryLinkResult : NSObject <DBSerializable>
 
@@ -31,12 +30,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESGetTemporaryLinkResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param metadata Metadata of the file.
 /// @param link The temporary link which can be used to stream content the file.
 ///
-/// @return An initialized DBFILESGetTemporaryLinkResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMetadata:(DBFILESFileMetadata * _Nonnull)metadata link:(NSString * _Nonnull)link;
 
@@ -45,27 +44,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetTemporaryLinkResult struct.
+/// The serialization class for the `GetTemporaryLinkResult` struct.
 ///
 @interface DBFILESGetTemporaryLinkResultSerializer : NSObject
 
 ///
-/// Serializes DBFILESGetTemporaryLinkResult instances.
+/// Serializes `DBFILESGetTemporaryLinkResult` instances.
 ///
-/// @param instance An instance of the DBFILESGetTemporaryLinkResult API object.
+/// @param instance An instance of the `DBFILESGetTemporaryLinkResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESGetTemporaryLinkResult API
+/// @return A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetTemporaryLinkResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESGetTemporaryLinkResult instances.
+/// Deserializes `DBFILESGetTemporaryLinkResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESGetTemporaryLinkResult API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkResult`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESGetTemporaryLinkResult object.
+/// @return An instantiation of the `DBFILESGetTemporaryLinkResult` object.
 ///
 + (DBFILESGetTemporaryLinkResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

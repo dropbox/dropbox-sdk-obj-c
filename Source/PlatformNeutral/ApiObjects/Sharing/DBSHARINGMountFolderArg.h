@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGMountFolderArg;
-
 #pragma mark - API Object
 
 ///
-/// The MountFolderArg struct.
+/// The `MountFolderArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGMountFolderArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGMountFolderArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID of the shared folder to mount.
 ///
-/// @return An initialized DBSHARINGMountFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
@@ -40,26 +38,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MountFolderArg struct.
+/// The serialization class for the `MountFolderArg` struct.
 ///
 @interface DBSHARINGMountFolderArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGMountFolderArg instances.
+/// Serializes `DBSHARINGMountFolderArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGMountFolderArg API object.
+/// @param instance An instance of the `DBSHARINGMountFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGMountFolderArg API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGMountFolderArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMountFolderArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGMountFolderArg instances.
+/// Deserializes `DBSHARINGMountFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGMountFolderArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGMountFolderArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGMountFolderArg object.
+/// @return An instantiation of the `DBSHARINGMountFolderArg` object.
 ///
 + (DBSHARINGMountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

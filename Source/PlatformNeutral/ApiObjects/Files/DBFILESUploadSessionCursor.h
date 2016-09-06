@@ -7,21 +7,19 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadSessionCursor;
-
 #pragma mark - API Object
 
 ///
-/// The UploadSessionCursor struct.
+/// The `UploadSessionCursor` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadSessionCursor : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The upload session ID (returned by uploadSessionStart).
+/// The upload session ID (returned by `uploadSessionStart`).
 @property(nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// The amount of data that has been uploaded so far. We use this to make sure upload data isn't
@@ -31,13 +29,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESUploadSessionCursor struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param sessionId The upload session ID (returned by :route:`upload_session/start`).
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
 /// @param offset The amount of data that has been uploaded so far. We use this to make sure upload
 /// data isn't lost or duplicated in the event of a network error.
 ///
-/// @return An initialized DBFILESUploadSessionCursor instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId offset:(NSNumber * _Nonnull)offset;
 
@@ -46,27 +44,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UploadSessionCursor struct.
+/// The serialization class for the `UploadSessionCursor` struct.
 ///
 @interface DBFILESUploadSessionCursorSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadSessionCursor instances.
+/// Serializes `DBFILESUploadSessionCursor` instances.
 ///
-/// @param instance An instance of the DBFILESUploadSessionCursor API object.
+/// @param instance An instance of the `DBFILESUploadSessionCursor` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadSessionCursor API
+/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionCursor` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionCursor * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadSessionCursor instances.
+/// Deserializes `DBFILESUploadSessionCursor` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadSessionCursor API
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionCursor` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESUploadSessionCursor object.
+/// @return An instantiation of the `DBFILESUploadSessionCursor` object.
 ///
 + (DBFILESUploadSessionCursor * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

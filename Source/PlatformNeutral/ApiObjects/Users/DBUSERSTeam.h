@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSTeam;
-
 #pragma mark - API Object
 
 ///
-/// The Team struct.
+/// The `Team` struct.
 ///
 /// Information about a team.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSTeam : NSObject <DBSerializable>
 
@@ -32,12 +30,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSTeam struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param id_ The team's unique ID.
 /// @param name The name of the team.
 ///
-/// @return An initialized DBUSERSTeam instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
 
@@ -46,25 +44,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the Team struct.
+/// The serialization class for the `Team` struct.
 ///
 @interface DBUSERSTeamSerializer : NSObject
 
 ///
-/// Serializes DBUSERSTeam instances.
+/// Serializes `DBUSERSTeam` instances.
 ///
-/// @param instance An instance of the DBUSERSTeam API object.
+/// @param instance An instance of the `DBUSERSTeam` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSTeam API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSTeam` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSTeam * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSTeam instances.
+/// Deserializes `DBUSERSTeam` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSTeam API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSTeam` API object.
 ///
-/// @return An instantiation of the DBUSERSTeam object.
+/// @return An instantiation of the `DBUSERSTeam` object.
 ///
 + (DBUSERSTeam * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

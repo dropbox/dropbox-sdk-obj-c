@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSAccountType;
-
 #pragma mark - API Object
 
 ///
-/// The AccountType union.
+/// The `AccountType` union.
 ///
 /// What type of account this user has.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSAccountType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBUSERSAccountTypeTag enum type represents the possible tag states with which the
-/// DBUSERSAccountType union can exist.
+/// The `DBUSERSAccountTypeTag` enum type represents the possible tag states with which the
+/// `DBUSERSAccountType` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSAccountTypeTag) {
   /// The basic account type.
   DBUSERSAccountTypeBasic,
@@ -43,52 +41,52 @@ typedef NS_ENUM(NSInteger, DBUSERSAccountTypeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Basic.
+/// Initializes union class with tag state of "basic".
 ///
-/// About the Basic tag state: The basic account type.
+/// Description of the "basic" tag state: The basic account type.
 ///
-/// @return An initialized DBUSERSAccountType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBasic;
 
 ///
-/// Initializes union class with tag state of Pro.
+/// Initializes union class with tag state of "pro".
 ///
-/// About the Pro tag state: The Dropbox Pro account type.
+/// Description of the "pro" tag state: The Dropbox Pro account type.
 ///
-/// @return An initialized DBUSERSAccountType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPro;
 
 ///
-/// Initializes union class with tag state of Business.
+/// Initializes union class with tag state of "business".
 ///
-/// About the Business tag state: The Dropbox Business account type.
+/// Description of the "business" tag state: The Dropbox Business account type.
 ///
-/// @return An initialized DBUSERSAccountType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBusiness;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Basic.
+/// Retrieves whether the union's current tag state has value "basic".
 ///
-/// @return Whether the union's current tag state has value Basic.
+/// @return Whether the union's current tag state has value "basic".
 ///
 - (BOOL)isBasic;
 
 ///
-/// Retrieves whether the union's current tag state has value Pro.
+/// Retrieves whether the union's current tag state has value "pro".
 ///
-/// @return Whether the union's current tag state has value Pro.
+/// @return Whether the union's current tag state has value "pro".
 ///
 - (BOOL)isPro;
 
 ///
-/// Retrieves whether the union's current tag state has value Business.
+/// Retrieves whether the union's current tag state has value "business".
 ///
-/// @return Whether the union's current tag state has value Business.
+/// @return Whether the union's current tag state has value "business".
 ///
 - (BOOL)isBusiness;
 
@@ -104,25 +102,25 @@ typedef NS_ENUM(NSInteger, DBUSERSAccountTypeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBUSERSAccountType union.
+/// The serialization class for the `DBUSERSAccountType` union.
 ///
 @interface DBUSERSAccountTypeSerializer : NSObject
 
 ///
-/// Serializes DBUSERSAccountType instances.
+/// Serializes `DBUSERSAccountType` instances.
 ///
-/// @param instance An instance of the DBUSERSAccountType API object.
+/// @param instance An instance of the `DBUSERSAccountType` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSAccountType API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSAccountType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSAccountType * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSAccountType instances.
+/// Deserializes `DBUSERSAccountType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSAccountType API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSAccountType` API object.
 ///
-/// @return An instantiation of the DBUSERSAccountType object.
+/// @return An instantiation of the `DBUSERSAccountType` object.
 ///
 + (DBUSERSAccountType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

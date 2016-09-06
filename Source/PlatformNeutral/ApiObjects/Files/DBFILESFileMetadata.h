@@ -8,7 +8,6 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESFileMetadata;
 @class DBFILESFileSharingInfo;
 @class DBFILESMediaInfo;
 @class DBPROPERTIESPropertyGroup;
@@ -16,10 +15,10 @@
 #pragma mark - API Object
 
 ///
-/// The FileMetadata struct.
+/// The `FileMetadata` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable>
 
@@ -53,8 +52,8 @@
 /// Additional information if the file has custom properties with the property template specified.
 @property(nonatomic, readonly) NSArray<DBPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
-/// This flag will only be present if include_has_explicit_shared_members  is true in listFolder or
-/// getMetadata. If this  flag is present, it will be true if this file has any explicit shared
+/// This flag will only be present if include_has_explicit_shared_members  is true in `listFolder`
+/// or `getMetadata`. If this  flag is present, it will be true if this file has any explicit shared
 /// members. This is different from sharing_info in that this could be true  in the case where a
 /// file has explicit members but is not contained within  a shared folder.
 @property(nonatomic, readonly) NSNumber * _Nullable hasExplicitSharedMembers;
@@ -62,7 +61,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESFileMetadata struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param name The last component of the path (including extension). This never contains a slash.
 /// @param id_ A unique identifier for the file.
@@ -79,21 +78,20 @@
 /// @param pathDisplay The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior will match the path
 /// provided in the Core API v1. Changes to the casing of paths won't be returned by
-/// :route:`list_folder/continue`. This field will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Deprecated. Please use
-/// :field:`FileSharingInfo.parent_shared_folder_id` or
-/// :field:`FolderSharingInfo.parent_shared_folder_id` instead.
+/// `listFolderContinue`. This field will be null if the file or folder is not mounted.
+/// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
+/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
 /// @param mediaInfo Additional information if the file is a photo or video.
 /// @param sharingInfo Set if this file is contained in a shared folder.
 /// @param propertyGroups Additional information if the file has custom properties with the property
 /// template specified.
 /// @param hasExplicitSharedMembers This flag will only be present if
-/// include_has_explicit_shared_members  is true in :route:`list_folder` or :route:`get_metadata`.
-/// If this  flag is present, it will be true if this file has any explicit shared  members. This is
-/// different from sharing_info in that this could be true  in the case where a file has explicit
-/// members but is not contained within  a shared folder.
+/// include_has_explicit_shared_members  is true in `listFolder` or `getMetadata`. If this  flag is
+/// present, it will be true if this file has any explicit shared  members. This is different from
+/// sharing_info in that this could be true  in the case where a file has explicit members but is
+/// not contained within  a shared folder.
 ///
-/// @return An initialized DBFILESFileMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                                  id_:(NSString * _Nonnull)id_
@@ -110,8 +108,7 @@
             hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers;
 
 ///
-/// Convenience constructor for the DBFILESFileMetadata struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param name The last component of the path (including extension). This never contains a slash.
 /// @param id_ A unique identifier for the file.
@@ -124,7 +121,7 @@
 /// elsewhere in the API and can be used to detect changes and avoid conflicts.
 /// @param size The file size in bytes.
 ///
-/// @return An initialized DBFILESFileMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                                  id_:(NSString * _Nonnull)id_
@@ -138,25 +135,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the FileMetadata struct.
+/// The serialization class for the `FileMetadata` struct.
 ///
 @interface DBFILESFileMetadataSerializer : NSObject
 
 ///
-/// Serializes DBFILESFileMetadata instances.
+/// Serializes `DBFILESFileMetadata` instances.
 ///
-/// @param instance An instance of the DBFILESFileMetadata API object.
+/// @param instance An instance of the `DBFILESFileMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESFileMetadata API object.
+/// @return A json-compatible dictionary representation of the `DBFILESFileMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESFileMetadata * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESFileMetadata instances.
+/// Deserializes `DBFILESFileMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESFileMetadata API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESFileMetadata` API object.
 ///
-/// @return An instantiation of the DBFILESFileMetadata object.
+/// @return An instantiation of the `DBFILESFileMetadata` object.
 ///
 + (DBFILESFileMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

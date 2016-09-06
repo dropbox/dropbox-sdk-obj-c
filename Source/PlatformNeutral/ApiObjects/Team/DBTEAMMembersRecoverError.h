@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersRecoverError;
-
 #pragma mark - API Object
 
 ///
-/// The MembersRecoverError union.
+/// The `MembersRecoverError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersRecoverError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersRecoverErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMembersRecoverError union can exist.
+/// The `DBTEAMMembersRecoverErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMMembersRecoverError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -45,67 +43,67 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersRecoverError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 ///
-/// Initializes union class with tag state of UserUnrecoverable.
+/// Initializes union class with tag state of "user_unrecoverable".
 ///
-/// About the UserUnrecoverable tag state: The user is not recoverable.
+/// Description of the "user_unrecoverable" tag state: The user is not recoverable.
 ///
-/// @return An initialized DBTEAMMembersRecoverError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserUnrecoverable;
 
 ///
-/// Initializes union class with tag state of UserNotInTeam.
+/// Initializes union class with tag state of "user_not_in_team".
 ///
-/// About the UserNotInTeam tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
 ///
-/// @return An initialized DBTEAMMembersRecoverError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMembersRecoverError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value UserUnrecoverable.
+/// Retrieves whether the union's current tag state has value "user_unrecoverable".
 ///
-/// @return Whether the union's current tag state has value UserUnrecoverable.
+/// @return Whether the union's current tag state has value "user_unrecoverable".
 ///
 - (BOOL)isUserUnrecoverable;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotInTeam.
+/// Retrieves whether the union's current tag state has value "user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value UserNotInTeam.
+/// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -121,26 +119,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersRecoverError union.
+/// The serialization class for the `DBTEAMMembersRecoverError` union.
 ///
 @interface DBTEAMMembersRecoverErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersRecoverError instances.
+/// Serializes `DBTEAMMembersRecoverError` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersRecoverError API object.
+/// @param instance An instance of the `DBTEAMMembersRecoverError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersRecoverError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersRecoverError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersRecoverError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersRecoverError instances.
+/// Deserializes `DBTEAMMembersRecoverError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersRecoverError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersRecoverError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersRecoverError object.
+/// @return An instantiation of the `DBTEAMMembersRecoverError` object.
 ///
 + (DBTEAMMembersRecoverError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

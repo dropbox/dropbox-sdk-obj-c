@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGModifySharedLinkSettingsError;
 @class DBSHARINGSharedLinkSettingsError;
 
 #pragma mark - API Object
 
 ///
-/// The ModifySharedLinkSettingsError union.
+/// The `ModifySharedLinkSettingsError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGModifySharedLinkSettingsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGModifySharedLinkSettingsErrorTag enum type represents the possible tag states with
-/// which the DBSHARINGModifySharedLinkSettingsError union can exist.
+/// The `DBSHARINGModifySharedLinkSettingsErrorTag` enum type represents the possible tag states
+/// with which the `DBSHARINGModifySharedLinkSettingsError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
   /// The shared link wasn't found
   DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
@@ -45,94 +44,95 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGModifySharedLinkSettingsErrorTag tag;
 
-/// There is an error with the given settings Ensure the isSettingsError method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// There is an error with the given settings @note Ensure the `isSettingsError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedLinkSettingsError * _Nonnull settingsError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of SharedLinkNotFound.
+/// Initializes union class with tag state of "shared_link_not_found".
 ///
-/// About the SharedLinkNotFound tag state: The shared link wasn't found
+/// Description of the "shared_link_not_found" tag state: The shared link wasn't found
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
 ///
-/// Initializes union class with tag state of SharedLinkAccessDenied.
+/// Initializes union class with tag state of "shared_link_access_denied".
 ///
-/// About the SharedLinkAccessDenied tag state: The caller is not allowed to access this shared link
+/// Description of the "shared_link_access_denied" tag state: The caller is not allowed to access
+/// this shared link
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of SettingsError.
+/// Initializes union class with tag state of "settings_error".
 ///
-/// About the SettingsError tag state: There is an error with the given settings
+/// Description of the "settings_error" tag state: There is an error with the given settings
 ///
 /// @param settingsError There is an error with the given settings
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSettingsError:(DBSHARINGSharedLinkSettingsError * _Nonnull)settingsError;
 
 ///
-/// Initializes union class with tag state of EmailNotVerified.
+/// Initializes union class with tag state of "email_not_verified".
 ///
-/// About the EmailNotVerified tag state: The caller's email should be verified
+/// Description of the "email_not_verified" tag state: The caller's email should be verified
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmailNotVerified;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkNotFound.
+/// Retrieves whether the union's current tag state has value "shared_link_not_found".
 ///
-/// @return Whether the union's current tag state has value SharedLinkNotFound.
+/// @return Whether the union's current tag state has value "shared_link_not_found".
 ///
 - (BOOL)isSharedLinkNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkAccessDenied.
+/// Retrieves whether the union's current tag state has value "shared_link_access_denied".
 ///
-/// @return Whether the union's current tag state has value SharedLinkAccessDenied.
+/// @return Whether the union's current tag state has value "shared_link_access_denied".
 ///
 - (BOOL)isSharedLinkAccessDenied;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value SettingsError.
+/// Retrieves whether the union's current tag state has value "settings_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the settingsError property,
+/// @note Call this method and ensure it returns true before accessing the `settingsError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value SettingsError.
+/// @return Whether the union's current tag state has value "settings_error".
 ///
 - (BOOL)isSettingsError;
 
 ///
-/// Retrieves whether the union's current tag state has value EmailNotVerified.
+/// Retrieves whether the union's current tag state has value "email_not_verified".
 ///
-/// @return Whether the union's current tag state has value EmailNotVerified.
+/// @return Whether the union's current tag state has value "email_not_verified".
 ///
 - (BOOL)isEmailNotVerified;
 
@@ -148,27 +148,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGModifySharedLinkSettingsError union.
+/// The serialization class for the `DBSHARINGModifySharedLinkSettingsError` union.
 ///
 @interface DBSHARINGModifySharedLinkSettingsErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGModifySharedLinkSettingsError instances.
+/// Serializes `DBSHARINGModifySharedLinkSettingsError` instances.
 ///
-/// @param instance An instance of the DBSHARINGModifySharedLinkSettingsError API object.
+/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsError` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGModifySharedLinkSettingsError API object.
+/// `DBSHARINGModifySharedLinkSettingsError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGModifySharedLinkSettingsError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGModifySharedLinkSettingsError instances.
+/// Deserializes `DBSHARINGModifySharedLinkSettingsError` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGModifySharedLinkSettingsError API object.
+/// `DBSHARINGModifySharedLinkSettingsError` API object.
 ///
-/// @return An instantiation of the DBSHARINGModifySharedLinkSettingsError object.
+/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsError` object.
 ///
 + (DBSHARINGModifySharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

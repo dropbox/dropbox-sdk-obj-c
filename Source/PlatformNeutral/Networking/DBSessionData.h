@@ -10,7 +10,7 @@
 ///
 /// Progress data storage.
 ///
-/// Progress and response handlers can be added to DBDelegate after a request is initiated.
+/// Progress and response handlers can be added to `DBDelegate` after a request is initiated.
 /// If a handler does not exist at the time the network response is received,
 /// progress data and/or response data will be saved until a handler is queued up
 /// to the corresponding task id. This gives the client the flexibility to install
@@ -28,7 +28,7 @@
 @property(nonatomic, readonly) int64_t expectedToCommit;
 
 ///
-/// DBProgressData full constructor.
+/// `DBProgressData` full constructor.
 ///
 /// @param committed Bytes committed (sent if RPC or Upload request, and downloaded if Download
 /// request).
@@ -37,14 +37,13 @@
 /// @param expectedToCommit Total bytes expected to commit (sent if RPC or Upload request, and
 /// downloaded if Download request).
 ///
-/// @return An initialized DBProgressData instance.
+/// @return An initialized `DBProgressData` instance.
 ///
 - (nonnull instancetype)initWithProgressData:(int64_t)committed
                               totalCommitted:(int64_t)totalCommitted
                             expectedToCommit:(int64_t)expectedToCommit;
 
 @end
-
 
 #pragma mark - Completion data
 
@@ -72,22 +71,21 @@
 @property(nonatomic, readonly) NSURL * _Nullable urlOutput;
 
 ///
-/// DBCompletionData full constructor.
+/// `DBCompletionData` full constructor.
 ///
 /// @param responseBody Data returned by the server in the response body.
 /// @param responseMetadata Metadata returned by the server in the response headers.
 /// @param responseError Client-side networking error.
 /// @param urlOutput Location of output content (for Download-style requests only).
 ///
-/// @return An initialized DBCompletionData instance.
+/// @return An initialized `DBCompletionData` instance.
 ///
-- (instancetype)initWithCompletionData:(NSData * _Nullable)responseBody
-                          responseMetadata:(NSURLResponse * _Nullable)responseMetadata
-                         responseError:(NSError * _Nullable)responseError
-                             urlOutput:(NSURL *)urlOutput;
+- (nonnull instancetype)initWithCompletionData:(NSData * _Nullable)responseBody
+                              responseMetadata:(NSURLResponse * _Nullable)responseMetadata
+                                 responseError:(NSError * _Nullable)responseError
+                                     urlOutput:(NSURL * _Nullable)urlOutput;
 
 @end
-
 
 #pragma mark - Session data
 
@@ -95,7 +93,7 @@
 /// Session data storage.
 ///
 /// All response data and handler data for a given session id is stored in this class.
-/// DBDelegate maintains a map of session ids to DBSessionData objects to manage
+/// `DBDelegate` maintains a map of session ids to `DBSessionData` objects to manage
 /// response handling.
 ///
 @interface DBSessionData : NSObject
@@ -129,11 +127,11 @@
 @property(nonatomic) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
 
 ///
-/// DBSessionData full constructor.
+/// `DBSessionData` full constructor.
 ///
 /// @param sessionid The unique identifier of the session.
 ///
-/// @return An initialized DBSessionData instance.
+/// @return An initialized `DBSessionData` instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionid;
 

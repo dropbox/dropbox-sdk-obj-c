@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGModifySharedLinkSettingsArgs;
 @class DBSHARINGSharedLinkSettings;
 
 #pragma mark - API Object
 
 ///
-/// The ModifySharedLinkSettingsArgs struct.
+/// The `ModifySharedLinkSettingsArgs` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGModifySharedLinkSettingsArgs : NSObject <DBSerializable>
 
@@ -34,27 +33,25 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGModifySharedLinkSettingsArgs struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param url URL of the shared link to change its settings
 /// @param settings Set of settings for the shared link.
 /// @param removeExpiration If set to true, removes the expiration of the shared link.
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url
                            settings:(DBSHARINGSharedLinkSettings * _Nonnull)settings
                    removeExpiration:(NSNumber * _Nullable)removeExpiration;
 
 ///
-/// Convenience constructor for the DBSHARINGModifySharedLinkSettingsArgs struct (exposes only
-/// non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param url URL of the shared link to change its settings
 /// @param settings Set of settings for the shared link.
 ///
-/// @return An initialized DBSHARINGModifySharedLinkSettingsArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url settings:(DBSHARINGSharedLinkSettings * _Nonnull)settings;
 
@@ -63,27 +60,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ModifySharedLinkSettingsArgs struct.
+/// The serialization class for the `ModifySharedLinkSettingsArgs` struct.
 ///
 @interface DBSHARINGModifySharedLinkSettingsArgsSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGModifySharedLinkSettingsArgs instances.
+/// Serializes `DBSHARINGModifySharedLinkSettingsArgs` instances.
 ///
-/// @param instance An instance of the DBSHARINGModifySharedLinkSettingsArgs API object.
+/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGModifySharedLinkSettingsArgs
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGModifySharedLinkSettingsArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGModifySharedLinkSettingsArgs * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGModifySharedLinkSettingsArgs instances.
+/// Deserializes `DBSHARINGModifySharedLinkSettingsArgs` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGModifySharedLinkSettingsArgs API object.
+/// `DBSHARINGModifySharedLinkSettingsArgs` API object.
 ///
-/// @return An instantiation of the DBSHARINGModifySharedLinkSettingsArgs object.
+/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsArgs` object.
 ///
 + (DBSHARINGModifySharedLinkSettingsArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

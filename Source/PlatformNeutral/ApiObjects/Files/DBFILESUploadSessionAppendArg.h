@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadSessionAppendArg;
 @class DBFILESUploadSessionCursor;
 
 #pragma mark - API Object
 
 ///
-/// The UploadSessionAppendArg struct.
+/// The `UploadSessionAppendArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadSessionAppendArg : NSObject <DBSerializable>
 
@@ -26,29 +25,28 @@
 @property(nonatomic, readonly) DBFILESUploadSessionCursor * _Nonnull cursor;
 
 /// If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 @property(nonatomic, readonly) NSNumber * _Nonnull close;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESUploadSessionAppendArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to
-/// call :route:`upload_session/append_v2` anymore with the current session.
+/// call `uploadSessionAppendV2` anymore with the current session.
 ///
-/// @return An initialized DBFILESUploadSessionAppendArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(DBFILESUploadSessionCursor * _Nonnull)cursor close:(NSNumber * _Nullable)close;
 
 ///
-/// Convenience constructor for the DBFILESUploadSessionAppendArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param cursor Contains the upload session ID and the offset.
 ///
-/// @return An initialized DBFILESUploadSessionAppendArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(DBFILESUploadSessionCursor * _Nonnull)cursor;
 
@@ -57,27 +55,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UploadSessionAppendArg struct.
+/// The serialization class for the `UploadSessionAppendArg` struct.
 ///
 @interface DBFILESUploadSessionAppendArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadSessionAppendArg instances.
+/// Serializes `DBFILESUploadSessionAppendArg` instances.
 ///
-/// @param instance An instance of the DBFILESUploadSessionAppendArg API object.
+/// @param instance An instance of the `DBFILESUploadSessionAppendArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadSessionAppendArg API
+/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionAppendArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionAppendArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadSessionAppendArg instances.
+/// Deserializes `DBFILESUploadSessionAppendArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadSessionAppendArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionAppendArg`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESUploadSessionAppendArg object.
+/// @return An instantiation of the `DBFILESUploadSessionAppendArg` object.
 ///
 + (DBFILESUploadSessionAppendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

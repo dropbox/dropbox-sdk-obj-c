@@ -7,24 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGGetFileMetadataIndividualResult;
 @class DBSHARINGSharedFileMetadata;
 @class DBSHARINGSharingFileAccessError;
 
 #pragma mark - API Object
 
 ///
-/// The GetFileMetadataIndividualResult union.
+/// The `GetFileMetadataIndividualResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGGetFileMetadataIndividualResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGGetFileMetadataIndividualResultTag enum type represents the possible tag states
-/// with which the DBSHARINGGetFileMetadataIndividualResult union can exist.
+/// The `DBSHARINGGetFileMetadataIndividualResultTag` enum type represents the possible tag states
+/// with which the `DBSHARINGGetFileMetadataIndividualResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataIndividualResultTag) {
   /// The result for this file if it was successful.
   DBSHARINGGetFileMetadataIndividualResultMetadata,
@@ -40,71 +39,71 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataIndividualResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGGetFileMetadataIndividualResultTag tag;
 
-/// The result for this file if it was successful. Ensure the isMetadata method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The result for this file if it was successful. @note Ensure the `isMetadata` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFileMetadata * _Nonnull metadata;
 
-/// The result for this file if it was an error. Ensure the isAccessError method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The result for this file if it was an error. @note Ensure the `isAccessError` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Metadata.
+/// Initializes union class with tag state of "metadata".
 ///
-/// About the Metadata tag state: The result for this file if it was successful.
+/// Description of the "metadata" tag state: The result for this file if it was successful.
 ///
 /// @param metadata The result for this file if it was successful.
 ///
-/// @return An initialized DBSHARINGGetFileMetadataIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMetadata:(DBSHARINGSharedFileMetadata * _Nonnull)metadata;
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
-/// About the AccessError tag state: The result for this file if it was an error.
+/// Description of the "access_error" tag state: The result for this file if it was an error.
 ///
 /// @param accessError The result for this file if it was an error.
 ///
-/// @return An initialized DBSHARINGGetFileMetadataIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGGetFileMetadataIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Metadata.
+/// Retrieves whether the union's current tag state has value "metadata".
 ///
-/// @note Call this method and ensure it returns true before accessing the metadata property,
+/// @note Call this method and ensure it returns true before accessing the `metadata` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Metadata.
+/// @return Whether the union's current tag state has value "metadata".
 ///
 - (BOOL)isMetadata;
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -120,27 +119,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataIndividualResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGGetFileMetadataIndividualResult union.
+/// The serialization class for the `DBSHARINGGetFileMetadataIndividualResult` union.
 ///
 @interface DBSHARINGGetFileMetadataIndividualResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGGetFileMetadataIndividualResult instances.
+/// Serializes `DBSHARINGGetFileMetadataIndividualResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGGetFileMetadataIndividualResult API object.
+/// @param instance An instance of the `DBSHARINGGetFileMetadataIndividualResult` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGGetFileMetadataIndividualResult API object.
+/// `DBSHARINGGetFileMetadataIndividualResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataIndividualResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGGetFileMetadataIndividualResult instances.
+/// Deserializes `DBSHARINGGetFileMetadataIndividualResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGGetFileMetadataIndividualResult API object.
+/// `DBSHARINGGetFileMetadataIndividualResult` API object.
 ///
-/// @return An instantiation of the DBSHARINGGetFileMetadataIndividualResult object.
+/// @return An instantiation of the `DBSHARINGGetFileMetadataIndividualResult` object.
 ///
 + (DBSHARINGGetFileMetadataIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

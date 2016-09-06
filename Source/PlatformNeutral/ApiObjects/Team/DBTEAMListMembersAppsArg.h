@@ -7,23 +7,21 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListMembersAppsArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListMembersAppsArg struct.
+/// The `ListMembersAppsArg` struct.
 ///
-/// Arguments for linkedAppsListMembersLinkedApps.
+/// Arguments for `linkedAppsListMembersLinkedApps`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMembersAppsArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// At the first call to the linkedAppsListMembersLinkedApps the cursor shouldn't be passed. Then,
+/// At the first call to the `linkedAppsListMembersLinkedApps` the cursor shouldn't be passed. Then,
 /// if the result of the call includes a cursor, the following requests should include the received
 /// cursors in order to receive the next sub list of the team applications
 @property(nonatomic, readonly) NSString * _Nullable cursor;
@@ -31,23 +29,21 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMListMembersAppsArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor At the first call to the :route:`linked_apps/list_members_linked_apps` the cursor
-/// shouldn't be passed. Then, if the result of the call includes a cursor, the following requests
-/// should include the received cursors in order to receive the next sub list of the team
-/// applications
+/// @param cursor At the first call to the `linkedAppsListMembersLinkedApps` the cursor shouldn't be
+/// passed. Then, if the result of the call includes a cursor, the following requests should include
+/// the received cursors in order to receive the next sub list of the team applications
 ///
-/// @return An initialized DBTEAMListMembersAppsArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor for the DBTEAMListMembersAppsArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 ///
-/// @return An initialized DBTEAMListMembersAppsArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)init;
 
@@ -56,26 +52,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListMembersAppsArg struct.
+/// The serialization class for the `ListMembersAppsArg` struct.
 ///
 @interface DBTEAMListMembersAppsArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMembersAppsArg instances.
+/// Serializes `DBTEAMListMembersAppsArg` instances.
 ///
-/// @param instance An instance of the DBTEAMListMembersAppsArg API object.
+/// @param instance An instance of the `DBTEAMListMembersAppsArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMembersAppsArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMListMembersAppsArg` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersAppsArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMembersAppsArg instances.
+/// Deserializes `DBTEAMListMembersAppsArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMembersAppsArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMembersAppsArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMListMembersAppsArg object.
+/// @return An instantiation of the `DBTEAMListMembersAppsArg` object.
 ///
 + (DBTEAMListMembersAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

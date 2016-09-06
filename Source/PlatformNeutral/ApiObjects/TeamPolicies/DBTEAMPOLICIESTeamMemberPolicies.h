@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMPOLICIESEmmState;
-@class DBTEAMPOLICIESTeamMemberPolicies;
 @class DBTEAMPOLICIESTeamSharingPolicies;
 
 #pragma mark - API Object
 
 ///
-/// The TeamMemberPolicies struct.
+/// The `TeamMemberPolicies` struct.
 ///
 /// Policies governing team members.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable>
 
@@ -37,8 +36,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMPOLICIESTeamMemberPolicies struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharing Policies governing sharing.
 /// @param emmState This describes the Enterprise Mobility Management (EMM) state for this team.
@@ -47,7 +45,7 @@
 /// devices. This is a new feature and in the future we'll be adding more new fields and additional
 /// documentation.
 ///
-/// @return An initialized DBTEAMPOLICIESTeamMemberPolicies instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharing
                                emmState:(DBTEAMPOLICIESEmmState * _Nonnull)emmState;
@@ -57,27 +55,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the TeamMemberPolicies struct.
+/// The serialization class for the `TeamMemberPolicies` struct.
 ///
 @interface DBTEAMPOLICIESTeamMemberPoliciesSerializer : NSObject
 
 ///
-/// Serializes DBTEAMPOLICIESTeamMemberPolicies instances.
+/// Serializes `DBTEAMPOLICIESTeamMemberPolicies` instances.
 ///
-/// @param instance An instance of the DBTEAMPOLICIESTeamMemberPolicies API object.
+/// @param instance An instance of the `DBTEAMPOLICIESTeamMemberPolicies` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMPOLICIESTeamMemberPolicies API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBTEAMPOLICIESTeamMemberPolicies`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESTeamMemberPolicies * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMPOLICIESTeamMemberPolicies instances.
+/// Deserializes `DBTEAMPOLICIESTeamMemberPolicies` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMPOLICIESTeamMemberPolicies
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESTeamMemberPolicies` API object.
 ///
-/// @return An instantiation of the DBTEAMPOLICIESTeamMemberPolicies object.
+/// @return An instantiation of the `DBTEAMPOLICIESTeamMemberPolicies` object.
 ///
 + (DBTEAMPOLICIESTeamMemberPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

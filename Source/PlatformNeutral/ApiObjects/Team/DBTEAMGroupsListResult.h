@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMCOMMONGroupSummary;
-@class DBTEAMGroupsListResult;
 
 #pragma mark - API Object
 
 ///
-/// The GroupsListResult struct.
+/// The `GroupsListResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupsListResult : NSObject <DBSerializable>
 
@@ -25,25 +24,24 @@
 /// (no description).
 @property(nonatomic, readonly) NSArray<DBTEAMCOMMONGroupSummary *> * _Nonnull groups;
 
-/// Pass the cursor into groupsListContinue to obtain the additional groups.
+/// Pass the cursor into `groupsListContinue` to obtain the additional groups.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Is true if there are additional groups that have not been returned yet. An additional call to
-/// groupsListContinue can retrieve them.
+/// `groupsListContinue` can retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupsListResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param groups (no description).
-/// @param cursor Pass the cursor into :route:`groups/list/continue` to obtain the additional
-/// groups.
+/// @param cursor Pass the cursor into `groupsListContinue` to obtain the additional groups.
 /// @param hasMore Is true if there are additional groups that have not been returned yet. An
-/// additional call to :route:`groups/list/continue` can retrieve them.
+/// additional call to `groupsListContinue` can retrieve them.
 ///
-/// @return An initialized DBTEAMGroupsListResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroups:(NSArray<DBTEAMCOMMONGroupSummary *> * _Nonnull)groups
                                 cursor:(NSString * _Nonnull)cursor
@@ -54,26 +52,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupsListResult struct.
+/// The serialization class for the `GroupsListResult` struct.
 ///
 @interface DBTEAMGroupsListResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupsListResult instances.
+/// Serializes `DBTEAMGroupsListResult` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupsListResult API object.
+/// @param instance An instance of the `DBTEAMGroupsListResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupsListResult API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupsListResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsListResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupsListResult instances.
+/// Deserializes `DBTEAMGroupsListResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupsListResult API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsListResult` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupsListResult object.
+/// @return An instantiation of the `DBTEAMGroupsListResult` object.
 ///
 + (DBTEAMGroupsListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

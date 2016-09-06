@@ -7,17 +7,16 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESThumbnailArg;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailSize;
 
 #pragma mark - API Object
 
 ///
-/// The ThumbnailArg struct.
+/// The `ThumbnailArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESThumbnailArg : NSObject <DBSerializable>
 
@@ -36,26 +35,25 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESThumbnailArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path to the image file you want to thumbnail.
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are
 /// photos, jpeg should be preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
 ///
-/// @return An initialized DBFILESThumbnailArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
                               format:(DBFILESThumbnailFormat * _Nullable)format
                                 size:(DBFILESThumbnailSize * _Nullable)size;
 
 ///
-/// Convenience constructor for the DBFILESThumbnailArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param path The path to the image file you want to thumbnail.
 ///
-/// @return An initialized DBFILESThumbnailArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -64,25 +62,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ThumbnailArg struct.
+/// The serialization class for the `ThumbnailArg` struct.
 ///
 @interface DBFILESThumbnailArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESThumbnailArg instances.
+/// Serializes `DBFILESThumbnailArg` instances.
 ///
-/// @param instance An instance of the DBFILESThumbnailArg API object.
+/// @param instance An instance of the `DBFILESThumbnailArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESThumbnailArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESThumbnailArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESThumbnailArg instances.
+/// Deserializes `DBFILESThumbnailArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESThumbnailArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailArg` API object.
 ///
-/// @return An instantiation of the DBFILESThumbnailArg object.
+/// @return An instantiation of the `DBFILESThumbnailArg` object.
 ///
 + (DBFILESThumbnailArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

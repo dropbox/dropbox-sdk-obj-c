@@ -9,22 +9,21 @@
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGFileMemberActionError;
-@class DBSHARINGFileMemberActionIndividualResult;
 
 #pragma mark - API Object
 
 ///
-/// The FileMemberActionIndividualResult union.
+/// The `FileMemberActionIndividualResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileMemberActionIndividualResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFileMemberActionIndividualResultTag enum type represents the possible tag states
-/// with which the DBSHARINGFileMemberActionIndividualResult union can exist.
+/// The `DBSHARINGFileMemberActionIndividualResultTag` enum type represents the possible tag states
+/// with which the `DBSHARINGFileMemberActionIndividualResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
   /// Member was successfully removed from this file. If AccessLevel is given, the member still
   /// has access via a parent shared folder.
@@ -39,59 +38,59 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 @property(nonatomic, readonly) DBSHARINGFileMemberActionIndividualResultTag tag;
 
 /// Member was successfully removed from this file. If AccessLevel is given, the member still has
-/// access via a parent shared folder. Ensure the isSuccess method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// access via a parent shared folder. @note Ensure the `isSuccess` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nullable success;
 
-/// User was not able to perform this action. Ensure the isMemberError method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// User was not able to perform this action. @note Ensure the `isMemberError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGFileMemberActionError * _Nonnull memberError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Success.
+/// Initializes union class with tag state of "success".
 ///
-/// About the Success tag state: Member was successfully removed from this file. If AccessLevel is
-/// given, the member still has access via a parent shared folder.
+/// Description of the "success" tag state: Member was successfully removed from this file. If
+/// AccessLevel is given, the member still has access via a parent shared folder.
 ///
 /// @param success Member was successfully removed from this file. If AccessLevel is given, the
 /// member still has access via a parent shared folder.
 ///
-/// @return An initialized DBSHARINGFileMemberActionIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(DBSHARINGAccessLevel * _Nullable)success;
 
 ///
-/// Initializes union class with tag state of MemberError.
+/// Initializes union class with tag state of "member_error".
 ///
-/// About the MemberError tag state: User was not able to perform this action.
+/// Description of the "member_error" tag state: User was not able to perform this action.
 ///
 /// @param memberError User was not able to perform this action.
 ///
-/// @return An initialized DBSHARINGFileMemberActionIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberError:(DBSHARINGFileMemberActionError * _Nonnull)memberError;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Success.
+/// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the success property,
+/// @note Call this method and ensure it returns true before accessing the `success` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Success.
+/// @return Whether the union's current tag state has value "success".
 ///
 - (BOOL)isSuccess;
 
 ///
-/// Retrieves whether the union's current tag state has value MemberError.
+/// Retrieves whether the union's current tag state has value "member_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the memberError property,
+/// @note Call this method and ensure it returns true before accessing the `memberError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value MemberError.
+/// @return Whether the union's current tag state has value "member_error".
 ///
 - (BOOL)isMemberError;
 
@@ -107,27 +106,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionIndividualResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFileMemberActionIndividualResult union.
+/// The serialization class for the `DBSHARINGFileMemberActionIndividualResult` union.
 ///
 @interface DBSHARINGFileMemberActionIndividualResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileMemberActionIndividualResult instances.
+/// Serializes `DBSHARINGFileMemberActionIndividualResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileMemberActionIndividualResult API object.
+/// @param instance An instance of the `DBSHARINGFileMemberActionIndividualResult` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGFileMemberActionIndividualResult API object.
+/// `DBSHARINGFileMemberActionIndividualResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberActionIndividualResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileMemberActionIndividualResult instances.
+/// Deserializes `DBSHARINGFileMemberActionIndividualResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGFileMemberActionIndividualResult API object.
+/// `DBSHARINGFileMemberActionIndividualResult` API object.
 ///
-/// @return An instantiation of the DBSHARINGFileMemberActionIndividualResult object.
+/// @return An instantiation of the `DBSHARINGFileMemberActionIndividualResult` object.
 ///
 + (DBSHARINGFileMemberActionIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

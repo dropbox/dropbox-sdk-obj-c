@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadSessionLookupError;
 @class DBFILESUploadSessionOffsetError;
 
 #pragma mark - API Object
 
 ///
-/// The UploadSessionLookupError union.
+/// The `UploadSessionLookupError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadSessionLookupError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESUploadSessionLookupErrorTag enum type represents the possible tag states with which
-/// the DBFILESUploadSessionLookupError union can exist.
+/// The `DBFILESUploadSessionLookupErrorTag` enum type represents the possible tag states with which
+/// the `DBFILESUploadSessionLookupError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
   /// The upload session id was not found.
   DBFILESUploadSessionLookupErrorNotFound,
@@ -50,100 +49,101 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 
 /// The specified offset was incorrect. See the value for the correct offset. (This error may occur
 /// when a previous request was received and processed successfully but the client did not receive
-/// the response, e.g. due to a network error.) Ensure the isIncorrectOffset method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// the response, e.g. due to a network error.) @note Ensure the `isIncorrectOffset` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of NotFound.
+/// Initializes union class with tag state of "not_found".
 ///
-/// About the NotFound tag state: The upload session id was not found.
+/// Description of the "not_found" tag state: The upload session id was not found.
 ///
-/// @return An initialized DBFILESUploadSessionLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotFound;
 
 ///
-/// Initializes union class with tag state of IncorrectOffset.
+/// Initializes union class with tag state of "incorrect_offset".
 ///
-/// About the IncorrectOffset tag state: The specified offset was incorrect. See the value for the
-/// correct offset. (This error may occur when a previous request was received and processed
-/// successfully but the client did not receive the response, e.g. due to a network error.)
+/// Description of the "incorrect_offset" tag state: The specified offset was incorrect. See the
+/// value for the correct offset. (This error may occur when a previous request was received and
+/// processed successfully but the client did not receive the response, e.g. due to a network
+/// error.)
 ///
 /// @param incorrectOffset The specified offset was incorrect. See the value for the correct offset.
 /// (This error may occur when a previous request was received and processed successfully but the
 /// client did not receive the response, e.g. due to a network error.)
 ///
-/// @return An initialized DBFILESUploadSessionLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithIncorrectOffset:(DBFILESUploadSessionOffsetError * _Nonnull)incorrectOffset;
 
 ///
-/// Initializes union class with tag state of Closed.
+/// Initializes union class with tag state of "closed".
 ///
-/// About the Closed tag state: You are attempting to append data to an upload session that has
-/// alread been closed (i.e. committed).
+/// Description of the "closed" tag state: You are attempting to append data to an upload session
+/// that has alread been closed (i.e. committed).
 ///
-/// @return An initialized DBFILESUploadSessionLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithClosed;
 
 ///
-/// Initializes union class with tag state of NotClosed.
+/// Initializes union class with tag state of "not_closed".
 ///
-/// About the NotClosed tag state: The session must be closed before calling
+/// Description of the "not_closed" tag state: The session must be closed before calling
 /// upload_session/finish_batch.
 ///
-/// @return An initialized DBFILESUploadSessionLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotClosed;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESUploadSessionLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value NotFound.
+/// Retrieves whether the union's current tag state has value "not_found".
 ///
-/// @return Whether the union's current tag state has value NotFound.
+/// @return Whether the union's current tag state has value "not_found".
 ///
 - (BOOL)isNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value IncorrectOffset.
+/// Retrieves whether the union's current tag state has value "incorrect_offset".
 ///
-/// @note Call this method and ensure it returns true before accessing the incorrectOffset property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `incorrectOffset`
+/// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value IncorrectOffset.
+/// @return Whether the union's current tag state has value "incorrect_offset".
 ///
 - (BOOL)isIncorrectOffset;
 
 ///
-/// Retrieves whether the union's current tag state has value Closed.
+/// Retrieves whether the union's current tag state has value "closed".
 ///
-/// @return Whether the union's current tag state has value Closed.
+/// @return Whether the union's current tag state has value "closed".
 ///
 - (BOOL)isClosed;
 
 ///
-/// Retrieves whether the union's current tag state has value NotClosed.
+/// Retrieves whether the union's current tag state has value "not_closed".
 ///
-/// @return Whether the union's current tag state has value NotClosed.
+/// @return Whether the union's current tag state has value "not_closed".
 ///
 - (BOOL)isNotClosed;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -159,27 +159,27 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESUploadSessionLookupError union.
+/// The serialization class for the `DBFILESUploadSessionLookupError` union.
 ///
 @interface DBFILESUploadSessionLookupErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadSessionLookupError instances.
+/// Serializes `DBFILESUploadSessionLookupError` instances.
 ///
-/// @param instance An instance of the DBFILESUploadSessionLookupError API object.
+/// @param instance An instance of the `DBFILESUploadSessionLookupError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadSessionLookupError API
+/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionLookupError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionLookupError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadSessionLookupError instances.
+/// Deserializes `DBFILESUploadSessionLookupError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadSessionLookupError
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionLookupError`
 /// API object.
 ///
-/// @return An instantiation of the DBFILESUploadSessionLookupError object.
+/// @return An instantiation of the `DBFILESUploadSessionLookupError` object.
 ///
 + (DBFILESUploadSessionLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

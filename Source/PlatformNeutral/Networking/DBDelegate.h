@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
 #import "DBHandlerTypes.h"
+#import <Foundation/Foundation.h>
 
 @class DBRpcData;
 @class DBUploadData;
@@ -16,7 +16,7 @@
 /// @note This delegate forces all supplied delegate queues to be serial.
 ///
 /// By default, this delegate is instantiated in the constructor of the
-/// DBTransportClient class, and uses the main delegate queue, so all handler
+/// `DBTransportClient` class, and uses the main delegate queue, so all handler
 /// code will be executed serially and on the main thread.
 ///
 /// Progress and response handlers can be added after the request is initiated.
@@ -30,23 +30,23 @@
 #pragma mark - Constructors
 
 ///
-/// DBDelegate full constructor.
+/// `DBDelegate` full constructor.
 ///
 /// @note The supplied queue must be serial.
 ///
 /// @param delegateQueue The queue used to execute handler code. By defaut, this
 /// is the main queue, so all handler code will be executed on the main thread.
 ///
-/// @return An initialized DBDelegate instance.
+/// @return An initialized `DBDelegate` instance.
 ///
-- (nonnull instancetype)initWithQueue:(NSOperationQueue * _Nonnull)delegateQueue;
+- (nonnull instancetype)initWithQueue:(NSOperationQueue * _Nullable)delegateQueue;
 
 ///
 /// Enqueues a handler to be executed periodically to retrieve information on the progress of
-/// the supplied NSURLSessionTask task for the corresponding Upload-style request.
+/// the supplied `NSURLSessionTask` task for the corresponding Upload-style request.
 ///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
+/// @param task The `NSURLSessionTask` task associated with the API request.
+/// @param session The `NSURLSession` session associated with the API request.
 /// @param progress The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
@@ -58,11 +58,11 @@
 #pragma mark - Add RPC-style handlers
 
 ///
-/// Enqueues a handler to be executed upon completion of the supplied NSURLSessionTask
+/// Enqueues a handler to be executed upon completion of the supplied `NSURLSession`Task
 /// task for the corresponding RPC-style request.
 ///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
+/// @param task The `NSURLSessionTask` task associated with the API request.
+/// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///
@@ -73,11 +73,11 @@
 #pragma mark - Add Upload-style handlers
 
 ///
-/// Enqueues a handler to be executed upon completion of the supplied NSURLSessionTask
+/// Enqueues a handler to be executed upon completion of the supplied `NSURLSessionTask`
 /// task for the corresponding Upload-style request.
 ///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
+/// @param task The `NSURLSessionTask` task associated with the API request.
+/// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///
@@ -88,11 +88,11 @@
 #pragma mark - Add Download-style handlers
 
 ///
-/// Enqueues a handler to be executed upon completion of the supplied NSURLSessionTask
+/// Enqueues a handler to be executed upon completion of the supplied `NSURLSessionTask`
 /// task for the corresponding Download-style request.
 ///
-/// @param task The NSURLSessionTask task associated with the API request.
-/// @param session The NSURLSession session associated with the API request.
+/// @param task The `NSURLSessionTask` task associated with the API request.
+/// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
 ///

@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGFileAction;
-
 #pragma mark - API Object
 
 ///
-/// The FileAction union.
+/// The `FileAction` union.
 ///
 /// Sharing actions that may be taken on files.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFileActionTag enum type represents the possible tag states with which the
-/// DBSHARINGFileAction union can exist.
+/// The `DBSHARINGFileActionTag` enum type represents the possible tag states with which the
+/// `DBSHARINGFileAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
   /// Change or edit contents of the file.
   DBSHARINGFileActionEditContents,
@@ -55,115 +53,116 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of EditContents.
+/// Initializes union class with tag state of "edit_contents".
 ///
-/// About the EditContents tag state: Change or edit contents of the file.
+/// Description of the "edit_contents" tag state: Change or edit contents of the file.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEditContents;
 
 ///
-/// Initializes union class with tag state of InviteViewer.
+/// Initializes union class with tag state of "invite_viewer".
 ///
-/// About the InviteViewer tag state: Add a member with view permissions.
+/// Description of the "invite_viewer" tag state: Add a member with view permissions.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInviteViewer;
 
 ///
-/// Initializes union class with tag state of InviteViewerNoComment.
+/// Initializes union class with tag state of "invite_viewer_no_comment".
 ///
-/// About the InviteViewerNoComment tag state: Add a member with view permissions but no comment
-/// permissions.
+/// Description of the "invite_viewer_no_comment" tag state: Add a member with view permissions but
+/// no comment permissions.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInviteViewerNoComment;
 
 ///
-/// Initializes union class with tag state of Unshare.
+/// Initializes union class with tag state of "unshare".
 ///
-/// About the Unshare tag state: Stop sharing this file.
+/// Description of the "unshare" tag state: Stop sharing this file.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnshare;
 
 ///
-/// Initializes union class with tag state of RelinquishMembership.
+/// Initializes union class with tag state of "relinquish_membership".
 ///
-/// About the RelinquishMembership tag state: Relinquish one's own membership to the file.
+/// Description of the "relinquish_membership" tag state: Relinquish one's own membership to the
+/// file.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRelinquishMembership;
 
 ///
-/// Initializes union class with tag state of ShareLink.
+/// Initializes union class with tag state of "share_link".
 ///
-/// About the ShareLink tag state: Create a shared link to the file.
+/// Description of the "share_link" tag state: Create a shared link to the file.
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithShareLink;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGFileAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value EditContents.
+/// Retrieves whether the union's current tag state has value "edit_contents".
 ///
-/// @return Whether the union's current tag state has value EditContents.
+/// @return Whether the union's current tag state has value "edit_contents".
 ///
 - (BOOL)isEditContents;
 
 ///
-/// Retrieves whether the union's current tag state has value InviteViewer.
+/// Retrieves whether the union's current tag state has value "invite_viewer".
 ///
-/// @return Whether the union's current tag state has value InviteViewer.
+/// @return Whether the union's current tag state has value "invite_viewer".
 ///
 - (BOOL)isInviteViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value InviteViewerNoComment.
+/// Retrieves whether the union's current tag state has value "invite_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value InviteViewerNoComment.
+/// @return Whether the union's current tag state has value "invite_viewer_no_comment".
 ///
 - (BOOL)isInviteViewerNoComment;
 
 ///
-/// Retrieves whether the union's current tag state has value Unshare.
+/// Retrieves whether the union's current tag state has value "unshare".
 ///
-/// @return Whether the union's current tag state has value Unshare.
+/// @return Whether the union's current tag state has value "unshare".
 ///
 - (BOOL)isUnshare;
 
 ///
-/// Retrieves whether the union's current tag state has value RelinquishMembership.
+/// Retrieves whether the union's current tag state has value "relinquish_membership".
 ///
-/// @return Whether the union's current tag state has value RelinquishMembership.
+/// @return Whether the union's current tag state has value "relinquish_membership".
 ///
 - (BOOL)isRelinquishMembership;
 
 ///
-/// Retrieves whether the union's current tag state has value ShareLink.
+/// Retrieves whether the union's current tag state has value "share_link".
 ///
-/// @return Whether the union's current tag state has value ShareLink.
+/// @return Whether the union's current tag state has value "share_link".
 ///
 - (BOOL)isShareLink;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -179,25 +178,25 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFileAction union.
+/// The serialization class for the `DBSHARINGFileAction` union.
 ///
 @interface DBSHARINGFileActionSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileAction instances.
+/// Serializes `DBSHARINGFileAction` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileAction API object.
+/// @param instance An instance of the `DBSHARINGFileAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileAction API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGFileAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileAction * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileAction instances.
+/// Deserializes `DBSHARINGFileAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFileAction API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileAction` API object.
 ///
-/// @return An instantiation of the DBSHARINGFileAction object.
+/// @return An instantiation of the `DBSHARINGFileAction` object.
 ///
 + (DBSHARINGFileAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

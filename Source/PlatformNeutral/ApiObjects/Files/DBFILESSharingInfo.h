@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESSharingInfo;
-
 #pragma mark - API Object
 
 ///
-/// The SharingInfo struct.
+/// The `SharingInfo` struct.
 ///
 /// Sharing info for a file or folder.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSharingInfo : NSObject <DBSerializable>
 
@@ -29,11 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESSharingInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param readOnly True if the file or folder is inside a read-only shared folder.
 ///
-/// @return An initialized DBFILESSharingInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
 
@@ -42,25 +40,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SharingInfo struct.
+/// The serialization class for the `SharingInfo` struct.
 ///
 @interface DBFILESSharingInfoSerializer : NSObject
 
 ///
-/// Serializes DBFILESSharingInfo instances.
+/// Serializes `DBFILESSharingInfo` instances.
 ///
-/// @param instance An instance of the DBFILESSharingInfo API object.
+/// @param instance An instance of the `DBFILESSharingInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSharingInfo API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSharingInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSharingInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSharingInfo instances.
+/// Deserializes `DBFILESSharingInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSharingInfo API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESSharingInfo` API object.
 ///
-/// @return An instantiation of the DBFILESSharingInfo object.
+/// @return An instantiation of the `DBFILESSharingInfo` object.
 ///
 + (DBFILESSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,35 +7,34 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGShareFolderError;
 @class DBSHARINGSharePathError;
 
 #pragma mark - API Object
 
 ///
-/// The ShareFolderError union.
+/// The `ShareFolderError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGShareFolderError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGShareFolderErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGShareFolderError union can exist.
+/// The `DBSHARINGShareFolderErrorTag` enum type represents the possible tag states with which the
+/// `DBSHARINGShareFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
   /// The current user's e-mail address is unverified.
   DBSHARINGShareFolderErrorEmailUnverified,
 
-  /// path in ShareFolderArg is invalid.
+  /// `path` in `DBSHARINGShareFolderArg` is invalid.
   DBSHARINGShareFolderErrorBadPath,
 
-  /// Team policy is more restrictive than memberPolicy in ShareFolderArg.
+  /// Team policy is more restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
   DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy,
 
-  /// The current user's account is not allowed to select the specified sharedLinkPolicy in
-  /// ShareFolderArg.
+  /// The current user's account is not allowed to select the specified `sharedLinkPolicy` in
+  /// `DBSHARINGShareFolderArg`.
   DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy,
 
   /// (no description).
@@ -49,113 +48,114 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGShareFolderErrorTag tag;
 
-/// path in ShareFolderArg is invalid. Ensure the isBadPath method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// `path` in `DBSHARINGShareFolderArg` is invalid. @note Ensure the `isBadPath` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharePathError * _Nonnull badPath;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of EmailUnverified.
+/// Initializes union class with tag state of "email_unverified".
 ///
-/// About the EmailUnverified tag state: The current user's e-mail address is unverified.
+/// Description of the "email_unverified" tag state: The current user's e-mail address is
+/// unverified.
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmailUnverified;
 
 ///
-/// Initializes union class with tag state of BadPath.
+/// Initializes union class with tag state of "bad_path".
 ///
-/// About the BadPath tag state: :field:`ShareFolderArg.path` is invalid.
+/// Description of the "bad_path" tag state: `path` in `DBSHARINGShareFolderArg` is invalid.
 ///
-/// @param badPath :field:`ShareFolderArg.path` is invalid.
+/// @param badPath `path` in `DBSHARINGShareFolderArg` is invalid.
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBadPath:(DBSHARINGSharePathError * _Nonnull)badPath;
 
 ///
-/// Initializes union class with tag state of TeamPolicyDisallowsMemberPolicy.
+/// Initializes union class with tag state of "team_policy_disallows_member_policy".
 ///
-/// About the TeamPolicyDisallowsMemberPolicy tag state: Team policy is more restrictive than
-/// :field:`ShareFolderArg.member_policy`.
+/// Description of the "team_policy_disallows_member_policy" tag state: Team policy is more
+/// restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamPolicyDisallowsMemberPolicy;
 
 ///
-/// Initializes union class with tag state of DisallowedSharedLinkPolicy.
+/// Initializes union class with tag state of "disallowed_shared_link_policy".
 ///
-/// About the DisallowedSharedLinkPolicy tag state: The current user's account is not allowed to
-/// select the specified :field:`ShareFolderArg.shared_link_policy`.
+/// Description of the "disallowed_shared_link_policy" tag state: The current user's account is not
+/// allowed to select the specified `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDisallowedSharedLinkPolicy;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of NoPermission.
+/// Initializes union class with tag state of "no_permission".
 ///
-/// About the NoPermission tag state: The current user does not have permission to perform this
-/// action.
+/// Description of the "no_permission" tag state: The current user does not have permission to
+/// perform this action.
 ///
-/// @return An initialized DBSHARINGShareFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoPermission;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value EmailUnverified.
+/// Retrieves whether the union's current tag state has value "email_unverified".
 ///
-/// @return Whether the union's current tag state has value EmailUnverified.
+/// @return Whether the union's current tag state has value "email_unverified".
 ///
 - (BOOL)isEmailUnverified;
 
 ///
-/// Retrieves whether the union's current tag state has value BadPath.
+/// Retrieves whether the union's current tag state has value "bad_path".
 ///
-/// @note Call this method and ensure it returns true before accessing the badPath property,
+/// @note Call this method and ensure it returns true before accessing the `badPath` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value BadPath.
+/// @return Whether the union's current tag state has value "bad_path".
 ///
 - (BOOL)isBadPath;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamPolicyDisallowsMemberPolicy.
+/// Retrieves whether the union's current tag state has value "team_policy_disallows_member_policy".
 ///
-/// @return Whether the union's current tag state has value TeamPolicyDisallowsMemberPolicy.
+/// @return Whether the union's current tag state has value "team_policy_disallows_member_policy".
 ///
 - (BOOL)isTeamPolicyDisallowsMemberPolicy;
 
 ///
-/// Retrieves whether the union's current tag state has value DisallowedSharedLinkPolicy.
+/// Retrieves whether the union's current tag state has value "disallowed_shared_link_policy".
 ///
-/// @return Whether the union's current tag state has value DisallowedSharedLinkPolicy.
+/// @return Whether the union's current tag state has value "disallowed_shared_link_policy".
 ///
 - (BOOL)isDisallowedSharedLinkPolicy;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value NoPermission.
+/// Retrieves whether the union's current tag state has value "no_permission".
 ///
-/// @return Whether the union's current tag state has value NoPermission.
+/// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
 
@@ -171,26 +171,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGShareFolderError union.
+/// The serialization class for the `DBSHARINGShareFolderError` union.
 ///
 @interface DBSHARINGShareFolderErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGShareFolderError instances.
+/// Serializes `DBSHARINGShareFolderError` instances.
 ///
-/// @param instance An instance of the DBSHARINGShareFolderError API object.
+/// @param instance An instance of the `DBSHARINGShareFolderError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGShareFolderError API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGShareFolderError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGShareFolderError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGShareFolderError instances.
+/// Deserializes `DBSHARINGShareFolderError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGShareFolderError API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGShareFolderError` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGShareFolderError object.
+/// @return An instantiation of the `DBSHARINGShareFolderError` object.
 ///
 + (DBSHARINGShareFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

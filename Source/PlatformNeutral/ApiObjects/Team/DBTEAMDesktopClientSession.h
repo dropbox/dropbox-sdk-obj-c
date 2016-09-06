@@ -8,18 +8,17 @@
 #import "DBTEAMDeviceSession.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMDesktopClientSession;
 @class DBTEAMDesktopPlatform;
 
 #pragma mark - API Object
 
 ///
-/// The DesktopClientSession struct.
+/// The `DesktopClientSession` struct.
 ///
 /// Information about linked Dropbox desktop client sessions
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMDesktopClientSession : DBTEAMDeviceSession <DBSerializable>
 
@@ -43,7 +42,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMDesktopClientSession struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The session id
 /// @param hostName Name of the hosting desktop
@@ -57,7 +56,7 @@
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
 ///
-/// @return An initialized DBTEAMDesktopClientSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                  hostName:(NSString * _Nonnull)hostName
@@ -71,8 +70,7 @@
                                   updated:(NSDate * _Nullable)updated;
 
 ///
-/// Convenience constructor for the DBTEAMDesktopClientSession struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sessionId The session id
 /// @param hostName Name of the hosting desktop
@@ -82,7 +80,7 @@
 /// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the account files upon
 /// unlinking
 ///
-/// @return An initialized DBTEAMDesktopClientSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                  hostName:(NSString * _Nonnull)hostName
@@ -96,27 +94,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DesktopClientSession struct.
+/// The serialization class for the `DesktopClientSession` struct.
 ///
 @interface DBTEAMDesktopClientSessionSerializer : NSObject
 
 ///
-/// Serializes DBTEAMDesktopClientSession instances.
+/// Serializes `DBTEAMDesktopClientSession` instances.
 ///
-/// @param instance An instance of the DBTEAMDesktopClientSession API object.
+/// @param instance An instance of the `DBTEAMDesktopClientSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMDesktopClientSession API
+/// @return A json-compatible dictionary representation of the `DBTEAMDesktopClientSession` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDesktopClientSession * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMDesktopClientSession instances.
+/// Deserializes `DBTEAMDesktopClientSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMDesktopClientSession API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMDesktopClientSession` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMDesktopClientSession object.
+/// @return An instantiation of the `DBTEAMDesktopClientSession` object.
 ///
 + (DBTEAMDesktopClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersUnsuspendError;
-
 #pragma mark - API Object
 
 ///
-/// The MembersUnsuspendError union.
+/// The `MembersUnsuspendError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersUnsuspendError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersUnsuspendErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMembersUnsuspendError union can exist.
+/// The `DBTEAMMembersUnsuspendErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMMembersUnsuspendError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -48,84 +46,85 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersUnsuspendError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 ///
-/// Initializes union class with tag state of UserNotInTeam.
+/// Initializes union class with tag state of "user_not_in_team".
 ///
-/// About the UserNotInTeam tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
 ///
-/// @return An initialized DBTEAMMembersUnsuspendError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMembersUnsuspendError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of UnsuspendNonSuspendedMember.
+/// Initializes union class with tag state of "unsuspend_non_suspended_member".
 ///
-/// About the UnsuspendNonSuspendedMember tag state: The user is unsuspended, so it cannot be
-/// unsuspended again.
+/// Description of the "unsuspend_non_suspended_member" tag state: The user is unsuspended, so it
+/// cannot be unsuspended again.
 ///
-/// @return An initialized DBTEAMMembersUnsuspendError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnsuspendNonSuspendedMember;
 
 ///
-/// Initializes union class with tag state of TeamLicenseLimit.
+/// Initializes union class with tag state of "team_license_limit".
 ///
-/// About the TeamLicenseLimit tag state: Team is full. The organization has no available licenses.
+/// Description of the "team_license_limit" tag state: Team is full. The organization has no
+/// available licenses.
 ///
-/// @return An initialized DBTEAMMembersUnsuspendError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamLicenseLimit;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotInTeam.
+/// Retrieves whether the union's current tag state has value "user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value UserNotInTeam.
+/// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value UnsuspendNonSuspendedMember.
+/// Retrieves whether the union's current tag state has value "unsuspend_non_suspended_member".
 ///
-/// @return Whether the union's current tag state has value UnsuspendNonSuspendedMember.
+/// @return Whether the union's current tag state has value "unsuspend_non_suspended_member".
 ///
 - (BOOL)isUnsuspendNonSuspendedMember;
 
 ///
-/// Retrieves whether the union's current tag state has value TeamLicenseLimit.
+/// Retrieves whether the union's current tag state has value "team_license_limit".
 ///
-/// @return Whether the union's current tag state has value TeamLicenseLimit.
+/// @return Whether the union's current tag state has value "team_license_limit".
 ///
 - (BOOL)isTeamLicenseLimit;
 
@@ -141,27 +140,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersUnsuspendError union.
+/// The serialization class for the `DBTEAMMembersUnsuspendError` union.
 ///
 @interface DBTEAMMembersUnsuspendErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersUnsuspendError instances.
+/// Serializes `DBTEAMMembersUnsuspendError` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersUnsuspendError API object.
+/// @param instance An instance of the `DBTEAMMembersUnsuspendError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersUnsuspendError API
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersUnsuspendError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersUnsuspendError instances.
+/// Deserializes `DBTEAMMembersUnsuspendError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersUnsuspendError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersUnsuspendError object.
+/// @return An instantiation of the `DBTEAMMembersUnsuspendError` object.
 ///
 + (DBTEAMMembersUnsuspendError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

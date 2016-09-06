@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGRelinquishFileMembershipError;
 @class DBSHARINGSharingFileAccessError;
 
 #pragma mark - API Object
 
 ///
-/// The RelinquishFileMembershipError union.
+/// The `RelinquishFileMembershipError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRelinquishFileMembershipError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGRelinquishFileMembershipErrorTag enum type represents the possible tag states with
-/// which the DBSHARINGRelinquishFileMembershipError union can exist.
+/// The `DBSHARINGRelinquishFileMembershipErrorTag` enum type represents the possible tag states
+/// with which the `DBSHARINGRelinquishFileMembershipError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
   /// (no description).
   DBSHARINGRelinquishFileMembershipErrorAccessError,
@@ -43,78 +42,78 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGRelinquishFileMembershipErrorTag tag;
 
-/// (no description). Ensure the isAccessError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
 /// @param accessError (no description).
 ///
-/// @return An initialized DBSHARINGRelinquishFileMembershipError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of GroupAccess.
+/// Initializes union class with tag state of "group_access".
 ///
-/// About the GroupAccess tag state: The current user has access to the shared file via a group.
-/// You can't relinquish membership to a file shared via groups.
+/// Description of the "group_access" tag state: The current user has access to the shared file via
+/// a group.  You can't relinquish membership to a file shared via groups.
 ///
-/// @return An initialized DBSHARINGRelinquishFileMembershipError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupAccess;
 
 ///
-/// Initializes union class with tag state of NoPermission.
+/// Initializes union class with tag state of "no_permission".
 ///
-/// About the NoPermission tag state: The current user does not have permission to perform this
-/// action.
+/// Description of the "no_permission" tag state: The current user does not have permission to
+/// perform this action.
 ///
-/// @return An initialized DBSHARINGRelinquishFileMembershipError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoPermission;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGRelinquishFileMembershipError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value GroupAccess.
+/// Retrieves whether the union's current tag state has value "group_access".
 ///
-/// @return Whether the union's current tag state has value GroupAccess.
+/// @return Whether the union's current tag state has value "group_access".
 ///
 - (BOOL)isGroupAccess;
 
 ///
-/// Retrieves whether the union's current tag state has value NoPermission.
+/// Retrieves whether the union's current tag state has value "no_permission".
 ///
-/// @return Whether the union's current tag state has value NoPermission.
+/// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -130,27 +129,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGRelinquishFileMembershipError union.
+/// The serialization class for the `DBSHARINGRelinquishFileMembershipError` union.
 ///
 @interface DBSHARINGRelinquishFileMembershipErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRelinquishFileMembershipError instances.
+/// Serializes `DBSHARINGRelinquishFileMembershipError` instances.
 ///
-/// @param instance An instance of the DBSHARINGRelinquishFileMembershipError API object.
+/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipError` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGRelinquishFileMembershipError API object.
+/// `DBSHARINGRelinquishFileMembershipError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRelinquishFileMembershipError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRelinquishFileMembershipError instances.
+/// Deserializes `DBSHARINGRelinquishFileMembershipError` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGRelinquishFileMembershipError API object.
+/// `DBSHARINGRelinquishFileMembershipError` API object.
 ///
-/// @return An instantiation of the DBSHARINGRelinquishFileMembershipError object.
+/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipError` object.
 ///
 + (DBSHARINGRelinquishFileMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

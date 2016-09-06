@@ -7,33 +7,31 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFilesContinueArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListFilesContinueArg struct.
+/// The `ListFilesContinueArg` struct.
 ///
-/// Arguments for listReceivedFilesContinue.
+/// Arguments for `listReceivedFilesContinue`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFilesContinueArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Cursor in cursor in ListFilesResult
+/// Cursor in `cursor` in `DBSHARINGListFilesResult`
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFilesContinueArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor Cursor in :field:`ListFilesResult.cursor`
+/// @param cursor Cursor in `cursor` in `DBSHARINGListFilesResult`
 ///
-/// @return An initialized DBSHARINGListFilesContinueArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
@@ -42,27 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFilesContinueArg struct.
+/// The serialization class for the `ListFilesContinueArg` struct.
 ///
 @interface DBSHARINGListFilesContinueArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFilesContinueArg instances.
+/// Serializes `DBSHARINGListFilesContinueArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFilesContinueArg API object.
+/// @param instance An instance of the `DBSHARINGListFilesContinueArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFilesContinueArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesContinueArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesContinueArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFilesContinueArg instances.
+/// Deserializes `DBSHARINGListFilesContinueArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFilesContinueArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesContinueArg`
+/// API object.
 ///
-/// @return An instantiation of the DBSHARINGListFilesContinueArg object.
+/// @return An instantiation of the `DBSHARINGListFilesContinueArg` object.
 ///
 + (DBSHARINGListFilesContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

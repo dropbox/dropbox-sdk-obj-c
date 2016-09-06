@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupsMembersListContinueArg;
-
 #pragma mark - API Object
 
 ///
-/// The GroupsMembersListContinueArg struct.
+/// The `GroupsMembersListContinueArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupsMembersListContinueArg : NSObject <DBSerializable>
 
@@ -27,12 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupsMembersListContinueArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param cursor Indicates from what point to get the next set of groups.
 ///
-/// @return An initialized DBTEAMGroupsMembersListContinueArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupsMembersListContinueArg struct.
+/// The serialization class for the `GroupsMembersListContinueArg` struct.
 ///
 @interface DBTEAMGroupsMembersListContinueArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupsMembersListContinueArg instances.
+/// Serializes `DBTEAMGroupsMembersListContinueArg` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupsMembersListContinueArg API object.
+/// @param instance An instance of the `DBTEAMGroupsMembersListContinueArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupsMembersListContinueArg
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupsMembersListContinueArg`
 /// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsMembersListContinueArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupsMembersListContinueArg instances.
+/// Deserializes `DBTEAMGroupsMembersListContinueArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBTEAMGroupsMembersListContinueArg API object.
+/// `DBTEAMGroupsMembersListContinueArg` API object.
 ///
-/// @return An instantiation of the DBTEAMGroupsMembersListContinueArg object.
+/// @return An instantiation of the `DBTEAMGroupsMembersListContinueArg` object.
 ///
 + (DBTEAMGroupsMembersListContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

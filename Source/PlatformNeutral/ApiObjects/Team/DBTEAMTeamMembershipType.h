@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMTeamMembershipType;
-
 #pragma mark - API Object
 
 ///
-/// The TeamMembershipType union.
+/// The `TeamMembershipType` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMTeamMembershipType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMTeamMembershipTypeTag enum type represents the possible tag states with which the
-/// DBTEAMTeamMembershipType union can exist.
+/// The `DBTEAMTeamMembershipTypeTag` enum type represents the possible tag states with which the
+/// `DBTEAMTeamMembershipType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
   /// User uses a license and has full access to team resources like the shared quota.
   DBTEAMTeamMembershipTypeFull,
@@ -39,38 +37,38 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Full.
+/// Initializes union class with tag state of "full".
 ///
-/// About the Full tag state: User uses a license and has full access to team resources like the
-/// shared quota.
+/// Description of the "full" tag state: User uses a license and has full access to team resources
+/// like the shared quota.
 ///
-/// @return An initialized DBTEAMTeamMembershipType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFull;
 
 ///
-/// Initializes union class with tag state of Limited.
+/// Initializes union class with tag state of "limited".
 ///
-/// About the Limited tag state: User does not have access to the shared quota and team admins have
-/// restricted administrative control.
+/// Description of the "limited" tag state: User does not have access to the shared quota and team
+/// admins have restricted administrative control.
 ///
-/// @return An initialized DBTEAMTeamMembershipType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLimited;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Full.
+/// Retrieves whether the union's current tag state has value "full".
 ///
-/// @return Whether the union's current tag state has value Full.
+/// @return Whether the union's current tag state has value "full".
 ///
 - (BOOL)isFull;
 
 ///
-/// Retrieves whether the union's current tag state has value Limited.
+/// Retrieves whether the union's current tag state has value "limited".
 ///
-/// @return Whether the union's current tag state has value Limited.
+/// @return Whether the union's current tag state has value "limited".
 ///
 - (BOOL)isLimited;
 
@@ -86,26 +84,27 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMTeamMembershipType union.
+/// The serialization class for the `DBTEAMTeamMembershipType` union.
 ///
 @interface DBTEAMTeamMembershipTypeSerializer : NSObject
 
 ///
-/// Serializes DBTEAMTeamMembershipType instances.
+/// Serializes `DBTEAMTeamMembershipType` instances.
 ///
-/// @param instance An instance of the DBTEAMTeamMembershipType API object.
+/// @param instance An instance of the `DBTEAMTeamMembershipType` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMTeamMembershipType API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMTeamMembershipType` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMTeamMembershipType * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMTeamMembershipType instances.
+/// Deserializes `DBTEAMTeamMembershipType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMTeamMembershipType API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMTeamMembershipType` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMTeamMembershipType object.
+/// @return An instantiation of the `DBTEAMTeamMembershipType` object.
 ///
 + (DBTEAMTeamMembershipType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,24 +8,23 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMRemovedStatus;
-@class DBTEAMTeamMemberStatus;
 
 #pragma mark - API Object
 
 ///
-/// The TeamMemberStatus union.
+/// The `TeamMemberStatus` union.
 ///
 /// The user's status as a member of a specific team.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMTeamMemberStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMTeamMemberStatusTag enum type represents the possible tag states with which the
-/// DBTEAMTeamMemberStatus union can exist.
+/// The `DBTEAMTeamMemberStatusTag` enum type represents the possible tag states with which the
+/// `DBTEAMTeamMemberStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMTeamMemberStatusTag) {
   /// User has successfully joined the team.
   DBTEAMTeamMemberStatusActive,
@@ -47,83 +46,84 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMemberStatusTag) {
 @property(nonatomic, readonly) DBTEAMTeamMemberStatusTag tag;
 
 /// User is no longer a member of the team. Removed users are only listed when include_removed is
-/// true in members/list. Ensure the isRemoved method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// true in members/list. @note Ensure the `isRemoved` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMRemovedStatus * _Nonnull removed;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Active.
+/// Initializes union class with tag state of "active".
 ///
-/// About the Active tag state: User has successfully joined the team.
+/// Description of the "active" tag state: User has successfully joined the team.
 ///
-/// @return An initialized DBTEAMTeamMemberStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithActive;
 
 ///
-/// Initializes union class with tag state of Invited.
+/// Initializes union class with tag state of "invited".
 ///
-/// About the Invited tag state: User has been invited to a team, but has not joined the team yet.
+/// Description of the "invited" tag state: User has been invited to a team, but has not joined the
+/// team yet.
 ///
-/// @return An initialized DBTEAMTeamMemberStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvited;
 
 ///
-/// Initializes union class with tag state of Suspended.
+/// Initializes union class with tag state of "suspended".
 ///
-/// About the Suspended tag state: User is no longer a member of the team, but the account can be
-/// un-suspended, re-establishing the user as a team member.
+/// Description of the "suspended" tag state: User is no longer a member of the team, but the
+/// account can be un-suspended, re-establishing the user as a team member.
 ///
-/// @return An initialized DBTEAMTeamMemberStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuspended;
 
 ///
-/// Initializes union class with tag state of Removed.
+/// Initializes union class with tag state of "removed".
 ///
-/// About the Removed tag state: User is no longer a member of the team. Removed users are only
-/// listed when include_removed is true in members/list.
+/// Description of the "removed" tag state: User is no longer a member of the team. Removed users
+/// are only listed when include_removed is true in members/list.
 ///
 /// @param removed User is no longer a member of the team. Removed users are only listed when
 /// include_removed is true in members/list.
 ///
-/// @return An initialized DBTEAMTeamMemberStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRemoved:(DBTEAMRemovedStatus * _Nonnull)removed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Active.
+/// Retrieves whether the union's current tag state has value "active".
 ///
-/// @return Whether the union's current tag state has value Active.
+/// @return Whether the union's current tag state has value "active".
 ///
 - (BOOL)isActive;
 
 ///
-/// Retrieves whether the union's current tag state has value Invited.
+/// Retrieves whether the union's current tag state has value "invited".
 ///
-/// @return Whether the union's current tag state has value Invited.
+/// @return Whether the union's current tag state has value "invited".
 ///
 - (BOOL)isInvited;
 
 ///
-/// Retrieves whether the union's current tag state has value Suspended.
+/// Retrieves whether the union's current tag state has value "suspended".
 ///
-/// @return Whether the union's current tag state has value Suspended.
+/// @return Whether the union's current tag state has value "suspended".
 ///
 - (BOOL)isSuspended;
 
 ///
-/// Retrieves whether the union's current tag state has value Removed.
+/// Retrieves whether the union's current tag state has value "removed".
 ///
-/// @note Call this method and ensure it returns true before accessing the removed property,
+/// @note Call this method and ensure it returns true before accessing the `removed` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Removed.
+/// @return Whether the union's current tag state has value "removed".
 ///
 - (BOOL)isRemoved;
 
@@ -139,26 +139,26 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMemberStatusTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMTeamMemberStatus union.
+/// The serialization class for the `DBTEAMTeamMemberStatus` union.
 ///
 @interface DBTEAMTeamMemberStatusSerializer : NSObject
 
 ///
-/// Serializes DBTEAMTeamMemberStatus instances.
+/// Serializes `DBTEAMTeamMemberStatus` instances.
 ///
-/// @param instance An instance of the DBTEAMTeamMemberStatus API object.
+/// @param instance An instance of the `DBTEAMTeamMemberStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMTeamMemberStatus API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMTeamMemberStatus` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMTeamMemberStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMTeamMemberStatus instances.
+/// Deserializes `DBTEAMTeamMemberStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMTeamMemberStatus API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMTeamMemberStatus` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMTeamMemberStatus object.
+/// @return An instantiation of the `DBTEAMTeamMemberStatus` object.
 ///
 + (DBTEAMTeamMemberStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

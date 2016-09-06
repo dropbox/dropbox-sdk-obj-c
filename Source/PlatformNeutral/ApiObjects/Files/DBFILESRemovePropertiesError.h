@@ -9,22 +9,21 @@
 
 @class DBFILESLookUpPropertiesError;
 @class DBFILESLookupError;
-@class DBFILESRemovePropertiesError;
 
 #pragma mark - API Object
 
 ///
-/// The RemovePropertiesError union.
+/// The `RemovePropertiesError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESRemovePropertiesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESRemovePropertiesErrorTag enum type represents the possible tag states with which the
-/// DBFILESRemovePropertiesError union can exist.
+/// The `DBFILESRemovePropertiesErrorTag` enum type represents the possible tag states with which
+/// the `DBFILESRemovePropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESRemovePropertiesErrorTag) {
   /// Property template does not exist for given identifier.
   DBFILESRemovePropertiesErrorTemplateNotFound,
@@ -46,109 +45,110 @@ typedef NS_ENUM(NSInteger, DBFILESRemovePropertiesErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESRemovePropertiesErrorTag tag;
 
-/// Property template does not exist for given identifier. Ensure the isTemplateNotFound method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// Property template does not exist for given identifier. @note Ensure the `isTemplateNotFound`
+/// method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
-/// (no description). Ensure the isPath method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
-/// (no description). Ensure the isPropertyGroupLookup method returns true before accessing,
+/// (no description). @note Ensure the `isPropertyGroupLookup` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookUpPropertiesError * _Nonnull propertyGroupLookup;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TemplateNotFound.
+/// Initializes union class with tag state of "template_not_found".
 ///
-/// About the TemplateNotFound tag state: Property template does not exist for given identifier.
+/// Description of the "template_not_found" tag state: Property template does not exist for given
+/// identifier.
 ///
 /// @param templateNotFound Property template does not exist for given identifier.
 ///
-/// @return An initialized DBFILESRemovePropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
 ///
-/// Initializes union class with tag state of RestrictedContent.
+/// Initializes union class with tag state of "restricted_content".
 ///
-/// About the RestrictedContent tag state: You do not have the permissions to modify this property
-/// template.
+/// Description of the "restricted_content" tag state: You do not have the permissions to modify
+/// this property template.
 ///
-/// @return An initialized DBFILESRemovePropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRestrictedContent;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESRemovePropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of Path.
+/// Initializes union class with tag state of "path".
 ///
 /// @param path (no description).
 ///
-/// @return An initialized DBFILESRemovePropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
 
 ///
-/// Initializes union class with tag state of PropertyGroupLookup.
+/// Initializes union class with tag state of "property_group_lookup".
 ///
 /// @param propertyGroupLookup (no description).
 ///
-/// @return An initialized DBFILESRemovePropertiesError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPropertyGroupLookup:(DBFILESLookUpPropertiesError * _Nonnull)propertyGroupLookup;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TemplateNotFound.
+/// Retrieves whether the union's current tag state has value "template_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the templateNotFound
+/// @note Call this method and ensure it returns true before accessing the `templateNotFound`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value TemplateNotFound.
+/// @return Whether the union's current tag state has value "template_not_found".
 ///
 - (BOOL)isTemplateNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value RestrictedContent.
+/// Retrieves whether the union's current tag state has value "restricted_content".
 ///
-/// @return Whether the union's current tag state has value RestrictedContent.
+/// @return Whether the union's current tag state has value "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value Path.
+/// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the path property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `path` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Path.
+/// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value PropertyGroupLookup.
+/// Retrieves whether the union's current tag state has value "property_group_lookup".
 ///
-/// @note Call this method and ensure it returns true before accessing the propertyGroupLookup
+/// @note Call this method and ensure it returns true before accessing the `propertyGroupLookup`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value PropertyGroupLookup.
+/// @return Whether the union's current tag state has value "property_group_lookup".
 ///
 - (BOOL)isPropertyGroupLookup;
 
@@ -164,27 +164,27 @@ typedef NS_ENUM(NSInteger, DBFILESRemovePropertiesErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESRemovePropertiesError union.
+/// The serialization class for the `DBFILESRemovePropertiesError` union.
 ///
 @interface DBFILESRemovePropertiesErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESRemovePropertiesError instances.
+/// Serializes `DBFILESRemovePropertiesError` instances.
 ///
-/// @param instance An instance of the DBFILESRemovePropertiesError API object.
+/// @param instance An instance of the `DBFILESRemovePropertiesError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESRemovePropertiesError API
+/// @return A json-compatible dictionary representation of the `DBFILESRemovePropertiesError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESRemovePropertiesError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESRemovePropertiesError instances.
+/// Deserializes `DBFILESRemovePropertiesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESRemovePropertiesError API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESRemovePropertiesError`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESRemovePropertiesError object.
+/// @return An instantiation of the `DBFILESRemovePropertiesError` object.
 ///
 + (DBFILESRemovePropertiesError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -10,15 +10,14 @@
 
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMGroupSelector;
-@class DBTEAMGroupUpdateArgs;
 
 #pragma mark - API Object
 
 ///
-/// The GroupUpdateArgs struct.
+/// The `GroupUpdateArgs` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupUpdateArgs : DBTEAMIncludeMembersArg <DBSerializable>
 
@@ -40,7 +39,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupUpdateArgs struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param group Specify a group.
 /// @param returnMembers Whether to return the list of members in the group.  Note that the default
@@ -52,7 +51,7 @@
 /// id will be cleared.
 /// @param dNewGroupManagementType Set new group management type, if provided.
 ///
-/// @return An initialized DBTEAMGroupUpdateArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group
                         returnMembers:(NSNumber * _Nullable)returnMembers
@@ -61,12 +60,11 @@
               dNewGroupManagementType:(DBTEAMCOMMONGroupManagementType * _Nullable)dNewGroupManagementType;
 
 ///
-/// Convenience constructor for the DBTEAMGroupUpdateArgs struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param group Specify a group.
 ///
-/// @return An initialized DBTEAMGroupUpdateArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group;
 
@@ -75,25 +73,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupUpdateArgs struct.
+/// The serialization class for the `GroupUpdateArgs` struct.
 ///
 @interface DBTEAMGroupUpdateArgsSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupUpdateArgs instances.
+/// Serializes `DBTEAMGroupUpdateArgs` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupUpdateArgs API object.
+/// @param instance An instance of the `DBTEAMGroupUpdateArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupUpdateArgs API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupUpdateArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupUpdateArgs * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupUpdateArgs instances.
+/// Deserializes `DBTEAMGroupUpdateArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupUpdateArgs API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupUpdateArgs` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMGroupUpdateArgs object.
+/// @return An instantiation of the `DBTEAMGroupUpdateArgs` object.
 ///
 + (DBTEAMGroupUpdateArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

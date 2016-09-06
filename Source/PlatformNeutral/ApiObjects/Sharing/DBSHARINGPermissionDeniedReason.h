@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGPermissionDeniedReason;
-
 #pragma mark - API Object
 
 ///
-/// The PermissionDeniedReason union.
+/// The `PermissionDeniedReason` union.
 ///
 /// Possible reasons the user is denied a permission.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGPermissionDeniedReason : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGPermissionDeniedReasonTag enum type represents the possible tag states with which
-/// the DBSHARINGPermissionDeniedReason union can exist.
+/// The `DBSHARINGPermissionDeniedReasonTag` enum type represents the possible tag states with which
+/// the `DBSHARINGPermissionDeniedReason` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
   /// User is not on the same team as the folder owner.
   DBSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner,
@@ -58,132 +56,134 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotSameTeamAsOwner.
+/// Initializes union class with tag state of "user_not_same_team_as_owner".
 ///
-/// About the UserNotSameTeamAsOwner tag state: User is not on the same team as the folder owner.
+/// Description of the "user_not_same_team_as_owner" tag state: User is not on the same team as the
+/// folder owner.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotSameTeamAsOwner;
 
 ///
-/// Initializes union class with tag state of UserNotAllowedByOwner.
+/// Initializes union class with tag state of "user_not_allowed_by_owner".
 ///
-/// About the UserNotAllowedByOwner tag state: User is prohibited by the owner from taking the
-/// action.
+/// Description of the "user_not_allowed_by_owner" tag state: User is prohibited by the owner from
+/// taking the action.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotAllowedByOwner;
 
 ///
-/// Initializes union class with tag state of TargetIsIndirectMember.
+/// Initializes union class with tag state of "target_is_indirect_member".
 ///
-/// About the TargetIsIndirectMember tag state: Target is indirectly a member of the folder, for
-/// example by being part of a group.
+/// Description of the "target_is_indirect_member" tag state: Target is indirectly a member of the
+/// folder, for example by being part of a group.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTargetIsIndirectMember;
 
 ///
-/// Initializes union class with tag state of TargetIsOwner.
+/// Initializes union class with tag state of "target_is_owner".
 ///
-/// About the TargetIsOwner tag state: Target is the owner of the folder.
+/// Description of the "target_is_owner" tag state: Target is the owner of the folder.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTargetIsOwner;
 
 ///
-/// Initializes union class with tag state of TargetIsSelf.
+/// Initializes union class with tag state of "target_is_self".
 ///
-/// About the TargetIsSelf tag state: Target is the user itself.
+/// Description of the "target_is_self" tag state: Target is the user itself.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTargetIsSelf;
 
 ///
-/// Initializes union class with tag state of TargetNotActive.
+/// Initializes union class with tag state of "target_not_active".
 ///
-/// About the TargetNotActive tag state: Target is not an active member of the team.
+/// Description of the "target_not_active" tag state: Target is not an active member of the team.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTargetNotActive;
 
 ///
-/// Initializes union class with tag state of FolderIsLimitedTeamFolder.
+/// Initializes union class with tag state of "folder_is_limited_team_folder".
 ///
-/// About the FolderIsLimitedTeamFolder tag state: Folder is team folder for a limited team.
+/// Description of the "folder_is_limited_team_folder" tag state: Folder is team folder for a
+/// limited team.
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFolderIsLimitedTeamFolder;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGPermissionDeniedReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotSameTeamAsOwner.
+/// Retrieves whether the union's current tag state has value "user_not_same_team_as_owner".
 ///
-/// @return Whether the union's current tag state has value UserNotSameTeamAsOwner.
+/// @return Whether the union's current tag state has value "user_not_same_team_as_owner".
 ///
 - (BOOL)isUserNotSameTeamAsOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotAllowedByOwner.
+/// Retrieves whether the union's current tag state has value "user_not_allowed_by_owner".
 ///
-/// @return Whether the union's current tag state has value UserNotAllowedByOwner.
+/// @return Whether the union's current tag state has value "user_not_allowed_by_owner".
 ///
 - (BOOL)isUserNotAllowedByOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value TargetIsIndirectMember.
+/// Retrieves whether the union's current tag state has value "target_is_indirect_member".
 ///
-/// @return Whether the union's current tag state has value TargetIsIndirectMember.
+/// @return Whether the union's current tag state has value "target_is_indirect_member".
 ///
 - (BOOL)isTargetIsIndirectMember;
 
 ///
-/// Retrieves whether the union's current tag state has value TargetIsOwner.
+/// Retrieves whether the union's current tag state has value "target_is_owner".
 ///
-/// @return Whether the union's current tag state has value TargetIsOwner.
+/// @return Whether the union's current tag state has value "target_is_owner".
 ///
 - (BOOL)isTargetIsOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value TargetIsSelf.
+/// Retrieves whether the union's current tag state has value "target_is_self".
 ///
-/// @return Whether the union's current tag state has value TargetIsSelf.
+/// @return Whether the union's current tag state has value "target_is_self".
 ///
 - (BOOL)isTargetIsSelf;
 
 ///
-/// Retrieves whether the union's current tag state has value TargetNotActive.
+/// Retrieves whether the union's current tag state has value "target_not_active".
 ///
-/// @return Whether the union's current tag state has value TargetNotActive.
+/// @return Whether the union's current tag state has value "target_not_active".
 ///
 - (BOOL)isTargetNotActive;
 
 ///
-/// Retrieves whether the union's current tag state has value FolderIsLimitedTeamFolder.
+/// Retrieves whether the union's current tag state has value "folder_is_limited_team_folder".
 ///
-/// @return Whether the union's current tag state has value FolderIsLimitedTeamFolder.
+/// @return Whether the union's current tag state has value "folder_is_limited_team_folder".
 ///
 - (BOOL)isFolderIsLimitedTeamFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -199,27 +199,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGPermissionDeniedReason union.
+/// The serialization class for the `DBSHARINGPermissionDeniedReason` union.
 ///
 @interface DBSHARINGPermissionDeniedReasonSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGPermissionDeniedReason instances.
+/// Serializes `DBSHARINGPermissionDeniedReason` instances.
 ///
-/// @param instance An instance of the DBSHARINGPermissionDeniedReason API object.
+/// @param instance An instance of the `DBSHARINGPermissionDeniedReason` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGPermissionDeniedReason API
+/// @return A json-compatible dictionary representation of the `DBSHARINGPermissionDeniedReason` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGPermissionDeniedReason * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGPermissionDeniedReason instances.
+/// Deserializes `DBSHARINGPermissionDeniedReason` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGPermissionDeniedReason
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGPermissionDeniedReason`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGPermissionDeniedReason object.
+/// @return An instantiation of the `DBSHARINGPermissionDeniedReason` object.
 ///
 + (DBSHARINGPermissionDeniedReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

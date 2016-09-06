@@ -8,7 +8,6 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGFileLinkMetadata;
 @class DBSHARINGLinkPermissions;
 @class DBSHARINGTeamMemberInfo;
 @class DBUSERSTeam;
@@ -16,12 +15,12 @@
 #pragma mark - API Object
 
 ///
-/// The FileLinkMetadata struct.
+/// The `FileLinkMetadata` struct.
 ///
 /// The metadata of a file shared link
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileLinkMetadata : DBSHARINGSharedLinkMetadata <DBSerializable>
 
@@ -46,7 +45,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGFileLinkMetadata struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param url URL of the shared link.
 /// @param name The linked file name (including extension). This never contains a slash.
@@ -70,7 +69,7 @@
 /// present if the content's owner is a team member and the content's owner team is different from
 /// the link's owner team.
 ///
-/// @return An initialized DBSHARINGFileLinkMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url
                                name:(NSString * _Nonnull)name
@@ -86,8 +85,7 @@
                contentOwnerTeamInfo:(DBUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
 ///
-/// Convenience constructor for the DBSHARINGFileLinkMetadata struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param url URL of the shared link.
 /// @param name The linked file name (including extension). This never contains a slash.
@@ -101,7 +99,7 @@
 /// elsewhere in the API and can be used to detect changes and avoid conflicts.
 /// @param size The file size in bytes.
 ///
-/// @return An initialized DBSHARINGFileLinkMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url
                                name:(NSString * _Nonnull)name
@@ -116,26 +114,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the FileLinkMetadata struct.
+/// The serialization class for the `FileLinkMetadata` struct.
 ///
 @interface DBSHARINGFileLinkMetadataSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileLinkMetadata instances.
+/// Serializes `DBSHARINGFileLinkMetadata` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileLinkMetadata API object.
+/// @param instance An instance of the `DBSHARINGFileLinkMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileLinkMetadata API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGFileLinkMetadata` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileLinkMetadata * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileLinkMetadata instances.
+/// Deserializes `DBSHARINGFileLinkMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFileLinkMetadata API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileLinkMetadata` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGFileLinkMetadata object.
+/// @return An instantiation of the `DBSHARINGFileLinkMetadata` object.
 ///
 + (DBSHARINGFileLinkMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

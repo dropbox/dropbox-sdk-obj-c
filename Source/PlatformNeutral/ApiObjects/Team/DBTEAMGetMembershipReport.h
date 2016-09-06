@@ -8,18 +8,16 @@
 #import "DBTEAMBaseDfbReport.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGetMembershipReport;
-
 #pragma mark - API Object
 
 ///
-/// The GetMembershipReport struct.
+/// The `GetMembershipReport` struct.
 ///
 /// Membership Report Result. Each of the items in the storage report is an array of values, one
 /// value per day. If there is no data for a day, then the value will be None.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGetMembershipReport : DBTEAMBaseDfbReport <DBSerializable>
 
@@ -43,7 +41,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGetMembershipReport struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param teamSize Team size, for each day.
@@ -52,7 +50,7 @@
 /// @param suspendedMembers The number of suspended team members, for each day.
 /// @param licenses The total number of licenses the team has, for each day.
 ///
-/// @return An initialized DBTEAMGetMembershipReport instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate
                                  teamSize:(NSArray<NSNumber *> * _Nonnull)teamSize
@@ -66,26 +64,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetMembershipReport struct.
+/// The serialization class for the `GetMembershipReport` struct.
 ///
 @interface DBTEAMGetMembershipReportSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGetMembershipReport instances.
+/// Serializes `DBTEAMGetMembershipReport` instances.
 ///
-/// @param instance An instance of the DBTEAMGetMembershipReport API object.
+/// @param instance An instance of the `DBTEAMGetMembershipReport` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGetMembershipReport API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGetMembershipReport` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGetMembershipReport * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGetMembershipReport instances.
+/// Deserializes `DBTEAMGetMembershipReport` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGetMembershipReport API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGetMembershipReport` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGetMembershipReport object.
+/// @return An instantiation of the `DBTEAMGetMembershipReport` object.
 ///
 + (DBTEAMGetMembershipReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

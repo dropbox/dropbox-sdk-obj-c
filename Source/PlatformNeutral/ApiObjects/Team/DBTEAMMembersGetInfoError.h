@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersGetInfoError;
-
 #pragma mark - API Object
 
 ///
-/// The MembersGetInfoError union.
+/// The `MembersGetInfoError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersGetInfoError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersGetInfoErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMembersGetInfoError union can exist.
+/// The `DBTEAMMembersGetInfoErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMMembersGetInfoError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoErrorTag) {
   /// (no description).
   DBTEAMMembersGetInfoErrorOther,
@@ -35,18 +33,18 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMembersGetInfoError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -62,26 +60,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersGetInfoError union.
+/// The serialization class for the `DBTEAMMembersGetInfoError` union.
 ///
 @interface DBTEAMMembersGetInfoErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersGetInfoError instances.
+/// Serializes `DBTEAMMembersGetInfoError` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersGetInfoError API object.
+/// @param instance An instance of the `DBTEAMMembersGetInfoError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersGetInfoError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersGetInfoError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersGetInfoError instances.
+/// Deserializes `DBTEAMMembersGetInfoError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersGetInfoError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersGetInfoError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersGetInfoError object.
+/// @return An instantiation of the `DBTEAMMembersGetInfoError` object.
 ///
 + (DBTEAMMembersGetInfoError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

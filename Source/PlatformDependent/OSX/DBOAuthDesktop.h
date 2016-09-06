@@ -10,18 +10,18 @@
 ///
 /// Platform-specific (here, OS X) shared application.
 ///
-/// Renders OAuth flow and implements DBSharedApplication protocol.
+/// Renders OAuth flow and implements `DBSharedApplication` protocol.
 ///
 @interface DBDesktopSharedApplication : NSObject <DBSharedApplication>
 
 ///
 /// DBDesktopSharedApplication full constructor.
 ///
-/// @param sharedApplication The NSWorkspace with which to render the
+/// @param sharedApplication The `NSWorkspace` with which to render the
 /// OAuth flow.
-/// @param controller The NSViewController with which to render the OAuth
+/// @param controller The `NSViewController` with which to render the OAuth
 /// flow.
-/// @param openURL A wrapper around app-extension unsafe openURL call.
+/// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
 /// @return An initialized instance.
 ///
@@ -32,18 +32,18 @@
 @end
 
 ///
-/// Platform-specific (here, OS X) NSViewController for rendering OAuth flow.
+/// Platform-specific (here, OS X) `NSViewController` for rendering OAuth flow.
 ///
-@interface DBWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate>
+@interface DBDesktopWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate>
 
 ///
 /// DBWebViewController full constructor.
 ///
 /// @param tryInterceptHandler The navigation handler for the view controller.
-/// Will check if exit URL (for redirect back to main app) can be successfully
+/// Will check if exit url (for redirect back to main app) can be successfully
 /// navigated to.
 /// @param cancelHandler Handler for auth cancellation. Will redirect back to
-/// main app with special cancel URL, so that cancellation can be detected.
+/// main app with special cancel url, so that cancellation can be detected.
 /// flow.
 ///
 /// @return An initialized instance.

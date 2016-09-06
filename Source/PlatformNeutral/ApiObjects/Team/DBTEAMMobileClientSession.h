@@ -9,17 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMMobileClientPlatform;
-@class DBTEAMMobileClientSession;
 
 #pragma mark - API Object
 
 ///
-/// The MobileClientSession struct.
+/// The `MobileClientSession` struct.
 ///
 /// Information about linked Dropbox mobile client sessions
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMobileClientSession : DBTEAMDeviceSession <DBSerializable>
 
@@ -43,7 +42,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMobileClientSession struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The session id
 /// @param deviceName The device name
@@ -56,7 +55,7 @@
 /// @param osVersion The hosting OS version
 /// @param lastCarrier last carrier used by the device
 ///
-/// @return An initialized DBTEAMMobileClientSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                deviceName:(NSString * _Nonnull)deviceName
@@ -70,14 +69,13 @@
                               lastCarrier:(NSString * _Nullable)lastCarrier;
 
 ///
-/// Convenience constructor for the DBTEAMMobileClientSession struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sessionId The session id
 /// @param deviceName The device name
 /// @param clientType The mobile application type
 ///
-/// @return An initialized DBTEAMMobileClientSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                deviceName:(NSString * _Nonnull)deviceName
@@ -88,26 +86,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MobileClientSession struct.
+/// The serialization class for the `MobileClientSession` struct.
 ///
 @interface DBTEAMMobileClientSessionSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMobileClientSession instances.
+/// Serializes `DBTEAMMobileClientSession` instances.
 ///
-/// @param instance An instance of the DBTEAMMobileClientSession API object.
+/// @param instance An instance of the `DBTEAMMobileClientSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMobileClientSession API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMobileClientSession` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMobileClientSession * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMobileClientSession instances.
+/// Deserializes `DBTEAMMobileClientSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMobileClientSession API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMobileClientSession` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMobileClientSession object.
+/// @return An instantiation of the `DBTEAMMobileClientSession` object.
 ///
 + (DBTEAMMobileClientSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

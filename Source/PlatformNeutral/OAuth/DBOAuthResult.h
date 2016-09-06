@@ -13,22 +13,22 @@
 
 #pragma mark - Tag type definition
 
-/// The DBAuthResultTag enum type represents the possible tag
+/// The `DBAuthResultTag` enum type represents the possible tag
 /// states that the DBOAuthResult union can exist in.
-typedef NS_ENUM(NSInteger, DBAuthResultTag) {
-  /// The authorization succeeded. Includes a DBAccessToken.
+typedef NS_ENUM(NSInteger, DBOAuthResultTag) {
+  /// The authorization succeeded. Includes a `DBAccessToken`.
   DBAuthSuccess,
 
-  /// The authorization failed. Includes an OAuth2Error and a descriptive message.
+  /// The authorization failed. Includes an `OAuth2Error` and a descriptive message.
   DBAuthError,
 
   /// The authorization was manually canceled by the user.
   DBAuthCancel,
 };
 
-/// The DBAuthErrorType enum type represents the possible
+/// The `DBAuthErrorType` enum type represents the possible
 /// error types that can be returned from OAuth linking.
-typedef NS_ENUM(NSInteger, DBAuthErrorType) {
+typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
   /// The client is not authorized to request an access token using this method.
   DBAuthUnauthorizedClient,
 
@@ -56,72 +56,76 @@ typedef NS_ENUM(NSInteger, DBAuthErrorType) {
 
 #pragma mark - Instance variables
 
-/// Represents the DBOAuthResult object's current tag state.
-@property(nonatomic, readonly) DBAuthResultTag tag;
+/// Represents the `DBOAuthResult` object's current tag state.
+@property(nonatomic, readonly) DBOAuthResultTag tag;
 
 /// The access token that is retrieved in the event of a successful OAuth authorization.
+/// @note Ensure the `isSuccess` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly) DBAccessToken * _Nonnull accessToken;
 
 /// The type of OAuth error that is returned in the event of an unsuccessful OAuth
-/// authorization.
-@property(nonatomic, readonly) DBAuthErrorType errorType;
+/// authorization. @note Ensure the `isError` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property(nonatomic, readonly) DBOAuthErrorType errorType;
 
-/// The error description string associated with the DBAuthErrorType that is returned
-/// in the event of an unsuccessful OAuth authorization.
+/// The error description string associated with the `DBAuthErrorType` that is returned
+/// in the event of an unsuccessful OAuth authorization. @note Ensure the `isError` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull errorDescription;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Success.
+/// Initializes union class with tag state of "success".
 ///
-/// @param accessToken The DBAccessToken (account_id / team_id and OAuth token pair)
+/// @param accessToken The `DBAccessToken` (`account_id` / `team_id` and OAuth token pair)
 /// retrieved from the authorization flow.
 ///
-/// @return An initialized DBOAuthResult instance.
+/// @return An initialized `DBOAuthResult` instance.
 ///
 - (nonnull instancetype)initWithSuccess:(DBAccessToken * _Nonnull)accessToken;
 
 ///
-/// Initializes union class with tag state of Error.
+/// Initializes union class with tag state of "error".
 ///
 /// @param errorType The string identifier of the OAuth error type
 /// (lookup performed in errorTypeLookup dict).
 /// @param errorDescription A short description of the error that
 /// occured during the authorization flow.
 ///
-/// @return An initialized DBOAuthResult instance.
+/// @return An initialized `DBOAuthResult` instance.
 ///
 - (nonnull instancetype)initWithError:(NSString * _Nonnull)errorType
                      errorDescription:(NSString * _Nonnull)errorDescription;
 
 ///
-/// Initializes union class with tag state of Cancel.
+/// Initializes union class with tag state of "cancel".
 ///
-/// @return An initialized DBOAuthResult instance.
+/// @return An initialized `DBOAuthResult` instance.
 ///
 - (nonnull instancetype)initWithCancel;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Success.
+/// Retrieves whether the union's current tag state has value "success".
 ///
-/// @return Whether the union's current tag state has value Success.
+/// @return Whether the union's current tag state has value "success".
 ///
 - (BOOL)isSuccess;
 
 ///
-/// Retrieves whether the union's current tag state has value Error.
+/// Retrieves whether the union's current tag state has value "error".
 ///
-/// @return Whether the union's current tag state has value Error.
+/// @return Whether the union's current tag state has value "error".
 ///
 - (BOOL)isError;
 
 ///
-/// Retrieves whether the union's current tag state has value Cancel.
+/// Retrieves whether the union's current tag state has value "cancel".
 ///
-/// @return Whether the union's current tag state has value Cancel.
+/// @return Whether the union's current tag state has value "cancel".
 ///
 - (BOOL)isCancel;
 

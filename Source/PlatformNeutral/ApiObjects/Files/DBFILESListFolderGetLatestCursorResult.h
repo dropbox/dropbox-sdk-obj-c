@@ -7,34 +7,31 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESListFolderGetLatestCursorResult;
-
 #pragma mark - API Object
 
 ///
-/// The ListFolderGetLatestCursorResult struct.
+/// The `ListFolderGetLatestCursorResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESListFolderGetLatestCursorResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Pass the cursor into listFolderContinue to see what's changed in the folder since your previous
-/// query.
+/// Pass the cursor into `listFolderContinue` to see what's changed in the folder since your
+/// previous query.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESListFolderGetLatestCursorResult struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor Pass the cursor into :route:`list_folder/continue` to see what's changed in the
-/// folder since your previous query.
+/// @param cursor Pass the cursor into `listFolderContinue` to see what's changed in the folder
+/// since your previous query.
 ///
-/// @return An initialized DBFILESListFolderGetLatestCursorResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
@@ -43,27 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFolderGetLatestCursorResult struct.
+/// The serialization class for the `ListFolderGetLatestCursorResult` struct.
 ///
 @interface DBFILESListFolderGetLatestCursorResultSerializer : NSObject
 
 ///
-/// Serializes DBFILESListFolderGetLatestCursorResult instances.
+/// Serializes `DBFILESListFolderGetLatestCursorResult` instances.
 ///
-/// @param instance An instance of the DBFILESListFolderGetLatestCursorResult API object.
+/// @param instance An instance of the `DBFILESListFolderGetLatestCursorResult` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBFILESListFolderGetLatestCursorResult API object.
+/// `DBFILESListFolderGetLatestCursorResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListFolderGetLatestCursorResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESListFolderGetLatestCursorResult instances.
+/// Deserializes `DBFILESListFolderGetLatestCursorResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBFILESListFolderGetLatestCursorResult API object.
+/// `DBFILESListFolderGetLatestCursorResult` API object.
 ///
-/// @return An instantiation of the DBFILESListFolderGetLatestCursorResult object.
+/// @return An instantiation of the `DBFILESListFolderGetLatestCursorResult` object.
 ///
 + (DBFILESListFolderGetLatestCursorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

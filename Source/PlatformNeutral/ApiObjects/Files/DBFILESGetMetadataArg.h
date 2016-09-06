@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESGetMetadataArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetMetadataArg struct.
+/// The `GetMetadataArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESGetMetadataArg : NSObject <DBSerializable>
 
@@ -24,11 +22,11 @@
 /// The path of a file or folder on Dropbox.
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// If true, mediaInfo in FileMetadata is set for photo and video.
+/// If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeMediaInfo;
 
-/// If true, DeletedMetadata will be returned for deleted file or folder, otherwise notFound in
-/// LookupError will be returned.
+/// If true, DeletedMetadata will be returned for deleted file or folder, otherwise `notFound` in
+/// `DBFILESLookupError` will be returned.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeDeleted;
 
 /// If true, the results will include a flag for each file indicating whether or not  that file has
@@ -38,16 +36,17 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESGetMetadataArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of a file or folder on Dropbox.
-/// @param includeMediaInfo If true, :field:`FileMetadata.media_info` is set for photo and video.
-/// @param includeDeleted If true, :type:`DeletedMetadata` will be returned for deleted file or
-/// folder, otherwise :field:`LookupError.not_found` will be returned.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and
+/// video.
+/// @param includeDeleted If true, DeletedMetadata will be returned for deleted file or folder,
+/// otherwise `notFound` in `DBFILESLookupError` will be returned.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file
 /// indicating whether or not  that file has any explicit members.
 ///
-/// @return An initialized DBFILESGetMetadataArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path
                     includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo
@@ -55,12 +54,11 @@
      includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 ///
-/// Convenience constructor for the DBFILESGetMetadataArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param path The path of a file or folder on Dropbox.
 ///
-/// @return An initialized DBFILESGetMetadataArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -69,25 +67,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetMetadataArg struct.
+/// The serialization class for the `GetMetadataArg` struct.
 ///
 @interface DBFILESGetMetadataArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESGetMetadataArg instances.
+/// Serializes `DBFILESGetMetadataArg` instances.
 ///
-/// @param instance An instance of the DBFILESGetMetadataArg API object.
+/// @param instance An instance of the `DBFILESGetMetadataArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESGetMetadataArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESGetMetadataArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetMetadataArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESGetMetadataArg instances.
+/// Deserializes `DBFILESGetMetadataArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESGetMetadataArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESGetMetadataArg` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESGetMetadataArg object.
+/// @return An instantiation of the `DBFILESGetMetadataArg` object.
 ///
 + (DBFILESGetMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

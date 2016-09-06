@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESThumbnailSize;
-
 #pragma mark - API Object
 
 ///
-/// The ThumbnailSize union.
+/// The `ThumbnailSize` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESThumbnailSize : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESThumbnailSizeTag enum type represents the possible tag states with which the
-/// DBFILESThumbnailSize union can exist.
+/// The `DBFILESThumbnailSizeTag` enum type represents the possible tag states with which the
+/// `DBFILESThumbnailSize` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
   /// 32 by 32 px.
   DBFILESThumbnailSizeW32h32,
@@ -47,84 +45,84 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of W32h32.
+/// Initializes union class with tag state of "w32h32".
 ///
-/// About the W32h32 tag state: 32 by 32 px.
+/// Description of the "w32h32" tag state: 32 by 32 px.
 ///
-/// @return An initialized DBFILESThumbnailSize instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW32h32;
 
 ///
-/// Initializes union class with tag state of W64h64.
+/// Initializes union class with tag state of "w64h64".
 ///
-/// About the W64h64 tag state: 64 by 64 px.
+/// Description of the "w64h64" tag state: 64 by 64 px.
 ///
-/// @return An initialized DBFILESThumbnailSize instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW64h64;
 
 ///
-/// Initializes union class with tag state of W128h128.
+/// Initializes union class with tag state of "w128h128".
 ///
-/// About the W128h128 tag state: 128 by 128 px.
+/// Description of the "w128h128" tag state: 128 by 128 px.
 ///
-/// @return An initialized DBFILESThumbnailSize instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW128h128;
 
 ///
-/// Initializes union class with tag state of W640h480.
+/// Initializes union class with tag state of "w640h480".
 ///
-/// About the W640h480 tag state: 640 by 480 px.
+/// Description of the "w640h480" tag state: 640 by 480 px.
 ///
-/// @return An initialized DBFILESThumbnailSize instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW640h480;
 
 ///
-/// Initializes union class with tag state of W1024h768.
+/// Initializes union class with tag state of "w1024h768".
 ///
-/// About the W1024h768 tag state: 1024 by 768
+/// Description of the "w1024h768" tag state: 1024 by 768
 ///
-/// @return An initialized DBFILESThumbnailSize instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW1024h768;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value W32h32.
+/// Retrieves whether the union's current tag state has value "w32h32".
 ///
-/// @return Whether the union's current tag state has value W32h32.
+/// @return Whether the union's current tag state has value "w32h32".
 ///
 - (BOOL)isW32h32;
 
 ///
-/// Retrieves whether the union's current tag state has value W64h64.
+/// Retrieves whether the union's current tag state has value "w64h64".
 ///
-/// @return Whether the union's current tag state has value W64h64.
+/// @return Whether the union's current tag state has value "w64h64".
 ///
 - (BOOL)isW64h64;
 
 ///
-/// Retrieves whether the union's current tag state has value W128h128.
+/// Retrieves whether the union's current tag state has value "w128h128".
 ///
-/// @return Whether the union's current tag state has value W128h128.
+/// @return Whether the union's current tag state has value "w128h128".
 ///
 - (BOOL)isW128h128;
 
 ///
-/// Retrieves whether the union's current tag state has value W640h480.
+/// Retrieves whether the union's current tag state has value "w640h480".
 ///
-/// @return Whether the union's current tag state has value W640h480.
+/// @return Whether the union's current tag state has value "w640h480".
 ///
 - (BOOL)isW640h480;
 
 ///
-/// Retrieves whether the union's current tag state has value W1024h768.
+/// Retrieves whether the union's current tag state has value "w1024h768".
 ///
-/// @return Whether the union's current tag state has value W1024h768.
+/// @return Whether the union's current tag state has value "w1024h768".
 ///
 - (BOOL)isW1024h768;
 
@@ -140,25 +138,26 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESThumbnailSize union.
+/// The serialization class for the `DBFILESThumbnailSize` union.
 ///
 @interface DBFILESThumbnailSizeSerializer : NSObject
 
 ///
-/// Serializes DBFILESThumbnailSize instances.
+/// Serializes `DBFILESThumbnailSize` instances.
 ///
-/// @param instance An instance of the DBFILESThumbnailSize API object.
+/// @param instance An instance of the `DBFILESThumbnailSize` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESThumbnailSize API object.
+/// @return A json-compatible dictionary representation of the `DBFILESThumbnailSize` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailSize * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESThumbnailSize instances.
+/// Deserializes `DBFILESThumbnailSize` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESThumbnailSize API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailSize` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESThumbnailSize object.
+/// @return An instantiation of the `DBFILESThumbnailSize` object.
 ///
 + (DBFILESThumbnailSize * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

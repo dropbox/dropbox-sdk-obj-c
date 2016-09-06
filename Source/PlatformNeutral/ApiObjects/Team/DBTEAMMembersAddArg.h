@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMMemberAddArg;
-@class DBTEAMMembersAddArg;
 
 #pragma mark - API Object
 
 ///
-/// The MembersAddArg struct.
+/// The `MembersAddArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersAddArg : NSObject <DBSerializable>
 
@@ -31,23 +30,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersAddArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param dNewMembers Details of new members to be added to the team.
 /// @param forceAsync Whether to force the add to happen asynchronously.
 ///
-/// @return An initialized DBTEAMMembersAddArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddArg *> * _Nonnull)dNewMembers
                                  forceAsync:(NSNumber * _Nullable)forceAsync;
 
 ///
-/// Convenience constructor for the DBTEAMMembersAddArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param dNewMembers Details of new members to be added to the team.
 ///
-/// @return An initialized DBTEAMMembersAddArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDNewMembers:(NSArray<DBTEAMMemberAddArg *> * _Nonnull)dNewMembers;
 
@@ -56,25 +54,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersAddArg struct.
+/// The serialization class for the `MembersAddArg` struct.
 ///
 @interface DBTEAMMembersAddArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersAddArg instances.
+/// Serializes `DBTEAMMembersAddArg` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersAddArg API object.
+/// @param instance An instance of the `DBTEAMMembersAddArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersAddArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersAddArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersAddArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersAddArg instances.
+/// Deserializes `DBTEAMMembersAddArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersAddArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersAddArg` API object.
 ///
-/// @return An instantiation of the DBTEAMMembersAddArg object.
+/// @return An instantiation of the `DBTEAMMembersAddArg` object.
 ///
 + (DBTEAMMembersAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

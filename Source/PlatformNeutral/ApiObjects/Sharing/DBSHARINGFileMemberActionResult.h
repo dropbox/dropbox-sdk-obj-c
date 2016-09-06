@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGFileMemberActionIndividualResult;
-@class DBSHARINGFileMemberActionResult;
 @class DBSHARINGMemberSelector;
 
 #pragma mark - API Object
 
 ///
-/// The FileMemberActionResult struct.
+/// The `FileMemberActionResult` struct.
 ///
-/// Per-member result for removeFileMember2 or addFileMember or changeFileMemberAccess.
+/// Per-member result for `removeFileMember2` or `addFileMember` or `changeFileMemberAccess`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileMemberActionResult : NSObject <DBSerializable>
 
@@ -34,13 +33,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGFileMemberActionResult struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param member One of specified input members.
 /// @param result The outcome of the action on this member.
 ///
-/// @return An initialized DBSHARINGFileMemberActionResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMember:(DBSHARINGMemberSelector * _Nonnull)member
                                 result:(DBSHARINGFileMemberActionIndividualResult * _Nonnull)result;
@@ -50,27 +48,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the FileMemberActionResult struct.
+/// The serialization class for the `FileMemberActionResult` struct.
 ///
 @interface DBSHARINGFileMemberActionResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileMemberActionResult instances.
+/// Serializes `DBSHARINGFileMemberActionResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileMemberActionResult API object.
+/// @param instance An instance of the `DBSHARINGFileMemberActionResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileMemberActionResult API
+/// @return A json-compatible dictionary representation of the `DBSHARINGFileMemberActionResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberActionResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileMemberActionResult instances.
+/// Deserializes `DBSHARINGFileMemberActionResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFileMemberActionResult
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileMemberActionResult`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGFileMemberActionResult object.
+/// @return An instantiation of the `DBSHARINGFileMemberActionResult` object.
 ///
 + (DBSHARINGFileMemberActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

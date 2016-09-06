@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFileMembersBatchArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListFileMembersBatchArg struct.
+/// The `ListFileMembersBatchArg` struct.
 ///
-/// Arguments for listFileMembersBatch.
+/// Arguments for `listFileMembersBatch`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFileMembersBatchArg : NSObject <DBSerializable>
 
@@ -32,23 +30,21 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFileMembersBatchArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param files Files for which to return members.
 /// @param limit Number of members to return max per query. Defaults to 10 if no limit is specified.
 ///
-/// @return An initialized DBSHARINGListFileMembersBatchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor for the DBSHARINGListFileMembersBatchArg struct (exposes only
-/// non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param files Files for which to return members.
 ///
-/// @return An initialized DBSHARINGListFileMembersBatchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files;
 
@@ -57,27 +53,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFileMembersBatchArg struct.
+/// The serialization class for the `ListFileMembersBatchArg` struct.
 ///
 @interface DBSHARINGListFileMembersBatchArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFileMembersBatchArg instances.
+/// Serializes `DBSHARINGListFileMembersBatchArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFileMembersBatchArg API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersBatchArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFileMembersBatchArg API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersBatchArg`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersBatchArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFileMembersBatchArg instances.
+/// Deserializes `DBSHARINGListFileMembersBatchArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFileMembersBatchArg
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersBatchArg` API object.
 ///
-/// @return An instantiation of the DBSHARINGListFileMembersBatchArg object.
+/// @return An instantiation of the `DBSHARINGListFileMembersBatchArg` object.
 ///
 + (DBSHARINGListFileMembersBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

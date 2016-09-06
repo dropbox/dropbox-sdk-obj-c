@@ -8,19 +8,18 @@
 #import "DBTEAMBaseDfbReport.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGetStorageReport;
 @class DBTEAMStorageBucket;
 
 #pragma mark - API Object
 
 ///
-/// The GetStorageReport struct.
+/// The `GetStorageReport` struct.
 ///
 /// Storage Report Result. Each of the items in the storage report is an array of values, one value
 /// per day. If there is no data for a day, then the value will be None.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGetStorageReport : DBTEAMBaseDfbReport <DBSerializable>
 
@@ -47,7 +46,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGetStorageReport struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param totalUsage Sum of the shared, unshared, and datastore usages, for each day.
@@ -62,7 +61,7 @@
 /// There is one such summary per day. If there is no data for a day, the storage summary will be
 /// empty.
 ///
-/// @return An initialized DBTEAMGetStorageReport instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithStartDate:(NSString * _Nonnull)startDate
                                totalUsage:(NSArray<NSNumber *> * _Nonnull)totalUsage
@@ -76,26 +75,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetStorageReport struct.
+/// The serialization class for the `GetStorageReport` struct.
 ///
 @interface DBTEAMGetStorageReportSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGetStorageReport instances.
+/// Serializes `DBTEAMGetStorageReport` instances.
 ///
-/// @param instance An instance of the DBTEAMGetStorageReport API object.
+/// @param instance An instance of the `DBTEAMGetStorageReport` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGetStorageReport API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGetStorageReport` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGetStorageReport * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGetStorageReport instances.
+/// Deserializes `DBTEAMGetStorageReport` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGetStorageReport API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGetStorageReport` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGetStorageReport object.
+/// @return An instantiation of the `DBTEAMGetStorageReport` object.
 ///
 + (DBTEAMGetStorageReport * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

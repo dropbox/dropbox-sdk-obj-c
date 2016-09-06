@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMemberSelectorError;
-
 #pragma mark - API Object
 
 ///
-/// The MemberSelectorError union.
+/// The `MemberSelectorError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMemberSelectorErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMemberSelectorError union can exist.
+/// The `DBTEAMMemberSelectorErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMMemberSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -39,37 +37,37 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 ///
-/// Initializes union class with tag state of UserNotInTeam.
+/// Initializes union class with tag state of "user_not_in_team".
 ///
-/// About the UserNotInTeam tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
 ///
-/// @return An initialized DBTEAMMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotInTeam.
+/// Retrieves whether the union's current tag state has value "user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value UserNotInTeam.
+/// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
@@ -85,26 +83,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMemberSelectorError union.
+/// The serialization class for the `DBTEAMMemberSelectorError` union.
 ///
 @interface DBTEAMMemberSelectorErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberSelectorError instances.
+/// Serializes `DBTEAMMemberSelectorError` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberSelectorError API object.
+/// @param instance An instance of the `DBTEAMMemberSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberSelectorError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberSelectorError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberSelectorError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberSelectorError instances.
+/// Deserializes `DBTEAMMemberSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberSelectorError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberSelectorError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMemberSelectorError object.
+/// @return An instantiation of the `DBTEAMMemberSelectorError` object.
 ///
 + (DBTEAMMemberSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

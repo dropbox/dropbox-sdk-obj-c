@@ -9,22 +9,21 @@
 
 @class DBSHARINGMemberAccessLevelResult;
 @class DBSHARINGRemoveFolderMemberError;
-@class DBSHARINGRemoveMemberJobStatus;
 
 #pragma mark - API Object
 
 ///
-/// The RemoveMemberJobStatus union.
+/// The `RemoveMemberJobStatus` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRemoveMemberJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGRemoveMemberJobStatusTag enum type represents the possible tag states with which
-/// the DBSHARINGRemoveMemberJobStatus union can exist.
+/// The `DBSHARINGRemoveMemberJobStatusTag` enum type represents the possible tag states with which
+/// the `DBSHARINGRemoveMemberJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBSHARINGRemoveMemberJobStatusInProgress,
@@ -42,73 +41,73 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 @property(nonatomic, readonly) DBSHARINGRemoveMemberJobStatusTag tag;
 
 /// Removing the folder member has finished. The value is information about whether the member has
-/// another form of access. Ensure the isComplete method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// another form of access. @note Ensure the `isComplete` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull complete;
 
-/// (no description). Ensure the isFailed method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isFailed` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGRemoveFolderMemberError * _Nonnull failed;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InProgress.
+/// Initializes union class with tag state of "in_progress".
 ///
-/// About the InProgress tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
 ///
-/// @return An initialized DBSHARINGRemoveMemberJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInProgress;
 
 ///
-/// Initializes union class with tag state of Complete.
+/// Initializes union class with tag state of "complete".
 ///
-/// About the Complete tag state: Removing the folder member has finished. The value is information
-/// about whether the member has another form of access.
+/// Description of the "complete" tag state: Removing the folder member has finished. The value is
+/// information about whether the member has another form of access.
 ///
 /// @param complete Removing the folder member has finished. The value is information about whether
 /// the member has another form of access.
 ///
-/// @return An initialized DBSHARINGRemoveMemberJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(DBSHARINGMemberAccessLevelResult * _Nonnull)complete;
 
 ///
-/// Initializes union class with tag state of Failed.
+/// Initializes union class with tag state of "failed".
 ///
 /// @param failed (no description).
 ///
-/// @return An initialized DBSHARINGRemoveMemberJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFailed:(DBSHARINGRemoveFolderMemberError * _Nonnull)failed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InProgress.
+/// Retrieves whether the union's current tag state has value "in_progress".
 ///
-/// @return Whether the union's current tag state has value InProgress.
+/// @return Whether the union's current tag state has value "in_progress".
 ///
 - (BOOL)isInProgress;
 
 ///
-/// Retrieves whether the union's current tag state has value Complete.
+/// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the complete property,
+/// @note Call this method and ensure it returns true before accessing the `complete` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Complete.
+/// @return Whether the union's current tag state has value "complete".
 ///
 - (BOOL)isComplete;
 
 ///
-/// Retrieves whether the union's current tag state has value Failed.
+/// Retrieves whether the union's current tag state has value "failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the failed property,
+/// @note Call this method and ensure it returns true before accessing the `failed` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Failed.
+/// @return Whether the union's current tag state has value "failed".
 ///
 - (BOOL)isFailed;
 
@@ -124,27 +123,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveMemberJobStatusTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGRemoveMemberJobStatus union.
+/// The serialization class for the `DBSHARINGRemoveMemberJobStatus` union.
 ///
 @interface DBSHARINGRemoveMemberJobStatusSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRemoveMemberJobStatus instances.
+/// Serializes `DBSHARINGRemoveMemberJobStatus` instances.
 ///
-/// @param instance An instance of the DBSHARINGRemoveMemberJobStatus API object.
+/// @param instance An instance of the `DBSHARINGRemoveMemberJobStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGRemoveMemberJobStatus API
+/// @return A json-compatible dictionary representation of the `DBSHARINGRemoveMemberJobStatus` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRemoveMemberJobStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRemoveMemberJobStatus instances.
+/// Deserializes `DBSHARINGRemoveMemberJobStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGRemoveMemberJobStatus
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGRemoveMemberJobStatus`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGRemoveMemberJobStatus object.
+/// @return An instantiation of the `DBSHARINGRemoveMemberJobStatus` object.
 ///
 + (DBSHARINGRemoveMemberJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

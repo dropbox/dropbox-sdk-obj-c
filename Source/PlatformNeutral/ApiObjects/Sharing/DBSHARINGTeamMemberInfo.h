@@ -7,18 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGTeamMemberInfo;
 @class DBUSERSTeam;
 
 #pragma mark - API Object
 
 ///
-/// The TeamMemberInfo struct.
+/// The `TeamMemberInfo` struct.
 ///
 /// Information about a team member.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGTeamMemberInfo : NSObject <DBSerializable>
 
@@ -37,27 +36,26 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGTeamMemberInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamInfo Information about the member's team
 /// @param displayName The display name of the user.
 /// @param memberId ID of user as a member of a team. This field will only be present if the member
 /// is in the same team as current user.
 ///
-/// @return An initialized DBSHARINGTeamMemberInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamInfo:(DBUSERSTeam * _Nonnull)teamInfo
                              displayName:(NSString * _Nonnull)displayName
                                 memberId:(NSString * _Nullable)memberId;
 
 ///
-/// Convenience constructor for the DBSHARINGTeamMemberInfo struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param teamInfo Information about the member's team
 /// @param displayName The display name of the user.
 ///
-/// @return An initialized DBSHARINGTeamMemberInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamInfo:(DBUSERSTeam * _Nonnull)teamInfo displayName:(NSString * _Nonnull)displayName;
 
@@ -66,26 +64,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the TeamMemberInfo struct.
+/// The serialization class for the `TeamMemberInfo` struct.
 ///
 @interface DBSHARINGTeamMemberInfoSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGTeamMemberInfo instances.
+/// Serializes `DBSHARINGTeamMemberInfo` instances.
 ///
-/// @param instance An instance of the DBSHARINGTeamMemberInfo API object.
+/// @param instance An instance of the `DBSHARINGTeamMemberInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGTeamMemberInfo API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGTeamMemberInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGTeamMemberInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGTeamMemberInfo instances.
+/// Deserializes `DBSHARINGTeamMemberInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGTeamMemberInfo API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGTeamMemberInfo` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGTeamMemberInfo object.
+/// @return An instantiation of the `DBSHARINGTeamMemberInfo` object.
 ///
 + (DBSHARINGTeamMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

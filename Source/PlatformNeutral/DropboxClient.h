@@ -16,11 +16,11 @@
 ///
 @interface DropboxClient : DBBase
 
-/// The transport client to use to make all networking requests
+/// The transport client used to make all networking requests
 @property(nonatomic) DBTransportClient * _Nonnull transportClient;
 
 ///
-/// DropboxClient convenience constructor.
+/// Convenience constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 ///
@@ -29,7 +29,7 @@
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
 
 ///
-/// DropboxClient convenience constructor.
+/// Convenience constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 /// @param memberId The Dropbox account_id of the team member to perform actions on
@@ -40,14 +40,14 @@
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken selectUser:(NSString * _Nonnull)selectUser;
 
 ///
-/// DropboxClient full constructor.
+/// Full constructor.
 ///
-/// @note Access token should be set in transportClient directly, rather than
-/// passed in to DropboxClient directly..
+/// @note Access token should be set in `transportClient` directly, rather than
+/// passed in to `DropboxClient` directly..
 ///
-/// @param transportClient The instance of DBTransportClient to use to make all
+/// @param transportClient The instance of `DBTransportClient` used to make all
 /// networking requests. This constructor offers the highlest-level of configurability.
-/// DBTransportClient offers a number of different constructors to customize networking
+/// `DBTransportClient` offers a number of different constructors to customize networking
 /// settings.
 ///
 /// @return An initialized instance.

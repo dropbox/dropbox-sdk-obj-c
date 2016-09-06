@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESSearchMode;
-
 #pragma mark - API Object
 
 ///
-/// The SearchMode union.
+/// The `SearchMode` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSearchMode : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESSearchModeTag enum type represents the possible tag states with which the
-/// DBFILESSearchMode union can exist.
+/// The `DBFILESSearchModeTag` enum type represents the possible tag states with which the
+/// `DBFILESSearchMode` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
   /// Search file and folder names.
   DBFILESSearchModeFilename,
@@ -41,52 +39,53 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Filename.
+/// Initializes union class with tag state of "filename".
 ///
-/// About the Filename tag state: Search file and folder names.
+/// Description of the "filename" tag state: Search file and folder names.
 ///
-/// @return An initialized DBFILESSearchMode instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFilename;
 
 ///
-/// Initializes union class with tag state of FilenameAndContent.
+/// Initializes union class with tag state of "filename_and_content".
 ///
-/// About the FilenameAndContent tag state: Search file and folder names as well as file contents.
+/// Description of the "filename_and_content" tag state: Search file and folder names as well as
+/// file contents.
 ///
-/// @return An initialized DBFILESSearchMode instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFilenameAndContent;
 
 ///
-/// Initializes union class with tag state of DeletedFilename.
+/// Initializes union class with tag state of "deleted_filename".
 ///
-/// About the DeletedFilename tag state: Search for deleted file and folder names.
+/// Description of the "deleted_filename" tag state: Search for deleted file and folder names.
 ///
-/// @return An initialized DBFILESSearchMode instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDeletedFilename;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Filename.
+/// Retrieves whether the union's current tag state has value "filename".
 ///
-/// @return Whether the union's current tag state has value Filename.
+/// @return Whether the union's current tag state has value "filename".
 ///
 - (BOOL)isFilename;
 
 ///
-/// Retrieves whether the union's current tag state has value FilenameAndContent.
+/// Retrieves whether the union's current tag state has value "filename_and_content".
 ///
-/// @return Whether the union's current tag state has value FilenameAndContent.
+/// @return Whether the union's current tag state has value "filename_and_content".
 ///
 - (BOOL)isFilenameAndContent;
 
 ///
-/// Retrieves whether the union's current tag state has value DeletedFilename.
+/// Retrieves whether the union's current tag state has value "deleted_filename".
 ///
-/// @return Whether the union's current tag state has value DeletedFilename.
+/// @return Whether the union's current tag state has value "deleted_filename".
 ///
 - (BOOL)isDeletedFilename;
 
@@ -102,25 +101,25 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESSearchMode union.
+/// The serialization class for the `DBFILESSearchMode` union.
 ///
 @interface DBFILESSearchModeSerializer : NSObject
 
 ///
-/// Serializes DBFILESSearchMode instances.
+/// Serializes `DBFILESSearchMode` instances.
 ///
-/// @param instance An instance of the DBFILESSearchMode API object.
+/// @param instance An instance of the `DBFILESSearchMode` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSearchMode API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSearchMode` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMode * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSearchMode instances.
+/// Deserializes `DBFILESSearchMode` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSearchMode API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMode` API object.
 ///
-/// @return An instantiation of the DBFILESSearchMode object.
+/// @return An instantiation of the `DBFILESSearchMode` object.
 ///
 + (DBFILESSearchMode * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

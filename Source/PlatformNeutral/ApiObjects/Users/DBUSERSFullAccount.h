@@ -9,19 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @class DBUSERSAccountType;
-@class DBUSERSFullAccount;
 @class DBUSERSFullTeam;
 @class DBUSERSName;
 
 #pragma mark - API Object
 
 ///
-/// The FullAccount struct.
+/// The `FullAccount` struct.
 ///
 /// Detailed information about the current user's account.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSFullAccount : DBUSERSAccount <DBSerializable>
 
@@ -54,30 +53,28 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSFullAccount struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the
-/// :field:`email_verified` field. Even then, it's possible that the user has since lost access to
-/// their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
+/// field. Even then, it's possible that the user has since lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
-/// @param locale The language that the user specified. Locale tags will be :link:`IETF language
-/// tags http://en.wikipedia.org/wiki/IETF_language_tag`.
-/// @param referralLink The user's :link:`referral link https://www.dropbox.com/referrals`.
+/// @param locale The language that the user specified. Locale tags will be IETF language tags
+/// http://en.wikipedia.org/wiki/IETF_language_tag.
+/// @param referralLink The user's referral link https://www.dropbox.com/referrals.
 /// @param isPaired Whether the user has a personal and work account. If the current account is
-/// personal, then :field:`team` will always be :val:`null`, but :field:`is_paired` will indicate if
-/// a work account is linked.
+/// personal, then team will always be null, but isPaired will indicate if a work account is linked.
 /// @param accountType What type of account this user has.
 /// @param profilePhotoUrl URL for the photo representing the user, if one is set.
-/// @param country The user's two-letter country code, if available. Country codes are based on
-/// :link:`ISO 3166-1 http://en.wikipedia.org/wiki/ISO_3166-1`.
+/// @param country The user's two-letter country code, if available. Country codes are based on ISO
+/// 3166-1 http://en.wikipedia.org/wiki/ISO_3166-1.
 /// @param team If this account is a member of a team, information about that team.
 /// @param teamMemberId This account's unique team member id. This field will only be present if
-/// :field:`team` is present.
+/// team is present.
 ///
-/// @return An initialized DBUSERSFullAccount instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId
                                      name:(DBUSERSName * _Nonnull)name
@@ -94,25 +91,22 @@
                              teamMemberId:(NSString * _Nullable)teamMemberId;
 
 ///
-/// Convenience constructor for the DBUSERSFullAccount struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the
-/// :field:`email_verified` field. Even then, it's possible that the user has since lost access to
-/// their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
+/// field. Even then, it's possible that the user has since lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
-/// @param locale The language that the user specified. Locale tags will be :link:`IETF language
-/// tags http://en.wikipedia.org/wiki/IETF_language_tag`.
-/// @param referralLink The user's :link:`referral link https://www.dropbox.com/referrals`.
+/// @param locale The language that the user specified. Locale tags will be IETF language tags
+/// http://en.wikipedia.org/wiki/IETF_language_tag.
+/// @param referralLink The user's referral link https://www.dropbox.com/referrals.
 /// @param isPaired Whether the user has a personal and work account. If the current account is
-/// personal, then :field:`team` will always be :val:`null`, but :field:`is_paired` will indicate if
-/// a work account is linked.
+/// personal, then team will always be null, but isPaired will indicate if a work account is linked.
 /// @param accountType What type of account this user has.
 ///
-/// @return An initialized DBUSERSFullAccount instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId
                                      name:(DBUSERSName * _Nonnull)name
@@ -129,25 +123,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the FullAccount struct.
+/// The serialization class for the `FullAccount` struct.
 ///
 @interface DBUSERSFullAccountSerializer : NSObject
 
 ///
-/// Serializes DBUSERSFullAccount instances.
+/// Serializes `DBUSERSFullAccount` instances.
 ///
-/// @param instance An instance of the DBUSERSFullAccount API object.
+/// @param instance An instance of the `DBUSERSFullAccount` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSFullAccount API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSFullAccount` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSFullAccount * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSFullAccount instances.
+/// Deserializes `DBUSERSFullAccount` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSFullAccount API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSFullAccount` API object.
 ///
-/// @return An instantiation of the DBUSERSFullAccount object.
+/// @return An instantiation of the `DBUSERSFullAccount` object.
 ///
 + (DBUSERSFullAccount * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGSharingUserError;
-
 #pragma mark - API Object
 
 ///
-/// The SharingUserError union.
+/// The `SharingUserError` union.
 ///
 /// User account had a problem preventing this action.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharingUserError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGSharingUserErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGSharingUserError union can exist.
+/// The `DBSHARINGSharingUserErrorTag` enum type represents the possible tag states with which the
+/// `DBSHARINGSharingUserError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharingUserErrorTag) {
   /// The current user must verify the account e-mail address before performing this action.
   DBSHARINGSharingUserErrorEmailUnverified,
@@ -40,35 +38,35 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingUserErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of EmailUnverified.
+/// Initializes union class with tag state of "email_unverified".
 ///
-/// About the EmailUnverified tag state: The current user must verify the account e-mail address
-/// before performing this action.
+/// Description of the "email_unverified" tag state: The current user must verify the account e-mail
+/// address before performing this action.
 ///
-/// @return An initialized DBSHARINGSharingUserError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmailUnverified;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGSharingUserError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value EmailUnverified.
+/// Retrieves whether the union's current tag state has value "email_unverified".
 ///
-/// @return Whether the union's current tag state has value EmailUnverified.
+/// @return Whether the union's current tag state has value "email_unverified".
 ///
 - (BOOL)isEmailUnverified;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -84,26 +82,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingUserErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGSharingUserError union.
+/// The serialization class for the `DBSHARINGSharingUserError` union.
 ///
 @interface DBSHARINGSharingUserErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharingUserError instances.
+/// Serializes `DBSHARINGSharingUserError` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharingUserError API object.
+/// @param instance An instance of the `DBSHARINGSharingUserError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharingUserError API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharingUserError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharingUserError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharingUserError instances.
+/// Deserializes `DBSHARINGSharingUserError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharingUserError API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharingUserError` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGSharingUserError object.
+/// @return An instantiation of the `DBSHARINGSharingUserError` object.
 ///
 + (DBSHARINGSharingUserError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

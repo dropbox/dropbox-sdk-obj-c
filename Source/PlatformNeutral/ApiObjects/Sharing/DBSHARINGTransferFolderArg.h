@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGTransferFolderArg;
-
 #pragma mark - API Object
 
 ///
-/// The TransferFolderArg struct.
+/// The `TransferFolderArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGTransferFolderArg : NSObject <DBSerializable>
 
@@ -30,12 +28,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGTransferFolderArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param toDropboxId A account or team member ID to transfer ownership to.
 ///
-/// @return An initialized DBSHARINGTransferFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                    toDropboxId:(NSString * _Nonnull)toDropboxId;
@@ -45,27 +43,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the TransferFolderArg struct.
+/// The serialization class for the `TransferFolderArg` struct.
 ///
 @interface DBSHARINGTransferFolderArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGTransferFolderArg instances.
+/// Serializes `DBSHARINGTransferFolderArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGTransferFolderArg API object.
+/// @param instance An instance of the `DBSHARINGTransferFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGTransferFolderArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGTransferFolderArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGTransferFolderArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGTransferFolderArg instances.
+/// Deserializes `DBSHARINGTransferFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGTransferFolderArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGTransferFolderArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGTransferFolderArg object.
+/// @return An instantiation of the `DBSHARINGTransferFolderArg` object.
 ///
 + (DBSHARINGTransferFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMAdminTier;
-
 #pragma mark - API Object
 
 ///
-/// The AdminTier union.
+/// The `AdminTier` union.
 ///
 /// Describes which team-related admin permissions a user has.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMAdminTier : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMAdminTierTag enum type represents the possible tag states with which the
-/// DBTEAMAdminTier union can exist.
+/// The `DBTEAMAdminTierTag` enum type represents the possible tag states with which the
+/// `DBTEAMAdminTier` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
   /// User is an administrator of the team - has all permissions.
   DBTEAMAdminTierTeamAdmin,
@@ -46,70 +44,71 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TeamAdmin.
+/// Initializes union class with tag state of "team_admin".
 ///
-/// About the TeamAdmin tag state: User is an administrator of the team - has all permissions.
+/// Description of the "team_admin" tag state: User is an administrator of the team - has all
+/// permissions.
 ///
-/// @return An initialized DBTEAMAdminTier instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamAdmin;
 
 ///
-/// Initializes union class with tag state of UserManagementAdmin.
+/// Initializes union class with tag state of "user_management_admin".
 ///
-/// About the UserManagementAdmin tag state: User can do most user provisioning, de-provisioning and
-/// management.
+/// Description of the "user_management_admin" tag state: User can do most user provisioning,
+/// de-provisioning and management.
 ///
-/// @return An initialized DBTEAMAdminTier instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserManagementAdmin;
 
 ///
-/// Initializes union class with tag state of SupportAdmin.
+/// Initializes union class with tag state of "support_admin".
 ///
-/// About the SupportAdmin tag state: User can do a limited set of common support tasks for existing
-/// users.
+/// Description of the "support_admin" tag state: User can do a limited set of common support tasks
+/// for existing users.
 ///
-/// @return An initialized DBTEAMAdminTier instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSupportAdmin;
 
 ///
-/// Initializes union class with tag state of MemberOnly.
+/// Initializes union class with tag state of "member_only".
 ///
-/// About the MemberOnly tag state: User is not an admin of the team.
+/// Description of the "member_only" tag state: User is not an admin of the team.
 ///
-/// @return An initialized DBTEAMAdminTier instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberOnly;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TeamAdmin.
+/// Retrieves whether the union's current tag state has value "team_admin".
 ///
-/// @return Whether the union's current tag state has value TeamAdmin.
+/// @return Whether the union's current tag state has value "team_admin".
 ///
 - (BOOL)isTeamAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value UserManagementAdmin.
+/// Retrieves whether the union's current tag state has value "user_management_admin".
 ///
-/// @return Whether the union's current tag state has value UserManagementAdmin.
+/// @return Whether the union's current tag state has value "user_management_admin".
 ///
 - (BOOL)isUserManagementAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value SupportAdmin.
+/// Retrieves whether the union's current tag state has value "support_admin".
 ///
-/// @return Whether the union's current tag state has value SupportAdmin.
+/// @return Whether the union's current tag state has value "support_admin".
 ///
 - (BOOL)isSupportAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value MemberOnly.
+/// Retrieves whether the union's current tag state has value "member_only".
 ///
-/// @return Whether the union's current tag state has value MemberOnly.
+/// @return Whether the union's current tag state has value "member_only".
 ///
 - (BOOL)isMemberOnly;
 
@@ -125,25 +124,25 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMAdminTier union.
+/// The serialization class for the `DBTEAMAdminTier` union.
 ///
 @interface DBTEAMAdminTierSerializer : NSObject
 
 ///
-/// Serializes DBTEAMAdminTier instances.
+/// Serializes `DBTEAMAdminTier` instances.
 ///
-/// @param instance An instance of the DBTEAMAdminTier API object.
+/// @param instance An instance of the `DBTEAMAdminTier` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMAdminTier API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMAdminTier` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMAdminTier * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMAdminTier instances.
+/// Deserializes `DBTEAMAdminTier` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMAdminTier API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMAdminTier` API object.
 ///
-/// @return An instantiation of the DBTEAMAdminTier object.
+/// @return An instantiation of the `DBTEAMAdminTier` object.
 ///
 + (DBTEAMAdminTier * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

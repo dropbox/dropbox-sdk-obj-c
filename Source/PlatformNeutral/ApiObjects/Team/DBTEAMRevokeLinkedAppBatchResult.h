@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeLinkedAppBatchResult;
 @class DBTEAMRevokeLinkedAppStatus;
 
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedAppBatchResult struct.
+/// The `RevokeLinkedAppBatchResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedAppBatchResult : NSObject <DBSerializable>
 
@@ -28,12 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeLinkedAppBatchResult struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param revokeLinkedAppStatus (no description).
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppBatchResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRevokeLinkedAppStatus:
     (NSArray<DBTEAMRevokeLinkedAppStatus *> * _Nonnull)revokeLinkedAppStatus;
@@ -43,27 +41,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeLinkedAppBatchResult struct.
+/// The serialization class for the `RevokeLinkedAppBatchResult` struct.
 ///
 @interface DBTEAMRevokeLinkedAppBatchResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedAppBatchResult instances.
+/// Serializes `DBTEAMRevokeLinkedAppBatchResult` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedAppBatchResult API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedAppBatchResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppBatchResult API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppBatchResult`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppBatchResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedAppBatchResult instances.
+/// Deserializes `DBTEAMRevokeLinkedAppBatchResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppBatchResult
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedAppBatchResult` API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedAppBatchResult object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedAppBatchResult` object.
 ///
 + (DBTEAMRevokeLinkedAppBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

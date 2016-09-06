@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGSharedLinkError;
-
 #pragma mark - API Object
 
 ///
-/// The SharedLinkError union.
+/// The `SharedLinkError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedLinkError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGSharedLinkErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGSharedLinkError union can exist.
+/// The `DBSHARINGSharedLinkErrorTag` enum type represents the possible tag states with which the
+/// `DBSHARINGSharedLinkError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
   /// The shared link wasn't found
   DBSHARINGSharedLinkErrorSharedLinkNotFound,
@@ -41,50 +39,51 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of SharedLinkNotFound.
+/// Initializes union class with tag state of "shared_link_not_found".
 ///
-/// About the SharedLinkNotFound tag state: The shared link wasn't found
+/// Description of the "shared_link_not_found" tag state: The shared link wasn't found
 ///
-/// @return An initialized DBSHARINGSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
 ///
-/// Initializes union class with tag state of SharedLinkAccessDenied.
+/// Initializes union class with tag state of "shared_link_access_denied".
 ///
-/// About the SharedLinkAccessDenied tag state: The caller is not allowed to access this shared link
+/// Description of the "shared_link_access_denied" tag state: The caller is not allowed to access
+/// this shared link
 ///
-/// @return An initialized DBSHARINGSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkNotFound.
+/// Retrieves whether the union's current tag state has value "shared_link_not_found".
 ///
-/// @return Whether the union's current tag state has value SharedLinkNotFound.
+/// @return Whether the union's current tag state has value "shared_link_not_found".
 ///
 - (BOOL)isSharedLinkNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkAccessDenied.
+/// Retrieves whether the union's current tag state has value "shared_link_access_denied".
 ///
-/// @return Whether the union's current tag state has value SharedLinkAccessDenied.
+/// @return Whether the union's current tag state has value "shared_link_access_denied".
 ///
 - (BOOL)isSharedLinkAccessDenied;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -100,26 +99,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGSharedLinkError union.
+/// The serialization class for the `DBSHARINGSharedLinkError` union.
 ///
 @interface DBSHARINGSharedLinkErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedLinkError instances.
+/// Serializes `DBSHARINGSharedLinkError` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedLinkError API object.
+/// @param instance An instance of the `DBSHARINGSharedLinkError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharedLinkError API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedLinkError instances.
+/// Deserializes `DBSHARINGSharedLinkError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharedLinkError API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedLinkError` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGSharedLinkError object.
+/// @return An instantiation of the `DBSHARINGSharedLinkError` object.
 ///
 + (DBSHARINGSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,25 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSGetAccountBatchError;
-
 #pragma mark - API Object
 
 ///
-/// The GetAccountBatchError union.
+/// The `GetAccountBatchError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSGetAccountBatchError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBUSERSGetAccountBatchErrorTag enum type represents the possible tag states with which the
-/// DBUSERSGetAccountBatchError union can exist.
+/// The `DBUSERSGetAccountBatchErrorTag` enum type represents the possible tag states with which the
+/// `DBUSERSGetAccountBatchError` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSGetAccountBatchErrorTag) {
-  /// The value is an account ID specified in accountIds in GetAccountBatchArg that does not
-  /// exist.
+  /// The value is an account ID specified in `accountIds` in `DBUSERSGetAccountBatchArg` that
+  /// does not exist.
   DBUSERSGetAccountBatchErrorNoAccount,
 
   /// (no description).
@@ -36,49 +34,49 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountBatchErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBUSERSGetAccountBatchErrorTag tag;
 
-/// The value is an account ID specified in accountIds in GetAccountBatchArg that does not exist.
-/// Ensure the isNoAccount method returns true before accessing, otherwise a runtime exception will
-/// be raised.
+/// The value is an account ID specified in `accountIds` in `DBUSERSGetAccountBatchArg` that does
+/// not exist. @note Ensure the `isNoAccount` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull noAccount;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of NoAccount.
+/// Initializes union class with tag state of "no_account".
 ///
-/// About the NoAccount tag state: The value is an account ID specified in
-/// :field:`GetAccountBatchArg.account_ids` that does not exist.
+/// Description of the "no_account" tag state: The value is an account ID specified in `accountIds`
+/// in `DBUSERSGetAccountBatchArg` that does not exist.
 ///
-/// @param noAccount The value is an account ID specified in :field:`GetAccountBatchArg.account_ids`
-/// that does not exist.
+/// @param noAccount The value is an account ID specified in `accountIds` in
+/// `DBUSERSGetAccountBatchArg` that does not exist.
 ///
-/// @return An initialized DBUSERSGetAccountBatchError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoAccount:(NSString * _Nonnull)noAccount;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBUSERSGetAccountBatchError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value NoAccount.
+/// Retrieves whether the union's current tag state has value "no_account".
 ///
-/// @note Call this method and ensure it returns true before accessing the noAccount property,
+/// @note Call this method and ensure it returns true before accessing the `noAccount` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value NoAccount.
+/// @return Whether the union's current tag state has value "no_account".
 ///
 - (BOOL)isNoAccount;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -94,27 +92,27 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountBatchErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBUSERSGetAccountBatchError union.
+/// The serialization class for the `DBUSERSGetAccountBatchError` union.
 ///
 @interface DBUSERSGetAccountBatchErrorSerializer : NSObject
 
 ///
-/// Serializes DBUSERSGetAccountBatchError instances.
+/// Serializes `DBUSERSGetAccountBatchError` instances.
 ///
-/// @param instance An instance of the DBUSERSGetAccountBatchError API object.
+/// @param instance An instance of the `DBUSERSGetAccountBatchError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSGetAccountBatchError API
+/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountBatchError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountBatchError * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSGetAccountBatchError instances.
+/// Deserializes `DBUSERSGetAccountBatchError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSGetAccountBatchError API
+/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountBatchError` API
 /// object.
 ///
-/// @return An instantiation of the DBUSERSGetAccountBatchError object.
+/// @return An instantiation of the `DBUSERSGetAccountBatchError` object.
 ///
 + (DBUSERSGetAccountBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

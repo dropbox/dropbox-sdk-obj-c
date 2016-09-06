@@ -7,31 +7,30 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGSharedLinkSettingsError;
-
 #pragma mark - API Object
 
 ///
-/// The SharedLinkSettingsError union.
+/// The `SharedLinkSettingsError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedLinkSettingsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGSharedLinkSettingsErrorTag enum type represents the possible tag states with which
-/// the DBSHARINGSharedLinkSettingsError union can exist.
+/// The `DBSHARINGSharedLinkSettingsErrorTag` enum type represents the possible tag states with
+/// which the `DBSHARINGSharedLinkSettingsError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
   /// The given settings are invalid (for example, all attributes of the SharedLinkSettings are
-  /// empty, the requested visibility is password in RequestedVisibility but the linkPassword in
-  /// SharedLinkSettings is missing, expires in SharedLinkSettings is set to the past, etc.)
+  /// empty, the requested visibility is `password` in `DBSHARINGRequestedVisibility` but the
+  /// `linkPassword` in `DBSHARINGSharedLinkSettings` is missing, `expires` in
+  /// `DBSHARINGSharedLinkSettings` is set to the past, etc.)
   DBSHARINGSharedLinkSettingsErrorInvalidSettings,
 
   /// User is not allowed to modify the settings of this link. Note that basic users can only set
-  /// public in RequestedVisibility as the requestedVisibility in SharedLinkSettings and cannot
-  /// set expires in SharedLinkSettings
+  /// `public` in `DBSHARINGRequestedVisibility` as the `requestedVisibility` in
+  /// `DBSHARINGSharedLinkSettings` and cannot set `expires` in `DBSHARINGSharedLinkSettings`
   DBSHARINGSharedLinkSettingsErrorNotAuthorized,
 
 };
@@ -42,42 +41,42 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InvalidSettings.
+/// Initializes union class with tag state of "invalid_settings".
 ///
-/// About the InvalidSettings tag state: The given settings are invalid (for example, all attributes
-/// of the :type:`SharedLinkSettings` are empty, the requested visibility is
-/// :field:`RequestedVisibility.password` but the :field:`SharedLinkSettings.link_password` is
-/// missing, :field:`SharedLinkSettings.expires` is set to the past, etc.)
+/// Description of the "invalid_settings" tag state: The given settings are invalid (for example,
+/// all attributes of the SharedLinkSettings are empty, the requested visibility is `password` in
+/// `DBSHARINGRequestedVisibility` but the `linkPassword` in `DBSHARINGSharedLinkSettings` is
+/// missing, `expires` in `DBSHARINGSharedLinkSettings` is set to the past, etc.)
 ///
-/// @return An initialized DBSHARINGSharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidSettings;
 
 ///
-/// Initializes union class with tag state of NotAuthorized.
+/// Initializes union class with tag state of "not_authorized".
 ///
-/// About the NotAuthorized tag state: User is not allowed to modify the settings of this link. Note
-/// that basic users can only set :field:`RequestedVisibility.public` as the
-/// :field:`SharedLinkSettings.requested_visibility` and cannot set
-/// :field:`SharedLinkSettings.expires`
+/// Description of the "not_authorized" tag state: User is not allowed to modify the settings of
+/// this link. Note that basic users can only set `public` in `DBSHARINGRequestedVisibility` as the
+/// `requestedVisibility` in `DBSHARINGSharedLinkSettings` and cannot set `expires` in
+/// `DBSHARINGSharedLinkSettings`
 ///
-/// @return An initialized DBSHARINGSharedLinkSettingsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotAuthorized;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidSettings.
+/// Retrieves whether the union's current tag state has value "invalid_settings".
 ///
-/// @return Whether the union's current tag state has value InvalidSettings.
+/// @return Whether the union's current tag state has value "invalid_settings".
 ///
 - (BOOL)isInvalidSettings;
 
 ///
-/// Retrieves whether the union's current tag state has value NotAuthorized.
+/// Retrieves whether the union's current tag state has value "not_authorized".
 ///
-/// @return Whether the union's current tag state has value NotAuthorized.
+/// @return Whether the union's current tag state has value "not_authorized".
 ///
 - (BOOL)isNotAuthorized;
 
@@ -93,27 +92,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkSettingsErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGSharedLinkSettingsError union.
+/// The serialization class for the `DBSHARINGSharedLinkSettingsError` union.
 ///
 @interface DBSHARINGSharedLinkSettingsErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedLinkSettingsError instances.
+/// Serializes `DBSHARINGSharedLinkSettingsError` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedLinkSettingsError API object.
+/// @param instance An instance of the `DBSHARINGSharedLinkSettingsError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharedLinkSettingsError API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkSettingsError`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkSettingsError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedLinkSettingsError instances.
+/// Deserializes `DBSHARINGSharedLinkSettingsError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharedLinkSettingsError
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkSettingsError` API object.
 ///
-/// @return An instantiation of the DBSHARINGSharedLinkSettingsError object.
+/// @return An instantiation of the `DBSHARINGSharedLinkSettingsError` object.
 ///
 + (DBSHARINGSharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

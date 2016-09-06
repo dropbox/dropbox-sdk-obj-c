@@ -7,26 +7,25 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFileMembersError;
 @class DBSHARINGSharingFileAccessError;
 @class DBSHARINGSharingUserError;
 
 #pragma mark - API Object
 
 ///
-/// The ListFileMembersError union.
+/// The `ListFileMembersError` union.
 ///
-/// Error for listFileMembers.
+/// Error for `listFileMembers`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFileMembersError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGListFileMembersErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGListFileMembersError union can exist.
+/// The `DBSHARINGListFileMembersErrorTag` enum type represents the possible tag states with which
+/// the `DBSHARINGListFileMembersError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersErrorTag) {
   /// (no description).
   DBSHARINGListFileMembersErrorUserError,
@@ -42,67 +41,67 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListFileMembersErrorTag tag;
 
-/// (no description). Ensure the isUserError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isUserError` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
-/// (no description). Ensure the isAccessError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserError.
+/// Initializes union class with tag state of "user_error".
 ///
 /// @param userError (no description).
 ///
-/// @return An initialized DBSHARINGListFileMembersError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserError:(DBSHARINGSharingUserError * _Nonnull)userError;
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
 /// @param accessError (no description).
 ///
-/// @return An initialized DBSHARINGListFileMembersError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGListFileMembersError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserError.
+/// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the userError property,
+/// @note Call this method and ensure it returns true before accessing the `userError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UserError.
+/// @return Whether the union's current tag state has value "user_error".
 ///
 - (BOOL)isUserError;
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -118,27 +117,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGListFileMembersError union.
+/// The serialization class for the `DBSHARINGListFileMembersError` union.
 ///
 @interface DBSHARINGListFileMembersErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFileMembersError instances.
+/// Serializes `DBSHARINGListFileMembersError` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFileMembersError API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFileMembersError API
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFileMembersError instances.
+/// Deserializes `DBSHARINGListFileMembersError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFileMembersError API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFileMembersError`
+/// API object.
 ///
-/// @return An instantiation of the DBSHARINGListFileMembersError object.
+/// @return An instantiation of the `DBSHARINGListFileMembersError` object.
 ///
 + (DBSHARINGListFileMembersError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

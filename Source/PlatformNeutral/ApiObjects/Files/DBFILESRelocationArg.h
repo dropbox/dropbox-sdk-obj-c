@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESRelocationArg;
-
 #pragma mark - API Object
 
 ///
-/// The RelocationArg struct.
+/// The `RelocationArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESRelocationArg : NSObject <DBSerializable>
 
@@ -30,12 +28,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESRelocationArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.
 ///
-/// @return An initialized DBFILESRelocationArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFromPath:(NSString * _Nonnull)fromPath toPath:(NSString * _Nonnull)toPath;
 
@@ -44,25 +42,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RelocationArg struct.
+/// The serialization class for the `RelocationArg` struct.
 ///
 @interface DBFILESRelocationArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESRelocationArg instances.
+/// Serializes `DBFILESRelocationArg` instances.
 ///
-/// @param instance An instance of the DBFILESRelocationArg API object.
+/// @param instance An instance of the `DBFILESRelocationArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESRelocationArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESRelocationArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESRelocationArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESRelocationArg instances.
+/// Deserializes `DBFILESRelocationArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESRelocationArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESRelocationArg` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESRelocationArg object.
+/// @return An instantiation of the `DBFILESRelocationArg` object.
 ///
 + (DBFILESRelocationArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

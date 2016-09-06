@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGRelinquishFileMembershipArg;
-
 #pragma mark - API Object
 
 ///
-/// The RelinquishFileMembershipArg struct.
+/// The `RelinquishFileMembershipArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRelinquishFileMembershipArg : NSObject <DBSerializable>
 
@@ -27,12 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGRelinquishFileMembershipArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file The path or id for the file.
 ///
-/// @return An initialized DBSHARINGRelinquishFileMembershipArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RelinquishFileMembershipArg struct.
+/// The serialization class for the `RelinquishFileMembershipArg` struct.
 ///
 @interface DBSHARINGRelinquishFileMembershipArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRelinquishFileMembershipArg instances.
+/// Serializes `DBSHARINGRelinquishFileMembershipArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGRelinquishFileMembershipArg API object.
+/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGRelinquishFileMembershipArg
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGRelinquishFileMembershipArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRelinquishFileMembershipArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRelinquishFileMembershipArg instances.
+/// Deserializes `DBSHARINGRelinquishFileMembershipArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGRelinquishFileMembershipArg API object.
+/// `DBSHARINGRelinquishFileMembershipArg` API object.
 ///
-/// @return An instantiation of the DBSHARINGRelinquishFileMembershipArg object.
+/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipArg` object.
 ///
 + (DBSHARINGRelinquishFileMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

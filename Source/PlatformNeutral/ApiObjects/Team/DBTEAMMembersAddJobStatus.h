@@ -8,28 +8,27 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMMemberAddResult;
-@class DBTEAMMembersAddJobStatus;
 
 #pragma mark - API Object
 
 ///
-/// The MembersAddJobStatus union.
+/// The `MembersAddJobStatus` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersAddJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersAddJobStatusTag enum type represents the possible tag states with which the
-/// DBTEAMMembersAddJobStatus union can exist.
+/// The `DBTEAMMembersAddJobStatusTag` enum type represents the possible tag states with which the
+/// `DBTEAMMembersAddJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersAddJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBTEAMMembersAddJobStatusInProgress,
 
   /// The asynchronous job has finished. For each member that was specified in the parameter
-  /// MembersAddArg that was provided to membersAdd, a corresponding item is returned in this
+  /// MembersAddArg that was provided to `membersAdd`, a corresponding item is returned in this
   /// list.
   DBTEAMMembersAddJobStatusComplete,
 
@@ -42,79 +41,79 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddJobStatusTag) {
 @property(nonatomic, readonly) DBTEAMMembersAddJobStatusTag tag;
 
 /// The asynchronous job has finished. For each member that was specified in the parameter
-/// MembersAddArg that was provided to membersAdd, a corresponding item is returned in this list.
-/// Ensure the isComplete method returns true before accessing, otherwise a runtime exception will
-/// be raised.
+/// MembersAddArg that was provided to `membersAdd`, a corresponding item is returned in this list.
+/// @note Ensure the `isComplete` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly) NSArray<DBTEAMMemberAddResult *> * _Nonnull complete;
 
-/// The asynchronous job returned an error. The string contains an error message. Ensure the
-/// isFailed method returns true before accessing, otherwise a runtime exception will be raised.
+/// The asynchronous job returned an error. The string contains an error message. @note Ensure the
+/// `isFailed` method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull failed;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InProgress.
+/// Initializes union class with tag state of "in_progress".
 ///
-/// About the InProgress tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
 ///
-/// @return An initialized DBTEAMMembersAddJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInProgress;
 
 ///
-/// Initializes union class with tag state of Complete.
+/// Initializes union class with tag state of "complete".
 ///
-/// About the Complete tag state: The asynchronous job has finished. For each member that was
-/// specified in the parameter :type:`MembersAddArg` that was provided to :route:`members/add`, a
-/// corresponding item is returned in this list.
+/// Description of the "complete" tag state: The asynchronous job has finished. For each member that
+/// was specified in the parameter MembersAddArg that was provided to `membersAdd`, a corresponding
+/// item is returned in this list.
 ///
 /// @param complete The asynchronous job has finished. For each member that was specified in the
-/// parameter :type:`MembersAddArg` that was provided to :route:`members/add`, a corresponding item
-/// is returned in this list.
+/// parameter MembersAddArg that was provided to `membersAdd`, a corresponding item is returned in
+/// this list.
 ///
-/// @return An initialized DBTEAMMembersAddJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(NSArray<DBTEAMMemberAddResult *> * _Nonnull)complete;
 
 ///
-/// Initializes union class with tag state of Failed.
+/// Initializes union class with tag state of "failed".
 ///
-/// About the Failed tag state: The asynchronous job returned an error. The string contains an error
-/// message.
+/// Description of the "failed" tag state: The asynchronous job returned an error. The string
+/// contains an error message.
 ///
 /// @param failed The asynchronous job returned an error. The string contains an error message.
 ///
-/// @return An initialized DBTEAMMembersAddJobStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFailed:(NSString * _Nonnull)failed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InProgress.
+/// Retrieves whether the union's current tag state has value "in_progress".
 ///
-/// @return Whether the union's current tag state has value InProgress.
+/// @return Whether the union's current tag state has value "in_progress".
 ///
 - (BOOL)isInProgress;
 
 ///
-/// Retrieves whether the union's current tag state has value Complete.
+/// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the complete property,
+/// @note Call this method and ensure it returns true before accessing the `complete` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Complete.
+/// @return Whether the union's current tag state has value "complete".
 ///
 - (BOOL)isComplete;
 
 ///
-/// Retrieves whether the union's current tag state has value Failed.
+/// Retrieves whether the union's current tag state has value "failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the failed property,
+/// @note Call this method and ensure it returns true before accessing the `failed` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Failed.
+/// @return Whether the union's current tag state has value "failed".
 ///
 - (BOOL)isFailed;
 
@@ -130,26 +129,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddJobStatusTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersAddJobStatus union.
+/// The serialization class for the `DBTEAMMembersAddJobStatus` union.
 ///
 @interface DBTEAMMembersAddJobStatusSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersAddJobStatus instances.
+/// Serializes `DBTEAMMembersAddJobStatus` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersAddJobStatus API object.
+/// @param instance An instance of the `DBTEAMMembersAddJobStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersAddJobStatus API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersAddJobStatus` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersAddJobStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersAddJobStatus instances.
+/// Deserializes `DBTEAMMembersAddJobStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersAddJobStatus API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersAddJobStatus` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersAddJobStatus object.
+/// @return An instantiation of the `DBTEAMMembersAddJobStatus` object.
 ///
 + (DBTEAMMembersAddJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

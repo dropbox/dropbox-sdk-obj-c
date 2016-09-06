@@ -8,25 +8,24 @@
 #import <Foundation/Foundation.h>
 
 @class DBUSERSIndividualSpaceAllocation;
-@class DBUSERSSpaceAllocation;
 @class DBUSERSTeamSpaceAllocation;
 
 #pragma mark - API Object
 
 ///
-/// The SpaceAllocation union.
+/// The `SpaceAllocation` union.
 ///
 /// Space is allocated differently based on the type of account.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSSpaceAllocation : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBUSERSSpaceAllocationTag enum type represents the possible tag states with which the
-/// DBUSERSSpaceAllocation union can exist.
+/// The `DBUSERSSpaceAllocationTag` enum type represents the possible tag states with which the
+/// `DBUSERSSpaceAllocation` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
   /// The user's space allocation applies only to their individual account.
   DBUSERSSpaceAllocationIndividual,
@@ -42,72 +41,73 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBUSERSSpaceAllocationTag tag;
 
-/// The user's space allocation applies only to their individual account. Ensure the isIndividual
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// The user's space allocation applies only to their individual account. @note Ensure the
+/// `isIndividual` method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBUSERSIndividualSpaceAllocation * _Nonnull individual;
 
-/// The user shares space with other members of their team. Ensure the isTeam method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// The user shares space with other members of their team. @note Ensure the `isTeam` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBUSERSTeamSpaceAllocation * _Nonnull team;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Individual.
+/// Initializes union class with tag state of "individual".
 ///
-/// About the Individual tag state: The user's space allocation applies only to their individual
-/// account.
+/// Description of the "individual" tag state: The user's space allocation applies only to their
+/// individual account.
 ///
 /// @param individual The user's space allocation applies only to their individual account.
 ///
-/// @return An initialized DBUSERSSpaceAllocation instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithIndividual:(DBUSERSIndividualSpaceAllocation * _Nonnull)individual;
 
 ///
-/// Initializes union class with tag state of Team.
+/// Initializes union class with tag state of "team".
 ///
-/// About the Team tag state: The user shares space with other members of their team.
+/// Description of the "team" tag state: The user shares space with other members of their team.
 ///
 /// @param team The user shares space with other members of their team.
 ///
-/// @return An initialized DBUSERSSpaceAllocation instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeam:(DBUSERSTeamSpaceAllocation * _Nonnull)team;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBUSERSSpaceAllocation instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Individual.
+/// Retrieves whether the union's current tag state has value "individual".
 ///
-/// @note Call this method and ensure it returns true before accessing the individual property,
+/// @note Call this method and ensure it returns true before accessing the `individual` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Individual.
+/// @return Whether the union's current tag state has value "individual".
 ///
 - (BOOL)isIndividual;
 
 ///
-/// Retrieves whether the union's current tag state has value Team.
+/// Retrieves whether the union's current tag state has value "team".
 ///
-/// @note Call this method and ensure it returns true before accessing the team property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `team` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Team.
+/// @return Whether the union's current tag state has value "team".
 ///
 - (BOOL)isTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -123,26 +123,26 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBUSERSSpaceAllocation union.
+/// The serialization class for the `DBUSERSSpaceAllocation` union.
 ///
 @interface DBUSERSSpaceAllocationSerializer : NSObject
 
 ///
-/// Serializes DBUSERSSpaceAllocation instances.
+/// Serializes `DBUSERSSpaceAllocation` instances.
 ///
-/// @param instance An instance of the DBUSERSSpaceAllocation API object.
+/// @param instance An instance of the `DBUSERSSpaceAllocation` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSSpaceAllocation API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSSpaceAllocation` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSSpaceAllocation * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSSpaceAllocation instances.
+/// Deserializes `DBUSERSSpaceAllocation` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSSpaceAllocation API
+/// @param dict A json-compatible dictionary representation of the `DBUSERSSpaceAllocation` API
 /// object.
 ///
-/// @return An instantiation of the DBUSERSSpaceAllocation object.
+/// @return An instantiation of the `DBUSERSSpaceAllocation` object.
 ///
 + (DBUSERSSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

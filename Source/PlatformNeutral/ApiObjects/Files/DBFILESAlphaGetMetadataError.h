@@ -7,24 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESAlphaGetMetadataError;
 @class DBFILESLookUpPropertiesError;
 @class DBFILESLookupError;
 
 #pragma mark - API Object
 
 ///
-/// The AlphaGetMetadataError union.
+/// The `AlphaGetMetadataError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESAlphaGetMetadataError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESAlphaGetMetadataErrorTag enum type represents the possible tag states with which the
-/// DBFILESAlphaGetMetadataError union can exist.
+/// The `DBFILESAlphaGetMetadataErrorTag` enum type represents the possible tag states with which
+/// the `DBFILESAlphaGetMetadataError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESAlphaGetMetadataErrorTag) {
   /// (no description).
   DBFILESAlphaGetMetadataErrorPath,
@@ -37,53 +36,53 @@ typedef NS_ENUM(NSInteger, DBFILESAlphaGetMetadataErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESAlphaGetMetadataErrorTag tag;
 
-/// (no description). Ensure the isPath method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
-/// (no description). Ensure the isPropertiesError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPropertiesError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookUpPropertiesError * _Nonnull propertiesError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Path.
+/// Initializes union class with tag state of "path".
 ///
 /// @param path (no description).
 ///
-/// @return An initialized DBFILESAlphaGetMetadataError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(DBFILESLookupError * _Nonnull)path;
 
 ///
-/// Initializes union class with tag state of PropertiesError.
+/// Initializes union class with tag state of "properties_error".
 ///
 /// @param propertiesError (no description).
 ///
-/// @return An initialized DBFILESAlphaGetMetadataError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPropertiesError:(DBFILESLookUpPropertiesError * _Nonnull)propertiesError;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Path.
+/// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the path property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `path` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Path.
+/// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value PropertiesError.
+/// Retrieves whether the union's current tag state has value "properties_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the propertiesError property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `propertiesError`
+/// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value PropertiesError.
+/// @return Whether the union's current tag state has value "properties_error".
 ///
 - (BOOL)isPropertiesError;
 
@@ -99,27 +98,27 @@ typedef NS_ENUM(NSInteger, DBFILESAlphaGetMetadataErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESAlphaGetMetadataError union.
+/// The serialization class for the `DBFILESAlphaGetMetadataError` union.
 ///
 @interface DBFILESAlphaGetMetadataErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESAlphaGetMetadataError instances.
+/// Serializes `DBFILESAlphaGetMetadataError` instances.
 ///
-/// @param instance An instance of the DBFILESAlphaGetMetadataError API object.
+/// @param instance An instance of the `DBFILESAlphaGetMetadataError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESAlphaGetMetadataError API
+/// @return A json-compatible dictionary representation of the `DBFILESAlphaGetMetadataError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESAlphaGetMetadataError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESAlphaGetMetadataError instances.
+/// Deserializes `DBFILESAlphaGetMetadataError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESAlphaGetMetadataError API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESAlphaGetMetadataError`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESAlphaGetMetadataError object.
+/// @return An instantiation of the `DBFILESAlphaGetMetadataError` object.
 ///
 + (DBFILESAlphaGetMetadataError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

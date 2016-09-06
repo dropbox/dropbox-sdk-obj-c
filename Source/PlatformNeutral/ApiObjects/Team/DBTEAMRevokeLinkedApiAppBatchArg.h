@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMRevokeLinkedApiAppArg;
-@class DBTEAMRevokeLinkedApiAppBatchArg;
 
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedApiAppBatchArg struct.
+/// The `RevokeLinkedApiAppBatchArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedApiAppBatchArg : NSObject <DBSerializable>
 
@@ -28,12 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeLinkedApiAppBatchArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param revokeLinkedApp (no description).
 ///
-/// @return An initialized DBTEAMRevokeLinkedApiAppBatchArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRevokeLinkedApp:(NSArray<DBTEAMRevokeLinkedApiAppArg *> * _Nonnull)revokeLinkedApp;
 
@@ -42,27 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeLinkedApiAppBatchArg struct.
+/// The serialization class for the `RevokeLinkedApiAppBatchArg` struct.
 ///
 @interface DBTEAMRevokeLinkedApiAppBatchArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedApiAppBatchArg instances.
+/// Serializes `DBTEAMRevokeLinkedApiAppBatchArg` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedApiAppBatchArg API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedApiAppBatchArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedApiAppBatchArg API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedApiAppBatchArg`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedApiAppBatchArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedApiAppBatchArg instances.
+/// Deserializes `DBTEAMRevokeLinkedApiAppBatchArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedApiAppBatchArg
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedApiAppBatchArg` API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedApiAppBatchArg object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedApiAppBatchArg` object.
 ///
 + (DBTEAMRevokeLinkedApiAppBatchArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

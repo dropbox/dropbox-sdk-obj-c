@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupUpdateError;
-
 #pragma mark - API Object
 
 ///
-/// The GroupUpdateError union.
+/// The `GroupUpdateError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupUpdateError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMGroupUpdateErrorTag enum type represents the possible tag states with which the
-/// DBTEAMGroupUpdateError union can exist.
+/// The `DBTEAMGroupUpdateErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMGroupUpdateError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupUpdateErrorGroupNotFound,
@@ -41,52 +39,52 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of GroupNotFound.
+/// Initializes union class with tag state of "group_not_found".
 ///
-/// About the GroupNotFound tag state: No matching group found. No groups match the specified group
-/// ID.
+/// Description of the "group_not_found" tag state: No matching group found. No groups match the
+/// specified group ID.
 ///
-/// @return An initialized DBTEAMGroupUpdateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMGroupUpdateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of ExternalIdAlreadyInUse.
+/// Initializes union class with tag state of "external_id_already_in_use".
 ///
-/// About the ExternalIdAlreadyInUse tag state: The new external ID is already being used by another
-/// group.
+/// Description of the "external_id_already_in_use" tag state: The new external ID is already being
+/// used by another group.
 ///
-/// @return An initialized DBTEAMGroupUpdateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithExternalIdAlreadyInUse;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value GroupNotFound.
+/// Retrieves whether the union's current tag state has value "group_not_found".
 ///
-/// @return Whether the union's current tag state has value GroupNotFound.
+/// @return Whether the union's current tag state has value "group_not_found".
 ///
 - (BOOL)isGroupNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value ExternalIdAlreadyInUse.
+/// Retrieves whether the union's current tag state has value "external_id_already_in_use".
 ///
-/// @return Whether the union's current tag state has value ExternalIdAlreadyInUse.
+/// @return Whether the union's current tag state has value "external_id_already_in_use".
 ///
 - (BOOL)isExternalIdAlreadyInUse;
 
@@ -102,26 +100,26 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMGroupUpdateError union.
+/// The serialization class for the `DBTEAMGroupUpdateError` union.
 ///
 @interface DBTEAMGroupUpdateErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupUpdateError instances.
+/// Serializes `DBTEAMGroupUpdateError` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupUpdateError API object.
+/// @param instance An instance of the `DBTEAMGroupUpdateError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupUpdateError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupUpdateError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupUpdateError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupUpdateError instances.
+/// Deserializes `DBTEAMGroupUpdateError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupUpdateError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupUpdateError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupUpdateError object.
+/// @return An instantiation of the `DBTEAMGroupUpdateError` object.
 ///
 + (DBTEAMGroupUpdateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

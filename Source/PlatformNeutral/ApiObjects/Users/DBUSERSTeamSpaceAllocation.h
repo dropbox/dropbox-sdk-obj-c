@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSTeamSpaceAllocation;
-
 #pragma mark - API Object
 
 ///
-/// The TeamSpaceAllocation struct.
+/// The `TeamSpaceAllocation` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSTeamSpaceAllocation : NSObject <DBSerializable>
 
@@ -30,12 +28,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSTeamSpaceAllocation struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param used The total space currently used by the user's team (bytes).
 /// @param allocated The total space allocated to the user's team (bytes).
 ///
-/// @return An initialized DBUSERSTeamSpaceAllocation instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocated:(NSNumber * _Nonnull)allocated;
 
@@ -44,27 +42,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the TeamSpaceAllocation struct.
+/// The serialization class for the `TeamSpaceAllocation` struct.
 ///
 @interface DBUSERSTeamSpaceAllocationSerializer : NSObject
 
 ///
-/// Serializes DBUSERSTeamSpaceAllocation instances.
+/// Serializes `DBUSERSTeamSpaceAllocation` instances.
 ///
-/// @param instance An instance of the DBUSERSTeamSpaceAllocation API object.
+/// @param instance An instance of the `DBUSERSTeamSpaceAllocation` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSTeamSpaceAllocation API
+/// @return A json-compatible dictionary representation of the `DBUSERSTeamSpaceAllocation` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSTeamSpaceAllocation * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSTeamSpaceAllocation instances.
+/// Deserializes `DBUSERSTeamSpaceAllocation` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSTeamSpaceAllocation API
+/// @param dict A json-compatible dictionary representation of the `DBUSERSTeamSpaceAllocation` API
 /// object.
 ///
-/// @return An instantiation of the DBUSERSTeamSpaceAllocation object.
+/// @return An instantiation of the `DBUSERSTeamSpaceAllocation` object.
 ///
 + (DBUSERSTeamSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

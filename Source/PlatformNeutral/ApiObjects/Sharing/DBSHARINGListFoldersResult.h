@@ -7,19 +7,19 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFoldersResult;
 @class DBSHARINGSharedFolderMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The ListFoldersResult struct.
+/// The `ListFoldersResult` struct.
 ///
-/// Result for listFolders or listMountableFolders, depending on which endpoint was requested.
-/// Unmounted shared folders can be identified by the absence of pathLower in SharedFolderMetadata.
+/// Result for `listFolders` or `listMountableFolders`, depending on which endpoint was requested.
+/// Unmounted shared folders can be identified by the absence of `pathLower` in
+/// `DBSHARINGSharedFolderMetadata`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFoldersResult : NSObject <DBSerializable>
 
@@ -29,32 +29,31 @@
 @property(nonatomic, readonly) NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull entries;
 
 /// Present if there are additional shared folders that have not been returned yet. Pass the cursor
-/// into the corresponding continue endpoint (either listFoldersContinue or
-/// listMountableFoldersContinue) to list additional folders.
+/// into the corresponding continue endpoint (either `listFoldersContinue` or
+/// `listMountableFoldersContinue`) to list additional folders.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFoldersResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param entries List of all shared folders the authenticated user has access to.
 /// @param cursor Present if there are additional shared folders that have not been returned yet.
-/// Pass the cursor into the corresponding continue endpoint (either :route:`list_folders/continue`
-/// or :route:`list_mountable_folders/continue`) to list additional folders.
+/// Pass the cursor into the corresponding continue endpoint (either `listFoldersContinue` or
+/// `listMountableFoldersContinue`) to list additional folders.
 ///
-/// @return An initialized DBSHARINGListFoldersResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull)entries
                                  cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor for the DBSHARINGListFoldersResult struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param entries List of all shared folders the authenticated user has access to.
 ///
-/// @return An initialized DBSHARINGListFoldersResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull)entries;
 
@@ -63,27 +62,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFoldersResult struct.
+/// The serialization class for the `ListFoldersResult` struct.
 ///
 @interface DBSHARINGListFoldersResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFoldersResult instances.
+/// Serializes `DBSHARINGListFoldersResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFoldersResult API object.
+/// @param instance An instance of the `DBSHARINGListFoldersResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFoldersResult API
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFoldersResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFoldersResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFoldersResult instances.
+/// Deserializes `DBSHARINGListFoldersResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFoldersResult API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFoldersResult` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGListFoldersResult object.
+/// @return An instantiation of the `DBSHARINGListFoldersResult` object.
 ///
 + (DBSHARINGListFoldersResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESCreateFolderArg;
-
 #pragma mark - API Object
 
 ///
-/// The CreateFolderArg struct.
+/// The `CreateFolderArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESCreateFolderArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESCreateFolderArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path Path in the user's Dropbox to create.
 ///
-/// @return An initialized DBFILESCreateFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -40,26 +38,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the CreateFolderArg struct.
+/// The serialization class for the `CreateFolderArg` struct.
 ///
 @interface DBFILESCreateFolderArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESCreateFolderArg instances.
+/// Serializes `DBFILESCreateFolderArg` instances.
 ///
-/// @param instance An instance of the DBFILESCreateFolderArg API object.
+/// @param instance An instance of the `DBFILESCreateFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESCreateFolderArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESCreateFolderArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESCreateFolderArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESCreateFolderArg instances.
+/// Deserializes `DBFILESCreateFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESCreateFolderArg API
+/// @param dict A json-compatible dictionary representation of the `DBFILESCreateFolderArg` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESCreateFolderArg object.
+/// @return An instantiation of the `DBFILESCreateFolderArg` object.
 ///
 + (DBFILESCreateFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

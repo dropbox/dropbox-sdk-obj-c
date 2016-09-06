@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersRemoveError;
-
 #pragma mark - API Object
 
 ///
-/// The MembersRemoveError union.
+/// The `MembersRemoveError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersRemoveError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersRemoveErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMembersRemoveError union can exist.
+/// The `DBTEAMMembersRemoveErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMMembersRemoveError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -78,254 +76,260 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 ///
-/// Initializes union class with tag state of UserNotInTeam.
+/// Initializes union class with tag state of "user_not_in_team".
 ///
-/// About the UserNotInTeam tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of RemoveLastAdmin.
+/// Initializes union class with tag state of "remove_last_admin".
 ///
-/// About the RemoveLastAdmin tag state: The user is the last admin of the team, so it cannot be
-/// removed from it.
+/// Description of the "remove_last_admin" tag state: The user is the last admin of the team, so it
+/// cannot be removed from it.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRemoveLastAdmin;
 
 ///
-/// Initializes union class with tag state of RemovedAndTransferDestShouldDiffer.
+/// Initializes union class with tag state of "removed_and_transfer_dest_should_differ".
 ///
-/// About the RemovedAndTransferDestShouldDiffer tag state: Expected removed user and transfer_dest
-/// user to be different
+/// Description of the "removed_and_transfer_dest_should_differ" tag state: Expected removed user
+/// and transfer_dest user to be different
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRemovedAndTransferDestShouldDiffer;
 
 ///
-/// Initializes union class with tag state of RemovedAndTransferAdminShouldDiffer.
+/// Initializes union class with tag state of "removed_and_transfer_admin_should_differ".
 ///
-/// About the RemovedAndTransferAdminShouldDiffer tag state: Expected removed user and
-/// transfer_admin user to be different.
+/// Description of the "removed_and_transfer_admin_should_differ" tag state: Expected removed user
+/// and transfer_admin user to be different.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRemovedAndTransferAdminShouldDiffer;
 
 ///
-/// Initializes union class with tag state of TransferDestUserNotFound.
+/// Initializes union class with tag state of "transfer_dest_user_not_found".
 ///
-/// About the TransferDestUserNotFound tag state: No matching user found for the argument
-/// transfer_dest_id.
+/// Description of the "transfer_dest_user_not_found" tag state: No matching user found for the
+/// argument transfer_dest_id.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTransferDestUserNotFound;
 
 ///
-/// Initializes union class with tag state of TransferDestUserNotInTeam.
+/// Initializes union class with tag state of "transfer_dest_user_not_in_team".
 ///
-/// About the TransferDestUserNotInTeam tag state: The provided transfer_dest_id does not exist on
-/// this team.
+/// Description of the "transfer_dest_user_not_in_team" tag state: The provided transfer_dest_id
+/// does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTransferDestUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of TransferAdminUserNotFound.
+/// Initializes union class with tag state of "transfer_admin_user_not_found".
 ///
-/// About the TransferAdminUserNotFound tag state: No matching user found for the argument
-/// transfer_admin_id.
+/// Description of the "transfer_admin_user_not_found" tag state: No matching user found for the
+/// argument transfer_admin_id.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTransferAdminUserNotFound;
 
 ///
-/// Initializes union class with tag state of TransferAdminUserNotInTeam.
+/// Initializes union class with tag state of "transfer_admin_user_not_in_team".
 ///
-/// About the TransferAdminUserNotInTeam tag state: The provided transfer_admin_id does not exist on
-/// this team.
+/// Description of the "transfer_admin_user_not_in_team" tag state: The provided transfer_admin_id
+/// does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTransferAdminUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of UnspecifiedTransferAdminId.
+/// Initializes union class with tag state of "unspecified_transfer_admin_id".
 ///
-/// About the UnspecifiedTransferAdminId tag state: The transfer_admin_id argument must be provided
-/// when file transfer is requested.
+/// Description of the "unspecified_transfer_admin_id" tag state: The transfer_admin_id argument
+/// must be provided when file transfer is requested.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnspecifiedTransferAdminId;
 
 ///
-/// Initializes union class with tag state of TransferAdminIsNotAdmin.
+/// Initializes union class with tag state of "transfer_admin_is_not_admin".
 ///
-/// About the TransferAdminIsNotAdmin tag state: Specified transfer_admin user is not a team admin.
+/// Description of the "transfer_admin_is_not_admin" tag state: Specified transfer_admin user is not
+/// a team admin.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTransferAdminIsNotAdmin;
 
 ///
-/// Initializes union class with tag state of CannotKeepAccountAndTransfer.
+/// Initializes union class with tag state of "cannot_keep_account_and_transfer".
 ///
-/// About the CannotKeepAccountAndTransfer tag state: Cannot keep account and transfer the data to
-/// another user at the same time.
+/// Description of the "cannot_keep_account_and_transfer" tag state: Cannot keep account and
+/// transfer the data to another user at the same time.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCannotKeepAccountAndTransfer;
 
 ///
-/// Initializes union class with tag state of CannotKeepAccountAndDeleteData.
+/// Initializes union class with tag state of "cannot_keep_account_and_delete_data".
 ///
-/// About the CannotKeepAccountAndDeleteData tag state: Cannot keep account and delete the data at
-/// the same time.
+/// Description of the "cannot_keep_account_and_delete_data" tag state: Cannot keep account and
+/// delete the data at the same time.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCannotKeepAccountAndDeleteData;
 
 ///
-/// Initializes union class with tag state of EmailAddressTooLongToBeDisabled.
+/// Initializes union class with tag state of "email_address_too_long_to_be_disabled".
 ///
-/// About the EmailAddressTooLongToBeDisabled tag state: The email address of the user is too long
-/// to be disabled.
+/// Description of the "email_address_too_long_to_be_disabled" tag state: The email address of the
+/// user is too long to be disabled.
 ///
-/// @return An initialized DBTEAMMembersRemoveError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmailAddressTooLongToBeDisabled;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotInTeam.
+/// Retrieves whether the union's current tag state has value "user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value UserNotInTeam.
+/// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value RemoveLastAdmin.
+/// Retrieves whether the union's current tag state has value "remove_last_admin".
 ///
-/// @return Whether the union's current tag state has value RemoveLastAdmin.
+/// @return Whether the union's current tag state has value "remove_last_admin".
 ///
 - (BOOL)isRemoveLastAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value RemovedAndTransferDestShouldDiffer.
+/// Retrieves whether the union's current tag state has value
+/// "removed_and_transfer_dest_should_differ".
 ///
-/// @return Whether the union's current tag state has value RemovedAndTransferDestShouldDiffer.
+/// @return Whether the union's current tag state has value
+/// "removed_and_transfer_dest_should_differ".
 ///
 - (BOOL)isRemovedAndTransferDestShouldDiffer;
 
 ///
-/// Retrieves whether the union's current tag state has value RemovedAndTransferAdminShouldDiffer.
+/// Retrieves whether the union's current tag state has value
+/// "removed_and_transfer_admin_should_differ".
 ///
-/// @return Whether the union's current tag state has value RemovedAndTransferAdminShouldDiffer.
+/// @return Whether the union's current tag state has value
+/// "removed_and_transfer_admin_should_differ".
 ///
 - (BOOL)isRemovedAndTransferAdminShouldDiffer;
 
 ///
-/// Retrieves whether the union's current tag state has value TransferDestUserNotFound.
+/// Retrieves whether the union's current tag state has value "transfer_dest_user_not_found".
 ///
-/// @return Whether the union's current tag state has value TransferDestUserNotFound.
+/// @return Whether the union's current tag state has value "transfer_dest_user_not_found".
 ///
 - (BOOL)isTransferDestUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value TransferDestUserNotInTeam.
+/// Retrieves whether the union's current tag state has value "transfer_dest_user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value TransferDestUserNotInTeam.
+/// @return Whether the union's current tag state has value "transfer_dest_user_not_in_team".
 ///
 - (BOOL)isTransferDestUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value TransferAdminUserNotFound.
+/// Retrieves whether the union's current tag state has value "transfer_admin_user_not_found".
 ///
-/// @return Whether the union's current tag state has value TransferAdminUserNotFound.
+/// @return Whether the union's current tag state has value "transfer_admin_user_not_found".
 ///
 - (BOOL)isTransferAdminUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value TransferAdminUserNotInTeam.
+/// Retrieves whether the union's current tag state has value "transfer_admin_user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value TransferAdminUserNotInTeam.
+/// @return Whether the union's current tag state has value "transfer_admin_user_not_in_team".
 ///
 - (BOOL)isTransferAdminUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value UnspecifiedTransferAdminId.
+/// Retrieves whether the union's current tag state has value "unspecified_transfer_admin_id".
 ///
-/// @return Whether the union's current tag state has value UnspecifiedTransferAdminId.
+/// @return Whether the union's current tag state has value "unspecified_transfer_admin_id".
 ///
 - (BOOL)isUnspecifiedTransferAdminId;
 
 ///
-/// Retrieves whether the union's current tag state has value TransferAdminIsNotAdmin.
+/// Retrieves whether the union's current tag state has value "transfer_admin_is_not_admin".
 ///
-/// @return Whether the union's current tag state has value TransferAdminIsNotAdmin.
+/// @return Whether the union's current tag state has value "transfer_admin_is_not_admin".
 ///
 - (BOOL)isTransferAdminIsNotAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value CannotKeepAccountAndTransfer.
+/// Retrieves whether the union's current tag state has value "cannot_keep_account_and_transfer".
 ///
-/// @return Whether the union's current tag state has value CannotKeepAccountAndTransfer.
+/// @return Whether the union's current tag state has value "cannot_keep_account_and_transfer".
 ///
 - (BOOL)isCannotKeepAccountAndTransfer;
 
 ///
-/// Retrieves whether the union's current tag state has value CannotKeepAccountAndDeleteData.
+/// Retrieves whether the union's current tag state has value "cannot_keep_account_and_delete_data".
 ///
-/// @return Whether the union's current tag state has value CannotKeepAccountAndDeleteData.
+/// @return Whether the union's current tag state has value "cannot_keep_account_and_delete_data".
 ///
 - (BOOL)isCannotKeepAccountAndDeleteData;
 
 ///
-/// Retrieves whether the union's current tag state has value EmailAddressTooLongToBeDisabled.
+/// Retrieves whether the union's current tag state has value
+/// "email_address_too_long_to_be_disabled".
 ///
-/// @return Whether the union's current tag state has value EmailAddressTooLongToBeDisabled.
+/// @return Whether the union's current tag state has value "email_address_too_long_to_be_disabled".
 ///
 - (BOOL)isEmailAddressTooLongToBeDisabled;
 
@@ -341,26 +345,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersRemoveError union.
+/// The serialization class for the `DBTEAMMembersRemoveError` union.
 ///
 @interface DBTEAMMembersRemoveErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersRemoveError instances.
+/// Serializes `DBTEAMMembersRemoveError` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersRemoveError API object.
+/// @param instance An instance of the `DBTEAMMembersRemoveError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersRemoveError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersRemoveError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersRemoveError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersRemoveError instances.
+/// Deserializes `DBTEAMMembersRemoveError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersRemoveError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersRemoveError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersRemoveError object.
+/// @return An instantiation of the `DBTEAMMembersRemoveError` object.
 ///
 + (DBTEAMMembersRemoveError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

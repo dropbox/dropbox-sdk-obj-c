@@ -5,6 +5,7 @@
 #import "DBOAuth.h"
 #import "DBSharedApplicationProtocol.h"
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
 #pragma mark - Shared application
@@ -12,18 +13,18 @@
 ///
 /// Platform-specific (here, iOS) shared application.
 ///
-/// Renders OAuth flow and implements DBSharedApplication protocol.
+/// Renders OAuth flow and implements `DBSharedApplication` protocol.
 ///
 @interface DBMobileSharedApplication : NSObject <DBSharedApplication>
 
 ///
 /// DBMobileSharedApplication full constructor.
 ///
-/// @param sharedApplication The UIApplication with which to render the
+/// @param sharedApplication The `UIApplication` with which to render the
 /// OAuth flow.
-/// @param controller The UIViewController with which to render the OAuth
+/// @param controller The `UIViewController` with which to render the OAuth
 /// flow.
-/// @param openURL A wrapper around app-extension unsafe openURL call.
+/// @param openURL A wrapper around app-extension unsafe `openURL` call.
 ///
 /// @return An initialized instance.
 ///
@@ -36,9 +37,9 @@
 #pragma mark - Web view controller
 
 ///
-/// Platform-specific (here, iOS) UIViewController for rendering OAuth flow.
+/// Platform-specific (here, iOS) `UIViewController` for rendering OAuth flow.
 ///
-@interface DBWebViewController : UIViewController <WKNavigationDelegate>
+@interface DBMobileWebViewController : UIViewController <WKNavigationDelegate>
 
 ///
 /// DBWebViewController full constructor.
@@ -47,7 +48,7 @@
 /// Will check if exit URL (for redirect back to main app) can be successfully
 /// navigated to.
 /// @param cancelHandler Handler for auth cancellation. Will redirect back to
-/// main app with special cancel URL, so that cancellation can be detected.
+/// main app with special cancel url, so that cancellation can be detected.
 /// flow.
 ///
 /// @return An initialized instance.

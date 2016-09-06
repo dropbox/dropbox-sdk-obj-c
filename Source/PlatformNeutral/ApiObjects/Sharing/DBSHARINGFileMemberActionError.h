@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGFileMemberActionError;
-
 #pragma mark - API Object
 
 ///
-/// The FileMemberActionError union.
+/// The `FileMemberActionError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileMemberActionError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFileMemberActionErrorTag enum type represents the possible tag states with which
-/// the DBSHARINGFileMemberActionError union can exist.
+/// The `DBSHARINGFileMemberActionErrorTag` enum type represents the possible tag states with which
+/// the `DBSHARINGFileMemberActionError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
   /// Specified member was not found.
   DBSHARINGFileMemberActionErrorInvalidMember,
@@ -41,51 +39,51 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InvalidMember.
+/// Initializes union class with tag state of "invalid_member".
 ///
-/// About the InvalidMember tag state: Specified member was not found.
+/// Description of the "invalid_member" tag state: Specified member was not found.
 ///
-/// @return An initialized DBSHARINGFileMemberActionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidMember;
 
 ///
-/// Initializes union class with tag state of NoPermission.
+/// Initializes union class with tag state of "no_permission".
 ///
-/// About the NoPermission tag state: User does not have permission to perform this action on this
-/// member.
+/// Description of the "no_permission" tag state: User does not have permission to perform this
+/// action on this member.
 ///
-/// @return An initialized DBSHARINGFileMemberActionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoPermission;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGFileMemberActionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidMember.
+/// Retrieves whether the union's current tag state has value "invalid_member".
 ///
-/// @return Whether the union's current tag state has value InvalidMember.
+/// @return Whether the union's current tag state has value "invalid_member".
 ///
 - (BOOL)isInvalidMember;
 
 ///
-/// Retrieves whether the union's current tag state has value NoPermission.
+/// Retrieves whether the union's current tag state has value "no_permission".
 ///
-/// @return Whether the union's current tag state has value NoPermission.
+/// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -101,27 +99,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFileMemberActionError union.
+/// The serialization class for the `DBSHARINGFileMemberActionError` union.
 ///
 @interface DBSHARINGFileMemberActionErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileMemberActionError instances.
+/// Serializes `DBSHARINGFileMemberActionError` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileMemberActionError API object.
+/// @param instance An instance of the `DBSHARINGFileMemberActionError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileMemberActionError API
+/// @return A json-compatible dictionary representation of the `DBSHARINGFileMemberActionError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberActionError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileMemberActionError instances.
+/// Deserializes `DBSHARINGFileMemberActionError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFileMemberActionError
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileMemberActionError`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGFileMemberActionError object.
+/// @return An instantiation of the `DBSHARINGFileMemberActionError` object.
 ///
 + (DBSHARINGFileMemberActionError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

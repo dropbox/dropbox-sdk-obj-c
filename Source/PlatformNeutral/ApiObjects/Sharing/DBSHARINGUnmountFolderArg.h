@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGUnmountFolderArg;
-
 #pragma mark - API Object
 
 ///
-/// The UnmountFolderArg struct.
+/// The `UnmountFolderArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGUnmountFolderArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGUnmountFolderArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
-/// @return An initialized DBSHARINGUnmountFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
@@ -40,26 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UnmountFolderArg struct.
+/// The serialization class for the `UnmountFolderArg` struct.
 ///
 @interface DBSHARINGUnmountFolderArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGUnmountFolderArg instances.
+/// Serializes `DBSHARINGUnmountFolderArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGUnmountFolderArg API object.
+/// @param instance An instance of the `DBSHARINGUnmountFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGUnmountFolderArg API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGUnmountFolderArg` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUnmountFolderArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGUnmountFolderArg instances.
+/// Deserializes `DBSHARINGUnmountFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGUnmountFolderArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGUnmountFolderArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGUnmountFolderArg object.
+/// @return An instantiation of the `DBSHARINGUnmountFolderArg` object.
 ///
 + (DBSHARINGUnmountFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

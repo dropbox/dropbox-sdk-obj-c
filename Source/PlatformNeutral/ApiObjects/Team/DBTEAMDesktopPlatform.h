@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMDesktopPlatform;
-
 #pragma mark - API Object
 
 ///
-/// The DesktopPlatform union.
+/// The `DesktopPlatform` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMDesktopPlatform : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMDesktopPlatformTag enum type represents the possible tag states with which the
-/// DBTEAMDesktopPlatform union can exist.
+/// The `DBTEAMDesktopPlatformTag` enum type represents the possible tag states with which the
+/// `DBTEAMDesktopPlatform` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
   /// Official Windows Dropbox desktop client
   DBTEAMDesktopPlatformWindows,
@@ -44,66 +42,66 @@ typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Windows.
+/// Initializes union class with tag state of "windows".
 ///
-/// About the Windows tag state: Official Windows Dropbox desktop client
+/// Description of the "windows" tag state: Official Windows Dropbox desktop client
 ///
-/// @return An initialized DBTEAMDesktopPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithWindows;
 
 ///
-/// Initializes union class with tag state of Mac.
+/// Initializes union class with tag state of "mac".
 ///
-/// About the Mac tag state: Official Mac Dropbox desktop client
+/// Description of the "mac" tag state: Official Mac Dropbox desktop client
 ///
-/// @return An initialized DBTEAMDesktopPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMac;
 
 ///
-/// Initializes union class with tag state of Linux.
+/// Initializes union class with tag state of "linux".
 ///
-/// About the Linux tag state: Official Linux Dropbox desktop client
+/// Description of the "linux" tag state: Official Linux Dropbox desktop client
 ///
-/// @return An initialized DBTEAMDesktopPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLinux;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMDesktopPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Windows.
+/// Retrieves whether the union's current tag state has value "windows".
 ///
-/// @return Whether the union's current tag state has value Windows.
+/// @return Whether the union's current tag state has value "windows".
 ///
 - (BOOL)isWindows;
 
 ///
-/// Retrieves whether the union's current tag state has value Mac.
+/// Retrieves whether the union's current tag state has value "mac".
 ///
-/// @return Whether the union's current tag state has value Mac.
+/// @return Whether the union's current tag state has value "mac".
 ///
 - (BOOL)isMac;
 
 ///
-/// Retrieves whether the union's current tag state has value Linux.
+/// Retrieves whether the union's current tag state has value "linux".
 ///
-/// @return Whether the union's current tag state has value Linux.
+/// @return Whether the union's current tag state has value "linux".
 ///
 - (BOOL)isLinux;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -119,25 +117,26 @@ typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMDesktopPlatform union.
+/// The serialization class for the `DBTEAMDesktopPlatform` union.
 ///
 @interface DBTEAMDesktopPlatformSerializer : NSObject
 
 ///
-/// Serializes DBTEAMDesktopPlatform instances.
+/// Serializes `DBTEAMDesktopPlatform` instances.
 ///
-/// @param instance An instance of the DBTEAMDesktopPlatform API object.
+/// @param instance An instance of the `DBTEAMDesktopPlatform` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMDesktopPlatform API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMDesktopPlatform` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDesktopPlatform * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMDesktopPlatform instances.
+/// Deserializes `DBTEAMDesktopPlatform` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMDesktopPlatform API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMDesktopPlatform` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMDesktopPlatform object.
+/// @return An instantiation of the `DBTEAMDesktopPlatform` object.
 ///
 + (DBTEAMDesktopPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

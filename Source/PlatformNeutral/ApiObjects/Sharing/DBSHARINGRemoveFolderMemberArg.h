@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGMemberSelector;
-@class DBSHARINGRemoveFolderMemberArg;
 
 #pragma mark - API Object
 
 ///
-/// The RemoveFolderMemberArg struct.
+/// The `RemoveFolderMemberArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRemoveFolderMemberArg : NSObject <DBSerializable>
 
@@ -36,7 +35,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGRemoveFolderMemberArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param member The member to remove from the folder.
@@ -44,7 +43,7 @@
 /// unshared, assuming it was mounted. Otherwise, it will be removed from their Dropbox. Also, this
 /// must be set to false when kicking a group.
 ///
-/// @return An initialized DBSHARINGRemoveFolderMemberArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                         member:(DBSHARINGMemberSelector * _Nonnull)member
@@ -55,27 +54,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RemoveFolderMemberArg struct.
+/// The serialization class for the `RemoveFolderMemberArg` struct.
 ///
 @interface DBSHARINGRemoveFolderMemberArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRemoveFolderMemberArg instances.
+/// Serializes `DBSHARINGRemoveFolderMemberArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGRemoveFolderMemberArg API object.
+/// @param instance An instance of the `DBSHARINGRemoveFolderMemberArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGRemoveFolderMemberArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGRemoveFolderMemberArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRemoveFolderMemberArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRemoveFolderMemberArg instances.
+/// Deserializes `DBSHARINGRemoveFolderMemberArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGRemoveFolderMemberArg
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGRemoveFolderMemberArg`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGRemoveFolderMemberArg object.
+/// @return An instantiation of the `DBSHARINGRemoveFolderMemberArg` object.
 ///
 + (DBSHARINGRemoveFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

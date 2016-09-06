@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGFileMemberActionError;
-@class DBSHARINGFileMemberRemoveActionResult;
 @class DBSHARINGMemberAccessLevelResult;
 
 #pragma mark - API Object
 
 ///
-/// The FileMemberRemoveActionResult union.
+/// The `FileMemberRemoveActionResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileMemberRemoveActionResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFileMemberRemoveActionResultTag enum type represents the possible tag states with
-/// which the DBSHARINGFileMemberRemoveActionResult union can exist.
+/// The `DBSHARINGFileMemberRemoveActionResultTag` enum type represents the possible tag states with
+/// which the `DBSHARINGFileMemberRemoveActionResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
   /// Member was successfully removed from this file.
   DBSHARINGFileMemberRemoveActionResultSuccess,
@@ -40,71 +39,71 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGFileMemberRemoveActionResultTag tag;
 
-/// Member was successfully removed from this file. Ensure the isSuccess method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Member was successfully removed from this file. @note Ensure the `isSuccess` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull success;
 
-/// User was not able to remove this member. Ensure the isMemberError method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// User was not able to remove this member. @note Ensure the `isMemberError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGFileMemberActionError * _Nonnull memberError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Success.
+/// Initializes union class with tag state of "success".
 ///
-/// About the Success tag state: Member was successfully removed from this file.
+/// Description of the "success" tag state: Member was successfully removed from this file.
 ///
 /// @param success Member was successfully removed from this file.
 ///
-/// @return An initialized DBSHARINGFileMemberRemoveActionResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(DBSHARINGMemberAccessLevelResult * _Nonnull)success;
 
 ///
-/// Initializes union class with tag state of MemberError.
+/// Initializes union class with tag state of "member_error".
 ///
-/// About the MemberError tag state: User was not able to remove this member.
+/// Description of the "member_error" tag state: User was not able to remove this member.
 ///
 /// @param memberError User was not able to remove this member.
 ///
-/// @return An initialized DBSHARINGFileMemberRemoveActionResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberError:(DBSHARINGFileMemberActionError * _Nonnull)memberError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGFileMemberRemoveActionResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Success.
+/// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the success property,
+/// @note Call this method and ensure it returns true before accessing the `success` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Success.
+/// @return Whether the union's current tag state has value "success".
 ///
 - (BOOL)isSuccess;
 
 ///
-/// Retrieves whether the union's current tag state has value MemberError.
+/// Retrieves whether the union's current tag state has value "member_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the memberError property,
+/// @note Call this method and ensure it returns true before accessing the `memberError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value MemberError.
+/// @return Whether the union's current tag state has value "member_error".
 ///
 - (BOOL)isMemberError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -120,27 +119,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFileMemberRemoveActionResult union.
+/// The serialization class for the `DBSHARINGFileMemberRemoveActionResult` union.
 ///
 @interface DBSHARINGFileMemberRemoveActionResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileMemberRemoveActionResult instances.
+/// Serializes `DBSHARINGFileMemberRemoveActionResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileMemberRemoveActionResult API object.
+/// @param instance An instance of the `DBSHARINGFileMemberRemoveActionResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileMemberRemoveActionResult
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFileMemberRemoveActionResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberRemoveActionResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileMemberRemoveActionResult instances.
+/// Deserializes `DBSHARINGFileMemberRemoveActionResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGFileMemberRemoveActionResult API object.
+/// `DBSHARINGFileMemberRemoveActionResult` API object.
 ///
-/// @return An instantiation of the DBSHARINGFileMemberRemoveActionResult object.
+/// @return An instantiation of the `DBSHARINGFileMemberRemoveActionResult` object.
 ///
 + (DBSHARINGFileMemberRemoveActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

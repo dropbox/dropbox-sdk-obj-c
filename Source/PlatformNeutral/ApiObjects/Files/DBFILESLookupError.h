@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESLookupError;
-
 #pragma mark - API Object
 
 ///
-/// The LookupError union.
+/// The `LookupError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESLookupError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESLookupErrorTag enum type represents the possible tag states with which the
-/// DBFILESLookupError union can exist.
+/// The `DBFILESLookupErrorTag` enum type represents the possible tag states with which the
+/// `DBFILESLookupError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
   /// (no description).
   DBFILESLookupErrorMalformedPath,
@@ -48,111 +46,112 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESLookupErrorTag tag;
 
-/// (no description). Ensure the isMalformedPath method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isMalformedPath` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSString * _Nullable malformedPath;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of MalformedPath.
+/// Initializes union class with tag state of "malformed_path".
 ///
 /// @param malformedPath (no description).
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMalformedPath:(NSString * _Nullable)malformedPath;
 
 ///
-/// Initializes union class with tag state of NotFound.
+/// Initializes union class with tag state of "not_found".
 ///
-/// About the NotFound tag state: There is nothing at the given path.
+/// Description of the "not_found" tag state: There is nothing at the given path.
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotFound;
 
 ///
-/// Initializes union class with tag state of NotFile.
+/// Initializes union class with tag state of "not_file".
 ///
-/// About the NotFile tag state: We were expecting a file, but the given path refers to something
-/// that isn't a file.
+/// Description of the "not_file" tag state: We were expecting a file, but the given path refers to
+/// something that isn't a file.
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotFile;
 
 ///
-/// Initializes union class with tag state of NotFolder.
+/// Initializes union class with tag state of "not_folder".
 ///
-/// About the NotFolder tag state: We were expecting a folder, but the given path refers to
-/// something that isn't a folder.
+/// Description of the "not_folder" tag state: We were expecting a folder, but the given path refers
+/// to something that isn't a folder.
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotFolder;
 
 ///
-/// Initializes union class with tag state of RestrictedContent.
+/// Initializes union class with tag state of "restricted_content".
 ///
-/// About the RestrictedContent tag state: The file cannot be transferred because the content is
-/// restricted.  For example, sometimes there are legal restrictions due to copyright claims.
+/// Description of the "restricted_content" tag state: The file cannot be transferred because the
+/// content is restricted.  For example, sometimes there are legal restrictions due to copyright
+/// claims.
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRestrictedContent;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESLookupError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value MalformedPath.
+/// Retrieves whether the union's current tag state has value "malformed_path".
 ///
-/// @note Call this method and ensure it returns true before accessing the malformedPath property,
+/// @note Call this method and ensure it returns true before accessing the `malformedPath` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value MalformedPath.
+/// @return Whether the union's current tag state has value "malformed_path".
 ///
 - (BOOL)isMalformedPath;
 
 ///
-/// Retrieves whether the union's current tag state has value NotFound.
+/// Retrieves whether the union's current tag state has value "not_found".
 ///
-/// @return Whether the union's current tag state has value NotFound.
+/// @return Whether the union's current tag state has value "not_found".
 ///
 - (BOOL)isNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value NotFile.
+/// Retrieves whether the union's current tag state has value "not_file".
 ///
-/// @return Whether the union's current tag state has value NotFile.
+/// @return Whether the union's current tag state has value "not_file".
 ///
 - (BOOL)isNotFile;
 
 ///
-/// Retrieves whether the union's current tag state has value NotFolder.
+/// Retrieves whether the union's current tag state has value "not_folder".
 ///
-/// @return Whether the union's current tag state has value NotFolder.
+/// @return Whether the union's current tag state has value "not_folder".
 ///
 - (BOOL)isNotFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value RestrictedContent.
+/// Retrieves whether the union's current tag state has value "restricted_content".
 ///
-/// @return Whether the union's current tag state has value RestrictedContent.
+/// @return Whether the union's current tag state has value "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -168,25 +167,25 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESLookupError union.
+/// The serialization class for the `DBFILESLookupError` union.
 ///
 @interface DBFILESLookupErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESLookupError instances.
+/// Serializes `DBFILESLookupError` instances.
 ///
-/// @param instance An instance of the DBFILESLookupError API object.
+/// @param instance An instance of the `DBFILESLookupError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESLookupError API object.
+/// @return A json-compatible dictionary representation of the `DBFILESLookupError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESLookupError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESLookupError instances.
+/// Deserializes `DBFILESLookupError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESLookupError API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESLookupError` API object.
 ///
-/// @return An instantiation of the DBFILESLookupError object.
+/// @return An instantiation of the `DBFILESLookupError` object.
 ///
 + (DBFILESLookupError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

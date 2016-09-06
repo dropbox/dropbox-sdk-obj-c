@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMGroupAccessType;
-@class DBTEAMGroupMemberInfo;
 @class DBTEAMMemberProfile;
 
 #pragma mark - API Object
 
 ///
-/// The GroupMemberInfo struct.
+/// The `GroupMemberInfo` struct.
 ///
 /// Profile of group member, and role in group.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupMemberInfo : NSObject <DBSerializable>
 
@@ -34,12 +33,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupMemberInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param profile Profile of group member.
 /// @param accessType The role that the user has in the group.
 ///
-/// @return An initialized DBTEAMGroupMemberInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithProfile:(DBTEAMMemberProfile * _Nonnull)profile
                              accessType:(DBTEAMGroupAccessType * _Nonnull)accessType;
@@ -49,25 +48,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupMemberInfo struct.
+/// The serialization class for the `GroupMemberInfo` struct.
 ///
 @interface DBTEAMGroupMemberInfoSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupMemberInfo instances.
+/// Serializes `DBTEAMGroupMemberInfo` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupMemberInfo API object.
+/// @param instance An instance of the `DBTEAMGroupMemberInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupMemberInfo API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupMemberInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMemberInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupMemberInfo instances.
+/// Deserializes `DBTEAMGroupMemberInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupMemberInfo API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMemberInfo` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMGroupMemberInfo object.
+/// @return An instantiation of the `DBTEAMGroupMemberInfo` object.
 ///
 + (DBTEAMGroupMemberInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

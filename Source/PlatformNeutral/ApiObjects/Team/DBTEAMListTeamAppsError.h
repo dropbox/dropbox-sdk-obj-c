@@ -7,27 +7,25 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListTeamAppsError;
-
 #pragma mark - API Object
 
 ///
-/// The ListTeamAppsError union.
+/// The `ListTeamAppsError` union.
 ///
-/// Error returned by linkedAppsListTeamLinkedApps
+/// Error returned by `linkedAppsListTeamLinkedApps`
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListTeamAppsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMListTeamAppsErrorTag enum type represents the possible tag states with which the
-/// DBTEAMListTeamAppsError union can exist.
+/// The `DBTEAMListTeamAppsErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMListTeamAppsError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListTeamAppsErrorTag) {
-  /// Indicates that the cursor has been invalidated. Call linkedAppsListTeamLinkedApps again with
-  /// an empty cursor to obtain a new cursor.
+  /// Indicates that the cursor has been invalidated. Call `linkedAppsListTeamLinkedApps` again
+  /// with an empty cursor to obtain a new cursor.
   DBTEAMListTeamAppsErrorReset,
 
   /// (no description).
@@ -41,35 +39,35 @@ typedef NS_ENUM(NSInteger, DBTEAMListTeamAppsErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Reset.
+/// Initializes union class with tag state of "reset".
 ///
-/// About the Reset tag state: Indicates that the cursor has been invalidated. Call
-/// :route:`linked_apps/list_team_linked_apps` again with an empty cursor to obtain a new cursor.
+/// Description of the "reset" tag state: Indicates that the cursor has been invalidated. Call
+/// `linkedAppsListTeamLinkedApps` again with an empty cursor to obtain a new cursor.
 ///
-/// @return An initialized DBTEAMListTeamAppsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReset;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMListTeamAppsError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Reset.
+/// Retrieves whether the union's current tag state has value "reset".
 ///
-/// @return Whether the union's current tag state has value Reset.
+/// @return Whether the union's current tag state has value "reset".
 ///
 - (BOOL)isReset;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -85,26 +83,26 @@ typedef NS_ENUM(NSInteger, DBTEAMListTeamAppsErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMListTeamAppsError union.
+/// The serialization class for the `DBTEAMListTeamAppsError` union.
 ///
 @interface DBTEAMListTeamAppsErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListTeamAppsError instances.
+/// Serializes `DBTEAMListTeamAppsError` instances.
 ///
-/// @param instance An instance of the DBTEAMListTeamAppsError API object.
+/// @param instance An instance of the `DBTEAMListTeamAppsError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListTeamAppsError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMListTeamAppsError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListTeamAppsError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListTeamAppsError instances.
+/// Deserializes `DBTEAMListTeamAppsError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListTeamAppsError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListTeamAppsError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMListTeamAppsError object.
+/// @return An instantiation of the `DBTEAMListTeamAppsError` object.
 ///
 + (DBTEAMListTeamAppsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

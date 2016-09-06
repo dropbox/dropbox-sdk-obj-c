@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESSearchMatchType;
-
 #pragma mark - API Object
 
 ///
-/// The SearchMatchType union.
+/// The `SearchMatchType` union.
 ///
 /// Indicates what type of match was found for a given item.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSearchMatchType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESSearchMatchTypeTag enum type represents the possible tag states with which the
-/// DBFILESSearchMatchType union can exist.
+/// The `DBFILESSearchMatchTypeTag` enum type represents the possible tag states with which the
+/// `DBFILESSearchMatchType` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
   /// This item was matched on its file or folder name.
   DBFILESSearchMatchTypeFilename,
@@ -43,52 +41,53 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Filename.
+/// Initializes union class with tag state of "filename".
 ///
-/// About the Filename tag state: This item was matched on its file or folder name.
+/// Description of the "filename" tag state: This item was matched on its file or folder name.
 ///
-/// @return An initialized DBFILESSearchMatchType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFilename;
 
 ///
-/// Initializes union class with tag state of Content.
+/// Initializes union class with tag state of "content".
 ///
-/// About the Content tag state: This item was matched based on its file contents.
+/// Description of the "content" tag state: This item was matched based on its file contents.
 ///
-/// @return An initialized DBFILESSearchMatchType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithContent;
 
 ///
-/// Initializes union class with tag state of Both.
+/// Initializes union class with tag state of "both".
 ///
-/// About the Both tag state: This item was matched based on both its contents and its file name.
+/// Description of the "both" tag state: This item was matched based on both its contents and its
+/// file name.
 ///
-/// @return An initialized DBFILESSearchMatchType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBoth;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Filename.
+/// Retrieves whether the union's current tag state has value "filename".
 ///
-/// @return Whether the union's current tag state has value Filename.
+/// @return Whether the union's current tag state has value "filename".
 ///
 - (BOOL)isFilename;
 
 ///
-/// Retrieves whether the union's current tag state has value Content.
+/// Retrieves whether the union's current tag state has value "content".
 ///
-/// @return Whether the union's current tag state has value Content.
+/// @return Whether the union's current tag state has value "content".
 ///
 - (BOOL)isContent;
 
 ///
-/// Retrieves whether the union's current tag state has value Both.
+/// Retrieves whether the union's current tag state has value "both".
 ///
-/// @return Whether the union's current tag state has value Both.
+/// @return Whether the union's current tag state has value "both".
 ///
 - (BOOL)isBoth;
 
@@ -104,26 +103,26 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESSearchMatchType union.
+/// The serialization class for the `DBFILESSearchMatchType` union.
 ///
 @interface DBFILESSearchMatchTypeSerializer : NSObject
 
 ///
-/// Serializes DBFILESSearchMatchType instances.
+/// Serializes `DBFILESSearchMatchType` instances.
 ///
-/// @param instance An instance of the DBFILESSearchMatchType API object.
+/// @param instance An instance of the `DBFILESSearchMatchType` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSearchMatchType API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSearchMatchType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMatchType * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSearchMatchType instances.
+/// Deserializes `DBFILESSearchMatchType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSearchMatchType API
+/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMatchType` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESSearchMatchType object.
+/// @return An instantiation of the `DBFILESSearchMatchType` object.
 ///
 + (DBFILESSearchMatchType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

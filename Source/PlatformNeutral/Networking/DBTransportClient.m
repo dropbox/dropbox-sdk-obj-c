@@ -69,8 +69,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
                                              delegate:_delegate
                                         delegateQueue:_delegateQueue];
     NSString *backgroundId =
-        backgroundSessionId ?: [NSString stringWithFormat:@"%@%lld", kBackgroundSessionId,
-                                                          (long long)[[NSDate date] timeIntervalSince1970] * 1000];
+        backgroundSessionId ?: [NSString stringWithFormat:@"%@_%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     _backgroundSession = [NSURLSession
         sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId]
                         delegate:_delegate

@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMAdminTier;
-@class DBTEAMMemberAddArg;
 
 #pragma mark - API Object
 
 ///
-/// The MemberAddArg struct.
+/// The `MemberAddArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberAddArg : NSObject <DBSerializable>
 
@@ -45,7 +44,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMemberAddArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param memberEmail (no description).
 /// @param memberGivenName Member's first name.
@@ -56,7 +55,7 @@
 /// sign-on (SSO) flows for onboarding that want to handle announcements themselves.
 /// @param role (no description).
 ///
-/// @return An initialized DBTEAMMemberAddArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail
                             memberGivenName:(NSString * _Nonnull)memberGivenName
@@ -66,14 +65,13 @@
                                        role:(DBTEAMAdminTier * _Nullable)role;
 
 ///
-/// Convenience constructor for the DBTEAMMemberAddArg struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param memberEmail (no description).
 /// @param memberGivenName Member's first name.
 /// @param memberSurname Member's last name.
 ///
-/// @return An initialized DBTEAMMemberAddArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberEmail:(NSString * _Nonnull)memberEmail
                             memberGivenName:(NSString * _Nonnull)memberGivenName
@@ -84,25 +82,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MemberAddArg struct.
+/// The serialization class for the `MemberAddArg` struct.
 ///
 @interface DBTEAMMemberAddArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberAddArg instances.
+/// Serializes `DBTEAMMemberAddArg` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberAddArg API object.
+/// @param instance An instance of the `DBTEAMMemberAddArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberAddArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberAddArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAddArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberAddArg instances.
+/// Deserializes `DBTEAMMemberAddArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberAddArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberAddArg` API object.
 ///
-/// @return An instantiation of the DBTEAMMemberAddArg object.
+/// @return An instantiation of the `DBTEAMMemberAddArg` object.
 ///
 + (DBTEAMMemberAddArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

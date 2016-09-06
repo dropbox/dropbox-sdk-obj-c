@@ -10,17 +10,16 @@
 @class DBTEAMPOLICIESSharedFolderJoinPolicy;
 @class DBTEAMPOLICIESSharedFolderMemberPolicy;
 @class DBTEAMPOLICIESSharedLinkCreatePolicy;
-@class DBTEAMPOLICIESTeamSharingPolicies;
 
 #pragma mark - API Object
 
 ///
-/// The TeamSharingPolicies struct.
+/// The `TeamSharingPolicies` struct.
 ///
 /// Policies governing sharing within and outside of the team.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMPOLICIESTeamSharingPolicies : NSObject <DBSerializable>
 
@@ -38,14 +37,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMPOLICIESTeamSharingPolicies struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderMemberPolicy Who can join folders shared by team members.
 /// @param sharedFolderJoinPolicy Which shared folders team members can join.
 /// @param sharedLinkCreatePolicy What is the visibility of newly created shared links.
 ///
-/// @return An initialized DBTEAMPOLICIESTeamSharingPolicies instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)
 initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonnull)sharedFolderMemberPolicy
@@ -57,27 +55,27 @@ initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonn
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the TeamSharingPolicies struct.
+/// The serialization class for the `TeamSharingPolicies` struct.
 ///
 @interface DBTEAMPOLICIESTeamSharingPoliciesSerializer : NSObject
 
 ///
-/// Serializes DBTEAMPOLICIESTeamSharingPolicies instances.
+/// Serializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
 ///
-/// @param instance An instance of the DBTEAMPOLICIESTeamSharingPolicies API object.
+/// @param instance An instance of the `DBTEAMPOLICIESTeamSharingPolicies` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMPOLICIESTeamSharingPolicies API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBTEAMPOLICIESTeamSharingPolicies`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMPOLICIESTeamSharingPolicies instances.
+/// Deserializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMPOLICIESTeamSharingPolicies
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESTeamSharingPolicies` API object.
 ///
-/// @return An instantiation of the DBTEAMPOLICIESTeamSharingPolicies object.
+/// @return An instantiation of the `DBTEAMPOLICIESTeamSharingPolicies` object.
 ///
 + (DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESDeleteArg;
-
 #pragma mark - API Object
 
 ///
-/// The DeleteArg struct.
+/// The `DeleteArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESDeleteArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESDeleteArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path Path in the user's Dropbox to delete.
 ///
-/// @return An initialized DBFILESDeleteArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -40,25 +38,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DeleteArg struct.
+/// The serialization class for the `DeleteArg` struct.
 ///
 @interface DBFILESDeleteArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESDeleteArg instances.
+/// Serializes `DBFILESDeleteArg` instances.
 ///
-/// @param instance An instance of the DBFILESDeleteArg API object.
+/// @param instance An instance of the `DBFILESDeleteArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESDeleteArg API object.
+/// @return A json-compatible dictionary representation of the `DBFILESDeleteArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESDeleteArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESDeleteArg instances.
+/// Deserializes `DBFILESDeleteArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESDeleteArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESDeleteArg` API object.
 ///
-/// @return An instantiation of the DBFILESDeleteArg object.
+/// @return An instantiation of the `DBFILESDeleteArg` object.
 ///
 + (DBFILESDeleteArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMDateRangeError;
-
 #pragma mark - API Object
 
 ///
-/// The DateRangeError union.
+/// The `DateRangeError` union.
 ///
 /// Errors that can originate from problems in input arguments to reports.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMDateRangeError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMDateRangeErrorTag enum type represents the possible tag states with which the
-/// DBTEAMDateRangeError union can exist.
+/// The `DBTEAMDateRangeErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMDateRangeError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMDateRangeErrorTag) {
   /// (no description).
   DBTEAMDateRangeErrorOther,
@@ -37,18 +35,18 @@ typedef NS_ENUM(NSInteger, DBTEAMDateRangeErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMDateRangeError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -64,25 +62,26 @@ typedef NS_ENUM(NSInteger, DBTEAMDateRangeErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMDateRangeError union.
+/// The serialization class for the `DBTEAMDateRangeError` union.
 ///
 @interface DBTEAMDateRangeErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMDateRangeError instances.
+/// Serializes `DBTEAMDateRangeError` instances.
 ///
-/// @param instance An instance of the DBTEAMDateRangeError API object.
+/// @param instance An instance of the `DBTEAMDateRangeError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMDateRangeError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMDateRangeError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDateRangeError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMDateRangeError instances.
+/// Deserializes `DBTEAMDateRangeError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMDateRangeError API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMDateRangeError` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMDateRangeError object.
+/// @return An instantiation of the `DBTEAMDateRangeError` object.
 ///
 + (DBTEAMDateRangeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESListFolderLongpollArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListFolderLongpollArg struct.
+/// The `ListFolderLongpollArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESListFolderLongpollArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// A cursor as returned by listFolder or listFolderContinue. Cursors retrieved by setting
-/// includeMediaInfo in ListFolderArg to true are not supported.
+/// A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by setting
+/// `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// A timeout in seconds. The request will block for at most this length of time, plus up to 90
@@ -33,29 +31,26 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESListFolderLongpollArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor A cursor as returned by :route:`list_folder` or :route:`list_folder/continue`.
-/// Cursors retrieved by setting :field:`ListFolderArg.include_media_info` to :val:`true` are not
-/// supported.
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by
+/// setting `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
 /// @param timeout A timeout in seconds. The request will block for at most this length of time,
 /// plus up to 90 seconds of random jitter added to avoid the thundering herd problem. Care should
 /// be taken when using this parameter, as some network infrastructure does not support long
 /// timeouts.
 ///
-/// @return An initialized DBFILESListFolderLongpollArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor timeout:(NSNumber * _Nullable)timeout;
 
 ///
-/// Convenience constructor for the DBFILESListFolderLongpollArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
-/// @param cursor A cursor as returned by :route:`list_folder` or :route:`list_folder/continue`.
-/// Cursors retrieved by setting :field:`ListFolderArg.include_media_info` to :val:`true` are not
-/// supported.
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by
+/// setting `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
 ///
-/// @return An initialized DBFILESListFolderLongpollArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
@@ -64,27 +59,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFolderLongpollArg struct.
+/// The serialization class for the `ListFolderLongpollArg` struct.
 ///
 @interface DBFILESListFolderLongpollArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESListFolderLongpollArg instances.
+/// Serializes `DBFILESListFolderLongpollArg` instances.
 ///
-/// @param instance An instance of the DBFILESListFolderLongpollArg API object.
+/// @param instance An instance of the `DBFILESListFolderLongpollArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESListFolderLongpollArg API
+/// @return A json-compatible dictionary representation of the `DBFILESListFolderLongpollArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListFolderLongpollArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESListFolderLongpollArg instances.
+/// Deserializes `DBFILESListFolderLongpollArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESListFolderLongpollArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESListFolderLongpollArg`
+/// API object.
 ///
-/// @return An instantiation of the DBFILESListFolderLongpollArg object.
+/// @return An instantiation of the `DBFILESListFolderLongpollArg` object.
 ///
 + (DBFILESListFolderLongpollArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

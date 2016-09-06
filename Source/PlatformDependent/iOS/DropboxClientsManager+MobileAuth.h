@@ -13,18 +13,18 @@
 ///
 /// Code with platform-specific (here, iOS) dependencies.
 ///
-/// Extends functionality of the DropboxClientsManager class.
+/// Extends functionality of the `DropboxClientsManager` class.
 ///
 @interface DropboxClientsManager (MobileAuth)
 
 ///
 /// Commences OAuth flow from supplied view controller.
 ///
-/// @param sharedApplication The UIApplication with which to render the
+/// @param sharedApplication The `UIApplication` with which to render the
 /// OAuth flow.
-/// @param controller The UIViewController with which to render the OAuth
+/// @param controller The `UIViewController` with which to render the OAuth
 /// flow.
-/// @param openURL A wrapper around app-extension unsafe openURL call.
+/// @param openURL A wrapper around app-extension unsafe `openURL` call.
 /// @param browserAuth Whether to use an external web-browser to perform
 /// authorization. If set to false, then an in-app webview will be used
 /// to facilitate the auth flow. The advantage of browser auth is it is
@@ -35,17 +35,17 @@
 ///
 + (void)authorizeFromController:(UIApplication * _Nonnull)sharedApplication
                      controller:(UIViewController * _Nonnull)controller
-                        openURL:(void (^_Nonnull)(NSURL *))openURL
+                        openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL
                     browserAuth:(BOOL)browserAuth;
 
 ///
-/// Initializes a DropboxClient shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
-/// API calls. Use setupWithAppKey:transportClient, if additional customization
+/// API calls. Use `setupWithAppKey:transportClient`, if additional customization
 /// of network calls is necessary. Should be called from app delegate.
 ///
-/// @param appKey The appKey of the third-party Dropbox API user app that will be
+/// @param appKey The app key of the third-party Dropbox API user app that will be
 /// associated with all API calls. To create an app or to locate your app's
 /// app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
@@ -53,30 +53,30 @@
 + (void)setupWithAppKey:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a DropboxClient shared instance with the supplied app key.
+/// Initializes a `DropboxClient` shared instance with the supplied app key.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different
-/// DBTransportClient constructors. Should be called from app delegate.
+/// `DBTransportClient` constructors. Should be called from app delegate.
 ///
-/// @param appKey The appKey of the third-party Dropbox API user app that will be
+/// @param appKey The app key of the third-party Dropbox API user app that will be
 /// associated with all API calls. To create an app or to locate your app's
 /// app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous DBTransportClient constructors.
+/// of the numerous `DBTransportClient` constructors.
 ///
 + (void)setupWithAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nonnull)transportClient;
 
 ///
-/// Initializes a DropboxTeamClient shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
-/// API calls. Use setupWithAppKey:transportClient, if additional customization
+/// API calls. Use `setupWithAppKey:transportClient`, if additional customization
 /// of network calls is necessary. Should be called from app delegate.
 ///
-/// @param appKey The appKey of the third-party Dropbox API team app that will be
+/// @param appKey The app key of the third-party Dropbox API team app that will be
 /// associated with all API calls. To create an app or to locate your app's
 /// app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
@@ -84,19 +84,19 @@
 + (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey;
 
 ///
-/// Initializes a DropboxTeamClient shared instance with the supplied app key.
+/// Initializes a `DropboxTeamClient` shared instance with the supplied app key.
 ///
 /// If a stored OAuth token exists, it will be retrieved and used to authenticate
 /// API calls. Customize configuration of network calls using the different
-/// DBTransportClient constructors. Should be called from app delegate.
+/// `DBTransportClient` constructors. Should be called from app delegate.
 ///
-/// @param appKey The appKey of the third-party Dropbox API team app that will be
+/// @param appKey The app key of the third-party Dropbox API team app that will be
 /// associated with all API calls. To create an app or to locate your app's
 /// app key, please visit the App Console here:
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous DBTransportClient constructors.
+/// of the numerous `DBTransportClient` constructors.
 ///
 + (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nonnull)transportClient;
 

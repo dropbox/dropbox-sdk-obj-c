@@ -14,21 +14,22 @@
 #import "DBTransportClient.h"
 
 ///
-/// Routes for the Auth namespace
+/// Routes for the `Auth` namespace
 ///
 @interface DBAUTHRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a request.
 @property(nonatomic, readonly) DBTransportClient * _Nonnull client;
 
-/// Initializes the DBAUTHRoutes namespace container object with a networking client.
+/// Initializes the `DBAUTHRoutes` namespace container object with a networking client.
 - (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
 
 ///
 /// Disables the access token used to authenticate the call.
 ///
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a void object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a `void` object on
+/// failure.
 ///
 - (DBRpcTask<DBNilObject *, DBNilObject *> * _Nonnull)tokenRevoke;
 

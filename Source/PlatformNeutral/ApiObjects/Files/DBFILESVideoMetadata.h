@@ -10,17 +10,16 @@
 
 @class DBFILESDimensions;
 @class DBFILESGpsCoordinates;
-@class DBFILESVideoMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The VideoMetadata struct.
+/// The `VideoMetadata` struct.
 ///
 /// Metadata for a video.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESVideoMetadata : DBFILESMediaMetadata <DBSerializable>
 
@@ -32,14 +31,14 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESVideoMetadata struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param dimensions Dimension of the photo/video.
 /// @param location The GPS coordinate of the photo/video.
 /// @param timeTaken The timestamp when the photo/video is taken.
 /// @param duration The duration of the video in milliseconds.
 ///
-/// @return An initialized DBFILESVideoMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDimensions:(DBFILESDimensions * _Nullable)dimensions
                                   location:(DBFILESGpsCoordinates * _Nullable)location
@@ -47,11 +46,10 @@
                                   duration:(NSNumber * _Nullable)duration;
 
 ///
-/// Convenience constructor for the DBFILESVideoMetadata struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 ///
-/// @return An initialized DBFILESVideoMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)init;
 
@@ -60,25 +58,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the VideoMetadata struct.
+/// The serialization class for the `VideoMetadata` struct.
 ///
 @interface DBFILESVideoMetadataSerializer : NSObject
 
 ///
-/// Serializes DBFILESVideoMetadata instances.
+/// Serializes `DBFILESVideoMetadata` instances.
 ///
-/// @param instance An instance of the DBFILESVideoMetadata API object.
+/// @param instance An instance of the `DBFILESVideoMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESVideoMetadata API object.
+/// @return A json-compatible dictionary representation of the `DBFILESVideoMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESVideoMetadata * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESVideoMetadata instances.
+/// Deserializes `DBFILESVideoMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESVideoMetadata API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESVideoMetadata` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESVideoMetadata object.
+/// @return An instantiation of the `DBFILESVideoMetadata` object.
 ///
 + (DBFILESVideoMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

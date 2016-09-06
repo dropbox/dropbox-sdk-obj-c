@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListMemberAppsArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListMemberAppsArg struct.
+/// The `ListMemberAppsArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMemberAppsArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMListMemberAppsArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamMemberId The team member id
 ///
-/// @return An initialized DBTEAMListMemberAppsArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId;
 
@@ -40,26 +38,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListMemberAppsArg struct.
+/// The serialization class for the `ListMemberAppsArg` struct.
 ///
 @interface DBTEAMListMemberAppsArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMemberAppsArg instances.
+/// Serializes `DBTEAMListMemberAppsArg` instances.
 ///
-/// @param instance An instance of the DBTEAMListMemberAppsArg API object.
+/// @param instance An instance of the `DBTEAMListMemberAppsArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMemberAppsArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMListMemberAppsArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberAppsArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMemberAppsArg instances.
+/// Deserializes `DBTEAMListMemberAppsArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMemberAppsArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberAppsArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMListMemberAppsArg object.
+/// @return An instantiation of the `DBTEAMListMemberAppsArg` object.
 ///
 + (DBTEAMListMemberAppsArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

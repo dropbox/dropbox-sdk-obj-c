@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESMetadata;
-
 #pragma mark - API Object
 
 ///
-/// The Metadata struct.
+/// The `Metadata` struct.
 ///
 /// Metadata for a file or folder.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESMetadata : NSObject <DBSerializable>
 
@@ -32,18 +30,18 @@
 
 /// The cased path to be used for display purposes only. In rare instances the casing will not
 /// correctly match the user's filesystem, but this behavior will match the path provided in the
-/// Core API v1. Changes to the casing of paths won't be returned by listFolderContinue. This field
-/// will be null if the file or folder is not mounted.
+/// Core API v1. Changes to the casing of paths won't be returned by `listFolderContinue`. This
+/// field will be null if the file or folder is not mounted.
 @property(nonatomic, readonly) NSString * _Nullable pathDisplay;
 
-/// Deprecated. Please use parentSharedFolderId in FileSharingInfo or parentSharedFolderId in
-/// FolderSharingInfo instead.
+/// Deprecated. Please use `parentSharedFolderId` in `DBFILESFileSharingInfo` or
+/// `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
 @property(nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESMetadata struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param name The last component of the path (including extension). This never contains a slash.
 /// @param pathLower The lowercased full path in the user's Dropbox. This always starts with a
@@ -51,12 +49,11 @@
 /// @param pathDisplay The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior will match the path
 /// provided in the Core API v1. Changes to the casing of paths won't be returned by
-/// :route:`list_folder/continue`. This field will be null if the file or folder is not mounted.
-/// @param parentSharedFolderId Deprecated. Please use
-/// :field:`FileSharingInfo.parent_shared_folder_id` or
-/// :field:`FolderSharingInfo.parent_shared_folder_id` instead.
+/// `listFolderContinue`. This field will be null if the file or folder is not mounted.
+/// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
+/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
 ///
-/// @return An initialized DBFILESMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                            pathLower:(NSString * _Nullable)pathLower
@@ -64,12 +61,11 @@
                 parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
 ///
-/// Convenience constructor for the DBFILESMetadata struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param name The last component of the path (including extension). This never contains a slash.
 ///
-/// @return An initialized DBFILESMetadata instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name;
 
@@ -78,25 +74,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the Metadata struct.
+/// The serialization class for the `Metadata` struct.
 ///
 @interface DBFILESMetadataSerializer : NSObject
 
 ///
-/// Serializes DBFILESMetadata instances.
+/// Serializes `DBFILESMetadata` instances.
 ///
-/// @param instance An instance of the DBFILESMetadata API object.
+/// @param instance An instance of the `DBFILESMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESMetadata API object.
+/// @return A json-compatible dictionary representation of the `DBFILESMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESMetadata * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESMetadata instances.
+/// Deserializes `DBFILESMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESMetadata API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESMetadata` API object.
 ///
-/// @return An instantiation of the DBFILESMetadata object.
+/// @return An instantiation of the `DBFILESMetadata` object.
 ///
 + (DBFILESMetadata * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

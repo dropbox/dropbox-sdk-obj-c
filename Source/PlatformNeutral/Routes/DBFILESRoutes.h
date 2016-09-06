@@ -112,14 +112,14 @@
 #import "DBTransportClient.h"
 
 ///
-/// Routes for the Files namespace
+/// Routes for the `Files` namespace
 ///
 @interface DBFILESRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a request.
 @property(nonatomic, readonly) DBTransportClient * _Nonnull client;
 
-/// Initializes the DBFILESRoutes namespace container object with a networking client.
+/// Initializes the `DBFILESRoutes` namespace container object with a networking client.
 - (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
 
 ///
@@ -127,8 +127,8 @@
 /// Metadata for the root folder is unsupported.
 ///
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESAlphaGetMetadataError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESAlphaGetMetadataError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESAlphaGetMetadataError *> * _Nonnull)alphaGetMetadata:(NSString * _Nonnull)path;
 
@@ -136,10 +136,11 @@
 /// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
 /// Metadata for the root folder is unsupported.
 ///
-/// @param includePropertyTemplates If true, propertyGroups in FileMetadata is set for files with custom properties.
+/// @param includePropertyTemplates If true, `propertyGroups` in `DBFILESFileMetadata` is set for files with custom
+/// properties.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESAlphaGetMetadataError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESAlphaGetMetadataError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESAlphaGetMetadataError *> * _Nonnull)
                alphaGetMetadata:(NSString * _Nonnull)path
@@ -150,13 +151,13 @@ includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMe
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadUrl:(NSString * _Nonnull)path
@@ -164,14 +165,14 @@ alphaUploadUrl:(NSString * _Nonnull)path
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param propertyGroups List of custom properties to add to file.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadUrl:(NSString * _Nonnull)path
@@ -184,13 +185,13 @@ propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> * _Nullable)propertyGroups
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadData:(NSString * _Nonnull)path
@@ -198,14 +199,14 @@ alphaUploadData:(NSString * _Nonnull)path
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param propertyGroups List of custom properties to add to file.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadData:(NSString * _Nonnull)path
@@ -218,13 +219,13 @@ alphaUploadData:(NSString * _Nonnull)path
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadStream:(NSString * _Nonnull)path
@@ -232,14 +233,14 @@ alphaUploadStream:(NSString * _Nonnull)path
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
-/// alpha and is slightly different from upload. Do not use this to upload a file larger than 150 MB. Instead, create an
-/// upload session with uploadSessionStart.
+/// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
+/// an upload session with `uploadSessionStart`.
 ///
 /// @param propertyGroups List of custom properties to add to file.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadErrorWithProperties object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadStream:(NSString * _Nonnull)path
@@ -257,32 +258,32 @@ alphaUploadStream:(NSString * _Nonnull)path
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESRelocationError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)dCopy:(NSString * _Nonnull)fromPath
                                                                    toPath:(NSString * _Nonnull)toPath;
 
 ///
 /// Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another
-/// user's Dropbox by passing it to dCopyReferenceSave.
+/// user's Dropbox by passing it to `dCopyReferenceSave`.
 ///
 /// @param path The path to the file or folder you want to get a copy reference to.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESGetCopyReferenceResult object on success or
-/// a DBFILESGetCopyReferenceError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESGetCopyReferenceResult` object on success
+/// or a `DBFILESGetCopyReferenceError` object on failure.
 ///
 - (DBRpcTask<DBFILESGetCopyReferenceResult *, DBFILESGetCopyReferenceError *> * _Nonnull)dCopyReferenceGet:
     (NSString * _Nonnull)path;
 
 ///
-/// Save a copy reference returned by dCopyReferenceGet to the user's Dropbox.
+/// Save a copy reference returned by `dCopyReferenceGet` to the user's Dropbox.
 ///
-/// @param dCopyReference A copy reference returned by dCopyReferenceGet.
+/// @param dCopyReference A copy reference returned by `dCopyReferenceGet`.
 /// @param path Path in the user's Dropbox that is the destination.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESSaveCopyReferenceResult object on success or
-/// a DBFILESSaveCopyReferenceError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESSaveCopyReferenceResult` object on success
+/// or a `DBFILESSaveCopyReferenceError` object on failure.
 ///
 - (DBRpcTask<DBFILESSaveCopyReferenceResult *, DBFILESSaveCopyReferenceError *> * _Nonnull)
 dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
@@ -293,8 +294,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path Path in the user's Dropbox to create.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFolderMetadata object on success or a
-/// DBFILESCreateFolderError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFolderMetadata` object on success or a
+/// `DBFILESCreateFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> * _Nonnull)createFolder:(NSString * _Nonnull)path;
 
@@ -305,8 +306,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path Path in the user's Dropbox to delete.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESDeleteError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESDeleteError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESDeleteError *> * _Nonnull)delete_:(NSString * _Nonnull)path;
 
@@ -319,8 +320,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESDownloadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESDownloadError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESDownloadError *> * _Nonnull)downloadUrl:(NSString * _Nonnull)path
                                                                                 overwrite:(BOOL)overwrite
@@ -336,8 +337,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESDownloadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESDownloadError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESDownloadError *> * _Nonnull)downloadUrl:(NSString * _Nonnull)path
                                                                                       rev:(NSString * _Nullable)rev
@@ -349,8 +350,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path of the file to download.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESDownloadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESDownloadError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path;
 
@@ -360,8 +361,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// @param path The path of the file to download.
 /// @param rev Deprecated. Please specify revision in path instead
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESDownloadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESDownloadError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESDownloadError *> * _Nonnull)downloadData:(NSString * _Nonnull)path
                                                                                         rev:(NSString * _Nullable)rev;
@@ -371,8 +372,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path of a file or folder on Dropbox.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESGetMetadataError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESGetMetadataError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path;
 
@@ -380,14 +381,14 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
 ///
 /// @param path The path of a file or folder on Dropbox.
-/// @param includeMediaInfo If true, mediaInfo in FileMetadata is set for photo and video.
-/// @param includeDeleted If true, DeletedMetadata will be returned for deleted file or folder, otherwise notFound in
-/// LookupError will be returned.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
+/// @param includeDeleted If true, DeletedMetadata will be returned for deleted file or folder, otherwise `notFound` in
+/// `DBFILESLookupError` will be returned.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESGetMetadataError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESGetMetadataError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESGetMetadataError *> * _Nonnull)getMetadata:(NSString * _Nonnull)path
                                                                 includeMediaInfo:(NSNumber * _Nullable)includeMediaInfo
@@ -405,8 +406,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESPreviewError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESPreviewError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESPreviewError *> * _Nonnull)getPreviewUrl:(NSString * _Nonnull)path
                                                                                  overwrite:(BOOL)overwrite
@@ -423,8 +424,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESPreviewError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESPreviewError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESPreviewError *> * _Nonnull)getPreviewUrl:(NSString * _Nonnull)path
                                                                                        rev:(NSString * _Nullable)rev
@@ -437,8 +438,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path of the file to preview.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESPreviewError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESPreviewError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path;
 
@@ -449,8 +450,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// @param path The path of the file to preview.
 /// @param rev Deprecated. Please specify revision in path instead
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESPreviewError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESPreviewError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESPreviewError *> * _Nonnull)getPreviewData:(NSString * _Nonnull)path
                                                                                          rev:(NSString * _Nullable)rev;
@@ -461,8 +462,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path to the file you want a temporary link to.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESGetTemporaryLinkResult object on success or
-/// a DBFILESGetTemporaryLinkError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESGetTemporaryLinkResult` object on success
+/// or a `DBFILESGetTemporaryLinkError` object on failure.
 ///
 - (DBRpcTask<DBFILESGetTemporaryLinkResult *, DBFILESGetTemporaryLinkError *> * _Nonnull)getTemporaryLink:
     (NSString * _Nonnull)path;
@@ -477,8 +478,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESThumbnailError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESThumbnailError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESThumbnailError *> * _Nonnull)getThumbnailUrl:(NSString * _Nonnull)path
                                                                                      overwrite:(BOOL)overwrite
@@ -498,8 +499,8 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// thrown).
 /// @param destination A closure used to compute the destination, given the temporary file location and the response.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESThumbnailError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESThumbnailError` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESFileMetadata *, DBFILESThumbnailError *> * _Nonnull)
 getThumbnailUrl:(NSString * _Nonnull)path
@@ -514,8 +515,8 @@ getThumbnailUrl:(NSString * _Nonnull)path
 ///
 /// @param path The path to the image file you want to thumbnail.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESThumbnailError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESThumbnailError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESThumbnailError *> * _Nonnull)getThumbnailData:
     (NSString * _Nonnull)path;
@@ -529,8 +530,8 @@ getThumbnailUrl:(NSString * _Nonnull)path
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESThumbnailError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESThumbnailError` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESFileMetadata *, DBFILESThumbnailError *> * _Nonnull)
 getThumbnailData:(NSString * _Nonnull)path
@@ -542,8 +543,8 @@ getThumbnailData:(NSString * _Nonnull)path
 ///
 /// @param path The path to the folder you want to see the contents of.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderResult object on success or a
-/// DBFILESListFolderError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
+/// `DBFILESListFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path;
 
@@ -553,14 +554,14 @@ getThumbnailData:(NSString * _Nonnull)path
 /// @param path The path to the folder you want to see the contents of.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
 /// will contain contents of all subfolders.
-/// @param includeMediaInfo If true, mediaInfo in FileMetadata is set for photo and video.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
 /// @param includeDeleted If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderResult object on success or a
-/// DBFILESListFolderError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
+/// `DBFILESListFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> * _Nonnull)
                      listFolder:(NSString * _Nonnull)path
@@ -570,46 +571,46 @@ getThumbnailData:(NSString * _Nonnull)path
 includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 ///
-/// Once a cursor has been retrieved from listFolder, use this to paginate through all files and retrieve updates to the
-/// folder.
+/// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
+/// the folder.
 ///
-/// @param cursor The cursor returned by your last call to listFolder or listFolderContinue.
+/// @param cursor The cursor returned by your last call to `listFolder` or `listFolderContinue`.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderResult object on success or a
-/// DBFILESListFolderContinueError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderResult` object on success or a
+/// `DBFILESListFolderContinueError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderContinueError *> * _Nonnull)listFolderContinue:
     (NSString * _Nonnull)cursor;
 
 ///
-/// A way to quickly get a cursor for the folder's state. Unlike listFolder, listFolderGetLatestCursor doesn't return
-/// any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to
-/// know about files that already exist in Dropbox.
+/// A way to quickly get a cursor for the folder's state. Unlike `listFolder`, `listFolderGetLatestCursor` doesn't
+/// return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't
+/// need to know about files that already exist in Dropbox.
 ///
 /// @param path The path to the folder you want to see the contents of.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderGetLatestCursorResult object on
-/// success or a DBFILESListFolderError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
+/// success or a `DBFILESListFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderGetLatestCursorResult *, DBFILESListFolderError *> * _Nonnull)listFolderGetLatestCursor:
     (NSString * _Nonnull)path;
 
 ///
-/// A way to quickly get a cursor for the folder's state. Unlike listFolder, listFolderGetLatestCursor doesn't return
-/// any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to
-/// know about files that already exist in Dropbox.
+/// A way to quickly get a cursor for the folder's state. Unlike `listFolder`, `listFolderGetLatestCursor` doesn't
+/// return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't
+/// need to know about files that already exist in Dropbox.
 ///
 /// @param path The path to the folder you want to see the contents of.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
 /// will contain contents of all subfolders.
-/// @param includeMediaInfo If true, mediaInfo in FileMetadata is set for photo and video.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
 /// @param includeDeleted If true, the results will include entries for files and folders that used to exist but were
 /// deleted.
 /// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file indicating whether or
 /// not  that file has any explicit members.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderGetLatestCursorResult object on
-/// success or a DBFILESListFolderError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderGetLatestCursorResult` object on
+/// success or a `DBFILESListFolderError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderGetLatestCursorResult *, DBFILESListFolderError *> * _Nonnull)
       listFolderGetLatestCursor:(NSString * _Nonnull)path
@@ -619,34 +620,36 @@ includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMe
 includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 ///
-/// A longpoll endpoint to wait for changes on an account. In conjunction with listFolderContinue, this call gives you a
-/// low-latency way to monitor an account for file changes. The connection will block until there are changes available
-/// or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side
-/// notifications, check out our webhooks documentation https://www.dropbox.com/developers/reference/webhooks.
+/// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
+/// a low-latency way to monitor an account for file changes. The connection will block until there are changes
+/// available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for
+/// server-side notifications, check out our webhooks documentation
+/// https://www.dropbox.com/developers/reference/webhooks.
 ///
-/// @param cursor A cursor as returned by listFolder or listFolderContinue. Cursors retrieved by setting
-/// includeMediaInfo in ListFolderArg to true are not supported.
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by setting
+/// `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderLongpollResult object on success
-/// or a DBFILESListFolderLongpollError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderLongpollResult` object on success
+/// or a `DBFILESListFolderLongpollError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderLongpollResult *, DBFILESListFolderLongpollError *> * _Nonnull)listFolderLongpoll:
     (NSString * _Nonnull)cursor;
 
 ///
-/// A longpoll endpoint to wait for changes on an account. In conjunction with listFolderContinue, this call gives you a
-/// low-latency way to monitor an account for file changes. The connection will block until there are changes available
-/// or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side
-/// notifications, check out our webhooks documentation https://www.dropbox.com/developers/reference/webhooks.
+/// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
+/// a low-latency way to monitor an account for file changes. The connection will block until there are changes
+/// available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for
+/// server-side notifications, check out our webhooks documentation
+/// https://www.dropbox.com/developers/reference/webhooks.
 ///
-/// @param cursor A cursor as returned by listFolder or listFolderContinue. Cursors retrieved by setting
-/// includeMediaInfo in ListFolderArg to true are not supported.
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by setting
+/// `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
 /// @param timeout A timeout in seconds. The request will block for at most this length of time, plus up to 90 seconds
 /// of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter, as some
 /// network infrastructure does not support long timeouts.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListFolderLongpollResult object on success
-/// or a DBFILESListFolderLongpollError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderLongpollResult` object on success
+/// or a `DBFILESListFolderLongpollError` object on failure.
 ///
 - (DBRpcTask<DBFILESListFolderLongpollResult *, DBFILESListFolderLongpollError *> * _Nonnull)
 listFolderLongpoll:(NSString * _Nonnull)cursor
@@ -657,8 +660,8 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 ///
 /// @param path The path to the file you want to see the revisions of.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListRevisionsResult object on success or a
-/// DBFILESListRevisionsError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListRevisionsResult` object on success or a
+/// `DBFILESListRevisionsError` object on failure.
 ///
 - (DBRpcTask<DBFILESListRevisionsResult *, DBFILESListRevisionsError *> * _Nonnull)listRevisions:
     (NSString * _Nonnull)path;
@@ -669,8 +672,8 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 /// @param path The path to the file you want to see the revisions of.
 /// @param limit The maximum number of revision entries returned.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESListRevisionsResult object on success or a
-/// DBFILESListRevisionsError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESListRevisionsResult` object on success or a
+/// `DBFILESListRevisionsError` object on failure.
 ///
 - (DBRpcTask<DBFILESListRevisionsResult *, DBFILESListRevisionsError *> * _Nonnull)listRevisions:(NSString * _Nonnull)path
                                                                                           limit:(NSNumber * _Nullable)
@@ -683,8 +686,8 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESMetadata object on success or a
-/// DBFILESRelocationError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESRelocationError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)move:(NSString * _Nonnull)fromPath
                                                                   toPath:(NSString * _Nonnull)toPath;
@@ -695,7 +698,7 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 ///
 /// @param path Path in the user's Dropbox to delete.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a DBFILESDeleteError
+/// @return Through the response callback, the caller will receive a `void` object on success or a `DBFILESDeleteError`
 /// object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESDeleteError *> * _Nonnull)permanentlyDelete:(NSString * _Nonnull)path;
@@ -707,8 +710,8 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 /// @param path A unique identifier for the file.
 /// @param propertyGroups Filled custom property templates associated with a file.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESAddPropertiesError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESAddPropertiesError` object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESAddPropertiesError *> * _Nonnull)
  propertiesAdd:(NSString * _Nonnull)path
@@ -720,8 +723,8 @@ propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> * _Nonnull)propertyGroups;
 /// @param path A unique identifier for the file.
 /// @param propertyGroups Filled custom property templates associated with a file.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESInvalidPropertyGroupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESInvalidPropertyGroupError` object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESInvalidPropertyGroupError *> * _Nonnull)
 propertiesOverwrite:(NSString * _Nonnull)path
@@ -729,14 +732,14 @@ propertiesOverwrite:(NSString * _Nonnull)path
 
 ///
 /// Remove all custom properties from a specified template associated with a file. To remove specific property key value
-/// pairs, see propertiesUpdate. To update a property template, see properties/template/update. Property templates can't
-/// be removed once created.
+/// pairs, see `propertiesUpdate`. To update a property template, see properties/template/update. Property templates
+/// can't be removed once created.
 ///
 /// @param path A unique identifier for the file.
 /// @param propertyTemplateIds A list of identifiers for a property template created by route properties/template/add.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESRemovePropertiesError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESRemovePropertiesError` object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESRemovePropertiesError *> * _Nonnull)propertiesRemove:(NSString * _Nonnull)path
                                                                    propertyTemplateIds:(NSArray<NSString *> * _Nonnull)
@@ -747,18 +750,18 @@ propertiesOverwrite:(NSString * _Nonnull)path
 ///
 /// @param templateId An identifier for property template added by route properties/template/add.
 ///
-/// @return Through the response callback, the caller will receive a DBPROPERTIESGetPropertyTemplateResult object on
-/// success or a DBPROPERTIESPropertyTemplateError object on failure.
+/// @return Through the response callback, the caller will receive a `DBPROPERTIESGetPropertyTemplateResult` object on
+/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
 ///
 - (DBRpcTask<DBPROPERTIESGetPropertyTemplateResult *, DBPROPERTIESPropertyTemplateError *> * _Nonnull)
 propertiesTemplateGet:(NSString * _Nonnull)templateId;
 
 ///
-/// Get the property template identifiers for a user. To get the schema of each template use propertiesTemplateGet.
+/// Get the property template identifiers for a user. To get the schema of each template use `propertiesTemplateGet`.
 ///
 ///
-/// @return Through the response callback, the caller will receive a DBPROPERTIESListPropertyTemplateIds object on
-/// success or a DBPROPERTIESPropertyTemplateError object on failure.
+/// @return Through the response callback, the caller will receive a `DBPROPERTIESListPropertyTemplateIds` object on
+/// success or a `DBPROPERTIESPropertyTemplateError` object on failure.
 ///
 - (DBRpcTask<DBPROPERTIESListPropertyTemplateIds *, DBPROPERTIESPropertyTemplateError *> * _Nonnull)
     propertiesTemplateList;
@@ -770,8 +773,8 @@ propertiesTemplateGet:(NSString * _Nonnull)templateId;
 /// @param path A unique identifier for the file.
 /// @param updatePropertyGroups Filled custom property templates associated with a file.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUpdatePropertiesError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUpdatePropertiesError` object on failure.
 ///
 - (DBRpcTask<DBNilObject *, DBFILESUpdatePropertiesError *> * _Nonnull)
     propertiesUpdate:(NSString * _Nonnull)path
@@ -783,8 +786,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// @param path The path to the file you want to restore.
 /// @param rev The revision to restore for the file.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESRestoreError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESRestoreError` object on failure.
 ///
 - (DBRpcTask<DBFILESFileMetadata *, DBFILESRestoreError *> * _Nonnull)restore:(NSString * _Nonnull)path
                                                                          rev:(NSString * _Nonnull)rev;
@@ -796,20 +799,20 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// @param path The path in Dropbox where the URL will be saved to.
 /// @param url The URL to be saved.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESSaveUrlResult object on success or a
-/// DBFILESSaveUrlError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESSaveUrlResult` object on success or a
+/// `DBFILESSaveUrlError` object on failure.
 ///
 - (DBRpcTask<DBFILESSaveUrlResult *, DBFILESSaveUrlError *> * _Nonnull)saveUrl:(NSString * _Nonnull)path
                                                                           url:(NSString * _Nonnull)url;
 
 ///
-/// Check the status of a saveUrl job.
+/// Check the status of a `saveUrl` job.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESSaveUrlJobStatus object on success or a
-/// DBASYNCPollError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESSaveUrlJobStatus` object on success or a
+/// `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBFILESSaveUrlJobStatus *, DBASYNCPollError *> * _Nonnull)saveUrlCheckJobStatus:
     (NSString * _Nonnull)asyncJobId;
@@ -822,8 +825,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// @param query The string to search for. The search string is split on spaces into multiple tokens. For file name
 /// searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
 ///
-/// @return Through the response callback, the caller will receive a DBFILESSearchResult object on success or a
-/// DBFILESSearchError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESSearchResult` object on success or a
+/// `DBFILESSearchError` object on failure.
 ///
 - (DBRpcTask<DBFILESSearchResult *, DBFILESSearchError *> * _Nonnull)search:(NSString * _Nonnull)path
                                                                      query:(NSString * _Nonnull)query;
@@ -840,8 +843,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// @param mode The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content
 /// is only available for Dropbox Business accounts.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESSearchResult object on success or a
-/// DBFILESSearchError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESSearchResult` object on success or a
+/// `DBFILESSearchError` object on failure.
 ///
 - (DBRpcTask<DBFILESSearchResult *, DBFILESSearchError *> * _Nonnull)search:(NSString * _Nonnull)path
                                                                      query:(NSString * _Nonnull)query
@@ -851,20 +854,20 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadUrl:(NSString * _Nonnull)path
                                                                         inputUrl:(NSURL * _Nonnull)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param mode Selects what to do if the file already exists.
@@ -877,8 +880,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadUrl:(NSString * _Nonnull)path
                                                                             mode:(DBFILESWriteMode * _Nullable)mode
@@ -889,20 +892,20 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path
                                                                         inputData:(NSData * _Nonnull)inputData;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param mode Selects what to do if the file already exists.
@@ -915,8 +918,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadData:(NSString * _Nonnull)path
                                                                              mode:(DBFILESWriteMode * _Nullable)mode
@@ -927,13 +930,13 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path
                                                                         inputStream:
@@ -941,7 +944,7 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
-/// Instead, create an upload session with uploadSessionStart.
+/// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param mode Selects what to do if the file already exists.
@@ -954,8 +957,8 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadStream:(NSString * _Nonnull)path
                                                                                mode:(DBFILESWriteMode * _Nullable)mode
@@ -969,13 +972,13 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
 /// contents.
 ///
-/// @param sessionId The upload session ID (returned by uploadSessionStart).
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
 /// @param offset The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or
 /// duplicated in the event of a network error.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendUrl:(NSString * _Nonnull)sessionId
@@ -987,13 +990,13 @@ uploadSessionAppendUrl:(NSString * _Nonnull)sessionId
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
 /// contents.
 ///
-/// @param sessionId The upload session ID (returned by uploadSessionStart).
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
 /// @param offset The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or
 /// duplicated in the event of a network error.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendData:(NSString * _Nonnull)sessionId
@@ -1005,13 +1008,13 @@ uploadSessionAppendData:(NSString * _Nonnull)sessionId
 /// DEPRECATED: Append more data to an upload session. A single request should not upload more than 150 MB of file
 /// contents.
 ///
-/// @param sessionId The upload session ID (returned by uploadSessionStart).
+/// @param sessionId The upload session ID (returned by `uploadSessionStart`).
 /// @param offset The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or
 /// duplicated in the event of a network error.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendStream:(NSString * _Nonnull)sessionId
@@ -1026,8 +1029,8 @@ uploadSessionAppendStream:(NSString * _Nonnull)sessionId
 /// @param cursor Contains the upload session ID and the offset.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1039,11 +1042,11 @@ uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1057,8 +1060,8 @@ uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Data:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1070,11 +1073,11 @@ uploadSessionAppendV2Data:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Data:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1088,8 +1091,8 @@ uploadSessionAppendV2Data:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1101,11 +1104,11 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a void object on success or a
-/// DBFILESUploadSessionLookupError object on failure.
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1120,8 +1123,8 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadSessionFinishError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> * _Nonnull)
 uploadSessionFinishUrl:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1136,8 +1139,8 @@ uploadSessionFinishUrl:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadSessionFinishError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> * _Nonnull)
 uploadSessionFinishData:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1152,8 +1155,8 @@ uploadSessionFinishData:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESFileMetadata object on success or a
-/// DBFILESUploadSessionFinishError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
+/// `DBFILESUploadSessionFinishError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> * _Nonnull)
 uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
@@ -1161,60 +1164,61 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
               inputStream:(NSInputStream * _Nonnull)inputStream;
 
 ///
-/// This route helps you commit many files at once into a user's Dropbox. Use uploadSessionStart and
-/// uploadSessionAppendV2 to upload file contents. We recommend uploading many files in parallel to increase throughput.
-/// Once the file contents have been uploaded, rather than calling uploadSessionFinish, use this route to finish all
-/// your upload sessions in a single request. close in UploadSessionStartArg or close in UploadSessionAppendArg needs to
-/// be true for last uploadSessionStart or uploadSessionAppendV2 call. This route will return job_id immediately and do
-/// the async commit job in background. We have another route uploadSessionFinishBatchCheck to check the job status. For
-/// the same account, this route should be executed serially. That means you should not start next job before current
-/// job finishes. Also we only allow up to 1000 entries in a single request
+/// This route helps you commit many files at once into a user's Dropbox. Use `uploadSessionStart` and
+/// `uploadSessionAppendV2` to upload file contents. We recommend uploading many files in parallel to increase
+/// throughput. Once the file contents have been uploaded, rather than calling `uploadSessionFinish`, use this route to
+/// finish all your upload sessions in a single request. `close` in `DBFILESUploadSessionStartArg` or `close` in
+/// `DBFILESUploadSessionAppendArg` needs to be true for last `uploadSessionStart` or `uploadSessionAppendV2` call. This
+/// route will return job_id immediately and do the async commit job in background. We have another route
+/// `uploadSessionFinishBatchCheck` to check the job status. For the same account, this route should be executed
+/// serially. That means you should not start next job before current job finishes. Also we only allow up to 1000
+/// entries in a single request
 ///
 /// @param entries Commit information for each file in the batch.
 ///
-/// @return Through the response callback, the caller will receive a DBASYNCLaunchEmptyResult object on success or a
-/// void object on failure.
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
 ///
 - (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)uploadSessionFinishBatch:
     (NSArray<DBFILESUploadSessionFinishArg *> * _Nonnull)entries;
 
 ///
-/// Returns the status of an asynchronous job for uploadSessionFinishBatch. If success, it returns list of result for
+/// Returns the status of an asynchronous job for `uploadSessionFinishBatch`. If success, it returns list of result for
 /// each entry
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionFinishBatchJobStatus object on
-/// success or a DBASYNCPollError object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionFinishBatchJobStatus` object
+/// on success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBFILESUploadSessionFinishBatchJobStatus *, DBASYNCPollError *> * _Nonnull)uploadSessionFinishBatchCheck:
     (NSString * _Nonnull)asyncJobId;
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)uploadSessionStartUrl:
     (NSURL * _Nonnull)inputUrl;
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)
 uploadSessionStartUrl:(NSNumber * _Nullable)close
@@ -1222,28 +1226,28 @@ uploadSessionStartUrl:(NSNumber * _Nullable)close
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)uploadSessionStartData:
     (NSData * _Nonnull)inputData;
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputData The file to upload, as an NSData * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)
 uploadSessionStartData:(NSNumber * _Nullable)close
@@ -1251,28 +1255,28 @@ uploadSessionStartData:(NSNumber * _Nullable)close
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)uploadSessionStartStream:
     (NSInputStream * _Nonnull)inputStream;
 
 ///
 /// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use uploadSessionAppendV2 to add more data and uploadSessionFinish to save all
-/// the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
+/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
-/// uploadSessionAppendV2 anymore with the current session.
+/// `uploadSessionAppendV2` anymore with the current session.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
-/// @return Through the response callback, the caller will receive a DBFILESUploadSessionStartResult object on success
-/// or a void object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
+/// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)
 uploadSessionStartStream:(NSNumber * _Nullable)close

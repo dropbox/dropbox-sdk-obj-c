@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupsPollError;
-
 #pragma mark - API Object
 
 ///
-/// The GroupsPollError union.
+/// The `GroupsPollError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupsPollError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMGroupsPollErrorTag enum type represents the possible tag states with which the
-/// DBTEAMGroupsPollError union can exist.
+/// The `DBTEAMGroupsPollErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMGroupsPollError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupsPollErrorTag) {
   /// The job ID is invalid.
   DBTEAMGroupsPollErrorInvalidAsyncJobId,
@@ -45,68 +43,68 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsPollErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InvalidAsyncJobId.
+/// Initializes union class with tag state of "invalid_async_job_id".
 ///
-/// About the InvalidAsyncJobId tag state: The job ID is invalid.
+/// Description of the "invalid_async_job_id" tag state: The job ID is invalid.
 ///
-/// @return An initialized DBTEAMGroupsPollError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidAsyncJobId;
 
 ///
-/// Initializes union class with tag state of InternalError.
+/// Initializes union class with tag state of "internal_error".
 ///
-/// About the InternalError tag state: Something went wrong with the job on Dropbox's end. You'll
-/// need to verify that the action you were taking succeeded, and if not, try again. This should
-/// happen very rarely.
+/// Description of the "internal_error" tag state: Something went wrong with the job on Dropbox's
+/// end. You'll need to verify that the action you were taking succeeded, and if not, try again.
+/// This should happen very rarely.
 ///
-/// @return An initialized DBTEAMGroupsPollError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInternalError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMGroupsPollError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of AccessDenied.
+/// Initializes union class with tag state of "access_denied".
 ///
-/// About the AccessDenied tag state: You are not allowed to poll this job.
+/// Description of the "access_denied" tag state: You are not allowed to poll this job.
 ///
-/// @return An initialized DBTEAMGroupsPollError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessDenied;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidAsyncJobId.
+/// Retrieves whether the union's current tag state has value "invalid_async_job_id".
 ///
-/// @return Whether the union's current tag state has value InvalidAsyncJobId.
+/// @return Whether the union's current tag state has value "invalid_async_job_id".
 ///
 - (BOOL)isInvalidAsyncJobId;
 
 ///
-/// Retrieves whether the union's current tag state has value InternalError.
+/// Retrieves whether the union's current tag state has value "internal_error".
 ///
-/// @return Whether the union's current tag state has value InternalError.
+/// @return Whether the union's current tag state has value "internal_error".
 ///
 - (BOOL)isInternalError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value AccessDenied.
+/// Retrieves whether the union's current tag state has value "access_denied".
 ///
-/// @return Whether the union's current tag state has value AccessDenied.
+/// @return Whether the union's current tag state has value "access_denied".
 ///
 - (BOOL)isAccessDenied;
 
@@ -122,25 +120,26 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsPollErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMGroupsPollError union.
+/// The serialization class for the `DBTEAMGroupsPollError` union.
 ///
 @interface DBTEAMGroupsPollErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupsPollError instances.
+/// Serializes `DBTEAMGroupsPollError` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupsPollError API object.
+/// @param instance An instance of the `DBTEAMGroupsPollError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupsPollError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupsPollError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsPollError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupsPollError instances.
+/// Deserializes `DBTEAMGroupsPollError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupsPollError API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsPollError` API
+/// object.
 ///
-/// @return An instantiation of the DBTEAMGroupsPollError object.
+/// @return An instantiation of the `DBTEAMGroupsPollError` object.
 ///
 + (DBTEAMGroupsPollError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,18 +8,16 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESFolderSharingInfo;
-
 #pragma mark - API Object
 
 ///
-/// The FolderSharingInfo struct.
+/// The `FolderSharingInfo` struct.
 ///
 /// Sharing info for a folder which is contained in a shared folder or is a shared folder mount
 /// point.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESFolderSharingInfo : DBFILESSharingInfo <DBSerializable>
 
@@ -35,26 +33,25 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESFolderSharingInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param readOnly True if the file or folder is inside a read-only shared folder.
 /// @param parentSharedFolderId Set if the folder is contained by a shared folder.
 /// @param sharedFolderId If this folder is a shared folder mount point, the ID of the shared folder
 /// mounted at this location.
 ///
-/// @return An initialized DBFILESFolderSharingInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly
                     parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId
                           sharedFolderId:(NSString * _Nullable)sharedFolderId;
 
 ///
-/// Convenience constructor for the DBFILESFolderSharingInfo struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param readOnly True if the file or folder is inside a read-only shared folder.
 ///
-/// @return An initialized DBFILESFolderSharingInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithReadOnly:(NSNumber * _Nonnull)readOnly;
 
@@ -63,26 +60,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the FolderSharingInfo struct.
+/// The serialization class for the `FolderSharingInfo` struct.
 ///
 @interface DBFILESFolderSharingInfoSerializer : NSObject
 
 ///
-/// Serializes DBFILESFolderSharingInfo instances.
+/// Serializes `DBFILESFolderSharingInfo` instances.
 ///
-/// @param instance An instance of the DBFILESFolderSharingInfo API object.
+/// @param instance An instance of the `DBFILESFolderSharingInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESFolderSharingInfo API object.
+/// @return A json-compatible dictionary representation of the `DBFILESFolderSharingInfo` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESFolderSharingInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESFolderSharingInfo instances.
+/// Deserializes `DBFILESFolderSharingInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESFolderSharingInfo API
+/// @param dict A json-compatible dictionary representation of the `DBFILESFolderSharingInfo` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESFolderSharingInfo object.
+/// @return An instantiation of the `DBFILESFolderSharingInfo` object.
 ///
 + (DBFILESFolderSharingInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGUnshareFolderArg;
-
 #pragma mark - API Object
 
 ///
-/// The UnshareFolderArg struct.
+/// The `UnshareFolderArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGUnshareFolderArg : NSObject <DBSerializable>
 
@@ -32,25 +30,24 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGUnshareFolderArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param leaveACopy If true, members of this shared folder will get a copy of this folder after
 /// it's unshared. Otherwise, it will be removed from their Dropbox. The current user, who is an
 /// owner, will always retain their copy.
 ///
-/// @return An initialized DBSHARINGUnshareFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                     leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
 ///
-/// Convenience constructor for the DBSHARINGUnshareFolderArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
-/// @return An initialized DBSHARINGUnshareFolderArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId;
 
@@ -59,26 +56,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UnshareFolderArg struct.
+/// The serialization class for the `UnshareFolderArg` struct.
 ///
 @interface DBSHARINGUnshareFolderArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGUnshareFolderArg instances.
+/// Serializes `DBSHARINGUnshareFolderArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGUnshareFolderArg API object.
+/// @param instance An instance of the `DBSHARINGUnshareFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGUnshareFolderArg API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGUnshareFolderArg` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUnshareFolderArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGUnshareFolderArg instances.
+/// Deserializes `DBSHARINGUnshareFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGUnshareFolderArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGUnshareFolderArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGUnshareFolderArg object.
+/// @return An instantiation of the `DBSHARINGUnshareFolderArg` object.
 ///
 + (DBSHARINGUnshareFolderArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

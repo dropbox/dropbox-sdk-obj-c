@@ -7,19 +7,18 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMGroupMembersSelector;
 @class DBTEAMGroupSelector;
 @class DBTEAMUsersSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The GroupMembersSelector struct.
+/// The `GroupMembersSelector` struct.
 ///
 /// Argument for selecting a group and a list of users.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupMembersSelector : NSObject <DBSerializable>
 
@@ -34,12 +33,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMGroupMembersSelector struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param group Specify a group.
-/// @param users A list of users that are members of :field:`group`.
+/// @param users A list of users that are members of group.
 ///
-/// @return An initialized DBTEAMGroupMembersSelector instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group
                                 users:(DBTEAMUsersSelectorArg * _Nonnull)users;
@@ -49,27 +48,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GroupMembersSelector struct.
+/// The serialization class for the `GroupMembersSelector` struct.
 ///
 @interface DBTEAMGroupMembersSelectorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupMembersSelector instances.
+/// Serializes `DBTEAMGroupMembersSelector` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupMembersSelector API object.
+/// @param instance An instance of the `DBTEAMGroupMembersSelector` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupMembersSelector API
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupMembersSelector` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersSelector * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupMembersSelector instances.
+/// Deserializes `DBTEAMGroupMembersSelector` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupMembersSelector API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMembersSelector` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupMembersSelector object.
+/// @return An instantiation of the `DBTEAMGroupMembersSelector` object.
 ///
 + (DBTEAMGroupMembersSelector * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBPROPERTIESGetPropertyTemplateArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetPropertyTemplateArg struct.
+/// The `GetPropertyTemplateArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBPROPERTIESGetPropertyTemplateArg : NSObject <DBSerializable>
 
@@ -27,12 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBPROPERTIESGetPropertyTemplateArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param templateId An identifier for property template added by route properties/template/add.
 ///
-/// @return An initialized DBPROPERTIESGetPropertyTemplateArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateId:(NSString * _Nonnull)templateId;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetPropertyTemplateArg struct.
+/// The serialization class for the `GetPropertyTemplateArg` struct.
 ///
 @interface DBPROPERTIESGetPropertyTemplateArgSerializer : NSObject
 
 ///
-/// Serializes DBPROPERTIESGetPropertyTemplateArg instances.
+/// Serializes `DBPROPERTIESGetPropertyTemplateArg` instances.
 ///
-/// @param instance An instance of the DBPROPERTIESGetPropertyTemplateArg API object.
+/// @param instance An instance of the `DBPROPERTIESGetPropertyTemplateArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBPROPERTIESGetPropertyTemplateArg
+/// @return A json-compatible dictionary representation of the `DBPROPERTIESGetPropertyTemplateArg`
 /// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESGetPropertyTemplateArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBPROPERTIESGetPropertyTemplateArg instances.
+/// Deserializes `DBPROPERTIESGetPropertyTemplateArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBPROPERTIESGetPropertyTemplateArg API object.
+/// `DBPROPERTIESGetPropertyTemplateArg` API object.
 ///
-/// @return An instantiation of the DBPROPERTIESGetPropertyTemplateArg object.
+/// @return An instantiation of the `DBPROPERTIESGetPropertyTemplateArg` object.
 ///
 + (DBPROPERTIESGetPropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

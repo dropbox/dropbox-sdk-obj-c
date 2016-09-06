@@ -7,19 +7,18 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersUnsuspendArg;
 @class DBTEAMUserSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The MembersUnsuspendArg struct.
+/// The `MembersUnsuspendArg` struct.
 ///
 /// Exactly one of team_member_id, email, or external_id must be provided to identify the user
 /// account.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersUnsuspendArg : NSObject <DBSerializable>
 
@@ -31,11 +30,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersUnsuspendArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of user to unsuspend.
 ///
-/// @return An initialized DBTEAMMembersUnsuspendArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user;
 
@@ -44,26 +43,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersUnsuspendArg struct.
+/// The serialization class for the `MembersUnsuspendArg` struct.
 ///
 @interface DBTEAMMembersUnsuspendArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersUnsuspendArg instances.
+/// Serializes `DBTEAMMembersUnsuspendArg` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersUnsuspendArg API object.
+/// @param instance An instance of the `DBTEAMMembersUnsuspendArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersUnsuspendArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendArg` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersUnsuspendArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersUnsuspendArg instances.
+/// Deserializes `DBTEAMMembersUnsuspendArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersUnsuspendArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersUnsuspendArg object.
+/// @return An instantiation of the `DBTEAMMembersUnsuspendArg` object.
 ///
 + (DBTEAMMembersUnsuspendArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

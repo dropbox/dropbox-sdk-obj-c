@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMUserSelectorError;
-
 #pragma mark - API Object
 
 ///
-/// The UserSelectorError union.
+/// The `UserSelectorError` union.
 ///
 /// Error that can be returned whenever a struct derived from UserSelectorArg is used.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMUserSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMUserSelectorErrorTag enum type represents the possible tag states with which the
-/// DBTEAMUserSelectorError union can exist.
+/// The `DBTEAMUserSelectorErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMUserSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMUserSelectorErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -38,21 +36,21 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMUserSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
@@ -68,26 +66,26 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMUserSelectorError union.
+/// The serialization class for the `DBTEAMUserSelectorError` union.
 ///
 @interface DBTEAMUserSelectorErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMUserSelectorError instances.
+/// Serializes `DBTEAMUserSelectorError` instances.
 ///
-/// @param instance An instance of the DBTEAMUserSelectorError API object.
+/// @param instance An instance of the `DBTEAMUserSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMUserSelectorError API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMUserSelectorError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMUserSelectorError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMUserSelectorError instances.
+/// Deserializes `DBTEAMUserSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMUserSelectorError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMUserSelectorError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMUserSelectorError object.
+/// @return An instantiation of the `DBTEAMUserSelectorError` object.
 ///
 + (DBTEAMUserSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

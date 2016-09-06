@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSGetAccountArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetAccountArg struct.
+/// The `GetAccountArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSGetAccountArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSGetAccountArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accountId A user's account identifier.
 ///
-/// @return An initialized DBUSERSGetAccountArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountId:(NSString * _Nonnull)accountId;
 
@@ -40,25 +38,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetAccountArg struct.
+/// The serialization class for the `GetAccountArg` struct.
 ///
 @interface DBUSERSGetAccountArgSerializer : NSObject
 
 ///
-/// Serializes DBUSERSGetAccountArg instances.
+/// Serializes `DBUSERSGetAccountArg` instances.
 ///
-/// @param instance An instance of the DBUSERSGetAccountArg API object.
+/// @param instance An instance of the `DBUSERSGetAccountArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSGetAccountArg API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSGetAccountArg instances.
+/// Deserializes `DBUSERSGetAccountArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSGetAccountArg API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountArg` API
+/// object.
 ///
-/// @return An instantiation of the DBUSERSGetAccountArg object.
+/// @return An instantiation of the `DBUSERSGetAccountArg` object.
 ///
 + (DBUSERSGetAccountArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

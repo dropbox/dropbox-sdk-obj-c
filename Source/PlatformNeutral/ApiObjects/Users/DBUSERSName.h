@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSName;
-
 #pragma mark - API Object
 
 ///
-/// The Name struct.
+/// The `Name` struct.
 ///
 /// Representations for a person's name to assist with internationalization.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSName : NSObject <DBSerializable>
 
@@ -39,17 +37,16 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSName struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param givenName Also known as a first name.
 /// @param surname Also known as a last name or family name.
 /// @param familiarName Locale-dependent name. In the US, a person's familiar name is their
-/// :field:`given_name`, but elsewhere, it could be any combination of a person's
-/// :field:`given_name` and :field:`surname`.
+/// givenName, but elsewhere, it could be any combination of a person's givenName and surname.
 /// @param displayName A name that can be used directly to represent the name of a user's Dropbox
 /// account.
 ///
-/// @return An initialized DBUSERSName instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName
                                   surname:(NSString * _Nonnull)surname
@@ -61,25 +58,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the Name struct.
+/// The serialization class for the `Name` struct.
 ///
 @interface DBUSERSNameSerializer : NSObject
 
 ///
-/// Serializes DBUSERSName instances.
+/// Serializes `DBUSERSName` instances.
 ///
-/// @param instance An instance of the DBUSERSName API object.
+/// @param instance An instance of the `DBUSERSName` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSName API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSName` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSName * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSName instances.
+/// Deserializes `DBUSERSName` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSName API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSName` API object.
 ///
-/// @return An instantiation of the DBUSERSName object.
+/// @return An instantiation of the `DBUSERSName` object.
 ///
 + (DBUSERSName * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

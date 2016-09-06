@@ -10,19 +10,18 @@
 
 @class DBSHARINGAccessLevel;
 @class DBSHARINGInviteeInfo;
-@class DBSHARINGInviteeMembershipInfo;
 @class DBSHARINGMemberPermission;
 @class DBSHARINGUserInfo;
 
 #pragma mark - API Object
 
 ///
-/// The InviteeMembershipInfo struct.
+/// The `InviteeMembershipInfo` struct.
 ///
 /// Information about an invited member of a shared content.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGInviteeMembershipInfo : DBSHARINGMembershipInfo <DBSerializable>
 
@@ -37,7 +36,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGInviteeMembershipInfo struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accessType The access type for this member.
 /// @param invitee Recipient of the invitation.
@@ -47,7 +46,7 @@
 /// @param isInherited True if the member has access from a parent folder.
 /// @param user The user this invitation is tied to, if available.
 ///
-/// @return An initialized DBSHARINGInviteeMembershipInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
                                    invitee:(DBSHARINGInviteeInfo * _Nonnull)invitee
@@ -57,13 +56,12 @@
                                       user:(DBSHARINGUserInfo * _Nullable)user;
 
 ///
-/// Convenience constructor for the DBSHARINGInviteeMembershipInfo struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param accessType The access type for this member.
 /// @param invitee Recipient of the invitation.
 ///
-/// @return An initialized DBSHARINGInviteeMembershipInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
                                    invitee:(DBSHARINGInviteeInfo * _Nonnull)invitee;
@@ -73,27 +71,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the InviteeMembershipInfo struct.
+/// The serialization class for the `InviteeMembershipInfo` struct.
 ///
 @interface DBSHARINGInviteeMembershipInfoSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGInviteeMembershipInfo instances.
+/// Serializes `DBSHARINGInviteeMembershipInfo` instances.
 ///
-/// @param instance An instance of the DBSHARINGInviteeMembershipInfo API object.
+/// @param instance An instance of the `DBSHARINGInviteeMembershipInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGInviteeMembershipInfo API
+/// @return A json-compatible dictionary representation of the `DBSHARINGInviteeMembershipInfo` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGInviteeMembershipInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGInviteeMembershipInfo instances.
+/// Deserializes `DBSHARINGInviteeMembershipInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGInviteeMembershipInfo
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGInviteeMembershipInfo`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGInviteeMembershipInfo object.
+/// @return An instantiation of the `DBSHARINGInviteeMembershipInfo` object.
 ///
 + (DBSHARINGInviteeMembershipInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

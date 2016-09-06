@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGAddFolderMemberArg;
 @class DBSHARINGAddMember;
 
 #pragma mark - API Object
 
 ///
-/// The AddFolderMemberArg struct.
+/// The `AddFolderMemberArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGAddFolderMemberArg : NSObject <DBSerializable>
 
@@ -38,7 +37,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGAddFolderMemberArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param members The intended list of members to add.  Added members will receive invites to join
@@ -47,7 +46,7 @@
 /// their invite.
 /// @param customMessage Optional message to display to added members in their invitation.
 ///
-/// @return An initialized DBSHARINGAddFolderMemberArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                        members:(NSArray<DBSHARINGAddMember *> * _Nonnull)members
@@ -55,14 +54,13 @@
                                  customMessage:(NSString * _Nullable)customMessage;
 
 ///
-/// Convenience constructor for the DBSHARINGAddFolderMemberArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 /// @param members The intended list of members to add.  Added members will receive invites to join
 /// the shared folder.
 ///
-/// @return An initialized DBSHARINGAddFolderMemberArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                        members:(NSArray<DBSHARINGAddMember *> * _Nonnull)members;
@@ -72,27 +70,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the AddFolderMemberArg struct.
+/// The serialization class for the `AddFolderMemberArg` struct.
 ///
 @interface DBSHARINGAddFolderMemberArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGAddFolderMemberArg instances.
+/// Serializes `DBSHARINGAddFolderMemberArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGAddFolderMemberArg API object.
+/// @param instance An instance of the `DBSHARINGAddFolderMemberArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGAddFolderMemberArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGAddFolderMemberArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddFolderMemberArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGAddFolderMemberArg instances.
+/// Deserializes `DBSHARINGAddFolderMemberArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGAddFolderMemberArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddFolderMemberArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGAddFolderMemberArg object.
+/// @return An instantiation of the `DBSHARINGAddFolderMemberArg` object.
 ///
 + (DBSHARINGAddFolderMemberArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

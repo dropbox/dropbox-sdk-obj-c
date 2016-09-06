@@ -9,16 +9,15 @@
 
 @class DBTEAMActiveWebSession;
 @class DBTEAMDesktopClientSession;
-@class DBTEAMListMemberDevicesResult;
 @class DBTEAMMobileClientSession;
 
 #pragma mark - API Object
 
 ///
-/// The ListMemberDevicesResult struct.
+/// The `ListMemberDevicesResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMemberDevicesResult : NSObject <DBSerializable>
 
@@ -36,13 +35,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMListMemberDevicesResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param activeWebSessions List of web sessions made by this team member
 /// @param desktopClientSessions List of desktop clients used by this team member
 /// @param mobileClientSessions List of mobile client used by this team member
 ///
-/// @return An initialized DBTEAMListMemberDevicesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithActiveWebSessions:(NSArray<DBTEAMActiveWebSession *> * _Nullable)activeWebSessions
                             desktopClientSessions:
@@ -50,11 +49,10 @@
                              mobileClientSessions:(NSArray<DBTEAMMobileClientSession *> * _Nullable)mobileClientSessions;
 
 ///
-/// Convenience constructor for the DBTEAMListMemberDevicesResult struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 ///
-/// @return An initialized DBTEAMListMemberDevicesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)init;
 
@@ -63,27 +61,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListMemberDevicesResult struct.
+/// The serialization class for the `ListMemberDevicesResult` struct.
 ///
 @interface DBTEAMListMemberDevicesResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMemberDevicesResult instances.
+/// Serializes `DBTEAMListMemberDevicesResult` instances.
 ///
-/// @param instance An instance of the DBTEAMListMemberDevicesResult API object.
+/// @param instance An instance of the `DBTEAMListMemberDevicesResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMemberDevicesResult API
+/// @return A json-compatible dictionary representation of the `DBTEAMListMemberDevicesResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberDevicesResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMemberDevicesResult instances.
+/// Deserializes `DBTEAMListMemberDevicesResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMemberDevicesResult API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberDevicesResult`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMListMemberDevicesResult object.
+/// @return An instantiation of the `DBTEAMListMemberDevicesResult` object.
 ///
 + (DBTEAMListMemberDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

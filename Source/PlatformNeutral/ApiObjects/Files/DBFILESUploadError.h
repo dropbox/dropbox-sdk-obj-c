@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadError;
 @class DBFILESUploadWriteFailed;
 
 #pragma mark - API Object
 
 ///
-/// The UploadError union.
+/// The `UploadError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESUploadErrorTag enum type represents the possible tag states with which the
-/// DBFILESUploadError union can exist.
+/// The `DBFILESUploadErrorTag` enum type represents the possible tag states with which the
+/// `DBFILESUploadError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
   /// Unable to save the uploaded contents to a file.
   DBFILESUploadErrorPath,
@@ -36,46 +35,46 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadErrorTag tag;
 
-/// Unable to save the uploaded contents to a file. Ensure the isPath method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Unable to save the uploaded contents to a file. @note Ensure the `isPath` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESUploadWriteFailed * _Nonnull path;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Path.
+/// Initializes union class with tag state of "path".
 ///
-/// About the Path tag state: Unable to save the uploaded contents to a file.
+/// Description of the "path" tag state: Unable to save the uploaded contents to a file.
 ///
 /// @param path Unable to save the uploaded contents to a file.
 ///
-/// @return An initialized DBFILESUploadError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(DBFILESUploadWriteFailed * _Nonnull)path;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESUploadError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Path.
+/// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the path property, otherwise
-/// a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the `path` property,
+/// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Path.
+/// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -91,25 +90,25 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESUploadError union.
+/// The serialization class for the `DBFILESUploadError` union.
 ///
 @interface DBFILESUploadErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadError instances.
+/// Serializes `DBFILESUploadError` instances.
 ///
-/// @param instance An instance of the DBFILESUploadError API object.
+/// @param instance An instance of the `DBFILESUploadError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadError API object.
+/// @return A json-compatible dictionary representation of the `DBFILESUploadError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadError instances.
+/// Deserializes `DBFILESUploadError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadError API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadError` API object.
 ///
-/// @return An instantiation of the DBFILESUploadError object.
+/// @return An instantiation of the `DBFILESUploadError` object.
 ///
 + (DBFILESUploadError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

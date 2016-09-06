@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGInsufficientQuotaAmounts;
-@class DBSHARINGMountFolderError;
 @class DBSHARINGSharedFolderAccessError;
 
 #pragma mark - API Object
 
 ///
-/// The MountFolderError union.
+/// The `MountFolderError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGMountFolderError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGMountFolderErrorTag enum type represents the possible tag states with which the
-/// DBSHARINGMountFolderError union can exist.
+/// The `DBSHARINGMountFolderErrorTag` enum type represents the possible tag states with which the
+/// `DBSHARINGMountFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
   /// (no description).
   DBSHARINGMountFolderErrorAccessError,
@@ -53,138 +52,139 @@ typedef NS_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGMountFolderErrorTag tag;
 
-/// (no description). Ensure the isAccessError method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
 
-/// The current user does not have enough space to mount the shared folder. Ensure the
-/// isInsufficientQuota method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// The current user does not have enough space to mount the shared folder. @note Ensure the
+/// `isInsufficientQuota` method returns true before accessing, otherwise a runtime exception will
+/// be raised.
 @property(nonatomic, readonly) DBSHARINGInsufficientQuotaAmounts * _Nonnull insufficientQuota;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
 /// @param accessError (no description).
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharedFolderAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of InsideSharedFolder.
+/// Initializes union class with tag state of "inside_shared_folder".
 ///
-/// About the InsideSharedFolder tag state: Mounting would cause a shared folder to be inside
-/// another, which is disallowed.
+/// Description of the "inside_shared_folder" tag state: Mounting would cause a shared folder to be
+/// inside another, which is disallowed.
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInsideSharedFolder;
 
 ///
-/// Initializes union class with tag state of InsufficientQuota.
+/// Initializes union class with tag state of "insufficient_quota".
 ///
-/// About the InsufficientQuota tag state: The current user does not have enough space to mount the
-/// shared folder.
+/// Description of the "insufficient_quota" tag state: The current user does not have enough space
+/// to mount the shared folder.
 ///
 /// @param insufficientQuota The current user does not have enough space to mount the shared folder.
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInsufficientQuota:(DBSHARINGInsufficientQuotaAmounts * _Nonnull)insufficientQuota;
 
 ///
-/// Initializes union class with tag state of AlreadyMounted.
+/// Initializes union class with tag state of "already_mounted".
 ///
-/// About the AlreadyMounted tag state: The shared folder is already mounted.
+/// Description of the "already_mounted" tag state: The shared folder is already mounted.
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAlreadyMounted;
 
 ///
-/// Initializes union class with tag state of NoPermission.
+/// Initializes union class with tag state of "no_permission".
 ///
-/// About the NoPermission tag state: The current user does not have permission to perform this
-/// action.
+/// Description of the "no_permission" tag state: The current user does not have permission to
+/// perform this action.
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoPermission;
 
 ///
-/// Initializes union class with tag state of NotMountable.
+/// Initializes union class with tag state of "not_mountable".
 ///
-/// About the NotMountable tag state: The shared folder is not mountable. One example where this can
-/// occur is when the shared folder belongs within a team folder in the user's Dropbox.
+/// Description of the "not_mountable" tag state: The shared folder is not mountable. One example
+/// where this can occur is when the shared folder belongs within a team folder in the user's
+/// Dropbox.
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotMountable;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGMountFolderError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value InsideSharedFolder.
+/// Retrieves whether the union's current tag state has value "inside_shared_folder".
 ///
-/// @return Whether the union's current tag state has value InsideSharedFolder.
+/// @return Whether the union's current tag state has value "inside_shared_folder".
 ///
 - (BOOL)isInsideSharedFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value InsufficientQuota.
+/// Retrieves whether the union's current tag state has value "insufficient_quota".
 ///
-/// @note Call this method and ensure it returns true before accessing the insufficientQuota
+/// @note Call this method and ensure it returns true before accessing the `insufficientQuota`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value InsufficientQuota.
+/// @return Whether the union's current tag state has value "insufficient_quota".
 ///
 - (BOOL)isInsufficientQuota;
 
 ///
-/// Retrieves whether the union's current tag state has value AlreadyMounted.
+/// Retrieves whether the union's current tag state has value "already_mounted".
 ///
-/// @return Whether the union's current tag state has value AlreadyMounted.
+/// @return Whether the union's current tag state has value "already_mounted".
 ///
 - (BOOL)isAlreadyMounted;
 
 ///
-/// Retrieves whether the union's current tag state has value NoPermission.
+/// Retrieves whether the union's current tag state has value "no_permission".
 ///
-/// @return Whether the union's current tag state has value NoPermission.
+/// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
 
 ///
-/// Retrieves whether the union's current tag state has value NotMountable.
+/// Retrieves whether the union's current tag state has value "not_mountable".
 ///
-/// @return Whether the union's current tag state has value NotMountable.
+/// @return Whether the union's current tag state has value "not_mountable".
 ///
 - (BOOL)isNotMountable;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -200,26 +200,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGMountFolderError union.
+/// The serialization class for the `DBSHARINGMountFolderError` union.
 ///
 @interface DBSHARINGMountFolderErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGMountFolderError instances.
+/// Serializes `DBSHARINGMountFolderError` instances.
 ///
-/// @param instance An instance of the DBSHARINGMountFolderError API object.
+/// @param instance An instance of the `DBSHARINGMountFolderError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGMountFolderError API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGMountFolderError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMountFolderError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGMountFolderError instances.
+/// Deserializes `DBSHARINGMountFolderError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGMountFolderError API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGMountFolderError` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGMountFolderError object.
+/// @return An instantiation of the `DBSHARINGMountFolderError` object.
 ///
 + (DBSHARINGMountFolderError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -9,17 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBPROPERTIESPropertyFieldTemplate;
-@class DBTEAMAddPropertyTemplateArg;
 
 #pragma mark - API Object
 
 ///
-/// The AddPropertyTemplateArg struct.
+/// The `AddPropertyTemplateArg` struct.
 ///
 /// Arguments for adding property templates.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMAddPropertyTemplateArg : DBPROPERTIESPropertyGroupTemplate <DBSerializable>
 
@@ -28,7 +27,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMAddPropertyTemplateArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param name A display name for the property template. Property template names can be up to 256
 /// bytes.
@@ -37,7 +36,7 @@
 /// @param fields This is a list of custom properties associated with a property template. There can
 /// be up to 64 properties in a single property template.
 ///
-/// @return An initialized DBTEAMAddPropertyTemplateArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                         description_:(NSString * _Nonnull)description_
@@ -48,27 +47,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the AddPropertyTemplateArg struct.
+/// The serialization class for the `AddPropertyTemplateArg` struct.
 ///
 @interface DBTEAMAddPropertyTemplateArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMAddPropertyTemplateArg instances.
+/// Serializes `DBTEAMAddPropertyTemplateArg` instances.
 ///
-/// @param instance An instance of the DBTEAMAddPropertyTemplateArg API object.
+/// @param instance An instance of the `DBTEAMAddPropertyTemplateArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMAddPropertyTemplateArg API
+/// @return A json-compatible dictionary representation of the `DBTEAMAddPropertyTemplateArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMAddPropertyTemplateArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMAddPropertyTemplateArg instances.
+/// Deserializes `DBTEAMAddPropertyTemplateArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMAddPropertyTemplateArg API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMAddPropertyTemplateArg`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMAddPropertyTemplateArg object.
+/// @return An instantiation of the `DBTEAMAddPropertyTemplateArg` object.
 ///
 + (DBTEAMAddPropertyTemplateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

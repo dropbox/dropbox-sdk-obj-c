@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeLinkedApiAppArg;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedApiAppArg struct.
+/// The `RevokeLinkedApiAppArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedApiAppArg : NSObject <DBSerializable>
 
@@ -33,27 +31,26 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeLinkedApiAppArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param appId The application's unique id
 /// @param teamMemberId The unique id of the member owning the device
 /// @param keepAppFolder Whether to keep the application dedicated folder (in case the application
 /// uses  one)
 ///
-/// @return An initialized DBTEAMRevokeLinkedApiAppArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId
                          teamMemberId:(NSString * _Nonnull)teamMemberId
                         keepAppFolder:(NSNumber * _Nullable)keepAppFolder;
 
 ///
-/// Convenience constructor for the DBTEAMRevokeLinkedApiAppArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param appId The application's unique id
 /// @param teamMemberId The unique id of the member owning the device
 ///
-/// @return An initialized DBTEAMRevokeLinkedApiAppArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppId:(NSString * _Nonnull)appId teamMemberId:(NSString * _Nonnull)teamMemberId;
 
@@ -62,27 +59,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeLinkedApiAppArg struct.
+/// The serialization class for the `RevokeLinkedApiAppArg` struct.
 ///
 @interface DBTEAMRevokeLinkedApiAppArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedApiAppArg instances.
+/// Serializes `DBTEAMRevokeLinkedApiAppArg` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedApiAppArg API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedApiAppArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedApiAppArg API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedApiAppArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedApiAppArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedApiAppArg instances.
+/// Deserializes `DBTEAMRevokeLinkedApiAppArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedApiAppArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedApiAppArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedApiAppArg object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedApiAppArg` object.
 ///
 + (DBTEAMRevokeLinkedApiAppArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

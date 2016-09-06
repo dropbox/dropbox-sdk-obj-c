@@ -7,33 +7,30 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFolderMembersContinueArg;
-
 #pragma mark - API Object
 
 ///
-/// The ListFolderMembersContinueArg struct.
+/// The `ListFolderMembersContinueArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFolderMembersContinueArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The cursor returned by your last call to listFolderMembers or listFolderMembersContinue.
+/// The cursor returned by your last call to `listFolderMembers` or `listFolderMembersContinue`.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFolderMembersContinueArg struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor The cursor returned by your last call to :route:`list_folder_members` or
-/// :route:`list_folder_members/continue`.
+/// @param cursor The cursor returned by your last call to `listFolderMembers` or
+/// `listFolderMembersContinue`.
 ///
-/// @return An initialized DBSHARINGListFolderMembersContinueArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursor:(NSString * _Nonnull)cursor;
 
@@ -42,27 +39,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFolderMembersContinueArg struct.
+/// The serialization class for the `ListFolderMembersContinueArg` struct.
 ///
 @interface DBSHARINGListFolderMembersContinueArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFolderMembersContinueArg instances.
+/// Serializes `DBSHARINGListFolderMembersContinueArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFolderMembersContinueArg API object.
+/// @param instance An instance of the `DBSHARINGListFolderMembersContinueArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFolderMembersContinueArg
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFolderMembersContinueArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersContinueArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFolderMembersContinueArg instances.
+/// Deserializes `DBSHARINGListFolderMembersContinueArg` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGListFolderMembersContinueArg API object.
+/// `DBSHARINGListFolderMembersContinueArg` API object.
 ///
-/// @return An instantiation of the DBSHARINGListFolderMembersContinueArg object.
+/// @return An instantiation of the `DBSHARINGListFolderMembersContinueArg` object.
 ///
 + (DBSHARINGListFolderMembersContinueArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

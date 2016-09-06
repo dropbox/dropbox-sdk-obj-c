@@ -8,22 +8,21 @@
 #import <Foundation/Foundation.h>
 
 @class DBFILESFileMetadata;
-@class DBFILESSaveUrlResult;
 
 #pragma mark - API Object
 
 ///
-/// The SaveUrlResult union.
+/// The `SaveUrlResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESSaveUrlResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESSaveUrlResultTag enum type represents the possible tag states with which the
-/// DBFILESSaveUrlResult union can exist.
+/// The `DBFILESSaveUrlResultTag` enum type represents the possible tag states with which the
+/// `DBFILESSaveUrlResult` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSaveUrlResultTag) {
   /// This response indicates that the processing is asynchronous. The string is an id that can be
   /// used to obtain the status of the asynchronous job.
@@ -38,59 +37,59 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlResultTag) {
 @property(nonatomic, readonly) DBFILESSaveUrlResultTag tag;
 
 /// This response indicates that the processing is asynchronous. The string is an id that can be
-/// used to obtain the status of the asynchronous job. Ensure the isAsyncJobId method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// used to obtain the status of the asynchronous job. @note Ensure the `isAsyncJobId` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
-/// Metadata of the file where the URL is saved to. Ensure the isComplete method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Metadata of the file where the URL is saved to. @note Ensure the `isComplete` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESFileMetadata * _Nonnull complete;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AsyncJobId.
+/// Initializes union class with tag state of "async_job_id".
 ///
-/// About the AsyncJobId tag state: This response indicates that the processing is asynchronous. The
-/// string is an id that can be used to obtain the status of the asynchronous job.
+/// Description of the "async_job_id" tag state: This response indicates that the processing is
+/// asynchronous. The string is an id that can be used to obtain the status of the asynchronous job.
 ///
 /// @param asyncJobId This response indicates that the processing is asynchronous. The string is an
 /// id that can be used to obtain the status of the asynchronous job.
 ///
-/// @return An initialized DBFILESSaveUrlResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAsyncJobId:(NSString * _Nonnull)asyncJobId;
 
 ///
-/// Initializes union class with tag state of Complete.
+/// Initializes union class with tag state of "complete".
 ///
-/// About the Complete tag state: Metadata of the file where the URL is saved to.
+/// Description of the "complete" tag state: Metadata of the file where the URL is saved to.
 ///
 /// @param complete Metadata of the file where the URL is saved to.
 ///
-/// @return An initialized DBFILESSaveUrlResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(DBFILESFileMetadata * _Nonnull)complete;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AsyncJobId.
+/// Retrieves whether the union's current tag state has value "async_job_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the asyncJobId property,
+/// @note Call this method and ensure it returns true before accessing the `asyncJobId` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AsyncJobId.
+/// @return Whether the union's current tag state has value "async_job_id".
 ///
 - (BOOL)isAsyncJobId;
 
 ///
-/// Retrieves whether the union's current tag state has value Complete.
+/// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the complete property,
+/// @note Call this method and ensure it returns true before accessing the `complete` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Complete.
+/// @return Whether the union's current tag state has value "complete".
 ///
 - (BOOL)isComplete;
 
@@ -106,25 +105,26 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESSaveUrlResult union.
+/// The serialization class for the `DBFILESSaveUrlResult` union.
 ///
 @interface DBFILESSaveUrlResultSerializer : NSObject
 
 ///
-/// Serializes DBFILESSaveUrlResult instances.
+/// Serializes `DBFILESSaveUrlResult` instances.
 ///
-/// @param instance An instance of the DBFILESSaveUrlResult API object.
+/// @param instance An instance of the `DBFILESSaveUrlResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESSaveUrlResult API object.
+/// @return A json-compatible dictionary representation of the `DBFILESSaveUrlResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveUrlResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESSaveUrlResult instances.
+/// Deserializes `DBFILESSaveUrlResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESSaveUrlResult API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESSaveUrlResult` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESSaveUrlResult object.
+/// @return An instantiation of the `DBFILESSaveUrlResult` object.
 ///
 + (DBFILESSaveUrlResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGMemberAction;
-
 #pragma mark - API Object
 
 ///
-/// The MemberAction union.
+/// The `MemberAction` union.
 ///
 /// Actions that may be taken on members of a shared folder.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGMemberAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGMemberActionTag enum type represents the possible tag states with which the
-/// DBSHARINGMemberAction union can exist.
+/// The `DBSHARINGMemberActionTag` enum type represents the possible tag states with which the
+/// `DBSHARINGMemberAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
   /// Allow the member to keep a copy of the folder when removing.
   DBSHARINGMemberActionLeaveACopy,
@@ -55,115 +53,116 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of LeaveACopy.
+/// Initializes union class with tag state of "leave_a_copy".
 ///
-/// About the LeaveACopy tag state: Allow the member to keep a copy of the folder when removing.
+/// Description of the "leave_a_copy" tag state: Allow the member to keep a copy of the folder when
+/// removing.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLeaveACopy;
 
 ///
-/// Initializes union class with tag state of MakeEditor.
+/// Initializes union class with tag state of "make_editor".
 ///
-/// About the MakeEditor tag state: Make the member an editor of the folder.
+/// Description of the "make_editor" tag state: Make the member an editor of the folder.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMakeEditor;
 
 ///
-/// Initializes union class with tag state of MakeOwner.
+/// Initializes union class with tag state of "make_owner".
 ///
-/// About the MakeOwner tag state: Make the member an owner of the folder.
+/// Description of the "make_owner" tag state: Make the member an owner of the folder.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMakeOwner;
 
 ///
-/// Initializes union class with tag state of MakeViewer.
+/// Initializes union class with tag state of "make_viewer".
 ///
-/// About the MakeViewer tag state: Make the member a viewer of the folder.
+/// Description of the "make_viewer" tag state: Make the member a viewer of the folder.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMakeViewer;
 
 ///
-/// Initializes union class with tag state of MakeViewerNoComment.
+/// Initializes union class with tag state of "make_viewer_no_comment".
 ///
-/// About the MakeViewerNoComment tag state: Make the member a viewer of the folder without
-/// commenting permissions.
+/// Description of the "make_viewer_no_comment" tag state: Make the member a viewer of the folder
+/// without commenting permissions.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMakeViewerNoComment;
 
 ///
-/// Initializes union class with tag state of Remove.
+/// Initializes union class with tag state of "remove".
 ///
-/// About the Remove tag state: Remove the member from the folder.
+/// Description of the "remove" tag state: Remove the member from the folder.
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRemove;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGMemberAction instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value LeaveACopy.
+/// Retrieves whether the union's current tag state has value "leave_a_copy".
 ///
-/// @return Whether the union's current tag state has value LeaveACopy.
+/// @return Whether the union's current tag state has value "leave_a_copy".
 ///
 - (BOOL)isLeaveACopy;
 
 ///
-/// Retrieves whether the union's current tag state has value MakeEditor.
+/// Retrieves whether the union's current tag state has value "make_editor".
 ///
-/// @return Whether the union's current tag state has value MakeEditor.
+/// @return Whether the union's current tag state has value "make_editor".
 ///
 - (BOOL)isMakeEditor;
 
 ///
-/// Retrieves whether the union's current tag state has value MakeOwner.
+/// Retrieves whether the union's current tag state has value "make_owner".
 ///
-/// @return Whether the union's current tag state has value MakeOwner.
+/// @return Whether the union's current tag state has value "make_owner".
 ///
 - (BOOL)isMakeOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value MakeViewer.
+/// Retrieves whether the union's current tag state has value "make_viewer".
 ///
-/// @return Whether the union's current tag state has value MakeViewer.
+/// @return Whether the union's current tag state has value "make_viewer".
 ///
 - (BOOL)isMakeViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value MakeViewerNoComment.
+/// Retrieves whether the union's current tag state has value "make_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value MakeViewerNoComment.
+/// @return Whether the union's current tag state has value "make_viewer_no_comment".
 ///
 - (BOOL)isMakeViewerNoComment;
 
 ///
-/// Retrieves whether the union's current tag state has value Remove.
+/// Retrieves whether the union's current tag state has value "remove".
 ///
-/// @return Whether the union's current tag state has value Remove.
+/// @return Whether the union's current tag state has value "remove".
 ///
 - (BOOL)isRemove;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -179,25 +178,26 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGMemberAction union.
+/// The serialization class for the `DBSHARINGMemberAction` union.
 ///
 @interface DBSHARINGMemberActionSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGMemberAction instances.
+/// Serializes `DBSHARINGMemberAction` instances.
 ///
-/// @param instance An instance of the DBSHARINGMemberAction API object.
+/// @param instance An instance of the `DBSHARINGMemberAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGMemberAction API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGMemberAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMemberAction * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGMemberAction instances.
+/// Deserializes `DBSHARINGMemberAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGMemberAction API object.
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGMemberAction` API
+/// object.
 ///
-/// @return An instantiation of the DBSHARINGMemberAction object.
+/// @return An instantiation of the `DBSHARINGMemberAction` object.
 ///
 + (DBSHARINGMemberAction * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

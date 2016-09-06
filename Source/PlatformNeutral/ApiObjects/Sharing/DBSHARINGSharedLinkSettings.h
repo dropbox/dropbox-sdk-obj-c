@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGRequestedVisibility;
-@class DBSHARINGSharedLinkSettings;
 
 #pragma mark - API Object
 
 ///
-/// The SharedLinkSettings struct.
+/// The `SharedLinkSettings` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedLinkSettings : NSObject <DBSerializable>
 
@@ -25,8 +24,8 @@
 /// The requested access for this shared link.
 @property(nonatomic, readonly) DBSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
-/// If requestedVisibility is password in RequestedVisibility this is needed to specify the password
-/// to access the link.
+/// If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this is needed to specify
+/// the password to access the link.
 @property(nonatomic, readonly) NSString * _Nullable linkPassword;
 
 /// Expiration time of the shared link. By default the link won't expire.
@@ -35,25 +34,24 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGSharedLinkSettings struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param requestedVisibility The requested access for this shared link.
-/// @param linkPassword If :field:`requested_visibility` is :field:`RequestedVisibility.password`
-/// this is needed to specify the password to access the link.
+/// @param linkPassword If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this
+/// is needed to specify the password to access the link.
 /// @param expires Expiration time of the shared link. By default the link won't expire.
 ///
-/// @return An initialized DBSHARINGSharedLinkSettings instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRequestedVisibility:(DBSHARINGRequestedVisibility * _Nullable)requestedVisibility
                                        linkPassword:(NSString * _Nullable)linkPassword
                                             expires:(NSDate * _Nullable)expires;
 
 ///
-/// Convenience constructor for the DBSHARINGSharedLinkSettings struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 ///
-/// @return An initialized DBSHARINGSharedLinkSettings instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)init;
 
@@ -62,27 +60,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the SharedLinkSettings struct.
+/// The serialization class for the `SharedLinkSettings` struct.
 ///
 @interface DBSHARINGSharedLinkSettingsSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedLinkSettings instances.
+/// Serializes `DBSHARINGSharedLinkSettings` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedLinkSettings API object.
+/// @param instance An instance of the `DBSHARINGSharedLinkSettings` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharedLinkSettings API
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkSettings` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkSettings * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedLinkSettings instances.
+/// Deserializes `DBSHARINGSharedLinkSettings` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharedLinkSettings API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedLinkSettings` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGSharedLinkSettings object.
+/// @return An instantiation of the `DBSHARINGSharedLinkSettings` object.
 ///
 + (DBSHARINGSharedLinkSettings * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

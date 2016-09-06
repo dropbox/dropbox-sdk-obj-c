@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMGroupAccessType;
-@class DBTEAMMemberAccess;
 @class DBTEAMUserSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The MemberAccess struct.
+/// The `MemberAccess` struct.
 ///
 /// Specify access type a member should have when joined to a group.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberAccess : NSObject <DBSerializable>
 
@@ -34,12 +33,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMemberAccess struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of a user.
 /// @param accessType Access type.
 ///
-/// @return An initialized DBTEAMMemberAccess instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user
                           accessType:(DBTEAMGroupAccessType * _Nonnull)accessType;
@@ -49,25 +48,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MemberAccess struct.
+/// The serialization class for the `MemberAccess` struct.
 ///
 @interface DBTEAMMemberAccessSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberAccess instances.
+/// Serializes `DBTEAMMemberAccess` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberAccess API object.
+/// @param instance An instance of the `DBTEAMMemberAccess` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberAccess API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberAccess` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAccess * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberAccess instances.
+/// Deserializes `DBTEAMMemberAccess` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberAccess API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberAccess` API object.
 ///
-/// @return An instantiation of the DBTEAMMemberAccess object.
+/// @return An instantiation of the `DBTEAMMemberAccess` object.
 ///
 + (DBTEAMMemberAccess * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,18 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBPROPERTIESPropertyFieldTemplate;
 @class DBPROPERTIESPropertyType;
 
 #pragma mark - API Object
 
 ///
-/// The PropertyFieldTemplate struct.
+/// The `PropertyFieldTemplate` struct.
 ///
 /// Describe a single property field type which that can be part of a property template.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBPROPERTIESPropertyFieldTemplate : NSObject <DBSerializable>
 
@@ -39,8 +38,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBPROPERTIESPropertyFieldTemplate struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param name This is the name or key of a custom property in a property template. File property
 /// names can be up to 256 bytes.
@@ -49,7 +47,7 @@
 /// @param type This is the data type of the value of this property. This type will be enforced upon
 /// property creation and modifications.
 ///
-/// @return An initialized DBPROPERTIESPropertyFieldTemplate instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                         description_:(NSString * _Nonnull)description_
@@ -60,27 +58,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the PropertyFieldTemplate struct.
+/// The serialization class for the `PropertyFieldTemplate` struct.
 ///
 @interface DBPROPERTIESPropertyFieldTemplateSerializer : NSObject
 
 ///
-/// Serializes DBPROPERTIESPropertyFieldTemplate instances.
+/// Serializes `DBPROPERTIESPropertyFieldTemplate` instances.
 ///
-/// @param instance An instance of the DBPROPERTIESPropertyFieldTemplate API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyFieldTemplate` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBPROPERTIESPropertyFieldTemplate API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyFieldTemplate`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyFieldTemplate * _Nonnull)instance;
 
 ///
-/// Deserializes DBPROPERTIESPropertyFieldTemplate instances.
+/// Deserializes `DBPROPERTIESPropertyFieldTemplate` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBPROPERTIESPropertyFieldTemplate
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyFieldTemplate` API object.
 ///
-/// @return An instantiation of the DBPROPERTIESPropertyFieldTemplate object.
+/// @return An instantiation of the `DBPROPERTIESPropertyFieldTemplate` object.
 ///
 + (DBPROPERTIESPropertyFieldTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGRevokeSharedLinkError;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeSharedLinkError union.
+/// The `RevokeSharedLinkError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGRevokeSharedLinkError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGRevokeSharedLinkErrorTag enum type represents the possible tag states with which
-/// the DBSHARINGRevokeSharedLinkError union can exist.
+/// The `DBSHARINGRevokeSharedLinkErrorTag` enum type represents the possible tag states with which
+/// the `DBSHARINGRevokeSharedLinkError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRevokeSharedLinkErrorTag) {
   /// The shared link wasn't found
   DBSHARINGRevokeSharedLinkErrorSharedLinkNotFound,
@@ -44,66 +42,67 @@ typedef NS_ENUM(NSInteger, DBSHARINGRevokeSharedLinkErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of SharedLinkNotFound.
+/// Initializes union class with tag state of "shared_link_not_found".
 ///
-/// About the SharedLinkNotFound tag state: The shared link wasn't found
+/// Description of the "shared_link_not_found" tag state: The shared link wasn't found
 ///
-/// @return An initialized DBSHARINGRevokeSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkNotFound;
 
 ///
-/// Initializes union class with tag state of SharedLinkAccessDenied.
+/// Initializes union class with tag state of "shared_link_access_denied".
 ///
-/// About the SharedLinkAccessDenied tag state: The caller is not allowed to access this shared link
+/// Description of the "shared_link_access_denied" tag state: The caller is not allowed to access
+/// this shared link
 ///
-/// @return An initialized DBSHARINGRevokeSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGRevokeSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 ///
-/// Initializes union class with tag state of SharedLinkMalformed.
+/// Initializes union class with tag state of "shared_link_malformed".
 ///
-/// About the SharedLinkMalformed tag state: Shared link is malformed.
+/// Description of the "shared_link_malformed" tag state: Shared link is malformed.
 ///
-/// @return An initialized DBSHARINGRevokeSharedLinkError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkMalformed;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkNotFound.
+/// Retrieves whether the union's current tag state has value "shared_link_not_found".
 ///
-/// @return Whether the union's current tag state has value SharedLinkNotFound.
+/// @return Whether the union's current tag state has value "shared_link_not_found".
 ///
 - (BOOL)isSharedLinkNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkAccessDenied.
+/// Retrieves whether the union's current tag state has value "shared_link_access_denied".
 ///
-/// @return Whether the union's current tag state has value SharedLinkAccessDenied.
+/// @return Whether the union's current tag state has value "shared_link_access_denied".
 ///
 - (BOOL)isSharedLinkAccessDenied;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value SharedLinkMalformed.
+/// Retrieves whether the union's current tag state has value "shared_link_malformed".
 ///
-/// @return Whether the union's current tag state has value SharedLinkMalformed.
+/// @return Whether the union's current tag state has value "shared_link_malformed".
 ///
 - (BOOL)isSharedLinkMalformed;
 
@@ -119,27 +118,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGRevokeSharedLinkErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGRevokeSharedLinkError union.
+/// The serialization class for the `DBSHARINGRevokeSharedLinkError` union.
 ///
 @interface DBSHARINGRevokeSharedLinkErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGRevokeSharedLinkError instances.
+/// Serializes `DBSHARINGRevokeSharedLinkError` instances.
 ///
-/// @param instance An instance of the DBSHARINGRevokeSharedLinkError API object.
+/// @param instance An instance of the `DBSHARINGRevokeSharedLinkError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGRevokeSharedLinkError API
+/// @return A json-compatible dictionary representation of the `DBSHARINGRevokeSharedLinkError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRevokeSharedLinkError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGRevokeSharedLinkError instances.
+/// Deserializes `DBSHARINGRevokeSharedLinkError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGRevokeSharedLinkError
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGRevokeSharedLinkError`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGRevokeSharedLinkError object.
+/// @return An instantiation of the `DBSHARINGRevokeSharedLinkError` object.
 ///
 + (DBSHARINGRevokeSharedLinkError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

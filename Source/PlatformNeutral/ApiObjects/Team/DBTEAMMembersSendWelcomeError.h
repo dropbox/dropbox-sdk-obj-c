@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersSendWelcomeError;
-
 #pragma mark - API Object
 
 ///
-/// The MembersSendWelcomeError union.
+/// The `MembersSendWelcomeError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersSendWelcomeError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMembersSendWelcomeErrorTag enum type represents the possible tag states with which the
-/// DBTEAMMembersSendWelcomeError union can exist.
+/// The `DBTEAMMembersSendWelcomeErrorTag` enum type represents the possible tag states with which
+/// the `DBTEAMMembersSendWelcomeError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
   /// No matching user found. The provided team_member_id, email, or external_id does not exist on
   /// this team.
@@ -42,51 +40,51 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of UserNotFound.
+/// Initializes union class with tag state of "user_not_found".
 ///
-/// About the UserNotFound tag state: No matching user found. The provided team_member_id, email, or
-/// external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The provided
+/// team_member_id, email, or external_id does not exist on this team.
 ///
-/// @return An initialized DBTEAMMembersSendWelcomeError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotFound;
 
 ///
-/// Initializes union class with tag state of UserNotInTeam.
+/// Initializes union class with tag state of "user_not_in_team".
 ///
-/// About the UserNotInTeam tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
 ///
-/// @return An initialized DBTEAMMembersSendWelcomeError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMembersSendWelcomeError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotFound.
+/// Retrieves whether the union's current tag state has value "user_not_found".
 ///
-/// @return Whether the union's current tag state has value UserNotFound.
+/// @return Whether the union's current tag state has value "user_not_found".
 ///
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value UserNotInTeam.
+/// Retrieves whether the union's current tag state has value "user_not_in_team".
 ///
-/// @return Whether the union's current tag state has value UserNotInTeam.
+/// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -102,27 +100,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSendWelcomeErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMembersSendWelcomeError union.
+/// The serialization class for the `DBTEAMMembersSendWelcomeError` union.
 ///
 @interface DBTEAMMembersSendWelcomeErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersSendWelcomeError instances.
+/// Serializes `DBTEAMMembersSendWelcomeError` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersSendWelcomeError API object.
+/// @param instance An instance of the `DBTEAMMembersSendWelcomeError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersSendWelcomeError API
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersSendWelcomeError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSendWelcomeError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersSendWelcomeError instances.
+/// Deserializes `DBTEAMMembersSendWelcomeError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersSendWelcomeError API
-/// object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersSendWelcomeError`
+/// API object.
 ///
-/// @return An instantiation of the DBTEAMMembersSendWelcomeError object.
+/// @return An instantiation of the `DBTEAMMembersSendWelcomeError` object.
 ///
 + (DBTEAMMembersSendWelcomeError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

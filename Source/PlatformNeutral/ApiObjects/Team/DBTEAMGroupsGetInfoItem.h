@@ -8,24 +8,23 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMGroupFullInfo;
-@class DBTEAMGroupsGetInfoItem;
 
 #pragma mark - API Object
 
 ///
-/// The GroupsGetInfoItem union.
+/// The `GroupsGetInfoItem` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMGroupsGetInfoItem : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMGroupsGetInfoItemTag enum type represents the possible tag states with which the
-/// DBTEAMGroupsGetInfoItem union can exist.
+/// The `DBTEAMGroupsGetInfoItemTag` enum type represents the possible tag states with which the
+/// `DBTEAMGroupsGetInfoItem` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
-  /// An ID that was provided as a parameter to groupsGetInfo, and did not match a corresponding
+  /// An ID that was provided as a parameter to `groupsGetInfo`, and did not match a corresponding
   /// group. The ID can be a group ID, or an external ID, depending on how the method was called.
   DBTEAMGroupsGetInfoItemIdNotFound,
 
@@ -37,63 +36,63 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMGroupsGetInfoItemTag tag;
 
-/// An ID that was provided as a parameter to groupsGetInfo, and did not match a corresponding
+/// An ID that was provided as a parameter to `groupsGetInfo`, and did not match a corresponding
 /// group. The ID can be a group ID, or an external ID, depending on how the method was called.
-/// Ensure the isIdNotFound method returns true before accessing, otherwise a runtime exception will
-/// be raised.
+/// @note Ensure the `isIdNotFound` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
 
-/// Info about a group. Ensure the isGroupInfo method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// Info about a group. @note Ensure the `isGroupInfo` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMGroupFullInfo * _Nonnull groupInfo;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of IdNotFound.
+/// Initializes union class with tag state of "id_not_found".
 ///
-/// About the IdNotFound tag state: An ID that was provided as a parameter to
-/// :route:`groups/get_info`, and did not match a corresponding group. The ID can be a group ID, or
-/// an external ID, depending on how the method was called.
+/// Description of the "id_not_found" tag state: An ID that was provided as a parameter to
+/// `groupsGetInfo`, and did not match a corresponding group. The ID can be a group ID, or an
+/// external ID, depending on how the method was called.
 ///
-/// @param idNotFound An ID that was provided as a parameter to :route:`groups/get_info`, and did
-/// not match a corresponding group. The ID can be a group ID, or an external ID, depending on how
-/// the method was called.
+/// @param idNotFound An ID that was provided as a parameter to `groupsGetInfo`, and did not match a
+/// corresponding group. The ID can be a group ID, or an external ID, depending on how the method
+/// was called.
 ///
-/// @return An initialized DBTEAMGroupsGetInfoItem instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithIdNotFound:(NSString * _Nonnull)idNotFound;
 
 ///
-/// Initializes union class with tag state of GroupInfo.
+/// Initializes union class with tag state of "group_info".
 ///
-/// About the GroupInfo tag state: Info about a group.
+/// Description of the "group_info" tag state: Info about a group.
 ///
 /// @param groupInfo Info about a group.
 ///
-/// @return An initialized DBTEAMGroupsGetInfoItem instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupInfo:(DBTEAMGroupFullInfo * _Nonnull)groupInfo;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value IdNotFound.
+/// Retrieves whether the union's current tag state has value "id_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the idNotFound property,
+/// @note Call this method and ensure it returns true before accessing the `idNotFound` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value IdNotFound.
+/// @return Whether the union's current tag state has value "id_not_found".
 ///
 - (BOOL)isIdNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value GroupInfo.
+/// Retrieves whether the union's current tag state has value "group_info".
 ///
-/// @note Call this method and ensure it returns true before accessing the groupInfo property,
+/// @note Call this method and ensure it returns true before accessing the `groupInfo` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value GroupInfo.
+/// @return Whether the union's current tag state has value "group_info".
 ///
 - (BOOL)isGroupInfo;
 
@@ -109,26 +108,26 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMGroupsGetInfoItem union.
+/// The serialization class for the `DBTEAMGroupsGetInfoItem` union.
 ///
 @interface DBTEAMGroupsGetInfoItemSerializer : NSObject
 
 ///
-/// Serializes DBTEAMGroupsGetInfoItem instances.
+/// Serializes `DBTEAMGroupsGetInfoItem` instances.
 ///
-/// @param instance An instance of the DBTEAMGroupsGetInfoItem API object.
+/// @param instance An instance of the `DBTEAMGroupsGetInfoItem` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMGroupsGetInfoItem API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMGroupsGetInfoItem` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsGetInfoItem * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMGroupsGetInfoItem instances.
+/// Deserializes `DBTEAMGroupsGetInfoItem` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMGroupsGetInfoItem API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsGetInfoItem` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMGroupsGetInfoItem object.
+/// @return An instantiation of the `DBTEAMGroupsGetInfoItem` object.
 ///
 + (DBTEAMGroupsGetInfoItem * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

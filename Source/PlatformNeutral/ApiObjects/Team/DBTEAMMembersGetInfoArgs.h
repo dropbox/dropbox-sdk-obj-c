@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersGetInfoArgs;
 @class DBTEAMUserSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The MembersGetInfoArgs struct.
+/// The `MembersGetInfoArgs` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersGetInfoArgs : NSObject <DBSerializable>
 
@@ -28,11 +27,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersGetInfoArgs struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param members List of team members.
 ///
-/// @return An initialized DBTEAMMembersGetInfoArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMembers:(NSArray<DBTEAMUserSelectorArg *> * _Nonnull)members;
 
@@ -41,26 +40,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersGetInfoArgs struct.
+/// The serialization class for the `MembersGetInfoArgs` struct.
 ///
 @interface DBTEAMMembersGetInfoArgsSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersGetInfoArgs instances.
+/// Serializes `DBTEAMMembersGetInfoArgs` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersGetInfoArgs API object.
+/// @param instance An instance of the `DBTEAMMembersGetInfoArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersGetInfoArgs API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersGetInfoArgs` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoArgs * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersGetInfoArgs instances.
+/// Deserializes `DBTEAMMembersGetInfoArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersGetInfoArgs API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersGetInfoArgs` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersGetInfoArgs object.
+/// @return An instantiation of the `DBTEAMMembersGetInfoArgs` object.
 ///
 + (DBTEAMMembersGetInfoArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

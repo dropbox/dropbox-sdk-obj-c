@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGAddMemberSelectorError;
-
 #pragma mark - API Object
 
 ///
-/// The AddMemberSelectorError union.
+/// The `AddMemberSelectorError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGAddMemberSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGAddMemberSelectorErrorTag enum type represents the possible tag states with which
-/// the DBSHARINGAddMemberSelectorError union can exist.
+/// The `DBSHARINGAddMemberSelectorErrorTag` enum type represents the possible tag states with which
+/// the `DBSHARINGAddMemberSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag) {
   /// Automatically created groups can only be added to team folders.
   DBSHARINGAddMemberSelectorErrorAutomaticGroup,
@@ -37,7 +35,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag) {
   /// unverified users by e-mail address instead of by their Dropbox ID.
   DBSHARINGAddMemberSelectorErrorUnverifiedDropboxId,
 
-  /// At least one of the specified groups in members in AddFolderMemberArg is deleted.
+  /// At least one of the specified groups in `members` in `DBSHARINGAddFolderMemberArg` is
+  /// deleted.
   DBSHARINGAddMemberSelectorErrorGroupDeleted,
 
   /// Sharing to a group that is not on the current user's team.
@@ -51,150 +50,153 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGAddMemberSelectorErrorTag tag;
 
-/// The value is the ID that could not be identified. Ensure the isInvalidDropboxId method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// The value is the ID that could not be identified. @note Ensure the `isInvalidDropboxId` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull invalidDropboxId;
 
-/// The value is the e-email address that is malformed. Ensure the isInvalidEmail method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// The value is the e-email address that is malformed. @note Ensure the `isInvalidEmail` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull invalidEmail;
 
 /// The value is the ID of the Dropbox user with an unverified e-mail address.  Invite unverified
-/// users by e-mail address instead of by their Dropbox ID. Ensure the isUnverifiedDropboxId method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// users by e-mail address instead of by their Dropbox ID. @note Ensure the `isUnverifiedDropboxId`
+/// method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull unverifiedDropboxId;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AutomaticGroup.
+/// Initializes union class with tag state of "automatic_group".
 ///
-/// About the AutomaticGroup tag state: Automatically created groups can only be added to team
-/// folders.
+/// Description of the "automatic_group" tag state: Automatically created groups can only be added
+/// to team folders.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAutomaticGroup;
 
 ///
-/// Initializes union class with tag state of InvalidDropboxId.
+/// Initializes union class with tag state of "invalid_dropbox_id".
 ///
-/// About the InvalidDropboxId tag state: The value is the ID that could not be identified.
+/// Description of the "invalid_dropbox_id" tag state: The value is the ID that could not be
+/// identified.
 ///
 /// @param invalidDropboxId The value is the ID that could not be identified.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidDropboxId:(NSString * _Nonnull)invalidDropboxId;
 
 ///
-/// Initializes union class with tag state of InvalidEmail.
+/// Initializes union class with tag state of "invalid_email".
 ///
-/// About the InvalidEmail tag state: The value is the e-email address that is malformed.
+/// Description of the "invalid_email" tag state: The value is the e-email address that is
+/// malformed.
 ///
 /// @param invalidEmail The value is the e-email address that is malformed.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidEmail:(NSString * _Nonnull)invalidEmail;
 
 ///
-/// Initializes union class with tag state of UnverifiedDropboxId.
+/// Initializes union class with tag state of "unverified_dropbox_id".
 ///
-/// About the UnverifiedDropboxId tag state: The value is the ID of the Dropbox user with an
-/// unverified e-mail address.  Invite unverified users by e-mail address instead of by their
-/// Dropbox ID.
+/// Description of the "unverified_dropbox_id" tag state: The value is the ID of the Dropbox user
+/// with an unverified e-mail address.  Invite unverified users by e-mail address instead of by
+/// their Dropbox ID.
 ///
 /// @param unverifiedDropboxId The value is the ID of the Dropbox user with an unverified e-mail
 /// address.  Invite unverified users by e-mail address instead of by their Dropbox ID.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUnverifiedDropboxId:(NSString * _Nonnull)unverifiedDropboxId;
 
 ///
-/// Initializes union class with tag state of GroupDeleted.
+/// Initializes union class with tag state of "group_deleted".
 ///
-/// About the GroupDeleted tag state: At least one of the specified groups in
-/// :field:`AddFolderMemberArg.members` is deleted.
+/// Description of the "group_deleted" tag state: At least one of the specified groups in `members`
+/// in `DBSHARINGAddFolderMemberArg` is deleted.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupDeleted;
 
 ///
-/// Initializes union class with tag state of GroupNotOnTeam.
+/// Initializes union class with tag state of "group_not_on_team".
 ///
-/// About the GroupNotOnTeam tag state: Sharing to a group that is not on the current user's team.
+/// Description of the "group_not_on_team" tag state: Sharing to a group that is not on the current
+/// user's team.
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupNotOnTeam;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGAddMemberSelectorError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AutomaticGroup.
+/// Retrieves whether the union's current tag state has value "automatic_group".
 ///
-/// @return Whether the union's current tag state has value AutomaticGroup.
+/// @return Whether the union's current tag state has value "automatic_group".
 ///
 - (BOOL)isAutomaticGroup;
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidDropboxId.
+/// Retrieves whether the union's current tag state has value "invalid_dropbox_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the invalidDropboxId
+/// @note Call this method and ensure it returns true before accessing the `invalidDropboxId`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value InvalidDropboxId.
+/// @return Whether the union's current tag state has value "invalid_dropbox_id".
 ///
 - (BOOL)isInvalidDropboxId;
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidEmail.
+/// Retrieves whether the union's current tag state has value "invalid_email".
 ///
-/// @note Call this method and ensure it returns true before accessing the invalidEmail property,
+/// @note Call this method and ensure it returns true before accessing the `invalidEmail` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value InvalidEmail.
+/// @return Whether the union's current tag state has value "invalid_email".
 ///
 - (BOOL)isInvalidEmail;
 
 ///
-/// Retrieves whether the union's current tag state has value UnverifiedDropboxId.
+/// Retrieves whether the union's current tag state has value "unverified_dropbox_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the unverifiedDropboxId
+/// @note Call this method and ensure it returns true before accessing the `unverifiedDropboxId`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value UnverifiedDropboxId.
+/// @return Whether the union's current tag state has value "unverified_dropbox_id".
 ///
 - (BOOL)isUnverifiedDropboxId;
 
 ///
-/// Retrieves whether the union's current tag state has value GroupDeleted.
+/// Retrieves whether the union's current tag state has value "group_deleted".
 ///
-/// @return Whether the union's current tag state has value GroupDeleted.
+/// @return Whether the union's current tag state has value "group_deleted".
 ///
 - (BOOL)isGroupDeleted;
 
 ///
-/// Retrieves whether the union's current tag state has value GroupNotOnTeam.
+/// Retrieves whether the union's current tag state has value "group_not_on_team".
 ///
-/// @return Whether the union's current tag state has value GroupNotOnTeam.
+/// @return Whether the union's current tag state has value "group_not_on_team".
 ///
 - (BOOL)isGroupNotOnTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -210,27 +212,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddMemberSelectorErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGAddMemberSelectorError union.
+/// The serialization class for the `DBSHARINGAddMemberSelectorError` union.
 ///
 @interface DBSHARINGAddMemberSelectorErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGAddMemberSelectorError instances.
+/// Serializes `DBSHARINGAddMemberSelectorError` instances.
 ///
-/// @param instance An instance of the DBSHARINGAddMemberSelectorError API object.
+/// @param instance An instance of the `DBSHARINGAddMemberSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGAddMemberSelectorError API
+/// @return A json-compatible dictionary representation of the `DBSHARINGAddMemberSelectorError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddMemberSelectorError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGAddMemberSelectorError instances.
+/// Deserializes `DBSHARINGAddMemberSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGAddMemberSelectorError
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddMemberSelectorError`
 /// API object.
 ///
-/// @return An instantiation of the DBSHARINGAddMemberSelectorError object.
+/// @return An instantiation of the `DBSHARINGAddMemberSelectorError` object.
 ///
 + (DBSHARINGAddMemberSelectorError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

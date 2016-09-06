@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGFileAction;
-@class DBSHARINGGetFileMetadataArg;
 
 #pragma mark - API Object
 
 ///
-/// The GetFileMetadataArg struct.
+/// The `GetFileMetadataArg` struct.
 ///
-/// Arguments of getFileMetadata
+/// Arguments of `getFileMetadata`
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGGetFileMetadataArg : NSObject <DBSerializable>
 
@@ -33,23 +32,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGGetFileMetadataArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file The file to query.
 /// @param actions File actions to query.
 ///
-/// @return An initialized DBSHARINGGetFileMetadataArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                              actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor for the DBSHARINGGetFileMetadataArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param file The file to query.
 ///
-/// @return An initialized DBSHARINGGetFileMetadataArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file;
 
@@ -58,27 +56,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetFileMetadataArg struct.
+/// The serialization class for the `GetFileMetadataArg` struct.
 ///
 @interface DBSHARINGGetFileMetadataArgSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGGetFileMetadataArg instances.
+/// Serializes `DBSHARINGGetFileMetadataArg` instances.
 ///
-/// @param instance An instance of the DBSHARINGGetFileMetadataArg API object.
+/// @param instance An instance of the `DBSHARINGGetFileMetadataArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGGetFileMetadataArg API
+/// @return A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGGetFileMetadataArg instances.
+/// Deserializes `DBSHARINGGetFileMetadataArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGGetFileMetadataArg API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataArg` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGGetFileMetadataArg object.
+/// @return An instantiation of the `DBSHARINGGetFileMetadataArg` object.
 ///
 + (DBSHARINGGetFileMetadataArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

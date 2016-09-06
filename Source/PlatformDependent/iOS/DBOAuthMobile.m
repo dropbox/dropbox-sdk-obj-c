@@ -76,8 +76,9 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBWebViewController *webViewController =
-      [[DBWebViewController alloc] init:authURL tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
+  DBMobileWebViewController *webViewController = [[DBMobileWebViewController alloc] init:authURL
+                                                                     tryInterceptHandler:tryInterceptHandler
+                                                                           cancelHandler:cancelHandler];
   UINavigationController *navigationController =
       [[UINavigationController alloc] initWithRootViewController:webViewController];
 
@@ -100,7 +101,7 @@
 
 #pragma mark - Web view controller
 
-@interface DBWebViewController ()
+@interface DBMobileWebViewController ()
 
 @property(nonatomic, readonly) WKWebView * _Nullable webView;
 @property(nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
@@ -112,7 +113,7 @@
 
 @end
 
-@implementation DBWebViewController
+@implementation DBMobileWebViewController
 
 - (instancetype)init {
   return [super initWithNibName:nil bundle:nil];

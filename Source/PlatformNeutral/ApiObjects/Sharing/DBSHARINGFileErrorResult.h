@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGFileErrorResult;
-
 #pragma mark - API Object
 
 ///
-/// The FileErrorResult union.
+/// The `FileErrorResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGFileErrorResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGFileErrorResultTag enum type represents the possible tag states with which the
-/// DBSHARINGFileErrorResult union can exist.
+/// The `DBSHARINGFileErrorResultTag` enum type represents the possible tag states with which the
+/// `DBSHARINGFileErrorResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
   /// File specified by id was not found.
   DBSHARINGFileErrorResultFileNotFoundError,
@@ -41,101 +39,101 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGFileErrorResultTag tag;
 
-/// File specified by id was not found. Ensure the isFileNotFoundError method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// File specified by id was not found. @note Ensure the `isFileNotFoundError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull fileNotFoundError;
 
-/// User does not have permission to take the specified action on the file. Ensure the
-/// isInvalidFileActionError method returns true before accessing, otherwise a runtime exception
+/// User does not have permission to take the specified action on the file. @note Ensure the
+/// `isInvalidFileActionError` method returns true before accessing, otherwise a runtime exception
 /// will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull invalidFileActionError;
 
-/// User does not have permission to access file specified by file.Id. Ensure the
-/// isPermissionDeniedError method returns true before accessing, otherwise a runtime exception will
-/// be raised.
+/// User does not have permission to access file specified by file.Id. @note Ensure the
+/// `isPermissionDeniedError` method returns true before accessing, otherwise a runtime exception
+/// will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull permissionDeniedError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of FileNotFoundError.
+/// Initializes union class with tag state of "file_not_found_error".
 ///
-/// About the FileNotFoundError tag state: File specified by id was not found.
+/// Description of the "file_not_found_error" tag state: File specified by id was not found.
 ///
 /// @param fileNotFoundError File specified by id was not found.
 ///
-/// @return An initialized DBSHARINGFileErrorResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFileNotFoundError:(NSString * _Nonnull)fileNotFoundError;
 
 ///
-/// Initializes union class with tag state of InvalidFileActionError.
+/// Initializes union class with tag state of "invalid_file_action_error".
 ///
-/// About the InvalidFileActionError tag state: User does not have permission to take the specified
-/// action on the file.
+/// Description of the "invalid_file_action_error" tag state: User does not have permission to take
+/// the specified action on the file.
 ///
 /// @param invalidFileActionError User does not have permission to take the specified action on the
 /// file.
 ///
-/// @return An initialized DBSHARINGFileErrorResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidFileActionError:(NSString * _Nonnull)invalidFileActionError;
 
 ///
-/// Initializes union class with tag state of PermissionDeniedError.
+/// Initializes union class with tag state of "permission_denied_error".
 ///
-/// About the PermissionDeniedError tag state: User does not have permission to access file
-/// specified by file.Id.
+/// Description of the "permission_denied_error" tag state: User does not have permission to access
+/// file specified by file.Id.
 ///
 /// @param permissionDeniedError User does not have permission to access file specified by file.Id.
 ///
-/// @return An initialized DBSHARINGFileErrorResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPermissionDeniedError:(NSString * _Nonnull)permissionDeniedError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGFileErrorResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value FileNotFoundError.
+/// Retrieves whether the union's current tag state has value "file_not_found_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the fileNotFoundError
+/// @note Call this method and ensure it returns true before accessing the `fileNotFoundError`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value FileNotFoundError.
+/// @return Whether the union's current tag state has value "file_not_found_error".
 ///
 - (BOOL)isFileNotFoundError;
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidFileActionError.
+/// Retrieves whether the union's current tag state has value "invalid_file_action_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the invalidFileActionError
+/// @note Call this method and ensure it returns true before accessing the `invalidFileActionError`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value InvalidFileActionError.
+/// @return Whether the union's current tag state has value "invalid_file_action_error".
 ///
 - (BOOL)isInvalidFileActionError;
 
 ///
-/// Retrieves whether the union's current tag state has value PermissionDeniedError.
+/// Retrieves whether the union's current tag state has value "permission_denied_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the permissionDeniedError
+/// @note Call this method and ensure it returns true before accessing the `permissionDeniedError`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value PermissionDeniedError.
+/// @return Whether the union's current tag state has value "permission_denied_error".
 ///
 - (BOOL)isPermissionDeniedError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -151,26 +149,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGFileErrorResult union.
+/// The serialization class for the `DBSHARINGFileErrorResult` union.
 ///
 @interface DBSHARINGFileErrorResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGFileErrorResult instances.
+/// Serializes `DBSHARINGFileErrorResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGFileErrorResult API object.
+/// @param instance An instance of the `DBSHARINGFileErrorResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGFileErrorResult API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGFileErrorResult` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileErrorResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGFileErrorResult instances.
+/// Deserializes `DBSHARINGFileErrorResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGFileErrorResult API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileErrorResult` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGFileErrorResult object.
+/// @return An instantiation of the `DBSHARINGFileErrorResult` object.
 ///
 + (DBSHARINGFileErrorResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

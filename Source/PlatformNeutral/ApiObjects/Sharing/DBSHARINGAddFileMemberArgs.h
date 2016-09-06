@@ -8,18 +8,17 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGAccessLevel;
-@class DBSHARINGAddFileMemberArgs;
 @class DBSHARINGMemberSelector;
 
 #pragma mark - API Object
 
 ///
-/// The AddFileMemberArgs struct.
+/// The `AddFileMemberArgs` struct.
 ///
-/// Arguments for addFileMember.
+/// Arguments for `addFileMember`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGAddFileMemberArgs : NSObject <DBSerializable>
 
@@ -47,7 +46,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGAddFileMemberArgs struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file File to which to add members.
 /// @param members Members to add. Note that even an email address is given, this may result in a
@@ -59,7 +58,7 @@
 /// members.
 /// @param addMessageAsComment If the custom message should be added as a comment on the file.
 ///
-/// @return An initialized DBSHARINGAddFileMemberArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                              members:(NSArray<DBSHARINGMemberSelector *> * _Nonnull)members
@@ -69,14 +68,13 @@
                  addMessageAsComment:(NSNumber * _Nullable)addMessageAsComment;
 
 ///
-/// Convenience constructor for the DBSHARINGAddFileMemberArgs struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param file File to which to add members.
 /// @param members Members to add. Note that even an email address is given, this may result in a
 /// user being directy added to the membership if that email is the user's main account email.
 ///
-/// @return An initialized DBSHARINGAddFileMemberArgs instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                              members:(NSArray<DBSHARINGMemberSelector *> * _Nonnull)members;
@@ -86,27 +84,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the AddFileMemberArgs struct.
+/// The serialization class for the `AddFileMemberArgs` struct.
 ///
 @interface DBSHARINGAddFileMemberArgsSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGAddFileMemberArgs instances.
+/// Serializes `DBSHARINGAddFileMemberArgs` instances.
 ///
-/// @param instance An instance of the DBSHARINGAddFileMemberArgs API object.
+/// @param instance An instance of the `DBSHARINGAddFileMemberArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGAddFileMemberArgs API
+/// @return A json-compatible dictionary representation of the `DBSHARINGAddFileMemberArgs` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddFileMemberArgs * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGAddFileMemberArgs instances.
+/// Deserializes `DBSHARINGAddFileMemberArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGAddFileMemberArgs API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddFileMemberArgs` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGAddFileMemberArgs object.
+/// @return An instantiation of the `DBSHARINGAddFileMemberArgs` object.
 ///
 + (DBSHARINGAddFileMemberArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSIndividualSpaceAllocation;
-
 #pragma mark - API Object
 
 ///
-/// The IndividualSpaceAllocation struct.
+/// The `IndividualSpaceAllocation` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSIndividualSpaceAllocation : NSObject <DBSerializable>
 
@@ -27,12 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBUSERSIndividualSpaceAllocation struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param allocated The total space allocated to the user's account (bytes).
 ///
-/// @return An initialized DBUSERSIndividualSpaceAllocation instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAllocated:(NSNumber * _Nonnull)allocated;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the IndividualSpaceAllocation struct.
+/// The serialization class for the `IndividualSpaceAllocation` struct.
 ///
 @interface DBUSERSIndividualSpaceAllocationSerializer : NSObject
 
 ///
-/// Serializes DBUSERSIndividualSpaceAllocation instances.
+/// Serializes `DBUSERSIndividualSpaceAllocation` instances.
 ///
-/// @param instance An instance of the DBUSERSIndividualSpaceAllocation API object.
+/// @param instance An instance of the `DBUSERSIndividualSpaceAllocation` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSIndividualSpaceAllocation API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBUSERSIndividualSpaceAllocation`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSIndividualSpaceAllocation * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSIndividualSpaceAllocation instances.
+/// Deserializes `DBUSERSIndividualSpaceAllocation` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSIndividualSpaceAllocation
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSIndividualSpaceAllocation` API object.
 ///
-/// @return An instantiation of the DBUSERSIndividualSpaceAllocation object.
+/// @return An instantiation of the `DBUSERSIndividualSpaceAllocation` object.
 ///
 + (DBUSERSIndividualSpaceAllocation * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

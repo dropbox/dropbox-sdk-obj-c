@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersListResult;
 @class DBTEAMTeamMemberInfo;
 
 #pragma mark - API Object
 
 ///
-/// The MembersListResult struct.
+/// The `MembersListResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersListResult : NSObject <DBSerializable>
 
@@ -25,25 +24,24 @@
 /// List of team members.
 @property(nonatomic, readonly) NSArray<DBTEAMTeamMemberInfo *> * _Nonnull members;
 
-/// Pass the cursor into membersListContinue to obtain the additional members.
+/// Pass the cursor into `membersListContinue` to obtain the additional members.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 /// Is true if there are additional team members that have not been returned yet. An additional call
-/// to membersListContinue can retrieve them.
+/// to `membersListContinue` can retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersListResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param members List of team members.
-/// @param cursor Pass the cursor into :route:`members/list/continue` to obtain the additional
-/// members.
+/// @param cursor Pass the cursor into `membersListContinue` to obtain the additional members.
 /// @param hasMore Is true if there are additional team members that have not been returned yet. An
-/// additional call to :route:`members/list/continue` can retrieve them.
+/// additional call to `membersListContinue` can retrieve them.
 ///
-/// @return An initialized DBTEAMMembersListResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMembers:(NSArray<DBTEAMTeamMemberInfo *> * _Nonnull)members
                                  cursor:(NSString * _Nonnull)cursor
@@ -54,26 +52,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersListResult struct.
+/// The serialization class for the `MembersListResult` struct.
 ///
 @interface DBTEAMMembersListResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersListResult instances.
+/// Serializes `DBTEAMMembersListResult` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersListResult API object.
+/// @param instance An instance of the `DBTEAMMembersListResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersListResult API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersListResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersListResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersListResult instances.
+/// Deserializes `DBTEAMMembersListResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersListResult API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersListResult` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersListResult object.
+/// @return An instantiation of the `DBTEAMMembersListResult` object.
 ///
 + (DBTEAMMembersListResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

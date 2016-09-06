@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBPROPERTIESPropertyTemplateError;
-
 #pragma mark - API Object
 
 ///
-/// The PropertyTemplateError union.
+/// The `PropertyTemplateError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBPROPERTIESPropertyTemplateError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBPROPERTIESPropertyTemplateErrorTag enum type represents the possible tag states with which
-/// the DBPROPERTIESPropertyTemplateError union can exist.
+/// The `DBPROPERTIESPropertyTemplateErrorTag` enum type represents the possible tag states with
+/// which the `DBPROPERTIESPropertyTemplateError` union can exist.
 typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTemplateErrorTag) {
   /// Property template does not exist for given identifier.
   DBPROPERTIESPropertyTemplateErrorTemplateNotFound,
@@ -38,63 +36,64 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTemplateErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBPROPERTIESPropertyTemplateErrorTag tag;
 
-/// Property template does not exist for given identifier. Ensure the isTemplateNotFound method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// Property template does not exist for given identifier. @note Ensure the `isTemplateNotFound`
+/// method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TemplateNotFound.
+/// Initializes union class with tag state of "template_not_found".
 ///
-/// About the TemplateNotFound tag state: Property template does not exist for given identifier.
+/// Description of the "template_not_found" tag state: Property template does not exist for given
+/// identifier.
 ///
 /// @param templateNotFound Property template does not exist for given identifier.
 ///
-/// @return An initialized DBPROPERTIESPropertyTemplateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTemplateNotFound:(NSString * _Nonnull)templateNotFound;
 
 ///
-/// Initializes union class with tag state of RestrictedContent.
+/// Initializes union class with tag state of "restricted_content".
 ///
-/// About the RestrictedContent tag state: You do not have the permissions to modify this property
-/// template.
+/// Description of the "restricted_content" tag state: You do not have the permissions to modify
+/// this property template.
 ///
-/// @return An initialized DBPROPERTIESPropertyTemplateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRestrictedContent;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBPROPERTIESPropertyTemplateError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TemplateNotFound.
+/// Retrieves whether the union's current tag state has value "template_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the templateNotFound
+/// @note Call this method and ensure it returns true before accessing the `templateNotFound`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value TemplateNotFound.
+/// @return Whether the union's current tag state has value "template_not_found".
 ///
 - (BOOL)isTemplateNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value RestrictedContent.
+/// Retrieves whether the union's current tag state has value "restricted_content".
 ///
-/// @return Whether the union's current tag state has value RestrictedContent.
+/// @return Whether the union's current tag state has value "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -110,27 +109,27 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTemplateErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBPROPERTIESPropertyTemplateError union.
+/// The serialization class for the `DBPROPERTIESPropertyTemplateError` union.
 ///
 @interface DBPROPERTIESPropertyTemplateErrorSerializer : NSObject
 
 ///
-/// Serializes DBPROPERTIESPropertyTemplateError instances.
+/// Serializes `DBPROPERTIESPropertyTemplateError` instances.
 ///
-/// @param instance An instance of the DBPROPERTIESPropertyTemplateError API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyTemplateError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBPROPERTIESPropertyTemplateError API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyTemplateError`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyTemplateError * _Nonnull)instance;
 
 ///
-/// Deserializes DBPROPERTIESPropertyTemplateError instances.
+/// Deserializes `DBPROPERTIESPropertyTemplateError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBPROPERTIESPropertyTemplateError
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyTemplateError` API object.
 ///
-/// @return An instantiation of the DBPROPERTIESPropertyTemplateError object.
+/// @return An instantiation of the `DBPROPERTIESPropertyTemplateError` object.
 ///
 + (DBPROPERTIESPropertyTemplateError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

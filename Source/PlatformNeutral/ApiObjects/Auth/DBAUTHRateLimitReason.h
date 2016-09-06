@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBAUTHRateLimitReason;
-
 #pragma mark - API Object
 
 ///
-/// The RateLimitReason union.
+/// The `RateLimitReason` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBAUTHRateLimitReason : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBAUTHRateLimitReasonTag enum type represents the possible tag states with which the
-/// DBAUTHRateLimitReason union can exist.
+/// The `DBAUTHRateLimitReasonTag` enum type represents the possible tag states with which the
+/// `DBAUTHRateLimitReason` union can exist.
 typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
   /// You are making too many requests in the past few minutes.
   DBAUTHRateLimitReasonTooManyRequests,
@@ -41,51 +39,52 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TooManyRequests.
+/// Initializes union class with tag state of "too_many_requests".
 ///
-/// About the TooManyRequests tag state: You are making too many requests in the past few minutes.
+/// Description of the "too_many_requests" tag state: You are making too many requests in the past
+/// few minutes.
 ///
-/// @return An initialized DBAUTHRateLimitReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTooManyRequests;
 
 ///
-/// Initializes union class with tag state of TooManyWriteOperations.
+/// Initializes union class with tag state of "too_many_write_operations".
 ///
-/// About the TooManyWriteOperations tag state: There are currently too many write operations
-/// happening in the user's Dropbox.
+/// Description of the "too_many_write_operations" tag state: There are currently too many write
+/// operations happening in the user's Dropbox.
 ///
-/// @return An initialized DBAUTHRateLimitReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTooManyWriteOperations;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBAUTHRateLimitReason instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TooManyRequests.
+/// Retrieves whether the union's current tag state has value "too_many_requests".
 ///
-/// @return Whether the union's current tag state has value TooManyRequests.
+/// @return Whether the union's current tag state has value "too_many_requests".
 ///
 - (BOOL)isTooManyRequests;
 
 ///
-/// Retrieves whether the union's current tag state has value TooManyWriteOperations.
+/// Retrieves whether the union's current tag state has value "too_many_write_operations".
 ///
-/// @return Whether the union's current tag state has value TooManyWriteOperations.
+/// @return Whether the union's current tag state has value "too_many_write_operations".
 ///
 - (BOOL)isTooManyWriteOperations;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -101,25 +100,26 @@ typedef NS_ENUM(NSInteger, DBAUTHRateLimitReasonTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBAUTHRateLimitReason union.
+/// The serialization class for the `DBAUTHRateLimitReason` union.
 ///
 @interface DBAUTHRateLimitReasonSerializer : NSObject
 
 ///
-/// Serializes DBAUTHRateLimitReason instances.
+/// Serializes `DBAUTHRateLimitReason` instances.
 ///
-/// @param instance An instance of the DBAUTHRateLimitReason API object.
+/// @param instance An instance of the `DBAUTHRateLimitReason` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBAUTHRateLimitReason API object.
+/// @return A json-compatible dictionary representation of the `DBAUTHRateLimitReason` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBAUTHRateLimitReason * _Nonnull)instance;
 
 ///
-/// Deserializes DBAUTHRateLimitReason instances.
+/// Deserializes `DBAUTHRateLimitReason` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBAUTHRateLimitReason API object.
+/// @param dict A json-compatible dictionary representation of the `DBAUTHRateLimitReason` API
+/// object.
 ///
-/// @return An instantiation of the DBAUTHRateLimitReason object.
+/// @return An instantiation of the `DBAUTHRateLimitReason` object.
 ///
 + (DBAUTHRateLimitReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -2,12 +2,15 @@
 #
 # Run the following command to retrieve all filenames
 #
-# `find ../Source/PlatformNeutral/ApiObjects ../Source/PlatformNeutral/Client ../Source/PlatformNeutral/Routes -name "*.[mh]" > list_files_reformat.txt`
+# `find ../Source -name "*.[mh]" > list_files_reformat.txt`
 #
 # and then:
 #
 # `sh reformat_files.sh list_files_reform.txt`
 #
+
+echo "Reformating source..."
+
 if [ -z "$1" ]; then
    echo "specify the file that contains a list of files"
    exit

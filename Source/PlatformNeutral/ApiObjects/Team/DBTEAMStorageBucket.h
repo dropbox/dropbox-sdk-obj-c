@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMStorageBucket;
-
 #pragma mark - API Object
 
 ///
-/// The StorageBucket struct.
+/// The `StorageBucket` struct.
 ///
 /// Describes the number of users in a specific storage bucket.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMStorageBucket : NSObject <DBSerializable>
 
@@ -33,13 +31,13 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMStorageBucket struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param bucket The name of the storage bucket. For example, '1G' is a bucket of users with
 /// storage size up to 1 Giga.
 /// @param users The number of people whose storage is in the range of this storage bucket.
 ///
-/// @return An initialized DBTEAMStorageBucket instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
 
@@ -48,25 +46,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the StorageBucket struct.
+/// The serialization class for the `StorageBucket` struct.
 ///
 @interface DBTEAMStorageBucketSerializer : NSObject
 
 ///
-/// Serializes DBTEAMStorageBucket instances.
+/// Serializes `DBTEAMStorageBucket` instances.
 ///
-/// @param instance An instance of the DBTEAMStorageBucket API object.
+/// @param instance An instance of the `DBTEAMStorageBucket` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMStorageBucket API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMStorageBucket` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMStorageBucket * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMStorageBucket instances.
+/// Deserializes `DBTEAMStorageBucket` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMStorageBucket API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMStorageBucket` API object.
 ///
-/// @return An instantiation of the DBTEAMStorageBucket object.
+/// @return An instantiation of the `DBTEAMStorageBucket` object.
 ///
 + (DBTEAMStorageBucket * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

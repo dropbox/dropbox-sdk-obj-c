@@ -22,13 +22,12 @@
 
 @end
 
-
 #pragma mark - Completion data
 
 @implementation DBCompletionData
 
 - (instancetype)initWithCompletionData:(NSData *)responseBody
-                          responseMetadata:(NSURLResponse *)responseMetadata
+                      responseMetadata:(NSURLResponse *)responseMetadata
                          responseError:(NSError *)responseError
                              urlOutput:(NSURL *)urlOutput {
   self = [super init];
@@ -42,7 +41,6 @@
 }
 
 @end
-
 
 #pragma mark - Session data
 

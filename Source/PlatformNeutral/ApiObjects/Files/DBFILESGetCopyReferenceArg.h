@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESGetCopyReferenceArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetCopyReferenceArg struct.
+/// The `GetCopyReferenceArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESGetCopyReferenceArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESGetCopyReferenceArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path to the file or folder you want to get a copy reference to.
 ///
-/// @return An initialized DBFILESGetCopyReferenceArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -40,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetCopyReferenceArg struct.
+/// The serialization class for the `GetCopyReferenceArg` struct.
 ///
 @interface DBFILESGetCopyReferenceArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESGetCopyReferenceArg instances.
+/// Serializes `DBFILESGetCopyReferenceArg` instances.
 ///
-/// @param instance An instance of the DBFILESGetCopyReferenceArg API object.
+/// @param instance An instance of the `DBFILESGetCopyReferenceArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESGetCopyReferenceArg API
+/// @return A json-compatible dictionary representation of the `DBFILESGetCopyReferenceArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetCopyReferenceArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESGetCopyReferenceArg instances.
+/// Deserializes `DBFILESGetCopyReferenceArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESGetCopyReferenceArg API
+/// @param dict A json-compatible dictionary representation of the `DBFILESGetCopyReferenceArg` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESGetCopyReferenceArg object.
+/// @return An instantiation of the `DBFILESGetCopyReferenceArg` object.
 ///
 + (DBFILESGetCopyReferenceArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

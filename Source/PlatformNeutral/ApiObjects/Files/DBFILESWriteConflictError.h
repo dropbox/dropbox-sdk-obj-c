@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESWriteConflictError;
-
 #pragma mark - API Object
 
 ///
-/// The WriteConflictError union.
+/// The `WriteConflictError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESWriteConflictError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESWriteConflictErrorTag enum type represents the possible tag states with which the
-/// DBFILESWriteConflictError union can exist.
+/// The `DBFILESWriteConflictErrorTag` enum type represents the possible tag states with which the
+/// `DBFILESWriteConflictError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
   /// There's a file in the way.
   DBFILESWriteConflictErrorFile,
@@ -44,67 +42,67 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of File.
+/// Initializes union class with tag state of "file".
 ///
-/// About the File tag state: There's a file in the way.
+/// Description of the "file" tag state: There's a file in the way.
 ///
-/// @return An initialized DBFILESWriteConflictError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFile;
 
 ///
-/// Initializes union class with tag state of Folder.
+/// Initializes union class with tag state of "folder".
 ///
-/// About the Folder tag state: There's a folder in the way.
+/// Description of the "folder" tag state: There's a folder in the way.
 ///
-/// @return An initialized DBFILESWriteConflictError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFolder;
 
 ///
-/// Initializes union class with tag state of FileAncestor.
+/// Initializes union class with tag state of "file_ancestor".
 ///
-/// About the FileAncestor tag state: There's a file at an ancestor path, so we couldn't create the
-/// required parent folders.
+/// Description of the "file_ancestor" tag state: There's a file at an ancestor path, so we couldn't
+/// create the required parent folders.
 ///
-/// @return An initialized DBFILESWriteConflictError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFileAncestor;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBFILESWriteConflictError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value File.
+/// Retrieves whether the union's current tag state has value "file".
 ///
-/// @return Whether the union's current tag state has value File.
+/// @return Whether the union's current tag state has value "file".
 ///
 - (BOOL)isFile;
 
 ///
-/// Retrieves whether the union's current tag state has value Folder.
+/// Retrieves whether the union's current tag state has value "folder".
 ///
-/// @return Whether the union's current tag state has value Folder.
+/// @return Whether the union's current tag state has value "folder".
 ///
 - (BOOL)isFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value FileAncestor.
+/// Retrieves whether the union's current tag state has value "file_ancestor".
 ///
-/// @return Whether the union's current tag state has value FileAncestor.
+/// @return Whether the union's current tag state has value "file_ancestor".
 ///
 - (BOOL)isFileAncestor;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -120,26 +118,27 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESWriteConflictError union.
+/// The serialization class for the `DBFILESWriteConflictError` union.
 ///
 @interface DBFILESWriteConflictErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESWriteConflictError instances.
+/// Serializes `DBFILESWriteConflictError` instances.
 ///
-/// @param instance An instance of the DBFILESWriteConflictError API object.
+/// @param instance An instance of the `DBFILESWriteConflictError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESWriteConflictError API object.
+/// @return A json-compatible dictionary representation of the `DBFILESWriteConflictError` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESWriteConflictError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESWriteConflictError instances.
+/// Deserializes `DBFILESWriteConflictError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESWriteConflictError API
+/// @param dict A json-compatible dictionary representation of the `DBFILESWriteConflictError` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESWriteConflictError object.
+/// @return An instantiation of the `DBFILESWriteConflictError` object.
 ///
 + (DBFILESWriteConflictError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

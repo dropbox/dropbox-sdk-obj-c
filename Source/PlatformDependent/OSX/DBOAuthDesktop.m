@@ -54,8 +54,9 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBWebViewController *webViewController =
-      [[DBWebViewController alloc] init:authURL tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
+  DBDesktopWebViewController *webViewController = [[DBDesktopWebViewController alloc] init:authURL
+                                                                       tryInterceptHandler:tryInterceptHandler
+                                                                             cancelHandler:cancelHandler];
   [_controller presentViewControllerAsModalWindow:webViewController];
 }
 
@@ -73,7 +74,7 @@
 
 @end
 
-@interface DBWebViewController ()
+@interface DBDesktopWebViewController ()
 
 @property(nonatomic) WKWebView * _Nullable webView;
 @property(nonatomic) void (^_Nullable onWillDismiss)(BOOL);
@@ -84,7 +85,7 @@
 
 @end
 
-@implementation DBWebViewController
+@implementation DBDesktopWebViewController
 
 - (instancetype)init {
   return [super initWithNibName:nil bundle:nil];

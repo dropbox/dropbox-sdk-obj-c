@@ -8,22 +8,21 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGMemberAccessLevelResult;
-@class DBSHARINGSharedFolderMemberError;
 
 #pragma mark - API Object
 
 ///
-/// The SharedFolderMemberError union.
+/// The `SharedFolderMemberError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGSharedFolderMemberError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGSharedFolderMemberErrorTag enum type represents the possible tag states with which
-/// the DBSHARINGSharedFolderMemberError union can exist.
+/// The `DBSHARINGSharedFolderMemberErrorTag` enum type represents the possible tag states with
+/// which the `DBSHARINGSharedFolderMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
   /// The target dropbox_id is invalid.
   DBSHARINGSharedFolderMemberErrorInvalidDropboxId,
@@ -42,79 +41,81 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGSharedFolderMemberErrorTag tag;
 
-/// The target member only has inherited access to the shared folder. Ensure the isNoExplicitAccess
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// The target member only has inherited access to the shared folder. @note Ensure the
+/// `isNoExplicitAccess` method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of InvalidDropboxId.
+/// Initializes union class with tag state of "invalid_dropbox_id".
 ///
-/// About the InvalidDropboxId tag state: The target dropbox_id is invalid.
+/// Description of the "invalid_dropbox_id" tag state: The target dropbox_id is invalid.
 ///
-/// @return An initialized DBSHARINGSharedFolderMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithInvalidDropboxId;
 
 ///
-/// Initializes union class with tag state of NotAMember.
+/// Initializes union class with tag state of "not_a_member".
 ///
-/// About the NotAMember tag state: The target dropbox_id is not a member of the shared folder.
+/// Description of the "not_a_member" tag state: The target dropbox_id is not a member of the shared
+/// folder.
 ///
-/// @return An initialized DBSHARINGSharedFolderMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNotAMember;
 
 ///
-/// Initializes union class with tag state of NoExplicitAccess.
+/// Initializes union class with tag state of "no_explicit_access".
 ///
-/// About the NoExplicitAccess tag state: The target member only has inherited access to the shared
-/// folder.
+/// Description of the "no_explicit_access" tag state: The target member only has inherited access
+/// to the shared folder.
 ///
 /// @param noExplicitAccess The target member only has inherited access to the shared folder.
 ///
-/// @return An initialized DBSHARINGSharedFolderMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoExplicitAccess:(DBSHARINGMemberAccessLevelResult * _Nonnull)noExplicitAccess;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGSharedFolderMemberError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value InvalidDropboxId.
+/// Retrieves whether the union's current tag state has value "invalid_dropbox_id".
 ///
-/// @return Whether the union's current tag state has value InvalidDropboxId.
+/// @return Whether the union's current tag state has value "invalid_dropbox_id".
 ///
 - (BOOL)isInvalidDropboxId;
 
 ///
-/// Retrieves whether the union's current tag state has value NotAMember.
+/// Retrieves whether the union's current tag state has value "not_a_member".
 ///
-/// @return Whether the union's current tag state has value NotAMember.
+/// @return Whether the union's current tag state has value "not_a_member".
 ///
 - (BOOL)isNotAMember;
 
 ///
-/// Retrieves whether the union's current tag state has value NoExplicitAccess.
+/// Retrieves whether the union's current tag state has value "no_explicit_access".
 ///
-/// @note Call this method and ensure it returns true before accessing the noExplicitAccess
+/// @note Call this method and ensure it returns true before accessing the `noExplicitAccess`
 /// property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value NoExplicitAccess.
+/// @return Whether the union's current tag state has value "no_explicit_access".
 ///
 - (BOOL)isNoExplicitAccess;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -130,27 +131,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGSharedFolderMemberError union.
+/// The serialization class for the `DBSHARINGSharedFolderMemberError` union.
 ///
 @interface DBSHARINGSharedFolderMemberErrorSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGSharedFolderMemberError instances.
+/// Serializes `DBSHARINGSharedFolderMemberError` instances.
 ///
-/// @param instance An instance of the DBSHARINGSharedFolderMemberError API object.
+/// @param instance An instance of the `DBSHARINGSharedFolderMemberError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGSharedFolderMemberError API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderMemberError`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMemberError * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGSharedFolderMemberError instances.
+/// Deserializes `DBSHARINGSharedFolderMemberError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGSharedFolderMemberError
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMemberError` API object.
 ///
-/// @return An instantiation of the DBSHARINGSharedFolderMemberError object.
+/// @return An instantiation of the `DBSHARINGSharedFolderMemberError` object.
 ///
 + (DBSHARINGSharedFolderMemberError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -17,19 +17,19 @@
 ///
 @interface DBBase : NSObject
 
-/// Routes within the auth namespace.
+/// Routes within the `auth` namespace.
 @property(nonatomic, readonly) DBAUTHRoutes * _Nonnull authRoutes;
 
-/// Routes within the files namespace.
+/// Routes within the `files` namespace.
 @property(nonatomic, readonly) DBFILESRoutes * _Nonnull filesRoutes;
 
-/// Routes within the sharing namespace.
+/// Routes within the `sharing` namespace.
 @property(nonatomic, readonly) DBSHARINGRoutes * _Nonnull sharingRoutes;
 
-/// Routes within the users namespace.
+/// Routes within the `users` namespace.
 @property(nonatomic, readonly) DBUSERSRoutes * _Nonnull usersRoutes;
 
-/// Initializes the DBBase object with a networking client.
+/// Initializes the `DBBase` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)client;
 
 @end

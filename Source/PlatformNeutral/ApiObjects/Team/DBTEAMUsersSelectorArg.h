@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMUsersSelectorArg;
-
 #pragma mark - API Object
 
 ///
-/// The UsersSelectorArg union.
+/// The `UsersSelectorArg` union.
 ///
 /// Argument for selecting a list of users, either by team_member_ids, external_ids or emails.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMUsersSelectorArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMUsersSelectorArgTag enum type represents the possible tag states with which the
-/// DBTEAMUsersSelectorArg union can exist.
+/// The `DBTEAMUsersSelectorArgTag` enum type represents the possible tag states with which the
+/// `DBTEAMUsersSelectorArg` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
   /// List of member IDs.
   DBTEAMUsersSelectorArgTeamMemberIds,
@@ -40,82 +38,82 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMUsersSelectorArgTag tag;
 
-/// List of member IDs. Ensure the isTeamMemberIds method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// List of member IDs. @note Ensure the `isTeamMemberIds` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull teamMemberIds;
 
-/// List of external user IDs. Ensure the isExternalIds method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// List of external user IDs. @note Ensure the `isExternalIds` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull externalIds;
 
-/// List of email addresses. Ensure the isEmails method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// List of email addresses. @note Ensure the `isEmails` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull emails;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of TeamMemberIds.
+/// Initializes union class with tag state of "team_member_ids".
 ///
-/// About the TeamMemberIds tag state: List of member IDs.
+/// Description of the "team_member_ids" tag state: List of member IDs.
 ///
 /// @param teamMemberIds List of member IDs.
 ///
-/// @return An initialized DBTEAMUsersSelectorArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamMemberIds:(NSArray<NSString *> * _Nonnull)teamMemberIds;
 
 ///
-/// Initializes union class with tag state of ExternalIds.
+/// Initializes union class with tag state of "external_ids".
 ///
-/// About the ExternalIds tag state: List of external user IDs.
+/// Description of the "external_ids" tag state: List of external user IDs.
 ///
 /// @param externalIds List of external user IDs.
 ///
-/// @return An initialized DBTEAMUsersSelectorArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithExternalIds:(NSArray<NSString *> * _Nonnull)externalIds;
 
 ///
-/// Initializes union class with tag state of Emails.
+/// Initializes union class with tag state of "emails".
 ///
-/// About the Emails tag state: List of email addresses.
+/// Description of the "emails" tag state: List of email addresses.
 ///
 /// @param emails List of email addresses.
 ///
-/// @return An initialized DBTEAMUsersSelectorArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmails:(NSArray<NSString *> * _Nonnull)emails;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value TeamMemberIds.
+/// Retrieves whether the union's current tag state has value "team_member_ids".
 ///
-/// @note Call this method and ensure it returns true before accessing the teamMemberIds property,
+/// @note Call this method and ensure it returns true before accessing the `teamMemberIds` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value TeamMemberIds.
+/// @return Whether the union's current tag state has value "team_member_ids".
 ///
 - (BOOL)isTeamMemberIds;
 
 ///
-/// Retrieves whether the union's current tag state has value ExternalIds.
+/// Retrieves whether the union's current tag state has value "external_ids".
 ///
-/// @note Call this method and ensure it returns true before accessing the externalIds property,
+/// @note Call this method and ensure it returns true before accessing the `externalIds` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value ExternalIds.
+/// @return Whether the union's current tag state has value "external_ids".
 ///
 - (BOOL)isExternalIds;
 
 ///
-/// Retrieves whether the union's current tag state has value Emails.
+/// Retrieves whether the union's current tag state has value "emails".
 ///
-/// @note Call this method and ensure it returns true before accessing the emails property,
+/// @note Call this method and ensure it returns true before accessing the `emails` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Emails.
+/// @return Whether the union's current tag state has value "emails".
 ///
 - (BOOL)isEmails;
 
@@ -131,26 +129,26 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMUsersSelectorArg union.
+/// The serialization class for the `DBTEAMUsersSelectorArg` union.
 ///
 @interface DBTEAMUsersSelectorArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMUsersSelectorArg instances.
+/// Serializes `DBTEAMUsersSelectorArg` instances.
 ///
-/// @param instance An instance of the DBTEAMUsersSelectorArg API object.
+/// @param instance An instance of the `DBTEAMUsersSelectorArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMUsersSelectorArg API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMUsersSelectorArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMUsersSelectorArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMUsersSelectorArg instances.
+/// Deserializes `DBTEAMUsersSelectorArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMUsersSelectorArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMUsersSelectorArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMUsersSelectorArg object.
+/// @return An instantiation of the `DBTEAMUsersSelectorArg` object.
 ///
 + (DBTEAMUsersSelectorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

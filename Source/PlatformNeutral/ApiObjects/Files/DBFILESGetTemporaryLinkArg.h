@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESGetTemporaryLinkArg;
-
 #pragma mark - API Object
 
 ///
-/// The GetTemporaryLinkArg struct.
+/// The `GetTemporaryLinkArg` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESGetTemporaryLinkArg : NSObject <DBSerializable>
 
@@ -27,11 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESGetTemporaryLinkArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path to the file you want a temporary link to.
 ///
-/// @return An initialized DBFILESGetTemporaryLinkArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path;
 
@@ -40,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GetTemporaryLinkArg struct.
+/// The serialization class for the `GetTemporaryLinkArg` struct.
 ///
 @interface DBFILESGetTemporaryLinkArgSerializer : NSObject
 
 ///
-/// Serializes DBFILESGetTemporaryLinkArg instances.
+/// Serializes `DBFILESGetTemporaryLinkArg` instances.
 ///
-/// @param instance An instance of the DBFILESGetTemporaryLinkArg API object.
+/// @param instance An instance of the `DBFILESGetTemporaryLinkArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESGetTemporaryLinkArg API
+/// @return A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetTemporaryLinkArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESGetTemporaryLinkArg instances.
+/// Deserializes `DBFILESGetTemporaryLinkArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESGetTemporaryLinkArg API
+/// @param dict A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkArg` API
 /// object.
 ///
-/// @return An instantiation of the DBFILESGetTemporaryLinkArg object.
+/// @return An instantiation of the `DBFILESGetTemporaryLinkArg` object.
 ///
 + (DBFILESGetTemporaryLinkArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

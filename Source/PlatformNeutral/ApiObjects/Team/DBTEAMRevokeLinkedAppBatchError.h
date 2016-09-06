@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeLinkedAppBatchError;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedAppBatchError union.
+/// The `RevokeLinkedAppBatchError` union.
 ///
-/// Error returned by linkedAppsRevokeLinkedAppBatch.
+/// Error returned by `linkedAppsRevokeLinkedAppBatch`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedAppBatchError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMRevokeLinkedAppBatchErrorTag enum type represents the possible tag states with which
-/// the DBTEAMRevokeLinkedAppBatchError union can exist.
+/// The `DBTEAMRevokeLinkedAppBatchErrorTag` enum type represents the possible tag states with which
+/// the `DBTEAMRevokeLinkedAppBatchError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
   /// (no description).
   DBTEAMRevokeLinkedAppBatchErrorOther,
@@ -37,18 +35,18 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppBatchError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -64,27 +62,27 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppBatchErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMRevokeLinkedAppBatchError union.
+/// The serialization class for the `DBTEAMRevokeLinkedAppBatchError` union.
 ///
 @interface DBTEAMRevokeLinkedAppBatchErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedAppBatchError instances.
+/// Serializes `DBTEAMRevokeLinkedAppBatchError` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedAppBatchError API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedAppBatchError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppBatchError API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppBatchError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppBatchError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedAppBatchError instances.
+/// Deserializes `DBTEAMRevokeLinkedAppBatchError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppBatchError
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppBatchError`
 /// API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedAppBatchError object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedAppBatchError` object.
 ///
 + (DBTEAMRevokeLinkedAppBatchError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

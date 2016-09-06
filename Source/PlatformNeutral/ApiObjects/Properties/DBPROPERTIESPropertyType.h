@@ -7,25 +7,23 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBPROPERTIESPropertyType;
-
 #pragma mark - API Object
 
 ///
-/// The PropertyType union.
+/// The `PropertyType` union.
 ///
 /// Data type of the given property added. This endpoint is in beta and  only properties of type
 /// strings is supported.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBPROPERTIESPropertyType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBPROPERTIESPropertyTypeTag enum type represents the possible tag states with which the
-/// DBPROPERTIESPropertyType union can exist.
+/// The `DBPROPERTIESPropertyTypeTag` enum type represents the possible tag states with which the
+/// `DBPROPERTIESPropertyType` union can exist.
 typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
   /// The associated property will be of type string. Unicode is supported.
   DBPROPERTIESPropertyTypeString,
@@ -41,35 +39,35 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of String.
+/// Initializes union class with tag state of "string".
 ///
-/// About the String tag state: The associated property will be of type string. Unicode is
-/// supported.
+/// Description of the "string" tag state: The associated property will be of type string. Unicode
+/// is supported.
 ///
-/// @return An initialized DBPROPERTIESPropertyType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithString;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBPROPERTIESPropertyType instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value String.
+/// Retrieves whether the union's current tag state has value "string".
 ///
-/// @return Whether the union's current tag state has value String.
+/// @return Whether the union's current tag state has value "string".
 ///
 - (BOOL)isString;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -85,26 +83,27 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBPROPERTIESPropertyType union.
+/// The serialization class for the `DBPROPERTIESPropertyType` union.
 ///
 @interface DBPROPERTIESPropertyTypeSerializer : NSObject
 
 ///
-/// Serializes DBPROPERTIESPropertyType instances.
+/// Serializes `DBPROPERTIESPropertyType` instances.
 ///
-/// @param instance An instance of the DBPROPERTIESPropertyType API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyType` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBPROPERTIESPropertyType API object.
+/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyType` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyType * _Nonnull)instance;
 
 ///
-/// Deserializes DBPROPERTIESPropertyType instances.
+/// Deserializes `DBPROPERTIESPropertyType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBPROPERTIESPropertyType API
+/// @param dict A json-compatible dictionary representation of the `DBPROPERTIESPropertyType` API
 /// object.
 ///
-/// @return An instantiation of the DBPROPERTIESPropertyType object.
+/// @return An instantiation of the `DBPROPERTIESPropertyType` object.
 ///
 + (DBPROPERTIESPropertyType * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

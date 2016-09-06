@@ -22,10 +22,10 @@
 
 @implementation DropboxClientsManager (DesktopAuth)
 
-+ (void)authorizeFromController:(NSWorkspace *)sharedApplication
-                     controller:(NSViewController *)controller
-                        openURL:(void (^_Nonnull)(NSURL *))openURL
-                    browserAuth:(BOOL)browserAuth {
++ (void)authorizeFromControllerDesktop:(NSWorkspace *)sharedApplication
+                            controller:(NSViewController *)controller
+                               openURL:(void (^_Nonnull)(NSURL *))openURL
+                           browserAuth:(BOOL)browserAuth {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   NSAssert([DropboxClientsManager authorizedClient] == nil && [DropboxClientsManager authorizedTeamClient] == nil,
@@ -35,25 +35,25 @@
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedDesktopApplication browserAuth:browserAuth];
 }
 
-+ (void)setupWithAppKey:(NSString *)appKey {
++ (void)setupWithAppKeyDesktop:(NSString *)appKey {
   [DropboxClientsManager setupWithAppKey:appKey
                       sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
                          transportClient:nil];
 }
 
-+ (void)setupWithAppKey:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
++ (void)setupWithAppKeyDesktop:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
   [DropboxClientsManager setupWithAppKey:appKey
                       sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
                          transportClient:transportClient];
 }
 
-+ (void)setupWithTeamAppKey:(NSString *)appKey {
++ (void)setupWithTeamAppKeyDesktop:(NSString *)appKey {
   [DropboxClientsManager setupWithTeamAppKey:appKey
                           sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
                              transportClient:nil];
 }
 
-+ (void)setupWithTeamAppKey:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
++ (void)setupWithTeamAppKeyDesktop:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
   [DropboxClientsManager setupWithTeamAppKey:appKey
                           sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
                              transportClient:transportClient];

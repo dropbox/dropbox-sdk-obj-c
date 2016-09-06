@@ -196,7 +196,7 @@
 ///
 /// Description method.
 ///
-/// @return A human-readable representation of the current DBRequestInternalServerError object.
+/// @return A human-readable representation of the current `DBRequestInternalServerError` object.
 ///
 - (NSString * _Nonnull)description;
 
@@ -206,25 +206,25 @@
 
 @interface DBRequestClientError : NSObject
 
-/// The client-side NSError object returned from the failed response.
+/// The client-side `NSError` object returned from the failed response.
 @property(nonatomic, readonly) NSError * _Nonnull nsError;
 
 ///
-/// DBRequestClientError full constructor.
+/// `DBRequestClientError` full constructor.
 ///
 /// An example of such an error might be if you attempt to make a request and are
 /// not connected to the internet.
 ///
-/// @param nsError The client-side NSError object returned from the failed response.
+/// @param nsError The client-side `NSError` object returned from the failed response.
 ///
-/// @return An initialized DBRequestClientError instance.
+/// @return An initialized `DBRequestClientError` instance.
 ///
 - (nonnull instancetype)init:(NSError * _Nonnull)nsError;
 
 ///
 /// Description method.
 ///
-/// @return A human-readable representation of the current DBRequestClientError object.
+/// @return A human-readable representation of the current `DBRequestClientError` object.
 ///
 - (NSString * _Nonnull)description;
 
@@ -238,49 +238,49 @@
 ///
 /// This class is represented almost like a Stone "Union" object. As one object,
 /// it can represent a number of error "states" (see all of the values of
-/// DBRequestErrorType). To handle each error type, call each of the
-/// is<TAG_STATE> methods until you determine the current tag state, then
-/// call the corresponding as<TAG_STATE> method to return an instance of the
+/// `DBRequestErrorType`). To handle each error type, call each of the
+/// `is<TAG_STATE>` methods until you determine the current tag state, then
+/// call the corresponding `as<TAG_STATE>` method to return an instance of the
 /// appropriate error type.
 ///
 /// For example:
 ///
 /// @code
-///
+/// ```
 /// if ([dbxError isHTTPError]) {
 ///     DBHttpError *httpError = [dbxError asHttpError];
 /// } else if ([dbxError isBadInputError]) { ........
-///
+/// ```
 /// @endcode
 ///
 @interface DBError : NSObject
 
 #pragma mark - Tag type definition
 
-typedef NS_ENUM(NSInteger, DBRequestErrorType) {
+typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
   /// Errors produced at the HTTP layer.
-  DBRequestHttpErrorType,
+  DBRequestErrorHttp,
 
   /// Errors due to bad input parameters to an API Operation.
-  DBRequestBadInputErrorType,
+  DBRequestErrorBadInput,
 
   /// Errors due to invalid authentication credentials.
-  DBRequestAuthErrorType,
+  DBRequestErrorAuth,
 
   /// Error caused by rate limiting.
-  DBRequestRateLimitErrorType,
+  DBRequestErrorRateLimit,
 
   /// Errors due to a problem on Dropbox.
-  DBRequestInternalServerErrorType,
+  DBRequestErrorInternalServer,
 
-  /// Errors due to a problem on the local operating system.
-  DBRequestClientErrorType,
+  /// Errors due to a problem on the client-side of the SDK.
+  DBRequestErrorClient,
 };
 
 #pragma mark - Instance variables
 
-/// Current state of the DBError object type.
-@property(nonatomic, readonly) DBRequestErrorType tag;
+/// Current state of the `DBError` object type.
+@property(nonatomic, readonly) DBRequestErrorTag tag;
 
 /// The Dropbox request id of the network call. This is useful to Dropbox
 /// for debugging issues with Dropbox's SDKs and API. Please include the
@@ -308,15 +308,15 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// event of a rate-limit error.
 @property(nonatomic, readonly) NSNumber * _Nonnull backoff;
 
-/// The client-side NSError object returned from the failed response.
+/// The client-side `NSError` object returned from the failed response.
 @property(nonatomic, readonly) NSError * _Nonnull nsError;
 
 #pragma mark - Constructors
 
 ///
-/// DBError convenience constructor.
+/// `DBError` convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing a generic
+/// Initializes the `DBError` object with all the required state for representing a generic
 /// HTTP error.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
@@ -325,7 +325,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// @param errorContent A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the "error_summary" key.
 ///
-/// @return An initialized DBError instance HTTP error state.
+/// @return An initialized `DBError` instance with HTTP error state.
 ///
 - (nonnull instancetype)initAsHttpError:(NSString * _Nullable)requestId
                              statusCode:(NSNumber * _Nullable)statusCode
@@ -334,7 +334,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 ///
 /// DBError convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing a Bad
+/// Initializes the `DBError` with all the required state for representing a Bad
 /// Input error.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
@@ -343,7 +343,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// @param errorContent A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the "error_summary" key.
 ///
-/// @return An initialized DBError instance with Bad Input error state.
+/// @return An initialized `DBError` instance with Bad Input error state.
 ///
 - (nonnull instancetype)initAsBadInputError:(NSString * _Nullable)requestId
                                  statusCode:(NSNumber * _Nullable)statusCode
@@ -352,7 +352,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 ///
 /// DBError convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing an Auth
+/// Initializes the `DBError` with all the required state for representing an Auth
 /// error.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
@@ -363,7 +363,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// @param structuredAuthError The structured object returned by the Dropbox API in the
 /// event of a 401 auth error.
 ///
-/// @return An initialized DBError instance with Auth error state.
+/// @return An initialized `DBError` instance with Auth error state.
 ///
 - (nonnull instancetype)initAsAuthError:(NSString * _Nullable)requestId
                              statusCode:(NSNumber * _Nullable)statusCode
@@ -373,7 +373,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 ///
 /// DBError convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing a
+/// Initializes the `DBError` with all the required state for representing a
 /// Rate Limit error.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
@@ -386,7 +386,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// @param backoff The number of seconds to wait before making any additional requests in the
 /// event of a rate-limit error.
 ///
-/// @return An initialized DBError instance.
+/// @return An initialized `DBError` instance with Rate Limit error state.
 ///
 - (nonnull instancetype)initAsRateLimitError:(NSString * _Nullable)requestId
                                   statusCode:(NSNumber * _Nullable)statusCode
@@ -395,9 +395,9 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
                                      backoff:(NSNumber * _Nonnull)backoff;
 
 ///
-/// DBError convenience constructor.
+/// `DBError` convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing an
+/// Initializes the `DBError` with all the required state for representing an
 /// Internal Server error.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
@@ -406,28 +406,28 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// @param errorContent A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the "error_summary" key.
 ///
-/// @return An initialized DBError instance with Internal Server error state.
+/// @return An initialized `DBError` instance with Internal Server error state.
 ///
 - (nonnull instancetype)initAsInternalServerError:(NSString * _Nullable)requestId
                                        statusCode:(NSNumber * _Nullable)statusCode
                                      errorContent:(NSString * _Nullable)errorContent;
 
 ///
-/// DBError convenience constructor.
+/// `DBError` convenience constructor.
 ///
-/// Initializes the DBError with all the required state for representing an "OS" error.
+/// Initializes the `DBError` with all the required state for representing an "OS" error.
 /// An example of such an error might be if you attempt to make a request and are not
 /// connected to the internet.
 ///
-/// @param nsError The client-side NSError object returned from the failed response.
+/// @param nsError The client-side `NSError` object returned from the failed response.
 ///
 ///
-/// @return An initialized DBError instance with OS error state.
+/// @return An initialized `DBError` instance with Client error state.
 ///
 - (nonnull instancetype)initAsClientError:(NSError * _Nullable)nsError;
 
 ///
-/// DBError full constructor.
+/// `DBError` full constructor.
 ///
 /// @param requestId The Dropbox request id of the network call. This is
 /// useful to Dropbox for debugging issues with Dropbox's SDKs and API.
@@ -442,9 +442,9 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 /// event of a rate-limit error.
 /// @param nsError The client-side NSError object returned from the failed response.
 ///
-/// @return An initialized DBError instance.
+/// @return An initialized `DBError` instance.
 ///
-- (nonnull instancetype)init:(DBRequestErrorType)tag
+- (nonnull instancetype)init:(DBRequestErrorTag)tag
                    requestId:(NSString * _Nullable)requestId
                   statusCode:(NSNumber * _Nullable)statusCode
                 errorContent:(NSString * _Nullable)errorContent
@@ -456,118 +456,118 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the error's current tag state has value HttpError.
+/// Retrieves whether the error's current tag state has value "http_error".
 ///
-/// @return Whether the union's current tag state has value HttpError.
+/// @return Whether the union's current tag state has value "http_error".
 ///
 - (BOOL)isHttpError;
 
 ///
-/// Retrieves whether the error's current tag state has value BadInputError.
+/// Retrieves whether the error's current tag state has value "bad_input_error".
 ///
-/// @return Whether the union's current tag state has value BadInputError.
+/// @return Whether the union's current tag state has value "bad_input_error".
 ///
 - (BOOL)isBadInputError;
 
 ///
-/// Retrieves whether the error's current tag state has value AuthError.
+/// Retrieves whether the error's current tag state has value "auth_error".
 ///
-/// @return Whether the union's current tag state has value AuthError.
+/// @return Whether the union's current tag state has value "auth_error".
 ///
 - (BOOL)isAuthError;
 
 ///
-/// Retrieves whether the error's current tag state has value RateLimitError.
+/// Retrieves whether the error's current tag state has value "rate_limit_error".
 ///
-/// @return Whether the union's current tag state has value RateLimitError.
+/// @return Whether the union's current tag state has value "rate_limit_error".
 ///
 - (BOOL)isRateLimitError;
 
 ///
-/// Retrieves whether the error's current tag state has value InternalServerError.
+/// Retrieves whether the error's current tag state has value "internal_server_error".
 ///
-/// @return Whether the union's current tag state has value InternalServerError.
+/// @return Whether the union's current tag state has value "internal_server_error".
 ///
 - (BOOL)isInternalServerError;
 
 ///
-/// Retrieves whether the error's current tag state has value ClientError.
+/// Retrieves whether the error's current tag state has value "client_error".
 ///
-/// @return Whether the union's current tag state has value ClientError.
+/// @return Whether the union's current tag state has value "client_error".
 ///
 - (BOOL)isClientError;
 
 #pragma mark - Error subtype retrieval methods
 
 ///
-/// Creates a DBRequestHttpError instance based on the data in the current DBError
+/// Creates a `DBRequestHttpError` instance based on the data in the current `DBError`
 /// instance.
 ///
-/// @note Will throw error if current DBError instance tag state is not
-/// HttpError. Should only use after checking if isHttpError returns true
-/// for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state is not
+/// "http_error". Should only use after checking if `isHttpError` returns true
+/// for the current `DBError` instance.
 ///
-/// @return An initialized DBRequestHttpError instance.
+/// @return An initialized `DBRequestHttpError` instance.
 ///
 - (DBRequestHttpError * _Nonnull)asHttpError;
 
 ///
-/// Creates a DBRequestBadInputError instance based on the data in the current DBError
+/// Creates a `DBRequestBadInputError` instance based on the data in the current `DBError`
 /// instance.
 ///
-/// @note Will throw error if current DBError instance tag state is not
-/// BadInputError. Should only use after checking if isBadInputError returns true
-/// for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state is not
+/// "bad_input_error". Should only use after checking if `isBadInputError` returns true
+/// for the current `DBError` instance.
 ///
-/// @return An initialized DBRequestBadInputError.
+/// @return An initialized `DBRequestBadInputError`.
 ///
 - (DBRequestBadInputError * _Nonnull)asBadInputError;
 
 ///
-/// Creates a DBRequestAuthError instance based on the data in the current DBError
+/// Creates a DBRequestAuthError instance based on the data in the current `DBError`
 /// instance.
 ///
-/// @note Will throw error if current DBError instance tag state is not
-/// AuthError. Should only use after checking if isAuthError returns true
-/// for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state is not
+/// "auth_error". Should only use after checking if `isAuthError` returns true
+/// for the current `DBError` instance.
 ///
-/// @return An initialized DBRequestAuthError instance.
+/// @return An initialized `DBRequestAuthError` instance.
 ///
 - (DBRequestAuthError * _Nonnull)asAuthError;
 
 ///
-/// Creates a DBRequestRateLimitError instance based on the data in the current DBError
+/// Creates a `DBRequestRateLimitError` instance based on the data in the current `DBError`
 /// instance.
 ///
-/// @note Will throw error if current DBError instance tag state is not
-/// RateLimitError. Should only use after checking if isRateLimitError returns true
-/// for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state is not
+/// "rate_limit_error". Should only use after checking if `isRateLimitError` returns true
+/// for the current `DBError` instance.
 ///
-/// @return An initialized DBRequestRateLimitError instance.
+/// @return An initialized `DBRequestRateLimitError` instance.
 ///
 - (DBRequestRateLimitError * _Nonnull)asRateLimitError;
 
 ///
-/// Creates a DBRequestInternalServerError instance based on the data in the
-/// current DBError instance.
+/// Creates a `DBRequestInternalServerError` instance based on the data in the
+/// current `DBError` instance.
 ///
-/// @note Will throw error if current DBError instance tag state
-/// is not InternalServerError. Should only use after checking if isInternalServerError
-/// returns true for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state
+/// is not "internal_server_error". Should only use after checking if `isInternalServerError`
+/// returns true for the current `DBError` instance.
 ///
-/// @return An initialized DBHttpError instance.
+/// @return An initialized `DBHttpError` instance.
 ///
 - (DBRequestInternalServerError * _Nonnull)asInternalServerError;
 
 ///
-/// Creates a DBRequestClientError instance based on the data in the current DBError
+/// Creates a `DBRequestClientError` instance based on the data in the current `DBError`
 /// instance.
 ///
-/// @note Will throw error if current DBError instance tag state is not
-/// ClientError. Should only use after checking if isClientError returns true
-/// for the current DBError instance.
+/// @note Will throw error if current `DBError` instance tag state is not
+/// "client_error". Should only use after checking if `isClientError` returns true
+/// for the current `DBError` instance.
 ///
-/// @return An initialized DBRequestClientError instance.
+/// @return An initialized `DBRequestClientError` instance.
 ///
 - (DBRequestClientError * _Nonnull)asClientError;
 
@@ -576,7 +576,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 ///
 /// Retrieves string value of union's current tag state.
 ///
-/// @return A human-readable string representing the union's current tag
+/// @return A human-readable string representing the `DBError` object's current tag
 /// state.
 ///
 - (NSString * _Nonnull)tagName;
@@ -586,7 +586,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorType) {
 ///
 /// Description method.
 ///
-/// @return A human-readable representation of the current DBError object.
+/// @return A human-readable representation of the current `DBError` object.
 ///
 - (NSString * _Nonnull)description;
 

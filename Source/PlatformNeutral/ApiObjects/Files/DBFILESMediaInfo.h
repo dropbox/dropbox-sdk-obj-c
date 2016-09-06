@@ -7,23 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESMediaInfo;
 @class DBFILESMediaMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The MediaInfo union.
+/// The `MediaInfo` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESMediaInfo : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBFILESMediaInfoTag enum type represents the possible tag states with which the
-/// DBFILESMediaInfo union can exist.
+/// The `DBFILESMediaInfoTag` enum type represents the possible tag states with which the
+/// `DBFILESMediaInfo` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
   /// Indicate the photo/video is still under processing and metadata is not available yet.
   DBFILESMediaInfoPending,
@@ -36,49 +35,49 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESMediaInfoTag tag;
 
-/// The metadata for the photo/video. Ensure the isMetadata method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// The metadata for the photo/video. @note Ensure the `isMetadata` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESMediaMetadata * _Nonnull metadata;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Pending.
+/// Initializes union class with tag state of "pending".
 ///
-/// About the Pending tag state: Indicate the photo/video is still under processing and metadata is
-/// not available yet.
+/// Description of the "pending" tag state: Indicate the photo/video is still under processing and
+/// metadata is not available yet.
 ///
-/// @return An initialized DBFILESMediaInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPending;
 
 ///
-/// Initializes union class with tag state of Metadata.
+/// Initializes union class with tag state of "metadata".
 ///
-/// About the Metadata tag state: The metadata for the photo/video.
+/// Description of the "metadata" tag state: The metadata for the photo/video.
 ///
 /// @param metadata The metadata for the photo/video.
 ///
-/// @return An initialized DBFILESMediaInfo instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMetadata:(DBFILESMediaMetadata * _Nonnull)metadata;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Pending.
+/// Retrieves whether the union's current tag state has value "pending".
 ///
-/// @return Whether the union's current tag state has value Pending.
+/// @return Whether the union's current tag state has value "pending".
 ///
 - (BOOL)isPending;
 
 ///
-/// Retrieves whether the union's current tag state has value Metadata.
+/// Retrieves whether the union's current tag state has value "metadata".
 ///
-/// @note Call this method and ensure it returns true before accessing the metadata property,
+/// @note Call this method and ensure it returns true before accessing the `metadata` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Metadata.
+/// @return Whether the union's current tag state has value "metadata".
 ///
 - (BOOL)isMetadata;
 
@@ -94,25 +93,25 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBFILESMediaInfo union.
+/// The serialization class for the `DBFILESMediaInfo` union.
 ///
 @interface DBFILESMediaInfoSerializer : NSObject
 
 ///
-/// Serializes DBFILESMediaInfo instances.
+/// Serializes `DBFILESMediaInfo` instances.
 ///
-/// @param instance An instance of the DBFILESMediaInfo API object.
+/// @param instance An instance of the `DBFILESMediaInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESMediaInfo API object.
+/// @return A json-compatible dictionary representation of the `DBFILESMediaInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESMediaInfo * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESMediaInfo instances.
+/// Deserializes `DBFILESMediaInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESMediaInfo API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESMediaInfo` API object.
 ///
-/// @return An instantiation of the DBFILESMediaInfo object.
+/// @return An instantiation of the `DBFILESMediaInfo` object.
 ///
 + (DBFILESMediaInfo * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

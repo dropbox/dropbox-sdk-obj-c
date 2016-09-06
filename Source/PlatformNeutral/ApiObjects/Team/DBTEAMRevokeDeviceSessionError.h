@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeDeviceSessionError;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeDeviceSessionError union.
+/// The `RevokeDeviceSessionError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeDeviceSessionError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMRevokeDeviceSessionErrorTag enum type represents the possible tag states with which
-/// the DBTEAMRevokeDeviceSessionError union can exist.
+/// The `DBTEAMRevokeDeviceSessionErrorTag` enum type represents the possible tag states with which
+/// the `DBTEAMRevokeDeviceSessionError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
   /// Device session not found.
   DBTEAMRevokeDeviceSessionErrorDeviceSessionNotFound,
@@ -41,50 +39,50 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of DeviceSessionNotFound.
+/// Initializes union class with tag state of "device_session_not_found".
 ///
-/// About the DeviceSessionNotFound tag state: Device session not found.
+/// Description of the "device_session_not_found" tag state: Device session not found.
 ///
-/// @return An initialized DBTEAMRevokeDeviceSessionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDeviceSessionNotFound;
 
 ///
-/// Initializes union class with tag state of MemberNotFound.
+/// Initializes union class with tag state of "member_not_found".
 ///
-/// About the MemberNotFound tag state: Member not found.
+/// Description of the "member_not_found" tag state: Member not found.
 ///
-/// @return An initialized DBTEAMRevokeDeviceSessionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMRevokeDeviceSessionError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value DeviceSessionNotFound.
+/// Retrieves whether the union's current tag state has value "device_session_not_found".
 ///
-/// @return Whether the union's current tag state has value DeviceSessionNotFound.
+/// @return Whether the union's current tag state has value "device_session_not_found".
 ///
 - (BOOL)isDeviceSessionNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value MemberNotFound.
+/// Retrieves whether the union's current tag state has value "member_not_found".
 ///
-/// @return Whether the union's current tag state has value MemberNotFound.
+/// @return Whether the union's current tag state has value "member_not_found".
 ///
 - (BOOL)isMemberNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -100,27 +98,27 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMRevokeDeviceSessionError union.
+/// The serialization class for the `DBTEAMRevokeDeviceSessionError` union.
 ///
 @interface DBTEAMRevokeDeviceSessionErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeDeviceSessionError instances.
+/// Serializes `DBTEAMRevokeDeviceSessionError` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeDeviceSessionError API object.
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeDeviceSessionError API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeDeviceSessionError instances.
+/// Deserializes `DBTEAMRevokeDeviceSessionError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeDeviceSessionError
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionError`
 /// API object.
 ///
-/// @return An instantiation of the DBTEAMRevokeDeviceSessionError object.
+/// @return An instantiation of the `DBTEAMRevokeDeviceSessionError` object.
 ///
 + (DBTEAMRevokeDeviceSessionError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESUploadSessionOffsetError;
-
 #pragma mark - API Object
 
 ///
-/// The UploadSessionOffsetError struct.
+/// The `UploadSessionOffsetError` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESUploadSessionOffsetError : NSObject <DBSerializable>
 
@@ -27,12 +25,11 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESUploadSessionOffsetError struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param correctOffset The offset up to which data has been collected.
 ///
-/// @return An initialized DBFILESUploadSessionOffsetError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCorrectOffset:(NSNumber * _Nonnull)correctOffset;
 
@@ -41,27 +38,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the UploadSessionOffsetError struct.
+/// The serialization class for the `UploadSessionOffsetError` struct.
 ///
 @interface DBFILESUploadSessionOffsetErrorSerializer : NSObject
 
 ///
-/// Serializes DBFILESUploadSessionOffsetError instances.
+/// Serializes `DBFILESUploadSessionOffsetError` instances.
 ///
-/// @param instance An instance of the DBFILESUploadSessionOffsetError API object.
+/// @param instance An instance of the `DBFILESUploadSessionOffsetError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESUploadSessionOffsetError API
+/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionOffsetError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionOffsetError * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESUploadSessionOffsetError instances.
+/// Deserializes `DBFILESUploadSessionOffsetError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESUploadSessionOffsetError
+/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionOffsetError`
 /// API object.
 ///
-/// @return An instantiation of the DBFILESUploadSessionOffsetError object.
+/// @return An instantiation of the `DBFILESUploadSessionOffsetError` object.
 ///
 + (DBFILESUploadSessionOffsetError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

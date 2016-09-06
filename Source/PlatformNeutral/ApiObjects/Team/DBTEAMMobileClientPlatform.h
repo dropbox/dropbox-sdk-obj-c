@@ -7,22 +7,20 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMobileClientPlatform;
-
 #pragma mark - API Object
 
 ///
-/// The MobileClientPlatform union.
+/// The `MobileClientPlatform` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMobileClientPlatform : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMMobileClientPlatformTag enum type represents the possible tag states with which the
-/// DBTEAMMobileClientPlatform union can exist.
+/// The `DBTEAMMobileClientPlatformTag` enum type represents the possible tag states with which the
+/// `DBTEAMMobileClientPlatform` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
   /// Official Dropbox iPhone client
   DBTEAMMobileClientPlatformIphone,
@@ -50,98 +48,98 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Iphone.
+/// Initializes union class with tag state of "iphone".
 ///
-/// About the Iphone tag state: Official Dropbox iPhone client
+/// Description of the "iphone" tag state: Official Dropbox iPhone client
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithIphone;
 
 ///
-/// Initializes union class with tag state of Ipad.
+/// Initializes union class with tag state of "ipad".
 ///
-/// About the Ipad tag state: Official Dropbox iPad client
+/// Description of the "ipad" tag state: Official Dropbox iPad client
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithIpad;
 
 ///
-/// Initializes union class with tag state of Android.
+/// Initializes union class with tag state of "android".
 ///
-/// About the Android tag state: Official Dropbox Android client
+/// Description of the "android" tag state: Official Dropbox Android client
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAndroid;
 
 ///
-/// Initializes union class with tag state of WindowsPhone.
+/// Initializes union class with tag state of "windows_phone".
 ///
-/// About the WindowsPhone tag state: Official Dropbox Windows phone client
+/// Description of the "windows_phone" tag state: Official Dropbox Windows phone client
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithWindowsPhone;
 
 ///
-/// Initializes union class with tag state of Blackberry.
+/// Initializes union class with tag state of "blackberry".
 ///
-/// About the Blackberry tag state: Official Dropbox Blackberry client
+/// Description of the "blackberry" tag state: Official Dropbox Blackberry client
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBlackberry;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMMobileClientPlatform instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Iphone.
+/// Retrieves whether the union's current tag state has value "iphone".
 ///
-/// @return Whether the union's current tag state has value Iphone.
+/// @return Whether the union's current tag state has value "iphone".
 ///
 - (BOOL)isIphone;
 
 ///
-/// Retrieves whether the union's current tag state has value Ipad.
+/// Retrieves whether the union's current tag state has value "ipad".
 ///
-/// @return Whether the union's current tag state has value Ipad.
+/// @return Whether the union's current tag state has value "ipad".
 ///
 - (BOOL)isIpad;
 
 ///
-/// Retrieves whether the union's current tag state has value Android.
+/// Retrieves whether the union's current tag state has value "android".
 ///
-/// @return Whether the union's current tag state has value Android.
+/// @return Whether the union's current tag state has value "android".
 ///
 - (BOOL)isAndroid;
 
 ///
-/// Retrieves whether the union's current tag state has value WindowsPhone.
+/// Retrieves whether the union's current tag state has value "windows_phone".
 ///
-/// @return Whether the union's current tag state has value WindowsPhone.
+/// @return Whether the union's current tag state has value "windows_phone".
 ///
 - (BOOL)isWindowsPhone;
 
 ///
-/// Retrieves whether the union's current tag state has value Blackberry.
+/// Retrieves whether the union's current tag state has value "blackberry".
 ///
-/// @return Whether the union's current tag state has value Blackberry.
+/// @return Whether the union's current tag state has value "blackberry".
 ///
 - (BOOL)isBlackberry;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -157,27 +155,27 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMMobileClientPlatform union.
+/// The serialization class for the `DBTEAMMobileClientPlatform` union.
 ///
 @interface DBTEAMMobileClientPlatformSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMobileClientPlatform instances.
+/// Serializes `DBTEAMMobileClientPlatform` instances.
 ///
-/// @param instance An instance of the DBTEAMMobileClientPlatform API object.
+/// @param instance An instance of the `DBTEAMMobileClientPlatform` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMobileClientPlatform API
+/// @return A json-compatible dictionary representation of the `DBTEAMMobileClientPlatform` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMobileClientPlatform * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMobileClientPlatform instances.
+/// Deserializes `DBTEAMMobileClientPlatform` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMobileClientPlatform API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMobileClientPlatform` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMobileClientPlatform object.
+/// @return An instantiation of the `DBTEAMMobileClientPlatform` object.
 ///
 + (DBTEAMMobileClientPlatform * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

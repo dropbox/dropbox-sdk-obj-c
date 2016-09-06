@@ -7,19 +7,18 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMembersDeactivateArg;
 @class DBTEAMUserSelectorArg;
 
 #pragma mark - API Object
 
 ///
-/// The MembersDeactivateArg struct.
+/// The `MembersDeactivateArg` struct.
 ///
 /// Exactly one of team_member_id, email, or external_id must be provided to identify the user
 /// account.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMembersDeactivateArg : NSObject <DBSerializable>
 
@@ -34,23 +33,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMembersDeactivateArg struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of user to remove/suspend.
 /// @param wipeData If provided, controls if the user's data will be deleted on their linked
 /// devices.
 ///
-/// @return An initialized DBTEAMMembersDeactivateArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
 
 ///
-/// Convenience constructor for the DBTEAMMembersDeactivateArg struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param user Identity of user to remove/suspend.
 ///
-/// @return An initialized DBTEAMMembersDeactivateArg instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user;
 
@@ -59,27 +57,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MembersDeactivateArg struct.
+/// The serialization class for the `MembersDeactivateArg` struct.
 ///
 @interface DBTEAMMembersDeactivateArgSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMembersDeactivateArg instances.
+/// Serializes `DBTEAMMembersDeactivateArg` instances.
 ///
-/// @param instance An instance of the DBTEAMMembersDeactivateArg API object.
+/// @param instance An instance of the `DBTEAMMembersDeactivateArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMembersDeactivateArg API
+/// @return A json-compatible dictionary representation of the `DBTEAMMembersDeactivateArg` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersDeactivateArg * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMembersDeactivateArg instances.
+/// Deserializes `DBTEAMMembersDeactivateArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMembersDeactivateArg API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersDeactivateArg` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMMembersDeactivateArg object.
+/// @return An instantiation of the `DBTEAMMembersDeactivateArg` object.
 ///
 + (DBTEAMMembersDeactivateArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

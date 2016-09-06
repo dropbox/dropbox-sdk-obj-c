@@ -7,17 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBFILESGpsCoordinates;
-
 #pragma mark - API Object
 
 ///
-/// The GpsCoordinates struct.
+/// The `GpsCoordinates` struct.
 ///
 /// GPS coordinates for a photo or video.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBFILESGpsCoordinates : NSObject <DBSerializable>
 
@@ -32,12 +30,12 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBFILESGpsCoordinates struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param latitude Latitude of the GPS coordinates.
 /// @param longitude Longitude of the GPS coordinates.
 ///
-/// @return An initialized DBFILESGpsCoordinates instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithLatitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
 
@@ -46,25 +44,26 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the GpsCoordinates struct.
+/// The serialization class for the `GpsCoordinates` struct.
 ///
 @interface DBFILESGpsCoordinatesSerializer : NSObject
 
 ///
-/// Serializes DBFILESGpsCoordinates instances.
+/// Serializes `DBFILESGpsCoordinates` instances.
 ///
-/// @param instance An instance of the DBFILESGpsCoordinates API object.
+/// @param instance An instance of the `DBFILESGpsCoordinates` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBFILESGpsCoordinates API object.
+/// @return A json-compatible dictionary representation of the `DBFILESGpsCoordinates` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGpsCoordinates * _Nonnull)instance;
 
 ///
-/// Deserializes DBFILESGpsCoordinates instances.
+/// Deserializes `DBFILESGpsCoordinates` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBFILESGpsCoordinates API object.
+/// @param dict A json-compatible dictionary representation of the `DBFILESGpsCoordinates` API
+/// object.
 ///
-/// @return An instantiation of the DBFILESGpsCoordinates object.
+/// @return An instantiation of the `DBFILESGpsCoordinates` object.
 ///
 + (DBFILESGpsCoordinates * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

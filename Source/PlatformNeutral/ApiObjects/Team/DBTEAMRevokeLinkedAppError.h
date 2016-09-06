@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMRevokeLinkedAppError;
-
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedAppError union.
+/// The `RevokeLinkedAppError` union.
 ///
-/// Error returned by linkedAppsRevokeLinkedApp.
+/// Error returned by `linkedAppsRevokeLinkedApp`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedAppError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBTEAMRevokeLinkedAppErrorTag enum type represents the possible tag states with which the
-/// DBTEAMRevokeLinkedAppError union can exist.
+/// The `DBTEAMRevokeLinkedAppErrorTag` enum type represents the possible tag states with which the
+/// `DBTEAMRevokeLinkedAppError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
   /// Application not found.
   DBTEAMRevokeLinkedAppErrorAppNotFound,
@@ -43,50 +41,50 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of AppNotFound.
+/// Initializes union class with tag state of "app_not_found".
 ///
-/// About the AppNotFound tag state: Application not found.
+/// Description of the "app_not_found" tag state: Application not found.
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppNotFound;
 
 ///
-/// Initializes union class with tag state of MemberNotFound.
+/// Initializes union class with tag state of "member_not_found".
 ///
-/// About the MemberNotFound tag state: Member not found.
+/// Description of the "member_not_found" tag state: Member not found.
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberNotFound;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value AppNotFound.
+/// Retrieves whether the union's current tag state has value "app_not_found".
 ///
-/// @return Whether the union's current tag state has value AppNotFound.
+/// @return Whether the union's current tag state has value "app_not_found".
 ///
 - (BOOL)isAppNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value MemberNotFound.
+/// Retrieves whether the union's current tag state has value "member_not_found".
 ///
-/// @return Whether the union's current tag state has value MemberNotFound.
+/// @return Whether the union's current tag state has value "member_not_found".
 ///
 - (BOOL)isMemberNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -102,27 +100,27 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBTEAMRevokeLinkedAppError union.
+/// The serialization class for the `DBTEAMRevokeLinkedAppError` union.
 ///
 @interface DBTEAMRevokeLinkedAppErrorSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedAppError instances.
+/// Serializes `DBTEAMRevokeLinkedAppError` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedAppError API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedAppError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppError API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppError` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppError * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedAppError instances.
+/// Deserializes `DBTEAMRevokeLinkedAppError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppError API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppError` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedAppError object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedAppError` object.
 ///
 + (DBTEAMRevokeLinkedAppError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

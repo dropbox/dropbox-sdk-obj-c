@@ -7,16 +7,15 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMListMembersDevicesResult;
 @class DBTEAMMemberDevices;
 
 #pragma mark - API Object
 
 ///
-/// The ListMembersDevicesResult struct.
+/// The `ListMembersDevicesResult` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMListMembersDevicesResult : NSObject <DBSerializable>
 
@@ -25,39 +24,38 @@
 /// The devices of each member of the team
 @property(nonatomic, readonly) NSArray<DBTEAMMemberDevices *> * _Nonnull devices;
 
-/// If true, then there are more devices available. Pass the cursor to devicesListMembersDevices to
-/// retrieve the rest.
+/// If true, then there are more devices available. Pass the cursor to `devicesListMembersDevices`
+/// to retrieve the rest.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
-/// Pass the cursor into devicesListMembersDevices to receive the next sub list of team's devices.
+/// Pass the cursor into `devicesListMembersDevices` to receive the next sub list of team's devices.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMListMembersDevicesResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param devices The devices of each member of the team
 /// @param hasMore If true, then there are more devices available. Pass the cursor to
-/// :route:`devices/list_members_devices` to retrieve the rest.
-/// @param cursor Pass the cursor into :route:`devices/list_members_devices` to receive the next sub
-/// list of team's devices.
+/// `devicesListMembersDevices` to retrieve the rest.
+/// @param cursor Pass the cursor into `devicesListMembersDevices` to receive the next sub list of
+/// team's devices.
 ///
-/// @return An initialized DBTEAMListMembersDevicesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> * _Nonnull)devices
                                 hasMore:(NSNumber * _Nonnull)hasMore
                                  cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor for the DBTEAMListMembersDevicesResult struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param devices The devices of each member of the team
 /// @param hasMore If true, then there are more devices available. Pass the cursor to
-/// :route:`devices/list_members_devices` to retrieve the rest.
+/// `devicesListMembersDevices` to retrieve the rest.
 ///
-/// @return An initialized DBTEAMListMembersDevicesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDevices:(NSArray<DBTEAMMemberDevices *> * _Nonnull)devices
                                 hasMore:(NSNumber * _Nonnull)hasMore;
@@ -67,27 +65,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListMembersDevicesResult struct.
+/// The serialization class for the `ListMembersDevicesResult` struct.
 ///
 @interface DBTEAMListMembersDevicesResultSerializer : NSObject
 
 ///
-/// Serializes DBTEAMListMembersDevicesResult instances.
+/// Serializes `DBTEAMListMembersDevicesResult` instances.
 ///
-/// @param instance An instance of the DBTEAMListMembersDevicesResult API object.
+/// @param instance An instance of the `DBTEAMListMembersDevicesResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMListMembersDevicesResult API
+/// @return A json-compatible dictionary representation of the `DBTEAMListMembersDevicesResult` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersDevicesResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMListMembersDevicesResult instances.
+/// Deserializes `DBTEAMListMembersDevicesResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMListMembersDevicesResult
+/// @param dict A json-compatible dictionary representation of the `DBTEAMListMembersDevicesResult`
 /// API object.
 ///
-/// @return An instantiation of the DBTEAMListMembersDevicesResult object.
+/// @return An instantiation of the `DBTEAMListMembersDevicesResult` object.
 ///
 + (DBTEAMListMembersDevicesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

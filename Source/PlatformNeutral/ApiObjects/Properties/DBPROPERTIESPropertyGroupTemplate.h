@@ -8,17 +8,16 @@
 #import <Foundation/Foundation.h>
 
 @class DBPROPERTIESPropertyFieldTemplate;
-@class DBPROPERTIESPropertyGroupTemplate;
 
 #pragma mark - API Object
 
 ///
-/// The PropertyGroupTemplate struct.
+/// The `PropertyGroupTemplate` struct.
 ///
 /// Describes property templates that can be filled and associated with a file.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBPROPERTIESPropertyGroupTemplate : NSObject <DBSerializable>
 
@@ -37,8 +36,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBPROPERTIESPropertyGroupTemplate struct (exposes all instance
-/// variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param name A display name for the property template. Property template names can be up to 256
 /// bytes.
@@ -47,7 +45,7 @@
 /// @param fields This is a list of custom properties associated with a property template. There can
 /// be up to 64 properties in a single property template.
 ///
-/// @return An initialized DBPROPERTIESPropertyGroupTemplate instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                         description_:(NSString * _Nonnull)description_
@@ -58,27 +56,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the PropertyGroupTemplate struct.
+/// The serialization class for the `PropertyGroupTemplate` struct.
 ///
 @interface DBPROPERTIESPropertyGroupTemplateSerializer : NSObject
 
 ///
-/// Serializes DBPROPERTIESPropertyGroupTemplate instances.
+/// Serializes `DBPROPERTIESPropertyGroupTemplate` instances.
 ///
-/// @param instance An instance of the DBPROPERTIESPropertyGroupTemplate API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyGroupTemplate` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBPROPERTIESPropertyGroupTemplate API
-/// object.
+/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyGroupTemplate`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyGroupTemplate * _Nonnull)instance;
 
 ///
-/// Deserializes DBPROPERTIESPropertyGroupTemplate instances.
+/// Deserializes `DBPROPERTIESPropertyGroupTemplate` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBPROPERTIESPropertyGroupTemplate
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyGroupTemplate` API object.
 ///
-/// @return An instantiation of the DBPROPERTIESPropertyGroupTemplate object.
+/// @return An instantiation of the `DBPROPERTIESPropertyGroupTemplate` object.
 ///
 + (DBPROPERTIESPropertyGroupTemplate * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

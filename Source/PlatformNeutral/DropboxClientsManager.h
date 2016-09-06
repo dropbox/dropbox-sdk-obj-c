@@ -13,69 +13,69 @@
 /// This is a convenience class for the typical single user case.
 ///
 /// To use this class, see details in the tutorial at:
-/// https://www.dropbox.com/developers/documentation/objective-c
+/// https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/README.md.
 ///
 @interface DropboxClientsManager : NSObject
 
 ///
-/// Accessor method for DropboxClient shared instance.
+/// Accessor method for `DropboxClient` shared instance.
 ///
-/// @return The DropboxClient shared instance.
+/// @return The `DropboxClient` shared instance.
 ///
 + (DropboxClient * _Nullable)authorizedClient;
 
 ///
-/// Mutator method for DropboxClient shared instance.
+/// Mutator method for `DropboxClient` shared instance.
 ///
-/// @param client The updated reference to the DropboxClient shared
+/// @param client The updated reference to the `DropboxClient` shared
 /// instance.
 ///
 + (void)authorizedClient:(DropboxClient * _Nullable)client;
 
 ///
-/// Accessor method for DropboxTeamClient shared instance.
+/// Accessor method for `DropboxTeamClient` shared instance.
 ///
-/// @return The DropboxTeamClient shared instance.
+/// @return The `DropboxTeamClient` shared instance.
 ///
 + (DropboxTeamClient * _Nullable)authorizedTeamClient;
 
 ///
-/// Mutator method for DropboxTeamClient shared instance.
+/// Mutator method for `DropboxTeamClient` shared instance.
 ///
-/// @param client The updated reference to the DropboxTeamClient shared
+/// @param client The updated reference to the `DropboxTeamClient` shared
 /// instance.
 ///
 + (void)authorizedTeamClient:(DropboxTeamClient * _Nullable)client;
 
 ///
-/// Handles launching the SDK with a redirect URL from an external source.
+/// Handles launching the SDK with a redirect url from an external source.
 ///
-/// Used after OAuth authentication has completed. A DropboxClient instance
-/// is initialized and the response access token is saved in the DBKeychain
+/// Used after OAuth authentication has completed. A `DropboxClient` instance
+/// is initialized and the response access token is saved in the `DBKeychain`
 /// class.
 ///
-/// @param url The auth redirect URL which relaunches the SDK.
+/// @param url The auth redirect url which relaunches the SDK.
 ///
-/// @return The DBOAuthResult result from the authorization attempt.
+/// @return The `DBOAuthResult` result from the authorization attempt.
 ///
 + (DBOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
 
 ///
-/// Handles launching the SDK with a redirect URL from an external source.
+/// Handles launching the SDK with a redirect url from an external source.
 ///
-/// Used after OAuth authentication has completed. A DropboxTeamClient instance
-/// is initialized and the response access token is saved in the DBKeychain
+/// Used after OAuth authentication has completed. A `DropboxTeamClient` instance
+/// is initialized and the response access token is saved in the `DBKeychain`
 /// class.
 ///
-/// @param url The auth redirect URL which relaunches the SDK.
+/// @param url The auth redirect url which relaunches the SDK.
 ///
-/// @return The DBOAuthResult result from the authorization attempt.
+/// @return The `DBOAuthResult` result from the authorization attempt.
 ///
 + (DBOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
 
 ///
 /// "Unlinks" the active user / team client (or both) and clears all stored
-/// access tokens in DBKeychain.
+/// access tokens in `DBKeychain`.
 ///
 + (void)unlinkClients;
 

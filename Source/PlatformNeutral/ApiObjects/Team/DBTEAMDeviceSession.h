@@ -7,15 +7,13 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMDeviceSession;
-
 #pragma mark - API Object
 
 ///
-/// The DeviceSession struct.
+/// The `DeviceSession` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMDeviceSession : NSObject <DBSerializable>
 
@@ -39,7 +37,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMDeviceSession struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The session id
 /// @param ipAddress The IP address of the last activity from this session
@@ -47,7 +45,7 @@
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
 ///
-/// @return An initialized DBTEAMDeviceSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId
                                 ipAddress:(NSString * _Nullable)ipAddress
@@ -56,12 +54,11 @@
                                   updated:(NSDate * _Nullable)updated;
 
 ///
-/// Convenience constructor for the DBTEAMDeviceSession struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param sessionId The session id
 ///
-/// @return An initialized DBTEAMDeviceSession instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId;
 
@@ -70,25 +67,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DeviceSession struct.
+/// The serialization class for the `DeviceSession` struct.
 ///
 @interface DBTEAMDeviceSessionSerializer : NSObject
 
 ///
-/// Serializes DBTEAMDeviceSession instances.
+/// Serializes `DBTEAMDeviceSession` instances.
 ///
-/// @param instance An instance of the DBTEAMDeviceSession API object.
+/// @param instance An instance of the `DBTEAMDeviceSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMDeviceSession API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMDeviceSession` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDeviceSession * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMDeviceSession instances.
+/// Deserializes `DBTEAMDeviceSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMDeviceSession API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMDeviceSession` API object.
 ///
-/// @return An instantiation of the DBTEAMDeviceSession object.
+/// @return An instantiation of the `DBTEAMDeviceSession` object.
 ///
 + (DBTEAMDeviceSession * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

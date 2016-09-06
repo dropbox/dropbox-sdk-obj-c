@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 
 @class DBSHARINGListFileMembersCountResult;
-@class DBSHARINGListFileMembersIndividualResult;
 @class DBSHARINGSharingFileAccessError;
 
 #pragma mark - API Object
 
 ///
-/// The ListFileMembersIndividualResult union.
+/// The `ListFileMembersIndividualResult` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFileMembersIndividualResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBSHARINGListFileMembersIndividualResultTag enum type represents the possible tag states
-/// with which the DBSHARINGListFileMembersIndividualResult union can exist.
+/// The `DBSHARINGListFileMembersIndividualResultTag` enum type represents the possible tag states
+/// with which the `DBSHARINGListFileMembersIndividualResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
   /// The results of the query for this file if it was successful
   DBSHARINGListFileMembersIndividualResultResult,
@@ -40,71 +39,73 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListFileMembersIndividualResultTag tag;
 
-/// The results of the query for this file if it was successful Ensure the isResult method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// The results of the query for this file if it was successful @note Ensure the `isResult` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGListFileMembersCountResult * _Nonnull result;
 
-/// The result of the query for this file if it was an error. Ensure the isAccessError method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// The result of the query for this file if it was an error. @note Ensure the `isAccessError`
+/// method returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of Result.
+/// Initializes union class with tag state of "result".
 ///
-/// About the Result tag state: The results of the query for this file if it was successful
+/// Description of the "result" tag state: The results of the query for this file if it was
+/// successful
 ///
 /// @param result The results of the query for this file if it was successful
 ///
-/// @return An initialized DBSHARINGListFileMembersIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithResult:(DBSHARINGListFileMembersCountResult * _Nonnull)result;
 
 ///
-/// Initializes union class with tag state of AccessError.
+/// Initializes union class with tag state of "access_error".
 ///
-/// About the AccessError tag state: The result of the query for this file if it was an error.
+/// Description of the "access_error" tag state: The result of the query for this file if it was an
+/// error.
 ///
 /// @param accessError The result of the query for this file if it was an error.
 ///
-/// @return An initialized DBSHARINGListFileMembersIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBSHARINGListFileMembersIndividualResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value Result.
+/// Retrieves whether the union's current tag state has value "result".
 ///
-/// @note Call this method and ensure it returns true before accessing the result property,
+/// @note Call this method and ensure it returns true before accessing the `result` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value Result.
+/// @return Whether the union's current tag state has value "result".
 ///
 - (BOOL)isResult;
 
 ///
-/// Retrieves whether the union's current tag state has value AccessError.
+/// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the accessError property,
+/// @note Call this method and ensure it returns true before accessing the `accessError` property,
 /// otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value AccessError.
+/// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -120,27 +121,27 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBSHARINGListFileMembersIndividualResult union.
+/// The serialization class for the `DBSHARINGListFileMembersIndividualResult` union.
 ///
 @interface DBSHARINGListFileMembersIndividualResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFileMembersIndividualResult instances.
+/// Serializes `DBSHARINGListFileMembersIndividualResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFileMembersIndividualResult API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersIndividualResult` API object.
 ///
 /// @return A json-compatible dictionary representation of the
-/// DBSHARINGListFileMembersIndividualResult API object.
+/// `DBSHARINGListFileMembersIndividualResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersIndividualResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFileMembersIndividualResult instances.
+/// Deserializes `DBSHARINGListFileMembersIndividualResult` instances.
 ///
 /// @param dict A json-compatible dictionary representation of the
-/// DBSHARINGListFileMembersIndividualResult API object.
+/// `DBSHARINGListFileMembersIndividualResult` API object.
 ///
-/// @return An instantiation of the DBSHARINGListFileMembersIndividualResult object.
+/// @return An instantiation of the `DBSHARINGListFileMembersIndividualResult` object.
 ///
 + (DBSHARINGListFileMembersIndividualResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

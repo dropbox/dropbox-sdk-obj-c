@@ -7,24 +7,22 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBUSERSGetAccountError;
-
 #pragma mark - API Object
 
 ///
-/// The GetAccountError union.
+/// The `GetAccountError` union.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBUSERSGetAccountError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The DBUSERSGetAccountErrorTag enum type represents the possible tag states with which the
-/// DBUSERSGetAccountError union can exist.
+/// The `DBUSERSGetAccountErrorTag` enum type represents the possible tag states with which the
+/// `DBUSERSGetAccountError` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
-  /// The specified accountId in GetAccountArg does not exist.
+  /// The specified `accountId` in `DBUSERSGetAccountArg` does not exist.
   DBUSERSGetAccountErrorNoAccount,
 
   /// (no description).
@@ -38,34 +36,35 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
 #pragma mark - Constructors
 
 ///
-/// Initializes union class with tag state of NoAccount.
+/// Initializes union class with tag state of "no_account".
 ///
-/// About the NoAccount tag state: The specified :field:`GetAccountArg.account_id` does not exist.
+/// Description of the "no_account" tag state: The specified `accountId` in `DBUSERSGetAccountArg`
+/// does not exist.
 ///
-/// @return An initialized DBUSERSGetAccountError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithNoAccount;
 
 ///
-/// Initializes union class with tag state of Other.
+/// Initializes union class with tag state of "other".
 ///
-/// @return An initialized DBUSERSGetAccountError instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
 
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value NoAccount.
+/// Retrieves whether the union's current tag state has value "no_account".
 ///
-/// @return Whether the union's current tag state has value NoAccount.
+/// @return Whether the union's current tag state has value "no_account".
 ///
 - (BOOL)isNoAccount;
 
 ///
-/// Retrieves whether the union's current tag state has value Other.
+/// Retrieves whether the union's current tag state has value "other".
 ///
-/// @return Whether the union's current tag state has value Other.
+/// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
 
@@ -81,26 +80,26 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the DBUSERSGetAccountError union.
+/// The serialization class for the `DBUSERSGetAccountError` union.
 ///
 @interface DBUSERSGetAccountErrorSerializer : NSObject
 
 ///
-/// Serializes DBUSERSGetAccountError instances.
+/// Serializes `DBUSERSGetAccountError` instances.
 ///
-/// @param instance An instance of the DBUSERSGetAccountError API object.
+/// @param instance An instance of the `DBUSERSGetAccountError` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBUSERSGetAccountError API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountError * _Nonnull)instance;
 
 ///
-/// Deserializes DBUSERSGetAccountError instances.
+/// Deserializes `DBUSERSGetAccountError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBUSERSGetAccountError API
+/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountError` API
 /// object.
 ///
-/// @return An instantiation of the DBUSERSGetAccountError object.
+/// @return An instantiation of the `DBUSERSGetAccountError` object.
 ///
 + (DBUSERSGetAccountError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

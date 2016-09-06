@@ -7,7 +7,6 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBTEAMMemberProfile;
 @class DBTEAMTeamMemberStatus;
 @class DBTEAMTeamMembershipType;
 @class DBUSERSName;
@@ -15,12 +14,12 @@
 #pragma mark - API Object
 
 ///
-/// The MemberProfile struct.
+/// The `MemberProfile` struct.
 ///
 /// Basic member profile.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMMemberProfile : NSObject <DBSerializable>
 
@@ -55,7 +54,7 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMMemberProfile struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
@@ -69,7 +68,7 @@
 /// team_member_id.
 /// @param accountId A user's account identifier.
 ///
-/// @return An initialized DBTEAMMemberProfile instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId
                                        email:(NSString * _Nonnull)email
@@ -81,8 +80,7 @@
                                    accountId:(NSString * _Nullable)accountId;
 
 ///
-/// Convenience constructor for the DBTEAMMemberProfile struct (exposes only non-nullable instance
-/// variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
@@ -92,7 +90,7 @@
 /// @param membershipType The user's membership type: full (normal team member) vs limited (does not
 /// use a license; no access to the team's shared quota).
 ///
-/// @return An initialized DBTEAMMemberProfile instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTeamMemberId:(NSString * _Nonnull)teamMemberId
                                        email:(NSString * _Nonnull)email
@@ -106,25 +104,25 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the MemberProfile struct.
+/// The serialization class for the `MemberProfile` struct.
 ///
 @interface DBTEAMMemberProfileSerializer : NSObject
 
 ///
-/// Serializes DBTEAMMemberProfile instances.
+/// Serializes `DBTEAMMemberProfile` instances.
 ///
-/// @param instance An instance of the DBTEAMMemberProfile API object.
+/// @param instance An instance of the `DBTEAMMemberProfile` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMMemberProfile API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMMemberProfile` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberProfile * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMMemberProfile instances.
+/// Deserializes `DBTEAMMemberProfile` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMMemberProfile API object.
+/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberProfile` API object.
 ///
-/// @return An instantiation of the DBTEAMMemberProfile object.
+/// @return An instantiation of the `DBTEAMMemberProfile` object.
 ///
 + (DBTEAMMemberProfile * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

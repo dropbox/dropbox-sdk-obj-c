@@ -7,18 +7,17 @@
 #import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
 
-@class DBSHARINGListFilesResult;
 @class DBSHARINGSharedFileMetadata;
 
 #pragma mark - API Object
 
 ///
-/// The ListFilesResult struct.
+/// The `ListFilesResult` struct.
 ///
-/// Success results for listReceivedFiles.
+/// Success results for `listReceivedFiles`.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBSHARINGListFilesResult : NSObject <DBSerializable>
 
@@ -33,23 +32,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBSHARINGListFilesResult struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param entries Information about the files shared with current user.
 /// @param cursor Cursor used to obtain additional shared files.
 ///
-/// @return An initialized DBSHARINGListFilesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFileMetadata *> * _Nonnull)entries
                                  cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor for the DBSHARINGListFilesResult struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param entries Information about the files shared with current user.
 ///
-/// @return An initialized DBSHARINGListFilesResult instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEntries:(NSArray<DBSHARINGSharedFileMetadata *> * _Nonnull)entries;
 
@@ -58,26 +56,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the ListFilesResult struct.
+/// The serialization class for the `ListFilesResult` struct.
 ///
 @interface DBSHARINGListFilesResultSerializer : NSObject
 
 ///
-/// Serializes DBSHARINGListFilesResult instances.
+/// Serializes `DBSHARINGListFilesResult` instances.
 ///
-/// @param instance An instance of the DBSHARINGListFilesResult API object.
+/// @param instance An instance of the `DBSHARINGListFilesResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBSHARINGListFilesResult API object.
+/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesResult` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesResult * _Nonnull)instance;
 
 ///
-/// Deserializes DBSHARINGListFilesResult instances.
+/// Deserializes `DBSHARINGListFilesResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBSHARINGListFilesResult API
+/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesResult` API
 /// object.
 ///
-/// @return An instantiation of the DBSHARINGListFilesResult object.
+/// @return An instantiation of the `DBSHARINGListFilesResult` object.
 ///
 + (DBSHARINGListFilesResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -8,15 +8,14 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMRevokeLinkedAppError;
-@class DBTEAMRevokeLinkedAppStatus;
 
 #pragma mark - API Object
 
 ///
-/// The RevokeLinkedAppStatus struct.
+/// The `RevokeLinkedAppStatus` struct.
 ///
-/// This class implements the DBSerializable protocol (serialize and deserialize instance methods),
-/// which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
+/// methods), which is required for all Obj-C SDK API route objects.
 ///
 @interface DBTEAMRevokeLinkedAppStatus : NSObject <DBSerializable>
 
@@ -31,23 +30,22 @@
 #pragma mark - Constructors
 
 ///
-/// Full constructor for the DBTEAMRevokeLinkedAppStatus struct (exposes all instance variables).
+/// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param success Result of the revoking request
 /// @param errorType The error cause in case of a failure
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success
                               errorType:(DBTEAMRevokeLinkedAppError * _Nullable)errorType;
 
 ///
-/// Convenience constructor for the DBTEAMRevokeLinkedAppStatus struct (exposes only non-nullable
-/// instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with no default value).
 ///
 /// @param success Result of the revoking request
 ///
-/// @return An initialized DBTEAMRevokeLinkedAppStatus instance.
+/// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSuccess:(NSNumber * _Nonnull)success;
 
@@ -56,27 +54,27 @@
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the RevokeLinkedAppStatus struct.
+/// The serialization class for the `RevokeLinkedAppStatus` struct.
 ///
 @interface DBTEAMRevokeLinkedAppStatusSerializer : NSObject
 
 ///
-/// Serializes DBTEAMRevokeLinkedAppStatus instances.
+/// Serializes `DBTEAMRevokeLinkedAppStatus` instances.
 ///
-/// @param instance An instance of the DBTEAMRevokeLinkedAppStatus API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedAppStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppStatus API
+/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppStatus` API
 /// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppStatus * _Nonnull)instance;
 
 ///
-/// Deserializes DBTEAMRevokeLinkedAppStatus instances.
+/// Deserializes `DBTEAMRevokeLinkedAppStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the DBTEAMRevokeLinkedAppStatus API
+/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppStatus` API
 /// object.
 ///
-/// @return An instantiation of the DBTEAMRevokeLinkedAppStatus object.
+/// @return An instantiation of the `DBTEAMRevokeLinkedAppStatus` object.
 ///
 + (DBTEAMRevokeLinkedAppStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 
