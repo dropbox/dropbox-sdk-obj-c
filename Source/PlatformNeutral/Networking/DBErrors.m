@@ -142,7 +142,7 @@
 
 - (NSString *)description {
   NSDictionary *values = @{ @"NSError" : _nsError ?: @"nil" };
-  return [NSString stringWithFormat:@"DBClientError[%@];", values];
+  return [NSString stringWithFormat:@"DropboxClientError[%@];", values];
 }
 
 @end

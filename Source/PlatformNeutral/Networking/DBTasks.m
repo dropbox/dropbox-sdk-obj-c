@@ -97,7 +97,7 @@
   }
   id jsonData =
       [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:serializationError];
-  if (serializationError) {
+  if (*serializationError) {
     return nil;
   }
 
@@ -292,7 +292,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *path = [_destination path];
 
-    if (![fileManager fileExistsAtPath:path]) {
+    if ([fileManager fileExistsAtPath:path]) {
       NSError *fileMoveError;
       if (_overwrite) {
         [fileManager removeItemAtPath:[_destination path] error:&fileMoveError];
