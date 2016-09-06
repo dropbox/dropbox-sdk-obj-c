@@ -2,6 +2,7 @@
 ## Build generated
 build/
 DerivedData/
+xcuserdata/
 
 ## Various settings
 *.pbxuser
@@ -29,16 +30,10 @@ DerivedData/
 
 # CocoaPods
 TestObjectiveDropbox_OSX/Pods/
-TestObjectiveDropbox_OSX/TestObjectiveDropbox_OSX.xcodeproj/xcuserdata/
-
 TestObjectiveDropbox_iOS/Pods/
-TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.xcodeproj/xcuserdata/
-
 Examples/DBRoulette/DBRoulette/Pods/
-Examples/DBRoulette/DBRoulette/DBRoulette.xcodeproj/xcuserdata/
 
 # Carthage
 Carthage/Build
 Examples/DBRoulette_Carthage/Carthage/
-Examples/DBRoulette_Carthage/DBRoulette_Carthage.xcodeproj/xcuserdata/
 
