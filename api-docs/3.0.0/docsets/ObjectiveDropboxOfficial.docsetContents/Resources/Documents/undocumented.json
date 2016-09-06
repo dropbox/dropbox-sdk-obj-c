@@ -1,0 +1,82 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 16,
+      "symbol": "NSArray(DBSerializable).+serialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 18,
+      "symbol": "NSArray(DBSerializable).+deserialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 29,
+      "symbol": "NSString(DBSerializable).+serialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 31,
+      "symbol": "NSString(DBSerializable).+deserialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 40,
+      "symbol": "DBTask.-initWithRoute:task:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 244,
+      "symbol": "DBDownloadUrlTask._destination",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.ivar",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 245,
+      "symbol": "DBDownloadUrlTask._overwrite",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.ivar",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTeamBaseClient.h",
+      "line": 20,
+      "symbol": "DBTeamBaseClient.transportClient",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTransportBaseClient.h",
+      "line": 9,
+      "symbol": "DBTransportBaseClient",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBTransportClientProtocol.h",
+      "line": 17,
+      "symbol": "DBTransportClient",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/docs_obj_c/api-docs/all_sdk_files/DBUserBaseClient.h",
+      "line": 24,
+      "symbol": "DBUserBaseClient.transportClient",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/scobbe/src/xplat/dbx/core/api/dropbox-sdk-obj-c/dropbox-sdk-obj-c/Format"
+}

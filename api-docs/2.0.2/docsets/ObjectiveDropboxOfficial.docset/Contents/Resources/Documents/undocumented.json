@@ -1,0 +1,110 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBHandlerTypes.h",
+      "line": 7,
+      "symbol": "DBProgressBlock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBHandlerTypes.h",
+      "line": 9,
+      "symbol": "DBRpcResponseBlock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBHandlerTypes.h",
+      "line": 11,
+      "symbol": "DBUploadResponseBlock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBHandlerTypes.h",
+      "line": 13,
+      "symbol": "DBDownloadResponseBlock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBSDKReachability.h",
+      "line": 13,
+      "symbol": "DBNetworkStatus",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBSDKReachability.h",
+      "line": 13,
+      "symbol": "DBNetworkStatus",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBSDKReachability.h",
+      "line": 18,
+      "symbol": "kDBSDKReachabilityChangedNotification",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBSDKReachability.h",
+      "line": 20,
+      "symbol": "DBSDKReachability",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 16,
+      "symbol": "NSArray(DBSerializable).+serialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 18,
+      "symbol": "NSArray(DBSerializable).+deserialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 29,
+      "symbol": "NSString(DBSerializable).+serialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBStoneSerializers.h",
+      "line": 31,
+      "symbol": "NSString(DBSerializable).+deserialize:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 31,
+      "symbol": "DBTask._session",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.ivar",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 32,
+      "symbol": "DBTask._delegate",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.ivar",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/scobbe/src/sdk/docs_obj_c/api-docs/all_sdk_files/DBTasks.h",
+      "line": 33,
+      "symbol": "DBTask._route",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.ivar",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/scobbe/src/sdk/dropbox-sdk-obj-c/Format"
+}
