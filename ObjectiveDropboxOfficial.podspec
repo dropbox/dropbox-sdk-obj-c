@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://dropbox.com/developers/"
   s.license      = "MIT"
   s.author       = { "Stephen Cobbe" => "scobbe@dropbox.com" }
-  s.source    = { :git => "https://github.com/dropbox/<placeholder>.git", :tag => s.version }
+  s.source    = { :git => "https://github.com/dropbox/dropbox-sdk-obj-c.git", :tag => s.version }
   s.osx.source_files = 'Source/PlatformNeutral/**/*.{h,m}', 'Source/PlatformDependent/OSX/*.{h,m}'
   s.ios.source_files = 'Source/PlatformNeutral/**/*.{h,m}', 'Source/PlatformDependent/iOS/*.{h,m}'
   s.requires_arc = true

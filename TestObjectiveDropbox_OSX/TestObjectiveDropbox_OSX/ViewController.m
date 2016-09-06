@@ -23,7 +23,7 @@
 @implementation ViewController
 
 - (IBAction)linkButtonPressed:(id)sender {
-  [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
+  [DropboxClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[NSWorkspace sharedWorkspace] openURL:url];
@@ -32,7 +32,7 @@
 }
 
 - (IBAction)linkBrowserButtonPressed:(id)sender {
-  [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
+  [DropboxClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[NSWorkspace sharedWorkspace] openURL:url];

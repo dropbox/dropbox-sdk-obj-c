@@ -415,7 +415,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFile:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
+  [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
       response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSURL *destination) {
         if (result) {
           MyLog(@"%@\n", result);
@@ -437,7 +437,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)downloadToFileAgain:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.files downloadURL:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
+  [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
       response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSURL *destination) {
         if (result) {
           MyLog(@"%@\n", result);
@@ -460,7 +460,7 @@ void MyLog(NSString *format, ...) {
 - (void)downloadToFileError:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *filePath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_does_not_exist"];
-  [[[_tester.files downloadURL:filePath overwrite:YES destination:_tester.testData.destURL]
+  [[[_tester.files downloadUrl:filePath overwrite:YES destination:_tester.testData.destURL]
       response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSURL *destination) {
         if (result) {
           NSAssert(NO, @"This call should have errored!");
@@ -502,7 +502,7 @@ void MyLog(NSString *format, ...) {
 - (void)uploadFile:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
-  [[[_tester.files uploadURL:outputPath inputURL:_tester.testData.destURL]
+  [[[_tester.files uploadUrl:outputPath inputUrl:_tester.testData.destURL]
       response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBError *error) {
         if (result) {
           MyLog(@"%@\n", result);

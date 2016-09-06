@@ -165,7 +165,7 @@ To facilitate the above authorization flows, you should take the following steps
 #import "DropboxSDKImports.h"
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [DropboxClientsManager setupWithAppKey:@"<APP_KEY>"];
+    [DropboxClientsManager setupWithAppKeyDesktop:@"<APP_KEY>"];
 }
 ```
 
@@ -196,7 +196,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 // By default, view controller executes before app delegate, so you should trigger the auth flow
 // manually, via a button or the like.
 - (void)myButtonPressed {
-    [DropboxClientsManager authorizeFromController:[NSWorkspace sharedWorkspace]
+    [DropboxClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
                                        browserAuth:YES];
