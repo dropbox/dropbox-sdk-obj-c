@@ -21,13 +21,13 @@ static ViewController *viewController = nil;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   switch (appPermission) {
   case FullDropbox:
-    [DropboxClientsManager setupWithAppKey:@"<FULL_DROPBOX_APP_KEY>"];
+    [DropboxClientsManager setupWithAppKeyDesktop:@"<FULL_DROPBOX_APP_KEY>"];
     break;
   case TeamMemberFileAccess:
-    [DropboxClientsManager setupWithTeamAppKey:@"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>"];
+    [DropboxClientsManager setupWithTeamAppKeyDesktop:@"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>"];
     break;
   case TeamMemberManagement:
-    [DropboxClientsManager setupWithTeamAppKey:@"<TEAM_MEMBER_MANAGEMENT_APP_KEY>"];
+    [DropboxClientsManager setupWithTeamAppKeyDesktop:@"<TEAM_MEMBER_MANAGEMENT_APP_KEY>"];
     break;
   }
 }
