@@ -14,7 +14,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 
 ### Register your application
 
-Before using this SDK, register your application in the [Dropbox App Console](https://dropbox.com/developers/apps).
+Before using this SDK, you should register your application in the [Dropbox App Console](https://dropbox.com/developers/apps). This creates a record of your app with Dropbox that will be associated with the API calls you make.
 
 ### Obtain an OAuth2 token
 
@@ -30,13 +30,13 @@ You can integrate the Dropbox Objective-C SDK into your project using one of sev
 
 ### CocoaPods
 
-To use [CocoaPods](http://cocoapods.org), a dependency manager for Cocoa projects, you can install it for your iOS or OS X project using the following command:
+To use [CocoaPods](http://cocoapods.org), a dependency manager for Cocoa projects, you should first install it using the following command:
 
 ```bash
 $ gem install cocoapods
 ```
 
-Then navigate to the directory that contains your project and create a new file called **Podfile**. You can either do this with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
+Then navigate to the directory that contains your project and create a new file called **Podfile**. You can do this either with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
 
 ```ruby
 target '<YOUR_PROJECT_NAME>' do
@@ -50,29 +50,39 @@ Then, run the following command to install the dependency:
 $ pod install
 ```
 
+Once your project is integrated with the Dropbox Objective-C SDK, you can pull SDK updates using the following command:
+
+```bash
+$ pod update
+```
+
 ### Carthage
 
-You can also integrate the Dropbox Objective-C SDK into your project using [Carthage](https://github.com/Carthage/Carthage), a decentralized dependency manager for Cocoa. You can install Carthage (with XCode 7+) via Homebrew:
+You can also integrate the Dropbox Objective-C SDK into your project using [Carthage](https://github.com/Carthage/Carthage), a decentralized dependency manager for Cocoa. Carthage offers more flexibility than CocoaPods, but requires some additional work. You can install Carthage (with Xcode 7+) via [Homebrew](http://brew.sh/):
 
-```
+```bash
 brew update
 brew install carthage
 ```
+
  To install the Dropbox Objective-C SDK via Carthage, you need to create a `Cartfile` in your project with the following contents:
 
 ```
 # ObjectiveDropboxOfficial
-github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0
+github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.2
 ```
 
 Then, run the following command to install the dependency to checkout and build the Dropbox Objective-C SDK repository:
 
-```
+### iOS
+
+```bash
 carthage update --platform iOS
 ```
-In the Project Navigator in XCode, select your project, and then navigate to **General** > **Linked Frameworks and Libraries** and drag and drop each framework (in `Carthage/Build/iOS`).
 
-Then, navigate to **Build Phases** > `+` > **New Run Script Phase**, and add the following code:
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Linked Frameworks and Libraries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/iOS`).
+
+Then, navigate to **Build Phases** > **+** > **New Run Script Phase**. In the newly-created **Run Script** section, add the following code to the script body area (beneath the "Shell" box):
 
 ```
 /usr/local/bin/carthage copy-frameworks
@@ -84,22 +94,31 @@ Then, navigate to the **Input Files** section and add the following path:
 $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 ```
 
-### Manually add framework
+### OS X
+```bash
+carthage update --platform OSX
+```
+
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/iOS`).
+
+Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/OSX`).
+
+### Manually add subproject
 
 Finally, you can also integrate the Dropbox Objective-C SDK into your project manually without using a dependency manager.
 
 Drag the `ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
 
-In the Project Navigator in XCode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > `+` > `ObjectiveDropboxOfficial.framework`.
+In the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add `ObjectiveDropboxOfficial.framework`.
 
 ## Configure your project
 
 Once you have integrated the Dropbox Objective-C SDK into your project, there are a few additional steps to take before you can begin making API calls.
 
-### Application .plist file
+### Application `.plist` file
 
-If you are compiling on iOS SDK 9.0, you will need to modify your application's .plist to handle Apple's [new security changes](https://developer.apple.com/videos/wwdc/2015/?id=703) to the `canOpenURL` function. You should
-add the following code to your application's .plist file:
+If you are compiling on iOS SDK 9.0, you will need to modify your application's `.plist` to handle Apple's [new security changes](https://developer.apple.com/videos/wwdc/2015/?id=703) to the `canOpenURL` function. You should
+add the following code to your application's `.plist` file:
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -113,7 +132,7 @@ This allows the Objective-C SDK to determine if the official Dropbox iOS app is 
 Additionally, your application needs to register to handle a unique Dropbox URL scheme for redirect following completion of the OAuth2 authorization flow. This URL scheme should have the format `db-<APP_KEY>`, where `<APP_KEY>` is your
 Dropbox app's app key, which can be found in the [App Console](https://dropbox.com/developers/apps).
 
-You should add the following code to your .plist file (but be sure to replace `<APP_KEY>` with your app's app key):
+You should add the following code to your `.plist` file (but be sure to replace `<APP_KEY>` with your app's app key):
 
 ```
 <key>CFBundleURLTypes</key>
@@ -129,7 +148,7 @@ You should add the following code to your .plist file (but be sure to replace `<
     </array>
 ```
 
-After you've made the above changes, your application's .plist file should look something like this:
+After you've made the above changes, your application's `.plist` file should look something like this:
 
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/InfoPlistExample.png?raw=true" alt="Info .plist Example"/>
@@ -512,7 +531,7 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 
 ## Examples
 
-Example projects that demonstrate how to integrate your app with the SDK can be found in the ./Examples/ folder.
+Example projects that demonstrate how to integrate your app with the SDK can be found in the `Examples/` folder.
 
 * [DBRoulette](https://github.com/dropbox/dropbox-sdk-obj-c/tree/master/Examples/DBRoulette/) - Play a fun game of photo roulette with the image files in your Dropbox!
 
@@ -534,12 +553,12 @@ If you're interested in modifying the SDK codebase, you should take the followin
 
 * clone this GitHub repository to your local filesystem
 * run `git submodule init` and then `git submodule update`
-* navigate to ./TestObjectiveDropbox_[iOS|OSX] and run `pod install`
-* open ./TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace in XCode
+* navigate to `TestObjectiveDropbox_[iOS|OSX]` and run `pod install`
+* open `TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace` in Xcode
 * implement your changes to the SDK source code.
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
-following the instructions listed in the ViewController.m file.
+following the instructions listed in the `ViewController.m` file.
 
 ## Bugs
 

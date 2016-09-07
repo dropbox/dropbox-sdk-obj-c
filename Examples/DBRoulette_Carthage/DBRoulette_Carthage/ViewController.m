@@ -10,8 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 
-#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
-#import <ObjectiveDropboxOfficial/DropboxClient.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImports.h>
 
 @interface ViewController ()
 
