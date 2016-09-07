@@ -436,8 +436,9 @@
 		F2059E8A1D7FAD13000E783D /* DBUSERSRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC21D7F6CC000ABD910 /* DBUSERSRouteObjects.m */; };
 		F2059E8B1D7FAD13000E783D /* DBOAuthMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC61D7F6CC000ABD910 /* DBOAuthMobile.m */; };
 		F2059E8C1D7FAD13000E783D /* DropboxClientsManager+MobileAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC81D7F6CC000ABD910 /* DropboxClientsManager+MobileAuth.m */; };
-		F2059E8D1D7FAD13000E783D /* DBOAuthDesktop.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CCB1D7F6CC000ABD910 /* DBOAuthDesktop.m */; };
-		F2059E8E1D7FAD13000E783D /* DropboxClientsManager+DesktopAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CCD1D7F6CC000ABD910 /* DropboxClientsManager+DesktopAuth.m */; };
+		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
+		F29AFA7D1D7FF02B0043800A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7C1D7FF02B0043800A /* UIKit.framework */; };
+		F29AFA7F1D7FF0340043800A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7E1D7FF0340043800A /* WebKit.framework */; };
 		F2B0B7861D7F9E8100663756 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F26B75781D7F6AF700714F70 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B0B7871D7F9E8A00663756 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095B1D7F6CBF00ABD910 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B0B7881D7F9E8A00663756 /* DBASYNCLaunchResultBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095D1D7F6CBF00ABD910 /* DBASYNCLaunchResultBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1744,6 +1745,9 @@
 		F26B75751D7F6AF700714F70 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26B75781D7F6AF700714F70 /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
 		F26B757A1D7F6AF700714F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F29AFA7A1D7FF0220043800A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F29AFA7C1D7FF02B0043800A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F29AFA7E1D7FF0340043800A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1751,6 +1755,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29AFA7F1D7FF0340043800A /* WebKit.framework in Frameworks */,
+				F29AFA7D1D7FF02B0043800A /* UIKit.framework in Frameworks */,
+				F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2786,6 +2793,7 @@
 		F26B756B1D7F6AF700714F70 = {
 			isa = PBXGroup;
 			children = (
+				F27DE9B31D7FF0A5003B1CEE /* Frameworks */,
 				F20909581D7F6CBF00ABD910 /* PlatformNeutral */,
 				F2090CC31D7F6CC000ABD910 /* PlatformDependent */,
 				F26B75771D7F6AF700714F70 /* ObjectiveDropboxOfficial */,
@@ -2808,6 +2816,16 @@
 				F26B757A1D7F6AF700714F70 /* Info.plist */,
 			);
 			path = ObjectiveDropboxOfficial;
+			sourceTree = "<group>";
+		};
+		F27DE9B31D7FF0A5003B1CEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F29AFA7E1D7FF0340043800A /* WebKit.framework */,
+				F29AFA7C1D7FF02B0043800A /* UIKit.framework */,
+				F29AFA7A1D7FF0220043800A /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3750,8 +3768,6 @@
 				F2059E8A1D7FAD13000E783D /* DBUSERSRouteObjects.m in Sources */,
 				F2059E8B1D7FAD13000E783D /* DBOAuthMobile.m in Sources */,
 				F2059E8C1D7FAD13000E783D /* DropboxClientsManager+MobileAuth.m in Sources */,
-				F2059E8D1D7FAD13000E783D /* DBOAuthDesktop.m in Sources */,
-				F2059E8E1D7FAD13000E783D /* DropboxClientsManager+DesktopAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
