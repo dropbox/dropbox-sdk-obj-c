@@ -7,6 +7,437 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2059CE01D7FAD11000E783D /* DBASYNCLaunchEmptyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F209095C1D7F6CBF00ABD910 /* DBASYNCLaunchEmptyResult.m */; };
+		F2059CE11D7FAD11000E783D /* DBASYNCLaunchResultBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F209095E1D7F6CBF00ABD910 /* DBASYNCLaunchResultBase.m */; };
+		F2059CE21D7FAD11000E783D /* DBASYNCPollArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909601D7F6CBF00ABD910 /* DBASYNCPollArg.m */; };
+		F2059CE31D7FAD11000E783D /* DBASYNCPollEmptyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909621D7F6CBF00ABD910 /* DBASYNCPollEmptyResult.m */; };
+		F2059CE41D7FAD11000E783D /* DBASYNCPollError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909641D7F6CBF00ABD910 /* DBASYNCPollError.m */; };
+		F2059CE51D7FAD11000E783D /* DBASYNCPollResultBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909661D7F6CBF00ABD910 /* DBASYNCPollResultBase.m */; };
+		F2059CE61D7FAD11000E783D /* DBAUTHAuthError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909691D7F6CBF00ABD910 /* DBAUTHAuthError.m */; };
+		F2059CE71D7FAD11000E783D /* DBAUTHRateLimitError.m in Sources */ = {isa = PBXBuildFile; fileRef = F209096B1D7F6CBF00ABD910 /* DBAUTHRateLimitError.m */; };
+		F2059CE81D7FAD11000E783D /* DBAUTHRateLimitReason.m in Sources */ = {isa = PBXBuildFile; fileRef = F209096D1D7F6CBF00ABD910 /* DBAUTHRateLimitReason.m */; };
+		F2059CE91D7FAD11000E783D /* DBFILESAddPropertiesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909701D7F6CBF00ABD910 /* DBFILESAddPropertiesError.m */; };
+		F2059CEA1D7FAD11000E783D /* DBFILESAlphaGetMetadataArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909721D7F6CBF00ABD910 /* DBFILESAlphaGetMetadataArg.m */; };
+		F2059CEB1D7FAD11000E783D /* DBFILESAlphaGetMetadataError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909741D7F6CBF00ABD910 /* DBFILESAlphaGetMetadataError.m */; };
+		F2059CEC1D7FAD11000E783D /* DBFILESCommitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909761D7F6CBF00ABD910 /* DBFILESCommitInfo.m */; };
+		F2059CED1D7FAD11000E783D /* DBFILESCommitInfoWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909781D7F6CBF00ABD910 /* DBFILESCommitInfoWithProperties.m */; };
+		F2059CEE1D7FAD11000E783D /* DBFILESCreateFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F209097A1D7F6CBF00ABD910 /* DBFILESCreateFolderArg.m */; };
+		F2059CEF1D7FAD11000E783D /* DBFILESCreateFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F209097C1D7F6CBF00ABD910 /* DBFILESCreateFolderError.m */; };
+		F2059CF01D7FAD11000E783D /* DBFILESDeleteArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F209097E1D7F6CBF00ABD910 /* DBFILESDeleteArg.m */; };
+		F2059CF11D7FAD11000E783D /* DBFILESDeletedMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909801D7F6CBF00ABD910 /* DBFILESDeletedMetadata.m */; };
+		F2059CF21D7FAD11000E783D /* DBFILESDeleteError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909821D7F6CBF00ABD910 /* DBFILESDeleteError.m */; };
+		F2059CF31D7FAD11000E783D /* DBFILESDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909841D7F6CBF00ABD910 /* DBFILESDimensions.m */; };
+		F2059CF41D7FAD11000E783D /* DBFILESDownloadArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909861D7F6CBF00ABD910 /* DBFILESDownloadArg.m */; };
+		F2059CF51D7FAD11000E783D /* DBFILESDownloadError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909881D7F6CBF00ABD910 /* DBFILESDownloadError.m */; };
+		F2059CF61D7FAD11000E783D /* DBFILESFileMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F209098A1D7F6CBF00ABD910 /* DBFILESFileMetadata.m */; };
+		F2059CF71D7FAD11000E783D /* DBFILESFileSharingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F209098C1D7F6CBF00ABD910 /* DBFILESFileSharingInfo.m */; };
+		F2059CF81D7FAD11000E783D /* DBFILESFolderMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F209098E1D7F6CBF00ABD910 /* DBFILESFolderMetadata.m */; };
+		F2059CF91D7FAD11000E783D /* DBFILESFolderSharingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909901D7F6CBF00ABD910 /* DBFILESFolderSharingInfo.m */; };
+		F2059CFA1D7FAD11000E783D /* DBFILESGetCopyReferenceArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909921D7F6CBF00ABD910 /* DBFILESGetCopyReferenceArg.m */; };
+		F2059CFB1D7FAD11000E783D /* DBFILESGetCopyReferenceError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909941D7F6CBF00ABD910 /* DBFILESGetCopyReferenceError.m */; };
+		F2059CFC1D7FAD11000E783D /* DBFILESGetCopyReferenceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909961D7F6CBF00ABD910 /* DBFILESGetCopyReferenceResult.m */; };
+		F2059CFD1D7FAD11000E783D /* DBFILESGetMetadataArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909981D7F6CBF00ABD910 /* DBFILESGetMetadataArg.m */; };
+		F2059CFE1D7FAD11000E783D /* DBFILESGetMetadataError.m in Sources */ = {isa = PBXBuildFile; fileRef = F209099A1D7F6CBF00ABD910 /* DBFILESGetMetadataError.m */; };
+		F2059CFF1D7FAD11000E783D /* DBFILESGetTemporaryLinkArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F209099C1D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkArg.m */; };
+		F2059D001D7FAD11000E783D /* DBFILESGetTemporaryLinkError.m in Sources */ = {isa = PBXBuildFile; fileRef = F209099E1D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkError.m */; };
+		F2059D011D7FAD11000E783D /* DBFILESGetTemporaryLinkResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909A01D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkResult.m */; };
+		F2059D021D7FAD11000E783D /* DBFILESGpsCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909A21D7F6CBF00ABD910 /* DBFILESGpsCoordinates.m */; };
+		F2059D031D7FAD11000E783D /* DBFILESInvalidPropertyGroupError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909A41D7F6CBF00ABD910 /* DBFILESInvalidPropertyGroupError.m */; };
+		F2059D041D7FAD11000E783D /* DBFILESListFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909A61D7F6CBF00ABD910 /* DBFILESListFolderArg.m */; };
+		F2059D051D7FAD11000E783D /* DBFILESListFolderContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909A81D7F6CBF00ABD910 /* DBFILESListFolderContinueArg.m */; };
+		F2059D061D7FAD11000E783D /* DBFILESListFolderContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909AA1D7F6CBF00ABD910 /* DBFILESListFolderContinueError.m */; };
+		F2059D071D7FAD11000E783D /* DBFILESListFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909AC1D7F6CBF00ABD910 /* DBFILESListFolderError.m */; };
+		F2059D081D7FAD11000E783D /* DBFILESListFolderGetLatestCursorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909AE1D7F6CBF00ABD910 /* DBFILESListFolderGetLatestCursorResult.m */; };
+		F2059D091D7FAD11000E783D /* DBFILESListFolderLongpollArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909B01D7F6CBF00ABD910 /* DBFILESListFolderLongpollArg.m */; };
+		F2059D0A1D7FAD11000E783D /* DBFILESListFolderLongpollError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909B21D7F6CBF00ABD910 /* DBFILESListFolderLongpollError.m */; };
+		F2059D0B1D7FAD11000E783D /* DBFILESListFolderLongpollResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909B41D7F6CBF00ABD910 /* DBFILESListFolderLongpollResult.m */; };
+		F2059D0C1D7FAD11000E783D /* DBFILESListFolderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909B61D7F6CBF00ABD910 /* DBFILESListFolderResult.m */; };
+		F2059D0D1D7FAD11000E783D /* DBFILESListRevisionsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909B81D7F6CBF00ABD910 /* DBFILESListRevisionsArg.m */; };
+		F2059D0E1D7FAD11000E783D /* DBFILESListRevisionsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909BA1D7F6CBF00ABD910 /* DBFILESListRevisionsError.m */; };
+		F2059D0F1D7FAD11000E783D /* DBFILESListRevisionsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909BC1D7F6CBF00ABD910 /* DBFILESListRevisionsResult.m */; };
+		F2059D101D7FAD11000E783D /* DBFILESLookupError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909BE1D7F6CBF00ABD910 /* DBFILESLookupError.m */; };
+		F2059D111D7FAD11000E783D /* DBFILESLookUpPropertiesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909C01D7F6CBF00ABD910 /* DBFILESLookUpPropertiesError.m */; };
+		F2059D121D7FAD11000E783D /* DBFILESMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909C21D7F6CBF00ABD910 /* DBFILESMediaInfo.m */; };
+		F2059D131D7FAD11000E783D /* DBFILESMediaMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909C41D7F6CBF00ABD910 /* DBFILESMediaMetadata.m */; };
+		F2059D141D7FAD12000E783D /* DBFILESMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909C61D7F6CBF00ABD910 /* DBFILESMetadata.m */; };
+		F2059D151D7FAD12000E783D /* DBFILESPhotoMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909C81D7F6CBF00ABD910 /* DBFILESPhotoMetadata.m */; };
+		F2059D161D7FAD12000E783D /* DBFILESPreviewArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909CA1D7F6CBF00ABD910 /* DBFILESPreviewArg.m */; };
+		F2059D171D7FAD12000E783D /* DBFILESPreviewError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909CC1D7F6CBF00ABD910 /* DBFILESPreviewError.m */; };
+		F2059D181D7FAD12000E783D /* DBFILESPropertiesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909CE1D7F6CBF00ABD910 /* DBFILESPropertiesError.m */; };
+		F2059D191D7FAD12000E783D /* DBFILESPropertyGroupUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909D01D7F6CBF00ABD910 /* DBFILESPropertyGroupUpdate.m */; };
+		F2059D1A1D7FAD12000E783D /* DBFILESPropertyGroupWithPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909D21D7F6CBF00ABD910 /* DBFILESPropertyGroupWithPath.m */; };
+		F2059D1B1D7FAD12000E783D /* DBFILESRelocationArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909D41D7F6CBF00ABD910 /* DBFILESRelocationArg.m */; };
+		F2059D1C1D7FAD12000E783D /* DBFILESRelocationError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909D61D7F6CBF00ABD910 /* DBFILESRelocationError.m */; };
+		F2059D1D1D7FAD12000E783D /* DBFILESRemovePropertiesArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909D81D7F6CBF00ABD910 /* DBFILESRemovePropertiesArg.m */; };
+		F2059D1E1D7FAD12000E783D /* DBFILESRemovePropertiesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909DA1D7F6CBF00ABD910 /* DBFILESRemovePropertiesError.m */; };
+		F2059D1F1D7FAD12000E783D /* DBFILESRestoreArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909DC1D7F6CBF00ABD910 /* DBFILESRestoreArg.m */; };
+		F2059D201D7FAD12000E783D /* DBFILESRestoreError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909DE1D7F6CBF00ABD910 /* DBFILESRestoreError.m */; };
+		F2059D211D7FAD12000E783D /* DBFILESSaveCopyReferenceArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909E01D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceArg.m */; };
+		F2059D221D7FAD12000E783D /* DBFILESSaveCopyReferenceError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909E21D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceError.m */; };
+		F2059D231D7FAD12000E783D /* DBFILESSaveCopyReferenceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909E41D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceResult.m */; };
+		F2059D241D7FAD12000E783D /* DBFILESSaveUrlArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909E61D7F6CBF00ABD910 /* DBFILESSaveUrlArg.m */; };
+		F2059D251D7FAD12000E783D /* DBFILESSaveUrlError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909E81D7F6CBF00ABD910 /* DBFILESSaveUrlError.m */; };
+		F2059D261D7FAD12000E783D /* DBFILESSaveUrlJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909EA1D7F6CBF00ABD910 /* DBFILESSaveUrlJobStatus.m */; };
+		F2059D271D7FAD12000E783D /* DBFILESSaveUrlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909EC1D7F6CBF00ABD910 /* DBFILESSaveUrlResult.m */; };
+		F2059D281D7FAD12000E783D /* DBFILESSearchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909EE1D7F6CBF00ABD910 /* DBFILESSearchArg.m */; };
+		F2059D291D7FAD12000E783D /* DBFILESSearchError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909F01D7F6CBF00ABD910 /* DBFILESSearchError.m */; };
+		F2059D2A1D7FAD12000E783D /* DBFILESSearchMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909F21D7F6CBF00ABD910 /* DBFILESSearchMatch.m */; };
+		F2059D2B1D7FAD12000E783D /* DBFILESSearchMatchType.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909F41D7F6CBF00ABD910 /* DBFILESSearchMatchType.m */; };
+		F2059D2C1D7FAD12000E783D /* DBFILESSearchMode.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909F61D7F6CBF00ABD910 /* DBFILESSearchMode.m */; };
+		F2059D2D1D7FAD12000E783D /* DBFILESSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909F81D7F6CBF00ABD910 /* DBFILESSearchResult.m */; };
+		F2059D2E1D7FAD12000E783D /* DBFILESSharingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909FA1D7F6CBF00ABD910 /* DBFILESSharingInfo.m */; };
+		F2059D2F1D7FAD12000E783D /* DBFILESThumbnailArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909FC1D7F6CBF00ABD910 /* DBFILESThumbnailArg.m */; };
+		F2059D301D7FAD12000E783D /* DBFILESThumbnailError.m in Sources */ = {isa = PBXBuildFile; fileRef = F20909FE1D7F6CBF00ABD910 /* DBFILESThumbnailError.m */; };
+		F2059D311D7FAD12000E783D /* DBFILESThumbnailFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A001D7F6CBF00ABD910 /* DBFILESThumbnailFormat.m */; };
+		F2059D321D7FAD12000E783D /* DBFILESThumbnailSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A021D7F6CBF00ABD910 /* DBFILESThumbnailSize.m */; };
+		F2059D331D7FAD12000E783D /* DBFILESUpdatePropertiesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A041D7F6CBF00ABD910 /* DBFILESUpdatePropertiesError.m */; };
+		F2059D341D7FAD12000E783D /* DBFILESUpdatePropertyGroupArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A061D7F6CBF00ABD910 /* DBFILESUpdatePropertyGroupArg.m */; };
+		F2059D351D7FAD12000E783D /* DBFILESUploadError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A081D7F6CBF00ABD910 /* DBFILESUploadError.m */; };
+		F2059D361D7FAD12000E783D /* DBFILESUploadErrorWithProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A0A1D7F6CBF00ABD910 /* DBFILESUploadErrorWithProperties.m */; };
+		F2059D371D7FAD12000E783D /* DBFILESUploadSessionAppendArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A0C1D7F6CBF00ABD910 /* DBFILESUploadSessionAppendArg.m */; };
+		F2059D381D7FAD12000E783D /* DBFILESUploadSessionCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A0E1D7F6CBF00ABD910 /* DBFILESUploadSessionCursor.m */; };
+		F2059D391D7FAD12000E783D /* DBFILESUploadSessionFinishArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A101D7F6CBF00ABD910 /* DBFILESUploadSessionFinishArg.m */; };
+		F2059D3A1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A121D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchArg.m */; };
+		F2059D3B1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A141D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchJobStatus.m */; };
+		F2059D3C1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A161D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchResult.m */; };
+		F2059D3D1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchResultEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A181D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchResultEntry.m */; };
+		F2059D3E1D7FAD12000E783D /* DBFILESUploadSessionFinishError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A1A1D7F6CBF00ABD910 /* DBFILESUploadSessionFinishError.m */; };
+		F2059D3F1D7FAD12000E783D /* DBFILESUploadSessionLookupError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A1C1D7F6CBF00ABD910 /* DBFILESUploadSessionLookupError.m */; };
+		F2059D401D7FAD12000E783D /* DBFILESUploadSessionOffsetError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A1E1D7F6CBF00ABD910 /* DBFILESUploadSessionOffsetError.m */; };
+		F2059D411D7FAD12000E783D /* DBFILESUploadSessionStartArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A201D7F6CBF00ABD910 /* DBFILESUploadSessionStartArg.m */; };
+		F2059D421D7FAD12000E783D /* DBFILESUploadSessionStartResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A221D7F6CBF00ABD910 /* DBFILESUploadSessionStartResult.m */; };
+		F2059D431D7FAD12000E783D /* DBFILESUploadWriteFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A241D7F6CBF00ABD910 /* DBFILESUploadWriteFailed.m */; };
+		F2059D441D7FAD12000E783D /* DBFILESVideoMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A261D7F6CBF00ABD910 /* DBFILESVideoMetadata.m */; };
+		F2059D451D7FAD12000E783D /* DBFILESWriteConflictError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A281D7F6CBF00ABD910 /* DBFILESWriteConflictError.m */; };
+		F2059D461D7FAD12000E783D /* DBFILESWriteError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A2A1D7F6CBF00ABD910 /* DBFILESWriteError.m */; };
+		F2059D471D7FAD12000E783D /* DBFILESWriteMode.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A2C1D7F6CBF00ABD910 /* DBFILESWriteMode.m */; };
+		F2059D481D7FAD12000E783D /* DBPROPERTIESGetPropertyTemplateArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A2F1D7F6CBF00ABD910 /* DBPROPERTIESGetPropertyTemplateArg.m */; };
+		F2059D491D7FAD12000E783D /* DBPROPERTIESGetPropertyTemplateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A311D7F6CBF00ABD910 /* DBPROPERTIESGetPropertyTemplateResult.m */; };
+		F2059D4A1D7FAD12000E783D /* DBPROPERTIESListPropertyTemplateIds.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A331D7F6CBF00ABD910 /* DBPROPERTIESListPropertyTemplateIds.m */; };
+		F2059D4B1D7FAD12000E783D /* DBPROPERTIESModifyPropertyTemplateError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A351D7F6CBF00ABD910 /* DBPROPERTIESModifyPropertyTemplateError.m */; };
+		F2059D4C1D7FAD12000E783D /* DBPROPERTIESPropertyField.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A371D7F6CBF00ABD910 /* DBPROPERTIESPropertyField.m */; };
+		F2059D4D1D7FAD12000E783D /* DBPROPERTIESPropertyFieldTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A391D7F6CBF00ABD910 /* DBPROPERTIESPropertyFieldTemplate.m */; };
+		F2059D4E1D7FAD12000E783D /* DBPROPERTIESPropertyGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A3B1D7F6CBF00ABD910 /* DBPROPERTIESPropertyGroup.m */; };
+		F2059D4F1D7FAD12000E783D /* DBPROPERTIESPropertyGroupTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A3D1D7F6CBF00ABD910 /* DBPROPERTIESPropertyGroupTemplate.m */; };
+		F2059D501D7FAD12000E783D /* DBPROPERTIESPropertyTemplateError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A3F1D7F6CBF00ABD910 /* DBPROPERTIESPropertyTemplateError.m */; };
+		F2059D511D7FAD12000E783D /* DBPROPERTIESPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A411D7F6CBF00ABD910 /* DBPROPERTIESPropertyType.m */; };
+		F2059D521D7FAD12000E783D /* DBSHARINGAccessLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A441D7F6CBF00ABD910 /* DBSHARINGAccessLevel.m */; };
+		F2059D531D7FAD12000E783D /* DBSHARINGAclUpdatePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A461D7F6CBF00ABD910 /* DBSHARINGAclUpdatePolicy.m */; };
+		F2059D541D7FAD12000E783D /* DBSHARINGAddFileMemberArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A481D7F6CBF00ABD910 /* DBSHARINGAddFileMemberArgs.m */; };
+		F2059D551D7FAD12000E783D /* DBSHARINGAddFileMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A4A1D7F6CBF00ABD910 /* DBSHARINGAddFileMemberError.m */; };
+		F2059D561D7FAD12000E783D /* DBSHARINGAddFolderMemberArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A4C1D7F6CBF00ABD910 /* DBSHARINGAddFolderMemberArg.m */; };
+		F2059D571D7FAD12000E783D /* DBSHARINGAddFolderMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A4E1D7F6CBF00ABD910 /* DBSHARINGAddFolderMemberError.m */; };
+		F2059D581D7FAD12000E783D /* DBSHARINGAddMember.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A501D7F6CBF00ABD910 /* DBSHARINGAddMember.m */; };
+		F2059D591D7FAD12000E783D /* DBSHARINGAddMemberSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A521D7F6CBF00ABD910 /* DBSHARINGAddMemberSelectorError.m */; };
+		F2059D5A1D7FAD12000E783D /* DBSHARINGChangeFileMemberAccessArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A541D7F6CBF00ABD910 /* DBSHARINGChangeFileMemberAccessArgs.m */; };
+		F2059D5B1D7FAD12000E783D /* DBSHARINGCollectionLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A561D7F6CBF00ABD910 /* DBSHARINGCollectionLinkMetadata.m */; };
+		F2059D5C1D7FAD12000E783D /* DBSHARINGCreateSharedLinkArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A581D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkArg.m */; };
+		F2059D5D1D7FAD12000E783D /* DBSHARINGCreateSharedLinkError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A5A1D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkError.m */; };
+		F2059D5E1D7FAD12000E783D /* DBSHARINGCreateSharedLinkWithSettingsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A5C1D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkWithSettingsArg.m */; };
+		F2059D5F1D7FAD12000E783D /* DBSHARINGCreateSharedLinkWithSettingsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A5E1D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkWithSettingsError.m */; };
+		F2059D601D7FAD12000E783D /* DBSHARINGFileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A601D7F6CBF00ABD910 /* DBSHARINGFileAction.m */; };
+		F2059D611D7FAD12000E783D /* DBSHARINGFileErrorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A621D7F6CBF00ABD910 /* DBSHARINGFileErrorResult.m */; };
+		F2059D621D7FAD12000E783D /* DBSHARINGFileLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A641D7F6CBF00ABD910 /* DBSHARINGFileLinkMetadata.m */; };
+		F2059D631D7FAD12000E783D /* DBSHARINGFileMemberActionError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A661D7F6CBF00ABD910 /* DBSHARINGFileMemberActionError.m */; };
+		F2059D641D7FAD12000E783D /* DBSHARINGFileMemberActionIndividualResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A681D7F6CBF00ABD910 /* DBSHARINGFileMemberActionIndividualResult.m */; };
+		F2059D651D7FAD12000E783D /* DBSHARINGFileMemberActionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A6A1D7F6CBF00ABD910 /* DBSHARINGFileMemberActionResult.m */; };
+		F2059D661D7FAD12000E783D /* DBSHARINGFileMemberRemoveActionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A6C1D7F6CBF00ABD910 /* DBSHARINGFileMemberRemoveActionResult.m */; };
+		F2059D671D7FAD12000E783D /* DBSHARINGFilePermission.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A6E1D7F6CBF00ABD910 /* DBSHARINGFilePermission.m */; };
+		F2059D681D7FAD12000E783D /* DBSHARINGFolderAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A701D7F6CBF00ABD910 /* DBSHARINGFolderAction.m */; };
+		F2059D691D7FAD12000E783D /* DBSHARINGFolderLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A721D7F6CBF00ABD910 /* DBSHARINGFolderLinkMetadata.m */; };
+		F2059D6A1D7FAD12000E783D /* DBSHARINGFolderPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A741D7F6CBF00ABD910 /* DBSHARINGFolderPermission.m */; };
+		F2059D6B1D7FAD12000E783D /* DBSHARINGFolderPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A761D7F6CBF00ABD910 /* DBSHARINGFolderPolicy.m */; };
+		F2059D6C1D7FAD12000E783D /* DBSHARINGGetFileMetadataArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A781D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataArg.m */; };
+		F2059D6D1D7FAD12000E783D /* DBSHARINGGetFileMetadataBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A7A1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataBatchArg.m */; };
+		F2059D6E1D7FAD12000E783D /* DBSHARINGGetFileMetadataBatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A7C1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataBatchResult.m */; };
+		F2059D6F1D7FAD12000E783D /* DBSHARINGGetFileMetadataError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A7E1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataError.m */; };
+		F2059D701D7FAD12000E783D /* DBSHARINGGetFileMetadataIndividualResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A801D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataIndividualResult.m */; };
+		F2059D711D7FAD12000E783D /* DBSHARINGGetMetadataArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A821D7F6CBF00ABD910 /* DBSHARINGGetMetadataArgs.m */; };
+		F2059D721D7FAD12000E783D /* DBSHARINGGetSharedLinkFileError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A841D7F6CBF00ABD910 /* DBSHARINGGetSharedLinkFileError.m */; };
+		F2059D731D7FAD12000E783D /* DBSHARINGGetSharedLinkMetadataArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A861D7F6CBF00ABD910 /* DBSHARINGGetSharedLinkMetadataArg.m */; };
+		F2059D741D7FAD12000E783D /* DBSHARINGGetSharedLinksArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A881D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksArg.m */; };
+		F2059D751D7FAD12000E783D /* DBSHARINGGetSharedLinksError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A8A1D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksError.m */; };
+		F2059D761D7FAD12000E783D /* DBSHARINGGetSharedLinksResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A8C1D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksResult.m */; };
+		F2059D771D7FAD12000E783D /* DBSHARINGGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A8E1D7F6CBF00ABD910 /* DBSHARINGGroupInfo.m */; };
+		F2059D781D7FAD12000E783D /* DBSHARINGGroupMembershipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A901D7F6CBF00ABD910 /* DBSHARINGGroupMembershipInfo.m */; };
+		F2059D791D7FAD12000E783D /* DBSHARINGInsufficientQuotaAmounts.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A921D7F6CBF00ABD910 /* DBSHARINGInsufficientQuotaAmounts.m */; };
+		F2059D7A1D7FAD12000E783D /* DBSHARINGInviteeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A941D7F6CBF00ABD910 /* DBSHARINGInviteeInfo.m */; };
+		F2059D7B1D7FAD12000E783D /* DBSHARINGInviteeMembershipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A961D7F6CBF00ABD910 /* DBSHARINGInviteeMembershipInfo.m */; };
+		F2059D7C1D7FAD12000E783D /* DBSHARINGJobError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A981D7F6CBF00ABD910 /* DBSHARINGJobError.m */; };
+		F2059D7D1D7FAD12000E783D /* DBSHARINGJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A9A1D7F6CBF00ABD910 /* DBSHARINGJobStatus.m */; };
+		F2059D7E1D7FAD12000E783D /* DBSHARINGLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A9C1D7F6CBF00ABD910 /* DBSHARINGLinkMetadata.m */; };
+		F2059D7F1D7FAD12000E783D /* DBSHARINGLinkPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090A9E1D7F6CBF00ABD910 /* DBSHARINGLinkPermissions.m */; };
+		F2059D801D7FAD12000E783D /* DBSHARINGListFileMembersArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AA01D7F6CBF00ABD910 /* DBSHARINGListFileMembersArg.m */; };
+		F2059D811D7FAD12000E783D /* DBSHARINGListFileMembersBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AA21D7F6CBF00ABD910 /* DBSHARINGListFileMembersBatchArg.m */; };
+		F2059D821D7FAD12000E783D /* DBSHARINGListFileMembersBatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AA41D7F6CBF00ABD910 /* DBSHARINGListFileMembersBatchResult.m */; };
+		F2059D831D7FAD12000E783D /* DBSHARINGListFileMembersContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AA61D7F6CBF00ABD910 /* DBSHARINGListFileMembersContinueArg.m */; };
+		F2059D841D7FAD12000E783D /* DBSHARINGListFileMembersContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AA81D7F6CBF00ABD910 /* DBSHARINGListFileMembersContinueError.m */; };
+		F2059D851D7FAD12000E783D /* DBSHARINGListFileMembersCountResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AAA1D7F6CBF00ABD910 /* DBSHARINGListFileMembersCountResult.m */; };
+		F2059D861D7FAD12000E783D /* DBSHARINGListFileMembersError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AAC1D7F6CBF00ABD910 /* DBSHARINGListFileMembersError.m */; };
+		F2059D871D7FAD12000E783D /* DBSHARINGListFileMembersIndividualResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AAE1D7F6CBF00ABD910 /* DBSHARINGListFileMembersIndividualResult.m */; };
+		F2059D881D7FAD12000E783D /* DBSHARINGListFilesArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AB01D7F6CBF00ABD910 /* DBSHARINGListFilesArg.m */; };
+		F2059D891D7FAD12000E783D /* DBSHARINGListFilesContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AB21D7F6CBF00ABD910 /* DBSHARINGListFilesContinueArg.m */; };
+		F2059D8A1D7FAD12000E783D /* DBSHARINGListFilesContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AB41D7F6CBF00ABD910 /* DBSHARINGListFilesContinueError.m */; };
+		F2059D8B1D7FAD12000E783D /* DBSHARINGListFilesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AB61D7F6CBF00ABD910 /* DBSHARINGListFilesResult.m */; };
+		F2059D8C1D7FAD12000E783D /* DBSHARINGListFolderMembersArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AB81D7F6CBF00ABD910 /* DBSHARINGListFolderMembersArgs.m */; };
+		F2059D8D1D7FAD12000E783D /* DBSHARINGListFolderMembersContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ABA1D7F6CBF00ABD910 /* DBSHARINGListFolderMembersContinueArg.m */; };
+		F2059D8E1D7FAD12000E783D /* DBSHARINGListFolderMembersContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ABC1D7F6CBF00ABD910 /* DBSHARINGListFolderMembersContinueError.m */; };
+		F2059D8F1D7FAD12000E783D /* DBSHARINGListFolderMembersCursorArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ABE1D7F6CBF00ABD910 /* DBSHARINGListFolderMembersCursorArg.m */; };
+		F2059D901D7FAD12000E783D /* DBSHARINGListFoldersArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AC01D7F6CBF00ABD910 /* DBSHARINGListFoldersArgs.m */; };
+		F2059D911D7FAD12000E783D /* DBSHARINGListFoldersContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AC21D7F6CBF00ABD910 /* DBSHARINGListFoldersContinueArg.m */; };
+		F2059D921D7FAD12000E783D /* DBSHARINGListFoldersContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AC41D7F6CBF00ABD910 /* DBSHARINGListFoldersContinueError.m */; };
+		F2059D931D7FAD12000E783D /* DBSHARINGListFoldersResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AC61D7F6CBF00ABD910 /* DBSHARINGListFoldersResult.m */; };
+		F2059D941D7FAD12000E783D /* DBSHARINGListSharedLinksArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AC81D7F6CBF00ABD910 /* DBSHARINGListSharedLinksArg.m */; };
+		F2059D951D7FAD12000E783D /* DBSHARINGListSharedLinksError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ACA1D7F6CBF00ABD910 /* DBSHARINGListSharedLinksError.m */; };
+		F2059D961D7FAD12000E783D /* DBSHARINGListSharedLinksResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ACC1D7F6CBF00ABD910 /* DBSHARINGListSharedLinksResult.m */; };
+		F2059D971D7FAD12000E783D /* DBSHARINGMemberAccessLevelResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ACE1D7F6CBF00ABD910 /* DBSHARINGMemberAccessLevelResult.m */; };
+		F2059D981D7FAD12000E783D /* DBSHARINGMemberAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AD01D7F6CBF00ABD910 /* DBSHARINGMemberAction.m */; };
+		F2059D991D7FAD12000E783D /* DBSHARINGMemberPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AD21D7F6CBF00ABD910 /* DBSHARINGMemberPermission.m */; };
+		F2059D9A1D7FAD12000E783D /* DBSHARINGMemberPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AD41D7F6CBF00ABD910 /* DBSHARINGMemberPolicy.m */; };
+		F2059D9B1D7FAD12000E783D /* DBSHARINGMemberSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AD61D7F6CBF00ABD910 /* DBSHARINGMemberSelector.m */; };
+		F2059D9C1D7FAD12000E783D /* DBSHARINGMembershipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AD81D7F6CBF00ABD910 /* DBSHARINGMembershipInfo.m */; };
+		F2059D9D1D7FAD12000E783D /* DBSHARINGModifySharedLinkSettingsArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ADA1D7F6CBF00ABD910 /* DBSHARINGModifySharedLinkSettingsArgs.m */; };
+		F2059D9E1D7FAD12000E783D /* DBSHARINGModifySharedLinkSettingsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ADC1D7F6CBF00ABD910 /* DBSHARINGModifySharedLinkSettingsError.m */; };
+		F2059D9F1D7FAD12000E783D /* DBSHARINGMountFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090ADE1D7F6CBF00ABD910 /* DBSHARINGMountFolderArg.m */; };
+		F2059DA01D7FAD12000E783D /* DBSHARINGMountFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AE01D7F6CBF00ABD910 /* DBSHARINGMountFolderError.m */; };
+		F2059DA11D7FAD12000E783D /* DBSHARINGParentFolderAccessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AE21D7F6CBF00ABD910 /* DBSHARINGParentFolderAccessInfo.m */; };
+		F2059DA21D7FAD12000E783D /* DBSHARINGPathLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AE41D7F6CBF00ABD910 /* DBSHARINGPathLinkMetadata.m */; };
+		F2059DA31D7FAD12000E783D /* DBSHARINGPendingUploadMode.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AE61D7F6CBF00ABD910 /* DBSHARINGPendingUploadMode.m */; };
+		F2059DA41D7FAD12000E783D /* DBSHARINGPermissionDeniedReason.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AE81D7F6CBF00ABD910 /* DBSHARINGPermissionDeniedReason.m */; };
+		F2059DA51D7FAD12000E783D /* DBSHARINGRelinquishFileMembershipArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AEA1D7F6CBF00ABD910 /* DBSHARINGRelinquishFileMembershipArg.m */; };
+		F2059DA61D7FAD12000E783D /* DBSHARINGRelinquishFileMembershipError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AEC1D7F6CBF00ABD910 /* DBSHARINGRelinquishFileMembershipError.m */; };
+		F2059DA71D7FAD12000E783D /* DBSHARINGRelinquishFolderMembershipArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AEE1D7F6CBF00ABD910 /* DBSHARINGRelinquishFolderMembershipArg.m */; };
+		F2059DA81D7FAD12000E783D /* DBSHARINGRelinquishFolderMembershipError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AF01D7F6CBF00ABD910 /* DBSHARINGRelinquishFolderMembershipError.m */; };
+		F2059DA91D7FAD12000E783D /* DBSHARINGRemoveFileMemberArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AF21D7F6CBF00ABD910 /* DBSHARINGRemoveFileMemberArg.m */; };
+		F2059DAA1D7FAD12000E783D /* DBSHARINGRemoveFileMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AF41D7F6CBF00ABD910 /* DBSHARINGRemoveFileMemberError.m */; };
+		F2059DAB1D7FAD12000E783D /* DBSHARINGRemoveFolderMemberArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AF61D7F6CBF00ABD910 /* DBSHARINGRemoveFolderMemberArg.m */; };
+		F2059DAC1D7FAD12000E783D /* DBSHARINGRemoveFolderMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AF81D7F6CBF00ABD910 /* DBSHARINGRemoveFolderMemberError.m */; };
+		F2059DAD1D7FAD12000E783D /* DBSHARINGRemoveMemberJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AFA1D7F6CBF00ABD910 /* DBSHARINGRemoveMemberJobStatus.m */; };
+		F2059DAE1D7FAD12000E783D /* DBSHARINGRequestedVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AFC1D7F6CBF00ABD910 /* DBSHARINGRequestedVisibility.m */; };
+		F2059DAF1D7FAD12000E783D /* DBSHARINGResolvedVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090AFE1D7F6CBF00ABD910 /* DBSHARINGResolvedVisibility.m */; };
+		F2059DB01D7FAD12000E783D /* DBSHARINGRevokeSharedLinkArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B001D7F6CBF00ABD910 /* DBSHARINGRevokeSharedLinkArg.m */; };
+		F2059DB11D7FAD12000E783D /* DBSHARINGRevokeSharedLinkError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B021D7F6CBF00ABD910 /* DBSHARINGRevokeSharedLinkError.m */; };
+		F2059DB21D7FAD12000E783D /* DBSHARINGSharedFileMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B041D7F6CBF00ABD910 /* DBSHARINGSharedFileMembers.m */; };
+		F2059DB31D7FAD12000E783D /* DBSHARINGSharedFileMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B061D7F6CBF00ABD910 /* DBSHARINGSharedFileMetadata.m */; };
+		F2059DB41D7FAD12000E783D /* DBSHARINGSharedFolderAccessError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B081D7F6CBF00ABD910 /* DBSHARINGSharedFolderAccessError.m */; };
+		F2059DB51D7FAD12000E783D /* DBSHARINGSharedFolderMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B0A1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMemberError.m */; };
+		F2059DB61D7FAD12000E783D /* DBSHARINGSharedFolderMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B0C1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMembers.m */; };
+		F2059DB71D7FAD12000E783D /* DBSHARINGSharedFolderMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B0E1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMetadata.m */; };
+		F2059DB81D7FAD12000E783D /* DBSHARINGSharedFolderMetadataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B101D7F6CBF00ABD910 /* DBSHARINGSharedFolderMetadataBase.m */; };
+		F2059DB91D7FAD12000E783D /* DBSHARINGSharedLinkAccessFailureReason.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B121D7F6CBF00ABD910 /* DBSHARINGSharedLinkAccessFailureReason.m */; };
+		F2059DBA1D7FAD12000E783D /* DBSHARINGSharedLinkError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B141D7F6CBF00ABD910 /* DBSHARINGSharedLinkError.m */; };
+		F2059DBB1D7FAD12000E783D /* DBSHARINGSharedLinkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B161D7F6CBF00ABD910 /* DBSHARINGSharedLinkMetadata.m */; };
+		F2059DBC1D7FAD12000E783D /* DBSHARINGSharedLinkPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B181D7F6CBF00ABD910 /* DBSHARINGSharedLinkPolicy.m */; };
+		F2059DBD1D7FAD12000E783D /* DBSHARINGSharedLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B1A1D7F6CBF00ABD910 /* DBSHARINGSharedLinkSettings.m */; };
+		F2059DBE1D7FAD12000E783D /* DBSHARINGSharedLinkSettingsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B1C1D7F6CBF00ABD910 /* DBSHARINGSharedLinkSettingsError.m */; };
+		F2059DBF1D7FAD12000E783D /* DBSHARINGShareFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B1E1D7F6CBF00ABD910 /* DBSHARINGShareFolderArg.m */; };
+		F2059DC01D7FAD12000E783D /* DBSHARINGShareFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B201D7F6CBF00ABD910 /* DBSHARINGShareFolderError.m */; };
+		F2059DC11D7FAD12000E783D /* DBSHARINGShareFolderErrorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B221D7F6CBF00ABD910 /* DBSHARINGShareFolderErrorBase.m */; };
+		F2059DC21D7FAD12000E783D /* DBSHARINGShareFolderJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B241D7F6CBF00ABD910 /* DBSHARINGShareFolderJobStatus.m */; };
+		F2059DC31D7FAD12000E783D /* DBSHARINGShareFolderLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B261D7F6CBF00ABD910 /* DBSHARINGShareFolderLaunch.m */; };
+		F2059DC41D7FAD12000E783D /* DBSHARINGSharePathError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B281D7F6CBF00ABD910 /* DBSHARINGSharePathError.m */; };
+		F2059DC51D7FAD12000E783D /* DBSHARINGSharingFileAccessError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B2A1D7F6CBF00ABD910 /* DBSHARINGSharingFileAccessError.m */; };
+		F2059DC61D7FAD12000E783D /* DBSHARINGSharingUserError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B2C1D7F6CBF00ABD910 /* DBSHARINGSharingUserError.m */; };
+		F2059DC71D7FAD12000E783D /* DBSHARINGTeamMemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B2E1D7F6CBF00ABD910 /* DBSHARINGTeamMemberInfo.m */; };
+		F2059DC81D7FAD12000E783D /* DBSHARINGTransferFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B301D7F6CBF00ABD910 /* DBSHARINGTransferFolderArg.m */; };
+		F2059DC91D7FAD12000E783D /* DBSHARINGTransferFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B321D7F6CBF00ABD910 /* DBSHARINGTransferFolderError.m */; };
+		F2059DCA1D7FAD12000E783D /* DBSHARINGUnmountFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B341D7F6CBF00ABD910 /* DBSHARINGUnmountFolderArg.m */; };
+		F2059DCB1D7FAD12000E783D /* DBSHARINGUnmountFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B361D7F6CBF00ABD910 /* DBSHARINGUnmountFolderError.m */; };
+		F2059DCC1D7FAD12000E783D /* DBSHARINGUnshareFileArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B381D7F6CBF00ABD910 /* DBSHARINGUnshareFileArg.m */; };
+		F2059DCD1D7FAD12000E783D /* DBSHARINGUnshareFileError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B3A1D7F6CBF00ABD910 /* DBSHARINGUnshareFileError.m */; };
+		F2059DCE1D7FAD12000E783D /* DBSHARINGUnshareFolderArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B3C1D7F6CBF00ABD910 /* DBSHARINGUnshareFolderArg.m */; };
+		F2059DCF1D7FAD12000E783D /* DBSHARINGUnshareFolderError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B3E1D7F6CBF00ABD910 /* DBSHARINGUnshareFolderError.m */; };
+		F2059DD01D7FAD12000E783D /* DBSHARINGUpdateFolderMemberArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B401D7F6CBF00ABD910 /* DBSHARINGUpdateFolderMemberArg.m */; };
+		F2059DD11D7FAD12000E783D /* DBSHARINGUpdateFolderMemberError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B421D7F6CBF00ABD910 /* DBSHARINGUpdateFolderMemberError.m */; };
+		F2059DD21D7FAD12000E783D /* DBSHARINGUpdateFolderPolicyArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B441D7F6CBF00ABD910 /* DBSHARINGUpdateFolderPolicyArg.m */; };
+		F2059DD31D7FAD12000E783D /* DBSHARINGUpdateFolderPolicyError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B461D7F6CBF00ABD910 /* DBSHARINGUpdateFolderPolicyError.m */; };
+		F2059DD41D7FAD12000E783D /* DBSHARINGUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B481D7F6CBF00ABD910 /* DBSHARINGUserInfo.m */; };
+		F2059DD51D7FAD12000E783D /* DBSHARINGUserMembershipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B4A1D7F6CBF00ABD910 /* DBSHARINGUserMembershipInfo.m */; };
+		F2059DD61D7FAD12000E783D /* DBSHARINGVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B4C1D7F6CBF00ABD910 /* DBSHARINGVisibility.m */; };
+		F2059DD71D7FAD12000E783D /* DBTEAMActiveWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B4F1D7F6CBF00ABD910 /* DBTEAMActiveWebSession.m */; };
+		F2059DD81D7FAD12000E783D /* DBTEAMAddPropertyTemplateArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B511D7F6CBF00ABD910 /* DBTEAMAddPropertyTemplateArg.m */; };
+		F2059DD91D7FAD12000E783D /* DBTEAMAddPropertyTemplateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B531D7F6CBF00ABD910 /* DBTEAMAddPropertyTemplateResult.m */; };
+		F2059DDA1D7FAD12000E783D /* DBTEAMAdminTier.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B551D7F6CBF00ABD910 /* DBTEAMAdminTier.m */; };
+		F2059DDB1D7FAD12000E783D /* DBTEAMApiApp.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B571D7F6CBF00ABD910 /* DBTEAMApiApp.m */; };
+		F2059DDC1D7FAD12000E783D /* DBTEAMBaseDfbReport.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B591D7F6CBF00ABD910 /* DBTEAMBaseDfbReport.m */; };
+		F2059DDD1D7FAD12000E783D /* DBTEAMDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B5B1D7F6CBF00ABD910 /* DBTEAMDateRange.m */; };
+		F2059DDE1D7FAD12000E783D /* DBTEAMDateRangeError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B5D1D7F6CBF00ABD910 /* DBTEAMDateRangeError.m */; };
+		F2059DDF1D7FAD12000E783D /* DBTEAMDesktopClientSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B5F1D7F6CBF00ABD910 /* DBTEAMDesktopClientSession.m */; };
+		F2059DE01D7FAD12000E783D /* DBTEAMDesktopPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B611D7F6CBF00ABD910 /* DBTEAMDesktopPlatform.m */; };
+		F2059DE11D7FAD12000E783D /* DBTEAMDevicesActive.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B631D7F6CBF00ABD910 /* DBTEAMDevicesActive.m */; };
+		F2059DE21D7FAD12000E783D /* DBTEAMDeviceSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B651D7F6CBF00ABD910 /* DBTEAMDeviceSession.m */; };
+		F2059DE31D7FAD12000E783D /* DBTEAMDeviceSessionArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B671D7F6CBF00ABD910 /* DBTEAMDeviceSessionArg.m */; };
+		F2059DE41D7FAD12000E783D /* DBTEAMGetActivityReport.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B691D7F6CBF00ABD910 /* DBTEAMGetActivityReport.m */; };
+		F2059DE51D7FAD12000E783D /* DBTEAMGetDevicesReport.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B6B1D7F6CBF00ABD910 /* DBTEAMGetDevicesReport.m */; };
+		F2059DE61D7FAD12000E783D /* DBTEAMGetMembershipReport.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B6D1D7F6CBF00ABD910 /* DBTEAMGetMembershipReport.m */; };
+		F2059DE71D7FAD12000E783D /* DBTEAMGetStorageReport.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B6F1D7F6CBF00ABD910 /* DBTEAMGetStorageReport.m */; };
+		F2059DE81D7FAD12000E783D /* DBTEAMGroupAccessType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B711D7F6CBF00ABD910 /* DBTEAMGroupAccessType.m */; };
+		F2059DE91D7FAD12000E783D /* DBTEAMGroupCreateArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B731D7F6CBF00ABD910 /* DBTEAMGroupCreateArg.m */; };
+		F2059DEA1D7FAD12000E783D /* DBTEAMGroupCreateError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B751D7F6CBF00ABD910 /* DBTEAMGroupCreateError.m */; };
+		F2059DEB1D7FAD12000E783D /* DBTEAMGroupDeleteError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B771D7F6CBF00ABD910 /* DBTEAMGroupDeleteError.m */; };
+		F2059DEC1D7FAD12000E783D /* DBTEAMGroupFullInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B791D7F6CBF00ABD910 /* DBTEAMGroupFullInfo.m */; };
+		F2059DED1D7FAD12000E783D /* DBTEAMGroupMemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B7B1D7F6CBF00ABD910 /* DBTEAMGroupMemberInfo.m */; };
+		F2059DEE1D7FAD12000E783D /* DBTEAMGroupMembersAddArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B7D1D7F6CBF00ABD910 /* DBTEAMGroupMembersAddArg.m */; };
+		F2059DEF1D7FAD12000E783D /* DBTEAMGroupMembersAddError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B7F1D7F6CBF00ABD910 /* DBTEAMGroupMembersAddError.m */; };
+		F2059DF01D7FAD12000E783D /* DBTEAMGroupMembersChangeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B811D7F6CBF00ABD910 /* DBTEAMGroupMembersChangeResult.m */; };
+		F2059DF11D7FAD12000E783D /* DBTEAMGroupMemberSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B831D7F6CBF00ABD910 /* DBTEAMGroupMemberSelector.m */; };
+		F2059DF21D7FAD12000E783D /* DBTEAMGroupMemberSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B851D7F6CBF00ABD910 /* DBTEAMGroupMemberSelectorError.m */; };
+		F2059DF31D7FAD12000E783D /* DBTEAMGroupMemberSetAccessTypeError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B871D7F6CBF00ABD910 /* DBTEAMGroupMemberSetAccessTypeError.m */; };
+		F2059DF41D7FAD12000E783D /* DBTEAMGroupMembersRemoveArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B891D7F6CBF00ABD910 /* DBTEAMGroupMembersRemoveArg.m */; };
+		F2059DF51D7FAD12000E783D /* DBTEAMGroupMembersRemoveError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B8B1D7F6CBF00ABD910 /* DBTEAMGroupMembersRemoveError.m */; };
+		F2059DF61D7FAD12000E783D /* DBTEAMGroupMembersSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B8D1D7F6CBF00ABD910 /* DBTEAMGroupMembersSelector.m */; };
+		F2059DF71D7FAD12000E783D /* DBTEAMGroupMembersSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B8F1D7F6CBF00ABD910 /* DBTEAMGroupMembersSelectorError.m */; };
+		F2059DF81D7FAD12000E783D /* DBTEAMGroupMembersSetAccessTypeArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B911D7F6CBF00ABD910 /* DBTEAMGroupMembersSetAccessTypeArg.m */; };
+		F2059DF91D7FAD12000E783D /* DBTEAMGroupSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B931D7F6CBF00ABD910 /* DBTEAMGroupSelector.m */; };
+		F2059DFA1D7FAD12000E783D /* DBTEAMGroupSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B951D7F6CBF00ABD910 /* DBTEAMGroupSelectorError.m */; };
+		F2059DFB1D7FAD12000E783D /* DBTEAMGroupsGetInfoError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B971D7F6CBF00ABD910 /* DBTEAMGroupsGetInfoError.m */; };
+		F2059DFC1D7FAD12000E783D /* DBTEAMGroupsGetInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B991D7F6CBF00ABD910 /* DBTEAMGroupsGetInfoItem.m */; };
+		F2059DFD1D7FAD12000E783D /* DBTEAMGroupsListArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B9B1D7F6CBF00ABD910 /* DBTEAMGroupsListArg.m */; };
+		F2059DFE1D7FAD12000E783D /* DBTEAMGroupsListContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B9D1D7F6CBF00ABD910 /* DBTEAMGroupsListContinueArg.m */; };
+		F2059DFF1D7FAD12000E783D /* DBTEAMGroupsListContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090B9F1D7F6CBF00ABD910 /* DBTEAMGroupsListContinueError.m */; };
+		F2059E001D7FAD12000E783D /* DBTEAMGroupsListResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BA11D7F6CBF00ABD910 /* DBTEAMGroupsListResult.m */; };
+		F2059E011D7FAD12000E783D /* DBTEAMGroupsMembersListArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BA31D7F6CBF00ABD910 /* DBTEAMGroupsMembersListArg.m */; };
+		F2059E021D7FAD12000E783D /* DBTEAMGroupsMembersListContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BA51D7F6CBF00ABD910 /* DBTEAMGroupsMembersListContinueArg.m */; };
+		F2059E031D7FAD12000E783D /* DBTEAMGroupsMembersListContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BA71D7F6CBF00ABD910 /* DBTEAMGroupsMembersListContinueError.m */; };
+		F2059E041D7FAD12000E783D /* DBTEAMGroupsMembersListResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BA91D7F6CBF00ABD910 /* DBTEAMGroupsMembersListResult.m */; };
+		F2059E051D7FAD12000E783D /* DBTEAMGroupsPollError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BAB1D7F6CBF00ABD910 /* DBTEAMGroupsPollError.m */; };
+		F2059E061D7FAD12000E783D /* DBTEAMGroupsSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BAD1D7F6CBF00ABD910 /* DBTEAMGroupsSelector.m */; };
+		F2059E071D7FAD12000E783D /* DBTEAMGroupUpdateArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BAF1D7F6CBF00ABD910 /* DBTEAMGroupUpdateArgs.m */; };
+		F2059E081D7FAD12000E783D /* DBTEAMGroupUpdateError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BB11D7F6CBF00ABD910 /* DBTEAMGroupUpdateError.m */; };
+		F2059E091D7FAD12000E783D /* DBTEAMIncludeMembersArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BB31D7F6CBF00ABD910 /* DBTEAMIncludeMembersArg.m */; };
+		F2059E0A1D7FAD12000E783D /* DBTEAMListMemberAppsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BB51D7F6CBF00ABD910 /* DBTEAMListMemberAppsArg.m */; };
+		F2059E0B1D7FAD12000E783D /* DBTEAMListMemberAppsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BB71D7F6CBF00ABD910 /* DBTEAMListMemberAppsError.m */; };
+		F2059E0C1D7FAD12000E783D /* DBTEAMListMemberAppsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BB91D7F6CBF00ABD910 /* DBTEAMListMemberAppsResult.m */; };
+		F2059E0D1D7FAD12000E783D /* DBTEAMListMemberDevicesArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BBB1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesArg.m */; };
+		F2059E0E1D7FAD12000E783D /* DBTEAMListMemberDevicesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BBD1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesError.m */; };
+		F2059E0F1D7FAD12000E783D /* DBTEAMListMemberDevicesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BBF1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesResult.m */; };
+		F2059E101D7FAD12000E783D /* DBTEAMListMembersAppsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BC11D7F6CBF00ABD910 /* DBTEAMListMembersAppsArg.m */; };
+		F2059E111D7FAD12000E783D /* DBTEAMListMembersAppsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BC31D7F6CBF00ABD910 /* DBTEAMListMembersAppsError.m */; };
+		F2059E121D7FAD12000E783D /* DBTEAMListMembersAppsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BC51D7F6CBF00ABD910 /* DBTEAMListMembersAppsResult.m */; };
+		F2059E131D7FAD12000E783D /* DBTEAMListMembersDevicesArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BC71D7F6CBF00ABD910 /* DBTEAMListMembersDevicesArg.m */; };
+		F2059E141D7FAD12000E783D /* DBTEAMListMembersDevicesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BC91D7F6CBF00ABD910 /* DBTEAMListMembersDevicesError.m */; };
+		F2059E151D7FAD12000E783D /* DBTEAMListMembersDevicesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BCB1D7F6CBF00ABD910 /* DBTEAMListMembersDevicesResult.m */; };
+		F2059E161D7FAD12000E783D /* DBTEAMListTeamAppsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BCD1D7F6CBF00ABD910 /* DBTEAMListTeamAppsArg.m */; };
+		F2059E171D7FAD12000E783D /* DBTEAMListTeamAppsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BCF1D7F6CBF00ABD910 /* DBTEAMListTeamAppsError.m */; };
+		F2059E181D7FAD12000E783D /* DBTEAMListTeamAppsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BD11D7F6CBF00ABD910 /* DBTEAMListTeamAppsResult.m */; };
+		F2059E191D7FAD12000E783D /* DBTEAMListTeamDevicesArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BD31D7F6CBF00ABD910 /* DBTEAMListTeamDevicesArg.m */; };
+		F2059E1A1D7FAD12000E783D /* DBTEAMListTeamDevicesError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BD51D7F6CBF00ABD910 /* DBTEAMListTeamDevicesError.m */; };
+		F2059E1B1D7FAD12000E783D /* DBTEAMListTeamDevicesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BD71D7F6CBF00ABD910 /* DBTEAMListTeamDevicesResult.m */; };
+		F2059E1C1D7FAD12000E783D /* DBTEAMMemberAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BD91D7F6CBF00ABD910 /* DBTEAMMemberAccess.m */; };
+		F2059E1D1D7FAD12000E783D /* DBTEAMMemberAddArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BDB1D7F6CBF00ABD910 /* DBTEAMMemberAddArg.m */; };
+		F2059E1E1D7FAD12000E783D /* DBTEAMMemberAddResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BDD1D7F6CBF00ABD910 /* DBTEAMMemberAddResult.m */; };
+		F2059E1F1D7FAD12000E783D /* DBTEAMMemberDevices.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BDF1D7F6CBF00ABD910 /* DBTEAMMemberDevices.m */; };
+		F2059E201D7FAD12000E783D /* DBTEAMMemberLinkedApps.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BE11D7F6CBF00ABD910 /* DBTEAMMemberLinkedApps.m */; };
+		F2059E211D7FAD12000E783D /* DBTEAMMemberProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BE31D7F6CBF00ABD910 /* DBTEAMMemberProfile.m */; };
+		F2059E221D7FAD12000E783D /* DBTEAMMembersAddArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BE51D7F6CBF00ABD910 /* DBTEAMMembersAddArg.m */; };
+		F2059E231D7FAD12000E783D /* DBTEAMMembersAddJobStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BE71D7F6CC000ABD910 /* DBTEAMMembersAddJobStatus.m */; };
+		F2059E241D7FAD12000E783D /* DBTEAMMembersAddLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BE91D7F6CC000ABD910 /* DBTEAMMembersAddLaunch.m */; };
+		F2059E251D7FAD12000E783D /* DBTEAMMembersDeactivateArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BEB1D7F6CC000ABD910 /* DBTEAMMembersDeactivateArg.m */; };
+		F2059E261D7FAD12000E783D /* DBTEAMMembersDeactivateError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BED1D7F6CC000ABD910 /* DBTEAMMembersDeactivateError.m */; };
+		F2059E271D7FAD12000E783D /* DBTEAMMemberSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BEF1D7F6CC000ABD910 /* DBTEAMMemberSelectorError.m */; };
+		F2059E281D7FAD12000E783D /* DBTEAMMembersGetInfoArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BF11D7F6CC000ABD910 /* DBTEAMMembersGetInfoArgs.m */; };
+		F2059E291D7FAD12000E783D /* DBTEAMMembersGetInfoError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BF31D7F6CC000ABD910 /* DBTEAMMembersGetInfoError.m */; };
+		F2059E2A1D7FAD12000E783D /* DBTEAMMembersGetInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BF51D7F6CC000ABD910 /* DBTEAMMembersGetInfoItem.m */; };
+		F2059E2B1D7FAD12000E783D /* DBTEAMMembersListArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BF71D7F6CC000ABD910 /* DBTEAMMembersListArg.m */; };
+		F2059E2C1D7FAD12000E783D /* DBTEAMMembersListContinueArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BF91D7F6CC000ABD910 /* DBTEAMMembersListContinueArg.m */; };
+		F2059E2D1D7FAD12000E783D /* DBTEAMMembersListContinueError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BFB1D7F6CC000ABD910 /* DBTEAMMembersListContinueError.m */; };
+		F2059E2E1D7FAD12000E783D /* DBTEAMMembersListError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BFD1D7F6CC000ABD910 /* DBTEAMMembersListError.m */; };
+		F2059E2F1D7FAD12000E783D /* DBTEAMMembersListResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090BFF1D7F6CC000ABD910 /* DBTEAMMembersListResult.m */; };
+		F2059E301D7FAD12000E783D /* DBTEAMMembersRecoverArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C011D7F6CC000ABD910 /* DBTEAMMembersRecoverArg.m */; };
+		F2059E311D7FAD12000E783D /* DBTEAMMembersRecoverError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C031D7F6CC000ABD910 /* DBTEAMMembersRecoverError.m */; };
+		F2059E321D7FAD12000E783D /* DBTEAMMembersRemoveArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C051D7F6CC000ABD910 /* DBTEAMMembersRemoveArg.m */; };
+		F2059E331D7FAD12000E783D /* DBTEAMMembersRemoveError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C071D7F6CC000ABD910 /* DBTEAMMembersRemoveError.m */; };
+		F2059E341D7FAD12000E783D /* DBTEAMMembersSendWelcomeError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C091D7F6CC000ABD910 /* DBTEAMMembersSendWelcomeError.m */; };
+		F2059E351D7FAD12000E783D /* DBTEAMMembersSetPermissionsArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C0B1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsArg.m */; };
+		F2059E361D7FAD12000E783D /* DBTEAMMembersSetPermissionsError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C0D1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsError.m */; };
+		F2059E371D7FAD12000E783D /* DBTEAMMembersSetPermissionsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C0F1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsResult.m */; };
+		F2059E381D7FAD12000E783D /* DBTEAMMembersSetProfileArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C111D7F6CC000ABD910 /* DBTEAMMembersSetProfileArg.m */; };
+		F2059E391D7FAD12000E783D /* DBTEAMMembersSetProfileError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C131D7F6CC000ABD910 /* DBTEAMMembersSetProfileError.m */; };
+		F2059E3A1D7FAD12000E783D /* DBTEAMMembersSuspendError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C151D7F6CC000ABD910 /* DBTEAMMembersSuspendError.m */; };
+		F2059E3B1D7FAD12000E783D /* DBTEAMMembersUnsuspendArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C171D7F6CC000ABD910 /* DBTEAMMembersUnsuspendArg.m */; };
+		F2059E3C1D7FAD12000E783D /* DBTEAMMembersUnsuspendError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C191D7F6CC000ABD910 /* DBTEAMMembersUnsuspendError.m */; };
+		F2059E3D1D7FAD12000E783D /* DBTEAMMobileClientPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C1B1D7F6CC000ABD910 /* DBTEAMMobileClientPlatform.m */; };
+		F2059E3E1D7FAD12000E783D /* DBTEAMMobileClientSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C1D1D7F6CC000ABD910 /* DBTEAMMobileClientSession.m */; };
+		F2059E3F1D7FAD12000E783D /* DBTEAMRemovedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C1F1D7F6CC000ABD910 /* DBTEAMRemovedStatus.m */; };
+		F2059E401D7FAD12000E783D /* DBTEAMRevokeDesktopClientArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C211D7F6CC000ABD910 /* DBTEAMRevokeDesktopClientArg.m */; };
+		F2059E411D7FAD12000E783D /* DBTEAMRevokeDeviceSessionArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C231D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionArg.m */; };
+		F2059E421D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C251D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchArg.m */; };
+		F2059E431D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C271D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchError.m */; };
+		F2059E441D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C291D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchResult.m */; };
+		F2059E451D7FAD12000E783D /* DBTEAMRevokeDeviceSessionError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C2B1D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionError.m */; };
+		F2059E461D7FAD12000E783D /* DBTEAMRevokeDeviceSessionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C2D1D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionStatus.m */; };
+		F2059E471D7FAD12000E783D /* DBTEAMRevokeLinkedApiAppArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C2F1D7F6CC000ABD910 /* DBTEAMRevokeLinkedApiAppArg.m */; };
+		F2059E481D7FAD12000E783D /* DBTEAMRevokeLinkedApiAppBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C311D7F6CC000ABD910 /* DBTEAMRevokeLinkedApiAppBatchArg.m */; };
+		F2059E491D7FAD12000E783D /* DBTEAMRevokeLinkedAppBatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C331D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppBatchError.m */; };
+		F2059E4A1D7FAD12000E783D /* DBTEAMRevokeLinkedAppBatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C351D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppBatchResult.m */; };
+		F2059E4B1D7FAD12000E783D /* DBTEAMRevokeLinkedAppError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C371D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppError.m */; };
+		F2059E4C1D7FAD12000E783D /* DBTEAMRevokeLinkedAppStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C391D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppStatus.m */; };
+		F2059E4D1D7FAD12000E783D /* DBTEAMStorageBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C3B1D7F6CC000ABD910 /* DBTEAMStorageBucket.m */; };
+		F2059E4E1D7FAD12000E783D /* DBTEAMTeamGetInfoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C3D1D7F6CC000ABD910 /* DBTEAMTeamGetInfoResult.m */; };
+		F2059E4F1D7FAD12000E783D /* DBTEAMTeamMemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C3F1D7F6CC000ABD910 /* DBTEAMTeamMemberInfo.m */; };
+		F2059E501D7FAD12000E783D /* DBTEAMTeamMemberProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C411D7F6CC000ABD910 /* DBTEAMTeamMemberProfile.m */; };
+		F2059E511D7FAD12000E783D /* DBTEAMTeamMembershipType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C431D7F6CC000ABD910 /* DBTEAMTeamMembershipType.m */; };
+		F2059E521D7FAD12000E783D /* DBTEAMTeamMemberStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C451D7F6CC000ABD910 /* DBTEAMTeamMemberStatus.m */; };
+		F2059E531D7FAD12000E783D /* DBTEAMUpdatePropertyTemplateArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C471D7F6CC000ABD910 /* DBTEAMUpdatePropertyTemplateArg.m */; };
+		F2059E541D7FAD12000E783D /* DBTEAMUpdatePropertyTemplateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C491D7F6CC000ABD910 /* DBTEAMUpdatePropertyTemplateResult.m */; };
+		F2059E551D7FAD12000E783D /* DBTEAMUserSelectorArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C4B1D7F6CC000ABD910 /* DBTEAMUserSelectorArg.m */; };
+		F2059E561D7FAD12000E783D /* DBTEAMUserSelectorError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C4D1D7F6CC000ABD910 /* DBTEAMUserSelectorError.m */; };
+		F2059E571D7FAD12000E783D /* DBTEAMUsersSelectorArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C4F1D7F6CC000ABD910 /* DBTEAMUsersSelectorArg.m */; };
+		F2059E581D7FAD12000E783D /* DBTEAMCOMMONGroupManagementType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C521D7F6CC000ABD910 /* DBTEAMCOMMONGroupManagementType.m */; };
+		F2059E591D7FAD12000E783D /* DBTEAMCOMMONGroupSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C541D7F6CC000ABD910 /* DBTEAMCOMMONGroupSummary.m */; };
+		F2059E5A1D7FAD12000E783D /* DBTEAMCOMMONGroupType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C561D7F6CC000ABD910 /* DBTEAMCOMMONGroupType.m */; };
+		F2059E5B1D7FAD12000E783D /* DBTEAMPOLICIESEmmState.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C591D7F6CC000ABD910 /* DBTEAMPOLICIESEmmState.m */; };
+		F2059E5C1D7FAD12000E783D /* DBTEAMPOLICIESSharedFolderJoinPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C5B1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedFolderJoinPolicy.m */; };
+		F2059E5D1D7FAD12000E783D /* DBTEAMPOLICIESSharedFolderMemberPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C5D1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedFolderMemberPolicy.m */; };
+		F2059E5E1D7FAD12000E783D /* DBTEAMPOLICIESSharedLinkCreatePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C5F1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedLinkCreatePolicy.m */; };
+		F2059E5F1D7FAD12000E783D /* DBTEAMPOLICIESTeamMemberPolicies.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C611D7F6CC000ABD910 /* DBTEAMPOLICIESTeamMemberPolicies.m */; };
+		F2059E601D7FAD12000E783D /* DBTEAMPOLICIESTeamSharingPolicies.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C631D7F6CC000ABD910 /* DBTEAMPOLICIESTeamSharingPolicies.m */; };
+		F2059E611D7FAD12000E783D /* DBUSERSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C661D7F6CC000ABD910 /* DBUSERSAccount.m */; };
+		F2059E621D7FAD12000E783D /* DBUSERSAccountType.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C681D7F6CC000ABD910 /* DBUSERSAccountType.m */; };
+		F2059E631D7FAD12000E783D /* DBUSERSBasicAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C6A1D7F6CC000ABD910 /* DBUSERSBasicAccount.m */; };
+		F2059E641D7FAD12000E783D /* DBUSERSFullAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C6C1D7F6CC000ABD910 /* DBUSERSFullAccount.m */; };
+		F2059E651D7FAD12000E783D /* DBUSERSFullTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C6E1D7F6CC000ABD910 /* DBUSERSFullTeam.m */; };
+		F2059E661D7FAD12000E783D /* DBUSERSGetAccountArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C701D7F6CC000ABD910 /* DBUSERSGetAccountArg.m */; };
+		F2059E671D7FAD12000E783D /* DBUSERSGetAccountBatchArg.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C721D7F6CC000ABD910 /* DBUSERSGetAccountBatchArg.m */; };
+		F2059E681D7FAD12000E783D /* DBUSERSGetAccountBatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C741D7F6CC000ABD910 /* DBUSERSGetAccountBatchError.m */; };
+		F2059E691D7FAD12000E783D /* DBUSERSGetAccountError.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C761D7F6CC000ABD910 /* DBUSERSGetAccountError.m */; };
+		F2059E6A1D7FAD12000E783D /* DBUSERSIndividualSpaceAllocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C781D7F6CC000ABD910 /* DBUSERSIndividualSpaceAllocation.m */; };
+		F2059E6B1D7FAD12000E783D /* DBUSERSName.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C7A1D7F6CC000ABD910 /* DBUSERSName.m */; };
+		F2059E6C1D7FAD12000E783D /* DBUSERSSpaceAllocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C7C1D7F6CC000ABD910 /* DBUSERSSpaceAllocation.m */; };
+		F2059E6D1D7FAD12000E783D /* DBUSERSSpaceUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C7E1D7F6CC000ABD910 /* DBUSERSSpaceUsage.m */; };
+		F2059E6E1D7FAD12000E783D /* DBUSERSTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C801D7F6CC000ABD910 /* DBUSERSTeam.m */; };
+		F2059E6F1D7FAD12000E783D /* DBUSERSTeamSpaceAllocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C821D7F6CC000ABD910 /* DBUSERSTeamSpaceAllocation.m */; };
+		F2059E701D7FAD12000E783D /* DBBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C851D7F6CC000ABD910 /* DBBase.m */; };
+		F2059E711D7FAD12000E783D /* DBBaseTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C871D7F6CC000ABD910 /* DBBaseTeam.m */; };
+		F2059E721D7FAD12000E783D /* DropboxClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C891D7F6CC000ABD910 /* DropboxClient.m */; };
+		F2059E731D7FAD12000E783D /* DropboxClientsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C8B1D7F6CC000ABD910 /* DropboxClientsManager.m */; };
+		F2059E741D7FAD12000E783D /* DropboxTeamClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C8E1D7F6CC000ABD910 /* DropboxTeamClient.m */; };
+		F2059E751D7FAD12000E783D /* DBDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C911D7F6CC000ABD910 /* DBDelegate.m */; };
+		F2059E761D7FAD12000E783D /* DBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C931D7F6CC000ABD910 /* DBErrors.m */; };
+		F2059E771D7FAD12000E783D /* DBSessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C961D7F6CC000ABD910 /* DBSessionData.m */; };
+		F2059E781D7FAD12000E783D /* DBTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C981D7F6CC000ABD910 /* DBTasks.m */; };
+		F2059E791D7FAD13000E783D /* DBTransportClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C9A1D7F6CC000ABD910 /* DBTransportClient.m */; };
+		F2059E7A1D7FAD13000E783D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C9C1D7F6CC000ABD910 /* Reachability.m */; };
+		F2059E7B1D7FAD13000E783D /* DBKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090C9F1D7F6CC000ABD910 /* DBKeychain.m */; };
+		F2059E7C1D7FAD13000E783D /* DBOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CA11D7F6CC000ABD910 /* DBOAuth.m */; };
+		F2059E7D1D7FAD13000E783D /* DBOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CA31D7F6CC000ABD910 /* DBOAuthResult.m */; };
+		F2059E7E1D7FAD13000E783D /* DBStoneBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CA81D7F6CC000ABD910 /* DBStoneBase.m */; };
+		F2059E7F1D7FAD13000E783D /* DBStoneSerializers.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CAA1D7F6CC000ABD910 /* DBStoneSerializers.m */; };
+		F2059E801D7FAD13000E783D /* DBStoneValidators.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CAC1D7F6CC000ABD910 /* DBStoneValidators.m */; };
+		F2059E811D7FAD13000E783D /* DBAUTHRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CAF1D7F6CC000ABD910 /* DBAUTHRoutes.m */; };
+		F2059E821D7FAD13000E783D /* DBFILESRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CB11D7F6CC000ABD910 /* DBFILESRoutes.m */; };
+		F2059E831D7FAD13000E783D /* DBSHARINGRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CB31D7F6CC000ABD910 /* DBSHARINGRoutes.m */; };
+		F2059E841D7FAD13000E783D /* DBTEAMRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CB51D7F6CC000ABD910 /* DBTEAMRoutes.m */; };
+		F2059E851D7FAD13000E783D /* DBUSERSRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CB71D7F6CC000ABD910 /* DBUSERSRoutes.m */; };
+		F2059E861D7FAD13000E783D /* DBAUTHRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CBA1D7F6CC000ABD910 /* DBAUTHRouteObjects.m */; };
+		F2059E871D7FAD13000E783D /* DBFILESRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CBC1D7F6CC000ABD910 /* DBFILESRouteObjects.m */; };
+		F2059E881D7FAD13000E783D /* DBSHARINGRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CBE1D7F6CC000ABD910 /* DBSHARINGRouteObjects.m */; };
+		F2059E891D7FAD13000E783D /* DBTEAMRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC01D7F6CC000ABD910 /* DBTEAMRouteObjects.m */; };
+		F2059E8A1D7FAD13000E783D /* DBUSERSRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC21D7F6CC000ABD910 /* DBUSERSRouteObjects.m */; };
+		F2059E8B1D7FAD13000E783D /* DBOAuthMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC61D7F6CC000ABD910 /* DBOAuthMobile.m */; };
+		F2059E8C1D7FAD13000E783D /* DropboxClientsManager+MobileAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CC81D7F6CC000ABD910 /* DropboxClientsManager+MobileAuth.m */; };
+		F2059E8D1D7FAD13000E783D /* DBOAuthDesktop.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CCB1D7F6CC000ABD910 /* DBOAuthDesktop.m */; };
+		F2059E8E1D7FAD13000E783D /* DropboxClientsManager+DesktopAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2090CCD1D7F6CC000ABD910 /* DropboxClientsManager+DesktopAuth.m */; };
 		F2B0B7861D7F9E8100663756 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F26B75781D7F6AF700714F70 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B0B7871D7F9E8A00663756 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095B1D7F6CBF00ABD910 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2B0B7881D7F9E8A00663756 /* DBASYNCLaunchResultBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095D1D7F6CBF00ABD910 /* DBASYNCLaunchResultBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2890,6 +3321,437 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2059CE01D7FAD11000E783D /* DBASYNCLaunchEmptyResult.m in Sources */,
+				F2059CE11D7FAD11000E783D /* DBASYNCLaunchResultBase.m in Sources */,
+				F2059CE21D7FAD11000E783D /* DBASYNCPollArg.m in Sources */,
+				F2059CE31D7FAD11000E783D /* DBASYNCPollEmptyResult.m in Sources */,
+				F2059CE41D7FAD11000E783D /* DBASYNCPollError.m in Sources */,
+				F2059CE51D7FAD11000E783D /* DBASYNCPollResultBase.m in Sources */,
+				F2059CE61D7FAD11000E783D /* DBAUTHAuthError.m in Sources */,
+				F2059CE71D7FAD11000E783D /* DBAUTHRateLimitError.m in Sources */,
+				F2059CE81D7FAD11000E783D /* DBAUTHRateLimitReason.m in Sources */,
+				F2059CE91D7FAD11000E783D /* DBFILESAddPropertiesError.m in Sources */,
+				F2059CEA1D7FAD11000E783D /* DBFILESAlphaGetMetadataArg.m in Sources */,
+				F2059CEB1D7FAD11000E783D /* DBFILESAlphaGetMetadataError.m in Sources */,
+				F2059CEC1D7FAD11000E783D /* DBFILESCommitInfo.m in Sources */,
+				F2059CED1D7FAD11000E783D /* DBFILESCommitInfoWithProperties.m in Sources */,
+				F2059CEE1D7FAD11000E783D /* DBFILESCreateFolderArg.m in Sources */,
+				F2059CEF1D7FAD11000E783D /* DBFILESCreateFolderError.m in Sources */,
+				F2059CF01D7FAD11000E783D /* DBFILESDeleteArg.m in Sources */,
+				F2059CF11D7FAD11000E783D /* DBFILESDeletedMetadata.m in Sources */,
+				F2059CF21D7FAD11000E783D /* DBFILESDeleteError.m in Sources */,
+				F2059CF31D7FAD11000E783D /* DBFILESDimensions.m in Sources */,
+				F2059CF41D7FAD11000E783D /* DBFILESDownloadArg.m in Sources */,
+				F2059CF51D7FAD11000E783D /* DBFILESDownloadError.m in Sources */,
+				F2059CF61D7FAD11000E783D /* DBFILESFileMetadata.m in Sources */,
+				F2059CF71D7FAD11000E783D /* DBFILESFileSharingInfo.m in Sources */,
+				F2059CF81D7FAD11000E783D /* DBFILESFolderMetadata.m in Sources */,
+				F2059CF91D7FAD11000E783D /* DBFILESFolderSharingInfo.m in Sources */,
+				F2059CFA1D7FAD11000E783D /* DBFILESGetCopyReferenceArg.m in Sources */,
+				F2059CFB1D7FAD11000E783D /* DBFILESGetCopyReferenceError.m in Sources */,
+				F2059CFC1D7FAD11000E783D /* DBFILESGetCopyReferenceResult.m in Sources */,
+				F2059CFD1D7FAD11000E783D /* DBFILESGetMetadataArg.m in Sources */,
+				F2059CFE1D7FAD11000E783D /* DBFILESGetMetadataError.m in Sources */,
+				F2059CFF1D7FAD11000E783D /* DBFILESGetTemporaryLinkArg.m in Sources */,
+				F2059D001D7FAD11000E783D /* DBFILESGetTemporaryLinkError.m in Sources */,
+				F2059D011D7FAD11000E783D /* DBFILESGetTemporaryLinkResult.m in Sources */,
+				F2059D021D7FAD11000E783D /* DBFILESGpsCoordinates.m in Sources */,
+				F2059D031D7FAD11000E783D /* DBFILESInvalidPropertyGroupError.m in Sources */,
+				F2059D041D7FAD11000E783D /* DBFILESListFolderArg.m in Sources */,
+				F2059D051D7FAD11000E783D /* DBFILESListFolderContinueArg.m in Sources */,
+				F2059D061D7FAD11000E783D /* DBFILESListFolderContinueError.m in Sources */,
+				F2059D071D7FAD11000E783D /* DBFILESListFolderError.m in Sources */,
+				F2059D081D7FAD11000E783D /* DBFILESListFolderGetLatestCursorResult.m in Sources */,
+				F2059D091D7FAD11000E783D /* DBFILESListFolderLongpollArg.m in Sources */,
+				F2059D0A1D7FAD11000E783D /* DBFILESListFolderLongpollError.m in Sources */,
+				F2059D0B1D7FAD11000E783D /* DBFILESListFolderLongpollResult.m in Sources */,
+				F2059D0C1D7FAD11000E783D /* DBFILESListFolderResult.m in Sources */,
+				F2059D0D1D7FAD11000E783D /* DBFILESListRevisionsArg.m in Sources */,
+				F2059D0E1D7FAD11000E783D /* DBFILESListRevisionsError.m in Sources */,
+				F2059D0F1D7FAD11000E783D /* DBFILESListRevisionsResult.m in Sources */,
+				F2059D101D7FAD11000E783D /* DBFILESLookupError.m in Sources */,
+				F2059D111D7FAD11000E783D /* DBFILESLookUpPropertiesError.m in Sources */,
+				F2059D121D7FAD11000E783D /* DBFILESMediaInfo.m in Sources */,
+				F2059D131D7FAD11000E783D /* DBFILESMediaMetadata.m in Sources */,
+				F2059D141D7FAD12000E783D /* DBFILESMetadata.m in Sources */,
+				F2059D151D7FAD12000E783D /* DBFILESPhotoMetadata.m in Sources */,
+				F2059D161D7FAD12000E783D /* DBFILESPreviewArg.m in Sources */,
+				F2059D171D7FAD12000E783D /* DBFILESPreviewError.m in Sources */,
+				F2059D181D7FAD12000E783D /* DBFILESPropertiesError.m in Sources */,
+				F2059D191D7FAD12000E783D /* DBFILESPropertyGroupUpdate.m in Sources */,
+				F2059D1A1D7FAD12000E783D /* DBFILESPropertyGroupWithPath.m in Sources */,
+				F2059D1B1D7FAD12000E783D /* DBFILESRelocationArg.m in Sources */,
+				F2059D1C1D7FAD12000E783D /* DBFILESRelocationError.m in Sources */,
+				F2059D1D1D7FAD12000E783D /* DBFILESRemovePropertiesArg.m in Sources */,
+				F2059D1E1D7FAD12000E783D /* DBFILESRemovePropertiesError.m in Sources */,
+				F2059D1F1D7FAD12000E783D /* DBFILESRestoreArg.m in Sources */,
+				F2059D201D7FAD12000E783D /* DBFILESRestoreError.m in Sources */,
+				F2059D211D7FAD12000E783D /* DBFILESSaveCopyReferenceArg.m in Sources */,
+				F2059D221D7FAD12000E783D /* DBFILESSaveCopyReferenceError.m in Sources */,
+				F2059D231D7FAD12000E783D /* DBFILESSaveCopyReferenceResult.m in Sources */,
+				F2059D241D7FAD12000E783D /* DBFILESSaveUrlArg.m in Sources */,
+				F2059D251D7FAD12000E783D /* DBFILESSaveUrlError.m in Sources */,
+				F2059D261D7FAD12000E783D /* DBFILESSaveUrlJobStatus.m in Sources */,
+				F2059D271D7FAD12000E783D /* DBFILESSaveUrlResult.m in Sources */,
+				F2059D281D7FAD12000E783D /* DBFILESSearchArg.m in Sources */,
+				F2059D291D7FAD12000E783D /* DBFILESSearchError.m in Sources */,
+				F2059D2A1D7FAD12000E783D /* DBFILESSearchMatch.m in Sources */,
+				F2059D2B1D7FAD12000E783D /* DBFILESSearchMatchType.m in Sources */,
+				F2059D2C1D7FAD12000E783D /* DBFILESSearchMode.m in Sources */,
+				F2059D2D1D7FAD12000E783D /* DBFILESSearchResult.m in Sources */,
+				F2059D2E1D7FAD12000E783D /* DBFILESSharingInfo.m in Sources */,
+				F2059D2F1D7FAD12000E783D /* DBFILESThumbnailArg.m in Sources */,
+				F2059D301D7FAD12000E783D /* DBFILESThumbnailError.m in Sources */,
+				F2059D311D7FAD12000E783D /* DBFILESThumbnailFormat.m in Sources */,
+				F2059D321D7FAD12000E783D /* DBFILESThumbnailSize.m in Sources */,
+				F2059D331D7FAD12000E783D /* DBFILESUpdatePropertiesError.m in Sources */,
+				F2059D341D7FAD12000E783D /* DBFILESUpdatePropertyGroupArg.m in Sources */,
+				F2059D351D7FAD12000E783D /* DBFILESUploadError.m in Sources */,
+				F2059D361D7FAD12000E783D /* DBFILESUploadErrorWithProperties.m in Sources */,
+				F2059D371D7FAD12000E783D /* DBFILESUploadSessionAppendArg.m in Sources */,
+				F2059D381D7FAD12000E783D /* DBFILESUploadSessionCursor.m in Sources */,
+				F2059D391D7FAD12000E783D /* DBFILESUploadSessionFinishArg.m in Sources */,
+				F2059D3A1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchArg.m in Sources */,
+				F2059D3B1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchJobStatus.m in Sources */,
+				F2059D3C1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchResult.m in Sources */,
+				F2059D3D1D7FAD12000E783D /* DBFILESUploadSessionFinishBatchResultEntry.m in Sources */,
+				F2059D3E1D7FAD12000E783D /* DBFILESUploadSessionFinishError.m in Sources */,
+				F2059D3F1D7FAD12000E783D /* DBFILESUploadSessionLookupError.m in Sources */,
+				F2059D401D7FAD12000E783D /* DBFILESUploadSessionOffsetError.m in Sources */,
+				F2059D411D7FAD12000E783D /* DBFILESUploadSessionStartArg.m in Sources */,
+				F2059D421D7FAD12000E783D /* DBFILESUploadSessionStartResult.m in Sources */,
+				F2059D431D7FAD12000E783D /* DBFILESUploadWriteFailed.m in Sources */,
+				F2059D441D7FAD12000E783D /* DBFILESVideoMetadata.m in Sources */,
+				F2059D451D7FAD12000E783D /* DBFILESWriteConflictError.m in Sources */,
+				F2059D461D7FAD12000E783D /* DBFILESWriteError.m in Sources */,
+				F2059D471D7FAD12000E783D /* DBFILESWriteMode.m in Sources */,
+				F2059D481D7FAD12000E783D /* DBPROPERTIESGetPropertyTemplateArg.m in Sources */,
+				F2059D491D7FAD12000E783D /* DBPROPERTIESGetPropertyTemplateResult.m in Sources */,
+				F2059D4A1D7FAD12000E783D /* DBPROPERTIESListPropertyTemplateIds.m in Sources */,
+				F2059D4B1D7FAD12000E783D /* DBPROPERTIESModifyPropertyTemplateError.m in Sources */,
+				F2059D4C1D7FAD12000E783D /* DBPROPERTIESPropertyField.m in Sources */,
+				F2059D4D1D7FAD12000E783D /* DBPROPERTIESPropertyFieldTemplate.m in Sources */,
+				F2059D4E1D7FAD12000E783D /* DBPROPERTIESPropertyGroup.m in Sources */,
+				F2059D4F1D7FAD12000E783D /* DBPROPERTIESPropertyGroupTemplate.m in Sources */,
+				F2059D501D7FAD12000E783D /* DBPROPERTIESPropertyTemplateError.m in Sources */,
+				F2059D511D7FAD12000E783D /* DBPROPERTIESPropertyType.m in Sources */,
+				F2059D521D7FAD12000E783D /* DBSHARINGAccessLevel.m in Sources */,
+				F2059D531D7FAD12000E783D /* DBSHARINGAclUpdatePolicy.m in Sources */,
+				F2059D541D7FAD12000E783D /* DBSHARINGAddFileMemberArgs.m in Sources */,
+				F2059D551D7FAD12000E783D /* DBSHARINGAddFileMemberError.m in Sources */,
+				F2059D561D7FAD12000E783D /* DBSHARINGAddFolderMemberArg.m in Sources */,
+				F2059D571D7FAD12000E783D /* DBSHARINGAddFolderMemberError.m in Sources */,
+				F2059D581D7FAD12000E783D /* DBSHARINGAddMember.m in Sources */,
+				F2059D591D7FAD12000E783D /* DBSHARINGAddMemberSelectorError.m in Sources */,
+				F2059D5A1D7FAD12000E783D /* DBSHARINGChangeFileMemberAccessArgs.m in Sources */,
+				F2059D5B1D7FAD12000E783D /* DBSHARINGCollectionLinkMetadata.m in Sources */,
+				F2059D5C1D7FAD12000E783D /* DBSHARINGCreateSharedLinkArg.m in Sources */,
+				F2059D5D1D7FAD12000E783D /* DBSHARINGCreateSharedLinkError.m in Sources */,
+				F2059D5E1D7FAD12000E783D /* DBSHARINGCreateSharedLinkWithSettingsArg.m in Sources */,
+				F2059D5F1D7FAD12000E783D /* DBSHARINGCreateSharedLinkWithSettingsError.m in Sources */,
+				F2059D601D7FAD12000E783D /* DBSHARINGFileAction.m in Sources */,
+				F2059D611D7FAD12000E783D /* DBSHARINGFileErrorResult.m in Sources */,
+				F2059D621D7FAD12000E783D /* DBSHARINGFileLinkMetadata.m in Sources */,
+				F2059D631D7FAD12000E783D /* DBSHARINGFileMemberActionError.m in Sources */,
+				F2059D641D7FAD12000E783D /* DBSHARINGFileMemberActionIndividualResult.m in Sources */,
+				F2059D651D7FAD12000E783D /* DBSHARINGFileMemberActionResult.m in Sources */,
+				F2059D661D7FAD12000E783D /* DBSHARINGFileMemberRemoveActionResult.m in Sources */,
+				F2059D671D7FAD12000E783D /* DBSHARINGFilePermission.m in Sources */,
+				F2059D681D7FAD12000E783D /* DBSHARINGFolderAction.m in Sources */,
+				F2059D691D7FAD12000E783D /* DBSHARINGFolderLinkMetadata.m in Sources */,
+				F2059D6A1D7FAD12000E783D /* DBSHARINGFolderPermission.m in Sources */,
+				F2059D6B1D7FAD12000E783D /* DBSHARINGFolderPolicy.m in Sources */,
+				F2059D6C1D7FAD12000E783D /* DBSHARINGGetFileMetadataArg.m in Sources */,
+				F2059D6D1D7FAD12000E783D /* DBSHARINGGetFileMetadataBatchArg.m in Sources */,
+				F2059D6E1D7FAD12000E783D /* DBSHARINGGetFileMetadataBatchResult.m in Sources */,
+				F2059D6F1D7FAD12000E783D /* DBSHARINGGetFileMetadataError.m in Sources */,
+				F2059D701D7FAD12000E783D /* DBSHARINGGetFileMetadataIndividualResult.m in Sources */,
+				F2059D711D7FAD12000E783D /* DBSHARINGGetMetadataArgs.m in Sources */,
+				F2059D721D7FAD12000E783D /* DBSHARINGGetSharedLinkFileError.m in Sources */,
+				F2059D731D7FAD12000E783D /* DBSHARINGGetSharedLinkMetadataArg.m in Sources */,
+				F2059D741D7FAD12000E783D /* DBSHARINGGetSharedLinksArg.m in Sources */,
+				F2059D751D7FAD12000E783D /* DBSHARINGGetSharedLinksError.m in Sources */,
+				F2059D761D7FAD12000E783D /* DBSHARINGGetSharedLinksResult.m in Sources */,
+				F2059D771D7FAD12000E783D /* DBSHARINGGroupInfo.m in Sources */,
+				F2059D781D7FAD12000E783D /* DBSHARINGGroupMembershipInfo.m in Sources */,
+				F2059D791D7FAD12000E783D /* DBSHARINGInsufficientQuotaAmounts.m in Sources */,
+				F2059D7A1D7FAD12000E783D /* DBSHARINGInviteeInfo.m in Sources */,
+				F2059D7B1D7FAD12000E783D /* DBSHARINGInviteeMembershipInfo.m in Sources */,
+				F2059D7C1D7FAD12000E783D /* DBSHARINGJobError.m in Sources */,
+				F2059D7D1D7FAD12000E783D /* DBSHARINGJobStatus.m in Sources */,
+				F2059D7E1D7FAD12000E783D /* DBSHARINGLinkMetadata.m in Sources */,
+				F2059D7F1D7FAD12000E783D /* DBSHARINGLinkPermissions.m in Sources */,
+				F2059D801D7FAD12000E783D /* DBSHARINGListFileMembersArg.m in Sources */,
+				F2059D811D7FAD12000E783D /* DBSHARINGListFileMembersBatchArg.m in Sources */,
+				F2059D821D7FAD12000E783D /* DBSHARINGListFileMembersBatchResult.m in Sources */,
+				F2059D831D7FAD12000E783D /* DBSHARINGListFileMembersContinueArg.m in Sources */,
+				F2059D841D7FAD12000E783D /* DBSHARINGListFileMembersContinueError.m in Sources */,
+				F2059D851D7FAD12000E783D /* DBSHARINGListFileMembersCountResult.m in Sources */,
+				F2059D861D7FAD12000E783D /* DBSHARINGListFileMembersError.m in Sources */,
+				F2059D871D7FAD12000E783D /* DBSHARINGListFileMembersIndividualResult.m in Sources */,
+				F2059D881D7FAD12000E783D /* DBSHARINGListFilesArg.m in Sources */,
+				F2059D891D7FAD12000E783D /* DBSHARINGListFilesContinueArg.m in Sources */,
+				F2059D8A1D7FAD12000E783D /* DBSHARINGListFilesContinueError.m in Sources */,
+				F2059D8B1D7FAD12000E783D /* DBSHARINGListFilesResult.m in Sources */,
+				F2059D8C1D7FAD12000E783D /* DBSHARINGListFolderMembersArgs.m in Sources */,
+				F2059D8D1D7FAD12000E783D /* DBSHARINGListFolderMembersContinueArg.m in Sources */,
+				F2059D8E1D7FAD12000E783D /* DBSHARINGListFolderMembersContinueError.m in Sources */,
+				F2059D8F1D7FAD12000E783D /* DBSHARINGListFolderMembersCursorArg.m in Sources */,
+				F2059D901D7FAD12000E783D /* DBSHARINGListFoldersArgs.m in Sources */,
+				F2059D911D7FAD12000E783D /* DBSHARINGListFoldersContinueArg.m in Sources */,
+				F2059D921D7FAD12000E783D /* DBSHARINGListFoldersContinueError.m in Sources */,
+				F2059D931D7FAD12000E783D /* DBSHARINGListFoldersResult.m in Sources */,
+				F2059D941D7FAD12000E783D /* DBSHARINGListSharedLinksArg.m in Sources */,
+				F2059D951D7FAD12000E783D /* DBSHARINGListSharedLinksError.m in Sources */,
+				F2059D961D7FAD12000E783D /* DBSHARINGListSharedLinksResult.m in Sources */,
+				F2059D971D7FAD12000E783D /* DBSHARINGMemberAccessLevelResult.m in Sources */,
+				F2059D981D7FAD12000E783D /* DBSHARINGMemberAction.m in Sources */,
+				F2059D991D7FAD12000E783D /* DBSHARINGMemberPermission.m in Sources */,
+				F2059D9A1D7FAD12000E783D /* DBSHARINGMemberPolicy.m in Sources */,
+				F2059D9B1D7FAD12000E783D /* DBSHARINGMemberSelector.m in Sources */,
+				F2059D9C1D7FAD12000E783D /* DBSHARINGMembershipInfo.m in Sources */,
+				F2059D9D1D7FAD12000E783D /* DBSHARINGModifySharedLinkSettingsArgs.m in Sources */,
+				F2059D9E1D7FAD12000E783D /* DBSHARINGModifySharedLinkSettingsError.m in Sources */,
+				F2059D9F1D7FAD12000E783D /* DBSHARINGMountFolderArg.m in Sources */,
+				F2059DA01D7FAD12000E783D /* DBSHARINGMountFolderError.m in Sources */,
+				F2059DA11D7FAD12000E783D /* DBSHARINGParentFolderAccessInfo.m in Sources */,
+				F2059DA21D7FAD12000E783D /* DBSHARINGPathLinkMetadata.m in Sources */,
+				F2059DA31D7FAD12000E783D /* DBSHARINGPendingUploadMode.m in Sources */,
+				F2059DA41D7FAD12000E783D /* DBSHARINGPermissionDeniedReason.m in Sources */,
+				F2059DA51D7FAD12000E783D /* DBSHARINGRelinquishFileMembershipArg.m in Sources */,
+				F2059DA61D7FAD12000E783D /* DBSHARINGRelinquishFileMembershipError.m in Sources */,
+				F2059DA71D7FAD12000E783D /* DBSHARINGRelinquishFolderMembershipArg.m in Sources */,
+				F2059DA81D7FAD12000E783D /* DBSHARINGRelinquishFolderMembershipError.m in Sources */,
+				F2059DA91D7FAD12000E783D /* DBSHARINGRemoveFileMemberArg.m in Sources */,
+				F2059DAA1D7FAD12000E783D /* DBSHARINGRemoveFileMemberError.m in Sources */,
+				F2059DAB1D7FAD12000E783D /* DBSHARINGRemoveFolderMemberArg.m in Sources */,
+				F2059DAC1D7FAD12000E783D /* DBSHARINGRemoveFolderMemberError.m in Sources */,
+				F2059DAD1D7FAD12000E783D /* DBSHARINGRemoveMemberJobStatus.m in Sources */,
+				F2059DAE1D7FAD12000E783D /* DBSHARINGRequestedVisibility.m in Sources */,
+				F2059DAF1D7FAD12000E783D /* DBSHARINGResolvedVisibility.m in Sources */,
+				F2059DB01D7FAD12000E783D /* DBSHARINGRevokeSharedLinkArg.m in Sources */,
+				F2059DB11D7FAD12000E783D /* DBSHARINGRevokeSharedLinkError.m in Sources */,
+				F2059DB21D7FAD12000E783D /* DBSHARINGSharedFileMembers.m in Sources */,
+				F2059DB31D7FAD12000E783D /* DBSHARINGSharedFileMetadata.m in Sources */,
+				F2059DB41D7FAD12000E783D /* DBSHARINGSharedFolderAccessError.m in Sources */,
+				F2059DB51D7FAD12000E783D /* DBSHARINGSharedFolderMemberError.m in Sources */,
+				F2059DB61D7FAD12000E783D /* DBSHARINGSharedFolderMembers.m in Sources */,
+				F2059DB71D7FAD12000E783D /* DBSHARINGSharedFolderMetadata.m in Sources */,
+				F2059DB81D7FAD12000E783D /* DBSHARINGSharedFolderMetadataBase.m in Sources */,
+				F2059DB91D7FAD12000E783D /* DBSHARINGSharedLinkAccessFailureReason.m in Sources */,
+				F2059DBA1D7FAD12000E783D /* DBSHARINGSharedLinkError.m in Sources */,
+				F2059DBB1D7FAD12000E783D /* DBSHARINGSharedLinkMetadata.m in Sources */,
+				F2059DBC1D7FAD12000E783D /* DBSHARINGSharedLinkPolicy.m in Sources */,
+				F2059DBD1D7FAD12000E783D /* DBSHARINGSharedLinkSettings.m in Sources */,
+				F2059DBE1D7FAD12000E783D /* DBSHARINGSharedLinkSettingsError.m in Sources */,
+				F2059DBF1D7FAD12000E783D /* DBSHARINGShareFolderArg.m in Sources */,
+				F2059DC01D7FAD12000E783D /* DBSHARINGShareFolderError.m in Sources */,
+				F2059DC11D7FAD12000E783D /* DBSHARINGShareFolderErrorBase.m in Sources */,
+				F2059DC21D7FAD12000E783D /* DBSHARINGShareFolderJobStatus.m in Sources */,
+				F2059DC31D7FAD12000E783D /* DBSHARINGShareFolderLaunch.m in Sources */,
+				F2059DC41D7FAD12000E783D /* DBSHARINGSharePathError.m in Sources */,
+				F2059DC51D7FAD12000E783D /* DBSHARINGSharingFileAccessError.m in Sources */,
+				F2059DC61D7FAD12000E783D /* DBSHARINGSharingUserError.m in Sources */,
+				F2059DC71D7FAD12000E783D /* DBSHARINGTeamMemberInfo.m in Sources */,
+				F2059DC81D7FAD12000E783D /* DBSHARINGTransferFolderArg.m in Sources */,
+				F2059DC91D7FAD12000E783D /* DBSHARINGTransferFolderError.m in Sources */,
+				F2059DCA1D7FAD12000E783D /* DBSHARINGUnmountFolderArg.m in Sources */,
+				F2059DCB1D7FAD12000E783D /* DBSHARINGUnmountFolderError.m in Sources */,
+				F2059DCC1D7FAD12000E783D /* DBSHARINGUnshareFileArg.m in Sources */,
+				F2059DCD1D7FAD12000E783D /* DBSHARINGUnshareFileError.m in Sources */,
+				F2059DCE1D7FAD12000E783D /* DBSHARINGUnshareFolderArg.m in Sources */,
+				F2059DCF1D7FAD12000E783D /* DBSHARINGUnshareFolderError.m in Sources */,
+				F2059DD01D7FAD12000E783D /* DBSHARINGUpdateFolderMemberArg.m in Sources */,
+				F2059DD11D7FAD12000E783D /* DBSHARINGUpdateFolderMemberError.m in Sources */,
+				F2059DD21D7FAD12000E783D /* DBSHARINGUpdateFolderPolicyArg.m in Sources */,
+				F2059DD31D7FAD12000E783D /* DBSHARINGUpdateFolderPolicyError.m in Sources */,
+				F2059DD41D7FAD12000E783D /* DBSHARINGUserInfo.m in Sources */,
+				F2059DD51D7FAD12000E783D /* DBSHARINGUserMembershipInfo.m in Sources */,
+				F2059DD61D7FAD12000E783D /* DBSHARINGVisibility.m in Sources */,
+				F2059DD71D7FAD12000E783D /* DBTEAMActiveWebSession.m in Sources */,
+				F2059DD81D7FAD12000E783D /* DBTEAMAddPropertyTemplateArg.m in Sources */,
+				F2059DD91D7FAD12000E783D /* DBTEAMAddPropertyTemplateResult.m in Sources */,
+				F2059DDA1D7FAD12000E783D /* DBTEAMAdminTier.m in Sources */,
+				F2059DDB1D7FAD12000E783D /* DBTEAMApiApp.m in Sources */,
+				F2059DDC1D7FAD12000E783D /* DBTEAMBaseDfbReport.m in Sources */,
+				F2059DDD1D7FAD12000E783D /* DBTEAMDateRange.m in Sources */,
+				F2059DDE1D7FAD12000E783D /* DBTEAMDateRangeError.m in Sources */,
+				F2059DDF1D7FAD12000E783D /* DBTEAMDesktopClientSession.m in Sources */,
+				F2059DE01D7FAD12000E783D /* DBTEAMDesktopPlatform.m in Sources */,
+				F2059DE11D7FAD12000E783D /* DBTEAMDevicesActive.m in Sources */,
+				F2059DE21D7FAD12000E783D /* DBTEAMDeviceSession.m in Sources */,
+				F2059DE31D7FAD12000E783D /* DBTEAMDeviceSessionArg.m in Sources */,
+				F2059DE41D7FAD12000E783D /* DBTEAMGetActivityReport.m in Sources */,
+				F2059DE51D7FAD12000E783D /* DBTEAMGetDevicesReport.m in Sources */,
+				F2059DE61D7FAD12000E783D /* DBTEAMGetMembershipReport.m in Sources */,
+				F2059DE71D7FAD12000E783D /* DBTEAMGetStorageReport.m in Sources */,
+				F2059DE81D7FAD12000E783D /* DBTEAMGroupAccessType.m in Sources */,
+				F2059DE91D7FAD12000E783D /* DBTEAMGroupCreateArg.m in Sources */,
+				F2059DEA1D7FAD12000E783D /* DBTEAMGroupCreateError.m in Sources */,
+				F2059DEB1D7FAD12000E783D /* DBTEAMGroupDeleteError.m in Sources */,
+				F2059DEC1D7FAD12000E783D /* DBTEAMGroupFullInfo.m in Sources */,
+				F2059DED1D7FAD12000E783D /* DBTEAMGroupMemberInfo.m in Sources */,
+				F2059DEE1D7FAD12000E783D /* DBTEAMGroupMembersAddArg.m in Sources */,
+				F2059DEF1D7FAD12000E783D /* DBTEAMGroupMembersAddError.m in Sources */,
+				F2059DF01D7FAD12000E783D /* DBTEAMGroupMembersChangeResult.m in Sources */,
+				F2059DF11D7FAD12000E783D /* DBTEAMGroupMemberSelector.m in Sources */,
+				F2059DF21D7FAD12000E783D /* DBTEAMGroupMemberSelectorError.m in Sources */,
+				F2059DF31D7FAD12000E783D /* DBTEAMGroupMemberSetAccessTypeError.m in Sources */,
+				F2059DF41D7FAD12000E783D /* DBTEAMGroupMembersRemoveArg.m in Sources */,
+				F2059DF51D7FAD12000E783D /* DBTEAMGroupMembersRemoveError.m in Sources */,
+				F2059DF61D7FAD12000E783D /* DBTEAMGroupMembersSelector.m in Sources */,
+				F2059DF71D7FAD12000E783D /* DBTEAMGroupMembersSelectorError.m in Sources */,
+				F2059DF81D7FAD12000E783D /* DBTEAMGroupMembersSetAccessTypeArg.m in Sources */,
+				F2059DF91D7FAD12000E783D /* DBTEAMGroupSelector.m in Sources */,
+				F2059DFA1D7FAD12000E783D /* DBTEAMGroupSelectorError.m in Sources */,
+				F2059DFB1D7FAD12000E783D /* DBTEAMGroupsGetInfoError.m in Sources */,
+				F2059DFC1D7FAD12000E783D /* DBTEAMGroupsGetInfoItem.m in Sources */,
+				F2059DFD1D7FAD12000E783D /* DBTEAMGroupsListArg.m in Sources */,
+				F2059DFE1D7FAD12000E783D /* DBTEAMGroupsListContinueArg.m in Sources */,
+				F2059DFF1D7FAD12000E783D /* DBTEAMGroupsListContinueError.m in Sources */,
+				F2059E001D7FAD12000E783D /* DBTEAMGroupsListResult.m in Sources */,
+				F2059E011D7FAD12000E783D /* DBTEAMGroupsMembersListArg.m in Sources */,
+				F2059E021D7FAD12000E783D /* DBTEAMGroupsMembersListContinueArg.m in Sources */,
+				F2059E031D7FAD12000E783D /* DBTEAMGroupsMembersListContinueError.m in Sources */,
+				F2059E041D7FAD12000E783D /* DBTEAMGroupsMembersListResult.m in Sources */,
+				F2059E051D7FAD12000E783D /* DBTEAMGroupsPollError.m in Sources */,
+				F2059E061D7FAD12000E783D /* DBTEAMGroupsSelector.m in Sources */,
+				F2059E071D7FAD12000E783D /* DBTEAMGroupUpdateArgs.m in Sources */,
+				F2059E081D7FAD12000E783D /* DBTEAMGroupUpdateError.m in Sources */,
+				F2059E091D7FAD12000E783D /* DBTEAMIncludeMembersArg.m in Sources */,
+				F2059E0A1D7FAD12000E783D /* DBTEAMListMemberAppsArg.m in Sources */,
+				F2059E0B1D7FAD12000E783D /* DBTEAMListMemberAppsError.m in Sources */,
+				F2059E0C1D7FAD12000E783D /* DBTEAMListMemberAppsResult.m in Sources */,
+				F2059E0D1D7FAD12000E783D /* DBTEAMListMemberDevicesArg.m in Sources */,
+				F2059E0E1D7FAD12000E783D /* DBTEAMListMemberDevicesError.m in Sources */,
+				F2059E0F1D7FAD12000E783D /* DBTEAMListMemberDevicesResult.m in Sources */,
+				F2059E101D7FAD12000E783D /* DBTEAMListMembersAppsArg.m in Sources */,
+				F2059E111D7FAD12000E783D /* DBTEAMListMembersAppsError.m in Sources */,
+				F2059E121D7FAD12000E783D /* DBTEAMListMembersAppsResult.m in Sources */,
+				F2059E131D7FAD12000E783D /* DBTEAMListMembersDevicesArg.m in Sources */,
+				F2059E141D7FAD12000E783D /* DBTEAMListMembersDevicesError.m in Sources */,
+				F2059E151D7FAD12000E783D /* DBTEAMListMembersDevicesResult.m in Sources */,
+				F2059E161D7FAD12000E783D /* DBTEAMListTeamAppsArg.m in Sources */,
+				F2059E171D7FAD12000E783D /* DBTEAMListTeamAppsError.m in Sources */,
+				F2059E181D7FAD12000E783D /* DBTEAMListTeamAppsResult.m in Sources */,
+				F2059E191D7FAD12000E783D /* DBTEAMListTeamDevicesArg.m in Sources */,
+				F2059E1A1D7FAD12000E783D /* DBTEAMListTeamDevicesError.m in Sources */,
+				F2059E1B1D7FAD12000E783D /* DBTEAMListTeamDevicesResult.m in Sources */,
+				F2059E1C1D7FAD12000E783D /* DBTEAMMemberAccess.m in Sources */,
+				F2059E1D1D7FAD12000E783D /* DBTEAMMemberAddArg.m in Sources */,
+				F2059E1E1D7FAD12000E783D /* DBTEAMMemberAddResult.m in Sources */,
+				F2059E1F1D7FAD12000E783D /* DBTEAMMemberDevices.m in Sources */,
+				F2059E201D7FAD12000E783D /* DBTEAMMemberLinkedApps.m in Sources */,
+				F2059E211D7FAD12000E783D /* DBTEAMMemberProfile.m in Sources */,
+				F2059E221D7FAD12000E783D /* DBTEAMMembersAddArg.m in Sources */,
+				F2059E231D7FAD12000E783D /* DBTEAMMembersAddJobStatus.m in Sources */,
+				F2059E241D7FAD12000E783D /* DBTEAMMembersAddLaunch.m in Sources */,
+				F2059E251D7FAD12000E783D /* DBTEAMMembersDeactivateArg.m in Sources */,
+				F2059E261D7FAD12000E783D /* DBTEAMMembersDeactivateError.m in Sources */,
+				F2059E271D7FAD12000E783D /* DBTEAMMemberSelectorError.m in Sources */,
+				F2059E281D7FAD12000E783D /* DBTEAMMembersGetInfoArgs.m in Sources */,
+				F2059E291D7FAD12000E783D /* DBTEAMMembersGetInfoError.m in Sources */,
+				F2059E2A1D7FAD12000E783D /* DBTEAMMembersGetInfoItem.m in Sources */,
+				F2059E2B1D7FAD12000E783D /* DBTEAMMembersListArg.m in Sources */,
+				F2059E2C1D7FAD12000E783D /* DBTEAMMembersListContinueArg.m in Sources */,
+				F2059E2D1D7FAD12000E783D /* DBTEAMMembersListContinueError.m in Sources */,
+				F2059E2E1D7FAD12000E783D /* DBTEAMMembersListError.m in Sources */,
+				F2059E2F1D7FAD12000E783D /* DBTEAMMembersListResult.m in Sources */,
+				F2059E301D7FAD12000E783D /* DBTEAMMembersRecoverArg.m in Sources */,
+				F2059E311D7FAD12000E783D /* DBTEAMMembersRecoverError.m in Sources */,
+				F2059E321D7FAD12000E783D /* DBTEAMMembersRemoveArg.m in Sources */,
+				F2059E331D7FAD12000E783D /* DBTEAMMembersRemoveError.m in Sources */,
+				F2059E341D7FAD12000E783D /* DBTEAMMembersSendWelcomeError.m in Sources */,
+				F2059E351D7FAD12000E783D /* DBTEAMMembersSetPermissionsArg.m in Sources */,
+				F2059E361D7FAD12000E783D /* DBTEAMMembersSetPermissionsError.m in Sources */,
+				F2059E371D7FAD12000E783D /* DBTEAMMembersSetPermissionsResult.m in Sources */,
+				F2059E381D7FAD12000E783D /* DBTEAMMembersSetProfileArg.m in Sources */,
+				F2059E391D7FAD12000E783D /* DBTEAMMembersSetProfileError.m in Sources */,
+				F2059E3A1D7FAD12000E783D /* DBTEAMMembersSuspendError.m in Sources */,
+				F2059E3B1D7FAD12000E783D /* DBTEAMMembersUnsuspendArg.m in Sources */,
+				F2059E3C1D7FAD12000E783D /* DBTEAMMembersUnsuspendError.m in Sources */,
+				F2059E3D1D7FAD12000E783D /* DBTEAMMobileClientPlatform.m in Sources */,
+				F2059E3E1D7FAD12000E783D /* DBTEAMMobileClientSession.m in Sources */,
+				F2059E3F1D7FAD12000E783D /* DBTEAMRemovedStatus.m in Sources */,
+				F2059E401D7FAD12000E783D /* DBTEAMRevokeDesktopClientArg.m in Sources */,
+				F2059E411D7FAD12000E783D /* DBTEAMRevokeDeviceSessionArg.m in Sources */,
+				F2059E421D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchArg.m in Sources */,
+				F2059E431D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchError.m in Sources */,
+				F2059E441D7FAD12000E783D /* DBTEAMRevokeDeviceSessionBatchResult.m in Sources */,
+				F2059E451D7FAD12000E783D /* DBTEAMRevokeDeviceSessionError.m in Sources */,
+				F2059E461D7FAD12000E783D /* DBTEAMRevokeDeviceSessionStatus.m in Sources */,
+				F2059E471D7FAD12000E783D /* DBTEAMRevokeLinkedApiAppArg.m in Sources */,
+				F2059E481D7FAD12000E783D /* DBTEAMRevokeLinkedApiAppBatchArg.m in Sources */,
+				F2059E491D7FAD12000E783D /* DBTEAMRevokeLinkedAppBatchError.m in Sources */,
+				F2059E4A1D7FAD12000E783D /* DBTEAMRevokeLinkedAppBatchResult.m in Sources */,
+				F2059E4B1D7FAD12000E783D /* DBTEAMRevokeLinkedAppError.m in Sources */,
+				F2059E4C1D7FAD12000E783D /* DBTEAMRevokeLinkedAppStatus.m in Sources */,
+				F2059E4D1D7FAD12000E783D /* DBTEAMStorageBucket.m in Sources */,
+				F2059E4E1D7FAD12000E783D /* DBTEAMTeamGetInfoResult.m in Sources */,
+				F2059E4F1D7FAD12000E783D /* DBTEAMTeamMemberInfo.m in Sources */,
+				F2059E501D7FAD12000E783D /* DBTEAMTeamMemberProfile.m in Sources */,
+				F2059E511D7FAD12000E783D /* DBTEAMTeamMembershipType.m in Sources */,
+				F2059E521D7FAD12000E783D /* DBTEAMTeamMemberStatus.m in Sources */,
+				F2059E531D7FAD12000E783D /* DBTEAMUpdatePropertyTemplateArg.m in Sources */,
+				F2059E541D7FAD12000E783D /* DBTEAMUpdatePropertyTemplateResult.m in Sources */,
+				F2059E551D7FAD12000E783D /* DBTEAMUserSelectorArg.m in Sources */,
+				F2059E561D7FAD12000E783D /* DBTEAMUserSelectorError.m in Sources */,
+				F2059E571D7FAD12000E783D /* DBTEAMUsersSelectorArg.m in Sources */,
+				F2059E581D7FAD12000E783D /* DBTEAMCOMMONGroupManagementType.m in Sources */,
+				F2059E591D7FAD12000E783D /* DBTEAMCOMMONGroupSummary.m in Sources */,
+				F2059E5A1D7FAD12000E783D /* DBTEAMCOMMONGroupType.m in Sources */,
+				F2059E5B1D7FAD12000E783D /* DBTEAMPOLICIESEmmState.m in Sources */,
+				F2059E5C1D7FAD12000E783D /* DBTEAMPOLICIESSharedFolderJoinPolicy.m in Sources */,
+				F2059E5D1D7FAD12000E783D /* DBTEAMPOLICIESSharedFolderMemberPolicy.m in Sources */,
+				F2059E5E1D7FAD12000E783D /* DBTEAMPOLICIESSharedLinkCreatePolicy.m in Sources */,
+				F2059E5F1D7FAD12000E783D /* DBTEAMPOLICIESTeamMemberPolicies.m in Sources */,
+				F2059E601D7FAD12000E783D /* DBTEAMPOLICIESTeamSharingPolicies.m in Sources */,
+				F2059E611D7FAD12000E783D /* DBUSERSAccount.m in Sources */,
+				F2059E621D7FAD12000E783D /* DBUSERSAccountType.m in Sources */,
+				F2059E631D7FAD12000E783D /* DBUSERSBasicAccount.m in Sources */,
+				F2059E641D7FAD12000E783D /* DBUSERSFullAccount.m in Sources */,
+				F2059E651D7FAD12000E783D /* DBUSERSFullTeam.m in Sources */,
+				F2059E661D7FAD12000E783D /* DBUSERSGetAccountArg.m in Sources */,
+				F2059E671D7FAD12000E783D /* DBUSERSGetAccountBatchArg.m in Sources */,
+				F2059E681D7FAD12000E783D /* DBUSERSGetAccountBatchError.m in Sources */,
+				F2059E691D7FAD12000E783D /* DBUSERSGetAccountError.m in Sources */,
+				F2059E6A1D7FAD12000E783D /* DBUSERSIndividualSpaceAllocation.m in Sources */,
+				F2059E6B1D7FAD12000E783D /* DBUSERSName.m in Sources */,
+				F2059E6C1D7FAD12000E783D /* DBUSERSSpaceAllocation.m in Sources */,
+				F2059E6D1D7FAD12000E783D /* DBUSERSSpaceUsage.m in Sources */,
+				F2059E6E1D7FAD12000E783D /* DBUSERSTeam.m in Sources */,
+				F2059E6F1D7FAD12000E783D /* DBUSERSTeamSpaceAllocation.m in Sources */,
+				F2059E701D7FAD12000E783D /* DBBase.m in Sources */,
+				F2059E711D7FAD12000E783D /* DBBaseTeam.m in Sources */,
+				F2059E721D7FAD12000E783D /* DropboxClient.m in Sources */,
+				F2059E731D7FAD12000E783D /* DropboxClientsManager.m in Sources */,
+				F2059E741D7FAD12000E783D /* DropboxTeamClient.m in Sources */,
+				F2059E751D7FAD12000E783D /* DBDelegate.m in Sources */,
+				F2059E761D7FAD12000E783D /* DBErrors.m in Sources */,
+				F2059E771D7FAD12000E783D /* DBSessionData.m in Sources */,
+				F2059E781D7FAD12000E783D /* DBTasks.m in Sources */,
+				F2059E791D7FAD13000E783D /* DBTransportClient.m in Sources */,
+				F2059E7A1D7FAD13000E783D /* Reachability.m in Sources */,
+				F2059E7B1D7FAD13000E783D /* DBKeychain.m in Sources */,
+				F2059E7C1D7FAD13000E783D /* DBOAuth.m in Sources */,
+				F2059E7D1D7FAD13000E783D /* DBOAuthResult.m in Sources */,
+				F2059E7E1D7FAD13000E783D /* DBStoneBase.m in Sources */,
+				F2059E7F1D7FAD13000E783D /* DBStoneSerializers.m in Sources */,
+				F2059E801D7FAD13000E783D /* DBStoneValidators.m in Sources */,
+				F2059E811D7FAD13000E783D /* DBAUTHRoutes.m in Sources */,
+				F2059E821D7FAD13000E783D /* DBFILESRoutes.m in Sources */,
+				F2059E831D7FAD13000E783D /* DBSHARINGRoutes.m in Sources */,
+				F2059E841D7FAD13000E783D /* DBTEAMRoutes.m in Sources */,
+				F2059E851D7FAD13000E783D /* DBUSERSRoutes.m in Sources */,
+				F2059E861D7FAD13000E783D /* DBAUTHRouteObjects.m in Sources */,
+				F2059E871D7FAD13000E783D /* DBFILESRouteObjects.m in Sources */,
+				F2059E881D7FAD13000E783D /* DBSHARINGRouteObjects.m in Sources */,
+				F2059E891D7FAD13000E783D /* DBTEAMRouteObjects.m in Sources */,
+				F2059E8A1D7FAD13000E783D /* DBUSERSRouteObjects.m in Sources */,
+				F2059E8B1D7FAD13000E783D /* DBOAuthMobile.m in Sources */,
+				F2059E8C1D7FAD13000E783D /* DropboxClientsManager+MobileAuth.m in Sources */,
+				F2059E8D1D7FAD13000E783D /* DBOAuthDesktop.m in Sources */,
+				F2059E8E1D7FAD13000E783D /* DropboxClientsManager+DesktopAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

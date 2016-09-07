@@ -13,6 +13,7 @@
 		F26075C41D7F5ECA00632951 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26075C21D7F5ECA00632951 /* Main.storyboard */; };
 		F26075C61D7F5ECA00632951 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26075C51D7F5ECA00632951 /* Assets.xcassets */; };
 		F26075C91D7F5ECA00632951 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26075C71D7F5ECA00632951 /* LaunchScreen.storyboard */; };
+		F2AA14B01D7FA3AF0028C194 /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AA14AF1D7FA3AF0028C194 /* ObjectiveDropboxOfficial.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F26075C51D7F5ECA00632951 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F26075C81D7F5ECA00632951 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F26075CA1D7F5ECA00632951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2AA14AF1D7FA3AF0028C194 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveDropboxOfficial.framework; path = Carthage/Build/iOS/ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,15 +35,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2AA14B01D7FA3AF0028C194 /* ObjectiveDropboxOfficial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2059CDF1D7FAAE4000E783D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2AA14AF1D7FA3AF0028C194 /* ObjectiveDropboxOfficial.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F26075AD1D7F5ECA00632951 = {
 			isa = PBXGroup;
 			children = (
+				F2059CDF1D7FAAE4000E783D /* Frameworks */,
 				F26075B81D7F5ECA00632951 /* DBRoulette_Carthage */,
 				F26075B71D7F5ECA00632951 /* Products */,
 			);
