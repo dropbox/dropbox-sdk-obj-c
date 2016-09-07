@@ -96,12 +96,12 @@ $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 
 ### OS X
 ```bash
-carthage update --platform OSX
+carthage update --platform Mac
 ```
 
 In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/iOS`).
 
-Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/OSX`).
+Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
 
 ### Manually add subproject
 

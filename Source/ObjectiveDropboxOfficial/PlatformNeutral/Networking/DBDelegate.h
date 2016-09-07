@@ -22,7 +22,10 @@
 /// Progress and response handlers can be added after the request is initiated.
 /// If a handler does not exist at the time the network response is received,
 /// progress data and/or response data will be saved until a handler is queued up
-/// to the corresponding task ID. This gives the client the flexibility to install
+/// to the corresponding task ID. For downloaded file content, the file content will be
+/// moved from an `NSURLSession` managed temporary location to an SDK managed temporary
+/// location, until the response handler is installed, at which point, the file content
+/// will be moved to the final destination. This gives the client the flexibility to install
 /// handlers when convenient.
 ///
 @interface DBDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>

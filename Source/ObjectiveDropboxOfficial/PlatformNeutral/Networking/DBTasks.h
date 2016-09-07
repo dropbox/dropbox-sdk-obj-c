@@ -258,7 +258,10 @@
 ///
 /// Installs a response handler for the current request.
 ///
-/// @note Any existing handlers are replaced by the supplied handler.
+/// @note Any existing handlers are replaced by the supplied handler. In the event the request returns
+/// successfully, but a handler is not yet installed, the downloaded content will be moved to a temporary
+/// location (`NSTemporaryDirectory()`) until the response handler is installed, at which point the
+/// file content will be moved to its final destination.
 ///
 /// @param response The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
