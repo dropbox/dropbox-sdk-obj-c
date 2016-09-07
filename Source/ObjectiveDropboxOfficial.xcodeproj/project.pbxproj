@@ -7,7 +7,440 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F26B75791D7F6AF700714F70 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F26B75781D7F6AF700714F70 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7861D7F9E8100663756 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F26B75781D7F6AF700714F70 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7871D7F9E8A00663756 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095B1D7F6CBF00ABD910 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7881D7F9E8A00663756 /* DBASYNCLaunchResultBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095D1D7F6CBF00ABD910 /* DBASYNCLaunchResultBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7891D7F9E8A00663756 /* DBASYNCPollArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F209095F1D7F6CBF00ABD910 /* DBASYNCPollArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78A1D7F9E8A00663756 /* DBASYNCPollEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909611D7F6CBF00ABD910 /* DBASYNCPollEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78B1D7F9E8A00663756 /* DBASYNCPollError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909631D7F6CBF00ABD910 /* DBASYNCPollError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78C1D7F9E8A00663756 /* DBASYNCPollResultBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909651D7F6CBF00ABD910 /* DBASYNCPollResultBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78D1D7F9E8A00663756 /* DBAUTHAuthError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909681D7F6CBF00ABD910 /* DBAUTHAuthError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78E1D7F9E8A00663756 /* DBAUTHRateLimitError.h in Headers */ = {isa = PBXBuildFile; fileRef = F209096A1D7F6CBF00ABD910 /* DBAUTHRateLimitError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B78F1D7F9E8A00663756 /* DBAUTHRateLimitReason.h in Headers */ = {isa = PBXBuildFile; fileRef = F209096C1D7F6CBF00ABD910 /* DBAUTHRateLimitReason.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7901D7F9E8A00663756 /* DBFILESAddPropertiesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F209096F1D7F6CBF00ABD910 /* DBFILESAddPropertiesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7911D7F9E8A00663756 /* DBFILESAlphaGetMetadataArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909711D7F6CBF00ABD910 /* DBFILESAlphaGetMetadataArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7921D7F9E8A00663756 /* DBFILESAlphaGetMetadataError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909731D7F6CBF00ABD910 /* DBFILESAlphaGetMetadataError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7931D7F9E8A00663756 /* DBFILESCommitInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909751D7F6CBF00ABD910 /* DBFILESCommitInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7941D7F9E8A00663756 /* DBFILESCommitInfoWithProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909771D7F6CBF00ABD910 /* DBFILESCommitInfoWithProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7951D7F9E8A00663756 /* DBFILESCreateFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909791D7F6CBF00ABD910 /* DBFILESCreateFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7961D7F9E8A00663756 /* DBFILESCreateFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F209097B1D7F6CBF00ABD910 /* DBFILESCreateFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7971D7F9E8A00663756 /* DBFILESDeleteArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F209097D1D7F6CBF00ABD910 /* DBFILESDeleteArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7981D7F9E8A00663756 /* DBFILESDeletedMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F209097F1D7F6CBF00ABD910 /* DBFILESDeletedMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7991D7F9E8A00663756 /* DBFILESDeleteError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909811D7F6CBF00ABD910 /* DBFILESDeleteError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79A1D7F9E8A00663756 /* DBFILESDimensions.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909831D7F6CBF00ABD910 /* DBFILESDimensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79B1D7F9E8A00663756 /* DBFILESDownloadArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909851D7F6CBF00ABD910 /* DBFILESDownloadArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79C1D7F9E8A00663756 /* DBFILESDownloadError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909871D7F6CBF00ABD910 /* DBFILESDownloadError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79D1D7F9E8A00663756 /* DBFILESFileMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909891D7F6CBF00ABD910 /* DBFILESFileMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79E1D7F9E8A00663756 /* DBFILESFileSharingInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F209098B1D7F6CBF00ABD910 /* DBFILESFileSharingInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B79F1D7F9E8A00663756 /* DBFILESFolderMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F209098D1D7F6CBF00ABD910 /* DBFILESFolderMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A01D7F9E8A00663756 /* DBFILESFolderSharingInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F209098F1D7F6CBF00ABD910 /* DBFILESFolderSharingInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A11D7F9E8A00663756 /* DBFILESGetCopyReferenceArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909911D7F6CBF00ABD910 /* DBFILESGetCopyReferenceArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A21D7F9E8A00663756 /* DBFILESGetCopyReferenceError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909931D7F6CBF00ABD910 /* DBFILESGetCopyReferenceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A31D7F9E8A00663756 /* DBFILESGetCopyReferenceResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909951D7F6CBF00ABD910 /* DBFILESGetCopyReferenceResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A41D7F9E8A00663756 /* DBFILESGetMetadataArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909971D7F6CBF00ABD910 /* DBFILESGetMetadataArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A51D7F9E8A00663756 /* DBFILESGetMetadataError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909991D7F6CBF00ABD910 /* DBFILESGetMetadataError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A61D7F9E8A00663756 /* DBFILESGetTemporaryLinkArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F209099B1D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A71D7F9E8A00663756 /* DBFILESGetTemporaryLinkError.h in Headers */ = {isa = PBXBuildFile; fileRef = F209099D1D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A81D7F9E8A00663756 /* DBFILESGetTemporaryLinkResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F209099F1D7F6CBF00ABD910 /* DBFILESGetTemporaryLinkResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7A91D7F9E8A00663756 /* DBFILESGpsCoordinates.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909A11D7F6CBF00ABD910 /* DBFILESGpsCoordinates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AA1D7F9E8A00663756 /* DBFILESInvalidPropertyGroupError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909A31D7F6CBF00ABD910 /* DBFILESInvalidPropertyGroupError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AB1D7F9E8A00663756 /* DBFILESListFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909A51D7F6CBF00ABD910 /* DBFILESListFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AC1D7F9E8A00663756 /* DBFILESListFolderContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909A71D7F6CBF00ABD910 /* DBFILESListFolderContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AD1D7F9E8A00663756 /* DBFILESListFolderContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909A91D7F6CBF00ABD910 /* DBFILESListFolderContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AE1D7F9E8A00663756 /* DBFILESListFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909AB1D7F6CBF00ABD910 /* DBFILESListFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7AF1D7F9E8A00663756 /* DBFILESListFolderGetLatestCursorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909AD1D7F6CBF00ABD910 /* DBFILESListFolderGetLatestCursorResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B01D7F9E8A00663756 /* DBFILESListFolderLongpollArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909AF1D7F6CBF00ABD910 /* DBFILESListFolderLongpollArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B11D7F9E8A00663756 /* DBFILESListFolderLongpollError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909B11D7F6CBF00ABD910 /* DBFILESListFolderLongpollError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B21D7F9E8A00663756 /* DBFILESListFolderLongpollResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909B31D7F6CBF00ABD910 /* DBFILESListFolderLongpollResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B31D7F9E8A00663756 /* DBFILESListFolderResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909B51D7F6CBF00ABD910 /* DBFILESListFolderResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B41D7F9E8A00663756 /* DBFILESListRevisionsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909B71D7F6CBF00ABD910 /* DBFILESListRevisionsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B51D7F9E8A00663756 /* DBFILESListRevisionsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909B91D7F6CBF00ABD910 /* DBFILESListRevisionsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B61D7F9E8A00663756 /* DBFILESListRevisionsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909BB1D7F6CBF00ABD910 /* DBFILESListRevisionsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B71D7F9E8A00663756 /* DBFILESLookupError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909BD1D7F6CBF00ABD910 /* DBFILESLookupError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B81D7F9E8A00663756 /* DBFILESLookUpPropertiesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909BF1D7F6CBF00ABD910 /* DBFILESLookUpPropertiesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7B91D7F9E8A00663756 /* DBFILESMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909C11D7F6CBF00ABD910 /* DBFILESMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BA1D7F9E8A00663756 /* DBFILESMediaMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909C31D7F6CBF00ABD910 /* DBFILESMediaMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BB1D7F9E8A00663756 /* DBFILESMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909C51D7F6CBF00ABD910 /* DBFILESMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BC1D7F9E8A00663756 /* DBFILESPhotoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909C71D7F6CBF00ABD910 /* DBFILESPhotoMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BD1D7F9E8A00663756 /* DBFILESPreviewArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909C91D7F6CBF00ABD910 /* DBFILESPreviewArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BE1D7F9E8A00663756 /* DBFILESPreviewError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909CB1D7F6CBF00ABD910 /* DBFILESPreviewError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7BF1D7F9E8A00663756 /* DBFILESPropertiesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909CD1D7F6CBF00ABD910 /* DBFILESPropertiesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C01D7F9E8A00663756 /* DBFILESPropertyGroupUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909CF1D7F6CBF00ABD910 /* DBFILESPropertyGroupUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C11D7F9E8A00663756 /* DBFILESPropertyGroupWithPath.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909D11D7F6CBF00ABD910 /* DBFILESPropertyGroupWithPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C21D7F9E8A00663756 /* DBFILESRelocationArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909D31D7F6CBF00ABD910 /* DBFILESRelocationArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C31D7F9E8A00663756 /* DBFILESRelocationError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909D51D7F6CBF00ABD910 /* DBFILESRelocationError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C41D7F9E8A00663756 /* DBFILESRemovePropertiesArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909D71D7F6CBF00ABD910 /* DBFILESRemovePropertiesArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C51D7F9E8A00663756 /* DBFILESRemovePropertiesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909D91D7F6CBF00ABD910 /* DBFILESRemovePropertiesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C61D7F9E8A00663756 /* DBFILESRestoreArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909DB1D7F6CBF00ABD910 /* DBFILESRestoreArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C71D7F9E8A00663756 /* DBFILESRestoreError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909DD1D7F6CBF00ABD910 /* DBFILESRestoreError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C81D7F9E8A00663756 /* DBFILESSaveCopyReferenceArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909DF1D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7C91D7F9E8A00663756 /* DBFILESSaveCopyReferenceError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909E11D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CA1D7F9E8A00663756 /* DBFILESSaveCopyReferenceResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909E31D7F6CBF00ABD910 /* DBFILESSaveCopyReferenceResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CB1D7F9E8B00663756 /* DBFILESSaveUrlArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909E51D7F6CBF00ABD910 /* DBFILESSaveUrlArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CC1D7F9E8B00663756 /* DBFILESSaveUrlError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909E71D7F6CBF00ABD910 /* DBFILESSaveUrlError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CD1D7F9E8B00663756 /* DBFILESSaveUrlJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909E91D7F6CBF00ABD910 /* DBFILESSaveUrlJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CE1D7F9E8B00663756 /* DBFILESSaveUrlResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909EB1D7F6CBF00ABD910 /* DBFILESSaveUrlResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7CF1D7F9E8B00663756 /* DBFILESSearchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909ED1D7F6CBF00ABD910 /* DBFILESSearchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D01D7F9E8B00663756 /* DBFILESSearchError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909EF1D7F6CBF00ABD910 /* DBFILESSearchError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D11D7F9E8B00663756 /* DBFILESSearchMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909F11D7F6CBF00ABD910 /* DBFILESSearchMatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D21D7F9E8B00663756 /* DBFILESSearchMatchType.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909F31D7F6CBF00ABD910 /* DBFILESSearchMatchType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D31D7F9E8B00663756 /* DBFILESSearchMode.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909F51D7F6CBF00ABD910 /* DBFILESSearchMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D41D7F9E8B00663756 /* DBFILESSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909F71D7F6CBF00ABD910 /* DBFILESSearchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D51D7F9E8B00663756 /* DBFILESSharingInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909F91D7F6CBF00ABD910 /* DBFILESSharingInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D61D7F9E8B00663756 /* DBFILESThumbnailArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909FB1D7F6CBF00ABD910 /* DBFILESThumbnailArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D71D7F9E8B00663756 /* DBFILESThumbnailError.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909FD1D7F6CBF00ABD910 /* DBFILESThumbnailError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D81D7F9E8B00663756 /* DBFILESThumbnailFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F20909FF1D7F6CBF00ABD910 /* DBFILESThumbnailFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7D91D7F9E8B00663756 /* DBFILESThumbnailSize.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A011D7F6CBF00ABD910 /* DBFILESThumbnailSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DA1D7F9E8B00663756 /* DBFILESUpdatePropertiesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A031D7F6CBF00ABD910 /* DBFILESUpdatePropertiesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DB1D7F9E8B00663756 /* DBFILESUpdatePropertyGroupArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A051D7F6CBF00ABD910 /* DBFILESUpdatePropertyGroupArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DC1D7F9E8B00663756 /* DBFILESUploadError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A071D7F6CBF00ABD910 /* DBFILESUploadError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DD1D7F9E8B00663756 /* DBFILESUploadErrorWithProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A091D7F6CBF00ABD910 /* DBFILESUploadErrorWithProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DE1D7F9E8B00663756 /* DBFILESUploadSessionAppendArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A0B1D7F6CBF00ABD910 /* DBFILESUploadSessionAppendArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7DF1D7F9E8B00663756 /* DBFILESUploadSessionCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A0D1D7F6CBF00ABD910 /* DBFILESUploadSessionCursor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E01D7F9E8B00663756 /* DBFILESUploadSessionFinishArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A0F1D7F6CBF00ABD910 /* DBFILESUploadSessionFinishArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E11D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A111D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E21D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A131D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E31D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A151D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E41D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchResultEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A171D7F6CBF00ABD910 /* DBFILESUploadSessionFinishBatchResultEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E51D7F9E8B00663756 /* DBFILESUploadSessionFinishError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A191D7F6CBF00ABD910 /* DBFILESUploadSessionFinishError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E61D7F9E8B00663756 /* DBFILESUploadSessionLookupError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A1B1D7F6CBF00ABD910 /* DBFILESUploadSessionLookupError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E71D7F9E8B00663756 /* DBFILESUploadSessionOffsetError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A1D1D7F6CBF00ABD910 /* DBFILESUploadSessionOffsetError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E81D7F9E8B00663756 /* DBFILESUploadSessionStartArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A1F1D7F6CBF00ABD910 /* DBFILESUploadSessionStartArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7E91D7F9E8B00663756 /* DBFILESUploadSessionStartResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A211D7F6CBF00ABD910 /* DBFILESUploadSessionStartResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7EA1D7F9E8B00663756 /* DBFILESUploadWriteFailed.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A231D7F6CBF00ABD910 /* DBFILESUploadWriteFailed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7EB1D7F9E8B00663756 /* DBFILESVideoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A251D7F6CBF00ABD910 /* DBFILESVideoMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7EC1D7F9E8B00663756 /* DBFILESWriteConflictError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A271D7F6CBF00ABD910 /* DBFILESWriteConflictError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7ED1D7F9E8B00663756 /* DBFILESWriteError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A291D7F6CBF00ABD910 /* DBFILESWriteError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7EE1D7F9E8B00663756 /* DBFILESWriteMode.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A2B1D7F6CBF00ABD910 /* DBFILESWriteMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7EF1D7F9E8B00663756 /* DBPROPERTIESGetPropertyTemplateArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A2E1D7F6CBF00ABD910 /* DBPROPERTIESGetPropertyTemplateArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F01D7F9E8B00663756 /* DBPROPERTIESGetPropertyTemplateResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A301D7F6CBF00ABD910 /* DBPROPERTIESGetPropertyTemplateResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F11D7F9E8B00663756 /* DBPROPERTIESListPropertyTemplateIds.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A321D7F6CBF00ABD910 /* DBPROPERTIESListPropertyTemplateIds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F21D7F9E8B00663756 /* DBPROPERTIESModifyPropertyTemplateError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A341D7F6CBF00ABD910 /* DBPROPERTIESModifyPropertyTemplateError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F31D7F9E8B00663756 /* DBPROPERTIESPropertyField.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A361D7F6CBF00ABD910 /* DBPROPERTIESPropertyField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F41D7F9E8B00663756 /* DBPROPERTIESPropertyFieldTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A381D7F6CBF00ABD910 /* DBPROPERTIESPropertyFieldTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F51D7F9E8B00663756 /* DBPROPERTIESPropertyGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A3A1D7F6CBF00ABD910 /* DBPROPERTIESPropertyGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F61D7F9E8B00663756 /* DBPROPERTIESPropertyGroupTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A3C1D7F6CBF00ABD910 /* DBPROPERTIESPropertyGroupTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F71D7F9E8B00663756 /* DBPROPERTIESPropertyTemplateError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A3E1D7F6CBF00ABD910 /* DBPROPERTIESPropertyTemplateError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F81D7F9E8B00663756 /* DBPROPERTIESPropertyType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A401D7F6CBF00ABD910 /* DBPROPERTIESPropertyType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7F91D7F9E8B00663756 /* DBSHARINGAccessLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A431D7F6CBF00ABD910 /* DBSHARINGAccessLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FA1D7F9E8B00663756 /* DBSHARINGAclUpdatePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A451D7F6CBF00ABD910 /* DBSHARINGAclUpdatePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FB1D7F9E8B00663756 /* DBSHARINGAddFileMemberArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A471D7F6CBF00ABD910 /* DBSHARINGAddFileMemberArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FC1D7F9E8B00663756 /* DBSHARINGAddFileMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A491D7F6CBF00ABD910 /* DBSHARINGAddFileMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FD1D7F9E8B00663756 /* DBSHARINGAddFolderMemberArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A4B1D7F6CBF00ABD910 /* DBSHARINGAddFolderMemberArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FE1D7F9E8B00663756 /* DBSHARINGAddFolderMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A4D1D7F6CBF00ABD910 /* DBSHARINGAddFolderMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B7FF1D7F9E8B00663756 /* DBSHARINGAddMember.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A4F1D7F6CBF00ABD910 /* DBSHARINGAddMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8001D7F9E8B00663756 /* DBSHARINGAddMemberSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A511D7F6CBF00ABD910 /* DBSHARINGAddMemberSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8011D7F9E8B00663756 /* DBSHARINGChangeFileMemberAccessArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A531D7F6CBF00ABD910 /* DBSHARINGChangeFileMemberAccessArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8021D7F9E8B00663756 /* DBSHARINGCollectionLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A551D7F6CBF00ABD910 /* DBSHARINGCollectionLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8031D7F9E8B00663756 /* DBSHARINGCreateSharedLinkArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A571D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8041D7F9E8B00663756 /* DBSHARINGCreateSharedLinkError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A591D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8051D7F9E8B00663756 /* DBSHARINGCreateSharedLinkWithSettingsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A5B1D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkWithSettingsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8061D7F9E8B00663756 /* DBSHARINGCreateSharedLinkWithSettingsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A5D1D7F6CBF00ABD910 /* DBSHARINGCreateSharedLinkWithSettingsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8071D7F9E8B00663756 /* DBSHARINGFileAction.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A5F1D7F6CBF00ABD910 /* DBSHARINGFileAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8081D7F9E8B00663756 /* DBSHARINGFileErrorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A611D7F6CBF00ABD910 /* DBSHARINGFileErrorResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8091D7F9E8B00663756 /* DBSHARINGFileLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A631D7F6CBF00ABD910 /* DBSHARINGFileLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80A1D7F9E8B00663756 /* DBSHARINGFileMemberActionError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A651D7F6CBF00ABD910 /* DBSHARINGFileMemberActionError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80B1D7F9E8B00663756 /* DBSHARINGFileMemberActionIndividualResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A671D7F6CBF00ABD910 /* DBSHARINGFileMemberActionIndividualResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80C1D7F9E8B00663756 /* DBSHARINGFileMemberActionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A691D7F6CBF00ABD910 /* DBSHARINGFileMemberActionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80D1D7F9E8B00663756 /* DBSHARINGFileMemberRemoveActionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A6B1D7F6CBF00ABD910 /* DBSHARINGFileMemberRemoveActionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80E1D7F9E8B00663756 /* DBSHARINGFilePermission.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A6D1D7F6CBF00ABD910 /* DBSHARINGFilePermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B80F1D7F9E8B00663756 /* DBSHARINGFolderAction.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A6F1D7F6CBF00ABD910 /* DBSHARINGFolderAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8101D7F9E8B00663756 /* DBSHARINGFolderLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A711D7F6CBF00ABD910 /* DBSHARINGFolderLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8111D7F9E8B00663756 /* DBSHARINGFolderPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A731D7F6CBF00ABD910 /* DBSHARINGFolderPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8121D7F9E8B00663756 /* DBSHARINGFolderPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A751D7F6CBF00ABD910 /* DBSHARINGFolderPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8131D7F9E8B00663756 /* DBSHARINGGetFileMetadataArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A771D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8141D7F9E8B00663756 /* DBSHARINGGetFileMetadataBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A791D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8151D7F9E8B00663756 /* DBSHARINGGetFileMetadataBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A7B1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8161D7F9E8B00663756 /* DBSHARINGGetFileMetadataError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A7D1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8171D7F9E8B00663756 /* DBSHARINGGetFileMetadataIndividualResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A7F1D7F6CBF00ABD910 /* DBSHARINGGetFileMetadataIndividualResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8181D7F9E8B00663756 /* DBSHARINGGetMetadataArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A811D7F6CBF00ABD910 /* DBSHARINGGetMetadataArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8191D7F9E8B00663756 /* DBSHARINGGetSharedLinkFileError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A831D7F6CBF00ABD910 /* DBSHARINGGetSharedLinkFileError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81A1D7F9E8B00663756 /* DBSHARINGGetSharedLinkMetadataArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A851D7F6CBF00ABD910 /* DBSHARINGGetSharedLinkMetadataArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81B1D7F9E8B00663756 /* DBSHARINGGetSharedLinksArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A871D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81C1D7F9E8B00663756 /* DBSHARINGGetSharedLinksError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A891D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81D1D7F9E8B00663756 /* DBSHARINGGetSharedLinksResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A8B1D7F6CBF00ABD910 /* DBSHARINGGetSharedLinksResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81E1D7F9E8B00663756 /* DBSHARINGGroupInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A8D1D7F6CBF00ABD910 /* DBSHARINGGroupInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B81F1D7F9E8B00663756 /* DBSHARINGGroupMembershipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A8F1D7F6CBF00ABD910 /* DBSHARINGGroupMembershipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8201D7F9E8B00663756 /* DBSHARINGInsufficientQuotaAmounts.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A911D7F6CBF00ABD910 /* DBSHARINGInsufficientQuotaAmounts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8211D7F9E8B00663756 /* DBSHARINGInviteeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A931D7F6CBF00ABD910 /* DBSHARINGInviteeInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8221D7F9E8B00663756 /* DBSHARINGInviteeMembershipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A951D7F6CBF00ABD910 /* DBSHARINGInviteeMembershipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8231D7F9E8B00663756 /* DBSHARINGJobError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A971D7F6CBF00ABD910 /* DBSHARINGJobError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8241D7F9E8B00663756 /* DBSHARINGJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A991D7F6CBF00ABD910 /* DBSHARINGJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8251D7F9E8B00663756 /* DBSHARINGLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A9B1D7F6CBF00ABD910 /* DBSHARINGLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8261D7F9E8B00663756 /* DBSHARINGLinkPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A9D1D7F6CBF00ABD910 /* DBSHARINGLinkPermissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8271D7F9E8B00663756 /* DBSHARINGListFileMembersArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090A9F1D7F6CBF00ABD910 /* DBSHARINGListFileMembersArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8281D7F9E8B00663756 /* DBSHARINGListFileMembersBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AA11D7F6CBF00ABD910 /* DBSHARINGListFileMembersBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8291D7F9E8B00663756 /* DBSHARINGListFileMembersBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AA31D7F6CBF00ABD910 /* DBSHARINGListFileMembersBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82A1D7F9E8B00663756 /* DBSHARINGListFileMembersContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AA51D7F6CBF00ABD910 /* DBSHARINGListFileMembersContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82B1D7F9E8B00663756 /* DBSHARINGListFileMembersContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AA71D7F6CBF00ABD910 /* DBSHARINGListFileMembersContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82C1D7F9E8B00663756 /* DBSHARINGListFileMembersCountResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AA91D7F6CBF00ABD910 /* DBSHARINGListFileMembersCountResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82D1D7F9E8B00663756 /* DBSHARINGListFileMembersError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AAB1D7F6CBF00ABD910 /* DBSHARINGListFileMembersError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82E1D7F9E8B00663756 /* DBSHARINGListFileMembersIndividualResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AAD1D7F6CBF00ABD910 /* DBSHARINGListFileMembersIndividualResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B82F1D7F9E8B00663756 /* DBSHARINGListFilesArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AAF1D7F6CBF00ABD910 /* DBSHARINGListFilesArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8301D7F9E8B00663756 /* DBSHARINGListFilesContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AB11D7F6CBF00ABD910 /* DBSHARINGListFilesContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8311D7F9E8B00663756 /* DBSHARINGListFilesContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AB31D7F6CBF00ABD910 /* DBSHARINGListFilesContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8321D7F9E8B00663756 /* DBSHARINGListFilesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AB51D7F6CBF00ABD910 /* DBSHARINGListFilesResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8331D7F9E8B00663756 /* DBSHARINGListFolderMembersArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AB71D7F6CBF00ABD910 /* DBSHARINGListFolderMembersArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8341D7F9E8B00663756 /* DBSHARINGListFolderMembersContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AB91D7F6CBF00ABD910 /* DBSHARINGListFolderMembersContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8351D7F9E8B00663756 /* DBSHARINGListFolderMembersContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ABB1D7F6CBF00ABD910 /* DBSHARINGListFolderMembersContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8361D7F9E8B00663756 /* DBSHARINGListFolderMembersCursorArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ABD1D7F6CBF00ABD910 /* DBSHARINGListFolderMembersCursorArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8371D7F9E8B00663756 /* DBSHARINGListFoldersArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ABF1D7F6CBF00ABD910 /* DBSHARINGListFoldersArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8381D7F9E8B00663756 /* DBSHARINGListFoldersContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AC11D7F6CBF00ABD910 /* DBSHARINGListFoldersContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8391D7F9E8B00663756 /* DBSHARINGListFoldersContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AC31D7F6CBF00ABD910 /* DBSHARINGListFoldersContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83A1D7F9E8B00663756 /* DBSHARINGListFoldersResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AC51D7F6CBF00ABD910 /* DBSHARINGListFoldersResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83B1D7F9E8B00663756 /* DBSHARINGListSharedLinksArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AC71D7F6CBF00ABD910 /* DBSHARINGListSharedLinksArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83C1D7F9E8B00663756 /* DBSHARINGListSharedLinksError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AC91D7F6CBF00ABD910 /* DBSHARINGListSharedLinksError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83D1D7F9E8B00663756 /* DBSHARINGListSharedLinksResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ACB1D7F6CBF00ABD910 /* DBSHARINGListSharedLinksResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83E1D7F9E8B00663756 /* DBSHARINGMemberAccessLevelResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ACD1D7F6CBF00ABD910 /* DBSHARINGMemberAccessLevelResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B83F1D7F9E8B00663756 /* DBSHARINGMemberAction.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ACF1D7F6CBF00ABD910 /* DBSHARINGMemberAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8401D7F9E8B00663756 /* DBSHARINGMemberPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AD11D7F6CBF00ABD910 /* DBSHARINGMemberPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8411D7F9E8B00663756 /* DBSHARINGMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AD31D7F6CBF00ABD910 /* DBSHARINGMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8421D7F9E8B00663756 /* DBSHARINGMemberSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AD51D7F6CBF00ABD910 /* DBSHARINGMemberSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8431D7F9E8B00663756 /* DBSHARINGMembershipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AD71D7F6CBF00ABD910 /* DBSHARINGMembershipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8441D7F9E8B00663756 /* DBSHARINGModifySharedLinkSettingsArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AD91D7F6CBF00ABD910 /* DBSHARINGModifySharedLinkSettingsArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8451D7F9E8B00663756 /* DBSHARINGModifySharedLinkSettingsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ADB1D7F6CBF00ABD910 /* DBSHARINGModifySharedLinkSettingsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8461D7F9E8B00663756 /* DBSHARINGMountFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ADD1D7F6CBF00ABD910 /* DBSHARINGMountFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8471D7F9E8B00663756 /* DBSHARINGMountFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090ADF1D7F6CBF00ABD910 /* DBSHARINGMountFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8481D7F9E8B00663756 /* DBSHARINGParentFolderAccessInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AE11D7F6CBF00ABD910 /* DBSHARINGParentFolderAccessInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8491D7F9E8B00663756 /* DBSHARINGPathLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AE31D7F6CBF00ABD910 /* DBSHARINGPathLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84A1D7F9E8B00663756 /* DBSHARINGPendingUploadMode.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AE51D7F6CBF00ABD910 /* DBSHARINGPendingUploadMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84B1D7F9E8B00663756 /* DBSHARINGPermissionDeniedReason.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AE71D7F6CBF00ABD910 /* DBSHARINGPermissionDeniedReason.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84C1D7F9E8B00663756 /* DBSHARINGRelinquishFileMembershipArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AE91D7F6CBF00ABD910 /* DBSHARINGRelinquishFileMembershipArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84D1D7F9E8B00663756 /* DBSHARINGRelinquishFileMembershipError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AEB1D7F6CBF00ABD910 /* DBSHARINGRelinquishFileMembershipError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84E1D7F9E8B00663756 /* DBSHARINGRelinquishFolderMembershipArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AED1D7F6CBF00ABD910 /* DBSHARINGRelinquishFolderMembershipArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B84F1D7F9E8B00663756 /* DBSHARINGRelinquishFolderMembershipError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AEF1D7F6CBF00ABD910 /* DBSHARINGRelinquishFolderMembershipError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8501D7F9E8B00663756 /* DBSHARINGRemoveFileMemberArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AF11D7F6CBF00ABD910 /* DBSHARINGRemoveFileMemberArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8511D7F9E8B00663756 /* DBSHARINGRemoveFileMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AF31D7F6CBF00ABD910 /* DBSHARINGRemoveFileMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8521D7F9E8B00663756 /* DBSHARINGRemoveFolderMemberArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AF51D7F6CBF00ABD910 /* DBSHARINGRemoveFolderMemberArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8531D7F9E8B00663756 /* DBSHARINGRemoveFolderMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AF71D7F6CBF00ABD910 /* DBSHARINGRemoveFolderMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8541D7F9E8B00663756 /* DBSHARINGRemoveMemberJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AF91D7F6CBF00ABD910 /* DBSHARINGRemoveMemberJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8551D7F9E8B00663756 /* DBSHARINGRequestedVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AFB1D7F6CBF00ABD910 /* DBSHARINGRequestedVisibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8561D7F9E8B00663756 /* DBSHARINGResolvedVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AFD1D7F6CBF00ABD910 /* DBSHARINGResolvedVisibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8571D7F9E8B00663756 /* DBSHARINGRevokeSharedLinkArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090AFF1D7F6CBF00ABD910 /* DBSHARINGRevokeSharedLinkArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8581D7F9E8B00663756 /* DBSHARINGRevokeSharedLinkError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B011D7F6CBF00ABD910 /* DBSHARINGRevokeSharedLinkError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8591D7F9E8B00663756 /* DBSHARINGSharedFileMembers.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B031D7F6CBF00ABD910 /* DBSHARINGSharedFileMembers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85A1D7F9E8B00663756 /* DBSHARINGSharedFileMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B051D7F6CBF00ABD910 /* DBSHARINGSharedFileMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85B1D7F9E8B00663756 /* DBSHARINGSharedFolderAccessError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B071D7F6CBF00ABD910 /* DBSHARINGSharedFolderAccessError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85C1D7F9E8B00663756 /* DBSHARINGSharedFolderMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B091D7F6CBF00ABD910 /* DBSHARINGSharedFolderMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85D1D7F9E8B00663756 /* DBSHARINGSharedFolderMembers.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B0B1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMembers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85E1D7F9E8B00663756 /* DBSHARINGSharedFolderMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B0D1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B85F1D7F9E8B00663756 /* DBSHARINGSharedFolderMetadataBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B0F1D7F6CBF00ABD910 /* DBSHARINGSharedFolderMetadataBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8601D7F9E8B00663756 /* DBSHARINGSharedLinkAccessFailureReason.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B111D7F6CBF00ABD910 /* DBSHARINGSharedLinkAccessFailureReason.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8611D7F9E8B00663756 /* DBSHARINGSharedLinkError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B131D7F6CBF00ABD910 /* DBSHARINGSharedLinkError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8621D7F9E8B00663756 /* DBSHARINGSharedLinkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B151D7F6CBF00ABD910 /* DBSHARINGSharedLinkMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8631D7F9E8B00663756 /* DBSHARINGSharedLinkPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B171D7F6CBF00ABD910 /* DBSHARINGSharedLinkPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8641D7F9E8B00663756 /* DBSHARINGSharedLinkSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B191D7F6CBF00ABD910 /* DBSHARINGSharedLinkSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8651D7F9E8B00663756 /* DBSHARINGSharedLinkSettingsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B1B1D7F6CBF00ABD910 /* DBSHARINGSharedLinkSettingsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8661D7F9E8B00663756 /* DBSHARINGShareFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B1D1D7F6CBF00ABD910 /* DBSHARINGShareFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8671D7F9E8B00663756 /* DBSHARINGShareFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B1F1D7F6CBF00ABD910 /* DBSHARINGShareFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8681D7F9E8B00663756 /* DBSHARINGShareFolderErrorBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B211D7F6CBF00ABD910 /* DBSHARINGShareFolderErrorBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8691D7F9E8B00663756 /* DBSHARINGShareFolderJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B231D7F6CBF00ABD910 /* DBSHARINGShareFolderJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86A1D7F9E8B00663756 /* DBSHARINGShareFolderLaunch.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B251D7F6CBF00ABD910 /* DBSHARINGShareFolderLaunch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86B1D7F9E8B00663756 /* DBSHARINGSharePathError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B271D7F6CBF00ABD910 /* DBSHARINGSharePathError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86C1D7F9E8B00663756 /* DBSHARINGSharingFileAccessError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B291D7F6CBF00ABD910 /* DBSHARINGSharingFileAccessError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86D1D7F9E8B00663756 /* DBSHARINGSharingUserError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B2B1D7F6CBF00ABD910 /* DBSHARINGSharingUserError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86E1D7F9E8B00663756 /* DBSHARINGTeamMemberInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B2D1D7F6CBF00ABD910 /* DBSHARINGTeamMemberInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B86F1D7F9E8B00663756 /* DBSHARINGTransferFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B2F1D7F6CBF00ABD910 /* DBSHARINGTransferFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8701D7F9E8B00663756 /* DBSHARINGTransferFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B311D7F6CBF00ABD910 /* DBSHARINGTransferFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8711D7F9E8B00663756 /* DBSHARINGUnmountFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B331D7F6CBF00ABD910 /* DBSHARINGUnmountFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8721D7F9E8B00663756 /* DBSHARINGUnmountFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B351D7F6CBF00ABD910 /* DBSHARINGUnmountFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8731D7F9E8B00663756 /* DBSHARINGUnshareFileArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B371D7F6CBF00ABD910 /* DBSHARINGUnshareFileArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8741D7F9E8B00663756 /* DBSHARINGUnshareFileError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B391D7F6CBF00ABD910 /* DBSHARINGUnshareFileError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8751D7F9E8B00663756 /* DBSHARINGUnshareFolderArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B3B1D7F6CBF00ABD910 /* DBSHARINGUnshareFolderArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8761D7F9E8B00663756 /* DBSHARINGUnshareFolderError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B3D1D7F6CBF00ABD910 /* DBSHARINGUnshareFolderError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8771D7F9E8B00663756 /* DBSHARINGUpdateFolderMemberArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B3F1D7F6CBF00ABD910 /* DBSHARINGUpdateFolderMemberArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8781D7F9E8B00663756 /* DBSHARINGUpdateFolderMemberError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B411D7F6CBF00ABD910 /* DBSHARINGUpdateFolderMemberError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8791D7F9E8B00663756 /* DBSHARINGUpdateFolderPolicyArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B431D7F6CBF00ABD910 /* DBSHARINGUpdateFolderPolicyArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87A1D7F9E8B00663756 /* DBSHARINGUpdateFolderPolicyError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B451D7F6CBF00ABD910 /* DBSHARINGUpdateFolderPolicyError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87B1D7F9E8B00663756 /* DBSHARINGUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B471D7F6CBF00ABD910 /* DBSHARINGUserInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87C1D7F9E8B00663756 /* DBSHARINGUserMembershipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B491D7F6CBF00ABD910 /* DBSHARINGUserMembershipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87D1D7F9E8B00663756 /* DBSHARINGVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B4B1D7F6CBF00ABD910 /* DBSHARINGVisibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87E1D7F9E8B00663756 /* DBTEAMActiveWebSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B4E1D7F6CBF00ABD910 /* DBTEAMActiveWebSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B87F1D7F9E8B00663756 /* DBTEAMAddPropertyTemplateArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B501D7F6CBF00ABD910 /* DBTEAMAddPropertyTemplateArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8801D7F9E8B00663756 /* DBTEAMAddPropertyTemplateResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B521D7F6CBF00ABD910 /* DBTEAMAddPropertyTemplateResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8811D7F9E8B00663756 /* DBTEAMAdminTier.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B541D7F6CBF00ABD910 /* DBTEAMAdminTier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8821D7F9E8C00663756 /* DBTEAMApiApp.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B561D7F6CBF00ABD910 /* DBTEAMApiApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8831D7F9E8C00663756 /* DBTEAMBaseDfbReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B581D7F6CBF00ABD910 /* DBTEAMBaseDfbReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8841D7F9E8C00663756 /* DBTEAMDateRange.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B5A1D7F6CBF00ABD910 /* DBTEAMDateRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8851D7F9E8C00663756 /* DBTEAMDateRangeError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B5C1D7F6CBF00ABD910 /* DBTEAMDateRangeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8861D7F9E8C00663756 /* DBTEAMDesktopClientSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B5E1D7F6CBF00ABD910 /* DBTEAMDesktopClientSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8871D7F9E8C00663756 /* DBTEAMDesktopPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B601D7F6CBF00ABD910 /* DBTEAMDesktopPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8881D7F9E8C00663756 /* DBTEAMDevicesActive.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B621D7F6CBF00ABD910 /* DBTEAMDevicesActive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8891D7F9E8C00663756 /* DBTEAMDeviceSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B641D7F6CBF00ABD910 /* DBTEAMDeviceSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88A1D7F9E8C00663756 /* DBTEAMDeviceSessionArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B661D7F6CBF00ABD910 /* DBTEAMDeviceSessionArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88B1D7F9E8C00663756 /* DBTEAMGetActivityReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B681D7F6CBF00ABD910 /* DBTEAMGetActivityReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88C1D7F9E8C00663756 /* DBTEAMGetDevicesReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B6A1D7F6CBF00ABD910 /* DBTEAMGetDevicesReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88D1D7F9E8C00663756 /* DBTEAMGetMembershipReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B6C1D7F6CBF00ABD910 /* DBTEAMGetMembershipReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88E1D7F9E8C00663756 /* DBTEAMGetStorageReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B6E1D7F6CBF00ABD910 /* DBTEAMGetStorageReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B88F1D7F9E8C00663756 /* DBTEAMGroupAccessType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B701D7F6CBF00ABD910 /* DBTEAMGroupAccessType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8901D7F9E8C00663756 /* DBTEAMGroupCreateArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B721D7F6CBF00ABD910 /* DBTEAMGroupCreateArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8911D7F9E8C00663756 /* DBTEAMGroupCreateError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B741D7F6CBF00ABD910 /* DBTEAMGroupCreateError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8921D7F9E8C00663756 /* DBTEAMGroupDeleteError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B761D7F6CBF00ABD910 /* DBTEAMGroupDeleteError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8931D7F9E8C00663756 /* DBTEAMGroupFullInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B781D7F6CBF00ABD910 /* DBTEAMGroupFullInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8941D7F9E8C00663756 /* DBTEAMGroupMemberInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B7A1D7F6CBF00ABD910 /* DBTEAMGroupMemberInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8951D7F9E8C00663756 /* DBTEAMGroupMembersAddArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B7C1D7F6CBF00ABD910 /* DBTEAMGroupMembersAddArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8961D7F9E8C00663756 /* DBTEAMGroupMembersAddError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B7E1D7F6CBF00ABD910 /* DBTEAMGroupMembersAddError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8971D7F9E8C00663756 /* DBTEAMGroupMembersChangeResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B801D7F6CBF00ABD910 /* DBTEAMGroupMembersChangeResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8981D7F9E8C00663756 /* DBTEAMGroupMemberSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B821D7F6CBF00ABD910 /* DBTEAMGroupMemberSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8991D7F9E8C00663756 /* DBTEAMGroupMemberSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B841D7F6CBF00ABD910 /* DBTEAMGroupMemberSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89A1D7F9E8C00663756 /* DBTEAMGroupMemberSetAccessTypeError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B861D7F6CBF00ABD910 /* DBTEAMGroupMemberSetAccessTypeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89B1D7F9E8C00663756 /* DBTEAMGroupMembersRemoveArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B881D7F6CBF00ABD910 /* DBTEAMGroupMembersRemoveArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89C1D7F9E8C00663756 /* DBTEAMGroupMembersRemoveError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B8A1D7F6CBF00ABD910 /* DBTEAMGroupMembersRemoveError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89D1D7F9E8C00663756 /* DBTEAMGroupMembersSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B8C1D7F6CBF00ABD910 /* DBTEAMGroupMembersSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89E1D7F9E8C00663756 /* DBTEAMGroupMembersSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B8E1D7F6CBF00ABD910 /* DBTEAMGroupMembersSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B89F1D7F9E8C00663756 /* DBTEAMGroupMembersSetAccessTypeArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B901D7F6CBF00ABD910 /* DBTEAMGroupMembersSetAccessTypeArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A01D7F9E8C00663756 /* DBTEAMGroupSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B921D7F6CBF00ABD910 /* DBTEAMGroupSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A11D7F9E8C00663756 /* DBTEAMGroupSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B941D7F6CBF00ABD910 /* DBTEAMGroupSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A21D7F9E8C00663756 /* DBTEAMGroupsGetInfoError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B961D7F6CBF00ABD910 /* DBTEAMGroupsGetInfoError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A31D7F9E8C00663756 /* DBTEAMGroupsGetInfoItem.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B981D7F6CBF00ABD910 /* DBTEAMGroupsGetInfoItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A41D7F9E8C00663756 /* DBTEAMGroupsListArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B9A1D7F6CBF00ABD910 /* DBTEAMGroupsListArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A51D7F9E8C00663756 /* DBTEAMGroupsListContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B9C1D7F6CBF00ABD910 /* DBTEAMGroupsListContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A61D7F9E8C00663756 /* DBTEAMGroupsListContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090B9E1D7F6CBF00ABD910 /* DBTEAMGroupsListContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A71D7F9E8C00663756 /* DBTEAMGroupsListResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BA01D7F6CBF00ABD910 /* DBTEAMGroupsListResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A81D7F9E8C00663756 /* DBTEAMGroupsMembersListArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BA21D7F6CBF00ABD910 /* DBTEAMGroupsMembersListArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8A91D7F9E8C00663756 /* DBTEAMGroupsMembersListContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BA41D7F6CBF00ABD910 /* DBTEAMGroupsMembersListContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AA1D7F9E8C00663756 /* DBTEAMGroupsMembersListContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BA61D7F6CBF00ABD910 /* DBTEAMGroupsMembersListContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AB1D7F9E8C00663756 /* DBTEAMGroupsMembersListResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BA81D7F6CBF00ABD910 /* DBTEAMGroupsMembersListResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AC1D7F9E8C00663756 /* DBTEAMGroupsPollError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BAA1D7F6CBF00ABD910 /* DBTEAMGroupsPollError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AD1D7F9E8C00663756 /* DBTEAMGroupsSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BAC1D7F6CBF00ABD910 /* DBTEAMGroupsSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AE1D7F9E8C00663756 /* DBTEAMGroupUpdateArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BAE1D7F6CBF00ABD910 /* DBTEAMGroupUpdateArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8AF1D7F9E8C00663756 /* DBTEAMGroupUpdateError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BB01D7F6CBF00ABD910 /* DBTEAMGroupUpdateError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B01D7F9E8C00663756 /* DBTEAMIncludeMembersArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BB21D7F6CBF00ABD910 /* DBTEAMIncludeMembersArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B11D7F9E8C00663756 /* DBTEAMListMemberAppsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BB41D7F6CBF00ABD910 /* DBTEAMListMemberAppsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B21D7F9E8C00663756 /* DBTEAMListMemberAppsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BB61D7F6CBF00ABD910 /* DBTEAMListMemberAppsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B31D7F9E8C00663756 /* DBTEAMListMemberAppsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BB81D7F6CBF00ABD910 /* DBTEAMListMemberAppsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B41D7F9E8C00663756 /* DBTEAMListMemberDevicesArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BBA1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B51D7F9E8C00663756 /* DBTEAMListMemberDevicesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BBC1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B61D7F9E8C00663756 /* DBTEAMListMemberDevicesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BBE1D7F6CBF00ABD910 /* DBTEAMListMemberDevicesResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B71D7F9E8C00663756 /* DBTEAMListMembersAppsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BC01D7F6CBF00ABD910 /* DBTEAMListMembersAppsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B81D7F9E8C00663756 /* DBTEAMListMembersAppsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BC21D7F6CBF00ABD910 /* DBTEAMListMembersAppsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8B91D7F9E8C00663756 /* DBTEAMListMembersAppsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BC41D7F6CBF00ABD910 /* DBTEAMListMembersAppsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BA1D7F9E8C00663756 /* DBTEAMListMembersDevicesArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BC61D7F6CBF00ABD910 /* DBTEAMListMembersDevicesArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BB1D7F9E8C00663756 /* DBTEAMListMembersDevicesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BC81D7F6CBF00ABD910 /* DBTEAMListMembersDevicesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BC1D7F9E8C00663756 /* DBTEAMListMembersDevicesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BCA1D7F6CBF00ABD910 /* DBTEAMListMembersDevicesResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BD1D7F9E8C00663756 /* DBTEAMListTeamAppsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BCC1D7F6CBF00ABD910 /* DBTEAMListTeamAppsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BE1D7F9E8C00663756 /* DBTEAMListTeamAppsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BCE1D7F6CBF00ABD910 /* DBTEAMListTeamAppsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8BF1D7F9E8C00663756 /* DBTEAMListTeamAppsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BD01D7F6CBF00ABD910 /* DBTEAMListTeamAppsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C01D7F9E8C00663756 /* DBTEAMListTeamDevicesArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BD21D7F6CBF00ABD910 /* DBTEAMListTeamDevicesArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C11D7F9E8C00663756 /* DBTEAMListTeamDevicesError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BD41D7F6CBF00ABD910 /* DBTEAMListTeamDevicesError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C21D7F9E8C00663756 /* DBTEAMListTeamDevicesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BD61D7F6CBF00ABD910 /* DBTEAMListTeamDevicesResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C31D7F9E8C00663756 /* DBTEAMMemberAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BD81D7F6CBF00ABD910 /* DBTEAMMemberAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C41D7F9E8C00663756 /* DBTEAMMemberAddArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BDA1D7F6CBF00ABD910 /* DBTEAMMemberAddArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C51D7F9E8C00663756 /* DBTEAMMemberAddResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BDC1D7F6CBF00ABD910 /* DBTEAMMemberAddResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C61D7F9E8C00663756 /* DBTEAMMemberDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BDE1D7F6CBF00ABD910 /* DBTEAMMemberDevices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C71D7F9E8C00663756 /* DBTEAMMemberLinkedApps.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BE01D7F6CBF00ABD910 /* DBTEAMMemberLinkedApps.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C81D7F9E8C00663756 /* DBTEAMMemberProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BE21D7F6CBF00ABD910 /* DBTEAMMemberProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8C91D7F9E8C00663756 /* DBTEAMMembersAddArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BE41D7F6CBF00ABD910 /* DBTEAMMembersAddArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CA1D7F9E8C00663756 /* DBTEAMMembersAddJobStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BE61D7F6CC000ABD910 /* DBTEAMMembersAddJobStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CB1D7F9E8C00663756 /* DBTEAMMembersAddLaunch.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BE81D7F6CC000ABD910 /* DBTEAMMembersAddLaunch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CC1D7F9E8C00663756 /* DBTEAMMembersDeactivateArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BEA1D7F6CC000ABD910 /* DBTEAMMembersDeactivateArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CD1D7F9E8C00663756 /* DBTEAMMembersDeactivateError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BEC1D7F6CC000ABD910 /* DBTEAMMembersDeactivateError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CE1D7F9E8C00663756 /* DBTEAMMemberSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BEE1D7F6CC000ABD910 /* DBTEAMMemberSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8CF1D7F9E8C00663756 /* DBTEAMMembersGetInfoArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BF01D7F6CC000ABD910 /* DBTEAMMembersGetInfoArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D01D7F9E8C00663756 /* DBTEAMMembersGetInfoError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BF21D7F6CC000ABD910 /* DBTEAMMembersGetInfoError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D11D7F9E8C00663756 /* DBTEAMMembersGetInfoItem.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BF41D7F6CC000ABD910 /* DBTEAMMembersGetInfoItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D21D7F9E8C00663756 /* DBTEAMMembersListArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BF61D7F6CC000ABD910 /* DBTEAMMembersListArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D31D7F9E8C00663756 /* DBTEAMMembersListContinueArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BF81D7F6CC000ABD910 /* DBTEAMMembersListContinueArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D41D7F9E8C00663756 /* DBTEAMMembersListContinueError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BFA1D7F6CC000ABD910 /* DBTEAMMembersListContinueError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D51D7F9E8C00663756 /* DBTEAMMembersListError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BFC1D7F6CC000ABD910 /* DBTEAMMembersListError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D61D7F9E8C00663756 /* DBTEAMMembersListResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090BFE1D7F6CC000ABD910 /* DBTEAMMembersListResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D71D7F9E8C00663756 /* DBTEAMMembersRecoverArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C001D7F6CC000ABD910 /* DBTEAMMembersRecoverArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D81D7F9E8C00663756 /* DBTEAMMembersRecoverError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C021D7F6CC000ABD910 /* DBTEAMMembersRecoverError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8D91D7F9E8C00663756 /* DBTEAMMembersRemoveArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C041D7F6CC000ABD910 /* DBTEAMMembersRemoveArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DA1D7F9E8C00663756 /* DBTEAMMembersRemoveError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C061D7F6CC000ABD910 /* DBTEAMMembersRemoveError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DB1D7F9E8C00663756 /* DBTEAMMembersSendWelcomeError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C081D7F6CC000ABD910 /* DBTEAMMembersSendWelcomeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DC1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C0A1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DD1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C0C1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DE1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C0E1D7F6CC000ABD910 /* DBTEAMMembersSetPermissionsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8DF1D7F9E8C00663756 /* DBTEAMMembersSetProfileArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C101D7F6CC000ABD910 /* DBTEAMMembersSetProfileArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E01D7F9E8C00663756 /* DBTEAMMembersSetProfileError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C121D7F6CC000ABD910 /* DBTEAMMembersSetProfileError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E11D7F9E8C00663756 /* DBTEAMMembersSuspendError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C141D7F6CC000ABD910 /* DBTEAMMembersSuspendError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E21D7F9E8C00663756 /* DBTEAMMembersUnsuspendArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C161D7F6CC000ABD910 /* DBTEAMMembersUnsuspendArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E31D7F9E8C00663756 /* DBTEAMMembersUnsuspendError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C181D7F6CC000ABD910 /* DBTEAMMembersUnsuspendError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E41D7F9E8C00663756 /* DBTEAMMobileClientPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C1A1D7F6CC000ABD910 /* DBTEAMMobileClientPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E51D7F9E8C00663756 /* DBTEAMMobileClientSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C1C1D7F6CC000ABD910 /* DBTEAMMobileClientSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E61D7F9E8C00663756 /* DBTEAMRemovedStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C1E1D7F6CC000ABD910 /* DBTEAMRemovedStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E71D7F9E8C00663756 /* DBTEAMRevokeDesktopClientArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C201D7F6CC000ABD910 /* DBTEAMRevokeDesktopClientArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E81D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C221D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8E91D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C241D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8EA1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C261D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8EB1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C281D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8EC1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C2A1D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8ED1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C2C1D7F6CC000ABD910 /* DBTEAMRevokeDeviceSessionStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8EE1D7F9E8C00663756 /* DBTEAMRevokeLinkedApiAppArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C2E1D7F6CC000ABD910 /* DBTEAMRevokeLinkedApiAppArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8EF1D7F9E8C00663756 /* DBTEAMRevokeLinkedApiAppBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C301D7F6CC000ABD910 /* DBTEAMRevokeLinkedApiAppBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F01D7F9E8C00663756 /* DBTEAMRevokeLinkedAppBatchError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C321D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppBatchError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F11D7F9E8C00663756 /* DBTEAMRevokeLinkedAppBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C341D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F21D7F9E8C00663756 /* DBTEAMRevokeLinkedAppError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C361D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F31D7F9E8C00663756 /* DBTEAMRevokeLinkedAppStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C381D7F6CC000ABD910 /* DBTEAMRevokeLinkedAppStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F41D7F9E8C00663756 /* DBTEAMStorageBucket.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C3A1D7F6CC000ABD910 /* DBTEAMStorageBucket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F51D7F9E8C00663756 /* DBTEAMTeamGetInfoResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C3C1D7F6CC000ABD910 /* DBTEAMTeamGetInfoResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F61D7F9E8C00663756 /* DBTEAMTeamMemberInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C3E1D7F6CC000ABD910 /* DBTEAMTeamMemberInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F71D7F9E8C00663756 /* DBTEAMTeamMemberProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C401D7F6CC000ABD910 /* DBTEAMTeamMemberProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F81D7F9E8C00663756 /* DBTEAMTeamMembershipType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C421D7F6CC000ABD910 /* DBTEAMTeamMembershipType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8F91D7F9E8C00663756 /* DBTEAMTeamMemberStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C441D7F6CC000ABD910 /* DBTEAMTeamMemberStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FA1D7F9E8C00663756 /* DBTEAMUpdatePropertyTemplateArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C461D7F6CC000ABD910 /* DBTEAMUpdatePropertyTemplateArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FB1D7F9E8C00663756 /* DBTEAMUpdatePropertyTemplateResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C481D7F6CC000ABD910 /* DBTEAMUpdatePropertyTemplateResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FC1D7F9E8C00663756 /* DBTEAMUserSelectorArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C4A1D7F6CC000ABD910 /* DBTEAMUserSelectorArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FD1D7F9E8C00663756 /* DBTEAMUserSelectorError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C4C1D7F6CC000ABD910 /* DBTEAMUserSelectorError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FE1D7F9E8C00663756 /* DBTEAMUsersSelectorArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C4E1D7F6CC000ABD910 /* DBTEAMUsersSelectorArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B8FF1D7F9E8C00663756 /* DBTEAMCOMMONGroupManagementType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C511D7F6CC000ABD910 /* DBTEAMCOMMONGroupManagementType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9001D7F9E8C00663756 /* DBTEAMCOMMONGroupSummary.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C531D7F6CC000ABD910 /* DBTEAMCOMMONGroupSummary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9011D7F9E8C00663756 /* DBTEAMCOMMONGroupType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C551D7F6CC000ABD910 /* DBTEAMCOMMONGroupType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9021D7F9E8C00663756 /* DBTEAMPOLICIESEmmState.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C581D7F6CC000ABD910 /* DBTEAMPOLICIESEmmState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9031D7F9E8C00663756 /* DBTEAMPOLICIESSharedFolderJoinPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C5A1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedFolderJoinPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9041D7F9E8C00663756 /* DBTEAMPOLICIESSharedFolderMemberPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C5C1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedFolderMemberPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9051D7F9E8C00663756 /* DBTEAMPOLICIESSharedLinkCreatePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C5E1D7F6CC000ABD910 /* DBTEAMPOLICIESSharedLinkCreatePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9061D7F9E8C00663756 /* DBTEAMPOLICIESTeamMemberPolicies.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C601D7F6CC000ABD910 /* DBTEAMPOLICIESTeamMemberPolicies.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9071D7F9E8C00663756 /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C621D7F6CC000ABD910 /* DBTEAMPOLICIESTeamSharingPolicies.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9081D7F9E8C00663756 /* DBUSERSAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C651D7F6CC000ABD910 /* DBUSERSAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9091D7F9E8C00663756 /* DBUSERSAccountType.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C671D7F6CC000ABD910 /* DBUSERSAccountType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90A1D7F9E8C00663756 /* DBUSERSBasicAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C691D7F6CC000ABD910 /* DBUSERSBasicAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90B1D7F9E8C00663756 /* DBUSERSFullAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C6B1D7F6CC000ABD910 /* DBUSERSFullAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90C1D7F9E8C00663756 /* DBUSERSFullTeam.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C6D1D7F6CC000ABD910 /* DBUSERSFullTeam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90D1D7F9E8C00663756 /* DBUSERSGetAccountArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C6F1D7F6CC000ABD910 /* DBUSERSGetAccountArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90E1D7F9E8C00663756 /* DBUSERSGetAccountBatchArg.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C711D7F6CC000ABD910 /* DBUSERSGetAccountBatchArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B90F1D7F9E8C00663756 /* DBUSERSGetAccountBatchError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C731D7F6CC000ABD910 /* DBUSERSGetAccountBatchError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9101D7F9E8C00663756 /* DBUSERSGetAccountError.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C751D7F6CC000ABD910 /* DBUSERSGetAccountError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9111D7F9E8C00663756 /* DBUSERSIndividualSpaceAllocation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C771D7F6CC000ABD910 /* DBUSERSIndividualSpaceAllocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9121D7F9E8C00663756 /* DBUSERSName.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C791D7F6CC000ABD910 /* DBUSERSName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9131D7F9E8C00663756 /* DBUSERSSpaceAllocation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C7B1D7F6CC000ABD910 /* DBUSERSSpaceAllocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9141D7F9E8C00663756 /* DBUSERSSpaceUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C7D1D7F6CC000ABD910 /* DBUSERSSpaceUsage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9151D7F9E8C00663756 /* DBUSERSTeam.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C7F1D7F6CC000ABD910 /* DBUSERSTeam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9161D7F9E8C00663756 /* DBUSERSTeamSpaceAllocation.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C811D7F6CC000ABD910 /* DBUSERSTeamSpaceAllocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9171D7F9E8C00663756 /* DBBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C841D7F6CC000ABD910 /* DBBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9181D7F9E8C00663756 /* DBBaseTeam.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C861D7F6CC000ABD910 /* DBBaseTeam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9191D7F9E8C00663756 /* DropboxClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C881D7F6CC000ABD910 /* DropboxClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91A1D7F9E8C00663756 /* DropboxClientsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C8A1D7F6CC000ABD910 /* DropboxClientsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91B1D7F9E8C00663756 /* DropboxSDKImports.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C8C1D7F6CC000ABD910 /* DropboxSDKImports.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91C1D7F9E8C00663756 /* DropboxTeamClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C8D1D7F6CC000ABD910 /* DropboxTeamClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91D1D7F9E8C00663756 /* DBDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C901D7F6CC000ABD910 /* DBDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91E1D7F9E8C00663756 /* DBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C921D7F6CC000ABD910 /* DBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B91F1D7F9E8C00663756 /* DBHandlerTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C941D7F6CC000ABD910 /* DBHandlerTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9201D7F9E8C00663756 /* DBSessionData.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C951D7F6CC000ABD910 /* DBSessionData.h */; };
+		F2B0B9211D7F9E8C00663756 /* DBTasks.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C971D7F6CC000ABD910 /* DBTasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9221D7F9E8C00663756 /* DBTransportClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C991D7F6CC000ABD910 /* DBTransportClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9231D7F9E8C00663756 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C9B1D7F6CC000ABD910 /* Reachability.h */; };
+		F2B0B9241D7F9E8C00663756 /* DBKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090C9E1D7F6CC000ABD910 /* DBKeychain.h */; };
+		F2B0B9251D7F9E8C00663756 /* DBOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA01D7F6CC000ABD910 /* DBOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9261D7F9E8C00663756 /* DBOAuthResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA21D7F6CC000ABD910 /* DBOAuthResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9271D7F9E8C00663756 /* DBSharedApplicationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA41D7F6CC000ABD910 /* DBSharedApplicationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9281D7F9E8C00663756 /* DBSerializableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA61D7F6CC000ABD910 /* DBSerializableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9291D7F9E8C00663756 /* DBStoneBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA71D7F6CC000ABD910 /* DBStoneBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92A1D7F9E8C00663756 /* DBStoneSerializers.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CA91D7F6CC000ABD910 /* DBStoneSerializers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92B1D7F9E8C00663756 /* DBStoneValidators.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CAB1D7F6CC000ABD910 /* DBStoneValidators.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92C1D7F9E8C00663756 /* DBAUTHRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CAE1D7F6CC000ABD910 /* DBAUTHRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92D1D7F9E8C00663756 /* DBFILESRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CB01D7F6CC000ABD910 /* DBFILESRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92E1D7F9E8C00663756 /* DBSHARINGRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CB21D7F6CC000ABD910 /* DBSHARINGRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B92F1D7F9E8C00663756 /* DBTEAMRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CB41D7F6CC000ABD910 /* DBTEAMRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9301D7F9E8C00663756 /* DBUSERSRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CB61D7F6CC000ABD910 /* DBUSERSRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9311D7F9E8C00663756 /* DBAUTHRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CB91D7F6CC000ABD910 /* DBAUTHRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9321D7F9E8C00663756 /* DBFILESRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CBB1D7F6CC000ABD910 /* DBFILESRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9331D7F9E8C00663756 /* DBSHARINGRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CBD1D7F6CC000ABD910 /* DBSHARINGRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9341D7F9E8C00663756 /* DBTEAMRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CBF1D7F6CC000ABD910 /* DBTEAMRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9351D7F9E8C00663756 /* DBUSERSRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CC11D7F6CC000ABD910 /* DBUSERSRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9361D7F9E8C00663756 /* DBOAuthMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CC51D7F6CC000ABD910 /* DBOAuthMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2B0B9371D7F9E8C00663756 /* DropboxClientsManager+MobileAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F2090CC71D7F6CC000ABD910 /* DropboxClientsManager+MobileAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1953,7 +2386,440 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F26B75791D7F6AF700714F70 /* ObjectiveDropboxOfficial.h in Headers */,
+				F2B0B7861D7F9E8100663756 /* ObjectiveDropboxOfficial.h in Headers */,
+				F2B0B7871D7F9E8A00663756 /* DBASYNCLaunchEmptyResult.h in Headers */,
+				F2B0B7881D7F9E8A00663756 /* DBASYNCLaunchResultBase.h in Headers */,
+				F2B0B7891D7F9E8A00663756 /* DBASYNCPollArg.h in Headers */,
+				F2B0B78A1D7F9E8A00663756 /* DBASYNCPollEmptyResult.h in Headers */,
+				F2B0B78B1D7F9E8A00663756 /* DBASYNCPollError.h in Headers */,
+				F2B0B78C1D7F9E8A00663756 /* DBASYNCPollResultBase.h in Headers */,
+				F2B0B78D1D7F9E8A00663756 /* DBAUTHAuthError.h in Headers */,
+				F2B0B78E1D7F9E8A00663756 /* DBAUTHRateLimitError.h in Headers */,
+				F2B0B78F1D7F9E8A00663756 /* DBAUTHRateLimitReason.h in Headers */,
+				F2B0B7901D7F9E8A00663756 /* DBFILESAddPropertiesError.h in Headers */,
+				F2B0B7911D7F9E8A00663756 /* DBFILESAlphaGetMetadataArg.h in Headers */,
+				F2B0B7921D7F9E8A00663756 /* DBFILESAlphaGetMetadataError.h in Headers */,
+				F2B0B7931D7F9E8A00663756 /* DBFILESCommitInfo.h in Headers */,
+				F2B0B7941D7F9E8A00663756 /* DBFILESCommitInfoWithProperties.h in Headers */,
+				F2B0B7951D7F9E8A00663756 /* DBFILESCreateFolderArg.h in Headers */,
+				F2B0B7961D7F9E8A00663756 /* DBFILESCreateFolderError.h in Headers */,
+				F2B0B7971D7F9E8A00663756 /* DBFILESDeleteArg.h in Headers */,
+				F2B0B7981D7F9E8A00663756 /* DBFILESDeletedMetadata.h in Headers */,
+				F2B0B7991D7F9E8A00663756 /* DBFILESDeleteError.h in Headers */,
+				F2B0B79A1D7F9E8A00663756 /* DBFILESDimensions.h in Headers */,
+				F2B0B79B1D7F9E8A00663756 /* DBFILESDownloadArg.h in Headers */,
+				F2B0B79C1D7F9E8A00663756 /* DBFILESDownloadError.h in Headers */,
+				F2B0B79D1D7F9E8A00663756 /* DBFILESFileMetadata.h in Headers */,
+				F2B0B79E1D7F9E8A00663756 /* DBFILESFileSharingInfo.h in Headers */,
+				F2B0B79F1D7F9E8A00663756 /* DBFILESFolderMetadata.h in Headers */,
+				F2B0B7A01D7F9E8A00663756 /* DBFILESFolderSharingInfo.h in Headers */,
+				F2B0B7A11D7F9E8A00663756 /* DBFILESGetCopyReferenceArg.h in Headers */,
+				F2B0B7A21D7F9E8A00663756 /* DBFILESGetCopyReferenceError.h in Headers */,
+				F2B0B7A31D7F9E8A00663756 /* DBFILESGetCopyReferenceResult.h in Headers */,
+				F2B0B7A41D7F9E8A00663756 /* DBFILESGetMetadataArg.h in Headers */,
+				F2B0B7A51D7F9E8A00663756 /* DBFILESGetMetadataError.h in Headers */,
+				F2B0B7A61D7F9E8A00663756 /* DBFILESGetTemporaryLinkArg.h in Headers */,
+				F2B0B7A71D7F9E8A00663756 /* DBFILESGetTemporaryLinkError.h in Headers */,
+				F2B0B7A81D7F9E8A00663756 /* DBFILESGetTemporaryLinkResult.h in Headers */,
+				F2B0B7A91D7F9E8A00663756 /* DBFILESGpsCoordinates.h in Headers */,
+				F2B0B7AA1D7F9E8A00663756 /* DBFILESInvalidPropertyGroupError.h in Headers */,
+				F2B0B7AB1D7F9E8A00663756 /* DBFILESListFolderArg.h in Headers */,
+				F2B0B7AC1D7F9E8A00663756 /* DBFILESListFolderContinueArg.h in Headers */,
+				F2B0B7AD1D7F9E8A00663756 /* DBFILESListFolderContinueError.h in Headers */,
+				F2B0B7AE1D7F9E8A00663756 /* DBFILESListFolderError.h in Headers */,
+				F2B0B7AF1D7F9E8A00663756 /* DBFILESListFolderGetLatestCursorResult.h in Headers */,
+				F2B0B7B01D7F9E8A00663756 /* DBFILESListFolderLongpollArg.h in Headers */,
+				F2B0B7B11D7F9E8A00663756 /* DBFILESListFolderLongpollError.h in Headers */,
+				F2B0B7B21D7F9E8A00663756 /* DBFILESListFolderLongpollResult.h in Headers */,
+				F2B0B7B31D7F9E8A00663756 /* DBFILESListFolderResult.h in Headers */,
+				F2B0B7B41D7F9E8A00663756 /* DBFILESListRevisionsArg.h in Headers */,
+				F2B0B7B51D7F9E8A00663756 /* DBFILESListRevisionsError.h in Headers */,
+				F2B0B7B61D7F9E8A00663756 /* DBFILESListRevisionsResult.h in Headers */,
+				F2B0B7B71D7F9E8A00663756 /* DBFILESLookupError.h in Headers */,
+				F2B0B7B81D7F9E8A00663756 /* DBFILESLookUpPropertiesError.h in Headers */,
+				F2B0B7B91D7F9E8A00663756 /* DBFILESMediaInfo.h in Headers */,
+				F2B0B7BA1D7F9E8A00663756 /* DBFILESMediaMetadata.h in Headers */,
+				F2B0B7BB1D7F9E8A00663756 /* DBFILESMetadata.h in Headers */,
+				F2B0B7BC1D7F9E8A00663756 /* DBFILESPhotoMetadata.h in Headers */,
+				F2B0B7BD1D7F9E8A00663756 /* DBFILESPreviewArg.h in Headers */,
+				F2B0B7BE1D7F9E8A00663756 /* DBFILESPreviewError.h in Headers */,
+				F2B0B7BF1D7F9E8A00663756 /* DBFILESPropertiesError.h in Headers */,
+				F2B0B7C01D7F9E8A00663756 /* DBFILESPropertyGroupUpdate.h in Headers */,
+				F2B0B7C11D7F9E8A00663756 /* DBFILESPropertyGroupWithPath.h in Headers */,
+				F2B0B7C21D7F9E8A00663756 /* DBFILESRelocationArg.h in Headers */,
+				F2B0B7C31D7F9E8A00663756 /* DBFILESRelocationError.h in Headers */,
+				F2B0B7C41D7F9E8A00663756 /* DBFILESRemovePropertiesArg.h in Headers */,
+				F2B0B7C51D7F9E8A00663756 /* DBFILESRemovePropertiesError.h in Headers */,
+				F2B0B7C61D7F9E8A00663756 /* DBFILESRestoreArg.h in Headers */,
+				F2B0B7C71D7F9E8A00663756 /* DBFILESRestoreError.h in Headers */,
+				F2B0B7C81D7F9E8A00663756 /* DBFILESSaveCopyReferenceArg.h in Headers */,
+				F2B0B7C91D7F9E8A00663756 /* DBFILESSaveCopyReferenceError.h in Headers */,
+				F2B0B7CA1D7F9E8A00663756 /* DBFILESSaveCopyReferenceResult.h in Headers */,
+				F2B0B7CB1D7F9E8B00663756 /* DBFILESSaveUrlArg.h in Headers */,
+				F2B0B7CC1D7F9E8B00663756 /* DBFILESSaveUrlError.h in Headers */,
+				F2B0B7CD1D7F9E8B00663756 /* DBFILESSaveUrlJobStatus.h in Headers */,
+				F2B0B7CE1D7F9E8B00663756 /* DBFILESSaveUrlResult.h in Headers */,
+				F2B0B7CF1D7F9E8B00663756 /* DBFILESSearchArg.h in Headers */,
+				F2B0B7D01D7F9E8B00663756 /* DBFILESSearchError.h in Headers */,
+				F2B0B7D11D7F9E8B00663756 /* DBFILESSearchMatch.h in Headers */,
+				F2B0B7D21D7F9E8B00663756 /* DBFILESSearchMatchType.h in Headers */,
+				F2B0B7D31D7F9E8B00663756 /* DBFILESSearchMode.h in Headers */,
+				F2B0B7D41D7F9E8B00663756 /* DBFILESSearchResult.h in Headers */,
+				F2B0B7D51D7F9E8B00663756 /* DBFILESSharingInfo.h in Headers */,
+				F2B0B7D61D7F9E8B00663756 /* DBFILESThumbnailArg.h in Headers */,
+				F2B0B7D71D7F9E8B00663756 /* DBFILESThumbnailError.h in Headers */,
+				F2B0B7D81D7F9E8B00663756 /* DBFILESThumbnailFormat.h in Headers */,
+				F2B0B7D91D7F9E8B00663756 /* DBFILESThumbnailSize.h in Headers */,
+				F2B0B7DA1D7F9E8B00663756 /* DBFILESUpdatePropertiesError.h in Headers */,
+				F2B0B7DB1D7F9E8B00663756 /* DBFILESUpdatePropertyGroupArg.h in Headers */,
+				F2B0B7DC1D7F9E8B00663756 /* DBFILESUploadError.h in Headers */,
+				F2B0B7DD1D7F9E8B00663756 /* DBFILESUploadErrorWithProperties.h in Headers */,
+				F2B0B7DE1D7F9E8B00663756 /* DBFILESUploadSessionAppendArg.h in Headers */,
+				F2B0B7DF1D7F9E8B00663756 /* DBFILESUploadSessionCursor.h in Headers */,
+				F2B0B7E01D7F9E8B00663756 /* DBFILESUploadSessionFinishArg.h in Headers */,
+				F2B0B7E11D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchArg.h in Headers */,
+				F2B0B7E21D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchJobStatus.h in Headers */,
+				F2B0B7E31D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchResult.h in Headers */,
+				F2B0B7E41D7F9E8B00663756 /* DBFILESUploadSessionFinishBatchResultEntry.h in Headers */,
+				F2B0B7E51D7F9E8B00663756 /* DBFILESUploadSessionFinishError.h in Headers */,
+				F2B0B7E61D7F9E8B00663756 /* DBFILESUploadSessionLookupError.h in Headers */,
+				F2B0B7E71D7F9E8B00663756 /* DBFILESUploadSessionOffsetError.h in Headers */,
+				F2B0B7E81D7F9E8B00663756 /* DBFILESUploadSessionStartArg.h in Headers */,
+				F2B0B7E91D7F9E8B00663756 /* DBFILESUploadSessionStartResult.h in Headers */,
+				F2B0B7EA1D7F9E8B00663756 /* DBFILESUploadWriteFailed.h in Headers */,
+				F2B0B7EB1D7F9E8B00663756 /* DBFILESVideoMetadata.h in Headers */,
+				F2B0B7EC1D7F9E8B00663756 /* DBFILESWriteConflictError.h in Headers */,
+				F2B0B7ED1D7F9E8B00663756 /* DBFILESWriteError.h in Headers */,
+				F2B0B7EE1D7F9E8B00663756 /* DBFILESWriteMode.h in Headers */,
+				F2B0B7EF1D7F9E8B00663756 /* DBPROPERTIESGetPropertyTemplateArg.h in Headers */,
+				F2B0B7F01D7F9E8B00663756 /* DBPROPERTIESGetPropertyTemplateResult.h in Headers */,
+				F2B0B7F11D7F9E8B00663756 /* DBPROPERTIESListPropertyTemplateIds.h in Headers */,
+				F2B0B7F21D7F9E8B00663756 /* DBPROPERTIESModifyPropertyTemplateError.h in Headers */,
+				F2B0B7F31D7F9E8B00663756 /* DBPROPERTIESPropertyField.h in Headers */,
+				F2B0B7F41D7F9E8B00663756 /* DBPROPERTIESPropertyFieldTemplate.h in Headers */,
+				F2B0B7F51D7F9E8B00663756 /* DBPROPERTIESPropertyGroup.h in Headers */,
+				F2B0B7F61D7F9E8B00663756 /* DBPROPERTIESPropertyGroupTemplate.h in Headers */,
+				F2B0B7F71D7F9E8B00663756 /* DBPROPERTIESPropertyTemplateError.h in Headers */,
+				F2B0B7F81D7F9E8B00663756 /* DBPROPERTIESPropertyType.h in Headers */,
+				F2B0B7F91D7F9E8B00663756 /* DBSHARINGAccessLevel.h in Headers */,
+				F2B0B7FA1D7F9E8B00663756 /* DBSHARINGAclUpdatePolicy.h in Headers */,
+				F2B0B7FB1D7F9E8B00663756 /* DBSHARINGAddFileMemberArgs.h in Headers */,
+				F2B0B7FC1D7F9E8B00663756 /* DBSHARINGAddFileMemberError.h in Headers */,
+				F2B0B7FD1D7F9E8B00663756 /* DBSHARINGAddFolderMemberArg.h in Headers */,
+				F2B0B7FE1D7F9E8B00663756 /* DBSHARINGAddFolderMemberError.h in Headers */,
+				F2B0B7FF1D7F9E8B00663756 /* DBSHARINGAddMember.h in Headers */,
+				F2B0B8001D7F9E8B00663756 /* DBSHARINGAddMemberSelectorError.h in Headers */,
+				F2B0B8011D7F9E8B00663756 /* DBSHARINGChangeFileMemberAccessArgs.h in Headers */,
+				F2B0B8021D7F9E8B00663756 /* DBSHARINGCollectionLinkMetadata.h in Headers */,
+				F2B0B8031D7F9E8B00663756 /* DBSHARINGCreateSharedLinkArg.h in Headers */,
+				F2B0B8041D7F9E8B00663756 /* DBSHARINGCreateSharedLinkError.h in Headers */,
+				F2B0B8051D7F9E8B00663756 /* DBSHARINGCreateSharedLinkWithSettingsArg.h in Headers */,
+				F2B0B8061D7F9E8B00663756 /* DBSHARINGCreateSharedLinkWithSettingsError.h in Headers */,
+				F2B0B8071D7F9E8B00663756 /* DBSHARINGFileAction.h in Headers */,
+				F2B0B8081D7F9E8B00663756 /* DBSHARINGFileErrorResult.h in Headers */,
+				F2B0B8091D7F9E8B00663756 /* DBSHARINGFileLinkMetadata.h in Headers */,
+				F2B0B80A1D7F9E8B00663756 /* DBSHARINGFileMemberActionError.h in Headers */,
+				F2B0B80B1D7F9E8B00663756 /* DBSHARINGFileMemberActionIndividualResult.h in Headers */,
+				F2B0B80C1D7F9E8B00663756 /* DBSHARINGFileMemberActionResult.h in Headers */,
+				F2B0B80D1D7F9E8B00663756 /* DBSHARINGFileMemberRemoveActionResult.h in Headers */,
+				F2B0B80E1D7F9E8B00663756 /* DBSHARINGFilePermission.h in Headers */,
+				F2B0B80F1D7F9E8B00663756 /* DBSHARINGFolderAction.h in Headers */,
+				F2B0B8101D7F9E8B00663756 /* DBSHARINGFolderLinkMetadata.h in Headers */,
+				F2B0B8111D7F9E8B00663756 /* DBSHARINGFolderPermission.h in Headers */,
+				F2B0B8121D7F9E8B00663756 /* DBSHARINGFolderPolicy.h in Headers */,
+				F2B0B8131D7F9E8B00663756 /* DBSHARINGGetFileMetadataArg.h in Headers */,
+				F2B0B8141D7F9E8B00663756 /* DBSHARINGGetFileMetadataBatchArg.h in Headers */,
+				F2B0B8151D7F9E8B00663756 /* DBSHARINGGetFileMetadataBatchResult.h in Headers */,
+				F2B0B8161D7F9E8B00663756 /* DBSHARINGGetFileMetadataError.h in Headers */,
+				F2B0B8171D7F9E8B00663756 /* DBSHARINGGetFileMetadataIndividualResult.h in Headers */,
+				F2B0B8181D7F9E8B00663756 /* DBSHARINGGetMetadataArgs.h in Headers */,
+				F2B0B8191D7F9E8B00663756 /* DBSHARINGGetSharedLinkFileError.h in Headers */,
+				F2B0B81A1D7F9E8B00663756 /* DBSHARINGGetSharedLinkMetadataArg.h in Headers */,
+				F2B0B81B1D7F9E8B00663756 /* DBSHARINGGetSharedLinksArg.h in Headers */,
+				F2B0B81C1D7F9E8B00663756 /* DBSHARINGGetSharedLinksError.h in Headers */,
+				F2B0B81D1D7F9E8B00663756 /* DBSHARINGGetSharedLinksResult.h in Headers */,
+				F2B0B81E1D7F9E8B00663756 /* DBSHARINGGroupInfo.h in Headers */,
+				F2B0B81F1D7F9E8B00663756 /* DBSHARINGGroupMembershipInfo.h in Headers */,
+				F2B0B8201D7F9E8B00663756 /* DBSHARINGInsufficientQuotaAmounts.h in Headers */,
+				F2B0B8211D7F9E8B00663756 /* DBSHARINGInviteeInfo.h in Headers */,
+				F2B0B8221D7F9E8B00663756 /* DBSHARINGInviteeMembershipInfo.h in Headers */,
+				F2B0B8231D7F9E8B00663756 /* DBSHARINGJobError.h in Headers */,
+				F2B0B8241D7F9E8B00663756 /* DBSHARINGJobStatus.h in Headers */,
+				F2B0B8251D7F9E8B00663756 /* DBSHARINGLinkMetadata.h in Headers */,
+				F2B0B8261D7F9E8B00663756 /* DBSHARINGLinkPermissions.h in Headers */,
+				F2B0B8271D7F9E8B00663756 /* DBSHARINGListFileMembersArg.h in Headers */,
+				F2B0B8281D7F9E8B00663756 /* DBSHARINGListFileMembersBatchArg.h in Headers */,
+				F2B0B8291D7F9E8B00663756 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
+				F2B0B82A1D7F9E8B00663756 /* DBSHARINGListFileMembersContinueArg.h in Headers */,
+				F2B0B82B1D7F9E8B00663756 /* DBSHARINGListFileMembersContinueError.h in Headers */,
+				F2B0B82C1D7F9E8B00663756 /* DBSHARINGListFileMembersCountResult.h in Headers */,
+				F2B0B82D1D7F9E8B00663756 /* DBSHARINGListFileMembersError.h in Headers */,
+				F2B0B82E1D7F9E8B00663756 /* DBSHARINGListFileMembersIndividualResult.h in Headers */,
+				F2B0B82F1D7F9E8B00663756 /* DBSHARINGListFilesArg.h in Headers */,
+				F2B0B8301D7F9E8B00663756 /* DBSHARINGListFilesContinueArg.h in Headers */,
+				F2B0B8311D7F9E8B00663756 /* DBSHARINGListFilesContinueError.h in Headers */,
+				F2B0B8321D7F9E8B00663756 /* DBSHARINGListFilesResult.h in Headers */,
+				F2B0B8331D7F9E8B00663756 /* DBSHARINGListFolderMembersArgs.h in Headers */,
+				F2B0B8341D7F9E8B00663756 /* DBSHARINGListFolderMembersContinueArg.h in Headers */,
+				F2B0B8351D7F9E8B00663756 /* DBSHARINGListFolderMembersContinueError.h in Headers */,
+				F2B0B8361D7F9E8B00663756 /* DBSHARINGListFolderMembersCursorArg.h in Headers */,
+				F2B0B8371D7F9E8B00663756 /* DBSHARINGListFoldersArgs.h in Headers */,
+				F2B0B8381D7F9E8B00663756 /* DBSHARINGListFoldersContinueArg.h in Headers */,
+				F2B0B8391D7F9E8B00663756 /* DBSHARINGListFoldersContinueError.h in Headers */,
+				F2B0B83A1D7F9E8B00663756 /* DBSHARINGListFoldersResult.h in Headers */,
+				F2B0B83B1D7F9E8B00663756 /* DBSHARINGListSharedLinksArg.h in Headers */,
+				F2B0B83C1D7F9E8B00663756 /* DBSHARINGListSharedLinksError.h in Headers */,
+				F2B0B83D1D7F9E8B00663756 /* DBSHARINGListSharedLinksResult.h in Headers */,
+				F2B0B83E1D7F9E8B00663756 /* DBSHARINGMemberAccessLevelResult.h in Headers */,
+				F2B0B83F1D7F9E8B00663756 /* DBSHARINGMemberAction.h in Headers */,
+				F2B0B8401D7F9E8B00663756 /* DBSHARINGMemberPermission.h in Headers */,
+				F2B0B8411D7F9E8B00663756 /* DBSHARINGMemberPolicy.h in Headers */,
+				F2B0B8421D7F9E8B00663756 /* DBSHARINGMemberSelector.h in Headers */,
+				F2B0B8431D7F9E8B00663756 /* DBSHARINGMembershipInfo.h in Headers */,
+				F2B0B8441D7F9E8B00663756 /* DBSHARINGModifySharedLinkSettingsArgs.h in Headers */,
+				F2B0B8451D7F9E8B00663756 /* DBSHARINGModifySharedLinkSettingsError.h in Headers */,
+				F2B0B8461D7F9E8B00663756 /* DBSHARINGMountFolderArg.h in Headers */,
+				F2B0B8471D7F9E8B00663756 /* DBSHARINGMountFolderError.h in Headers */,
+				F2B0B8481D7F9E8B00663756 /* DBSHARINGParentFolderAccessInfo.h in Headers */,
+				F2B0B8491D7F9E8B00663756 /* DBSHARINGPathLinkMetadata.h in Headers */,
+				F2B0B84A1D7F9E8B00663756 /* DBSHARINGPendingUploadMode.h in Headers */,
+				F2B0B84B1D7F9E8B00663756 /* DBSHARINGPermissionDeniedReason.h in Headers */,
+				F2B0B84C1D7F9E8B00663756 /* DBSHARINGRelinquishFileMembershipArg.h in Headers */,
+				F2B0B84D1D7F9E8B00663756 /* DBSHARINGRelinquishFileMembershipError.h in Headers */,
+				F2B0B84E1D7F9E8B00663756 /* DBSHARINGRelinquishFolderMembershipArg.h in Headers */,
+				F2B0B84F1D7F9E8B00663756 /* DBSHARINGRelinquishFolderMembershipError.h in Headers */,
+				F2B0B8501D7F9E8B00663756 /* DBSHARINGRemoveFileMemberArg.h in Headers */,
+				F2B0B8511D7F9E8B00663756 /* DBSHARINGRemoveFileMemberError.h in Headers */,
+				F2B0B8521D7F9E8B00663756 /* DBSHARINGRemoveFolderMemberArg.h in Headers */,
+				F2B0B8531D7F9E8B00663756 /* DBSHARINGRemoveFolderMemberError.h in Headers */,
+				F2B0B8541D7F9E8B00663756 /* DBSHARINGRemoveMemberJobStatus.h in Headers */,
+				F2B0B8551D7F9E8B00663756 /* DBSHARINGRequestedVisibility.h in Headers */,
+				F2B0B8561D7F9E8B00663756 /* DBSHARINGResolvedVisibility.h in Headers */,
+				F2B0B8571D7F9E8B00663756 /* DBSHARINGRevokeSharedLinkArg.h in Headers */,
+				F2B0B8581D7F9E8B00663756 /* DBSHARINGRevokeSharedLinkError.h in Headers */,
+				F2B0B8591D7F9E8B00663756 /* DBSHARINGSharedFileMembers.h in Headers */,
+				F2B0B85A1D7F9E8B00663756 /* DBSHARINGSharedFileMetadata.h in Headers */,
+				F2B0B85B1D7F9E8B00663756 /* DBSHARINGSharedFolderAccessError.h in Headers */,
+				F2B0B85C1D7F9E8B00663756 /* DBSHARINGSharedFolderMemberError.h in Headers */,
+				F2B0B85D1D7F9E8B00663756 /* DBSHARINGSharedFolderMembers.h in Headers */,
+				F2B0B85E1D7F9E8B00663756 /* DBSHARINGSharedFolderMetadata.h in Headers */,
+				F2B0B85F1D7F9E8B00663756 /* DBSHARINGSharedFolderMetadataBase.h in Headers */,
+				F2B0B8601D7F9E8B00663756 /* DBSHARINGSharedLinkAccessFailureReason.h in Headers */,
+				F2B0B8611D7F9E8B00663756 /* DBSHARINGSharedLinkError.h in Headers */,
+				F2B0B8621D7F9E8B00663756 /* DBSHARINGSharedLinkMetadata.h in Headers */,
+				F2B0B8631D7F9E8B00663756 /* DBSHARINGSharedLinkPolicy.h in Headers */,
+				F2B0B8641D7F9E8B00663756 /* DBSHARINGSharedLinkSettings.h in Headers */,
+				F2B0B8651D7F9E8B00663756 /* DBSHARINGSharedLinkSettingsError.h in Headers */,
+				F2B0B8661D7F9E8B00663756 /* DBSHARINGShareFolderArg.h in Headers */,
+				F2B0B8671D7F9E8B00663756 /* DBSHARINGShareFolderError.h in Headers */,
+				F2B0B8681D7F9E8B00663756 /* DBSHARINGShareFolderErrorBase.h in Headers */,
+				F2B0B8691D7F9E8B00663756 /* DBSHARINGShareFolderJobStatus.h in Headers */,
+				F2B0B86A1D7F9E8B00663756 /* DBSHARINGShareFolderLaunch.h in Headers */,
+				F2B0B86B1D7F9E8B00663756 /* DBSHARINGSharePathError.h in Headers */,
+				F2B0B86C1D7F9E8B00663756 /* DBSHARINGSharingFileAccessError.h in Headers */,
+				F2B0B86D1D7F9E8B00663756 /* DBSHARINGSharingUserError.h in Headers */,
+				F2B0B86E1D7F9E8B00663756 /* DBSHARINGTeamMemberInfo.h in Headers */,
+				F2B0B86F1D7F9E8B00663756 /* DBSHARINGTransferFolderArg.h in Headers */,
+				F2B0B8701D7F9E8B00663756 /* DBSHARINGTransferFolderError.h in Headers */,
+				F2B0B8711D7F9E8B00663756 /* DBSHARINGUnmountFolderArg.h in Headers */,
+				F2B0B8721D7F9E8B00663756 /* DBSHARINGUnmountFolderError.h in Headers */,
+				F2B0B8731D7F9E8B00663756 /* DBSHARINGUnshareFileArg.h in Headers */,
+				F2B0B8741D7F9E8B00663756 /* DBSHARINGUnshareFileError.h in Headers */,
+				F2B0B8751D7F9E8B00663756 /* DBSHARINGUnshareFolderArg.h in Headers */,
+				F2B0B8761D7F9E8B00663756 /* DBSHARINGUnshareFolderError.h in Headers */,
+				F2B0B8771D7F9E8B00663756 /* DBSHARINGUpdateFolderMemberArg.h in Headers */,
+				F2B0B8781D7F9E8B00663756 /* DBSHARINGUpdateFolderMemberError.h in Headers */,
+				F2B0B8791D7F9E8B00663756 /* DBSHARINGUpdateFolderPolicyArg.h in Headers */,
+				F2B0B87A1D7F9E8B00663756 /* DBSHARINGUpdateFolderPolicyError.h in Headers */,
+				F2B0B87B1D7F9E8B00663756 /* DBSHARINGUserInfo.h in Headers */,
+				F2B0B87C1D7F9E8B00663756 /* DBSHARINGUserMembershipInfo.h in Headers */,
+				F2B0B87D1D7F9E8B00663756 /* DBSHARINGVisibility.h in Headers */,
+				F2B0B87E1D7F9E8B00663756 /* DBTEAMActiveWebSession.h in Headers */,
+				F2B0B87F1D7F9E8B00663756 /* DBTEAMAddPropertyTemplateArg.h in Headers */,
+				F2B0B8801D7F9E8B00663756 /* DBTEAMAddPropertyTemplateResult.h in Headers */,
+				F2B0B8811D7F9E8B00663756 /* DBTEAMAdminTier.h in Headers */,
+				F2B0B8821D7F9E8C00663756 /* DBTEAMApiApp.h in Headers */,
+				F2B0B8831D7F9E8C00663756 /* DBTEAMBaseDfbReport.h in Headers */,
+				F2B0B8841D7F9E8C00663756 /* DBTEAMDateRange.h in Headers */,
+				F2B0B8851D7F9E8C00663756 /* DBTEAMDateRangeError.h in Headers */,
+				F2B0B8861D7F9E8C00663756 /* DBTEAMDesktopClientSession.h in Headers */,
+				F2B0B8871D7F9E8C00663756 /* DBTEAMDesktopPlatform.h in Headers */,
+				F2B0B8881D7F9E8C00663756 /* DBTEAMDevicesActive.h in Headers */,
+				F2B0B8891D7F9E8C00663756 /* DBTEAMDeviceSession.h in Headers */,
+				F2B0B88A1D7F9E8C00663756 /* DBTEAMDeviceSessionArg.h in Headers */,
+				F2B0B88B1D7F9E8C00663756 /* DBTEAMGetActivityReport.h in Headers */,
+				F2B0B88C1D7F9E8C00663756 /* DBTEAMGetDevicesReport.h in Headers */,
+				F2B0B88D1D7F9E8C00663756 /* DBTEAMGetMembershipReport.h in Headers */,
+				F2B0B88E1D7F9E8C00663756 /* DBTEAMGetStorageReport.h in Headers */,
+				F2B0B88F1D7F9E8C00663756 /* DBTEAMGroupAccessType.h in Headers */,
+				F2B0B8901D7F9E8C00663756 /* DBTEAMGroupCreateArg.h in Headers */,
+				F2B0B8911D7F9E8C00663756 /* DBTEAMGroupCreateError.h in Headers */,
+				F2B0B8921D7F9E8C00663756 /* DBTEAMGroupDeleteError.h in Headers */,
+				F2B0B8931D7F9E8C00663756 /* DBTEAMGroupFullInfo.h in Headers */,
+				F2B0B8941D7F9E8C00663756 /* DBTEAMGroupMemberInfo.h in Headers */,
+				F2B0B8951D7F9E8C00663756 /* DBTEAMGroupMembersAddArg.h in Headers */,
+				F2B0B8961D7F9E8C00663756 /* DBTEAMGroupMembersAddError.h in Headers */,
+				F2B0B8971D7F9E8C00663756 /* DBTEAMGroupMembersChangeResult.h in Headers */,
+				F2B0B8981D7F9E8C00663756 /* DBTEAMGroupMemberSelector.h in Headers */,
+				F2B0B8991D7F9E8C00663756 /* DBTEAMGroupMemberSelectorError.h in Headers */,
+				F2B0B89A1D7F9E8C00663756 /* DBTEAMGroupMemberSetAccessTypeError.h in Headers */,
+				F2B0B89B1D7F9E8C00663756 /* DBTEAMGroupMembersRemoveArg.h in Headers */,
+				F2B0B89C1D7F9E8C00663756 /* DBTEAMGroupMembersRemoveError.h in Headers */,
+				F2B0B89D1D7F9E8C00663756 /* DBTEAMGroupMembersSelector.h in Headers */,
+				F2B0B89E1D7F9E8C00663756 /* DBTEAMGroupMembersSelectorError.h in Headers */,
+				F2B0B89F1D7F9E8C00663756 /* DBTEAMGroupMembersSetAccessTypeArg.h in Headers */,
+				F2B0B8A01D7F9E8C00663756 /* DBTEAMGroupSelector.h in Headers */,
+				F2B0B8A11D7F9E8C00663756 /* DBTEAMGroupSelectorError.h in Headers */,
+				F2B0B8A21D7F9E8C00663756 /* DBTEAMGroupsGetInfoError.h in Headers */,
+				F2B0B8A31D7F9E8C00663756 /* DBTEAMGroupsGetInfoItem.h in Headers */,
+				F2B0B8A41D7F9E8C00663756 /* DBTEAMGroupsListArg.h in Headers */,
+				F2B0B8A51D7F9E8C00663756 /* DBTEAMGroupsListContinueArg.h in Headers */,
+				F2B0B8A61D7F9E8C00663756 /* DBTEAMGroupsListContinueError.h in Headers */,
+				F2B0B8A71D7F9E8C00663756 /* DBTEAMGroupsListResult.h in Headers */,
+				F2B0B8A81D7F9E8C00663756 /* DBTEAMGroupsMembersListArg.h in Headers */,
+				F2B0B8A91D7F9E8C00663756 /* DBTEAMGroupsMembersListContinueArg.h in Headers */,
+				F2B0B8AA1D7F9E8C00663756 /* DBTEAMGroupsMembersListContinueError.h in Headers */,
+				F2B0B8AB1D7F9E8C00663756 /* DBTEAMGroupsMembersListResult.h in Headers */,
+				F2B0B8AC1D7F9E8C00663756 /* DBTEAMGroupsPollError.h in Headers */,
+				F2B0B8AD1D7F9E8C00663756 /* DBTEAMGroupsSelector.h in Headers */,
+				F2B0B8AE1D7F9E8C00663756 /* DBTEAMGroupUpdateArgs.h in Headers */,
+				F2B0B8AF1D7F9E8C00663756 /* DBTEAMGroupUpdateError.h in Headers */,
+				F2B0B8B01D7F9E8C00663756 /* DBTEAMIncludeMembersArg.h in Headers */,
+				F2B0B8B11D7F9E8C00663756 /* DBTEAMListMemberAppsArg.h in Headers */,
+				F2B0B8B21D7F9E8C00663756 /* DBTEAMListMemberAppsError.h in Headers */,
+				F2B0B8B31D7F9E8C00663756 /* DBTEAMListMemberAppsResult.h in Headers */,
+				F2B0B8B41D7F9E8C00663756 /* DBTEAMListMemberDevicesArg.h in Headers */,
+				F2B0B8B51D7F9E8C00663756 /* DBTEAMListMemberDevicesError.h in Headers */,
+				F2B0B8B61D7F9E8C00663756 /* DBTEAMListMemberDevicesResult.h in Headers */,
+				F2B0B8B71D7F9E8C00663756 /* DBTEAMListMembersAppsArg.h in Headers */,
+				F2B0B8B81D7F9E8C00663756 /* DBTEAMListMembersAppsError.h in Headers */,
+				F2B0B8B91D7F9E8C00663756 /* DBTEAMListMembersAppsResult.h in Headers */,
+				F2B0B8BA1D7F9E8C00663756 /* DBTEAMListMembersDevicesArg.h in Headers */,
+				F2B0B8BB1D7F9E8C00663756 /* DBTEAMListMembersDevicesError.h in Headers */,
+				F2B0B8BC1D7F9E8C00663756 /* DBTEAMListMembersDevicesResult.h in Headers */,
+				F2B0B8BD1D7F9E8C00663756 /* DBTEAMListTeamAppsArg.h in Headers */,
+				F2B0B8BE1D7F9E8C00663756 /* DBTEAMListTeamAppsError.h in Headers */,
+				F2B0B8BF1D7F9E8C00663756 /* DBTEAMListTeamAppsResult.h in Headers */,
+				F2B0B8C01D7F9E8C00663756 /* DBTEAMListTeamDevicesArg.h in Headers */,
+				F2B0B8C11D7F9E8C00663756 /* DBTEAMListTeamDevicesError.h in Headers */,
+				F2B0B8C21D7F9E8C00663756 /* DBTEAMListTeamDevicesResult.h in Headers */,
+				F2B0B8C31D7F9E8C00663756 /* DBTEAMMemberAccess.h in Headers */,
+				F2B0B8C41D7F9E8C00663756 /* DBTEAMMemberAddArg.h in Headers */,
+				F2B0B8C51D7F9E8C00663756 /* DBTEAMMemberAddResult.h in Headers */,
+				F2B0B8C61D7F9E8C00663756 /* DBTEAMMemberDevices.h in Headers */,
+				F2B0B8C71D7F9E8C00663756 /* DBTEAMMemberLinkedApps.h in Headers */,
+				F2B0B8C81D7F9E8C00663756 /* DBTEAMMemberProfile.h in Headers */,
+				F2B0B8C91D7F9E8C00663756 /* DBTEAMMembersAddArg.h in Headers */,
+				F2B0B8CA1D7F9E8C00663756 /* DBTEAMMembersAddJobStatus.h in Headers */,
+				F2B0B8CB1D7F9E8C00663756 /* DBTEAMMembersAddLaunch.h in Headers */,
+				F2B0B8CC1D7F9E8C00663756 /* DBTEAMMembersDeactivateArg.h in Headers */,
+				F2B0B8CD1D7F9E8C00663756 /* DBTEAMMembersDeactivateError.h in Headers */,
+				F2B0B8CE1D7F9E8C00663756 /* DBTEAMMemberSelectorError.h in Headers */,
+				F2B0B8CF1D7F9E8C00663756 /* DBTEAMMembersGetInfoArgs.h in Headers */,
+				F2B0B8D01D7F9E8C00663756 /* DBTEAMMembersGetInfoError.h in Headers */,
+				F2B0B8D11D7F9E8C00663756 /* DBTEAMMembersGetInfoItem.h in Headers */,
+				F2B0B8D21D7F9E8C00663756 /* DBTEAMMembersListArg.h in Headers */,
+				F2B0B8D31D7F9E8C00663756 /* DBTEAMMembersListContinueArg.h in Headers */,
+				F2B0B8D41D7F9E8C00663756 /* DBTEAMMembersListContinueError.h in Headers */,
+				F2B0B8D51D7F9E8C00663756 /* DBTEAMMembersListError.h in Headers */,
+				F2B0B8D61D7F9E8C00663756 /* DBTEAMMembersListResult.h in Headers */,
+				F2B0B8D71D7F9E8C00663756 /* DBTEAMMembersRecoverArg.h in Headers */,
+				F2B0B8D81D7F9E8C00663756 /* DBTEAMMembersRecoverError.h in Headers */,
+				F2B0B8D91D7F9E8C00663756 /* DBTEAMMembersRemoveArg.h in Headers */,
+				F2B0B8DA1D7F9E8C00663756 /* DBTEAMMembersRemoveError.h in Headers */,
+				F2B0B8DB1D7F9E8C00663756 /* DBTEAMMembersSendWelcomeError.h in Headers */,
+				F2B0B8DC1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsArg.h in Headers */,
+				F2B0B8DD1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsError.h in Headers */,
+				F2B0B8DE1D7F9E8C00663756 /* DBTEAMMembersSetPermissionsResult.h in Headers */,
+				F2B0B8DF1D7F9E8C00663756 /* DBTEAMMembersSetProfileArg.h in Headers */,
+				F2B0B8E01D7F9E8C00663756 /* DBTEAMMembersSetProfileError.h in Headers */,
+				F2B0B8E11D7F9E8C00663756 /* DBTEAMMembersSuspendError.h in Headers */,
+				F2B0B8E21D7F9E8C00663756 /* DBTEAMMembersUnsuspendArg.h in Headers */,
+				F2B0B8E31D7F9E8C00663756 /* DBTEAMMembersUnsuspendError.h in Headers */,
+				F2B0B8E41D7F9E8C00663756 /* DBTEAMMobileClientPlatform.h in Headers */,
+				F2B0B8E51D7F9E8C00663756 /* DBTEAMMobileClientSession.h in Headers */,
+				F2B0B8E61D7F9E8C00663756 /* DBTEAMRemovedStatus.h in Headers */,
+				F2B0B8E71D7F9E8C00663756 /* DBTEAMRevokeDesktopClientArg.h in Headers */,
+				F2B0B8E81D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionArg.h in Headers */,
+				F2B0B8E91D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchArg.h in Headers */,
+				F2B0B8EA1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchError.h in Headers */,
+				F2B0B8EB1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionBatchResult.h in Headers */,
+				F2B0B8EC1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionError.h in Headers */,
+				F2B0B8ED1D7F9E8C00663756 /* DBTEAMRevokeDeviceSessionStatus.h in Headers */,
+				F2B0B8EE1D7F9E8C00663756 /* DBTEAMRevokeLinkedApiAppArg.h in Headers */,
+				F2B0B8EF1D7F9E8C00663756 /* DBTEAMRevokeLinkedApiAppBatchArg.h in Headers */,
+				F2B0B8F01D7F9E8C00663756 /* DBTEAMRevokeLinkedAppBatchError.h in Headers */,
+				F2B0B8F11D7F9E8C00663756 /* DBTEAMRevokeLinkedAppBatchResult.h in Headers */,
+				F2B0B8F21D7F9E8C00663756 /* DBTEAMRevokeLinkedAppError.h in Headers */,
+				F2B0B8F31D7F9E8C00663756 /* DBTEAMRevokeLinkedAppStatus.h in Headers */,
+				F2B0B8F41D7F9E8C00663756 /* DBTEAMStorageBucket.h in Headers */,
+				F2B0B8F51D7F9E8C00663756 /* DBTEAMTeamGetInfoResult.h in Headers */,
+				F2B0B8F61D7F9E8C00663756 /* DBTEAMTeamMemberInfo.h in Headers */,
+				F2B0B8F71D7F9E8C00663756 /* DBTEAMTeamMemberProfile.h in Headers */,
+				F2B0B8F81D7F9E8C00663756 /* DBTEAMTeamMembershipType.h in Headers */,
+				F2B0B8F91D7F9E8C00663756 /* DBTEAMTeamMemberStatus.h in Headers */,
+				F2B0B8FA1D7F9E8C00663756 /* DBTEAMUpdatePropertyTemplateArg.h in Headers */,
+				F2B0B8FB1D7F9E8C00663756 /* DBTEAMUpdatePropertyTemplateResult.h in Headers */,
+				F2B0B8FC1D7F9E8C00663756 /* DBTEAMUserSelectorArg.h in Headers */,
+				F2B0B8FD1D7F9E8C00663756 /* DBTEAMUserSelectorError.h in Headers */,
+				F2B0B8FE1D7F9E8C00663756 /* DBTEAMUsersSelectorArg.h in Headers */,
+				F2B0B8FF1D7F9E8C00663756 /* DBTEAMCOMMONGroupManagementType.h in Headers */,
+				F2B0B9001D7F9E8C00663756 /* DBTEAMCOMMONGroupSummary.h in Headers */,
+				F2B0B9011D7F9E8C00663756 /* DBTEAMCOMMONGroupType.h in Headers */,
+				F2B0B9021D7F9E8C00663756 /* DBTEAMPOLICIESEmmState.h in Headers */,
+				F2B0B9031D7F9E8C00663756 /* DBTEAMPOLICIESSharedFolderJoinPolicy.h in Headers */,
+				F2B0B9041D7F9E8C00663756 /* DBTEAMPOLICIESSharedFolderMemberPolicy.h in Headers */,
+				F2B0B9051D7F9E8C00663756 /* DBTEAMPOLICIESSharedLinkCreatePolicy.h in Headers */,
+				F2B0B9061D7F9E8C00663756 /* DBTEAMPOLICIESTeamMemberPolicies.h in Headers */,
+				F2B0B9071D7F9E8C00663756 /* DBTEAMPOLICIESTeamSharingPolicies.h in Headers */,
+				F2B0B9081D7F9E8C00663756 /* DBUSERSAccount.h in Headers */,
+				F2B0B9091D7F9E8C00663756 /* DBUSERSAccountType.h in Headers */,
+				F2B0B90A1D7F9E8C00663756 /* DBUSERSBasicAccount.h in Headers */,
+				F2B0B90B1D7F9E8C00663756 /* DBUSERSFullAccount.h in Headers */,
+				F2B0B90C1D7F9E8C00663756 /* DBUSERSFullTeam.h in Headers */,
+				F2B0B90D1D7F9E8C00663756 /* DBUSERSGetAccountArg.h in Headers */,
+				F2B0B90E1D7F9E8C00663756 /* DBUSERSGetAccountBatchArg.h in Headers */,
+				F2B0B90F1D7F9E8C00663756 /* DBUSERSGetAccountBatchError.h in Headers */,
+				F2B0B9101D7F9E8C00663756 /* DBUSERSGetAccountError.h in Headers */,
+				F2B0B9111D7F9E8C00663756 /* DBUSERSIndividualSpaceAllocation.h in Headers */,
+				F2B0B9121D7F9E8C00663756 /* DBUSERSName.h in Headers */,
+				F2B0B9131D7F9E8C00663756 /* DBUSERSSpaceAllocation.h in Headers */,
+				F2B0B9141D7F9E8C00663756 /* DBUSERSSpaceUsage.h in Headers */,
+				F2B0B9151D7F9E8C00663756 /* DBUSERSTeam.h in Headers */,
+				F2B0B9161D7F9E8C00663756 /* DBUSERSTeamSpaceAllocation.h in Headers */,
+				F2B0B9171D7F9E8C00663756 /* DBBase.h in Headers */,
+				F2B0B9181D7F9E8C00663756 /* DBBaseTeam.h in Headers */,
+				F2B0B9191D7F9E8C00663756 /* DropboxClient.h in Headers */,
+				F2B0B91A1D7F9E8C00663756 /* DropboxClientsManager.h in Headers */,
+				F2B0B91B1D7F9E8C00663756 /* DropboxSDKImports.h in Headers */,
+				F2B0B91C1D7F9E8C00663756 /* DropboxTeamClient.h in Headers */,
+				F2B0B91D1D7F9E8C00663756 /* DBDelegate.h in Headers */,
+				F2B0B91E1D7F9E8C00663756 /* DBErrors.h in Headers */,
+				F2B0B9211D7F9E8C00663756 /* DBTasks.h in Headers */,
+				F2B0B9221D7F9E8C00663756 /* DBTransportClient.h in Headers */,
+				F2B0B9251D7F9E8C00663756 /* DBOAuth.h in Headers */,
+				F2B0B9261D7F9E8C00663756 /* DBOAuthResult.h in Headers */,
+				F2B0B9291D7F9E8C00663756 /* DBStoneBase.h in Headers */,
+				F2B0B92A1D7F9E8C00663756 /* DBStoneSerializers.h in Headers */,
+				F2B0B92B1D7F9E8C00663756 /* DBStoneValidators.h in Headers */,
+				F2B0B92C1D7F9E8C00663756 /* DBAUTHRoutes.h in Headers */,
+				F2B0B92D1D7F9E8C00663756 /* DBFILESRoutes.h in Headers */,
+				F2B0B92E1D7F9E8C00663756 /* DBSHARINGRoutes.h in Headers */,
+				F2B0B92F1D7F9E8C00663756 /* DBTEAMRoutes.h in Headers */,
+				F2B0B9301D7F9E8C00663756 /* DBUSERSRoutes.h in Headers */,
+				F2B0B9311D7F9E8C00663756 /* DBAUTHRouteObjects.h in Headers */,
+				F2B0B9321D7F9E8C00663756 /* DBFILESRouteObjects.h in Headers */,
+				F2B0B9331D7F9E8C00663756 /* DBSHARINGRouteObjects.h in Headers */,
+				F2B0B9341D7F9E8C00663756 /* DBTEAMRouteObjects.h in Headers */,
+				F2B0B9351D7F9E8C00663756 /* DBUSERSRouteObjects.h in Headers */,
+				F2B0B91F1D7F9E8C00663756 /* DBHandlerTypes.h in Headers */,
+				F2B0B9361D7F9E8C00663756 /* DBOAuthMobile.h in Headers */,
+				F2B0B9271D7F9E8C00663756 /* DBSharedApplicationProtocol.h in Headers */,
+				F2B0B9281D7F9E8C00663756 /* DBSerializableProtocol.h in Headers */,
+				F2B0B9371D7F9E8C00663756 /* DropboxClientsManager+MobileAuth.h in Headers */,
+				F2B0B9201D7F9E8C00663756 /* DBSessionData.h in Headers */,
+				F2B0B9231D7F9E8C00663756 /* Reachability.h in Headers */,
+				F2B0B9241D7F9E8C00663756 /* DBKeychain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

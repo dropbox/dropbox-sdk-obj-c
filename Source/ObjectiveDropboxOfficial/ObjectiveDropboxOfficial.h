@@ -16,3 +16,5 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import
 // <ObjectiveDropboxOfficial/PublicHeader.h>
+
+#import <ObjectiveDropboxOfficial/DropboxSDKImports.h>
