@@ -36,7 +36,7 @@ To use [CocoaPods](http://cocoapods.org), a dependency manager for Cocoa project
 $ gem install cocoapods
 ```
 
-Then navigate to the directory that contains your project and create a new file called **Podfile**. You can do this either with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
+Then navigate to the directory that contains your project and create a new file called `Podfile`. You can do this either with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
 
 ```ruby
 target '<YOUR_PROJECT_NAME>' do
@@ -69,7 +69,7 @@ brew install carthage
 
 ```
 # ObjectiveDropboxOfficial
-github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.2
+github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.4
 ```
 
 Then, run the following command to install the dependency to checkout and build the Dropbox Objective-C SDK repository:
@@ -99,7 +99,7 @@ $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 carthage update --platform Mac
 ```
 
-In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/iOS`).
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/Mac`).
 
 Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
 

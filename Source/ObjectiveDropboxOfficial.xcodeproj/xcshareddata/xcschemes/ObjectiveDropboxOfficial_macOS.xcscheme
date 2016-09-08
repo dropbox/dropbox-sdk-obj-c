@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F27DE9E11D7FF909003B1CEE"
-               BuildableName = "ObjectiveDropboxOfficial_OSX.framework"
-               BlueprintName = "ObjectiveDropboxOfficial_OSX"
+               BuildableName = "ObjectiveDropboxOfficial_macOS.framework"
+               BlueprintName = "ObjectiveDropboxOfficial_macOS"
                ReferencedContainer = "container:ObjectiveDropboxOfficial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F27DE9E11D7FF909003B1CEE"
-            BuildableName = "ObjectiveDropboxOfficial_OSX.framework"
-            BlueprintName = "ObjectiveDropboxOfficial_OSX"
+            BuildableName = "ObjectiveDropboxOfficial_macOS.framework"
+            BlueprintName = "ObjectiveDropboxOfficial_macOS"
             ReferencedContainer = "container:ObjectiveDropboxOfficial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F27DE9E11D7FF909003B1CEE"
-            BuildableName = "ObjectiveDropboxOfficial_OSX.framework"
-            BlueprintName = "ObjectiveDropboxOfficial_OSX"
+            BuildableName = "ObjectiveDropboxOfficial_macOS.framework"
+            BlueprintName = "ObjectiveDropboxOfficial_macOS"
             ReferencedContainer = "container:ObjectiveDropboxOfficial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
