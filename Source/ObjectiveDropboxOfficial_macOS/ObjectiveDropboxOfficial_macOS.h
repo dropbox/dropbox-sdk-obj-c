@@ -13,6 +13,7 @@ FOUNDATION_EXPORT double ObjectiveDropboxOfficial_macOSVersionNumber;
 //! Project version string for ObjectiveDropboxOfficial_macOS.
 FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficial_macOSVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ObjectiveDropboxOfficial_macOS/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import
+// <ObjectiveDropboxOfficial_macOS/PublicHeader.h>
 
 #import <ObjectiveDropboxOfficial_macOS/DropboxSDKImports.h>

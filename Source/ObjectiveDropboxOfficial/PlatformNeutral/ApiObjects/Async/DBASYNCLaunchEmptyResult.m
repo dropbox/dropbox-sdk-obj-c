@@ -62,7 +62,7 @@
     return @"DBASYNCLaunchEmptyResultComplete";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -96,7 +96,9 @@
   } else if ([valueObj isComplete]) {
     jsonDict[@".tag"] = @"complete";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -112,7 +114,10 @@
     return [[DBASYNCLaunchEmptyResult alloc] initWithComplete];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

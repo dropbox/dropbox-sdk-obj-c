@@ -47,7 +47,7 @@
     return @"DBASYNCLaunchResultBaseAsyncJobId";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -79,7 +79,9 @@
     jsonDict[@"async_job_id"] = valueObj.asyncJobId;
     jsonDict[@".tag"] = @"async_job_id";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -93,7 +95,10 @@
     return [[DBASYNCLaunchResultBase alloc] initWithAsyncJobId:asyncJobId];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

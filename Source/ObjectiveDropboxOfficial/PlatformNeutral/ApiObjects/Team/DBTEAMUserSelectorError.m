@@ -36,7 +36,7 @@
     return @"DBTEAMUserSelectorErrorUserNotFound";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -67,7 +67,9 @@
   if ([valueObj isUserNotFound]) {
     jsonDict[@".tag"] = @"user_not_found";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -80,7 +82,10 @@
     return [[DBTEAMUserSelectorError alloc] initWithUserNotFound];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

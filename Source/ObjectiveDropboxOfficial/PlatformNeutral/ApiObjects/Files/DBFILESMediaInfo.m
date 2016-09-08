@@ -62,7 +62,7 @@
     return @"DBFILESMediaInfoMetadata";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -96,7 +96,9 @@
     jsonDict[@"metadata"] = [[DBFILESMediaMetadataSerializer serialize:valueObj.metadata] mutableCopy];
     jsonDict[@".tag"] = @"metadata";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -108,11 +110,14 @@
   if ([tag isEqualToString:@"pending"]) {
     return [[DBFILESMediaInfo alloc] initWithPending];
   } else if ([tag isEqualToString:@"metadata"]) {
-    DBFILESMediaMetadata *metadata = [DBFILESMediaMetadataSerializer deserialize:valueDict];
+    DBFILESMediaMetadata *metadata = [DBFILESMediaMetadataSerializer deserialize:valueDict[@"metadata"]];
     return [[DBFILESMediaInfo alloc] initWithMetadata:metadata];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

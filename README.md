@@ -99,9 +99,9 @@ $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 carthage update --platform Mac
 ```
 
-In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/Mac`).
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial_macOS.framework` (from `Carthage/Build/Mac`).
 
-Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
+Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial_macOS.framework.dSYM` (from `Carthage/Build/Mac`).
 
 ### Manually add subproject
 
@@ -467,8 +467,8 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
             } else if ([error isHttpError]) {
                 DBRequestHttpError *genericHttpError = [error asHttpError];
                 NSLog(@"%@\n", genericHttpError);
-            } else if ([error isOsError]) {
-                DBRequestOsError *genericLocalError = [error asOsError];
+            } else if ([error isClientError]) {
+                DBRequestClientError *genericLocalError = [error asClientError];
                 NSLog(@"%@\n", genericLocalError);
             }
         }

@@ -156,7 +156,7 @@
     return @"DBFILESUpdatePropertiesErrorPropertyGroupLookup";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -203,7 +203,9 @@
         [[DBFILESLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup] mutableCopy];
     jsonDict[@".tag"] = @"property_group_lookup";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -232,7 +234,10 @@
     return [[DBFILESUpdatePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

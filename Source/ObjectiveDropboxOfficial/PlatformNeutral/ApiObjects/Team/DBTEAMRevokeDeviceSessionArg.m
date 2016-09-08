@@ -97,7 +97,7 @@
     return @"DBTEAMRevokeDeviceSessionArgMobileClient";
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
 }
 
 #pragma mark - Serialization methods
@@ -136,7 +136,9 @@
     jsonDict[@"mobile_client"] = [[DBTEAMDeviceSessionArgSerializer serialize:valueObj.mobileClient] mutableCopy];
     jsonDict[@".tag"] = @"mobile_client";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
   }
 
   return jsonDict;
@@ -156,7 +158,10 @@
     return [[DBTEAMRevokeDeviceSessionArg alloc] initWithMobileClient:mobileClient];
   }
 
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an invalid value." userInfo:nil]);
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end
