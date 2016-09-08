@@ -1,13 +1,13 @@
 # Dropbox for Objective-C
 
-The Official Dropbox Objective-C SDK for integrating with Dropbox [API v2](https://www.dropbox.com/developers/documentation/http/documentation) on iOS or OS X.
+The Official Dropbox Objective-C SDK for integrating with Dropbox [API v2](https://www.dropbox.com/developers/documentation/http/documentation) on iOS or macOS.
 
 Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/).
 
 ## Requirements
 
 - iOS 8.0+
-- OS X 10.10+
+- macOS 10.10+
 - Xcode 7.3+
 
 ## Get Started
@@ -74,7 +74,7 @@ github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.2
 
 Then, run the following command to install the dependency to checkout and build the Dropbox Objective-C SDK repository:
 
-### iOS
+#### iOS
 
 ```bash
 carthage update --platform iOS
@@ -94,7 +94,7 @@ Then, navigate to the **Input Files** section and add the following path:
 $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 ```
 
-### OS X
+#### macOS
 ```bash
 carthage update --platform Mac
 ```
@@ -159,8 +159,8 @@ After you've made the above changes, your application's `.plist` file should loo
 There are three methods to programmatically retrieve an OAuth2 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* **In-app webview auth** (iOS, OS X): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
-* **External browser auth** (iOS, OS X): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **In-app webview auth** (iOS, macOS): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
+* **External browser auth** (iOS, macOS): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
@@ -178,7 +178,7 @@ To facilitate the above authorization flows, you should take the following steps
 
 ```
 
-(for OS X)
+(for macOS)
 
 ```objective-c
 #import "DropboxSDKImports.h"
@@ -207,7 +207,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 
 ```
 
-(for OS X)
+(for macOS)
 
 ```objective-c
 #import "DropboxSDKImports.h"
@@ -254,7 +254,7 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 
 ```
 
-(for OS X)
+(for macOS)
 
 ```objective-c
 #import "DropboxSDKImports.h"
@@ -553,8 +553,8 @@ If you're interested in modifying the SDK codebase, you should take the followin
 
 * clone this GitHub repository to your local filesystem
 * run `git submodule init` and then `git submodule update`
-* navigate to `TestObjectiveDropbox_[iOS|OSX]` and run `pod install`
-* open `TestObjectiveDropbox_[iOS|OSX]/TestObjectiveDropbox_[iOS|OSX].xcworkspace` in Xcode
+* navigate to `TestObjectiveDropbox_[iOS|macOS]` and run `pod install`
+* open `TestObjectiveDropbox_[iOS|macOS]/TestObjectiveDropbox_[iOS|macOS].xcworkspace` in Xcode
 * implement your changes to the SDK source code.
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by

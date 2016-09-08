@@ -26,8 +26,7 @@ typedef NS_ENUM(NSInteger, DBOAuthResultTag) {
   DBAuthCancel,
 };
 
-/// The `DBAuthErrorType` enum type represents the possible
-/// error types that can be returned from OAuth linking.
+/// Represents the possible error types that can be returned from OAuth linking.
 typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
   /// The client is not authorized to request an access token using this method.
   DBAuthUnauthorizedClient,

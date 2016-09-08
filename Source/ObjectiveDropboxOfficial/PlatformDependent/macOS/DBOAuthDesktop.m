@@ -47,7 +47,7 @@
 }
 
 - (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL {
-  // no platform-specific auth methods for OS X
+  // no platform-specific auth methods for macOS
   return NO;
 }
 

@@ -255,7 +255,7 @@ if (browserAuth) {
 
 @end
 
-#pragma mark - OAuth manager base (OS X)
+#pragma mark - OAuth manager base (macOS)
 
 @implementation DBDesktopOAuthManager
 

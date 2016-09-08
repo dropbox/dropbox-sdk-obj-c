@@ -8,7 +8,7 @@
 #import <WebKit/WebKit.h>
 
 ///
-/// Platform-specific (here, OS X) shared application.
+/// Platform-specific (here, macOS) shared application.
 ///
 /// Renders OAuth flow and implements `DBSharedApplication` protocol.
 ///
@@ -32,7 +32,7 @@
 @end
 
 ///
-/// Platform-specific (here, OS X) `NSViewController` for rendering OAuth flow.
+/// Platform-specific (here, macOS) `NSViewController` for rendering OAuth flow.
 ///
 @interface DBDesktopWebViewController : NSViewController <NSWindowDelegate, WKNavigationDelegate>
 

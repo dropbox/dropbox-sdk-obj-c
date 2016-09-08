@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ObjectiveDropboxOfficial: 3e3040bd34a9c2ca61e3c3820ed4513ca9f9b30f
+  ObjectiveDropboxOfficial: 48fb7f91bae92f46af10424cfab98b20858dafea
 
-PODFILE CHECKSUM: f29322558cd2eac301235c5411e8c6dba2a0ca9c
+PODFILE CHECKSUM: 979c1657a9c513a1dd22e1e839c45540fba747e4
 
 COCOAPODS: 1.0.1

@@ -11,7 +11,7 @@
 @class NSViewController;
 
 ///
-/// Code with platform-specific (here, OS X) dependencies.
+/// Code with platform-specific (here, macOS) dependencies.
 ///
 /// Extends functionality of the `DropboxClientsManager` class.
 ///

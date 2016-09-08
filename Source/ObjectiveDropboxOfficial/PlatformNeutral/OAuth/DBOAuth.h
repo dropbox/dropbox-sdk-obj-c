@@ -142,10 +142,10 @@
 
 @end
 
-#pragma mark - OAuth manager base (OS X)
+#pragma mark - OAuth manager base (macOS)
 
 ///
-/// Platform-specific (OS X) manager for performing OAuth linking.
+/// Platform-specific (macOS) manager for performing OAuth linking.
 ///
 @interface DBDesktopOAuthManager : DBOAuthManager
 

@@ -38,7 +38,10 @@ else
         echo "Removing tmp sdk files..."
         rm -rf $tmp_location
 
-        ln -s $base_location/$sdk_version $base_location/latest
+        cd $base_location/
+        rm latest
+        ln -s $sdk_version latest
+        cd -
     else
         echo "Docs directory does not exist"
     fi

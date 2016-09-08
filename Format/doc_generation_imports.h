@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <AppKit/AppKit.h>
 
+#import "DBErrors.h"
 #import "DBDelegate.h"
 #import "DBOAuthMobile.h"
 #import "DropboxClient.h"

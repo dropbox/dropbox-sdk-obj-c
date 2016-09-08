@@ -1,6 +1,6 @@
 //
 //  TestData.h
-//  TestObjectiveDropbox_iOS
+//  TestObjectiveDropbox_macOS
 //
 //  Copyright © 2016 Dropbox. All rights reserved.
 //

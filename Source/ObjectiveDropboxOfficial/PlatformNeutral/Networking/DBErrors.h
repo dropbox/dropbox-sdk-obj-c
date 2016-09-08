@@ -204,6 +204,14 @@
 
 #pragma mark - Client error
 
+///
+/// Client side request error.
+///
+/// Contains relevant information regarding a failed network
+/// request. Initialized in the event of a client-side error,
+/// like an invalid url host, or making a request when not connected
+/// to the internet.
+///
 @interface DBRequestClientError : NSObject
 
 /// The client-side `NSError` object returned from the failed response.
@@ -257,6 +265,7 @@
 
 #pragma mark - Tag type definition
 
+/// Represents the possible error types that can be returned from network requests.
 typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
   /// Errors produced at the HTTP layer.
   DBRequestErrorHttp,
