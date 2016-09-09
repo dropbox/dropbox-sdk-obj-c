@@ -9,6 +9,7 @@
 + (NSString *)serialize:(NSDate *)value dateFormat:(NSString *)dateFormat {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+  [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
   [formatter setDateFormat:[self convertFormat:dateFormat]];
 
   return [formatter stringFromDate:value];
@@ -17,6 +18,7 @@
 + (NSDate *)deserialize:(NSString *)value dateFormat:(NSString *)dateFormat {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+  [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
   [formatter setDateFormat:[self convertFormat:dateFormat]];
 
   return [formatter dateFromString:value];
