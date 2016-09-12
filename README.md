@@ -290,7 +290,7 @@ After the end user signs in with their Dropbox login credentials via the in-app 
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowApproval.png?raw=true" alt="Auth Flow Approval Example"/>
 </p>
 
-If they press "Allow" or "Cancel", the `db-<APP_KEY>` redirect URL will be launched from the webview, and will be handled in your application
+If they press **Allow** or **Cancel**, the `db-<APP_KEY>` redirect URL will be launched from the webview, and will be handled in your application
 delegate's `application:handleOpenURL` method, from which the result of the authorization can be parsed.
 
 Now you're ready to begin making API requests!
@@ -397,17 +397,18 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 
 Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route **arguments** are struct types and most route **errors** are union types.
 
-**Struct types** are "traditional" object types, that is, composite types made up of a collection of one or more instance fields. All public instance fields are accessible at runtime, regardless of state.
+**NOTE:** In this context, "structs" and "unions" are terms specific to the Dropbox API, and not to any of the languages that are used to query the API, so you should avoid thinking of them in terms of their Objective-C definitions.
 
-**Union types**, on the other hand, represent a single value that can take on multiple value types, depending on state. Each union state, or "tag", may have an associated value type (or it may not, in which case, the union type is said to be "void").
-Associated value types can either be primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at run time, depending on the tag state of the union.
+**Struct types** are "traditional" object types, that is, composite types made up of a collection of one or more instance fields. All public instance fields are accessible at runtime, regardless of runtime state.
+
+**Union types**, on the other hand, represent a single value that can take on multiple value types, depending on state. We capture all of these different type scenarios under one "union object", but that object will exist only as one type at runtime. Each union state type, or **tag**, may have an associated value (if it doesn't, the union state type is said to be **void**). Associated value types can either be primitives, structs or unions. Although the Objective-C SDK represents union types as objects with multiple instance fields, at most one instance field is accessible at runtime, depending on the tag state of the union.
 
 For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns an error, `DeleteError`, which is a union type. The `DeleteError` union can take on two different tag states: `path_lookup`
 (if there is a problem looking up the path) or `path_write` (if there is a problem writing -- or in this case deleting -- to the path). Here, both tag states have non-void associated values (of types `DBFILESLookupError` and `DBFILESWriteError`, respectively).
 
 In this way, one union object is able to capture a multitude of scenarios, each of which has their own value type.
 
-To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the value associated with that tag state (provided there exists an associated value type, i.e., it's not "void").
+To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the value associated with that tag state (provided there exists an associated value type, i.e., it's not **void**).
 If at run time you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
 
 #### Route-specific errors
@@ -481,7 +482,7 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
 Some routes return union types as result types, so you should be prepared to handle these results in the same way that you handle union route errors. Please consult the [documentation](https://www.dropbox.com/developers/documentation/http/documentation)
 for each endpoint that you use to ensure you are properly handling the route's response type.
 
-A few routes return result types that are "datatypes with subtypes", that is, structs that can take on multiple state types like unions.
+A few routes return result types that are **datatypes with subtypes**, that is, structs that can take on multiple state types like unions.
 
 For example, the [/delete](https://www.dropbox.com/developers/documentation/http/documentation#files-delete) endpoint returns a generic `Metadata` type, which can exist either as a `FileMetadata` struct, a `FolderMetadata` struct, or a `DeletedMetadata` struct.
 To determine at runtime which subtype the `Metadata` type exists as, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
@@ -509,10 +510,13 @@ To determine at runtime which subtype the `Metadata` type exists as, perform an 
 }];
 ```
 
-This `Metadata` object is known as a "datatype with subtypes" in our API v2 documentation. The difference between these "datatypes with subtypes" and union types is that union types can exist as only one instance value at a time, whereas these "datatypes with subtypes" can exist
-as multiple instance values at a time.
+This `Metadata` object is known as a **datatype with subtypes** in our API v2 documentation.
 
-Only a few routes return result types like this.
+Datatypes with subtypes are a way combining structs and unions. Datatypes with subtypes are struct objects that contain a tag, which specifies which subtype the object exists as at runtime. The reason we have this construct, as with unions, is so we can capture a multitude of scenarios with one object.
+
+In the above example, the `Metadata` type can exists as `FileMetadata`, `FolderMetadata` or `DeleteMetadata`. Each of these types have common instances fields like "name" (the name for the file, folder or deleted type), but also instance fields that are specific to the particular subtype. In order to leverage inheritance, we set a common supertype called `Metadata` which captures all of the common instance fields, but also has a tag instance field, which specifies which subtype the object currently exists as.
+
+In this way, datatypes with subtypes are a hybrid of structs and unions. Only a few routes return result types like this.
 
 ### Customizing network calls
 

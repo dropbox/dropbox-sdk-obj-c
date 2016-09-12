@@ -1,0 +1,1 @@
+../../../ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/PlatformNeutral/ApiObjects/Files/DBFILESThumbnailSize.h
