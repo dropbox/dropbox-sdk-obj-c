@@ -3661,11 +3661,11 @@
 		F26B756B1D7F6AF700714F70 = {
 			isa = PBXGroup;
 			children = (
+				F26B75771D7F6AF700714F70 /* ObjectiveDropboxOfficial */,
 				F27DE9E31D7FF909003B1CEE /* ObjectiveDropboxOfficial_macOS */,
 				F27DE9B31D7FF0A5003B1CEE /* Frameworks */,
 				F20909581D7F6CBF00ABD910 /* PlatformNeutral */,
 				F2090CC31D7F6CC000ABD910 /* PlatformDependent */,
-				F26B75771D7F6AF700714F70 /* ObjectiveDropboxOfficial */,
 				F26B75761D7F6AF700714F70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -3703,8 +3703,8 @@
 		F27DE9E31D7FF909003B1CEE /* ObjectiveDropboxOfficial_macOS */ = {
 			isa = PBXGroup;
 			children = (
-				F2B9D2F11D8149810087EAAF /* Info.plist */,
 				F2B9D2F21D8149810087EAAF /* ObjectiveDropboxOfficial_macOS.h */,
+				F2B9D2F11D8149810087EAAF /* Info.plist */,
 			);
 			path = ObjectiveDropboxOfficial_macOS;
 			sourceTree = "<group>";
