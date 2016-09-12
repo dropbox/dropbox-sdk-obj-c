@@ -14,8 +14,9 @@
 ///
 /// The `ListMemberAppsResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMemberAppsResult : NSObject <DBSerializable>
 
@@ -29,7 +30,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param linkedApiApps List of third party applications linked by this team member
+/// @param linkedApiApps List of third party applications linked by this team
+/// member
 ///
 /// @return An initialized instance.
 ///
@@ -49,16 +51,16 @@
 ///
 /// @param instance An instance of the `DBTEAMListMemberAppsResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMemberAppsResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMemberAppsResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberAppsResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberAppsResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberAppsResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMemberAppsResult` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMemberAppsResult` object.
 ///

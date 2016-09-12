@@ -14,8 +14,9 @@
 ///
 /// The `GroupCreateArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupCreateArg : NSObject <DBSerializable>
 
@@ -36,10 +37,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param groupName Group name.
-/// @param groupExternalId The creator of a team can associate an arbitrary external ID to the
-/// group.
-/// @param groupManagementType Whether the team can be managed by selected users, or only by team
-/// admins
+/// @param groupExternalId The creator of a team can associate an arbitrary
+/// external ID to the group.
+/// @param groupManagementType Whether the team can be managed by selected
+/// users, or only by team admins
 ///
 /// @return An initialized instance.
 ///
@@ -48,7 +49,8 @@
                       groupManagementType:(DBTEAMCOMMONGroupManagementType * _Nullable)groupManagementType;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param groupName Group name.
 ///
@@ -70,15 +72,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupCreateArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupCreateArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupCreateArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupCreateArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupCreateArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupCreateArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupCreateArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupCreateArg` object.
 ///

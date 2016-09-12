@@ -14,15 +14,16 @@
 ///
 /// The `TransferFolderError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGTransferFolderError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGTransferFolderErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGTransferFolderError` union can exist.
+/// The `DBSHARINGTransferFolderErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGTransferFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
   /// (no description).
   DBSHARINGTransferFolderErrorAccessError,
@@ -53,8 +54,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGTransferFolderErrorTag tag;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -71,8 +72,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_dropbox_id".
 ///
-/// Description of the "invalid_dropbox_id" tag state: `toDropboxId` in `DBSHARINGTransferFolderArg`
-/// is invalid.
+/// Description of the "invalid_dropbox_id" tag state: `toDropboxId` in
+/// `DBSHARINGTransferFolderArg` is invalid.
 ///
 /// @return An initialized instance.
 ///
@@ -81,8 +82,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "new_owner_not_a_member".
 ///
-/// Description of the "new_owner_not_a_member" tag state: The new designated owner is not currently
-/// a member of the shared folder.
+/// Description of the "new_owner_not_a_member" tag state: The new designated
+/// owner is not currently a member of the shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -91,8 +92,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "new_owner_unmounted".
 ///
-/// Description of the "new_owner_unmounted" tag state: The new designated owner has not added the
-/// folder to their Dropbox.
+/// Description of the "new_owner_unmounted" tag state: The new designated owner
+/// has not added the folder to their Dropbox.
 ///
 /// @return An initialized instance.
 ///
@@ -101,8 +102,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "new_owner_email_unverified".
 ///
-/// Description of the "new_owner_email_unverified" tag state: The new designated owner's e-mail
-/// address is unverified.
+/// Description of the "new_owner_email_unverified" tag state: The new
+/// designated owner's e-mail address is unverified.
 ///
 /// @return An initialized instance.
 ///
@@ -111,8 +112,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "team_folder".
 ///
-/// Description of the "team_folder" tag state: This action cannot be performed on a team shared
-/// folder.
+/// Description of the "team_folder" tag state: This action cannot be performed
+/// on a team shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -121,8 +122,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: The current user does not have permission to
-/// perform this action.
+/// Description of the "no_permission" tag state: The current user does not have
+/// permission to perform this action.
 ///
 /// @return An initialized instance.
 ///
@@ -140,38 +141,46 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_dropbox_id".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_dropbox_id".
 ///
-/// @return Whether the union's current tag state has value "invalid_dropbox_id".
+/// @return Whether the union's current tag state has value
+/// "invalid_dropbox_id".
 ///
 - (BOOL)isInvalidDropboxId;
 
 ///
-/// Retrieves whether the union's current tag state has value "new_owner_not_a_member".
+/// Retrieves whether the union's current tag state has value
+/// "new_owner_not_a_member".
 ///
-/// @return Whether the union's current tag state has value "new_owner_not_a_member".
+/// @return Whether the union's current tag state has value
+/// "new_owner_not_a_member".
 ///
 - (BOOL)isDNewOwnerNotAMember;
 
 ///
-/// Retrieves whether the union's current tag state has value "new_owner_unmounted".
+/// Retrieves whether the union's current tag state has value
+/// "new_owner_unmounted".
 ///
-/// @return Whether the union's current tag state has value "new_owner_unmounted".
+/// @return Whether the union's current tag state has value
+/// "new_owner_unmounted".
 ///
 - (BOOL)isDNewOwnerUnmounted;
 
 ///
-/// Retrieves whether the union's current tag state has value "new_owner_email_unverified".
+/// Retrieves whether the union's current tag state has value
+/// "new_owner_email_unverified".
 ///
-/// @return Whether the union's current tag state has value "new_owner_email_unverified".
+/// @return Whether the union's current tag state has value
+/// "new_owner_email_unverified".
 ///
 - (BOOL)isDNewOwnerEmailUnverified;
 
@@ -215,18 +224,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGTransferFolderErrorTag) {
 ///
 /// Serializes `DBSHARINGTransferFolderError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGTransferFolderError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGTransferFolderError` API
+/// @param instance An instance of the `DBSHARINGTransferFolderError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGTransferFolderError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGTransferFolderError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGTransferFolderError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGTransferFolderError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGTransferFolderError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGTransferFolderError` object.
 ///

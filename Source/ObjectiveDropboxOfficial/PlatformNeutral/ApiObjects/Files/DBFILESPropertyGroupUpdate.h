@@ -14,8 +14,9 @@
 ///
 /// The `PropertyGroupUpdate` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESPropertyGroupUpdate : NSObject <DBSerializable>
 
@@ -24,11 +25,12 @@
 /// A unique identifier for a property template.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
-/// List of property fields to update if the field already exists. If the field doesn't exist, add
-/// the field to the property group.
+/// List of property fields to update if the field already exists. If the field
+/// doesn't exist, add the field to the property group.
 @property(nonatomic, readonly) NSArray<DBPROPERTIESPropertyField *> * _Nullable addOrUpdateFields;
 
-/// List of property field names to remove from property group if the field exists.
+/// List of property field names to remove from property group if the field
+/// exists.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nullable removeFields;
 
 #pragma mark - Constructors
@@ -37,10 +39,11 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param templateId A unique identifier for a property template.
-/// @param addOrUpdateFields List of property fields to update if the field already exists. If the
-/// field doesn't exist, add the field to the property group.
-/// @param removeFields List of property field names to remove from property group if the field
-/// exists.
+/// @param addOrUpdateFields List of property fields to update if the field
+/// already exists. If the field doesn't exist, add the field to the property
+/// group.
+/// @param removeFields List of property field names to remove from property
+/// group if the field exists.
 ///
 /// @return An initialized instance.
 ///
@@ -49,7 +52,8 @@
                               removeFields:(NSArray<NSString *> * _Nullable)removeFields;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param templateId A unique identifier for a property template.
 ///
@@ -71,16 +75,16 @@
 ///
 /// @param instance An instance of the `DBFILESPropertyGroupUpdate` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESPropertyGroupUpdate` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESPropertyGroupUpdate` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPropertyGroupUpdate * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESPropertyGroupUpdate` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESPropertyGroupUpdate` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESPropertyGroupUpdate` API object.
 ///
 /// @return An instantiation of the `DBFILESPropertyGroupUpdate` object.
 ///

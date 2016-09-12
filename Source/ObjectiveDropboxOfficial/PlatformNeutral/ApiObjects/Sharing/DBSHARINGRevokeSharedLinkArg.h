@@ -12,8 +12,9 @@
 ///
 /// The `RevokeSharedLinkArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRevokeSharedLinkArg : NSObject <DBSerializable>
 
@@ -45,18 +46,19 @@
 ///
 /// Serializes `DBSHARINGRevokeSharedLinkArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRevokeSharedLinkArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGRevokeSharedLinkArg` API
+/// @param instance An instance of the `DBSHARINGRevokeSharedLinkArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGRevokeSharedLinkArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRevokeSharedLinkArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGRevokeSharedLinkArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGRevokeSharedLinkArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGRevokeSharedLinkArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGRevokeSharedLinkArg` object.
 ///

@@ -15,8 +15,9 @@
 ///
 /// The `SearchMatch` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSearchMatch : NSObject <DBSerializable>
 
@@ -55,14 +56,16 @@
 ///
 /// @param instance An instance of the `DBFILESSearchMatch` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSearchMatch` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSearchMatch` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMatch * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSearchMatch` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMatch` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSearchMatch` API object.
 ///
 /// @return An instantiation of the `DBFILESSearchMatch` object.
 ///

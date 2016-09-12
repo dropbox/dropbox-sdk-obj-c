@@ -14,15 +14,17 @@
 ///
 /// The `ModifySharedLinkSettingsError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGModifySharedLinkSettingsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGModifySharedLinkSettingsErrorTag` enum type represents the possible tag states
-/// with which the `DBSHARINGModifySharedLinkSettingsError` union can exist.
+/// The `DBSHARINGModifySharedLinkSettingsErrorTag` enum type represents the
+/// possible tag states with which the `DBSHARINGModifySharedLinkSettingsError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
   /// The shared link wasn't found
   DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound,
@@ -44,8 +46,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGModifySharedLinkSettingsErrorTag tag;
 
-/// There is an error with the given settings @note Ensure the `isSettingsError` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// There is an error with the given settings @note Ensure the `isSettingsError`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBSHARINGSharedLinkSettingsError * _Nonnull settingsError;
 
 #pragma mark - Constructors
@@ -53,7 +56,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 ///
 /// Initializes union class with tag state of "shared_link_not_found".
 ///
-/// Description of the "shared_link_not_found" tag state: The shared link wasn't found
+/// Description of the "shared_link_not_found" tag state: The shared link wasn't
+/// found
 ///
 /// @return An initialized instance.
 ///
@@ -62,8 +66,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 ///
 /// Initializes union class with tag state of "shared_link_access_denied".
 ///
-/// Description of the "shared_link_access_denied" tag state: The caller is not allowed to access
-/// this shared link
+/// Description of the "shared_link_access_denied" tag state: The caller is not
+/// allowed to access this shared link
 ///
 /// @return An initialized instance.
 ///
@@ -79,7 +83,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 ///
 /// Initializes union class with tag state of "settings_error".
 ///
-/// Description of the "settings_error" tag state: There is an error with the given settings
+/// Description of the "settings_error" tag state: There is an error with the
+/// given settings
 ///
 /// @param settingsError There is an error with the given settings
 ///
@@ -90,7 +95,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 ///
 /// Initializes union class with tag state of "email_not_verified".
 ///
-/// Description of the "email_not_verified" tag state: The caller's email should be verified
+/// Description of the "email_not_verified" tag state: The caller's email should
+/// be verified
 ///
 /// @return An initialized instance.
 ///
@@ -99,16 +105,20 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "shared_link_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "shared_link_not_found".
 ///
-/// @return Whether the union's current tag state has value "shared_link_not_found".
+/// @return Whether the union's current tag state has value
+/// "shared_link_not_found".
 ///
 - (BOOL)isSharedLinkNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "shared_link_access_denied".
+/// Retrieves whether the union's current tag state has value
+/// "shared_link_access_denied".
 ///
-/// @return Whether the union's current tag state has value "shared_link_access_denied".
+/// @return Whether the union's current tag state has value
+/// "shared_link_access_denied".
 ///
 - (BOOL)isSharedLinkAccessDenied;
 
@@ -122,17 +132,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "settings_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `settingsError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `settingsError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "settings_error".
 ///
 - (BOOL)isSettingsError;
 
 ///
-/// Retrieves whether the union's current tag state has value "email_not_verified".
+/// Retrieves whether the union's current tag state has value
+/// "email_not_verified".
 ///
-/// @return Whether the union's current tag state has value "email_not_verified".
+/// @return Whether the union's current tag state has value
+/// "email_not_verified".
 ///
 - (BOOL)isEmailNotVerified;
 
@@ -148,14 +160,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGModifySharedLinkSettingsError` union.
+/// The serialization class for the `DBSHARINGModifySharedLinkSettingsError`
+/// union.
 ///
 @interface DBSHARINGModifySharedLinkSettingsErrorSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGModifySharedLinkSettingsError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsError` API object.
+/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsError`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGModifySharedLinkSettingsError` API object.
@@ -168,7 +182,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGModifySharedLinkSettingsErrorTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGModifySharedLinkSettingsError` API object.
 ///
-/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsError` object.
+/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsError`
+/// object.
 ///
 + (DBSHARINGModifySharedLinkSettingsError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

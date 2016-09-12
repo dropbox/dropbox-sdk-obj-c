@@ -16,8 +16,9 @@
 ///
 /// Success results for `listReceivedFiles`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFilesResult : NSObject <DBSerializable>
 
@@ -43,7 +44,8 @@
                                  cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param entries Information about the files shared with current user.
 ///
@@ -65,16 +67,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGListFilesResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFilesResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesResult` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFilesResult` object.
 ///

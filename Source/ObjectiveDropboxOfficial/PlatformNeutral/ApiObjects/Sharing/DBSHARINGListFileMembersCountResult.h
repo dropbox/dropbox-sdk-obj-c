@@ -14,8 +14,9 @@
 ///
 /// The `ListFileMembersCountResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFileMembersCountResult : NSObject <DBSerializable>
 
@@ -33,7 +34,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param members A list of members on this file.
-/// @param memberCount The number of members on this file. This does not include inherited members
+/// @param memberCount The number of members on this file. This does not include
+/// inherited members
 ///
 /// @return An initialized instance.
 ///
@@ -52,10 +54,11 @@
 ///
 /// Serializes `DBSHARINGListFileMembersCountResult` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFileMembersCountResult` API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersCountResult` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersCountResult`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersCountResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersCountResult * _Nonnull)instance;
 
@@ -65,7 +68,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFileMembersCountResult` API object.
 ///
-/// @return An instantiation of the `DBSHARINGListFileMembersCountResult` object.
+/// @return An instantiation of the `DBSHARINGListFileMembersCountResult`
+/// object.
 ///
 + (DBSHARINGListFileMembersCountResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -12,8 +12,9 @@
 ///
 /// The `ListMemberDevicesArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMemberDevicesArg : NSObject <DBSerializable>
 
@@ -38,8 +39,10 @@
 ///
 /// @param teamMemberId The team's member id
 /// @param includeWebSessions Whether to list web sessions of the team's member
-/// @param includeDesktopClients Whether to list linked desktop devices of the team's member
-/// @param includeMobileClients Whether to list linked mobile devices of the team's member
+/// @param includeDesktopClients Whether to list linked desktop devices of the
+/// team's member
+/// @param includeMobileClients Whether to list linked mobile devices of the
+/// team's member
 ///
 /// @return An initialized instance.
 ///
@@ -49,7 +52,8 @@
                         includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param teamMemberId The team's member id
 ///
@@ -71,16 +75,16 @@
 ///
 /// @param instance An instance of the `DBTEAMListMemberDevicesArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMemberDevicesArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMemberDevicesArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberDevicesArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberDevicesArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberDevicesArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMemberDevicesArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMemberDevicesArg` object.
 ///

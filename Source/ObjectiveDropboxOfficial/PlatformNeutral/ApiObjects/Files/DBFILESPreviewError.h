@@ -14,20 +14,22 @@
 ///
 /// The `PreviewError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESPreviewError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESPreviewErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESPreviewError` union can exist.
+/// The `DBFILESPreviewErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESPreviewError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
   /// An error occurs when downloading metadata for the file.
   DBFILESPreviewErrorPath,
 
-  /// This preview generation is still in progress and the file is not ready  for preview yet.
+  /// This preview generation is still in progress and the file is not ready
+  /// for preview yet.
   DBFILESPreviewErrorInProgress,
 
   /// The file extension is not supported preview generation.
@@ -41,8 +43,9 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESPreviewErrorTag tag;
 
-/// An error occurs when downloading metadata for the file. @note Ensure the `isPath` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// An error occurs when downloading metadata for the file. @note Ensure the
+/// `isPath` method returns true before accessing, otherwise a runtime exception
+/// will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -50,7 +53,8 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// Initializes union class with tag state of "path".
 ///
-/// Description of the "path" tag state: An error occurs when downloading metadata for the file.
+/// Description of the "path" tag state: An error occurs when downloading
+/// metadata for the file.
 ///
 /// @param path An error occurs when downloading metadata for the file.
 ///
@@ -61,8 +65,8 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: This preview generation is still in progress and the
-/// file is not ready  for preview yet.
+/// Description of the "in_progress" tag state: This preview generation is still
+/// in progress and the file is not ready  for preview yet.
 ///
 /// @return An initialized instance.
 ///
@@ -71,8 +75,8 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_extension".
 ///
-/// Description of the "unsupported_extension" tag state: The file extension is not supported
-/// preview generation.
+/// Description of the "unsupported_extension" tag state: The file extension is
+/// not supported preview generation.
 ///
 /// @return An initialized instance.
 ///
@@ -81,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_content".
 ///
-/// Description of the "unsupported_content" tag state: The file content is not supported for
-/// preview generation.
+/// Description of the "unsupported_content" tag state: The file content is not
+/// supported for preview generation.
 ///
 /// @return An initialized instance.
 ///
@@ -93,8 +97,8 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -108,16 +112,20 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 - (BOOL)isInProgress;
 
 ///
-/// Retrieves whether the union's current tag state has value "unsupported_extension".
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_extension".
 ///
-/// @return Whether the union's current tag state has value "unsupported_extension".
+/// @return Whether the union's current tag state has value
+/// "unsupported_extension".
 ///
 - (BOOL)isUnsupportedExtension;
 
 ///
-/// Retrieves whether the union's current tag state has value "unsupported_content".
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_content".
 ///
-/// @return Whether the union's current tag state has value "unsupported_content".
+/// @return Whether the union's current tag state has value
+/// "unsupported_content".
 ///
 - (BOOL)isUnsupportedContent;
 
@@ -142,14 +150,16 @@ typedef NS_ENUM(NSInteger, DBFILESPreviewErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESPreviewError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESPreviewError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESPreviewError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPreviewError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESPreviewError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESPreviewError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESPreviewError` API object.
 ///
 /// @return An instantiation of the `DBFILESPreviewError` object.
 ///

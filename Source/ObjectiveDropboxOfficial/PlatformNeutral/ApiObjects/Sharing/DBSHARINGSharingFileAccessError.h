@@ -14,26 +14,30 @@
 ///
 /// User could not access this file.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharingFileAccessError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharingFileAccessErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGSharingFileAccessError` union can exist.
+/// The `DBSHARINGSharingFileAccessErrorTag` enum type represents the possible
+/// tag states with which the `DBSHARINGSharingFileAccessError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
-  /// Current user does not have sufficient privileges to perform the desired action.
+  /// Current user does not have sufficient privileges to perform the desired
+  /// action.
   DBSHARINGSharingFileAccessErrorNoPermission,
 
   /// File specified was not found.
   DBSHARINGSharingFileAccessErrorInvalidFile,
 
-  /// A folder can't be shared this way. Use folder sharing or a shared link instead.
+  /// A folder can't be shared this way. Use folder sharing or a shared link
+  /// instead.
   DBSHARINGSharingFileAccessErrorIsFolder,
 
-  /// A file inside a public folder can't be shared this way. Use a public link instead.
+  /// A file inside a public folder can't be shared this way. Use a public
+  /// link instead.
   DBSHARINGSharingFileAccessErrorInsidePublicFolder,
 
   /// A Mac OS X package can't be shared this way. Use a shared link instead.
@@ -52,8 +56,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: Current user does not have sufficient privileges
-/// to perform the desired action.
+/// Description of the "no_permission" tag state: Current user does not have
+/// sufficient privileges to perform the desired action.
 ///
 /// @return An initialized instance.
 ///
@@ -71,8 +75,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "is_folder".
 ///
-/// Description of the "is_folder" tag state: A folder can't be shared this way. Use folder sharing
-/// or a shared link instead.
+/// Description of the "is_folder" tag state: A folder can't be shared this way.
+/// Use folder sharing or a shared link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -81,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_public_folder".
 ///
-/// Description of the "inside_public_folder" tag state: A file inside a public folder can't be
-/// shared this way. Use a public link instead.
+/// Description of the "inside_public_folder" tag state: A file inside a public
+/// folder can't be shared this way. Use a public link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -91,8 +95,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_osx_package".
 ///
-/// Description of the "inside_osx_package" tag state: A Mac OS X package can't be shared this way.
-/// Use a shared link instead.
+/// Description of the "inside_osx_package" tag state: A Mac OS X package can't
+/// be shared this way. Use a shared link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -129,16 +133,20 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 - (BOOL)isIsFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_public_folder".
+/// Retrieves whether the union's current tag state has value
+/// "inside_public_folder".
 ///
-/// @return Whether the union's current tag state has value "inside_public_folder".
+/// @return Whether the union's current tag state has value
+/// "inside_public_folder".
 ///
 - (BOOL)isInsidePublicFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_osx_package".
+/// Retrieves whether the union's current tag state has value
+/// "inside_osx_package".
 ///
-/// @return Whether the union's current tag state has value "inside_osx_package".
+/// @return Whether the union's current tag state has value
+/// "inside_osx_package".
 ///
 - (BOOL)isInsideOsxPackage;
 
@@ -168,18 +176,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharingFileAccessErrorTag) {
 ///
 /// Serializes `DBSHARINGSharingFileAccessError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharingFileAccessError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharingFileAccessError` API
+/// @param instance An instance of the `DBSHARINGSharingFileAccessError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharingFileAccessError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharingFileAccessError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharingFileAccessError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharingFileAccessError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharingFileAccessError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharingFileAccessError` object.
 ///

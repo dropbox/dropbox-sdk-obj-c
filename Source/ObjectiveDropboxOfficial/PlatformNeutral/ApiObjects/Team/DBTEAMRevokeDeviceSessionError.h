@@ -12,15 +12,16 @@
 ///
 /// The `RevokeDeviceSessionError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeDeviceSessionError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMRevokeDeviceSessionErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMRevokeDeviceSessionError` union can exist.
+/// The `DBTEAMRevokeDeviceSessionErrorTag` enum type represents the possible
+/// tag states with which the `DBTEAMRevokeDeviceSessionError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
   /// Device session not found.
   DBTEAMRevokeDeviceSessionErrorDeviceSessionNotFound,
@@ -41,7 +42,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
 ///
 /// Initializes union class with tag state of "device_session_not_found".
 ///
-/// Description of the "device_session_not_found" tag state: Device session not found.
+/// Description of the "device_session_not_found" tag state: Device session not
+/// found.
 ///
 /// @return An initialized instance.
 ///
@@ -66,14 +68,17 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "device_session_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "device_session_not_found".
 ///
-/// @return Whether the union's current tag state has value "device_session_not_found".
+/// @return Whether the union's current tag state has value
+/// "device_session_not_found".
 ///
 - (BOOL)isDeviceSessionNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_found".
 ///
 /// @return Whether the union's current tag state has value "member_not_found".
 ///
@@ -105,18 +110,19 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionErrorTag) {
 ///
 /// Serializes `DBTEAMRevokeDeviceSessionError` instances.
 ///
-/// @param instance An instance of the `DBTEAMRevokeDeviceSessionError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionError` API
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeDeviceSessionError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionError` API object.
 ///
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionError` object.
 ///

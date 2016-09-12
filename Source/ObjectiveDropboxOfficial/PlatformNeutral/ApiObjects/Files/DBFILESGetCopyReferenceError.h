@@ -14,15 +14,16 @@
 ///
 /// The `GetCopyReferenceError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESGetCopyReferenceError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESGetCopyReferenceErrorTag` enum type represents the possible tag states with which
-/// the `DBFILESGetCopyReferenceError` union can exist.
+/// The `DBFILESGetCopyReferenceErrorTag` enum type represents the possible tag
+/// states with which the `DBFILESGetCopyReferenceError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
   /// (no description).
   DBFILESGetCopyReferenceErrorPath,
@@ -35,8 +36,8 @@ typedef NS_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESGetCopyReferenceErrorTag tag;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -62,8 +63,8 @@ typedef NS_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -95,18 +96,19 @@ typedef NS_ENUM(NSInteger, DBFILESGetCopyReferenceErrorTag) {
 ///
 /// Serializes `DBFILESGetCopyReferenceError` instances.
 ///
-/// @param instance An instance of the `DBFILESGetCopyReferenceError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESGetCopyReferenceError` API
+/// @param instance An instance of the `DBFILESGetCopyReferenceError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESGetCopyReferenceError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetCopyReferenceError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESGetCopyReferenceError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESGetCopyReferenceError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESGetCopyReferenceError` API object.
 ///
 /// @return An instantiation of the `DBFILESGetCopyReferenceError` object.
 ///

@@ -14,15 +14,16 @@
 ///
 /// Policy governing who can view shared links.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedLinkPolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharedLinkPolicyTag` enum type represents the possible tag states with which the
-/// `DBSHARINGSharedLinkPolicy` union can exist.
+/// The `DBSHARINGSharedLinkPolicyTag` enum type represents the possible tag
+/// states with which the `DBSHARINGSharedLinkPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
   /// Links can be shared with anyone.
   DBSHARINGSharedLinkPolicyAnyone,
@@ -52,8 +53,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// Initializes union class with tag state of "members".
 ///
-/// Description of the "members" tag state: Links can only be shared among members of the shared
-/// folder.
+/// Description of the "members" tag state: Links can only be shared among
+/// members of the shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -110,16 +111,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 ///
 /// @param instance An instance of the `DBSHARINGSharedLinkPolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkPolicy` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkPolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkPolicy * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedLinkPolicy` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedLinkPolicy` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkPolicy` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharedLinkPolicy` object.
 ///

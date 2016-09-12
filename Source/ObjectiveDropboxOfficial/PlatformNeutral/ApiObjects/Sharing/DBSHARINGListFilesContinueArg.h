@@ -14,8 +14,9 @@
 ///
 /// Arguments for `listReceivedFilesContinue`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFilesContinueArg : NSObject <DBSerializable>
 
@@ -47,18 +48,19 @@
 ///
 /// Serializes `DBSHARINGListFilesContinueArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFilesContinueArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesContinueArg` API
+/// @param instance An instance of the `DBSHARINGListFilesContinueArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesContinueArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesContinueArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFilesContinueArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesContinueArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesContinueArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFilesContinueArg` object.
 ///

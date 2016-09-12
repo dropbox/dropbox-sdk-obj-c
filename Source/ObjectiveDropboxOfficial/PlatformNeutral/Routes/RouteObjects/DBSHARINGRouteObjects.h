@@ -9,8 +9,9 @@
 @class DBRoute;
 
 ///
-/// Stone route objects for the Sharing namespace. Each route in the Sharing namespace has its own
-/// static object, which contains information about the route.
+/// Stone route objects for the Sharing namespace. Each route in the Sharing
+/// namespace has its own static object, which contains information about the
+/// route.
 ///
 @interface DBSHARINGRouteObjects : NSObject
 

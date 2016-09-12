@@ -14,12 +14,13 @@
 ///
 /// The `ListFoldersResult` struct.
 ///
-/// Result for `listFolders` or `listMountableFolders`, depending on which endpoint was requested.
-/// Unmounted shared folders can be identified by the absence of `pathLower` in
-/// `DBSHARINGSharedFolderMetadata`.
+/// Result for `listFolders` or `listMountableFolders`, depending on which
+/// endpoint was requested. Unmounted shared folders can be identified by the
+/// absence of `pathLower` in `DBSHARINGSharedFolderMetadata`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFoldersResult : NSObject <DBSerializable>
 
@@ -28,9 +29,10 @@
 /// List of all shared folders the authenticated user has access to.
 @property(nonatomic, readonly) NSArray<DBSHARINGSharedFolderMetadata *> * _Nonnull entries;
 
-/// Present if there are additional shared folders that have not been returned yet. Pass the cursor
-/// into the corresponding continue endpoint (either `listFoldersContinue` or
-/// `listMountableFoldersContinue`) to list additional folders.
+/// Present if there are additional shared folders that have not been returned
+/// yet. Pass the cursor into the corresponding continue endpoint (either
+/// `listFoldersContinue` or `listMountableFoldersContinue`) to list additional
+/// folders.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
@@ -38,10 +40,12 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param entries List of all shared folders the authenticated user has access to.
-/// @param cursor Present if there are additional shared folders that have not been returned yet.
-/// Pass the cursor into the corresponding continue endpoint (either `listFoldersContinue` or
-/// `listMountableFoldersContinue`) to list additional folders.
+/// @param entries List of all shared folders the authenticated user has access
+/// to.
+/// @param cursor Present if there are additional shared folders that have not
+/// been returned yet. Pass the cursor into the corresponding continue endpoint
+/// (either `listFoldersContinue` or `listMountableFoldersContinue`) to list
+/// additional folders.
 ///
 /// @return An initialized instance.
 ///
@@ -49,9 +53,11 @@
                                  cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param entries List of all shared folders the authenticated user has access to.
+/// @param entries List of all shared folders the authenticated user has access
+/// to.
 ///
 /// @return An initialized instance.
 ///
@@ -71,16 +77,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGListFoldersResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFoldersResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFoldersResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFoldersResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFoldersResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersResult` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFoldersResult` object.
 ///

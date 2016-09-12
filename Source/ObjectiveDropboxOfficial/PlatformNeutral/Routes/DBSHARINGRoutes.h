@@ -146,10 +146,12 @@
 ///
 @interface DBSHARINGRoutes : NSObject
 
-/// An instance of the networking client that each route will use to submit a request.
+/// An instance of the networking client that each route will use to submit a
+/// request.
 @property(nonatomic, readonly) DBTransportClient * _Nonnull client;
 
-/// Initializes the `DBSHARINGRoutes` namespace container object with a networking client.
+/// Initializes the `DBSHARINGRoutes` namespace container object with a
+/// networking client.
 - (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
 
 ///

@@ -14,8 +14,9 @@
 ///
 /// The `ListFoldersArgs` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFoldersArgs : NSObject <DBSerializable>
 
@@ -24,9 +25,10 @@
 /// The maximum number of results to return per request.
 @property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
-/// This is a list indicating whether each returned folder data entry will include a boolean field
-/// `allow` in `DBSHARINGFolderPermission` that describes whether the current user can perform the
-/// `FolderAction` on the folder.
+/// This is a list indicating whether each returned folder data entry will
+/// include a boolean field `allow` in `DBSHARINGFolderPermission` that
+/// describes whether the current user can perform the `FolderAction` on the
+/// folder.
 @property(nonatomic, readonly) NSArray<DBSHARINGFolderAction *> * _Nullable actions;
 
 #pragma mark - Constructors
@@ -35,9 +37,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param limit The maximum number of results to return per request.
-/// @param actions This is a list indicating whether each returned folder data entry will include a
-/// boolean field `allow` in `DBSHARINGFolderPermission` that describes whether the current user can
-/// perform the `FolderAction` on the folder.
+/// @param actions This is a list indicating whether each returned folder data
+/// entry will include a boolean field `allow` in `DBSHARINGFolderPermission`
+/// that describes whether the current user can perform the `FolderAction` on
+/// the folder.
 ///
 /// @return An initialized instance.
 ///
@@ -45,7 +48,8 @@
                               actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -66,16 +70,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGListFoldersArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFoldersArgs` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFoldersArgs * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFoldersArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFoldersArgs` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersArgs` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFoldersArgs` object.
 ///

@@ -12,8 +12,9 @@
 ///
 /// The `UploadSessionCursor` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionCursor : NSObject <DBSerializable>
 
@@ -22,8 +23,8 @@
 /// The upload session ID (returned by `uploadSessionStart`).
 @property(nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
-/// The amount of data that has been uploaded so far. We use this to make sure upload data isn't
-/// lost or duplicated in the event of a network error.
+/// The amount of data that has been uploaded so far. We use this to make sure
+/// upload data isn't lost or duplicated in the event of a network error.
 @property(nonatomic, readonly) NSNumber * _Nonnull offset;
 
 #pragma mark - Constructors
@@ -32,8 +33,9 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sessionId The upload session ID (returned by `uploadSessionStart`).
-/// @param offset The amount of data that has been uploaded so far. We use this to make sure upload
-/// data isn't lost or duplicated in the event of a network error.
+/// @param offset The amount of data that has been uploaded so far. We use this
+/// to make sure upload data isn't lost or duplicated in the event of a network
+/// error.
 ///
 /// @return An initialized instance.
 ///
@@ -53,16 +55,16 @@
 ///
 /// @param instance An instance of the `DBFILESUploadSessionCursor` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionCursor` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionCursor` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionCursor * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionCursor` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionCursor` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionCursor` API object.
 ///
 /// @return An instantiation of the `DBFILESUploadSessionCursor` object.
 ///

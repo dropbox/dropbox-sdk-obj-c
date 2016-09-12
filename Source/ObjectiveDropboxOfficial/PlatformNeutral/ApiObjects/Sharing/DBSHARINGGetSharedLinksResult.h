@@ -14,8 +14,9 @@
 ///
 /// The `GetSharedLinksResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGetSharedLinksResult : NSObject <DBSerializable>
 
@@ -47,18 +48,19 @@
 ///
 /// Serializes `DBSHARINGGetSharedLinksResult` instances.
 ///
-/// @param instance An instance of the `DBSHARINGGetSharedLinksResult` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGetSharedLinksResult` API
+/// @param instance An instance of the `DBSHARINGGetSharedLinksResult` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGetSharedLinksResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetSharedLinksResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGetSharedLinksResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetSharedLinksResult`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGetSharedLinksResult` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGetSharedLinksResult` object.
 ///

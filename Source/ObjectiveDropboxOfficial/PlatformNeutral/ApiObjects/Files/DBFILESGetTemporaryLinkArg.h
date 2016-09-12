@@ -12,8 +12,9 @@
 ///
 /// The `GetTemporaryLinkArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESGetTemporaryLinkArg : NSObject <DBSerializable>
 
@@ -47,16 +48,16 @@
 ///
 /// @param instance An instance of the `DBFILESGetTemporaryLinkArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESGetTemporaryLinkArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetTemporaryLinkArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESGetTemporaryLinkArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESGetTemporaryLinkArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESGetTemporaryLinkArg` API object.
 ///
 /// @return An instantiation of the `DBFILESGetTemporaryLinkArg` object.
 ///

@@ -16,8 +16,9 @@
 ///
 /// Information on linked applications of a team member.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMemberLinkedApps : NSObject <DBSerializable>
 
@@ -35,7 +36,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param teamMemberId The member unique Id
-/// @param linkedApiApps List of third party applications linked by this team member
+/// @param linkedApiApps List of third party applications linked by this team
+/// member
 ///
 /// @return An initialized instance.
 ///
@@ -56,15 +58,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMemberLinkedApps` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMemberLinkedApps` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMemberLinkedApps` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberLinkedApps * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMemberLinkedApps` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberLinkedApps` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMemberLinkedApps` API object.
 ///
 /// @return An instantiation of the `DBTEAMMemberLinkedApps` object.
 ///

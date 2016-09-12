@@ -12,11 +12,12 @@
 ///
 /// The `UserInfo` struct.
 ///
-/// Basic information about a user. Use `usersAccount` and `usersAccountBatch` to obtain more
-/// detailed information.
+/// Basic information about a user. Use `usersAccount` and `usersAccountBatch`
+/// to obtain more detailed information.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGUserInfo : NSObject <DBSerializable>
 
@@ -28,7 +29,8 @@
 /// If the user is in the same team as current user.
 @property(nonatomic, readonly) NSNumber * _Nonnull sameTeam;
 
-/// The team member ID of the shared folder member. Only present if sameTeam is true.
+/// The team member ID of the shared folder member. Only present if sameTeam is
+/// true.
 @property(nonatomic, readonly) NSString * _Nullable teamMemberId;
 
 #pragma mark - Constructors
@@ -38,8 +40,8 @@
 ///
 /// @param accountId The account ID of the user.
 /// @param sameTeam If the user is in the same team as current user.
-/// @param teamMemberId The team member ID of the shared folder member. Only present if sameTeam is
-/// true.
+/// @param teamMemberId The team member ID of the shared folder member. Only
+/// present if sameTeam is true.
 ///
 /// @return An initialized instance.
 ///
@@ -48,7 +50,8 @@
                              teamMemberId:(NSString * _Nullable)teamMemberId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accountId The account ID of the user.
 /// @param sameTeam If the user is in the same team as current user.
@@ -71,14 +74,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGUserInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGUserInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGUserInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUserInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGUserInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGUserInfo` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGUserInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGUserInfo` object.
 ///

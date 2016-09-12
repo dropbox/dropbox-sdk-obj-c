@@ -14,15 +14,16 @@
 ///
 /// The `PropertiesError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESPropertiesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESPropertiesErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESPropertiesError` union can exist.
+/// The `DBFILESPropertiesErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESPropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
   /// Property template does not exist for given identifier.
   DBFILESPropertiesErrorTemplateNotFound,
@@ -41,12 +42,13 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESPropertiesErrorTag tag;
 
-/// Property template does not exist for given identifier. @note Ensure the `isTemplateNotFound`
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// Property template does not exist for given identifier. @note Ensure the
+/// `isTemplateNotFound` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateNotFound;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -54,10 +56,11 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// Initializes union class with tag state of "template_not_found".
 ///
-/// Description of the "template_not_found" tag state: Property template does not exist for given
-/// identifier.
+/// Description of the "template_not_found" tag state: Property template does
+/// not exist for given identifier.
 ///
-/// @param templateNotFound Property template does not exist for given identifier.
+/// @param templateNotFound Property template does not exist for given
+/// identifier.
 ///
 /// @return An initialized instance.
 ///
@@ -66,8 +69,8 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// Initializes union class with tag state of "restricted_content".
 ///
-/// Description of the "restricted_content" tag state: You do not have the permissions to modify
-/// this property template.
+/// Description of the "restricted_content" tag state: You do not have the
+/// permissions to modify this property template.
 ///
 /// @return An initialized instance.
 ///
@@ -92,19 +95,23 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "template_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "template_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the `templateNotFound`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `templateNotFound` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value "template_not_found".
+/// @return Whether the union's current tag state has value
+/// "template_not_found".
 ///
 - (BOOL)isTemplateNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "restricted_content".
+/// Retrieves whether the union's current tag state has value
+/// "restricted_content".
 ///
-/// @return Whether the union's current tag state has value "restricted_content".
+/// @return Whether the union's current tag state has value
+/// "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
@@ -118,8 +125,8 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -146,15 +153,16 @@ typedef NS_ENUM(NSInteger, DBFILESPropertiesErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESPropertiesError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESPropertiesError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESPropertiesError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPropertiesError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESPropertiesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESPropertiesError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESPropertiesError` API object.
 ///
 /// @return An instantiation of the `DBFILESPropertiesError` object.
 ///

@@ -18,15 +18,16 @@
 ///
 /// Errors for `removeFileMember2`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRemoveFileMemberError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGRemoveFileMemberErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGRemoveFileMemberError` union can exist.
+/// The `DBSHARINGRemoveFileMemberErrorTag` enum type represents the possible
+/// tag states with which the `DBSHARINGRemoveFileMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
   /// (no description).
   DBSHARINGRemoveFileMemberErrorUserError,
@@ -34,8 +35,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
   /// (no description).
   DBSHARINGRemoveFileMemberErrorAccessError,
 
-  /// This member does not have explicit access to the file and therefore cannot be removed. The
-  /// return value is the access that a user might have to the file from a parent folder.
+  /// This member does not have explicit access to the file and therefore
+  /// cannot be removed. The return value is the access that a user might have
+  /// to the file from a parent folder.
   DBSHARINGRemoveFileMemberErrorNoExplicitAccess,
 
   /// (no description).
@@ -46,18 +48,18 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGRemoveFileMemberErrorTag tag;
 
-/// (no description). @note Ensure the `isUserError` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (no description). @note Ensure the `isUserError` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
-/// This member does not have explicit access to the file and therefore cannot be removed. The
-/// return value is the access that a user might have to the file from a parent folder. @note Ensure
-/// the `isNoExplicitAccess` method returns true before accessing, otherwise a runtime exception
-/// will be raised.
+/// This member does not have explicit access to the file and therefore cannot
+/// be removed. The return value is the access that a user might have to the
+/// file from a parent folder. @note Ensure the `isNoExplicitAccess` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 #pragma mark - Constructors
@@ -83,13 +85,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "no_explicit_access".
 ///
-/// Description of the "no_explicit_access" tag state: This member does not have explicit access to
-/// the file and therefore cannot be removed. The return value is the access that a user might have
-/// to the file from a parent folder.
+/// Description of the "no_explicit_access" tag state: This member does not have
+/// explicit access to the file and therefore cannot be removed. The return
+/// value is the access that a user might have to the file from a parent folder.
 ///
-/// @param noExplicitAccess This member does not have explicit access to the file and therefore
-/// cannot be removed. The return value is the access that a user might have to the file from a
-/// parent folder.
+/// @param noExplicitAccess This member does not have explicit access to the
+/// file and therefore cannot be removed. The return value is the access that a
+/// user might have to the file from a parent folder.
 ///
 /// @return An initialized instance.
 ///
@@ -107,8 +109,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `userError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `userError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "user_error".
 ///
@@ -117,20 +119,22 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
 
 ///
-/// Retrieves whether the union's current tag state has value "no_explicit_access".
+/// Retrieves whether the union's current tag state has value
+/// "no_explicit_access".
 ///
-/// @note Call this method and ensure it returns true before accessing the `noExplicitAccess`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `noExplicitAccess` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value "no_explicit_access".
+/// @return Whether the union's current tag state has value
+/// "no_explicit_access".
 ///
 - (BOOL)isNoExplicitAccess;
 
@@ -160,18 +164,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGRemoveFileMemberErrorTag) {
 ///
 /// Serializes `DBSHARINGRemoveFileMemberError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRemoveFileMemberError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGRemoveFileMemberError` API
+/// @param instance An instance of the `DBSHARINGRemoveFileMemberError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGRemoveFileMemberError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRemoveFileMemberError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGRemoveFileMemberError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGRemoveFileMemberError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGRemoveFileMemberError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGRemoveFileMemberError` object.
 ///

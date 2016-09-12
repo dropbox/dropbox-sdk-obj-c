@@ -14,15 +14,16 @@
 ///
 /// The `UploadError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESUploadErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESUploadError` union can exist.
+/// The `DBFILESUploadErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESUploadError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
   /// Unable to save the uploaded contents to a file.
   DBFILESUploadErrorPath,
@@ -35,8 +36,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadErrorTag tag;
 
-/// Unable to save the uploaded contents to a file. @note Ensure the `isPath` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// Unable to save the uploaded contents to a file. @note Ensure the `isPath`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBFILESUploadWriteFailed * _Nonnull path;
 
 #pragma mark - Constructors
@@ -44,7 +46,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 ///
 /// Initializes union class with tag state of "path".
 ///
-/// Description of the "path" tag state: Unable to save the uploaded contents to a file.
+/// Description of the "path" tag state: Unable to save the uploaded contents to
+/// a file.
 ///
 /// @param path Unable to save the uploaded contents to a file.
 ///
@@ -64,8 +67,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -99,14 +102,16 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESUploadError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESUploadError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESUploadError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESUploadError` API object.
 ///
 /// @return An instantiation of the `DBFILESUploadError` object.
 ///

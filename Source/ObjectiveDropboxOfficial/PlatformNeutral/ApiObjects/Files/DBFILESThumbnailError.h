@@ -14,15 +14,16 @@
 ///
 /// The `ThumbnailError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESThumbnailError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESThumbnailErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESThumbnailError` union can exist.
+/// The `DBFILESThumbnailErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESThumbnailError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
   /// An error occurs when downloading metadata for the image.
   DBFILESThumbnailErrorPath,
@@ -41,8 +42,9 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESThumbnailErrorTag tag;
 
-/// An error occurs when downloading metadata for the image. @note Ensure the `isPath` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// An error occurs when downloading metadata for the image. @note Ensure the
+/// `isPath` method returns true before accessing, otherwise a runtime exception
+/// will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -50,7 +52,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// Initializes union class with tag state of "path".
 ///
-/// Description of the "path" tag state: An error occurs when downloading metadata for the image.
+/// Description of the "path" tag state: An error occurs when downloading
+/// metadata for the image.
 ///
 /// @param path An error occurs when downloading metadata for the image.
 ///
@@ -61,8 +64,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_extension".
 ///
-/// Description of the "unsupported_extension" tag state: The file extension doesn't allow
-/// conversion to a thumbnail.
+/// Description of the "unsupported_extension" tag state: The file extension
+/// doesn't allow conversion to a thumbnail.
 ///
 /// @return An initialized instance.
 ///
@@ -71,7 +74,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_image".
 ///
-/// Description of the "unsupported_image" tag state: The image cannot be converted to a thumbnail.
+/// Description of the "unsupported_image" tag state: The image cannot be
+/// converted to a thumbnail.
 ///
 /// @return An initialized instance.
 ///
@@ -80,7 +84,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// Initializes union class with tag state of "conversion_error".
 ///
-/// Description of the "conversion_error" tag state: An error occurs during thumbnail conversion.
+/// Description of the "conversion_error" tag state: An error occurs during
+/// thumbnail conversion.
 ///
 /// @return An initialized instance.
 ///
@@ -91,29 +96,33 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value "unsupported_extension".
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_extension".
 ///
-/// @return Whether the union's current tag state has value "unsupported_extension".
+/// @return Whether the union's current tag state has value
+/// "unsupported_extension".
 ///
 - (BOOL)isUnsupportedExtension;
 
 ///
-/// Retrieves whether the union's current tag state has value "unsupported_image".
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_image".
 ///
 /// @return Whether the union's current tag state has value "unsupported_image".
 ///
 - (BOOL)isUnsupportedImage;
 
 ///
-/// Retrieves whether the union's current tag state has value "conversion_error".
+/// Retrieves whether the union's current tag state has value
+/// "conversion_error".
 ///
 /// @return Whether the union's current tag state has value "conversion_error".
 ///
@@ -140,15 +149,16 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESThumbnailError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESThumbnailError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESThumbnailError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESThumbnailError` API object.
 ///
 /// @return An instantiation of the `DBFILESThumbnailError` object.
 ///

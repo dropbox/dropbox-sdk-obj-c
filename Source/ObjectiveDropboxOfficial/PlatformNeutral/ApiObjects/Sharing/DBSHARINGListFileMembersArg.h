@@ -16,8 +16,9 @@
 ///
 /// Arguments for `listFileMembers`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFileMembersArg : NSObject <DBSerializable>
 
@@ -32,7 +33,8 @@
 /// Whether to include members who only have access from a parent shared folder.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeInherited;
 
-/// Number of members to return max per query. Defaults to 100 if no limit is specified.
+/// Number of members to return max per query. Defaults to 100 if no limit is
+/// specified.
 @property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
@@ -42,10 +44,10 @@
 ///
 /// @param file The file for which you want to see members.
 /// @param actions The actions for which to return permissions on a member
-/// @param includeInherited Whether to include members who only have access from a parent shared
-/// folder.
-/// @param limit Number of members to return max per query. Defaults to 100 if no limit is
-/// specified.
+/// @param includeInherited Whether to include members who only have access from
+/// a parent shared folder.
+/// @param limit Number of members to return max per query. Defaults to 100 if
+/// no limit is specified.
 ///
 /// @return An initialized instance.
 ///
@@ -55,7 +57,8 @@
                                limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param file The file for which you want to see members.
 ///
@@ -77,16 +80,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGListFileMembersArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFileMembersArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFileMembersArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFileMembersArg` object.
 ///

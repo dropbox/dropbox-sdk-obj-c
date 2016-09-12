@@ -16,21 +16,24 @@
 ///
 /// Describes property templates that can be filled and associated with a file.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESPropertyGroupTemplate : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// A display name for the property template. Property template names can be up to 256 bytes.
+/// A display name for the property template. Property template names can be up
+/// to 256 bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;
 
-/// Description for new property template. Property template descriptions can be up to 1024 bytes.
+/// Description for new property template. Property template descriptions can be
+/// up to 1024 bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull description_;
 
-/// This is a list of custom properties associated with a property template. There can be up to 64
-/// properties in a single property template.
+/// This is a list of custom properties associated with a property template.
+/// There can be up to 64 properties in a single property template.
 @property(nonatomic, readonly) NSArray<DBPROPERTIESPropertyFieldTemplate *> * _Nonnull fields;
 
 #pragma mark - Constructors
@@ -38,12 +41,12 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param name A display name for the property template. Property template names can be up to 256
-/// bytes.
-/// @param description_ Description for new property template. Property template descriptions can be
-/// up to 1024 bytes.
-/// @param fields This is a list of custom properties associated with a property template. There can
-/// be up to 64 properties in a single property template.
+/// @param name A display name for the property template. Property template
+/// names can be up to 256 bytes.
+/// @param description_ Description for new property template. Property template
+/// descriptions can be up to 1024 bytes.
+/// @param fields This is a list of custom properties associated with a property
+/// template. There can be up to 64 properties in a single property template.
 ///
 /// @return An initialized instance.
 ///
@@ -63,10 +66,11 @@
 ///
 /// Serializes `DBPROPERTIESPropertyGroupTemplate` instances.
 ///
-/// @param instance An instance of the `DBPROPERTIESPropertyGroupTemplate` API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyGroupTemplate` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyGroupTemplate`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyGroupTemplate` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyGroupTemplate * _Nonnull)instance;
 

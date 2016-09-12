@@ -12,15 +12,16 @@
 ///
 /// The `ThumbnailSize` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESThumbnailSize : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESThumbnailSizeTag` enum type represents the possible tag states with which the
-/// `DBFILESThumbnailSize` union can exist.
+/// The `DBFILESThumbnailSizeTag` enum type represents the possible tag states
+/// with which the `DBFILESThumbnailSize` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
   /// 32 by 32 px.
   DBFILESThumbnailSizeW32h32,
@@ -147,15 +148,16 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 ///
 /// @param instance An instance of the `DBFILESThumbnailSize` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESThumbnailSize` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESThumbnailSize` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailSize * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailSize` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailSize` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESThumbnailSize` API object.
 ///
 /// @return An instantiation of the `DBFILESThumbnailSize` object.
 ///

@@ -12,8 +12,9 @@
 ///
 /// The `GetPropertyTemplateArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESGetPropertyTemplateArg : NSObject <DBSerializable>
 
@@ -27,7 +28,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param templateId An identifier for property template added by route properties/template/add.
+/// @param templateId An identifier for property template added by route
+/// properties/template/add.
 ///
 /// @return An initialized instance.
 ///
@@ -45,10 +47,11 @@
 ///
 /// Serializes `DBPROPERTIESGetPropertyTemplateArg` instances.
 ///
-/// @param instance An instance of the `DBPROPERTIESGetPropertyTemplateArg` API object.
+/// @param instance An instance of the `DBPROPERTIESGetPropertyTemplateArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESGetPropertyTemplateArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESGetPropertyTemplateArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESGetPropertyTemplateArg * _Nonnull)instance;
 

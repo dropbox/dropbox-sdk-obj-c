@@ -19,8 +19,9 @@
 ///
 /// Profile of a user as a member of a team.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMTeamMemberProfile : DBTEAMMemberProfile <DBSerializable>
 
@@ -36,15 +37,16 @@
 ///
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
-/// @param emailVerified Is true if the user's email is verified to be owned by the user.
+/// @param emailVerified Is true if the user's email is verified to be owned by
+/// the user.
 /// @param status The user's status as a member of a specific team.
 /// @param name Representations for a person's name.
-/// @param membershipType The user's membership type: full (normal team member) vs limited (does not
-/// use a license; no access to the team's shared quota).
+/// @param membershipType The user's membership type: full (normal team member)
+/// vs limited (does not use a license; no access to the team's shared quota).
 /// @param groups List of group IDs of groups that the user belongs to.
-/// @param externalId External ID that a team can attach to the user. An application using the API
-/// may find it easier to use their own IDs instead of Dropbox IDs like account_id or
-/// team_member_id.
+/// @param externalId External ID that a team can attach to the user. An
+/// application using the API may find it easier to use their own IDs instead of
+/// Dropbox IDs like account_id or team_member_id.
 /// @param accountId A user's account identifier.
 ///
 /// @return An initialized instance.
@@ -60,15 +62,17 @@
                                    accountId:(NSString * _Nullable)accountId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param teamMemberId ID of user as a member of a team.
 /// @param email Email address of user.
-/// @param emailVerified Is true if the user's email is verified to be owned by the user.
+/// @param emailVerified Is true if the user's email is verified to be owned by
+/// the user.
 /// @param status The user's status as a member of a specific team.
 /// @param name Representations for a person's name.
-/// @param membershipType The user's membership type: full (normal team member) vs limited (does not
-/// use a license; no access to the team's shared quota).
+/// @param membershipType The user's membership type: full (normal team member)
+/// vs limited (does not use a license; no access to the team's shared quota).
 /// @param groups List of group IDs of groups that the user belongs to.
 ///
 /// @return An initialized instance.
@@ -95,15 +99,16 @@
 ///
 /// @param instance An instance of the `DBTEAMTeamMemberProfile` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMTeamMemberProfile` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMTeamMemberProfile` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMTeamMemberProfile * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMTeamMemberProfile` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMTeamMemberProfile` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMTeamMemberProfile` API object.
 ///
 /// @return An instantiation of the `DBTEAMTeamMemberProfile` object.
 ///

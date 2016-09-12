@@ -12,34 +12,40 @@
 ///
 /// The `WriteMode` union.
 ///
-/// Your intent when writing a file to some path. This is used to determine what constitutes a
-/// conflict and what the autorename strategy is. In some situations, the conflict behavior is
-/// identical: (a) If the target path doesn't contain anything, the file is always written; no
-/// conflict. (b) If the target path contains a folder, it's always a conflict. (c) If the target
-/// path contains a file with identical contents, nothing gets written; no conflict. The conflict
-/// checking differs in the case where there's a file at the target path with contents different
-/// from the contents you're trying to write.
+/// Your intent when writing a file to some path. This is used to determine what
+/// constitutes a conflict and what the autorename strategy is. In some
+/// situations, the conflict behavior is identical: (a) If the target path
+/// doesn't contain anything, the file is always written; no conflict. (b) If
+/// the target path contains a folder, it's always a conflict. (c) If the target
+/// path contains a file with identical contents, nothing gets written; no
+/// conflict. The conflict checking differs in the case where there's a file at
+/// the target path with contents different from the contents you're trying to
+/// write.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESWriteMode : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESWriteModeTag` enum type represents the possible tag states with which the
-/// `DBFILESWriteMode` union can exist.
+/// The `DBFILESWriteModeTag` enum type represents the possible tag states with
+/// which the `DBFILESWriteMode` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
-  /// Never overwrite the existing file. The autorename strategy is to append a number to the file
-  /// name. For example, "document.txt" might become "document (2).txt".
+  /// Never overwrite the existing file. The autorename strategy is to append
+  /// a number to the file name. For example, "document.txt" might become
+  /// "document (2).txt".
   DBFILESWriteModeAdd,
 
-  /// Always overwrite the existing file. The autorename strategy is the same as it is for add.
+  /// Always overwrite the existing file. The autorename strategy is the same
+  /// as it is for add.
   DBFILESWriteModeOverwrite,
 
-  /// Overwrite if the given "rev" matches the existing file's "rev". The autorename strategy is
-  /// to append the string "conflicted copy" to the file name. For example, "document.txt" might
-  /// become "document (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
+  /// Overwrite if the given "rev" matches the existing file's "rev". The
+  /// autorename strategy is to append the string "conflicted copy" to the
+  /// file name. For example, "document.txt" might become "document
+  /// (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
   DBFILESWriteModeUpdate,
 
 };
@@ -47,10 +53,12 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESWriteModeTag tag;
 
-/// Overwrite if the given "rev" matches the existing file's "rev". The autorename strategy is to
-/// append the string "conflicted copy" to the file name. For example, "document.txt" might become
-/// "document (conflicted copy).txt" or "document (Panda's conflicted copy).txt". @note Ensure the
-/// `isUpdate` method returns true before accessing, otherwise a runtime exception will be raised.
+/// Overwrite if the given "rev" matches the existing file's "rev". The
+/// autorename strategy is to append the string "conflicted copy" to the file
+/// name. For example, "document.txt" might become "document (conflicted
+/// copy).txt" or "document (Panda's conflicted copy).txt". @note Ensure the
+/// `isUpdate` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull update;
 
 #pragma mark - Constructors
@@ -58,9 +66,9 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// Initializes union class with tag state of "add".
 ///
-/// Description of the "add" tag state: Never overwrite the existing file. The autorename strategy
-/// is to append a number to the file name. For example, "document.txt" might become "document
-/// (2).txt".
+/// Description of the "add" tag state: Never overwrite the existing file. The
+/// autorename strategy is to append a number to the file name. For example,
+/// "document.txt" might become "document (2).txt".
 ///
 /// @return An initialized instance.
 ///
@@ -69,8 +77,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// Initializes union class with tag state of "overwrite".
 ///
-/// Description of the "overwrite" tag state: Always overwrite the existing file. The autorename
-/// strategy is the same as it is for add.
+/// Description of the "overwrite" tag state: Always overwrite the existing
+/// file. The autorename strategy is the same as it is for add.
 ///
 /// @return An initialized instance.
 ///
@@ -79,14 +87,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// Initializes union class with tag state of "update".
 ///
-/// Description of the "update" tag state: Overwrite if the given "rev" matches the existing file's
-/// "rev". The autorename strategy is to append the string "conflicted copy" to the file name. For
-/// example, "document.txt" might become "document (conflicted copy).txt" or "document (Panda's
-/// conflicted copy).txt".
+/// Description of the "update" tag state: Overwrite if the given "rev" matches
+/// the existing file's "rev". The autorename strategy is to append the string
+/// "conflicted copy" to the file name. For example, "document.txt" might become
+/// "document (conflicted copy).txt" or "document (Panda's conflicted
+/// copy).txt".
 ///
-/// @param update Overwrite if the given "rev" matches the existing file's "rev". The autorename
-/// strategy is to append the string "conflicted copy" to the file name. For example, "document.txt"
-/// might become "document (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
+/// @param update Overwrite if the given "rev" matches the existing file's
+/// "rev". The autorename strategy is to append the string "conflicted copy" to
+/// the file name. For example, "document.txt" might become "document
+/// (conflicted copy).txt" or "document (Panda's conflicted copy).txt".
 ///
 /// @return An initialized instance.
 ///
@@ -111,8 +121,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// Retrieves whether the union's current tag state has value "update".
 ///
-/// @note Call this method and ensure it returns true before accessing the `update` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `update` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "update".
 ///
@@ -139,14 +149,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// @param instance An instance of the `DBFILESWriteMode` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESWriteMode` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESWriteMode` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESWriteMode * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESWriteMode` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESWriteMode` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESWriteMode` API object.
 ///
 /// @return An instantiation of the `DBFILESWriteMode` object.
 ///

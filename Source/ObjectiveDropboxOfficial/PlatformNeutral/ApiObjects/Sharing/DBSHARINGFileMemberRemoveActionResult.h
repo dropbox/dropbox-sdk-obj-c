@@ -15,15 +15,17 @@
 ///
 /// The `FileMemberRemoveActionResult` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFileMemberRemoveActionResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGFileMemberRemoveActionResultTag` enum type represents the possible tag states with
-/// which the `DBSHARINGFileMemberRemoveActionResult` union can exist.
+/// The `DBSHARINGFileMemberRemoveActionResultTag` enum type represents the
+/// possible tag states with which the `DBSHARINGFileMemberRemoveActionResult`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
   /// Member was successfully removed from this file.
   DBSHARINGFileMemberRemoveActionResultSuccess,
@@ -39,12 +41,14 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGFileMemberRemoveActionResultTag tag;
 
-/// Member was successfully removed from this file. @note Ensure the `isSuccess` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// Member was successfully removed from this file. @note Ensure the `isSuccess`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull success;
 
-/// User was not able to remove this member. @note Ensure the `isMemberError` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// User was not able to remove this member. @note Ensure the `isMemberError`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBSHARINGFileMemberActionError * _Nonnull memberError;
 
 #pragma mark - Constructors
@@ -52,7 +56,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 ///
 /// Initializes union class with tag state of "success".
 ///
-/// Description of the "success" tag state: Member was successfully removed from this file.
+/// Description of the "success" tag state: Member was successfully removed from
+/// this file.
 ///
 /// @param success Member was successfully removed from this file.
 ///
@@ -63,7 +68,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 ///
 /// Initializes union class with tag state of "member_error".
 ///
-/// Description of the "member_error" tag state: User was not able to remove this member.
+/// Description of the "member_error" tag state: User was not able to remove
+/// this member.
 ///
 /// @param memberError User was not able to remove this member.
 ///
@@ -83,8 +89,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 ///
 /// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the `success` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `success` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "success".
 ///
@@ -93,8 +99,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 ///
 /// Retrieves whether the union's current tag state has value "member_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `memberError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "member_error".
 ///
@@ -119,14 +125,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGFileMemberRemoveActionResult` union.
+/// The serialization class for the `DBSHARINGFileMemberRemoveActionResult`
+/// union.
 ///
 @interface DBSHARINGFileMemberRemoveActionResultSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGFileMemberRemoveActionResult` instances.
 ///
-/// @param instance An instance of the `DBSHARINGFileMemberRemoveActionResult` API object.
+/// @param instance An instance of the `DBSHARINGFileMemberRemoveActionResult`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberRemoveActionResult` API object.
@@ -139,7 +147,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberRemoveActionResultTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGFileMemberRemoveActionResult` API object.
 ///
-/// @return An instantiation of the `DBSHARINGFileMemberRemoveActionResult` object.
+/// @return An instantiation of the `DBSHARINGFileMemberRemoveActionResult`
+/// object.
 ///
 + (DBSHARINGFileMemberRemoveActionResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

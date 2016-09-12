@@ -19,24 +19,27 @@
 ///
 /// The metadata of a file shared link
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFileLinkMetadata : DBSHARINGSharedLinkMetadata <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The modification time set by the desktop client when the file was added to Dropbox. Since this
-/// time is not verified (the Dropbox server stores whatever the desktop client sends up), this
-/// should only be used for display purposes (such as sorting) and not, for example, to determine if
-/// a file has changed or not.
+/// The modification time set by the desktop client when the file was added to
+/// Dropbox. Since this time is not verified (the Dropbox server stores whatever
+/// the desktop client sends up), this should only be used for display purposes
+/// (such as sorting) and not, for example, to determine if a file has changed
+/// or not.
 @property(nonatomic, readonly) NSDate * _Nonnull clientModified;
 
 /// The last time the file was modified on Dropbox.
 @property(nonatomic, readonly) NSDate * _Nonnull serverModified;
 
-/// A unique identifier for the current revision of a file. This field is the same rev as elsewhere
-/// in the API and can be used to detect changes and avoid conflicts.
+/// A unique identifier for the current revision of a file. This field is the
+/// same rev as elsewhere in the API and can be used to detect changes and avoid
+/// conflicts.
 @property(nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
@@ -48,26 +51,29 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param url URL of the shared link.
-/// @param name The linked file name (including extension). This never contains a slash.
+/// @param name The linked file name (including extension). This never contains
+/// a slash.
 /// @param linkPermissions The link's access permissions.
-/// @param clientModified The modification time set by the desktop client when the file was added to
-/// Dropbox. Since this time is not verified (the Dropbox server stores whatever the desktop client
-/// sends up), this should only be used for display purposes (such as sorting) and not, for example,
-/// to determine if a file has changed or not.
+/// @param clientModified The modification time set by the desktop client when
+/// the file was added to Dropbox. Since this time is not verified (the Dropbox
+/// server stores whatever the desktop client sends up), this should only be
+/// used for display purposes (such as sorting) and not, for example, to
+/// determine if a file has changed or not.
 /// @param serverModified The last time the file was modified on Dropbox.
-/// @param rev A unique identifier for the current revision of a file. This field is the same rev as
-/// elsewhere in the API and can be used to detect changes and avoid conflicts.
+/// @param rev A unique identifier for the current revision of a file. This
+/// field is the same rev as elsewhere in the API and can be used to detect
+/// changes and avoid conflicts.
 /// @param size The file size in bytes.
 /// @param id_ A unique identifier for the linked file.
 /// @param expires Expiration time, if set. By default the link won't expire.
-/// @param pathLower The lowercased full path in the user's Dropbox. This always starts with a
-/// slash. This field will only be present only if the linked file is in the authenticated user's
-/// dropbox.
-/// @param teamMemberInfo The team membership information of the link's owner.  This field will only
-/// be present  if the link's owner is a team member.
-/// @param contentOwnerTeamInfo The team information of the content's owner. This field will only be
-/// present if the content's owner is a team member and the content's owner team is different from
-/// the link's owner team.
+/// @param pathLower The lowercased full path in the user's Dropbox. This always
+/// starts with a slash. This field will only be present only if the linked file
+/// is in the authenticated user's  dropbox.
+/// @param teamMemberInfo The team membership information of the link's owner.
+/// This field will only be present  if the link's owner is a team member.
+/// @param contentOwnerTeamInfo The team information of the content's owner.
+/// This field will only be present if the content's owner is a team member and
+/// the content's owner team is different from the link's owner team.
 ///
 /// @return An initialized instance.
 ///
@@ -85,18 +91,22 @@
                contentOwnerTeamInfo:(DBUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param url URL of the shared link.
-/// @param name The linked file name (including extension). This never contains a slash.
+/// @param name The linked file name (including extension). This never contains
+/// a slash.
 /// @param linkPermissions The link's access permissions.
-/// @param clientModified The modification time set by the desktop client when the file was added to
-/// Dropbox. Since this time is not verified (the Dropbox server stores whatever the desktop client
-/// sends up), this should only be used for display purposes (such as sorting) and not, for example,
-/// to determine if a file has changed or not.
+/// @param clientModified The modification time set by the desktop client when
+/// the file was added to Dropbox. Since this time is not verified (the Dropbox
+/// server stores whatever the desktop client sends up), this should only be
+/// used for display purposes (such as sorting) and not, for example, to
+/// determine if a file has changed or not.
 /// @param serverModified The last time the file was modified on Dropbox.
-/// @param rev A unique identifier for the current revision of a file. This field is the same rev as
-/// elsewhere in the API and can be used to detect changes and avoid conflicts.
+/// @param rev A unique identifier for the current revision of a file. This
+/// field is the same rev as elsewhere in the API and can be used to detect
+/// changes and avoid conflicts.
 /// @param size The file size in bytes.
 ///
 /// @return An initialized instance.
@@ -123,16 +133,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGFileLinkMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFileLinkMetadata` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFileLinkMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileLinkMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFileLinkMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileLinkMetadata` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFileLinkMetadata` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFileLinkMetadata` object.
 ///

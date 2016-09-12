@@ -12,15 +12,16 @@
 ///
 /// The `MobileClientPlatform` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMobileClientPlatform : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMobileClientPlatformTag` enum type represents the possible tag states with which the
-/// `DBTEAMMobileClientPlatform` union can exist.
+/// The `DBTEAMMobileClientPlatformTag` enum type represents the possible tag
+/// states with which the `DBTEAMMobileClientPlatform` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
   /// Official Dropbox iPhone client
   DBTEAMMobileClientPlatformIphone,
@@ -77,7 +78,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 ///
 /// Initializes union class with tag state of "windows_phone".
 ///
-/// Description of the "windows_phone" tag state: Official Dropbox Windows phone client
+/// Description of the "windows_phone" tag state: Official Dropbox Windows phone
+/// client
 ///
 /// @return An initialized instance.
 ///
@@ -86,7 +88,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 ///
 /// Initializes union class with tag state of "blackberry".
 ///
-/// Description of the "blackberry" tag state: Official Dropbox Blackberry client
+/// Description of the "blackberry" tag state: Official Dropbox Blackberry
+/// client
 ///
 /// @return An initialized instance.
 ///
@@ -164,16 +167,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMobileClientPlatformTag) {
 ///
 /// @param instance An instance of the `DBTEAMMobileClientPlatform` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMobileClientPlatform` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMobileClientPlatform` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMobileClientPlatform * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMobileClientPlatform` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMobileClientPlatform` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMobileClientPlatform` API object.
 ///
 /// @return An instantiation of the `DBTEAMMobileClientPlatform` object.
 ///

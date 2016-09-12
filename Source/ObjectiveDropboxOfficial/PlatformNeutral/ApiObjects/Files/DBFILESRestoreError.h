@@ -15,15 +15,16 @@
 ///
 /// The `RestoreError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESRestoreError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESRestoreErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESRestoreError` union can exist.
+/// The `DBFILESRestoreErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESRestoreError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
   /// An error occurs when downloading metadata for the file.
   DBFILESRestoreErrorPathLookup,
@@ -42,12 +43,14 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESRestoreErrorTag tag;
 
-/// An error occurs when downloading metadata for the file. @note Ensure the `isPathLookup` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// An error occurs when downloading metadata for the file. @note Ensure the
+/// `isPathLookup` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull pathLookup;
 
-/// An error occurs when trying to restore the file to that path. @note Ensure the `isPathWrite`
-/// method returns true before accessing, otherwise a runtime exception will be raised.
+/// An error occurs when trying to restore the file to that path. @note Ensure
+/// the `isPathWrite` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly) DBFILESWriteError * _Nonnull pathWrite;
 
 #pragma mark - Constructors
@@ -55,8 +58,8 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// Initializes union class with tag state of "path_lookup".
 ///
-/// Description of the "path_lookup" tag state: An error occurs when downloading metadata for the
-/// file.
+/// Description of the "path_lookup" tag state: An error occurs when downloading
+/// metadata for the file.
 ///
 /// @param pathLookup An error occurs when downloading metadata for the file.
 ///
@@ -67,10 +70,11 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// Initializes union class with tag state of "path_write".
 ///
-/// Description of the "path_write" tag state: An error occurs when trying to restore the file to
-/// that path.
+/// Description of the "path_write" tag state: An error occurs when trying to
+/// restore the file to that path.
 ///
-/// @param pathWrite An error occurs when trying to restore the file to that path.
+/// @param pathWrite An error occurs when trying to restore the file to that
+/// path.
 ///
 /// @return An initialized instance.
 ///
@@ -79,8 +83,8 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_revision".
 ///
-/// Description of the "invalid_revision" tag state: The revision is invalid. It may point to a
-/// different file.
+/// Description of the "invalid_revision" tag state: The revision is invalid. It
+/// may point to a different file.
 ///
 /// @return An initialized instance.
 ///
@@ -98,8 +102,8 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path_lookup".
 ///
-/// @note Call this method and ensure it returns true before accessing the `pathLookup` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `pathLookup` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path_lookup".
 ///
@@ -108,15 +112,16 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path_write".
 ///
-/// @note Call this method and ensure it returns true before accessing the `pathWrite` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `pathWrite` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path_write".
 ///
 - (BOOL)isPathWrite;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_revision".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_revision".
 ///
 /// @return Whether the union's current tag state has value "invalid_revision".
 ///
@@ -150,14 +155,16 @@ typedef NS_ENUM(NSInteger, DBFILESRestoreErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESRestoreError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESRestoreError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESRestoreError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESRestoreError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESRestoreError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESRestoreError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESRestoreError` API object.
 ///
 /// @return An instantiation of the `DBFILESRestoreError` object.
 ///

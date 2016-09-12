@@ -14,11 +14,12 @@
 ///
 /// The `MembersUnsuspendArg` struct.
 ///
-/// Exactly one of team_member_id, email, or external_id must be provided to identify the user
-/// account.
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersUnsuspendArg : NSObject <DBSerializable>
 
@@ -52,16 +53,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersUnsuspendArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersUnsuspendArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersUnsuspendArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersUnsuspendArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersUnsuspendArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersUnsuspendArg` object.
 ///

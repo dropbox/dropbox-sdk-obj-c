@@ -14,8 +14,9 @@
 ///
 /// Arguments for `listFileMembersBatch`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFileMembersBatchArg : NSObject <DBSerializable>
 
@@ -24,7 +25,8 @@
 /// Files for which to return members.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull files;
 
-/// Number of members to return max per query. Defaults to 10 if no limit is specified.
+/// Number of members to return max per query. Defaults to 10 if no limit is
+/// specified.
 @property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
@@ -33,14 +35,16 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param files Files for which to return members.
-/// @param limit Number of members to return max per query. Defaults to 10 if no limit is specified.
+/// @param limit Number of members to return max per query. Defaults to 10 if no
+/// limit is specified.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFiles:(NSArray<NSString *> * _Nonnull)files limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param files Files for which to return members.
 ///
@@ -60,10 +64,11 @@
 ///
 /// Serializes `DBSHARINGListFileMembersBatchArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFileMembersBatchArg` API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersBatchArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersBatchArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersBatchArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersBatchArg * _Nonnull)instance;
 

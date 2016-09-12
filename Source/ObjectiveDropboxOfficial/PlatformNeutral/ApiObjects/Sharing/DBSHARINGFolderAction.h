@@ -14,15 +14,16 @@
 ///
 /// Actions that may be taken on shared folders.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFolderAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGFolderActionTag` enum type represents the possible tag states with which the
-/// `DBSHARINGFolderAction` union can exist.
+/// The `DBSHARINGFolderActionTag` enum type represents the possible tag states
+/// with which the `DBSHARINGFolderAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// Change folder options, such as who can be invited to join the folder.
   DBSHARINGFolderActionChangeOptions,
@@ -30,13 +31,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// Change or edit contents of the folder.
   DBSHARINGFolderActionEditContents,
 
-  /// Invite a user or group to join the folder with read and write permission.
+  /// Invite a user or group to join the folder with read and write
+  /// permission.
   DBSHARINGFolderActionInviteEditor,
 
   /// Invite a user or group to join the folder with read permission.
   DBSHARINGFolderActionInviteViewer,
 
-  /// Invite a user or group to join the folder with read permission but no comment permissions.
+  /// Invite a user or group to join the folder with read permission but no
+  /// comment permissions.
   DBSHARINGFolderActionInviteViewerNoComment,
 
   /// Relinquish one's own membership in the folder.
@@ -48,11 +51,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// Stop sharing this folder.
   DBSHARINGFolderActionUnshare,
 
-  /// Keep a copy of the contents upon leaving or being kicked from the folder.
+  /// Keep a copy of the contents upon leaving or being kicked from the
+  /// folder.
   DBSHARINGFolderActionLeaveACopy,
 
-  /// Create a shared link for folder.
+  /// This action is deprecated. Use create_link instead.
   DBSHARINGFolderActionShareLink,
+
+  /// Create a shared link for folder.
+  DBSHARINGFolderActionCreateLink,
 
   /// (no description).
   DBSHARINGFolderActionOther,
@@ -67,8 +74,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "change_options".
 ///
-/// Description of the "change_options" tag state: Change folder options, such as who can be invited
-/// to join the folder.
+/// Description of the "change_options" tag state: Change folder options, such
+/// as who can be invited to join the folder.
 ///
 /// @return An initialized instance.
 ///
@@ -77,7 +84,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "edit_contents".
 ///
-/// Description of the "edit_contents" tag state: Change or edit contents of the folder.
+/// Description of the "edit_contents" tag state: Change or edit contents of the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -86,8 +94,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "invite_editor".
 ///
-/// Description of the "invite_editor" tag state: Invite a user or group to join the folder with
-/// read and write permission.
+/// Description of the "invite_editor" tag state: Invite a user or group to join
+/// the folder with read and write permission.
 ///
 /// @return An initialized instance.
 ///
@@ -96,8 +104,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "invite_viewer".
 ///
-/// Description of the "invite_viewer" tag state: Invite a user or group to join the folder with
-/// read permission.
+/// Description of the "invite_viewer" tag state: Invite a user or group to join
+/// the folder with read permission.
 ///
 /// @return An initialized instance.
 ///
@@ -106,8 +114,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "invite_viewer_no_comment".
 ///
-/// Description of the "invite_viewer_no_comment" tag state: Invite a user or group to join the
-/// folder with read permission but no comment permissions.
+/// Description of the "invite_viewer_no_comment" tag state: Invite a user or
+/// group to join the folder with read permission but no comment permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -116,8 +124,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "relinquish_membership".
 ///
-/// Description of the "relinquish_membership" tag state: Relinquish one's own membership in the
-/// folder.
+/// Description of the "relinquish_membership" tag state: Relinquish one's own
+/// membership in the folder.
 ///
 /// @return An initialized instance.
 ///
@@ -144,8 +152,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "leave_a_copy".
 ///
-/// Description of the "leave_a_copy" tag state: Keep a copy of the contents upon leaving or being
-/// kicked from the folder.
+/// Description of the "leave_a_copy" tag state: Keep a copy of the contents
+/// upon leaving or being kicked from the folder.
 ///
 /// @return An initialized instance.
 ///
@@ -154,11 +162,21 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: Create a shared link for folder.
+/// Description of the "share_link" tag state: This action is deprecated. Use
+/// create_link instead.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithShareLink;
+
+///
+/// Initializes union class with tag state of "create_link".
+///
+/// Description of the "create_link" tag state: Create a shared link for folder.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithCreateLink;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -198,16 +216,20 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 - (BOOL)isInviteViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value "invite_viewer_no_comment".
+/// Retrieves whether the union's current tag state has value
+/// "invite_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value "invite_viewer_no_comment".
+/// @return Whether the union's current tag state has value
+/// "invite_viewer_no_comment".
 ///
 - (BOOL)isInviteViewerNoComment;
 
 ///
-/// Retrieves whether the union's current tag state has value "relinquish_membership".
+/// Retrieves whether the union's current tag state has value
+/// "relinquish_membership".
 ///
-/// @return Whether the union's current tag state has value "relinquish_membership".
+/// @return Whether the union's current tag state has value
+/// "relinquish_membership".
 ///
 - (BOOL)isRelinquishMembership;
 
@@ -240,6 +262,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 - (BOOL)isShareLink;
 
 ///
+/// Retrieves whether the union's current tag state has value "create_link".
+///
+/// @return Whether the union's current tag state has value "create_link".
+///
+- (BOOL)isCreateLink;
+
+///
 /// Retrieves whether the union's current tag state has value "other".
 ///
 /// @return Whether the union's current tag state has value "other".
@@ -267,15 +296,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 ///
 /// @param instance An instance of the `DBSHARINGFolderAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFolderAction` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFolderAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFolderAction * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFolderAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFolderAction` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFolderAction` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFolderAction` object.
 ///

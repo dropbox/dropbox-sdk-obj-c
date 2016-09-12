@@ -14,15 +14,16 @@
 ///
 /// Sharing actions that may be taken on files.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFileAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGFileActionTag` enum type represents the possible tag states with which the
-/// `DBSHARINGFileAction` union can exist.
+/// The `DBSHARINGFileActionTag` enum type represents the possible tag states
+/// with which the `DBSHARINGFileAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
   /// Change or edit contents of the file.
   DBSHARINGFileActionEditContents,
@@ -39,8 +40,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
   /// Relinquish one's own membership to the file.
   DBSHARINGFileActionRelinquishMembership,
 
-  /// Create a shared link to the file.
+  /// This action is deprecated. Use create_link instead.
   DBSHARINGFileActionShareLink,
+
+  /// Create a shared link to the file.
+  DBSHARINGFileActionCreateLink,
 
   /// (no description).
   DBSHARINGFileActionOther,
@@ -55,7 +59,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "edit_contents".
 ///
-/// Description of the "edit_contents" tag state: Change or edit contents of the file.
+/// Description of the "edit_contents" tag state: Change or edit contents of the
+/// file.
 ///
 /// @return An initialized instance.
 ///
@@ -64,7 +69,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "invite_viewer".
 ///
-/// Description of the "invite_viewer" tag state: Add a member with view permissions.
+/// Description of the "invite_viewer" tag state: Add a member with view
+/// permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -73,8 +79,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "invite_viewer_no_comment".
 ///
-/// Description of the "invite_viewer_no_comment" tag state: Add a member with view permissions but
-/// no comment permissions.
+/// Description of the "invite_viewer_no_comment" tag state: Add a member with
+/// view permissions but no comment permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -92,8 +98,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "relinquish_membership".
 ///
-/// Description of the "relinquish_membership" tag state: Relinquish one's own membership to the
-/// file.
+/// Description of the "relinquish_membership" tag state: Relinquish one's own
+/// membership to the file.
 ///
 /// @return An initialized instance.
 ///
@@ -102,11 +108,22 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// Initializes union class with tag state of "share_link".
 ///
-/// Description of the "share_link" tag state: Create a shared link to the file.
+/// Description of the "share_link" tag state: This action is deprecated. Use
+/// create_link instead.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithShareLink;
+
+///
+/// Initializes union class with tag state of "create_link".
+///
+/// Description of the "create_link" tag state: Create a shared link to the
+/// file.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithCreateLink;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -132,9 +149,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 - (BOOL)isInviteViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value "invite_viewer_no_comment".
+/// Retrieves whether the union's current tag state has value
+/// "invite_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value "invite_viewer_no_comment".
+/// @return Whether the union's current tag state has value
+/// "invite_viewer_no_comment".
 ///
 - (BOOL)isInviteViewerNoComment;
 
@@ -146,9 +165,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 - (BOOL)isUnshare;
 
 ///
-/// Retrieves whether the union's current tag state has value "relinquish_membership".
+/// Retrieves whether the union's current tag state has value
+/// "relinquish_membership".
 ///
-/// @return Whether the union's current tag state has value "relinquish_membership".
+/// @return Whether the union's current tag state has value
+/// "relinquish_membership".
 ///
 - (BOOL)isRelinquishMembership;
 
@@ -158,6 +179,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 /// @return Whether the union's current tag state has value "share_link".
 ///
 - (BOOL)isShareLink;
+
+///
+/// Retrieves whether the union's current tag state has value "create_link".
+///
+/// @return Whether the union's current tag state has value "create_link".
+///
+- (BOOL)isCreateLink;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".
@@ -187,14 +215,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 ///
 /// @param instance An instance of the `DBSHARINGFileAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFileAction` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFileAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileAction * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFileAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileAction` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFileAction` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFileAction` object.
 ///

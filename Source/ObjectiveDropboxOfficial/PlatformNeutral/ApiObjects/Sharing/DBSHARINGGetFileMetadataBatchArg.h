@@ -16,8 +16,9 @@
 ///
 /// Arguments of `getFileMetadataBatch`
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGetFileMetadataBatchArg : NSObject <DBSerializable>
 
@@ -43,7 +44,8 @@
                               actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param files The files to query.
 ///
@@ -63,10 +65,11 @@
 ///
 /// Serializes `DBSHARINGGetFileMetadataBatchArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGGetFileMetadataBatchArg` API object.
+/// @param instance An instance of the `DBSHARINGGetFileMetadataBatchArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataBatchArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGetFileMetadataBatchArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataBatchArg * _Nonnull)instance;
 

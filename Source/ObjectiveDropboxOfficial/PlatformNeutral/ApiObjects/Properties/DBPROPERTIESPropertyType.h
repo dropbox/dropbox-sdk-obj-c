@@ -12,18 +12,19 @@
 ///
 /// The `PropertyType` union.
 ///
-/// Data type of the given property added. This endpoint is in beta and  only properties of type
-/// strings is supported.
+/// Data type of the given property added. This endpoint is in beta and  only
+/// properties of type strings is supported.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESPropertyType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBPROPERTIESPropertyTypeTag` enum type represents the possible tag states with which the
-/// `DBPROPERTIESPropertyType` union can exist.
+/// The `DBPROPERTIESPropertyTypeTag` enum type represents the possible tag
+/// states with which the `DBPROPERTIESPropertyType` union can exist.
 typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
   /// The associated property will be of type string. Unicode is supported.
   DBPROPERTIESPropertyTypeString,
@@ -41,8 +42,8 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 ///
 /// Initializes union class with tag state of "string".
 ///
-/// Description of the "string" tag state: The associated property will be of type string. Unicode
-/// is supported.
+/// Description of the "string" tag state: The associated property will be of
+/// type string. Unicode is supported.
 ///
 /// @return An initialized instance.
 ///
@@ -92,16 +93,16 @@ typedef NS_ENUM(NSInteger, DBPROPERTIESPropertyTypeTag) {
 ///
 /// @param instance An instance of the `DBPROPERTIESPropertyType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyType` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBPROPERTIESPropertyType` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyType` API object.
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyType` object.
 ///

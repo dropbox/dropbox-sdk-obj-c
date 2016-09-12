@@ -12,21 +12,23 @@
 ///
 /// The `TeamMembershipType` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMTeamMembershipType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMTeamMembershipTypeTag` enum type represents the possible tag states with which the
-/// `DBTEAMTeamMembershipType` union can exist.
+/// The `DBTEAMTeamMembershipTypeTag` enum type represents the possible tag
+/// states with which the `DBTEAMTeamMembershipType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
-  /// User uses a license and has full access to team resources like the shared quota.
+  /// User uses a license and has full access to team resources like the
+  /// shared quota.
   DBTEAMTeamMembershipTypeFull,
 
-  /// User does not have access to the shared quota and team admins have restricted administrative
-  /// control.
+  /// User does not have access to the shared quota and team admins have
+  /// restricted administrative control.
   DBTEAMTeamMembershipTypeLimited,
 
 };
@@ -39,8 +41,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
 ///
 /// Initializes union class with tag state of "full".
 ///
-/// Description of the "full" tag state: User uses a license and has full access to team resources
-/// like the shared quota.
+/// Description of the "full" tag state: User uses a license and has full access
+/// to team resources like the shared quota.
 ///
 /// @return An initialized instance.
 ///
@@ -49,8 +51,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
 ///
 /// Initializes union class with tag state of "limited".
 ///
-/// Description of the "limited" tag state: User does not have access to the shared quota and team
-/// admins have restricted administrative control.
+/// Description of the "limited" tag state: User does not have access to the
+/// shared quota and team admins have restricted administrative control.
 ///
 /// @return An initialized instance.
 ///
@@ -93,16 +95,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamMembershipTypeTag) {
 ///
 /// @param instance An instance of the `DBTEAMTeamMembershipType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMTeamMembershipType` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMTeamMembershipType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMTeamMembershipType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMTeamMembershipType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMTeamMembershipType` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMTeamMembershipType` API object.
 ///
 /// @return An instantiation of the `DBTEAMTeamMembershipType` object.
 ///

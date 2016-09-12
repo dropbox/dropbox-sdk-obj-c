@@ -9,8 +9,9 @@
 @class DBRoute;
 
 ///
-/// Stone route objects for the Users namespace. Each route in the Users namespace has its own
-/// static object, which contains information about the route.
+/// Stone route objects for the Users namespace. Each route in the Users
+/// namespace has its own static object, which contains information about the
+/// route.
 ///
 @interface DBUSERSRouteObjects : NSObject
 

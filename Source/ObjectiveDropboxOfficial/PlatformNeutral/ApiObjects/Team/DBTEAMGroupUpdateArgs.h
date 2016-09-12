@@ -16,8 +16,9 @@
 ///
 /// The `GroupUpdateArgs` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupUpdateArgs : DBTEAMIncludeMembersArg <DBSerializable>
 
@@ -29,8 +30,9 @@
 /// Optional argument. Set group name to this if provided.
 @property(nonatomic, readonly) NSString * _Nullable dNewGroupName;
 
-/// Optional argument. New group external ID. If the argument is None, the group's external_id won't
-/// be updated. If the argument is empty string, the group's external id will be cleared.
+/// Optional argument. New group external ID. If the argument is None, the
+/// group's external_id won't be updated. If the argument is empty string, the
+/// group's external id will be cleared.
 @property(nonatomic, readonly) NSString * _Nullable dNewGroupExternalId;
 
 /// Set new group management type, if provided.
@@ -42,13 +44,13 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param group Specify a group.
-/// @param returnMembers Whether to return the list of members in the group.  Note that the default
-/// value will cause all the group members  to be returned in the response. This may take a long
-/// time for large groups.
+/// @param returnMembers Whether to return the list of members in the group.
+/// Note that the default value will cause all the group members  to be returned
+/// in the response. This may take a long time for large groups.
 /// @param dNewGroupName Optional argument. Set group name to this if provided.
-/// @param dNewGroupExternalId Optional argument. New group external ID. If the argument is None,
-/// the group's external_id won't be updated. If the argument is empty string, the group's external
-/// id will be cleared.
+/// @param dNewGroupExternalId Optional argument. New group external ID. If the
+/// argument is None, the group's external_id won't be updated. If the argument
+/// is empty string, the group's external id will be cleared.
 /// @param dNewGroupManagementType Set new group management type, if provided.
 ///
 /// @return An initialized instance.
@@ -60,7 +62,8 @@
               dNewGroupManagementType:(DBTEAMCOMMONGroupManagementType * _Nullable)dNewGroupManagementType;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param group Specify a group.
 ///
@@ -82,15 +85,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupUpdateArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupUpdateArgs` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupUpdateArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupUpdateArgs * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupUpdateArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupUpdateArgs` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupUpdateArgs` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupUpdateArgs` object.
 ///

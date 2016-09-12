@@ -17,8 +17,9 @@
 ///
 /// Metadata for a collection-based shared link.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGCollectionLinkMetadata : DBSHARINGLinkMetadata <DBSerializable>
 
@@ -40,7 +41,8 @@
                             expires:(NSDate * _Nullable)expires;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param url URL of the shared link.
 /// @param visibility Who can access the link.
@@ -61,18 +63,19 @@
 ///
 /// Serializes `DBSHARINGCollectionLinkMetadata` instances.
 ///
-/// @param instance An instance of the `DBSHARINGCollectionLinkMetadata` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGCollectionLinkMetadata` API
+/// @param instance An instance of the `DBSHARINGCollectionLinkMetadata` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGCollectionLinkMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGCollectionLinkMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGCollectionLinkMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGCollectionLinkMetadata`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGCollectionLinkMetadata` API object.
 ///
 /// @return An instantiation of the `DBSHARINGCollectionLinkMetadata` object.
 ///

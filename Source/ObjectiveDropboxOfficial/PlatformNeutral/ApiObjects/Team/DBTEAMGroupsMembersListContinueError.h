@@ -12,15 +12,17 @@
 ///
 /// The `GroupsMembersListContinueError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsMembersListContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupsMembersListContinueErrorTag` enum type represents the possible tag states with
-/// which the `DBTEAMGroupsMembersListContinueError` union can exist.
+/// The `DBTEAMGroupsMembersListContinueErrorTag` enum type represents the
+/// possible tag states with which the `DBTEAMGroupsMembersListContinueError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
   /// The cursor is invalid.
   DBTEAMGroupsMembersListContinueErrorInvalidCursor,
@@ -79,14 +81,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBTEAMGroupsMembersListContinueError` union.
+/// The serialization class for the `DBTEAMGroupsMembersListContinueError`
+/// union.
 ///
 @interface DBTEAMGroupsMembersListContinueErrorSerializer : NSObject
 
 ///
 /// Serializes `DBTEAMGroupsMembersListContinueError` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupsMembersListContinueError` API object.
+/// @param instance An instance of the `DBTEAMGroupsMembersListContinueError`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListContinueError` API object.
@@ -99,7 +103,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsMembersListContinueErrorTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMGroupsMembersListContinueError` API object.
 ///
-/// @return An instantiation of the `DBTEAMGroupsMembersListContinueError` object.
+/// @return An instantiation of the `DBTEAMGroupsMembersListContinueError`
+/// object.
 ///
 + (DBTEAMGroupsMembersListContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

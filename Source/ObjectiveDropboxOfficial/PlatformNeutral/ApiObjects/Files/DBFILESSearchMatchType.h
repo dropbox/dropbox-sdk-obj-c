@@ -14,15 +14,16 @@
 ///
 /// Indicates what type of match was found for a given item.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSearchMatchType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESSearchMatchTypeTag` enum type represents the possible tag states with which the
-/// `DBFILESSearchMatchType` union can exist.
+/// The `DBFILESSearchMatchTypeTag` enum type represents the possible tag states
+/// with which the `DBFILESSearchMatchType` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
   /// This item was matched on its file or folder name.
   DBFILESSearchMatchTypeFilename,
@@ -43,7 +44,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 ///
 /// Initializes union class with tag state of "filename".
 ///
-/// Description of the "filename" tag state: This item was matched on its file or folder name.
+/// Description of the "filename" tag state: This item was matched on its file
+/// or folder name.
 ///
 /// @return An initialized instance.
 ///
@@ -52,7 +54,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 ///
 /// Initializes union class with tag state of "content".
 ///
-/// Description of the "content" tag state: This item was matched based on its file contents.
+/// Description of the "content" tag state: This item was matched based on its
+/// file contents.
 ///
 /// @return An initialized instance.
 ///
@@ -61,8 +64,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 ///
 /// Initializes union class with tag state of "both".
 ///
-/// Description of the "both" tag state: This item was matched based on both its contents and its
-/// file name.
+/// Description of the "both" tag state: This item was matched based on both its
+/// contents and its file name.
 ///
 /// @return An initialized instance.
 ///
@@ -112,15 +115,16 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 ///
 /// @param instance An instance of the `DBFILESSearchMatchType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSearchMatchType` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSearchMatchType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMatchType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSearchMatchType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMatchType` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSearchMatchType` API object.
 ///
 /// @return An instantiation of the `DBFILESSearchMatchType` object.
 ///

@@ -17,8 +17,9 @@
 ///
 /// Specify access type a member should have when joined to a group.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMemberAccess : NSObject <DBSerializable>
 
@@ -57,14 +58,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMemberAccess` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMemberAccess` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMemberAccess` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAccess * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMemberAccess` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberAccess` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMemberAccess` API object.
 ///
 /// @return An instantiation of the `DBTEAMMemberAccess` object.
 ///

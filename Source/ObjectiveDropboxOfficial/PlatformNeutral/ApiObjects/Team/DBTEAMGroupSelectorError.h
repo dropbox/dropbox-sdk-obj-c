@@ -14,15 +14,16 @@
 ///
 /// Error that can be raised when GroupSelector is used.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupSelectorErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMGroupSelectorError` union can exist.
+/// The `DBTEAMGroupSelectorErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMGroupSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupSelectorErrorGroupNotFound,
@@ -40,8 +41,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
 ///
 /// Initializes union class with tag state of "group_not_found".
 ///
-/// Description of the "group_not_found" tag state: No matching group found. No groups match the
-/// specified group ID.
+/// Description of the "group_not_found" tag state: No matching group found. No
+/// groups match the specified group ID.
 ///
 /// @return An initialized instance.
 ///
@@ -91,16 +92,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMGroupSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupSelectorError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupSelectorError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupSelectorError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupSelectorError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupSelectorError` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupSelectorError` object.
 ///

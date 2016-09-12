@@ -14,8 +14,9 @@
 ///
 /// The `RevokeDeviceSessionBatchResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeDeviceSessionBatchResult : NSObject <DBSerializable>
 
@@ -48,7 +49,8 @@
 ///
 /// Serializes `DBTEAMRevokeDeviceSessionBatchResult` instances.
 ///
-/// @param instance An instance of the `DBTEAMRevokeDeviceSessionBatchResult` API object.
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionBatchResult`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchResult` API object.
@@ -61,7 +63,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBTEAMRevokeDeviceSessionBatchResult` API object.
 ///
-/// @return An instantiation of the `DBTEAMRevokeDeviceSessionBatchResult` object.
+/// @return An instantiation of the `DBTEAMRevokeDeviceSessionBatchResult`
+/// object.
 ///
 + (DBTEAMRevokeDeviceSessionBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

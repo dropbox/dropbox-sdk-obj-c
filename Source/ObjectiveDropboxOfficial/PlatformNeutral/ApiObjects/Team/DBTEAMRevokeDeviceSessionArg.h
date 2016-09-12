@@ -15,15 +15,16 @@
 ///
 /// The `RevokeDeviceSessionArg` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeDeviceSessionArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMRevokeDeviceSessionArgTag` enum type represents the possible tag states with which
-/// the `DBTEAMRevokeDeviceSessionArg` union can exist.
+/// The `DBTEAMRevokeDeviceSessionArgTag` enum type represents the possible tag
+/// states with which the `DBTEAMRevokeDeviceSessionArg` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
   /// End an active session
   DBTEAMRevokeDeviceSessionArgWebSession,
@@ -39,16 +40,16 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMRevokeDeviceSessionArgTag tag;
 
-/// End an active session @note Ensure the `isWebSession` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// End an active session @note Ensure the `isWebSession` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMDeviceSessionArg * _Nonnull webSession;
 
-/// Unlink a linked desktop device @note Ensure the `isDesktopClient` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Unlink a linked desktop device @note Ensure the `isDesktopClient` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMRevokeDesktopClientArg * _Nonnull desktopClient;
 
-/// Unlink a linked mobile device @note Ensure the `isMobileClient` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Unlink a linked mobile device @note Ensure the `isMobileClient` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMDeviceSessionArg * _Nonnull mobileClient;
 
 #pragma mark - Constructors
@@ -67,7 +68,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 ///
 /// Initializes union class with tag state of "desktop_client".
 ///
-/// Description of the "desktop_client" tag state: Unlink a linked desktop device
+/// Description of the "desktop_client" tag state: Unlink a linked desktop
+/// device
 ///
 /// @param desktopClient Unlink a linked desktop device
 ///
@@ -91,8 +93,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "web_session".
 ///
-/// @note Call this method and ensure it returns true before accessing the `webSession` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `webSession` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "web_session".
 ///
@@ -101,8 +103,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "desktop_client".
 ///
-/// @note Call this method and ensure it returns true before accessing the `desktopClient` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `desktopClient` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "desktop_client".
 ///
@@ -111,8 +113,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "mobile_client".
 ///
-/// @note Call this method and ensure it returns true before accessing the `mobileClient` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `mobileClient` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "mobile_client".
 ///
@@ -137,18 +139,19 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionArgTag) {
 ///
 /// Serializes `DBTEAMRevokeDeviceSessionArg` instances.
 ///
-/// @param instance An instance of the `DBTEAMRevokeDeviceSessionArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionArg` API
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeDeviceSessionArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionArg` object.
 ///

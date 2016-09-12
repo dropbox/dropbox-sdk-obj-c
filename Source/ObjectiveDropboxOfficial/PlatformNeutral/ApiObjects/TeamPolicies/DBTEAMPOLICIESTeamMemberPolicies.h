@@ -17,8 +17,9 @@
 ///
 /// Policies governing team members.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable>
 
@@ -27,10 +28,11 @@
 /// Policies governing sharing.
 @property(nonatomic, readonly) DBTEAMPOLICIESTeamSharingPolicies * _Nonnull sharing;
 
-/// This describes the Enterprise Mobility Management (EMM) state for this team. This information
-/// can be used to understand if an organization is integrating with a third-party EMM vendor to
-/// further manage and apply restrictions upon the team's Dropbox usage on mobile devices. This is a
-/// new feature and in the future we'll be adding more new fields and additional documentation.
+/// This describes the Enterprise Mobility Management (EMM) state for this team.
+/// This information can be used to understand if an organization is integrating
+/// with a third-party EMM vendor to further manage and apply restrictions upon
+/// the team's Dropbox usage on mobile devices. This is a new feature and in the
+/// future we'll be adding more new fields and additional documentation.
 @property(nonatomic, readonly) DBTEAMPOLICIESEmmState * _Nonnull emmState;
 
 #pragma mark - Constructors
@@ -39,11 +41,12 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharing Policies governing sharing.
-/// @param emmState This describes the Enterprise Mobility Management (EMM) state for this team.
-/// This information can be used to understand if an organization is integrating with a third-party
-/// EMM vendor to further manage and apply restrictions upon the team's Dropbox usage on mobile
-/// devices. This is a new feature and in the future we'll be adding more new fields and additional
-/// documentation.
+/// @param emmState This describes the Enterprise Mobility Management (EMM)
+/// state for this team. This information can be used to understand if an
+/// organization is integrating with a third-party EMM vendor to further manage
+/// and apply restrictions upon the team's Dropbox usage on mobile devices. This
+/// is a new feature and in the future we'll be adding more new fields and
+/// additional documentation.
 ///
 /// @return An initialized instance.
 ///
@@ -62,10 +65,11 @@
 ///
 /// Serializes `DBTEAMPOLICIESTeamMemberPolicies` instances.
 ///
-/// @param instance An instance of the `DBTEAMPOLICIESTeamMemberPolicies` API object.
+/// @param instance An instance of the `DBTEAMPOLICIESTeamMemberPolicies` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMPOLICIESTeamMemberPolicies`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESTeamMemberPolicies` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESTeamMemberPolicies * _Nonnull)instance;
 

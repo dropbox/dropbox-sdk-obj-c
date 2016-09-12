@@ -15,11 +15,13 @@
 ///
 /// The `GetStorageReport` struct.
 ///
-/// Storage Report Result. Each of the items in the storage report is an array of values, one value
-/// per day. If there is no data for a day, then the value will be None.
+/// Storage Report Result. Each of the items in the storage report is an array
+/// of values, one value per day. If there is no data for a day, then the value
+/// will be None.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGetStorageReport : DBTEAMBaseDfbReport <DBSerializable>
 
@@ -28,19 +30,22 @@
 /// Sum of the shared, unshared, and datastore usages, for each day.
 @property(nonatomic, readonly) NSArray<NSNumber *> * _Nonnull totalUsage;
 
-/// Array of the combined size (bytes) of team members' shared folders, for each day.
+/// Array of the combined size (bytes) of team members' shared folders, for each
+/// day.
 @property(nonatomic, readonly) NSArray<NSNumber *> * _Nonnull sharedUsage;
 
-/// Array of the combined size (bytes) of team members' root namespaces, for each day.
+/// Array of the combined size (bytes) of team members' root namespaces, for
+/// each day.
 @property(nonatomic, readonly) NSArray<NSNumber *> * _Nonnull unsharedUsage;
 
 /// Array of the number of shared folders owned by team members, for each day.
 @property(nonatomic, readonly) NSArray<NSNumber *> * _Nonnull sharedFolders;
 
-/// Array of storage summaries of team members' account sizes. Each storage summary is an array of
-/// key, value pairs, where each pair describes a storage bucket. The key indicates the upper bound
-/// of the bucket and the value is the number of users in that bucket. There is one such summary per
-/// day. If there is no data for a day, the storage summary will be empty.
+/// Array of storage summaries of team members' account sizes. Each storage
+/// summary is an array of key, value pairs, where each pair describes a storage
+/// bucket. The key indicates the upper bound of the bucket and the value is the
+/// number of users in that bucket. There is one such summary per day. If there
+/// is no data for a day, the storage summary will be empty.
 @property(nonatomic, readonly) NSArray<NSArray<DBTEAMStorageBucket *> *> * _Nonnull memberStorageMap;
 
 #pragma mark - Constructors
@@ -49,16 +54,19 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
-/// @param totalUsage Sum of the shared, unshared, and datastore usages, for each day.
-/// @param sharedUsage Array of the combined size (bytes) of team members' shared folders, for each
-/// day.
-/// @param unsharedUsage Array of the combined size (bytes) of team members' root namespaces, for
+/// @param totalUsage Sum of the shared, unshared, and datastore usages, for
 /// each day.
-/// @param sharedFolders Array of the number of shared folders owned by team members, for each day.
-/// @param memberStorageMap Array of storage summaries of team members' account sizes. Each storage
-/// summary is an array of key, value pairs, where each pair describes a storage bucket. The key
-/// indicates the upper bound of the bucket and the value is the number of users in that bucket.
-/// There is one such summary per day. If there is no data for a day, the storage summary will be
+/// @param sharedUsage Array of the combined size (bytes) of team members'
+/// shared folders, for each day.
+/// @param unsharedUsage Array of the combined size (bytes) of team members'
+/// root namespaces, for each day.
+/// @param sharedFolders Array of the number of shared folders owned by team
+/// members, for each day.
+/// @param memberStorageMap Array of storage summaries of team members' account
+/// sizes. Each storage summary is an array of key, value pairs, where each pair
+/// describes a storage bucket. The key indicates the upper bound of the bucket
+/// and the value is the number of users in that bucket. There is one such
+/// summary per day. If there is no data for a day, the storage summary will be
 /// empty.
 ///
 /// @return An initialized instance.
@@ -84,15 +92,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGetStorageReport` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGetStorageReport` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGetStorageReport` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGetStorageReport * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGetStorageReport` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGetStorageReport` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGetStorageReport` API object.
 ///
 /// @return An instantiation of the `DBTEAMGetStorageReport` object.
 ///

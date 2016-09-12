@@ -15,11 +15,12 @@
 ///
 /// The `MembersSetPermissionsArg` struct.
 ///
-/// Exactly one of team_member_id, email, or external_id must be provided to identify the user
-/// account.
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersSetPermissionsArg : NSObject <DBSerializable>
 
@@ -55,18 +56,19 @@
 ///
 /// Serializes `DBTEAMMembersSetPermissionsArg` instances.
 ///
-/// @param instance An instance of the `DBTEAMMembersSetPermissionsArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetPermissionsArg` API
+/// @param instance An instance of the `DBTEAMMembersSetPermissionsArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetPermissionsArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetPermissionsArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersSetPermissionsArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersSetPermissionsArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetPermissionsArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersSetPermissionsArg` object.
 ///

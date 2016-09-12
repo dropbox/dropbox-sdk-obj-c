@@ -14,15 +14,17 @@
 ///
 /// The `UploadSessionFinishBatchJobStatus` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionFinishBatchJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESUploadSessionFinishBatchJobStatusTag` enum type represents the possible tag states
-/// with which the `DBFILESUploadSessionFinishBatchJobStatus` union can exist.
+/// The `DBFILESUploadSessionFinishBatchJobStatusTag` enum type represents the
+/// possible tag states with which the
+/// `DBFILESUploadSessionFinishBatchJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBFILESUploadSessionFinishBatchJobStatusInProgress,
@@ -35,8 +37,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishBatchJobStatusTag tag;
 
-/// The `uploadSessionFinishBatch` has finished. @note Ensure the `isComplete` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// The `uploadSessionFinishBatch` has finished. @note Ensure the `isComplete`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishBatchResult * _Nonnull complete;
 
 #pragma mark - Constructors
@@ -44,7 +47,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in
+/// progress.
 ///
 /// @return An initialized instance.
 ///
@@ -53,7 +57,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// Description of the "complete" tag state: The `uploadSessionFinishBatch` has finished.
+/// Description of the "complete" tag state: The `uploadSessionFinishBatch` has
+/// finished.
 ///
 /// @param complete The `uploadSessionFinishBatch` has finished.
 ///
@@ -73,8 +78,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 ///
 /// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the `complete` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `complete` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "complete".
 ///
@@ -92,14 +97,16 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBFILESUploadSessionFinishBatchJobStatus` union.
+/// The serialization class for the `DBFILESUploadSessionFinishBatchJobStatus`
+/// union.
 ///
 @interface DBFILESUploadSessionFinishBatchJobStatusSerializer : NSObject
 
 ///
 /// Serializes `DBFILESUploadSessionFinishBatchJobStatus` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionFinishBatchJobStatus` API object.
+/// @param instance An instance of the
+/// `DBFILESUploadSessionFinishBatchJobStatus` API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchJobStatus` API object.
@@ -112,7 +119,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchJobStatusTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchJobStatus` API object.
 ///
-/// @return An instantiation of the `DBFILESUploadSessionFinishBatchJobStatus` object.
+/// @return An instantiation of the `DBFILESUploadSessionFinishBatchJobStatus`
+/// object.
 ///
 + (DBFILESUploadSessionFinishBatchJobStatus * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -12,15 +12,17 @@
 ///
 /// The `SharedLinkAccessFailureReason` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedLinkAccessFailureReason : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharedLinkAccessFailureReasonTag` enum type represents the possible tag states
-/// with which the `DBSHARINGSharedLinkAccessFailureReason` union can exist.
+/// The `DBSHARINGSharedLinkAccessFailureReasonTag` enum type represents the
+/// possible tag states with which the `DBSHARINGSharedLinkAccessFailureReason`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
   /// User is not logged in.
   DBSHARINGSharedLinkAccessFailureReasonLoginRequired,
@@ -59,7 +61,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 ///
 /// Initializes union class with tag state of "email_verify_required".
 ///
-/// Description of the "email_verify_required" tag state: User's email is not verified.
+/// Description of the "email_verify_required" tag state: User's email is not
+/// verified.
 ///
 /// @return An initialized instance.
 ///
@@ -68,7 +71,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 ///
 /// Initializes union class with tag state of "password_required".
 ///
-/// Description of the "password_required" tag state: The link is password protected.
+/// Description of the "password_required" tag state: The link is password
+/// protected.
 ///
 /// @return An initialized instance.
 ///
@@ -77,7 +81,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 ///
 /// Initializes union class with tag state of "team_only".
 ///
-/// Description of the "team_only" tag state: Access is allowed for team members only.
+/// Description of the "team_only" tag state: Access is allowed for team members
+/// only.
 ///
 /// @return An initialized instance.
 ///
@@ -86,7 +91,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 ///
 /// Initializes union class with tag state of "owner_only".
 ///
-/// Description of the "owner_only" tag state: Access is allowed for the shared link's owner only.
+/// Description of the "owner_only" tag state: Access is allowed for the shared
+/// link's owner only.
 ///
 /// @return An initialized instance.
 ///
@@ -109,14 +115,17 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 - (BOOL)isLoginRequired;
 
 ///
-/// Retrieves whether the union's current tag state has value "email_verify_required".
+/// Retrieves whether the union's current tag state has value
+/// "email_verify_required".
 ///
-/// @return Whether the union's current tag state has value "email_verify_required".
+/// @return Whether the union's current tag state has value
+/// "email_verify_required".
 ///
 - (BOOL)isEmailVerifyRequired;
 
 ///
-/// Retrieves whether the union's current tag state has value "password_required".
+/// Retrieves whether the union's current tag state has value
+/// "password_required".
 ///
 /// @return Whether the union's current tag state has value "password_required".
 ///
@@ -155,14 +164,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGSharedLinkAccessFailureReason` union.
+/// The serialization class for the `DBSHARINGSharedLinkAccessFailureReason`
+/// union.
 ///
 @interface DBSHARINGSharedLinkAccessFailureReasonSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGSharedLinkAccessFailureReason` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharedLinkAccessFailureReason` API object.
+/// @param instance An instance of the `DBSHARINGSharedLinkAccessFailureReason`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGSharedLinkAccessFailureReason` API object.
@@ -175,7 +186,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkAccessFailureReasonTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGSharedLinkAccessFailureReason` API object.
 ///
-/// @return An instantiation of the `DBSHARINGSharedLinkAccessFailureReason` object.
+/// @return An instantiation of the `DBSHARINGSharedLinkAccessFailureReason`
+/// object.
 ///
 + (DBSHARINGSharedLinkAccessFailureReason * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -17,7 +17,9 @@
 
 - (instancetype)initWithReadOnly:(NSNumber *)readOnly
             parentSharedFolderId:(NSString *)parentSharedFolderId
-                  sharedFolderId:(NSString *)sharedFolderId {
+                  sharedFolderId:(NSString *)sharedFolderId
+                    traverseOnly:(NSNumber *)traverseOnly
+                        noAccess:(NSNumber *)noAccess {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:nil maxLength:nil pattern:@"[-_0-9a-zA-Z:]+"]](
       parentSharedFolderId);
@@ -28,12 +30,14 @@
   if (self) {
     _parentSharedFolderId = parentSharedFolderId;
     _sharedFolderId = sharedFolderId;
+    _traverseOnly = traverseOnly ?: @NO;
+    _noAccess = noAccess ?: @NO;
   }
   return self;
 }
 
 - (instancetype)initWithReadOnly:(NSNumber *)readOnly {
-  return [self initWithReadOnly:readOnly parentSharedFolderId:nil sharedFolderId:nil];
+  return [self initWithReadOnly:readOnly parentSharedFolderId:nil sharedFolderId:nil traverseOnly:nil noAccess:nil];
 }
 
 #pragma mark - Serialization methods
@@ -68,6 +72,8 @@
   if (valueObj.sharedFolderId) {
     jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   }
+  jsonDict[@"traverse_only"] = valueObj.traverseOnly;
+  jsonDict[@"no_access"] = valueObj.noAccess;
 
   return jsonDict;
 }
@@ -76,10 +82,14 @@
   NSNumber *readOnly = valueDict[@"read_only"];
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
   NSString *sharedFolderId = valueDict[@"shared_folder_id"] ?: nil;
+  NSNumber *traverseOnly = valueDict[@"traverse_only"];
+  NSNumber *noAccess = valueDict[@"no_access"];
 
   return [[DBFILESFolderSharingInfo alloc] initWithReadOnly:readOnly
                                        parentSharedFolderId:parentSharedFolderId
-                                             sharedFolderId:sharedFolderId];
+                                             sharedFolderId:sharedFolderId
+                                               traverseOnly:traverseOnly
+                                                   noAccess:noAccess];
 }
 
 @end

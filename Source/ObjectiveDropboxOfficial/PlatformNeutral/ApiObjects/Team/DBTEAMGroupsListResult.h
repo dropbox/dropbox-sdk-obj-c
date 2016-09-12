@@ -14,8 +14,9 @@
 ///
 /// The `GroupsListResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsListResult : NSObject <DBSerializable>
 
@@ -27,8 +28,8 @@
 /// Pass the cursor into `groupsListContinue` to obtain the additional groups.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Is true if there are additional groups that have not been returned yet. An additional call to
-/// `groupsListContinue` can retrieve them.
+/// Is true if there are additional groups that have not been returned yet. An
+/// additional call to `groupsListContinue` can retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 #pragma mark - Constructors
@@ -37,9 +38,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param groups (no description).
-/// @param cursor Pass the cursor into `groupsListContinue` to obtain the additional groups.
-/// @param hasMore Is true if there are additional groups that have not been returned yet. An
-/// additional call to `groupsListContinue` can retrieve them.
+/// @param cursor Pass the cursor into `groupsListContinue` to obtain the
+/// additional groups.
+/// @param hasMore Is true if there are additional groups that have not been
+/// returned yet. An additional call to `groupsListContinue` can retrieve them.
 ///
 /// @return An initialized instance.
 ///
@@ -61,15 +63,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupsListResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupsListResult` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsListResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsListResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsListResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListResult` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupsListResult` object.
 ///

@@ -18,8 +18,9 @@
 ///
 /// Shared folder user and group membership.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedFolderMembers : NSObject <DBSerializable>
 
@@ -34,8 +35,9 @@
 /// The list of invitees to the shared folder.
 @property(nonatomic, readonly) NSArray<DBSHARINGInviteeMembershipInfo *> * _Nonnull invitees;
 
-/// Present if there are additional shared folder members that have not been returned yet. Pass the
-/// cursor into `listFolderMembersContinue` to list additional members.
+/// Present if there are additional shared folder members that have not been
+/// returned yet. Pass the cursor into `listFolderMembersContinue` to list
+/// additional members.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
@@ -46,8 +48,9 @@
 /// @param users The list of user members of the shared folder.
 /// @param groups The list of group members of the shared folder.
 /// @param invitees The list of invitees to the shared folder.
-/// @param cursor Present if there are additional shared folder members that have not been returned
-/// yet. Pass the cursor into `listFolderMembersContinue` to list additional members.
+/// @param cursor Present if there are additional shared folder members that
+/// have not been returned yet. Pass the cursor into `listFolderMembersContinue`
+/// to list additional members.
 ///
 /// @return An initialized instance.
 ///
@@ -57,7 +60,8 @@
                                cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param users The list of user members of the shared folder.
 /// @param groups The list of group members of the shared folder.
@@ -81,18 +85,19 @@
 ///
 /// Serializes `DBSHARINGSharedFolderMembers` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharedFolderMembers` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderMembers` API
+/// @param instance An instance of the `DBSHARINGSharedFolderMembers` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMembers` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMembers * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedFolderMembers` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedFolderMembers`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMembers` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharedFolderMembers` object.
 ///

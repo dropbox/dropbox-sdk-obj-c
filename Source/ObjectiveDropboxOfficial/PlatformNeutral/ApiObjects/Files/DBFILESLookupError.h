@@ -12,15 +12,16 @@
 ///
 /// The `LookupError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESLookupError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESLookupErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESLookupError` union can exist.
+/// The `DBFILESLookupErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESLookupError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
   /// (no description).
   DBFILESLookupErrorMalformedPath,
@@ -28,14 +29,16 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
   /// There is nothing at the given path.
   DBFILESLookupErrorNotFound,
 
-  /// We were expecting a file, but the given path refers to something that isn't a file.
+  /// We were expecting a file, but the given path refers to something that
+  /// isn't a file.
   DBFILESLookupErrorNotFile,
 
-  /// We were expecting a folder, but the given path refers to something that isn't a folder.
+  /// We were expecting a folder, but the given path refers to something that
+  /// isn't a folder.
   DBFILESLookupErrorNotFolder,
 
-  /// The file cannot be transferred because the content is restricted.  For example, sometimes
-  /// there are legal restrictions due to copyright claims.
+  /// The file cannot be transferred because the content is restricted.  For
+  /// example, sometimes there are legal restrictions due to copyright claims.
   DBFILESLookupErrorRestrictedContent,
 
   /// (no description).
@@ -46,8 +49,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESLookupErrorTag tag;
 
-/// (no description). @note Ensure the `isMalformedPath` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isMalformedPath` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSString * _Nullable malformedPath;
 
 #pragma mark - Constructors
@@ -64,7 +67,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// Initializes union class with tag state of "not_found".
 ///
-/// Description of the "not_found" tag state: There is nothing at the given path.
+/// Description of the "not_found" tag state: There is nothing at the given
+/// path.
 ///
 /// @return An initialized instance.
 ///
@@ -73,8 +77,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// Initializes union class with tag state of "not_file".
 ///
-/// Description of the "not_file" tag state: We were expecting a file, but the given path refers to
-/// something that isn't a file.
+/// Description of the "not_file" tag state: We were expecting a file, but the
+/// given path refers to something that isn't a file.
 ///
 /// @return An initialized instance.
 ///
@@ -83,8 +87,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// Initializes union class with tag state of "not_folder".
 ///
-/// Description of the "not_folder" tag state: We were expecting a folder, but the given path refers
-/// to something that isn't a folder.
+/// Description of the "not_folder" tag state: We were expecting a folder, but
+/// the given path refers to something that isn't a folder.
 ///
 /// @return An initialized instance.
 ///
@@ -93,9 +97,9 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// Initializes union class with tag state of "restricted_content".
 ///
-/// Description of the "restricted_content" tag state: The file cannot be transferred because the
-/// content is restricted.  For example, sometimes there are legal restrictions due to copyright
-/// claims.
+/// Description of the "restricted_content" tag state: The file cannot be
+/// transferred because the content is restricted.  For example, sometimes there
+/// are legal restrictions due to copyright claims.
 ///
 /// @return An initialized instance.
 ///
@@ -113,8 +117,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "malformed_path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `malformedPath` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `malformedPath` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "malformed_path".
 ///
@@ -142,9 +146,11 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 - (BOOL)isNotFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "restricted_content".
+/// Retrieves whether the union's current tag state has value
+/// "restricted_content".
 ///
-/// @return Whether the union's current tag state has value "restricted_content".
+/// @return Whether the union's current tag state has value
+/// "restricted_content".
 ///
 - (BOOL)isRestrictedContent;
 
@@ -176,14 +182,16 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESLookupError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESLookupError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESLookupError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESLookupError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESLookupError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESLookupError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESLookupError` API object.
 ///
 /// @return An instantiation of the `DBFILESLookupError` object.
 ///

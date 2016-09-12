@@ -14,8 +14,9 @@
 ///
 /// The `UploadSessionFinishBatchResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionFinishBatchResult : NSObject <DBSerializable>
 
@@ -47,7 +48,8 @@
 ///
 /// Serializes `DBFILESUploadSessionFinishBatchResult` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionFinishBatchResult` API object.
+/// @param instance An instance of the `DBFILESUploadSessionFinishBatchResult`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchResult` API object.
@@ -60,7 +62,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchResult` API object.
 ///
-/// @return An instantiation of the `DBFILESUploadSessionFinishBatchResult` object.
+/// @return An instantiation of the `DBFILESUploadSessionFinishBatchResult`
+/// object.
 ///
 + (DBFILESUploadSessionFinishBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

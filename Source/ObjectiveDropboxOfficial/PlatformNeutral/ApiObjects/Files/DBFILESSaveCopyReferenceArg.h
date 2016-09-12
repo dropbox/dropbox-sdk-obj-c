@@ -12,8 +12,9 @@
 ///
 /// The `SaveCopyReferenceArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSaveCopyReferenceArg : NSObject <DBSerializable>
 
@@ -51,16 +52,16 @@
 ///
 /// @param instance An instance of the `DBFILESSaveCopyReferenceArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveCopyReferenceArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSaveCopyReferenceArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceArg` API object.
 ///
 /// @return An instantiation of the `DBFILESSaveCopyReferenceArg` object.
 ///

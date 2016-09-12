@@ -14,15 +14,16 @@
 ///
 /// The `JobStatus` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGJobStatusTag` enum type represents the possible tag states with which the
-/// `DBSHARINGJobStatus` union can exist.
+/// The `DBSHARINGJobStatusTag` enum type represents the possible tag states
+/// with which the `DBSHARINGJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBSHARINGJobStatusInProgress,
@@ -38,8 +39,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGJobStatusTag tag;
 
-/// The asynchronous job returned an error. @note Ensure the `isFailed` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The asynchronous job returned an error. @note Ensure the `isFailed` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGJobError * _Nonnull failed;
 
 #pragma mark - Constructors
@@ -47,7 +48,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in
+/// progress.
 ///
 /// @return An initialized instance.
 ///
@@ -65,7 +67,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// Initializes union class with tag state of "failed".
 ///
-/// Description of the "failed" tag state: The asynchronous job returned an error.
+/// Description of the "failed" tag state: The asynchronous job returned an
+/// error.
 ///
 /// @param failed The asynchronous job returned an error.
 ///
@@ -92,8 +95,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// Retrieves whether the union's current tag state has value "failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the `failed` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `failed` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "failed".
 ///
@@ -120,14 +123,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobStatusTag) {
 ///
 /// @param instance An instance of the `DBSHARINGJobStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGJobStatus` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGJobStatus` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGJobStatus * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGJobStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGJobStatus` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGJobStatus` API object.
 ///
 /// @return An instantiation of the `DBSHARINGJobStatus` object.
 ///

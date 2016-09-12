@@ -14,29 +14,32 @@
 ///
 /// The `RelinquishFolderMembershipError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRelinquishFolderMembershipError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGRelinquishFolderMembershipErrorTag` enum type represents the possible tag states
-/// with which the `DBSHARINGRelinquishFolderMembershipError` union can exist.
+/// The `DBSHARINGRelinquishFolderMembershipErrorTag` enum type represents the
+/// possible tag states with which the
+/// `DBSHARINGRelinquishFolderMembershipError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
   /// (no description).
   DBSHARINGRelinquishFolderMembershipErrorAccessError,
 
-  /// The current user is the owner of the shared folder. Owners cannot relinquish membership to
-  /// their own folders. Try unsharing or transferring ownership first.
+  /// The current user is the owner of the shared folder. Owners cannot
+  /// relinquish membership to their own folders. Try unsharing or
+  /// transferring ownership first.
   DBSHARINGRelinquishFolderMembershipErrorFolderOwner,
 
-  /// The shared folder is currently mounted.  Unmount the shared folder before relinquishing
-  /// membership.
+  /// The shared folder is currently mounted.  Unmount the shared folder
+  /// before relinquishing membership.
   DBSHARINGRelinquishFolderMembershipErrorMounted,
 
-  /// The current user has access to the shared folder via a group.  You can't relinquish
-  /// membership to folders shared via groups.
+  /// The current user has access to the shared folder via a group.  You can't
+  /// relinquish membership to folders shared via groups.
   DBSHARINGRelinquishFolderMembershipErrorGroupAccess,
 
   /// This action cannot be performed on a team shared folder.
@@ -53,8 +56,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGRelinquishFolderMembershipErrorTag tag;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -71,9 +74,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "folder_owner".
 ///
-/// Description of the "folder_owner" tag state: The current user is the owner of the shared folder.
-/// Owners cannot relinquish membership to their own folders. Try unsharing or transferring
-/// ownership first.
+/// Description of the "folder_owner" tag state: The current user is the owner
+/// of the shared folder. Owners cannot relinquish membership to their own
+/// folders. Try unsharing or transferring ownership first.
 ///
 /// @return An initialized instance.
 ///
@@ -82,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "mounted".
 ///
-/// Description of the "mounted" tag state: The shared folder is currently mounted.  Unmount the
-/// shared folder before relinquishing membership.
+/// Description of the "mounted" tag state: The shared folder is currently
+/// mounted.  Unmount the shared folder before relinquishing membership.
 ///
 /// @return An initialized instance.
 ///
@@ -92,8 +95,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "group_access".
 ///
-/// Description of the "group_access" tag state: The current user has access to the shared folder
-/// via a group.  You can't relinquish membership to folders shared via groups.
+/// Description of the "group_access" tag state: The current user has access to
+/// the shared folder via a group.  You can't relinquish membership to folders
+/// shared via groups.
 ///
 /// @return An initialized instance.
 ///
@@ -102,8 +106,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "team_folder".
 ///
-/// Description of the "team_folder" tag state: This action cannot be performed on a team shared
-/// folder.
+/// Description of the "team_folder" tag state: This action cannot be performed
+/// on a team shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -112,8 +116,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: The current user does not have permission to
-/// perform this action.
+/// Description of the "no_permission" tag state: The current user does not have
+/// permission to perform this action.
 ///
 /// @return An initialized instance.
 ///
@@ -131,8 +135,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
@@ -192,14 +196,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGRelinquishFolderMembershipError` union.
+/// The serialization class for the `DBSHARINGRelinquishFolderMembershipError`
+/// union.
 ///
 @interface DBSHARINGRelinquishFolderMembershipErrorSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGRelinquishFolderMembershipError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRelinquishFolderMembershipError` API object.
+/// @param instance An instance of the
+/// `DBSHARINGRelinquishFolderMembershipError` API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFolderMembershipError` API object.
@@ -212,7 +218,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFolderMembershipError` API object.
 ///
-/// @return An instantiation of the `DBSHARINGRelinquishFolderMembershipError` object.
+/// @return An instantiation of the `DBSHARINGRelinquishFolderMembershipError`
+/// object.
 ///
 + (DBSHARINGRelinquishFolderMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

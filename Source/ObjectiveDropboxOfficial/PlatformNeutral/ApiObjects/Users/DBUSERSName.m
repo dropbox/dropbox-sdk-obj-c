@@ -17,7 +17,8 @@
 - (instancetype)initWithGivenName:(NSString *)givenName
                           surname:(NSString *)surname
                      familiarName:(NSString *)familiarName
-                      displayName:(NSString *)displayName {
+                      displayName:(NSString *)displayName
+                  abbreviatedName:(NSString *)abbreviatedName {
 
   self = [super init];
   if (self) {
@@ -25,6 +26,7 @@
     _surname = surname;
     _familiarName = familiarName;
     _displayName = displayName;
+    _abbreviatedName = abbreviatedName;
   }
   return self;
 }
@@ -58,6 +60,7 @@
   jsonDict[@"surname"] = valueObj.surname;
   jsonDict[@"familiar_name"] = valueObj.familiarName;
   jsonDict[@"display_name"] = valueObj.displayName;
+  jsonDict[@"abbreviated_name"] = valueObj.abbreviatedName;
 
   return jsonDict;
 }
@@ -67,11 +70,13 @@
   NSString *surname = valueDict[@"surname"];
   NSString *familiarName = valueDict[@"familiar_name"];
   NSString *displayName = valueDict[@"display_name"];
+  NSString *abbreviatedName = valueDict[@"abbreviated_name"];
 
   return [[DBUSERSName alloc] initWithGivenName:givenName
                                         surname:surname
                                    familiarName:familiarName
-                                    displayName:displayName];
+                                    displayName:displayName
+                                abbreviatedName:abbreviatedName];
 }
 
 @end

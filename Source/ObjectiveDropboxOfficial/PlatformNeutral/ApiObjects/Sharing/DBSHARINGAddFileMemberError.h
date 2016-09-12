@@ -17,15 +17,16 @@
 ///
 /// Errors for `addFileMember`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGAddFileMemberError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGAddFileMemberErrorTag` enum type represents the possible tag states with which the
-/// `DBSHARINGAddFileMemberError` union can exist.
+/// The `DBSHARINGAddFileMemberErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGAddFileMemberError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
   /// (no description).
   DBSHARINGAddFileMemberErrorUserError,
@@ -47,12 +48,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGAddFileMemberErrorTag tag;
 
-/// (no description). @note Ensure the `isUserError` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (no description). @note Ensure the `isUserError` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -78,7 +79,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "rate_limit".
 ///
-/// Description of the "rate_limit" tag state: The user has reached the rate limit for invitations.
+/// Description of the "rate_limit" tag state: The user has reached the rate
+/// limit for invitations.
 ///
 /// @return An initialized instance.
 ///
@@ -87,8 +89,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_comment".
 ///
-/// Description of the "invalid_comment" tag state: The custom message did not pass comment
-/// permissions checks.
+/// Description of the "invalid_comment" tag state: The custom message did not
+/// pass comment permissions checks.
 ///
 /// @return An initialized instance.
 ///
@@ -106,8 +108,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `userError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `userError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "user_error".
 ///
@@ -116,8 +118,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
@@ -165,16 +167,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAddFileMemberErrorTag) {
 ///
 /// @param instance An instance of the `DBSHARINGAddFileMemberError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGAddFileMemberError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGAddFileMemberError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddFileMemberError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGAddFileMemberError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddFileMemberError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGAddFileMemberError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGAddFileMemberError` object.
 ///

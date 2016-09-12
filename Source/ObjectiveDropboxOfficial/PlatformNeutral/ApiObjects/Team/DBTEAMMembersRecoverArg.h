@@ -14,11 +14,12 @@
 ///
 /// The `MembersRecoverArg` struct.
 ///
-/// Exactly one of team_member_id, email, or external_id must be provided to identify the user
-/// account.
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersRecoverArg : NSObject <DBSerializable>
 
@@ -52,15 +53,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersRecoverArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersRecoverArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersRecoverArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersRecoverArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersRecoverArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersRecoverArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersRecoverArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersRecoverArg` object.
 ///

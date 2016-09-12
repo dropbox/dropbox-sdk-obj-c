@@ -14,21 +14,22 @@
 ///
 /// The `ListSharedLinksError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListSharedLinksError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGListSharedLinksErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGListSharedLinksError` union can exist.
+/// The `DBSHARINGListSharedLinksErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGListSharedLinksError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
   /// (no description).
   DBSHARINGListSharedLinksErrorPath,
 
-  /// Indicates that the cursor has been invalidated. Call `listSharedLinks` to obtain a new
-  /// cursor.
+  /// Indicates that the cursor has been invalidated. Call `listSharedLinks`
+  /// to obtain a new cursor.
   DBSHARINGListSharedLinksErrorReset,
 
   /// (no description).
@@ -39,8 +40,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListSharedLinksErrorTag tag;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -57,8 +58,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 ///
 /// Initializes union class with tag state of "reset".
 ///
-/// Description of the "reset" tag state: Indicates that the cursor has been invalidated. Call
-/// `listSharedLinks` to obtain a new cursor.
+/// Description of the "reset" tag state: Indicates that the cursor has been
+/// invalidated. Call `listSharedLinks` to obtain a new cursor.
 ///
 /// @return An initialized instance.
 ///
@@ -76,8 +77,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -116,18 +117,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 ///
 /// Serializes `DBSHARINGListSharedLinksError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListSharedLinksError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListSharedLinksError` API
+/// @param instance An instance of the `DBSHARINGListSharedLinksError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListSharedLinksError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListSharedLinksError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListSharedLinksError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListSharedLinksError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListSharedLinksError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListSharedLinksError` object.
 ///

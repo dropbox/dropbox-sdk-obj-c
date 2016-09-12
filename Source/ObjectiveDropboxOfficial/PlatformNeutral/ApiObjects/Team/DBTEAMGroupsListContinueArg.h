@@ -12,8 +12,9 @@
 ///
 /// The `GroupsListContinueArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsListContinueArg : NSObject <DBSerializable>
 
@@ -47,16 +48,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupsListContinueArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupsListContinueArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListContinueArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsListContinueArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsListContinueArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsListContinueArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListContinueArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupsListContinueArg` object.
 ///

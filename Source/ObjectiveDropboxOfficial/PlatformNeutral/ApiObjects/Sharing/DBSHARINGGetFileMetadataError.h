@@ -17,15 +17,16 @@
 ///
 /// Error result for `getFileMetadata`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGetFileMetadataError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGGetFileMetadataErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGGetFileMetadataError` union can exist.
+/// The `DBSHARINGGetFileMetadataErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGGetFileMetadataError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataErrorTag) {
   /// (no description).
   DBSHARINGGetFileMetadataErrorUserError,
@@ -41,12 +42,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGGetFileMetadataErrorTag tag;
 
-/// (no description). @note Ensure the `isUserError` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (no description). @note Ensure the `isUserError` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -81,8 +82,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `userError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `userError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "user_error".
 ///
@@ -91,8 +92,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
@@ -124,18 +125,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGGetFileMetadataErrorTag) {
 ///
 /// Serializes `DBSHARINGGetFileMetadataError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGGetFileMetadataError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataError` API
+/// @param instance An instance of the `DBSHARINGGetFileMetadataError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGetFileMetadataError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGetFileMetadataError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGetFileMetadataError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGetFileMetadataError` object.
 ///

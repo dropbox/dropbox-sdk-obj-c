@@ -12,8 +12,9 @@
 ///
 /// The `RelinquishFileMembershipArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRelinquishFileMembershipArg : NSObject <DBSerializable>
 
@@ -45,7 +46,8 @@
 ///
 /// Serializes `DBSHARINGRelinquishFileMembershipArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipArg` API object.
+/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipArg`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFileMembershipArg` API object.
@@ -58,7 +60,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFileMembershipArg` API object.
 ///
-/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipArg` object.
+/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipArg`
+/// object.
 ///
 + (DBSHARINGRelinquishFileMembershipArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

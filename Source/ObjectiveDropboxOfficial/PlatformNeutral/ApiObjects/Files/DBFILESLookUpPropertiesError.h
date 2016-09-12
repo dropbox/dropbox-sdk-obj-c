@@ -12,15 +12,16 @@
 ///
 /// The `LookUpPropertiesError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESLookUpPropertiesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESLookUpPropertiesErrorTag` enum type represents the possible tag states with which
-/// the `DBFILESLookUpPropertiesError` union can exist.
+/// The `DBFILESLookUpPropertiesErrorTag` enum type represents the possible tag
+/// states with which the `DBFILESLookUpPropertiesError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESLookUpPropertiesErrorTag) {
   /// This property group does not exist for this file.
   DBFILESLookUpPropertiesErrorPropertyGroupNotFound,
@@ -35,8 +36,8 @@ typedef NS_ENUM(NSInteger, DBFILESLookUpPropertiesErrorTag) {
 ///
 /// Initializes union class with tag state of "property_group_not_found".
 ///
-/// Description of the "property_group_not_found" tag state: This property group does not exist for
-/// this file.
+/// Description of the "property_group_not_found" tag state: This property group
+/// does not exist for this file.
 ///
 /// @return An initialized instance.
 ///
@@ -45,9 +46,11 @@ typedef NS_ENUM(NSInteger, DBFILESLookUpPropertiesErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "property_group_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "property_group_not_found".
 ///
-/// @return Whether the union's current tag state has value "property_group_not_found".
+/// @return Whether the union's current tag state has value
+/// "property_group_not_found".
 ///
 - (BOOL)isPropertyGroupNotFound;
 
@@ -70,18 +73,19 @@ typedef NS_ENUM(NSInteger, DBFILESLookUpPropertiesErrorTag) {
 ///
 /// Serializes `DBFILESLookUpPropertiesError` instances.
 ///
-/// @param instance An instance of the `DBFILESLookUpPropertiesError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESLookUpPropertiesError` API
+/// @param instance An instance of the `DBFILESLookUpPropertiesError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESLookUpPropertiesError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESLookUpPropertiesError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESLookUpPropertiesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESLookUpPropertiesError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESLookUpPropertiesError` API object.
 ///
 /// @return An instantiation of the `DBFILESLookUpPropertiesError` object.
 ///

@@ -8,9 +8,9 @@
 #import "DBTransportClient.h"
 
 ///
-/// Base client object that contains an instance field for each namespace, each of which contains
-/// references to all routes within that namespace. Fully-implemented API clients will inherit this
-/// class.
+/// Base client object that contains an instance field for each namespace, each
+/// of which contains references to all routes within that namespace.
+/// Fully-implemented API clients will inherit this class.
 ///
 @interface DBBaseTeam : NSObject
 

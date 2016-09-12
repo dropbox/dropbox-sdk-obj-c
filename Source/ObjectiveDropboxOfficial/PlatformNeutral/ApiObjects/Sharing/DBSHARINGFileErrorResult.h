@@ -12,15 +12,16 @@
 ///
 /// The `FileErrorResult` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFileErrorResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGFileErrorResultTag` enum type represents the possible tag states with which the
-/// `DBSHARINGFileErrorResult` union can exist.
+/// The `DBSHARINGFileErrorResultTag` enum type represents the possible tag
+/// states with which the `DBSHARINGFileErrorResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
   /// File specified by id was not found.
   DBSHARINGFileErrorResultFileNotFoundError,
@@ -39,18 +40,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGFileErrorResultTag tag;
 
-/// File specified by id was not found. @note Ensure the `isFileNotFoundError` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// File specified by id was not found. @note Ensure the `isFileNotFoundError`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull fileNotFoundError;
 
-/// User does not have permission to take the specified action on the file. @note Ensure the
-/// `isInvalidFileActionError` method returns true before accessing, otherwise a runtime exception
-/// will be raised.
+/// User does not have permission to take the specified action on the file.
+/// @note Ensure the `isInvalidFileActionError` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull invalidFileActionError;
 
-/// User does not have permission to access file specified by file.Id. @note Ensure the
-/// `isPermissionDeniedError` method returns true before accessing, otherwise a runtime exception
-/// will be raised.
+/// User does not have permission to access file specified by file.Id. @note
+/// Ensure the `isPermissionDeniedError` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull permissionDeniedError;
 
 #pragma mark - Constructors
@@ -58,7 +60,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 ///
 /// Initializes union class with tag state of "file_not_found_error".
 ///
-/// Description of the "file_not_found_error" tag state: File specified by id was not found.
+/// Description of the "file_not_found_error" tag state: File specified by id
+/// was not found.
 ///
 /// @param fileNotFoundError File specified by id was not found.
 ///
@@ -69,11 +72,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 ///
 /// Initializes union class with tag state of "invalid_file_action_error".
 ///
-/// Description of the "invalid_file_action_error" tag state: User does not have permission to take
-/// the specified action on the file.
+/// Description of the "invalid_file_action_error" tag state: User does not have
+/// permission to take the specified action on the file.
 ///
-/// @param invalidFileActionError User does not have permission to take the specified action on the
-/// file.
+/// @param invalidFileActionError User does not have permission to take the
+/// specified action on the file.
 ///
 /// @return An initialized instance.
 ///
@@ -82,10 +85,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 ///
 /// Initializes union class with tag state of "permission_denied_error".
 ///
-/// Description of the "permission_denied_error" tag state: User does not have permission to access
-/// file specified by file.Id.
+/// Description of the "permission_denied_error" tag state: User does not have
+/// permission to access file specified by file.Id.
 ///
-/// @param permissionDeniedError User does not have permission to access file specified by file.Id.
+/// @param permissionDeniedError User does not have permission to access file
+/// specified by file.Id.
 ///
 /// @return An initialized instance.
 ///
@@ -101,32 +105,40 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "file_not_found_error".
+/// Retrieves whether the union's current tag state has value
+/// "file_not_found_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `fileNotFoundError`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `fileNotFoundError` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value "file_not_found_error".
+/// @return Whether the union's current tag state has value
+/// "file_not_found_error".
 ///
 - (BOOL)isFileNotFoundError;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_file_action_error".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_file_action_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `invalidFileActionError`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `invalidFileActionError` property, otherwise a runtime exception will be
+/// thrown.
 ///
-/// @return Whether the union's current tag state has value "invalid_file_action_error".
+/// @return Whether the union's current tag state has value
+/// "invalid_file_action_error".
 ///
 - (BOOL)isInvalidFileActionError;
 
 ///
-/// Retrieves whether the union's current tag state has value "permission_denied_error".
+/// Retrieves whether the union's current tag state has value
+/// "permission_denied_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `permissionDeniedError`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `permissionDeniedError` property, otherwise a runtime exception will be
+/// thrown.
 ///
-/// @return Whether the union's current tag state has value "permission_denied_error".
+/// @return Whether the union's current tag state has value
+/// "permission_denied_error".
 ///
 - (BOOL)isPermissionDeniedError;
 
@@ -158,16 +170,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileErrorResultTag) {
 ///
 /// @param instance An instance of the `DBSHARINGFileErrorResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFileErrorResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFileErrorResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileErrorResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFileErrorResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileErrorResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFileErrorResult` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFileErrorResult` object.
 ///

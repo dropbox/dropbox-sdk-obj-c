@@ -14,8 +14,9 @@
 ///
 /// The `CommitInfo` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESCommitInfo : NSObject <DBSerializable>
 
@@ -27,19 +28,20 @@
 /// Selects what to do if the file already exists.
 @property(nonatomic, readonly) DBFILESWriteMode * _Nonnull mode;
 
-/// If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file
-/// to avoid conflict.
+/// If there's a conflict, as determined by mode, have the Dropbox server try to
+/// autorename the file to avoid conflict.
 @property(nonatomic, readonly) NSNumber * _Nonnull autorename;
 
-/// The value to store as the clientModified timestamp. Dropbox automatically records the time at
-/// which the file was written to the Dropbox servers. It can also record an additional timestamp,
-/// provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually
-/// created or modified.
+/// The value to store as the clientModified timestamp. Dropbox automatically
+/// records the time at which the file was written to the Dropbox servers. It
+/// can also record an additional timestamp, provided by Dropbox desktop
+/// clients, mobile clients, and API apps of when the file was actually created
+/// or modified.
 @property(nonatomic, readonly) NSDate * _Nullable clientModified;
 
-/// Normally, users are made aware of any file modifications in their Dropbox account via
-/// notifications in the client software. If true, this tells the clients that this modification
-/// shouldn't result in a user notification.
+/// Normally, users are made aware of any file modifications in their Dropbox
+/// account via notifications in the client software. If true, this tells the
+/// clients that this modification shouldn't result in a user notification.
 @property(nonatomic, readonly) NSNumber * _Nonnull mute;
 
 #pragma mark - Constructors
@@ -49,15 +51,17 @@
 ///
 /// @param path Path in the user's Dropbox to save the file.
 /// @param mode Selects what to do if the file already exists.
-/// @param autorename If there's a conflict, as determined by mode, have the Dropbox server try to
-/// autorename the file to avoid conflict.
-/// @param clientModified The value to store as the clientModified timestamp. Dropbox automatically
-/// records the time at which the file was written to the Dropbox servers. It can also record an
-/// additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when
-/// the file was actually created or modified.
-/// @param mute Normally, users are made aware of any file modifications in their Dropbox account
-/// via notifications in the client software. If true, this tells the clients that this modification
-/// shouldn't result in a user notification.
+/// @param autorename If there's a conflict, as determined by mode, have the
+/// Dropbox server try to autorename the file to avoid conflict.
+/// @param clientModified The value to store as the clientModified timestamp.
+/// Dropbox automatically records the time at which the file was written to the
+/// Dropbox servers. It can also record an additional timestamp, provided by
+/// Dropbox desktop clients, mobile clients, and API apps of when the file was
+/// actually created or modified.
+/// @param mute Normally, users are made aware of any file modifications in
+/// their Dropbox account via notifications in the client software. If true,
+/// this tells the clients that this modification shouldn't result in a user
+/// notification.
 ///
 /// @return An initialized instance.
 ///
@@ -68,7 +72,8 @@
                                 mute:(NSNumber * _Nullable)mute;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path Path in the user's Dropbox to save the file.
 ///
@@ -90,14 +95,16 @@
 ///
 /// @param instance An instance of the `DBFILESCommitInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESCommitInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESCommitInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESCommitInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESCommitInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESCommitInfo` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESCommitInfo` API object.
 ///
 /// @return An instantiation of the `DBFILESCommitInfo` object.
 ///

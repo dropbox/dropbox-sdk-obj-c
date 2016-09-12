@@ -14,15 +14,16 @@
 ///
 /// The group type determines how a group is managed.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMCOMMONGroupManagementType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMCOMMONGroupManagementTypeTag` enum type represents the possible tag states with which
-/// the `DBTEAMCOMMONGroupManagementType` union can exist.
+/// The `DBTEAMCOMMONGroupManagementTypeTag` enum type represents the possible
+/// tag states with which the `DBTEAMCOMMONGroupManagementType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
   /// A group which is managed by team admins only.
   DBTEAMCOMMONGroupManagementTypeCompanyManaged,
@@ -43,7 +44,8 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 ///
 /// Initializes union class with tag state of "company_managed".
 ///
-/// Description of the "company_managed" tag state: A group which is managed by team admins only.
+/// Description of the "company_managed" tag state: A group which is managed by
+/// team admins only.
 ///
 /// @return An initialized instance.
 ///
@@ -52,7 +54,8 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 ///
 /// Initializes union class with tag state of "user_managed".
 ///
-/// Description of the "user_managed" tag state: A group which is managed by selected users.
+/// Description of the "user_managed" tag state: A group which is managed by
+/// selected users.
 ///
 /// @return An initialized instance.
 ///
@@ -107,18 +110,19 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 ///
 /// Serializes `DBTEAMCOMMONGroupManagementType` instances.
 ///
-/// @param instance An instance of the `DBTEAMCOMMONGroupManagementType` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMCOMMONGroupManagementType` API
+/// @param instance An instance of the `DBTEAMCOMMONGroupManagementType` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupManagementType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMCOMMONGroupManagementType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMCOMMONGroupManagementType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMCOMMONGroupManagementType`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupManagementType` API object.
 ///
 /// @return An instantiation of the `DBTEAMCOMMONGroupManagementType` object.
 ///

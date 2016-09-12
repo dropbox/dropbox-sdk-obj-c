@@ -12,18 +12,19 @@
 ///
 /// The `MemberSelectorError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMemberSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMemberSelectorErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMMemberSelectorError` union can exist.
+/// The `DBTEAMMemberSelectorErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMMemberSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or external_id does not exist on
-  /// this team.
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
   DBTEAMMemberSelectorErrorUserNotFound,
 
   /// The user is not a member of the team.
@@ -39,8 +40,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_found".
 ///
-/// Description of the "user_not_found" tag state: No matching user found. The provided
-/// team_member_id, email, or external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The
+/// provided team_member_id, email, or external_id does not exist on this team.
 ///
 /// @return An initialized instance.
 ///
@@ -49,7 +50,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_in_team".
 ///
-/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of
+/// the team.
 ///
 /// @return An initialized instance.
 ///
@@ -65,7 +67,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
@@ -92,16 +95,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberSelectorErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMMemberSelectorError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMemberSelectorError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMemberSelectorError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberSelectorError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMemberSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberSelectorError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMemberSelectorError` API object.
 ///
 /// @return An instantiation of the `DBTEAMMemberSelectorError` object.
 ///

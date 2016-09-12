@@ -16,8 +16,9 @@
 ///
 /// Collection of custom properties in filled property templates.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESPropertyGroup : NSObject <DBSerializable>
 
@@ -26,8 +27,8 @@
 /// A unique identifier for a property template type.
 @property(nonatomic, readonly, copy) NSString * _Nonnull templateId;
 
-/// This is a list of custom properties associated with a file. There can be up to 32 properties for
-/// a template.
+/// This is a list of custom properties associated with a file. There can be up
+/// to 32 properties for a template.
 @property(nonatomic, readonly) NSArray<DBPROPERTIESPropertyField *> * _Nonnull fields;
 
 #pragma mark - Constructors
@@ -36,8 +37,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param templateId A unique identifier for a property template type.
-/// @param fields This is a list of custom properties associated with a file. There can be up to 32
-/// properties for a template.
+/// @param fields This is a list of custom properties associated with a file.
+/// There can be up to 32 properties for a template.
 ///
 /// @return An initialized instance.
 ///
@@ -58,16 +59,16 @@
 ///
 /// @param instance An instance of the `DBPROPERTIESPropertyGroup` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyGroup` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyGroup` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyGroup * _Nonnull)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyGroup` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBPROPERTIESPropertyGroup` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyGroup` API object.
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyGroup` object.
 ///

@@ -116,10 +116,12 @@
 ///
 @interface DBFILESRoutes : NSObject
 
-/// An instance of the networking client that each route will use to submit a request.
+/// An instance of the networking client that each route will use to submit a
+/// request.
 @property(nonatomic, readonly) DBTransportClient * _Nonnull client;
 
-/// Initializes the `DBFILESRoutes` namespace container object with a networking client.
+/// Initializes the `DBFILESRoutes` namespace container object with a networking
+/// client.
 - (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
 
 ///
@@ -136,8 +138,8 @@
 /// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:
 /// Metadata for the root folder is unsupported.
 ///
-/// @param includePropertyTemplates If true, `propertyGroups` in `DBFILESFileMetadata` is set for files with custom
-/// properties.
+/// @param includePropertyTemplates If set to a valid list of template IDs, `propertyGroups` in `DBFILESFileMetadata` is
+/// set for files with custom properties.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
 /// `DBFILESAlphaGetMetadataError` object on failure.

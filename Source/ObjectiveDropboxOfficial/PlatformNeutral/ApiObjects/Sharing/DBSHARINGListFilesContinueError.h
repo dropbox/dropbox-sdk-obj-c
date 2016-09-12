@@ -16,15 +16,16 @@
 ///
 /// Error results for `listReceivedFilesContinue`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFilesContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGListFilesContinueErrorTag` enum type represents the possible tag states with which
-/// the `DBSHARINGListFilesContinueError` union can exist.
+/// The `DBSHARINGListFilesContinueErrorTag` enum type represents the possible
+/// tag states with which the `DBSHARINGListFilesContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
   /// User account had a problem.
   DBSHARINGListFilesContinueErrorUserError,
@@ -40,8 +41,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListFilesContinueErrorTag tag;
 
-/// User account had a problem. @note Ensure the `isUserError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// User account had a problem. @note Ensure the `isUserError` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingUserError * _Nonnull userError;
 
 #pragma mark - Constructors
@@ -60,8 +61,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_cursor".
 ///
-/// Description of the "invalid_cursor" tag state: `cursor` in `DBSHARINGListFilesContinueArg` is
-/// invalid.
+/// Description of the "invalid_cursor" tag state: `cursor` in
+/// `DBSHARINGListFilesContinueArg` is invalid.
 ///
 /// @return An initialized instance.
 ///
@@ -79,8 +80,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "user_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `userError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `userError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "user_error".
 ///
@@ -119,18 +120,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFilesContinueErrorTag) {
 ///
 /// Serializes `DBSHARINGListFilesContinueError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFilesContinueError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesContinueError` API
+/// @param instance An instance of the `DBSHARINGListFilesContinueError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesContinueError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesContinueError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFilesContinueError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesContinueError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesContinueError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFilesContinueError` object.
 ///

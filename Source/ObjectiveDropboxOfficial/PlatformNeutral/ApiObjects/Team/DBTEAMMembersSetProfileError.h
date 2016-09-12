@@ -12,18 +12,19 @@
 ///
 /// The `MembersSetProfileError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersSetProfileError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersSetProfileErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMMembersSetProfileError` union can exist.
+/// The `DBTEAMMembersSetProfileErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMMembersSetProfileError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or external_id does not exist on
-  /// this team.
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
   DBTEAMMembersSetProfileErrorUserNotFound,
 
   /// The user is not a member of the team.
@@ -32,7 +33,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
   /// It is unsafe to use both external_id and new_external_id
   DBTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe,
 
-  /// None of new_email, new_given_name, new_surname, or new_external_id are specified
+  /// None of new_email, new_given_name, new_surname, or new_external_id are
+  /// specified
   DBTEAMMembersSetProfileErrorNoNewDataSpecified,
 
   /// Email is already reserved for another user.
@@ -60,8 +62,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_found".
 ///
-/// Description of the "user_not_found" tag state: No matching user found. The provided
-/// team_member_id, email, or external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The
+/// provided team_member_id, email, or external_id does not exist on this team.
 ///
 /// @return An initialized instance.
 ///
@@ -70,17 +72,19 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_in_team".
 ///
-/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of
+/// the team.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
-/// Initializes union class with tag state of "external_id_and_new_external_id_unsafe".
+/// Initializes union class with tag state of
+/// "external_id_and_new_external_id_unsafe".
 ///
-/// Description of the "external_id_and_new_external_id_unsafe" tag state: It is unsafe to use both
-/// external_id and new_external_id
+/// Description of the "external_id_and_new_external_id_unsafe" tag state: It is
+/// unsafe to use both external_id and new_external_id
 ///
 /// @return An initialized instance.
 ///
@@ -89,8 +93,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "no_new_data_specified".
 ///
-/// Description of the "no_new_data_specified" tag state: None of new_email, new_given_name,
-/// new_surname, or new_external_id are specified
+/// Description of the "no_new_data_specified" tag state: None of new_email,
+/// new_given_name, new_surname, or new_external_id are specified
 ///
 /// @return An initialized instance.
 ///
@@ -99,8 +103,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "email_reserved_for_other_user".
 ///
-/// Description of the "email_reserved_for_other_user" tag state: Email is already reserved for
-/// another user.
+/// Description of the "email_reserved_for_other_user" tag state: Email is
+/// already reserved for another user.
 ///
 /// @return An initialized instance.
 ///
@@ -109,8 +113,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "external_id_used_by_other_user".
 ///
-/// Description of the "external_id_used_by_other_user" tag state: The external ID is already in use
-/// by another team member.
+/// Description of the "external_id_used_by_other_user" tag state: The external
+/// ID is already in use by another team member.
 ///
 /// @return An initialized instance.
 ///
@@ -119,7 +123,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "set_profile_disallowed".
 ///
-/// Description of the "set_profile_disallowed" tag state: Setting profile disallowed
+/// Description of the "set_profile_disallowed" tag state: Setting profile
+/// disallowed
 ///
 /// @return An initialized instance.
 ///
@@ -128,7 +133,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "param_cannot_be_empty".
 ///
-/// Description of the "param_cannot_be_empty" tag state: Parameter new_email cannot be empty.
+/// Description of the "param_cannot_be_empty" tag state: Parameter new_email
+/// cannot be empty.
 ///
 /// @return An initialized instance.
 ///
@@ -151,7 +157,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
@@ -167,37 +174,47 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 - (BOOL)isExternalIdAndNewExternalIdUnsafe;
 
 ///
-/// Retrieves whether the union's current tag state has value "no_new_data_specified".
+/// Retrieves whether the union's current tag state has value
+/// "no_new_data_specified".
 ///
-/// @return Whether the union's current tag state has value "no_new_data_specified".
+/// @return Whether the union's current tag state has value
+/// "no_new_data_specified".
 ///
 - (BOOL)isNoNewDataSpecified;
 
 ///
-/// Retrieves whether the union's current tag state has value "email_reserved_for_other_user".
+/// Retrieves whether the union's current tag state has value
+/// "email_reserved_for_other_user".
 ///
-/// @return Whether the union's current tag state has value "email_reserved_for_other_user".
+/// @return Whether the union's current tag state has value
+/// "email_reserved_for_other_user".
 ///
 - (BOOL)isEmailReservedForOtherUser;
 
 ///
-/// Retrieves whether the union's current tag state has value "external_id_used_by_other_user".
+/// Retrieves whether the union's current tag state has value
+/// "external_id_used_by_other_user".
 ///
-/// @return Whether the union's current tag state has value "external_id_used_by_other_user".
+/// @return Whether the union's current tag state has value
+/// "external_id_used_by_other_user".
 ///
 - (BOOL)isExternalIdUsedByOtherUser;
 
 ///
-/// Retrieves whether the union's current tag state has value "set_profile_disallowed".
+/// Retrieves whether the union's current tag state has value
+/// "set_profile_disallowed".
 ///
-/// @return Whether the union's current tag state has value "set_profile_disallowed".
+/// @return Whether the union's current tag state has value
+/// "set_profile_disallowed".
 ///
 - (BOOL)isSetProfileDisallowed;
 
 ///
-/// Retrieves whether the union's current tag state has value "param_cannot_be_empty".
+/// Retrieves whether the union's current tag state has value
+/// "param_cannot_be_empty".
 ///
-/// @return Whether the union's current tag state has value "param_cannot_be_empty".
+/// @return Whether the union's current tag state has value
+/// "param_cannot_be_empty".
 ///
 - (BOOL)isParamCannotBeEmpty;
 
@@ -227,18 +244,19 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Serializes `DBTEAMMembersSetProfileError` instances.
 ///
-/// @param instance An instance of the `DBTEAMMembersSetProfileError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetProfileError` API
+/// @param instance An instance of the `DBTEAMMembersSetProfileError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetProfileError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetProfileError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersSetProfileError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersSetProfileError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetProfileError` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersSetProfileError` object.
 ///

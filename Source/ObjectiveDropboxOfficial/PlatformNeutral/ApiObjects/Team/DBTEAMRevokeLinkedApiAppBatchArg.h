@@ -14,8 +14,9 @@
 ///
 /// The `RevokeLinkedApiAppBatchArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeLinkedApiAppBatchArg : NSObject <DBSerializable>
 
@@ -47,10 +48,11 @@
 ///
 /// Serializes `DBTEAMRevokeLinkedApiAppBatchArg` instances.
 ///
-/// @param instance An instance of the `DBTEAMRevokeLinkedApiAppBatchArg` API object.
+/// @param instance An instance of the `DBTEAMRevokeLinkedApiAppBatchArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedApiAppBatchArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedApiAppBatchArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedApiAppBatchArg * _Nonnull)instance;
 

@@ -16,8 +16,9 @@
 ///
 /// Information returned by `linkedAppsListMembersLinkedApps`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMembersAppsResult : NSObject <DBSerializable>
 
@@ -30,8 +31,8 @@
 /// `linkedAppsListMembersLinkedApps` to retrieve the rest.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
-/// Pass the cursor into `linkedAppsListMembersLinkedApps` to receive the next sub list of team's
-/// applications.
+/// Pass the cursor into `linkedAppsListMembersLinkedApps` to receive the next
+/// sub list of team's applications.
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
@@ -40,10 +41,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param apps The linked applications of each member of the team
-/// @param hasMore If true, then there are more apps available. Pass the cursor to
-/// `linkedAppsListMembersLinkedApps` to retrieve the rest.
-/// @param cursor Pass the cursor into `linkedAppsListMembersLinkedApps` to receive the next sub
-/// list of team's applications.
+/// @param hasMore If true, then there are more apps available. Pass the cursor
+/// to `linkedAppsListMembersLinkedApps` to retrieve the rest.
+/// @param cursor Pass the cursor into `linkedAppsListMembersLinkedApps` to
+/// receive the next sub list of team's applications.
 ///
 /// @return An initialized instance.
 ///
@@ -52,11 +53,12 @@
                               cursor:(NSString * _Nullable)cursor;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param apps The linked applications of each member of the team
-/// @param hasMore If true, then there are more apps available. Pass the cursor to
-/// `linkedAppsListMembersLinkedApps` to retrieve the rest.
+/// @param hasMore If true, then there are more apps available. Pass the cursor
+/// to `linkedAppsListMembersLinkedApps` to retrieve the rest.
 ///
 /// @return An initialized instance.
 ///
@@ -77,16 +79,16 @@
 ///
 /// @param instance An instance of the `DBTEAMListMembersAppsResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMembersAppsResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMembersAppsResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersAppsResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMembersAppsResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMembersAppsResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMembersAppsResult` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMembersAppsResult` object.
 ///

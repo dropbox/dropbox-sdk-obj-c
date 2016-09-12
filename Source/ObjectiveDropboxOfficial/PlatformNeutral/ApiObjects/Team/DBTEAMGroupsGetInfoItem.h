@@ -14,18 +14,20 @@
 ///
 /// The `GroupsGetInfoItem` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsGetInfoItem : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupsGetInfoItemTag` enum type represents the possible tag states with which the
-/// `DBTEAMGroupsGetInfoItem` union can exist.
+/// The `DBTEAMGroupsGetInfoItemTag` enum type represents the possible tag
+/// states with which the `DBTEAMGroupsGetInfoItem` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
-  /// An ID that was provided as a parameter to `groupsGetInfo`, and did not match a corresponding
-  /// group. The ID can be a group ID, or an external ID, depending on how the method was called.
+  /// An ID that was provided as a parameter to `groupsGetInfo`, and did not
+  /// match a corresponding group. The ID can be a group ID, or an external
+  /// ID, depending on how the method was called.
   DBTEAMGroupsGetInfoItemIdNotFound,
 
   /// Info about a group.
@@ -36,14 +38,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMGroupsGetInfoItemTag tag;
 
-/// An ID that was provided as a parameter to `groupsGetInfo`, and did not match a corresponding
-/// group. The ID can be a group ID, or an external ID, depending on how the method was called.
-/// @note Ensure the `isIdNotFound` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// An ID that was provided as a parameter to `groupsGetInfo`, and did not match
+/// a corresponding group. The ID can be a group ID, or an external ID,
+/// depending on how the method was called. @note Ensure the `isIdNotFound`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
 
-/// Info about a group. @note Ensure the `isGroupInfo` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// Info about a group. @note Ensure the `isGroupInfo` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMGroupFullInfo * _Nonnull groupInfo;
 
 #pragma mark - Constructors
@@ -51,13 +54,14 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 ///
 /// Initializes union class with tag state of "id_not_found".
 ///
-/// Description of the "id_not_found" tag state: An ID that was provided as a parameter to
-/// `groupsGetInfo`, and did not match a corresponding group. The ID can be a group ID, or an
-/// external ID, depending on how the method was called.
+/// Description of the "id_not_found" tag state: An ID that was provided as a
+/// parameter to `groupsGetInfo`, and did not match a corresponding group. The
+/// ID can be a group ID, or an external ID, depending on how the method was
+/// called.
 ///
-/// @param idNotFound An ID that was provided as a parameter to `groupsGetInfo`, and did not match a
-/// corresponding group. The ID can be a group ID, or an external ID, depending on how the method
-/// was called.
+/// @param idNotFound An ID that was provided as a parameter to `groupsGetInfo`,
+/// and did not match a corresponding group. The ID can be a group ID, or an
+/// external ID, depending on how the method was called.
 ///
 /// @return An initialized instance.
 ///
@@ -79,8 +83,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 ///
 /// Retrieves whether the union's current tag state has value "id_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the `idNotFound` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `idNotFound` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "id_not_found".
 ///
@@ -89,8 +93,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 ///
 /// Retrieves whether the union's current tag state has value "group_info".
 ///
-/// @note Call this method and ensure it returns true before accessing the `groupInfo` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `groupInfo` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "group_info".
 ///
@@ -117,15 +121,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 ///
 /// @param instance An instance of the `DBTEAMGroupsGetInfoItem` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupsGetInfoItem` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupsGetInfoItem` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsGetInfoItem * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsGetInfoItem` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsGetInfoItem` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupsGetInfoItem` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupsGetInfoItem` object.
 ///

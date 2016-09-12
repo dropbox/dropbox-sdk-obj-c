@@ -12,8 +12,9 @@
 ///
 /// The `GetCopyReferenceArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESGetCopyReferenceArg : NSObject <DBSerializable>
 
@@ -27,7 +28,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param path The path to the file or folder you want to get a copy reference to.
+/// @param path The path to the file or folder you want to get a copy reference
+/// to.
 ///
 /// @return An initialized instance.
 ///
@@ -47,16 +49,16 @@
 ///
 /// @param instance An instance of the `DBFILESGetCopyReferenceArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESGetCopyReferenceArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESGetCopyReferenceArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetCopyReferenceArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESGetCopyReferenceArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESGetCopyReferenceArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESGetCopyReferenceArg` API object.
 ///
 /// @return An instantiation of the `DBFILESGetCopyReferenceArg` object.
 ///

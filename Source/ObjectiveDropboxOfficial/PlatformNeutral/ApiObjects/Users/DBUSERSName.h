@@ -14,8 +14,9 @@
 ///
 /// Representations for a person's name to assist with internationalization.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSName : NSObject <DBSerializable>
 
@@ -27,12 +28,17 @@
 /// Also known as a last name or family name.
 @property(nonatomic, readonly, copy) NSString * _Nonnull surname;
 
-/// Locale-dependent name. In the US, a person's familiar name is their givenName, but elsewhere, it
-/// could be any combination of a person's givenName and surname.
+/// Locale-dependent name. In the US, a person's familiar name is their
+/// givenName, but elsewhere, it could be any combination of a person's
+/// givenName and surname.
 @property(nonatomic, readonly, copy) NSString * _Nonnull familiarName;
 
-/// A name that can be used directly to represent the name of a user's Dropbox account.
+/// A name that can be used directly to represent the name of a user's Dropbox
+/// account.
 @property(nonatomic, readonly, copy) NSString * _Nonnull displayName;
+
+/// An abbreviated form of the person's name. Their initials in most locales.
+@property(nonatomic, readonly, copy) NSString * _Nonnull abbreviatedName;
 
 #pragma mark - Constructors
 
@@ -41,17 +47,21 @@
 ///
 /// @param givenName Also known as a first name.
 /// @param surname Also known as a last name or family name.
-/// @param familiarName Locale-dependent name. In the US, a person's familiar name is their
-/// givenName, but elsewhere, it could be any combination of a person's givenName and surname.
-/// @param displayName A name that can be used directly to represent the name of a user's Dropbox
-/// account.
+/// @param familiarName Locale-dependent name. In the US, a person's familiar
+/// name is their givenName, but elsewhere, it could be any combination of a
+/// person's givenName and surname.
+/// @param displayName A name that can be used directly to represent the name of
+/// a user's Dropbox account.
+/// @param abbreviatedName An abbreviated form of the person's name. Their
+/// initials in most locales.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGivenName:(NSString * _Nonnull)givenName
                                   surname:(NSString * _Nonnull)surname
                              familiarName:(NSString * _Nonnull)familiarName
-                              displayName:(NSString * _Nonnull)displayName;
+                              displayName:(NSString * _Nonnull)displayName
+                          abbreviatedName:(NSString * _Nonnull)abbreviatedName;
 
 @end
 
@@ -67,14 +77,16 @@
 ///
 /// @param instance An instance of the `DBUSERSName` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSName` API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSName` API
+/// object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSName * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSName` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSName` API object.
+/// @param dict A json-compatible dictionary representation of the `DBUSERSName`
+/// API object.
 ///
 /// @return An instantiation of the `DBUSERSName` object.
 ///

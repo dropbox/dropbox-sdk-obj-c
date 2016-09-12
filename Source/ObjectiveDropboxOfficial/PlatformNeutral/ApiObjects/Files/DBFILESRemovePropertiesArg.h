@@ -12,8 +12,9 @@
 ///
 /// The `RemovePropertiesArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESRemovePropertiesArg : NSObject <DBSerializable>
 
@@ -22,7 +23,8 @@
 /// A unique identifier for the file.
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// A list of identifiers for a property template created by route properties/template/add.
+/// A list of identifiers for a property template created by route
+/// properties/template/add.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull propertyTemplateIds;
 
 #pragma mark - Constructors
@@ -31,8 +33,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path A unique identifier for the file.
-/// @param propertyTemplateIds A list of identifiers for a property template created by route
-/// properties/template/add.
+/// @param propertyTemplateIds A list of identifiers for a property template
+/// created by route properties/template/add.
 ///
 /// @return An initialized instance.
 ///
@@ -53,16 +55,16 @@
 ///
 /// @param instance An instance of the `DBFILESRemovePropertiesArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESRemovePropertiesArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESRemovePropertiesArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESRemovePropertiesArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESRemovePropertiesArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESRemovePropertiesArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESRemovePropertiesArg` API object.
 ///
 /// @return An instantiation of the `DBFILESRemovePropertiesArg` object.
 ///

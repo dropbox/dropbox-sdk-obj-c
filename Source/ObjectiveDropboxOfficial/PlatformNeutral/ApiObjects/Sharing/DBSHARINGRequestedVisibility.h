@@ -12,20 +12,22 @@
 ///
 /// The `RequestedVisibility` union.
 ///
-/// The access permission that can be requested by the caller for the shared link. Note that the
-/// final resolved visibility of the shared link takes into account other aspects, such as team and
-/// shared folder settings. Check the ResolvedVisibility for more info on the possible resolved
-/// visibility values of shared links.
+/// The access permission that can be requested by the caller for the shared
+/// link. Note that the final resolved visibility of the shared link takes into
+/// account other aspects, such as team and shared folder settings. Check the
+/// ResolvedVisibility for more info on the possible resolved visibility values
+/// of shared links.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRequestedVisibility : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGRequestedVisibilityTag` enum type represents the possible tag states with which
-/// the `DBSHARINGRequestedVisibility` union can exist.
+/// The `DBSHARINGRequestedVisibilityTag` enum type represents the possible tag
+/// states with which the `DBSHARINGRequestedVisibility` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
   /// Anyone who has received the link can access it. No login required.
   DBSHARINGRequestedVisibilityPublic,
@@ -33,7 +35,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
   /// Only members of the same team can access the link. Login is required.
   DBSHARINGRequestedVisibilityTeamOnly,
 
-  /// A link-specific password is required to access the link. Login is not required.
+  /// A link-specific password is required to access the link. Login is not
+  /// required.
   DBSHARINGRequestedVisibilityPassword,
 
 };
@@ -46,8 +49,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
 ///
 /// Initializes union class with tag state of "public".
 ///
-/// Description of the "public" tag state: Anyone who has received the link can access it. No login
-/// required.
+/// Description of the "public" tag state: Anyone who has received the link can
+/// access it. No login required.
 ///
 /// @return An initialized instance.
 ///
@@ -56,8 +59,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
 ///
 /// Initializes union class with tag state of "team_only".
 ///
-/// Description of the "team_only" tag state: Only members of the same team can access the link.
-/// Login is required.
+/// Description of the "team_only" tag state: Only members of the same team can
+/// access the link. Login is required.
 ///
 /// @return An initialized instance.
 ///
@@ -66,8 +69,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
 ///
 /// Initializes union class with tag state of "password".
 ///
-/// Description of the "password" tag state: A link-specific password is required to access the
-/// link. Login is not required.
+/// Description of the "password" tag state: A link-specific password is
+/// required to access the link. Login is not required.
 ///
 /// @return An initialized instance.
 ///
@@ -115,18 +118,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGRequestedVisibilityTag) {
 ///
 /// Serializes `DBSHARINGRequestedVisibility` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRequestedVisibility` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGRequestedVisibility` API
+/// @param instance An instance of the `DBSHARINGRequestedVisibility` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGRequestedVisibility` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGRequestedVisibility * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGRequestedVisibility` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGRequestedVisibility`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGRequestedVisibility` API object.
 ///
 /// @return An instantiation of the `DBSHARINGRequestedVisibility` object.
 ///

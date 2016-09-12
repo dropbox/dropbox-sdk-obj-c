@@ -14,22 +14,23 @@
 ///
 /// The `MembersGetInfoItem` union.
 ///
-/// Describes a result obtained for a single user whose id was specified in the parameter of
-/// `membersGetInfo`.
+/// Describes a result obtained for a single user whose id was specified in the
+/// parameter of `membersGetInfo`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersGetInfoItem : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersGetInfoItemTag` enum type represents the possible tag states with which the
-/// `DBTEAMMembersGetInfoItem` union can exist.
+/// The `DBTEAMMembersGetInfoItemTag` enum type represents the possible tag
+/// states with which the `DBTEAMMembersGetInfoItem` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
-  /// An ID that was provided as a parameter to `membersGetInfo`, and did not match a
-  /// corresponding user. This might be a team_member_id, an email, or an external ID, depending
-  /// on how the method was called.
+  /// An ID that was provided as a parameter to `membersGetInfo`, and did not
+  /// match a corresponding user. This might be a team_member_id, an email, or
+  /// an external ID, depending on how the method was called.
   DBTEAMMembersGetInfoItemIdNotFound,
 
   /// Info about a team member.
@@ -40,14 +41,15 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMMembersGetInfoItemTag tag;
 
-/// An ID that was provided as a parameter to `membersGetInfo`, and did not match a corresponding
-/// user. This might be a team_member_id, an email, or an external ID, depending on how the method
-/// was called. @note Ensure the `isIdNotFound` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// An ID that was provided as a parameter to `membersGetInfo`, and did not
+/// match a corresponding user. This might be a team_member_id, an email, or an
+/// external ID, depending on how the method was called. @note Ensure the
+/// `isIdNotFound` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull idNotFound;
 
-/// Info about a team member. @note Ensure the `isMemberInfo` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// Info about a team member. @note Ensure the `isMemberInfo` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBTEAMTeamMemberInfo * _Nonnull memberInfo;
 
 #pragma mark - Constructors
@@ -55,13 +57,15 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// Initializes union class with tag state of "id_not_found".
 ///
-/// Description of the "id_not_found" tag state: An ID that was provided as a parameter to
-/// `membersGetInfo`, and did not match a corresponding user. This might be a team_member_id, an
-/// email, or an external ID, depending on how the method was called.
+/// Description of the "id_not_found" tag state: An ID that was provided as a
+/// parameter to `membersGetInfo`, and did not match a corresponding user. This
+/// might be a team_member_id, an email, or an external ID, depending on how the
+/// method was called.
 ///
-/// @param idNotFound An ID that was provided as a parameter to `membersGetInfo`, and did not match
-/// a corresponding user. This might be a team_member_id, an email, or an external ID, depending on
-/// how the method was called.
+/// @param idNotFound An ID that was provided as a parameter to
+/// `membersGetInfo`, and did not match a corresponding user. This might be a
+/// team_member_id, an email, or an external ID, depending on how the method was
+/// called.
 ///
 /// @return An initialized instance.
 ///
@@ -83,8 +87,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// Retrieves whether the union's current tag state has value "id_not_found".
 ///
-/// @note Call this method and ensure it returns true before accessing the `idNotFound` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `idNotFound` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "id_not_found".
 ///
@@ -93,8 +97,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// Retrieves whether the union's current tag state has value "member_info".
 ///
-/// @note Call this method and ensure it returns true before accessing the `memberInfo` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberInfo` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "member_info".
 ///
@@ -121,16 +125,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoItemTag) {
 ///
 /// @param instance An instance of the `DBTEAMMembersGetInfoItem` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersGetInfoItem` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersGetInfoItem` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoItem * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersGetInfoItem` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersGetInfoItem` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersGetInfoItem` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersGetInfoItem` object.
 ///

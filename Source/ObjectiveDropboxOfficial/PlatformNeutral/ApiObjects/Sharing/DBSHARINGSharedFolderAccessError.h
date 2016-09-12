@@ -14,15 +14,17 @@
 ///
 /// There is an error accessing the shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedFolderAccessError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharedFolderAccessErrorTag` enum type represents the possible tag states with
-/// which the `DBSHARINGSharedFolderAccessError` union can exist.
+/// The `DBSHARINGSharedFolderAccessErrorTag` enum type represents the possible
+/// tag states with which the `DBSHARINGSharedFolderAccessError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
   /// This shared folder ID is invalid.
   DBSHARINGSharedFolderAccessErrorInvalidId,
@@ -58,8 +60,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "not_a_member".
 ///
-/// Description of the "not_a_member" tag state: The user is not a member of the shared folder thus
-/// cannot access it.
+/// Description of the "not_a_member" tag state: The user is not a member of the
+/// shared folder thus cannot access it.
 ///
 /// @return An initialized instance.
 ///
@@ -68,8 +70,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 ///
 /// Initializes union class with tag state of "email_unverified".
 ///
-/// Description of the "email_unverified" tag state: The current user's e-mail address is
-/// unverified.
+/// Description of the "email_unverified" tag state: The current user's e-mail
+/// address is unverified.
 ///
 /// @return An initialized instance.
 ///
@@ -108,7 +110,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 - (BOOL)isNotAMember;
 
 ///
-/// Retrieves whether the union's current tag state has value "email_unverified".
+/// Retrieves whether the union's current tag state has value
+/// "email_unverified".
 ///
 /// @return Whether the union's current tag state has value "email_unverified".
 ///
@@ -147,10 +150,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderAccessErrorTag) {
 ///
 /// Serializes `DBSHARINGSharedFolderAccessError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharedFolderAccessError` API object.
+/// @param instance An instance of the `DBSHARINGSharedFolderAccessError` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderAccessError`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderAccessError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderAccessError * _Nonnull)instance;
 

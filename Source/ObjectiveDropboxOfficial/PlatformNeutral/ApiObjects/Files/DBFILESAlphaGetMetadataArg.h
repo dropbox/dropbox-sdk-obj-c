@@ -13,14 +13,16 @@
 ///
 /// The `AlphaGetMetadataArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESAlphaGetMetadataArg : DBFILESGetMetadataArg <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// If true, `propertyGroups` in `DBFILESFileMetadata` is set for files with custom properties.
+/// If set to a valid list of template IDs, `propertyGroups` in
+/// `DBFILESFileMetadata` is set for files with custom properties.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nullable includePropertyTemplates;
 
 #pragma mark - Constructors
@@ -29,14 +31,17 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of a file or folder on Dropbox.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and
-/// video.
-/// @param includeDeleted If true, DeletedMetadata will be returned for deleted file or folder,
-/// otherwise `notFound` in `DBFILESLookupError` will be returned.
-/// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file
-/// indicating whether or not  that file has any explicit members.
-/// @param includePropertyTemplates If true, `propertyGroups` in `DBFILESFileMetadata` is set for
-/// files with custom properties.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set
+/// for photo and video.
+/// @param includeDeleted If true, DeletedMetadata will be returned for deleted
+/// file or folder, otherwise `notFound` in `DBFILESLookupError` will be
+/// returned.
+/// @param includeHasExplicitSharedMembers If true, the results will include a
+/// flag for each file indicating whether or not  that file has any explicit
+/// members.
+/// @param includePropertyTemplates If set to a valid list of template IDs,
+/// `propertyGroups` in `DBFILESFileMetadata` is set for files with custom
+/// properties.
 ///
 /// @return An initialized instance.
 ///
@@ -47,7 +52,8 @@
             includePropertyTemplates:(NSArray<NSString *> * _Nullable)includePropertyTemplates;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path The path of a file or folder on Dropbox.
 ///
@@ -69,16 +75,16 @@
 ///
 /// @param instance An instance of the `DBFILESAlphaGetMetadataArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESAlphaGetMetadataArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESAlphaGetMetadataArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESAlphaGetMetadataArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESAlphaGetMetadataArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESAlphaGetMetadataArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESAlphaGetMetadataArg` API object.
 ///
 /// @return An instantiation of the `DBFILESAlphaGetMetadataArg` object.
 ///

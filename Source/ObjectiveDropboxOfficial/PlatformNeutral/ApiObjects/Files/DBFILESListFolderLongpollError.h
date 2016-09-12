@@ -12,17 +12,19 @@
 ///
 /// The `ListFolderLongpollError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESListFolderLongpollError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESListFolderLongpollErrorTag` enum type represents the possible tag states with which
-/// the `DBFILESListFolderLongpollError` union can exist.
+/// The `DBFILESListFolderLongpollErrorTag` enum type represents the possible
+/// tag states with which the `DBFILESListFolderLongpollError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESListFolderLongpollErrorTag) {
-  /// Indicates that the cursor has been invalidated. Call `listFolder` to obtain a new cursor.
+  /// Indicates that the cursor has been invalidated. Call `listFolder` to
+  /// obtain a new cursor.
   DBFILESListFolderLongpollErrorReset,
 
   /// (no description).
@@ -38,8 +40,8 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderLongpollErrorTag) {
 ///
 /// Initializes union class with tag state of "reset".
 ///
-/// Description of the "reset" tag state: Indicates that the cursor has been invalidated. Call
-/// `listFolder` to obtain a new cursor.
+/// Description of the "reset" tag state: Indicates that the cursor has been
+/// invalidated. Call `listFolder` to obtain a new cursor.
 ///
 /// @return An initialized instance.
 ///
@@ -87,18 +89,19 @@ typedef NS_ENUM(NSInteger, DBFILESListFolderLongpollErrorTag) {
 ///
 /// Serializes `DBFILESListFolderLongpollError` instances.
 ///
-/// @param instance An instance of the `DBFILESListFolderLongpollError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESListFolderLongpollError` API
+/// @param instance An instance of the `DBFILESListFolderLongpollError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESListFolderLongpollError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListFolderLongpollError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESListFolderLongpollError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESListFolderLongpollError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESListFolderLongpollError` API object.
 ///
 /// @return An instantiation of the `DBFILESListFolderLongpollError` object.
 ///

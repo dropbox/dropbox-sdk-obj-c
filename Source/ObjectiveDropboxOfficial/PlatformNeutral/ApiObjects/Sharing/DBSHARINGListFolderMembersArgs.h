@@ -15,8 +15,9 @@
 ///
 /// The `ListFolderMembersArgs` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFolderMembersArgs : DBSHARINGListFolderMembersCursorArg <DBSerializable>
 
@@ -31,11 +32,12 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param actions This is a list indicating whether each returned member will include a boolean
-/// value `allow` in `DBSHARINGMemberPermission` that describes whether the current user can perform
-/// the MemberAction on the member.
-/// @param limit The maximum number of results that include members, groups and invitees to return
-/// per request.
+/// @param actions This is a list indicating whether each returned member will
+/// include a boolean value `allow` in `DBSHARINGMemberPermission` that
+/// describes whether the current user can perform the MemberAction on the
+/// member.
+/// @param limit The maximum number of results that include members, groups and
+/// invitees to return per request.
 ///
 /// @return An initialized instance.
 ///
@@ -44,7 +46,8 @@
                                          limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
@@ -64,18 +67,19 @@
 ///
 /// Serializes `DBSHARINGListFolderMembersArgs` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFolderMembersArgs` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFolderMembersArgs` API
+/// @param instance An instance of the `DBSHARINGListFolderMembersArgs` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFolderMembersArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersArgs * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFolderMembersArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFolderMembersArgs`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFolderMembersArgs` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFolderMembersArgs` object.
 ///

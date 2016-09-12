@@ -14,25 +14,27 @@
 ///
 /// The `PropertyFieldTemplate` struct.
 ///
-/// Describe a single property field type which that can be part of a property template.
+/// Describe a single property field type which that can be part of a property
+/// template.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESPropertyFieldTemplate : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// This is the name or key of a custom property in a property template. File property names can be
-/// up to 256 bytes.
+/// This is the name or key of a custom property in a property template. File
+/// property names can be up to 256 bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;
 
-/// This is the description for a custom property in a property template. File property description
-/// can be up to 1024 bytes.
+/// This is the description for a custom property in a property template. File
+/// property description can be up to 1024 bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull description_;
 
-/// This is the data type of the value of this property. This type will be enforced upon property
-/// creation and modifications.
+/// This is the data type of the value of this property. This type will be
+/// enforced upon property creation and modifications.
 @property(nonatomic, readonly) DBPROPERTIESPropertyType * _Nonnull type;
 
 #pragma mark - Constructors
@@ -40,12 +42,12 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param name This is the name or key of a custom property in a property template. File property
-/// names can be up to 256 bytes.
-/// @param description_ This is the description for a custom property in a property template. File
-/// property description can be up to 1024 bytes.
-/// @param type This is the data type of the value of this property. This type will be enforced upon
-/// property creation and modifications.
+/// @param name This is the name or key of a custom property in a property
+/// template. File property names can be up to 256 bytes.
+/// @param description_ This is the description for a custom property in a
+/// property template. File property description can be up to 1024 bytes.
+/// @param type This is the data type of the value of this property. This type
+/// will be enforced upon property creation and modifications.
 ///
 /// @return An initialized instance.
 ///
@@ -65,10 +67,11 @@
 ///
 /// Serializes `DBPROPERTIESPropertyFieldTemplate` instances.
 ///
-/// @param instance An instance of the `DBPROPERTIESPropertyFieldTemplate` API object.
+/// @param instance An instance of the `DBPROPERTIESPropertyFieldTemplate` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyFieldTemplate`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyFieldTemplate` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyFieldTemplate * _Nonnull)instance;
 

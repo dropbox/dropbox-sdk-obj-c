@@ -17,8 +17,9 @@
 ///
 /// Information about linked Dropbox mobile client sessions
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMobileClientSession : DBTEAMDeviceSession <DBSerializable>
 
@@ -48,7 +49,8 @@
 /// @param deviceName The device name
 /// @param clientType The mobile application type
 /// @param ipAddress The IP address of the last activity from this session
-/// @param country The country from which the last activity from this session was made
+/// @param country The country from which the last activity from this session
+/// was made
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
 /// @param clientVersion The dropbox client version
@@ -69,7 +71,8 @@
                               lastCarrier:(NSString * _Nullable)lastCarrier;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sessionId The session id
 /// @param deviceName The device name
@@ -95,16 +98,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMobileClientSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMobileClientSession` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMobileClientSession` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMobileClientSession * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMobileClientSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMobileClientSession` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMobileClientSession` API object.
 ///
 /// @return An instantiation of the `DBTEAMMobileClientSession` object.
 ///

@@ -15,8 +15,9 @@
 ///
 /// Sharing info for a file which is contained by a shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESFileSharingInfo : DBFILESSharingInfo <DBSerializable>
 
@@ -25,8 +26,8 @@
 /// ID of shared folder that holds this file.
 @property(nonatomic, readonly, copy) NSString * _Nonnull parentSharedFolderId;
 
-/// The last user who modified the file. This field will be null if the user's account has been
-/// deleted.
+/// The last user who modified the file. This field will be null if the user's
+/// account has been deleted.
 @property(nonatomic, readonly) NSString * _Nullable modifiedBy;
 
 #pragma mark - Constructors
@@ -34,10 +35,11 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param readOnly True if the file or folder is inside a read-only shared folder.
+/// @param readOnly True if the file or folder is inside a read-only shared
+/// folder.
 /// @param parentSharedFolderId ID of shared folder that holds this file.
-/// @param modifiedBy The last user who modified the file. This field will be null if the user's
-/// account has been deleted.
+/// @param modifiedBy The last user who modified the file. This field will be
+/// null if the user's account has been deleted.
 ///
 /// @return An initialized instance.
 ///
@@ -46,9 +48,11 @@
                               modifiedBy:(NSString * _Nullable)modifiedBy;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param readOnly True if the file or folder is inside a read-only shared folder.
+/// @param readOnly True if the file or folder is inside a read-only shared
+/// folder.
 /// @param parentSharedFolderId ID of shared folder that holds this file.
 ///
 /// @return An initialized instance.
@@ -70,15 +74,16 @@
 ///
 /// @param instance An instance of the `DBFILESFileSharingInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESFileSharingInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESFileSharingInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESFileSharingInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESFileSharingInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESFileSharingInfo` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESFileSharingInfo` API object.
 ///
 /// @return An instantiation of the `DBFILESFileSharingInfo` object.
 ///

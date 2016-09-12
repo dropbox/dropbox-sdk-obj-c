@@ -12,8 +12,9 @@
 ///
 /// The `DownloadArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESDownloadArg : NSObject <DBSerializable>
 
@@ -38,7 +39,8 @@
 - (nonnull instancetype)initWithPath:(NSString * _Nonnull)path rev:(NSString * _Nullable)rev;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path The path of the file to download.
 ///
@@ -60,14 +62,16 @@
 ///
 /// @param instance An instance of the `DBFILESDownloadArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESDownloadArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESDownloadArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESDownloadArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESDownloadArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESDownloadArg` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESDownloadArg` API object.
 ///
 /// @return An instantiation of the `DBFILESDownloadArg` object.
 ///

@@ -12,15 +12,16 @@
 ///
 /// The `MembersGetInfoError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersGetInfoError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersGetInfoErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMMembersGetInfoError` union can exist.
+/// The `DBTEAMMembersGetInfoErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMMembersGetInfoError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoErrorTag) {
   /// (no description).
   DBTEAMMembersGetInfoErrorOther,
@@ -69,16 +70,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersGetInfoErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMMembersGetInfoError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersGetInfoError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersGetInfoError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersGetInfoError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersGetInfoError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersGetInfoError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersGetInfoError` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersGetInfoError` object.
 ///

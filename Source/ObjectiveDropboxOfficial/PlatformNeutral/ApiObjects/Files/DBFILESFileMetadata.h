@@ -17,8 +17,9 @@
 ///
 /// The `FileMetadata` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable>
 
@@ -27,17 +28,19 @@
 /// A unique identifier for the file.
 @property(nonatomic, readonly, copy) NSString * _Nonnull id_;
 
-/// For files, this is the modification time set by the desktop client when the file was added to
-/// Dropbox. Since this time is not verified (the Dropbox server stores whatever the desktop client
-/// sends up), this should only be used for display purposes (such as sorting) and not, for example,
-/// to determine if a file has changed or not.
+/// For files, this is the modification time set by the desktop client when the
+/// file was added to Dropbox. Since this time is not verified (the Dropbox
+/// server stores whatever the desktop client sends up), this should only be
+/// used for display purposes (such as sorting) and not, for example, to
+/// determine if a file has changed or not.
 @property(nonatomic, readonly) NSDate * _Nonnull clientModified;
 
 /// The last time the file was modified on Dropbox.
 @property(nonatomic, readonly) NSDate * _Nonnull serverModified;
 
-/// A unique identifier for the current revision of a file. This field is the same rev as elsewhere
-/// in the API and can be used to detect changes and avoid conflicts.
+/// A unique identifier for the current revision of a file. This field is the
+/// same rev as elsewhere in the API and can be used to detect changes and avoid
+/// conflicts.
 @property(nonatomic, readonly, copy) NSString * _Nonnull rev;
 
 /// The file size in bytes.
@@ -49,13 +52,15 @@
 /// Set if this file is contained in a shared folder.
 @property(nonatomic, readonly) DBFILESFileSharingInfo * _Nullable sharingInfo;
 
-/// Additional information if the file has custom properties with the property template specified.
+/// Additional information if the file has custom properties with the property
+/// template specified.
 @property(nonatomic, readonly) NSArray<DBPROPERTIESPropertyGroup *> * _Nullable propertyGroups;
 
-/// This flag will only be present if include_has_explicit_shared_members  is true in `listFolder`
-/// or `getMetadata`. If this  flag is present, it will be true if this file has any explicit shared
-/// members. This is different from sharing_info in that this could be true  in the case where a
-/// file has explicit members but is not contained within  a shared folder.
+/// This flag will only be present if include_has_explicit_shared_members  is
+/// true in `listFolder` or `getMetadata`. If this  flag is present, it will be
+/// true if this file has any explicit shared  members. This is different from
+/// sharing_info in that this could be true  in the case where a file has
+/// explicit members but is not contained within  a shared folder.
 @property(nonatomic, readonly) NSNumber * _Nullable hasExplicitSharedMembers;
 
 #pragma mark - Constructors
@@ -63,33 +68,40 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param name The last component of the path (including extension). This never contains a slash.
+/// @param name The last component of the path (including extension). This never
+/// contains a slash.
 /// @param id_ A unique identifier for the file.
-/// @param clientModified For files, this is the modification time set by the desktop client when
-/// the file was added to Dropbox. Since this time is not verified (the Dropbox server stores
-/// whatever the desktop client sends up), this should only be used for display purposes (such as
-/// sorting) and not, for example, to determine if a file has changed or not.
+/// @param clientModified For files, this is the modification time set by the
+/// desktop client when the file was added to Dropbox. Since this time is not
+/// verified (the Dropbox server stores whatever the desktop client sends up),
+/// this should only be used for display purposes (such as sorting) and not, for
+/// example, to determine if a file has changed or not.
 /// @param serverModified The last time the file was modified on Dropbox.
-/// @param rev A unique identifier for the current revision of a file. This field is the same rev as
-/// elsewhere in the API and can be used to detect changes and avoid conflicts.
+/// @param rev A unique identifier for the current revision of a file. This
+/// field is the same rev as elsewhere in the API and can be used to detect
+/// changes and avoid conflicts.
 /// @param size The file size in bytes.
-/// @param pathLower The lowercased full path in the user's Dropbox. This always starts with a
-/// slash. This field will be null if the file or folder is not mounted.
-/// @param pathDisplay The cased path to be used for display purposes only. In rare instances the
-/// casing will not correctly match the user's filesystem, but this behavior will match the path
-/// provided in the Core API v1. Changes to the casing of paths won't be returned by
-/// `listFolderContinue`. This field will be null if the file or folder is not mounted.
+/// @param pathLower The lowercased full path in the user's Dropbox. This always
+/// starts with a slash. This field will be null if the file or folder is not
+/// mounted.
+/// @param pathDisplay The cased path to be used for display purposes only. In
+/// rare instances the casing will not correctly match the user's filesystem,
+/// but this behavior will match the path provided in the Core API v1. Changes
+/// to the casing of paths won't be returned by `listFolderContinue`. This field
+/// will be null if the file or folder is not mounted.
 /// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
+/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
+/// `DBFILESFolderSharingInfo` instead.
 /// @param mediaInfo Additional information if the file is a photo or video.
 /// @param sharingInfo Set if this file is contained in a shared folder.
-/// @param propertyGroups Additional information if the file has custom properties with the property
-/// template specified.
+/// @param propertyGroups Additional information if the file has custom
+/// properties with the property template specified.
 /// @param hasExplicitSharedMembers This flag will only be present if
-/// include_has_explicit_shared_members  is true in `listFolder` or `getMetadata`. If this  flag is
-/// present, it will be true if this file has any explicit shared  members. This is different from
-/// sharing_info in that this could be true  in the case where a file has explicit members but is
-/// not contained within  a shared folder.
+/// include_has_explicit_shared_members  is true in `listFolder` or
+/// `getMetadata`. If this  flag is present, it will be true if this file has
+/// any explicit shared  members. This is different from sharing_info in that
+/// this could be true  in the case where a file has explicit members but is not
+/// contained within  a shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -108,17 +120,21 @@
             hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param name The last component of the path (including extension). This never contains a slash.
+/// @param name The last component of the path (including extension). This never
+/// contains a slash.
 /// @param id_ A unique identifier for the file.
-/// @param clientModified For files, this is the modification time set by the desktop client when
-/// the file was added to Dropbox. Since this time is not verified (the Dropbox server stores
-/// whatever the desktop client sends up), this should only be used for display purposes (such as
-/// sorting) and not, for example, to determine if a file has changed or not.
+/// @param clientModified For files, this is the modification time set by the
+/// desktop client when the file was added to Dropbox. Since this time is not
+/// verified (the Dropbox server stores whatever the desktop client sends up),
+/// this should only be used for display purposes (such as sorting) and not, for
+/// example, to determine if a file has changed or not.
 /// @param serverModified The last time the file was modified on Dropbox.
-/// @param rev A unique identifier for the current revision of a file. This field is the same rev as
-/// elsewhere in the API and can be used to detect changes and avoid conflicts.
+/// @param rev A unique identifier for the current revision of a file. This
+/// field is the same rev as elsewhere in the API and can be used to detect
+/// changes and avoid conflicts.
 /// @param size The file size in bytes.
 ///
 /// @return An initialized instance.
@@ -144,14 +160,16 @@
 ///
 /// @param instance An instance of the `DBFILESFileMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESFileMetadata` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESFileMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESFileMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESFileMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESFileMetadata` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESFileMetadata` API object.
 ///
 /// @return An instantiation of the `DBFILESFileMetadata` object.
 ///

@@ -12,14 +12,16 @@
 ///
 /// The `ListFoldersContinueArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFoldersContinueArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The cursor returned by the previous API call specified in the endpoint description.
+/// The cursor returned by the previous API call specified in the endpoint
+/// description.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 #pragma mark - Constructors
@@ -27,8 +29,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor The cursor returned by the previous API call specified in the endpoint
-/// description.
+/// @param cursor The cursor returned by the previous API call specified in the
+/// endpoint description.
 ///
 /// @return An initialized instance.
 ///
@@ -46,18 +48,19 @@
 ///
 /// Serializes `DBSHARINGListFoldersContinueArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFoldersContinueArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFoldersContinueArg` API
+/// @param instance An instance of the `DBSHARINGListFoldersContinueArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersContinueArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFoldersContinueArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFoldersContinueArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFoldersContinueArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFoldersContinueArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFoldersContinueArg` object.
 ///

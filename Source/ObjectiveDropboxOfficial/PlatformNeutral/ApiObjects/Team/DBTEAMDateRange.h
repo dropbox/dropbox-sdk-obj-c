@@ -14,8 +14,9 @@
 ///
 /// Input arguments that can be provided for most reports.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMDateRange : NSObject <DBSerializable>
 
@@ -40,7 +41,8 @@
 - (nonnull instancetype)initWithStartDate:(NSDate * _Nullable)startDate endDate:(NSDate * _Nullable)endDate;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -61,14 +63,16 @@
 ///
 /// @param instance An instance of the `DBTEAMDateRange` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMDateRange` API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMDateRange`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDateRange * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMDateRange` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMDateRange` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMDateRange` API object.
 ///
 /// @return An instantiation of the `DBTEAMDateRange` object.
 ///

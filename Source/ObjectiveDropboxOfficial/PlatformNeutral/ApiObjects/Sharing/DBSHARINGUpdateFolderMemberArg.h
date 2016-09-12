@@ -15,8 +15,9 @@
 ///
 /// The `UpdateFolderMemberArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGUpdateFolderMemberArg : NSObject <DBSerializable>
 
@@ -25,11 +26,12 @@
 /// The ID for the shared folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
-/// The member of the shared folder to update.  Only the `dropboxId` in `DBSHARINGMemberSelector`
-/// may be set at this time.
+/// The member of the shared folder to update.  Only the `dropboxId` in
+/// `DBSHARINGMemberSelector` may be set at this time.
 @property(nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
 
-/// The new access level for member. `owner` in `DBSHARINGAccessLevel` is disallowed.
+/// The new access level for member. `owner` in `DBSHARINGAccessLevel` is
+/// disallowed.
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessLevel;
 
 #pragma mark - Constructors
@@ -38,10 +40,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param member The member of the shared folder to update.  Only the `dropboxId` in
-/// `DBSHARINGMemberSelector` may be set at this time.
-/// @param accessLevel The new access level for member. `owner` in `DBSHARINGAccessLevel` is
-/// disallowed.
+/// @param member The member of the shared folder to update.  Only the
+/// `dropboxId` in `DBSHARINGMemberSelector` may be set at this time.
+/// @param accessLevel The new access level for member. `owner` in
+/// `DBSHARINGAccessLevel` is disallowed.
 ///
 /// @return An initialized instance.
 ///
@@ -61,18 +63,19 @@
 ///
 /// Serializes `DBSHARINGUpdateFolderMemberArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGUpdateFolderMemberArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGUpdateFolderMemberArg` API
+/// @param instance An instance of the `DBSHARINGUpdateFolderMemberArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGUpdateFolderMemberArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUpdateFolderMemberArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGUpdateFolderMemberArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGUpdateFolderMemberArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGUpdateFolderMemberArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGUpdateFolderMemberArg` object.
 ///

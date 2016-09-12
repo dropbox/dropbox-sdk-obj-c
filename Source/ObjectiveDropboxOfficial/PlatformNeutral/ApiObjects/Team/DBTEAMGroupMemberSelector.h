@@ -17,8 +17,9 @@
 ///
 /// Argument for selecting a group and a single user.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupMemberSelector : NSObject <DBSerializable>
 
@@ -56,16 +57,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupMemberSelector` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupMemberSelector` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupMemberSelector` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMemberSelector * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMemberSelector` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMemberSelector` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupMemberSelector` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupMemberSelector` object.
 ///

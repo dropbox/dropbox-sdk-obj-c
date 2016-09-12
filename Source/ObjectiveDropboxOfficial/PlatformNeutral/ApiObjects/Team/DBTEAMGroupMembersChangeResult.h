@@ -16,8 +16,9 @@
 ///
 /// Result returned by `groupsMembersAdd` and `groupsMembersRemove`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupMembersChangeResult : NSObject <DBSerializable>
 
@@ -26,7 +27,8 @@
 /// The group info after member change operation has been performed.
 @property(nonatomic, readonly) DBTEAMGroupFullInfo * _Nonnull groupInfo;
 
-/// An ID that can be used to obtain the status of granting/revoking group-owned resources.
+/// An ID that can be used to obtain the status of granting/revoking group-owned
+/// resources.
 @property(nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
 #pragma mark - Constructors
@@ -34,9 +36,10 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param groupInfo The group info after member change operation has been performed.
-/// @param asyncJobId An ID that can be used to obtain the status of granting/revoking group-owned
-/// resources.
+/// @param groupInfo The group info after member change operation has been
+/// performed.
+/// @param asyncJobId An ID that can be used to obtain the status of
+/// granting/revoking group-owned resources.
 ///
 /// @return An initialized instance.
 ///
@@ -55,18 +58,19 @@
 ///
 /// Serializes `DBTEAMGroupMembersChangeResult` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupMembersChangeResult` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupMembersChangeResult` API
+/// @param instance An instance of the `DBTEAMGroupMembersChangeResult` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersChangeResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersChangeResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMembersChangeResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMembersChangeResult`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersChangeResult` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupMembersChangeResult` object.
 ///

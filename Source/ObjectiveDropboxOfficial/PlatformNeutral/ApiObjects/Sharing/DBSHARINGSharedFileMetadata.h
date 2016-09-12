@@ -18,8 +18,9 @@
 ///
 /// Properties of the shared file.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedFileMetadata : NSObject <DBSerializable>
 
@@ -28,16 +29,18 @@
 /// Policies governing this shared file.
 @property(nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
 
-/// The sharing permissions that requesting user has on this file. This corresponds to the entries
-/// given in `actions` in `DBSHARINGGetFileMetadataBatchArg` or `actions` in
+/// The sharing permissions that requesting user has on this file. This
+/// corresponds to the entries given in `actions` in
+/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
 /// `DBSHARINGGetFileMetadataArg`.
 @property(nonatomic, readonly) NSArray<DBSHARINGFilePermission *> * _Nullable permissions;
 
-/// The team that owns the file. This field is not present if the file is not owned by a team.
+/// The team that owns the file. This field is not present if the file is not
+/// owned by a team.
 @property(nonatomic, readonly) DBUSERSTeam * _Nullable ownerTeam;
 
-/// The ID of the parent shared folder. This field is present only if the file is contained within a
-/// shared folder.
+/// The ID of the parent shared folder. This field is present only if the file
+/// is contained within a shared folder.
 @property(nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
 /// URL for displaying a web preview of the shared file.
@@ -46,9 +49,9 @@
 /// The lower-case full path of this file. Absent for unmounted files.
 @property(nonatomic, readonly) NSString * _Nullable pathLower;
 
-/// The cased path to be used for display purposes only. In rare instances the casing will not
-/// correctly match the user's filesystem, but this behavior will match the path provided in the
-/// Core API v1. Absent for unmounted files.
+/// The cased path to be used for display purposes only. In rare instances the
+/// casing will not correctly match the user's filesystem, but this behavior
+/// will match the path provided in the Core API v1. Absent for unmounted files.
 @property(nonatomic, readonly) NSString * _Nullable pathDisplay;
 
 /// The name of this file.
@@ -56,6 +59,12 @@
 
 /// The ID of the file.
 @property(nonatomic, readonly, copy) NSString * _Nonnull id_;
+
+/// Timestamp indicating when the current user was invited to this shared file.
+/// If the user was not invited to the shared file, the timestamp will indicate
+/// when the user was invited to the parent shared folder. This value may be
+/// absent.
+@property(nonatomic, readonly) NSDate * _Nullable timeInvited;
 
 #pragma mark - Constructors
 
@@ -66,17 +75,24 @@
 /// @param previewUrl URL for displaying a web preview of the shared file.
 /// @param name The name of this file.
 /// @param id_ The ID of the file.
-/// @param permissions The sharing permissions that requesting user has on this file. This
-/// corresponds to the entries given in `actions` in `DBSHARINGGetFileMetadataBatchArg` or `actions`
-/// in `DBSHARINGGetFileMetadataArg`.
-/// @param ownerTeam The team that owns the file. This field is not present if the file is not owned
-/// by a team.
-/// @param parentSharedFolderId The ID of the parent shared folder. This field is present only if
-/// the file is contained within a shared folder.
-/// @param pathLower The lower-case full path of this file. Absent for unmounted files.
-/// @param pathDisplay The cased path to be used for display purposes only. In rare instances the
-/// casing will not correctly match the user's filesystem, but this behavior will match the path
-/// provided in the Core API v1. Absent for unmounted files.
+/// @param permissions The sharing permissions that requesting user has on this
+/// file. This corresponds to the entries given in `actions` in
+/// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
+/// `DBSHARINGGetFileMetadataArg`.
+/// @param ownerTeam The team that owns the file. This field is not present if
+/// the file is not owned by a team.
+/// @param parentSharedFolderId The ID of the parent shared folder. This field
+/// is present only if the file is contained within a shared folder.
+/// @param pathLower The lower-case full path of this file. Absent for unmounted
+/// files.
+/// @param pathDisplay The cased path to be used for display purposes only. In
+/// rare instances the casing will not correctly match the user's filesystem,
+/// but this behavior will match the path provided in the Core API v1. Absent
+/// for unmounted files.
+/// @param timeInvited Timestamp indicating when the current user was invited to
+/// this shared file. If the user was not invited to the shared file, the
+/// timestamp will indicate when the user was invited to the parent shared
+/// folder. This value may be absent.
 ///
 /// @return An initialized instance.
 ///
@@ -88,10 +104,12 @@
                              ownerTeam:(DBUSERSTeam * _Nullable)ownerTeam
                   parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId
                              pathLower:(NSString * _Nullable)pathLower
-                           pathDisplay:(NSString * _Nullable)pathDisplay;
+                           pathDisplay:(NSString * _Nullable)pathDisplay
+                           timeInvited:(NSDate * _Nullable)timeInvited;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param policy Policies governing this shared file.
 /// @param previewUrl URL for displaying a web preview of the shared file.
@@ -119,16 +137,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGSharedFileMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFileMetadata` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFileMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFileMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedFileMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedFileMetadata` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFileMetadata` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharedFileMetadata` object.
 ///

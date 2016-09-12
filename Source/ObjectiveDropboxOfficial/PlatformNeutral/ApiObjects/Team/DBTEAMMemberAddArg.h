@@ -14,8 +14,9 @@
 ///
 /// The `MemberAddArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMemberAddArg : NSObject <DBSerializable>
 
@@ -33,9 +34,10 @@
 /// External ID for member.
 @property(nonatomic, readonly) NSString * _Nullable memberExternalId;
 
-/// Whether to send a welcome email to the member. If send_welcome_email is false, no email
-/// invitation will be sent to the user. This may be useful for apps using single sign-on (SSO)
-/// flows for onboarding that want to handle announcements themselves.
+/// Whether to send a welcome email to the member. If send_welcome_email is
+/// false, no email invitation will be sent to the user. This may be useful for
+/// apps using single sign-on (SSO) flows for onboarding that want to handle
+/// announcements themselves.
 @property(nonatomic, readonly) NSNumber * _Nonnull sendWelcomeEmail;
 
 /// (no description).
@@ -50,9 +52,10 @@
 /// @param memberGivenName Member's first name.
 /// @param memberSurname Member's last name.
 /// @param memberExternalId External ID for member.
-/// @param sendWelcomeEmail Whether to send a welcome email to the member. If send_welcome_email is
-/// false, no email invitation will be sent to the user. This may be useful for apps using single
-/// sign-on (SSO) flows for onboarding that want to handle announcements themselves.
+/// @param sendWelcomeEmail Whether to send a welcome email to the member. If
+/// send_welcome_email is false, no email invitation will be sent to the user.
+/// This may be useful for apps using single sign-on (SSO) flows for onboarding
+/// that want to handle announcements themselves.
 /// @param role (no description).
 ///
 /// @return An initialized instance.
@@ -65,7 +68,8 @@
                                        role:(DBTEAMAdminTier * _Nullable)role;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param memberEmail (no description).
 /// @param memberGivenName Member's first name.
@@ -91,14 +95,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMemberAddArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMemberAddArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMemberAddArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMemberAddArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMemberAddArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMemberAddArg` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMemberAddArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMemberAddArg` object.
 ///

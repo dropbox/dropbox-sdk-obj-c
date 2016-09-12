@@ -18,8 +18,9 @@
 ///
 /// Policies governing sharing within and outside of the team.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMPOLICIESTeamSharingPolicies : NSObject <DBSerializable>
 
@@ -41,7 +42,8 @@
 ///
 /// @param sharedFolderMemberPolicy Who can join folders shared by team members.
 /// @param sharedFolderJoinPolicy Which shared folders team members can join.
-/// @param sharedLinkCreatePolicy What is the visibility of newly created shared links.
+/// @param sharedLinkCreatePolicy What is the visibility of newly created shared
+/// links.
 ///
 /// @return An initialized instance.
 ///
@@ -62,10 +64,11 @@ initWithSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy * _Nonn
 ///
 /// Serializes `DBTEAMPOLICIESTeamSharingPolicies` instances.
 ///
-/// @param instance An instance of the `DBTEAMPOLICIESTeamSharingPolicies` API object.
+/// @param instance An instance of the `DBTEAMPOLICIESTeamSharingPolicies` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMPOLICIESTeamSharingPolicies`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESTeamSharingPolicies` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)instance;
 

@@ -12,8 +12,9 @@
 ///
 /// The `UnshareFolderArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGUnshareFolderArg : NSObject <DBSerializable>
 
@@ -22,9 +23,9 @@
 /// The ID for the shared folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
-/// If true, members of this shared folder will get a copy of this folder after it's unshared.
-/// Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always
-/// retain their copy.
+/// If true, members of this shared folder will get a copy of this folder after
+/// it's unshared. Otherwise, it will be removed from their Dropbox. The current
+/// user, who is an owner, will always retain their copy.
 @property(nonatomic, readonly) NSNumber * _Nonnull leaveACopy;
 
 #pragma mark - Constructors
@@ -33,9 +34,9 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param leaveACopy If true, members of this shared folder will get a copy of this folder after
-/// it's unshared. Otherwise, it will be removed from their Dropbox. The current user, who is an
-/// owner, will always retain their copy.
+/// @param leaveACopy If true, members of this shared folder will get a copy of
+/// this folder after it's unshared. Otherwise, it will be removed from their
+/// Dropbox. The current user, who is an owner, will always retain their copy.
 ///
 /// @return An initialized instance.
 ///
@@ -43,7 +44,8 @@
                                     leaveACopy:(NSNumber * _Nullable)leaveACopy;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
@@ -65,16 +67,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGUnshareFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGUnshareFolderArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGUnshareFolderArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUnshareFolderArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGUnshareFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGUnshareFolderArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGUnshareFolderArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGUnshareFolderArg` object.
 ///

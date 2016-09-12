@@ -14,15 +14,16 @@
 ///
 /// The `SaveUrlError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSaveUrlError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESSaveUrlErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESSaveUrlError` union can exist.
+/// The `DBFILESSaveUrlErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESSaveUrlError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
   /// (no description).
   DBFILESSaveUrlErrorPath,
@@ -44,8 +45,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESSaveUrlErrorTag tag;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESWriteError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -62,7 +63,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 ///
 /// Initializes union class with tag state of "download_failed".
 ///
-/// Description of the "download_failed" tag state: Failed downloading the given URL.
+/// Description of the "download_failed" tag state: Failed downloading the given
+/// URL.
 ///
 /// @return An initialized instance.
 ///
@@ -80,7 +82,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 ///
 /// Initializes union class with tag state of "not_found".
 ///
-/// Description of the "not_found" tag state: The file where the URL is saved to no longer exists.
+/// Description of the "not_found" tag state: The file where the URL is saved to
+/// no longer exists.
 ///
 /// @return An initialized instance.
 ///
@@ -98,8 +101,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -154,14 +157,16 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESSaveUrlError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSaveUrlError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSaveUrlError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveUrlError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSaveUrlError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSaveUrlError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSaveUrlError` API object.
 ///
 /// @return An instantiation of the `DBFILESSaveUrlError` object.
 ///

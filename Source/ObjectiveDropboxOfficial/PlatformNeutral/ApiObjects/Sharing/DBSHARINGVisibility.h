@@ -12,18 +12,20 @@
 ///
 /// The `Visibility` union.
 ///
-/// Who can access a shared link. The most open visibility is public. The default depends on many
-/// aspects, such as team and user preferences and shared folder settings.
+/// Who can access a shared link. The most open visibility is public. The
+/// default depends on many aspects, such as team and user preferences and
+/// shared folder settings.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGVisibility : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGVisibilityTag` enum type represents the possible tag states with which the
-/// `DBSHARINGVisibility` union can exist.
+/// The `DBSHARINGVisibilityTag` enum type represents the possible tag states
+/// with which the `DBSHARINGVisibility` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
   /// Anyone who has received the link can access it. No login required.
   DBSHARINGVisibilityPublic,
@@ -31,14 +33,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
   /// Only members of the same team can access the link. Login is required.
   DBSHARINGVisibilityTeamOnly,
 
-  /// A link-specific password is required to access the link. Login is not required.
+  /// A link-specific password is required to access the link. Login is not
+  /// required.
   DBSHARINGVisibilityPassword,
 
-  /// Only members of the same team who have the link-specific password can access the link.
+  /// Only members of the same team who have the link-specific password can
+  /// access the link.
   DBSHARINGVisibilityTeamAndPassword,
 
-  /// Only members of the shared folder containing the linked file can access the link. Login is
-  /// required.
+  /// Only members of the shared folder containing the linked file can access
+  /// the link. Login is required.
   DBSHARINGVisibilitySharedFolderOnly,
 
   /// (no description).
@@ -54,8 +58,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// Initializes union class with tag state of "public".
 ///
-/// Description of the "public" tag state: Anyone who has received the link can access it. No login
-/// required.
+/// Description of the "public" tag state: Anyone who has received the link can
+/// access it. No login required.
 ///
 /// @return An initialized instance.
 ///
@@ -64,8 +68,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// Initializes union class with tag state of "team_only".
 ///
-/// Description of the "team_only" tag state: Only members of the same team can access the link.
-/// Login is required.
+/// Description of the "team_only" tag state: Only members of the same team can
+/// access the link. Login is required.
 ///
 /// @return An initialized instance.
 ///
@@ -74,8 +78,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// Initializes union class with tag state of "password".
 ///
-/// Description of the "password" tag state: A link-specific password is required to access the
-/// link. Login is not required.
+/// Description of the "password" tag state: A link-specific password is
+/// required to access the link. Login is not required.
 ///
 /// @return An initialized instance.
 ///
@@ -84,8 +88,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// Initializes union class with tag state of "team_and_password".
 ///
-/// Description of the "team_and_password" tag state: Only members of the same team who have the
-/// link-specific password can access the link.
+/// Description of the "team_and_password" tag state: Only members of the same
+/// team who have the link-specific password can access the link.
 ///
 /// @return An initialized instance.
 ///
@@ -94,8 +98,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// Initializes union class with tag state of "shared_folder_only".
 ///
-/// Description of the "shared_folder_only" tag state: Only members of the shared folder containing
-/// the linked file can access the link. Login is required.
+/// Description of the "shared_folder_only" tag state: Only members of the
+/// shared folder containing the linked file can access the link. Login is
+/// required.
 ///
 /// @return An initialized instance.
 ///
@@ -132,16 +137,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 - (BOOL)isPassword;
 
 ///
-/// Retrieves whether the union's current tag state has value "team_and_password".
+/// Retrieves whether the union's current tag state has value
+/// "team_and_password".
 ///
 /// @return Whether the union's current tag state has value "team_and_password".
 ///
 - (BOOL)isTeamAndPassword;
 
 ///
-/// Retrieves whether the union's current tag state has value "shared_folder_only".
+/// Retrieves whether the union's current tag state has value
+/// "shared_folder_only".
 ///
-/// @return Whether the union's current tag state has value "shared_folder_only".
+/// @return Whether the union's current tag state has value
+/// "shared_folder_only".
 ///
 - (BOOL)isSharedFolderOnly;
 
@@ -173,14 +181,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGVisibilityTag) {
 ///
 /// @param instance An instance of the `DBSHARINGVisibility` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGVisibility` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGVisibility` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGVisibility * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGVisibility` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGVisibility` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGVisibility` API object.
 ///
 /// @return An instantiation of the `DBSHARINGVisibility` object.
 ///

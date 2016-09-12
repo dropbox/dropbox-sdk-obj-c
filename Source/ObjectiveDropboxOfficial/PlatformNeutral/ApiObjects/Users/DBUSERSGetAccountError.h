@@ -12,15 +12,16 @@
 ///
 /// The `GetAccountError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSGetAccountError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBUSERSGetAccountErrorTag` enum type represents the possible tag states with which the
-/// `DBUSERSGetAccountError` union can exist.
+/// The `DBUSERSGetAccountErrorTag` enum type represents the possible tag states
+/// with which the `DBUSERSGetAccountError` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
   /// The specified `accountId` in `DBUSERSGetAccountArg` does not exist.
   DBUSERSGetAccountErrorNoAccount,
@@ -38,8 +39,8 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
 ///
 /// Initializes union class with tag state of "no_account".
 ///
-/// Description of the "no_account" tag state: The specified `accountId` in `DBUSERSGetAccountArg`
-/// does not exist.
+/// Description of the "no_account" tag state: The specified `accountId` in
+/// `DBUSERSGetAccountArg` does not exist.
 ///
 /// @return An initialized instance.
 ///
@@ -89,15 +90,16 @@ typedef NS_ENUM(NSInteger, DBUSERSGetAccountErrorTag) {
 ///
 /// @param instance An instance of the `DBUSERSGetAccountError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBUSERSGetAccountError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSGetAccountError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSGetAccountError` API object.
 ///
 /// @return An instantiation of the `DBUSERSGetAccountError` object.
 ///

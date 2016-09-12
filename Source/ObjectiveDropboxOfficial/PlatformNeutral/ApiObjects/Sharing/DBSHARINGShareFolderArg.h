@@ -16,24 +16,28 @@
 ///
 /// The `ShareFolderArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGShareFolderArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The path to the folder to share. If it does not exist, then a new one is created.
+/// The path to the folder to share. If it does not exist, then a new one is
+/// created.
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Who can be a member of this shared folder. Only applicable if the current user is on a team.
+/// Who can be a member of this shared folder. Only applicable if the current
+/// user is on a team.
 @property(nonatomic, readonly) DBSHARINGMemberPolicy * _Nonnull memberPolicy;
 
 /// Who can add and remove members of this shared folder.
 @property(nonatomic, readonly) DBSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
 
-/// The policy to apply to shared links created for content inside this shared folder.  The current
-/// user must be on a team to set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
+/// The policy to apply to shared links created for content inside this shared
+/// folder.  The current user must be on a team to set this policy to `members`
+/// in `DBSHARINGSharedLinkPolicy`.
 @property(nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
 /// Whether to force the share to happen asynchronously.
@@ -44,13 +48,14 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param path The path to the folder to share. If it does not exist, then a new one is created.
-/// @param memberPolicy Who can be a member of this shared folder. Only applicable if the current
-/// user is on a team.
+/// @param path The path to the folder to share. If it does not exist, then a
+/// new one is created.
+/// @param memberPolicy Who can be a member of this shared folder. Only
+/// applicable if the current user is on a team.
 /// @param aclUpdatePolicy Who can add and remove members of this shared folder.
-/// @param sharedLinkPolicy The policy to apply to shared links created for content inside this
-/// shared folder.  The current user must be on a team to set this policy to `members` in
-/// `DBSHARINGSharedLinkPolicy`.
+/// @param sharedLinkPolicy The policy to apply to shared links created for
+/// content inside this shared folder.  The current user must be on a team to
+/// set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param forceAsync Whether to force the share to happen asynchronously.
 ///
 /// @return An initialized instance.
@@ -62,9 +67,11 @@
                           forceAsync:(NSNumber * _Nullable)forceAsync;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param path The path to the folder to share. If it does not exist, then a new one is created.
+/// @param path The path to the folder to share. If it does not exist, then a
+/// new one is created.
 ///
 /// @return An initialized instance.
 ///
@@ -84,15 +91,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGShareFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGShareFolderArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGShareFolderArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGShareFolderArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGShareFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGShareFolderArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGShareFolderArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGShareFolderArg` object.
 ///

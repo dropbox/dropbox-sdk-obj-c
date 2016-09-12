@@ -15,15 +15,16 @@
 ///
 /// The `DeleteError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESDeleteError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESDeleteErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESDeleteError` union can exist.
+/// The `DBFILESDeleteErrorTag` enum type represents the possible tag states
+/// with which the `DBFILESDeleteError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESDeleteErrorTag) {
   /// (no description).
   DBFILESDeleteErrorPathLookup,
@@ -39,12 +40,12 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESDeleteErrorTag tag;
 
-/// (no description). @note Ensure the `isPathLookup` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isPathLookup` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull pathLookup;
 
-/// (no description). @note Ensure the `isPathWrite` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (no description). @note Ensure the `isPathWrite` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESWriteError * _Nonnull pathWrite;
 
 #pragma mark - Constructors
@@ -79,8 +80,8 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path_lookup".
 ///
-/// @note Call this method and ensure it returns true before accessing the `pathLookup` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `pathLookup` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path_lookup".
 ///
@@ -89,8 +90,8 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path_write".
 ///
-/// @note Call this method and ensure it returns true before accessing the `pathWrite` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `pathWrite` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path_write".
 ///
@@ -124,14 +125,16 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESDeleteError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESDeleteError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESDeleteError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESDeleteError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESDeleteError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESDeleteError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESDeleteError` API object.
 ///
 /// @return An instantiation of the `DBFILESDeleteError` object.
 ///

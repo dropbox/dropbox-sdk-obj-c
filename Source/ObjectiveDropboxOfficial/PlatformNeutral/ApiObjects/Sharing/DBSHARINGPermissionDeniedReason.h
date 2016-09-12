@@ -14,15 +14,16 @@
 ///
 /// Possible reasons the user is denied a permission.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGPermissionDeniedReason : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGPermissionDeniedReasonTag` enum type represents the possible tag states with which
-/// the `DBSHARINGPermissionDeniedReason` union can exist.
+/// The `DBSHARINGPermissionDeniedReasonTag` enum type represents the possible
+/// tag states with which the `DBSHARINGPermissionDeniedReason` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
   /// User is not on the same team as the folder owner.
   DBSHARINGPermissionDeniedReasonUserNotSameTeamAsOwner,
@@ -30,7 +31,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
   /// User is prohibited by the owner from taking the action.
   DBSHARINGPermissionDeniedReasonUserNotAllowedByOwner,
 
-  /// Target is indirectly a member of the folder, for example by being part of a group.
+  /// Target is indirectly a member of the folder, for example by being part
+  /// of a group.
   DBSHARINGPermissionDeniedReasonTargetIsIndirectMember,
 
   /// Target is the owner of the folder.
@@ -58,8 +60,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "user_not_same_team_as_owner".
 ///
-/// Description of the "user_not_same_team_as_owner" tag state: User is not on the same team as the
-/// folder owner.
+/// Description of the "user_not_same_team_as_owner" tag state: User is not on
+/// the same team as the folder owner.
 ///
 /// @return An initialized instance.
 ///
@@ -68,8 +70,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "user_not_allowed_by_owner".
 ///
-/// Description of the "user_not_allowed_by_owner" tag state: User is prohibited by the owner from
-/// taking the action.
+/// Description of the "user_not_allowed_by_owner" tag state: User is prohibited
+/// by the owner from taking the action.
 ///
 /// @return An initialized instance.
 ///
@@ -78,8 +80,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "target_is_indirect_member".
 ///
-/// Description of the "target_is_indirect_member" tag state: Target is indirectly a member of the
-/// folder, for example by being part of a group.
+/// Description of the "target_is_indirect_member" tag state: Target is
+/// indirectly a member of the folder, for example by being part of a group.
 ///
 /// @return An initialized instance.
 ///
@@ -88,7 +90,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "target_is_owner".
 ///
-/// Description of the "target_is_owner" tag state: Target is the owner of the folder.
+/// Description of the "target_is_owner" tag state: Target is the owner of the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -106,7 +109,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "target_not_active".
 ///
-/// Description of the "target_not_active" tag state: Target is not an active member of the team.
+/// Description of the "target_not_active" tag state: Target is not an active
+/// member of the team.
 ///
 /// @return An initialized instance.
 ///
@@ -115,8 +119,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Initializes union class with tag state of "folder_is_limited_team_folder".
 ///
-/// Description of the "folder_is_limited_team_folder" tag state: Folder is team folder for a
-/// limited team.
+/// Description of the "folder_is_limited_team_folder" tag state: Folder is team
+/// folder for a limited team.
 ///
 /// @return An initialized instance.
 ///
@@ -132,23 +136,29 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_same_team_as_owner".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_same_team_as_owner".
 ///
-/// @return Whether the union's current tag state has value "user_not_same_team_as_owner".
+/// @return Whether the union's current tag state has value
+/// "user_not_same_team_as_owner".
 ///
 - (BOOL)isUserNotSameTeamAsOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_allowed_by_owner".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_allowed_by_owner".
 ///
-/// @return Whether the union's current tag state has value "user_not_allowed_by_owner".
+/// @return Whether the union's current tag state has value
+/// "user_not_allowed_by_owner".
 ///
 - (BOOL)isUserNotAllowedByOwner;
 
 ///
-/// Retrieves whether the union's current tag state has value "target_is_indirect_member".
+/// Retrieves whether the union's current tag state has value
+/// "target_is_indirect_member".
 ///
-/// @return Whether the union's current tag state has value "target_is_indirect_member".
+/// @return Whether the union's current tag state has value
+/// "target_is_indirect_member".
 ///
 - (BOOL)isTargetIsIndirectMember;
 
@@ -167,16 +177,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 - (BOOL)isTargetIsSelf;
 
 ///
-/// Retrieves whether the union's current tag state has value "target_not_active".
+/// Retrieves whether the union's current tag state has value
+/// "target_not_active".
 ///
 /// @return Whether the union's current tag state has value "target_not_active".
 ///
 - (BOOL)isTargetNotActive;
 
 ///
-/// Retrieves whether the union's current tag state has value "folder_is_limited_team_folder".
+/// Retrieves whether the union's current tag state has value
+/// "folder_is_limited_team_folder".
 ///
-/// @return Whether the union's current tag state has value "folder_is_limited_team_folder".
+/// @return Whether the union's current tag state has value
+/// "folder_is_limited_team_folder".
 ///
 - (BOOL)isFolderIsLimitedTeamFolder;
 
@@ -206,18 +219,19 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 ///
 /// Serializes `DBSHARINGPermissionDeniedReason` instances.
 ///
-/// @param instance An instance of the `DBSHARINGPermissionDeniedReason` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGPermissionDeniedReason` API
+/// @param instance An instance of the `DBSHARINGPermissionDeniedReason` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGPermissionDeniedReason` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGPermissionDeniedReason * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGPermissionDeniedReason` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGPermissionDeniedReason`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGPermissionDeniedReason` API object.
 ///
 /// @return An instantiation of the `DBSHARINGPermissionDeniedReason` object.
 ///

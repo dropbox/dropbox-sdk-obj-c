@@ -14,11 +14,12 @@
 ///
 /// The `Account` struct.
 ///
-/// The amount of detail revealed about an account depends on the user being queried and the user
-/// making the query.
+/// The amount of detail revealed about an account depends on the user being
+/// queried and the user making the query.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSAccount : NSObject <DBSerializable>
 
@@ -30,8 +31,9 @@
 /// Details of a user's name.
 @property(nonatomic, readonly) DBUSERSName * _Nonnull name;
 
-/// The user's e-mail address. Do not rely on this without checking the emailVerified field. Even
-/// then, it's possible that the user has since lost access to their e-mail.
+/// The user's e-mail address. Do not rely on this without checking the
+/// emailVerified field. Even then, it's possible that the user has since lost
+/// access to their e-mail.
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 /// Whether the user has verified their e-mail address.
@@ -50,11 +52,13 @@
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
-/// field. Even then, it's possible that the user has since lost access to their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking
+/// the emailVerified field. Even then, it's possible that the user has since
+/// lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
-/// @param profilePhotoUrl URL for the photo representing the user, if one is set.
+/// @param profilePhotoUrl URL for the photo representing the user, if one is
+/// set.
 ///
 /// @return An initialized instance.
 ///
@@ -66,12 +70,14 @@
                           profilePhotoUrl:(NSString * _Nullable)profilePhotoUrl;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
-/// field. Even then, it's possible that the user has since lost access to their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking
+/// the emailVerified field. Even then, it's possible that the user has since
+/// lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
 ///
@@ -97,14 +103,16 @@
 ///
 /// @param instance An instance of the `DBUSERSAccount` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSAccount` API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSAccount`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSAccount * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSAccount` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSAccount` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSAccount` API object.
 ///
 /// @return An instantiation of the `DBUSERSAccount` object.
 ///

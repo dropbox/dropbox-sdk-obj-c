@@ -16,11 +16,12 @@
 ///
 /// The `GroupInfo` struct.
 ///
-/// The information about a group. Groups is a way to manage a list of users  who need same access
-/// permission to the shared folder.
+/// The information about a group. Groups is a way to manage a list of users
+/// who need same access permission to the shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGroupInfo : DBTEAMCOMMONGroupSummary <DBSerializable>
 
@@ -46,8 +47,8 @@
 /// @param groupType The type of group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
-/// @param groupExternalId External ID of group. This is an arbitrary ID that an admin can attach to
-/// a group.
+/// @param groupExternalId External ID of group. This is an arbitrary ID that an
+/// admin can attach to a group.
 /// @param memberCount The number of members in the group.
 ///
 /// @return An initialized instance.
@@ -62,7 +63,8 @@
                               memberCount:(NSNumber * _Nullable)memberCount;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
@@ -94,14 +96,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGGroupInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGroupInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGroupInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGroupInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGroupInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGroupInfo` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGroupInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGroupInfo` object.
 ///

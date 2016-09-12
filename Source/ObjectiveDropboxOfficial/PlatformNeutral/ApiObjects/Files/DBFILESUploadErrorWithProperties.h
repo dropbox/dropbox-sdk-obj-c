@@ -15,15 +15,17 @@
 ///
 /// The `UploadErrorWithProperties` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadErrorWithProperties : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESUploadErrorWithPropertiesTag` enum type represents the possible tag states with
-/// which the `DBFILESUploadErrorWithProperties` union can exist.
+/// The `DBFILESUploadErrorWithPropertiesTag` enum type represents the possible
+/// tag states with which the `DBFILESUploadErrorWithProperties` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
   /// Unable to save the uploaded contents to a file.
   DBFILESUploadErrorWithPropertiesPath,
@@ -39,12 +41,13 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadErrorWithPropertiesTag tag;
 
-/// Unable to save the uploaded contents to a file. @note Ensure the `isPath` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// Unable to save the uploaded contents to a file. @note Ensure the `isPath`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBFILESUploadWriteFailed * _Nonnull path;
 
-/// (no description). @note Ensure the `isPropertiesError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isPropertiesError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESInvalidPropertyGroupError * _Nonnull propertiesError;
 
 #pragma mark - Constructors
@@ -52,7 +55,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
 ///
 /// Initializes union class with tag state of "path".
 ///
-/// Description of the "path" tag state: Unable to save the uploaded contents to a file.
+/// Description of the "path" tag state: Unable to save the uploaded contents to
+/// a file.
 ///
 /// @param path Unable to save the uploaded contents to a file.
 ///
@@ -81,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -96,10 +100,11 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value "properties_error".
+/// Retrieves whether the union's current tag state has value
+/// "properties_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `propertiesError`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `propertiesError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "properties_error".
 ///
@@ -124,10 +129,11 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorWithPropertiesTag) {
 ///
 /// Serializes `DBFILESUploadErrorWithProperties` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadErrorWithProperties` API object.
+/// @param instance An instance of the `DBFILESUploadErrorWithProperties` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadErrorWithProperties`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadErrorWithProperties` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadErrorWithProperties * _Nonnull)instance;
 

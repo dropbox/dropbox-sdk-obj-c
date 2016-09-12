@@ -14,17 +14,19 @@
 ///
 /// The `MediaInfo` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESMediaInfo : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESMediaInfoTag` enum type represents the possible tag states with which the
-/// `DBFILESMediaInfo` union can exist.
+/// The `DBFILESMediaInfoTag` enum type represents the possible tag states with
+/// which the `DBFILESMediaInfo` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
-  /// Indicate the photo/video is still under processing and metadata is not available yet.
+  /// Indicate the photo/video is still under processing and metadata is not
+  /// available yet.
   DBFILESMediaInfoPending,
 
   /// The metadata for the photo/video.
@@ -35,8 +37,8 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESMediaInfoTag tag;
 
-/// The metadata for the photo/video. @note Ensure the `isMetadata` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The metadata for the photo/video. @note Ensure the `isMetadata` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESMediaMetadata * _Nonnull metadata;
 
 #pragma mark - Constructors
@@ -44,8 +46,8 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 ///
 /// Initializes union class with tag state of "pending".
 ///
-/// Description of the "pending" tag state: Indicate the photo/video is still under processing and
-/// metadata is not available yet.
+/// Description of the "pending" tag state: Indicate the photo/video is still
+/// under processing and metadata is not available yet.
 ///
 /// @return An initialized instance.
 ///
@@ -74,8 +76,8 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 ///
 /// Retrieves whether the union's current tag state has value "metadata".
 ///
-/// @note Call this method and ensure it returns true before accessing the `metadata` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `metadata` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "metadata".
 ///
@@ -102,14 +104,16 @@ typedef NS_ENUM(NSInteger, DBFILESMediaInfoTag) {
 ///
 /// @param instance An instance of the `DBFILESMediaInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESMediaInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESMediaInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESMediaInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESMediaInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESMediaInfo` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESMediaInfo` API object.
 ///
 /// @return An instantiation of the `DBFILESMediaInfo` object.
 ///

@@ -14,21 +14,23 @@
 ///
 /// The `RelinquishFileMembershipError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGRelinquishFileMembershipError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGRelinquishFileMembershipErrorTag` enum type represents the possible tag states
-/// with which the `DBSHARINGRelinquishFileMembershipError` union can exist.
+/// The `DBSHARINGRelinquishFileMembershipErrorTag` enum type represents the
+/// possible tag states with which the `DBSHARINGRelinquishFileMembershipError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
   /// (no description).
   DBSHARINGRelinquishFileMembershipErrorAccessError,
 
-  /// The current user has access to the shared file via a group.  You can't relinquish membership
-  /// to a file shared via groups.
+  /// The current user has access to the shared file via a group.  You can't
+  /// relinquish membership to a file shared via groups.
   DBSHARINGRelinquishFileMembershipErrorGroupAccess,
 
   /// The current user does not have permission to perform this action.
@@ -42,8 +44,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGRelinquishFileMembershipErrorTag tag;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -60,8 +62,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "group_access".
 ///
-/// Description of the "group_access" tag state: The current user has access to the shared file via
-/// a group.  You can't relinquish membership to a file shared via groups.
+/// Description of the "group_access" tag state: The current user has access to
+/// the shared file via a group.  You can't relinquish membership to a file
+/// shared via groups.
 ///
 /// @return An initialized instance.
 ///
@@ -70,8 +73,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: The current user does not have permission to
-/// perform this action.
+/// Description of the "no_permission" tag state: The current user does not have
+/// permission to perform this action.
 ///
 /// @return An initialized instance.
 ///
@@ -89,8 +92,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
@@ -129,14 +132,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGRelinquishFileMembershipError` union.
+/// The serialization class for the `DBSHARINGRelinquishFileMembershipError`
+/// union.
 ///
 @interface DBSHARINGRelinquishFileMembershipErrorSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGRelinquishFileMembershipError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipError` API object.
+/// @param instance An instance of the `DBSHARINGRelinquishFileMembershipError`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFileMembershipError` API object.
@@ -149,7 +154,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFileMembershipErrorTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGRelinquishFileMembershipError` API object.
 ///
-/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipError` object.
+/// @return An instantiation of the `DBSHARINGRelinquishFileMembershipError`
+/// object.
 ///
 + (DBSHARINGRelinquishFileMembershipError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

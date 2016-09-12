@@ -14,15 +14,16 @@
 ///
 /// The `SharePathError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharePathError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharePathErrorTag` enum type represents the possible tag states with which the
-/// `DBSHARINGSharePathError` union can exist.
+/// The `DBSHARINGSharePathErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGSharePathError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
   /// A file is at the specified path.
   DBSHARINGSharePathErrorIsFile,
@@ -42,10 +43,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
   /// A public folder can't be shared this way. Use a public link instead.
   DBSHARINGSharePathErrorIsPublicFolder,
 
-  /// A folder inside a public folder can't be shared this way. Use a public link instead.
+  /// A folder inside a public folder can't be shared this way. Use a public
+  /// link instead.
   DBSHARINGSharePathErrorInsidePublicFolder,
 
-  /// Folder is already shared. Contains metadata about the existing shared folder.
+  /// Folder is already shared. Contains metadata about the existing shared
+  /// folder.
   DBSHARINGSharePathErrorAlreadyShared,
 
   /// Path is not valid.
@@ -65,9 +68,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGSharePathErrorTag tag;
 
-/// Folder is already shared. Contains metadata about the existing shared folder. @note Ensure the
-/// `isAlreadyShared` method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// Folder is already shared. Contains metadata about the existing shared
+/// folder. @note Ensure the `isAlreadyShared` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
 
 #pragma mark - Constructors
@@ -84,8 +87,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_shared_folder".
 ///
-/// Description of the "inside_shared_folder" tag state: We do not support sharing a folder inside a
-/// shared folder.
+/// Description of the "inside_shared_folder" tag state: We do not support
+/// sharing a folder inside a shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -94,8 +97,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "contains_shared_folder".
 ///
-/// Description of the "contains_shared_folder" tag state: We do not support shared folders that
-/// contain shared folders.
+/// Description of the "contains_shared_folder" tag state: We do not support
+/// shared folders that contain shared folders.
 ///
 /// @return An initialized instance.
 ///
@@ -104,7 +107,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "is_app_folder".
 ///
-/// Description of the "is_app_folder" tag state: We do not support sharing an app folder.
+/// Description of the "is_app_folder" tag state: We do not support sharing an
+/// app folder.
 ///
 /// @return An initialized instance.
 ///
@@ -113,8 +117,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_app_folder".
 ///
-/// Description of the "inside_app_folder" tag state: We do not support sharing a folder inside an
-/// app folder.
+/// Description of the "inside_app_folder" tag state: We do not support sharing
+/// a folder inside an app folder.
 ///
 /// @return An initialized instance.
 ///
@@ -123,8 +127,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "is_public_folder".
 ///
-/// Description of the "is_public_folder" tag state: A public folder can't be shared this way. Use a
-/// public link instead.
+/// Description of the "is_public_folder" tag state: A public folder can't be
+/// shared this way. Use a public link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -133,8 +137,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_public_folder".
 ///
-/// Description of the "inside_public_folder" tag state: A folder inside a public folder can't be
-/// shared this way. Use a public link instead.
+/// Description of the "inside_public_folder" tag state: A folder inside a
+/// public folder can't be shared this way. Use a public link instead.
 ///
 /// @return An initialized instance.
 ///
@@ -143,11 +147,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "already_shared".
 ///
-/// Description of the "already_shared" tag state: Folder is already shared. Contains metadata about
-/// the existing shared folder.
+/// Description of the "already_shared" tag state: Folder is already shared.
+/// Contains metadata about the existing shared folder.
 ///
-/// @param alreadyShared Folder is already shared. Contains metadata about the existing shared
-/// folder.
+/// @param alreadyShared Folder is already shared. Contains metadata about the
+/// existing shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -165,7 +169,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "is_osx_package".
 ///
-/// Description of the "is_osx_package" tag state: We do not support sharing a Mac OS X package.
+/// Description of the "is_osx_package" tag state: We do not support sharing a
+/// Mac OS X package.
 ///
 /// @return An initialized instance.
 ///
@@ -174,8 +179,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// Initializes union class with tag state of "inside_osx_package".
 ///
-/// Description of the "inside_osx_package" tag state: We do not support sharing a folder inside a
-/// Mac OS X package.
+/// Description of the "inside_osx_package" tag state: We do not support sharing
+/// a folder inside a Mac OS X package.
 ///
 /// @return An initialized instance.
 ///
@@ -198,16 +203,20 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 - (BOOL)isIsFile;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_shared_folder".
+/// Retrieves whether the union's current tag state has value
+/// "inside_shared_folder".
 ///
-/// @return Whether the union's current tag state has value "inside_shared_folder".
+/// @return Whether the union's current tag state has value
+/// "inside_shared_folder".
 ///
 - (BOOL)isInsideSharedFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "contains_shared_folder".
+/// Retrieves whether the union's current tag state has value
+/// "contains_shared_folder".
 ///
-/// @return Whether the union's current tag state has value "contains_shared_folder".
+/// @return Whether the union's current tag state has value
+/// "contains_shared_folder".
 ///
 - (BOOL)isContainsSharedFolder;
 
@@ -219,31 +228,35 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 - (BOOL)isIsAppFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_app_folder".
+/// Retrieves whether the union's current tag state has value
+/// "inside_app_folder".
 ///
 /// @return Whether the union's current tag state has value "inside_app_folder".
 ///
 - (BOOL)isInsideAppFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "is_public_folder".
+/// Retrieves whether the union's current tag state has value
+/// "is_public_folder".
 ///
 /// @return Whether the union's current tag state has value "is_public_folder".
 ///
 - (BOOL)isIsPublicFolder;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_public_folder".
+/// Retrieves whether the union's current tag state has value
+/// "inside_public_folder".
 ///
-/// @return Whether the union's current tag state has value "inside_public_folder".
+/// @return Whether the union's current tag state has value
+/// "inside_public_folder".
 ///
 - (BOOL)isInsidePublicFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value "already_shared".
 ///
-/// @note Call this method and ensure it returns true before accessing the `alreadyShared` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `alreadyShared` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "already_shared".
 ///
@@ -264,9 +277,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 - (BOOL)isIsOsxPackage;
 
 ///
-/// Retrieves whether the union's current tag state has value "inside_osx_package".
+/// Retrieves whether the union's current tag state has value
+/// "inside_osx_package".
 ///
-/// @return Whether the union's current tag state has value "inside_osx_package".
+/// @return Whether the union's current tag state has value
+/// "inside_osx_package".
 ///
 - (BOOL)isInsideOsxPackage;
 
@@ -298,15 +313,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 ///
 /// @param instance An instance of the `DBSHARINGSharePathError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharePathError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharePathError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharePathError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharePathError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharePathError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharePathError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharePathError` object.
 ///

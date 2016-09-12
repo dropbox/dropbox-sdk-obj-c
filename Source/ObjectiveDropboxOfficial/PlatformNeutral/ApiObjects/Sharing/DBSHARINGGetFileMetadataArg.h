@@ -16,8 +16,9 @@
 ///
 /// Arguments of `getFileMetadata`
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGetFileMetadataArg : NSObject <DBSerializable>
 
@@ -43,7 +44,8 @@
                              actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param file The file to query.
 ///
@@ -65,16 +67,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGGetFileMetadataArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGetFileMetadataArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetFileMetadataArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGetFileMetadataArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetFileMetadataArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGetFileMetadataArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGetFileMetadataArg` object.
 ///

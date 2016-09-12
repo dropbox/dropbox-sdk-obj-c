@@ -25,7 +25,8 @@
                      ownerTeam:(DBUSERSTeam *)ownerTeam
           parentSharedFolderId:(NSString *)parentSharedFolderId
                      pathLower:(NSString *)pathLower
-                   pathDisplay:(NSString *)pathDisplay {
+                   pathDisplay:(NSString *)pathDisplay
+                   timeInvited:(NSDate *)timeInvited {
   [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"id:.*"](id_);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](permissions);
@@ -44,6 +45,7 @@
     _pathDisplay = pathDisplay;
     _name = name;
     _id_ = id_;
+    _timeInvited = timeInvited;
   }
   return self;
 }
@@ -60,7 +62,8 @@
                     ownerTeam:nil
          parentSharedFolderId:nil
                     pathLower:nil
-                  pathDisplay:nil];
+                  pathDisplay:nil
+                  timeInvited:nil];
 }
 
 #pragma mark - Serialization methods
@@ -110,6 +113,9 @@
   if (valueObj.pathDisplay) {
     jsonDict[@"path_display"] = valueObj.pathDisplay;
   }
+  if (valueObj.timeInvited) {
+    jsonDict[@"time_invited"] = [DBNSDateSerializer serialize:valueObj.timeInvited dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
 
   return jsonDict;
 }
@@ -130,6 +136,9 @@
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
   NSString *pathLower = valueDict[@"path_lower"] ?: nil;
   NSString *pathDisplay = valueDict[@"path_display"] ?: nil;
+  NSDate *timeInvited = valueDict[@"time_invited"] ? [DBNSDateSerializer deserialize:valueDict[@"time_invited"]
+                                                                          dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                                   : nil;
 
   return [[DBSHARINGSharedFileMetadata alloc] initWithPolicy:policy
                                                   previewUrl:previewUrl
@@ -139,7 +148,8 @@
                                                    ownerTeam:ownerTeam
                                         parentSharedFolderId:parentSharedFolderId
                                                    pathLower:pathLower
-                                                 pathDisplay:pathDisplay];
+                                                 pathDisplay:pathDisplay
+                                                 timeInvited:timeInvited];
 }
 
 @end

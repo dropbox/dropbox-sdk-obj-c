@@ -14,15 +14,16 @@
 ///
 /// The `SaveCopyReferenceError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSaveCopyReferenceError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESSaveCopyReferenceErrorTag` enum type represents the possible tag states with which
-/// the `DBFILESSaveCopyReferenceError` union can exist.
+/// The `DBFILESSaveCopyReferenceErrorTag` enum type represents the possible tag
+/// states with which the `DBFILESSaveCopyReferenceError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
   /// (no description).
   DBFILESSaveCopyReferenceErrorPath,
@@ -30,8 +31,9 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
   /// The copy reference is invalid.
   DBFILESSaveCopyReferenceErrorInvalidCopyReference,
 
-  /// You don't have permission to save the given copy reference. Please make sure this app is
-  /// same app which created the copy reference and the source user is still linked to the app.
+  /// You don't have permission to save the given copy reference. Please make
+  /// sure this app is same app which created the copy reference and the
+  /// source user is still linked to the app.
   DBFILESSaveCopyReferenceErrorNoPermission,
 
   /// The file referenced by the copy reference cannot be found.
@@ -48,8 +50,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESSaveCopyReferenceErrorTag tag;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESWriteError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -66,7 +68,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_copy_reference".
 ///
-/// Description of the "invalid_copy_reference" tag state: The copy reference is invalid.
+/// Description of the "invalid_copy_reference" tag state: The copy reference is
+/// invalid.
 ///
 /// @return An initialized instance.
 ///
@@ -75,9 +78,9 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: You don't have permission to save the given copy
-/// reference. Please make sure this app is same app which created the copy reference and the source
-/// user is still linked to the app.
+/// Description of the "no_permission" tag state: You don't have permission to
+/// save the given copy reference. Please make sure this app is same app which
+/// created the copy reference and the source user is still linked to the app.
 ///
 /// @return An initialized instance.
 ///
@@ -86,8 +89,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Initializes union class with tag state of "not_found".
 ///
-/// Description of the "not_found" tag state: The file referenced by the copy reference cannot be
-/// found.
+/// Description of the "not_found" tag state: The file referenced by the copy
+/// reference cannot be found.
 ///
 /// @return An initialized instance.
 ///
@@ -96,8 +99,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Initializes union class with tag state of "too_many_files".
 ///
-/// Description of the "too_many_files" tag state: The operation would involve more than 10,000
-/// files and folders.
+/// Description of the "too_many_files" tag state: The operation would involve
+/// more than 10,000 files and folders.
 ///
 /// @return An initialized instance.
 ///
@@ -115,17 +118,19 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_copy_reference".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_copy_reference".
 ///
-/// @return Whether the union's current tag state has value "invalid_copy_reference".
+/// @return Whether the union's current tag state has value
+/// "invalid_copy_reference".
 ///
 - (BOOL)isInvalidCopyReference;
 
@@ -176,18 +181,19 @@ typedef NS_ENUM(NSInteger, DBFILESSaveCopyReferenceErrorTag) {
 ///
 /// Serializes `DBFILESSaveCopyReferenceError` instances.
 ///
-/// @param instance An instance of the `DBFILESSaveCopyReferenceError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceError` API
+/// @param instance An instance of the `DBFILESSaveCopyReferenceError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveCopyReferenceError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSaveCopyReferenceError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceError` API object.
 ///
 /// @return An instantiation of the `DBFILESSaveCopyReferenceError` object.
 ///

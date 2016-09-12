@@ -12,8 +12,9 @@
 ///
 /// The `RelocationArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESRelocationArg : NSObject <DBSerializable>
 
@@ -51,15 +52,16 @@
 ///
 /// @param instance An instance of the `DBFILESRelocationArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESRelocationArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESRelocationArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESRelocationArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESRelocationArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESRelocationArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESRelocationArg` API object.
 ///
 /// @return An instantiation of the `DBFILESRelocationArg` object.
 ///

@@ -14,15 +14,17 @@
 ///
 /// The `ListFolderMembersContinueError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFolderMembersContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGListFolderMembersContinueErrorTag` enum type represents the possible tag states
-/// with which the `DBSHARINGListFolderMembersContinueError` union can exist.
+/// The `DBSHARINGListFolderMembersContinueErrorTag` enum type represents the
+/// possible tag states with which the `DBSHARINGListFolderMembersContinueError`
+/// union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
   /// (no description).
   DBSHARINGListFolderMembersContinueErrorAccessError,
@@ -38,8 +40,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGListFolderMembersContinueErrorTag tag;
 
-/// (no description). @note Ensure the `isAccessError` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isAccessError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGSharedFolderAccessError * _Nonnull accessError;
 
 #pragma mark - Constructors
@@ -75,8 +77,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "access_error".
 ///
-/// @note Call this method and ensure it returns true before accessing the `accessError` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `accessError` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "access_error".
 ///
@@ -108,14 +110,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBSHARINGListFolderMembersContinueError` union.
+/// The serialization class for the `DBSHARINGListFolderMembersContinueError`
+/// union.
 ///
 @interface DBSHARINGListFolderMembersContinueErrorSerializer : NSObject
 
 ///
 /// Serializes `DBSHARINGListFolderMembersContinueError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFolderMembersContinueError` API object.
+/// @param instance An instance of the `DBSHARINGListFolderMembersContinueError`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersContinueError` API object.
@@ -128,7 +132,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersContinueError` API object.
 ///
-/// @return An instantiation of the `DBSHARINGListFolderMembersContinueError` object.
+/// @return An instantiation of the `DBSHARINGListFolderMembersContinueError`
+/// object.
 ///
 + (DBSHARINGListFolderMembersContinueError * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

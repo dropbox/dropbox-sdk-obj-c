@@ -17,19 +17,20 @@
 ///
 /// Basic information about any account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSBasicAccount : DBUSERSAccount <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Whether this user is a teammate of the current user. If this account is the current user's
-/// account, then this will be true.
+/// Whether this user is a teammate of the current user. If this account is the
+/// current user's account, then this will be true.
 @property(nonatomic, readonly) NSNumber * _Nonnull isTeammate;
 
-/// The user's unique team member id. This field will only be present if the user is part of a team
-/// and isTeammate is true.
+/// The user's unique team member id. This field will only be present if the
+/// user is part of a team and isTeammate is true.
 @property(nonatomic, readonly) NSString * _Nullable teamMemberId;
 
 #pragma mark - Constructors
@@ -39,15 +40,17 @@
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
-/// field. Even then, it's possible that the user has since lost access to their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking
+/// the emailVerified field. Even then, it's possible that the user has since
+/// lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
-/// @param isTeammate Whether this user is a teammate of the current user. If this account is the
-/// current user's account, then this will be true.
-/// @param profilePhotoUrl URL for the photo representing the user, if one is set.
-/// @param teamMemberId The user's unique team member id. This field will only be present if the
-/// user is part of a team and isTeammate is true.
+/// @param isTeammate Whether this user is a teammate of the current user. If
+/// this account is the current user's account, then this will be true.
+/// @param profilePhotoUrl URL for the photo representing the user, if one is
+/// set.
+/// @param teamMemberId The user's unique team member id. This field will only
+/// be present if the user is part of a team and isTeammate is true.
 ///
 /// @return An initialized instance.
 ///
@@ -61,16 +64,18 @@
                              teamMemberId:(NSString * _Nullable)teamMemberId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accountId The user's unique Dropbox ID.
 /// @param name Details of a user's name.
-/// @param email The user's e-mail address. Do not rely on this without checking the emailVerified
-/// field. Even then, it's possible that the user has since lost access to their e-mail.
+/// @param email The user's e-mail address. Do not rely on this without checking
+/// the emailVerified field. Even then, it's possible that the user has since
+/// lost access to their e-mail.
 /// @param emailVerified Whether the user has verified their e-mail address.
 /// @param disabled Whether the user has been disabled.
-/// @param isTeammate Whether this user is a teammate of the current user. If this account is the
-/// current user's account, then this will be true.
+/// @param isTeammate Whether this user is a teammate of the current user. If
+/// this account is the current user's account, then this will be true.
 ///
 /// @return An initialized instance.
 ///
@@ -95,14 +100,16 @@
 ///
 /// @param instance An instance of the `DBUSERSBasicAccount` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSBasicAccount` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBUSERSBasicAccount` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSBasicAccount * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSBasicAccount` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSBasicAccount` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSBasicAccount` API object.
 ///
 /// @return An instantiation of the `DBUSERSBasicAccount` object.
 ///

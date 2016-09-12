@@ -12,17 +12,19 @@
 ///
 /// The `PendingUploadMode` union.
 ///
-/// Flag to indicate pending upload default (for linking to not-yet-existing paths).
+/// Flag to indicate pending upload default (for linking to not-yet-existing
+/// paths).
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGPendingUploadMode : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGPendingUploadModeTag` enum type represents the possible tag states with which the
-/// `DBSHARINGPendingUploadMode` union can exist.
+/// The `DBSHARINGPendingUploadModeTag` enum type represents the possible tag
+/// states with which the `DBSHARINGPendingUploadMode` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGPendingUploadModeTag) {
   /// Assume pending uploads are files.
   DBSHARINGPendingUploadModeFile,
@@ -92,16 +94,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGPendingUploadModeTag) {
 ///
 /// @param instance An instance of the `DBSHARINGPendingUploadMode` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGPendingUploadMode` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGPendingUploadMode` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGPendingUploadMode * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGPendingUploadMode` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGPendingUploadMode` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGPendingUploadMode` API object.
 ///
 /// @return An instantiation of the `DBSHARINGPendingUploadMode` object.
 ///

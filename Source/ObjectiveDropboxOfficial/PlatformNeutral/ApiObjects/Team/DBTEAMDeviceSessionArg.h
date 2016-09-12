@@ -12,8 +12,9 @@
 ///
 /// The `DeviceSessionArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMDeviceSessionArg : NSObject <DBSerializable>
 
@@ -51,15 +52,16 @@
 ///
 /// @param instance An instance of the `DBTEAMDeviceSessionArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMDeviceSessionArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMDeviceSessionArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDeviceSessionArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMDeviceSessionArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMDeviceSessionArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMDeviceSessionArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMDeviceSessionArg` object.
 ///

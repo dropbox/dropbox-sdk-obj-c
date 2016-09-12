@@ -12,19 +12,21 @@
 ///
 /// The `PollResultBase` union.
 ///
-/// Result returned by methods that poll for the status of an asynchronous job. Unions that extend
-/// this union should add a 'complete' field with a type of the information returned upon job
-/// completion. See PollEmptyResult for an example.
+/// Result returned by methods that poll for the status of an asynchronous job.
+/// Unions that extend this union should add a 'complete' field with a type of
+/// the information returned upon job completion. See PollEmptyResult for an
+/// example.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBASYNCPollResultBase : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBASYNCPollResultBaseTag` enum type represents the possible tag states with which the
-/// `DBASYNCPollResultBase` union can exist.
+/// The `DBASYNCPollResultBaseTag` enum type represents the possible tag states
+/// with which the `DBASYNCPollResultBase` union can exist.
 typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
   /// The asynchronous job is still in progress.
   DBASYNCPollResultBaseInProgress,
@@ -39,7 +41,8 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in
+/// progress.
 ///
 /// @return An initialized instance.
 ///
@@ -75,15 +78,16 @@ typedef NS_ENUM(NSInteger, DBASYNCPollResultBaseTag) {
 ///
 /// @param instance An instance of the `DBASYNCPollResultBase` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBASYNCPollResultBase` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBASYNCPollResultBase` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBASYNCPollResultBase * _Nonnull)instance;
 
 ///
 /// Deserializes `DBASYNCPollResultBase` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBASYNCPollResultBase` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBASYNCPollResultBase` API object.
 ///
 /// @return An instantiation of the `DBASYNCPollResultBase` object.
 ///

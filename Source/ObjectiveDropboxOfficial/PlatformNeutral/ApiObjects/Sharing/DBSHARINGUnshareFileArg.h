@@ -14,8 +14,9 @@
 ///
 /// Arguments for `unshareFile`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGUnshareFileArg : NSObject <DBSerializable>
 
@@ -49,15 +50,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGUnshareFileArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGUnshareFileArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGUnshareFileArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGUnshareFileArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGUnshareFileArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGUnshareFileArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGUnshareFileArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGUnshareFileArg` object.
 ///

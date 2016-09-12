@@ -12,15 +12,16 @@
 ///
 /// The `SearchMode` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSearchMode : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESSearchModeTag` enum type represents the possible tag states with which the
-/// `DBFILESSearchMode` union can exist.
+/// The `DBFILESSearchModeTag` enum type represents the possible tag states with
+/// which the `DBFILESSearchMode` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
   /// Search file and folder names.
   DBFILESSearchModeFilename,
@@ -50,8 +51,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// Initializes union class with tag state of "filename_and_content".
 ///
-/// Description of the "filename_and_content" tag state: Search file and folder names as well as
-/// file contents.
+/// Description of the "filename_and_content" tag state: Search file and folder
+/// names as well as file contents.
 ///
 /// @return An initialized instance.
 ///
@@ -60,7 +61,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// Initializes union class with tag state of "deleted_filename".
 ///
-/// Description of the "deleted_filename" tag state: Search for deleted file and folder names.
+/// Description of the "deleted_filename" tag state: Search for deleted file and
+/// folder names.
 ///
 /// @return An initialized instance.
 ///
@@ -76,14 +78,17 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 - (BOOL)isFilename;
 
 ///
-/// Retrieves whether the union's current tag state has value "filename_and_content".
+/// Retrieves whether the union's current tag state has value
+/// "filename_and_content".
 ///
-/// @return Whether the union's current tag state has value "filename_and_content".
+/// @return Whether the union's current tag state has value
+/// "filename_and_content".
 ///
 - (BOOL)isFilenameAndContent;
 
 ///
-/// Retrieves whether the union's current tag state has value "deleted_filename".
+/// Retrieves whether the union's current tag state has value
+/// "deleted_filename".
 ///
 /// @return Whether the union's current tag state has value "deleted_filename".
 ///
@@ -110,14 +115,16 @@ typedef NS_ENUM(NSInteger, DBFILESSearchModeTag) {
 ///
 /// @param instance An instance of the `DBFILESSearchMode` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSearchMode` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSearchMode` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchMode * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSearchMode` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSearchMode` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSearchMode` API object.
 ///
 /// @return An instantiation of the `DBFILESSearchMode` object.
 ///

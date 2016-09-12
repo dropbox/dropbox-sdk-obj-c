@@ -12,8 +12,9 @@
 ///
 /// The `GetAccountArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSGetAccountArg : NSObject <DBSerializable>
 
@@ -47,15 +48,16 @@
 ///
 /// @param instance An instance of the `DBUSERSGetAccountArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSGetAccountArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBUSERSGetAccountArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSGetAccountArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSGetAccountArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSGetAccountArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSGetAccountArg` API object.
 ///
 /// @return An instantiation of the `DBUSERSGetAccountArg` object.
 ///

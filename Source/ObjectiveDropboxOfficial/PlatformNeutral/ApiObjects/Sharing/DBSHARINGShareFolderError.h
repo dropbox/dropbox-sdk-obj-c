@@ -14,15 +14,16 @@
 ///
 /// The `ShareFolderError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGShareFolderError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGShareFolderErrorTag` enum type represents the possible tag states with which the
-/// `DBSHARINGShareFolderError` union can exist.
+/// The `DBSHARINGShareFolderErrorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGShareFolderError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
   /// The current user's e-mail address is unverified.
   DBSHARINGShareFolderErrorEmailUnverified,
@@ -30,11 +31,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
   /// `path` in `DBSHARINGShareFolderArg` is invalid.
   DBSHARINGShareFolderErrorBadPath,
 
-  /// Team policy is more restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
+  /// Team policy is more restrictive than `memberPolicy` in
+  /// `DBSHARINGShareFolderArg`.
   DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy,
 
-  /// The current user's account is not allowed to select the specified `sharedLinkPolicy` in
-  /// `DBSHARINGShareFolderArg`.
+  /// The current user's account is not allowed to select the specified
+  /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
   DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy,
 
   /// (no description).
@@ -48,8 +50,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGShareFolderErrorTag tag;
 
-/// `path` in `DBSHARINGShareFolderArg` is invalid. @note Ensure the `isBadPath` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// `path` in `DBSHARINGShareFolderArg` is invalid. @note Ensure the `isBadPath`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBSHARINGSharePathError * _Nonnull badPath;
 
 #pragma mark - Constructors
@@ -57,8 +60,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "email_unverified".
 ///
-/// Description of the "email_unverified" tag state: The current user's e-mail address is
-/// unverified.
+/// Description of the "email_unverified" tag state: The current user's e-mail
+/// address is unverified.
 ///
 /// @return An initialized instance.
 ///
@@ -67,7 +70,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "bad_path".
 ///
-/// Description of the "bad_path" tag state: `path` in `DBSHARINGShareFolderArg` is invalid.
+/// Description of the "bad_path" tag state: `path` in `DBSHARINGShareFolderArg`
+/// is invalid.
 ///
 /// @param badPath `path` in `DBSHARINGShareFolderArg` is invalid.
 ///
@@ -76,10 +80,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 - (nonnull instancetype)initWithBadPath:(DBSHARINGSharePathError * _Nonnull)badPath;
 
 ///
-/// Initializes union class with tag state of "team_policy_disallows_member_policy".
+/// Initializes union class with tag state of
+/// "team_policy_disallows_member_policy".
 ///
-/// Description of the "team_policy_disallows_member_policy" tag state: Team policy is more
-/// restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
+/// Description of the "team_policy_disallows_member_policy" tag state: Team
+/// policy is more restrictive than `memberPolicy` in `DBSHARINGShareFolderArg`.
 ///
 /// @return An initialized instance.
 ///
@@ -88,8 +93,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "disallowed_shared_link_policy".
 ///
-/// Description of the "disallowed_shared_link_policy" tag state: The current user's account is not
-/// allowed to select the specified `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
+/// Description of the "disallowed_shared_link_policy" tag state: The current
+/// user's account is not allowed to select the specified `sharedLinkPolicy` in
+/// `DBSHARINGShareFolderArg`.
 ///
 /// @return An initialized instance.
 ///
@@ -105,8 +111,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// Initializes union class with tag state of "no_permission".
 ///
-/// Description of the "no_permission" tag state: The current user does not have permission to
-/// perform this action.
+/// Description of the "no_permission" tag state: The current user does not have
+/// permission to perform this action.
 ///
 /// @return An initialized instance.
 ///
@@ -115,7 +121,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "email_unverified".
+/// Retrieves whether the union's current tag state has value
+/// "email_unverified".
 ///
 /// @return Whether the union's current tag state has value "email_unverified".
 ///
@@ -124,24 +131,28 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "bad_path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `badPath` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `badPath` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "bad_path".
 ///
 - (BOOL)isBadPath;
 
 ///
-/// Retrieves whether the union's current tag state has value "team_policy_disallows_member_policy".
+/// Retrieves whether the union's current tag state has value
+/// "team_policy_disallows_member_policy".
 ///
-/// @return Whether the union's current tag state has value "team_policy_disallows_member_policy".
+/// @return Whether the union's current tag state has value
+/// "team_policy_disallows_member_policy".
 ///
 - (BOOL)isTeamPolicyDisallowsMemberPolicy;
 
 ///
-/// Retrieves whether the union's current tag state has value "disallowed_shared_link_policy".
+/// Retrieves whether the union's current tag state has value
+/// "disallowed_shared_link_policy".
 ///
-/// @return Whether the union's current tag state has value "disallowed_shared_link_policy".
+/// @return Whether the union's current tag state has value
+/// "disallowed_shared_link_policy".
 ///
 - (BOOL)isDisallowedSharedLinkPolicy;
 
@@ -180,16 +191,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGShareFolderErrorTag) {
 ///
 /// @param instance An instance of the `DBSHARINGShareFolderError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGShareFolderError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGShareFolderError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGShareFolderError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGShareFolderError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGShareFolderError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGShareFolderError` API object.
 ///
 /// @return An instantiation of the `DBSHARINGShareFolderError` object.
 ///

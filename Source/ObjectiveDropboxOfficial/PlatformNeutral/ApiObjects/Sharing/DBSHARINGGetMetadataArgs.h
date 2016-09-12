@@ -14,8 +14,9 @@
 ///
 /// The `GetMetadataArgs` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGetMetadataArgs : NSObject <DBSerializable>
 
@@ -24,9 +25,9 @@
 /// The ID for the shared folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
-/// This is a list indicating whether the returned folder data will include a boolean value  `allow`
-/// in `DBSHARINGFolderPermission` that describes whether the current user can perform the
-/// FolderAction on the folder.
+/// This is a list indicating whether the returned folder data will include a
+/// boolean value  `allow` in `DBSHARINGFolderPermission` that describes whether
+/// the current user can perform the  FolderAction on the folder.
 @property(nonatomic, readonly) NSArray<DBSHARINGFolderAction *> * _Nullable actions;
 
 #pragma mark - Constructors
@@ -35,9 +36,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param actions This is a list indicating whether the returned folder data will include a boolean
-/// value  `allow` in `DBSHARINGFolderPermission` that describes whether the current user can
-/// perform the  FolderAction on the folder.
+/// @param actions This is a list indicating whether the returned folder data
+/// will include a boolean value  `allow` in `DBSHARINGFolderPermission` that
+/// describes whether the current user can perform the  FolderAction on the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -45,7 +47,8 @@
                                        actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
 ///
@@ -67,16 +70,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGGetMetadataArgs` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGetMetadataArgs` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGetMetadataArgs` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGetMetadataArgs * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGetMetadataArgs` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGetMetadataArgs` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGetMetadataArgs` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGetMetadataArgs` object.
 ///

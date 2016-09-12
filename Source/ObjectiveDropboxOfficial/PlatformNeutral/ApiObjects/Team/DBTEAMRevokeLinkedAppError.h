@@ -14,15 +14,16 @@
 ///
 /// Error returned by `linkedAppsRevokeLinkedApp`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeLinkedAppError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMRevokeLinkedAppErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMRevokeLinkedAppError` union can exist.
+/// The `DBTEAMRevokeLinkedAppErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMRevokeLinkedAppError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
   /// Application not found.
   DBTEAMRevokeLinkedAppErrorAppNotFound,
@@ -75,7 +76,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 - (BOOL)isAppNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_found".
 ///
 /// @return Whether the union's current tag state has value "member_not_found".
 ///
@@ -109,16 +111,16 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeLinkedAppErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMRevokeLinkedAppError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedAppError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedAppError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedAppError` API object.
 ///
 /// @return An instantiation of the `DBTEAMRevokeLinkedAppError` object.
 ///

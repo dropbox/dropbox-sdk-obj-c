@@ -16,8 +16,9 @@
 ///
 /// Error occurred because the app is being rate limited.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBAUTHRateLimitError : NSObject <DBSerializable>
 
@@ -26,7 +27,8 @@
 /// The reason why the app is being rate limited.
 @property(nonatomic, readonly) DBAUTHRateLimitReason * _Nonnull reason;
 
-/// The number of seconds that the app should wait before making another request.
+/// The number of seconds that the app should wait before making another
+/// request.
 @property(nonatomic, readonly) NSNumber * _Nonnull retryAfter;
 
 #pragma mark - Constructors
@@ -35,7 +37,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param reason The reason why the app is being rate limited.
-/// @param retryAfter The number of seconds that the app should wait before making another request.
+/// @param retryAfter The number of seconds that the app should wait before
+/// making another request.
 ///
 /// @return An initialized instance.
 ///
@@ -43,7 +46,8 @@
                             retryAfter:(NSNumber * _Nullable)retryAfter;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param reason The reason why the app is being rate limited.
 ///
@@ -65,15 +69,16 @@
 ///
 /// @param instance An instance of the `DBAUTHRateLimitError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBAUTHRateLimitError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBAUTHRateLimitError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBAUTHRateLimitError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBAUTHRateLimitError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBAUTHRateLimitError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBAUTHRateLimitError` API object.
 ///
 /// @return An instantiation of the `DBAUTHRateLimitError` object.
 ///

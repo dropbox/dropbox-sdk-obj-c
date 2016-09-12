@@ -18,8 +18,9 @@
 ///
 /// Properties of the shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedFolderMetadataBase : NSObject <DBSerializable>
 
@@ -34,11 +35,12 @@
 /// Policies governing this shared folder.
 @property(nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
 
-/// The team that owns the folder. This field is not present if the folder is not owned by a team.
+/// The team that owns the folder. This field is not present if the folder is
+/// not owned by a team.
 @property(nonatomic, readonly) DBUSERSTeam * _Nullable ownerTeam;
 
-/// The ID of the parent shared folder. This field is present only if the folder is contained within
-/// another shared folder.
+/// The ID of the parent shared folder. This field is present only if the folder
+/// is contained within another shared folder.
 @property(nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
 #pragma mark - Constructors
@@ -47,12 +49,13 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accessType The current user's access level for this shared folder.
-/// @param isTeamFolder Whether this folder is a team folder https://www.dropbox.com/en/help/986.
+/// @param isTeamFolder Whether this folder is a team folder
+/// https://www.dropbox.com/en/help/986.
 /// @param policy Policies governing this shared folder.
-/// @param ownerTeam The team that owns the folder. This field is not present if the folder is not
-/// owned by a team.
-/// @param parentSharedFolderId The ID of the parent shared folder. This field is present only if
-/// the folder is contained within another shared folder.
+/// @param ownerTeam The team that owns the folder. This field is not present if
+/// the folder is not owned by a team.
+/// @param parentSharedFolderId The ID of the parent shared folder. This field
+/// is present only if the folder is contained within another shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -63,10 +66,12 @@
                       parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accessType The current user's access level for this shared folder.
-/// @param isTeamFolder Whether this folder is a team folder https://www.dropbox.com/en/help/986.
+/// @param isTeamFolder Whether this folder is a team folder
+/// https://www.dropbox.com/en/help/986.
 /// @param policy Policies governing this shared folder.
 ///
 /// @return An initialized instance.
@@ -87,10 +92,11 @@
 ///
 /// Serializes `DBSHARINGSharedFolderMetadataBase` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharedFolderMetadataBase` API object.
+/// @param instance An instance of the `DBSHARINGSharedFolderMetadataBase` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderMetadataBase`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMetadataBase` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMetadataBase * _Nonnull)instance;
 

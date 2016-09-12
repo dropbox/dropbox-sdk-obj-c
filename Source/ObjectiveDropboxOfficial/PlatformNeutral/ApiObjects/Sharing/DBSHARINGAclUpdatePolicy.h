@@ -12,23 +12,25 @@
 ///
 /// The `AclUpdatePolicy` union.
 ///
-/// Policy governing who can change a shared folder's access control list (ACL). In other words, who
-/// can add, remove, or change the privileges of members.
+/// Policy governing who can change a shared folder's access control list (ACL).
+/// In other words, who can add, remove, or change the privileges of members.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGAclUpdatePolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGAclUpdatePolicyTag` enum type represents the possible tag states with which the
-/// `DBSHARINGAclUpdatePolicy` union can exist.
+/// The `DBSHARINGAclUpdatePolicyTag` enum type represents the possible tag
+/// states with which the `DBSHARINGAclUpdatePolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
   /// Only the owner can update the ACL.
   DBSHARINGAclUpdatePolicyOwner,
 
-  /// Any editor can update the ACL. This may be further restricted to editors on the same team.
+  /// Any editor can update the ACL. This may be further restricted to editors
+  /// on the same team.
   DBSHARINGAclUpdatePolicyEditors,
 
   /// (no description).
@@ -53,8 +55,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// Initializes union class with tag state of "editors".
 ///
-/// Description of the "editors" tag state: Any editor can update the ACL. This may be further
-/// restricted to editors on the same team.
+/// Description of the "editors" tag state: Any editor can update the ACL. This
+/// may be further restricted to editors on the same team.
 ///
 /// @return An initialized instance.
 ///
@@ -111,16 +113,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAclUpdatePolicyTag) {
 ///
 /// @param instance An instance of the `DBSHARINGAclUpdatePolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGAclUpdatePolicy` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGAclUpdatePolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAclUpdatePolicy * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGAclUpdatePolicy` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGAclUpdatePolicy` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGAclUpdatePolicy` API object.
 ///
 /// @return An instantiation of the `DBSHARINGAclUpdatePolicy` object.
 ///

@@ -14,8 +14,9 @@
 ///
 /// The `GroupsMembersListArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsMembersListArg : NSObject <DBSerializable>
 
@@ -40,7 +41,8 @@
 - (nonnull instancetype)initWithGroup:(DBTEAMGroupSelector * _Nonnull)group limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param group The group whose members are to be listed.
 ///
@@ -62,16 +64,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupsMembersListArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupsMembersListArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupsMembersListArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsMembersListArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsMembersListArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsMembersListArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupsMembersListArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupsMembersListArg` object.
 ///

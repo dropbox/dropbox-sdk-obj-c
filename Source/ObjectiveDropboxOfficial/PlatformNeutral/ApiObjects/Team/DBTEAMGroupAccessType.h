@@ -14,15 +14,16 @@
 ///
 /// Role of a user in group.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupAccessType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupAccessTypeTag` enum type represents the possible tag states with which the
-/// `DBTEAMGroupAccessType` union can exist.
+/// The `DBTEAMGroupAccessTypeTag` enum type represents the possible tag states
+/// with which the `DBTEAMGroupAccessType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
   /// User is a member of the group, but has no special permissions.
   DBTEAMGroupAccessTypeMember,
@@ -40,8 +41,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
 ///
 /// Initializes union class with tag state of "member".
 ///
-/// Description of the "member" tag state: User is a member of the group, but has no special
-/// permissions.
+/// Description of the "member" tag state: User is a member of the group, but
+/// has no special permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -50,7 +51,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
 ///
 /// Initializes union class with tag state of "owner".
 ///
-/// Description of the "owner" tag state: User can rename the group, and add/remove members.
+/// Description of the "owner" tag state: User can rename the group, and
+/// add/remove members.
 ///
 /// @return An initialized instance.
 ///
@@ -93,15 +95,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupAccessTypeTag) {
 ///
 /// @param instance An instance of the `DBTEAMGroupAccessType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupAccessType` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupAccessType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupAccessType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupAccessType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupAccessType` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupAccessType` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupAccessType` object.
 ///

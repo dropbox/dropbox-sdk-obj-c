@@ -14,18 +14,20 @@
 ///
 /// Defines the access levels for collaborators.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGAccessLevel : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGAccessLevelTag` enum type represents the possible tag states with which the
-/// `DBSHARINGAccessLevel` union can exist.
+/// The `DBSHARINGAccessLevelTag` enum type represents the possible tag states
+/// with which the `DBSHARINGAccessLevel` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
-  /// The collaborator is the owner of the shared folder. Owners can view and edit the shared
-  /// folder as well as set the folder's policies using `updateFolderPolicy`.
+  /// The collaborator is the owner of the shared folder. Owners can view and
+  /// edit the shared folder as well as set the folder's policies using
+  /// `updateFolderPolicy`.
   DBSHARINGAccessLevelOwner,
 
   /// The collaborator can both view and edit the shared folder.
@@ -34,7 +36,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
   /// The collaborator can only view the shared folder.
   DBSHARINGAccessLevelViewer,
 
-  /// The collaborator can only view the shared folder and does not have any access to comments.
+  /// The collaborator can only view the shared folder and does not have any
+  /// access to comments.
   DBSHARINGAccessLevelViewerNoComment,
 
   /// (no description).
@@ -50,9 +53,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 ///
 /// Initializes union class with tag state of "owner".
 ///
-/// Description of the "owner" tag state: The collaborator is the owner of the shared folder. Owners
-/// can view and edit the shared folder as well as set the folder's policies using
-/// `updateFolderPolicy`.
+/// Description of the "owner" tag state: The collaborator is the owner of the
+/// shared folder. Owners can view and edit the shared folder as well as set the
+/// folder's policies using `updateFolderPolicy`.
 ///
 /// @return An initialized instance.
 ///
@@ -61,8 +64,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 ///
 /// Initializes union class with tag state of "editor".
 ///
-/// Description of the "editor" tag state: The collaborator can both view and edit the shared
-/// folder.
+/// Description of the "editor" tag state: The collaborator can both view and
+/// edit the shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -71,7 +74,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 ///
 /// Initializes union class with tag state of "viewer".
 ///
-/// Description of the "viewer" tag state: The collaborator can only view the shared folder.
+/// Description of the "viewer" tag state: The collaborator can only view the
+/// shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -80,8 +84,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 ///
 /// Initializes union class with tag state of "viewer_no_comment".
 ///
-/// Description of the "viewer_no_comment" tag state: The collaborator can only view the shared
-/// folder and does not have any access to comments.
+/// Description of the "viewer_no_comment" tag state: The collaborator can only
+/// view the shared folder and does not have any access to comments.
 ///
 /// @return An initialized instance.
 ///
@@ -118,7 +122,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 - (BOOL)isViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value "viewer_no_comment".
+/// Retrieves whether the union's current tag state has value
+/// "viewer_no_comment".
 ///
 /// @return Whether the union's current tag state has value "viewer_no_comment".
 ///
@@ -152,15 +157,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGAccessLevelTag) {
 ///
 /// @param instance An instance of the `DBSHARINGAccessLevel` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGAccessLevel` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGAccessLevel` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAccessLevel * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGAccessLevel` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGAccessLevel` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGAccessLevel` API object.
 ///
 /// @return An instantiation of the `DBSHARINGAccessLevel` object.
 ///

@@ -14,8 +14,9 @@
 ///
 /// The `AddFolderMemberArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGAddFolderMemberArg : NSObject <DBSerializable>
 
@@ -24,11 +25,12 @@
 /// The ID for the shared folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull sharedFolderId;
 
-/// The intended list of members to add.  Added members will receive invites to join the shared
-/// folder.
+/// The intended list of members to add.  Added members will receive invites to
+/// join the shared folder.
 @property(nonatomic, readonly) NSArray<DBSHARINGAddMember *> * _Nonnull members;
 
-/// Whether added members should be notified via email and device notifications of their invite.
+/// Whether added members should be notified via email and device notifications
+/// of their invite.
 @property(nonatomic, readonly) NSNumber * _Nonnull quiet;
 
 /// Optional message to display to added members in their invitation.
@@ -40,11 +42,12 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param members The intended list of members to add.  Added members will receive invites to join
-/// the shared folder.
-/// @param quiet Whether added members should be notified via email and device notifications of
-/// their invite.
-/// @param customMessage Optional message to display to added members in their invitation.
+/// @param members The intended list of members to add.  Added members will
+/// receive invites to join the shared folder.
+/// @param quiet Whether added members should be notified via email and device
+/// notifications of their invite.
+/// @param customMessage Optional message to display to added members in their
+/// invitation.
 ///
 /// @return An initialized instance.
 ///
@@ -54,11 +57,12 @@
                                  customMessage:(NSString * _Nullable)customMessage;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sharedFolderId The ID for the shared folder.
-/// @param members The intended list of members to add.  Added members will receive invites to join
-/// the shared folder.
+/// @param members The intended list of members to add.  Added members will
+/// receive invites to join the shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -79,16 +83,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGAddFolderMemberArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGAddFolderMemberArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGAddFolderMemberArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddFolderMemberArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGAddFolderMemberArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddFolderMemberArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGAddFolderMemberArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGAddFolderMemberArg` object.
 ///

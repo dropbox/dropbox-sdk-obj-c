@@ -14,18 +14,19 @@
 ///
 /// The group type determines how a group is created and managed.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMCOMMONGroupType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMCOMMONGroupTypeTag` enum type represents the possible tag states with which the
-/// `DBTEAMCOMMONGroupType` union can exist.
+/// The `DBTEAMCOMMONGroupTypeTag` enum type represents the possible tag states
+/// with which the `DBTEAMCOMMONGroupType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupTypeTag) {
-  /// A group to which team members are automatically added. Applicable to team folders
-  /// https://www.dropbox.com/help/986 only.
+  /// A group to which team members are automatically added. Applicable to
+  /// team folders https://www.dropbox.com/help/986 only.
   DBTEAMCOMMONGroupTypeTeam,
 
   /// A group is created and managed by a user.
@@ -44,8 +45,9 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupTypeTag) {
 ///
 /// Initializes union class with tag state of "team".
 ///
-/// Description of the "team" tag state: A group to which team members are automatically added.
-/// Applicable to team folders https://www.dropbox.com/help/986 only.
+/// Description of the "team" tag state: A group to which team members are
+/// automatically added. Applicable to team folders
+/// https://www.dropbox.com/help/986 only.
 ///
 /// @return An initialized instance.
 ///
@@ -54,7 +56,8 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupTypeTag) {
 ///
 /// Initializes union class with tag state of "user_managed".
 ///
-/// Description of the "user_managed" tag state: A group is created and managed by a user.
+/// Description of the "user_managed" tag state: A group is created and managed
+/// by a user.
 ///
 /// @return An initialized instance.
 ///
@@ -111,15 +114,16 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupTypeTag) {
 ///
 /// @param instance An instance of the `DBTEAMCOMMONGroupType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMCOMMONGroupType` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMCOMMONGroupType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMCOMMONGroupType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMCOMMONGroupType` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupType` API object.
 ///
 /// @return An instantiation of the `DBTEAMCOMMONGroupType` object.
 ///

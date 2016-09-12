@@ -62,6 +62,14 @@
   return self;
 }
 
+- (instancetype)initWithCreateLink {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGFileActionCreateLink;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -98,6 +106,10 @@
   return _tag == DBSHARINGFileActionShareLink;
 }
 
+- (BOOL)isCreateLink {
+  return _tag == DBSHARINGFileActionCreateLink;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGFileActionOther;
 }
@@ -116,6 +128,8 @@
     return @"DBSHARINGFileActionRelinquishMembership";
   case DBSHARINGFileActionShareLink:
     return @"DBSHARINGFileActionShareLink";
+  case DBSHARINGFileActionCreateLink:
+    return @"DBSHARINGFileActionCreateLink";
   case DBSHARINGFileActionOther:
     return @"DBSHARINGFileActionOther";
   }
@@ -160,6 +174,8 @@
     jsonDict[@".tag"] = @"relinquish_membership";
   } else if ([valueObj isShareLink]) {
     jsonDict[@".tag"] = @"share_link";
+  } else if ([valueObj isCreateLink]) {
+    jsonDict[@".tag"] = @"create_link";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -186,6 +202,8 @@
     return [[DBSHARINGFileAction alloc] initWithRelinquishMembership];
   } else if ([tag isEqualToString:@"share_link"]) {
     return [[DBSHARINGFileAction alloc] initWithShareLink];
+  } else if ([tag isEqualToString:@"create_link"]) {
+    return [[DBSHARINGFileAction alloc] initWithCreateLink];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileAction alloc] initWithOther];
   }

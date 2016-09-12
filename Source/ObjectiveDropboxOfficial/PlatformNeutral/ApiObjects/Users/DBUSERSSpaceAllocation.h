@@ -17,15 +17,16 @@
 ///
 /// Space is allocated differently based on the type of account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSSpaceAllocation : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBUSERSSpaceAllocationTag` enum type represents the possible tag states with which the
-/// `DBUSERSSpaceAllocation` union can exist.
+/// The `DBUSERSSpaceAllocationTag` enum type represents the possible tag states
+/// with which the `DBUSERSSpaceAllocation` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
   /// The user's space allocation applies only to their individual account.
   DBUSERSSpaceAllocationIndividual,
@@ -41,13 +42,14 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBUSERSSpaceAllocationTag tag;
 
-/// The user's space allocation applies only to their individual account. @note Ensure the
-/// `isIndividual` method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// The user's space allocation applies only to their individual account. @note
+/// Ensure the `isIndividual` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly) DBUSERSIndividualSpaceAllocation * _Nonnull individual;
 
-/// The user shares space with other members of their team. @note Ensure the `isTeam` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// The user shares space with other members of their team. @note Ensure the
+/// `isTeam` method returns true before accessing, otherwise a runtime exception
+/// will be raised.
 @property(nonatomic, readonly) DBUSERSTeamSpaceAllocation * _Nonnull team;
 
 #pragma mark - Constructors
@@ -55,10 +57,11 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 ///
 /// Initializes union class with tag state of "individual".
 ///
-/// Description of the "individual" tag state: The user's space allocation applies only to their
-/// individual account.
+/// Description of the "individual" tag state: The user's space allocation
+/// applies only to their individual account.
 ///
-/// @param individual The user's space allocation applies only to their individual account.
+/// @param individual The user's space allocation applies only to their
+/// individual account.
 ///
 /// @return An initialized instance.
 ///
@@ -67,7 +70,8 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 ///
 /// Initializes union class with tag state of "team".
 ///
-/// Description of the "team" tag state: The user shares space with other members of their team.
+/// Description of the "team" tag state: The user shares space with other
+/// members of their team.
 ///
 /// @param team The user shares space with other members of their team.
 ///
@@ -87,8 +91,8 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 ///
 /// Retrieves whether the union's current tag state has value "individual".
 ///
-/// @note Call this method and ensure it returns true before accessing the `individual` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `individual` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "individual".
 ///
@@ -97,8 +101,8 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 ///
 /// Retrieves whether the union's current tag state has value "team".
 ///
-/// @note Call this method and ensure it returns true before accessing the `team` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `team` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "team".
 ///
@@ -132,15 +136,16 @@ typedef NS_ENUM(NSInteger, DBUSERSSpaceAllocationTag) {
 ///
 /// @param instance An instance of the `DBUSERSSpaceAllocation` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSSpaceAllocation` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBUSERSSpaceAllocation` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSSpaceAllocation * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSSpaceAllocation` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSSpaceAllocation` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSSpaceAllocation` API object.
 ///
 /// @return An instantiation of the `DBUSERSSpaceAllocation` object.
 ///

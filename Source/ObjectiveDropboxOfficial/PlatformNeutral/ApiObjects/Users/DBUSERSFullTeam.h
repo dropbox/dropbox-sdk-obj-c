@@ -17,8 +17,9 @@
 ///
 /// Detailed information about a team.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSFullTeam : DBUSERSTeam <DBSerializable>
 
@@ -56,14 +57,16 @@
 ///
 /// @param instance An instance of the `DBUSERSFullTeam` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSFullTeam` API object.
+/// @return A json-compatible dictionary representation of the `DBUSERSFullTeam`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSFullTeam * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSFullTeam` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSFullTeam` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSFullTeam` API object.
 ///
 /// @return An instantiation of the `DBUSERSFullTeam` object.
 ///

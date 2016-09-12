@@ -12,8 +12,9 @@
 ///
 /// The `InsufficientQuotaAmounts` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGInsufficientQuotaAmounts : NSObject <DBSerializable>
 
@@ -33,9 +34,11 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param spaceNeeded The amount of space needed to add the item (the size of the item).
+/// @param spaceNeeded The amount of space needed to add the item (the size of
+/// the item).
 /// @param spaceShortage The amount of extra space needed to add the item.
-/// @param spaceLeft The amount of space left in the user's Dropbox, less than space_needed.
+/// @param spaceLeft The amount of space left in the user's Dropbox, less than
+/// space_needed.
 ///
 /// @return An initialized instance.
 ///
@@ -55,10 +58,11 @@
 ///
 /// Serializes `DBSHARINGInsufficientQuotaAmounts` instances.
 ///
-/// @param instance An instance of the `DBSHARINGInsufficientQuotaAmounts` API object.
+/// @param instance An instance of the `DBSHARINGInsufficientQuotaAmounts` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGInsufficientQuotaAmounts`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGInsufficientQuotaAmounts` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGInsufficientQuotaAmounts * _Nonnull)instance;
 

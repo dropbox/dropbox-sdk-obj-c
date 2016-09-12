@@ -14,21 +14,23 @@
 ///
 /// Error returned by methods for polling the status of asynchronous job.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBASYNCPollError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBASYNCPollErrorTag` enum type represents the possible tag states with which the
-/// `DBASYNCPollError` union can exist.
+/// The `DBASYNCPollErrorTag` enum type represents the possible tag states with
+/// which the `DBASYNCPollError` union can exist.
 typedef NS_ENUM(NSInteger, DBASYNCPollErrorTag) {
   /// The job ID is invalid.
   DBASYNCPollErrorInvalidAsyncJobId,
 
-  /// Something went wrong with the job on Dropbox's end. You'll need to verify that the action
-  /// you were taking succeeded, and if not, try again. This should happen very rarely.
+  /// Something went wrong with the job on Dropbox's end. You'll need to
+  /// verify that the action you were taking succeeded, and if not, try again.
+  /// This should happen very rarely.
   DBASYNCPollErrorInternalError,
 
   /// (no description).
@@ -53,9 +55,9 @@ typedef NS_ENUM(NSInteger, DBASYNCPollErrorTag) {
 ///
 /// Initializes union class with tag state of "internal_error".
 ///
-/// Description of the "internal_error" tag state: Something went wrong with the job on Dropbox's
-/// end. You'll need to verify that the action you were taking succeeded, and if not, try again.
-/// This should happen very rarely.
+/// Description of the "internal_error" tag state: Something went wrong with the
+/// job on Dropbox's end. You'll need to verify that the action you were taking
+/// succeeded, and if not, try again. This should happen very rarely.
 ///
 /// @return An initialized instance.
 ///
@@ -71,9 +73,11 @@ typedef NS_ENUM(NSInteger, DBASYNCPollErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_async_job_id".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_async_job_id".
 ///
-/// @return Whether the union's current tag state has value "invalid_async_job_id".
+/// @return Whether the union's current tag state has value
+/// "invalid_async_job_id".
 ///
 - (BOOL)isInvalidAsyncJobId;
 
@@ -112,14 +116,16 @@ typedef NS_ENUM(NSInteger, DBASYNCPollErrorTag) {
 ///
 /// @param instance An instance of the `DBASYNCPollError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBASYNCPollError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBASYNCPollError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBASYNCPollError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBASYNCPollError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBASYNCPollError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBASYNCPollError` API object.
 ///
 /// @return An instantiation of the `DBASYNCPollError` object.
 ///

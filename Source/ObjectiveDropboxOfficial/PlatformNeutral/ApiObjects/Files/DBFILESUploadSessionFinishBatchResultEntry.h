@@ -15,15 +15,17 @@
 ///
 /// The `UploadSessionFinishBatchResultEntry` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionFinishBatchResultEntry : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESUploadSessionFinishBatchResultEntryTag` enum type represents the possible tag states
-/// with which the `DBFILESUploadSessionFinishBatchResultEntry` union can exist.
+/// The `DBFILESUploadSessionFinishBatchResultEntryTag` enum type represents the
+/// possible tag states with which the
+/// `DBFILESUploadSessionFinishBatchResultEntry` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
   /// (no description).
   DBFILESUploadSessionFinishBatchResultEntrySuccess,
@@ -36,12 +38,12 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishBatchResultEntryTag tag;
 
-/// (no description). @note Ensure the `isSuccess` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isSuccess` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESFileMetadata * _Nonnull success;
 
-/// (no description). @note Ensure the `isFailure` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isFailure` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishError * _Nonnull failure;
 
 #pragma mark - Constructors
@@ -69,8 +71,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 ///
 /// Retrieves whether the union's current tag state has value "success".
 ///
-/// @note Call this method and ensure it returns true before accessing the `success` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `success` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "success".
 ///
@@ -79,8 +81,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 ///
 /// Retrieves whether the union's current tag state has value "failure".
 ///
-/// @note Call this method and ensure it returns true before accessing the `failure` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `failure` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "failure".
 ///
@@ -98,14 +100,16 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 #pragma mark - Serializer Object
 
 ///
-/// The serialization class for the `DBFILESUploadSessionFinishBatchResultEntry` union.
+/// The serialization class for the `DBFILESUploadSessionFinishBatchResultEntry`
+/// union.
 ///
 @interface DBFILESUploadSessionFinishBatchResultEntrySerializer : NSObject
 
 ///
 /// Serializes `DBFILESUploadSessionFinishBatchResultEntry` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionFinishBatchResultEntry` API object.
+/// @param instance An instance of the
+/// `DBFILESUploadSessionFinishBatchResultEntry` API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchResultEntry` API object.
@@ -118,7 +122,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishBatchResultEntryTag) {
 /// @param dict A json-compatible dictionary representation of the
 /// `DBFILESUploadSessionFinishBatchResultEntry` API object.
 ///
-/// @return An instantiation of the `DBFILESUploadSessionFinishBatchResultEntry` object.
+/// @return An instantiation of the `DBFILESUploadSessionFinishBatchResultEntry`
+/// object.
 ///
 + (DBFILESUploadSessionFinishBatchResultEntry * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

@@ -14,8 +14,9 @@
 ///
 /// The `SearchResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSearchResult : NSObject <DBSerializable>
 
@@ -24,12 +25,12 @@
 /// A list (possibly empty) of matches for the query.
 @property(nonatomic, readonly) NSArray<DBFILESSearchMatch *> * _Nonnull matches;
 
-/// Used for paging. If true, indicates there is another page of results available that can be
-/// fetched by calling `search` again.
+/// Used for paging. If true, indicates there is another page of results
+/// available that can be fetched by calling `search` again.
 @property(nonatomic, readonly) NSNumber * _Nonnull more;
 
-/// Used for paging. Value to set the start argument to when calling `search` to fetch the next page
-/// of results.
+/// Used for paging. Value to set the start argument to when calling `search` to
+/// fetch the next page of results.
 @property(nonatomic, readonly) NSNumber * _Nonnull start;
 
 #pragma mark - Constructors
@@ -38,10 +39,10 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param matches A list (possibly empty) of matches for the query.
-/// @param more Used for paging. If true, indicates there is another page of results available that
-/// can be fetched by calling `search` again.
-/// @param start Used for paging. Value to set the start argument to when calling `search` to fetch
-/// the next page of results.
+/// @param more Used for paging. If true, indicates there is another page of
+/// results available that can be fetched by calling `search` again.
+/// @param start Used for paging. Value to set the start argument to when
+/// calling `search` to fetch the next page of results.
 ///
 /// @return An initialized instance.
 ///
@@ -63,14 +64,16 @@
 ///
 /// @param instance An instance of the `DBFILESSearchResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSearchResult` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSearchResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSearchResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSearchResult` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSearchResult` API object.
 ///
 /// @return An instantiation of the `DBFILESSearchResult` object.
 ///

@@ -15,12 +15,14 @@
 ///
 /// The `GetDevicesReport` struct.
 ///
-/// Devices Report Result. Contains subsections for different time ranges of activity. Each of the
-/// items in each subsection of the storage report is an array of values, one value per day. If
-/// there is no data for a day, then the value will be None.
+/// Devices Report Result. Contains subsections for different time ranges of
+/// activity. Each of the items in each subsection of the storage report is an
+/// array of values, one value per day. If there is no data for a day, then the
+/// value will be None.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGetDevicesReport : DBTEAMBaseDfbReport <DBSerializable>
 
@@ -43,7 +45,8 @@
 /// @param startDate First date present in the results as 'YYYY-MM-DD' or None.
 /// @param active1Day Report of the number of devices active in the last day.
 /// @param active7Day Report of the number of devices active in the last 7 days.
-/// @param active28Day Report of the number of devices active in the last 28 days.
+/// @param active28Day Report of the number of devices active in the last 28
+/// days.
 ///
 /// @return An initialized instance.
 ///
@@ -66,15 +69,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGetDevicesReport` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGetDevicesReport` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGetDevicesReport` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGetDevicesReport * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGetDevicesReport` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGetDevicesReport` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGetDevicesReport` API object.
 ///
 /// @return An instantiation of the `DBTEAMGetDevicesReport` object.
 ///

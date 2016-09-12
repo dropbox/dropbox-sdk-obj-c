@@ -12,8 +12,9 @@
 ///
 /// The `GetMetadataArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESGetMetadataArg : NSObject <DBSerializable>
 
@@ -25,12 +26,12 @@
 /// If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeMediaInfo;
 
-/// If true, DeletedMetadata will be returned for deleted file or folder, otherwise `notFound` in
-/// `DBFILESLookupError` will be returned.
+/// If true, DeletedMetadata will be returned for deleted file or folder,
+/// otherwise `notFound` in `DBFILESLookupError` will be returned.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeDeleted;
 
-/// If true, the results will include a flag for each file indicating whether or not  that file has
-/// any explicit members.
+/// If true, the results will include a flag for each file indicating whether or
+/// not  that file has any explicit members.
 @property(nonatomic, readonly) NSNumber * _Nonnull includeHasExplicitSharedMembers;
 
 #pragma mark - Constructors
@@ -39,12 +40,14 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of a file or folder on Dropbox.
-/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set for photo and
-/// video.
-/// @param includeDeleted If true, DeletedMetadata will be returned for deleted file or folder,
-/// otherwise `notFound` in `DBFILESLookupError` will be returned.
-/// @param includeHasExplicitSharedMembers If true, the results will include a flag for each file
-/// indicating whether or not  that file has any explicit members.
+/// @param includeMediaInfo If true, `mediaInfo` in `DBFILESFileMetadata` is set
+/// for photo and video.
+/// @param includeDeleted If true, DeletedMetadata will be returned for deleted
+/// file or folder, otherwise `notFound` in `DBFILESLookupError` will be
+/// returned.
+/// @param includeHasExplicitSharedMembers If true, the results will include a
+/// flag for each file indicating whether or not  that file has any explicit
+/// members.
 ///
 /// @return An initialized instance.
 ///
@@ -54,7 +57,8 @@
      includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path The path of a file or folder on Dropbox.
 ///
@@ -76,15 +80,16 @@
 ///
 /// @param instance An instance of the `DBFILESGetMetadataArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESGetMetadataArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESGetMetadataArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESGetMetadataArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESGetMetadataArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESGetMetadataArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESGetMetadataArg` API object.
 ///
 /// @return An instantiation of the `DBFILESGetMetadataArg` object.
 ///

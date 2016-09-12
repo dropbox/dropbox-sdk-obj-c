@@ -12,15 +12,16 @@
 ///
 /// The `GroupsListContinueError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupsListContinueError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupsListContinueErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMGroupsListContinueError` union can exist.
+/// The `DBTEAMGroupsListContinueErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMGroupsListContinueError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupsListContinueErrorTag) {
   /// The cursor is invalid.
   DBTEAMGroupsListContinueErrorInvalidCursor,
@@ -86,18 +87,19 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsListContinueErrorTag) {
 ///
 /// Serializes `DBTEAMGroupsListContinueError` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupsListContinueError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupsListContinueError` API
+/// @param instance An instance of the `DBTEAMGroupsListContinueError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListContinueError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupsListContinueError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupsListContinueError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupsListContinueError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupsListContinueError` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupsListContinueError` object.
 ///

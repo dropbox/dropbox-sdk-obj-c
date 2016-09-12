@@ -17,8 +17,9 @@
 ///
 /// Information about linked Dropbox desktop client sessions
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMDesktopClientSession : DBTEAMDeviceSession <DBSerializable>
 
@@ -49,10 +50,11 @@
 /// @param clientType The Dropbox desktop client type
 /// @param clientVersion The Dropbox client version
 /// @param platform Information on the hosting platform
-/// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the account files upon
-/// unlinking
+/// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the
+/// account files upon unlinking
 /// @param ipAddress The IP address of the last activity from this session
-/// @param country The country from which the last activity from this session was made
+/// @param country The country from which the last activity from this session
+/// was made
 /// @param created The time this session was created
 /// @param updated The time of the last activity from this session
 ///
@@ -70,15 +72,16 @@
                                   updated:(NSDate * _Nullable)updated;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param sessionId The session id
 /// @param hostName Name of the hosting desktop
 /// @param clientType The Dropbox desktop client type
 /// @param clientVersion The Dropbox client version
 /// @param platform Information on the hosting platform
-/// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the account files upon
-/// unlinking
+/// @param isDeleteOnUnlinkSupported Whether it's possible to delete all of the
+/// account files upon unlinking
 ///
 /// @return An initialized instance.
 ///
@@ -103,16 +106,16 @@
 ///
 /// @param instance An instance of the `DBTEAMDesktopClientSession` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMDesktopClientSession` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMDesktopClientSession` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDesktopClientSession * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMDesktopClientSession` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMDesktopClientSession` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMDesktopClientSession` API object.
 ///
 /// @return An instantiation of the `DBTEAMDesktopClientSession` object.
 ///

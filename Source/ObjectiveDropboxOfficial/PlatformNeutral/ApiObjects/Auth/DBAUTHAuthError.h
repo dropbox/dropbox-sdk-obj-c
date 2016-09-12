@@ -14,23 +14,26 @@
 ///
 /// Errors occurred during authentication.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBAUTHAuthError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBAUTHAuthErrorTag` enum type represents the possible tag states with which the
-/// `DBAUTHAuthError` union can exist.
+/// The `DBAUTHAuthErrorTag` enum type represents the possible tag states with
+/// which the `DBAUTHAuthError` union can exist.
 typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
   /// The access token is invalid.
   DBAUTHAuthErrorInvalidAccessToken,
 
-  /// The user specified in 'Dropbox-API-Select-User' is no longer on the team.
+  /// The user specified in 'Dropbox-API-Select-User' is no longer on the
+  /// team.
   DBAUTHAuthErrorInvalidSelectUser,
 
-  /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox Business team admin.
+  /// The user specified in 'Dropbox-API-Select-Admin' is not a Dropbox
+  /// Business team admin.
   DBAUTHAuthErrorInvalidSelectAdmin,
 
   /// (no description).
@@ -46,7 +49,8 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_access_token".
 ///
-/// Description of the "invalid_access_token" tag state: The access token is invalid.
+/// Description of the "invalid_access_token" tag state: The access token is
+/// invalid.
 ///
 /// @return An initialized instance.
 ///
@@ -82,23 +86,29 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_access_token".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_access_token".
 ///
-/// @return Whether the union's current tag state has value "invalid_access_token".
+/// @return Whether the union's current tag state has value
+/// "invalid_access_token".
 ///
 - (BOOL)isInvalidAccessToken;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_select_user".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_select_user".
 ///
-/// @return Whether the union's current tag state has value "invalid_select_user".
+/// @return Whether the union's current tag state has value
+/// "invalid_select_user".
 ///
 - (BOOL)isInvalidSelectUser;
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_select_admin".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_select_admin".
 ///
-/// @return Whether the union's current tag state has value "invalid_select_admin".
+/// @return Whether the union's current tag state has value
+/// "invalid_select_admin".
 ///
 - (BOOL)isInvalidSelectAdmin;
 
@@ -130,14 +140,16 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 ///
 /// @param instance An instance of the `DBAUTHAuthError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBAUTHAuthError` API object.
+/// @return A json-compatible dictionary representation of the `DBAUTHAuthError`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBAUTHAuthError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBAUTHAuthError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBAUTHAuthError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBAUTHAuthError` API object.
 ///
 /// @return An instantiation of the `DBAUTHAuthError` object.
 ///

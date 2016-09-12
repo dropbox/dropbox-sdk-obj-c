@@ -14,15 +14,16 @@
 ///
 /// The `ListRevisionsError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESListRevisionsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESListRevisionsErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESListRevisionsError` union can exist.
+/// The `DBFILESListRevisionsErrorTag` enum type represents the possible tag
+/// states with which the `DBFILESListRevisionsError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESListRevisionsErrorTag) {
   /// (no description).
   DBFILESListRevisionsErrorPath,
@@ -35,8 +36,8 @@ typedef NS_ENUM(NSInteger, DBFILESListRevisionsErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESListRevisionsErrorTag tag;
 
-/// (no description). @note Ensure the `isPath` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isPath` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESLookupError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -62,8 +63,8 @@ typedef NS_ENUM(NSInteger, DBFILESListRevisionsErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
@@ -97,16 +98,16 @@ typedef NS_ENUM(NSInteger, DBFILESListRevisionsErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESListRevisionsError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESListRevisionsError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESListRevisionsError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListRevisionsError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESListRevisionsError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESListRevisionsError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESListRevisionsError` API object.
 ///
 /// @return An instantiation of the `DBFILESListRevisionsError` object.
 ///

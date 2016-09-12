@@ -16,14 +16,16 @@
 ///
 /// Arguments for `listReceivedFiles`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFilesArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Number of files to return max per query. Defaults to 100 if no limit is specified.
+/// Number of files to return max per query. Defaults to 100 if no limit is
+/// specified.
 @property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 /// File actions to query.
@@ -34,7 +36,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param limit Number of files to return max per query. Defaults to 100 if no limit is specified.
+/// @param limit Number of files to return max per query. Defaults to 100 if no
+/// limit is specified.
 /// @param actions File actions to query.
 ///
 /// @return An initialized instance.
@@ -43,7 +46,8 @@
                               actions:(NSArray<DBSHARINGFileAction *> * _Nullable)actions;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -64,15 +68,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGListFilesArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFilesArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFilesArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGListFilesArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGListFilesArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGListFilesArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGListFilesArg` object.
 ///

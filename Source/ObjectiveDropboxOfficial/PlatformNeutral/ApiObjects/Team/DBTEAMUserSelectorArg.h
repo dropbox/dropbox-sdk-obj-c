@@ -12,17 +12,19 @@
 ///
 /// The `UserSelectorArg` union.
 ///
-/// Argument for selecting a single user, either by team_member_id, external_id or email.
+/// Argument for selecting a single user, either by team_member_id, external_id
+/// or email.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMUserSelectorArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMUserSelectorArgTag` enum type represents the possible tag states with which the
-/// `DBTEAMUserSelectorArg` union can exist.
+/// The `DBTEAMUserSelectorArgTag` enum type represents the possible tag states
+/// with which the `DBTEAMUserSelectorArg` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
   /// (no description).
   DBTEAMUserSelectorArgTeamMemberId,
@@ -38,16 +40,16 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMUserSelectorArgTag tag;
 
-/// (no description). @note Ensure the `isTeamMemberId` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isTeamMemberId` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull teamMemberId;
 
-/// (no description). @note Ensure the `isExternalId` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isExternalId` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull externalId;
 
-/// (no description). @note Ensure the `isEmail` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isEmail` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 #pragma mark - Constructors
@@ -84,8 +86,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "team_member_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `teamMemberId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamMemberId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "team_member_id".
 ///
@@ -94,8 +96,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "external_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `externalId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `externalId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "external_id".
 ///
@@ -104,8 +106,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "email".
 ///
-/// @note Call this method and ensure it returns true before accessing the `email` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `email` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "email".
 ///
@@ -132,15 +134,16 @@ typedef NS_ENUM(NSInteger, DBTEAMUserSelectorArgTag) {
 ///
 /// @param instance An instance of the `DBTEAMUserSelectorArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMUserSelectorArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMUserSelectorArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMUserSelectorArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMUserSelectorArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMUserSelectorArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMUserSelectorArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMUserSelectorArg` object.
 ///

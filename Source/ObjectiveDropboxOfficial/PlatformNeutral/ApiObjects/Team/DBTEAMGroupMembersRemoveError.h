@@ -12,15 +12,16 @@
 ///
 /// The `GroupMembersRemoveError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupMembersRemoveError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupMembersRemoveErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMGroupMembersRemoveError` union can exist.
+/// The `DBTEAMGroupMembersRemoveErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMGroupMembersRemoveError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupMembersRemoveErrorGroupNotFound,
@@ -31,8 +32,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
   /// At least one of the specified users is not a member of the group.
   DBTEAMGroupMembersRemoveErrorMemberNotInGroup,
 
-  /// Group is not in this team. You cannot remove members from a group that is outside of your
-  /// team.
+  /// Group is not in this team. You cannot remove members from a group that
+  /// is outside of your team.
   DBTEAMGroupMembersRemoveErrorGroupNotInTeam,
 
 };
@@ -45,8 +46,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// Initializes union class with tag state of "group_not_found".
 ///
-/// Description of the "group_not_found" tag state: No matching group found. No groups match the
-/// specified group ID.
+/// Description of the "group_not_found" tag state: No matching group found. No
+/// groups match the specified group ID.
 ///
 /// @return An initialized instance.
 ///
@@ -62,8 +63,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// Initializes union class with tag state of "member_not_in_group".
 ///
-/// Description of the "member_not_in_group" tag state: At least one of the specified users is not a
-/// member of the group.
+/// Description of the "member_not_in_group" tag state: At least one of the
+/// specified users is not a member of the group.
 ///
 /// @return An initialized instance.
 ///
@@ -72,8 +73,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// Initializes union class with tag state of "group_not_in_team".
 ///
-/// Description of the "group_not_in_team" tag state: Group is not in this team. You cannot remove
-/// members from a group that is outside of your team.
+/// Description of the "group_not_in_team" tag state: Group is not in this team.
+/// You cannot remove members from a group that is outside of your team.
 ///
 /// @return An initialized instance.
 ///
@@ -96,14 +97,17 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_in_group".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_in_group".
 ///
-/// @return Whether the union's current tag state has value "member_not_in_group".
+/// @return Whether the union's current tag state has value
+/// "member_not_in_group".
 ///
 - (BOOL)isMemberNotInGroup;
 
 ///
-/// Retrieves whether the union's current tag state has value "group_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "group_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "group_not_in_team".
 ///
@@ -128,18 +132,19 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 /// Serializes `DBTEAMGroupMembersRemoveError` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupMembersRemoveError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupMembersRemoveError` API
+/// @param instance An instance of the `DBTEAMGroupMembersRemoveError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersRemoveError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersRemoveError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMembersRemoveError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMembersRemoveError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersRemoveError` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupMembersRemoveError` object.
 ///

@@ -12,21 +12,23 @@
 ///
 /// The `LaunchEmptyResult` union.
 ///
-/// Result returned by methods that may either launch an asynchronous job or complete synchronously.
-/// Upon synchronous completion of the job, no additional information is returned.
+/// Result returned by methods that may either launch an asynchronous job or
+/// complete synchronously. Upon synchronous completion of the job, no
+/// additional information is returned.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBASYNCLaunchEmptyResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBASYNCLaunchEmptyResultTag` enum type represents the possible tag states with which the
-/// `DBASYNCLaunchEmptyResult` union can exist.
+/// The `DBASYNCLaunchEmptyResultTag` enum type represents the possible tag
+/// states with which the `DBASYNCLaunchEmptyResult` union can exist.
 typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
-  /// This response indicates that the processing is asynchronous. The string is an id that can be
-  /// used to obtain the status of the asynchronous job.
+  /// This response indicates that the processing is asynchronous. The string
+  /// is an id that can be used to obtain the status of the asynchronous job.
   DBASYNCLaunchEmptyResultAsyncJobId,
 
   /// The job finished synchronously and successfully.
@@ -37,9 +39,10 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBASYNCLaunchEmptyResultTag tag;
 
-/// This response indicates that the processing is asynchronous. The string is an id that can be
-/// used to obtain the status of the asynchronous job. @note Ensure the `isAsyncJobId` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// This response indicates that the processing is asynchronous. The string is
+/// an id that can be used to obtain the status of the asynchronous job. @note
+/// Ensure the `isAsyncJobId` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
 #pragma mark - Constructors
@@ -47,11 +50,13 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
 ///
 /// Initializes union class with tag state of "async_job_id".
 ///
-/// Description of the "async_job_id" tag state: This response indicates that the processing is
-/// asynchronous. The string is an id that can be used to obtain the status of the asynchronous job.
+/// Description of the "async_job_id" tag state: This response indicates that
+/// the processing is asynchronous. The string is an id that can be used to
+/// obtain the status of the asynchronous job.
 ///
-/// @param asyncJobId This response indicates that the processing is asynchronous. The string is an
-/// id that can be used to obtain the status of the asynchronous job.
+/// @param asyncJobId This response indicates that the processing is
+/// asynchronous. The string is an id that can be used to obtain the status of
+/// the asynchronous job.
 ///
 /// @return An initialized instance.
 ///
@@ -60,7 +65,8 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// Description of the "complete" tag state: The job finished synchronously and successfully.
+/// Description of the "complete" tag state: The job finished synchronously and
+/// successfully.
 ///
 /// @return An initialized instance.
 ///
@@ -71,8 +77,8 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
 ///
 /// Retrieves whether the union's current tag state has value "async_job_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `asyncJobId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `asyncJobId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "async_job_id".
 ///
@@ -106,16 +112,16 @@ typedef NS_ENUM(NSInteger, DBASYNCLaunchEmptyResultTag) {
 ///
 /// @param instance An instance of the `DBASYNCLaunchEmptyResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBASYNCLaunchEmptyResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBASYNCLaunchEmptyResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBASYNCLaunchEmptyResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBASYNCLaunchEmptyResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBASYNCLaunchEmptyResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBASYNCLaunchEmptyResult` API object.
 ///
 /// @return An instantiation of the `DBASYNCLaunchEmptyResult` object.
 ///

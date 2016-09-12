@@ -14,12 +14,13 @@
 ///
 /// The `MembersSetProfileArg` struct.
 ///
-/// Exactly one of team_member_id, email, or external_id must be provided to identify the user
-/// account. At least one of new_email, new_external_id, new_given_name, and/or new_surname must be
-/// provided.
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account. At least one of new_email, new_external_id,
+/// new_given_name, and/or new_surname must be provided.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersSetProfileArg : NSObject <DBSerializable>
 
@@ -60,7 +61,8 @@
                          dNewSurname:(NSString * _Nullable)dNewSurname;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param user Identity of user whose profile will be set.
 ///
@@ -82,16 +84,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersSetProfileArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetProfileArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetProfileArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetProfileArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersSetProfileArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersSetProfileArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetProfileArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersSetProfileArg` object.
 ///

@@ -14,8 +14,9 @@
 ///
 /// The `PropertyGroupWithPath` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESPropertyGroupWithPath : NSObject <DBSerializable>
 
@@ -33,7 +34,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path A unique identifier for the file.
-/// @param propertyGroups Filled custom property templates associated with a file.
+/// @param propertyGroups Filled custom property templates associated with a
+/// file.
 ///
 /// @return An initialized instance.
 ///
@@ -52,18 +54,19 @@
 ///
 /// Serializes `DBFILESPropertyGroupWithPath` instances.
 ///
-/// @param instance An instance of the `DBFILESPropertyGroupWithPath` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESPropertyGroupWithPath` API
+/// @param instance An instance of the `DBFILESPropertyGroupWithPath` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESPropertyGroupWithPath` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPropertyGroupWithPath * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESPropertyGroupWithPath` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESPropertyGroupWithPath`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESPropertyGroupWithPath` API object.
 ///
 /// @return An instantiation of the `DBFILESPropertyGroupWithPath` object.
 ///

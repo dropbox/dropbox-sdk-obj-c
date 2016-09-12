@@ -9,8 +9,8 @@
 @class DBRoute;
 
 ///
-/// Stone route objects for the Team namespace. Each route in the Team namespace has its own static
-/// object, which contains information about the route.
+/// Stone route objects for the Team namespace. Each route in the Team namespace
+/// has its own static object, which contains information about the route.
 ///
 @interface DBTEAMRouteObjects : NSObject
 

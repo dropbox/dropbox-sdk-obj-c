@@ -15,10 +15,12 @@
 ///
 /// The `AddMember` struct.
 ///
-/// The member and type of access the member should have when added to a shared folder.
+/// The member and type of access the member should have when added to a shared
+/// folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGAddMember : NSObject <DBSerializable>
 
@@ -27,8 +29,8 @@
 /// The member to add to the shared folder.
 @property(nonatomic, readonly) DBSHARINGMemberSelector * _Nonnull member;
 
-/// The access level to grant member to the shared folder.  `owner` in `DBSHARINGAccessLevel` is
-/// disallowed.
+/// The access level to grant member to the shared folder.  `owner` in
+/// `DBSHARINGAccessLevel` is disallowed.
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessLevel;
 
 #pragma mark - Constructors
@@ -37,8 +39,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param member The member to add to the shared folder.
-/// @param accessLevel The access level to grant member to the shared folder.  `owner` in
-/// `DBSHARINGAccessLevel` is disallowed.
+/// @param accessLevel The access level to grant member to the shared folder.
+/// `owner` in `DBSHARINGAccessLevel` is disallowed.
 ///
 /// @return An initialized instance.
 ///
@@ -46,7 +48,8 @@
                            accessLevel:(DBSHARINGAccessLevel * _Nullable)accessLevel;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param member The member to add to the shared folder.
 ///
@@ -68,14 +71,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGAddMember` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGAddMember` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGAddMember` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGAddMember * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGAddMember` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGAddMember` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGAddMember` API object.
 ///
 /// @return An instantiation of the `DBSHARINGAddMember` object.
 ///

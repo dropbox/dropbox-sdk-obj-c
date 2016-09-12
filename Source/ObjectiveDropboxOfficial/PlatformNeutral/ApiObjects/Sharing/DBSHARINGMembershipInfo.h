@@ -17,8 +17,9 @@
 ///
 /// The information about a member of the shared content.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGMembershipInfo : NSObject <DBSerializable>
 
@@ -27,8 +28,8 @@
 /// The access type for this member.
 @property(nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessType;
 
-/// The permissions that requesting user has on this member. The set of permissions corresponds to
-/// the MemberActions in the request.
+/// The permissions that requesting user has on this member. The set of
+/// permissions corresponds to the MemberActions in the request.
 @property(nonatomic, readonly) NSArray<DBSHARINGMemberPermission *> * _Nullable permissions;
 
 /// Suggested name initials for a member.
@@ -43,8 +44,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accessType The access type for this member.
-/// @param permissions The permissions that requesting user has on this member. The set of
-/// permissions corresponds to the MemberActions in the request.
+/// @param permissions The permissions that requesting user has on this member.
+/// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Suggested name initials for a member.
 /// @param isInherited True if the member has access from a parent folder.
 ///
@@ -56,7 +57,8 @@
                                isInherited:(NSNumber * _Nullable)isInherited;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accessType The access type for this member.
 ///
@@ -78,15 +80,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGMembershipInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGMembershipInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGMembershipInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMembershipInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGMembershipInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGMembershipInfo` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGMembershipInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGMembershipInfo` object.
 ///

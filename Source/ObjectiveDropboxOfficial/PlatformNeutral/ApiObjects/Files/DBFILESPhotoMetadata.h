@@ -18,8 +18,9 @@
 ///
 /// Metadata for a photo.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESPhotoMetadata : DBFILESMediaMetadata <DBSerializable>
 
@@ -41,7 +42,8 @@
                                  timeTaken:(NSDate * _Nullable)timeTaken;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -62,15 +64,16 @@
 ///
 /// @param instance An instance of the `DBFILESPhotoMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESPhotoMetadata` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESPhotoMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESPhotoMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESPhotoMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESPhotoMetadata` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESPhotoMetadata` API object.
 ///
 /// @return An instantiation of the `DBFILESPhotoMetadata` object.
 ///

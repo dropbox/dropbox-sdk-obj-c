@@ -14,15 +14,16 @@
 ///
 /// Includes different ways to identify a member of a shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGMemberSelector : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGMemberSelectorTag` enum type represents the possible tag states with which the
-/// `DBSHARINGMemberSelector` union can exist.
+/// The `DBSHARINGMemberSelectorTag` enum type represents the possible tag
+/// states with which the `DBSHARINGMemberSelector` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
   /// Dropbox account, team member, or group ID of member.
   DBSHARINGMemberSelectorDropboxId,
@@ -38,12 +39,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGMemberSelectorTag tag;
 
-/// Dropbox account, team member, or group ID of member. @note Ensure the `isDropboxId` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// Dropbox account, team member, or group ID of member. @note Ensure the
+/// `isDropboxId` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull dropboxId;
 
-/// E-mail address of member. @note Ensure the `isEmail` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// E-mail address of member. @note Ensure the `isEmail` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 #pragma mark - Constructors
@@ -51,7 +53,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
 ///
 /// Initializes union class with tag state of "dropbox_id".
 ///
-/// Description of the "dropbox_id" tag state: Dropbox account, team member, or group ID of member.
+/// Description of the "dropbox_id" tag state: Dropbox account, team member, or
+/// group ID of member.
 ///
 /// @param dropboxId Dropbox account, team member, or group ID of member.
 ///
@@ -82,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "dropbox_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `dropboxId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `dropboxId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "dropbox_id".
 ///
@@ -92,8 +95,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "email".
 ///
-/// @note Call this method and ensure it returns true before accessing the `email` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `email` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "email".
 ///
@@ -127,15 +130,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberSelectorTag) {
 ///
 /// @param instance An instance of the `DBSHARINGMemberSelector` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGMemberSelector` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGMemberSelector` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMemberSelector * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGMemberSelector` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGMemberSelector` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGMemberSelector` API object.
 ///
 /// @return An instantiation of the `DBSHARINGMemberSelector` object.
 ///

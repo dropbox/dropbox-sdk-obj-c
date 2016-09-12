@@ -12,15 +12,16 @@
 ///
 /// The `UploadSessionStartArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionStartArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// If true, the current session will be closed, at which point you won't be able to call
-/// `uploadSessionAppendV2` anymore with the current session.
+/// If true, the current session will be closed, at which point you won't be
+/// able to call `uploadSessionAppendV2` anymore with the current session.
 @property(nonatomic, readonly) NSNumber * _Nonnull close;
 
 #pragma mark - Constructors
@@ -28,15 +29,17 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param close If true, the current session will be closed, at which point you won't be able to
-/// call `uploadSessionAppendV2` anymore with the current session.
+/// @param close If true, the current session will be closed, at which point you
+/// won't be able to call `uploadSessionAppendV2` anymore with the current
+/// session.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithClose:(NSNumber * _Nullable)close;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -55,18 +58,19 @@
 ///
 /// Serializes `DBFILESUploadSessionStartArg` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionStartArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionStartArg` API
+/// @param instance An instance of the `DBFILESUploadSessionStartArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionStartArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionStartArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionStartArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionStartArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionStartArg` API object.
 ///
 /// @return An instantiation of the `DBFILESUploadSessionStartArg` object.
 ///

@@ -17,8 +17,9 @@
 ///
 /// Metadata for a path-based shared link.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGPathLinkMetadata : DBSHARINGLinkMetadata <DBSerializable>
 
@@ -45,7 +46,8 @@
                             expires:(NSDate * _Nullable)expires;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param url URL of the shared link.
 /// @param visibility Who can access the link.
@@ -71,16 +73,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGPathLinkMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGPathLinkMetadata` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGPathLinkMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGPathLinkMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGPathLinkMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGPathLinkMetadata` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGPathLinkMetadata` API object.
 ///
 /// @return An instantiation of the `DBSHARINGPathLinkMetadata` object.
 ///

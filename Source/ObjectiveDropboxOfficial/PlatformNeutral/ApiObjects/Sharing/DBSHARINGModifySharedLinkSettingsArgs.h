@@ -14,8 +14,9 @@
 ///
 /// The `ModifySharedLinkSettingsArgs` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGModifySharedLinkSettingsArgs : NSObject <DBSerializable>
 
@@ -37,7 +38,8 @@
 ///
 /// @param url URL of the shared link to change its settings
 /// @param settings Set of settings for the shared link.
-/// @param removeExpiration If set to true, removes the expiration of the shared link.
+/// @param removeExpiration If set to true, removes the expiration of the shared
+/// link.
 ///
 /// @return An initialized instance.
 ///
@@ -46,7 +48,8 @@
                    removeExpiration:(NSNumber * _Nullable)removeExpiration;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param url URL of the shared link to change its settings
 /// @param settings Set of settings for the shared link.
@@ -67,7 +70,8 @@
 ///
 /// Serializes `DBSHARINGModifySharedLinkSettingsArgs` instances.
 ///
-/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsArgs` API object.
+/// @param instance An instance of the `DBSHARINGModifySharedLinkSettingsArgs`
+/// API object.
 ///
 /// @return A json-compatible dictionary representation of the
 /// `DBSHARINGModifySharedLinkSettingsArgs` API object.
@@ -80,7 +84,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGModifySharedLinkSettingsArgs` API object.
 ///
-/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsArgs` object.
+/// @return An instantiation of the `DBSHARINGModifySharedLinkSettingsArgs`
+/// object.
 ///
 + (DBSHARINGModifySharedLinkSettingsArgs * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

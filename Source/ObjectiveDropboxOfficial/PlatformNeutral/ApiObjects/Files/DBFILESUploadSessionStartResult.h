@@ -12,15 +12,16 @@
 ///
 /// The `UploadSessionStartResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionStartResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// A unique identifier for the upload session. Pass this to `uploadSessionAppendV2` and
-/// `uploadSessionFinish`.
+/// A unique identifier for the upload session. Pass this to
+/// `uploadSessionAppendV2` and `uploadSessionFinish`.
 @property(nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 #pragma mark - Constructors
@@ -47,18 +48,19 @@
 ///
 /// Serializes `DBFILESUploadSessionStartResult` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionStartResult` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionStartResult` API
+/// @param instance An instance of the `DBFILESUploadSessionStartResult` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionStartResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionStartResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionStartResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionStartResult`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionStartResult` API object.
 ///
 /// @return An instantiation of the `DBFILESUploadSessionStartResult` object.
 ///

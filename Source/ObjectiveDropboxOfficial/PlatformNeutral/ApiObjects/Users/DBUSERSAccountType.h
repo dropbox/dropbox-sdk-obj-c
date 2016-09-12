@@ -14,15 +14,16 @@
 ///
 /// What type of account this user has.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBUSERSAccountType : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBUSERSAccountTypeTag` enum type represents the possible tag states with which the
-/// `DBUSERSAccountType` union can exist.
+/// The `DBUSERSAccountTypeTag` enum type represents the possible tag states
+/// with which the `DBUSERSAccountType` union can exist.
 typedef NS_ENUM(NSInteger, DBUSERSAccountTypeTag) {
   /// The basic account type.
   DBUSERSAccountTypeBasic,
@@ -111,14 +112,16 @@ typedef NS_ENUM(NSInteger, DBUSERSAccountTypeTag) {
 ///
 /// @param instance An instance of the `DBUSERSAccountType` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBUSERSAccountType` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBUSERSAccountType` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBUSERSAccountType * _Nonnull)instance;
 
 ///
 /// Deserializes `DBUSERSAccountType` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBUSERSAccountType` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBUSERSAccountType` API object.
 ///
 /// @return An instantiation of the `DBUSERSAccountType` object.
 ///

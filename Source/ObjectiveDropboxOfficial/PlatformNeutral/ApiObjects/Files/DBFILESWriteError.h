@@ -14,20 +14,22 @@
 ///
 /// The `WriteError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESWriteError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESWriteErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESWriteError` union can exist.
+/// The `DBFILESWriteErrorTag` enum type represents the possible tag states with
+/// which the `DBFILESWriteError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
   /// (no description).
   DBFILESWriteErrorMalformedPath,
 
-  /// Couldn't write to the target path because there was something in the way.
+  /// Couldn't write to the target path because there was something in the
+  /// way.
   DBFILESWriteErrorConflict,
 
   /// The user doesn't have permissions to write to the target location.
@@ -47,12 +49,13 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESWriteErrorTag tag;
 
-/// (no description). @note Ensure the `isMalformedPath` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// (no description). @note Ensure the `isMalformedPath` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSString * _Nullable malformedPath;
 
-/// Couldn't write to the target path because there was something in the way. @note Ensure the
-/// `isConflict` method returns true before accessing, otherwise a runtime exception will be raised.
+/// Couldn't write to the target path because there was something in the way.
+/// @note Ensure the `isConflict` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESWriteConflictError * _Nonnull conflict;
 
 #pragma mark - Constructors
@@ -69,10 +72,11 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Initializes union class with tag state of "conflict".
 ///
-/// Description of the "conflict" tag state: Couldn't write to the target path because there was
-/// something in the way.
+/// Description of the "conflict" tag state: Couldn't write to the target path
+/// because there was something in the way.
 ///
-/// @param conflict Couldn't write to the target path because there was something in the way.
+/// @param conflict Couldn't write to the target path because there was
+/// something in the way.
 ///
 /// @return An initialized instance.
 ///
@@ -81,8 +85,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Initializes union class with tag state of "no_write_permission".
 ///
-/// Description of the "no_write_permission" tag state: The user doesn't have permissions to write
-/// to the target location.
+/// Description of the "no_write_permission" tag state: The user doesn't have
+/// permissions to write to the target location.
 ///
 /// @return An initialized instance.
 ///
@@ -91,8 +95,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Initializes union class with tag state of "insufficient_space".
 ///
-/// Description of the "insufficient_space" tag state: The user doesn't have enough available space
-/// (bytes) to write more data.
+/// Description of the "insufficient_space" tag state: The user doesn't have
+/// enough available space (bytes) to write more data.
 ///
 /// @return An initialized instance.
 ///
@@ -101,8 +105,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Initializes union class with tag state of "disallowed_name".
 ///
-/// Description of the "disallowed_name" tag state: Dropbox will not save the file or folder because
-/// of its name.
+/// Description of the "disallowed_name" tag state: Dropbox will not save the
+/// file or folder because of its name.
 ///
 /// @return An initialized instance.
 ///
@@ -120,8 +124,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "malformed_path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `malformedPath` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `malformedPath` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "malformed_path".
 ///
@@ -130,24 +134,28 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "conflict".
 ///
-/// @note Call this method and ensure it returns true before accessing the `conflict` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `conflict` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "conflict".
 ///
 - (BOOL)isConflict;
 
 ///
-/// Retrieves whether the union's current tag state has value "no_write_permission".
+/// Retrieves whether the union's current tag state has value
+/// "no_write_permission".
 ///
-/// @return Whether the union's current tag state has value "no_write_permission".
+/// @return Whether the union's current tag state has value
+/// "no_write_permission".
 ///
 - (BOOL)isNoWritePermission;
 
 ///
-/// Retrieves whether the union's current tag state has value "insufficient_space".
+/// Retrieves whether the union's current tag state has value
+/// "insufficient_space".
 ///
-/// @return Whether the union's current tag state has value "insufficient_space".
+/// @return Whether the union's current tag state has value
+/// "insufficient_space".
 ///
 - (BOOL)isInsufficientSpace;
 
@@ -186,14 +194,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESWriteError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESWriteError` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESWriteError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESWriteError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESWriteError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESWriteError` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESWriteError` API object.
 ///
 /// @return An instantiation of the `DBFILESWriteError` object.
 ///

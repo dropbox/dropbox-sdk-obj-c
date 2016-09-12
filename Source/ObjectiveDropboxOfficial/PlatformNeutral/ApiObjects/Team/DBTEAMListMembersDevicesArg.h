@@ -12,16 +12,18 @@
 ///
 /// The `ListMembersDevicesArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMembersDevicesArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// At the first call to the `devicesListMembersDevices` the cursor shouldn't be passed. Then, if
-/// the result of the call includes a cursor, the following requests should include the received
-/// cursors in order to receive the next sub list of team devices
+/// At the first call to the `devicesListMembersDevices` the cursor shouldn't be
+/// passed. Then, if the result of the call includes a cursor, the following
+/// requests should include the received cursors in order to receive the next
+/// sub list of team devices
 @property(nonatomic, readonly) NSString * _Nullable cursor;
 
 /// Whether to list web sessions of the team members
@@ -38,12 +40,15 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor At the first call to the `devicesListMembersDevices` the cursor shouldn't be
-/// passed. Then, if the result of the call includes a cursor, the following requests should include
-/// the received cursors in order to receive the next sub list of team devices
+/// @param cursor At the first call to the `devicesListMembersDevices` the
+/// cursor shouldn't be passed. Then, if the result of the call includes a
+/// cursor, the following requests should include the received cursors in order
+/// to receive the next sub list of team devices
 /// @param includeWebSessions Whether to list web sessions of the team members
-/// @param includeDesktopClients Whether to list desktop clients of the team members
-/// @param includeMobileClients Whether to list mobile clients of the team members
+/// @param includeDesktopClients Whether to list desktop clients of the team
+/// members
+/// @param includeMobileClients Whether to list mobile clients of the team
+/// members
 ///
 /// @return An initialized instance.
 ///
@@ -53,7 +58,8 @@
                   includeMobileClients:(NSNumber * _Nullable)includeMobileClients;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -74,16 +80,16 @@
 ///
 /// @param instance An instance of the `DBTEAMListMembersDevicesArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMembersDevicesArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMembersDevicesArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersDevicesArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMembersDevicesArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMembersDevicesArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMembersDevicesArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMembersDevicesArg` object.
 ///

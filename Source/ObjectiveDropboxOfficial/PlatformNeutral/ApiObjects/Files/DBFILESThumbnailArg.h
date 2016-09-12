@@ -15,8 +15,9 @@
 ///
 /// The `ThumbnailArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESThumbnailArg : NSObject <DBSerializable>
 
@@ -25,8 +26,9 @@
 /// The path to the image file you want to thumbnail.
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg
-/// should be preferred, while png is  better for screenshots and digital arts.
+/// The format for the thumbnail image, jpeg (default) or png. For  images that
+/// are photos, jpeg should be preferred, while png is  better for screenshots
+/// and digital arts.
 @property(nonatomic, readonly) DBFILESThumbnailFormat * _Nonnull format;
 
 /// The size for the thumbnail image.
@@ -38,8 +40,9 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path to the image file you want to thumbnail.
-/// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are
-/// photos, jpeg should be preferred, while png is  better for screenshots and digital arts.
+/// @param format The format for the thumbnail image, jpeg (default) or png. For
+/// images that are photos, jpeg should be preferred, while png is  better for
+/// screenshots and digital arts.
 /// @param size The size for the thumbnail image.
 ///
 /// @return An initialized instance.
@@ -49,7 +52,8 @@
                                 size:(DBFILESThumbnailSize * _Nullable)size;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path The path to the image file you want to thumbnail.
 ///
@@ -71,14 +75,16 @@
 ///
 /// @param instance An instance of the `DBFILESThumbnailArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESThumbnailArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESThumbnailArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailArg` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESThumbnailArg` API object.
 ///
 /// @return An instantiation of the `DBFILESThumbnailArg` object.
 ///

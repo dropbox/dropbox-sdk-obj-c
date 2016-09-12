@@ -17,8 +17,9 @@
 ///
 /// The `GroupMembersSetAccessTypeArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupMembersSetAccessTypeArg : DBTEAMGroupMemberSelector <DBSerializable>
 
@@ -27,8 +28,9 @@
 /// New group access type the user will have.
 @property(nonatomic, readonly) DBTEAMGroupAccessType * _Nonnull accessType;
 
-/// Whether to return the list of members in the group.  Note that the default value will cause all
-/// the group members  to be returned in the response. This may take a long time for large groups.
+/// Whether to return the list of members in the group.  Note that the default
+/// value will cause all the group members  to be returned in the response. This
+/// may take a long time for large groups.
 @property(nonatomic, readonly) NSNumber * _Nonnull returnMembers;
 
 #pragma mark - Constructors
@@ -39,9 +41,9 @@
 /// @param group Specify a group.
 /// @param user Identity of a user that is a member of group.
 /// @param accessType New group access type the user will have.
-/// @param returnMembers Whether to return the list of members in the group.  Note that the default
-/// value will cause all the group members  to be returned in the response. This may take a long
-/// time for large groups.
+/// @param returnMembers Whether to return the list of members in the group.
+/// Note that the default value will cause all the group members  to be returned
+/// in the response. This may take a long time for large groups.
 ///
 /// @return An initialized instance.
 ///
@@ -51,7 +53,8 @@
                         returnMembers:(NSNumber * _Nullable)returnMembers;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param group Specify a group.
 /// @param user Identity of a user that is a member of group.
@@ -75,10 +78,11 @@
 ///
 /// Serializes `DBTEAMGroupMembersSetAccessTypeArg` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupMembersSetAccessTypeArg` API object.
+/// @param instance An instance of the `DBTEAMGroupMembersSetAccessTypeArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupMembersSetAccessTypeArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersSetAccessTypeArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersSetAccessTypeArg * _Nonnull)instance;
 

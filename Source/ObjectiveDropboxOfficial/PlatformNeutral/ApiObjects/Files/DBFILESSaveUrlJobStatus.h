@@ -15,15 +15,16 @@
 ///
 /// The `SaveUrlJobStatus` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSaveUrlJobStatus : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESSaveUrlJobStatusTag` enum type represents the possible tag states with which the
-/// `DBFILESSaveUrlJobStatus` union can exist.
+/// The `DBFILESSaveUrlJobStatusTag` enum type represents the possible tag
+/// states with which the `DBFILESSaveUrlJobStatus` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
   /// The asynchronous job is still in progress.
   DBFILESSaveUrlJobStatusInProgress,
@@ -39,12 +40,13 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESSaveUrlJobStatusTag tag;
 
-/// Metadata of the file where the URL is saved to. @note Ensure the `isComplete` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// Metadata of the file where the URL is saved to. @note Ensure the
+/// `isComplete` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property(nonatomic, readonly) DBFILESFileMetadata * _Nonnull complete;
 
-/// (no description). @note Ensure the `isFailed` method returns true before accessing, otherwise a
-/// runtime exception will be raised.
+/// (no description). @note Ensure the `isFailed` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESSaveUrlError * _Nonnull failed;
 
 #pragma mark - Constructors
@@ -52,7 +54,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in
+/// progress.
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +64,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// Description of the "complete" tag state: Metadata of the file where the URL is saved to.
+/// Description of the "complete" tag state: Metadata of the file where the URL
+/// is saved to.
 ///
 /// @param complete Metadata of the file where the URL is saved to.
 ///
@@ -90,8 +94,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 ///
 /// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the `complete` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `complete` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "complete".
 ///
@@ -100,8 +104,8 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 ///
 /// Retrieves whether the union's current tag state has value "failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the `failed` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `failed` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "failed".
 ///
@@ -128,15 +132,16 @@ typedef NS_ENUM(NSInteger, DBFILESSaveUrlJobStatusTag) {
 ///
 /// @param instance An instance of the `DBFILESSaveUrlJobStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSaveUrlJobStatus` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSaveUrlJobStatus` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveUrlJobStatus * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSaveUrlJobStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSaveUrlJobStatus` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSaveUrlJobStatus` API object.
 ///
 /// @return An instantiation of the `DBFILESSaveUrlJobStatus` object.
 ///

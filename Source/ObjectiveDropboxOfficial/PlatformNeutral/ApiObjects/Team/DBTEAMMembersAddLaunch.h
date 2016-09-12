@@ -14,18 +14,19 @@
 ///
 /// The `MembersAddLaunch` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersAddLaunch : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersAddLaunchTag` enum type represents the possible tag states with which the
-/// `DBTEAMMembersAddLaunch` union can exist.
+/// The `DBTEAMMembersAddLaunchTag` enum type represents the possible tag states
+/// with which the `DBTEAMMembersAddLaunch` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
-  /// This response indicates that the processing is asynchronous. The string is an id that can be
-  /// used to obtain the status of the asynchronous job.
+  /// This response indicates that the processing is asynchronous. The string
+  /// is an id that can be used to obtain the status of the asynchronous job.
   DBTEAMMembersAddLaunchAsyncJobId,
 
   /// (no description).
@@ -36,13 +37,14 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMMembersAddLaunchTag tag;
 
-/// This response indicates that the processing is asynchronous. The string is an id that can be
-/// used to obtain the status of the asynchronous job. @note Ensure the `isAsyncJobId` method
-/// returns true before accessing, otherwise a runtime exception will be raised.
+/// This response indicates that the processing is asynchronous. The string is
+/// an id that can be used to obtain the status of the asynchronous job. @note
+/// Ensure the `isAsyncJobId` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull asyncJobId;
 
-/// (no description). @note Ensure the `isComplete` method returns true before accessing, otherwise
-/// a runtime exception will be raised.
+/// (no description). @note Ensure the `isComplete` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<DBTEAMMemberAddResult *> * _Nonnull complete;
 
 #pragma mark - Constructors
@@ -50,11 +52,13 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
 ///
 /// Initializes union class with tag state of "async_job_id".
 ///
-/// Description of the "async_job_id" tag state: This response indicates that the processing is
-/// asynchronous. The string is an id that can be used to obtain the status of the asynchronous job.
+/// Description of the "async_job_id" tag state: This response indicates that
+/// the processing is asynchronous. The string is an id that can be used to
+/// obtain the status of the asynchronous job.
 ///
-/// @param asyncJobId This response indicates that the processing is asynchronous. The string is an
-/// id that can be used to obtain the status of the asynchronous job.
+/// @param asyncJobId This response indicates that the processing is
+/// asynchronous. The string is an id that can be used to obtain the status of
+/// the asynchronous job.
 ///
 /// @return An initialized instance.
 ///
@@ -74,8 +78,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
 ///
 /// Retrieves whether the union's current tag state has value "async_job_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `asyncJobId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `asyncJobId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "async_job_id".
 ///
@@ -84,8 +88,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
 ///
 /// Retrieves whether the union's current tag state has value "complete".
 ///
-/// @note Call this method and ensure it returns true before accessing the `complete` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `complete` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "complete".
 ///
@@ -112,15 +116,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersAddLaunchTag) {
 ///
 /// @param instance An instance of the `DBTEAMMembersAddLaunch` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersAddLaunch` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersAddLaunch` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersAddLaunch * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersAddLaunch` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersAddLaunch` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersAddLaunch` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersAddLaunch` object.
 ///

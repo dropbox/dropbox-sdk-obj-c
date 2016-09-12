@@ -12,18 +12,20 @@
 ///
 /// The `PropertyField` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESPropertyField : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// This is the name or key of a custom property in a property template. File property names can be
-/// up to 256 bytes.
+/// This is the name or key of a custom property in a property template. File
+/// property names can be up to 256 bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;
 
-/// Value of a custom property attached to a file. Values can be up to 1024 bytes.
+/// Value of a custom property attached to a file. Values can be up to 1024
+/// bytes.
 @property(nonatomic, readonly, copy) NSString * _Nonnull value;
 
 #pragma mark - Constructors
@@ -31,9 +33,10 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param name This is the name or key of a custom property in a property template. File property
-/// names can be up to 256 bytes.
-/// @param value Value of a custom property attached to a file. Values can be up to 1024 bytes.
+/// @param name This is the name or key of a custom property in a property
+/// template. File property names can be up to 256 bytes.
+/// @param value Value of a custom property attached to a file. Values can be up
+/// to 1024 bytes.
 ///
 /// @return An initialized instance.
 ///
@@ -53,16 +56,16 @@
 ///
 /// @param instance An instance of the `DBPROPERTIESPropertyField` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESPropertyField` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyField` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESPropertyField * _Nonnull)instance;
 
 ///
 /// Deserializes `DBPROPERTIESPropertyField` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBPROPERTIESPropertyField` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBPROPERTIESPropertyField` API object.
 ///
 /// @return An instantiation of the `DBPROPERTIESPropertyField` object.
 ///

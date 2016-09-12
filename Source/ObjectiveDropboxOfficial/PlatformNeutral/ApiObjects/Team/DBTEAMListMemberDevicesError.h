@@ -12,15 +12,16 @@
 ///
 /// The `ListMemberDevicesError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMemberDevicesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMListMemberDevicesErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMListMemberDevicesError` union can exist.
+/// The `DBTEAMListMemberDevicesErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMListMemberDevicesError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
   /// Member not found.
   DBTEAMListMemberDevicesErrorMemberNotFound,
@@ -54,7 +55,8 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_found".
 ///
 /// @return Whether the union's current tag state has value "member_not_found".
 ///
@@ -86,18 +88,19 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberDevicesErrorTag) {
 ///
 /// Serializes `DBTEAMListMemberDevicesError` instances.
 ///
-/// @param instance An instance of the `DBTEAMListMemberDevicesError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMemberDevicesError` API
+/// @param instance An instance of the `DBTEAMListMemberDevicesError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMemberDevicesError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberDevicesError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberDevicesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberDevicesError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMemberDevicesError` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMemberDevicesError` object.
 ///

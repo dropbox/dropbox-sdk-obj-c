@@ -12,15 +12,16 @@
 ///
 /// The `ThumbnailFormat` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESThumbnailFormat : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESThumbnailFormatTag` enum type represents the possible tag states with which the
-/// `DBFILESThumbnailFormat` union can exist.
+/// The `DBFILESThumbnailFormatTag` enum type represents the possible tag states
+/// with which the `DBFILESThumbnailFormat` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
   /// (no description).
   DBFILESThumbnailFormatJpeg,
@@ -86,15 +87,16 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailFormatTag) {
 ///
 /// @param instance An instance of the `DBFILESThumbnailFormat` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESThumbnailFormat` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESThumbnailFormat` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESThumbnailFormat * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESThumbnailFormat` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESThumbnailFormat` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESThumbnailFormat` API object.
 ///
 /// @return An instantiation of the `DBFILESThumbnailFormat` object.
 ///

@@ -16,8 +16,9 @@
 ///
 /// Information about a group.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMCOMMONGroupSummary : NSObject <DBSerializable>
 
@@ -29,7 +30,8 @@
 /// (no description).
 @property(nonatomic, readonly, copy) NSString * _Nonnull groupId;
 
-/// External ID of group. This is an arbitrary ID that an admin can attach to a group.
+/// External ID of group. This is an arbitrary ID that an admin can attach to a
+/// group.
 @property(nonatomic, readonly) NSString * _Nullable groupExternalId;
 
 /// The number of members in the group.
@@ -46,8 +48,8 @@
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
-/// @param groupExternalId External ID of group. This is an arbitrary ID that an admin can attach to
-/// a group.
+/// @param groupExternalId External ID of group. This is an arbitrary ID that an
+/// admin can attach to a group.
 /// @param memberCount The number of members in the group.
 ///
 /// @return An initialized instance.
@@ -59,7 +61,8 @@
                               memberCount:(NSNumber * _Nullable)memberCount;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
@@ -85,16 +88,16 @@
 ///
 /// @param instance An instance of the `DBTEAMCOMMONGroupSummary` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMCOMMONGroupSummary` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupSummary` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMCOMMONGroupSummary * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMCOMMONGroupSummary` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMCOMMONGroupSummary` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMCOMMONGroupSummary` API object.
 ///
 /// @return An instantiation of the `DBTEAMCOMMONGroupSummary` object.
 ///

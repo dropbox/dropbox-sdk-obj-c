@@ -14,15 +14,16 @@
 ///
 /// Error returned by `linkedAppsListMemberLinkedApps`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMemberAppsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMListMemberAppsErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMListMemberAppsError` union can exist.
+/// The `DBTEAMListMemberAppsErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMListMemberAppsError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
   /// Member not found.
   DBTEAMListMemberAppsErrorMemberNotFound,
@@ -56,7 +57,8 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_found".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_found".
 ///
 /// @return Whether the union's current tag state has value "member_not_found".
 ///
@@ -90,16 +92,16 @@ typedef NS_ENUM(NSInteger, DBTEAMListMemberAppsErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMListMemberAppsError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMemberAppsError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMemberAppsError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMemberAppsError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMemberAppsError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMemberAppsError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMemberAppsError` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMemberAppsError` object.
 ///

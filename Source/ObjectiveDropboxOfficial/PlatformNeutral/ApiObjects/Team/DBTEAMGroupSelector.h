@@ -12,17 +12,19 @@
 ///
 /// The `GroupSelector` union.
 ///
-/// Argument for selecting a single group, either by group_id or by external group ID.
+/// Argument for selecting a single group, either by group_id or by external
+/// group ID.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupSelector : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupSelectorTag` enum type represents the possible tag states with which the
-/// `DBTEAMGroupSelector` union can exist.
+/// The `DBTEAMGroupSelectorTag` enum type represents the possible tag states
+/// with which the `DBTEAMGroupSelector` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorTag) {
   /// Group ID.
   DBTEAMGroupSelectorGroupId,
@@ -35,12 +37,12 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMGroupSelectorTag tag;
 
-/// Group ID. @note Ensure the `isGroupId` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// Group ID. @note Ensure the `isGroupId` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull groupId;
 
-/// External ID of the group. @note Ensure the `isGroupExternalId` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// External ID of the group. @note Ensure the `isGroupExternalId` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull groupExternalId;
 
 #pragma mark - Constructors
@@ -72,18 +74,19 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "group_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `groupId` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `groupId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "group_id".
 ///
 - (BOOL)isGroupId;
 
 ///
-/// Retrieves whether the union's current tag state has value "group_external_id".
+/// Retrieves whether the union's current tag state has value
+/// "group_external_id".
 ///
-/// @note Call this method and ensure it returns true before accessing the `groupExternalId`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `groupExternalId` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "group_external_id".
 ///
@@ -110,14 +113,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupSelectorTag) {
 ///
 /// @param instance An instance of the `DBTEAMGroupSelector` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupSelector` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupSelector` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupSelector * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupSelector` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupSelector` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupSelector` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupSelector` object.
 ///

@@ -14,19 +14,21 @@
 ///
 /// The `ListFolderMembersCursorArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFolderMembersCursorArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// This is a list indicating whether each returned member will include a boolean value `allow` in
-/// `DBSHARINGMemberPermission` that describes whether the current user can perform the MemberAction
-/// on the member.
+/// This is a list indicating whether each returned member will include a
+/// boolean value `allow` in `DBSHARINGMemberPermission` that describes whether
+/// the current user can perform the MemberAction on the member.
 @property(nonatomic, readonly) NSArray<DBSHARINGMemberAction *> * _Nullable actions;
 
-/// The maximum number of results that include members, groups and invitees to return per request.
+/// The maximum number of results that include members, groups and invitees to
+/// return per request.
 @property(nonatomic, readonly) NSNumber * _Nonnull limit;
 
 #pragma mark - Constructors
@@ -34,11 +36,12 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param actions This is a list indicating whether each returned member will include a boolean
-/// value `allow` in `DBSHARINGMemberPermission` that describes whether the current user can perform
-/// the MemberAction on the member.
-/// @param limit The maximum number of results that include members, groups and invitees to return
-/// per request.
+/// @param actions This is a list indicating whether each returned member will
+/// include a boolean value `allow` in `DBSHARINGMemberPermission` that
+/// describes whether the current user can perform the MemberAction on the
+/// member.
+/// @param limit The maximum number of results that include members, groups and
+/// invitees to return per request.
 ///
 /// @return An initialized instance.
 ///
@@ -46,7 +49,8 @@
                                   limit:(NSNumber * _Nullable)limit;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -65,10 +69,11 @@
 ///
 /// Serializes `DBSHARINGListFolderMembersCursorArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFolderMembersCursorArg` API object.
+/// @param instance An instance of the `DBSHARINGListFolderMembersCursorArg` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFolderMembersCursorArg`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFolderMembersCursorArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFolderMembersCursorArg * _Nonnull)instance;
 
@@ -78,7 +83,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFolderMembersCursorArg` API object.
 ///
-/// @return An instantiation of the `DBSHARINGListFolderMembersCursorArg` object.
+/// @return An instantiation of the `DBSHARINGListFolderMembersCursorArg`
+/// object.
 ///
 + (DBSHARINGListFolderMembersCursorArg * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

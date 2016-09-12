@@ -12,18 +12,20 @@
 ///
 /// The `ListMembersDevicesError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMListMembersDevicesError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMListMembersDevicesErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMListMembersDevicesError` union can exist.
+/// The `DBTEAMListMembersDevicesErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMListMembersDevicesError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMListMembersDevicesErrorTag) {
-  /// Indicates that the cursor has been invalidated. Call `devicesListMembersDevices` again with
-  /// an empty cursor to obtain a new cursor.
+  /// Indicates that the cursor has been invalidated. Call
+  /// `devicesListMembersDevices` again with an empty cursor to obtain a new
+  /// cursor.
   DBTEAMListMembersDevicesErrorReset,
 
   /// (no description).
@@ -39,8 +41,9 @@ typedef NS_ENUM(NSInteger, DBTEAMListMembersDevicesErrorTag) {
 ///
 /// Initializes union class with tag state of "reset".
 ///
-/// Description of the "reset" tag state: Indicates that the cursor has been invalidated. Call
-/// `devicesListMembersDevices` again with an empty cursor to obtain a new cursor.
+/// Description of the "reset" tag state: Indicates that the cursor has been
+/// invalidated. Call `devicesListMembersDevices` again with an empty cursor to
+/// obtain a new cursor.
 ///
 /// @return An initialized instance.
 ///
@@ -88,18 +91,19 @@ typedef NS_ENUM(NSInteger, DBTEAMListMembersDevicesErrorTag) {
 ///
 /// Serializes `DBTEAMListMembersDevicesError` instances.
 ///
-/// @param instance An instance of the `DBTEAMListMembersDevicesError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMListMembersDevicesError` API
+/// @param instance An instance of the `DBTEAMListMembersDevicesError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMListMembersDevicesError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMListMembersDevicesError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMListMembersDevicesError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMListMembersDevicesError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMListMembersDevicesError` API object.
 ///
 /// @return An instantiation of the `DBTEAMListMembersDevicesError` object.
 ///

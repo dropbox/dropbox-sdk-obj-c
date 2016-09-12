@@ -14,8 +14,9 @@
 ///
 /// The `CreateSharedLinkArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGCreateSharedLinkArg : NSObject <DBSerializable>
 
@@ -27,9 +28,10 @@
 /// Whether to return a shortened URL.
 @property(nonatomic, readonly) NSNumber * _Nonnull shortUrl;
 
-/// If it's okay to share a path that does not yet exist, set this to either `file` in
-/// `DBSHARINGPendingUploadMode` or `folder` in `DBSHARINGPendingUploadMode` to indicate whether to
-/// assume it's a file or folder.
+/// If it's okay to share a path that does not yet exist, set this to either
+/// `file` in `DBSHARINGPendingUploadMode` or `folder` in
+/// `DBSHARINGPendingUploadMode` to indicate whether to assume it's a file or
+/// folder.
 @property(nonatomic, readonly) DBSHARINGPendingUploadMode * _Nullable pendingUpload;
 
 #pragma mark - Constructors
@@ -39,9 +41,10 @@
 ///
 /// @param path The path to share.
 /// @param shortUrl Whether to return a shortened URL.
-/// @param pendingUpload If it's okay to share a path that does not yet exist, set this to either
-/// `file` in `DBSHARINGPendingUploadMode` or `folder` in `DBSHARINGPendingUploadMode` to indicate
-/// whether to assume it's a file or folder.
+/// @param pendingUpload If it's okay to share a path that does not yet exist,
+/// set this to either `file` in `DBSHARINGPendingUploadMode` or `folder` in
+/// `DBSHARINGPendingUploadMode` to indicate whether to assume it's a file or
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -50,7 +53,8 @@
                        pendingUpload:(DBSHARINGPendingUploadMode * _Nullable)pendingUpload;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path The path to share.
 ///
@@ -70,18 +74,19 @@
 ///
 /// Serializes `DBSHARINGCreateSharedLinkArg` instances.
 ///
-/// @param instance An instance of the `DBSHARINGCreateSharedLinkArg` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGCreateSharedLinkArg` API
+/// @param instance An instance of the `DBSHARINGCreateSharedLinkArg` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGCreateSharedLinkArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGCreateSharedLinkArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGCreateSharedLinkArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGCreateSharedLinkArg`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGCreateSharedLinkArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGCreateSharedLinkArg` object.
 ///

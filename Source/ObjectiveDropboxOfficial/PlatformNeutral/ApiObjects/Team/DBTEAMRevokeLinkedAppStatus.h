@@ -14,8 +14,9 @@
 ///
 /// The `RevokeLinkedAppStatus` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeLinkedAppStatus : NSObject <DBSerializable>
 
@@ -41,7 +42,8 @@
                               errorType:(DBTEAMRevokeLinkedAppError * _Nullable)errorType;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param success Result of the revoking request
 ///
@@ -63,16 +65,16 @@
 ///
 /// @param instance An instance of the `DBTEAMRevokeLinkedAppStatus` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppStatus` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedAppStatus` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeLinkedAppStatus * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeLinkedAppStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeLinkedAppStatus` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeLinkedAppStatus` API object.
 ///
 /// @return An instantiation of the `DBTEAMRevokeLinkedAppStatus` object.
 ///

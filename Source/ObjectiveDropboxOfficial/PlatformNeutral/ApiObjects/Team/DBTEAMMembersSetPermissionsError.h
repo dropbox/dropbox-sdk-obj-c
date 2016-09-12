@@ -12,18 +12,20 @@
 ///
 /// The `MembersSetPermissionsError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersSetPermissionsError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersSetPermissionsErrorTag` enum type represents the possible tag states with
-/// which the `DBTEAMMembersSetPermissionsError` union can exist.
+/// The `DBTEAMMembersSetPermissionsErrorTag` enum type represents the possible
+/// tag states with which the `DBTEAMMembersSetPermissionsError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or external_id does not exist on
-  /// this team.
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
   DBTEAMMembersSetPermissionsErrorUserNotFound,
 
   /// Cannot remove the admin setting of the last admin.
@@ -51,8 +53,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_found".
 ///
-/// Description of the "user_not_found" tag state: No matching user found. The provided
-/// team_member_id, email, or external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The
+/// provided team_member_id, email, or external_id does not exist on this team.
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +63,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Initializes union class with tag state of "last_admin".
 ///
-/// Description of the "last_admin" tag state: Cannot remove the admin setting of the last admin.
+/// Description of the "last_admin" tag state: Cannot remove the admin setting
+/// of the last admin.
 ///
 /// @return An initialized instance.
 ///
@@ -70,7 +73,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_in_team".
 ///
-/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of
+/// the team.
 ///
 /// @return An initialized instance.
 ///
@@ -79,7 +83,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Initializes union class with tag state of "cannot_set_permissions".
 ///
-/// Description of the "cannot_set_permissions" tag state: Cannot remove/grant permissions.
+/// Description of the "cannot_set_permissions" tag state: Cannot remove/grant
+/// permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -88,8 +93,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Initializes union class with tag state of "team_license_limit".
 ///
-/// Description of the "team_license_limit" tag state: Team is full. The organization has no
-/// available licenses.
+/// Description of the "team_license_limit" tag state: Team is full. The
+/// organization has no available licenses.
 ///
 /// @return An initialized instance.
 ///
@@ -119,23 +124,28 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 - (BOOL)isLastAdmin;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
 
 ///
-/// Retrieves whether the union's current tag state has value "cannot_set_permissions".
+/// Retrieves whether the union's current tag state has value
+/// "cannot_set_permissions".
 ///
-/// @return Whether the union's current tag state has value "cannot_set_permissions".
+/// @return Whether the union's current tag state has value
+/// "cannot_set_permissions".
 ///
 - (BOOL)isCannotSetPermissions;
 
 ///
-/// Retrieves whether the union's current tag state has value "team_license_limit".
+/// Retrieves whether the union's current tag state has value
+/// "team_license_limit".
 ///
-/// @return Whether the union's current tag state has value "team_license_limit".
+/// @return Whether the union's current tag state has value
+/// "team_license_limit".
 ///
 - (BOOL)isTeamLicenseLimit;
 
@@ -165,10 +175,11 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetPermissionsErrorTag) {
 ///
 /// Serializes `DBTEAMMembersSetPermissionsError` instances.
 ///
-/// @param instance An instance of the `DBTEAMMembersSetPermissionsError` API object.
+/// @param instance An instance of the `DBTEAMMembersSetPermissionsError` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetPermissionsError`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetPermissionsError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetPermissionsError * _Nonnull)instance;
 

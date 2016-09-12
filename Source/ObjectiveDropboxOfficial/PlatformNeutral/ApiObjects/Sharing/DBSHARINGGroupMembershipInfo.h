@@ -19,8 +19,9 @@
 ///
 /// The information about a group member of the shared content.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGGroupMembershipInfo : DBSHARINGMembershipInfo <DBSerializable>
 
@@ -36,8 +37,8 @@
 ///
 /// @param accessType The access type for this member.
 /// @param group The information about the membership group.
-/// @param permissions The permissions that requesting user has on this member. The set of
-/// permissions corresponds to the MemberActions in the request.
+/// @param permissions The permissions that requesting user has on this member.
+/// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Suggested name initials for a member.
 /// @param isInherited True if the member has access from a parent folder.
 ///
@@ -50,7 +51,8 @@
                                isInherited:(NSNumber * _Nullable)isInherited;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param accessType The access type for this member.
 /// @param group The information about the membership group.
@@ -72,18 +74,19 @@
 ///
 /// Serializes `DBSHARINGGroupMembershipInfo` instances.
 ///
-/// @param instance An instance of the `DBSHARINGGroupMembershipInfo` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGGroupMembershipInfo` API
+/// @param instance An instance of the `DBSHARINGGroupMembershipInfo` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGGroupMembershipInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGGroupMembershipInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGGroupMembershipInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGGroupMembershipInfo`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGGroupMembershipInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGGroupMembershipInfo` object.
 ///

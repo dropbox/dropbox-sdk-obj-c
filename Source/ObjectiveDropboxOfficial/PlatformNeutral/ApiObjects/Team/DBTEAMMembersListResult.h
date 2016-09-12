@@ -14,8 +14,9 @@
 ///
 /// The `MembersListResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersListResult : NSObject <DBSerializable>
 
@@ -27,8 +28,8 @@
 /// Pass the cursor into `membersListContinue` to obtain the additional members.
 @property(nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
-/// Is true if there are additional team members that have not been returned yet. An additional call
-/// to `membersListContinue` can retrieve them.
+/// Is true if there are additional team members that have not been returned
+/// yet. An additional call to `membersListContinue` can retrieve them.
 @property(nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 #pragma mark - Constructors
@@ -37,9 +38,11 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param members List of team members.
-/// @param cursor Pass the cursor into `membersListContinue` to obtain the additional members.
-/// @param hasMore Is true if there are additional team members that have not been returned yet. An
-/// additional call to `membersListContinue` can retrieve them.
+/// @param cursor Pass the cursor into `membersListContinue` to obtain the
+/// additional members.
+/// @param hasMore Is true if there are additional team members that have not
+/// been returned yet. An additional call to `membersListContinue` can retrieve
+/// them.
 ///
 /// @return An initialized instance.
 ///
@@ -61,15 +64,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersListResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersListResult` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersListResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersListResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersListResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersListResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersListResult` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersListResult` object.
 ///

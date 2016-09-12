@@ -12,18 +12,19 @@
 ///
 /// The `MembersRecoverError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersRecoverError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersRecoverErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMMembersRecoverError` union can exist.
+/// The `DBTEAMMembersRecoverErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMMembersRecoverError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or external_id does not exist on
-  /// this team.
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
   DBTEAMMembersRecoverErrorUserNotFound,
 
   /// The user is not recoverable.
@@ -45,8 +46,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_found".
 ///
-/// Description of the "user_not_found" tag state: No matching user found. The provided
-/// team_member_id, email, or external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The
+/// provided team_member_id, email, or external_id does not exist on this team.
 ///
 /// @return An initialized instance.
 ///
@@ -55,7 +56,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 ///
 /// Initializes union class with tag state of "user_unrecoverable".
 ///
-/// Description of the "user_unrecoverable" tag state: The user is not recoverable.
+/// Description of the "user_unrecoverable" tag state: The user is not
+/// recoverable.
 ///
 /// @return An initialized instance.
 ///
@@ -64,7 +66,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_in_team".
 ///
-/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of
+/// the team.
 ///
 /// @return An initialized instance.
 ///
@@ -87,14 +90,17 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_unrecoverable".
+/// Retrieves whether the union's current tag state has value
+/// "user_unrecoverable".
 ///
-/// @return Whether the union's current tag state has value "user_unrecoverable".
+/// @return Whether the union's current tag state has value
+/// "user_unrecoverable".
 ///
 - (BOOL)isUserUnrecoverable;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
@@ -128,16 +134,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMMembersRecoverError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersRecoverError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersRecoverError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersRecoverError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersRecoverError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersRecoverError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersRecoverError` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersRecoverError` object.
 ///

@@ -18,21 +18,23 @@
 ///
 /// A set of policies governing membership and privileges for a shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFolderPolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Who can be a member of this shared folder, as set on the folder itself. The effective policy may
-/// differ from this value if the team-wide policy is more restrictive. Present only if the folder
-/// is owned by a team.
+/// Who can be a member of this shared folder, as set on the folder itself. The
+/// effective policy may differ from this value if the team-wide policy is more
+/// restrictive. Present only if the folder is owned by a team.
 @property(nonatomic, readonly) DBSHARINGMemberPolicy * _Nullable memberPolicy;
 
-/// Who can be a member of this shared folder, taking into account both the folder and the team-wide
-/// policy. This value may differ from that of member_policy if the team-wide policy is more
-/// restrictive than the folder policy. Present only if the folder is owned by a team.
+/// Who can be a member of this shared folder, taking into account both the
+/// folder and the team-wide policy. This value may differ from that of
+/// member_policy if the team-wide policy is more restrictive than the folder
+/// policy. Present only if the folder is owned by a team.
 @property(nonatomic, readonly) DBSHARINGMemberPolicy * _Nullable resolvedMemberPolicy;
 
 /// Who can add and remove members from this shared folder.
@@ -46,15 +48,18 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param aclUpdatePolicy Who can add and remove members from this shared folder.
+/// @param aclUpdatePolicy Who can add and remove members from this shared
+/// folder.
 /// @param sharedLinkPolicy Who links can be shared with.
-/// @param memberPolicy Who can be a member of this shared folder, as set on the folder itself. The
-/// effective policy may differ from this value if the team-wide policy is more restrictive. Present
-/// only if the folder is owned by a team.
-/// @param resolvedMemberPolicy Who can be a member of this shared folder, taking into account both
-/// the folder and the team-wide policy. This value may differ from that of member_policy if the
-/// team-wide policy is more restrictive than the folder policy. Present only if the folder is owned
-/// by a team.
+/// @param memberPolicy Who can be a member of this shared folder, as set on the
+/// folder itself. The effective policy may differ from this value if the
+/// team-wide policy is more restrictive. Present only if the folder is owned by
+/// a team.
+/// @param resolvedMemberPolicy Who can be a member of this shared folder,
+/// taking into account both the folder and the team-wide policy. This value may
+/// differ from that of member_policy if the team-wide policy is more
+/// restrictive than the folder policy. Present only if the folder is owned by a
+/// team.
 ///
 /// @return An initialized instance.
 ///
@@ -64,9 +69,11 @@
                            resolvedMemberPolicy:(DBSHARINGMemberPolicy * _Nullable)resolvedMemberPolicy;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param aclUpdatePolicy Who can add and remove members from this shared folder.
+/// @param aclUpdatePolicy Who can add and remove members from this shared
+/// folder.
 /// @param sharedLinkPolicy Who links can be shared with.
 ///
 /// @return An initialized instance.
@@ -88,15 +95,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGFolderPolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFolderPolicy` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFolderPolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFolderPolicy * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFolderPolicy` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFolderPolicy` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFolderPolicy` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFolderPolicy` object.
 ///

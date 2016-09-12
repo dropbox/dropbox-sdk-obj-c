@@ -12,17 +12,19 @@
 ///
 /// The `UsersSelectorArg` union.
 ///
-/// Argument for selecting a list of users, either by team_member_ids, external_ids or emails.
+/// Argument for selecting a list of users, either by team_member_ids,
+/// external_ids or emails.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMUsersSelectorArg : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMUsersSelectorArgTag` enum type represents the possible tag states with which the
-/// `DBTEAMUsersSelectorArg` union can exist.
+/// The `DBTEAMUsersSelectorArgTag` enum type represents the possible tag states
+/// with which the `DBTEAMUsersSelectorArg` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
   /// List of member IDs.
   DBTEAMUsersSelectorArgTeamMemberIds,
@@ -38,16 +40,16 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBTEAMUsersSelectorArgTag tag;
 
-/// List of member IDs. @note Ensure the `isTeamMemberIds` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// List of member IDs. @note Ensure the `isTeamMemberIds` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull teamMemberIds;
 
-/// List of external user IDs. @note Ensure the `isExternalIds` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// List of external user IDs. @note Ensure the `isExternalIds` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull externalIds;
 
-/// List of email addresses. @note Ensure the `isEmails` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// List of email addresses. @note Ensure the `isEmails` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) NSArray<NSString *> * _Nonnull emails;
 
 #pragma mark - Constructors
@@ -90,8 +92,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "team_member_ids".
 ///
-/// @note Call this method and ensure it returns true before accessing the `teamMemberIds` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamMemberIds` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "team_member_ids".
 ///
@@ -100,8 +102,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "external_ids".
 ///
-/// @note Call this method and ensure it returns true before accessing the `externalIds` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `externalIds` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "external_ids".
 ///
@@ -110,8 +112,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// Retrieves whether the union's current tag state has value "emails".
 ///
-/// @note Call this method and ensure it returns true before accessing the `emails` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `emails` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "emails".
 ///
@@ -138,15 +140,16 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 ///
 /// @param instance An instance of the `DBTEAMUsersSelectorArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMUsersSelectorArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMUsersSelectorArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMUsersSelectorArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMUsersSelectorArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMUsersSelectorArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMUsersSelectorArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMUsersSelectorArg` object.
 ///

@@ -14,15 +14,16 @@
 ///
 /// Actions that may be taken on members of a shared folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGMemberAction : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGMemberActionTag` enum type represents the possible tag states with which the
-/// `DBSHARINGMemberAction` union can exist.
+/// The `DBSHARINGMemberActionTag` enum type represents the possible tag states
+/// with which the `DBSHARINGMemberAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
   /// Allow the member to keep a copy of the folder when removing.
   DBSHARINGMemberActionLeaveACopy,
@@ -55,8 +56,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// Initializes union class with tag state of "leave_a_copy".
 ///
-/// Description of the "leave_a_copy" tag state: Allow the member to keep a copy of the folder when
-/// removing.
+/// Description of the "leave_a_copy" tag state: Allow the member to keep a copy
+/// of the folder when removing.
 ///
 /// @return An initialized instance.
 ///
@@ -65,7 +66,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// Initializes union class with tag state of "make_editor".
 ///
-/// Description of the "make_editor" tag state: Make the member an editor of the folder.
+/// Description of the "make_editor" tag state: Make the member an editor of the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -74,7 +76,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// Initializes union class with tag state of "make_owner".
 ///
-/// Description of the "make_owner" tag state: Make the member an owner of the folder.
+/// Description of the "make_owner" tag state: Make the member an owner of the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -83,7 +86,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// Initializes union class with tag state of "make_viewer".
 ///
-/// Description of the "make_viewer" tag state: Make the member a viewer of the folder.
+/// Description of the "make_viewer" tag state: Make the member a viewer of the
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -92,8 +96,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// Initializes union class with tag state of "make_viewer_no_comment".
 ///
-/// Description of the "make_viewer_no_comment" tag state: Make the member a viewer of the folder
-/// without commenting permissions.
+/// Description of the "make_viewer_no_comment" tag state: Make the member a
+/// viewer of the folder without commenting permissions.
 ///
 /// @return An initialized instance.
 ///
@@ -146,9 +150,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 - (BOOL)isMakeViewer;
 
 ///
-/// Retrieves whether the union's current tag state has value "make_viewer_no_comment".
+/// Retrieves whether the union's current tag state has value
+/// "make_viewer_no_comment".
 ///
-/// @return Whether the union's current tag state has value "make_viewer_no_comment".
+/// @return Whether the union's current tag state has value
+/// "make_viewer_no_comment".
 ///
 - (BOOL)isMakeViewerNoComment;
 
@@ -187,15 +193,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberActionTag) {
 ///
 /// @param instance An instance of the `DBSHARINGMemberAction` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGMemberAction` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGMemberAction` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMemberAction * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGMemberAction` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGMemberAction` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGMemberAction` API object.
 ///
 /// @return An instantiation of the `DBSHARINGMemberAction` object.
 ///

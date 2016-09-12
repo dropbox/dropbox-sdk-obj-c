@@ -16,8 +16,9 @@
 ///
 /// Information about a team member.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGTeamMemberInfo : NSObject <DBSerializable>
 
@@ -29,8 +30,8 @@
 /// The display name of the user.
 @property(nonatomic, readonly, copy) NSString * _Nonnull displayName;
 
-/// ID of user as a member of a team. This field will only be present if the member is in the same
-/// team as current user.
+/// ID of user as a member of a team. This field will only be present if the
+/// member is in the same team as current user.
 @property(nonatomic, readonly) NSString * _Nullable memberId;
 
 #pragma mark - Constructors
@@ -40,8 +41,8 @@
 ///
 /// @param teamInfo Information about the member's team
 /// @param displayName The display name of the user.
-/// @param memberId ID of user as a member of a team. This field will only be present if the member
-/// is in the same team as current user.
+/// @param memberId ID of user as a member of a team. This field will only be
+/// present if the member is in the same team as current user.
 ///
 /// @return An initialized instance.
 ///
@@ -50,7 +51,8 @@
                                 memberId:(NSString * _Nullable)memberId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param teamInfo Information about the member's team
 /// @param displayName The display name of the user.
@@ -73,15 +75,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGTeamMemberInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGTeamMemberInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGTeamMemberInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGTeamMemberInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGTeamMemberInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGTeamMemberInfo` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGTeamMemberInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGTeamMemberInfo` object.
 ///

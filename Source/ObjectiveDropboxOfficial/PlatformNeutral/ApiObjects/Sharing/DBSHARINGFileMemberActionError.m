@@ -5,12 +5,15 @@
 ///
 
 #import "DBSHARINGFileMemberActionError.h"
+#import "DBSHARINGSharingFileAccessError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
 #pragma mark - API Object
 
 @implementation DBSHARINGFileMemberActionError
+
+@synthesize accessError = _accessError;
 
 #pragma mark - Constructors
 
@@ -30,6 +33,15 @@
   return self;
 }
 
+- (instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError *)accessError {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGFileMemberActionErrorAccessError;
+    _accessError = accessError;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -40,6 +52,14 @@
 
 #pragma mark - Instance field accessors
 
+- (DBSHARINGSharingFileAccessError *)accessError {
+  if (![self isAccessError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBSHARINGFileMemberActionErrorAccessError, but was %@.", [self tagName]];
+  }
+  return _accessError;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isInvalidMember {
@@ -48,6 +68,10 @@
 
 - (BOOL)isNoPermission {
   return _tag == DBSHARINGFileMemberActionErrorNoPermission;
+}
+
+- (BOOL)isAccessError {
+  return _tag == DBSHARINGFileMemberActionErrorAccessError;
 }
 
 - (BOOL)isOther {
@@ -60,6 +84,8 @@
     return @"DBSHARINGFileMemberActionErrorInvalidMember";
   case DBSHARINGFileMemberActionErrorNoPermission:
     return @"DBSHARINGFileMemberActionErrorNoPermission";
+  case DBSHARINGFileMemberActionErrorAccessError:
+    return @"DBSHARINGFileMemberActionErrorAccessError";
   case DBSHARINGFileMemberActionErrorOther:
     return @"DBSHARINGFileMemberActionErrorOther";
   }
@@ -96,6 +122,10 @@
     jsonDict[@".tag"] = @"invalid_member";
   } else if ([valueObj isNoPermission]) {
     jsonDict[@".tag"] = @"no_permission";
+  } else if ([valueObj isAccessError]) {
+    jsonDict[@"access_error"] =
+        [[DBSHARINGSharingFileAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
+    jsonDict[@".tag"] = @"access_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -114,6 +144,10 @@
     return [[DBSHARINGFileMemberActionError alloc] initWithInvalidMember];
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGFileMemberActionError alloc] initWithNoPermission];
+  } else if ([tag isEqualToString:@"access_error"]) {
+    DBSHARINGSharingFileAccessError *accessError =
+        [DBSHARINGSharingFileAccessErrorSerializer deserialize:valueDict[@"access_error"]];
+    return [[DBSHARINGFileMemberActionError alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileMemberActionError alloc] initWithOther];
   }

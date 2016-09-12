@@ -12,18 +12,19 @@
 ///
 /// The `MembersUnsuspendError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersUnsuspendError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMMembersUnsuspendErrorTag` enum type represents the possible tag states with which the
-/// `DBTEAMMembersUnsuspendError` union can exist.
+/// The `DBTEAMMembersUnsuspendErrorTag` enum type represents the possible tag
+/// states with which the `DBTEAMMembersUnsuspendError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
-  /// No matching user found. The provided team_member_id, email, or external_id does not exist on
-  /// this team.
+  /// No matching user found. The provided team_member_id, email, or
+  /// external_id does not exist on this team.
   DBTEAMMembersUnsuspendErrorUserNotFound,
 
   /// The user is not a member of the team.
@@ -48,8 +49,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_found".
 ///
-/// Description of the "user_not_found" tag state: No matching user found. The provided
-/// team_member_id, email, or external_id does not exist on this team.
+/// Description of the "user_not_found" tag state: No matching user found. The
+/// provided team_member_id, email, or external_id does not exist on this team.
 ///
 /// @return An initialized instance.
 ///
@@ -58,7 +59,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 ///
 /// Initializes union class with tag state of "user_not_in_team".
 ///
-/// Description of the "user_not_in_team" tag state: The user is not a member of the team.
+/// Description of the "user_not_in_team" tag state: The user is not a member of
+/// the team.
 ///
 /// @return An initialized instance.
 ///
@@ -74,8 +76,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 ///
 /// Initializes union class with tag state of "unsuspend_non_suspended_member".
 ///
-/// Description of the "unsuspend_non_suspended_member" tag state: The user is unsuspended, so it
-/// cannot be unsuspended again.
+/// Description of the "unsuspend_non_suspended_member" tag state: The user is
+/// unsuspended, so it cannot be unsuspended again.
 ///
 /// @return An initialized instance.
 ///
@@ -84,8 +86,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 ///
 /// Initializes union class with tag state of "team_license_limit".
 ///
-/// Description of the "team_license_limit" tag state: Team is full. The organization has no
-/// available licenses.
+/// Description of the "team_license_limit" tag state: Team is full. The
+/// organization has no available licenses.
 ///
 /// @return An initialized instance.
 ///
@@ -101,7 +103,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 - (BOOL)isUserNotFound;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_not_in_team".
+/// Retrieves whether the union's current tag state has value
+/// "user_not_in_team".
 ///
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
@@ -115,16 +118,20 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value "unsuspend_non_suspended_member".
+/// Retrieves whether the union's current tag state has value
+/// "unsuspend_non_suspended_member".
 ///
-/// @return Whether the union's current tag state has value "unsuspend_non_suspended_member".
+/// @return Whether the union's current tag state has value
+/// "unsuspend_non_suspended_member".
 ///
 - (BOOL)isUnsuspendNonSuspendedMember;
 
 ///
-/// Retrieves whether the union's current tag state has value "team_license_limit".
+/// Retrieves whether the union's current tag state has value
+/// "team_license_limit".
 ///
-/// @return Whether the union's current tag state has value "team_license_limit".
+/// @return Whether the union's current tag state has value
+/// "team_license_limit".
 ///
 - (BOOL)isTeamLicenseLimit;
 
@@ -149,16 +156,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersUnsuspendErrorTag) {
 ///
 /// @param instance An instance of the `DBTEAMMembersUnsuspendError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersUnsuspendError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersUnsuspendError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersUnsuspendError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersUnsuspendError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersUnsuspendError` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersUnsuspendError` object.
 ///

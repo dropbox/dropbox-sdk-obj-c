@@ -14,8 +14,9 @@
 ///
 /// The `SearchArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSearchArg : NSObject <DBSerializable>
 
@@ -24,9 +25,9 @@
 /// The path in the user's Dropbox to search. Should probably be a folder.
 @property(nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// The string to search for. The search string is split on spaces into multiple tokens. For file
-/// name searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but
-/// not "batman car").
+/// The string to search for. The search string is split on spaces into multiple
+/// tokens. For file name searching, the last token is used for prefix matching
+/// (i.e. "bat c" matches "bat cave" but not "batman car").
 @property(nonatomic, readonly, copy) NSString * _Nonnull query;
 
 /// The starting index within the search results (used for paging).
@@ -35,8 +36,8 @@
 /// The maximum number of search results to return.
 @property(nonatomic, readonly) NSNumber * _Nonnull maxResults;
 
-/// The search mode (filename, filename_and_content, or deleted_filename). Note that searching file
-/// content is only available for Dropbox Business accounts.
+/// The search mode (filename, filename_and_content, or deleted_filename). Note
+/// that searching file content is only available for Dropbox Business accounts.
 @property(nonatomic, readonly) DBFILESSearchMode * _Nonnull mode;
 
 #pragma mark - Constructors
@@ -44,14 +45,16 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param path The path in the user's Dropbox to search. Should probably be a folder.
-/// @param query The string to search for. The search string is split on spaces into multiple
-/// tokens. For file name searching, the last token is used for prefix matching (i.e. "bat c"
-/// matches "bat cave" but not "batman car").
+/// @param path The path in the user's Dropbox to search. Should probably be a
+/// folder.
+/// @param query The string to search for. The search string is split on spaces
+/// into multiple tokens. For file name searching, the last token is used for
+/// prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
 /// @param start The starting index within the search results (used for paging).
 /// @param maxResults The maximum number of search results to return.
-/// @param mode The search mode (filename, filename_and_content, or deleted_filename). Note that
-/// searching file content is only available for Dropbox Business accounts.
+/// @param mode The search mode (filename, filename_and_content, or
+/// deleted_filename). Note that searching file content is only available for
+/// Dropbox Business accounts.
 ///
 /// @return An initialized instance.
 ///
@@ -62,12 +65,14 @@
                                 mode:(DBFILESSearchMode * _Nullable)mode;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param path The path in the user's Dropbox to search. Should probably be a folder.
-/// @param query The string to search for. The search string is split on spaces into multiple
-/// tokens. For file name searching, the last token is used for prefix matching (i.e. "bat c"
-/// matches "bat cave" but not "batman car").
+/// @param path The path in the user's Dropbox to search. Should probably be a
+/// folder.
+/// @param query The string to search for. The search string is split on spaces
+/// into multiple tokens. For file name searching, the last token is used for
+/// prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
 ///
 /// @return An initialized instance.
 ///
@@ -87,14 +92,16 @@
 ///
 /// @param instance An instance of the `DBFILESSearchArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESSearchArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSearchArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSearchArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSearchArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSearchArg` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSearchArg` API object.
 ///
 /// @return An instantiation of the `DBFILESSearchArg` object.
 ///

@@ -12,8 +12,9 @@
 ///
 /// The `TransferFolderArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGTransferFolderArg : NSObject <DBSerializable>
 
@@ -52,16 +53,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGTransferFolderArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGTransferFolderArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGTransferFolderArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGTransferFolderArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGTransferFolderArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGTransferFolderArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGTransferFolderArg` API object.
 ///
 /// @return An instantiation of the `DBSHARINGTransferFolderArg` object.
 ///

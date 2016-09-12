@@ -9,8 +9,8 @@
 @class DBRoute;
 
 ///
-/// Stone route objects for the Auth namespace. Each route in the Auth namespace has its own static
-/// object, which contains information about the route.
+/// Stone route objects for the Auth namespace. Each route in the Auth namespace
+/// has its own static object, which contains information about the route.
 ///
 @interface DBAUTHRouteObjects : NSObject
 

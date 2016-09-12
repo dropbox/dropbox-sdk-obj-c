@@ -18,8 +18,9 @@
 ///
 /// The metadata of a shared link
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedLinkMetadata : NSObject <DBSerializable>
 
@@ -37,19 +38,21 @@
 /// Expiration time, if set. By default the link won't expire.
 @property(nonatomic, readonly) NSDate * _Nullable expires;
 
-/// The lowercased full path in the user's Dropbox. This always starts with a slash. This field will
-/// only be present only if the linked file is in the authenticated user's  dropbox.
+/// The lowercased full path in the user's Dropbox. This always starts with a
+/// slash. This field will only be present only if the linked file is in the
+/// authenticated user's  dropbox.
 @property(nonatomic, readonly) NSString * _Nullable pathLower;
 
 /// The link's access permissions.
 @property(nonatomic, readonly) DBSHARINGLinkPermissions * _Nonnull linkPermissions;
 
-/// The team membership information of the link's owner.  This field will only be present  if the
-/// link's owner is a team member.
+/// The team membership information of the link's owner.  This field will only
+/// be present  if the link's owner is a team member.
 @property(nonatomic, readonly) DBSHARINGTeamMemberInfo * _Nullable teamMemberInfo;
 
-/// The team information of the content's owner. This field will only be present if the content's
-/// owner is a team member and the content's owner team is different from the link's owner team.
+/// The team information of the content's owner. This field will only be present
+/// if the content's owner is a team member and the content's owner team is
+/// different from the link's owner team.
 @property(nonatomic, readonly) DBUSERSTeam * _Nullable contentOwnerTeamInfo;
 
 #pragma mark - Constructors
@@ -58,18 +61,19 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param url URL of the shared link.
-/// @param name The linked file name (including extension). This never contains a slash.
+/// @param name The linked file name (including extension). This never contains
+/// a slash.
 /// @param linkPermissions The link's access permissions.
 /// @param id_ A unique identifier for the linked file.
 /// @param expires Expiration time, if set. By default the link won't expire.
-/// @param pathLower The lowercased full path in the user's Dropbox. This always starts with a
-/// slash. This field will only be present only if the linked file is in the authenticated user's
-/// dropbox.
-/// @param teamMemberInfo The team membership information of the link's owner.  This field will only
-/// be present  if the link's owner is a team member.
-/// @param contentOwnerTeamInfo The team information of the content's owner. This field will only be
-/// present if the content's owner is a team member and the content's owner team is different from
-/// the link's owner team.
+/// @param pathLower The lowercased full path in the user's Dropbox. This always
+/// starts with a slash. This field will only be present only if the linked file
+/// is in the authenticated user's  dropbox.
+/// @param teamMemberInfo The team membership information of the link's owner.
+/// This field will only be present  if the link's owner is a team member.
+/// @param contentOwnerTeamInfo The team information of the content's owner.
+/// This field will only be present if the content's owner is a team member and
+/// the content's owner team is different from the link's owner team.
 ///
 /// @return An initialized instance.
 ///
@@ -83,10 +87,12 @@
                contentOwnerTeamInfo:(DBUSERSTeam * _Nullable)contentOwnerTeamInfo;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param url URL of the shared link.
-/// @param name The linked file name (including extension). This never contains a slash.
+/// @param name The linked file name (including extension). This never contains
+/// a slash.
 /// @param linkPermissions The link's access permissions.
 ///
 /// @return An initialized instance.
@@ -109,16 +115,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGSharedLinkMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkMetadata` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkMetadata` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedLinkMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedLinkMetadata` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkMetadata` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharedLinkMetadata` object.
 ///

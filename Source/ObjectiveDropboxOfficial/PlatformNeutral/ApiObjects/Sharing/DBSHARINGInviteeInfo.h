@@ -14,15 +14,16 @@
 ///
 /// Information about the recipient of a shared content invitation.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGInviteeInfo : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGInviteeInfoTag` enum type represents the possible tag states with which the
-/// `DBSHARINGInviteeInfo` union can exist.
+/// The `DBSHARINGInviteeInfoTag` enum type represents the possible tag states
+/// with which the `DBSHARINGInviteeInfo` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGInviteeInfoTag) {
   /// E-mail address of invited user.
   DBSHARINGInviteeInfoEmail,
@@ -35,8 +36,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGInviteeInfoTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGInviteeInfoTag tag;
 
-/// E-mail address of invited user. @note Ensure the `isEmail` method returns true before accessing,
-/// otherwise a runtime exception will be raised.
+/// E-mail address of invited user. @note Ensure the `isEmail` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property(nonatomic, readonly, copy) NSString * _Nonnull email;
 
 #pragma mark - Constructors
@@ -64,8 +65,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGInviteeInfoTag) {
 ///
 /// Retrieves whether the union's current tag state has value "email".
 ///
-/// @note Call this method and ensure it returns true before accessing the `email` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `email` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "email".
 ///
@@ -99,15 +100,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGInviteeInfoTag) {
 ///
 /// @param instance An instance of the `DBSHARINGInviteeInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGInviteeInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGInviteeInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGInviteeInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGInviteeInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGInviteeInfo` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGInviteeInfo` API object.
 ///
 /// @return An instantiation of the `DBSHARINGInviteeInfo` object.
 ///

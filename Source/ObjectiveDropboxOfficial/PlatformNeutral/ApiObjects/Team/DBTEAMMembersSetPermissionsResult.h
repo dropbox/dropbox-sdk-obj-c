@@ -14,8 +14,9 @@
 ///
 /// The `MembersSetPermissionsResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersSetPermissionsResult : NSObject <DBSerializable>
 
@@ -32,7 +33,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param teamMemberId The member ID of the user to which the change was applied.
+/// @param teamMemberId The member ID of the user to which the change was
+/// applied.
 /// @param role The role after the change.
 ///
 /// @return An initialized instance.
@@ -51,10 +53,11 @@
 ///
 /// Serializes `DBTEAMMembersSetPermissionsResult` instances.
 ///
-/// @param instance An instance of the `DBTEAMMembersSetPermissionsResult` API object.
+/// @param instance An instance of the `DBTEAMMembersSetPermissionsResult` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersSetPermissionsResult`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersSetPermissionsResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersSetPermissionsResult * _Nonnull)instance;
 

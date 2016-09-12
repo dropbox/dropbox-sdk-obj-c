@@ -14,8 +14,9 @@
 ///
 /// The `RevokeDeviceSessionStatus` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMRevokeDeviceSessionStatus : NSObject <DBSerializable>
 
@@ -41,7 +42,8 @@
                               errorType:(DBTEAMRevokeDeviceSessionError * _Nullable)errorType;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param success Result of the revoking request
 ///
@@ -61,18 +63,19 @@
 ///
 /// Serializes `DBTEAMRevokeDeviceSessionStatus` instances.
 ///
-/// @param instance An instance of the `DBTEAMRevokeDeviceSessionStatus` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionStatus` API
+/// @param instance An instance of the `DBTEAMRevokeDeviceSessionStatus` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionStatus` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMRevokeDeviceSessionStatus * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMRevokeDeviceSessionStatus` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMRevokeDeviceSessionStatus`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMRevokeDeviceSessionStatus` API object.
 ///
 /// @return An instantiation of the `DBTEAMRevokeDeviceSessionStatus` object.
 ///

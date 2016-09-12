@@ -14,8 +14,9 @@
 ///
 /// Information on linked third party applications
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMApiApp : NSObject <DBSerializable>
 
@@ -61,7 +62,8 @@
                                linked:(NSDate * _Nullable)linked;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param appId The application unique id
 /// @param appName The application name
@@ -87,14 +89,16 @@
 ///
 /// @param instance An instance of the `DBTEAMApiApp` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMApiApp` API object.
+/// @return A json-compatible dictionary representation of the `DBTEAMApiApp`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMApiApp * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMApiApp` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMApiApp` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMApiApp` API object.
 ///
 /// @return An instantiation of the `DBTEAMApiApp` object.
 ///

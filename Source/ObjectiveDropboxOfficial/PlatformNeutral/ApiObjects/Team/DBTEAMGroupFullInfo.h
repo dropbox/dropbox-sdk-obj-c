@@ -18,8 +18,9 @@
 ///
 /// Full description of a group.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupFullInfo : DBTEAMCOMMONGroupSummary <DBSerializable>
 
@@ -28,7 +29,8 @@
 /// List of group members.
 @property(nonatomic, readonly) NSArray<DBTEAMGroupMemberInfo *> * _Nullable members;
 
-/// The group creation time as a UTC timestamp in milliseconds since the Unix epoch.
+/// The group creation time as a UTC timestamp in milliseconds since the Unix
+/// epoch.
 @property(nonatomic, readonly) NSNumber * _Nonnull created;
 
 #pragma mark - Constructors
@@ -39,9 +41,10 @@
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
-/// @param created The group creation time as a UTC timestamp in milliseconds since the Unix epoch.
-/// @param groupExternalId External ID of group. This is an arbitrary ID that an admin can attach to
-/// a group.
+/// @param created The group creation time as a UTC timestamp in milliseconds
+/// since the Unix epoch.
+/// @param groupExternalId External ID of group. This is an arbitrary ID that an
+/// admin can attach to a group.
 /// @param memberCount The number of members in the group.
 /// @param members List of group members.
 ///
@@ -56,12 +59,14 @@
                                   members:(NSArray<DBTEAMGroupMemberInfo *> * _Nullable)members;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param groupName (no description).
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
-/// @param created The group creation time as a UTC timestamp in milliseconds since the Unix epoch.
+/// @param created The group creation time as a UTC timestamp in milliseconds
+/// since the Unix epoch.
 ///
 /// @return An initialized instance.
 ///
@@ -84,14 +89,16 @@
 ///
 /// @param instance An instance of the `DBTEAMGroupFullInfo` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupFullInfo` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupFullInfo` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupFullInfo * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupFullInfo` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupFullInfo` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupFullInfo` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupFullInfo` object.
 ///

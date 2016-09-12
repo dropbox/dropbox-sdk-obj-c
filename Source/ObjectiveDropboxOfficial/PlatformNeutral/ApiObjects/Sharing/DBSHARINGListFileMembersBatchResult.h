@@ -16,8 +16,9 @@
 ///
 /// Per-file result for `listFileMembersBatch`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGListFileMembersBatchResult : NSObject <DBSerializable>
 
@@ -54,10 +55,11 @@
 ///
 /// Serializes `DBSHARINGListFileMembersBatchResult` instances.
 ///
-/// @param instance An instance of the `DBSHARINGListFileMembersBatchResult` API object.
+/// @param instance An instance of the `DBSHARINGListFileMembersBatchResult` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGListFileMembersBatchResult`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGListFileMembersBatchResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGListFileMembersBatchResult * _Nonnull)instance;
 
@@ -67,7 +69,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBSHARINGListFileMembersBatchResult` API object.
 ///
-/// @return An instantiation of the `DBSHARINGListFileMembersBatchResult` object.
+/// @return An instantiation of the `DBSHARINGListFileMembersBatchResult`
+/// object.
 ///
 + (DBSHARINGListFileMembersBatchResult * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

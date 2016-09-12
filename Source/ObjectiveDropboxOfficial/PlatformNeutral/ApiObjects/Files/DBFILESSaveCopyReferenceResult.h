@@ -14,8 +14,9 @@
 ///
 /// The `SaveCopyReferenceResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESSaveCopyReferenceResult : NSObject <DBSerializable>
 
@@ -29,7 +30,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param metadata The metadata of the saved file or folder in the user's Dropbox.
+/// @param metadata The metadata of the saved file or folder in the user's
+/// Dropbox.
 ///
 /// @return An initialized instance.
 ///
@@ -47,18 +49,19 @@
 ///
 /// Serializes `DBFILESSaveCopyReferenceResult` instances.
 ///
-/// @param instance An instance of the `DBFILESSaveCopyReferenceResult` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceResult` API
+/// @param instance An instance of the `DBFILESSaveCopyReferenceResult` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESSaveCopyReferenceResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESSaveCopyReferenceResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESSaveCopyReferenceResult`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESSaveCopyReferenceResult` API object.
 ///
 /// @return An instantiation of the `DBFILESSaveCopyReferenceResult` object.
 ///

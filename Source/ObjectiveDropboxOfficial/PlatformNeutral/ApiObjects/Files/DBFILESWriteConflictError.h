@@ -12,15 +12,16 @@
 ///
 /// The `WriteConflictError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESWriteConflictError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESWriteConflictErrorTag` enum type represents the possible tag states with which the
-/// `DBFILESWriteConflictError` union can exist.
+/// The `DBFILESWriteConflictErrorTag` enum type represents the possible tag
+/// states with which the `DBFILESWriteConflictError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
   /// There's a file in the way.
   DBFILESWriteConflictErrorFile,
@@ -28,7 +29,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
   /// There's a folder in the way.
   DBFILESWriteConflictErrorFolder,
 
-  /// There's a file at an ancestor path, so we couldn't create the required parent folders.
+  /// There's a file at an ancestor path, so we couldn't create the required
+  /// parent folders.
   DBFILESWriteConflictErrorFileAncestor,
 
   /// (no description).
@@ -62,8 +64,8 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// Initializes union class with tag state of "file_ancestor".
 ///
-/// Description of the "file_ancestor" tag state: There's a file at an ancestor path, so we couldn't
-/// create the required parent folders.
+/// Description of the "file_ancestor" tag state: There's a file at an ancestor
+/// path, so we couldn't create the required parent folders.
 ///
 /// @return An initialized instance.
 ///
@@ -127,16 +129,16 @@ typedef NS_ENUM(NSInteger, DBFILESWriteConflictErrorTag) {
 ///
 /// @param instance An instance of the `DBFILESWriteConflictError` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESWriteConflictError` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESWriteConflictError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESWriteConflictError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESWriteConflictError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESWriteConflictError` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESWriteConflictError` API object.
 ///
 /// @return An instantiation of the `DBFILESWriteConflictError` object.
 ///

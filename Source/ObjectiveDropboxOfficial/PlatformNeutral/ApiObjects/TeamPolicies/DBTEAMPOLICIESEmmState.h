@@ -12,15 +12,16 @@
 ///
 /// The `EmmState` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMPOLICIESEmmState : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMPOLICIESEmmStateTag` enum type represents the possible tag states with which the
-/// `DBTEAMPOLICIESEmmState` union can exist.
+/// The `DBTEAMPOLICIESEmmStateTag` enum type represents the possible tag states
+/// with which the `DBTEAMPOLICIESEmmState` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMPOLICIESEmmStateTag) {
   /// Emm token is disabled
   DBTEAMPOLICIESEmmStateDisabled,
@@ -126,15 +127,16 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESEmmStateTag) {
 ///
 /// @param instance An instance of the `DBTEAMPOLICIESEmmState` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMPOLICIESEmmState` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESEmmState` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMPOLICIESEmmState * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMPOLICIESEmmState` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMPOLICIESEmmState` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMPOLICIESEmmState` API object.
 ///
 /// @return An instantiation of the `DBTEAMPOLICIESEmmState` object.
 ///

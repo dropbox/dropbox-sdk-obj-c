@@ -15,22 +15,26 @@
 ///
 /// The `MembersRemoveArg` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersRemoveArg : DBTEAMMembersDeactivateArg <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// If provided, files from the deleted member account will be transferred to this user.
+/// If provided, files from the deleted member account will be transferred to
+/// this user.
 @property(nonatomic, readonly) DBTEAMUserSelectorArg * _Nullable transferDestId;
 
-/// If provided, errors during the transfer process will be sent via email to this user. If the
-/// transfer_dest_id argument was provided, then this argument must be provided as well.
+/// If provided, errors during the transfer process will be sent via email to
+/// this user. If the transfer_dest_id argument was provided, then this argument
+/// must be provided as well.
 @property(nonatomic, readonly) DBTEAMUserSelectorArg * _Nullable transferAdminId;
 
-/// Downgrade the member to a Basic account. The user will retain the email address associated with
-/// their Dropbox  account and data in their account that is not restricted to team members.
+/// Downgrade the member to a Basic account. The user will retain the email
+/// address associated with their Dropbox  account and data in their account
+/// that is not restricted to team members.
 @property(nonatomic, readonly) NSNumber * _Nonnull keepAccount;
 
 #pragma mark - Constructors
@@ -39,16 +43,16 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of user to remove/suspend.
-/// @param wipeData If provided, controls if the user's data will be deleted on their linked
-/// devices.
-/// @param transferDestId If provided, files from the deleted member account will be transferred to
-/// this user.
-/// @param transferAdminId If provided, errors during the transfer process will be sent via email to
-/// this user. If the transfer_dest_id argument was provided, then this argument must be provided as
-/// well.
-/// @param keepAccount Downgrade the member to a Basic account. The user will retain the email
-/// address associated with their Dropbox  account and data in their account that is not restricted
-/// to team members.
+/// @param wipeData If provided, controls if the user's data will be deleted on
+/// their linked devices.
+/// @param transferDestId If provided, files from the deleted member account
+/// will be transferred to this user.
+/// @param transferAdminId If provided, errors during the transfer process will
+/// be sent via email to this user. If the transfer_dest_id argument was
+/// provided, then this argument must be provided as well.
+/// @param keepAccount Downgrade the member to a Basic account. The user will
+/// retain the email address associated with their Dropbox  account and data in
+/// their account that is not restricted to team members.
 ///
 /// @return An initialized instance.
 ///
@@ -59,7 +63,8 @@
                          keepAccount:(NSNumber * _Nullable)keepAccount;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param user Identity of user to remove/suspend.
 ///
@@ -81,15 +86,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersRemoveArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersRemoveArg` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersRemoveArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersRemoveArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersRemoveArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersRemoveArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersRemoveArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersRemoveArg` object.
 ///

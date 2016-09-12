@@ -14,15 +14,17 @@
 ///
 /// The `SharedFolderMemberError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedFolderMemberError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGSharedFolderMemberErrorTag` enum type represents the possible tag states with
-/// which the `DBSHARINGSharedFolderMemberError` union can exist.
+/// The `DBSHARINGSharedFolderMemberErrorTag` enum type represents the possible
+/// tag states with which the `DBSHARINGSharedFolderMemberError` union can
+/// exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
   /// The target dropbox_id is invalid.
   DBSHARINGSharedFolderMemberErrorInvalidDropboxId,
@@ -41,9 +43,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBSHARINGSharedFolderMemberErrorTag tag;
 
-/// The target member only has inherited access to the shared folder. @note Ensure the
-/// `isNoExplicitAccess` method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// The target member only has inherited access to the shared folder. @note
+/// Ensure the `isNoExplicitAccess` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
 @property(nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 #pragma mark - Constructors
@@ -51,7 +53,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "invalid_dropbox_id".
 ///
-/// Description of the "invalid_dropbox_id" tag state: The target dropbox_id is invalid.
+/// Description of the "invalid_dropbox_id" tag state: The target dropbox_id is
+/// invalid.
 ///
 /// @return An initialized instance.
 ///
@@ -60,8 +63,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "not_a_member".
 ///
-/// Description of the "not_a_member" tag state: The target dropbox_id is not a member of the shared
-/// folder.
+/// Description of the "not_a_member" tag state: The target dropbox_id is not a
+/// member of the shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -70,10 +73,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// Initializes union class with tag state of "no_explicit_access".
 ///
-/// Description of the "no_explicit_access" tag state: The target member only has inherited access
-/// to the shared folder.
+/// Description of the "no_explicit_access" tag state: The target member only
+/// has inherited access to the shared folder.
 ///
-/// @param noExplicitAccess The target member only has inherited access to the shared folder.
+/// @param noExplicitAccess The target member only has inherited access to the
+/// shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -89,9 +93,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 #pragma mark - Tag state methods
 
 ///
-/// Retrieves whether the union's current tag state has value "invalid_dropbox_id".
+/// Retrieves whether the union's current tag state has value
+/// "invalid_dropbox_id".
 ///
-/// @return Whether the union's current tag state has value "invalid_dropbox_id".
+/// @return Whether the union's current tag state has value
+/// "invalid_dropbox_id".
 ///
 - (BOOL)isInvalidDropboxId;
 
@@ -103,12 +109,14 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 - (BOOL)isNotAMember;
 
 ///
-/// Retrieves whether the union's current tag state has value "no_explicit_access".
+/// Retrieves whether the union's current tag state has value
+/// "no_explicit_access".
 ///
-/// @note Call this method and ensure it returns true before accessing the `noExplicitAccess`
-/// property, otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `noExplicitAccess` property, otherwise a runtime exception will be thrown.
 ///
-/// @return Whether the union's current tag state has value "no_explicit_access".
+/// @return Whether the union's current tag state has value
+/// "no_explicit_access".
 ///
 - (BOOL)isNoExplicitAccess;
 
@@ -138,10 +146,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedFolderMemberErrorTag) {
 ///
 /// Serializes `DBSHARINGSharedFolderMemberError` instances.
 ///
-/// @param instance An instance of the `DBSHARINGSharedFolderMemberError` API object.
+/// @param instance An instance of the `DBSHARINGSharedFolderMemberError` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedFolderMemberError`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedFolderMemberError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedFolderMemberError * _Nonnull)instance;
 

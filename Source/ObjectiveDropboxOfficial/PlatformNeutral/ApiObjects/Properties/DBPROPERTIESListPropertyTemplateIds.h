@@ -12,8 +12,9 @@
 ///
 /// The `ListPropertyTemplateIds` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBPROPERTIESListPropertyTemplateIds : NSObject <DBSerializable>
 
@@ -27,7 +28,8 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param templateIds List of identifiers for templates added by route properties/template/add.
+/// @param templateIds List of identifiers for templates added by route
+/// properties/template/add.
 ///
 /// @return An initialized instance.
 ///
@@ -45,10 +47,11 @@
 ///
 /// Serializes `DBPROPERTIESListPropertyTemplateIds` instances.
 ///
-/// @param instance An instance of the `DBPROPERTIESListPropertyTemplateIds` API object.
+/// @param instance An instance of the `DBPROPERTIESListPropertyTemplateIds` API
+/// object.
 ///
-/// @return A json-compatible dictionary representation of the `DBPROPERTIESListPropertyTemplateIds`
-/// API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBPROPERTIESListPropertyTemplateIds` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBPROPERTIESListPropertyTemplateIds * _Nonnull)instance;
 
@@ -58,7 +61,8 @@
 /// @param dict A json-compatible dictionary representation of the
 /// `DBPROPERTIESListPropertyTemplateIds` API object.
 ///
-/// @return An instantiation of the `DBPROPERTIESListPropertyTemplateIds` object.
+/// @return An instantiation of the `DBPROPERTIESListPropertyTemplateIds`
+/// object.
 ///
 + (DBPROPERTIESListPropertyTemplateIds * _Nonnull)deserialize:(NSDictionary * _Nonnull)dict;
 

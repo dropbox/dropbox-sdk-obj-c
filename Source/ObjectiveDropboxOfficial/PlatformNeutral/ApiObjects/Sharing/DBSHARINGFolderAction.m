@@ -94,6 +94,14 @@
   return self;
 }
 
+- (instancetype)initWithCreateLink {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGFolderActionCreateLink;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -146,6 +154,10 @@
   return _tag == DBSHARINGFolderActionShareLink;
 }
 
+- (BOOL)isCreateLink {
+  return _tag == DBSHARINGFolderActionCreateLink;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGFolderActionOther;
 }
@@ -172,6 +184,8 @@
     return @"DBSHARINGFolderActionLeaveACopy";
   case DBSHARINGFolderActionShareLink:
     return @"DBSHARINGFolderActionShareLink";
+  case DBSHARINGFolderActionCreateLink:
+    return @"DBSHARINGFolderActionCreateLink";
   case DBSHARINGFolderActionOther:
     return @"DBSHARINGFolderActionOther";
   }
@@ -224,6 +238,8 @@
     jsonDict[@".tag"] = @"leave_a_copy";
   } else if ([valueObj isShareLink]) {
     jsonDict[@".tag"] = @"share_link";
+  } else if ([valueObj isCreateLink]) {
+    jsonDict[@".tag"] = @"create_link";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -258,6 +274,8 @@
     return [[DBSHARINGFolderAction alloc] initWithLeaveACopy];
   } else if ([tag isEqualToString:@"share_link"]) {
     return [[DBSHARINGFolderAction alloc] initWithShareLink];
+  } else if ([tag isEqualToString:@"create_link"]) {
+    return [[DBSHARINGFolderAction alloc] initWithCreateLink];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFolderAction alloc] initWithOther];
   }

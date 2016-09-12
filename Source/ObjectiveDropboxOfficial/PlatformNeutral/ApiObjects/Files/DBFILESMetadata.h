@@ -14,24 +14,27 @@
 ///
 /// Metadata for a file or folder.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESMetadata : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The last component of the path (including extension). This never contains a slash.
+/// The last component of the path (including extension). This never contains a
+/// slash.
 @property(nonatomic, readonly, copy) NSString * _Nonnull name;
 
-/// The lowercased full path in the user's Dropbox. This always starts with a slash. This field will
-/// be null if the file or folder is not mounted.
+/// The lowercased full path in the user's Dropbox. This always starts with a
+/// slash. This field will be null if the file or folder is not mounted.
 @property(nonatomic, readonly) NSString * _Nullable pathLower;
 
-/// The cased path to be used for display purposes only. In rare instances the casing will not
-/// correctly match the user's filesystem, but this behavior will match the path provided in the
-/// Core API v1. Changes to the casing of paths won't be returned by `listFolderContinue`. This
-/// field will be null if the file or folder is not mounted.
+/// The cased path to be used for display purposes only. In rare instances the
+/// casing will not correctly match the user's filesystem, but this behavior
+/// will match the path provided in the Core API v1. Changes to the casing of
+/// paths won't be returned by `listFolderContinue`. This field will be null if
+/// the file or folder is not mounted.
 @property(nonatomic, readonly) NSString * _Nullable pathDisplay;
 
 /// Deprecated. Please use `parentSharedFolderId` in `DBFILESFileSharingInfo` or
@@ -43,15 +46,19 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param name The last component of the path (including extension). This never contains a slash.
-/// @param pathLower The lowercased full path in the user's Dropbox. This always starts with a
-/// slash. This field will be null if the file or folder is not mounted.
-/// @param pathDisplay The cased path to be used for display purposes only. In rare instances the
-/// casing will not correctly match the user's filesystem, but this behavior will match the path
-/// provided in the Core API v1. Changes to the casing of paths won't be returned by
-/// `listFolderContinue`. This field will be null if the file or folder is not mounted.
+/// @param name The last component of the path (including extension). This never
+/// contains a slash.
+/// @param pathLower The lowercased full path in the user's Dropbox. This always
+/// starts with a slash. This field will be null if the file or folder is not
+/// mounted.
+/// @param pathDisplay The cased path to be used for display purposes only. In
+/// rare instances the casing will not correctly match the user's filesystem,
+/// but this behavior will match the path provided in the Core API v1. Changes
+/// to the casing of paths won't be returned by `listFolderContinue`. This field
+/// will be null if the file or folder is not mounted.
 /// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
-/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
+/// `DBFILESFileSharingInfo` or `parentSharedFolderId` in
+/// `DBFILESFolderSharingInfo` instead.
 ///
 /// @return An initialized instance.
 ///
@@ -61,9 +68,11 @@
                 parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
-/// @param name The last component of the path (including extension). This never contains a slash.
+/// @param name The last component of the path (including extension). This never
+/// contains a slash.
 ///
 /// @return An initialized instance.
 ///
@@ -83,14 +92,16 @@
 ///
 /// @param instance An instance of the `DBFILESMetadata` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESMetadata` API object.
+/// @return A json-compatible dictionary representation of the `DBFILESMetadata`
+/// API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESMetadata * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESMetadata` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESMetadata` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESMetadata` API object.
 ///
 /// @return An instantiation of the `DBFILESMetadata` object.
 ///

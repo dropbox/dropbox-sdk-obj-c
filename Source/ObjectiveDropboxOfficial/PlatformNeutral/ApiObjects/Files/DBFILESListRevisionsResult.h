@@ -14,8 +14,9 @@
 ///
 /// The `ListRevisionsResult` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESListRevisionsResult : NSObject <DBSerializable>
 
@@ -33,7 +34,8 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param isDeleted If the file is deleted.
-/// @param entries The revisions for the file. Only non-delete revisions will show up here.
+/// @param entries The revisions for the file. Only non-delete revisions will
+/// show up here.
 ///
 /// @return An initialized instance.
 ///
@@ -54,16 +56,16 @@
 ///
 /// @param instance An instance of the `DBFILESListRevisionsResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBFILESListRevisionsResult` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESListRevisionsResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESListRevisionsResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESListRevisionsResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESListRevisionsResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESListRevisionsResult` API object.
 ///
 /// @return An instantiation of the `DBFILESListRevisionsResult` object.
 ///

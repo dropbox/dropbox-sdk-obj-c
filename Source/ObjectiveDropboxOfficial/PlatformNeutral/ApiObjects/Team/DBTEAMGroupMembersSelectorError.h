@@ -12,18 +12,19 @@
 ///
 /// The `GroupMembersSelectorError` union.
 ///
-/// Error that can be raised when GroupMembersSelector is used, and the users are required to be
-/// members of the specified group.
+/// Error that can be raised when GroupMembersSelector is used, and the users
+/// are required to be members of the specified group.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMGroupMembersSelectorError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMGroupMembersSelectorErrorTag` enum type represents the possible tag states with which
-/// the `DBTEAMGroupMembersSelectorError` union can exist.
+/// The `DBTEAMGroupMembersSelectorErrorTag` enum type represents the possible
+/// tag states with which the `DBTEAMGroupMembersSelectorError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupMembersSelectorErrorTag) {
   /// No matching group found. No groups match the specified group ID.
   DBTEAMGroupMembersSelectorErrorGroupNotFound,
@@ -44,8 +45,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersSelectorErrorTag) {
 ///
 /// Initializes union class with tag state of "group_not_found".
 ///
-/// Description of the "group_not_found" tag state: No matching group found. No groups match the
-/// specified group ID.
+/// Description of the "group_not_found" tag state: No matching group found. No
+/// groups match the specified group ID.
 ///
 /// @return An initialized instance.
 ///
@@ -61,8 +62,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersSelectorErrorTag) {
 ///
 /// Initializes union class with tag state of "member_not_in_group".
 ///
-/// Description of the "member_not_in_group" tag state: At least one of the specified users is not a
-/// member of the group.
+/// Description of the "member_not_in_group" tag state: At least one of the
+/// specified users is not a member of the group.
 ///
 /// @return An initialized instance.
 ///
@@ -85,9 +86,11 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersSelectorErrorTag) {
 - (BOOL)isOther;
 
 ///
-/// Retrieves whether the union's current tag state has value "member_not_in_group".
+/// Retrieves whether the union's current tag state has value
+/// "member_not_in_group".
 ///
-/// @return Whether the union's current tag state has value "member_not_in_group".
+/// @return Whether the union's current tag state has value
+/// "member_not_in_group".
 ///
 - (BOOL)isMemberNotInGroup;
 
@@ -110,18 +113,19 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersSelectorErrorTag) {
 ///
 /// Serializes `DBTEAMGroupMembersSelectorError` instances.
 ///
-/// @param instance An instance of the `DBTEAMGroupMembersSelectorError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBTEAMGroupMembersSelectorError` API
+/// @param instance An instance of the `DBTEAMGroupMembersSelectorError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersSelectorError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMGroupMembersSelectorError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMGroupMembersSelectorError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMGroupMembersSelectorError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMGroupMembersSelectorError` API object.
 ///
 /// @return An instantiation of the `DBTEAMGroupMembersSelectorError` object.
 ///

@@ -15,15 +15,16 @@
 ///
 /// The `UploadSessionFinishError` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBFILESUploadSessionFinishError : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBFILESUploadSessionFinishErrorTag` enum type represents the possible tag states with which
-/// the `DBFILESUploadSessionFinishError` union can exist.
+/// The `DBFILESUploadSessionFinishErrorTag` enum type represents the possible
+/// tag states with which the `DBFILESUploadSessionFinishError` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
   /// The session arguments are incorrect; the value explains the reason.
   DBFILESUploadSessionFinishErrorLookupFailed,
@@ -31,8 +32,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
   /// Unable to save the uploaded contents to a file.
   DBFILESUploadSessionFinishErrorPath,
 
-  /// The batch request commits files into too many different shared folders. Please limit your
-  /// batch request to files contained in a single shared folder.
+  /// The batch request commits files into too many different shared folders.
+  /// Please limit your batch request to files contained in a single shared
+  /// folder.
   DBFILESUploadSessionFinishErrorTooManySharedFolderTargets,
 
   /// (no description).
@@ -43,13 +45,14 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 /// Represents the union's current tag state.
 @property(nonatomic, readonly) DBFILESUploadSessionFinishErrorTag tag;
 
-/// The session arguments are incorrect; the value explains the reason. @note Ensure the
-/// `isLookupFailed` method returns true before accessing, otherwise a runtime exception will be
-/// raised.
+/// The session arguments are incorrect; the value explains the reason. @note
+/// Ensure the `isLookupFailed` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
 @property(nonatomic, readonly) DBFILESUploadSessionLookupError * _Nonnull lookupFailed;
 
-/// Unable to save the uploaded contents to a file. @note Ensure the `isPath` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// Unable to save the uploaded contents to a file. @note Ensure the `isPath`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
 @property(nonatomic, readonly) DBFILESWriteError * _Nonnull path;
 
 #pragma mark - Constructors
@@ -57,10 +60,11 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Initializes union class with tag state of "lookup_failed".
 ///
-/// Description of the "lookup_failed" tag state: The session arguments are incorrect; the value
-/// explains the reason.
+/// Description of the "lookup_failed" tag state: The session arguments are
+/// incorrect; the value explains the reason.
 ///
-/// @param lookupFailed The session arguments are incorrect; the value explains the reason.
+/// @param lookupFailed The session arguments are incorrect; the value explains
+/// the reason.
 ///
 /// @return An initialized instance.
 ///
@@ -69,7 +73,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Initializes union class with tag state of "path".
 ///
-/// Description of the "path" tag state: Unable to save the uploaded contents to a file.
+/// Description of the "path" tag state: Unable to save the uploaded contents to
+/// a file.
 ///
 /// @param path Unable to save the uploaded contents to a file.
 ///
@@ -80,9 +85,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Initializes union class with tag state of "too_many_shared_folder_targets".
 ///
-/// Description of the "too_many_shared_folder_targets" tag state: The batch request commits files
-/// into too many different shared folders. Please limit your batch request to files contained in a
-/// single shared folder.
+/// Description of the "too_many_shared_folder_targets" tag state: The batch
+/// request commits files into too many different shared folders. Please limit
+/// your batch request to files contained in a single shared folder.
 ///
 /// @return An initialized instance.
 ///
@@ -100,8 +105,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "lookup_failed".
 ///
-/// @note Call this method and ensure it returns true before accessing the `lookupFailed` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `lookupFailed` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "lookup_failed".
 ///
@@ -110,17 +115,19 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Retrieves whether the union's current tag state has value "path".
 ///
-/// @note Call this method and ensure it returns true before accessing the `path` property,
-/// otherwise a runtime exception will be thrown.
+/// @note Call this method and ensure it returns true before accessing the
+/// `path` property, otherwise a runtime exception will be thrown.
 ///
 /// @return Whether the union's current tag state has value "path".
 ///
 - (BOOL)isPath;
 
 ///
-/// Retrieves whether the union's current tag state has value "too_many_shared_folder_targets".
+/// Retrieves whether the union's current tag state has value
+/// "too_many_shared_folder_targets".
 ///
-/// @return Whether the union's current tag state has value "too_many_shared_folder_targets".
+/// @return Whether the union's current tag state has value
+/// "too_many_shared_folder_targets".
 ///
 - (BOOL)isTooManySharedFolderTargets;
 
@@ -150,18 +157,19 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionFinishErrorTag) {
 ///
 /// Serializes `DBFILESUploadSessionFinishError` instances.
 ///
-/// @param instance An instance of the `DBFILESUploadSessionFinishError` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBFILESUploadSessionFinishError` API
+/// @param instance An instance of the `DBFILESUploadSessionFinishError` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionFinishError` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBFILESUploadSessionFinishError * _Nonnull)instance;
 
 ///
 /// Deserializes `DBFILESUploadSessionFinishError` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBFILESUploadSessionFinishError`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBFILESUploadSessionFinishError` API object.
 ///
 /// @return An instantiation of the `DBFILESUploadSessionFinishError` object.
 ///

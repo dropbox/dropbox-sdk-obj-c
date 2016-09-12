@@ -12,18 +12,19 @@
 ///
 /// The `PollEmptyResult` union.
 ///
-/// Result returned by methods that poll for the status of an asynchronous job. Upon completion of
-/// the job, no additional information is returned.
+/// Result returned by methods that poll for the status of an asynchronous job.
+/// Upon completion of the job, no additional information is returned.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBASYNCPollEmptyResult : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBASYNCPollEmptyResultTag` enum type represents the possible tag states with which the
-/// `DBASYNCPollEmptyResult` union can exist.
+/// The `DBASYNCPollEmptyResultTag` enum type represents the possible tag states
+/// with which the `DBASYNCPollEmptyResult` union can exist.
 typedef NS_ENUM(NSInteger, DBASYNCPollEmptyResultTag) {
   /// The asynchronous job is still in progress.
   DBASYNCPollEmptyResultInProgress,
@@ -41,7 +42,8 @@ typedef NS_ENUM(NSInteger, DBASYNCPollEmptyResultTag) {
 ///
 /// Initializes union class with tag state of "in_progress".
 ///
-/// Description of the "in_progress" tag state: The asynchronous job is still in progress.
+/// Description of the "in_progress" tag state: The asynchronous job is still in
+/// progress.
 ///
 /// @return An initialized instance.
 ///
@@ -50,7 +52,8 @@ typedef NS_ENUM(NSInteger, DBASYNCPollEmptyResultTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// Description of the "complete" tag state: The asynchronous job has completed successfully.
+/// Description of the "complete" tag state: The asynchronous job has completed
+/// successfully.
 ///
 /// @return An initialized instance.
 ///
@@ -93,15 +96,16 @@ typedef NS_ENUM(NSInteger, DBASYNCPollEmptyResultTag) {
 ///
 /// @param instance An instance of the `DBASYNCPollEmptyResult` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBASYNCPollEmptyResult` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBASYNCPollEmptyResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBASYNCPollEmptyResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBASYNCPollEmptyResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBASYNCPollEmptyResult` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBASYNCPollEmptyResult` API object.
 ///
 /// @return An instantiation of the `DBASYNCPollEmptyResult` object.
 ///

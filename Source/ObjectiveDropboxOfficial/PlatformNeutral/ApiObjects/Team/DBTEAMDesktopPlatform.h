@@ -12,15 +12,16 @@
 ///
 /// The `DesktopPlatform` union.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMDesktopPlatform : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBTEAMDesktopPlatformTag` enum type represents the possible tag states with which the
-/// `DBTEAMDesktopPlatform` union can exist.
+/// The `DBTEAMDesktopPlatformTag` enum type represents the possible tag states
+/// with which the `DBTEAMDesktopPlatform` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
   /// Official Windows Dropbox desktop client
   DBTEAMDesktopPlatformWindows,
@@ -44,7 +45,8 @@ typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
 ///
 /// Initializes union class with tag state of "windows".
 ///
-/// Description of the "windows" tag state: Official Windows Dropbox desktop client
+/// Description of the "windows" tag state: Official Windows Dropbox desktop
+/// client
 ///
 /// @return An initialized instance.
 ///
@@ -126,15 +128,16 @@ typedef NS_ENUM(NSInteger, DBTEAMDesktopPlatformTag) {
 ///
 /// @param instance An instance of the `DBTEAMDesktopPlatform` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMDesktopPlatform` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMDesktopPlatform` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMDesktopPlatform * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMDesktopPlatform` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMDesktopPlatform` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMDesktopPlatform` API object.
 ///
 /// @return An instantiation of the `DBTEAMDesktopPlatform` object.
 ///

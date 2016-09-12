@@ -14,15 +14,16 @@
 ///
 /// Describes the number of users in a specific storage bucket.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMStorageBucket : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The name of the storage bucket. For example, '1G' is a bucket of users with storage size up to 1
-/// Giga.
+/// The name of the storage bucket. For example, '1G' is a bucket of users with
+/// storage size up to 1 Giga.
 @property(nonatomic, readonly, copy) NSString * _Nonnull bucket;
 
 /// The number of people whose storage is in the range of this storage bucket.
@@ -33,9 +34,10 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param bucket The name of the storage bucket. For example, '1G' is a bucket of users with
-/// storage size up to 1 Giga.
-/// @param users The number of people whose storage is in the range of this storage bucket.
+/// @param bucket The name of the storage bucket. For example, '1G' is a bucket
+/// of users with storage size up to 1 Giga.
+/// @param users The number of people whose storage is in the range of this
+/// storage bucket.
 ///
 /// @return An initialized instance.
 ///
@@ -55,14 +57,16 @@
 ///
 /// @param instance An instance of the `DBTEAMStorageBucket` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMStorageBucket` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMStorageBucket` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMStorageBucket * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMStorageBucket` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMStorageBucket` API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMStorageBucket` API object.
 ///
 /// @return An instantiation of the `DBTEAMStorageBucket` object.
 ///

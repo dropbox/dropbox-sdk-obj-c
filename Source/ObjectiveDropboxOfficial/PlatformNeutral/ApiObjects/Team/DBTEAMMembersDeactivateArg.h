@@ -14,11 +14,12 @@
 ///
 /// The `MembersDeactivateArg` struct.
 ///
-/// Exactly one of team_member_id, email, or external_id must be provided to identify the user
-/// account.
+/// Exactly one of team_member_id, email, or external_id must be provided to
+/// identify the user account.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBTEAMMembersDeactivateArg : NSObject <DBSerializable>
 
@@ -27,7 +28,8 @@
 /// Identity of user to remove/suspend.
 @property(nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
 
-/// If provided, controls if the user's data will be deleted on their linked devices.
+/// If provided, controls if the user's data will be deleted on their linked
+/// devices.
 @property(nonatomic, readonly) NSNumber * _Nonnull wipeData;
 
 #pragma mark - Constructors
@@ -36,15 +38,16 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param user Identity of user to remove/suspend.
-/// @param wipeData If provided, controls if the user's data will be deleted on their linked
-/// devices.
+/// @param wipeData If provided, controls if the user's data will be deleted on
+/// their linked devices.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUser:(DBTEAMUserSelectorArg * _Nonnull)user wipeData:(NSNumber * _Nullable)wipeData;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param user Identity of user to remove/suspend.
 ///
@@ -66,16 +69,16 @@
 ///
 /// @param instance An instance of the `DBTEAMMembersDeactivateArg` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBTEAMMembersDeactivateArg` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBTEAMMembersDeactivateArg` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBTEAMMembersDeactivateArg * _Nonnull)instance;
 
 ///
 /// Deserializes `DBTEAMMembersDeactivateArg` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBTEAMMembersDeactivateArg` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBTEAMMembersDeactivateArg` API object.
 ///
 /// @return An instantiation of the `DBTEAMMembersDeactivateArg` object.
 ///

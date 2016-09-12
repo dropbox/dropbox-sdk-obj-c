@@ -14,8 +14,9 @@
 ///
 /// The `SharedLinkSettings` struct.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGSharedLinkSettings : NSObject <DBSerializable>
 
@@ -24,8 +25,8 @@
 /// The requested access for this shared link.
 @property(nonatomic, readonly) DBSHARINGRequestedVisibility * _Nullable requestedVisibility;
 
-/// If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this is needed to specify
-/// the password to access the link.
+/// If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this
+/// is needed to specify the password to access the link.
 @property(nonatomic, readonly) NSString * _Nullable linkPassword;
 
 /// Expiration time of the shared link. By default the link won't expire.
@@ -37,9 +38,11 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param requestedVisibility The requested access for this shared link.
-/// @param linkPassword If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this
-/// is needed to specify the password to access the link.
-/// @param expires Expiration time of the shared link. By default the link won't expire.
+/// @param linkPassword If requestedVisibility is `password` in
+/// `DBSHARINGRequestedVisibility` this is needed to specify the password to
+/// access the link.
+/// @param expires Expiration time of the shared link. By default the link won't
+/// expire.
 ///
 /// @return An initialized instance.
 ///
@@ -48,7 +51,8 @@
                                             expires:(NSDate * _Nullable)expires;
 
 ///
-/// Convenience constructor (exposes only non-nullable instance variables with no default value).
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 ///
 /// @return An initialized instance.
@@ -69,16 +73,16 @@
 ///
 /// @param instance An instance of the `DBSHARINGSharedLinkSettings` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGSharedLinkSettings` API
-/// object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkSettings` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGSharedLinkSettings * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGSharedLinkSettings` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGSharedLinkSettings` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGSharedLinkSettings` API object.
 ///
 /// @return An instantiation of the `DBSHARINGSharedLinkSettings` object.
 ///

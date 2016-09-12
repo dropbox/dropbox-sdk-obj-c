@@ -15,10 +15,12 @@
 ///
 /// The `FileMemberActionResult` struct.
 ///
-/// Per-member result for `removeFileMember2` or `addFileMember` or `changeFileMemberAccess`.
+/// Per-member result for `removeFileMember2` or `addFileMember` or
+/// `changeFileMemberAccess`.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGFileMemberActionResult : NSObject <DBSerializable>
 
@@ -55,18 +57,19 @@
 ///
 /// Serializes `DBSHARINGFileMemberActionResult` instances.
 ///
-/// @param instance An instance of the `DBSHARINGFileMemberActionResult` API object.
-///
-/// @return A json-compatible dictionary representation of the `DBSHARINGFileMemberActionResult` API
+/// @param instance An instance of the `DBSHARINGFileMemberActionResult` API
 /// object.
+///
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGFileMemberActionResult` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGFileMemberActionResult * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGFileMemberActionResult` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGFileMemberActionResult`
-/// API object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGFileMemberActionResult` API object.
 ///
 /// @return An instantiation of the `DBSHARINGFileMemberActionResult` object.
 ///

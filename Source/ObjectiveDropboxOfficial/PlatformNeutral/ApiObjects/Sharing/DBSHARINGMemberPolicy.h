@@ -12,18 +12,19 @@
 ///
 /// The `MemberPolicy` union.
 ///
-/// Policy governing who can be a member of a shared folder. Only applicable to folders owned by a
-/// user on a team.
+/// Policy governing who can be a member of a shared folder. Only applicable to
+/// folders owned by a user on a team.
 ///
-/// This class implements the `DBSerializable` protocol (serialize and deserialize instance
-/// methods), which is required for all Obj-C SDK API route objects.
+/// This class implements the `DBSerializable` protocol (serialize and
+/// deserialize instance methods), which is required for all Obj-C SDK API route
+/// objects.
 ///
 @interface DBSHARINGMemberPolicy : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// The `DBSHARINGMemberPolicyTag` enum type represents the possible tag states with which the
-/// `DBSHARINGMemberPolicy` union can exist.
+/// The `DBSHARINGMemberPolicyTag` enum type represents the possible tag states
+/// with which the `DBSHARINGMemberPolicy` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
   /// Only a teammate can become a member.
   DBSHARINGMemberPolicyTeam,
@@ -110,15 +111,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGMemberPolicyTag) {
 ///
 /// @param instance An instance of the `DBSHARINGMemberPolicy` API object.
 ///
-/// @return A json-compatible dictionary representation of the `DBSHARINGMemberPolicy` API object.
+/// @return A json-compatible dictionary representation of the
+/// `DBSHARINGMemberPolicy` API object.
 ///
 + (NSDictionary * _Nonnull)serialize:(DBSHARINGMemberPolicy * _Nonnull)instance;
 
 ///
 /// Deserializes `DBSHARINGMemberPolicy` instances.
 ///
-/// @param dict A json-compatible dictionary representation of the `DBSHARINGMemberPolicy` API
-/// object.
+/// @param dict A json-compatible dictionary representation of the
+/// `DBSHARINGMemberPolicy` API object.
 ///
 /// @return An instantiation of the `DBSHARINGMemberPolicy` object.
 ///
