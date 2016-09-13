@@ -2,21 +2,28 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <AppKit/AppKit.h>
+
 #import "DBOAuth.h"
 #import "DBOAuthDesktop.h"
 #import "DBTransportClient.h"
 #import "DropboxClientsManager.h"
-#import <AppKit/AppKit.h>
 
 @interface DropboxClientsManager ()
 
-+ (void)setupWithAppKey:(NSString * _Nonnull)appKey
-     sharedOAuthManager:(DBOAuthManager * _Nonnull)sharedOAuthManager
-        transportClient:(DBTransportClient * _Nullable)transportClient;
++ (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
+              transportClient:(DBTransportClient * _Nonnull)transportClient;
 
-+ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey
-         sharedOAuthManager:(DBOAuthManager * _Nonnull)sharedOAuthManager
-            transportClient:(DBTransportClient * _Nullable)transportClient;
++ (void)setupWithOAuthManagerMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
+                       transportClient:(DBTransportClient * _Nonnull)transportClient
+                              tokenUid:(NSString * _Nullable)tokenUid;
+
++ (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
+                  transportClient:(DBTransportClient * _Nonnull)transportClient;
+
++ (void)setupWithOAuthManagerMultiUserTeam:(DBOAuthManager * _Nonnull)oAuthManager
+                           transportClient:(DBTransportClient * _Nonnull)transportClient
+                                  tokenUid:(NSString * _Nullable)tokenUid;
 
 @end
 
@@ -36,27 +43,37 @@
 }
 
 + (void)setupWithAppKeyDesktop:(NSString *)appKey {
-  [DropboxClientsManager setupWithAppKey:appKey
-                      sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
-                         transportClient:nil];
+  [[self class] setupWithAppKeyDesktop:appKey transportClient:nil];
 }
 
 + (void)setupWithAppKeyDesktop:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
-  [DropboxClientsManager setupWithAppKey:appKey
-                      sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
-                         transportClient:transportClient];
+  [[self class] setupWithOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
+                      transportClient:transportClient];
+}
+
++ (void)setupWithAppKeyMultiUserDesktop:(NSString *)appKey
+                        transportClient:(DBTransportClient *)transportClient
+                               tokenUid:(NSString *)tokenUid {
+  [[self class] setupWithOAuthManagerMultiUser:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
+                               transportClient:transportClient
+                                      tokenUid:tokenUid];
 }
 
 + (void)setupWithTeamAppKeyDesktop:(NSString *)appKey {
-  [DropboxClientsManager setupWithTeamAppKey:appKey
-                          sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
-                             transportClient:nil];
+  [[self class] setupWithTeamAppKeyDesktop:appKey transportClient:nil];
 }
 
 + (void)setupWithTeamAppKeyDesktop:(NSString *)appKey transportClient:(DBTransportClient *)transportClient {
-  [DropboxClientsManager setupWithTeamAppKey:appKey
-                          sharedOAuthManager:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
-                             transportClient:transportClient];
+  [[self class] setupWithOAuthManagerTeam:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
+                          transportClient:transportClient];
+}
+
++ (void)setupWithTeamAppKeyMultiUserDesktop:(NSString *)appKey
+                            transportClient:(DBTransportClient *)transportClient
+                                   tokenUid:(NSString *)tokenUid {
+  [[self class] setupWithOAuthManagerMultiUserTeam:[[DBDesktopOAuthManager alloc] initWithAppKey:appKey]
+                                   transportClient:transportClient
+                                          tokenUid:tokenUid];
 }
 
 @end

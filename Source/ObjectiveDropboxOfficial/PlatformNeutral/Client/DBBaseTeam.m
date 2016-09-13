@@ -5,6 +5,8 @@
 ///
 
 #import "DBBaseTeam.h"
+#import "DBTEAMRoutes.h"
+#import "DBTransportClient.h"
 
 @implementation DBBaseTeam
 

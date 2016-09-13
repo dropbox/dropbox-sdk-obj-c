@@ -2,7 +2,6 @@
 //  ObjectiveDropboxOfficial.h
 //  ObjectiveDropboxOfficial
 //
-//  Created by Stephen Cobbe on 9/6/16.
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
@@ -17,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import
 // <ObjectiveDropboxOfficial/PublicHeader.h>
 
-#import <ObjectiveDropboxOfficial/DropboxSDKImports.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImportsMobile.h>

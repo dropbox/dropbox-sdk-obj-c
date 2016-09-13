@@ -2,8 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
+
+#import "DBSerializableProtocol.h"
 
 ///
 /// Category to ensure `NSArray` class "implements" `DBSerializable` protocol, which is

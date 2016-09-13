@@ -9,7 +9,7 @@
 #import "TestData.h"
 #import "ViewController.h"
 
-#import "DropboxSDKImports.h"
+#import "DropboxSDKImportsDesktop.h"
 
 @interface ViewController ()
 

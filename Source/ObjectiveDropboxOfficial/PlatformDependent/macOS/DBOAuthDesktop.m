@@ -2,17 +2,16 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <SystemConfiguration/SystemConfiguration.h>
+
 #import "DBOAuth.h"
 #import "DBOAuthDesktop.h"
-#import <AppKit/AppKit.h>
-#import <SystemConfiguration/SystemConfiguration.h>
-#import <WebKit/WebKit.h>
 
 @interface DBDesktopSharedApplication ()
 
-@property(nonatomic) NSWorkspace * _Nullable sharedWorkspace;
-@property(nonatomic) NSViewController * _Nullable controller;
-@property(nonatomic) void (^openURL)(NSURL * _Nullable);
+@property (nonatomic) NSWorkspace * _Nullable sharedWorkspace;
+@property (nonatomic) NSViewController * _Nullable controller;
+@property (nonatomic) void (^openURL)(NSURL * _Nullable);
 
 - (nonnull instancetype)init:(NSWorkspace * _Nonnull)sharedApplication
                   controller:(NSViewController * _Nonnull)controller
@@ -76,12 +75,12 @@
 
 @interface DBDesktopWebViewController ()
 
-@property(nonatomic) WKWebView * _Nullable webView;
-@property(nonatomic) void (^_Nullable onWillDismiss)(BOOL);
-@property(nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable);
-@property(nonatomic) void (^_Nullable cancelHandler)(void);
-@property(nonatomic) NSProgressIndicator * _Nullable indicator;
-@property(nonatomic, copy) NSURL * _Nullable startURL;
+@property (nonatomic) WKWebView * _Nullable webView;
+@property (nonatomic) void (^_Nullable onWillDismiss)(BOOL);
+@property (nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic) void (^_Nullable cancelHandler)(void);
+@property (nonatomic) NSProgressIndicator * _Nullable indicator;
+@property (nonatomic, copy) NSURL * _Nullable startURL;
 
 @end
 

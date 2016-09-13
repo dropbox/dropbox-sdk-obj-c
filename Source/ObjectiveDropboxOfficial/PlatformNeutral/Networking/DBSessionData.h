@@ -2,8 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
 #import <Foundation/Foundation.h>
+
+#import "DBHandlerTypes.h"
 
 #pragma mark - Progress data
 
@@ -19,13 +20,13 @@
 @interface DBProgressData : NSObject
 
 /// Bytes committed (sent if RPC or Upload request, and downloaded if Download request).
-@property(nonatomic, readonly) int64_t committed;
+@property (nonatomic, readonly) int64_t committed;
 
 /// Total bytes committed (sent if RPC or Upload request, and downloaded if Download request).
-@property(nonatomic, readonly) int64_t totalCommitted;
+@property (nonatomic, readonly) int64_t totalCommitted;
 
 /// Total bytes expected to commit (sent if RPC or Upload request, and downloaded if Download request).
-@property(nonatomic, readonly) int64_t expectedToCommit;
+@property (nonatomic, readonly) int64_t expectedToCommit;
 
 ///
 /// `DBProgressData` full constructor.
@@ -59,16 +60,16 @@
 @interface DBCompletionData : NSObject
 
 /// Data returned by the server in the response body.
-@property(nonatomic, readonly) NSData * _Nullable responseBody;
+@property (nonatomic, readonly) NSData * _Nullable responseBody;
 
 /// Metadata returned by the server in the response headers.
-@property(nonatomic, readonly) NSURLResponse * _Nullable responseMetadata;
+@property (nonatomic, readonly) NSURLResponse * _Nullable responseMetadata;
 
 /// Client-side networking error.
-@property(nonatomic, readonly) NSError * _Nullable responseError;
+@property (nonatomic, readonly) NSError * _Nullable responseError;
 
 /// Location of output content (for Download-style requests only).
-@property(nonatomic, readonly) NSURL * _Nullable urlOutput;
+@property (nonatomic, readonly) NSURL * _Nullable urlOutput;
 
 ///
 /// `DBCompletionData` full constructor.
@@ -100,31 +101,31 @@
 
 /// The unique identifier of the session. Data is stored by session (rather than
 /// task id, because task ids are not unique across sessions.
-@property(nonatomic) NSString * _Nonnull sessionId;
+@property (nonatomic) NSString * _Nonnull sessionId;
 
 /// Map from task id to response body data (for RPC and Upload style requests).
-@property(nonatomic) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
+@property (nonatomic) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
 
 /// Map from task id to progress handler. Progress handlers are of the same type for
 /// all different styles of API requests.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
 
 /// Map from task id to RPC-style response handler.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBRpcResponseBlock> * _Nonnull rpcHandlers;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBRpcResponseBlock> * _Nonnull rpcHandlers;
 
 /// Map from task id to Upload-style response handler.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBUploadResponseBlock> * _Nonnull uploadHandlers;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBUploadResponseBlock> * _Nonnull uploadHandlers;
 
 /// Map from task id to Download-style response handler.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBDownloadResponseBlock> * _Nonnull downloadHandlers;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBDownloadResponseBlock> * _Nonnull downloadHandlers;
 
 /// Map from task id to completion data object. Stores completion data for all styles
 /// of API requests.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBCompletionData *> * _Nonnull completionData;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBCompletionData *> * _Nonnull completionData;
 
 /// Map from task id to progress data object. Stores progress data for all styles
 /// of API requests.
-@property(nonatomic) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
+@property (nonatomic) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
 
 ///
 /// `DBSessionData` full constructor.

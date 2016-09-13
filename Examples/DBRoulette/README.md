@@ -14,7 +14,7 @@ Otherwise, you can obtain an OAuth token programmatically using the SDK's pre-de
 
 ### Overview
 
-DBRoulette is a simple sample app that uses the Dropbox API v2 Objective-C SDK (integrated via **CocoaPods** in one project and **Carthage** in the other) to query the Dropbox API.
+DBRoulette is a simple sample app that uses the Dropbox API v2 Objective-C SDK (integrated via **CocoaPods** in one project, **Carthage** in the other, and finally as a **Xcode subproject**) to query the Dropbox API.
 
 The app requires the user to login to their Dropbox user account:
 

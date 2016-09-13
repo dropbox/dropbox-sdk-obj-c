@@ -6,12 +6,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBAUTHRouteObjects.h"
-#import "DBAUTHRoutes.h"
-#import "DBErrors.h"
-#import "DBStoneBase.h"
 #import "DBTasks.h"
-#import "DBTransportClient.h"
+
+@class DBNilObject;
+@class DBTransportClient;
 
 ///
 /// Routes for the `Auth` namespace
@@ -20,7 +18,7 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property(nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
 
 /// Initializes the `DBAUTHRoutes` namespace container object with a networking
 /// client.

@@ -3,9 +3,11 @@
 ///
 
 #import <Foundation/Foundation.h>
+
 @class DropboxClient;
 @class DropboxTeamClient;
 @class DBOAuthResult;
+@class DBTransportClient;
 
 ///
 /// Dropbox Clients Manager.
@@ -48,6 +50,40 @@
 + (void)authorizedTeamClient:(DropboxTeamClient * _Nullable)client;
 
 ///
+/// Reauthorizes shared user client instance with the access token retrieved from storage
+/// via the supplied `tokenUid`.
+///
+/// In the multi Dropbox user case, this method should be called when authorizing a new user
+/// after application has initially launched. For example, if an initially authorized user
+/// is logged out and the app is not shutdown, and a new user is to be authorized via a
+/// pre-existing access token, this method should be called.
+///
+/// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned
+/// after a successful progression through the OAuth flow (via `handleRedirectURL` or
+/// `handleRedirectURLTeam`) in the `DBAccessToken` field of the `DBOAuthResult` object.
+///
+/// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
+///
++ (BOOL)reauthorizeClient:(NSString * _Nullable)tokenUid;
+
+///
+/// Reauthorizes shared team client instance with the access token retrieved from storage
+/// via the supplied `tokenUid`.
+///
+/// In the multi Dropbox user case, this method should be called when authorizing a new user
+/// after application has initially launched. For example, if an initially authorized user
+/// is logged out and the app is not shutdown, and a new user is to be authorized via a
+/// pre-existing access token, this method should be called.
+///
+/// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned
+/// after a successful progression through the OAuth flow (via `handleRedirectURL` or
+/// `handleRedirectURLTeam`) in the `DBAccessToken` field of the `DBOAuthResult` object.
+///
+/// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
+///
++ (BOOL)reauthorizeTeamClient:(NSString * _Nullable)tokenUid;
+
+///
 /// Handles launching the SDK with a redirect url from an external source.
 ///
 /// Used after OAuth authentication has completed. A `DropboxClient` instance
@@ -78,5 +114,11 @@
 /// access tokens in `DBKeychain`.
 ///
 + (void)unlinkClients;
+
+///
+/// Only "unlinks" the active user / team client (or both) but does not clear any stored
+/// access tokens in `DBKeychain`.
+///
++ (void)resetClients;
 
 @end

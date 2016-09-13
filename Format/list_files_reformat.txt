@@ -3,10 +3,12 @@
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DBOAuthMobile.m
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DropboxClientsManager+MobileAuth.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DropboxClientsManager+MobileAuth.m
+../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DropboxSDKImportsMobile.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/macOS/DBOAuthDesktop.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/macOS/DBOAuthDesktop.m
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/macOS/DropboxClientsManager+DesktopAuth.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/macOS/DropboxClientsManager+DesktopAuth.m
+../Source//ObjectiveDropboxOfficial/PlatformDependent/macOS/DropboxSDKImportsDesktop.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/ApiObjects/Async/DBASYNCLaunchEmptyResult.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/ApiObjects/Async/DBASYNCLaunchEmptyResult.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/ApiObjects/Async/DBASYNCLaunchResultBase.h
@@ -815,7 +817,6 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxClient.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxClientsManager.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxClientsManager.m
-../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxSDKImports.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxTeamClient.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/DropboxTeamClient.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBDelegate.h

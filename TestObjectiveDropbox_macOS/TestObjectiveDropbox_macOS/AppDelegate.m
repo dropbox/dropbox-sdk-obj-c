@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "DropboxSDKImports.h"
+#import "DropboxSDKImportsDesktop.h"
 
 @interface AppDelegate ()
 

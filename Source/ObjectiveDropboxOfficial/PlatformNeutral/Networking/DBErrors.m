@@ -6,7 +6,6 @@
 #import "DBAuthRateLimitError.h"
 #import "DBErrors.h"
 #import "DBOAuth.h"
-#import <Foundation/Foundation.h>
 
 #pragma mark - HTTP error
 

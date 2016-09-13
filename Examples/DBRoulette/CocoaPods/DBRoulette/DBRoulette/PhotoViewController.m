@@ -5,7 +5,8 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
-#import "DropboxSDKImports.h"
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
 #import "PhotoViewController.h"
 
 @interface PhotoViewController ()
@@ -28,7 +29,7 @@
 
   DropboxClient *client = [DropboxClientsManager authorizedClient];
 
-  NSString *searchPath = @"/Apps/Test App 50000";
+  NSString *searchPath = @"";
 
   // list folder metadata contents (folder will be root "/" Dropbox folder if app has permission
   // "Full Dropbox" or "/Apps/<APP_NAME>/" if app has permission "App Folder").

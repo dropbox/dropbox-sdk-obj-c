@@ -2,19 +2,18 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <SystemConfiguration/SystemConfiguration.h>
+
 #import "DBOAuth.h"
 #import "DBOAuthMobile.h"
-#import <SystemConfiguration/SystemConfiguration.h>
-#import <UIKit/UIKit.h>
-#import <WebKit/WebKit.h>
 
 #pragma mark - Shared application
 
 @interface DBMobileSharedApplication ()
 
-@property(nonatomic, readonly) UIApplication * _Nullable sharedApplication;
-@property(nonatomic, readonly) UIViewController * _Nullable controller;
-@property(nonatomic, readonly, nullable) void (^openURL)(NSURL * _Nullable);
+@property (nonatomic, readonly) UIApplication * _Nullable sharedApplication;
+@property (nonatomic, readonly) UIViewController * _Nullable controller;
+@property (nonatomic, readonly, nullable) void (^openURL)(NSURL * _Nullable);
 
 @end
 
@@ -103,13 +102,13 @@
 
 @interface DBMobileWebViewController ()
 
-@property(nonatomic, readonly) WKWebView * _Nullable webView;
-@property(nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
-@property(nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
-@property(nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
-@property(nonatomic, readonly, nullable) void (^cancelHandler)(void);
-@property(nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
-@property(nonatomic, readonly, copy) NSURL * _Nullable startURL;
+@property (nonatomic, readonly) WKWebView * _Nullable webView;
+@property (nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
+@property (nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
+@property (nonatomic, readonly, nullable) void (^cancelHandler)(void);
+@property (nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
+@property (nonatomic, readonly, copy) NSURL * _Nullable startURL;
 
 @end
 

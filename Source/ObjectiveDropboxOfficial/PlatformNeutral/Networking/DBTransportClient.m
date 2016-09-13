@@ -10,14 +10,14 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString const *const kVersion = @"1.0.6";
+static NSString const *const kVersion = @"1.0.8";
 static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 @interface DBTransportClient ()
 
-@property(nonatomic, readonly) NSDictionary<NSString *, NSString *> * _Nonnull baseHosts;
-@property(nonatomic, readonly, copy) NSString * _Nonnull userAgent;
+@property (nonatomic, readonly) NSDictionary<NSString *, NSString *> * _Nonnull baseHosts;
+@property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
 
 @end
 

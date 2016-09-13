@@ -2,8 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
 #import <Foundation/Foundation.h>
+
+#import "DBHandlerTypes.h"
 
 @class DBRpcData;
 @class DBUploadData;

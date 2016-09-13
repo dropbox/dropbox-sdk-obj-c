@@ -6,7 +6,9 @@
 
 #import "DBAUTHRouteObjects.h"
 #import "DBAUTHRoutes.h"
+#import "DBErrors.h"
 #import "DBStoneBase.h"
+#import "DBTransportClient.h"
 
 @implementation DBAUTHRouteObjects
 

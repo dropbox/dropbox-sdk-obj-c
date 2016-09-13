@@ -171,11 +171,11 @@
 @interface DBAccessToken : NSObject
 
 /// The OAuth2 access token.
-@property(nonatomic, readonly, copy) NSString * _Nonnull accessToken;
+@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
 
 /// The unique identifier of the access token used for storing in `DBKeychain`.
 /// Either the `account_id` (if user app) or the `team_id` if (team app).
-@property(nonatomic, readonly, copy) NSString * _Nonnull uid;
+@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
 
 ///
 /// DBAccessToken full constructor.

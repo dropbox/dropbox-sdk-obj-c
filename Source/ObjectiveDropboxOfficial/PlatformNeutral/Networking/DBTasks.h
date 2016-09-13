@@ -2,8 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
 #import <Foundation/Foundation.h>
+
+#import "DBHandlerTypes.h"
 @class DBDelegate;
 @class DBError;
 @class DBRoute;
@@ -36,14 +37,14 @@
 }
 
 /// The session that was used to make to the request.
-@property(nonatomic, readonly) NSURLSession * _Nonnull session;
+@property (nonatomic, readonly) NSURLSession * _Nonnull session;
 
 /// The delegate used manage handler code.
-@property(nonatomic, readonly) DBDelegate * _Nonnull delegate;
+@property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
 /// Information about the route to which the request
 /// was made.
-@property(nonatomic, readonly) DBRoute * _Nonnull route;
+@property (nonatomic, readonly) DBRoute * _Nonnull route;
 
 @end
 
@@ -228,10 +229,10 @@
 @property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
 
 /// Whether the outputted file should overwrite in the event of a name collision.
-@property(nonatomic, readonly) BOOL overwrite;
+@property (nonatomic, readonly) BOOL overwrite;
 
 /// Location to which output content should be downloaded.
-@property(nonatomic, readonly, copy) NSURL * _Nonnull destination;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull destination;
 
 ///
 /// `DBDownloadUrlTask` full constructor.

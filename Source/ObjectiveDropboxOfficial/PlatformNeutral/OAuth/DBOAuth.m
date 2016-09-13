@@ -16,10 +16,10 @@ static Reachability *internetReachableFoo;
 
 @interface DBOAuthManager ()
 
-@property(nonatomic, copy) NSString * _Nullable appKey;
-@property(nonatomic, copy) NSURL * _Nullable redirectURL;
-@property(nonatomic, copy) NSString * _Nullable host;
-@property(nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+@property (nonatomic, copy) NSString * _Nullable appKey;
+@property (nonatomic, copy) NSURL * _Nullable redirectURL;
+@property (nonatomic, copy) NSString * _Nullable host;
+@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
 
 @end
 
@@ -268,15 +268,15 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 @interface DBMobileOAuthManager ()
 
 // "re-declaring" private variables from parent (with @dynamic tag in @implementation)
-@property(nonatomic, copy) NSString * _Nullable appKey;
-@property(nonatomic, copy) NSURL * _Nullable redirectURL;
-@property(nonatomic, copy) NSString * _Nullable host;
-@property(nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+@property (nonatomic, copy) NSString * _Nullable appKey;
+@property (nonatomic, copy) NSURL * _Nullable redirectURL;
+@property (nonatomic, copy) NSString * _Nullable host;
+@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
 
 /// The redirect url from the mobile "direct auth" flow, wherein
 /// authorization is received from an official Dropbox mobile app,
 /// if one exists.
-@property(nonatomic, copy) NSURL * _Nullable dauthRedirectURL;
+@property (nonatomic, copy) NSURL * _Nullable dauthRedirectURL;
 
 @end
 

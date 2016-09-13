@@ -2,11 +2,12 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuth.h"
-#import "DBSharedApplicationProtocol.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+
+#import "DBOAuth.h"
+#import "DBSharedApplicationProtocol.h"
 
 #pragma mark - Shared application
 

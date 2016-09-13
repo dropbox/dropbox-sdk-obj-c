@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2ACB7421D88A99200596DDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB7411D88A99200596DDE /* main.m */; };
+		F2ACB7451D88A99200596DDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB7441D88A99200596DDE /* AppDelegate.m */; };
+		F2ACB7481D88A99200596DDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB7471D88A99200596DDE /* ViewController.m */; };
+		F2ACB74B1D88A99200596DDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2ACB7491D88A99200596DDE /* Main.storyboard */; };
+		F2ACB74D1D88A99200596DDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2ACB74C1D88A99200596DDE /* Assets.xcassets */; };
+		F2ACB7501D88A99200596DDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2ACB74E1D88A99200596DDE /* LaunchScreen.storyboard */; };
+		F2ACB75C1D88ABD700596DDE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB75B1D88ABD700596DDE /* PhotoViewController.m */; };
+		F2ACB7601D88B23900596DDE /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F2ACB73D1D88A99200596DDE /* DBRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2ACB7411D88A99200596DDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2ACB7431D88A99200596DDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F2ACB7441D88A99200596DDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F2ACB7461D88A99200596DDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F2ACB7471D88A99200596DDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F2ACB74A1D88A99200596DDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F2ACB74C1D88A99200596DDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2ACB74F1D88A99200596DDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F2ACB7511D88A99200596DDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2ACB75A1D88ABBE00596DDE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		F2ACB75B1D88ABD700596DDE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveDropboxOfficial.framework; path = Carthage/Build/iOS/ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2ACB73A1D88A99200596DDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2ACB7601D88B23900596DDE /* ObjectiveDropboxOfficial.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2ACB7341D88A99200596DDE = {
+			isa = PBXGroup;
+			children = (
+				F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */,
+				F2ACB73F1D88A99200596DDE /* DBRoulette */,
+				F2ACB73E1D88A99200596DDE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2ACB73E1D88A99200596DDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2ACB73D1D88A99200596DDE /* DBRoulette.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2ACB73F1D88A99200596DDE /* DBRoulette */ = {
+			isa = PBXGroup;
+			children = (
+				F2ACB7431D88A99200596DDE /* AppDelegate.h */,
+				F2ACB7441D88A99200596DDE /* AppDelegate.m */,
+				F2ACB7461D88A99200596DDE /* ViewController.h */,
+				F2ACB7471D88A99200596DDE /* ViewController.m */,
+				F2ACB75A1D88ABBE00596DDE /* PhotoViewController.h */,
+				F2ACB75B1D88ABD700596DDE /* PhotoViewController.m */,
+				F2ACB7491D88A99200596DDE /* Main.storyboard */,
+				F2ACB74C1D88A99200596DDE /* Assets.xcassets */,
+				F2ACB74E1D88A99200596DDE /* LaunchScreen.storyboard */,
+				F2ACB7511D88A99200596DDE /* Info.plist */,
+				F2ACB7401D88A99200596DDE /* Supporting Files */,
+			);
+			path = DBRoulette;
+			sourceTree = "<group>";
+		};
+		F2ACB7401D88A99200596DDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2ACB7411D88A99200596DDE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2ACB73C1D88A99200596DDE /* DBRoulette */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2ACB7541D88A99200596DDE /* Build configuration list for PBXNativeTarget "DBRoulette" */;
+			buildPhases = (
+				F2ACB7391D88A99200596DDE /* Sources */,
+				F2ACB73A1D88A99200596DDE /* Frameworks */,
+				F2ACB73B1D88A99200596DDE /* Resources */,
+				F2ACB7591D88AADC00596DDE /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBRoulette;
+			productName = DBRoulette;
+			productReference = F2ACB73D1D88A99200596DDE /* DBRoulette.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2ACB7351D88A99200596DDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Dropbox;
+				TargetAttributes = {
+					F2ACB73C1D88A99200596DDE = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = F2ACB7381D88A99200596DDE /* Build configuration list for PBXProject "DBRoulette" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2ACB7341D88A99200596DDE;
+			productRefGroup = F2ACB73E1D88A99200596DDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2ACB73C1D88A99200596DDE /* DBRoulette */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2ACB73B1D88A99200596DDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2ACB7501D88A99200596DDE /* LaunchScreen.storyboard in Resources */,
+				F2ACB74D1D88A99200596DDE /* Assets.xcassets in Resources */,
+				F2ACB74B1D88A99200596DDE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2ACB7591D88AADC00596DDE /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework",
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2ACB7391D88A99200596DDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2ACB7481D88A99200596DDE /* ViewController.m in Sources */,
+				F2ACB75C1D88ABD700596DDE /* PhotoViewController.m in Sources */,
+				F2ACB7451D88A99200596DDE /* AppDelegate.m in Sources */,
+				F2ACB7421D88A99200596DDE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F2ACB7491D88A99200596DDE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2ACB74A1D88A99200596DDE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F2ACB74E1D88A99200596DDE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2ACB74F1D88A99200596DDE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2ACB7521D88A99200596DDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F2ACB7531D88A99200596DDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2ACB7551D88A99200596DDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DBRoulette/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.DBRoulette;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2ACB7561D88A99200596DDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DBRoulette/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.DBRoulette;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2ACB7381D88A99200596DDE /* Build configuration list for PBXProject "DBRoulette" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2ACB7521D88A99200596DDE /* Debug */,
+				F2ACB7531D88A99200596DDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2ACB7541D88A99200596DDE /* Build configuration list for PBXNativeTarget "DBRoulette" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2ACB7551D88A99200596DDE /* Debug */,
+				F2ACB7561D88A99200596DDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2ACB7351D88A99200596DDE /* Project object */;
+}

@@ -5,8 +5,9 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
 #import "AppDelegate.h"
-#import "DropboxSDKImports.h"
 #import "PhotoViewController.h"
 #import "ViewController.h"
 

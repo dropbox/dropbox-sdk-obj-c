@@ -9,8 +9,8 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
 @interface DBDelegate ()
 
-@property(nonatomic) NSOperationQueue * _Nonnull delegateQueue;
-@property(nonatomic) NSMutableDictionary<NSString *, DBSessionData *> * _Nonnull sessionData;
+@property (nonatomic) NSOperationQueue * _Nonnull delegateQueue;
+@property (nonatomic) NSMutableDictionary<NSString *, DBSessionData *> * _Nonnull sessionData;
 
 @end
 

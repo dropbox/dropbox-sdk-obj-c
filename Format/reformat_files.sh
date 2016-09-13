@@ -26,6 +26,7 @@ for item in $files ; do
     
     sed -i -e 's/*_Nonnull/* _Nonnull/g' $item
     sed -i -e 's/*_Nullable/* _Nullable/g' $item
+    sed -i -e 's/@property(/@property (/g' $item
     
     rm $item.tmp
 done

@@ -2,9 +2,10 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import <Foundation/Foundation.h>
+
 #import "DBBase.h"
 #import "DBTransportClient.h"
-#import <Foundation/Foundation.h>
 
 ///
 /// Dropbox User API Client.
@@ -17,7 +18,7 @@
 @interface DropboxClient : DBBase
 
 /// The transport client used to make all networking requests
-@property(nonatomic) DBTransportClient * _Nonnull transportClient;
+@property (nonatomic) DBTransportClient * _Nonnull transportClient;
 
 ///
 /// Convenience constructor.

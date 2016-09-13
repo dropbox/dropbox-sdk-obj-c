@@ -6,24 +6,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBErrors.h"
-#import "DBStoneBase.h"
 #import "DBTasks.h"
-#import "DBTransportClient.h"
-#import "DBUSERSAccount.h"
-#import "DBUSERSAccountType.h"
-#import "DBUSERSBasicAccount.h"
-#import "DBUSERSFullAccount.h"
-#import "DBUSERSFullTeam.h"
-#import "DBUSERSGetAccountArg.h"
-#import "DBUSERSGetAccountBatchArg.h"
-#import "DBUSERSGetAccountBatchError.h"
-#import "DBUSERSGetAccountError.h"
-#import "DBUSERSName.h"
-#import "DBUSERSRouteObjects.h"
-#import "DBUSERSRoutes.h"
-#import "DBUSERSSpaceAllocation.h"
-#import "DBUSERSSpaceUsage.h"
+
+@class DBNilObject;
+@class DBTransportClient;
+@class DBUSERSAccountType;
+@class DBUSERSBasicAccount;
+@class DBUSERSFullAccount;
+@class DBUSERSFullTeam;
+@class DBUSERSGetAccountBatchError;
+@class DBUSERSGetAccountError;
+@class DBUSERSName;
+@class DBUSERSSpaceAllocation;
+@class DBUSERSSpaceUsage;
 
 ///
 /// Routes for the `Users` namespace
@@ -32,7 +27,7 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property(nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
 
 /// Initializes the `DBUSERSRoutes` namespace container object with a networking
 /// client.

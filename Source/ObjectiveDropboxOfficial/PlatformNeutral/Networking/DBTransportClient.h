@@ -2,8 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBSerializableProtocol.h"
 #import <Foundation/Foundation.h>
+
+#import "DBSerializableProtocol.h"
 
 @class DBDelegate;
 @class DBDownloadDataTask;
@@ -42,27 +43,27 @@
 
 /// The delegate used to manage execution of all response / error code. By default, this
 /// is an instance of `DBDelegate` with the main thread queue as delegate queue.
-@property(nonatomic, readonly) DBDelegate * _Nonnull delegate;
+@property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
 /// A serial delegate queue used for executing blocks of code that touch state
 /// shared across threads (mainly the request handlers storage).
-@property(nonatomic, readonly) NSOperationQueue * _Nonnull delegateQueue;
+@property (nonatomic, readonly) NSOperationQueue * _Nonnull delegateQueue;
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload
 /// from `NSData` and `NSInputStream`, and download to `NSData`).
-@property(nonatomic) NSURLSession * _Nonnull session;
+@property (nonatomic) NSURLSession * _Nonnull session;
 
 /// The background session used to make all background requests (Upload and Download style
 /// requests, except for upload from `NSData` and `NSInputStream`, and download to `NSData`).
-@property(nonatomic) NSURLSession * _Nonnull backgroundSession;
+@property (nonatomic) NSURLSession * _Nonnull backgroundSession;
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property(nonatomic, copy) NSString * _Nonnull accessToken;
+@property (nonatomic, copy) NSString * _Nonnull accessToken;
 
 /// An additional authentication header field used when a team app with
 /// the appropriate permissions "performs" user actions on behalf of
 /// a team member.
-@property(nonatomic, readonly, copy) NSString * _Nullable selectUser;
+@property (nonatomic, readonly, copy) NSString * _Nullable selectUser;
 
 #pragma mark - Constructors
 

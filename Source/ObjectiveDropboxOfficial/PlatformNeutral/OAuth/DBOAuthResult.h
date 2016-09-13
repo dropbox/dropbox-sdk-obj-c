@@ -56,22 +56,22 @@ typedef NS_ENUM(NSInteger, DBOAuthErrorType) {
 #pragma mark - Instance variables
 
 /// Represents the `DBOAuthResult` object's current tag state.
-@property(nonatomic, readonly) DBOAuthResultTag tag;
+@property (nonatomic, readonly) DBOAuthResultTag tag;
 
 /// The access token that is retrieved in the event of a successful OAuth authorization.
 /// @note Ensure the `isSuccess` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
-@property(nonatomic, readonly) DBAccessToken * _Nonnull accessToken;
+@property (nonatomic, readonly) DBAccessToken * _Nonnull accessToken;
 
 /// The type of OAuth error that is returned in the event of an unsuccessful OAuth
 /// authorization. @note Ensure the `isError` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
-@property(nonatomic, readonly) DBOAuthErrorType errorType;
+@property (nonatomic, readonly) DBOAuthErrorType errorType;
 
 /// The error description string associated with the `DBAuthErrorType` that is returned
 /// in the event of an unsuccessful OAuth authorization. @note Ensure the `isError` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
-@property(nonatomic, readonly, copy) NSString * _Nonnull errorDescription;
+@property (nonatomic, readonly, copy) NSString * _Nonnull errorDescription;
 
 #pragma mark - Constructors
 
