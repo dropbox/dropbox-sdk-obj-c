@@ -72,7 +72,7 @@
                                                     withBlock:^id(id elem) {
                                                       return elem;
                                                     }];
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(10);
 
   return [[DBSHARINGListFileMembersBatchArg alloc] initWithFiles:files limit:limit];
 }

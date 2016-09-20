@@ -74,7 +74,7 @@
   DBTEAMGroupSelector *group = [DBTEAMGroupSelectorSerializer deserialize:valueDict[@"group"]];
   DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
   DBTEAMGroupAccessType *accessType = [DBTEAMGroupAccessTypeSerializer deserialize:valueDict[@"access_type"]];
-  NSNumber *returnMembers = valueDict[@"return_members"];
+  NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
   return [[DBTEAMGroupMembersSetAccessTypeArg alloc] initWithGroup:group
                                                               user:user

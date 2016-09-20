@@ -51,13 +51,16 @@
 ///
 /// @param task The `NSURLSessionTask` task associated with the API request.
 /// @param session The `NSURLSession` session associated with the API request.
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressHandler The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
+/// @param progressHandlerQueue The operation queue on which to execute progress handler code. If nil,
+/// then the progress queue is the queue with which the delegate object was instantiated.
 ///
 - (void)addProgressHandler:(NSURLSessionTask * _Nonnull)task
                    session:(NSURLSession * _Nonnull)session
-           progressHandler:(DBProgressBlock _Nonnull)handler;
+           progressHandler:(DBProgressBlock _Nonnull)handler
+      progressHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 #pragma mark - Add RPC-style handlers
 
@@ -69,10 +72,13 @@
 /// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
+/// @param responseHandlerQueue The operation queue on which to execute response handler code. If nil,
+/// then the response queue is the queue with which the delegate object was instantiated.
 ///
 - (void)addRpcResponseHandler:(NSURLSessionTask * _Nonnull)task
                       session:(NSURLSession * _Nonnull)session
-              responseHandler:(DBRpcResponseBlock _Nonnull)handler;
+              responseHandler:(DBRpcResponseBlock _Nonnull)handler
+         responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 #pragma mark - Add Upload-style handlers
 
@@ -84,10 +90,13 @@
 /// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
+/// @param responseHandlerQueue The operation queue on which to execute response handler code. If nil,
+/// then the response queue is the queue with which the delegate object was instantiated.
 ///
 - (void)addUploadResponseHandler:(NSURLSessionTask * _Nonnull)task
                          session:(NSURLSession * _Nonnull)session
-                 responseHandler:(DBUploadResponseBlock _Nonnull)handler;
+                 responseHandler:(DBUploadResponseBlock _Nonnull)handler
+            responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 #pragma mark - Add Download-style handlers
 
@@ -99,9 +108,12 @@
 /// @param session The `NSURLSession` session associated with the API request.
 /// @param responseHandler The handler block to be executed in the event of a successful or
 /// unsuccessful network request.
+/// @param responseHandlerQueue The operation queue on which to execute response handler code. If nil,
+/// then the response queue is the queue with which the delegate object was instantiated.
 ///
 - (void)addDownloadResponseHandler:(NSURLSessionTask * _Nonnull)task
                            session:(NSURLSession * _Nonnull)session
-                   responseHandler:(DBDownloadResponseBlock _Nonnull)handler;
+                   responseHandler:(DBDownloadResponseBlock _Nonnull)handler
+              responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 @end

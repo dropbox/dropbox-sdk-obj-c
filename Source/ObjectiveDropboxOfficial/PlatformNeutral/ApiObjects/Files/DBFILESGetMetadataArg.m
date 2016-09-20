@@ -70,9 +70,9 @@
 
 + (DBFILESGetMetadataArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  NSNumber *includeMediaInfo = valueDict[@"include_media_info"];
-  NSNumber *includeDeleted = valueDict[@"include_deleted"];
-  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"];
+  NSNumber *includeMediaInfo = valueDict[@"include_media_info"] ?: @NO;
+  NSNumber *includeDeleted = valueDict[@"include_deleted"] ?: @NO;
+  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
 
   return [[DBFILESGetMetadataArg alloc] initWithPath:path
                                     includeMediaInfo:includeMediaInfo

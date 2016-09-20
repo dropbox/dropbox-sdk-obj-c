@@ -62,7 +62,7 @@
 
 + (DBAUTHRateLimitError *)deserialize:(NSDictionary *)valueDict {
   DBAUTHRateLimitReason *reason = [DBAUTHRateLimitReasonSerializer deserialize:valueDict[@"reason"]];
-  NSNumber *retryAfter = valueDict[@"retry_after"];
+  NSNumber *retryAfter = valueDict[@"retry_after"] ?: @(1);
 
   return [[DBAUTHRateLimitError alloc] initWithReason:reason retryAfter:retryAfter];
 }

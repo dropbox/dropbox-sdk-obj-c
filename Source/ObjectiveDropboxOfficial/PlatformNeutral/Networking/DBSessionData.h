@@ -127,6 +127,14 @@
 /// of API requests.
 @property (nonatomic) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
 
+/// Map from task id to progress handler queue. Stores handler queues for all styles
+/// of API requests.
+@property (nonatomic) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull progressHandlerQueues;
+
+/// Map from task id to response handler queue. Stores handler queues for all styles
+/// of API requests.
+@property (nonatomic) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull responseHandlerQueues;
+
 ///
 /// `DBSessionData` full constructor.
 ///

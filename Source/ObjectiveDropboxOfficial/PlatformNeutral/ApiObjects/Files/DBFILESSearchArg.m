@@ -75,9 +75,10 @@
 + (DBFILESSearchArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
   NSString *query = valueDict[@"query"];
-  NSNumber *start = valueDict[@"start"];
-  NSNumber *maxResults = valueDict[@"max_results"];
-  DBFILESSearchMode *mode = [DBFILESSearchModeSerializer deserialize:valueDict[@"mode"]];
+  NSNumber *start = valueDict[@"start"] ?: @(0);
+  NSNumber *maxResults = valueDict[@"max_results"] ?: @(100);
+  DBFILESSearchMode *mode = valueDict[@"mode"] ? [DBFILESSearchModeSerializer deserialize:valueDict[@"mode"]]
+                                               : [[DBFILESSearchMode alloc] initWithFilename];
 
   return [[DBFILESSearchArg alloc] initWithPath:path query:query start:start maxResults:maxResults mode:mode];
 }

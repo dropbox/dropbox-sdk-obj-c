@@ -29,10 +29,7 @@ xcuserdata/
 *.dSYM
 
 # CocoaPods
-TestObjectiveDropbox_macOS/Pods/
-TestObjectiveDropbox_iOS/Pods/
-Examples/DBRoulette/DBRoulette/Pods/
+Pods/
 
 # Carthage
-Carthage/Build
-Examples/DBRoulette/Carthage/DBRoulette/Carthage
+Carthage/

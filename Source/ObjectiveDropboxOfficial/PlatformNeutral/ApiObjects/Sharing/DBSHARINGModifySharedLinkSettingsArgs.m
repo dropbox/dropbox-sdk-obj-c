@@ -67,7 +67,7 @@
 + (DBSHARINGModifySharedLinkSettingsArgs *)deserialize:(NSDictionary *)valueDict {
   NSString *url = valueDict[@"url"];
   DBSHARINGSharedLinkSettings *settings = [DBSHARINGSharedLinkSettingsSerializer deserialize:valueDict[@"settings"]];
-  NSNumber *removeExpiration = valueDict[@"remove_expiration"];
+  NSNumber *removeExpiration = valueDict[@"remove_expiration"] ?: @NO;
 
   return [[DBSHARINGModifySharedLinkSettingsArgs alloc] initWithUrl:url
                                                            settings:settings

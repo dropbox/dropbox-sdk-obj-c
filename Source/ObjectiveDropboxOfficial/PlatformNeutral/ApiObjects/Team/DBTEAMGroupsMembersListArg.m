@@ -63,7 +63,7 @@
 
 + (DBTEAMGroupsMembersListArg *)deserialize:(NSDictionary *)valueDict {
   DBTEAMGroupSelector *group = [DBTEAMGroupSelectorSerializer deserialize:valueDict[@"group"]];
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(1000);
 
   return [[DBTEAMGroupsMembersListArg alloc] initWithGroup:group limit:limit];
 }

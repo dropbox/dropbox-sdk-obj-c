@@ -82,8 +82,8 @@
   NSNumber *readOnly = valueDict[@"read_only"];
   NSString *parentSharedFolderId = valueDict[@"parent_shared_folder_id"] ?: nil;
   NSString *sharedFolderId = valueDict[@"shared_folder_id"] ?: nil;
-  NSNumber *traverseOnly = valueDict[@"traverse_only"];
-  NSNumber *noAccess = valueDict[@"no_access"];
+  NSNumber *traverseOnly = valueDict[@"traverse_only"] ?: @NO;
+  NSNumber *noAccess = valueDict[@"no_access"] ?: @NO;
 
   return [[DBFILESFolderSharingInfo alloc] initWithReadOnly:readOnly
                                        parentSharedFolderId:parentSharedFolderId

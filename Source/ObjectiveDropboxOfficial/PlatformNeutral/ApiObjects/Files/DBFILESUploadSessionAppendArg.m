@@ -62,7 +62,7 @@
 
 + (DBFILESUploadSessionAppendArg *)deserialize:(NSDictionary *)valueDict {
   DBFILESUploadSessionCursor *cursor = [DBFILESUploadSessionCursorSerializer deserialize:valueDict[@"cursor"]];
-  NSNumber *close = valueDict[@"close"];
+  NSNumber *close = valueDict[@"close"] ?: @NO;
 
   return [[DBFILESUploadSessionAppendArg alloc] initWithCursor:cursor close:close];
 }

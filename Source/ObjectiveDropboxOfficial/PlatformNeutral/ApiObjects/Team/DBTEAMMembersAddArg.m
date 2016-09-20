@@ -70,7 +70,7 @@
                            withBlock:^id(id elem) {
                              return [DBTEAMMemberAddArgSerializer deserialize:elem];
                            }];
-  NSNumber *forceAsync = valueDict[@"force_async"];
+  NSNumber *forceAsync = valueDict[@"force_async"] ?: @NO;
 
   return [[DBTEAMMembersAddArg alloc] initWithDNewMembers:dNewMembers forceAsync:forceAsync];
 }

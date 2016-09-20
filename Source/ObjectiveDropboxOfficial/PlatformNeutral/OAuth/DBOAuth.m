@@ -5,12 +5,12 @@
 #import "DBKeychain.h"
 #import "DBOAuth.h"
 #import "DBOAuthResult.h"
+#import "DBReachability.h"
 #import "DBSharedApplicationProtocol.h"
-#import "Reachability.h"
 
 /// A shared instance of a `DBOAuthManager` for convenience
 static DBOAuthManager *sharedOAuthManager;
-static Reachability *internetReachableFoo;
+static DBReachability *internetReachableFoo;
 
 #pragma mark - OAuth manager base
 
@@ -74,7 +74,7 @@ static Reachability *internetReachableFoo;
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
-  if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+  if ([[DBReachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
     NSString *message = @"Try again once you have an internet connection.";
     NSString *title = @"No internet connection";
 
@@ -191,7 +191,7 @@ if (browserAuth) {
     }
     return [[DBOAuthResult alloc] initWithError:results[@"error"] errorDescription:desc];
   } else {
-    NSString *uid = results[@"account_id"] ?: results[@"team_id"];
+    NSString *uid = results[@"uid"];
     DBAccessToken *accessToken = [[DBAccessToken alloc] initWithAccessToken:results[@"access_token"] uid:uid];
     return [[DBOAuthResult alloc] initWithSuccess:accessToken];
   }

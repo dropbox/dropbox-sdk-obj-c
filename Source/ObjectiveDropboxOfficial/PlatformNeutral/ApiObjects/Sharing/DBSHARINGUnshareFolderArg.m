@@ -62,7 +62,7 @@
 
 + (DBSHARINGUnshareFolderArg *)deserialize:(NSDictionary *)valueDict {
   NSString *sharedFolderId = valueDict[@"shared_folder_id"];
-  NSNumber *leaveACopy = valueDict[@"leave_a_copy"];
+  NSNumber *leaveACopy = valueDict[@"leave_a_copy"] ?: @NO;
 
   return [[DBSHARINGUnshareFolderArg alloc] initWithSharedFolderId:sharedFolderId leaveACopy:leaveACopy];
 }

@@ -68,7 +68,7 @@
 
 + (DBSHARINGCreateSharedLinkArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  NSNumber *shortUrl = valueDict[@"short_url"];
+  NSNumber *shortUrl = valueDict[@"short_url"] ?: @NO;
   DBSHARINGPendingUploadMode *pendingUpload =
       valueDict[@"pending_upload"] ? [DBSHARINGPendingUploadModeSerializer deserialize:valueDict[@"pending_upload"]]
                                    : nil;

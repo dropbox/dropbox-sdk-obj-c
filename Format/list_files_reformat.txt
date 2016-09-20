@@ -1,4 +1,5 @@
-../Source//ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h
+../Source//ObjectiveDropboxOfficial/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h
+../Source//ObjectiveDropboxOfficial/ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DBOAuthMobile.h
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DBOAuthMobile.m
 ../Source//ObjectiveDropboxOfficial/PlatformDependent/iOS/DropboxClientsManager+MobileAuth.h
@@ -824,14 +825,14 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBErrors.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBErrors.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBHandlerTypes.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBReachability.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBReachability.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBSessionData.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBSessionData.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasks.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasks.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTransportClient.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTransportClient.m
-../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/Reachability.h
-../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/Reachability.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBKeychain.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBKeychain.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBOAuth.h
@@ -866,4 +867,3 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Routes/RouteObjects/DBTEAMRouteObjects.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Routes/RouteObjects/DBUSERSRouteObjects.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Routes/RouteObjects/DBUSERSRouteObjects.m
-../Source//ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h

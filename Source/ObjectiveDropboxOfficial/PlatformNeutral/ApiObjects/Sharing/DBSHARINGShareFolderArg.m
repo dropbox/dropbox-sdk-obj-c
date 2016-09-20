@@ -75,12 +75,17 @@
 
 + (DBSHARINGShareFolderArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  DBSHARINGMemberPolicy *memberPolicy = [DBSHARINGMemberPolicySerializer deserialize:valueDict[@"member_policy"]];
+  DBSHARINGMemberPolicy *memberPolicy = valueDict[@"member_policy"]
+                                            ? [DBSHARINGMemberPolicySerializer deserialize:valueDict[@"member_policy"]]
+                                            : [[DBSHARINGMemberPolicy alloc] initWithAnyone];
   DBSHARINGAclUpdatePolicy *aclUpdatePolicy =
-      [DBSHARINGAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]];
+      valueDict[@"acl_update_policy"] ? [DBSHARINGAclUpdatePolicySerializer deserialize:valueDict[@"acl_update_policy"]]
+                                      : [[DBSHARINGAclUpdatePolicy alloc] initWithOwner];
   DBSHARINGSharedLinkPolicy *sharedLinkPolicy =
-      [DBSHARINGSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]];
-  NSNumber *forceAsync = valueDict[@"force_async"];
+      valueDict[@"shared_link_policy"]
+          ? [DBSHARINGSharedLinkPolicySerializer deserialize:valueDict[@"shared_link_policy"]]
+          : [[DBSHARINGSharedLinkPolicy alloc] initWithAnyone];
+  NSNumber *forceAsync = valueDict[@"force_async"] ?: @NO;
 
   return [[DBSHARINGShareFolderArg alloc] initWithPath:path
                                           memberPolicy:memberPolicy

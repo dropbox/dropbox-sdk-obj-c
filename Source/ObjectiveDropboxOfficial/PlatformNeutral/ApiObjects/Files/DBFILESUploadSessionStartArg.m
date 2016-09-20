@@ -58,7 +58,7 @@
 }
 
 + (DBFILESUploadSessionStartArg *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *close = valueDict[@"close"];
+  NSNumber *close = valueDict[@"close"] ?: @NO;
 
   return [[DBFILESUploadSessionStartArg alloc] initWithClose:close];
 }

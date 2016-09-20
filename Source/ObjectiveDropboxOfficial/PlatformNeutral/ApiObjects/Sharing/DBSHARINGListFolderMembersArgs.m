@@ -79,7 +79,7 @@
                                                      return [DBSHARINGMemberActionSerializer deserialize:elem];
                                                    }]
                             : nil;
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(1000);
 
   return [[DBSHARINGListFolderMembersArgs alloc] initWithSharedFolderId:sharedFolderId actions:actions limit:limit];
 }

@@ -66,7 +66,7 @@
 + (DBTEAMRevokeLinkedApiAppArg *)deserialize:(NSDictionary *)valueDict {
   NSString *appId = valueDict[@"app_id"];
   NSString *teamMemberId = valueDict[@"team_member_id"];
-  NSNumber *keepAppFolder = valueDict[@"keep_app_folder"];
+  NSNumber *keepAppFolder = valueDict[@"keep_app_folder"] ?: @YES;
 
   return
       [[DBTEAMRevokeLinkedApiAppArg alloc] initWithAppId:appId teamMemberId:teamMemberId keepAppFolder:keepAppFolder];

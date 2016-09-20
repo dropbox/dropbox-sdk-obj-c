@@ -94,7 +94,7 @@
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
-  NSNumber *isInherited = valueDict[@"is_inherited"];
+  NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
   DBSHARINGUserInfo *user = valueDict[@"user"] ? [DBSHARINGUserInfoSerializer deserialize:valueDict[@"user"]] : nil;
 
   return [[DBSHARINGInviteeMembershipInfo alloc] initWithAccessType:accessType

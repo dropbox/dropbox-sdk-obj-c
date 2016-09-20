@@ -65,7 +65,7 @@
 + (DBTEAMRevokeDesktopClientArg *)deserialize:(NSDictionary *)valueDict {
   NSString *sessionId = valueDict[@"session_id"];
   NSString *teamMemberId = valueDict[@"team_member_id"];
-  NSNumber *deleteOnUnlink = valueDict[@"delete_on_unlink"];
+  NSNumber *deleteOnUnlink = valueDict[@"delete_on_unlink"] ?: @NO;
 
   return [[DBTEAMRevokeDesktopClientArg alloc] initWithSessionId:sessionId
                                                     teamMemberId:teamMemberId

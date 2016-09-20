@@ -69,8 +69,11 @@
 
 + (DBFILESThumbnailArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  DBFILESThumbnailFormat *format = [DBFILESThumbnailFormatSerializer deserialize:valueDict[@"format"]];
-  DBFILESThumbnailSize *size = [DBFILESThumbnailSizeSerializer deserialize:valueDict[@"size"]];
+  DBFILESThumbnailFormat *format = valueDict[@"format"]
+                                       ? [DBFILESThumbnailFormatSerializer deserialize:valueDict[@"format"]]
+                                       : [[DBFILESThumbnailFormat alloc] initWithJpeg];
+  DBFILESThumbnailSize *size = valueDict[@"size"] ? [DBFILESThumbnailSizeSerializer deserialize:valueDict[@"size"]]
+                                                  : [[DBFILESThumbnailSize alloc] initWithW64h64];
 
   return [[DBFILESThumbnailArg alloc] initWithPath:path format:format size:size];
 }

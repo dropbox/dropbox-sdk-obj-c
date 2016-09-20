@@ -69,7 +69,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
                                              delegate:_delegate
                                         delegateQueue:_delegateQueue];
     NSString *backgroundId =
-        backgroundSessionId ?: [NSString stringWithFormat:@"%@_%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
+        backgroundSessionId ?: [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     _backgroundSession = [NSURLSession
         sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId]
                         delegate:_delegate
@@ -106,6 +106,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
 
   NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
+  task.priority = NSURLSessionTaskPriorityHigh;
   DBRpcTask *rpcTask = [[DBRpcTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
   [task resume];
 

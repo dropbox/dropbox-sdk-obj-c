@@ -76,12 +76,13 @@
 
 + (DBFILESCommitInfo *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  DBFILESWriteMode *mode = [DBFILESWriteModeSerializer deserialize:valueDict[@"mode"]];
-  NSNumber *autorename = valueDict[@"autorename"];
+  DBFILESWriteMode *mode = valueDict[@"mode"] ? [DBFILESWriteModeSerializer deserialize:valueDict[@"mode"]]
+                                              : [[DBFILESWriteMode alloc] initWithAdd];
+  NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
   NSDate *clientModified = valueDict[@"client_modified"] ? [DBNSDateSerializer deserialize:valueDict[@"client_modified"]
                                                                                 dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                                                          : nil;
-  NSNumber *mute = valueDict[@"mute"];
+  NSNumber *mute = valueDict[@"mute"] ?: @NO;
 
   return [[DBFILESCommitInfo alloc] initWithPath:path
                                             mode:mode

@@ -26,6 +26,7 @@
 		F230DB561D6668DD00E3EB0E /* TestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestData.m; sourceTree = "<group>"; };
 		F230DB581D666E4800E3EB0E /* TestClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClasses.h; sourceTree = "<group>"; };
 		F230DB591D666E5900E3EB0E /* TestClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClasses.m; sourceTree = "<group>"; };
+		F246F5A01D91E32800BAC19F /* TestObjectiveDropbox_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestObjectiveDropbox_iOS.entitlements; sourceTree = "<group>"; };
 		F27BA8041D63BBA100FB7864 /* TestObjectiveDropbox_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjectiveDropbox_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27BA8081D63BBA100FB7864 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F27BA80A1D63BBA100FB7864 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		F27BA8061D63BBA100FB7864 /* TestObjectiveDropbox_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F246F5A01D91E32800BAC19F /* TestObjectiveDropbox_iOS.entitlements */,
 				F27BA80A1D63BBA100FB7864 /* AppDelegate.h */,
 				F27BA80B1D63BBA100FB7864 /* AppDelegate.m */,
 				F27BA80D1D63BBA100FB7864 /* ViewController.h */,
@@ -142,11 +144,17 @@
 		F27BA7FC1D63BBA100FB7864 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Dropbox;
 				TargetAttributes = {
 					F27BA8031D63BBA100FB7864 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = NX6T6UBSFF;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -194,7 +202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A03DFCDE9686959E9D77EEE /* [CP] Embed Pods Frameworks */ = {
@@ -278,8 +286,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -323,8 +333,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -353,6 +365,8 @@
 			baseConfigurationReference = 65F9D9B80A170147CA9887A7 /* Pods-TestObjectiveDropbox_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
+				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
@@ -365,6 +379,8 @@
 			baseConfigurationReference = E9403DCD149530530F654EE7 /* Pods-TestObjectiveDropbox_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
+				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";

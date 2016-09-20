@@ -63,7 +63,7 @@
 
 + (DBFILESListFolderLongpollArg *)deserialize:(NSDictionary *)valueDict {
   NSString *cursor = valueDict[@"cursor"];
-  NSNumber *timeout = valueDict[@"timeout"];
+  NSNumber *timeout = valueDict[@"timeout"] ?: @(30);
 
   return [[DBFILESListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
 }

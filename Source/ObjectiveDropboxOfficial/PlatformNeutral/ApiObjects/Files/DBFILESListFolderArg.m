@@ -76,10 +76,10 @@
 
 + (DBFILESListFolderArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  NSNumber *recursive = valueDict[@"recursive"];
-  NSNumber *includeMediaInfo = valueDict[@"include_media_info"];
-  NSNumber *includeDeleted = valueDict[@"include_deleted"];
-  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"];
+  NSNumber *recursive = valueDict[@"recursive"] ?: @NO;
+  NSNumber *includeMediaInfo = valueDict[@"include_media_info"] ?: @NO;
+  NSNumber *includeDeleted = valueDict[@"include_deleted"] ?: @NO;
+  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
 
   return [[DBFILESListFolderArg alloc] initWithPath:path
                                           recursive:recursive

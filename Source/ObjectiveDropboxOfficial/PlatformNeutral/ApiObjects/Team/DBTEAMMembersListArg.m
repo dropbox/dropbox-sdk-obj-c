@@ -61,8 +61,8 @@
 }
 
 + (DBTEAMMembersListArg *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *limit = valueDict[@"limit"];
-  NSNumber *includeRemoved = valueDict[@"include_removed"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(1000);
+  NSNumber *includeRemoved = valueDict[@"include_removed"] ?: @NO;
 
   return [[DBTEAMMembersListArg alloc] initWithLimit:limit includeRemoved:includeRemoved];
 }

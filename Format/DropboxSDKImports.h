@@ -21,6 +21,7 @@
 #import "DBHandlerTypes.h"
 #import "DBKeychain.h"
 #import "DBOAuthResult.h"
+#import "DBReachability.h"
 #import "DBSessionData.h"
 #import "DBStoneBase.h"
 #import "DBStoneSerializers.h"
@@ -29,7 +30,6 @@
 #import "DBTransportClient.h"
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
-#import "Reachability.h"
 
 
 

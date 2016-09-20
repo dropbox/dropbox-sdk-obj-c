@@ -86,7 +86,7 @@
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
-  NSNumber *isInherited = valueDict[@"is_inherited"];
+  NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
 
   return [[DBSHARINGMembershipInfo alloc] initWithAccessType:accessType
                                                  permissions:permissions

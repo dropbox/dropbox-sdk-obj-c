@@ -62,7 +62,7 @@
 
 + (DBTEAMMembersDeactivateArg *)deserialize:(NSDictionary *)valueDict {
   DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-  NSNumber *wipeData = valueDict[@"wipe_data"];
+  NSNumber *wipeData = valueDict[@"wipe_data"] ?: @YES;
 
   return [[DBTEAMMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
 }

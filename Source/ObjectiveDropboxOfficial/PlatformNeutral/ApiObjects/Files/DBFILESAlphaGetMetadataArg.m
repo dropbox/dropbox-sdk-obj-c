@@ -88,9 +88,9 @@
 
 + (DBFILESAlphaGetMetadataArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  NSNumber *includeMediaInfo = valueDict[@"include_media_info"];
-  NSNumber *includeDeleted = valueDict[@"include_deleted"];
-  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"];
+  NSNumber *includeMediaInfo = valueDict[@"include_media_info"] ?: @NO;
+  NSNumber *includeDeleted = valueDict[@"include_deleted"] ?: @NO;
+  NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
   NSArray<NSString *> *includePropertyTemplates =
       valueDict[@"include_property_templates"] ? [DBArraySerializer deserialize:valueDict[@"include_property_templates"]
                                                                       withBlock:^id(id elem) {

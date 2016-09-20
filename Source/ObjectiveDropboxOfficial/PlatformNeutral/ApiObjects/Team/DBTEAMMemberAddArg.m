@@ -93,8 +93,9 @@
   NSString *memberGivenName = valueDict[@"member_given_name"];
   NSString *memberSurname = valueDict[@"member_surname"];
   NSString *memberExternalId = valueDict[@"member_external_id"] ?: nil;
-  NSNumber *sendWelcomeEmail = valueDict[@"send_welcome_email"];
-  DBTEAMAdminTier *role = [DBTEAMAdminTierSerializer deserialize:valueDict[@"role"]];
+  NSNumber *sendWelcomeEmail = valueDict[@"send_welcome_email"] ?: @YES;
+  DBTEAMAdminTier *role = valueDict[@"role"] ? [DBTEAMAdminTierSerializer deserialize:valueDict[@"role"]]
+                                             : [[DBTEAMAdminTier alloc] initWithMemberOnly];
 
   return [[DBTEAMMemberAddArg alloc] initWithMemberEmail:memberEmail
                                          memberGivenName:memberGivenName

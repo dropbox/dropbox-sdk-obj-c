@@ -5,11 +5,11 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
 #import "TestClasses.h"
 #import "TestData.h"
 #import "ViewController.h"
-
-#import "DropboxSDKImportsMobile.h"
 
 @interface ViewController ()
 

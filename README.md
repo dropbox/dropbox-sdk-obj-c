@@ -181,7 +181,7 @@ To facilitate the above authorization flows, you should take the following steps
 ##### macOS
 
 ```objective-c
-#import <ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h>
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [DropboxClientsManager setupWithAppKeyDesktop:@"<APP_KEY>"];
@@ -198,7 +198,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-- (void)viewDidLoad {
+- (void)myButtonInControllerPressed {
     [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
                                         controller:self
                                            openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; }
@@ -210,11 +210,9 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 ##### macOS
 
 ```objective-c
-#import <ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h>
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-// By default, view controller executes before app delegate, so you should trigger the auth flow
-// manually, via a button or the like.
-- (void)myButtonPressed {
+- (void)myButtonInControllerPressed {
     [DropboxClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
@@ -257,7 +255,7 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 ##### macOS
 
 ```objective-c
-#import <ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h>
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 // generic launch handler
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
@@ -347,15 +345,16 @@ Note: Response handlers are required for all endpoints. Progress handlers, on th
 #### Upload-style request
 ```objective-c
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
-[[[client.filesRoutes uploadData:@"/test/path" inputData:fileData] response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBError *error) {
-    if (result) {
-        NSLog(@"%@\n", result);
-    } else {
-        NSLog(@"%@\n%@\n", routeError, error);
-    }
-}] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
-    NSLog(@"%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
-}];
+[[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account" inputData:fileData]
+    response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBError *error) {
+        if (result) {
+            NSLog(@"%@\n", result);
+        } else {
+            NSLog(@"%@\n%@\n", routeError, error);
+        }
+    }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
+        NSLog(@"%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
+    }];
 ```
 
 #### Download-style request
@@ -364,33 +363,34 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *outputDirectory = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
 NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_output.txt"];
-[[[client.filesRoutes downloadData:@"/test/path" overwrite:YES destination:outputUrl] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSURL *destination) {
-    if (result) {
-        NSLog(@"%@\n", result);
-        NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
-        NSString *dataStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@\n", dataStr);
-    } else {
-        NSLog(@"%@\n%@\n", routeError, error);
-    }
-}] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
-    NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
-}];
+[[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account" overwrite:YES destination:outputUrl]
+    response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSURL *destination) {
+        if (result) {
+            NSLog(@"%@\n", result);
+            NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
+            NSString *dataStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@\n", dataStr);
+        } else {
+            NSLog(@"%@\n%@\n", routeError, error);
+        }
+    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
+        NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
+    }];
 
 
 // Download to NSData
-NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
-[[[client.filesRoutes downloadData:@"/test/path"] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSData *fileContents) {
-    if (result) {
-        NSLog(@"%@\n", result);
-        NSString *dataStr = [[NSString alloc]initWithData:fileContents encoding:NSUTF8StringEncoding];
-        NSLog(@"%@\n", dataStr);
-    } else {
-        NSLog(@"%@\n%@\n", routeError, error);
-    }
-}] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
-    NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
-}];
+[[[client.filesRoutes downloadData:@"/test/path"]
+    response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSData *fileContents) {
+        if (result) {
+            NSLog(@"%@\n", result);
+            NSString *dataStr = [[NSString alloc]initWithData:fileContents encoding:NSUTF8StringEncoding];
+            NSLog(@"%@\n", dataStr);
+        } else {
+            NSLog(@"%@\n%@\n", routeError, error);
+        }
+    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
+        NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
+    }];
 ```
 
 ### Handling responses and errors
@@ -408,7 +408,7 @@ For example, the [/delete](https://www.dropbox.com/developers/documentation/http
 
 In this way, one union object is able to capture a multitude of scenarios, each of which has their own value type.
 
-To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the tag state of the union, you can then safely access the value associated with that tag state (provided there exists an associated value type, i.e., it's not **void**).
+To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the current tag state of the union, you can then safely access the value associated with that tag state (provided there exists an associated value type, i.e., it's not **void**).
 If at run time you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
 
 #### Route-specific errors
@@ -538,7 +538,7 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 
 #### macOS
 ```objective-c
-#import <ObjectiveDropboxOfficial_macOS/ObjectiveDropboxOfficial_macOS.h>
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:nil
                                                                          selectUser:nil

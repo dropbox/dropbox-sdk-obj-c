@@ -68,7 +68,7 @@
 }
 
 + (DBSHARINGListFoldersArgs *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(1000);
   NSArray<DBSHARINGFolderAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
                                                    withBlock:^id(id elem) {

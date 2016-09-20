@@ -115,6 +115,16 @@
   return statusCode == 409;
 }
 
+- (NSString *)caseInsensitiveLookup:(NSString *)lookupKey dictionary:(NSDictionary<id, id> *)dictionary {
+  for (id key in dictionary) {
+    NSString *keyString = (NSString *)key;
+    if ([keyString.lowercaseString isEqualToString:lookupKey.lowercaseString]) {
+      return (NSString *)dictionary[key];
+    }
+  }
+  return nil;
+}
+
 @end
 
 #pragma mark - RPC-style network task
@@ -136,6 +146,10 @@
 }
 
 - (DBRpcTask *)response:(void (^)(id, id, DBError *))responseBlock {
+  return [self response:nil response:responseBlock];
+}
+
+- (DBRpcTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBError *))responseBlock {
   DBRpcResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -158,13 +172,17 @@
     responseBlock(result, nil, nil);
   };
 
-  [_delegate addRpcResponseHandler:_task session:_session responseHandler:wrapperBlock];
+  [_delegate addRpcResponseHandler:_task session:_session responseHandler:wrapperBlock responseHandlerQueue:queue];
 
   return self;
 }
 
 - (DBRpcTask *)progress:(DBProgressBlock)progressBlock {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
+  return [self progress:nil progress:progressBlock];
+}
+
+- (DBRpcTask *)progress:(NSOperationQueue *)handlerQueue progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:handlerQueue];
   return self;
 }
 
@@ -201,6 +219,10 @@
 }
 
 - (DBUploadTask *)response:(void (^)(id, id, DBError *))responseBlock {
+  return [self response:nil response:responseBlock];
+}
+
+- (DBUploadTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBError *))responseBlock {
   DBUploadResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -223,13 +245,17 @@
     responseBlock(result, nil, nil);
   };
 
-  [_delegate addUploadResponseHandler:_task session:_session responseHandler:wrapperBlock];
+  [_delegate addUploadResponseHandler:_task session:_session responseHandler:wrapperBlock responseHandlerQueue:queue];
 
   return self;
 }
 
 - (DBUploadTask *)progress:(DBProgressBlock)progressBlock {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
+  return [self progress:nil progress:progressBlock];
+}
+
+- (DBUploadTask *)progress:(NSOperationQueue *)handlerQueue progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:handlerQueue];
   return self;
 }
 
@@ -270,11 +296,17 @@
 }
 
 - (DBDownloadUrlTask *)response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
+  return [self response:nil response:responseBlock];
+}
+
+- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue
+                       response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
   DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSData *resultData = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *headerString = [self caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
+    NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
     if (!resultData) {
       // error data is in response body (downloaded to output tmp file)
@@ -324,13 +356,17 @@
     responseBlock(result, nil, nil, _destination);
   };
 
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock];
+  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock responseHandlerQueue:queue];
 
   return self;
 }
 
 - (DBDownloadUrlTask *)progress:(DBProgressBlock)progressBlock {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
+  return [self progress:nil progress:progressBlock];
+}
+
+- (DBDownloadUrlTask *)progress:(NSOperationQueue *)handlerQueue progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:handlerQueue];
   return self;
 }
 
@@ -367,11 +403,17 @@
 }
 
 - (DBDownloadDataTask *)response:(void (^)(id, id, DBError *dbxError, NSData *))responseBlock {
+  return [self response:nil response:responseBlock];
+}
+
+- (DBDownloadDataTask *)response:(NSOperationQueue *)queue
+                        response:(void (^)(id, id, DBError *dbxError, NSData *))responseBlock {
   DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSData *resultData = [httpHeaders[@"Dropbox-API-Result"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *headerString = [self caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
+    NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
     if (!resultData) {
       // error data is in response body (downloaded to output tmp file)
@@ -395,13 +437,17 @@
     responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
   };
 
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock];
+  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:wrapperBlock responseHandlerQueue:queue];
 
   return self;
 }
 
 - (DBDownloadDataTask *)progress:(DBProgressBlock)progressBlock {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock];
+  return [self progress:nil progress:progressBlock];
+}
+
+- (DBDownloadDataTask *)progress:(NSOperationQueue *)handlerQueue progress:(DBProgressBlock)progressBlock {
+  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:handlerQueue];
   return self;
 }
 

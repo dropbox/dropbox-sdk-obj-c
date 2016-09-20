@@ -63,7 +63,9 @@
 
 + (DBSHARINGAddMember *)deserialize:(NSDictionary *)valueDict {
   DBSHARINGMemberSelector *member = [DBSHARINGMemberSelectorSerializer deserialize:valueDict[@"member"]];
-  DBSHARINGAccessLevel *accessLevel = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_level"]];
+  DBSHARINGAccessLevel *accessLevel = valueDict[@"access_level"]
+                                          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_level"]]
+                                          : [[DBSHARINGAccessLevel alloc] initWithViewer];
 
   return [[DBSHARINGAddMember alloc] initWithMember:member accessLevel:accessLevel];
 }

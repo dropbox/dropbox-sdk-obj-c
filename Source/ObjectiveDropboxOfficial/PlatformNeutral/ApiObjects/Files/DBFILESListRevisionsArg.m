@@ -63,7 +63,7 @@
 
 + (DBFILESListRevisionsArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *limit = valueDict[@"limit"] ?: @(10);
 
   return [[DBFILESListRevisionsArg alloc] initWithPath:path limit:limit];
 }

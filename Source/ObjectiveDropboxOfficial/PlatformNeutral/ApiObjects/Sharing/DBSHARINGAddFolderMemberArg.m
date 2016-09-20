@@ -83,7 +83,7 @@
                            withBlock:^id(id elem) {
                              return [DBSHARINGAddMemberSerializer deserialize:elem];
                            }];
-  NSNumber *quiet = valueDict[@"quiet"];
+  NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
 
   return [[DBSHARINGAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId

@@ -89,9 +89,11 @@
                              return [DBSHARINGMemberSelectorSerializer deserialize:elem];
                            }];
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
-  NSNumber *quiet = valueDict[@"quiet"];
-  DBSHARINGAccessLevel *accessLevel = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_level"]];
-  NSNumber *addMessageAsComment = valueDict[@"add_message_as_comment"];
+  NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
+  DBSHARINGAccessLevel *accessLevel = valueDict[@"access_level"]
+                                          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_level"]]
+                                          : [[DBSHARINGAccessLevel alloc] initWithViewer];
+  NSNumber *addMessageAsComment = valueDict[@"add_message_as_comment"] ?: @NO;
 
   return [[DBSHARINGAddFileMemberArgs alloc] initWithFile:file
                                                   members:members

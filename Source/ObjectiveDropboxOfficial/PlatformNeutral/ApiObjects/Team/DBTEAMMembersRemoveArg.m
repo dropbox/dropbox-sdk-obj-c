@@ -75,14 +75,14 @@
 
 + (DBTEAMMembersRemoveArg *)deserialize:(NSDictionary *)valueDict {
   DBTEAMUserSelectorArg *user = [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"user"]];
-  NSNumber *wipeData = valueDict[@"wipe_data"];
+  NSNumber *wipeData = valueDict[@"wipe_data"] ?: @YES;
   DBTEAMUserSelectorArg *transferDestId =
       valueDict[@"transfer_dest_id"] ? [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"transfer_dest_id"]]
                                      : nil;
   DBTEAMUserSelectorArg *transferAdminId =
       valueDict[@"transfer_admin_id"] ? [DBTEAMUserSelectorArgSerializer deserialize:valueDict[@"transfer_admin_id"]]
                                       : nil;
-  NSNumber *keepAccount = valueDict[@"keep_account"];
+  NSNumber *keepAccount = valueDict[@"keep_account"] ?: @NO;
 
   return [[DBTEAMMembersRemoveArg alloc] initWithUser:user
                                              wipeData:wipeData

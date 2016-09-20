@@ -5,10 +5,10 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
 #import "TestClasses.h"
 #import "TestData.h"
-
-#import "DropboxSDKImportsDesktop.h"
 
 void MyLog(NSString *format, ...) {
   va_list args;

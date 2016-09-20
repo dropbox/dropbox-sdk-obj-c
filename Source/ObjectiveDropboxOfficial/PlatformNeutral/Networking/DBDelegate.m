@@ -52,11 +52,20 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
   if (error && [task isKindOfClass:[NSURLSessionDownloadTask class]]) {
     DBDownloadResponseBlock responseHandler = sessionData.downloadHandlers[taskId];
     if (responseHandler) {
-      responseHandler(nil, task.response, error);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          responseHandler(nil, task.response, error);
+        }];
+      } else {
+        responseHandler(nil, task.response, error);
+      }
       [sessionData.downloadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.responsesData removeObjectForKey:taskId];
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:nil
                                                                            responseMetadata:task.response
@@ -67,12 +76,21 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     NSMutableData *responseData = sessionData.responsesData[taskId];
     DBUploadResponseBlock responseHandler = sessionData.uploadHandlers[taskId];
     if (responseHandler) {
-      responseHandler(responseData, task.response, error);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          responseHandler(responseData, task.response, error);
+        }];
+      } else {
+        responseHandler(responseData, task.response, error);
+      }
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.uploadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.responsesData removeObjectForKey:taskId];
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:responseData
                                                                            responseMetadata:task.response
@@ -83,12 +101,21 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     NSMutableData *responseData = sessionData.responsesData[taskId];
     DBRpcResponseBlock responseHandler = sessionData.rpcHandlers[taskId];
     if (responseHandler) {
-      responseHandler(responseData, task.response, error);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          responseHandler(responseData, task.response, error);
+        }];
+      } else {
+        responseHandler(responseData, task.response, error);
+      }
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.rpcHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.responsesData removeObjectForKey:taskId];
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
     } else {
       sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:responseData
                                                                            responseMetadata:task.response
@@ -109,7 +136,14 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
   if ([task isKindOfClass:[NSURLSessionDataTask class]]) {
     DBProgressBlock progressHandler = sessionData.progressHandlers[taskId];
     if (progressHandler) {
-      progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
+      NSOperationQueue *handlerQueue = sessionData.progressHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
+        }];
+      } else {
+        progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
+      }
     } else {
       sessionData.progressData[taskId] = [[DBProgressData alloc] initWithProgressData:bytesSent
                                                                        totalCommitted:totalBytesSent
@@ -128,7 +162,14 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
   DBProgressBlock progressHandler = sessionData.progressHandlers[taskId];
   if (progressHandler) {
-    progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+    NSOperationQueue *handlerQueue = sessionData.progressHandlerQueues[taskId];
+    if (handlerQueue) {
+      [handlerQueue addOperationWithBlock:^{
+        progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+      }];
+    } else {
+      progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+    }
   } else {
     sessionData.progressData[taskId] = [[DBProgressData alloc] initWithProgressData:bytesWritten
                                                                      totalCommitted:totalBytesWritten
@@ -144,21 +185,23 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
   DBDownloadResponseBlock responseHandler = sessionData.downloadHandlers[taskId];
   if (responseHandler) {
-    responseHandler(location, downloadTask.response, nil);
+    NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+    if (handlerQueue) {
+      NSString *tmpOutputPath = [self moveFileToTempStorage:location];
+      [handlerQueue addOperationWithBlock:^{
+        responseHandler([NSURL URLWithString:tmpOutputPath], downloadTask.response, nil);
+      }];
+    } else {
+      responseHandler(location, downloadTask.response, nil);
+    }
     [sessionData.downloadHandlers removeObjectForKey:taskId];
     [sessionData.progressHandlers removeObjectForKey:taskId];
     [sessionData.progressData removeObjectForKey:taskId];
     [sessionData.responsesData removeObjectForKey:taskId];
+    [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+    [sessionData.progressHandlerQueues removeObjectForKey:taskId];
   } else {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *tmpOutputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
-
-    NSError *fileMoveError;
-    [fileManager moveItemAtPath:[location path] toPath:tmpOutputPath error:&fileMoveError];
-    if (fileMoveError) {
-      NSLog(@"Error moving file to temporary storage location: %@", fileMoveError);
-    }
-
+    NSString *tmpOutputPath = [self moveFileToTempStorage:location];
     sessionData.completionData[taskId] =
         [[DBCompletionData alloc] initWithCompletionData:nil
                                         responseMetadata:downloadTask.response
@@ -167,12 +210,26 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
   }
 }
 
+- (NSString *)moveFileToTempStorage:(NSURL *)startingLocation {
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSString *tmpOutputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
+  
+  NSError *fileMoveError;
+  [fileManager moveItemAtPath:[startingLocation path] toPath:tmpOutputPath error:&fileMoveError];
+  if (fileMoveError) {
+    NSLog(@"Error moving file to temporary storage location: %@", fileMoveError);
+  }
+  
+  return tmpOutputPath;
+}
+
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
 }
 
 - (void)addProgressHandler:(NSURLSessionTask *)task
                    session:(NSURLSession *)session
-           progressHandler:(void (^)(int64_t, int64_t, int64_t))handler {
+           progressHandler:(void (^)(int64_t, int64_t, int64_t))handler
+      progressHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
 
   [_delegateQueue addOperationWithBlock:^{
@@ -180,10 +237,20 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
     // there is a handler queued to be executed
     DBProgressData *progressData = sessionData.progressData[taskId];
     if (progressData) {
-      handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
+      NSOperationQueue *handlerQueue = sessionData.progressHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
+        }];
+      } else {
+        handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
+      }
       [sessionData.progressData removeObjectForKey:taskId];
-    } else if (!sessionData.progressHandlers[taskId]) {
+    } else {
       sessionData.progressHandlers[taskId] = handler;
+      if (handlerQueue) {
+        sessionData.progressHandlerQueues[taskId] = handlerQueue;
+      }
     }
   }];
 }
@@ -192,20 +259,33 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
 - (void)addRpcResponseHandler:(NSURLSessionTask *)task
                       session:(NSURLSession *)session
-              responseHandler:(DBRpcResponseBlock)handler {
+              responseHandler:(DBRpcResponseBlock)handler
+         responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];
 
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        }];
+      } else {
+        handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.rpcHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
-    } else if (!sessionData.rpcHandlers[taskId]) {
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
+    } else {
       sessionData.rpcHandlers[taskId] = handler;
+      if (handlerQueue) {
+        sessionData.responseHandlerQueues[taskId] = handlerQueue;
+      }
     }
   }];
 }
@@ -214,20 +294,33 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
 - (void)addUploadResponseHandler:(NSURLSessionTask *)task
                          session:(NSURLSession *)session
-                 responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler {
+                 responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler
+            responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];
 
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        }];
+      } else {
+        handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+      }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.uploadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
-    } else if (!sessionData.uploadHandlers[taskId]) {
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
+    } else {
       sessionData.uploadHandlers[taskId] = handler;
+      if (handlerQueue) {
+        sessionData.responseHandlerQueues[taskId] = handlerQueue;
+      }
     }
   }];
 }
@@ -236,20 +329,33 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 
 - (void)addDownloadResponseHandler:(NSURLSessionTask *)task
                            session:(NSURLSession *)session
-                   responseHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler {
+                   responseHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler
+              responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];
 
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
+      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
+      if (handlerQueue) {
+        [handlerQueue addOperationWithBlock:^{
+          handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
+        }];
+      } else {
+        handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
+      }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
       [sessionData.downloadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
-    } else if (!sessionData.downloadHandlers[taskId]) {
+      [sessionData.responseHandlerQueues removeObjectForKey:taskId];
+      [sessionData.progressHandlerQueues removeObjectForKey:taskId];
+    } else {
       sessionData.downloadHandlers[taskId] = handler;
+      if (handlerQueue) {
+        sessionData.responseHandlerQueues[taskId] = handlerQueue;
+      }
     }
   }];
 }

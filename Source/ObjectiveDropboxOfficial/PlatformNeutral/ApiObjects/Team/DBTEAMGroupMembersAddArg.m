@@ -76,7 +76,7 @@
                            withBlock:^id(id elem) {
                              return [DBTEAMMemberAccessSerializer deserialize:elem];
                            }];
-  NSNumber *returnMembers = valueDict[@"return_members"];
+  NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
   return [[DBTEAMGroupMembersAddArg alloc] initWithGroup:group members:members returnMembers:returnMembers];
 }

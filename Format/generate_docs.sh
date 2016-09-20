@@ -9,7 +9,7 @@ else
 
     echo "Checking doc repo exists..."
 
-    if [ -d "../../docs_obj_c/api-docs" ]; then
+    if [ -d base_location ]; then
         docs_location="$base_location/$sdk_version"
         tmp_location="$base_location/all_sdk_files"
         if [ -d $docs_location ]; then
@@ -26,8 +26,6 @@ else
         echo "Copying all sdk files to tmp directory..."
         find ../Source/ObjectiveDropboxOfficial/ -name \*.[h,m] -exec cp {} $tmp_location \;
         cp ../README.md $tmp_location
-
-        cp DropboxSDKImports.h $tmp_location
 
         echo "Generating documents..."
         jazzy --objc --readme $tmp_location/README.md --umbrella-header $tmp_location/DropboxSDKImports.h --framework-root $tmp_location --config ../.jazzy.json -o $docs_location

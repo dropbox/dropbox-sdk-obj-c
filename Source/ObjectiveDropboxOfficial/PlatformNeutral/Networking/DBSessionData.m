@@ -57,6 +57,8 @@
     _downloadHandlers = [NSMutableDictionary new];
     _progressData = [NSMutableDictionary new];
     _completionData = [NSMutableDictionary new];
+    _progressHandlerQueues = [NSMutableDictionary new];
+    _responseHandlerQueues = [NSMutableDictionary new];
   }
   return self;
 }

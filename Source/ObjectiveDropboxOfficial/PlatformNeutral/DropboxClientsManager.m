@@ -79,7 +79,6 @@ static DropboxTeamClient *authorizedTeamClient;
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `[DropboxClientsManager setupWithAppKey]` before calling this method");
-  NSAssert([DropboxClientsManager authorizedClient] == nil, @"Dropbox user client is already authorized");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
@@ -93,7 +92,6 @@ static DropboxTeamClient *authorizedTeamClient;
 + (BOOL)reauthorizeTeamClient:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `[DropboxClientsManager setupWithTeamAppKey]` before calling this method");
-  NSAssert([DropboxClientsManager authorizedTeamClient] == nil, @"Dropbox user client is already authorized");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
@@ -137,7 +135,6 @@ static DropboxTeamClient *authorizedTeamClient;
 + (DBOAuthResult *)handleRedirectURL:(NSURL *)url {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `[DropboxClientsManager setupWithAppKey]` before calling this method");
-  NSAssert([DropboxClientsManager authorizedClient] == nil, @"Dropbox user client is already authorized");
 
   DBOAuthResult *result = [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url];
 
@@ -160,7 +157,6 @@ static DropboxTeamClient *authorizedTeamClient;
 + (DBOAuthResult *)handleRedirectURLTeam:(NSURL *)url {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `[DropboxClientsManager setupWithTeamAppKey]` before calling this method");
-  NSAssert([DropboxClientsManager authorizedTeamClient] == nil, @"Dropbox team client is already authorized");
 
   DBOAuthResult *result = [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url];
 
@@ -181,12 +177,10 @@ static DropboxTeamClient *authorizedTeamClient;
 }
 
 + (void)unlinkClients {
-  NSAssert(
-      [DBOAuthManager sharedOAuthManager] != nil,
-      @"Call `[DropboxClient setupWithAppKey]` or `[DropboxClient setupWithTeamAppKey]` before calling this method");
-
-  [[DBOAuthManager sharedOAuthManager] clearStoredAccessTokens];
-  [self resetClients];
+  if ([DBOAuthManager sharedOAuthManager]) {
+    [[DBOAuthManager sharedOAuthManager] clearStoredAccessTokens];
+    [[self class] resetClients];
+  }
 }
 
 + (void)resetClients {

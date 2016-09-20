@@ -76,7 +76,7 @@
                            withBlock:^id(id elem) {
                              return [DBTEAMUserSelectorArgSerializer deserialize:elem];
                            }];
-  NSNumber *returnMembers = valueDict[@"return_members"];
+  NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
   return [[DBTEAMGroupMembersRemoveArg alloc] initWithGroup:group users:users returnMembers:returnMembers];
 }

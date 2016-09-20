@@ -58,7 +58,7 @@
 }
 
 + (DBTEAMIncludeMembersArg *)deserialize:(NSDictionary *)valueDict {
-  NSNumber *returnMembers = valueDict[@"return_members"];
+  NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
   return [[DBTEAMIncludeMembersArg alloc] initWithReturnMembers:returnMembers];
 }

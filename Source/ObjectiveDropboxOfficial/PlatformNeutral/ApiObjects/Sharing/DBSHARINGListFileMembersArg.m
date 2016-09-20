@@ -83,8 +83,8 @@
                                                      return [DBSHARINGMemberActionSerializer deserialize:elem];
                                                    }]
                             : nil;
-  NSNumber *includeInherited = valueDict[@"include_inherited"];
-  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *includeInherited = valueDict[@"include_inherited"] ?: @YES;
+  NSNumber *limit = valueDict[@"limit"] ?: @(100);
 
   return [[DBSHARINGListFileMembersArg alloc] initWithFile:file
                                                    actions:actions

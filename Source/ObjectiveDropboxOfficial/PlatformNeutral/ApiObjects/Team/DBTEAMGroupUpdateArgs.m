@@ -84,7 +84,7 @@
 
 + (DBTEAMGroupUpdateArgs *)deserialize:(NSDictionary *)valueDict {
   DBTEAMGroupSelector *group = [DBTEAMGroupSelectorSerializer deserialize:valueDict[@"group"]];
-  NSNumber *returnMembers = valueDict[@"return_members"];
+  NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
   NSString *dNewGroupName = valueDict[@"new_group_name"] ?: nil;
   NSString *dNewGroupExternalId = valueDict[@"new_group_external_id"] ?: nil;
   DBTEAMCOMMONGroupManagementType *dNewGroupManagementType =

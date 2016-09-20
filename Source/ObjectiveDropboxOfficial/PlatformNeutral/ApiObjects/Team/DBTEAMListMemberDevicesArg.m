@@ -71,9 +71,9 @@
 
 + (DBTEAMListMemberDevicesArg *)deserialize:(NSDictionary *)valueDict {
   NSString *teamMemberId = valueDict[@"team_member_id"];
-  NSNumber *includeWebSessions = valueDict[@"include_web_sessions"];
-  NSNumber *includeDesktopClients = valueDict[@"include_desktop_clients"];
-  NSNumber *includeMobileClients = valueDict[@"include_mobile_clients"];
+  NSNumber *includeWebSessions = valueDict[@"include_web_sessions"] ?: @YES;
+  NSNumber *includeDesktopClients = valueDict[@"include_desktop_clients"] ?: @YES;
+  NSNumber *includeMobileClients = valueDict[@"include_mobile_clients"] ?: @YES;
 
   return [[DBTEAMListMemberDevicesArg alloc] initWithTeamMemberId:teamMemberId
                                                includeWebSessions:includeWebSessions
