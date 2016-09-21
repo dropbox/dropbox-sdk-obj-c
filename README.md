@@ -165,9 +165,9 @@ Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the new
 
 ### Manually add subproject
 
-Finally, you can also integrate the Dropbox Objective-C SDK into your project manually without using a dependency manager.
+Finally, you can also integrate the Dropbox Objective-C SDK into your project manually with the help of Carthage. Please follow the above steps under the [Carthage](#carthage) section.
 
-Drag the `dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
+Once you have checkedout out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
 
 Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add `ObjectiveDropboxOfficial.framework`.
 
