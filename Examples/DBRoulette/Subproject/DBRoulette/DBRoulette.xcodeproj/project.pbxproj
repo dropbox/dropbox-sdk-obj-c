@@ -14,19 +14,20 @@
 		F2350E0B1D88B64E00BC3308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2350E0A1D88B64E00BC3308 /* Assets.xcassets */; };
 		F2350E0E1D88B64E00BC3308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2350E0C1D88B64E00BC3308 /* LaunchScreen.storyboard */; };
 		F2350E251D88B70A00BC3308 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2350E241D88B70A00BC3308 /* PhotoViewController.m */; };
+		F23B85F21D9323CF0059439A /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F2E0ABCF1D9239B200CEA4D3 /* PBXContainerItemProxy */ = {
+		F23B85EE1D9323C60059439A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F2E0ABCA1D9239B200CEA4D3 /* ObjectiveDropboxOfficial.xcodeproj */;
+			containerPortal = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F26B75751D7F6AF700714F70;
 			remoteInfo = "ObjectiveDropboxOfficial iOS";
 		};
-		F2E0ABD11D9239B200CEA4D3 /* PBXContainerItemProxy */ = {
+		F23B85F01D9323C60059439A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F2E0ABCA1D9239B200CEA4D3 /* ObjectiveDropboxOfficial.xcodeproj */;
+			containerPortal = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F27DE9E21D7FF909003B1CEE;
 			remoteInfo = "ObjectiveDropboxOfficial macOS";
@@ -59,7 +60,7 @@
 		F2350E0F1D88B64E00BC3308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2350E231D88B6F600BC3308 /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		F2350E241D88B70A00BC3308 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		F2E0ABCA1D9239B200CEA4D3 /* ObjectiveDropboxOfficial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveDropboxOfficial.xcodeproj; path = ../../../../Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj; sourceTree = "<group>"; };
+		F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveDropboxOfficial.xcodeproj; path = "Carthage/Checkouts/dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23B85F21D9323CF0059439A /* ObjectiveDropboxOfficial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,9 +78,9 @@
 		F2350DF21D88B64D00BC3308 = {
 			isa = PBXGroup;
 			children = (
+				F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */,
 				F2350DFD1D88B64D00BC3308 /* DBRoulette */,
 				F2350DFC1D88B64D00BC3308 /* Products */,
-				F2E0ABCA1D9239B200CEA4D3 /* ObjectiveDropboxOfficial.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,11 +118,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F2E0ABCB1D9239B200CEA4D3 /* Products */ = {
+		F23B85EA1D9323C60059439A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F2E0ABD01D9239B200CEA4D3 /* ObjectiveDropboxOfficial.framework */,
-				F2E0ABD21D9239B200CEA4D3 /* ObjectiveDropboxOfficial.framework */,
+				F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */,
+				F23B85F11D9323C60059439A /* ObjectiveDropboxOfficial.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +138,7 @@
 				F2350DF81D88B64D00BC3308 /* Frameworks */,
 				F2350DF91D88B64D00BC3308 /* Resources */,
 				F2350E221D88B68600BC3308 /* Embed Frameworks */,
+				F23B85F31D9323E30059439A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -173,8 +176,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F2E0ABCB1D9239B200CEA4D3 /* Products */;
-					ProjectRef = F2E0ABCA1D9239B200CEA4D3 /* ObjectiveDropboxOfficial.xcodeproj */;
+					ProductGroup = F23B85EA1D9323C60059439A /* Products */;
+					ProjectRef = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -185,18 +188,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F2E0ABD01D9239B200CEA4D3 /* ObjectiveDropboxOfficial.framework */ = {
+		F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ObjectiveDropboxOfficial.framework;
-			remoteRef = F2E0ABCF1D9239B200CEA4D3 /* PBXContainerItemProxy */;
+			remoteRef = F23B85EE1D9323C60059439A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F2E0ABD21D9239B200CEA4D3 /* ObjectiveDropboxOfficial.framework */ = {
+		F23B85F11D9323C60059439A /* ObjectiveDropboxOfficial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ObjectiveDropboxOfficial.framework;
-			remoteRef = F2E0ABD11D9239B200CEA4D3 /* PBXContainerItemProxy */;
+			remoteRef = F23B85F01D9323C60059439A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -213,6 +216,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F23B85F31D9323E30059439A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2350DF71D88B64D00BC3308 /* Sources */ = {

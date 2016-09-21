@@ -130,7 +130,7 @@ brew install carthage
 github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.9
 ```
 
-Then, run the following command to install the dependency to checkout and build the Dropbox Objective-C SDK repository:
+Then, run the following command to checkout and build the Dropbox Objective-C SDK repository:
 
 ##### iOS
 
@@ -165,11 +165,26 @@ Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the new
 
 ### Manually add subproject
 
-Finally, you can also integrate the Dropbox Objective-C SDK into your project manually with the help of Carthage. Please follow the above steps under the [Carthage](#carthage) section.
+Finally, you can also integrate the Dropbox Objective-C SDK into your project manually with the help of Carthage. Please take the following steps:
 
-Once you have checkedout out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
+Create a `Cartfile` in your project with the same contents as the Cartfile listed in the [Carthage](#carthage) section of the README.
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add `ObjectiveDropboxOfficial.framework`.
+Then, run the following command to checkout and build the Dropbox Objective-C SDK repository:
+
+##### iOS
+
+```bash
+carthage update --platform iOS
+```
+
+##### macOS
+```bash
+carthage update --platform Mac
+```
+
+Once you have checkedout out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
+
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file that has the same platform target as your build target.
 
 ---
 
