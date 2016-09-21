@@ -4,13 +4,67 @@ The Official Dropbox Objective-C SDK for integrating with Dropbox [API v2](https
 
 Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/).
 
-## Requirements
+---
+
+## Table of Contents
+
+* [System requirements](#system-requirements)
+  * [Xcode 8 and iOS 10 bug](#xcode-8-and-ios-10-bug)
+* [Get started](#get-started)
+  * [Register your application](#register-your-application)
+  * [Obtain an OAuth2 token](#obtain-an-oauth2-token)
+* [SDK distribution](#sdk-distribution)
+  * [CocoaPods](#cocoapods)
+  * [Carthage](#carthage)
+  * [Manually add subproject](#manually-add-subproject)
+* [Configure your project](#configure-your-project)
+  * [Application `.plist` file](#application-plist-file)
+  * [Handling the authorization flow](#handling-the-authorization-flow)
+    * [Initialize a `DropboxClient` instance](#initialize-a-dropboxclient-instance)
+    * [Begin the authorization flow](#begin-the-authorization-flow)
+    * [Handle redirect back into SDK](#handle-redirect-back-into-sdk)
+* [Try some API requests](#try-some-api-requests)
+  * [Dropbox client instance](#dropbox-client-instance)
+  * [Handle the API response](#handle-the-api-response)
+  * [Request types](#request-types)
+    * [RPC-style request](#rpc-style-request)
+    * [Upload-style request](#upload-style-request)
+    * [Download-style request](#download-style-request)
+  * [Handling responses and errors](#handling-responses-and-errors)
+    * [Route-specific errors](#route-specific-errors)
+    * [Generic network request errors](#generic-network-request-errors)
+    * [Response handling edge cases](#response-handling-edge-cases)
+  * [Customizing network calls](#customizing-network-calls)
+    * [Configure network client](#configure-network-client)
+    * [Specify API call response queue](#specify-api-call-response-queue)
+  * [`DropboxClientsManager` class](#dropboxclientsmanager-class)
+    * [Single Dropbox user case](#single-dropbox-user-case)
+    * [Multiple Dropbox user case](#multiple-dropbox-user-case)
+* [Examples](#examples)
+* [Documentation](#documentation)
+* [Stone](#stone)
+* [Modifications](#modifications)
+* [Bugs](#bugs)
+
+---
+
+## System requirements
 
 - iOS 8.0+
 - macOS 10.10+
 - Xcode 7.3+
 
-## Get Started
+---
+
+### Xcode 8 and iOS 10 bug
+
+> The Dropbox Objective-C SDK currently supports Xcode 8 and iOS 10. However, there appears to be a bug with the Keychain in the iOS simulator environment where data is not persistently saved to the Keychain.
+>
+> As a temporary workaround, in the Project Navigator, select **your project** > **Capabilities** > **Keychain Sharing** > **ON**.
+>
+> You can read more about the bug [here](https://forums.developer.apple.com/message/170381#170381).
+
+## Get started
 
 ### Register your application
 
@@ -24,7 +78,9 @@ a Dropbox user account or team.
 Once you've created an app, you can go to the App Console and manually generate an access token to authorize your app to access your own Dropbox account.
 Otherwise, you can obtain an OAuth token programmatically using the SDK's pre-defined auth flow. For more information, [see below](https://github.com/dropbox/dropbox-sdk-obj-c#handling-authorization-flow).
 
-## SDK Distribution
+---
+
+## SDK distribution
 
 You can integrate the Dropbox Objective-C SDK into your project using one of several methods.
 
@@ -56,6 +112,8 @@ Once your project is integrated with the Dropbox Objective-C SDK, you can pull S
 $ pod update
 ```
 
+---
+
 ### Carthage
 
 You can also integrate the Dropbox Objective-C SDK into your project using [Carthage](https://github.com/Carthage/Carthage), a decentralized dependency manager for Cocoa. Carthage offers more flexibility than CocoaPods, but requires some additional work. You can install Carthage (with Xcode 7+) via [Homebrew](http://brew.sh/):
@@ -69,12 +127,12 @@ brew install carthage
 
 ```
 # ObjectiveDropboxOfficial
-github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.8
+github "https://github.com/dropbox/dropbox-sdk-obj-c" ~> 1.0.9
 ```
 
 Then, run the following command to install the dependency to checkout and build the Dropbox Objective-C SDK repository:
 
-#### iOS
+##### iOS
 
 ```bash
 carthage update --platform iOS
@@ -94,14 +152,16 @@ Then, navigate to the **Input Files** section and add the following path:
 $(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework
 ```
 
-#### macOS
+##### macOS
 ```bash
 carthage update --platform Mac
 ```
 
-In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial_macOS.framework` (from `Carthage/Build/Mac`).
+In the Project Navigator in Xcode, select your project, and then navigate to **General** > **Embedded Binaries**, then drag and drop `ObjectiveDropboxOfficial.framework` (from `Carthage/Build/Mac`).
 
-Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial_macOS.framework.dSYM` (from `Carthage/Build/Mac`).
+Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
+
+---
 
 ### Manually add subproject
 
@@ -110,6 +170,8 @@ Finally, you can also integrate the Dropbox Objective-C SDK into your project ma
 Drag the `dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
 
 Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add `ObjectiveDropboxOfficial.framework`.
+
+---
 
 ## Configure your project
 
@@ -154,6 +216,8 @@ After you've made the above changes, your application's `.plist` file should loo
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/InfoPlistExample.png?raw=true" alt="Info .plist Example"/>
 </p>
 
+---
+
 ### Handling the authorization flow
 
 There are three methods to programmatically retrieve an OAuth2 access token:
@@ -164,7 +228,9 @@ There are three methods to programmatically retrieve an OAuth2 access token:
 
 To facilitate the above authorization flows, you should take the following steps:
 
-#### Initialize a `DropboxClient` instance from application delegate
+---
+
+#### Initialize a `DropboxClient` instance
 
 ##### iOS
 
@@ -188,7 +254,9 @@ To facilitate the above authorization flows, you should take the following steps
 }
 ```
 
-#### Begin the authorization flow from view controller
+---
+
+#### Begin the authorization flow
 
 You can commence the auth flow by calling `authorizeFromController:controller:openURL:browserAuth` method in your application's
 view controller. If you wish to authenticate via the in-app webview, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
@@ -226,6 +294,8 @@ Beginning the authentication flow via in-app webview will launch a window like t
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowInit.png?raw=true" alt="Auth Flow Init Example"/>
 </p>
+
+---
 
 #### Handle redirect back into SDK
 
@@ -293,11 +363,13 @@ delegate's `application:handleOpenURL` method, from which the result of the auth
 
 Now you're ready to begin making API requests!
 
+---
+
 ## Try some API requests
 
 Once you have obtained an OAuth2 token, you can try some API v2 calls using the Objective-C SDK.
 
-### Retrieve your Dropbox client instance
+### Dropbox client instance
 
 Start by creating a reference to the `DropboxClient` or `DropboxTeamClient` instance that you will use to make your API calls.
 
@@ -317,6 +389,8 @@ or
 DropboxClient *client = [[DropboxClient alloc] initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
 ```
 
+---
+
 ### Handle the API response
 
 The Dropbox [User API](https://www.dropbox.com/developers/documentation/http/documentation) and [Business API](https://www.dropbox.com/developers/documentation/http/teams) have three types of requests: RPC, Upload and Download.
@@ -328,6 +402,8 @@ The response handlers for each request type are similar to one another. The argu
 * **output content** (`NSURL` / `NSData` reference to downloaded output for Download-style endpoints only)
 
 Note: Response handlers are required for all endpoints. Progress handlers, on the other hand, are optional for all endpoints.
+
+---
 
 ### Request types
 
@@ -341,6 +417,8 @@ Note: Response handlers are required for all endpoints. Progress handlers, on th
     }
 }];
 ```
+
+---
 
 #### Upload-style request
 ```objective-c
@@ -356,6 +434,8 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
         NSLog(@"%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
     }];
 ```
+
+---
 
 #### Download-style request
 ```objective-c
@@ -393,6 +473,8 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
     }];
 ```
 
+---
+
 ### Handling responses and errors
 
 Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route **arguments** are struct types and most route **errors** are union types.
@@ -410,6 +492,8 @@ In this way, one union object is able to capture a multitude of scenarios, each 
 
 To properly handle union types, you should call each of the `is<TAG_STATE>` methods associated with the union. Once you have determined the current tag state of the union, you can then safely access the value associated with that tag state (provided there exists an associated value type, i.e., it's not **void**).
 If at run time you attempt to access a union instance field that is not associated with the current tag state, **an exception will be thrown**. See below:
+
+---
 
 #### Route-specific errors
 ```objective-c
@@ -435,6 +519,8 @@ If at run time you attempt to access a union instance field that is not associat
     }
 }];
 ```
+
+---
 
 #### Generic network request errors
 
@@ -477,6 +563,8 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
 }];
 ```
 
+---
+
 #### Response handling edge cases
 
 Some routes return union types as result types, so you should be prepared to handle these results in the same way that you handle union route errors. Please consult the [documentation](https://www.dropbox.com/developers/documentation/http/documentation)
@@ -518,12 +606,15 @@ In the above example, the `Metadata` type can exists as `FileMetadata`, `FolderM
 
 In this way, datatypes with subtypes are a hybrid of structs and unions. Only a few routes return result types like this.
 
+---
+
 ### Customizing network calls
 
-By default, all response handler code is executed via the main queue (which makes UI updating convenient). However, if additional customization is necessary
-(like handling responses on a custom queue), you can initialize your `DropboxClient` with a customized `DBTransportClient` in your application delegate. See below:
+#### Configure network client
 
-#### iOS
+It is possible to configure the networking client used by the SDK to make API requests. You can supply custom fields like a custom user agent or custom delegate queue to manage response handler code. See below:
+
+##### iOS
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
@@ -536,7 +627,7 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 [DropboxClientsManager setupWithAppKey:@"<APP_KEY>" transportClient:transportClient];
 ```
 
-#### macOS
+##### macOS
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
@@ -548,6 +639,24 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
                                                                       delegateQueue:[NSOperationQueue new]];
 [DropboxClientsManager setupWithAppKeyDesktop:@"<APP_KEY>" transportClient:transportClient];
 ```
+
+#### Specify API call response queue
+
+By default, response/progress handler code runs on the main thread. You can set a custom response queue for each API call that you make via the `response` method, in the event want your response/progress handler code to run on a different thread:
+
+```objective-c
+DropboxClient *client = [DropboxClientsManager authorizedClient];
+  [[client.filesRoutes listFolder:@""]
+   response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
+    if (result) {
+      NSLog(@"%@", [NSThread currentThread]);  // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
+      NSLog(@"%@", [NSThread mainThread]);     // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
+      NSLog(@"%@\n", result);
+    }
+}];
+```
+
+---
 
 ### `DropboxClientsManager` class
 
@@ -587,16 +696,22 @@ The `DropboxClient` (or `DropboxTeamClient`) is then used to make all of the des
 * call `resetClients` to logout Dropbox user but not clear any access tokens
 * if specific access tokens need to be removed, use the `clearStoredAccessToken` method in `DBOAuthManager`
 
+---
+
 ## Examples
 
 Example projects that demonstrate how to integrate your app with the SDK can be found in the `Examples/` folder.
 
 * [DBRoulette](https://github.com/dropbox/dropbox-sdk-obj-c/tree/master/Examples/DBRoulette/) - Play a fun game of photo roulette with the image files in your Dropbox!
 
+---
+
 ## Documentation
 
 * [Dropbox API v2 Objective-C SDK](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/)
 * [Dropbox API v2](https://www.dropbox.com/developers/documentation/http/documentation)
+
+---
 
 ## Stone
 
@@ -604,6 +719,8 @@ All of our routes and data types are auto-generated using a framework called [St
 
 The `stone` repo contains all of the Objective-C specific generation logic, and the `spec` repo contains the language-neutral API endpoint specifications which serve
 as input to the language-specific generators.
+
+---
 
 ## Modifications
 
@@ -617,6 +734,8 @@ If you're interested in modifying the SDK codebase, you should take the followin
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
 following the instructions listed in the `ViewController.m` file.
+
+---
 
 ## Bugs
 

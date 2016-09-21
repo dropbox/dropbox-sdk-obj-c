@@ -10,7 +10,7 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString const *const kVersion = @"1.0.8";
+static NSString const *const kVersion = @"1.0.9";
 static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
