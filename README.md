@@ -167,7 +167,7 @@ Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the new
 
 Finally, you can also integrate the Dropbox Objective-C SDK into your project manually without using a dependency manager.
 
-Drag the `dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
+Drag the `dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` project into your project as a subproject.
 
 Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add `ObjectiveDropboxOfficial.framework`.
 

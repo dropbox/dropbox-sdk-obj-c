@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MRs-WV-PFu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MRs-WV-PFu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Link Account-->
@@ -14,25 +15,23 @@
                         <viewControllerLayoutGuide type="bottom" id="DTO-n9-53q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KR5-aC-yjs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cm-2q-FUk">
-                                <rect key="frame" x="216" y="285" width="169" height="30"/>
                                 <state key="normal" title="Link to Dropbox Account"/>
                                 <connections>
                                     <action selector="linkDropboxButtonPressed:" destination="ElL-rP-LEb" eventType="touchUpInside" id="lNw-dE-mbq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIu-il-JiZ">
-                                <rect key="frame" x="217" y="323" width="166" height="30"/>
                                 <state key="normal" title="Unlink Dropbox Account"/>
                                 <connections>
                                     <action selector="unlinkDropboxButtonPressed:" destination="ElL-rP-LEb" eventType="touchUpInside" id="Pa2-mB-F2v"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Cm-2q-FUk" firstAttribute="centerX" secondItem="KR5-aC-yjs" secondAttribute="centerX" id="Jsi-nS-ufY"/>
                             <constraint firstItem="uIu-il-JiZ" firstAttribute="centerX" secondItem="0Cm-2q-FUk" secondAttribute="centerX" id="Mjq-Qx-eG4"/>
@@ -67,21 +66,18 @@
                         <viewControllerLayoutGuide type="bottom" id="rLN-gy-ke5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zdh-Ee-0p6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIQ-bq-yFr">
-                                <rect key="frame" x="233" y="485" width="134" height="30"/>
                                 <state key="normal" title="Pick Random Photo"/>
                                 <connections>
                                     <action selector="randomPhotoButtonPressed:" destination="eax-7T-koS" eventType="touchUpInside" id="19W-Xh-BvE"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="R35-8M-nuZ">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="R35-8M-nuZ"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aIQ-bq-yFr" firstAttribute="centerX" secondItem="Zdh-Ee-0p6" secondAttribute="centerX" id="3Jz-hZ-LVi"/>
                             <constraint firstItem="aIQ-bq-yFr" firstAttribute="centerY" secondItem="Zdh-Ee-0p6" secondAttribute="centerY" constant="200" id="CvQ-Gp-Hhr"/>

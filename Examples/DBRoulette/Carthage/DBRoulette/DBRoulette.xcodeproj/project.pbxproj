@@ -14,7 +14,7 @@
 		F2ACB74D1D88A99200596DDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2ACB74C1D88A99200596DDE /* Assets.xcassets */; };
 		F2ACB7501D88A99200596DDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2ACB74E1D88A99200596DDE /* LaunchScreen.storyboard */; };
 		F2ACB75C1D88ABD700596DDE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB75B1D88ABD700596DDE /* PhotoViewController.m */; };
-		F2ACB7601D88B23900596DDE /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */; };
+		F2E0ABC71D92392A00CEA4D3 /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E0ABC61D92392A00CEA4D3 /* ObjectiveDropboxOfficial.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		F2ACB7511D88A99200596DDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2ACB75A1D88ABBE00596DDE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		F2ACB75B1D88ABD700596DDE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveDropboxOfficial.framework; path = Carthage/Build/iOS/ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
+		F2E0ABC61D92392A00CEA4D3 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveDropboxOfficial.framework; path = Carthage/Build/iOS/ObjectiveDropboxOfficial.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2ACB7601D88B23900596DDE /* ObjectiveDropboxOfficial.framework in Frameworks */,
+				F2E0ABC71D92392A00CEA4D3 /* ObjectiveDropboxOfficial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,9 +48,9 @@
 		F2ACB7341D88A99200596DDE = {
 			isa = PBXGroup;
 			children = (
-				F2ACB75F1D88B23900596DDE /* ObjectiveDropboxOfficial.framework */,
 				F2ACB73F1D88A99200596DDE /* DBRoulette */,
 				F2ACB73E1D88A99200596DDE /* Products */,
+				F2E0ABC51D92392A00CEA4D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +88,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2E0ABC51D92392A00CEA4D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2E0ABC61D92392A00CEA4D3 /* ObjectiveDropboxOfficial.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,6 +107,7 @@
 				F2ACB73A1D88A99200596DDE /* Frameworks */,
 				F2ACB73B1D88A99200596DDE /* Resources */,
 				F2ACB7591D88AADC00596DDE /* Run Script */,
+				F2E0ABC81D92393800CEA4D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -115,7 +124,7 @@
 		F2ACB7351D88A99200596DDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Dropbox;
 				TargetAttributes = {
 					F2ACB73C1D88A99200596DDE = {
@@ -170,6 +179,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		F2E0ABC81D92393800CEA4D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectiveDropboxOfficial.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -220,8 +243,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -265,8 +290,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -339,6 +366,7 @@
 				F2ACB7561D88A99200596DDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
