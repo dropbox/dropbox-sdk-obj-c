@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; };
+		F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; };
 		F27DEB9A1D7FFBB9003B1CEE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB991D7FFBB9003B1CEE /* AppKit.framework */; };
 		F27DEB9C1D7FFBBF003B1CEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB9B1D7FFBBF003B1CEE /* Foundation.framework */; };
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
@@ -16,14 +18,12 @@
 		F2EBB7551D921E63004707E1 /* DBOAuthMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EBB74E1D921E63004707E1 /* DBOAuthMobile.m */; };
 		F2EBB7561D921E63004707E1 /* DropboxClientsManager+MobileAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB74F1D921E63004707E1 /* DropboxClientsManager+MobileAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBB7571D921E63004707E1 /* DropboxClientsManager+MobileAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EBB7501D921E63004707E1 /* DropboxClientsManager+MobileAuth.m */; };
-		F2EBB7581D921E63004707E1 /* DropboxSDKImports.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7511D921E63004707E1 /* DropboxSDKImports.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2EBB7591D921E63004707E1 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7521D921E63004707E1 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2EBB7581D921E63004707E1 /* DropboxSDKImportsMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7511D921E63004707E1 /* DropboxSDKImportsMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBB7641D921E6C004707E1 /* DBOAuthDesktop.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB75D1D921E6C004707E1 /* DBOAuthDesktop.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBB7651D921E6C004707E1 /* DBOAuthDesktop.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EBB75E1D921E6C004707E1 /* DBOAuthDesktop.m */; };
 		F2EBB7661D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB75F1D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBB7671D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EBB7601D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.m */; };
-		F2EBB7681D921E6C004707E1 /* DropboxSDKImports.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7611D921E6C004707E1 /* DropboxSDKImports.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2EBB7691D921E6C004707E1 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7621D921E6C004707E1 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2EBB7681D921E6C004707E1 /* DropboxSDKImportsDesktop.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB7611D921E6C004707E1 /* DropboxSDKImportsDesktop.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBBAD41D921E79004707E1 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB76D1D921E78004707E1 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBBAD51D921E79004707E1 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2EBB76D1D921E78004707E1 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2EBBAD61D921E79004707E1 /* DBASYNCLaunchEmptyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EBB76E1D921E78004707E1 /* DBASYNCLaunchEmptyResult.m */; };
@@ -1741,6 +1741,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
 		F26B75751D7F6AF700714F70 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DE9E21D7FF909003B1CEE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DEB991D7FFBB9003B1CEE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -1753,15 +1754,13 @@
 		F2EBB74E1D921E63004707E1 /* DBOAuthMobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthMobile.m; sourceTree = "<group>"; };
 		F2EBB74F1D921E63004707E1 /* DropboxClientsManager+MobileAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DropboxClientsManager+MobileAuth.h"; sourceTree = "<group>"; };
 		F2EBB7501D921E63004707E1 /* DropboxClientsManager+MobileAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DropboxClientsManager+MobileAuth.m"; sourceTree = "<group>"; };
-		F2EBB7511D921E63004707E1 /* DropboxSDKImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxSDKImports.h; sourceTree = "<group>"; };
-		F2EBB7521D921E63004707E1 /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
+		F2EBB7511D921E63004707E1 /* DropboxSDKImportsMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxSDKImportsMobile.h; sourceTree = "<group>"; };
 		F2EBB75B1D921E6C004707E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2EBB75D1D921E6C004707E1 /* DBOAuthDesktop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOAuthDesktop.h; sourceTree = "<group>"; };
 		F2EBB75E1D921E6C004707E1 /* DBOAuthDesktop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOAuthDesktop.m; sourceTree = "<group>"; };
 		F2EBB75F1D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DropboxClientsManager+DesktopAuth.h"; sourceTree = "<group>"; };
 		F2EBB7601D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DropboxClientsManager+DesktopAuth.m"; sourceTree = "<group>"; };
-		F2EBB7611D921E6C004707E1 /* DropboxSDKImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxSDKImports.h; sourceTree = "<group>"; };
-		F2EBB7621D921E6C004707E1 /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
+		F2EBB7611D921E6C004707E1 /* DropboxSDKImportsDesktop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxSDKImportsDesktop.h; sourceTree = "<group>"; };
 		F2EBB76D1D921E78004707E1 /* DBASYNCLaunchEmptyResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBASYNCLaunchEmptyResult.h; sourceTree = "<group>"; };
 		F2EBB76E1D921E78004707E1 /* DBASYNCLaunchEmptyResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBASYNCLaunchEmptyResult.m; sourceTree = "<group>"; };
 		F2EBB76F1D921E78004707E1 /* DBASYNCLaunchResultBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBASYNCLaunchResultBase.h; sourceTree = "<group>"; };
@@ -2681,7 +2680,6 @@
 			children = (
 				F2EBB74B1D921E63004707E1 /* Info.plist */,
 				F2EBB74C1D921E63004707E1 /* iOS */,
-				F2EBB7521D921E63004707E1 /* ObjectiveDropboxOfficial.h */,
 			);
 			path = ObjectiveDropboxOfficial_iOS;
 			sourceTree = "<group>";
@@ -2693,7 +2691,7 @@
 				F2EBB74E1D921E63004707E1 /* DBOAuthMobile.m */,
 				F2EBB74F1D921E63004707E1 /* DropboxClientsManager+MobileAuth.h */,
 				F2EBB7501D921E63004707E1 /* DropboxClientsManager+MobileAuth.m */,
-				F2EBB7511D921E63004707E1 /* DropboxSDKImports.h */,
+				F2EBB7511D921E63004707E1 /* DropboxSDKImportsMobile.h */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -2703,7 +2701,6 @@
 			children = (
 				F2EBB75B1D921E6C004707E1 /* Info.plist */,
 				F2EBB75C1D921E6C004707E1 /* macOS */,
-				F2EBB7621D921E6C004707E1 /* ObjectiveDropboxOfficial.h */,
 			);
 			path = ObjectiveDropboxOfficial_macOS;
 			sourceTree = "<group>";
@@ -2715,7 +2712,7 @@
 				F2EBB75E1D921E6C004707E1 /* DBOAuthDesktop.m */,
 				F2EBB75F1D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.h */,
 				F2EBB7601D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.m */,
-				F2EBB7611D921E6C004707E1 /* DropboxSDKImports.h */,
+				F2EBB7611D921E6C004707E1 /* DropboxSDKImportsDesktop.h */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -2723,14 +2720,15 @@
 		F2EBB76A1D921E78004707E1 /* PlatformNeutral */ = {
 			isa = PBXGroup;
 			children = (
-				F2EBB76B1D921E78004707E1 /* ApiObjects */,
-				F2EBBA951D921E79004707E1 /* Client */,
 				F2EBBA9A1D921E79004707E1 /* DropboxClient.h */,
 				F2EBBA9B1D921E79004707E1 /* DropboxClient.m */,
 				F2EBBA9C1D921E79004707E1 /* DropboxClientsManager.h */,
 				F2EBBA9D1D921E79004707E1 /* DropboxClientsManager.m */,
 				F2EBBA9E1D921E79004707E1 /* DropboxTeamClient.h */,
 				F2EBBA9F1D921E79004707E1 /* DropboxTeamClient.m */,
+				F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */,
+				F2EBB76B1D921E78004707E1 /* ApiObjects */,
+				F2EBBA951D921E79004707E1 /* Client */,
 				F2EBBAA01D921E79004707E1 /* Networking */,
 				F2EBBAAE1D921E79004707E1 /* OAuth */,
 				F2EBBAB61D921E79004707E1 /* Resources */,
@@ -3912,7 +3910,6 @@
 				F2EBBCC81D921E7A004707E1 /* DBSHARINGCreateSharedLinkError.h in Headers */,
 				F2EBC0181D921E7B004707E1 /* DBTEAMMembersRecoverError.h in Headers */,
 				F2EBBB181D921E79004707E1 /* DBFILESDeletedMetadata.h in Headers */,
-				F2EBB7591D921E63004707E1 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBBD81D921E7A004707E1 /* DBFILESSaveCopyReferenceArg.h in Headers */,
 				F2EBC0601D921E7C004707E1 /* DBTEAMRevokeDeviceSessionBatchError.h in Headers */,
 				F2EBBFB01D921E7B004707E1 /* DBTEAMListTeamAppsError.h in Headers */,
@@ -3924,6 +3921,7 @@
 				F2EBBCE01D921E7A004707E1 /* DBSHARINGFileMemberActionError.h in Headers */,
 				F2EBBD981D921E7A004707E1 /* DBSHARINGListFoldersContinueArg.h in Headers */,
 				F2EBC09C1D921E7C004707E1 /* DBTEAMTeamMemberStatus.h in Headers */,
+				F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBB541D921E7A004707E1 /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F2EBBD5C1D921E7A004707E1 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
 				F2EBC13A1D921E7C004707E1 /* DBTasks.h in Headers */,
@@ -4071,7 +4069,7 @@
 				F2EBBEDC1D921E7B004707E1 /* DBTEAMDeviceSession.h in Headers */,
 				F2EBBFC01D921E7B004707E1 /* DBTEAMListTeamDevicesResult.h in Headers */,
 				F2EBBEC81D921E7B004707E1 /* DBTEAMDateRange.h in Headers */,
-				F2EBB7581D921E63004707E1 /* DropboxSDKImports.h in Headers */,
+				F2EBB7581D921E63004707E1 /* DropboxSDKImportsMobile.h in Headers */,
 				F2EBBE241D921E7A004707E1 /* DBSHARINGSharedFolderAccessError.h in Headers */,
 				F2EBBB7C1D921E7A004707E1 /* DBFILESListFolderLongpollError.h in Headers */,
 				F2EBC0F81D921E7C004707E1 /* DBUSERSGetAccountError.h in Headers */,
@@ -4353,7 +4351,6 @@
 				F2EBBCC91D921E7A004707E1 /* DBSHARINGCreateSharedLinkError.h in Headers */,
 				F2EBC0191D921E7B004707E1 /* DBTEAMMembersRecoverError.h in Headers */,
 				F2EBBB191D921E79004707E1 /* DBFILESDeletedMetadata.h in Headers */,
-				F2EBB7691D921E6C004707E1 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBBD91D921E7A004707E1 /* DBFILESSaveCopyReferenceArg.h in Headers */,
 				F2EBC0611D921E7C004707E1 /* DBTEAMRevokeDeviceSessionBatchError.h in Headers */,
 				F2EBBFB11D921E7B004707E1 /* DBTEAMListTeamAppsError.h in Headers */,
@@ -4365,6 +4362,7 @@
 				F2EBBCE11D921E7A004707E1 /* DBSHARINGFileMemberActionError.h in Headers */,
 				F2EBBD991D921E7A004707E1 /* DBSHARINGListFoldersContinueArg.h in Headers */,
 				F2EBC09D1D921E7C004707E1 /* DBTEAMTeamMemberStatus.h in Headers */,
+				F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBB551D921E7A004707E1 /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F2EBBD5D1D921E7A004707E1 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
 				F2EBC13B1D921E7C004707E1 /* DBTasks.h in Headers */,
@@ -4512,7 +4510,7 @@
 				F2EBBEDD1D921E7B004707E1 /* DBTEAMDeviceSession.h in Headers */,
 				F2EBBFC11D921E7B004707E1 /* DBTEAMListTeamDevicesResult.h in Headers */,
 				F2EBBEC91D921E7B004707E1 /* DBTEAMDateRange.h in Headers */,
-				F2EBB7681D921E6C004707E1 /* DropboxSDKImports.h in Headers */,
+				F2EBB7681D921E6C004707E1 /* DropboxSDKImportsDesktop.h in Headers */,
 				F2EBBE251D921E7A004707E1 /* DBSHARINGSharedFolderAccessError.h in Headers */,
 				F2EBBB7D1D921E7A004707E1 /* DBFILESListFolderLongpollError.h in Headers */,
 				F2EBC0F91D921E7C004707E1 /* DBUSERSGetAccountError.h in Headers */,

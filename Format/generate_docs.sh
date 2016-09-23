@@ -9,7 +9,7 @@ else
 
     echo "Checking doc repo exists..."
 
-    if [ -d base_location ]; then
+    if [ -d "../../docs_obj_c/api-docs" ]; then
         docs_location="$base_location/$sdk_version"
         tmp_location="$base_location/all_sdk_files"
         if [ -d $docs_location ]; then
