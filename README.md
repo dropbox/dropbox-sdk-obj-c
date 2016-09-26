@@ -660,8 +660,7 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
 By default, response/progress handler code runs on the main thread. You can set a custom response queue for each API call that you make via the `response` method, in the event want your response/progress handler code to run on a different thread:
 
 ```objective-c
-DropboxClient *client = [DropboxClientsManager authorizedClient];
-  [[client.filesRoutes listFolder:@""]
+[[client.filesRoutes listFolder:@""]
    response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
     if (result) {
       NSLog(@"%@", [NSThread currentThread]);  // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}

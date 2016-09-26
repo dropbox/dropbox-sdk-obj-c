@@ -35,8 +35,6 @@
                     browserAuth:(BOOL)browserAuth {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
-  NSAssert([DropboxClientsManager authorizedClient] == nil && [DropboxClientsManager authorizedTeamClient] == nil,
-           @"A Dropbox client is already authorized");
   DBMobileSharedApplication *sharedMobileApplication =
       [[DBMobileSharedApplication alloc] init:sharedApplication controller:controller openURL:openURL];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication browserAuth:browserAuth];
