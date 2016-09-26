@@ -2,8 +2,6 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <SystemConfiguration/SystemConfiguration.h>
-
 #import "DBOAuth.h"
 #import "DBOAuthMobile.h"
 

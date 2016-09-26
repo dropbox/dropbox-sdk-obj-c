@@ -534,7 +534,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @return The current `DBDownloadDataTask` instance.
 ///
 - (DBDownloadDataTask * _Nonnull)progress:(NSOperationQueue * _Nullable)queue
-                               progress:(DBProgressBlock _Nonnull)progressBlock;
+                                progress:(DBProgressBlock _Nonnull)progressBlock;
 
 ///
 /// Cancels the current request.

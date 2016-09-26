@@ -52,8 +52,8 @@ def main():
     if args.stone:
         stone_path = args.stone
 
-    dropbox_pkg_path = os.path.abspath('./Source/ObjectiveDropboxOfficial/PlatformNeutral')
-    dropbox_tests_path = os.path.abspath('./ObjectiveDropbox/DBSerializationTests')
+    dropbox_pkg_path = os.path.abspath('Source/ObjectiveDropboxOfficial/PlatformNeutral')
+    dropbox_tests_path = os.path.abspath('ObjectiveDropbox/DBSerializationTests')
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)

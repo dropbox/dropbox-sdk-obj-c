@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'ObjectiveDropboxOfficial'
-  s.version      = '1.0.9'
+  s.version      = '1.0.10'
   s.summary      = 'Dropbox Objective C SDK for APIv2'
   s.homepage     = 'https://dropbox.com/developers/'
   s.license      = 'MIT'
@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.osx.public_header_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.h', 'Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial_macOS/**/*.h'
   s.ios.public_header_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.h', 'Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial_iOS/**/*.h'
   
-  s.osx.frameworks = 'AppKit', 'Foundation'
-  s.ios.frameworks = 'UIKit', 'Webkit', 'Foundation'
+  s.osx.frameworks = 'AppKit', 'Webkit', 'SystemConfiguration', 'Foundation'
+  s.ios.frameworks = 'UIKit', 'Webkit', 'SystemConfiguration', 'Foundation'
 end

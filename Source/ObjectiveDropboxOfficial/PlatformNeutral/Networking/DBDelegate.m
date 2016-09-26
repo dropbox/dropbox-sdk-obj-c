@@ -213,13 +213,13 @@ static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_for
 - (NSString *)moveFileToTempStorage:(NSURL *)startingLocation {
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSString *tmpOutputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
-  
+
   NSError *fileMoveError;
   [fileManager moveItemAtPath:[startingLocation path] toPath:tmpOutputPath error:&fileMoveError];
   if (fileMoveError) {
     NSLog(@"Error moving file to temporary storage location: %@", fileMoveError);
   }
-  
+
   return tmpOutputPath;
 }
 
