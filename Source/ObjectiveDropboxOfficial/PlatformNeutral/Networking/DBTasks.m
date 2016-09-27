@@ -22,12 +22,12 @@
             httpHeaders:(NSDictionary *)httpHeaders {
   DBError *dbxError;
 
-  if (statusCode == 200) {
-    return nil;
-  }
-
   if (clientError) {
     return [[DBError alloc] initAsClientError:clientError];
+  }
+  
+  if (statusCode == 200) {
+    return nil;
   }
 
   NSDictionary *deserializedData = [self deserializeHttpData:errorData];
@@ -308,7 +308,7 @@
     NSString *headerString = [self caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
     NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
-    if (!resultData) {
+    if (clientError || !resultData) {
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       DBError *dbxError = [self getDBError:errorData
@@ -322,25 +322,25 @@
     }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = [_destination path];
+    NSString *destinationPath = [_destination path];
 
-    if ([fileManager fileExistsAtPath:path]) {
+    if ([fileManager fileExistsAtPath:destinationPath]) {
       NSError *fileMoveError;
       if (_overwrite) {
-        [fileManager removeItemAtPath:[_destination path] error:&fileMoveError];
+        [fileManager removeItemAtPath:destinationPath error:&fileMoveError];
         if (fileMoveError) {
           responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
           return;
         }
       }
-      [fileManager moveItemAtPath:[location path] toPath:path error:&fileMoveError];
+      [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
         responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
         return;
       }
     } else {
       NSError *fileMoveError;
-      [fileManager moveItemAtPath:[location path] toPath:path error:&fileMoveError];
+      [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
         responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
         return;

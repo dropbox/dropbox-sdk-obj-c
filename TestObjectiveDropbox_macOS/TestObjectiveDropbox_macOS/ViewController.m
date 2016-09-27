@@ -41,34 +41,25 @@
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {
-  DropboxClient *client = [DropboxClientsManager authorizedClient];
-  [[client.filesRoutes listFolder:@""]
-   response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
-    if (result) {
-      NSLog(@"%@", [NSThread currentThread]);
-      NSLog(@"%@", [NSThread mainThread]);
-      NSLog(@"%@\n", result);
-    }
-  }];
-//  DropboxTester *tester = [[DropboxTester alloc] initWithTestData:[TestData new]];
-//
-//  void (^unlink)() = ^{
-//    [TestFormat printAllTestsEnd];
-//    [DropboxClientsManager unlinkClients];
-//    [self checkButtons];
-//  };
-//
-//  switch (appPermission) {
-//  case FullDropbox:
-//    [self testAllUserEndpoints:tester nextTest:unlink asMember:NO];
-//    break;
-//  case TeamMemberFileAccess:
-//    [self testTeamMemberFileAcessActions:unlink];
-//    break;
-//  case TeamMemberManagement:
-//    [self testTeamMemberManagementActions:unlink];
-//    break;
-//  }
+  DropboxTester *tester = [[DropboxTester alloc] initWithTestData:[TestData new]];
+
+  void (^unlink)() = ^{
+    [TestFormat printAllTestsEnd];
+    [DropboxClientsManager unlinkClients];
+    [self checkButtons];
+  };
+
+  switch (appPermission) {
+  case FullDropbox:
+    [self testAllUserEndpoints:tester nextTest:unlink asMember:NO];
+    break;
+  case TeamMemberFileAccess:
+    [self testTeamMemberFileAcessActions:unlink];
+    break;
+  case TeamMemberManagement:
+    [self testTeamMemberManagementActions:unlink];
+    break;
+  }
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
