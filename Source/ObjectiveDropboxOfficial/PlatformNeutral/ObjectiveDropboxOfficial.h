@@ -8,9 +8,9 @@
 #import "TargetConditionals.h"
 
 #if TARGET_OS_IPHONE
-  #import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
 #else
-  #import <Cocoa/Cocoa.h>
+#import <Cocoa/Cocoa.h>
 #endif
 
 //! Project version number for ObjectiveDropboxOfficial.
@@ -23,7 +23,7 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 // <ObjectiveDropboxOfficial/PublicHeader.h>
 
 #if TARGET_OS_IPHONE
-  #import <ObjectiveDropboxOfficial/DropboxSDKImportsMobile.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImportsMobile.h>
 #else
-  #import <ObjectiveDropboxOfficial/DropboxSDKImportsDesktop.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImportsDesktop.h>
 #endif

@@ -12,7 +12,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
   * [Xcode 8 and iOS 10 bug](#xcode-8-and-ios-10-bug)
 * [Get started](#get-started)
   * [Register your application](#register-your-application)
-  * [Obtain an OAuth2 token](#obtain-an-oauth2-token)
+  * [Obtain an OAuth 2.0 token](#obtain-an-oauth-20-token)
 * [SDK distribution](#sdk-distribution)
   * [CocoaPods](#cocoapods)
   * [Carthage](#carthage)
@@ -70,9 +70,9 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 
 Before using this SDK, you should register your application in the [Dropbox App Console](https://dropbox.com/developers/apps). This creates a record of your app with Dropbox that will be associated with the API calls you make.
 
-### Obtain an OAuth2 token
+### Obtain an OAuth 2.0 token
 
-All requests need to be made with an OAuth2 access token. An OAuth token represents an authenticated link between a Dropbox app and
+All requests need to be made with an OAuth 2.0 access token. An OAuth token represents an authenticated link between a Dropbox app and
 a Dropbox user account or team.
 
 Once you've created an app, you can go to the App Console and manually generate an access token to authorize your app to access your own Dropbox account.
@@ -204,9 +204,9 @@ add the following code to your application's `.plist` file:
         <string>dbapi-2</string>
     </array>
 ```
-This allows the Objective-C SDK to determine if the official Dropbox iOS app is installed on the current device. If it is installed, then the official Dropbox iOS app can be used to programmatically obtain an OAuth2 access token.
+This allows the Objective-C SDK to determine if the official Dropbox iOS app is installed on the current device. If it is installed, then the official Dropbox iOS app can be used to programmatically obtain an OAuth 2.0 access token.
 
-Additionally, your application needs to register to handle a unique Dropbox URL scheme for redirect following completion of the OAuth2 authorization flow. This URL scheme should have the format `db-<APP_KEY>`, where `<APP_KEY>` is your
+Additionally, your application needs to register to handle a unique Dropbox URL scheme for redirect following completion of the OAuth 2.0 authorization flow. This URL scheme should have the format `db-<APP_KEY>`, where `<APP_KEY>` is your
 Dropbox app's app key, which can be found in the [App Console](https://dropbox.com/developers/apps).
 
 You should add the following code to your `.plist` file (but be sure to replace `<APP_KEY>` with your app's app key):
@@ -235,7 +235,7 @@ After you've made the above changes, your application's `.plist` file should loo
 
 ### Handling the authorization flow
 
-There are three methods to programmatically retrieve an OAuth2 access token:
+There are three methods to programmatically retrieve an OAuth 2.0 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
 * **In-app webview auth** (iOS, macOS): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
@@ -382,7 +382,7 @@ Now you're ready to begin making API requests!
 
 ## Try some API requests
 
-Once you have obtained an OAuth2 token, you can try some API v2 calls using the Objective-C SDK.
+Once you have obtained an OAuth 2.0 token, you can try some API v2 calls using the Objective-C SDK.
 
 ### Dropbox client instance
 
@@ -424,13 +424,14 @@ Note: Response handlers are required for all endpoints. Progress handlers, on th
 
 #### RPC-style request
 ```objective-c
-[[client.filesRoutes createFolder:@"/test/path"] response:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBError *error) {
-    if (result) {
-        NSLog(@"%@\n", result);
-    } else {
-        NSLog(@"%@\n%@\n", routeError, error);
-    }
-}];
+[[client.filesRoutes createFolder:@"/test/path"]
+    response:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBError *error) {
+        if (result) {
+            NSLog(@"%@\n", result);
+        } else {
+            NSLog(@"%@\n%@\n", routeError, error);
+        }
+    }];
 ```
 
 ---
@@ -512,27 +513,28 @@ If at run time you attempt to access a union instance field that is not associat
 
 #### Route-specific errors
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
-    if (result) {
-        NSLog(@"%@\n", result);
-    } else {
-        // Error is with the route specifically (status code 409)
-        if (routeError) {
-            if ([routeError isPathLookup]) {
-                // Can safely access this field
-                DBFILESLookupError *pathLookup = routeError.pathLookup;
-                NSLog(@"%@\n", pathLookup);
-            } else if ([routeError isPathWrite]) {
-                DBFILESWriteError *pathWrite = routeError.pathWrite;
-                NSLog(@"%@\n", pathWrite);
+[[client.filesRoutes delete_:@"/test/path"]
+    response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
+        if (result) {
+            NSLog(@"%@\n", result);
+        } else {
+            // Error is with the route specifically (status code 409)
+            if (routeError) {
+                if ([routeError isPathLookup]) {
+                    // Can safely access this field
+                    DBFILESLookupError *pathLookup = routeError.pathLookup;
+                    NSLog(@"%@\n", pathLookup);
+                } else if ([routeError isPathWrite]) {
+                    DBFILESWriteError *pathWrite = routeError.pathWrite;
+                    NSLog(@"%@\n", pathWrite);
 
-                // This would cause a runtime error
-                // DBFILESLookupError *pathLookup = routeError.pathLookup;
+                    // This would cause a runtime error
+                    // DBFILESLookupError *pathLookup = routeError.pathLookup;
+                }
             }
+            NSLog(@"%@\n%@\n", routeError, error);
         }
-        NSLog(@"%@\n%@\n", routeError, error);
-    }
-}];
+    }];
 ```
 
 ---
@@ -545,37 +547,38 @@ The `DBError` type is a special union type which is similar to the standard API 
 As with accessing associated values in regular unions, the `as<TAG_STATE>` should only be called after the corresponding `is<TAG_STATE>` method returns true. See below:
 
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
-    if (result) {
-        NSLog(@"%@\n", result);
-    } else {
-        if (routeError) {
-            // see handling above
-        }
-        // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
-        else {
-            if ([error isInternalServerError]) {
-                DBRequestInternalServerError *internalServerError = [error asInternalServerError];
-                NSLog(@"%@\n", internalServerError);
-            } else if ([error isBadInputError]) {
-                DBRequestBadInputError *badInputError = [error asBadInputError];
-                NSLog(@"%@\n", badInputError);
-            } else if ([error isAuthError]) {
-                DBRequestAuthError *authError = [error asAuthError];
-                NSLog(@"%@\n", authError);
-            } else if ([error isRateLimitError]) {
-                DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
-                NSLog(@"%@\n", rateLimitError);
-            } else if ([error isHttpError]) {
-                DBRequestHttpError *genericHttpError = [error asHttpError];
-                NSLog(@"%@\n", genericHttpError);
-            } else if ([error isClientError]) {
-                DBRequestClientError *genericLocalError = [error asClientError];
-                NSLog(@"%@\n", genericLocalError);
+[[client.filesRoutes delete_:@"/test/path"]
+    response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
+        if (result) {
+            NSLog(@"%@\n", result);
+        } else {
+            if (routeError) {
+                // see handling above
+            }
+            // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
+            else {
+                if ([error isInternalServerError]) {
+                    DBRequestInternalServerError *internalServerError = [error asInternalServerError];
+                    NSLog(@"%@\n", internalServerError);
+                } else if ([error isBadInputError]) {
+                    DBRequestBadInputError *badInputError = [error asBadInputError];
+                    NSLog(@"%@\n", badInputError);
+                } else if ([error isAuthError]) {
+                    DBRequestAuthError *authError = [error asAuthError];
+                    NSLog(@"%@\n", authError);
+                } else if ([error isRateLimitError]) {
+                    DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
+                    NSLog(@"%@\n", rateLimitError);
+                } else if ([error isHttpError]) {
+                    DBRequestHttpError *genericHttpError = [error asHttpError];
+                    NSLog(@"%@\n", genericHttpError);
+                } else if ([error isClientError]) {
+                    DBRequestClientError *genericLocalError = [error asClientError];
+                    NSLog(@"%@\n", genericLocalError);
+                }
             }
         }
-    }
-}];
+    }];
 ```
 
 ---
@@ -591,26 +594,27 @@ For example, the [/delete](https://www.dropbox.com/developers/documentation/http
 To determine at runtime which subtype the `Metadata` type exists as, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
 
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
-    if (result) {
-        if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
-            DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
-            NSLog(@"%@\n", fileMetadata);
-        } else if ([result isKindOfClass:[DBFILESFolderMetadata class]]) {
-            DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)result;
-            NSLog(@"%@\n", folderMetadata);
-        } else if ([result isKindOfClass:[DBFILESDeletedMetadata class]]) {
-            DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)result;
-            NSLog(@"%@\n", deletedMetadata);
-        }
-    } else {
-        if (routeError) {
-            // see handling above
+[[client.filesRoutes delete_:@"/test/path"]
+    response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBError *error) {
+        if (result) {
+            if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
+                DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
+                NSLog(@"%@\n", fileMetadata);
+            } else if ([result isKindOfClass:[DBFILESFolderMetadata class]]) {
+                DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)result;
+                NSLog(@"%@\n", folderMetadata);
+            } else if ([result isKindOfClass:[DBFILESDeletedMetadata class]]) {
+                DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)result;
+                NSLog(@"%@\n", deletedMetadata);
+            }
         } else {
-            // see handling above
+            if (routeError) {
+                // see handling above
+            } else {
+                // see handling above
+            }
         }
-    }
-}];
+    }];
 ```
 
 This `Metadata` object is known as a **datatype with subtypes** in our API v2 documentation.
@@ -661,13 +665,13 @@ By default, response/progress handler code runs on the main thread. You can set 
 
 ```objective-c
 [[client.filesRoutes listFolder:@""]
-   response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
-    if (result) {
-      NSLog(@"%@", [NSThread currentThread]);  // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
-      NSLog(@"%@", [NSThread mainThread]);     // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
-      NSLog(@"%@\n", result);
-    }
-}];
+    response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
+        if (result) {
+          NSLog(@"%@", [NSThread currentThread]);  // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
+          NSLog(@"%@", [NSThread mainThread]);     // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
+          NSLog(@"%@\n", result);
+        }
+    }];
 ```
 
 ---

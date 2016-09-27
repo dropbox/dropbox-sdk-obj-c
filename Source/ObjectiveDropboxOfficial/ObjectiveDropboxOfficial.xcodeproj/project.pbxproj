@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; };
-		F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; };
+		F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F25D1B471D95B68600B748CF /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F27DEB9A1D7FFBB9003B1CEE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB991D7FFBB9003B1CEE /* AppKit.framework */; };
 		F27DEB9C1D7FFBBF003B1CEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB9B1D7FFBBF003B1CEE /* Foundation.framework */; };
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
@@ -3921,7 +3921,6 @@
 				F2EBBCE01D921E7A004707E1 /* DBSHARINGFileMemberActionError.h in Headers */,
 				F2EBBD981D921E7A004707E1 /* DBSHARINGListFoldersContinueArg.h in Headers */,
 				F2EBC09C1D921E7C004707E1 /* DBTEAMTeamMemberStatus.h in Headers */,
-				F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBB541D921E7A004707E1 /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F2EBBD5C1D921E7A004707E1 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
 				F2EBC13A1D921E7C004707E1 /* DBTasks.h in Headers */,
@@ -4150,6 +4149,7 @@
 				F2EBBFE81D921E7B004707E1 /* DBTEAMMembersDeactivateArg.h in Headers */,
 				F2EBBD681D921E7A004707E1 /* DBSHARINGListFileMembersCountResult.h in Headers */,
 				F2EBBDEC1D921E7A004707E1 /* DBSHARINGRelinquishFileMembershipError.h in Headers */,
+				F25D1B481D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBC7C1D921E7A004707E1 /* DBPROPERTIESListPropertyTemplateIds.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4362,7 +4362,6 @@
 				F2EBBCE11D921E7A004707E1 /* DBSHARINGFileMemberActionError.h in Headers */,
 				F2EBBD991D921E7A004707E1 /* DBSHARINGListFoldersContinueArg.h in Headers */,
 				F2EBC09D1D921E7C004707E1 /* DBTEAMTeamMemberStatus.h in Headers */,
-				F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBB551D921E7A004707E1 /* DBFILESGetTemporaryLinkError.h in Headers */,
 				F2EBBD5D1D921E7A004707E1 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
 				F2EBC13B1D921E7C004707E1 /* DBTasks.h in Headers */,
@@ -4591,6 +4590,7 @@
 				F2EBBFE91D921E7B004707E1 /* DBTEAMMembersDeactivateArg.h in Headers */,
 				F2EBBD691D921E7A004707E1 /* DBSHARINGListFileMembersCountResult.h in Headers */,
 				F2EBBDED1D921E7A004707E1 /* DBSHARINGRelinquishFileMembershipError.h in Headers */,
+				F25D1B491D95B68600B748CF /* ObjectiveDropboxOfficial.h in Headers */,
 				F2EBBC7D1D921E7A004707E1 /* DBPROPERTIESListPropertyTemplateIds.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
