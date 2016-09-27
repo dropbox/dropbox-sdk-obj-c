@@ -33,7 +33,7 @@
 /// Convenience constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
-/// @param memberId The Dropbox account_id of the team member to perform actions on
+/// @param selectUser The Dropbox account_id of the team member to perform actions on
 /// behalf of. e.g. "dbid:12345678910..."
 ///
 /// @return An initialized instance.

@@ -25,7 +25,7 @@
   if (clientError) {
     return [[DBError alloc] initAsClientError:clientError];
   }
-  
+
   if (statusCode == 200) {
     return nil;
   }

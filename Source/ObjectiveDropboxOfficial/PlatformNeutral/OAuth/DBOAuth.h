@@ -88,7 +88,7 @@
 ///
 /// Saves an access token to the `DBKeychain` class.
 ///
-/// @param token The access token to save.
+/// @param accessToken The access token to save.
 ///
 /// @return Whether the save operation succeeded.
 ///

@@ -73,7 +73,6 @@
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
-/// @param backgroundSessionId The background session identifier used to make background request
 /// @param route The static `DBRoute` instance associated with the route to which the request
 /// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
@@ -92,7 +91,7 @@
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.).
@@ -110,7 +109,7 @@
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.).
@@ -128,7 +127,7 @@
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes sent. The second argument is the number of total
 /// bytes sent. And the third argument is the number of total bytes expected to be sent.
 ///
@@ -144,7 +143,7 @@
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes sent. The second argument is the number of total
 /// bytes sent. And the third argument is the number of total bytes expected to be sent.
 ///
@@ -194,7 +193,6 @@
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
-/// @param backgroundSessionId The background session identifier used to make background request
 /// @param route The static `DBRoute` instance associated with the route to which the request
 /// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
@@ -213,7 +211,7 @@
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.).
@@ -231,7 +229,7 @@
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.).
@@ -249,7 +247,7 @@
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes uploaded. The second argument is the number of total
 /// bytes uploaded. And the third argument is the number of total bytes expected to be uploaded.
 ///
@@ -265,7 +263,7 @@
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes uploaded. The second argument is the number of total
 /// bytes uploaded. And the third argument is the number of total bytes expected to be uploaded.
 ///
@@ -322,7 +320,6 @@
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
-/// @param backgroundSessionId The background session identifier used to make background request
 /// @param route The static `DBRoute` instance associated with the route to which the request
 /// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
@@ -348,7 +345,7 @@
 /// location (`NSTemporaryDirectory()`) until the response handler is installed, at which point the
 /// file content will be moved to its final destination.
 ///
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
@@ -367,7 +364,7 @@
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
@@ -386,7 +383,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///
@@ -402,7 +399,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///
@@ -454,7 +451,6 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @param task The `NSURLSessionDataTask` task that initialized the network request.
 /// @param session The `NSURLSession` used to make the network request.
 /// @param delegate The delegate that manages and executes response code.
-/// @param backgroundSessionId The background session identifier used to make background request
 /// @param route The static `DBRoute` instance associated with the route to which the request
 /// was made. Contains information like route host, response type, etc.). This is used in the deserialization
 /// process.
@@ -473,7 +469,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
@@ -492,7 +488,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param response The handler block to be executed in the event of a successful or
+/// @param responseBlock The handler block to be executed in the event of a successful or
 /// unsuccessful network request. The first argument is the route-specific result. The second
 /// argument is the route-specific error. And the third argument is the more general network
 /// error (which includes information like Dropbox request ID, http status code, etc.). The fourth
@@ -511,7 +507,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 ///
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///
@@ -527,7 +523,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param queue The operation queue on which to execute the response.
-/// @param progress The progress block to be executed in the event of a request update.
+/// @param progressBlock The progress block to be executed in the event of a request update.
 /// The first argument is the number of bytes downloaded. The second argument is the number of total
 /// bytes downloaded. And the third argument is the number of total bytes expected to be downloaded.
 ///

@@ -157,13 +157,13 @@
 #pragma mark - Upload-style request (NSURL)
 
 ///
-/// Request to Upload-style endpoint (via NSURL).
+/// Request to Upload-style endpoint (via `NSURL`).
 ///
 /// @param route The static `DBRoute` instance associated with the route. Contains information
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the `DBSerializable`
 /// protocol.
-/// @param inputUrl The location of the file to upload. NSURLSession supports background uploads
+/// @param input The location of the file to upload. NSURLSession supports background uploads
 /// for this input type, so by default, all requests of this type will be made in the background.
 ///
 /// @return A `DBUploadTask` where response and progress handlers can be added, and the request can
@@ -182,7 +182,7 @@
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the `DBSerializable`
 /// protocol.
-/// @param inputUrl The location of the file to upload. NSURLSession does not support background
+/// @param input The location of the file to upload. NSURLSession does not support background
 /// uploads for this input type, so by default, all requests of this type will be made in the foreground.
 ///
 /// @return A `DBUploadTask` where response and progress handlers can be added, and the request can
@@ -201,7 +201,7 @@
 /// like route host, response type, etc.
 /// @param arg The unserialized route argument to pass. Must conform to the `DBSerializable`
 /// protocol.
-/// @param inputUrl The location of the file to upload. `NSURLSession` does not support background
+/// @param input The location of the file to upload. `NSURLSession` does not support background
 /// uploads for this input type, so by default, all requests of this type will be made in the foreground.
 ///
 /// @return A `DBUploadTask` where response and progress handlers can be added, and the request can

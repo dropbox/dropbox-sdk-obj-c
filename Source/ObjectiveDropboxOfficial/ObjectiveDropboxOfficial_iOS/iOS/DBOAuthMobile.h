@@ -56,6 +56,6 @@
 ///
 - (nonnull instancetype)init:(NSURL * _Nonnull)url
          tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
-               cancelHandler:(void (^_Nonnull)(void))cancel;
+               cancelHandler:(void (^_Nonnull)(void))cancelHandler;
 
 @end
