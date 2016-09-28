@@ -26,9 +26,10 @@ else
         echo "Copying all sdk files to tmp directory..."
         find ../Source/ObjectiveDropboxOfficial/ -name \*.[h,m] -exec cp {} $tmp_location \;
         cp ../README.md $tmp_location
+        cp ./UmbrellaHeader.h $tmp_location
 
         echo "Generating documents..."
-        jazzy --objc --readme $tmp_location/README.md --umbrella-header $tmp_location/DropboxSDKImports.h --framework-root $tmp_location --config ../.jazzy.json -o $docs_location
+        jazzy --objc --readme $tmp_location/README.md --umbrella-header $tmp_location/UmbrellaHeader.h --framework-root $tmp_location --config ../.jazzy.json -o $docs_location
 
         cp jazzy.css $docs_location/css/
 

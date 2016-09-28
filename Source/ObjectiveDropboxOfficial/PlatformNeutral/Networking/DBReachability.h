@@ -10,7 +10,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
 
-typedef enum : NSInteger { NotReachable = 0, ReachableViaWiFi, ReachableViaWWAN } DBNetworkStatus;
+typedef enum : NSInteger { DBNotReachable = 0, DBReachableViaWiFi, DBReachableViaWWAN } DBNetworkStatus;
 
 #pragma mark IPv6 Support
 // Reachability fully support IPv6.  For full details, see ReadMe.md.

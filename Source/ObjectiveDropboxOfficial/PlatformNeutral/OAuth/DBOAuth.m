@@ -74,7 +74,7 @@ static DBReachability *internetReachableFoo;
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
-  if ([[DBReachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+  if ([[DBReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
     NSString *message = @"Try again once you have an internet connection.";
     NSString *title = @"No internet connection";
 
@@ -138,7 +138,6 @@ if (browserAuth) {
   for (NSDictionary *urlType in urlTypes) {
     NSArray<NSString *> *schemes = [urlType objectForKey:@"CFBundleURLSchemes"];
     for (NSString *scheme in schemes) {
-      NSLog(@"%@\n", scheme);
       if ([scheme isEqualToString:appScheme]) {
         return YES;
       }

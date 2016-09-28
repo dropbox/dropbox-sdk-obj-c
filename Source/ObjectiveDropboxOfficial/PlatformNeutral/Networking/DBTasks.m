@@ -169,6 +169,7 @@
       responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError]);
       return;
     }
+    result = !_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil);
   };
 
@@ -242,6 +243,7 @@
       responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError]);
       return;
     }
+    result = !_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil);
   };
 
@@ -353,6 +355,7 @@
       responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError], _destination);
       return;
     }
+    result = !_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil, _destination);
   };
 
@@ -434,6 +437,7 @@
       responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError], nil);
       return;
     }
+    result = !_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
   };
 

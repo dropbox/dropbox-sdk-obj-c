@@ -10,7 +10,7 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString const *const kVersion = @"1.0.11";
+static NSString const *const kVersion = @"1.0.12";
 static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
@@ -65,13 +65,20 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   if (self) {
     _delegateQueue = delegateQueue ?: [NSOperationQueue mainQueue];
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
-    _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 100.0;
+
+    _session = [NSURLSession sessionWithConfiguration:sessionConfig
                                              delegate:_delegate
                                         delegateQueue:_delegateQueue];
     NSString *backgroundId =
         backgroundSessionId ?: [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
+    NSURLSessionConfiguration *backgroundSessionConfig =
+      [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
+    backgroundSessionConfig.timeoutIntervalForRequest = 100.0;
     _backgroundSession = [NSURLSession
-        sessionWithConfiguration:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId]
+        sessionWithConfiguration:backgroundSessionConfig
                         delegate:_delegate
                    delegateQueue:_delegateQueue];
 
