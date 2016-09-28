@@ -19,7 +19,7 @@
 #pragma mark IPv6 Support
 // DBReachability fully support IPv6.  For full details, see ReadMe.md.
 
-NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
+NSString *kDBReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
 
 #pragma mark - Supporting functions
 
@@ -54,7 +54,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
   DBReachability *noteObject = (__bridge DBReachability *)info;
   // Post a notification to notify the client that the network reachability changed.
-  [[NSNotificationCenter defaultCenter] postNotificationName:kReachabilityChangedNotification object:noteObject];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDBReachabilityChangedNotification object:noteObject];
 }
 
 #pragma mark - DBReachability implementation
