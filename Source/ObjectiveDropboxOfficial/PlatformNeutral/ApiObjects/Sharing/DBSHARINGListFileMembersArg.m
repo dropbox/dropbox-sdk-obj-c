@@ -19,7 +19,7 @@
                      actions:(NSArray<DBSHARINGMemberAction *> *)actions
             includeInherited:(NSNumber *)includeInherited
                        limit:(NSNumber *)limit {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"](file);
   [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
   [DBStoneValidators numericValidator:@(1) maxValue:@(300)](limit ?: @(100));
 

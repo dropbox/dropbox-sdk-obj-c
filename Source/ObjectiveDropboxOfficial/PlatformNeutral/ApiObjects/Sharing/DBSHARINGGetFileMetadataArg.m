@@ -16,7 +16,7 @@
 #pragma mark - Constructors
 
 - (instancetype)initWithFile:(NSString *)file actions:(NSArray<DBSHARINGFileAction *> *)actions {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"](file);
   [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
   self = [super init];

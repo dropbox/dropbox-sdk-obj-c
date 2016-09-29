@@ -24,6 +24,12 @@
 /// Accessor method for the dCopy route object.
 + (DBRoute * _Nonnull)DBFILESDCopy;
 
+/// Accessor method for the dCopyBatch route object.
++ (DBRoute * _Nonnull)DBFILESDCopyBatch;
+
+/// Accessor method for the dCopyBatchCheck route object.
++ (DBRoute * _Nonnull)DBFILESDCopyBatchCheck;
+
 /// Accessor method for the dCopyReferenceGet route object.
 + (DBRoute * _Nonnull)DBFILESDCopyReferenceGet;
 
@@ -35,6 +41,12 @@
 
 /// Accessor method for the delete_ route object.
 + (DBRoute * _Nonnull)DBFILESDelete_;
+
+/// Accessor method for the deleteBatch route object.
++ (DBRoute * _Nonnull)DBFILESDeleteBatch;
+
+/// Accessor method for the deleteBatchCheck route object.
++ (DBRoute * _Nonnull)DBFILESDeleteBatchCheck;
 
 /// Accessor method for the download route object.
 + (DBRoute * _Nonnull)DBFILESDownload;
@@ -68,6 +80,12 @@
 
 /// Accessor method for the move route object.
 + (DBRoute * _Nonnull)DBFILESMove;
+
+/// Accessor method for the moveBatch route object.
++ (DBRoute * _Nonnull)DBFILESMoveBatch;
+
+/// Accessor method for the moveBatchCheck route object.
++ (DBRoute * _Nonnull)DBFILESMoveBatchCheck;
 
 /// Accessor method for the permanentlyDelete route object.
 + (DBRoute * _Nonnull)DBFILESPermanentlyDelete;

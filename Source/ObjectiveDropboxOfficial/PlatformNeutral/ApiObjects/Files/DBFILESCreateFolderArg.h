@@ -26,10 +26,26 @@
 /// Path in the user's Dropbox to create.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
+/// If there's a conflict, have the Dropbox server try to autorename the folder
+/// to avoid the conflict.
+@property (nonatomic, readonly) NSNumber * _Nonnull autorename;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param path Path in the user's Dropbox to create.
+/// @param autorename If there's a conflict, have the Dropbox server try to
+/// autorename the folder to avoid the conflict.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithPath:(NSString * _Nonnull)path autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param path Path in the user's Dropbox to create.
 ///

@@ -5,6 +5,7 @@
 ///
 
 #import "DBFILESLookupError.h"
+#import "DBFILESPathRootError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -13,6 +14,7 @@
 @implementation DBFILESLookupError
 
 @synthesize malformedPath = _malformedPath;
+@synthesize invalidPathRoot = _invalidPathRoot;
 
 #pragma mark - Constructors
 
@@ -57,6 +59,15 @@
   return self;
 }
 
+- (instancetype)initWithInvalidPathRoot:(DBFILESPathRootError *)invalidPathRoot {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESLookupErrorInvalidPathRoot;
+    _invalidPathRoot = invalidPathRoot;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -73,6 +84,14 @@
                 format:@"Invalid tag: required DBFILESLookupErrorMalformedPath, but was %@.", [self tagName]];
   }
   return _malformedPath;
+}
+
+- (DBFILESPathRootError *)invalidPathRoot {
+  if (![self isInvalidPathRoot]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBFILESLookupErrorInvalidPathRoot, but was %@.", [self tagName]];
+  }
+  return _invalidPathRoot;
 }
 
 #pragma mark - Tag state methods
@@ -97,6 +116,10 @@
   return _tag == DBFILESLookupErrorRestrictedContent;
 }
 
+- (BOOL)isInvalidPathRoot {
+  return _tag == DBFILESLookupErrorInvalidPathRoot;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESLookupErrorOther;
 }
@@ -113,6 +136,8 @@
     return @"DBFILESLookupErrorNotFolder";
   case DBFILESLookupErrorRestrictedContent:
     return @"DBFILESLookupErrorRestrictedContent";
+  case DBFILESLookupErrorInvalidPathRoot:
+    return @"DBFILESLookupErrorInvalidPathRoot";
   case DBFILESLookupErrorOther:
     return @"DBFILESLookupErrorOther";
   }
@@ -158,6 +183,9 @@
     jsonDict[@".tag"] = @"not_folder";
   } else if ([valueObj isRestrictedContent]) {
     jsonDict[@".tag"] = @"restricted_content";
+  } else if ([valueObj isInvalidPathRoot]) {
+    jsonDict[@"invalid_path_root"] = [[DBFILESPathRootErrorSerializer serialize:valueObj.invalidPathRoot] mutableCopy];
+    jsonDict[@".tag"] = @"invalid_path_root";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -183,6 +211,9 @@
     return [[DBFILESLookupError alloc] initWithNotFolder];
   } else if ([tag isEqualToString:@"restricted_content"]) {
     return [[DBFILESLookupError alloc] initWithRestrictedContent];
+  } else if ([tag isEqualToString:@"invalid_path_root"]) {
+    DBFILESPathRootError *invalidPathRoot = [DBFILESPathRootErrorSerializer deserialize:valueDict];
+    return [[DBFILESLookupError alloc] initWithInvalidPathRoot:invalidPathRoot];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESLookupError alloc] initWithOther];
   }

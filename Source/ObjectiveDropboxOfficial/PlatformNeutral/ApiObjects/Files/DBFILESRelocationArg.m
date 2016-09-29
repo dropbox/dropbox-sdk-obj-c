@@ -5,6 +5,7 @@
 ///
 
 #import "DBFILESRelocationArg.h"
+#import "DBFILESRelocationPath.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -14,16 +15,23 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithFromPath:(NSString *)fromPath toPath:(NSString *)toPath {
+- (instancetype)initWithFromPath:(NSString *)fromPath
+                          toPath:(NSString *)toPath
+               allowSharedFolder:(NSNumber *)allowSharedFolder
+                      autorename:(NSNumber *)autorename {
   [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](fromPath);
   [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](toPath);
 
-  self = [super init];
+  self = [super initWithFromPath:fromPath toPath:toPath];
   if (self) {
-    _fromPath = fromPath;
-    _toPath = toPath;
+    _allowSharedFolder = allowSharedFolder ?: @NO;
+    _autorename = autorename ?: @NO;
   }
   return self;
+}
+
+- (instancetype)initWithFromPath:(NSString *)fromPath toPath:(NSString *)toPath {
+  return [self initWithFromPath:fromPath toPath:toPath allowSharedFolder:nil autorename:nil];
 }
 
 #pragma mark - Serialization methods
@@ -53,6 +61,8 @@
 
   jsonDict[@"from_path"] = valueObj.fromPath;
   jsonDict[@"to_path"] = valueObj.toPath;
+  jsonDict[@"allow_shared_folder"] = valueObj.allowSharedFolder;
+  jsonDict[@"autorename"] = valueObj.autorename;
 
   return jsonDict;
 }
@@ -60,8 +70,13 @@
 + (DBFILESRelocationArg *)deserialize:(NSDictionary *)valueDict {
   NSString *fromPath = valueDict[@"from_path"];
   NSString *toPath = valueDict[@"to_path"];
+  NSNumber *allowSharedFolder = valueDict[@"allow_shared_folder"] ?: @NO;
+  NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
 
-  return [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
+  return [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
+                                                 toPath:toPath
+                                      allowSharedFolder:allowSharedFolder
+                                             autorename:autorename];
 }
 
 @end

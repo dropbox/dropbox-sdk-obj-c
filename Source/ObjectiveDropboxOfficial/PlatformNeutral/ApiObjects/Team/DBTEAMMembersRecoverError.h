@@ -36,6 +36,9 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
   /// The user is not a member of the team.
   DBTEAMMembersRecoverErrorUserNotInTeam,
 
+  /// Team is full. The organization has no available licenses.
+  DBTEAMMembersRecoverErrorTeamLicenseLimit,
+
   /// (no description).
   DBTEAMMembersRecoverErrorOther,
 
@@ -77,6 +80,16 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 - (nonnull instancetype)initWithUserNotInTeam;
 
 ///
+/// Initializes union class with tag state of "team_license_limit".
+///
+/// Description of the "team_license_limit" tag state: Team is full. The
+/// organization has no available licenses.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithTeamLicenseLimit;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -108,6 +121,15 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRecoverErrorTag) {
 /// @return Whether the union's current tag state has value "user_not_in_team".
 ///
 - (BOOL)isUserNotInTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_license_limit".
+///
+/// @return Whether the union's current tag state has value
+/// "team_license_limit".
+///
+- (BOOL)isTeamLicenseLimit;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

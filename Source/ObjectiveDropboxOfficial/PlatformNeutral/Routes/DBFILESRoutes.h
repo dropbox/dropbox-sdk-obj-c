@@ -14,6 +14,10 @@
 @class DBFILESAlphaGetMetadataError;
 @class DBFILESCommitInfo;
 @class DBFILESCreateFolderError;
+@class DBFILESDeleteArg;
+@class DBFILESDeleteBatchError;
+@class DBFILESDeleteBatchJobStatus;
+@class DBFILESDeleteBatchResult;
 @class DBFILESDeleteError;
 @class DBFILESDownloadError;
 @class DBFILESFileMetadata;
@@ -40,7 +44,11 @@
 @class DBFILESMetadata;
 @class DBFILESPreviewError;
 @class DBFILESPropertyGroupUpdate;
+@class DBFILESRelocationBatchError;
+@class DBFILESRelocationBatchJobStatus;
+@class DBFILESRelocationBatchResult;
 @class DBFILESRelocationError;
+@class DBFILESRelocationPath;
 @class DBFILESRemovePropertiesError;
 @class DBFILESRestoreError;
 @class DBFILESSaveCopyReferenceError;
@@ -224,14 +232,77 @@ alphaUploadStream:(NSString * _Nonnull)path
 /// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
 /// will be copied.
 ///
-/// @param fromPath Path in the user's Dropbox to be copied or moved.
-/// @param toPath Path in the user's Dropbox that is the destination.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
 /// `DBFILESRelocationError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)dCopy:(NSString * _Nonnull)fromPath
                                                                    toPath:(NSString * _Nonnull)toPath;
+
+///
+/// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be copied.
+///
+/// @param allowSharedFolder If true, `dCopy` will copy contents in shared folder, otherwise `cantCopySharedFolder` in
+/// `DBFILESRelocationError` will be returned if fromPath contains shared folder. This field is always true for `move`.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESRelocationError` object on failure.
+///
+- (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)dCopy:(NSString * _Nonnull)fromPath
+                                                                   toPath:(NSString * _Nonnull)toPath
+                                                        allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
+                                                               autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. If `allowSharedFolder` in
+/// `DBFILESRelocationBatchArg` is false, this route is atomic. If on entry failes, the whole transaction will abort. If
+/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, not atomicity is guaranteed, but you will be able to
+/// copy the contents of shared folders to new locations. This route will return job ID immediately and do the async
+/// copy job in background. Please use `dCopyBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)dCopyBatch:
+    (NSArray<DBFILESRelocationPath *> * _Nonnull)entries;
+
+///
+/// Copy multiple files or folders to different locations at once in the user's Dropbox. If `allowSharedFolder` in
+/// `DBFILESRelocationBatchArg` is false, this route is atomic. If on entry failes, the whole transaction will abort. If
+/// `allowSharedFolder` in `DBFILESRelocationBatchArg` is true, not atomicity is guaranteed, but you will be able to
+/// copy the contents of shared folders to new locations. This route will return job ID immediately and do the async
+/// copy job in background. Please use `dCopyBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+/// @param allowSharedFolder If true, `dCopyBatch` will copy contents in shared folder, otherwise `cantCopySharedFolder`
+/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder.  This
+/// field is always true for `moveBatch`.
+/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
+/// the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)
+       dCopyBatch:(NSArray<DBFILESRelocationPath *> * _Nonnull)entries
+allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
+       autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Returns the status of an asynchronous job for `dCopyBatch`. If success, it returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchJobStatus` object on success
+/// or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> * _Nonnull)dCopyBatchCheck:
+    (NSString * _Nonnull)asyncJobId;
 
 ///
 /// Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another
@@ -269,6 +340,19 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 - (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> * _Nonnull)createFolder:(NSString * _Nonnull)path;
 
 ///
+/// Create a folder at a given path.
+///
+/// @param path Path in the user's Dropbox to create.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESFolderMetadata` object on success or a
+/// `DBFILESCreateFolderError` object on failure.
+///
+- (DBRpcTask<DBFILESFolderMetadata *, DBFILESCreateFolderError *> * _Nonnull)createFolder:(NSString * _Nonnull)path
+                                                                              autorename:
+                                                                                  (NSNumber * _Nullable)autorename;
+
+///
 /// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
 /// successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding
 /// FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
@@ -279,6 +363,29 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// `DBFILESDeleteError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESDeleteError *> * _Nonnull)delete_:(NSString * _Nonnull)path;
+
+///
+/// Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the
+/// delete batch asynchronously. Use `deleteBatchCheck` to check the job status.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)deleteBatch:
+    (NSArray<DBFILESDeleteArg *> * _Nonnull)entries;
+
+///
+/// Returns the status of an asynchronous job for `deleteBatch`. If success, it returns list of result for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESDeleteBatchJobStatus` object on success or
+/// a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESDeleteBatchJobStatus *, DBASYNCPollError *> * _Nonnull)deleteBatchCheck:
+    (NSString * _Nonnull)asyncJobId;
 
 ///
 /// Download a file from a user's Dropbox.
@@ -300,7 +407,7 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead
+/// @param rev Deprecated. Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
 /// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
 /// thrown).
@@ -328,7 +435,7 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead
+/// @param rev Deprecated. Please specify revision in path instead.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESDownloadError` object on failure.
@@ -367,7 +474,7 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 
 ///
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
-/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf
+/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
 ///
 /// @param path The path of the file to preview.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
@@ -384,10 +491,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 
 ///
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
-/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf
+/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead
+/// @param rev Deprecated. Please specify revision in path instead.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
 /// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
 /// thrown).
@@ -403,7 +510,7 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 
 ///
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
-/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf
+/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
 ///
 /// @param path The path of the file to preview.
 ///
@@ -414,10 +521,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 
 ///
 /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc,
-/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf
+/// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
 ///
 /// @param path The path of the file to preview.
-/// @param rev Deprecated. Please specify revision in path instead
+/// @param rev Deprecated. Please specify revision in path instead.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESPreviewError` object on failure.
@@ -508,7 +615,17 @@ getThumbnailData:(NSString * _Nonnull)path
             size:(DBFILESThumbnailSize * _Nullable)size;
 
 ///
-/// Returns the contents of a folder.
+/// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
+/// call `listFolderContinue` with the returned `cursor` in `DBFILESListFolderResult` to retrieve more entries. If
+/// you're using `recursive` in `DBFILESListFolderArg` set to true to keep a local cache of the contents of a Dropbox
+/// account, iterate through each entry in order and process them as follows to keep your local state in sync: For each
+/// FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist
+/// yet, create them. If there's already something else at the given path, replace it and remove all its children. For
+/// each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't
+/// exist yet, create them. If there's already something else at the given path, replace it but leave the children as
+/// they are. Check the new entry's `readOnly` in `DBFILESFolderSharingInfo` and set all its children's read-only
+/// statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all
+/// its children. If there's nothing at the given path, ignore this entry.
 ///
 /// @param path The path to the folder you want to see the contents of.
 ///
@@ -518,7 +635,17 @@ getThumbnailData:(NSString * _Nonnull)path
 - (DBRpcTask<DBFILESListFolderResult *, DBFILESListFolderError *> * _Nonnull)listFolder:(NSString * _Nonnull)path;
 
 ///
-/// Returns the contents of a folder.
+/// Starts returning the contents of a folder. If the result's `hasMore` in `DBFILESListFolderResult` field is true,
+/// call `listFolderContinue` with the returned `cursor` in `DBFILESListFolderResult` to retrieve more entries. If
+/// you're using `recursive` in `DBFILESListFolderArg` set to true to keep a local cache of the contents of a Dropbox
+/// account, iterate through each entry in order and process them as follows to keep your local state in sync: For each
+/// FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist
+/// yet, create them. If there's already something else at the given path, replace it and remove all its children. For
+/// each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't
+/// exist yet, create them. If there's already something else at the given path, replace it but leave the children as
+/// they are. Check the new entry's `readOnly` in `DBFILESFolderSharingInfo` and set all its children's read-only
+/// statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all
+/// its children. If there's nothing at the given path, ignore this entry.
 ///
 /// @param path The path to the folder you want to see the contents of.
 /// @param recursive If true, the list folder operation will be applied recursively to all subfolders and the response
@@ -541,7 +668,7 @@ includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMe
 
 ///
 /// Once a cursor has been retrieved from `listFolder`, use this to paginate through all files and retrieve updates to
-/// the folder.
+/// the folder, following the same rules as documented for `listFolder`.
 ///
 /// @param cursor The cursor returned by your last call to `listFolder` or `listFolderContinue`.
 ///
@@ -625,7 +752,7 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
            timeout:(NSNumber * _Nullable)timeout;
 
 ///
-/// Return revisions of a file
+/// Return revisions of a file.
 ///
 /// @param path The path to the file you want to see the revisions of.
 ///
@@ -636,7 +763,7 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
     (NSString * _Nonnull)path;
 
 ///
-/// Return revisions of a file
+/// Return revisions of a file.
 ///
 /// @param path The path to the file you want to see the revisions of.
 /// @param limit The maximum number of revision entries returned.
@@ -652,14 +779,73 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 /// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
 /// will be moved.
 ///
-/// @param fromPath Path in the user's Dropbox to be copied or moved.
-/// @param toPath Path in the user's Dropbox that is the destination.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
 /// `DBFILESRelocationError` object on failure.
 ///
 - (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)move:(NSString * _Nonnull)fromPath
                                                                   toPath:(NSString * _Nonnull)toPath;
+
+///
+/// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents
+/// will be moved.
+///
+/// @param allowSharedFolder If true, `dCopy` will copy contents in shared folder, otherwise `cantCopySharedFolder` in
+/// `DBFILESRelocationError` will be returned if fromPath contains shared folder. This field is always true for `move`.
+/// @param autorename If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESMetadata` object on success or a
+/// `DBFILESRelocationError` object on failure.
+///
+- (DBRpcTask<DBFILESMetadata *, DBFILESRelocationError *> * _Nonnull)move:(NSString * _Nonnull)fromPath
+                                                                  toPath:(NSString * _Nonnull)toPath
+                                                       allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
+                                                              autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing',
+/// which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do
+/// the async moving job in background. Please use `moveBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)moveBatch:
+    (NSArray<DBFILESRelocationPath *> * _Nonnull)entries;
+
+///
+/// Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing',
+/// which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do
+/// the async moving job in background. Please use `moveBatchCheck` to check the job status.
+///
+/// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
+/// @param allowSharedFolder If true, `dCopyBatch` will copy contents in shared folder, otherwise `cantCopySharedFolder`
+/// in `DBFILESRelocationError` will be returned if `fromPath` in `DBFILESRelocationPath` contains shared folder.  This
+/// field is always true for `moveBatch`.
+/// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
+/// the conflict.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)
+        moveBatch:(NSArray<DBFILESRelocationPath *> * _Nonnull)entries
+allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
+       autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Returns the status of an asynchronous job for `moveBatch`. If success, it returns list of results for each entry.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchJobStatus` object on success
+/// or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBFILESRelocationBatchJobStatus *, DBASYNCPollError *> * _Nonnull)moveBatchCheck:
+    (NSString * _Nonnull)asyncJobId;
 
 ///
 /// Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint
@@ -750,7 +936,7 @@ propertiesTemplateGet:(NSString * _Nonnull)templateId;
 updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePropertyGroups;
 
 ///
-/// Restore a file to a specific revision
+/// Restore a file to a specific revision.
 ///
 /// @param path The path to the file you want to restore.
 /// @param rev The revision to restore for the file.
@@ -1137,11 +1323,11 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// `uploadSessionAppendV2` to upload file contents. We recommend uploading many files in parallel to increase
 /// throughput. Once the file contents have been uploaded, rather than calling `uploadSessionFinish`, use this route to
 /// finish all your upload sessions in a single request. `close` in `DBFILESUploadSessionStartArg` or `close` in
-/// `DBFILESUploadSessionAppendArg` needs to be true for last `uploadSessionStart` or `uploadSessionAppendV2` call. This
-/// route will return job_id immediately and do the async commit job in background. We have another route
+/// `DBFILESUploadSessionAppendArg` needs to be true for the last `uploadSessionStart` or `uploadSessionAppendV2` call.
+/// This route will return a job_id immediately and do the async commit job in background. Use
 /// `uploadSessionFinishBatchCheck` to check the job status. For the same account, this route should be executed
-/// serially. That means you should not start next job before current job finishes. Also we only allow up to 1000
-/// entries in a single request
+/// serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a
+/// single request.
 ///
 /// @param entries Commit information for each file in the batch.
 ///
@@ -1153,7 +1339,7 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 
 ///
 /// Returns the status of an asynchronous job for `uploadSessionFinishBatch`. If success, it returns list of result for
-/// each entry
+/// each entry.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -1165,9 +1351,10 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
     (NSString * _Nonnull)asyncJobId;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputUrl The file to upload, as an NSURL * object.
 ///
@@ -1178,9 +1365,10 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
     (NSURL * _Nonnull)inputUrl;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppendV2` anymore with the current session.
@@ -1194,9 +1382,10 @@ uploadSessionStartUrl:(NSNumber * _Nullable)close
              inputUrl:(NSURL * _Nonnull)inputUrl;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputData The file to upload, as an NSData * object.
 ///
@@ -1207,9 +1396,10 @@ uploadSessionStartUrl:(NSNumber * _Nullable)close
     (NSData * _Nonnull)inputData;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppendV2` anymore with the current session.
@@ -1223,9 +1413,10 @@ uploadSessionStartData:(NSNumber * _Nullable)close
              inputData:(NSData * _Nonnull)inputData;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
@@ -1236,9 +1427,10 @@ uploadSessionStartData:(NSNumber * _Nullable)close
     (NSInputStream * _Nonnull)inputStream;
 
 ///
-/// Upload sessions allow you to upload a single file using multiple requests. This call starts a new upload session
-/// with the given data.  You can then use `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save
-/// all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+/// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
+/// greater than 150 MB.  This call starts a new upload session with the given data. You can then use
+/// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
+/// single request should not upload more than 150 MB of file contents.
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppendV2` anymore with the current session.

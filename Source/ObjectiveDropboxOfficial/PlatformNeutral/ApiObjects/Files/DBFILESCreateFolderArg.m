@@ -14,14 +14,19 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithPath:(NSString *)path {
+- (instancetype)initWithPath:(NSString *)path autorename:(NSNumber *)autorename {
   [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](path);
 
   self = [super init];
   if (self) {
     _path = path;
+    _autorename = autorename ?: @NO;
   }
   return self;
+}
+
+- (instancetype)initWithPath:(NSString *)path {
+  return [self initWithPath:path autorename:nil];
 }
 
 #pragma mark - Serialization methods
@@ -50,14 +55,16 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"path"] = valueObj.path;
+  jsonDict[@"autorename"] = valueObj.autorename;
 
   return jsonDict;
 }
 
 + (DBFILESCreateFolderArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
+  NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
 
-  return [[DBFILESCreateFolderArg alloc] initWithPath:path];
+  return [[DBFILESCreateFolderArg alloc] initWithPath:path autorename:autorename];
 }
 
 @end

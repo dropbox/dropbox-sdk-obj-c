@@ -39,6 +39,9 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
   /// Business team admin.
   DBAUTHAuthErrorInvalidSelectAdmin,
 
+  /// The user has been suspended.
+  DBAUTHAuthErrorUserSuspended,
+
   /// (no description).
   DBAUTHAuthErrorOther,
 
@@ -80,6 +83,15 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 - (nonnull instancetype)initWithInvalidSelectAdmin;
 
 ///
+/// Initializes union class with tag state of "user_suspended".
+///
+/// Description of the "user_suspended" tag state: The user has been suspended.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUserSuspended;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -114,6 +126,13 @@ typedef NS_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 /// "invalid_select_admin".
 ///
 - (BOOL)isInvalidSelectAdmin;
+
+///
+/// Retrieves whether the union's current tag state has value "user_suspended".
+///
+/// @return Whether the union's current tag state has value "user_suspended".
+///
+- (BOOL)isUserSuspended;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -39,7 +39,7 @@
 /// access to this folder. They do, however, have access to some sub folder.
 @property (nonatomic, readonly) NSNumber * _Nonnull traverseOnly;
 
-/// Specifies that the folder cannot be accessed by the user
+/// Specifies that the folder cannot be accessed by the user.
 @property (nonatomic, readonly) NSNumber * _Nonnull noAccess;
 
 #pragma mark - Constructors
@@ -57,7 +57,7 @@
 /// user can only see a limited subset of the contents of this folder because
 /// they don't have read access to this folder. They do, however, have access to
 /// some sub folder.
-/// @param noAccess Specifies that the folder cannot be accessed by the user
+/// @param noAccess Specifies that the folder cannot be accessed by the user.
 ///
 /// @return An initialized instance.
 ///

@@ -17,9 +17,10 @@
 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files actions:(NSArray<DBSHARINGFileAction *> *)actions {
   [DBStoneValidators arrayValidator:nil maxItems:@(100)
-                      itemValidator:[DBStoneValidators stringValidator:@(1)
-                                                             maxLength:nil
-                                                               pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
+                      itemValidator:[DBStoneValidators
+                                        stringValidator:@(1)
+                                              maxLength:nil
+                                                pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"]](files);
   [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](actions);
 
   self = [super init];

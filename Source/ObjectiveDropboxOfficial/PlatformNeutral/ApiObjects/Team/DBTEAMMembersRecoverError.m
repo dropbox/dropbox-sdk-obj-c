@@ -39,6 +39,14 @@
   return self;
 }
 
+- (instancetype)initWithTeamLicenseLimit {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersRecoverErrorTeamLicenseLimit;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -63,6 +71,10 @@
   return _tag == DBTEAMMembersRecoverErrorUserNotInTeam;
 }
 
+- (BOOL)isTeamLicenseLimit {
+  return _tag == DBTEAMMembersRecoverErrorTeamLicenseLimit;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMMembersRecoverErrorOther;
 }
@@ -75,6 +87,8 @@
     return @"DBTEAMMembersRecoverErrorUserUnrecoverable";
   case DBTEAMMembersRecoverErrorUserNotInTeam:
     return @"DBTEAMMembersRecoverErrorUserNotInTeam";
+  case DBTEAMMembersRecoverErrorTeamLicenseLimit:
+    return @"DBTEAMMembersRecoverErrorTeamLicenseLimit";
   case DBTEAMMembersRecoverErrorOther:
     return @"DBTEAMMembersRecoverErrorOther";
   }
@@ -113,6 +127,8 @@
     jsonDict[@".tag"] = @"user_unrecoverable";
   } else if ([valueObj isUserNotInTeam]) {
     jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isTeamLicenseLimit]) {
+    jsonDict[@".tag"] = @"team_license_limit";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -133,6 +149,8 @@
     return [[DBTEAMMembersRecoverError alloc] initWithUserUnrecoverable];
   } else if ([tag isEqualToString:@"user_not_in_team"]) {
     return [[DBTEAMMembersRecoverError alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"team_license_limit"]) {
+    return [[DBTEAMMembersRecoverError alloc] initWithTeamLicenseLimit];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersRecoverError alloc] initWithOther];
   }

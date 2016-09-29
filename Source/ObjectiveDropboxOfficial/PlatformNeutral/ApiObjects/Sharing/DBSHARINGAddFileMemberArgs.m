@@ -22,7 +22,7 @@
                        quiet:(NSNumber *)quiet
                  accessLevel:(DBSHARINGAccessLevel *)accessLevel
          addMessageAsComment:(NSNumber *)addMessageAsComment {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"](file);
   [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](members);
 
   self = [super init];

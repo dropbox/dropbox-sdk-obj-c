@@ -32,7 +32,7 @@
 @property (nonatomic, readonly) NSNumber * _Nonnull hasMore;
 
 /// Pass the cursor into `listSharedLinks` to obtain the additional links.
-/// Cursor is returned only if no path is given or the path is empty.
+/// Cursor is returned only if no path is given.
 @property (nonatomic, readonly) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
@@ -44,8 +44,7 @@
 /// @param hasMore Is true if there are additional shared links that have not
 /// been returned yet. Pass the cursor into `listSharedLinks` to retrieve them.
 /// @param cursor Pass the cursor into `listSharedLinks` to obtain the
-/// additional links. Cursor is returned only if no path is given or the path is
-/// empty.
+/// additional links. Cursor is returned only if no path is given.
 ///
 /// @return An initialized instance.
 ///

@@ -38,6 +38,14 @@
   return self;
 }
 
+- (instancetype)initWithUserSuspended {
+  self = [super init];
+  if (self) {
+    _tag = DBAUTHAuthErrorUserSuspended;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -62,6 +70,10 @@
   return _tag == DBAUTHAuthErrorInvalidSelectAdmin;
 }
 
+- (BOOL)isUserSuspended {
+  return _tag == DBAUTHAuthErrorUserSuspended;
+}
+
 - (BOOL)isOther {
   return _tag == DBAUTHAuthErrorOther;
 }
@@ -74,6 +86,8 @@
     return @"DBAUTHAuthErrorInvalidSelectUser";
   case DBAUTHAuthErrorInvalidSelectAdmin:
     return @"DBAUTHAuthErrorInvalidSelectAdmin";
+  case DBAUTHAuthErrorUserSuspended:
+    return @"DBAUTHAuthErrorUserSuspended";
   case DBAUTHAuthErrorOther:
     return @"DBAUTHAuthErrorOther";
   }
@@ -112,6 +126,8 @@
     jsonDict[@".tag"] = @"invalid_select_user";
   } else if ([valueObj isInvalidSelectAdmin]) {
     jsonDict[@".tag"] = @"invalid_select_admin";
+  } else if ([valueObj isUserSuspended]) {
+    jsonDict[@".tag"] = @"user_suspended";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -132,6 +148,8 @@
     return [[DBAUTHAuthError alloc] initWithInvalidSelectUser];
   } else if ([tag isEqualToString:@"invalid_select_admin"]) {
     return [[DBAUTHAuthError alloc] initWithInvalidSelectAdmin];
+  } else if ([tag isEqualToString:@"user_suspended"]) {
+    return [[DBAUTHAuthError alloc] initWithUserSuspended];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAuthError alloc] initWithOther];
   }

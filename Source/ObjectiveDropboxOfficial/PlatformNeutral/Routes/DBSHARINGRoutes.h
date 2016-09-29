@@ -469,10 +469,10 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
          linkPassword:(NSString * _Nullable)linkPassword;
 
 ///
-/// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given or
-/// the path is empty, returns a list of all shared links for the current user, including collection links. If a
-/// non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links
-/// are never returned in this case. Note that the url field in the response is never the shortened URL.
+/// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given,
+/// returns a list of all shared links for the current user, including collection links. If a non-empty path is given,
+/// returns a list of all shared links that allow access to the given path.  Collection links are never returned in this
+/// case. Note that the url field in the response is never the shortened URL.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGGetSharedLinksResult` object on success
@@ -482,10 +482,10 @@ getSharedLinkMetadata:(NSString * _Nonnull)url
     __deprecated_msg("get_shared_links is deprecated. Use list_shared_links.");
 
 ///
-/// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given or
-/// the path is empty, returns a list of all shared links for the current user, including collection links. If a
-/// non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links
-/// are never returned in this case. Note that the url field in the response is never the shortened URL.
+/// DEPRECATED: Returns a list of LinkMetadata objects for this user, including collection links. If no path is given,
+/// returns a list of all shared links for the current user, including collection links. If a non-empty path is given,
+/// returns a list of all shared links that allow access to the given path.  Collection links are never returned in this
+/// case. Note that the url field in the response is never the shortened URL.
 ///
 /// @param path See `getSharedLinks` description.
 ///
@@ -714,10 +714,10 @@ listReceivedFiles:(NSNumber * _Nullable)limit
     (NSString * _Nonnull)cursor;
 
 ///
-/// List shared links of this user. If no path is given or the path is empty, returns a list of all shared links for the
-/// current user. If a non-empty path is given, returns a list of all shared links that allow access to the given path -
-/// direct links to the given path and links to parent folders of the given path. Links to parent folders can be
-/// suppressed by setting direct_only to true.
+/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
+/// non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to
+/// the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting
+/// direct_only to true.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBSHARINGListSharedLinksResult` object on success
@@ -726,10 +726,10 @@ listReceivedFiles:(NSNumber * _Nullable)limit
 - (DBRpcTask<DBSHARINGListSharedLinksResult *, DBSHARINGListSharedLinksError *> * _Nonnull)listSharedLinks;
 
 ///
-/// List shared links of this user. If no path is given or the path is empty, returns a list of all shared links for the
-/// current user. If a non-empty path is given, returns a list of all shared links that allow access to the given path -
-/// direct links to the given path and links to parent folders of the given path. Links to parent folders can be
-/// suppressed by setting direct_only to true.
+/// List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a
+/// non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to
+/// the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting
+/// direct_only to true.
 ///
 /// @param path See `listSharedLinks` description.
 /// @param cursor The cursor returned by your last call to `listSharedLinks`.

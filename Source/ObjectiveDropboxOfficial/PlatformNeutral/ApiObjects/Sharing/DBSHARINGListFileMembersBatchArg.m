@@ -16,9 +16,10 @@
 
 - (instancetype)initWithFiles:(NSArray<NSString *> *)files limit:(NSNumber *)limit {
   [DBStoneValidators arrayValidator:nil maxItems:@(100)
-                      itemValidator:[DBStoneValidators stringValidator:@(1)
-                                                             maxLength:nil
-                                                               pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"]](files);
+                      itemValidator:[DBStoneValidators
+                                        stringValidator:@(1)
+                                              maxLength:nil
+                                                pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"]](files);
   [DBStoneValidators numericValidator:nil maxValue:@(20)](limit ?: @(10));
 
   self = [super init];

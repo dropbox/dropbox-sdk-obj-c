@@ -12,6 +12,9 @@
 #import "DBFILESAddPropertiesError.h"
 #import "DBFILESAlphaGetMetadataError.h"
 #import "DBFILESCreateFolderError.h"
+#import "DBFILESDeleteBatchError.h"
+#import "DBFILESDeleteBatchJobStatus.h"
+#import "DBFILESDeleteBatchResult.h"
 #import "DBFILESDeleteError.h"
 #import "DBFILESDeletedMetadata.h"
 #import "DBFILESDownloadError.h"
@@ -39,6 +42,9 @@
 #import "DBFILESMetadata.h"
 #import "DBFILESPreviewError.h"
 #import "DBFILESPropertiesError.h"
+#import "DBFILESRelocationBatchError.h"
+#import "DBFILESRelocationBatchJobStatus.h"
+#import "DBFILESRelocationBatchResult.h"
 #import "DBFILESRelocationError.h"
 #import "DBFILESRemovePropertiesError.h"
 #import "DBFILESRestoreError.h"
@@ -78,10 +84,14 @@
 static DBRoute *DBFILESAlphaGetMetadata;
 static DBRoute *DBFILESAlphaUpload;
 static DBRoute *DBFILESDCopy;
+static DBRoute *DBFILESDCopyBatch;
+static DBRoute *DBFILESDCopyBatchCheck;
 static DBRoute *DBFILESDCopyReferenceGet;
 static DBRoute *DBFILESDCopyReferenceSave;
 static DBRoute *DBFILESCreateFolder;
 static DBRoute *DBFILESDelete_;
+static DBRoute *DBFILESDeleteBatch;
+static DBRoute *DBFILESDeleteBatchCheck;
 static DBRoute *DBFILESDownload;
 static DBRoute *DBFILESGetMetadata;
 static DBRoute *DBFILESGetPreview;
@@ -93,6 +103,8 @@ static DBRoute *DBFILESListFolderGetLatestCursor;
 static DBRoute *DBFILESListFolderLongpoll;
 static DBRoute *DBFILESListRevisions;
 static DBRoute *DBFILESMove;
+static DBRoute *DBFILESMoveBatch;
+static DBRoute *DBFILESMoveBatchCheck;
 static DBRoute *DBFILESPermanentlyDelete;
 static DBRoute *DBFILESPropertiesAdd;
 static DBRoute *DBFILESPropertiesOverwrite;
@@ -163,6 +175,40 @@ static DBRoute *DBFILESUploadSessionStart;
   return DBFILESDCopy;
 }
 
++ (DBRoute *)DBFILESDCopyBatch {
+  if (!DBFILESDCopyBatch) {
+    DBFILESDCopyBatch = [[DBRoute alloc] init:@"copy_batch"
+                                   namespace_:@"files"
+                                   deprecated:@NO
+                                   resultType:[DBASYNCLaunchEmptyResult class]
+                                    errorType:nil
+                                        attrs:@{
+                                          @"host" : @"api",
+                                          @"style" : @"rpc"
+                                        }
+                             arraySerialBlock:nil
+                           arrayDeserialBlock:nil];
+  }
+  return DBFILESDCopyBatch;
+}
+
++ (DBRoute *)DBFILESDCopyBatchCheck {
+  if (!DBFILESDCopyBatchCheck) {
+    DBFILESDCopyBatchCheck = [[DBRoute alloc] init:@"copy_batch/check"
+                                        namespace_:@"files"
+                                        deprecated:@NO
+                                        resultType:[DBFILESRelocationBatchJobStatus class]
+                                         errorType:[DBASYNCPollError class]
+                                             attrs:@{
+                                               @"host" : @"api",
+                                               @"style" : @"rpc"
+                                             }
+                                  arraySerialBlock:nil
+                                arrayDeserialBlock:nil];
+  }
+  return DBFILESDCopyBatchCheck;
+}
+
 + (DBRoute *)DBFILESDCopyReferenceGet {
   if (!DBFILESDCopyReferenceGet) {
     DBFILESDCopyReferenceGet = [[DBRoute alloc] init:@"copy_reference/get"
@@ -229,6 +275,40 @@ static DBRoute *DBFILESUploadSessionStart;
                         arrayDeserialBlock:nil];
   }
   return DBFILESDelete_;
+}
+
++ (DBRoute *)DBFILESDeleteBatch {
+  if (!DBFILESDeleteBatch) {
+    DBFILESDeleteBatch = [[DBRoute alloc] init:@"delete_batch"
+                                    namespace_:@"files"
+                                    deprecated:@NO
+                                    resultType:[DBASYNCLaunchEmptyResult class]
+                                     errorType:nil
+                                         attrs:@{
+                                           @"host" : @"api",
+                                           @"style" : @"rpc"
+                                         }
+                              arraySerialBlock:nil
+                            arrayDeserialBlock:nil];
+  }
+  return DBFILESDeleteBatch;
+}
+
++ (DBRoute *)DBFILESDeleteBatchCheck {
+  if (!DBFILESDeleteBatchCheck) {
+    DBFILESDeleteBatchCheck = [[DBRoute alloc] init:@"delete_batch/check"
+                                         namespace_:@"files"
+                                         deprecated:@NO
+                                         resultType:[DBFILESDeleteBatchJobStatus class]
+                                          errorType:[DBASYNCPollError class]
+                                              attrs:@{
+                                                @"host" : @"api",
+                                                @"style" : @"rpc"
+                                              }
+                                   arraySerialBlock:nil
+                                 arrayDeserialBlock:nil];
+  }
+  return DBFILESDeleteBatchCheck;
 }
 
 + (DBRoute *)DBFILESDownload {
@@ -416,6 +496,40 @@ static DBRoute *DBFILESUploadSessionStart;
                      arrayDeserialBlock:nil];
   }
   return DBFILESMove;
+}
+
++ (DBRoute *)DBFILESMoveBatch {
+  if (!DBFILESMoveBatch) {
+    DBFILESMoveBatch = [[DBRoute alloc] init:@"move_batch"
+                                  namespace_:@"files"
+                                  deprecated:@NO
+                                  resultType:[DBASYNCLaunchEmptyResult class]
+                                   errorType:nil
+                                       attrs:@{
+                                         @"host" : @"api",
+                                         @"style" : @"rpc"
+                                       }
+                            arraySerialBlock:nil
+                          arrayDeserialBlock:nil];
+  }
+  return DBFILESMoveBatch;
+}
+
++ (DBRoute *)DBFILESMoveBatchCheck {
+  if (!DBFILESMoveBatchCheck) {
+    DBFILESMoveBatchCheck = [[DBRoute alloc] init:@"move_batch/check"
+                                       namespace_:@"files"
+                                       deprecated:@NO
+                                       resultType:[DBFILESRelocationBatchJobStatus class]
+                                        errorType:[DBASYNCPollError class]
+                                            attrs:@{
+                                              @"host" : @"api",
+                                              @"style" : @"rpc"
+                                            }
+                                 arraySerialBlock:nil
+                               arrayDeserialBlock:nil];
+  }
+  return DBFILESMoveBatchCheck;
 }
 
 + (DBRoute *)DBFILESPermanentlyDelete {

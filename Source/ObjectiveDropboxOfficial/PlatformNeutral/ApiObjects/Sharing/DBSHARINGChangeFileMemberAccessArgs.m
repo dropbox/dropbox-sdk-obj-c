@@ -19,7 +19,7 @@
 - (instancetype)initWithFile:(NSString *)file
                       member:(DBSHARINGMemberSelector *)member
                  accessLevel:(DBSHARINGAccessLevel *)accessLevel {
-  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[^:]*:[^:]*)"](file);
+  [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:@"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?"](file);
 
   self = [super init];
   if (self) {

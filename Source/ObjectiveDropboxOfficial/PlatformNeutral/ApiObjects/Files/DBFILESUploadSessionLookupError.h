@@ -31,9 +31,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
   DBFILESUploadSessionLookupErrorNotFound,
 
   /// The specified offset was incorrect. See the value for the correct
-  /// offset. (This error may occur when a previous request was received and
+  /// offset. This error may occur when a previous request was received and
   /// processed successfully but the client did not receive the response, e.g.
-  /// due to a network error.)
+  /// due to a network error.
   DBFILESUploadSessionLookupErrorIncorrectOffset,
 
   /// You are attempting to append data to an upload session that has alread
@@ -52,9 +52,9 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 @property (nonatomic, readonly) DBFILESUploadSessionLookupErrorTag tag;
 
 /// The specified offset was incorrect. See the value for the correct offset.
-/// (This error may occur when a previous request was received and processed
+/// This error may occur when a previous request was received and processed
 /// successfully but the client did not receive the response, e.g. due to a
-/// network error.) @note Ensure the `isIncorrectOffset` method returns true
+/// network error. @note Ensure the `isIncorrectOffset` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESUploadSessionOffsetError * _Nonnull incorrectOffset;
 
@@ -74,14 +74,14 @@ typedef NS_ENUM(NSInteger, DBFILESUploadSessionLookupErrorTag) {
 /// Initializes union class with tag state of "incorrect_offset".
 ///
 /// Description of the "incorrect_offset" tag state: The specified offset was
-/// incorrect. See the value for the correct offset. (This error may occur when
-/// a previous request was received and processed successfully but the client
-/// did not receive the response, e.g. due to a network error.)
+/// incorrect. See the value for the correct offset. This error may occur when a
+/// previous request was received and processed successfully but the client did
+/// not receive the response, e.g. due to a network error.
 ///
 /// @param incorrectOffset The specified offset was incorrect. See the value for
-/// the correct offset. (This error may occur when a previous request was
+/// the correct offset. This error may occur when a previous request was
 /// received and processed successfully but the client did not receive the
-/// response, e.g. due to a network error.)
+/// response, e.g. due to a network error.
 ///
 /// @return An initialized instance.
 ///

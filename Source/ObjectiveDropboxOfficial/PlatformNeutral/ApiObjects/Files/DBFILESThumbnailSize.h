@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
   /// 640 by 480 px.
   DBFILESThumbnailSizeW640h480,
 
-  /// 1024 by 768
+  /// 1024 by 768.
   DBFILESThumbnailSizeW1024h768,
 
 };
@@ -87,7 +87,7 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 ///
 /// Initializes union class with tag state of "w1024h768".
 ///
-/// Description of the "w1024h768" tag state: 1024 by 768
+/// Description of the "w1024h768" tag state: 1024 by 768.
 ///
 /// @return An initialized instance.
 ///

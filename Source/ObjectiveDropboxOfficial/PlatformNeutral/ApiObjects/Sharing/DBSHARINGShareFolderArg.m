@@ -22,7 +22,7 @@
              aclUpdatePolicy:(DBSHARINGAclUpdatePolicy *)aclUpdatePolicy
             sharedLinkPolicy:(DBSHARINGSharedLinkPolicy *)sharedLinkPolicy
                   forceAsync:(NSNumber *)forceAsync {
-  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"/(.|[\\r\\n])*"](path);
+  [DBStoneValidators stringValidator:nil maxLength:nil pattern:@"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)"](path);
 
   self = [super init];
   if (self) {

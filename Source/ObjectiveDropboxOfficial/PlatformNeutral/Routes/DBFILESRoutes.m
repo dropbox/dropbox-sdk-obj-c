@@ -18,6 +18,10 @@
 #import "DBFILESCreateFolderArg.h"
 #import "DBFILESCreateFolderError.h"
 #import "DBFILESDeleteArg.h"
+#import "DBFILESDeleteBatchArg.h"
+#import "DBFILESDeleteBatchError.h"
+#import "DBFILESDeleteBatchJobStatus.h"
+#import "DBFILESDeleteBatchResult.h"
 #import "DBFILESDeleteError.h"
 #import "DBFILESDeletedMetadata.h"
 #import "DBFILESDownloadArg.h"
@@ -57,7 +61,12 @@
 #import "DBFILESPropertyGroupUpdate.h"
 #import "DBFILESPropertyGroupWithPath.h"
 #import "DBFILESRelocationArg.h"
+#import "DBFILESRelocationBatchArg.h"
+#import "DBFILESRelocationBatchError.h"
+#import "DBFILESRelocationBatchJobStatus.h"
+#import "DBFILESRelocationBatchResult.h"
 #import "DBFILESRelocationError.h"
+#import "DBFILESRelocationPath.h"
 #import "DBFILESRemovePropertiesArg.h"
 #import "DBFILESRemovePropertiesError.h"
 #import "DBFILESRestoreArg.h"
@@ -213,6 +222,40 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)dCopy:(NSString *)fromPath
+               toPath:(NSString *)toPath
+    allowSharedFolder:(NSNumber *)allowSharedFolder
+           autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopy;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
+                                                                      toPath:toPath
+                                                           allowSharedFolder:allowSharedFolder
+                                                                  autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatch;
+  DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyBatch:(NSArray<DBFILESRelocationPath *> *)entries
+        allowSharedFolder:(NSNumber *)allowSharedFolder
+               autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatch;
+  DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries
+                                                                    allowSharedFolder:allowSharedFolder
+                                                                           autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)dCopyBatchCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDCopyBatchCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)dCopyReferenceGet:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESDCopyReferenceGet;
   DBFILESGetCopyReferenceArg *arg = [[DBFILESGetCopyReferenceArg alloc] initWithPath:path];
@@ -232,9 +275,27 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)createFolder:(NSString *)path autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESCreateFolder;
+  DBFILESCreateFolderArg *arg = [[DBFILESCreateFolderArg alloc] initWithPath:path autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)delete_:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESDelete_;
   DBFILESDeleteArg *arg = [[DBFILESDeleteArg alloc] initWithPath:path];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)deleteBatch:(NSArray<DBFILESDeleteArg *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDeleteBatch;
+  DBFILESDeleteBatchArg *arg = [[DBFILESDeleteBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)deleteBatchCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESDeleteBatchCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -419,6 +480,40 @@
 - (DBRpcTask *)move:(NSString *)fromPath toPath:(NSString *)toPath {
   DBRoute *route = DBFILESRouteObjects.DBFILESMove;
   DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath toPath:toPath];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)move:(NSString *)fromPath
+               toPath:(NSString *)toPath
+    allowSharedFolder:(NSNumber *)allowSharedFolder
+           autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMove;
+  DBFILESRelocationArg *arg = [[DBFILESRelocationArg alloc] initWithFromPath:fromPath
+                                                                      toPath:toPath
+                                                           allowSharedFolder:allowSharedFolder
+                                                                  autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveBatch:(NSArray<DBFILESRelocationPath *> *)entries {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatch;
+  DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveBatch:(NSArray<DBFILESRelocationPath *> *)entries
+       allowSharedFolder:(NSNumber *)allowSharedFolder
+              autorename:(NSNumber *)autorename {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatch;
+  DBFILESRelocationBatchArg *arg = [[DBFILESRelocationBatchArg alloc] initWithEntries:entries
+                                                                    allowSharedFolder:allowSharedFolder
+                                                                           autorename:autorename];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)moveBatchCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBFILESRouteObjects.DBFILESMoveBatchCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 

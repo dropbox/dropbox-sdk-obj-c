@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBFILESRelocationPath.h"
 #import "DBSerializableProtocol.h"
 
 @class DBFILESRelocationArg;
@@ -19,20 +20,43 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESRelocationArg : NSObject <DBSerializable>
+@interface DBFILESRelocationArg : DBFILESRelocationPath <DBSerializable>
 
 #pragma mark - Instance fields
 
-/// Path in the user's Dropbox to be copied or moved.
-@property (nonatomic, readonly, copy) NSString * _Nonnull fromPath;
+/// If true, `dCopy` will copy contents in shared folder, otherwise
+/// `cantCopySharedFolder` in `DBFILESRelocationError` will be returned if
+/// fromPath contains shared folder. This field is always true for `move`.
+@property (nonatomic, readonly) NSNumber * _Nonnull allowSharedFolder;
 
-/// Path in the user's Dropbox that is the destination.
-@property (nonatomic, readonly, copy) NSString * _Nonnull toPath;
+/// If there's a conflict, have the Dropbox server try to autorename the file to
+/// avoid the conflict.
+@property (nonatomic, readonly) NSNumber * _Nonnull autorename;
 
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param fromPath Path in the user's Dropbox to be copied or moved.
+/// @param toPath Path in the user's Dropbox that is the destination.
+/// @param allowSharedFolder If true, `dCopy` will copy contents in shared
+/// folder, otherwise `cantCopySharedFolder` in `DBFILESRelocationError` will be
+/// returned if fromPath contains shared folder. This field is always true for
+/// `move`.
+/// @param autorename If there's a conflict, have the Dropbox server try to
+/// autorename the file to avoid the conflict.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithFromPath:(NSString * _Nonnull)fromPath
+                                  toPath:(NSString * _Nonnull)toPath
+                       allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
+                              autorename:(NSNumber * _Nullable)autorename;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param fromPath Path in the user's Dropbox to be copied or moved.
 /// @param toPath Path in the user's Dropbox that is the destination.

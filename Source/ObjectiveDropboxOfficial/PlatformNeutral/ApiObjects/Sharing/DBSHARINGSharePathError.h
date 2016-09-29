@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBFILESPathRootError;
 @class DBSHARINGSharePathError;
 @class DBSHARINGSharedFolderMetadata;
 
@@ -36,6 +37,12 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
   /// We do not support shared folders that contain shared folders.
   DBSHARINGSharePathErrorContainsSharedFolder,
 
+  /// We do not support shared folders that contain app folders.
+  DBSHARINGSharePathErrorContainsAppFolder,
+
+  /// We do not support shared folders that contain team folders.
+  DBSHARINGSharePathErrorContainsTeamFolder,
+
   /// We do not support sharing an app folder.
   DBSHARINGSharePathErrorIsAppFolder,
 
@@ -62,6 +69,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
   /// We do not support sharing a folder inside a Mac OS X package.
   DBSHARINGSharePathErrorInsideOsxPackage,
 
+  /// The path root parameter provided is invalid.
+  DBSHARINGSharePathErrorInvalidPathRoot,
+
   /// (no description).
   DBSHARINGSharePathErrorOther,
 
@@ -74,6 +84,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 /// folder. @note Ensure the `isAlreadyShared` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBSHARINGSharedFolderMetadata * _Nonnull alreadyShared;
+
+/// The path root parameter provided is invalid. @note Ensure the
+/// `isInvalidPathRoot` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBFILESPathRootError * _Nonnull invalidPathRoot;
 
 #pragma mark - Constructors
 
@@ -105,6 +120,26 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithContainsSharedFolder;
+
+///
+/// Initializes union class with tag state of "contains_app_folder".
+///
+/// Description of the "contains_app_folder" tag state: We do not support shared
+/// folders that contain app folders.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithContainsAppFolder;
+
+///
+/// Initializes union class with tag state of "contains_team_folder".
+///
+/// Description of the "contains_team_folder" tag state: We do not support
+/// shared folders that contain team folders.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithContainsTeamFolder;
 
 ///
 /// Initializes union class with tag state of "is_app_folder".
@@ -189,6 +224,18 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 - (nonnull instancetype)initWithInsideOsxPackage;
 
 ///
+/// Initializes union class with tag state of "invalid_path_root".
+///
+/// Description of the "invalid_path_root" tag state: The path root parameter
+/// provided is invalid.
+///
+/// @param invalidPathRoot The path root parameter provided is invalid.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithInvalidPathRoot:(DBFILESPathRootError * _Nonnull)invalidPathRoot;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -221,6 +268,24 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 /// "contains_shared_folder".
 ///
 - (BOOL)isContainsSharedFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "contains_app_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "contains_app_folder".
+///
+- (BOOL)isContainsAppFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "contains_team_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "contains_team_folder".
+///
+- (BOOL)isContainsTeamFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value "is_app_folder".
@@ -286,6 +351,17 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharePathErrorTag) {
 /// "inside_osx_package".
 ///
 - (BOOL)isInsideOsxPackage;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "invalid_path_root".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `invalidPathRoot` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "invalid_path_root".
+///
+- (BOOL)isInvalidPathRoot;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

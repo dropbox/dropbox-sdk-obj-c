@@ -26,7 +26,7 @@
 /// The path of the file to download.
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
-/// Deprecated. Please specify revision in path instead
+/// Deprecated. Please specify revision in path instead.
 @property (nonatomic, readonly) NSString * _Nullable rev;
 
 #pragma mark - Constructors
@@ -35,7 +35,7 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param path The path of the file to download.
-/// @param rev Deprecated. Please specify revision in path instead
+/// @param rev Deprecated. Please specify revision in path instead.
 ///
 /// @return An initialized instance.
 ///
