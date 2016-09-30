@@ -14,6 +14,8 @@
 
 /// Import handwritten files
 
+#import "DBChunkInputStream.h"
+#import "DBCustomRoutes.h"
 #import "DBDelegate.h"
 #import "DBErrors.h"
 #import "DBHandlerTypes.h"

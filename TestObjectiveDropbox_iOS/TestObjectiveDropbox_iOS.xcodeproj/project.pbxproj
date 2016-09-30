@@ -365,9 +365,11 @@
 			baseConfigurationReference = 65F9D9B80A170147CA9887A7 /* Pods-TestObjectiveDropbox_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
 				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,9 +381,11 @@
 			baseConfigurationReference = E9403DCD149530530F654EE7 /* Pods-TestObjectiveDropbox_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
 				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

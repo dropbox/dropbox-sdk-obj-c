@@ -48,6 +48,80 @@ void MyLog(NSString *format, ...) {
 @end
 
 /**
+ Custom Tests
+ */
+
+@implementation BatchUploadTests
+
+- (instancetype)init:(DropboxTester *)tester {
+  self = [super init];
+  if (self) {
+    _tester = tester;
+  }
+  return self;
+}
+
+- (void)batchUploadFiles {
+  [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+
+  // create working folder
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSString *workingDirectoryName = @"MyOutputFolder";
+  NSURL *workingDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]
+                       URLByAppendingPathComponent:workingDirectoryName];
+  
+  [fileManager createDirectoryAtPath:[workingDirectory path]
+         withIntermediateDirectories:YES
+                          attributes:nil
+                               error:nil];
+  
+  NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
+  
+  NSLog(@"Creating files in: %@", [workingDirectory path]);
+  NSURL *myUrl;
+  // create a bunch of fake files
+  for (int i = 0; i < 10; i++) {
+    NSString *fileName = [NSString stringWithFormat:@"test_file_%d", i];
+    NSString *fileContent = [NSString stringWithFormat:@"%@'s content. Test content here.", fileName];
+    NSURL *fileUrl = [workingDirectory URLByAppendingPathComponent:fileName];
+    
+    // don't create a file for the name test_file_5 so we use a custom large file
+    // there instead
+    if (i != 5) {
+      NSError *fileCreationError;
+      [fileContent writeToFile:[fileUrl path]
+                    atomically:NO
+                      encoding:NSStringEncodingConversionAllowLossy
+                         error:&fileCreationError];
+      
+      if (fileCreationError) {
+        NSLog(@"Error creating file: %@", fileCreationError);
+        NSLog(@"Terminating...");
+        exit(0);
+      }
+    }
+    
+    DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@/%@", _tester.testData.testFolderPath, fileName]];
+    
+    myUrl = fileUrl;
+    [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:fileUrl];
+  }
+
+  [_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
+    NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal, expectedToUploadTotal);
+  } responseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBError *error) {
+    if (result) {
+      MyLog(@"%@\n", result);
+      [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+    } else {
+      [TestFormat abort:error routeError:routeError];
+    }
+  }];
+}
+
+@end
+
+/**
     Dropbox User API Endpoint Tests
  */
 

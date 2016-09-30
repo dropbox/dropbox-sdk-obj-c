@@ -36,6 +36,16 @@
 
 @end
 
+@interface BatchUploadTests : NSObject
+
+- (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
+
+- (void)batchUploadFiles;
+
+@property DropboxTester * _Nonnull tester;
+
+@end
+
 @interface AuthTests : NSObject
 
 - (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;

@@ -865,6 +865,8 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBOAuthResult.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBSharedApplicationProtocol.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/ObjectiveDropboxOfficial.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBCustomRoutes.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBCustomRoutes.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBSerializableProtocol.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBStoneBase.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBStoneBase.m

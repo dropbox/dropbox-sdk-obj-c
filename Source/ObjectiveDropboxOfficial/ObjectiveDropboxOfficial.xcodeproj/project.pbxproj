@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2043DA21DAAE32500280189 /* DBChunkInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F2043D9E1DAAE32500280189 /* DBChunkInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2043DA31DAAE32500280189 /* DBChunkInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F2043D9E1DAAE32500280189 /* DBChunkInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2043DA41DAAE32500280189 /* DBChunkInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F2043D9F1DAAE32500280189 /* DBChunkInputStream.m */; };
+		F2043DA51DAAE32500280189 /* DBChunkInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F2043D9F1DAAE32500280189 /* DBChunkInputStream.m */; };
+		F2043DA61DAAE32500280189 /* DBCustomRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2043DA01DAAE32500280189 /* DBCustomRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2043DA71DAAE32500280189 /* DBCustomRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2043DA01DAAE32500280189 /* DBCustomRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2043DA81DAAE32500280189 /* DBCustomRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2043DA11DAAE32500280189 /* DBCustomRoutes.m */; };
+		F2043DA91DAAE32500280189 /* DBCustomRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = F2043DA11DAAE32500280189 /* DBCustomRoutes.m */; };
 		F27DEB9A1D7FFBB9003B1CEE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB991D7FFBB9003B1CEE /* AppKit.framework */; };
 		F27DEB9C1D7FFBBF003B1CEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB9B1D7FFBBF003B1CEE /* Foundation.framework */; };
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
@@ -1793,6 +1801,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2043D9E1DAAE32500280189 /* DBChunkInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBChunkInputStream.h; sourceTree = "<group>"; };
+		F2043D9F1DAAE32500280189 /* DBChunkInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBChunkInputStream.m; sourceTree = "<group>"; };
+		F2043DA01DAAE32500280189 /* DBCustomRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCustomRoutes.h; sourceTree = "<group>"; };
+		F2043DA11DAAE32500280189 /* DBCustomRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCustomRoutes.m; sourceTree = "<group>"; };
 		F26B75751D7F6AF700714F70 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DE9E21D7FF909003B1CEE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DEB991D7FFBB9003B1CEE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -3726,6 +3738,10 @@
 		F2D9F45D1D9D9E9800A42585 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2043D9E1DAAE32500280189 /* DBChunkInputStream.h */,
+				F2043D9F1DAAE32500280189 /* DBChunkInputStream.m */,
+				F2043DA01DAAE32500280189 /* DBCustomRoutes.h */,
+				F2043DA11DAAE32500280189 /* DBCustomRoutes.m */,
 				F2D9F45E1D9D9E9800A42585 /* DBSerializableProtocol.h */,
 				F2D9F45F1D9D9E9800A42585 /* DBStoneBase.h */,
 				F2D9F4601D9D9E9800A42585 /* DBStoneBase.m */,
@@ -4266,6 +4282,8 @@
 				F2D9F5FB1D9D9E9900A42585 /* DBFILESUpdatePropertiesError.h in Headers */,
 				F2D9F58F1D9D9E9900A42585 /* DBFILESRelocationBatchJobStatus.h in Headers */,
 				F2EBB7561D921E63004707E1 /* DropboxClientsManager+MobileAuth.h in Headers */,
+				F2043DA61DAAE32500280189 /* DBCustomRoutes.h in Headers */,
+				F2043DA21DAAE32500280189 /* DBChunkInputStream.h in Headers */,
 				F2EBB7541D921E63004707E1 /* DBOAuthMobile.h in Headers */,
 				F2EBB7581D921E63004707E1 /* DropboxSDKImportsMobile.h in Headers */,
 			);
@@ -4720,6 +4738,8 @@
 				F2D9F5341D9D9E9900A42585 /* DBFILESListFolderGetLatestCursorResult.h in Headers */,
 				F2D9F5901D9D9E9900A42585 /* DBFILESRelocationBatchJobStatus.h in Headers */,
 				F2EBB7641D921E6C004707E1 /* DBOAuthDesktop.h in Headers */,
+				F2043DA71DAAE32500280189 /* DBCustomRoutes.h in Headers */,
+				F2043DA31DAAE32500280189 /* DBChunkInputStream.h in Headers */,
 				F2EBB7661D921E6C004707E1 /* DropboxClientsManager+DesktopAuth.h in Headers */,
 				F2EBB7681D921E6C004707E1 /* DropboxSDKImportsDesktop.h in Headers */,
 			);
@@ -4939,6 +4959,7 @@
 				F2D9F6F11D9D9E9900A42585 /* DBSHARINGGetFileMetadataIndividualResult.m in Sources */,
 				F2D9FB311D9D9E9B00A42585 /* DBStoneBase.m in Sources */,
 				F2D9F69D1D9D9E9900A42585 /* DBSHARINGCollectionLinkMetadata.m in Sources */,
+				F2043DA41DAAE32500280189 /* DBChunkInputStream.m in Sources */,
 				F2D9F4C91D9D9E9800A42585 /* DBFILESDeleteBatchJobStatus.m in Sources */,
 				F2D9F7091D9D9E9900A42585 /* DBSHARINGGetSharedLinksResult.m in Sources */,
 				F2D9F9F51D9D9E9A00A42585 /* DBTEAMMembersRecoverError.m in Sources */,
@@ -5228,6 +5249,7 @@
 				F2D9F9D11D9D9E9A00A42585 /* DBTEAMMembersGetInfoArgs.m in Sources */,
 				F2D9FA951D9D9E9B00A42585 /* DBTEAMCOMMONGroupSummary.m in Sources */,
 				F2D9F4AD1D9D9E9800A42585 /* DBFILESCommitInfo.m in Sources */,
+				F2043DA81DAAE32500280189 /* DBCustomRoutes.m in Sources */,
 				F2D9F4C51D9D9E9800A42585 /* DBFILESDeleteBatchError.m in Sources */,
 				F2D9F62D1D9D9E9900A42585 /* DBFILESUploadSessionLookupError.m in Sources */,
 				F2D9F9791D9D9E9A00A42585 /* DBTEAMListMembersAppsResult.m in Sources */,
@@ -5388,6 +5410,7 @@
 				F2D9F6F21D9D9E9900A42585 /* DBSHARINGGetFileMetadataIndividualResult.m in Sources */,
 				F2D9FB321D9D9E9B00A42585 /* DBStoneBase.m in Sources */,
 				F2D9F69E1D9D9E9900A42585 /* DBSHARINGCollectionLinkMetadata.m in Sources */,
+				F2043DA51DAAE32500280189 /* DBChunkInputStream.m in Sources */,
 				F2D9F4CA1D9D9E9800A42585 /* DBFILESDeleteBatchJobStatus.m in Sources */,
 				F2D9F70A1D9D9E9900A42585 /* DBSHARINGGetSharedLinksResult.m in Sources */,
 				F2D9F9F61D9D9E9A00A42585 /* DBTEAMMembersRecoverError.m in Sources */,
@@ -5677,6 +5700,7 @@
 				F2D9F9D21D9D9E9A00A42585 /* DBTEAMMembersGetInfoArgs.m in Sources */,
 				F2D9FA961D9D9E9B00A42585 /* DBTEAMCOMMONGroupSummary.m in Sources */,
 				F2D9F4AE1D9D9E9800A42585 /* DBFILESCommitInfo.m in Sources */,
+				F2043DA91DAAE32500280189 /* DBCustomRoutes.m in Sources */,
 				F2D9F4C61D9D9E9800A42585 /* DBFILESDeleteBatchError.m in Sources */,
 				F2D9F62E1D9D9E9900A42585 /* DBFILESUploadSessionLookupError.m in Sources */,
 				F2D9F97A1D9D9E9A00A42585 /* DBTEAMListMembersAppsResult.m in Sources */,
