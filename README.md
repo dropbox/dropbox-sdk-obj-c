@@ -416,7 +416,9 @@ The response handlers for each request type are similar to one another. The argu
 * **network request error** (generic to all requests -- contains information like request ID, HTTP status code, etc.)
 * **output content** (`NSURL` / `NSData` reference to downloaded output for Download-style endpoints only)
 
-Note: Response handlers are required for all endpoints. Progress handlers, on the other hand, are optional for all endpoints.
+Response handlers are required for all endpoints. Progress handlers, on the other hand, are optional for all endpoints.
+
+> Note: The Objective-C SDK uses `NSNumber` objects in place of boolean values. This is done so that nullability can be represented in some of our API response values. For this reason, you should be careful when writing checks like `if (myAPIObject.isSomething)`, which is checking nullability rather than value. Instead, you should use `if ([myAPIObject.isSomething boolValue])`, which converts the `NSNumber` field to a boolean value before using it in the if check.
 
 ---
 
