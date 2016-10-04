@@ -10,7 +10,7 @@
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
-static NSString const *const kVersion = @"1.1.0";
+static NSString const *const kVersion = @"1.1.1";
 static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
@@ -109,7 +109,6 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
 
   NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
-  task.priority = NSURLSessionTaskPriorityHigh;
   DBRpcTask *rpcTask = [[DBRpcTask alloc] initWithTask:task session:_session delegate:_delegate route:route];
   [task resume];
 
