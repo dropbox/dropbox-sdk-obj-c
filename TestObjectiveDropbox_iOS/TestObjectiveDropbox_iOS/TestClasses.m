@@ -101,13 +101,14 @@ void MyLog(NSString *format, ...) {
       }
     }
     
-    DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@/%@", _tester.testData.testFolderPath, fileName]];
+    DBFILESCommitInfo *commitInfo =
+      [[DBFILESCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@/%@", _tester.testData.testFolderPath, fileName]];
     
     myUrl = fileUrl;
     [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:fileUrl];
   }
-
-  [_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
+  
+  [_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo queue:nil progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
     NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal, expectedToUploadTotal);
   } responseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBError *error) {
     if (result) {

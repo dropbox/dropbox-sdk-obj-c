@@ -24,6 +24,8 @@
 ///
 /// @return An initialized DBChunkInputStream instance.
 ///
-- (nonnull instancetype)initWithFileUrl:(NSURL * _Nonnull)fileUrl startBytes:(NSUInteger)startBytes endBytes:(NSUInteger)endBytes;
+- (nonnull instancetype)initWithFileUrl:(NSURL * _Nonnull)fileUrl
+                             startBytes:(NSUInteger)startBytes
+                               endBytes:(NSUInteger)endBytes;
 
 @end

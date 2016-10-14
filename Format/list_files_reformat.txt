@@ -855,6 +855,8 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBSessionData.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasks.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasks.m
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasksStorage.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTasksStorage.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTransportClient.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Networking/DBTransportClient.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBKeychain.h
@@ -865,6 +867,9 @@
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBOAuthResult.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/OAuth/DBSharedApplicationProtocol.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/ObjectiveDropboxOfficial.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBChunkInputStream.h
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBChunkInputStream.m
+../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBConstants.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBCustomRoutes.h
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBCustomRoutes.m
 ../Source//ObjectiveDropboxOfficial/PlatformNeutral/Resources/DBSerializableProtocol.h

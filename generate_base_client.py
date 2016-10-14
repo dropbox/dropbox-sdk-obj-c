@@ -95,12 +95,11 @@ def main():
 
 def _get_client_args():
     input_doc = "The file to upload, as an {} object."
-    dest_doc = ('A closure used to compute the destination, '
-        + 'given the temporary file location and the response.')
+    dest_doc = ('The file url of the desired download output location.')
 
-    overwrite_doc = ('A boolean to set behavior in the event of a naming conflict. `True` will '
-        + 'overwrite conflicting file at destination. `False` will take no action (but '
-        + 'if left unhandled in destination closure, an NSError will be thrown).')
+    overwrite_doc = ('A boolean to set behavior in the event of a naming conflict. `YES` will '
+        + 'overwrite conflicting file at destination. `NO` will take no action, resulting in an `NSError` '
+        + 'returned to the response handler in the event of a file conflict.')
 
     client_args = {
         'upload': [

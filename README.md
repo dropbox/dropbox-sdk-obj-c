@@ -176,15 +176,18 @@ Then, run the following command to checkout and build the Dropbox Objective-C SD
 ```bash
 carthage update --platform iOS
 ```
+Once you have checked-out out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
+
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file for the iOS platform.
 
 ##### macOS
 ```bash
 carthage update --platform Mac
 ```
 
-Once you have checkedout out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
+Once you have checked-out out all the necessary code via Carthage, drag the `Carthage/Checkouts/ObjectiveDropboxOfficial/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj` file into your project as a subproject.
 
-Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file that has the same platform target as your build target.
+Then, in the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **General** > **Embedded Binaries** > **+** and then add the `ObjectiveDropboxOfficial.framework` file for the macOS platform.
 
 ---
 
@@ -284,8 +287,10 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 - (void)myButtonInControllerPressed {
     [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
                                         controller:self
-                                           openURL:^(NSURL *url){ [[UIApplication sharedApplication] openURL:url]; }
-                                       browserAuth:YES];
+                                           openURL:^(NSURL *url) {
+                                                [[UIApplication sharedApplication] openURL:url];
+                                           }
+                                        browserAuth:YES];
 }
 
 ```
@@ -451,6 +456,28 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
     }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
         NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
     }];
+
+// ADVANCED UPLOAD USE CASES
+// To batch upload files or to chunk upload large files, use the custom `batchUploadFiles` route
+
+NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
+DBFILESCommitInfo *commitInfo =
+    [[DBFILESCommitInfo alloc] initWithPath:@"/output/path/in/Dropbox"];
+[uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:@"/local/path/to/my/file"];
+
+[_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo
+                            queue:nil
+                    progressBlock:^(int64_t uploaded, int64_t total, int64_t expectedTotal) {
+    NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, total, expectedTotal);
+} responseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBError *error) {
+    if (result) {
+      NSLog(@"%@\n", result);
+    } else {
+      NSLog(@"%@  %@\n", routeError, error);
+    }
+}];
+
+// note: with this method, response and progress handlers are passed directly into the route as arguments
 ```
 
 ---

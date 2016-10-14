@@ -2,10 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBConstants.h"
 #import "DBDelegate.h"
 #import "DBSessionData.h"
-
-static NSString const *const kForegroundId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
 
 @interface DBDelegate ()
 

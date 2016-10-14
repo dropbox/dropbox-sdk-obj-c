@@ -2,9 +2,9 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
-
 #import "DBHandlerTypes.h"
+#import <Foundation/Foundation.h>
+@class DBBatchUploadData;
 @class DBDelegate;
 @class DBError;
 @class DBRoute;
@@ -14,20 +14,17 @@
 ///
 /// Base class for network task wrappers.
 ///
-/// After a network request is made via `DBTransportClient`, a subclass
-/// of `DBTask` is returned, from which response and progress handlers
-/// can be installed, and the network response paused or cancelled.
+/// After a network request is made via `DBTransportClient`, a subclass of `DBTask` is returned, from which response and
+/// progress handlers can be installed, and the network response paused or cancelled.
 ///
-/// Handlers are executed on the thread specified by the `DBDelegate` instance with which
-/// the `DBTask` instance is initialied (more specifically, the delegate queue that
-/// the `DBDelegate` uses to execute handler code). By default, this is the main
-/// thread, which makes updating UI elements in response handlers convenient.
+/// Handlers are executed on the thread specified by the `DBDelegate` instance with which the `DBTask` instance is
+/// initialied (more specifically, the delegate queue that the `DBDelegate` uses to execute handler code). By default,
+/// this is the main thread, which makes updating UI elements in response handlers convenient.
 ///
-/// While response handlers are not optional, they do not necessarily need to have been installed
-/// by the time the SDK has received its server response. If this is the case, completion data will
-/// be saved, and the handler will be executed with the completion data upon its installation.
-/// Downloaded content will be moved from a temporary location to the final destination when the
-/// response handler code is executed.
+/// While response handlers are not optional, they do not necessarily need to have been installed by the time the SDK
+/// has received its server response. If this is the case, completion data will be saved, and the handler will be
+/// executed with the completion data upon its installation. Downloaded content will be moved from a temporary location
+/// to the final destination when the response handler code is executed.
 ///
 @interface DBTask : NSObject {
 @protected
@@ -546,5 +543,31 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// Resumes the current request.
 ///
 - (void)resume;
+
+@end
+
+///
+/// Dropbox task object for custom batch upload route.
+///
+/// The batch upload route is a convenience layer over several of our auto-generated API endpoints. For this reason,
+/// there is less flexibility and granularity of control. Progress and response handlers are passed directly into this
+/// route (rather than installed via this task object) and only `cancel` is available. This task is also specific to
+/// only one endpoint, rather than an entire class (style) of endpoints.
+///
+@interface DBBatchUploadTask : NSObject
+
+///
+/// DBBatchUploadTask full constructor.
+///
+/// @param uploadData relevant to the particular batch upload request.
+///
+/// @returns A DBBatchUploadTask instance.
+///
+- (nonnull instancetype)initWithUploadData:(DBBatchUploadData * _Nonnull)uploadData;
+
+///
+/// Cancels the current request.
+///
+- (void)cancel;
 
 @end

@@ -391,10 +391,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// Download a file from a user's Dropbox.
 ///
 /// @param path The path of the file to download.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESDownloadError` object on failure.
@@ -408,10 +408,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path of the file to download.
 /// @param rev Deprecated. Please specify revision in path instead.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESDownloadError` object on failure.
@@ -477,10 +477,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
 ///
 /// @param path The path of the file to preview.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESPreviewError` object on failure.
@@ -495,10 +495,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 ///
 /// @param path The path of the file to preview.
 /// @param rev Deprecated. Please specify revision in path instead.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESPreviewError` object on failure.
@@ -549,10 +549,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 ///
 /// @param path The path to the image file you want to thumbnail.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESThumbnailError` object on failure.
@@ -570,10 +570,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// @param format The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be
 /// preferred, while png is  better for screenshots and digital arts.
 /// @param size The size for the thumbnail image.
-/// @param overwrite A boolean to set behavior in the event of a naming conflict. `True` will overwrite conflicting file
-/// at destination. `False` will take no action (but if left unhandled in destination closure, an NSError will be
-/// thrown).
-/// @param destination A closure used to compute the destination, given the temporary file location and the response.
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESThumbnailError` object on failure.

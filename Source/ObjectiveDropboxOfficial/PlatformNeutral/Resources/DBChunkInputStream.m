@@ -9,17 +9,17 @@
 
 @interface DBChunkInputStream ()
 
-@property (nonatomic) NSInputStream * _Nonnull parentStream;
+@property (nonatomic, readonly) NSInputStream * _Nonnull parentStream;
 @property (nonatomic) NSStreamStatus parentStreamStatus;
-@property (nonatomic) id <NSStreamDelegate> streamDelegate;
+@property (nonatomic, readonly, weak) id<NSStreamDelegate> streamDelegate;
 
 @property (nonatomic) CFReadStreamClientCallBack copiedCallback;
 @property (nonatomic) CFStreamClientContext copiedContext;
 @property (nonatomic) CFOptionFlags requestedEvents;
 
-@property (nonatomic) NSUInteger startBytes;
-@property (nonatomic) NSUInteger endBytes;
-@property (nonatomic) NSUInteger totalBytesToRead;
+@property (nonatomic, readonly) NSUInteger startBytes;
+@property (nonatomic, readonly) NSUInteger endBytes;
+@property (nonatomic, readonly) NSUInteger totalBytesToRead;
 @property (nonatomic) NSUInteger totalBytesRead;
 
 @end
@@ -33,16 +33,17 @@
   if (self) {
     _parentStream = [[NSInputStream alloc] initWithURL:fileUrl];
     [_parentStream setDelegate:self];
-    
-    NSAssert(endBytes > startBytes, @"End location (%lu) needs to be greater than start location (%lu)", (unsigned long)endBytes, (unsigned long)startBytes);
+
+    NSAssert(endBytes > startBytes, @"End location (%lu) needs to be greater than start location (%lu)",
+             (unsigned long)endBytes, (unsigned long)startBytes);
     _startBytes = startBytes;
     _endBytes = endBytes;
-    _totalBytesToRead  = endBytes - startBytes;
+    _totalBytesToRead = endBytes - startBytes;
     _totalBytesRead = 0;
 
     [self setDelegate:self];
   }
-  
+
   return self;
 }
 
@@ -59,15 +60,14 @@
   _parentStreamStatus = NSStreamStatusClosed;
 }
 
-- (id <NSStreamDelegate> )delegate {
+- (id<NSStreamDelegate>)delegate {
   return _streamDelegate;
 }
 
 - (void)setDelegate:(id<NSStreamDelegate>)aDelegate {
   if (!aDelegate) {
     _streamDelegate = self;
-  }
-  else {
+  } else {
     _streamDelegate = aDelegate;
   }
 }
@@ -105,11 +105,11 @@
   if (len > bytesRemaining) {
     bytesToRead = bytesRemaining;
   }
-  
+
   NSInteger bytesRead = [_parentStream read:buffer maxLength:bytesToRead];
-  
+
   _totalBytesRead += bytesRead;
-  
+
   return bytesRead;
 }
 
@@ -124,7 +124,7 @@
     _parentStreamStatus = NSStreamStatusAtEnd;
     return NO;
   }
-  
+
   return [_parentStream hasBytesAvailable];
 }
 
@@ -137,12 +137,12 @@
 - (BOOL)_setCFClientFlags:(CFOptionFlags)inFlags
                  callback:(CFReadStreamClientCallBack)inCallback
                   context:(CFStreamClientContext *)inContext {
-  
+
   if (inCallback) {
     _requestedEvents = inFlags;
     _copiedCallback = inCallback;
     memcpy(&_copiedContext, inContext, sizeof(CFStreamClientContext));
-    
+
     if (_copiedContext.info && _copiedContext.retain) {
       _copiedContext.retain(_copiedContext.info);
     }
@@ -152,10 +152,10 @@
     if (_copiedContext.info && _copiedContext.release) {
       _copiedContext.release(_copiedContext.info);
     }
-    
+
     memset(&_copiedContext, 0, sizeof(CFStreamClientContext));
   }
-  
+
   return YES;
 }
 
@@ -169,43 +169,35 @@
   assert(aStream == _parentStream);
 
   switch (eventCode) {
-    case NSStreamEventOpenCompleted:
-      if (_requestedEvents & kCFStreamEventOpenCompleted) {
-        _copiedCallback((__bridge CFReadStreamRef)self,
-                       kCFStreamEventOpenCompleted,
-                       _copiedContext.info);
-      }
-      break;
-      
-    case NSStreamEventHasBytesAvailable:
-      if (_requestedEvents & kCFStreamEventHasBytesAvailable) {
-        _copiedCallback((__bridge CFReadStreamRef)self,
-                       kCFStreamEventHasBytesAvailable,
-                       _copiedContext.info);
-      }
-      break;
-      
-    case NSStreamEventErrorOccurred:
-      if (_requestedEvents & kCFStreamEventErrorOccurred) {
-        _copiedCallback((__bridge CFReadStreamRef)self,
-                       kCFStreamEventErrorOccurred,
-                       _copiedContext.info);
-      }
-      break;
-      
-    case NSStreamEventEndEncountered:
-      if (_requestedEvents & kCFStreamEventEndEncountered) {
-        _copiedCallback((__bridge CFReadStreamRef)self,
-                       kCFStreamEventEndEncountered,
-                       _copiedContext.info);
-      }
-      break;
-      
-    case NSStreamEventHasSpaceAvailable:
-      break;
-      
-    default:
-      break;
+  case NSStreamEventOpenCompleted:
+    if (_requestedEvents & kCFStreamEventOpenCompleted) {
+      _copiedCallback((__bridge CFReadStreamRef)self, kCFStreamEventOpenCompleted, _copiedContext.info);
+    }
+    break;
+
+  case NSStreamEventHasBytesAvailable:
+    if (_requestedEvents & kCFStreamEventHasBytesAvailable) {
+      _copiedCallback((__bridge CFReadStreamRef)self, kCFStreamEventHasBytesAvailable, _copiedContext.info);
+    }
+    break;
+
+  case NSStreamEventErrorOccurred:
+    if (_requestedEvents & kCFStreamEventErrorOccurred) {
+      _copiedCallback((__bridge CFReadStreamRef)self, kCFStreamEventErrorOccurred, _copiedContext.info);
+    }
+    break;
+
+  case NSStreamEventEndEncountered:
+    if (_requestedEvents & kCFStreamEventEndEncountered) {
+      _copiedCallback((__bridge CFReadStreamRef)self, kCFStreamEventEndEncountered, _copiedContext.info);
+    }
+    break;
+
+  case NSStreamEventHasSpaceAvailable:
+    break;
+
+  default:
+    break;
   }
 }
 
