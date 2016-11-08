@@ -266,7 +266,8 @@ static const int timeoutInSec = 200;
          chunkUploadFinished:(dispatch_semaphore_t *)chunkUploadFinished
                   retryCount:(int)retryCount {
   // close session on final append call
-  __block DBUploadTask *task = [[self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
+  __block DBUploadTask *task = [
+      [self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
       response:chunkUploadResponseQueue
       response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBError *error) {
         if (error) {
