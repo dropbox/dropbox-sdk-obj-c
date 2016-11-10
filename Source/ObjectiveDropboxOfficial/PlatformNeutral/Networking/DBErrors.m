@@ -370,7 +370,7 @@
   case DBRequestErrorRateLimit:
     return [NSString stringWithFormat:@"%@", [self asRateLimitError]];
   case DBRequestErrorInternalServer:
-    return @"DBRequestErrorInternalServer";
+    return [NSString stringWithFormat:@"%@", [self asInternalServerError]];
   case DBRequestErrorClient:
     return [NSString stringWithFormat:@"%@", [self asClientError]];
   }

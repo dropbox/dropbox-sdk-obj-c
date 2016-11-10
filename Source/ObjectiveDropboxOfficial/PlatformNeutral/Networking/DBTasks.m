@@ -87,6 +87,9 @@
 }
 
 - (NSDictionary *)deserializeHttpData:(NSData *)data {
+  if (!data) {
+    return nil;
+  }
   NSError *error;
   return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 }
