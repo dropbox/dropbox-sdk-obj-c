@@ -4,10 +4,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^DBProgressBlock)(int64_t, int64_t, int64_t);
+typedef void (^DBProgressBlock)(int64_t committed, int64_t totalCommitted, int64_t expectedToCommit);
 
-typedef void (^DBRpcResponseBlock)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef void (^DBRpcResponseBlock)(NSData * _Nullable responseBody, NSURLResponse * _Nullable responseMetadata, NSError * _Nullable responseError);
 
-typedef void (^DBUploadResponseBlock)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef void (^DBUploadResponseBlock)(NSData * _Nullable responseBody, NSURLResponse * _Nullable responseMetadata, NSError * _Nullable responseError);
 
-typedef void (^DBDownloadResponseBlock)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef void (^DBDownloadResponseBlock)(NSURL * _Nullable urlOutput, NSURLResponse * _Nullable responseMetadata, NSError * _Nullable responseError);
