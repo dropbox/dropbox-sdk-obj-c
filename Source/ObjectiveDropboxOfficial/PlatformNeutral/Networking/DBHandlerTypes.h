@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^DBProgressBlock)(int64_t, int64_t, int64_t);
+typedef void (^DBProgressBlock)(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite);
 
 typedef void (^DBRpcResponseBlock)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
 
