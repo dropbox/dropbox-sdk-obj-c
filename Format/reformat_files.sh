@@ -9,8 +9,6 @@
 # `sh reformat_files.sh list_files_reform.txt`
 #
 
-echo "Reformating source..."
-
 if [ -z "$1" ]; then
    echo "specify the file that contains a list of files"
    exit

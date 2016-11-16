@@ -31,6 +31,12 @@ _cmdline_parser.add_argument(
     type=str,
     help='Path to clone of stone repository.',
 )
+_cmdline_parser.add_argument(
+    '-n',
+    '--no-documentation',
+    type=str,
+    help='Sets whether no documentation should be generated.',
+)
 
 
 def main():
@@ -54,15 +60,20 @@ def main():
 
     dropbox_pkg_path = os.path.abspath('Source/ObjectiveDropboxOfficial/PlatformNeutral')
     dropbox_tests_path = os.path.abspath('ObjectiveDropbox/DBSerializationTests')
+    dropbox_format_path = os.path.abspath('Format')
 
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
 
     if verbose:
         print('Generating Obj-C types')
+
+    types_cmd = ['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_types', dropbox_pkg_path] + specs
+
+    if not args.no_documentation:
+        types_cmd += ['--', '-d', 'true']
     o = subprocess.check_output(
-        (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_types', dropbox_pkg_path] +
-         specs),
+        (types_cmd),
         cwd=stone_path)
     if o:
         print('Output:', o)
@@ -92,6 +103,15 @@ def main():
     #     cwd=stone_path)
     # if o:
     #     print('Output:', o)
+
+    with open(dropbox_format_path + '/list_files_reformat.txt', "w") as outfile:
+        get_files_cmd = ['find', '../Source/', '-iname', '*.[mh]']
+        subprocess.call(get_files_cmd, stdout=outfile, cwd=dropbox_format_path)
+
+    subprocess.call(['echo', 'Reformating source...'])
+    o = subprocess.check_output((['sh', 'reformat_files.sh', 'list_files_reformat.txt']), cwd=dropbox_format_path)
+    if o:
+        print('Output:', o)
 
 def _get_client_args():
     input_doc = "The file to upload, as an {} object."
