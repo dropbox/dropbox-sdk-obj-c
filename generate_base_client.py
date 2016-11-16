@@ -72,7 +72,7 @@ def main():
     if args.stone:
         stone_path = args.stone
 
-    dropbox_pkg_path = args.output_path if args.output_path else os.path.abspath('Source/ObjectiveDropboxOfficial/Generated')
+    dropbox_pkg_path = args.output_path if args.output_path else os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
     dropbox_tests_path = os.path.abspath('ObjectiveDropbox/DBSerializationTests')
     dropbox_format_path = os.path.abspath('Format')
 
