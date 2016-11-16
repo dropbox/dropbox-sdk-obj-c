@@ -21,12 +21,9 @@ for item in $files ; do
     cp $item $item.tmp
     
     clang\-format $item.tmp > $item
-    
-    sed -i -e 's/*_Nonnull/* _Nonnull/g' $item
-    sed -i -e 's/*_Nullable/* _Nullable/g' $item
-    sed -i -e 's/@property(/@property (/g' $item
-    
-    rm $item.tmp
-done
 
-find ../ -type f -name '*-e' -delete
+    rm $item.tmp
+    
+    sed -i '' -e 's/*_Nonnull/* _Nonnull/g' -e 's/*_Nullable/* _Nullable/g' -e 's/@property(/@property (/g' $item
+    
+done

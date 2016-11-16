@@ -32,10 +32,24 @@ _cmdline_parser.add_argument(
     help='Path to clone of stone repository.',
 )
 _cmdline_parser.add_argument(
-    '-n',
-    '--no-documentation',
+    '-d',
+    '--documentation',
+    action='store_false',
+    help='Sets whether documentation config file should be generated.',
+    default=True,
+)
+_cmdline_parser.add_argument(
+    '-f',
+    '--formatting',
+    action='store_false',
+    help='Sets whether source should be formatted.',
+    default=True,
+)
+_cmdline_parser.add_argument(
+    '-o',
+    '--output_path',
     type=str,
-    help='Sets whether no documentation should be generated.',
+    help='Path to generation output.',
 )
 
 
@@ -58,7 +72,7 @@ def main():
     if args.stone:
         stone_path = args.stone
 
-    dropbox_pkg_path = os.path.abspath('Source/ObjectiveDropboxOfficial/PlatformNeutral')
+    dropbox_pkg_path = args.output_path if args.output_path else os.path.abspath('Source/ObjectiveDropboxOfficial/Generated')
     dropbox_tests_path = os.path.abspath('ObjectiveDropbox/DBSerializationTests')
     dropbox_format_path = os.path.abspath('Format')
 
@@ -70,7 +84,7 @@ def main():
 
     types_cmd = ['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', 'obj_c_types', dropbox_pkg_path] + specs
 
-    if not args.no_documentation:
+    if args.documentation:
         types_cmd += ['--', '-d', 'true']
     o = subprocess.check_output(
         (types_cmd),
@@ -108,10 +122,10 @@ def main():
         get_files_cmd = ['find', '../Source/', '-iname', '*.[mh]']
         subprocess.call(get_files_cmd, stdout=outfile, cwd=dropbox_format_path)
 
-    subprocess.call(['echo', 'Reformating source...'])
-    o = subprocess.check_output((['sh', 'reformat_files.sh', 'list_files_reformat.txt']), cwd=dropbox_format_path)
-    if o:
-        print('Output:', o)
+    if args.formatting:
+        o = subprocess.check_output((['sh', 'reformat_files.sh', 'list_files_reformat.txt']), cwd=dropbox_format_path)
+        if o:
+            print('Output:', o)
 
 def _get_client_args():
     input_doc = "The file to upload, as an {} object."
