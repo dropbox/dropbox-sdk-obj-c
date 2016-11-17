@@ -9,7 +9,6 @@
 #import "DBASYNCPollArg.h"
 #import "DBASYNCPollError.h"
 #import "DBASYNCPollResultBase.h"
-#import "DBErrors.h"
 #import "DBFILESAddPropertiesError.h"
 #import "DBFILESAlphaGetMetadataArg.h"
 #import "DBFILESAlphaGetMetadataError.h"
@@ -114,6 +113,7 @@
 #import "DBPROPERTIESPropertyGroup.h"
 #import "DBPROPERTIESPropertyGroupTemplate.h"
 #import "DBPROPERTIESPropertyTemplateError.h"
+#import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportClient.h"
 

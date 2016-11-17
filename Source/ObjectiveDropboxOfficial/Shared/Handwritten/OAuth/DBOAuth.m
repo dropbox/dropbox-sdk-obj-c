@@ -2,15 +2,15 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBKeychain.h"
 #import "DBOAuth.h"
 #import "DBOAuthResult.h"
-#import "DBReachability.h"
+#import "DBSDKKeychain.h"
+#import "DBSDKReachability.h"
 #import "DBSharedApplicationProtocol.h"
 
 /// A shared instance of a `DBOAuthManager` for convenience
 static DBOAuthManager *sharedOAuthManager;
-static DBReachability *internetReachableFoo;
+static DBSDKReachability *internetReachableFoo;
 
 #pragma mark - OAuth manager base
 
@@ -67,14 +67,14 @@ static DBReachability *internetReachableFoo;
   DBOAuthResult *result = [self extractFromUrl:url];
 
   if ([result isSuccess]) {
-    [DBKeychain set:result.accessToken.uid value:result.accessToken.accessToken];
+    [DBSDKKeychain set:result.accessToken.uid value:result.accessToken.accessToken];
   }
 
   return result;
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
-  if ([[DBReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
+  if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
     NSString *message = @"Try again once you have an internet connection.";
     NSString *title = @"No internet connection";
 
@@ -201,13 +201,14 @@ if (browserAuth) {
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {
+#pragma unused(sharedApplication)
   return NO;
 }
 
 #pragma mark - Keychain methods
 
 - (BOOL)storeAccessToken:(DBAccessToken *)accessToken {
-  return [DBKeychain set:accessToken.uid value:accessToken.accessToken];
+  return [DBSDKKeychain set:accessToken.uid value:accessToken.accessToken];
 }
 
 - (DBAccessToken *)getFirstAccessToken {
@@ -220,7 +221,7 @@ if (browserAuth) {
 }
 
 - (DBAccessToken *)getAccessToken:(NSString *)owner {
-  NSString *accessToken = [DBKeychain get:owner];
+  NSString *accessToken = [DBSDKKeychain get:owner];
   if (accessToken != nil) {
     return [[DBAccessToken alloc] initWithAccessToken:accessToken uid:owner];
   } else {
@@ -229,10 +230,10 @@ if (browserAuth) {
 }
 
 - (NSDictionary<NSString *, DBAccessToken *> *)getAllAccessTokens {
-  NSArray<NSString *> *users = [DBKeychain getAll];
+  NSArray<NSString *> *users = [DBSDKKeychain getAll];
   NSMutableDictionary<NSString *, DBAccessToken *> *result = [[NSMutableDictionary alloc] init];
   for (NSString *user in users) {
-    NSString *accessToken = [DBKeychain get:user];
+    NSString *accessToken = [DBSDKKeychain get:user];
     if (accessToken != nil) {
       result[user] = [[DBAccessToken alloc] initWithAccessToken:accessToken uid:user];
     }
@@ -245,11 +246,11 @@ if (browserAuth) {
 }
 
 - (BOOL)clearStoredAccessToken:(DBAccessToken *)token {
-  return [DBKeychain delete:token.uid];
+  return [DBSDKKeychain delete:token.uid];
 }
 
 - (BOOL)clearStoredAccessTokens {
-  return [DBKeychain clear];
+  return [DBSDKKeychain clear];
 }
 
 @end

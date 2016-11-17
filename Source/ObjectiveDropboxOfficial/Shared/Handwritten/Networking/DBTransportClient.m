@@ -5,7 +5,7 @@
 #import "DBAuthAuthError.h"
 #import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
-#import "DBErrors.h"
+#import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
 #import "DBTransportClient.h"
@@ -320,7 +320,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 + (NSString *)asciiEscapeWithString:(NSString *)string {
   NSMutableString *result = [[NSMutableString alloc] init];
-  for (int i = 0; i < string.length; i++) {
+  for (NSUInteger i = 0; i < string.length; i++) {
     NSString *substring = [string substringWithRange:NSMakeRange(i, 1)];
     if ([substring canBeConvertedToEncoding:NSASCIIStringEncoding]) {
       [result appendString:substring];

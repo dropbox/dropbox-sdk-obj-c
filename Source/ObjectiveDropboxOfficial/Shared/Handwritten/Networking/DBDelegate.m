@@ -222,9 +222,6 @@
   return tmpOutputPath;
 }
 
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
-}
-
 - (void)addProgressHandler:(NSURLSessionTask *)task
                    session:(NSURLSession *)session
            progressHandler:(void (^)(int64_t, int64_t, int64_t))handler

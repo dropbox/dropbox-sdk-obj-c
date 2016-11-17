@@ -14,12 +14,12 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-#import "DBReachability.h"
+#import "DBSDKReachability.h"
 
 #pragma mark IPv6 Support
-// DBReachability fully support IPv6.  For full details, see ReadMe.md.
+// DBSDKReachability fully support IPv6.  For full details, see ReadMe.md.
 
-NSString *kDBReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
+NSString *kDBSDKReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
 
 #pragma mark - Supporting functions
 
@@ -28,7 +28,7 @@ NSString *kDBReachabilityChangedNotification = @"kNetworkReachabilityChangedNoti
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char *comment) {
 #if kShouldPrintReachabilityFlags
 
-  NSLog(@"DBReachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
+  NSLog(@"DBSDKReachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
 #if TARGET_OS_IPHONE
         (flags & kSCNetworkReachabilityFlagsIsWWAN) ? 'W' : '-',
 #else
@@ -49,22 +49,22 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char 
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info) {
 #pragma unused(target, flags)
   NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
-  NSCAssert([(__bridge NSObject *)info isKindOfClass:[DBReachability class]],
+  NSCAssert([(__bridge NSObject *)info isKindOfClass:[DBSDKReachability class]],
             @"info was wrong class in ReachabilityCallback");
 
-  DBReachability *noteObject = (__bridge DBReachability *)info;
+  DBSDKReachability *noteObject = (__bridge DBSDKReachability *)info;
   // Post a notification to notify the client that the network reachability changed.
-  [[NSNotificationCenter defaultCenter] postNotificationName:kDBReachabilityChangedNotification object:noteObject];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDBSDKReachabilityChangedNotification object:noteObject];
 }
 
-#pragma mark - DBReachability implementation
+#pragma mark - DBSDKReachability implementation
 
-@implementation DBReachability {
+@implementation DBSDKReachability {
   SCNetworkReachabilityRef _reachabilityRef;
 }
 
 + (instancetype)reachabilityWithHostName:(NSString *)hostName {
-  DBReachability *returnValue = NULL;
+  DBSDKReachability *returnValue = NULL;
   SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
   if (reachability != NULL) {
     returnValue = [[self alloc] init];
@@ -80,7 +80,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 + (instancetype)reachabilityWithAddress:(const struct sockaddr *)hostAddress {
   SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, hostAddress);
 
-  DBReachability *returnValue = NULL;
+  DBSDKReachability *returnValue = NULL;
 
   if (reachability != NULL) {
     returnValue = [[self alloc] init];

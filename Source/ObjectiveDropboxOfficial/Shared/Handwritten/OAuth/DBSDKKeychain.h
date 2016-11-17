@@ -7,7 +7,7 @@
 ///
 /// Keychain class for storing OAuth tokens.
 ///
-@interface DBKeychain : NSObject
+@interface DBSDKKeychain : NSObject
 
 /// Stores a key / value pair in the keychain.
 + (BOOL)set:(NSString *)key value:(NSString *)value;

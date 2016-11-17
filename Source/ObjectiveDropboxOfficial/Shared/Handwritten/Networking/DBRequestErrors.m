@@ -4,8 +4,8 @@
 
 #import "DBAuthAuthError.h"
 #import "DBAuthRateLimitError.h"
-#import "DBErrors.h"
 #import "DBOAuth.h"
+#import "DBRequestErrors.h"
 
 #pragma mark - HTTP error
 
@@ -146,9 +146,9 @@
 
 @end
 
-#pragma mark - DBError generic error
+#pragma mark - DBRequestError generic error
 
-@implementation DBError
+@implementation DBRequestError
 
 #pragma mark - Constructors
 

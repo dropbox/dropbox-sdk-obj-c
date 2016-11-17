@@ -7,7 +7,6 @@
 #import "DBASYNCLaunchEmptyResult.h"
 #import "DBChunkInputStream.h"
 #import "DBCustomRoutes.h"
-#import "DBErrors.h"
 #import "DBFILESCommitInfo.h"
 #import "DBFILESUploadSessionCursor.h"
 #import "DBFILESUploadSessionFinishArg.h"
@@ -15,6 +14,7 @@
 #import "DBFILESUploadSessionOffsetError.h"
 #import "DBFILESUploadSessionStartResult.h"
 #import "DBHandlerTypes.h"
+#import "DBRequestErrors.h"
 #import "DBTasksStorage.h"
 
 // 10 MB file chunk size
@@ -101,7 +101,7 @@ static const int timeoutInSec = 200;
 
     if (fileSizeError) {
       [uploadData.queue addOperationWithBlock:^{
-        uploadData.responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileSizeError]);
+        uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileSizeError]);
       }];
       return uploadTask;
     }
@@ -144,8 +144,8 @@ static const int timeoutInSec = 200;
   // because file can be uploaded in one request
   __block DBUploadTask *task = [[self uploadSessionStartUrl:@(YES) inputUrl:fileUrl]
       response:uploadData.queue
-      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBError *error) {
-        if (result) {
+      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+        if (result && !routeError) {
           NSString *sessionId = result.sessionId;
           NSNumber *offset = @(fileSize);
           DBFILESUploadSessionCursor *cursor =
@@ -186,8 +186,8 @@ static const int timeoutInSec = 200;
   // do not immediately close session
   __block DBUploadTask *task = [[self uploadSessionStartStream:fileChunkInputStream]
       response:chunkUploadContinueQueue
-      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBError *error) {
-        if (result) {
+      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+        if (result && !routeError) {
           [self executeProgressHandler:uploadData startBytes:startBytes endBytes:endBytes];
 
           NSString *sessionId = result.sessionId;
@@ -228,7 +228,7 @@ static const int timeoutInSec = 200;
     dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
 
     // iterate through all remaining chunks and upload each one sequentially
-    for (int i = 1; i < numFileChunks; i++) {
+    for (NSUInteger i = 1; i < numFileChunks; i++) {
       NSUInteger startBytes = fileChunkSize * i;
       NSUInteger endBytes = (i != numFileChunks - 1) ? fileChunkSize * (i + 1) : fileSize;
       DBChunkInputStream *fileChunkInputStream =
@@ -269,8 +269,8 @@ static const int timeoutInSec = 200;
   __block DBUploadTask *task = [
       [self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
       response:chunkUploadResponseQueue
-      response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBError *error) {
-        if (error) {
+      response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
+        if (error && !result) {
           if (!routeError) {
             if ([error isRateLimitError]) {
               DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
@@ -314,7 +314,7 @@ static const int timeoutInSec = 200;
 
 - (void)queryJobStatus:(DBBatchUploadData *)uploadData asyncJobId:(NSString *)asyncJobId retryCount:(int)retryCount {
   [[self uploadSessionFinishBatchCheck:asyncJobId]
-      response:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBError *error) {
+      response:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
         if (result) {
           if ([result isInProgress]) {
             sleep(1);
@@ -328,7 +328,7 @@ static const int timeoutInSec = 200;
               NSError *timeoutError =
                   [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorTimedOut userInfo:userInfo];
               [uploadData.queue addOperationWithBlock:^{
-                uploadData.responseBlock(nil, nil, [[DBError alloc] initAsClientError:timeoutError]);
+                uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:timeoutError]);
               }];
             }
           } else if ([result isComplete]) {
@@ -366,8 +366,8 @@ static const int timeoutInSec = 200;
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     [[self uploadSessionFinishBatch:uploadData.finishArgs]
-        response:^(DBASYNCLaunchEmptyResult *result, DBNilObject *routeError, DBError *error) {
-          if (result) {
+        response:^(DBASYNCLaunchEmptyResult *result, DBNilObject *routeError, DBRequestError *error) {
+          if (result && !routeError) {
             if ([result isAsyncJobId]) {
               sleep(1);
               [self queryJobStatus:uploadData asyncJobId:result.asyncJobId retryCount:2];
@@ -400,7 +400,7 @@ static const int timeoutInSec = 200;
 
   if (fileHandleError) {
     [uploadData.queue addOperationWithBlock:^{
-      uploadData.responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileHandleError]);
+      uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileHandleError]);
     }];
     return nil;
   }

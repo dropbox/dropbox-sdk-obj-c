@@ -4,9 +4,9 @@
 
 #import <Security/Security.h>
 
-#import "DBKeychain.h"
+#import "DBSDKKeychain.h"
 
-@implementation DBKeychain
+@implementation DBSDKKeychain
 
 + (BOOL)set:(NSString *)key value:(NSString *)value {
   NSData *encoding = [value dataUsingEncoding:NSUTF8StringEncoding];
@@ -27,7 +27,7 @@
 }
 
 + (NSArray<NSString *> *)getAll {
-  NSMutableDictionary<NSString *, id> *query = [DBKeychain queryWithDict:@{
+  NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{
     (NSString *)kSecReturnAttributes : (id)kCFBooleanTrue,
     (NSString *)kSecMatchLimit : (id)kSecMatchLimitAll
   }];
@@ -49,18 +49,18 @@
 }
 
 + (BOOL) delete:(NSString *)key {
-  NSMutableDictionary<NSString *, id> *query = [DBKeychain queryWithDict:@{(id)kSecAttrAccount : key}];
+  NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key}];
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
 
 + (BOOL)clear {
-  NSMutableDictionary<NSString *, id> *query = [DBKeychain queryWithDict:@{}];
+  NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{}];
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
 
 + (BOOL)setWithData:(NSString *)key value:(NSData *)value {
   NSMutableDictionary<NSString *, id> *query =
-      [DBKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
+      [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
 
   SecItemDelete((__bridge CFDictionaryRef)query);
 
@@ -68,7 +68,7 @@
 }
 
 + (NSData *)getAsData:(NSString *)key {
-  NSMutableDictionary<NSString *, id> *query = [DBKeychain queryWithDict:@{
+  NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{
     (id)kSecAttrAccount : key,
     (id)kSecReturnData : (id)kCFBooleanTrue,
     (id)kSecMatchLimit : (id)kSecMatchLimitOne

@@ -16,13 +16,13 @@
     if (minLength) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at least %@ characters", value, [minLength stringValue]];
-      NSAssert(length >= [minLength intValue], message);
+      NSAssert(length >= [minLength unsignedIntegerValue], message);
     }
 
     if (maxLength) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at most %@ characters", value, [maxLength stringValue]];
-      NSAssert(length <= [maxLength intValue], message);
+      NSAssert(length <= [maxLength unsignedIntegerValue], message);
     }
 
     if (pattern && pattern.length != 0) {
@@ -42,13 +42,13 @@
     if (minValue) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at least %@", value, [minValue stringValue]];
-      NSAssert([value intValue] >= [minValue intValue], message);
+      NSAssert([value unsignedIntegerValue] >= [minValue unsignedIntegerValue], message);
     }
 
     if (maxValue) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at most %@", value, [maxValue stringValue]];
-      NSAssert([value intValue] <= [maxValue intValue], message);
+      NSAssert([value unsignedIntegerValue] <= [maxValue unsignedIntegerValue], message);
     }
   };
 
@@ -64,13 +64,13 @@
     if (minItems) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at least %@ items", value, [minItems stringValue]];
-      NSAssert(count >= [minItems intValue], message);
+      NSAssert(count >= [minItems unsignedIntegerValue], message);
     }
 
     if (maxItems) {
       __unused NSString *message =
           [NSString stringWithFormat:@"\"%@\" must be at most %@ items", value, [maxItems stringValue]];
-      NSAssert(count <= [maxItems intValue], message);
+      NSAssert(count <= [maxItems unsignedIntegerValue], message);
     }
 
     if (itemValidator) {

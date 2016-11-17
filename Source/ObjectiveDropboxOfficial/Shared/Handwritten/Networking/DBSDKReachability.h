@@ -15,9 +15,9 @@ typedef enum : NSInteger { DBNotReachable = 0, DBReachableViaWiFi, DBReachableVi
 #pragma mark IPv6 Support
 // Reachability fully support IPv6.  For full details, see ReadMe.md.
 
-extern NSString *kDBReachabilityChangedNotification;
+extern NSString *kDBSDKReachabilityChangedNotification;
 
-@interface DBReachability : NSObject
+@interface DBSDKReachability : NSObject
 
 /*!
  * Use to check the reachability of a given host name.

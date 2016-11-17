@@ -56,6 +56,7 @@
   [alertController addAction:[UIAlertAction actionWithTitle:@"Retry"
                                                       style:(UIAlertActionStyle)UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
+#pragma unused(action)
                                                       buttonHandlers[@"Retry"]();
                                                     }]];
 
@@ -169,6 +170,7 @@
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+#pragma unused(webView)
   if (navigationAction.request.URL && _tryInterceptHandler) {
     if (_tryInterceptHandler(navigationAction.request.URL)) {
       [self dismiss:YES];
@@ -179,6 +181,8 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+#pragma unused(webView)
+#pragma unused(navigation)
   [_indicator stopAnimating];
   [_indicator removeFromSuperview];
 }
@@ -199,6 +203,7 @@
 }
 
 - (void)goBack:(id)sender {
+#pragma unused(sender)
   [_webView goBack];
 }
 

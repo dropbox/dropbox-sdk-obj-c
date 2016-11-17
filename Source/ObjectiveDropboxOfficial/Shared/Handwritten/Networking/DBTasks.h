@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 @class DBBatchUploadData;
 @class DBDelegate;
-@class DBError;
+@class DBRequestError;
 @class DBRoute;
 
 #pragma mark - Base network task
@@ -96,7 +96,7 @@
 /// @return The current `DBRpcTask` instance.
 ///
 - (DBRpcTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                     DBError * _Nullable))responseBlock;
+                                                                     DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -115,7 +115,7 @@
 ///
 - (DBRpcTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
                                           response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                     DBError * _Nullable))responseBlock;
+                                                                     DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -216,7 +216,7 @@
 /// @return The current `DBUploadTask` instance.
 ///
 - (DBUploadTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                        DBError * _Nullable))responseBlock;
+                                                                        DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -235,7 +235,7 @@
 ///
 - (DBUploadTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
                                              response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                        DBError * _Nullable))responseBlock;
+                                                                        DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -351,7 +351,7 @@
 /// @return The current `DBDownloadUrlTask` instance.
 ///
 - (DBDownloadUrlTask<TResponse, TError> * _Nonnull)response:
-    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSURL * _Nonnull))responseBlock;
+    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -371,7 +371,7 @@
 ///
 - (DBDownloadUrlTask<TResponse, TError> * _Nonnull)
 response:(NSOperationQueue * _Nullable)queue
-response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSURL * _Nonnull))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -475,7 +475,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 /// @return The current `DBDownloadDataTask` instance.
 ///
 - (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:
-    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSData * _Nonnull))responseBlock;
+    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSData * _Nonnull))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -495,7 +495,7 @@ response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nul
 ///
 - (DBDownloadDataTask<TResponse, TError> * _Nonnull)
 response:(NSOperationQueue * _Nullable)queue
-response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBError * _Nullable, NSData * _Nonnull))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSData * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.

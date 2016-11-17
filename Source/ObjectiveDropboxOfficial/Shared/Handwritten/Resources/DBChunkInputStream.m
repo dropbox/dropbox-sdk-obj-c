@@ -114,6 +114,8 @@
 }
 
 - (BOOL)getBuffer:(uint8_t **)buffer length:(NSUInteger *)len {
+#pragma unused(buffer)
+#pragma unused(len)
   return NO;
 }
 

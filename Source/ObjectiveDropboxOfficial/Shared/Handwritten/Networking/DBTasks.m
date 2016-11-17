@@ -5,7 +5,7 @@
 #import "DBAuthAuthError.h"
 #import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
-#import "DBErrors.h"
+#import "DBRequestErrors.h"
 #import "DBHandlerTypes.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
@@ -15,15 +15,14 @@
 
 @implementation DBTask
 
-- (DBError *)getDBError:(NSData *)errorData
-               response:(NSURLResponse *)response
+- (DBRequestError *)getDBRequestError:(NSData *)errorData
             clientError:(NSError *)clientError
              statusCode:(int)statusCode
             httpHeaders:(NSDictionary *)httpHeaders {
-  DBError *dbxError;
+  DBRequestError *dbxError;
 
   if (clientError) {
-    return [[DBError alloc] initAsClientError:clientError];
+    return [[DBRequestError alloc] initAsClientError:clientError];
   }
 
   if (statusCode == 200) {
@@ -47,12 +46,12 @@
   }
 
   if (statusCode >= 500 && statusCode < 600) {
-    dbxError = [[DBError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else if (statusCode == 400) {
-    dbxError = [[DBError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else if (statusCode == 401) {
     DBAUTHAuthError *authError = [DBAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]];
-    dbxError = [[DBError alloc] initAsAuthError:requestId
+    dbxError = [[DBRequestError alloc] initAsAuthError:requestId
                                      statusCode:@(statusCode)
                                    errorContent:errorContent
                             structuredAuthError:authError];
@@ -60,15 +59,15 @@
     DBAUTHRateLimitError *rateLimitError = [DBAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
     NSString *retryAfter = httpHeaders[@"Retry-After"];
     double retryAfterSeconds = retryAfter.doubleValue;
-    dbxError = [[DBError alloc] initAsRateLimitError:requestId
+    dbxError = [[DBRequestError alloc] initAsRateLimitError:requestId
                                           statusCode:@(statusCode)
                                         errorContent:errorContent
                             structuredRateLimitError:rateLimitError
                                              backoff:@(retryAfterSeconds)];
   } else if ([self statusCodeIsRouteError:statusCode]) {
-    dbxError = [[DBError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else {
-    dbxError = [[DBError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
   }
 
   return dbxError;
@@ -148,18 +147,17 @@
   return self;
 }
 
-- (DBRpcTask *)response:(void (^)(id, id, DBError *))responseBlock {
+- (DBRpcTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBRpcTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBError *))responseBlock {
+- (DBRpcTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
   DBRpcResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBError *dbxError =
-        [self getDBError:data response:response clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
+    DBRequestError *dbxError = [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
@@ -169,7 +167,7 @@
     NSError *serializationError;
     id result = [self routeResultWithData:data serializationError:&serializationError];
     if (serializationError) {
-      responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError]);
+      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return;
     }
     result = !_route.resultType ? [DBNilObject new] : result;
@@ -222,18 +220,17 @@
   return self;
 }
 
-- (DBUploadTask *)response:(void (^)(id, id, DBError *))responseBlock {
+- (DBUploadTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBUploadTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBError *))responseBlock {
+- (DBUploadTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
   DBUploadResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBError *dbxError =
-        [self getDBError:data response:response clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
+    DBRequestError *dbxError = [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
@@ -243,7 +240,7 @@
     NSError *serializationError;
     id result = [self routeResultWithData:data serializationError:&serializationError];
     if (serializationError) {
-      responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError]);
+      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return;
     }
     result = !_route.resultType ? [DBNilObject new] : result;
@@ -300,12 +297,12 @@
   return self;
 }
 
-- (DBDownloadUrlTask *)response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
+- (DBDownloadUrlTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
   return [self response:nil response:responseBlock];
 }
 
 - (DBDownloadUrlTask *)response:(NSOperationQueue *)queue
-                       response:(void (^)(id, id, DBError *dbxError, NSURL *))responseBlock {
+                       response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
   DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -316,11 +313,8 @@
     if (clientError || !resultData) {
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
-      DBError *dbxError = [self getDBError:errorData
-                                  response:response
-                               clientError:clientError
-                                statusCode:statusCode
-                               httpHeaders:httpHeaders];
+      DBRequestError *dbxError =
+          [self getDBRequestError:errorData clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, _destination);
@@ -334,20 +328,20 @@
       if (_overwrite) {
         [fileManager removeItemAtPath:destinationPath error:&fileMoveError];
         if (fileMoveError) {
-          responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
+          responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
           return;
         }
       }
       [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
-        responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
+        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
         return;
       }
     } else {
       NSError *fileMoveError;
       [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
-        responseBlock(nil, nil, [[DBError alloc] initAsClientError:fileMoveError], _destination);
+        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
         return;
       }
     }
@@ -355,7 +349,7 @@
     NSError *serializationError;
     id result = [self routeResultWithData:resultData serializationError:&serializationError];
     if (serializationError) {
-      responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError], _destination);
+      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], _destination);
       return;
     }
     result = !_route.resultType ? [DBNilObject new] : result;
@@ -408,12 +402,12 @@
   return self;
 }
 
-- (DBDownloadDataTask *)response:(void (^)(id, id, DBError *dbxError, NSData *))responseBlock {
+- (DBDownloadDataTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
   return [self response:nil response:responseBlock];
 }
 
 - (DBDownloadDataTask *)response:(NSOperationQueue *)queue
-                        response:(void (^)(id, id, DBError *dbxError, NSData *))responseBlock {
+                        response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
   DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -424,11 +418,8 @@
     if (!resultData) {
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
-      DBError *dbxError = [self getDBError:errorData
-                                  response:response
-                               clientError:clientError
-                                statusCode:statusCode
-                               httpHeaders:httpHeaders];
+      DBRequestError *dbxError =
+          [self getDBRequestError:errorData clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:errorData statusCode:statusCode] : nil;
       return responseBlock(nil, routeError, dbxError, nil);
@@ -437,7 +428,7 @@
     NSError *serializationError;
     id result = [self routeResultWithData:resultData serializationError:&serializationError];
     if (serializationError) {
-      responseBlock(nil, nil, [[DBError alloc] initAsClientError:serializationError], nil);
+      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], nil);
       return;
     }
     result = !_route.resultType ? [DBNilObject new] : result;

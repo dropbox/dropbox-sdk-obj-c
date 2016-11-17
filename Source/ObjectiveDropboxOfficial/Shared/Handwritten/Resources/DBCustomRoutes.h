@@ -15,7 +15,7 @@
 
 /// Special custom response block for batch upload.
 typedef void (^DBBatchUploadResponseBlock)(DBFILESUploadSessionFinishBatchJobStatus * _Nullable,
-                                           DBASYNCPollError * _Nullable, DBError * _Nullable);
+                                           DBASYNCPollError * _Nullable, DBRequestError * _Nullable);
 
 ///
 /// Stores data for a particular batch upload attempt.
