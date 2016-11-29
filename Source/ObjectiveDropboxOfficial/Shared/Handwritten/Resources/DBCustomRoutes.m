@@ -313,52 +313,52 @@ static const int timeoutInSec = 200;
 }
 
 - (void)queryJobStatus:(DBBatchUploadData *)uploadData asyncJobId:(NSString *)asyncJobId retryCount:(int)retryCount {
-  [[self uploadSessionFinishBatchCheck:asyncJobId]
-      response:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
-        if (result) {
-          if ([result isInProgress]) {
-            sleep(1);
-            if (retryCount <= timeoutInSec) {
-              [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount + 1];
-            } else {
-              NSString *errorMessage =
-                  [NSString stringWithFormat:@"Result polling took > %d seconds. Timing out.", timeoutInSec];
-              NSMutableDictionary *userInfo = [NSMutableDictionary new];
-              userInfo[NSUnderlyingErrorKey] = errorMessage;
-              NSError *timeoutError =
-                  [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorTimedOut userInfo:userInfo];
-              [uploadData.queue addOperationWithBlock:^{
-                uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:timeoutError]);
-              }];
-            }
-          } else if ([result isComplete]) {
-            [uploadData.queue addOperationWithBlock:^{
-              uploadData.responseBlock(result, nil, nil);
-            }];
-          }
-        } else if (error) {
-          if (!routeError) {
-            if ([error isRateLimitError]) {
-              DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
-              double backoffInSeconds = [rateLimitError.backoff doubleValue];
-              dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(backoffInSeconds * NSEC_PER_SEC));
-
-              // retry after backoff time
-              dispatch_after(delayTime, dispatch_get_main_queue(), ^(void) {
-                [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount];
-              });
-            } else {
-              [uploadData.queue addOperationWithBlock:^{
-                uploadData.responseBlock(nil, nil, error);
-              }];
-            }
-          } else {
-            [uploadData.queue addOperationWithBlock:^{
-              uploadData.responseBlock(nil, routeError, error);
-            }];
-          }
+  [[self uploadSessionFinishBatchCheck:asyncJobId] response:^(DBFILESUploadSessionFinishBatchJobStatus *result,
+                                                              DBASYNCPollError *routeError, DBRequestError *error) {
+    if (result) {
+      if ([result isInProgress]) {
+        sleep(1);
+        if (retryCount <= timeoutInSec) {
+          [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount + 1];
+        } else {
+          NSString *errorMessage =
+              [NSString stringWithFormat:@"Result polling took > %d seconds. Timing out.", timeoutInSec];
+          NSMutableDictionary *userInfo = [NSMutableDictionary new];
+          userInfo[NSUnderlyingErrorKey] = errorMessage;
+          NSError *timeoutError =
+              [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorTimedOut userInfo:userInfo];
+          [uploadData.queue addOperationWithBlock:^{
+            uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:timeoutError]);
+          }];
         }
-      }];
+      } else if ([result isComplete]) {
+        [uploadData.queue addOperationWithBlock:^{
+          uploadData.responseBlock(result, nil, nil);
+        }];
+      }
+    } else if (error) {
+      if (!routeError) {
+        if ([error isRateLimitError]) {
+          DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
+          double backoffInSeconds = [rateLimitError.backoff doubleValue];
+          dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(backoffInSeconds * NSEC_PER_SEC));
+
+          // retry after backoff time
+          dispatch_after(delayTime, dispatch_get_main_queue(), ^(void) {
+            [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount];
+          });
+        } else {
+          [uploadData.queue addOperationWithBlock:^{
+            uploadData.responseBlock(nil, nil, error);
+          }];
+        }
+      } else {
+        [uploadData.queue addOperationWithBlock:^{
+          uploadData.responseBlock(nil, routeError, error);
+        }];
+      }
+    }
+  }];
 }
 
 - (void)batchFinishUponCompletion:(DBBatchUploadData *)uploadData {

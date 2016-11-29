@@ -123,6 +123,8 @@ def main():
         subprocess.call(get_files_cmd, stdout=outfile, cwd=dropbox_format_path)
 
     if args.formatting:
+        if verbose:
+            print('Formatting source files')
         o = subprocess.check_output((['sh', 'reformat_files.sh', 'list_files_reformat.txt']), cwd=dropbox_format_path)
         if o:
             print('Output:', o)

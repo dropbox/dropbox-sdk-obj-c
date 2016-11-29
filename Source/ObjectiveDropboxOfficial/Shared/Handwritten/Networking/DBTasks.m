@@ -5,8 +5,8 @@
 #import "DBAuthAuthError.h"
 #import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
-#import "DBRequestErrors.h"
 #import "DBHandlerTypes.h"
+#import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
 #import "DBTransportClient.h"
@@ -16,9 +16,9 @@
 @implementation DBTask
 
 - (DBRequestError *)getDBRequestError:(NSData *)errorData
-            clientError:(NSError *)clientError
-             statusCode:(int)statusCode
-            httpHeaders:(NSDictionary *)httpHeaders {
+                          clientError:(NSError *)clientError
+                           statusCode:(int)statusCode
+                          httpHeaders:(NSDictionary *)httpHeaders {
   DBRequestError *dbxError;
 
   if (clientError) {
@@ -46,24 +46,26 @@
   }
 
   if (statusCode >= 500 && statusCode < 600) {
-    dbxError = [[DBRequestError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError =
+        [[DBRequestError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else if (statusCode == 400) {
-    dbxError = [[DBRequestError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError =
+        [[DBRequestError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else if (statusCode == 401) {
     DBAUTHAuthError *authError = [DBAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]];
     dbxError = [[DBRequestError alloc] initAsAuthError:requestId
-                                     statusCode:@(statusCode)
-                                   errorContent:errorContent
-                            structuredAuthError:authError];
+                                            statusCode:@(statusCode)
+                                          errorContent:errorContent
+                                   structuredAuthError:authError];
   } else if (statusCode == 429) {
     DBAUTHRateLimitError *rateLimitError = [DBAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
     NSString *retryAfter = httpHeaders[@"Retry-After"];
     double retryAfterSeconds = retryAfter.doubleValue;
     dbxError = [[DBRequestError alloc] initAsRateLimitError:requestId
-                                          statusCode:@(statusCode)
-                                        errorContent:errorContent
-                            structuredRateLimitError:rateLimitError
-                                             backoff:@(retryAfterSeconds)];
+                                                 statusCode:@(statusCode)
+                                               errorContent:errorContent
+                                   structuredRateLimitError:rateLimitError
+                                                    backoff:@(retryAfterSeconds)];
   } else if ([self statusCodeIsRouteError:statusCode]) {
     dbxError = [[DBRequestError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
   } else {
@@ -157,7 +159,8 @@
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBRequestError *dbxError = [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
+    DBRequestError *dbxError =
+        [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
@@ -230,7 +233,8 @@
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
 
-    DBRequestError *dbxError = [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
+    DBRequestError *dbxError =
+        [self getDBRequestError:data clientError:clientError statusCode:statusCode httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError =
           [self statusCodeIsRouteError:statusCode] ? [self routeErrorWithData:data statusCode:statusCode] : nil;
