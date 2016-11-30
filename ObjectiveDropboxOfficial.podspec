@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.osx.public_header_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.h', 'Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial_macOS/**/*.h'
   s.ios.public_header_files = 'Source/ObjectiveDropboxOfficial/PlatformNeutral/**/*.h', 'Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial_iOS/**/*.h'
   
-  s.osx.frameworks = 'AppKit', 'Webkit', 'SystemConfiguration', 'Foundation'
-  s.ios.frameworks = 'UIKit', 'Webkit', 'SystemConfiguration', 'Foundation'
+  s.osx.frameworks = 'AppKit', 'WebKit', 'SystemConfiguration', 'Foundation'
+  s.ios.frameworks = 'UIKit', 'WebKit', 'SystemConfiguration', 'Foundation'
 end
