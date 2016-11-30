@@ -68,7 +68,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
   /// time.
   DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer,
 
-  /// Cannot keep account and delete the data at the same time.
+  /// Cannot keep account and delete the data at the same time. To keep the
+  /// account the argument wipe_data should be set to False.
   DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData,
 
   /// The email address of the user is too long to be disabled.
@@ -216,7 +217,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersRemoveErrorTag) {
 /// "cannot_keep_account_and_delete_data".
 ///
 /// Description of the "cannot_keep_account_and_delete_data" tag state: Cannot
-/// keep account and delete the data at the same time.
+/// keep account and delete the data at the same time. To keep the account the
+/// argument wipe_data should be set to False.
 ///
 /// @return An initialized instance.
 ///

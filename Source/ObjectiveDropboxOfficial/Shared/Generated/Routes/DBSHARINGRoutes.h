@@ -525,8 +525,8 @@ includeInherited:(NSNumber * _Nullable)includeInherited
 
 ///
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
-/// size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users are
-/// not included in the result, and permissions are not returned for this endpoint.
+/// size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users and
+/// groups are not included in the result, and permissions are not returned for this endpoint.
 ///
 /// @param files Files for which to return members.
 ///
@@ -538,8 +538,8 @@ listFileMembersBatch:(NSArray<NSString *> * _Nonnull)files;
 
 ///
 /// Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result
-/// size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users are
-/// not included in the result, and permissions are not returned for this endpoint.
+/// size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users and
+/// groups are not included in the result, and permissions are not returned for this endpoint.
 ///
 /// @param files Files for which to return members.
 /// @param limit Number of members to return max per query. Defaults to 10 if no limit is specified.

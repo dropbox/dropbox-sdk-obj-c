@@ -95,6 +95,20 @@
 #import "DBTEAMRouteObjects.h"
 #import "DBTEAMRoutes.h"
 #import "DBTEAMStorageBucket.h"
+#import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderActivateError.h"
+#import "DBTEAMTeamFolderArchiveError.h"
+#import "DBTEAMTeamFolderArchiveJobStatus.h"
+#import "DBTEAMTeamFolderArchiveLaunch.h"
+#import "DBTEAMTeamFolderCreateError.h"
+#import "DBTEAMTeamFolderGetInfoItem.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
+#import "DBTEAMTeamFolderListError.h"
+#import "DBTEAMTeamFolderListResult.h"
+#import "DBTEAMTeamFolderMetadata.h"
+#import "DBTEAMTeamFolderPermanentlyDeleteError.h"
+#import "DBTEAMTeamFolderRenameError.h"
+#import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamGetInfoResult.h"
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
@@ -153,6 +167,14 @@ static DBRoute *DBTEAMReportsGetActivity;
 static DBRoute *DBTEAMReportsGetDevices;
 static DBRoute *DBTEAMReportsGetMembership;
 static DBRoute *DBTEAMReportsGetStorage;
+static DBRoute *DBTEAMTeamFolderActivate;
+static DBRoute *DBTEAMTeamFolderArchive;
+static DBRoute *DBTEAMTeamFolderArchiveCheck;
+static DBRoute *DBTEAMTeamFolderCreate;
+static DBRoute *DBTEAMTeamFolderGetInfo;
+static DBRoute *DBTEAMTeamFolderList;
+static DBRoute *DBTEAMTeamFolderPermanentlyDelete;
+static DBRoute *DBTEAMTeamFolderRename;
 
 + (DBRoute *)DBTEAMAlphaGroupsCreate {
   if (!DBTEAMAlphaGroupsCreate) {
@@ -162,6 +184,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMGroupFullInfo class]
                                           errorType:[DBTEAMGroupCreateError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -179,6 +202,7 @@ static DBRoute *DBTEAMReportsGetStorage;
         resultType:[NSArray<DBTEAMGroupsGetInfoItem *> class]
         errorType:[DBTEAMGroupsGetInfoError class]
         attrs:@{
+          @"auth" : @"team",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -201,6 +225,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                        resultType:[DBTEAMGroupsListResult class]
                                         errorType:nil
                                             attrs:@{
+                                              @"auth" : @"team",
                                               @"host" : @"api",
                                               @"style" : @"rpc"
                                             }
@@ -218,6 +243,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                resultType:[DBTEAMGroupsListResult class]
                                                 errorType:[DBTEAMGroupsListContinueError class]
                                                     attrs:@{
+                                                      @"auth" : @"team",
                                                       @"host" : @"api",
                                                       @"style" : @"rpc"
                                                     }
@@ -235,6 +261,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMGroupFullInfo class]
                                           errorType:[DBTEAMGroupUpdateError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -252,6 +279,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                 resultType:[DBTEAMListMemberDevicesResult class]
                                                  errorType:[DBTEAMListMemberDevicesError class]
                                                      attrs:@{
+                                                       @"auth" : @"team",
                                                        @"host" : @"api",
                                                        @"style" : @"rpc"
                                                      }
@@ -269,6 +297,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                  resultType:[DBTEAMListMembersDevicesResult class]
                                                   errorType:[DBTEAMListMembersDevicesError class]
                                                       attrs:@{
+                                                        @"auth" : @"team",
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
@@ -286,6 +315,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                               resultType:[DBTEAMListTeamDevicesResult class]
                                                errorType:[DBTEAMListTeamDevicesError class]
                                                    attrs:@{
+                                                     @"auth" : @"team",
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
@@ -303,6 +333,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                   resultType:nil
                                                    errorType:[DBTEAMRevokeDeviceSessionError class]
                                                        attrs:@{
+                                                         @"auth" : @"team",
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
@@ -320,6 +351,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                        resultType:[DBTEAMRevokeDeviceSessionBatchResult class]
                                                         errorType:[DBTEAMRevokeDeviceSessionBatchError class]
                                                             attrs:@{
+                                                              @"auth" : @"team",
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
@@ -337,6 +369,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                resultType:[DBTEAMTeamGetInfoResult class]
                                 errorType:nil
                                     attrs:@{
+                                      @"auth" : @"team",
                                       @"host" : @"api",
                                       @"style" : @"rpc"
                                     }
@@ -354,6 +387,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                     resultType:[DBTEAMGroupFullInfo class]
                                      errorType:[DBTEAMGroupCreateError class]
                                          attrs:@{
+                                           @"auth" : @"team",
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
@@ -371,6 +405,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                     resultType:[DBASYNCLaunchEmptyResult class]
                                      errorType:[DBTEAMGroupDeleteError class]
                                          attrs:@{
+                                           @"auth" : @"team",
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
@@ -388,6 +423,7 @@ static DBRoute *DBTEAMReportsGetStorage;
         resultType:[NSArray<DBTEAMGroupsGetInfoItem *> class]
         errorType:[DBTEAMGroupsGetInfoError class]
         attrs:@{
+          @"auth" : @"team",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -410,6 +446,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                           resultType:[DBASYNCPollEmptyResult class]
                                            errorType:[DBTEAMGroupsPollError class]
                                                attrs:@{
+                                                 @"auth" : @"team",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -427,6 +464,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                   resultType:[DBTEAMGroupsListResult class]
                                    errorType:nil
                                        attrs:@{
+                                         @"auth" : @"team",
                                          @"host" : @"api",
                                          @"style" : @"rpc"
                                        }
@@ -444,6 +482,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                           resultType:[DBTEAMGroupsListResult class]
                                            errorType:[DBTEAMGroupsListContinueError class]
                                                attrs:@{
+                                                 @"auth" : @"team",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -461,6 +500,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                         resultType:[DBTEAMGroupMembersChangeResult class]
                                          errorType:[DBTEAMGroupMembersAddError class]
                                              attrs:@{
+                                               @"auth" : @"team",
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
@@ -478,6 +518,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMGroupsMembersListResult class]
                                           errorType:[DBTEAMGroupSelectorError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -495,6 +536,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                  resultType:[DBTEAMGroupsMembersListResult class]
                                                   errorType:[DBTEAMGroupsMembersListContinueError class]
                                                       attrs:@{
+                                                        @"auth" : @"team",
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
@@ -512,6 +554,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                            resultType:[DBTEAMGroupMembersChangeResult class]
                                             errorType:[DBTEAMGroupMembersRemoveError class]
                                                 attrs:@{
+                                                  @"auth" : @"team",
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
@@ -529,6 +572,7 @@ static DBRoute *DBTEAMReportsGetStorage;
         resultType:[NSArray<DBTEAMGroupsGetInfoItem *> class]
         errorType:[DBTEAMGroupMemberSetAccessTypeError class]
         attrs:@{
+          @"auth" : @"team",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -551,6 +595,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                     resultType:[DBTEAMGroupFullInfo class]
                                      errorType:[DBTEAMGroupUpdateError class]
                                          attrs:@{
+                                           @"auth" : @"team",
                                            @"host" : @"api",
                                            @"style" : @"rpc"
                                          }
@@ -568,6 +613,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                       resultType:[DBTEAMListMemberAppsResult class]
                                                        errorType:[DBTEAMListMemberAppsError class]
                                                            attrs:@{
+                                                             @"auth" : @"team",
                                                              @"host" : @"api",
                                                              @"style" : @"rpc"
                                                            }
@@ -585,6 +631,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                        resultType:[DBTEAMListMembersAppsResult class]
                                                         errorType:[DBTEAMListMembersAppsError class]
                                                             attrs:@{
+                                                              @"auth" : @"team",
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
@@ -602,6 +649,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                     resultType:[DBTEAMListTeamAppsResult class]
                                                      errorType:[DBTEAMListTeamAppsError class]
                                                          attrs:@{
+                                                           @"auth" : @"team",
                                                            @"host" : @"api",
                                                            @"style" : @"rpc"
                                                          }
@@ -619,6 +667,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                  resultType:nil
                                                   errorType:[DBTEAMRevokeLinkedAppError class]
                                                       attrs:@{
+                                                        @"auth" : @"team",
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
@@ -636,6 +685,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                       resultType:[DBTEAMRevokeLinkedAppBatchResult class]
                                                        errorType:[DBTEAMRevokeLinkedAppBatchError class]
                                                            attrs:@{
+                                                             @"auth" : @"team",
                                                              @"host" : @"api",
                                                              @"style" : @"rpc"
                                                            }
@@ -653,6 +703,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                   resultType:[DBTEAMMembersAddLaunch class]
                                    errorType:nil
                                        attrs:@{
+                                         @"auth" : @"team",
                                          @"host" : @"api",
                                          @"style" : @"rpc"
                                        }
@@ -670,6 +721,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                               resultType:[DBTEAMMembersAddJobStatus class]
                                                errorType:[DBASYNCPollError class]
                                                    attrs:@{
+                                                     @"auth" : @"team",
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
@@ -687,6 +739,7 @@ static DBRoute *DBTEAMReportsGetStorage;
         resultType:[NSArray<DBTEAMMembersGetInfoItem *> class]
         errorType:[DBTEAMMembersGetInfoError class]
         attrs:@{
+          @"auth" : @"team",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -709,6 +762,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                    resultType:[DBTEAMMembersListResult class]
                                     errorType:[DBTEAMMembersListError class]
                                         attrs:@{
+                                          @"auth" : @"team",
                                           @"host" : @"api",
                                           @"style" : @"rpc"
                                         }
@@ -726,6 +780,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                            resultType:[DBTEAMMembersListResult class]
                                             errorType:[DBTEAMMembersListContinueError class]
                                                 attrs:@{
+                                                  @"auth" : @"team",
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
@@ -743,6 +798,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                       resultType:nil
                                        errorType:[DBTEAMMembersRecoverError class]
                                            attrs:@{
+                                             @"auth" : @"team",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -760,6 +816,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                      resultType:[DBASYNCLaunchEmptyResult class]
                                       errorType:[DBTEAMMembersRemoveError class]
                                           attrs:@{
+                                            @"auth" : @"team",
                                             @"host" : @"api",
                                             @"style" : @"rpc"
                                           }
@@ -777,6 +834,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                  resultType:[DBASYNCPollEmptyResult class]
                                                   errorType:[DBASYNCPollError class]
                                                       attrs:@{
+                                                        @"auth" : @"team",
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
@@ -794,6 +852,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                resultType:nil
                                                 errorType:[DBTEAMMembersSendWelcomeError class]
                                                     attrs:@{
+                                                      @"auth" : @"team",
                                                       @"host" : @"api",
                                                       @"style" : @"rpc"
                                                     }
@@ -811,6 +870,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                   resultType:[DBTEAMMembersSetPermissionsResult class]
                                                    errorType:[DBTEAMMembersSetPermissionsError class]
                                                        attrs:@{
+                                                         @"auth" : @"team",
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
@@ -828,6 +888,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMTeamMemberInfo class]
                                           errorType:[DBTEAMMembersSetProfileError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -845,6 +906,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                       resultType:nil
                                        errorType:[DBTEAMMembersSuspendError class]
                                            attrs:@{
+                                             @"auth" : @"team",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -862,6 +924,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                         resultType:nil
                                          errorType:[DBTEAMMembersUnsuspendError class]
                                              attrs:@{
+                                               @"auth" : @"team",
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
@@ -879,6 +942,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                              resultType:[DBTEAMAddPropertyTemplateResult class]
                                               errorType:[DBPROPERTIESModifyPropertyTemplateError class]
                                                   attrs:@{
+                                                    @"auth" : @"team",
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
@@ -896,6 +960,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                              resultType:[DBPROPERTIESGetPropertyTemplateResult class]
                                               errorType:[DBPROPERTIESPropertyTemplateError class]
                                                   attrs:@{
+                                                    @"auth" : @"team",
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
@@ -913,6 +978,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                               resultType:[DBPROPERTIESListPropertyTemplateIds class]
                                                errorType:[DBPROPERTIESPropertyTemplateError class]
                                                    attrs:@{
+                                                     @"auth" : @"team",
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
@@ -930,6 +996,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                                 resultType:[DBTEAMUpdatePropertyTemplateResult class]
                                                  errorType:[DBPROPERTIESModifyPropertyTemplateError class]
                                                      attrs:@{
+                                                       @"auth" : @"team",
                                                        @"host" : @"api",
                                                        @"style" : @"rpc"
                                                      }
@@ -947,6 +1014,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                           resultType:[DBTEAMGetActivityReport class]
                                            errorType:[DBTEAMDateRangeError class]
                                                attrs:@{
+                                                 @"auth" : @"team",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -964,6 +1032,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMGetDevicesReport class]
                                           errorType:[DBTEAMDateRangeError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -981,6 +1050,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                             resultType:[DBTEAMGetMembershipReport class]
                                              errorType:[DBTEAMDateRangeError class]
                                                  attrs:@{
+                                                   @"auth" : @"team",
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
@@ -998,6 +1068,7 @@ static DBRoute *DBTEAMReportsGetStorage;
                                          resultType:[DBTEAMGetStorageReport class]
                                           errorType:[DBTEAMDateRangeError class]
                                               attrs:@{
+                                                @"auth" : @"team",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -1005,6 +1076,155 @@ static DBRoute *DBTEAMReportsGetStorage;
                                  arrayDeserialBlock:nil];
   }
   return DBTEAMReportsGetStorage;
+}
+
++ (DBRoute *)DBTEAMTeamFolderActivate {
+  if (!DBTEAMTeamFolderActivate) {
+    DBTEAMTeamFolderActivate = [[DBRoute alloc] init:@"team_folder/activate"
+                                          namespace_:@"team"
+                                          deprecated:@NO
+                                          resultType:[DBTEAMTeamFolderMetadata class]
+                                           errorType:[DBTEAMTeamFolderActivateError class]
+                                               attrs:@{
+                                                 @"auth" : @"team",
+                                                 @"host" : @"api",
+                                                 @"style" : @"rpc"
+                                               }
+                                    arraySerialBlock:nil
+                                  arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderActivate;
+}
+
++ (DBRoute *)DBTEAMTeamFolderArchive {
+  if (!DBTEAMTeamFolderArchive) {
+    DBTEAMTeamFolderArchive = [[DBRoute alloc] init:@"team_folder/archive"
+                                         namespace_:@"team"
+                                         deprecated:@NO
+                                         resultType:[DBTEAMTeamFolderArchiveLaunch class]
+                                          errorType:[DBTEAMTeamFolderArchiveError class]
+                                              attrs:@{
+                                                @"auth" : @"team",
+                                                @"host" : @"api",
+                                                @"style" : @"rpc"
+                                              }
+                                   arraySerialBlock:nil
+                                 arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderArchive;
+}
+
++ (DBRoute *)DBTEAMTeamFolderArchiveCheck {
+  if (!DBTEAMTeamFolderArchiveCheck) {
+    DBTEAMTeamFolderArchiveCheck = [[DBRoute alloc] init:@"team_folder/archive/check"
+                                              namespace_:@"team"
+                                              deprecated:@NO
+                                              resultType:[DBTEAMTeamFolderArchiveJobStatus class]
+                                               errorType:[DBASYNCPollError class]
+                                                   attrs:@{
+                                                     @"auth" : @"team",
+                                                     @"host" : @"api",
+                                                     @"style" : @"rpc"
+                                                   }
+                                        arraySerialBlock:nil
+                                      arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderArchiveCheck;
+}
+
++ (DBRoute *)DBTEAMTeamFolderCreate {
+  if (!DBTEAMTeamFolderCreate) {
+    DBTEAMTeamFolderCreate = [[DBRoute alloc] init:@"team_folder/create"
+                                        namespace_:@"team"
+                                        deprecated:@NO
+                                        resultType:[DBTEAMTeamFolderMetadata class]
+                                         errorType:[DBTEAMTeamFolderCreateError class]
+                                             attrs:@{
+                                               @"auth" : @"team",
+                                               @"host" : @"api",
+                                               @"style" : @"rpc"
+                                             }
+                                  arraySerialBlock:nil
+                                arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderCreate;
+}
+
++ (DBRoute *)DBTEAMTeamFolderGetInfo {
+  if (!DBTEAMTeamFolderGetInfo) {
+    DBTEAMTeamFolderGetInfo = [[DBRoute alloc] init:@"team_folder/get_info"
+        namespace_:@"team"
+        deprecated:@NO
+        resultType:[NSArray<DBTEAMTeamFolderGetInfoItem *> class]
+        errorType:nil
+        attrs:@{
+          @"auth" : @"team",
+          @"host" : @"api",
+          @"style" : @"rpc"
+        }
+        arraySerialBlock:nil
+        arrayDeserialBlock:^id(id array) {
+          return [DBArraySerializer deserialize:array
+                                      withBlock:^id(id elem) {
+                                        return [DBTEAMTeamFolderGetInfoItemSerializer deserialize:elem];
+                                      }];
+        }];
+  }
+  return DBTEAMTeamFolderGetInfo;
+}
+
++ (DBRoute *)DBTEAMTeamFolderList {
+  if (!DBTEAMTeamFolderList) {
+    DBTEAMTeamFolderList = [[DBRoute alloc] init:@"team_folder/list"
+                                      namespace_:@"team"
+                                      deprecated:@NO
+                                      resultType:[DBTEAMTeamFolderListResult class]
+                                       errorType:[DBTEAMTeamFolderListError class]
+                                           attrs:@{
+                                             @"auth" : @"team",
+                                             @"host" : @"api",
+                                             @"style" : @"rpc"
+                                           }
+                                arraySerialBlock:nil
+                              arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderList;
+}
+
++ (DBRoute *)DBTEAMTeamFolderPermanentlyDelete {
+  if (!DBTEAMTeamFolderPermanentlyDelete) {
+    DBTEAMTeamFolderPermanentlyDelete = [[DBRoute alloc] init:@"team_folder/permanently_delete"
+                                                   namespace_:@"team"
+                                                   deprecated:@NO
+                                                   resultType:nil
+                                                    errorType:[DBTEAMTeamFolderPermanentlyDeleteError class]
+                                                        attrs:@{
+                                                          @"auth" : @"team",
+                                                          @"host" : @"api",
+                                                          @"style" : @"rpc"
+                                                        }
+                                             arraySerialBlock:nil
+                                           arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderPermanentlyDelete;
+}
+
++ (DBRoute *)DBTEAMTeamFolderRename {
+  if (!DBTEAMTeamFolderRename) {
+    DBTEAMTeamFolderRename = [[DBRoute alloc] init:@"team_folder/rename"
+                                        namespace_:@"team"
+                                        deprecated:@NO
+                                        resultType:[DBTEAMTeamFolderMetadata class]
+                                         errorType:[DBTEAMTeamFolderRenameError class]
+                                             attrs:@{
+                                               @"auth" : @"team",
+                                               @"host" : @"api",
+                                               @"style" : @"rpc"
+                                             }
+                                  arraySerialBlock:nil
+                                arrayDeserialBlock:nil];
+  }
+  return DBTEAMTeamFolderRename;
 }
 
 @end

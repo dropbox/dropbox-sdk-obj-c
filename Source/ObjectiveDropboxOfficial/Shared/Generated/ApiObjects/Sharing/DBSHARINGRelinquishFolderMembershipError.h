@@ -50,6 +50,10 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
   /// The current user does not have permission to perform this action.
   DBSHARINGRelinquishFolderMembershipErrorNoPermission,
 
+  /// The current user only has inherited access to the shared folder.  You
+  /// can't relinquish inherited membership to folders.
+  DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess,
+
   /// (no description).
   DBSHARINGRelinquishFolderMembershipErrorOther,
 
@@ -126,6 +130,17 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 - (nonnull instancetype)initWithNoPermission;
 
 ///
+/// Initializes union class with tag state of "no_explicit_access".
+///
+/// Description of the "no_explicit_access" tag state: The current user only has
+/// inherited access to the shared folder.  You can't relinquish inherited
+/// membership to folders.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithNoExplicitAccess;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -178,6 +193,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGRelinquishFolderMembershipErrorTag) {
 /// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_explicit_access".
+///
+/// @return Whether the union's current tag state has value
+/// "no_explicit_access".
+///
+- (BOOL)isNoExplicitAccess;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

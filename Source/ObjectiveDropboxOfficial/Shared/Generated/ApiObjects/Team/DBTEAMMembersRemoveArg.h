@@ -36,7 +36,8 @@
 
 /// Downgrade the member to a Basic account. The user will retain the email
 /// address associated with their Dropbox  account and data in their account
-/// that is not restricted to team members.
+/// that is not restricted to team members. In order to keep the account the
+/// argument wipe_data should be set to False.
 @property (nonatomic, readonly) NSNumber * _Nonnull keepAccount;
 
 #pragma mark - Constructors
@@ -54,7 +55,8 @@
 /// provided, then this argument must be provided as well.
 /// @param keepAccount Downgrade the member to a Basic account. The user will
 /// retain the email address associated with their Dropbox  account and data in
-/// their account that is not restricted to team members.
+/// their account that is not restricted to team members. In order to keep the
+/// account the argument wipe_data should be set to False.
 ///
 /// @return An initialized instance.
 ///

@@ -36,9 +36,9 @@
 /// The `DBFILESWriteModeTag` enum type represents the possible tag states with
 /// which the `DBFILESWriteMode` union can exist.
 typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
-  /// Never overwrite the existing file. The autorename strategy is to append
-  /// a number to the file name. For example, "document.txt" might become
-  /// "document (2).txt".
+  /// Do not overwrite an existing file if there is a conflict. The autorename
+  /// strategy is to append a number to the file name. For example,
+  /// "document.txt" might become "document (2).txt".
   DBFILESWriteModeAdd,
 
   /// Always overwrite the existing file. The autorename strategy is the same
@@ -69,9 +69,9 @@ typedef NS_ENUM(NSInteger, DBFILESWriteModeTag) {
 ///
 /// Initializes union class with tag state of "add".
 ///
-/// Description of the "add" tag state: Never overwrite the existing file. The
-/// autorename strategy is to append a number to the file name. For example,
-/// "document.txt" might become "document (2).txt".
+/// Description of the "add" tag state: Do not overwrite an existing file if
+/// there is a conflict. The autorename strategy is to append a number to the
+/// file name. For example, "document.txt" might become "document (2).txt".
 ///
 /// @return An initialized instance.
 ///

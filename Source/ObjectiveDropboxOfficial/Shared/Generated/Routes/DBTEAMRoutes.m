@@ -137,6 +137,26 @@
 #import "DBTEAMRouteObjects.h"
 #import "DBTEAMRoutes.h"
 #import "DBTEAMStorageBucket.h"
+#import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderActivateError.h"
+#import "DBTEAMTeamFolderArchiveArg.h"
+#import "DBTEAMTeamFolderArchiveError.h"
+#import "DBTEAMTeamFolderArchiveJobStatus.h"
+#import "DBTEAMTeamFolderArchiveLaunch.h"
+#import "DBTEAMTeamFolderCreateArg.h"
+#import "DBTEAMTeamFolderCreateError.h"
+#import "DBTEAMTeamFolderGetInfoItem.h"
+#import "DBTEAMTeamFolderIdArg.h"
+#import "DBTEAMTeamFolderIdListArg.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
+#import "DBTEAMTeamFolderListArg.h"
+#import "DBTEAMTeamFolderListError.h"
+#import "DBTEAMTeamFolderListResult.h"
+#import "DBTEAMTeamFolderMetadata.h"
+#import "DBTEAMTeamFolderPermanentlyDeleteError.h"
+#import "DBTEAMTeamFolderRenameArg.h"
+#import "DBTEAMTeamFolderRenameError.h"
+#import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamGetInfoResult.h"
 #import "DBTEAMTeamMemberInfo.h"
 #import "DBTEAMTeamMemberProfile.h"
@@ -689,6 +709,67 @@
 - (DBRpcTask *)reportsGetStorage:(NSDate *)startDate endDate:(NSDate *)endDate {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetStorage;
   DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initWithStartDate:startDate endDate:endDate];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderActivate:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderActivate;
+  DBTEAMTeamFolderIdArg *arg = [[DBTEAMTeamFolderIdArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderArchive:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderArchive;
+  DBTEAMTeamFolderArchiveArg *arg = [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderArchive:(NSString *)teamFolderId forceAsyncOff:(NSNumber *)forceAsyncOff {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderArchive;
+  DBTEAMTeamFolderArchiveArg *arg =
+      [[DBTEAMTeamFolderArchiveArg alloc] initWithTeamFolderId:teamFolderId forceAsyncOff:forceAsyncOff];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderArchiveCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderArchiveCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderCreate:(NSString *)name {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderCreate;
+  DBTEAMTeamFolderCreateArg *arg = [[DBTEAMTeamFolderCreateArg alloc] initWithName:name];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderGetInfo:(NSArray<NSString *> *)teamFolderIds {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderGetInfo;
+  DBTEAMTeamFolderIdListArg *arg = [[DBTEAMTeamFolderIdListArg alloc] initWithTeamFolderIds:teamFolderIds];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderList {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderList;
+  DBTEAMTeamFolderListArg *arg = [[DBTEAMTeamFolderListArg alloc] init];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderList:(NSNumber *)limit {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderList;
+  DBTEAMTeamFolderListArg *arg = [[DBTEAMTeamFolderListArg alloc] initWithLimit:limit];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderPermanentlyDelete:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderPermanentlyDelete;
+  DBTEAMTeamFolderIdArg *arg = [[DBTEAMTeamFolderIdArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderRename:(NSString *)teamFolderId name:(NSString *)name {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderRename;
+  DBTEAMTeamFolderRenameArg *arg = [[DBTEAMTeamFolderRenameArg alloc] initWithTeamFolderId:teamFolderId name:name];
   return [self.client requestRpc:route arg:arg];
 }
 

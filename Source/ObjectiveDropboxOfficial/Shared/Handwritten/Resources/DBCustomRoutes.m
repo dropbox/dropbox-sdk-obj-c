@@ -10,6 +10,7 @@
 #import "DBFILESCommitInfo.h"
 #import "DBFILESUploadSessionCursor.h"
 #import "DBFILESUploadSessionFinishArg.h"
+#import "DBFILESUploadSessionFinishBatchLaunch.h"
 #import "DBFILESUploadSessionLookupError.h"
 #import "DBFILESUploadSessionOffsetError.h"
 #import "DBFILESUploadSessionStartResult.h"
@@ -366,7 +367,7 @@ static const int timeoutInSec = 200;
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     [[self uploadSessionFinishBatch:uploadData.finishArgs]
-        response:^(DBASYNCLaunchEmptyResult *result, DBNilObject *routeError, DBRequestError *error) {
+        response:^(DBFILESUploadSessionFinishBatchLaunch *result, DBNilObject *routeError, DBRequestError *error) {
           if (result && !routeError) {
             if ([result isAsyncJobId]) {
               sleep(1);

@@ -36,6 +36,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGUnshareFolderErrorTag) {
   /// The current user does not have permission to perform this action.
   DBSHARINGUnshareFolderErrorNoPermission,
 
+  /// This shared folder has too many files to be unshared.
+  DBSHARINGUnshareFolderErrorTooManyFiles,
+
   /// (no description).
   DBSHARINGUnshareFolderErrorOther,
 
@@ -80,6 +83,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGUnshareFolderErrorTag) {
 - (nonnull instancetype)initWithNoPermission;
 
 ///
+/// Initializes union class with tag state of "too_many_files".
+///
+/// Description of the "too_many_files" tag state: This shared folder has too
+/// many files to be unshared.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithTooManyFiles;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -111,6 +124,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGUnshareFolderErrorTag) {
 /// @return Whether the union's current tag state has value "no_permission".
 ///
 - (BOOL)isNoPermission;
+
+///
+/// Retrieves whether the union's current tag state has value "too_many_files".
+///
+/// @return Whether the union's current tag state has value "too_many_files".
+///
+- (BOOL)isTooManyFiles;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -39,8 +39,9 @@
 /// mounted.
 /// @param pathDisplay The cased path to be used for display purposes only. In
 /// rare instances the casing will not correctly match the user's filesystem,
-/// but this behavior will match the path provided in the Core API v1. Changes
-/// to the casing of paths won't be returned by `listFolderContinue`. This field
+/// but this behavior will match the path provided in the Core API v1, and at
+/// least the last path component will have the correct casing. Changes to only
+/// the casing of paths won't be returned by `listFolderContinue`. This field
 /// will be null if the file or folder is not mounted.
 /// @param parentSharedFolderId Deprecated. Please use `parentSharedFolderId` in
 /// `DBFILESFileSharingInfo` or `parentSharedFolderId` in

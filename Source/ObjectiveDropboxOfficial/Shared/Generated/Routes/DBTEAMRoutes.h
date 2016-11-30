@@ -98,6 +98,20 @@
 @class DBTEAMRevokeLinkedAppError;
 @class DBTEAMRevokeLinkedAppStatus;
 @class DBTEAMStorageBucket;
+@class DBTEAMTeamFolderAccessError;
+@class DBTEAMTeamFolderActivateError;
+@class DBTEAMTeamFolderArchiveError;
+@class DBTEAMTeamFolderArchiveJobStatus;
+@class DBTEAMTeamFolderArchiveLaunch;
+@class DBTEAMTeamFolderCreateError;
+@class DBTEAMTeamFolderGetInfoItem;
+@class DBTEAMTeamFolderInvalidStatusError;
+@class DBTEAMTeamFolderListError;
+@class DBTEAMTeamFolderListResult;
+@class DBTEAMTeamFolderMetadata;
+@class DBTEAMTeamFolderPermanentlyDeleteError;
+@class DBTEAMTeamFolderRenameError;
+@class DBTEAMTeamFolderStatus;
 @class DBTEAMTeamGetInfoResult;
 @class DBTEAMTeamMemberInfo;
 @class DBTEAMTeamMemberProfile;
@@ -816,7 +830,8 @@ linkedAppsRevokeLinkedAppBatch:(NSArray<DBTEAMRevokeLinkedApiAppArg *> * _Nonnul
 /// @param transferAdminId If provided, errors during the transfer process will be sent via email to this user. If the
 /// transfer_dest_id argument was provided, then this argument must be provided as well.
 /// @param keepAccount Downgrade the member to a Basic account. The user will retain the email address associated with
-/// their Dropbox  account and data in their account that is not restricted to team members.
+/// their Dropbox  account and data in their account that is not restricted to team members. In order to keep the
+/// account the argument wipe_data should be set to False.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
 /// `DBTEAMMembersRemoveError` object on failure.
@@ -1081,5 +1096,125 @@ reportsGetMembership:(NSDate * _Nullable)startDate
 ///
 - (DBRpcTask<DBTEAMGetStorageReport *, DBTEAMDateRangeError *> * _Nonnull)reportsGetStorage:(NSDate * _Nullable)startDate
                                                                                    endDate:(NSDate * _Nullable)endDate;
+
+///
+/// Sets an archived team folder's status to active. This endpoint is only available to teams with improved team folders
+/// /help/986. Permission : Team member file access.
+///
+/// @param teamFolderId The ID of the team folder.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderActivateError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderActivateError *> * _Nonnull)teamFolderActivate:
+    (NSString * _Nonnull)teamFolderId;
+
+///
+/// Sets an active team folder's status to archived and removes all folder and file members. This endpoint is only
+/// available to teams with improved team folders /help/986. Permission : Team member file access.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderArchiveLaunch` object on success
+/// or a `DBTEAMTeamFolderArchiveError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderArchiveLaunch *, DBTEAMTeamFolderArchiveError *> * _Nonnull)teamFolderArchive:
+    (NSString * _Nonnull)teamFolderId;
+
+///
+/// Sets an active team folder's status to archived and removes all folder and file members. This endpoint is only
+/// available to teams with improved team folders /help/986. Permission : Team member file access.
+///
+/// @param forceAsyncOff Whether to force the archive to happen synchronously.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderArchiveLaunch` object on success
+/// or a `DBTEAMTeamFolderArchiveError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderArchiveLaunch *, DBTEAMTeamFolderArchiveError *> * _Nonnull)
+teamFolderArchive:(NSString * _Nonnull)teamFolderId
+    forceAsyncOff:(NSNumber * _Nullable)forceAsyncOff;
+
+///
+/// Returns the status of an asynchronous job for archiving a team folder. This endpoint is only available to teams with
+/// improved team folders /help/986. Permission : Team member file access.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderArchiveJobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderArchiveJobStatus *, DBASYNCPollError *> * _Nonnull)teamFolderArchiveCheck:
+    (NSString * _Nonnull)asyncJobId;
+
+///
+/// Creates a new, active, team folder. This endpoint is only available to teams with improved team folders /help/986.
+/// Permission : Team member file access.
+///
+/// @param name Name for the new team folder.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderCreateError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderCreateError *> * _Nonnull)teamFolderCreate:
+    (NSString * _Nonnull)name;
+
+///
+/// Retrieves metadata for team folders. This endpoint is only available to teams with improved team folders /help/986.
+/// Permission : Team member file access.
+///
+/// @param teamFolderIds The list of team folder IDs.
+///
+/// @return Through the response callback, the caller will receive a `NSArray<DBTEAMTeamFolderGetInfoItem *>` object on
+/// success or a `void` object on failure.
+///
+- (DBRpcTask<NSArray<DBTEAMTeamFolderGetInfoItem *> *, DBNilObject *> * _Nonnull)teamFolderGetInfo:
+    (NSArray<NSString *> * _Nonnull)teamFolderIds;
+
+///
+/// Lists all team folders. This endpoint is only available to teams with improved team folders /help/986. Permission :
+/// Team member file access.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderListResult` object on success or a
+/// `DBTEAMTeamFolderListError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderListResult *, DBTEAMTeamFolderListError *> * _Nonnull)teamFolderList;
+
+///
+/// Lists all team folders. This endpoint is only available to teams with improved team folders /help/986. Permission :
+/// Team member file access.
+///
+/// @param limit The maximum number of results to return per request.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderListResult` object on success or a
+/// `DBTEAMTeamFolderListError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderListResult *, DBTEAMTeamFolderListError *> * _Nonnull)teamFolderList:
+    (NSNumber * _Nullable)limit;
+
+///
+/// Permanently deletes an archived team folder. This endpoint is only available to teams with improved team folders
+/// /help/986. Permission : Team member file access.
+///
+/// @param teamFolderId The ID of the team folder.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBTEAMTeamFolderPermanentlyDeleteError` object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBTEAMTeamFolderPermanentlyDeleteError *> * _Nonnull)teamFolderPermanentlyDelete:
+    (NSString * _Nonnull)teamFolderId;
+
+///
+/// Changes an active team folder's name. This endpoint is only available to teams with improved team folders /help/986.
+/// Permission : Team member file access.
+///
+/// @param name New team folder name.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderMetadata` object on success or a
+/// `DBTEAMTeamFolderRenameError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRenameError *> * _Nonnull)
+teamFolderRename:(NSString * _Nonnull)teamFolderId
+            name:(NSString * _Nonnull)name;
 
 @end

@@ -42,6 +42,14 @@
   return self;
 }
 
+- (instancetype)initWithTooManyFiles {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGUnshareFolderErrorTooManyFiles;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -74,6 +82,10 @@
   return _tag == DBSHARINGUnshareFolderErrorNoPermission;
 }
 
+- (BOOL)isTooManyFiles {
+  return _tag == DBSHARINGUnshareFolderErrorTooManyFiles;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGUnshareFolderErrorOther;
 }
@@ -86,6 +98,8 @@
     return @"DBSHARINGUnshareFolderErrorTeamFolder";
   case DBSHARINGUnshareFolderErrorNoPermission:
     return @"DBSHARINGUnshareFolderErrorNoPermission";
+  case DBSHARINGUnshareFolderErrorTooManyFiles:
+    return @"DBSHARINGUnshareFolderErrorTooManyFiles";
   case DBSHARINGUnshareFolderErrorOther:
     return @"DBSHARINGUnshareFolderErrorOther";
   }
@@ -126,6 +140,8 @@
     jsonDict[@".tag"] = @"team_folder";
   } else if ([valueObj isNoPermission]) {
     jsonDict[@".tag"] = @"no_permission";
+  } else if ([valueObj isTooManyFiles]) {
+    jsonDict[@".tag"] = @"too_many_files";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -148,6 +164,8 @@
     return [[DBSHARINGUnshareFolderError alloc] initWithTeamFolder];
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGUnshareFolderError alloc] initWithNoPermission];
+  } else if ([tag isEqualToString:@"too_many_files"]) {
+    return [[DBSHARINGUnshareFolderError alloc] initWithTooManyFiles];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUnshareFolderError alloc] initWithOther];
   }

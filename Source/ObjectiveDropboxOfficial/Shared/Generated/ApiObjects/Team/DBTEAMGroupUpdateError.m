@@ -31,6 +31,22 @@
   return self;
 }
 
+- (instancetype)initWithGroupNameAlreadyUsed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupUpdateErrorGroupNameAlreadyUsed;
+  }
+  return self;
+}
+
+- (instancetype)initWithGroupNameInvalid {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupUpdateErrorGroupNameInvalid;
+  }
+  return self;
+}
+
 - (instancetype)initWithExternalIdAlreadyInUse {
   self = [super init];
   if (self) {
@@ -51,6 +67,14 @@
   return _tag == DBTEAMGroupUpdateErrorOther;
 }
 
+- (BOOL)isGroupNameAlreadyUsed {
+  return _tag == DBTEAMGroupUpdateErrorGroupNameAlreadyUsed;
+}
+
+- (BOOL)isGroupNameInvalid {
+  return _tag == DBTEAMGroupUpdateErrorGroupNameInvalid;
+}
+
 - (BOOL)isExternalIdAlreadyInUse {
   return _tag == DBTEAMGroupUpdateErrorExternalIdAlreadyInUse;
 }
@@ -61,6 +85,10 @@
     return @"DBTEAMGroupUpdateErrorGroupNotFound";
   case DBTEAMGroupUpdateErrorOther:
     return @"DBTEAMGroupUpdateErrorOther";
+  case DBTEAMGroupUpdateErrorGroupNameAlreadyUsed:
+    return @"DBTEAMGroupUpdateErrorGroupNameAlreadyUsed";
+  case DBTEAMGroupUpdateErrorGroupNameInvalid:
+    return @"DBTEAMGroupUpdateErrorGroupNameInvalid";
   case DBTEAMGroupUpdateErrorExternalIdAlreadyInUse:
     return @"DBTEAMGroupUpdateErrorExternalIdAlreadyInUse";
   }
@@ -97,6 +125,10 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isGroupNameAlreadyUsed]) {
+    jsonDict[@".tag"] = @"group_name_already_used";
+  } else if ([valueObj isGroupNameInvalid]) {
+    jsonDict[@".tag"] = @"group_name_invalid";
   } else if ([valueObj isExternalIdAlreadyInUse]) {
     jsonDict[@".tag"] = @"external_id_already_in_use";
   } else {
@@ -115,6 +147,10 @@
     return [[DBTEAMGroupUpdateError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupUpdateError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"group_name_already_used"]) {
+    return [[DBTEAMGroupUpdateError alloc] initWithGroupNameAlreadyUsed];
+  } else if ([tag isEqualToString:@"group_name_invalid"]) {
+    return [[DBTEAMGroupUpdateError alloc] initWithGroupNameInvalid];
   } else if ([tag isEqualToString:@"external_id_already_in_use"]) {
     return [[DBTEAMGroupUpdateError alloc] initWithExternalIdAlreadyInUse];
   }

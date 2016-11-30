@@ -31,6 +31,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedLinkType {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -59,6 +67,10 @@
   return _tag == DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied;
 }
 
+- (BOOL)isUnsupportedLinkType {
+  return _tag == DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGGetSharedLinkFileErrorOther;
 }
@@ -73,6 +85,8 @@
     return @"DBSHARINGGetSharedLinkFileErrorSharedLinkNotFound";
   case DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied:
     return @"DBSHARINGGetSharedLinkFileErrorSharedLinkAccessDenied";
+  case DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType:
+    return @"DBSHARINGGetSharedLinkFileErrorUnsupportedLinkType";
   case DBSHARINGGetSharedLinkFileErrorOther:
     return @"DBSHARINGGetSharedLinkFileErrorOther";
   case DBSHARINGGetSharedLinkFileErrorSharedLinkIsDirectory:
@@ -111,6 +125,8 @@
     jsonDict[@".tag"] = @"shared_link_not_found";
   } else if ([valueObj isSharedLinkAccessDenied]) {
     jsonDict[@".tag"] = @"shared_link_access_denied";
+  } else if ([valueObj isUnsupportedLinkType]) {
+    jsonDict[@".tag"] = @"unsupported_link_type";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isSharedLinkIsDirectory]) {
@@ -131,6 +147,8 @@
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithSharedLinkNotFound];
   } else if ([tag isEqualToString:@"shared_link_access_denied"]) {
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithSharedLinkAccessDenied];
+  } else if ([tag isEqualToString:@"unsupported_link_type"]) {
+    return [[DBSHARINGGetSharedLinkFileError alloc] initWithUnsupportedLinkType];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithOther];
   } else if ([tag isEqualToString:@"shared_link_is_directory"]) {

@@ -6,13 +6,34 @@
 
 #import "DBAUTHRouteObjects.h"
 #import "DBAUTHRoutes.h"
+#import "DBAUTHTokenFromOAuth1Error.h"
+#import "DBAUTHTokenFromOAuth1Result.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportClient.h"
 
 @implementation DBAUTHRouteObjects
 
+static DBRoute *DBAUTHTokenFromOauth1;
 static DBRoute *DBAUTHTokenRevoke;
+
++ (DBRoute *)DBAUTHTokenFromOauth1 {
+  if (!DBAUTHTokenFromOauth1) {
+    DBAUTHTokenFromOauth1 = [[DBRoute alloc] init:@"token/from_oauth1"
+                                       namespace_:@"auth"
+                                       deprecated:@NO
+                                       resultType:[DBAUTHTokenFromOAuth1Result class]
+                                        errorType:[DBAUTHTokenFromOAuth1Error class]
+                                            attrs:@{
+                                              @"auth" : @"app",
+                                              @"host" : @"api",
+                                              @"style" : @"rpc"
+                                            }
+                                 arraySerialBlock:nil
+                               arrayDeserialBlock:nil];
+  }
+  return DBAUTHTokenFromOauth1;
+}
 
 + (DBRoute *)DBAUTHTokenRevoke {
   if (!DBAUTHTokenRevoke) {
@@ -22,6 +43,7 @@ static DBRoute *DBAUTHTokenRevoke;
                                    resultType:nil
                                     errorType:nil
                                         attrs:@{
+                                          @"auth" : @"user",
                                           @"host" : @"api",
                                           @"style" : @"rpc"
                                         }

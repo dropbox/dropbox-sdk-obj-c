@@ -6,6 +6,9 @@
 
 #import "DBAUTHRouteObjects.h"
 #import "DBAUTHRoutes.h"
+#import "DBAUTHTokenFromOAuth1Arg.h"
+#import "DBAUTHTokenFromOAuth1Error.h"
+#import "DBAUTHTokenFromOAuth1Result.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportClient.h"
@@ -18,6 +21,13 @@
     _client = client;
   }
   return self;
+}
+
+- (DBRpcTask *)tokenFromOauth1:(NSString *)oauth1Token oauth1TokenSecret:(NSString *)oauth1TokenSecret {
+  DBRoute *route = DBAUTHRouteObjects.DBAUTHTokenFromOauth1;
+  DBAUTHTokenFromOAuth1Arg *arg =
+      [[DBAUTHTokenFromOAuth1Arg alloc] initWithOauth1Token:oauth1Token oauth1TokenSecret:oauth1TokenSecret];
+  return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)tokenRevoke {

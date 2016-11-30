@@ -161,4 +161,28 @@
 /// Accessor method for the reportsGetStorage route object.
 + (DBRoute * _Nonnull)DBTEAMReportsGetStorage;
 
+/// Accessor method for the teamFolderActivate route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderActivate;
+
+/// Accessor method for the teamFolderArchive route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderArchive;
+
+/// Accessor method for the teamFolderArchiveCheck route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderArchiveCheck;
+
+/// Accessor method for the teamFolderCreate route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderCreate;
+
+/// Accessor method for the teamFolderGetInfo route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderGetInfo;
+
+/// Accessor method for the teamFolderList route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderList;
+
+/// Accessor method for the teamFolderPermanentlyDelete route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderPermanentlyDelete;
+
+/// Accessor method for the teamFolderRename route object.
++ (DBRoute * _Nonnull)DBTEAMTeamFolderRename;
+
 @end

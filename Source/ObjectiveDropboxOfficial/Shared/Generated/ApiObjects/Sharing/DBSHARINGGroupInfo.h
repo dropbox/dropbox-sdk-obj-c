@@ -32,6 +32,9 @@
 /// The type of group.
 @property (nonatomic, readonly) DBTEAMCOMMONGroupType * _Nonnull groupType;
 
+/// If the current user is a member of the group.
+@property (nonatomic, readonly) NSNumber * _Nonnull isMember;
+
 /// If the current user is an owner of the group.
 @property (nonatomic, readonly) NSNumber * _Nonnull isOwner;
 
@@ -47,6 +50,7 @@
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
 /// @param groupType The type of group.
+/// @param isMember If the current user is a member of the group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
 /// @param groupExternalId External ID of group. This is an arbitrary ID that an
@@ -59,6 +63,7 @@
                                   groupId:(NSString * _Nonnull)groupId
                       groupManagementType:(DBTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType
                                 groupType:(DBTEAMCOMMONGroupType * _Nonnull)groupType
+                                 isMember:(NSNumber * _Nonnull)isMember
                                   isOwner:(NSNumber * _Nonnull)isOwner
                                  sameTeam:(NSNumber * _Nonnull)sameTeam
                           groupExternalId:(NSString * _Nullable)groupExternalId
@@ -72,6 +77,7 @@
 /// @param groupId (no description).
 /// @param groupManagementType Who is allowed to manage the group.
 /// @param groupType The type of group.
+/// @param isMember If the current user is a member of the group.
 /// @param isOwner If the current user is an owner of the group.
 /// @param sameTeam If the group is owned by the current user's team.
 ///
@@ -81,6 +87,7 @@
                                   groupId:(NSString * _Nonnull)groupId
                       groupManagementType:(DBTEAMCOMMONGroupManagementType * _Nonnull)groupManagementType
                                 groupType:(DBTEAMCOMMONGroupType * _Nonnull)groupType
+                                 isMember:(NSNumber * _Nonnull)isMember
                                   isOwner:(NSNumber * _Nonnull)isOwner
                                  sameTeam:(NSNumber * _Nonnull)sameTeam;
 

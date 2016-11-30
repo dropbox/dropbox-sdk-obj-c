@@ -32,7 +32,13 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
   /// (no description).
   DBTEAMGroupUpdateErrorOther,
 
-  /// The new external ID is already being used by another group.
+  /// The requested group name is already being used by another group.
+  DBTEAMGroupUpdateErrorGroupNameAlreadyUsed,
+
+  /// Group name is empty or has invalid characters.
+  DBTEAMGroupUpdateErrorGroupNameInvalid,
+
+  /// The requested external ID is already being used by another group.
   DBTEAMGroupUpdateErrorExternalIdAlreadyInUse,
 
 };
@@ -60,10 +66,30 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 ///
+/// Initializes union class with tag state of "group_name_already_used".
+///
+/// Description of the "group_name_already_used" tag state: The requested group
+/// name is already being used by another group.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithGroupNameAlreadyUsed;
+
+///
+/// Initializes union class with tag state of "group_name_invalid".
+///
+/// Description of the "group_name_invalid" tag state: Group name is empty or
+/// has invalid characters.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithGroupNameInvalid;
+
+///
 /// Initializes union class with tag state of "external_id_already_in_use".
 ///
-/// Description of the "external_id_already_in_use" tag state: The new external
-/// ID is already being used by another group.
+/// Description of the "external_id_already_in_use" tag state: The requested
+/// external ID is already being used by another group.
 ///
 /// @return An initialized instance.
 ///
@@ -84,6 +110,24 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "group_name_already_used".
+///
+/// @return Whether the union's current tag state has value
+/// "group_name_already_used".
+///
+- (BOOL)isGroupNameAlreadyUsed;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "group_name_invalid".
+///
+/// @return Whether the union's current tag state has value
+/// "group_name_invalid".
+///
+- (BOOL)isGroupNameInvalid;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -775,8 +775,8 @@ If you're interested in modifying the SDK codebase, you should take the followin
 
 * clone this GitHub repository to your local filesystem
 * run `git submodule init` and then `git submodule update`
-* navigate to `TestObjectiveDropbox_[iOS|macOS]` and run `pod install`
-* open `TestObjectiveDropbox_[iOS|macOS]/TestObjectiveDropbox_[iOS|macOS].xcworkspace` in Xcode
+* navigate to `TestObjectiveDropbox` and run `pod install`
+* open `TestObjectiveDropbox/TestObjectiveDropbox.xcworkspace` in Xcode
 * implement your changes to the SDK source code.
 
 To ensure your changes have not broken any existing functionality, you can run a series of integration tests by

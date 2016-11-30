@@ -8,7 +8,6 @@
 
 #import "DBTasks.h"
 
-@class DBASYNCLaunchEmptyResult;
 @class DBASYNCPollError;
 @class DBFILESAddPropertiesError;
 @class DBFILESAlphaGetMetadataError;
@@ -17,6 +16,7 @@
 @class DBFILESDeleteArg;
 @class DBFILESDeleteBatchError;
 @class DBFILESDeleteBatchJobStatus;
+@class DBFILESDeleteBatchLaunch;
 @class DBFILESDeleteBatchResult;
 @class DBFILESDeleteError;
 @class DBFILESDownloadError;
@@ -46,6 +46,7 @@
 @class DBFILESPropertyGroupUpdate;
 @class DBFILESRelocationBatchError;
 @class DBFILESRelocationBatchJobStatus;
+@class DBFILESRelocationBatchLaunch;
 @class DBFILESRelocationBatchResult;
 @class DBFILESRelocationError;
 @class DBFILESRelocationPath;
@@ -69,6 +70,7 @@
 @class DBFILESUploadSessionCursor;
 @class DBFILESUploadSessionFinishArg;
 @class DBFILESUploadSessionFinishBatchJobStatus;
+@class DBFILESUploadSessionFinishBatchLaunch;
 @class DBFILESUploadSessionFinishBatchResult;
 @class DBFILESUploadSessionFinishError;
 @class DBFILESUploadSessionLookupError;
@@ -264,10 +266,10 @@ alphaUploadStream:(NSString * _Nonnull)path
 ///
 /// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
+/// a `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)dCopyBatch:
+- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> * _Nonnull)dCopyBatch:
     (NSArray<DBFILESRelocationPath *> * _Nonnull)entries;
 
 ///
@@ -284,10 +286,10 @@ alphaUploadStream:(NSString * _Nonnull)path
 /// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
 /// the conflict.
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
+/// a `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)
+- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> * _Nonnull)
        dCopyBatch:(NSArray<DBFILESRelocationPath *> * _Nonnull)entries
 allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
        autorename:(NSNumber * _Nullable)autorename;
@@ -369,10 +371,10 @@ dCopyReferenceSave:(NSString * _Nonnull)dCopyReference
 /// delete batch asynchronously. Use `deleteBatchCheck` to check the job status.
 ///
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
+/// @return Through the response callback, the caller will receive a `DBFILESDeleteBatchLaunch` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)deleteBatch:
+- (DBRpcTask<DBFILESDeleteBatchLaunch *, DBNilObject *> * _Nonnull)deleteBatch:
     (NSArray<DBFILESDeleteArg *> * _Nonnull)entries;
 
 ///
@@ -809,10 +811,10 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 ///
 /// @param entries List of entries to be moved or copied. Each entry is RelocationPath.
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
+/// a `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)moveBatch:
+- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> * _Nonnull)moveBatch:
     (NSArray<DBFILESRelocationPath *> * _Nonnull)entries;
 
 ///
@@ -827,10 +829,10 @@ listFolderLongpoll:(NSString * _Nonnull)cursor
 /// @param autorename If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid
 /// the conflict.
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESRelocationBatchLaunch` object on success or
+/// a `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)
+- (DBRpcTask<DBFILESRelocationBatchLaunch *, DBNilObject *> * _Nonnull)
         moveBatch:(NSArray<DBFILESRelocationPath *> * _Nonnull)entries
 allowSharedFolder:(NSNumber * _Nullable)allowSharedFolder
        autorename:(NSNumber * _Nullable)autorename;
@@ -1331,10 +1333,10 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param entries Commit information for each file in the batch.
 ///
-/// @return Through the response callback, the caller will receive a `DBASYNCLaunchEmptyResult` object on success or a
-/// `void` object on failure.
+/// @return Through the response callback, the caller will receive a `DBFILESUploadSessionFinishBatchLaunch` object on
+/// success or a `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchEmptyResult *, DBNilObject *> * _Nonnull)uploadSessionFinishBatch:
+- (DBRpcTask<DBFILESUploadSessionFinishBatchLaunch *, DBNilObject *> * _Nonnull)uploadSessionFinishBatch:
     (NSArray<DBFILESUploadSessionFinishArg *> * _Nonnull)entries;
 
 ///

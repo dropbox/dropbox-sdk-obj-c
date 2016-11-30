@@ -26,13 +26,13 @@
 /// The `DBTEAMGroupCreateErrorTag` enum type represents the possible tag states
 /// with which the `DBTEAMGroupCreateError` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
-  /// There is already an existing group with the requested name.
+  /// The requested group name is already being used by another group.
   DBTEAMGroupCreateErrorGroupNameAlreadyUsed,
 
   /// Group name is empty or has invalid characters.
   DBTEAMGroupCreateErrorGroupNameInvalid,
 
-  /// The new external ID is already being used by another group.
+  /// The requested external ID is already being used by another group.
   DBTEAMGroupCreateErrorExternalIdAlreadyInUse,
 
   /// (no description).
@@ -48,8 +48,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
 ///
 /// Initializes union class with tag state of "group_name_already_used".
 ///
-/// Description of the "group_name_already_used" tag state: There is already an
-/// existing group with the requested name.
+/// Description of the "group_name_already_used" tag state: The requested group
+/// name is already being used by another group.
 ///
 /// @return An initialized instance.
 ///
@@ -68,8 +68,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
 ///
 /// Initializes union class with tag state of "external_id_already_in_use".
 ///
-/// Description of the "external_id_already_in_use" tag state: The new external
-/// ID is already being used by another group.
+/// Description of the "external_id_already_in_use" tag state: The requested
+/// external ID is already being used by another group.
 ///
 /// @return An initialized instance.
 ///

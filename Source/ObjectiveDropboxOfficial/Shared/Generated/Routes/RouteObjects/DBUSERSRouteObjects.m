@@ -35,6 +35,7 @@ static DBRoute *DBUSERSGetSpaceUsage;
                                    resultType:[DBUSERSBasicAccount class]
                                     errorType:[DBUSERSGetAccountError class]
                                         attrs:@{
+                                          @"auth" : @"user",
                                           @"host" : @"api",
                                           @"style" : @"rpc"
                                         }
@@ -52,6 +53,7 @@ static DBRoute *DBUSERSGetSpaceUsage;
         resultType:[NSArray<DBUSERSBasicAccount *> class]
         errorType:[DBUSERSGetAccountBatchError class]
         attrs:@{
+          @"auth" : @"user",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -74,6 +76,7 @@ static DBRoute *DBUSERSGetSpaceUsage;
                                           resultType:[DBUSERSFullAccount class]
                                            errorType:nil
                                                attrs:@{
+                                                 @"auth" : @"user",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -91,6 +94,7 @@ static DBRoute *DBUSERSGetSpaceUsage;
                                       resultType:[DBUSERSSpaceUsage class]
                                        errorType:nil
                                            attrs:@{
+                                             @"auth" : @"user",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }

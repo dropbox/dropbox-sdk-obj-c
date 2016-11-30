@@ -34,6 +34,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedLinkType {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -80,6 +88,10 @@
   return _tag == DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied;
 }
 
+- (BOOL)isUnsupportedLinkType {
+  return _tag == DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGModifySharedLinkSettingsErrorOther;
 }
@@ -98,6 +110,8 @@
     return @"DBSHARINGModifySharedLinkSettingsErrorSharedLinkNotFound";
   case DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied:
     return @"DBSHARINGModifySharedLinkSettingsErrorSharedLinkAccessDenied";
+  case DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType:
+    return @"DBSHARINGModifySharedLinkSettingsErrorUnsupportedLinkType";
   case DBSHARINGModifySharedLinkSettingsErrorOther:
     return @"DBSHARINGModifySharedLinkSettingsErrorOther";
   case DBSHARINGModifySharedLinkSettingsErrorSettingsError:
@@ -138,6 +152,8 @@
     jsonDict[@".tag"] = @"shared_link_not_found";
   } else if ([valueObj isSharedLinkAccessDenied]) {
     jsonDict[@".tag"] = @"shared_link_access_denied";
+  } else if ([valueObj isUnsupportedLinkType]) {
+    jsonDict[@".tag"] = @"unsupported_link_type";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isSettingsError]) {
@@ -162,6 +178,8 @@
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithSharedLinkNotFound];
   } else if ([tag isEqualToString:@"shared_link_access_denied"]) {
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithSharedLinkAccessDenied];
+  } else if ([tag isEqualToString:@"unsupported_link_type"]) {
+    return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithUnsupportedLinkType];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithOther];
   } else if ([tag isEqualToString:@"settings_error"]) {

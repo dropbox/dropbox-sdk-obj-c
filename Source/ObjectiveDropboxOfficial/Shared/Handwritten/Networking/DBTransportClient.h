@@ -129,6 +129,8 @@
 /// calls. If no identifier is supplied, a default, timestamp-based identifier is used.
 /// @param delegateQueue The queue used by `DBDelegate` for safely executing response code. If
 /// nil, then `DBTransportClient` defaults to using the main queue. This must be a serial queue.
+/// @param appKey The app key of the Dropbox API app being used. Used for "app" auth for certain routes.
+/// @param appSecret The app secret of the Dropbox API app being used. Used for "app" auth for certain routes.
 ///
 /// @return An initialized `DBTransportClient` instance.
 ///
@@ -137,7 +139,9 @@
                                   baseHosts:(NSDictionary<NSString *, NSString *> * _Nullable)baseHosts
                                   userAgent:(NSString * _Nullable)userAgent
                         backgroundSessionId:(NSString * _Nullable)backgroundSessionId
-                              delegateQueue:(NSOperationQueue * _Nullable)delegateQueue;
+                              delegateQueue:(NSOperationQueue * _Nullable)delegateQueue
+                                     appKey:(NSString * _Nullable)appKey
+                                  appSecret:(NSString * _Nullable)appSecret;
 
 #pragma mark - RPC-style request
 

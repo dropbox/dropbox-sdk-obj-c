@@ -66,6 +66,14 @@
   return self;
 }
 
+- (instancetype)initWithNoExplicitAccess {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -111,6 +119,10 @@
   return _tag == DBSHARINGRelinquishFolderMembershipErrorNoPermission;
 }
 
+- (BOOL)isNoExplicitAccess {
+  return _tag == DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGRelinquishFolderMembershipErrorOther;
 }
@@ -129,6 +141,8 @@
     return @"DBSHARINGRelinquishFolderMembershipErrorTeamFolder";
   case DBSHARINGRelinquishFolderMembershipErrorNoPermission:
     return @"DBSHARINGRelinquishFolderMembershipErrorNoPermission";
+  case DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess:
+    return @"DBSHARINGRelinquishFolderMembershipErrorNoExplicitAccess";
   case DBSHARINGRelinquishFolderMembershipErrorOther:
     return @"DBSHARINGRelinquishFolderMembershipErrorOther";
   }
@@ -175,6 +189,8 @@
     jsonDict[@".tag"] = @"team_folder";
   } else if ([valueObj isNoPermission]) {
     jsonDict[@".tag"] = @"no_permission";
+  } else if ([valueObj isNoExplicitAccess]) {
+    jsonDict[@".tag"] = @"no_explicit_access";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -203,6 +219,8 @@
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithTeamFolder];
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithNoPermission];
+  } else if ([tag isEqualToString:@"no_explicit_access"]) {
+    return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithNoExplicitAccess];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithOther];
   }

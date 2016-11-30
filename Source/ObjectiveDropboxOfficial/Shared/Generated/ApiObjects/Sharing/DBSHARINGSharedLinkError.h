@@ -26,11 +26,14 @@
 /// The `DBSHARINGSharedLinkErrorTag` enum type represents the possible tag
 /// states with which the `DBSHARINGSharedLinkError` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
-  /// The shared link wasn't found
+  /// The shared link wasn't found.
   DBSHARINGSharedLinkErrorSharedLinkNotFound,
 
-  /// The caller is not allowed to access this shared link
+  /// The caller is not allowed to access this shared link.
   DBSHARINGSharedLinkErrorSharedLinkAccessDenied,
+
+  /// This type of link is not supported.
+  DBSHARINGSharedLinkErrorUnsupportedLinkType,
 
   /// (no description).
   DBSHARINGSharedLinkErrorOther,
@@ -46,7 +49,7 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 /// Initializes union class with tag state of "shared_link_not_found".
 ///
 /// Description of the "shared_link_not_found" tag state: The shared link wasn't
-/// found
+/// found.
 ///
 /// @return An initialized instance.
 ///
@@ -56,11 +59,21 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 /// Initializes union class with tag state of "shared_link_access_denied".
 ///
 /// Description of the "shared_link_access_denied" tag state: The caller is not
-/// allowed to access this shared link
+/// allowed to access this shared link.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedLinkAccessDenied;
+
+///
+/// Initializes union class with tag state of "unsupported_link_type".
+///
+/// Description of the "unsupported_link_type" tag state: This type of link is
+/// not supported.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUnsupportedLinkType;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -88,6 +101,15 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkErrorTag) {
 /// "shared_link_access_denied".
 ///
 - (BOOL)isSharedLinkAccessDenied;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_link_type".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_link_type".
+///
+- (BOOL)isUnsupportedLinkType;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

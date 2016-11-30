@@ -30,6 +30,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedLinkType {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGSharedLinkErrorUnsupportedLinkType;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -50,6 +58,10 @@
   return _tag == DBSHARINGSharedLinkErrorSharedLinkAccessDenied;
 }
 
+- (BOOL)isUnsupportedLinkType {
+  return _tag == DBSHARINGSharedLinkErrorUnsupportedLinkType;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGSharedLinkErrorOther;
 }
@@ -60,6 +72,8 @@
     return @"DBSHARINGSharedLinkErrorSharedLinkNotFound";
   case DBSHARINGSharedLinkErrorSharedLinkAccessDenied:
     return @"DBSHARINGSharedLinkErrorSharedLinkAccessDenied";
+  case DBSHARINGSharedLinkErrorUnsupportedLinkType:
+    return @"DBSHARINGSharedLinkErrorUnsupportedLinkType";
   case DBSHARINGSharedLinkErrorOther:
     return @"DBSHARINGSharedLinkErrorOther";
   }
@@ -96,6 +110,8 @@
     jsonDict[@".tag"] = @"shared_link_not_found";
   } else if ([valueObj isSharedLinkAccessDenied]) {
     jsonDict[@".tag"] = @"shared_link_access_denied";
+  } else if ([valueObj isUnsupportedLinkType]) {
+    jsonDict[@".tag"] = @"unsupported_link_type";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -114,6 +130,8 @@
     return [[DBSHARINGSharedLinkError alloc] initWithSharedLinkNotFound];
   } else if ([tag isEqualToString:@"shared_link_access_denied"]) {
     return [[DBSHARINGSharedLinkError alloc] initWithSharedLinkAccessDenied];
+  } else if ([tag isEqualToString:@"unsupported_link_type"]) {
+    return [[DBSHARINGSharedLinkError alloc] initWithUnsupportedLinkType];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkError alloc] initWithOther];
   }

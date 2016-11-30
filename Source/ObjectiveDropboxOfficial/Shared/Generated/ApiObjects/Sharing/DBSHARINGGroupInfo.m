@@ -21,6 +21,7 @@
                           groupId:(NSString *)groupId
               groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
                         groupType:(DBTEAMCOMMONGroupType *)groupType
+                         isMember:(NSNumber *)isMember
                           isOwner:(NSNumber *)isOwner
                          sameTeam:(NSNumber *)sameTeam
                   groupExternalId:(NSString *)groupExternalId
@@ -33,6 +34,7 @@
                       memberCount:memberCount];
   if (self) {
     _groupType = groupType;
+    _isMember = isMember;
     _isOwner = isOwner;
     _sameTeam = sameTeam;
   }
@@ -43,12 +45,14 @@
                           groupId:(NSString *)groupId
               groupManagementType:(DBTEAMCOMMONGroupManagementType *)groupManagementType
                         groupType:(DBTEAMCOMMONGroupType *)groupType
+                         isMember:(NSNumber *)isMember
                           isOwner:(NSNumber *)isOwner
                          sameTeam:(NSNumber *)sameTeam {
   return [self initWithGroupName:groupName
                          groupId:groupId
              groupManagementType:groupManagementType
                        groupType:groupType
+                        isMember:isMember
                          isOwner:isOwner
                         sameTeam:sameTeam
                  groupExternalId:nil
@@ -85,6 +89,7 @@
   jsonDict[@"group_management_type"] =
       [DBTEAMCOMMONGroupManagementTypeSerializer serialize:valueObj.groupManagementType];
   jsonDict[@"group_type"] = [DBTEAMCOMMONGroupTypeSerializer serialize:valueObj.groupType];
+  jsonDict[@"is_member"] = valueObj.isMember;
   jsonDict[@"is_owner"] = valueObj.isOwner;
   jsonDict[@"same_team"] = valueObj.sameTeam;
   if (valueObj.groupExternalId) {
@@ -103,6 +108,7 @@
   DBTEAMCOMMONGroupManagementType *groupManagementType =
       [DBTEAMCOMMONGroupManagementTypeSerializer deserialize:valueDict[@"group_management_type"]];
   DBTEAMCOMMONGroupType *groupType = [DBTEAMCOMMONGroupTypeSerializer deserialize:valueDict[@"group_type"]];
+  NSNumber *isMember = valueDict[@"is_member"];
   NSNumber *isOwner = valueDict[@"is_owner"];
   NSNumber *sameTeam = valueDict[@"same_team"];
   NSString *groupExternalId = valueDict[@"group_external_id"] ?: nil;
@@ -112,6 +118,7 @@
                                                groupId:groupId
                                    groupManagementType:groupManagementType
                                              groupType:groupType
+                                              isMember:isMember
                                                isOwner:isOwner
                                               sameTeam:sameTeam
                                        groupExternalId:groupExternalId

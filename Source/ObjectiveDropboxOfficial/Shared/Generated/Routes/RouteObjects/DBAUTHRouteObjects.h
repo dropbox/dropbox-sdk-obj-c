@@ -14,6 +14,9 @@
 ///
 @interface DBAUTHRouteObjects : NSObject
 
+/// Accessor method for the tokenFromOauth1 route object.
++ (DBRoute * _Nonnull)DBAUTHTokenFromOauth1;
+
 /// Accessor method for the tokenRevoke route object.
 + (DBRoute * _Nonnull)DBAUTHTokenRevoke;
 

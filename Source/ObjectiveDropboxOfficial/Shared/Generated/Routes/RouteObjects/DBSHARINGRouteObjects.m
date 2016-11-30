@@ -145,6 +145,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         resultType:[NSArray<DBSHARINGFileMemberActionResult *> class]
         errorType:[DBSHARINGAddFileMemberError class]
         attrs:@{
+          @"auth" : @"user",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -167,6 +168,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                           resultType:nil
                                            errorType:[DBSHARINGAddFolderMemberError class]
                                                attrs:@{
+                                                 @"auth" : @"user",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -184,6 +186,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                  resultType:[DBSHARINGFileMemberActionResult class]
                                                   errorType:[DBSHARINGFileMemberActionError class]
                                                       attrs:@{
+                                                        @"auth" : @"user",
                                                         @"host" : @"api",
                                                         @"style" : @"rpc"
                                                       }
@@ -201,6 +204,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                          resultType:[DBSHARINGJobStatus class]
                                           errorType:[DBASYNCPollError class]
                                               attrs:@{
+                                                @"auth" : @"user",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -218,6 +222,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                      resultType:[DBSHARINGRemoveMemberJobStatus class]
                                                       errorType:[DBASYNCPollError class]
                                                           attrs:@{
+                                                            @"auth" : @"user",
                                                             @"host" : @"api",
                                                             @"style" : @"rpc"
                                                           }
@@ -235,6 +240,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                               resultType:[DBSHARINGShareFolderJobStatus class]
                                                errorType:[DBASYNCPollError class]
                                                    attrs:@{
+                                                     @"auth" : @"user",
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
@@ -252,6 +258,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                            resultType:[DBSHARINGPathLinkMetadata class]
                                             errorType:[DBSHARINGCreateSharedLinkError class]
                                                 attrs:@{
+                                                  @"auth" : @"user",
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
@@ -269,6 +276,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                        resultType:[DBSHARINGSharedLinkMetadata class]
                                                         errorType:[DBSHARINGCreateSharedLinkWithSettingsError class]
                                                             attrs:@{
+                                                              @"auth" : @"user",
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
@@ -286,6 +294,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                           resultType:[DBSHARINGSharedFileMetadata class]
                                            errorType:[DBSHARINGGetFileMetadataError class]
                                                attrs:@{
+                                                 @"auth" : @"user",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -303,6 +312,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         resultType:[NSArray<DBSHARINGGetFileMetadataBatchResult *> class]
         errorType:[DBSHARINGSharingUserError class]
         attrs:@{
+          @"auth" : @"user",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -325,6 +335,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                             resultType:[DBSHARINGSharedFolderMetadata class]
                                              errorType:[DBSHARINGSharedFolderAccessError class]
                                                  attrs:@{
+                                                   @"auth" : @"user",
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
@@ -342,6 +353,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                             resultType:[DBSHARINGSharedLinkMetadata class]
                                              errorType:[DBSHARINGGetSharedLinkFileError class]
                                                  attrs:@{
+                                                   @"auth" : @"user",
                                                    @"host" : @"content",
                                                    @"style" : @"download"
                                                  }
@@ -359,6 +371,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                 resultType:[DBSHARINGSharedLinkMetadata class]
                                                  errorType:[DBSHARINGSharedLinkError class]
                                                      attrs:@{
+                                                       @"auth" : @"user",
                                                        @"host" : @"api",
                                                        @"style" : @"rpc"
                                                      }
@@ -376,6 +389,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                          resultType:[DBSHARINGGetSharedLinksResult class]
                                           errorType:[DBSHARINGGetSharedLinksError class]
                                               attrs:@{
+                                                @"auth" : @"user",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -393,6 +407,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                           resultType:[DBSHARINGSharedFileMembers class]
                                            errorType:[DBSHARINGListFileMembersError class]
                                                attrs:@{
+                                                 @"auth" : @"user",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -410,6 +425,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         resultType:[NSArray<DBSHARINGListFileMembersBatchResult *> class]
         errorType:[DBSHARINGSharingUserError class]
         attrs:@{
+          @"auth" : @"user",
           @"host" : @"api",
           @"style" : @"rpc"
         }
@@ -432,6 +448,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                   resultType:[DBSHARINGSharedFileMembers class]
                                                    errorType:[DBSHARINGListFileMembersContinueError class]
                                                        attrs:@{
+                                                         @"auth" : @"user",
                                                          @"host" : @"api",
                                                          @"style" : @"rpc"
                                                        }
@@ -449,6 +466,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                             resultType:[DBSHARINGSharedFolderMembers class]
                                              errorType:[DBSHARINGSharedFolderAccessError class]
                                                  attrs:@{
+                                                   @"auth" : @"user",
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
@@ -466,6 +484,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                     resultType:[DBSHARINGSharedFolderMembers class]
                                                      errorType:[DBSHARINGListFolderMembersContinueError class]
                                                          attrs:@{
+                                                           @"auth" : @"user",
                                                            @"host" : @"api",
                                                            @"style" : @"rpc"
                                                          }
@@ -483,6 +502,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                       resultType:[DBSHARINGListFoldersResult class]
                                        errorType:nil
                                            attrs:@{
+                                             @"auth" : @"user",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -500,6 +520,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                               resultType:[DBSHARINGListFoldersResult class]
                                                errorType:[DBSHARINGListFoldersContinueError class]
                                                    attrs:@{
+                                                     @"auth" : @"user",
                                                      @"host" : @"api",
                                                      @"style" : @"rpc"
                                                    }
@@ -517,6 +538,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                resultType:[DBSHARINGListFoldersResult class]
                                                 errorType:nil
                                                     attrs:@{
+                                                      @"auth" : @"user",
                                                       @"host" : @"api",
                                                       @"style" : @"rpc"
                                                     }
@@ -534,6 +556,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                        resultType:[DBSHARINGListFoldersResult class]
                                                         errorType:[DBSHARINGListFoldersContinueError class]
                                                             attrs:@{
+                                                              @"auth" : @"user",
                                                               @"host" : @"api",
                                                               @"style" : @"rpc"
                                                             }
@@ -551,6 +574,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                             resultType:[DBSHARINGListFilesResult class]
                                              errorType:[DBSHARINGSharingUserError class]
                                                  attrs:@{
+                                                   @"auth" : @"user",
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
@@ -568,6 +592,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                     resultType:[DBSHARINGListFilesResult class]
                                                      errorType:[DBSHARINGListFilesContinueError class]
                                                          attrs:@{
+                                                           @"auth" : @"user",
                                                            @"host" : @"api",
                                                            @"style" : @"rpc"
                                                          }
@@ -585,6 +610,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                           resultType:[DBSHARINGListSharedLinksResult class]
                                            errorType:[DBSHARINGListSharedLinksError class]
                                                attrs:@{
+                                                 @"auth" : @"user",
                                                  @"host" : @"api",
                                                  @"style" : @"rpc"
                                                }
@@ -602,6 +628,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                    resultType:[DBSHARINGSharedLinkMetadata class]
                                                     errorType:[DBSHARINGModifySharedLinkSettingsError class]
                                                         attrs:@{
+                                                          @"auth" : @"user",
                                                           @"host" : @"api",
                                                           @"style" : @"rpc"
                                                         }
@@ -619,6 +646,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                       resultType:[DBSHARINGSharedFolderMetadata class]
                                        errorType:[DBSHARINGMountFolderError class]
                                            attrs:@{
+                                             @"auth" : @"user",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -636,6 +664,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                    resultType:nil
                                                     errorType:[DBSHARINGRelinquishFileMembershipError class]
                                                         attrs:@{
+                                                          @"auth" : @"user",
                                                           @"host" : @"api",
                                                           @"style" : @"rpc"
                                                         }
@@ -653,6 +682,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                                      resultType:[DBASYNCLaunchEmptyResult class]
                                                       errorType:[DBSHARINGRelinquishFolderMembershipError class]
                                                           attrs:@{
+                                                            @"auth" : @"user",
                                                             @"host" : @"api",
                                                             @"style" : @"rpc"
                                                           }
@@ -670,6 +700,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                            resultType:[DBSHARINGFileMemberActionIndividualResult class]
                                             errorType:[DBSHARINGRemoveFileMemberError class]
                                                 attrs:@{
+                                                  @"auth" : @"user",
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
@@ -687,6 +718,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                             resultType:[DBSHARINGFileMemberRemoveActionResult class]
                                              errorType:[DBSHARINGRemoveFileMemberError class]
                                                  attrs:@{
+                                                   @"auth" : @"user",
                                                    @"host" : @"api",
                                                    @"style" : @"rpc"
                                                  }
@@ -704,6 +736,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                              resultType:[DBASYNCLaunchResultBase class]
                                               errorType:[DBSHARINGRemoveFolderMemberError class]
                                                   attrs:@{
+                                                    @"auth" : @"user",
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
@@ -721,6 +754,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                            resultType:nil
                                             errorType:[DBSHARINGRevokeSharedLinkError class]
                                                 attrs:@{
+                                                  @"auth" : @"user",
                                                   @"host" : @"api",
                                                   @"style" : @"rpc"
                                                 }
@@ -738,6 +772,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                       resultType:[DBSHARINGShareFolderLaunch class]
                                        errorType:[DBSHARINGShareFolderError class]
                                            attrs:@{
+                                             @"auth" : @"user",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -755,6 +790,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                          resultType:nil
                                           errorType:[DBSHARINGTransferFolderError class]
                                               attrs:@{
+                                                @"auth" : @"user",
                                                 @"host" : @"api",
                                                 @"style" : @"rpc"
                                               }
@@ -772,6 +808,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                         resultType:nil
                                          errorType:[DBSHARINGUnmountFolderError class]
                                              attrs:@{
+                                               @"auth" : @"user",
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
@@ -789,6 +826,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                       resultType:nil
                                        errorType:[DBSHARINGUnshareFileError class]
                                            attrs:@{
+                                             @"auth" : @"user",
                                              @"host" : @"api",
                                              @"style" : @"rpc"
                                            }
@@ -806,6 +844,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                         resultType:[DBASYNCLaunchEmptyResult class]
                                          errorType:[DBSHARINGUnshareFolderError class]
                                              attrs:@{
+                                               @"auth" : @"user",
                                                @"host" : @"api",
                                                @"style" : @"rpc"
                                              }
@@ -823,6 +862,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                              resultType:[DBSHARINGMemberAccessLevelResult class]
                                               errorType:[DBSHARINGUpdateFolderMemberError class]
                                                   attrs:@{
+                                                    @"auth" : @"user",
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
@@ -840,6 +880,7 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
                                              resultType:[DBSHARINGSharedFolderMetadata class]
                                               errorType:[DBSHARINGUpdateFolderPolicyError class]
                                                   attrs:@{
+                                                    @"auth" : @"user",
                                                     @"host" : @"api",
                                                     @"style" : @"rpc"
                                                   }
