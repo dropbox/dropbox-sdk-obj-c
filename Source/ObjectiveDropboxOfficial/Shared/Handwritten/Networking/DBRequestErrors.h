@@ -517,6 +517,8 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// If for a route-specific error, this field will be the value of the "error_summary" key.
 /// @param structuredAuthError The structured object returned by the Dropbox API in the
 /// event of a 401 auth error.
+/// @param structuredAccessError The structured object returned by the Dropbox API in the
+/// event of a 403 access error.
 /// @param structuredRateLimitError The structured object returned by the Dropbox API in the
 /// event of a 429 rate-limit error.
 /// @param backoff The number of seconds to wait before making any additional requests in the
@@ -530,6 +532,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
                   statusCode:(NSNumber * _Nullable)statusCode
                 errorContent:(NSString * _Nullable)errorContent
          structuredAuthError:(DBAUTHAuthError * _Nullable)structuredAuthError
+       structuredAccessError:(DBAUTHAccessError * _Nullable)structuredAccessError
     structuredRateLimitError:(DBAUTHRateLimitError * _Nullable)structuredRateLimitError
                      backoff:(NSNumber * _Nullable)backoff
                      nsError:(NSError * _Nullable)nsError;

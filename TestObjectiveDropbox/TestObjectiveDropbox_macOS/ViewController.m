@@ -86,22 +86,27 @@
 
 - (void)checkButtons {
   if ([DropboxClientsManager authorizedClient] != nil || [DropboxClientsManager authorizedTeamClient] != nil) {
-    [_linkButton setEnabled:NO];
-    [_linkBrowserButton setEnabled:NO];
-    [_unlinkButton setEnabled:YES];
-    [_runTestsButton setEnabled:YES];
-  } else {
-    [_linkButton setEnabled:YES];
-    [_linkBrowserButton setEnabled:YES];
-    [_unlinkButton setEnabled:NO];
-    [_runTestsButton setEnabled:NO];
+    if ([DropboxClientsManager authorizedClient].transportClient.accessToken != nil ||
+        [DropboxClientsManager authorizedTeamClient].transportClient.accessToken != nil) {
+      [_linkButton setEnabled:NO];
+      [_linkBrowserButton setEnabled:NO];
+      [_unlinkButton setEnabled:YES];
+      [_runTestsButton setEnabled:YES];
+
+      return;
+    }
   }
+
+  [_linkButton setEnabled:YES];
+  [_linkBrowserButton setEnabled:YES];
+  [_unlinkButton setEnabled:NO];
+  [_runTestsButton setEnabled:NO];
 }
 
 /**
  To run these unit tests, you will need to do the following:
 
- Navigate to TestObjectiveDropbox_<platform>/ and run `pod install` to generate workspace file.
+ Navigate to TestObjectiveDropbox/ and run `pod install` to generate workspace file.
 
  There are three types of unit tests here:
 
@@ -117,7 +122,7 @@
 
  1.) Fill in personal data in `TestData`in TestData.m.
  2.) For each of the above apps, you will need to add a user-specific app key. For each test run, you
- will need to call `[DropboxClientsManager setupWithAppKey]` (or `[DropboxClientsManager setupWithTeamAppKey]`) and
+ will need to call `[DropboxClientsManager setupWithAppKeyDesktop]` (or `[DropboxClientsManager setupWithTeamAppKeyDesktop]`) and
  supply the
  appropriate app key value, in AppDelegate.m.
  3.) Depending on which app you are currently testing, you will need to toggle the `appPermission` variable

@@ -130,6 +130,13 @@
     _cancelHandler = cancelHandler;
     _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _startURL = URL;
+
+    // clear any persistent cookies
+    NSString *libraryPath =
+        [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
+    NSError *errors;
+    [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
   }
   return self;
 }

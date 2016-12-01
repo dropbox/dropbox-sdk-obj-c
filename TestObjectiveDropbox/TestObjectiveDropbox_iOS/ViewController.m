@@ -85,22 +85,26 @@
 
 - (void)checkButtons {
   if ([DropboxClientsManager authorizedClient] != nil || [DropboxClientsManager authorizedTeamClient] != nil) {
-    _linkButton.hidden = YES;
-    _linkBrowserButton.hidden = YES;
-    _unlinkButton.hidden = NO;
-    _runTestsButton.hidden = NO;
-  } else {
-    _linkButton.hidden = NO;
-    _linkBrowserButton.hidden = NO;
-    _unlinkButton.hidden = YES;
-    _runTestsButton.hidden = YES;
+    if ([DropboxClientsManager authorizedClient].transportClient.accessToken != nil ||
+        [DropboxClientsManager authorizedTeamClient].transportClient.accessToken != nil) {
+      _linkButton.hidden = YES;
+      _linkBrowserButton.hidden = YES;
+      _unlinkButton.hidden = NO;
+      _runTestsButton.hidden = NO;
+      return;
+    }
   }
+
+  _linkButton.hidden = NO;
+  _linkBrowserButton.hidden = NO;
+  _unlinkButton.hidden = YES;
+  _runTestsButton.hidden = YES;
 }
 
 /**
  To run these unit tests, you will need to do the following:
 
- Navigate to TestObjectiveDropbox_<platform>/ and run `pod install` to generate workspace file.
+ Navigate to TestObjectiveDropbox/ and run `pod install` to generate workspace file.
 
  There are three types of unit tests here:
 

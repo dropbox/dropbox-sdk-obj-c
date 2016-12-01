@@ -671,6 +671,8 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
                                                                           baseHosts:nil
                                                                           userAgent:@"CustomUserAgent"
                                                                 backgroundSessionId:@"com.custom.background.session.id"
+                                                                             appKey:(NSString *)@"<APP_KEY>"
+                                                                          appSecret:(NSString *)@"<APP_SECRET>"
                                                                       delegateQueue:[NSOperationQueue new]];
 [DropboxClientsManager setupWithAppKey:@"<APP_KEY>" transportClient:transportClient];
 ```
@@ -684,6 +686,8 @@ DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessTo
                                                                           baseHosts:nil
                                                                           userAgent:@"CustomUserAgent"
                                                                 backgroundSessionId:@"com.custom.background.session.id"
+                                                                             appKey:(NSString *)@"<APP_KEY>"
+                                                                          appSecret:(NSString *)@"<APP_SECRET>"
                                                                       delegateQueue:[NSOperationQueue new]];
 [DropboxClientsManager setupWithAppKeyDesktop:@"<APP_KEY>" transportClient:transportClient];
 ```
