@@ -168,6 +168,7 @@
 #pragma mark NSStreamDelegate methods
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+#pragma unused(aStream)
   assert(aStream == _parentStream);
 
   switch (eventCode) {
