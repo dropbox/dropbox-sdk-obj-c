@@ -158,7 +158,7 @@
 /// @param statusCode The HTTP response status code of the request.
 /// @param errorContent A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the "error_summary" key.
-/// @param structuredAuthError The structured object returned by the Dropbox API in the
+/// @param structuredAccessError The structured object returned by the Dropbox API in the
 /// event of a 403 access error.
 ///
 /// @return An initialized DBRequestAuthError instance.
