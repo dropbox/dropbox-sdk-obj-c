@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class DBAUTHAccessError;
 @class DBAUTHAuthError;
 @class DBAUTHRateLimitError;
 
@@ -129,6 +130,48 @@
 /// Description method.
 ///
 /// @return A human-readable representation of the current DBRequestAuthError object.
+///
+- (NSString * _Nonnull)description;
+
+@end
+
+#pragma mark - Access error
+
+///
+/// Access request error.
+///
+/// Contains relevant information regarding a failed network
+/// request. Initialized in the event of an HTTP 403 response.
+/// Extends DBRequestHttpError.
+///
+@interface DBRequestAccessError : DBRequestHttpError
+
+/// The structured object returned by the Dropbox API in the event of a 403 access
+/// error.
+@property (nonatomic, readonly) DBAUTHAccessError * _Nonnull structuredAccessError;
+
+///
+/// DBRequestAccessError full constructor.
+///
+/// @param requestId The Dropbox request id of the network call. This is
+/// useful to Dropbox for debugging issues with Dropbox's SDKs and API.
+/// @param statusCode The HTTP response status code of the request.
+/// @param errorContent A string representation of the error body received in the reponse.
+/// If for a route-specific error, this field will be the value of the "error_summary" key.
+/// @param structuredAuthError The structured object returned by the Dropbox API in the
+/// event of a 403 access error.
+///
+/// @return An initialized DBRequestAuthError instance.
+///
+- (nonnull instancetype)init:(NSString * _Nonnull)requestId
+                  statusCode:(NSNumber * _Nonnull)statusCode
+                errorContent:(NSString * _Nonnull)errorContent
+       structuredAccessError:(DBAUTHAccessError * _Nonnull)structuredAccessError;
+
+///
+/// Description method.
+///
+/// @return A human-readable representation of the current DBRequestAccessError object.
 ///
 - (NSString * _Nonnull)description;
 
@@ -277,6 +320,9 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
   /// Errors due to invalid authentication credentials.
   DBRequestErrorAuth,
 
+  /// Errors due to invalid permission to access.
+  DBRequestErrorAccess,
+
   /// Error caused by rate limiting.
   DBRequestErrorRateLimit,
 
@@ -309,6 +355,10 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// The structured object returned by the Dropbox API in the event of a 401 auth
 /// error.
 @property (nonatomic, readonly) DBAUTHAuthError * _Nonnull structuredAuthError;
+
+/// The structured object returned by the Dropbox API in the event of a 403 access
+/// error.
+@property (nonatomic, readonly) DBAUTHAccessError * _Nonnull structuredAccessError;
 
 /// The structured object returned by the Dropbox API in the event of a 429
 /// rate-limit error.
@@ -379,6 +429,27 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
                              statusCode:(NSNumber * _Nullable)statusCode
                            errorContent:(NSString * _Nullable)errorContent
                     structuredAuthError:(DBAUTHAuthError * _Nonnull)structuredAuthError;
+
+///
+/// DBRequestError convenience constructor.
+///
+/// Initializes the `DBRequestError` with all the required state for representing an Access
+/// error.
+///
+/// @param requestId The Dropbox request id of the network call. This is
+/// useful to Dropbox for debugging issues with Dropbox's SDKs and API.
+/// @param statusCode The HTTP response status code of the request.
+/// @param errorContent A string representation of the error body received in the reponse.
+/// If for a route-specific error, this field will be the value of the "error_summary" key.
+/// @param structuredAccessError The structured object returned by the Dropbox API in the
+/// event of a 403 access error.
+///
+/// @return An initialized `DBRequestError` instance with Auth error state.
+///
+- (nonnull instancetype)initAsAccessError:(NSString * _Nullable)requestId
+                               statusCode:(NSNumber * _Nullable)statusCode
+                             errorContent:(NSString * _Nullable)errorContent
+                    structuredAccessError:(DBAUTHAccessError * _Nonnull)structuredAccessError;
 
 ///
 /// DBRequestError convenience constructor.

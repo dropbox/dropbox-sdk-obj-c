@@ -2,6 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBAUTHAccessError.h"
 #import "DBAuthAuthError.h"
 #import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
@@ -57,6 +58,12 @@
                                             statusCode:@(statusCode)
                                           errorContent:errorContent
                                    structuredAuthError:authError];
+  } else if (statusCode == 403) {
+    DBAUTHAccessError *accessError = [DBAUTHAccessErrorSerializer deserialize:deserializedData[@"error"]];
+    dbxError = [[DBRequestError alloc] initAsAccessError:requestId
+                                              statusCode:@(statusCode)
+                                            errorContent:errorContent
+                                   structuredAccessError:accessError];
   } else if (statusCode == 429) {
     DBAUTHRateLimitError *rateLimitError = [DBAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
     NSString *retryAfter = httpHeaders[@"Retry-After"];

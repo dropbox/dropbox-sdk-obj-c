@@ -261,7 +261,8 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
       }
       NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
       NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];
-      [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]] forKey:@"Authorization"];
+      [headers setObject:[NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:0]]
+                  forKey:@"Authorization"];
     } else {
       [headers setObject:[NSString stringWithFormat:@"Bearer %@", _accessToken] forKey:@"Authorization"];
     }
