@@ -561,6 +561,13 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 - (BOOL)isAuthError;
 
 ///
+/// Retrieves whether the error's current tag state has value "access_error".
+///
+/// @return Whether the union's current tag state has value "access_error".
+///
+- (BOOL)isAccessError;
+
+///
 /// Retrieves whether the error's current tag state has value "rate_limit_error".
 ///
 /// @return Whether the union's current tag state has value "rate_limit_error".
@@ -618,6 +625,18 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// @return An initialized `DBRequestAuthError` instance.
 ///
 - (DBRequestAuthError * _Nonnull)asAuthError;
+
+///
+/// Creates a DBRequestAccessError instance based on the data in the current `DBRequestError`
+/// instance.
+///
+/// @note Will throw error if current `DBRequestError` instance tag state is not
+/// "auth_error". Should only use after checking if `isAccessError` returns true
+/// for the current `DBRequestError` instance.
+///
+/// @return An initialized `DBRequestAccessError` instance.
+///
+- (DBRequestAuthError * _Nonnull)asAccessError;
 
 ///
 /// Creates a `DBRequestRateLimitError` instance based on the data in the current `DBRequestError`
