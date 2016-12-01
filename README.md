@@ -595,6 +595,9 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
                 } else if ([error isAuthError]) {
                     DBRequestAuthError *authError = [error asAuthError];
                     NSLog(@"%@\n", authError);
+                } else if ([error isAccessError]) {
+                    DBRequestAccessError *accessError = [error asAccessError];
+                    NSLog(@"%@\n", accessError);
                 } else if ([error isRateLimitError]) {
                     DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
                     NSLog(@"%@\n", rateLimitError);
