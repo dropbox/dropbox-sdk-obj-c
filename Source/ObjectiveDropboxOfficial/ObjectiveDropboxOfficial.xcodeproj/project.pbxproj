@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21DB9DF1DF0ED0D00865B11 /* DBSDKTransportClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F21DB9DE1DF0ED0D00865B11 /* DBSDKTransportClient.h */; };
+		F21DB9E01DF0ED0D00865B11 /* DBSDKTransportClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F21DB9DE1DF0ED0D00865B11 /* DBSDKTransportClient.h */; };
+		F25C36231DF10DAF0089E3BA /* DBTransportClientBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F25C36221DF10DAF0089E3BA /* DBTransportClientBase.h */; };
+		F25C36241DF10DAF0089E3BA /* DBTransportClientBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F25C36221DF10DAF0089E3BA /* DBTransportClientBase.h */; };
+		F25C36261DF10DE40089E3BA /* DBTransportClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F25C36251DF10DE40089E3BA /* DBTransportClientBase.m */; };
+		F25C36271DF10DE40089E3BA /* DBTransportClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F25C36251DF10DE40089E3BA /* DBTransportClientBase.m */; };
 		F27DEB9A1D7FFBB9003B1CEE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB991D7FFBB9003B1CEE /* AppKit.framework */; };
 		F27DEB9C1D7FFBBF003B1CEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB9B1D7FFBBF003B1CEE /* Foundation.framework */; };
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
@@ -1927,6 +1933,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21DB9DE1DF0ED0D00865B11 /* DBSDKTransportClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSDKTransportClient.h; sourceTree = "<group>"; };
+		F25C36221DF10DAF0089E3BA /* DBTransportClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTransportClientBase.h; sourceTree = "<group>"; };
+		F25C36251DF10DE40089E3BA /* DBTransportClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTransportClientBase.m; sourceTree = "<group>"; };
 		F26B75751D7F6AF700714F70 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DE9E21D7FF909003B1CEE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DEB991D7FFBB9003B1CEE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -4058,8 +4067,11 @@
 				F2FE138F1DDCED3900BF106E /* DBTasks.m */,
 				F2FE13901DDCED3900BF106E /* DBTasksStorage.h */,
 				F2FE13911DDCED3900BF106E /* DBTasksStorage.m */,
+				F25C36221DF10DAF0089E3BA /* DBTransportClientBase.h */,
+				F25C36251DF10DE40089E3BA /* DBTransportClientBase.m */,
 				F2FE13921DDCED3900BF106E /* DBTransportClient.h */,
 				F2FE13931DDCED3900BF106E /* DBTransportClient.m */,
+				F21DB9DE1DF0ED0D00865B11 /* DBSDKTransportClient.h */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -4111,6 +4123,7 @@
 				F2E1B5E41DF00D720077C01E /* DBFILESCommitInfoWithProperties.h in Headers */,
 				F2E1B6E81DF00D720077C01E /* DBFILESRestoreArg.h in Headers */,
 				F2E1B7941DF00D720077C01E /* DBPROPERTIESGetPropertyTemplateResult.h in Headers */,
+				F25C36231DF10DAF0089E3BA /* DBTransportClientBase.h in Headers */,
 				F2E1BBE41DF00D750077C01E /* DBTEAMTeamFolderMetadata.h in Headers */,
 				F2E1B8641DF00D730077C01E /* DBSHARINGJobStatus.h in Headers */,
 				F2E1BB2C1DF00D740077C01E /* DBTEAMMembersListResult.h in Headers */,
@@ -4557,6 +4570,7 @@
 				F2E1B7441DF00D720077C01E /* DBFILESUploadErrorWithProperties.h in Headers */,
 				F2E1B8D41DF00D730077C01E /* DBSHARINGMemberPermission.h in Headers */,
 				F2E1BB9C1DF00D740077C01E /* DBTEAMRevokeLinkedAppError.h in Headers */,
+				F21DB9DF1DF0ED0D00865B11 /* DBSDKTransportClient.h in Headers */,
 				F2E1B7401DF00D720077C01E /* DBFILESUploadError.h in Headers */,
 				F2E1B9C81DF00D730077C01E /* DBSHARINGVisibility.h in Headers */,
 				F2E1BC241DF00D750077C01E /* DBTEAMCOMMONGroupSummary.h in Headers */,
@@ -4600,6 +4614,7 @@
 				F2E1B5E51DF00D720077C01E /* DBFILESCommitInfoWithProperties.h in Headers */,
 				F2E1B6E91DF00D720077C01E /* DBFILESRestoreArg.h in Headers */,
 				F2E1B7951DF00D720077C01E /* DBPROPERTIESGetPropertyTemplateResult.h in Headers */,
+				F25C36241DF10DAF0089E3BA /* DBTransportClientBase.h in Headers */,
 				F2E1BBE51DF00D750077C01E /* DBTEAMTeamFolderMetadata.h in Headers */,
 				F2E1B8651DF00D730077C01E /* DBSHARINGJobStatus.h in Headers */,
 				F2E1BB2D1DF00D740077C01E /* DBTEAMMembersListResult.h in Headers */,
@@ -5046,6 +5061,7 @@
 				F2E1B7451DF00D720077C01E /* DBFILESUploadErrorWithProperties.h in Headers */,
 				F2E1B8D51DF00D730077C01E /* DBSHARINGMemberPermission.h in Headers */,
 				F2E1BB9D1DF00D740077C01E /* DBTEAMRevokeLinkedAppError.h in Headers */,
+				F21DB9E01DF0ED0D00865B11 /* DBSDKTransportClient.h in Headers */,
 				F2E1B7411DF00D720077C01E /* DBFILESUploadError.h in Headers */,
 				F2E1B9C91DF00D730077C01E /* DBSHARINGVisibility.h in Headers */,
 				F2E1BC251DF00D750077C01E /* DBTEAMCOMMONGroupSummary.h in Headers */,
@@ -5392,6 +5408,7 @@
 				F2E1B8161DF00D720077C01E /* DBSHARINGFolderLinkMetadata.m in Sources */,
 				F2E1BC9A1DF00D750077C01E /* DBAUTHRoutes.m in Sources */,
 				F2E1B6C21DF00D720077C01E /* DBFILESRelocationBatchArg.m in Sources */,
+				F25C36261DF10DE40089E3BA /* DBTransportClientBase.m in Sources */,
 				F2E1B63A1DF00D720077C01E /* DBFILESGetCopyReferenceError.m in Sources */,
 				F2E1BCBA1DF00D750077C01E /* DBTEAMRouteObjects.m in Sources */,
 				F2E1B9261DF00D730077C01E /* DBSHARINGRemoveMemberJobStatus.m in Sources */,
@@ -5873,6 +5890,7 @@
 				F2E1B8171DF00D720077C01E /* DBSHARINGFolderLinkMetadata.m in Sources */,
 				F2E1BC9B1DF00D750077C01E /* DBAUTHRoutes.m in Sources */,
 				F2E1B6C31DF00D720077C01E /* DBFILESRelocationBatchArg.m in Sources */,
+				F25C36271DF10DE40089E3BA /* DBTransportClientBase.m in Sources */,
 				F2E1B63B1DF00D720077C01E /* DBFILESGetCopyReferenceError.m in Sources */,
 				F2E1BCBB1DF00D750077C01E /* DBTEAMRouteObjects.m in Sources */,
 				F2E1B9271DF00D730077C01E /* DBSHARINGRemoveMemberJobStatus.m in Sources */,

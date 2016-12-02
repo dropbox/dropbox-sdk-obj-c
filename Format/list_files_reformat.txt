@@ -938,6 +938,7 @@
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBRequestErrors.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSDKReachability.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSDKReachability.m
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSDKTransportClient.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSessionData.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSessionData.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasks.h
@@ -946,6 +947,8 @@
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasksStorage.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClient.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClient.m
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientBase.h
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientBase.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/OAuth/DBOAuth.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/OAuth/DBOAuth.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/OAuth/DBOAuthResult.h

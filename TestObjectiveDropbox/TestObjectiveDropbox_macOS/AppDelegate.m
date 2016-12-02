@@ -24,9 +24,7 @@ static ViewController *viewController = nil;
   TestData *data = [TestData new];
   DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:nil
                                                                            selectUser:nil
-                                                                            baseHosts:nil
                                                                             userAgent:nil
-                                                                  backgroundSessionId:nil
                                                                         delegateQueue:nil
                                                                                appKey:data.fullDropboxAppKey
                                                                             appSecret:data.fullDropboxAppSecret];

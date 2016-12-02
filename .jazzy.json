@@ -524,6 +524,7 @@
         "DBRequestHttpError", 
         "DBRequestBadInputError", 
         "DBRequestAuthError", 
+        "DBRequestAccessError", 
         "DBRequestRateLimitError", 
         "DBRequestInternalServerError", 
         "DBRequestClientError", 
