@@ -11,11 +11,11 @@
 #import "DBAUTHTokenFromOAuth1Result.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 
 @implementation DBAUTHRoutes
 
-- (instancetype)init:(DBTransportClient *)client {
+- (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
   if (self) {
     _client = client;

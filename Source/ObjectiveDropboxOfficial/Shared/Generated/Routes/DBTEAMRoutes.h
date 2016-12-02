@@ -117,7 +117,8 @@
 @class DBTEAMTeamMemberProfile;
 @class DBTEAMUpdatePropertyTemplateResult;
 @class DBTEAMUserSelectorArg;
-@class DBTransportClient;
+
+@protocol DBTransportClient;
 
 ///
 /// Routes for the `Team` namespace
@@ -126,11 +127,11 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
 /// Initializes the `DBTEAMRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///
 /// Creates a new, empty group, with a requested name. Permission : Team member management

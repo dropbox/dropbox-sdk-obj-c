@@ -96,8 +96,9 @@
 @class DBSHARINGUpdateFolderPolicyError;
 @class DBSHARINGUserMembershipInfo;
 @class DBSHARINGVisibility;
-@class DBTransportClient;
 @class DBUSERSTeam;
+
+@protocol DBTransportClient;
 
 ///
 /// Routes for the `Sharing` namespace
@@ -106,11 +107,11 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
 /// Initializes the `DBSHARINGRoutes` namespace container object with a
 /// networking client.
-- (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///
 /// Adds specified members to a file.

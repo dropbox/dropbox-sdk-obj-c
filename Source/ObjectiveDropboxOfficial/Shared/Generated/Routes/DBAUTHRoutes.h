@@ -11,7 +11,8 @@
 @class DBAUTHTokenFromOAuth1Error;
 @class DBAUTHTokenFromOAuth1Result;
 @class DBNilObject;
-@class DBTransportClient;
+
+@protocol DBTransportClient;
 
 ///
 /// Routes for the `Auth` namespace
@@ -20,11 +21,11 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
 /// Initializes the `DBAUTHRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///
 /// Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.

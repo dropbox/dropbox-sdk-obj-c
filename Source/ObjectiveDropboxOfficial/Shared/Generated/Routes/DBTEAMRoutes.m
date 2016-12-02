@@ -164,11 +164,11 @@
 #import "DBTEAMUpdatePropertyTemplateResult.h"
 #import "DBTEAMUserSelectorArg.h"
 #import "DBTEAMUserSelectorError.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 
 @implementation DBTEAMRoutes
 
-- (instancetype)init:(DBTransportClient *)client {
+- (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
   if (self) {
     _client = client;

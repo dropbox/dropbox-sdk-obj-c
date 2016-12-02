@@ -14,7 +14,7 @@
 @class DBRpcTask;
 @class DBUploadTask;
 
-@protocol DBSDKTransportClient <NSObject>
+@protocol DBTransportClient <NSObject>
 
 #pragma mark - RPC-style request
 

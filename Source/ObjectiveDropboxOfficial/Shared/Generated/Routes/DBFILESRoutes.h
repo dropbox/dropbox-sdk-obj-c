@@ -86,7 +86,8 @@
 @class DBPROPERTIESPropertyFieldTemplate;
 @class DBPROPERTIESPropertyGroup;
 @class DBPROPERTIESPropertyTemplateError;
-@class DBTransportClient;
+
+@protocol DBTransportClient;
 
 ///
 /// Routes for the `Files` namespace
@@ -95,11 +96,11 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
 /// Initializes the `DBFILESRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///
 /// Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note:

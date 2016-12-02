@@ -117,11 +117,11 @@
 #import "DBPROPERTIESPropertyTemplateError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 
 @implementation DBFILESRoutes
 
-- (instancetype)init:(DBTransportClient *)client {
+- (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
   if (self) {
     _client = client;

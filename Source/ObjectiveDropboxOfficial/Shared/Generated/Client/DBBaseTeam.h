@@ -7,7 +7,8 @@
 #import <Foundation/Foundation.h>
 
 @class DBTEAMRoutes;
-@class DBTransportClient;
+
+@protocol DBTransportClient;
 
 ///
 /// Base client object that contains an instance field for each namespace, each
@@ -20,6 +21,6 @@
 @property (nonatomic, readonly) DBTEAMRoutes * _Nonnull teamRoutes;
 
 /// Initializes the `DBBaseTeam` object with a networking client.
-- (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client;
 
 @end

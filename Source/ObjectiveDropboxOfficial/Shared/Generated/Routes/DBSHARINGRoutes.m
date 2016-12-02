@@ -135,12 +135,12 @@
 #import "DBSHARINGUserMembershipInfo.h"
 #import "DBSHARINGVisibility.h"
 #import "DBStoneBase.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 #import "DBUSERSTeam.h"
 
 @implementation DBSHARINGRoutes
 
-- (instancetype)init:(DBTransportClient *)client {
+- (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
   if (self) {
     _client = client;

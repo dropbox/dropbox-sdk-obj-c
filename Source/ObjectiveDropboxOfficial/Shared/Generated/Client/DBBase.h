@@ -9,8 +9,9 @@
 @class DBAUTHRoutes;
 @class DBFILESRoutes;
 @class DBSHARINGRoutes;
-@class DBTransportClient;
 @class DBUSERSRoutes;
+
+@protocol DBTransportClient;
 
 ///
 /// Base client object that contains an instance field for each namespace, each
@@ -32,6 +33,6 @@
 @property (nonatomic, readonly) DBUSERSRoutes * _Nonnull usersRoutes;
 
 /// Initializes the `DBBase` object with a networking client.
-- (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client;
 
 @end

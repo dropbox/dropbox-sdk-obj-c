@@ -9,7 +9,6 @@
 #import "DBTasks.h"
 
 @class DBNilObject;
-@class DBTransportClient;
 @class DBUSERSAccountType;
 @class DBUSERSBasicAccount;
 @class DBUSERSFullAccount;
@@ -20,6 +19,8 @@
 @class DBUSERSSpaceAllocation;
 @class DBUSERSSpaceUsage;
 
+@protocol DBTransportClient;
+
 ///
 /// Routes for the `Users` namespace
 ///
@@ -27,11 +28,11 @@
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
-@property (nonatomic, readonly) DBTransportClient * _Nonnull client;
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
 /// Initializes the `DBUSERSRoutes` namespace container object with a networking
 /// client.
-- (nonnull instancetype)init:(DBTransportClient * _Nonnull)client;
+- (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///
 /// Get information about a user's account.

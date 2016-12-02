@@ -2,17 +2,14 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBAUTHAuthError.h"
-#import "DBAuthRateLimitError.h"
 #import "DBDelegate.h"
-#import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
 #import "DBTransportClient.h"
 
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
-@interface DBTransportClient (Private)
+@interface DBTransportClientBase ()
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
                            accessToken:(NSString *)accessToken

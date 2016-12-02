@@ -6,11 +6,11 @@
 
 #import "DBBaseTeam.h"
 #import "DBTEAMRoutes.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 
 @implementation DBBaseTeam
 
-- (instancetype)initWithTransportClient:(DBTransportClient *)client {
+- (instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client {
   self = [super init];
   if (self) {
     _teamRoutes = [[DBTEAMRoutes alloc] init:client];

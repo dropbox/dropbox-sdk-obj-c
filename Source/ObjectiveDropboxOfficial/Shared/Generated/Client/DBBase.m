@@ -8,12 +8,12 @@
 #import "DBBase.h"
 #import "DBFILESRoutes.h"
 #import "DBSHARINGRoutes.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 #import "DBUSERSRoutes.h"
 
 @implementation DBBase
 
-- (instancetype)initWithTransportClient:(DBTransportClient *)client {
+- (instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client {
   self = [super init];
   if (self) {
     _authRoutes = [[DBAUTHRoutes alloc] init:client];

@@ -6,7 +6,7 @@
 
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
-#import "DBTransportClient.h"
+#import "DBTransportClientProtocol.h"
 #import "DBUSERSAccount.h"
 #import "DBUSERSAccountType.h"
 #import "DBUSERSBasicAccount.h"
@@ -24,7 +24,7 @@
 
 @implementation DBUSERSRoutes
 
-- (instancetype)init:(DBTransportClient *)client {
+- (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
   if (self) {
     _client = client;
