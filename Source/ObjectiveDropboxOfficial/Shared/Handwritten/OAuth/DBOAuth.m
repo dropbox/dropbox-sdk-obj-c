@@ -150,7 +150,7 @@ if (browserAuth) {
   NSURLComponents *components = [[NSURLComponents alloc] init];
   components.scheme = @"https";
   components.host = _host;
-  components.path = @"/1/oauth2/authorize";
+  components.path = @"/oauth2/authorize";
 
   components.queryItems = @[
     [NSURLQueryItem queryItemWithName:@"response_type" value:@"token"],
