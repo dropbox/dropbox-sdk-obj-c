@@ -8,13 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBAUTHAuthError.h"
-#import "DBAuthRateLimitError.h"
-#import "DBDelegate.h"
-#import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
-#import "DBTransportClient.h"
 #import "DBTransportClientBase.h"
 
 static NSString const * _Nonnull const kVersion = @"2.0.2";

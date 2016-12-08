@@ -59,13 +59,13 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
 
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    sessionConfig.timeoutIntervalForRequest = 100.0;
+    sessionConfig.timeoutIntervalForRequest = 60.0;
 
     _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:_delegateQueue];
     NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     NSURLSessionConfiguration *backgroundSessionConfig =
         [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
-    backgroundSessionConfig.timeoutIntervalForRequest = 100.0;
+    backgroundSessionConfig.timeoutIntervalForResource = 60.0;
     _backgroundSession =
         [NSURLSession sessionWithConfiguration:backgroundSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
   }
