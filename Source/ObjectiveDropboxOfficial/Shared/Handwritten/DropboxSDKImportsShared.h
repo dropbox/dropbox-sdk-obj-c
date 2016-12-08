@@ -24,5 +24,7 @@
 #import "DBTasks.h"
 #import "DBTasksStorage.h"
 #import "DBTransportClient.h"
+#import "DBTransportClientBase.h"
+#import "DBTransportClientProtocol.h"
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
