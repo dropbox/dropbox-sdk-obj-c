@@ -13,10 +13,9 @@
 #import "DBAUTHRateLimitError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
-#import "DBTasks.h"
 #import "DBTransportClientBase.h"
 
-static NSString const * _Nonnull const kVersion = @"2.0.2";
+static NSString const * _Nonnull const kVersion = @"2.0.3";
 static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSDictionary<NSString *, NSString *> *baseHosts = nil;
 
