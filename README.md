@@ -339,7 +339,19 @@ To handle the redirection back into the Objective-C SDK once the authentication 
     }
     return NO;
 }
+```
 
+For iOS targets >= 9, use:
+
+```objective-c
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
+    ....
+    ....
+}
 ```
 
 ##### macOS
