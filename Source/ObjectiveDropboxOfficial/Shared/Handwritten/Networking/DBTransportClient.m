@@ -62,7 +62,6 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
     NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     NSURLSessionConfiguration *backgroundSessionConfig =
         [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
-    backgroundSessionConfig.timeoutIntervalForResource = 60.0;
     _backgroundSession =
         [NSURLSession sessionWithConfiguration:backgroundSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
   }
