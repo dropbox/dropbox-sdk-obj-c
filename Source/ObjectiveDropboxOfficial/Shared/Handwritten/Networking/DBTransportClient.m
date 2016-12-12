@@ -49,6 +49,32 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
                       delegateQueue:(NSOperationQueue *)delegateQueue
                              appKey:(NSString *)appKey
                           appSecret:(NSString *)appSecret {
+  return [self initWithAccessToken:accessToken
+                        selectUser:selectUser
+                         userAgent:userAgent
+                     delegateQueue:delegateQueue
+            forceForegroundSession:NO
+                            appKey:appKey
+                         appSecret:appSecret];
+}
+
+- (instancetype)initWithForceForegroundSession {
+  return [self initWithAccessToken:nil
+                        selectUser:nil
+                         userAgent:nil
+                     delegateQueue:nil
+            forceForegroundSession:YES
+                            appKey:nil
+                         appSecret:nil];
+}
+
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                         selectUser:(NSString *)selectUser
+                          userAgent:(NSString *)userAgent
+                      delegateQueue:(NSOperationQueue *)delegateQueue
+             forceForegroundSession:(BOOL)forceForegroundSession
+                             appKey:(NSString *)appKey
+                          appSecret:(NSString *)appSecret {
   self = [super init:selectUser userAgent:userAgent appKey:appKey appSecret:appSecret];
   if (self) {
     _accessToken = accessToken;
@@ -61,9 +87,13 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
     _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:_delegateQueue];
     NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     NSURLSessionConfiguration *backgroundSessionConfig =
-        [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
-    _backgroundSession =
+    [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
+    if (!forceForegroundSession) {
+      _backgroundSession =
         [NSURLSession sessionWithConfiguration:backgroundSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
+    } else {
+      _backgroundSession = _session;
+    }
   }
   return self;
 }

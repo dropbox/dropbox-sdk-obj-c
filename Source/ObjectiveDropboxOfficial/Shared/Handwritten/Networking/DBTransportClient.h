@@ -83,6 +83,8 @@
 ///
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken selectUser:(NSString * _Nullable)selectUser;
 
+- (nonnull instancetype)initWithForceForegroundSession;
+
 ///
 /// `DBTransportClient` full constructor.
 ///
@@ -102,6 +104,14 @@
                                  selectUser:(NSString * _Nullable)selectUser
                                   userAgent:(NSString * _Nullable)userAgent
                               delegateQueue:(NSOperationQueue * _Nullable)delegateQueue
+                                     appKey:(NSString * _Nullable)appKey
+                                  appSecret:(NSString * _Nullable)appSecret;
+
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
+                                 selectUser:(NSString * _Nullable)selectUser
+                                  userAgent:(NSString * _Nullable)userAgent
+                              delegateQueue:(NSOperationQueue * _Nullable)delegateQueue
+                     forceForegroundSession:(BOOL)forceForegroundSession
                                      appKey:(NSString * _Nullable)appKey
                                   appSecret:(NSString * _Nullable)appSecret;
 

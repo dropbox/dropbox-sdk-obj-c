@@ -314,7 +314,7 @@
     NSString *headerString = [DBTransportClientBase caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
     NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
-    if (!resultData) {
+    if (clientError || !resultData) {
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       DBRequestError *dbxError = [DBTransportClientBase dBRequestErrorWithErrorData:errorData
