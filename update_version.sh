@@ -25,6 +25,9 @@ else
     echo "Updating SDK text to version \"$1\""
 fi
 
+echo
+echo
+
 echo "Replacing podspec version number..."
 sed -i '' -E "s/s.version      = '$version_regex'/s.version      = '$1'/" $podspec
 cat $podspec | grep $1
