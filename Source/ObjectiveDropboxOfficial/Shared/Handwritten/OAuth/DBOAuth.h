@@ -81,7 +81,7 @@
 ///
 /// - returns nil if SDK cannot handle the redirect URL, otherwise returns an instance of `DBOAuthResult`.
 ///
-- (DBOAuthResult * _Nonnull)handleRedirectURL:(NSURL * _Nonnull)url;
+- (DBOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
 
 #pragma mark - Keychain methods
 

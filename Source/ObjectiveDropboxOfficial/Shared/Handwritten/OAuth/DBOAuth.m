@@ -42,6 +42,7 @@ static DBSDKReachability *internetReachableFoo;
 }
 
 - (instancetype)initWithAppKey:(NSString *)appKey host:(NSString *)host {
+  self = [super init];
   if (self) {
     _appKey = appKey;
     _redirectURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"db-%@://2/token", _appKey]];

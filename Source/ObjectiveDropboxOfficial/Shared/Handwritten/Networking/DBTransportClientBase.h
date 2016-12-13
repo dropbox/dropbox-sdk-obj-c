@@ -10,7 +10,7 @@
 @interface DBTransportClientBase : NSObject
 
 - (nonnull instancetype)init:(NSString * _Nullable)selectUser
-                   userAgent:(NSString * _Nonnull)userAgent
+                   userAgent:(NSString * _Nullable)userAgent
                       appKey:(NSString * _Nullable)appKey
                    appSecret:(NSString * _Nullable)appSecret;
 

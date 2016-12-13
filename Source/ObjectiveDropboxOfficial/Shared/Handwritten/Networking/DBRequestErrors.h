@@ -342,34 +342,34 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 /// for debugging issues with Dropbox's SDKs and API. Please include the
 /// value of this field when submitting technical support inquiries to
 /// Dropbox.
-@property (nonatomic, readonly, copy) NSString * _Nonnull requestId;
+@property (nonatomic, readonly, copy) NSString * _Nullable requestId;
 
 /// The HTTP response status code of the request.
-@property (nonatomic, readonly) NSNumber * _Nonnull statusCode;
+@property (nonatomic, readonly) NSNumber * _Nullable statusCode;
 
 /// A string representation of the error body received in the reponse.
 /// If for a route-specific error, this field will be the value of the
 /// "error_summary" key.
-@property (nonatomic, readonly, copy) NSString * _Nonnull errorContent;
+@property (nonatomic, readonly, copy) NSString * _Nullable errorContent;
 
 /// The structured object returned by the Dropbox API in the event of a 401 auth
 /// error.
-@property (nonatomic, readonly) DBAUTHAuthError * _Nonnull structuredAuthError;
+@property (nonatomic, readonly) DBAUTHAuthError * _Nullable structuredAuthError;
 
 /// The structured object returned by the Dropbox API in the event of a 403 access
 /// error.
-@property (nonatomic, readonly) DBAUTHAccessError * _Nonnull structuredAccessError;
+@property (nonatomic, readonly) DBAUTHAccessError * _Nullable structuredAccessError;
 
 /// The structured object returned by the Dropbox API in the event of a 429
 /// rate-limit error.
-@property (nonatomic, readonly) DBAUTHRateLimitError * _Nonnull structuredRateLimitError;
+@property (nonatomic, readonly) DBAUTHRateLimitError * _Nullable structuredRateLimitError;
 
 /// The number of seconds to wait before making any additional requests in the
 /// event of a rate-limit error.
-@property (nonatomic, readonly) NSNumber * _Nonnull backoff;
+@property (nonatomic, readonly) NSNumber * _Nullable backoff;
 
 /// The client-side `NSError` object returned from the failed response.
-@property (nonatomic, readonly) NSError * _Nonnull nsError;
+@property (nonatomic, readonly) NSError * _Nullable nsError;
 
 #pragma mark - Constructors
 

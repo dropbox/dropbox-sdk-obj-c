@@ -434,7 +434,6 @@ void MyLog(NSString *format, ...) {
   NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
   
   NSLog(@"Creating files in: %@", [workingDirectory path]);
-  NSURL *myUrl;
   // create a bunch of fake files
   for (int i = 0; i < 10; i++) {
     NSString *fileName = [NSString stringWithFormat:@"test_file_%d", i];
@@ -460,7 +459,6 @@ void MyLog(NSString *format, ...) {
     DBFILESCommitInfo *commitInfo =
       [[DBFILESCommitInfo alloc] initWithPath:[NSString stringWithFormat:@"%@/%@", _tester.testData.testFolderPath, fileName]];
     
-    myUrl = fileUrl;
     [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:fileUrl];
   }
   
