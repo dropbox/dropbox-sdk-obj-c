@@ -3,14 +3,14 @@
 ///
 
 #import "DBConstants.h"
-#import "DBTasks.h"
+#import "DBTasksImpl.h"
 #import "DBTasksStorage.h"
 
 @interface DBTasksStorage ()
 
-@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTask *> * _Nonnull uploadTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTask *> * _Nonnull downloadUrlTasks;
-@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTask *> * _Nonnull downloadDataTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBUploadTaskImpl *> * _Nonnull uploadTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadUrlTaskImpl *> * _Nonnull downloadUrlTasks;
+@property (nonatomic) NSMutableDictionary<NSString *, DBDownloadDataTaskImpl *> * _Nonnull downloadDataTasks;
 
 @property (nonatomic) BOOL cancel;
 
@@ -33,15 +33,15 @@
     _cancel = YES;
 
     for (NSString *key in _uploadTasks) {
-      DBUploadTask *task = _uploadTasks[key];
+      DBUploadTaskImpl *task = _uploadTasks[key];
       [task cancel];
     }
     for (NSString *key in _downloadUrlTasks) {
-      DBDownloadUrlTask *task = _downloadUrlTasks[key];
+      DBDownloadUrlTaskImpl *task = _downloadUrlTasks[key];
       [task cancel];
     }
     for (NSString *key in _downloadDataTasks) {
-      DBDownloadDataTask *task = _downloadDataTasks[key];
+      DBDownloadDataTaskImpl *task = _downloadDataTasks[key];
       [task cancel];
     }
 
@@ -51,7 +51,7 @@
   }
 }
 
-- (void)addUploadTask:(DBUploadTask *)task {
+- (void)addUploadTask:(DBUploadTaskImpl *)task {
   @synchronized(self) {
     if (!_cancel) {
       NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
@@ -63,7 +63,7 @@
   }
 }
 
-- (void)removeUploadTask:(DBUploadTask *)task {
+- (void)removeUploadTask:(DBUploadTaskImpl *)task {
   @synchronized(self) {
     NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
     NSString *key = [NSString stringWithFormat:@"%@/%lu", sessionId, (unsigned long)task.task.taskIdentifier];
@@ -71,7 +71,7 @@
   }
 }
 
-- (void)addDownloadUrlTask:(DBDownloadUrlTask *)task {
+- (void)addDownloadUrlTask:(DBDownloadUrlTaskImpl *)task {
   @synchronized(self) {
     if (!_cancel) {
       NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
@@ -83,7 +83,7 @@
   }
 }
 
-- (void)removeDownloadUrlTask:(DBDownloadUrlTask *)task {
+- (void)removeDownloadUrlTask:(DBDownloadUrlTaskImpl *)task {
   @synchronized(self) {
     NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
     NSString *key = [NSString stringWithFormat:@"%@/%lu", sessionId, (unsigned long)task.task.taskIdentifier];
@@ -91,7 +91,7 @@
   }
 }
 
-- (void)addDownloadDataTask:(DBDownloadDataTask *)task {
+- (void)addDownloadDataTask:(DBDownloadDataTaskImpl *)task {
   @synchronized(self) {
     if (!_cancel) {
       NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
@@ -103,7 +103,7 @@
   }
 }
 
-- (void)removeDownloadDataTask:(DBDownloadDataTask *)task {
+- (void)removeDownloadDataTask:(DBDownloadDataTaskImpl *)task {
   @synchronized(self) {
     NSString *sessionId = task.session.configuration.identifier ?: kForegroundId;
     NSString *key = [NSString stringWithFormat:@"%@/%lu", sessionId, (unsigned long)task.task.taskIdentifier];

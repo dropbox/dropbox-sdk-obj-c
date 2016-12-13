@@ -10,6 +10,7 @@
 #import "DBFILESRoutes.h"
 #import "DBFILESUploadSessionFinishBatchJobStatus.h"
 #import "DBHandlerTypes.h"
+@class DBBatchUploadTask;
 @class DBTasksStorage;
 @class DBTransportClient;
 

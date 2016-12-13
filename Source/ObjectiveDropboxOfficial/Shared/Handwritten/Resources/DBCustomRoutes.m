@@ -16,6 +16,7 @@
 #import "DBFILESUploadSessionStartResult.h"
 #import "DBHandlerTypes.h"
 #import "DBRequestErrors.h"
+#import "DBTasksImpl.h"
 #import "DBTasksStorage.h"
 
 // 10 MB file chunk size

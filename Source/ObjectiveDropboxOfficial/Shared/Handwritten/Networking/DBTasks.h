@@ -28,20 +28,33 @@
 ///
 @interface DBTask : NSObject {
 @protected
-  NSURLSession *_session;
-  DBDelegate *_delegate;
   DBRoute *_route;
 }
-
-/// The session that was used to make to the request.
-@property (nonatomic, readonly) NSURLSession * _Nonnull session;
-
-/// The delegate used manage handler code.
-@property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
-
 /// Information about the route to which the request
 /// was made.
 @property (nonatomic, readonly) DBRoute * _Nonnull route;
+
+- (nonnull instancetype)initWithRoute:(DBRoute * _Nonnull)route;
+
+///
+/// Cancels the current request.
+///
+- (void)cancel;
+
+///
+/// Suspends the current request.
+///
+- (void)suspend;
+
+///
+/// Resumes the current request.
+///
+- (void)resume;
+
+///
+/// Starts the current request.
+///
+- (void)start;
 
 @end
 
@@ -61,26 +74,6 @@
 ///
 @interface DBRpcTask <TResponse, TError> : DBTask
 
-/// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDataTask * _Nonnull task;
-
-///
-/// `DBRpcTask` full constructor.
-///
-/// @param task The `NSURLSessionDataTask` task that initialized the network request.
-/// @param session The `NSURLSession` used to make the network request.
-/// @param delegate The delegate that manages and executes response code.
-/// @param route The static `DBRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
-/// process.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithTask:(NSURLSessionDataTask * _Nonnull)task
-                             session:(NSURLSession * _Nonnull)session
-                            delegate:(DBDelegate * _Nonnull)delegate
-                               route:(DBRoute * _Nonnull)route;
-
 ///
 /// Installs a response handler for the current request.
 ///
@@ -96,7 +89,7 @@
 /// @return The current `DBRpcTask` instance.
 ///
 - (DBRpcTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                     DBRequestError * _Nullable))responseBlock;
+                                                                      DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -114,8 +107,8 @@
 /// @return The current `DBRpcTask` instance.
 ///
 - (DBRpcTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
-                                          response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                     DBRequestError * _Nullable))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                           DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -148,21 +141,6 @@
 ///
 - (DBRpcTask * _Nonnull)progress:(NSOperationQueue * _Nullable)queue progress:(DBProgressBlock _Nonnull)progressBlock;
 
-///
-/// Cancels the current request.
-///
-- (void)cancel;
-
-///
-/// Suspends the current request.
-///
-- (void)suspend;
-
-///
-/// Resumes the current request.
-///
-- (void)resume;
-
 @end
 
 #pragma mark - Upload-style network task
@@ -181,26 +159,6 @@
 ///
 @interface DBUploadTask <TResponse, TError> : DBTask
 
-/// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionUploadTask * _Nonnull task;
-
-///
-/// `DBUploadTask` full constructor.
-///
-/// @param task The `NSURLSessionDataTask` task that initialized the network request.
-/// @param session The `NSURLSession` used to make the network request.
-/// @param delegate The delegate that manages and executes response code.
-/// @param route The static `DBRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
-/// process.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task
-                             session:(NSURLSession * _Nonnull)session
-                            delegate:(DBDelegate * _Nonnull)delegate
-                               route:(DBRoute * _Nonnull)route;
-
 ///
 /// Installs a response handler for the current request.
 ///
@@ -216,7 +174,7 @@
 /// @return The current `DBUploadTask` instance.
 ///
 - (DBUploadTask<TResponse, TError> * _Nonnull)response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                        DBRequestError * _Nullable))responseBlock;
+                                                                         DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -234,8 +192,8 @@
 /// @return The current `DBUploadTask` instance.
 ///
 - (DBUploadTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
-                                             response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                        DBRequestError * _Nullable))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                           DBRequestError * _Nullable))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -268,21 +226,6 @@
 ///
 - (DBUploadTask * _Nonnull)progress:(NSOperationQueue * _Nullable)queue progress:(DBProgressBlock _Nonnull)progressBlock;
 
-///
-/// Cancels the current request.
-///
-- (void)cancel;
-
-///
-/// Suspends the current request.
-///
-- (void)suspend;
-
-///
-/// Resumes the current request.
-///
-- (void)resume;
-
 @end
 
 #pragma mark - Download-style network task (NSURL)
@@ -301,36 +244,6 @@
 /// Response / error deserialization is performed with this class.
 ///
 @interface DBDownloadUrlTask <TResponse, TError> : DBTask
-
-/// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
-
-/// Whether the outputted file should overwrite in the event of a name collision.
-@property (nonatomic, readonly) BOOL overwrite;
-
-/// Location to which output content should be downloaded.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull destination;
-
-///
-/// `DBDownloadUrlTask` full constructor.
-///
-/// @param task The `NSURLSessionDataTask` task that initialized the network request.
-/// @param session The `NSURLSession` used to make the network request.
-/// @param delegate The delegate that manages and executes response code.
-/// @param route The static `DBRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
-/// process.
-/// @param overwrite Whether the outputted file should overwrite in the event of a name collision.
-/// @param destination Location to which output content should be downloaded.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task
-                             session:(NSURLSession * _Nonnull)session
-                            delegate:(DBDelegate * _Nonnull)delegate
-                               route:(DBRoute * _Nonnull)route
-                           overwrite:(BOOL)overwrite
-                         destination:(NSURL * _Nonnull)destination;
 
 ///
 /// Installs a response handler for the current request.
@@ -351,7 +264,7 @@
 /// @return The current `DBDownloadUrlTask` instance.
 ///
 - (DBDownloadUrlTask<TResponse, TError> * _Nonnull)response:
-    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
+(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -370,9 +283,9 @@
 /// @return The current `DBDownloadUrlTask` instance.
 ///
 - (DBDownloadUrlTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
-                                                  response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                             DBRequestError * _Nullable,
-                                                                             NSURL * _Nonnull))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                           DBRequestError * _Nullable,
+                           NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -404,22 +317,7 @@
 /// @return The current `DBDownloadUrlTask` instance.
 ///
 - (DBDownloadUrlTask * _Nonnull)progress:(NSOperationQueue * _Nullable)queue
-                               progress:(DBProgressBlock _Nonnull)progressBlock;
-
-///
-/// Cancels the current request.
-///
-- (void)cancel;
-
-///
-/// Suspends the current request.
-///
-- (void)suspend;
-
-///
-/// Resumes the current request.
-///
-- (void)resume;
+progress:(DBProgressBlock _Nonnull)progressBlock;
 
 @end
 
@@ -440,26 +338,6 @@
 ///
 @interface DBDownloadDataTask <TResponse, TError> : DBTask
 
-/// The `NSURLSessionTask` that was used to make the request.
-@property (nonatomic, readonly) NSURLSessionDownloadTask * _Nonnull task;
-
-///
-/// DBDownloadDataTask full constructor.
-///
-/// @param task The `NSURLSessionDataTask` task that initialized the network request.
-/// @param session The `NSURLSession` used to make the network request.
-/// @param delegate The delegate that manages and executes response code.
-/// @param route The static `DBRoute` instance associated with the route to which the request
-/// was made. Contains information like route host, response type, etc.). This is used in the deserialization
-/// process.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithTask:(NSURLSessionDownloadTask * _Nonnull)task
-                             session:(NSURLSession * _Nonnull)session
-                            delegate:(DBDelegate * _Nonnull)delegate
-                               route:(DBRoute * _Nonnull)route;
-
 ///
 /// Installs a response handler for the current request.
 ///
@@ -476,7 +354,7 @@
 /// @return The current `DBDownloadDataTask` instance.
 ///
 - (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:
-    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSData * _Nonnull))responseBlock;
+(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSData * _Nonnull))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -495,9 +373,9 @@
 /// @return The current `DBDownloadDataTask` instance.
 ///
 - (DBDownloadDataTask<TResponse, TError> * _Nonnull)response:(NSOperationQueue * _Nullable)queue
-                                                   response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
-                                                                              DBRequestError * _Nullable,
-                                                                              NSData * _Nonnull))responseBlock;
+response:(void (^_Nonnull)(TResponse _Nullable, TError _Nullable,
+                           DBRequestError * _Nullable,
+                           NSData * _Nonnull))responseBlock;
 
 ///
 /// Installs a progress handler for the current request.
@@ -529,47 +407,6 @@
 /// @return The current `DBDownloadDataTask` instance.
 ///
 - (DBDownloadDataTask * _Nonnull)progress:(NSOperationQueue * _Nullable)queue
-                                progress:(DBProgressBlock _Nonnull)progressBlock;
-
-///
-/// Cancels the current request.
-///
-- (void)cancel;
-
-///
-/// Suspends the current request.
-///
-- (void)suspend;
-
-///
-/// Resumes the current request.
-///
-- (void)resume;
-
-@end
-
-///
-/// Dropbox task object for custom batch upload route.
-///
-/// The batch upload route is a convenience layer over several of our auto-generated API endpoints. For this reason,
-/// there is less flexibility and granularity of control. Progress and response handlers are passed directly into this
-/// route (rather than installed via this task object) and only `cancel` is available. This task is also specific to
-/// only one endpoint, rather than an entire class (style) of endpoints.
-///
-@interface DBBatchUploadTask : NSObject
-
-///
-/// DBBatchUploadTask full constructor.
-///
-/// @param uploadData relevant to the particular batch upload request.
-///
-/// @returns A DBBatchUploadTask instance.
-///
-- (nonnull instancetype)initWithUploadData:(DBBatchUploadData * _Nonnull)uploadData;
-
-///
-/// Cancels the current request.
-///
-- (void)cancel;
+progress:(DBProgressBlock _Nonnull)progressBlock;
 
 @end
