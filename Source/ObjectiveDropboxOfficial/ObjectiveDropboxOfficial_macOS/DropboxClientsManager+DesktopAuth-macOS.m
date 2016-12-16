@@ -5,7 +5,7 @@
 #import <AppKit/AppKit.h>
 
 #import "DBOAuth.h"
-#import "DBOAuthDesktop.h"
+#import "DBOAuthDesktop-macOS.h"
 #import "DBTransportClient.h"
 #import "DropboxClientsManager.h"
 

@@ -93,7 +93,7 @@
   [queryResult setObject:(id)kSecClassGenericPassword forKey:(NSString *)kSecClass];
   [queryResult setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId]
                   forKey:(NSString *)kSecAttrService];
-  [queryResult setObject:kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly forKey:kSecAttrAccessible];
+  [queryResult setObject:(id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly forKey:(NSString *)kSecAttrAccessible];
 
   return queryResult;
 }
@@ -109,13 +109,15 @@
     [query setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId]
                     forKey:(NSString *)kSecAttrService];
 
-    NSDictionary<NSString *, id> *attributesToUpdate = @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
+    NSDictionary<NSString *, id> *attributesToUpdate = @{(NSString *)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
     OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
     if (status == noErr) {
       [Defaults setObject:@"YES" forKey:@"KeychainAccessibilityMigration"];
-      return YES;
+    } else {
+      return NO;
     }
   }
+  return YES;
 }
 
 @end

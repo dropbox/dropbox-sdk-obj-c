@@ -4,5 +4,5 @@
 
 /// Platform-dependent imports
 
-#import "DBOAuthDesktop.h"
-#import "DropboxClientsManager+DesktopAuth.h"
+#import "DBOAuthDesktop-macOS.h"
+#import "DropboxClientsManager+DesktopAuth-macOS.h"

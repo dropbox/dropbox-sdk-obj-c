@@ -3,7 +3,7 @@
 ///
 
 #import "DBOAuth.h"
-#import "DBOAuthDesktop.h"
+#import "DBOAuthDesktop-macOS.h"
 
 @interface DBDesktopSharedApplication ()
 
