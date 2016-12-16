@@ -8,6 +8,9 @@
 
 @implementation DBSDKKeychain
 
++ (void)initialize {
+  [[self class] checkAccessibilityMigration];
+}
 + (BOOL)set:(NSString *)key value:(NSString *)value {
   NSData *encoding = [value dataUsingEncoding:NSUTF8StringEncoding];
   if (encoding) {
@@ -48,7 +51,7 @@
   return results;
 }
 
-+ (BOOL) delete:(NSString *)key {
++ (BOOL)delete:(NSString *)key {
   NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key}];
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
@@ -90,8 +93,29 @@
   [queryResult setObject:(id)kSecClassGenericPassword forKey:(NSString *)kSecClass];
   [queryResult setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId]
                   forKey:(NSString *)kSecAttrService];
+  [queryResult setObject:kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly forKey:kSecAttrAccessible];
 
   return queryResult;
+}
+
++ (BOOL)checkAccessibilityMigration {
+  NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+  BOOL MigrationOccured = [[Defaults stringForKey:@"KeychainAccessibilityMigration"] boolValue];
+
+  if (!MigrationOccured) {
+    NSMutableDictionary<NSString *, id> *query = [NSMutableDictionary new];
+    NSString *bundleId = [NSBundle mainBundle].bundleIdentifier ?: @"";
+    [query setObject:(id)kSecClassGenericPassword forKey:(NSString *)kSecClass];
+    [query setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId]
+                    forKey:(NSString *)kSecAttrService];
+
+    NSDictionary<NSString *, id> *attributesToUpdate = @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
+    OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
+    if (status == noErr) {
+      [Defaults setObject:@"YES" forKey:@"KeychainAccessibilityMigration"];
+      return YES;
+    }
+  }
 }
 
 @end
