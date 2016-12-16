@@ -1,4 +1,4 @@
-#import "DropboxSDKImportsMobile.h"
-#import "DropboxSDKImportsDesktop.h"
+#import "DropboxSDKImports-iOS.h"
+#import "DropboxSDKImports-macOS.h"
 #import "DBImportsGenerated.h"
 #import "DropboxSDKImportsShared.h"

@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBOAuthMobile.h"
+#import "DBOAuthMobile-iOS.h"
 #import "DBOAuthResult.h"
 #import "DropboxClientsManager.h"
 @class DBTransportClient;

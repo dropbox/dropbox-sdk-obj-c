@@ -5,7 +5,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DBOAuth.h"
-#import "DBOAuthMobile.h"
+#import "DBOAuthMobile-iOS.h"
 #import "DBTransportClient.h"
 #import "DropboxClientsManager.h"
 

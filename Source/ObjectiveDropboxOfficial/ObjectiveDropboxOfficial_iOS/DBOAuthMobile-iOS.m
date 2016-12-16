@@ -3,7 +3,7 @@
 ///
 
 #import "DBOAuth.h"
-#import "DBOAuthMobile.h"
+#import "DBOAuthMobile-iOS.h"
 
 #pragma mark - Shared application
 

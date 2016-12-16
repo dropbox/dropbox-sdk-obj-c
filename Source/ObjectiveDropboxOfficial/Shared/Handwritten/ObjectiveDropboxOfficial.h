@@ -25,7 +25,7 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 #import <ObjectiveDropboxOfficial/DropboxSDKImportsShared.h>
 
 #if TARGET_OS_IPHONE
-#import <ObjectiveDropboxOfficial/DropboxSDKImportsMobile.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImports-iOS.h>
 #else
-#import <ObjectiveDropboxOfficial/DropboxSDKImportsDesktop.h>
+#import <ObjectiveDropboxOfficial/DropboxSDKImports-macOS.h>
 #endif
