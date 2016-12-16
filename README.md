@@ -95,22 +95,29 @@ $ gem install cocoapods
 Then navigate to the directory that contains your project and create a new file called `Podfile`. You can do this either with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
 
 ```ruby
+platform :ios, '8.0'
+use_frameworks!
+
 target '<YOUR_PROJECT_NAME>' do
     pod 'ObjectiveDropboxOfficial'
 end
 ```
 
-Then, run the following command to install the dependency:
+Then, after ensuring that your project window in Xcode is **closed**, run the following command to install the dependency:
 
 ```bash
 $ pod install
 ```
 
-Once your project is integrated with the Dropbox Objective-C SDK, you can pull SDK updates using the following command:
+Once this command completes, open the newly create `.xcworkspace` file. Your project should now be successfully integrated with the the SDK.
+
+From here, you can pull SDK updates using the following command:
 
 ```bash
 $ pod update
 ```
+
+If Xcode errors with a message about `Undefined symbols for architecture...`, try adding `$(inherited)` to your project's **Other Linker Flags** in **Build Settings**, and ensure that the `-ObjC` flag is included in **Other Linker Flags**.
 
 ---
 

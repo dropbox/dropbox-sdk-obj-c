@@ -11,6 +11,7 @@
 + (void)initialize {
   [[self class] checkAccessibilityMigration];
 }
+
 + (BOOL)set:(NSString *)key value:(NSString *)value {
   NSData *encoding = [value dataUsingEncoding:NSUTF8StringEncoding];
   if (encoding) {
