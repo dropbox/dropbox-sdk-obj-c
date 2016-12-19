@@ -144,7 +144,10 @@ static const int timeoutInSec = 200;
 
   // immediately close session after first API call
   // because file can be uploaded in one request
-  __block DBUploadTask *task = [[self uploadSessionStartUrl:@(YES) inputUrl:fileUrl]
+  __block DBUploadTask *task = [[[self uploadSessionStartUrl:@(YES) inputUrl:fileUrl]
+      progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+      }]
       response:uploadData.queue
       response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result && !routeError) {
@@ -158,8 +161,6 @@ static const int timeoutInSec = 200;
 
           // store commit info for this file
           [uploadData.finishArgs addObject:finishArg];
-
-          [self executeProgressHandler:uploadData startBytes:0 endBytes:fileSize];
         } else {
           [uploadData.queue addOperationWithBlock:^{
             uploadData.responseBlock(nil, nil, error);
@@ -186,12 +187,13 @@ static const int timeoutInSec = 200;
   NSOperationQueue *chunkUploadContinueQueue = [NSOperationQueue new];
 
   // do not immediately close session
-  __block DBUploadTask *task = [[self uploadSessionStartStream:fileChunkInputStream]
+  __block DBUploadTask *task = [[[self uploadSessionStartStream:fileChunkInputStream]
+      progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+      }]
       response:chunkUploadContinueQueue
       response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result && !routeError) {
-          [self executeProgressHandler:uploadData startBytes:startBytes endBytes:endBytes];
-
           NSString *sessionId = result.sessionId;
           [self appendRemainingFileChunks:uploadData fileUrl:fileUrl fileSize:fileSize sessionId:sessionId];
 
@@ -253,8 +255,6 @@ static const int timeoutInSec = 200;
 
       // wait until each chunk upload completes before resuming loop iteration
       dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
-
-      [self executeProgressHandler:uploadData startBytes:startBytes endBytes:endBytes];
     }
     dispatch_group_leave(uploadData.uploadGroup);
   }];
@@ -268,8 +268,13 @@ static const int timeoutInSec = 200;
          chunkUploadFinished:(dispatch_semaphore_t *)chunkUploadFinished
                   retryCount:(int)retryCount {
   // close session on final append call
-  __block DBUploadTask *task = [
+  __block DBUploadTask *task = [[
       [self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
+      progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        if (retryCount == 0) {
+          [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+        }
+      }]
       response:chunkUploadResponseQueue
       response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
         if (error && !result) {
