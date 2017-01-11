@@ -959,6 +959,7 @@
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/OAuth/DBSDKKeychain.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/OAuth/DBSharedApplicationProtocol.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/ObjectiveDropboxOfficial.h
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/ObjectiveDropboxOfficialXplat.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Resources/DBChunkInputStream.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Resources/DBChunkInputStream.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Resources/DBConstants.h
