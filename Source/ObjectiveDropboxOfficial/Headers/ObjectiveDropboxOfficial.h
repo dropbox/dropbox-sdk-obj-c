@@ -9,7 +9,7 @@
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
-#else
+#elif TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
 #endif
 
@@ -26,6 +26,6 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 
 #if TARGET_OS_IPHONE
 #import <ObjectiveDropboxOfficial/DropboxSDKImports-iOS.h>
-#else
+#elif TARGET_OS_MAC
 #import <ObjectiveDropboxOfficial/DropboxSDKImports-macOS.h>
 #endif
