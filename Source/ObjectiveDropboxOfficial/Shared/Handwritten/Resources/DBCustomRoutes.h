@@ -59,7 +59,7 @@ typedef void (^DBBatchUploadResponseBlock)(DBFILESUploadSessionFinishBatchJobSta
 @property (atomic) BOOL cancel;
 
 /// The container object that stores all upload / download task objects for cancelling.
-@property (nonatomic) DBTasksStorage * _Nonnull taskStorage;
+@property (nonatomic, strong) DBTasksStorage * _Nonnull taskStorage;
 
 @end
 

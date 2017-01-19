@@ -101,39 +101,39 @@
 
 /// The unique identifier of the session. Data is stored by session (rather than
 /// task id, because task ids are not unique across sessions.
-@property (nonatomic) NSString * _Nonnull sessionId;
+@property (nonatomic, copy) NSString * _Nonnull sessionId;
 
 /// Map from task id to response body data (for RPC and Upload style requests).
-@property (nonatomic) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
 
 /// Map from task id to progress handler. Progress handlers are of the same type for
 /// all different styles of API requests.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
 
 /// Map from task id to RPC-style response handler.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBRpcResponseBlock> * _Nonnull rpcHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBRpcResponseBlock> * _Nonnull rpcHandlers;
 
 /// Map from task id to Upload-style response handler.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBUploadResponseBlock> * _Nonnull uploadHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBUploadResponseBlock> * _Nonnull uploadHandlers;
 
 /// Map from task id to Download-style response handler.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBDownloadResponseBlock> * _Nonnull downloadHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBDownloadResponseBlock> * _Nonnull downloadHandlers;
 
 /// Map from task id to completion data object. Stores completion data for all styles
 /// of API requests.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBCompletionData *> * _Nonnull completionData;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBCompletionData *> * _Nonnull completionData;
 
 /// Map from task id to progress data object. Stores progress data for all styles
 /// of API requests.
-@property (nonatomic) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
 
 /// Map from task id to progress handler queue. Stores handler queues for all styles
 /// of API requests.
-@property (nonatomic) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull progressHandlerQueues;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull progressHandlerQueues;
 
 /// Map from task id to response handler queue. Stores handler queues for all styles
 /// of API requests.
-@property (nonatomic) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull responseHandlerQueues;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull responseHandlerQueues;
 
 ///
 /// `DBSessionData` full constructor.

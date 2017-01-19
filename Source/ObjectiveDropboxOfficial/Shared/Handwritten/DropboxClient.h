@@ -18,7 +18,7 @@
 @interface DropboxClient : DBBase
 
 /// The transport client used to make all networking requests
-@property (nonatomic) DBTransportClient * _Nonnull transportClient;
+@property (nonatomic, strong) DBTransportClient * _Nonnull transportClient;
 
 ///
 /// Convenience constructor.

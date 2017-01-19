@@ -30,6 +30,10 @@
 + (NSString * _Nullable)caseInsensitiveLookup:(NSString * _Nullable)lookupKey
                                   dictionary:(NSDictionary<id, id> * _Nullable)dictionary;
 
++ (NSString * _Nonnull)sdkVersion;
+
++ (NSString * _Nonnull)defaultUserAgent;
+
 @property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
 @property (nonatomic, readonly, copy) NSString * _Nullable appKey;
 @property (nonatomic, readonly, copy) NSString * _Nullable appSecret;

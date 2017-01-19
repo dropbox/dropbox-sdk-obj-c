@@ -1926,6 +1926,8 @@
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
 		F29AFA7D1D7FF02B0043800A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7C1D7FF02B0043800A /* UIKit.framework */; };
 		F29AFA7F1D7FF0340043800A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7E1D7FF0340043800A /* WebKit.framework */; };
+		F2FB65101E317406004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2FB65111E31740C004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -4610,6 +4612,7 @@
 				F29787231E03692D00876A73 /* DBTEAMMembersListContinueArg.h in Headers */,
 				F297852F1E03692B00876A73 /* DBSHARINGResolvedVisibility.h in Headers */,
 				F29785FB1E03692B00876A73 /* DBTEAMDeviceSession.h in Headers */,
+				F2FB65111E31740C004605E4 /* ObjectiveDropboxOfficial.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5098,6 +5101,7 @@
 				F29787241E03692D00876A73 /* DBTEAMMembersListContinueArg.h in Headers */,
 				F29785301E03692B00876A73 /* DBSHARINGResolvedVisibility.h in Headers */,
 				F29785FC1E03692B00876A73 /* DBTEAMDeviceSession.h in Headers */,
+				F2FB65101E317406004605E4 /* ObjectiveDropboxOfficial.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

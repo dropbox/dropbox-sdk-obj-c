@@ -15,16 +15,16 @@
 #import "DBStoneBase.h"
 #import "DBTransportClientBase.h"
 
-static NSString const * _Nonnull const kVersion = @"2.0.6";
-static NSString const *const kDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
-NSDictionary<NSString *, NSString *> *baseHosts = nil;
-
 #pragma mark - Internal serialization helpers
+
+static NSString *kV2SDKVersion = @"2.0.6";
+static NSString *kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
+NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
 @implementation DBTransportClientBase
 
 + (void)initialize {
-  baseHosts = @{
+  kV2SDKBaseHosts = @{
     @"api" : @"https://api.dropbox.com/2",
     @"content" : @"https://api-content.dropbox.com/2",
     @"notify" : @"https://notify.dropboxapi.com/2",
@@ -37,7 +37,7 @@ NSDictionary<NSString *, NSString *> *baseHosts = nil;
            appSecret:(NSString *)appSecret {
   self = [super init];
   if (self) {
-    NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kDefaultUserAgentPrefix, kVersion];
+    NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
 
     _selectUser = selectUser;
     _userAgent = userAgent ? [[userAgent stringByAppendingString:@"/"] stringByAppendingString:defaultUserAgent]
@@ -115,7 +115,7 @@ NSDictionary<NSString *, NSString *> *baseHosts = nil;
 }
 
 + (NSURL *)urlWithRoute:(DBRoute *)route {
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", baseHosts[route.attrs[@"host"]], route.namespace_,
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", kV2SDKBaseHosts[route.attrs[@"host"]], route.namespace_,
                                                          route.name]];
 }
 
@@ -250,7 +250,7 @@ NSDictionary<NSString *, NSString *> *baseHosts = nil;
   if (!data) {
     return nil;
   }
-  id routeError;
+  id routeError = nil;
   NSDictionary *deserializedData = [self deserializeHttpData:data];
   if ([[self class] statusCodeIsRouteError:statusCode]) {
     routeError = [route.errorType deserialize:deserializedData[@"error"]];
@@ -298,6 +298,14 @@ NSDictionary<NSString *, NSString *> *baseHosts = nil;
     }
   }
   return nil;
+}
+
++ (NSString *)sdkVersion {
+    return kV2SDKVersion;
+}
+
++ (NSString *)defaultUserAgent {
+    return kV2SDKDefaultUserAgentPrefix;
 }
 
 @end

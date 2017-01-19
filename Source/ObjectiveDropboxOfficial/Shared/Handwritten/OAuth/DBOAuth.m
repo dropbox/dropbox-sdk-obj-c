@@ -10,7 +10,6 @@
 
 /// A shared instance of a `DBOAuthManager` for convenience
 static DBOAuthManager *sharedOAuthManager;
-static DBSDKReachability *internetReachableFoo;
 
 #pragma mark - OAuth manager base
 

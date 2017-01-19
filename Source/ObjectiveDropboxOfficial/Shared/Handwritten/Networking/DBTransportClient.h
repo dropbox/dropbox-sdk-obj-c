@@ -52,11 +52,11 @@
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload
 /// from `NSData` and `NSInputStream`, and download to `NSData`).
-@property (nonatomic) NSURLSession * _Nonnull session;
+@property (nonatomic, strong) NSURLSession * _Nonnull session;
 
 /// The background session used to make all background requests (Upload and Download style
 /// requests, except for upload from `NSData` and `NSInputStream`, and download to `NSData`).
-@property (nonatomic) NSURLSession * _Nonnull backgroundSession;
+@property (nonatomic, strong) NSURLSession * _Nonnull backgroundSession;
 
 /// The Dropbox OAuth2 access token used to make requests.
 @property (nonatomic, copy) NSString * _Nullable accessToken;
