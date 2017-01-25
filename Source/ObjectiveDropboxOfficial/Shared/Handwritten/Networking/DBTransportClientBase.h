@@ -9,7 +9,8 @@
 
 @interface DBTransportClientBase : NSObject
 
-- (nonnull instancetype)init:(NSString * _Nullable)selectUser
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
+                  selectUser:(NSString * _Nullable)selectUser
                    userAgent:(NSString * _Nullable)userAgent
                       appKey:(NSString * _Nullable)appKey
                    appSecret:(NSString * _Nullable)appSecret;
@@ -33,6 +34,9 @@
 + (NSString * _Nonnull)sdkVersion;
 
 + (NSString * _Nonnull)defaultUserAgent;
+
+/// The Dropbox OAuth2 access token used to make requests.
+@property (nonatomic, copy) NSString * _Nullable accessToken;
 
 @property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
 @property (nonatomic, readonly, copy) NSString * _Nullable appKey;

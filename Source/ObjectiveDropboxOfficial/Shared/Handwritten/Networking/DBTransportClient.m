@@ -75,9 +75,8 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
              forceForegroundSession:(BOOL)forceForegroundSession
                              appKey:(NSString *)appKey
                           appSecret:(NSString *)appSecret {
-  self = [super init:selectUser userAgent:userAgent appKey:appKey appSecret:appSecret];
+  self = [super initWithAccessToken:accessToken selectUser:selectUser userAgent:userAgent appKey:appKey appSecret:appSecret];
   if (self) {
-    _accessToken = accessToken;
     _delegateQueue = delegateQueue ?: [NSOperationQueue mainQueue];
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
 
@@ -103,7 +102,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 - (DBRpcTaskImpl *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   // RPC request submits argument in request body
   NSData *serializedArgData = [[self class] serializeArgData:route routeArg:arg];
@@ -122,7 +121,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputUrl:(NSURL *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -139,7 +138,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -155,7 +154,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
 
@@ -174,7 +173,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
                            destination:(NSURL *)destination {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -195,7 +194,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 - (DBDownloadDataTaskImpl *)requestDownload:(DBRoute *)route arg:(id<DBSerializable>)arg {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
-  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:_accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 

@@ -31,12 +31,14 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   };
 }
 
-- (instancetype)init:(NSString *)selectUser
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+          selectUser:(NSString *)selectUser
            userAgent:(NSString *)userAgent
               appKey:(NSString *)appKey
            appSecret:(NSString *)appSecret {
   self = [super init];
   if (self) {
+    _accessToken = accessToken;
     NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
 
     _selectUser = selectUser;

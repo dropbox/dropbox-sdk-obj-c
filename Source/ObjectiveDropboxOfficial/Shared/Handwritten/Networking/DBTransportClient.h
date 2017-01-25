@@ -58,9 +58,6 @@
 /// requests, except for upload from `NSData` and `NSInputStream`, and download to `NSData`).
 @property (nonatomic, strong) NSURLSession * _Nonnull backgroundSession;
 
-/// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy) NSString * _Nullable accessToken;
-
 #pragma mark - Constructors
 
 ///
