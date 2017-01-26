@@ -20,7 +20,7 @@
 }
 
 - (instancetype)initWithTransportClient:(DBTransportClient *)transportClient {
-    return [super initWithTransportClient:transportClient];
+  return [super initWithTransportClient:transportClient];
 }
 
 @end

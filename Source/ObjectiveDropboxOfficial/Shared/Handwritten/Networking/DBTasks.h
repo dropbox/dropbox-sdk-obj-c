@@ -243,7 +243,11 @@
 ///
 /// Response / error deserialization is performed with this class.
 ///
-@interface DBDownloadUrlTask <TResponse, TError> : DBTask
+@interface DBDownloadUrlTask <TResponse, TError> : DBTask {
+@protected
+  NSURL *_destination;
+  BOOL _overwrite;
+}
 
 ///
 /// Installs a response handler for the current request.
@@ -264,7 +268,7 @@
 /// @return The current `DBDownloadUrlTask` instance.
 ///
 - (DBDownloadUrlTask<TResponse, TError> * _Nonnull)response:
-(void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
+    (void (^_Nonnull)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSURL * _Nonnull))responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.

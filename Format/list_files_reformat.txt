@@ -942,6 +942,7 @@
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSDKReachability.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSessionData.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBSessionData.m
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasks+Protected.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasks.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasks.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasksImpl.h

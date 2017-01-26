@@ -11,6 +11,8 @@
 		F235B5241E29913600144F8B /* DropboxClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DropboxClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
 		F235B5311E29915400144F8B /* DropboxClientsManager+DesktopAuth-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B52B1E29915400144F8B /* DropboxClientsManager+DesktopAuth-macOS.m */; };
+		F258B31A1E3AB93600DD3A73 /* DBTasks+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F258B3191E3AB93600DD3A73 /* DBTasks+Protected.h */; };
+		F258B31B1E3AB93600DD3A73 /* DBTasks+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F258B3191E3AB93600DD3A73 /* DBTasks+Protected.h */; };
 		F27DEB9A1D7FFBB9003B1CEE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB991D7FFBB9003B1CEE /* AppKit.framework */; };
 		F27DEB9C1D7FFBBF003B1CEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27DEB9B1D7FFBBF003B1CEE /* Foundation.framework */; };
 		F297819B1E03692800876A73 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2977DCF1E03692600876A73 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1945,6 +1947,7 @@
 		F235B52D1E29915400144F8B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
 		F235B5361E29917E00144F8B /* ObjectiveDropboxOfficialLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficialLib.h; sourceTree = "<group>"; };
+		F258B3191E3AB93600DD3A73 /* DBTasks+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBTasks+Protected.h"; sourceTree = "<group>"; };
 		F26B75751D7F6AF700714F70 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DE9E21D7FF909003B1CEE /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27DEB991D7FFBB9003B1CEE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -4085,6 +4088,7 @@
 				F29781801E03692800876A73 /* DBSessionData.m */,
 				F29781811E03692800876A73 /* DBTasks.h */,
 				F29781821E03692800876A73 /* DBTasks.m */,
+				F258B3191E3AB93600DD3A73 /* DBTasks+Protected.h */,
 				F29781831E03692800876A73 /* DBTasksImpl.h */,
 				F29781841E03692800876A73 /* DBTasksImpl.m */,
 				F29781851E03692800876A73 /* DBTasksStorage.h */,
@@ -4538,6 +4542,7 @@
 				F29787FF1E03692E00876A73 /* DBTEAMTeamMemberInfo.h in Headers */,
 				F29783131E03692900876A73 /* DBFILESSearchError.h in Headers */,
 				F297868F1E03692C00876A73 /* DBTEAMGroupUpdateArgs.h in Headers */,
+				F258B31A1E3AB93600DD3A73 /* DBTasks+Protected.h in Headers */,
 				F29786131E03692C00876A73 /* DBTEAMGroupAccessType.h in Headers */,
 				F29781BB1E03692800876A73 /* DBAUTHInvalidAccountTypeError.h in Headers */,
 				F29785E71E03692B00876A73 /* DBTEAMDateRange.h in Headers */,
@@ -5027,6 +5032,7 @@
 				F29788001E03692E00876A73 /* DBTEAMTeamMemberInfo.h in Headers */,
 				F29783141E03692900876A73 /* DBFILESSearchError.h in Headers */,
 				F29786901E03692C00876A73 /* DBTEAMGroupUpdateArgs.h in Headers */,
+				F258B31B1E3AB93600DD3A73 /* DBTasks+Protected.h in Headers */,
 				F29786141E03692C00876A73 /* DBTEAMGroupAccessType.h in Headers */,
 				F29781BC1E03692800876A73 /* DBAUTHInvalidAccountTypeError.h in Headers */,
 				F29785E81E03692B00876A73 /* DBTEAMDateRange.h in Headers */,

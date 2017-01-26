@@ -86,12 +86,6 @@
 /// The delegate used manage handler code.
 @property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
-/// Whether the outputted file should overwrite in the event of a name collision.
-@property (nonatomic, readonly) BOOL overwrite;
-
-/// Location to which output content should be downloaded.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull destination;
-
 ///
 /// `DBDownloadUrlTask` full constructor.
 ///
