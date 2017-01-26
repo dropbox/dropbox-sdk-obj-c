@@ -10,10 +10,10 @@
 @interface DBTransportClientBase : NSObject
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
-                  selectUser:(NSString * _Nullable)selectUser
-                   userAgent:(NSString * _Nullable)userAgent
-                      appKey:(NSString * _Nullable)appKey
-                   appSecret:(NSString * _Nullable)appSecret;
+                                 selectUser:(NSString * _Nullable)selectUser
+                                  userAgent:(NSString * _Nullable)userAgent
+                                     appKey:(NSString * _Nullable)appKey
+                                  appSecret:(NSString * _Nullable)appSecret;
 
 + (DBRequestError * _Nullable)dBRequestErrorWithErrorData:(NSData * _Nullable)errorData
                                              clientError:(NSError * _Nullable)clientError

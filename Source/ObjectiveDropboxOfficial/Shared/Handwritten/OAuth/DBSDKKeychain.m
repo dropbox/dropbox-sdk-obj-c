@@ -52,7 +52,7 @@
   return results;
 }
 
-+ (BOOL)delete:(NSString *)key {
++ (BOOL) delete:(NSString *)key {
   NSMutableDictionary<NSString *, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key}];
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
@@ -107,10 +107,10 @@
     NSMutableDictionary<NSString *, id> *query = [NSMutableDictionary new];
     NSString *bundleId = [NSBundle mainBundle].bundleIdentifier ?: @"";
     [query setObject:(id)kSecClassGenericPassword forKey:(NSString *)kSecClass];
-    [query setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId]
-                    forKey:(NSString *)kSecAttrService];
+    [query setObject:(id)[NSString stringWithFormat:@"%@.dropbox.authv2", bundleId] forKey:(NSString *)kSecAttrService];
 
-    NSDictionary<NSString *, id> *attributesToUpdate = @{(NSString *)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
+    NSDictionary<NSString *, id> *attributesToUpdate =
+        @{(NSString *)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
     OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
     if (status == noErr) {
       [Defaults setObject:@"YES" forKey:@"KeychainAccessibilityMigration"];

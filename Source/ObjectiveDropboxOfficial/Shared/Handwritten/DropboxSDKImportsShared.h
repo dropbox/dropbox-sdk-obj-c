@@ -9,8 +9,8 @@
 /// Import handwritten shared files
 
 #import "DropboxClient.h"
-#import "DropboxTeamClient.h"
 #import "DropboxClientsManager.h"
+#import "DropboxTeamClient.h"
 
 /// Networking
 #import "DBDelegate.h"

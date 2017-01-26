@@ -32,10 +32,10 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken
-          selectUser:(NSString *)selectUser
-           userAgent:(NSString *)userAgent
-              appKey:(NSString *)appKey
-           appSecret:(NSString *)appSecret {
+                         selectUser:(NSString *)selectUser
+                          userAgent:(NSString *)userAgent
+                             appKey:(NSString *)appKey
+                          appSecret:(NSString *)appSecret {
   self = [super init];
   if (self) {
     _accessToken = accessToken;
@@ -117,8 +117,8 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 }
 
 + (NSURL *)urlWithRoute:(DBRoute *)route {
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", kV2SDKBaseHosts[route.attrs[@"host"]], route.namespace_,
-                                                         route.name]];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", kV2SDKBaseHosts[route.attrs[@"host"]],
+                                                         route.namespace_, route.name]];
 }
 
 + (NSData *)serializeArgData:(DBRoute *)route routeArg:(id<DBSerializable>)arg {
@@ -211,24 +211,31 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   } else {
     errorContent = errorData ? [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding] : nil;
   }
+  NSString *userMessage = deserializedData[@"user_message"];
 
   if (statusCode >= 500 && statusCode < 600) {
-    dbxError =
-        [[DBRequestError alloc] initAsInternalServerError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsInternalServerError:requestId
+                                                      statusCode:@(statusCode)
+                                                    errorContent:errorContent
+                                                     userMessage:userMessage];
   } else if (statusCode == 400) {
-    dbxError =
-        [[DBRequestError alloc] initAsBadInputError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsBadInputError:requestId
+                                                statusCode:@(statusCode)
+                                              errorContent:errorContent
+                                               userMessage:userMessage];
   } else if (statusCode == 401) {
     DBAUTHAuthError *authError = [DBAUTHAuthErrorSerializer deserialize:deserializedData[@"error"]];
     dbxError = [[DBRequestError alloc] initAsAuthError:requestId
                                             statusCode:@(statusCode)
                                           errorContent:errorContent
+                                           userMessage:userMessage
                                    structuredAuthError:authError];
   } else if (statusCode == 403) {
     DBAUTHAccessError *accessError = [DBAUTHAccessErrorSerializer deserialize:deserializedData[@"error"]];
     dbxError = [[DBRequestError alloc] initAsAccessError:requestId
                                               statusCode:@(statusCode)
                                             errorContent:errorContent
+                                             userMessage:userMessage
                                    structuredAccessError:accessError];
   } else if (statusCode == 429) {
     DBAUTHRateLimitError *rateLimitError = [DBAUTHRateLimitErrorSerializer deserialize:deserializedData[@"error"]];
@@ -237,12 +244,19 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     dbxError = [[DBRequestError alloc] initAsRateLimitError:requestId
                                                  statusCode:@(statusCode)
                                                errorContent:errorContent
+                                                userMessage:userMessage
                                    structuredRateLimitError:rateLimitError
                                                     backoff:@(retryAfterSeconds)];
   } else if ([[self class] statusCodeIsRouteError:statusCode]) {
-    dbxError = [[DBRequestError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsHttpError:requestId
+                                            statusCode:@(statusCode)
+                                          errorContent:errorContent
+                                           userMessage:userMessage];
   } else {
-    dbxError = [[DBRequestError alloc] initAsHttpError:requestId statusCode:@(statusCode) errorContent:errorContent];
+    dbxError = [[DBRequestError alloc] initAsHttpError:requestId
+                                            statusCode:@(statusCode)
+                                          errorContent:errorContent
+                                           userMessage:userMessage];
   }
 
   return dbxError;
@@ -303,11 +317,11 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 }
 
 + (NSString *)sdkVersion {
-    return kV2SDKVersion;
+  return kV2SDKVersion;
 }
 
 + (NSString *)defaultUserAgent {
-    return kV2SDKDefaultUserAgentPrefix;
+  return kV2SDKDefaultUserAgentPrefix;
 }
 
 @end
