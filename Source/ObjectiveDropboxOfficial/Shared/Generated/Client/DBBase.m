@@ -16,6 +16,7 @@
 - (instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client {
   self = [super init];
   if (self) {
+    _transportClient = client;
     _authRoutes = [[DBAUTHRoutes alloc] init:client];
     _filesRoutes = [[DBFILESRoutes alloc] init:client];
     _sharingRoutes = [[DBSHARINGRoutes alloc] init:client];

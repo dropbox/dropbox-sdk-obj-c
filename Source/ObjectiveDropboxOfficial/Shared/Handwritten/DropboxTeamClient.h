@@ -18,12 +18,6 @@
 ///
 @interface DropboxTeamClient : DBBaseTeam
 
-/// The transport client used to make all networking requests
-@property (nonatomic, strong) DBTransportClient * _Nonnull transportClient;
-
-/// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy) NSString * _Nullable accessToken;
-
 ///
 /// Convenience constructor.
 ///

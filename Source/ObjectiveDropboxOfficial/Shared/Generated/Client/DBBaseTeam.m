@@ -13,6 +13,7 @@
 - (instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client {
   self = [super init];
   if (self) {
+    _transportClient = client;
     _teamRoutes = [[DBTEAMRoutes alloc] init:client];
   }
   return self;

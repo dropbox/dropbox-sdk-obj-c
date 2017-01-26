@@ -9,25 +9,15 @@
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
   DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:accessToken];
-  self = [super initWithTransportClient:transportClient];
-  if (self != nil) {
-    _transportClient = transportClient;
-    _accessToken = accessToken;
-  }
-  return self;
+  return [super initWithTransportClient:transportClient];
 }
 
 - (instancetype)initWithTransportClient:(DBTransportClient *)transportClient {
-  self = [super initWithTransportClient:transportClient];
-  if (self != nil) {
-    _transportClient = transportClient;
-    _accessToken = transportClient.accessToken;
-  }
-  return self;
+    return [super initWithTransportClient:transportClient];
 }
 
 - (DropboxClient *)asMember:(NSString *)memberId {
-  return [[DropboxClient alloc] initWithAccessToken:self.accessToken selectUser:memberId];
+  return [[DropboxClient alloc] initWithAccessToken:self.transportClient.accessToken selectUser:memberId];
 }
 
 @end

@@ -17,6 +17,8 @@
 ///
 @interface DBBaseTeam : NSObject
 
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull transportClient;
+
 /// Routes within the `team` namespace.
 @property (nonatomic, readonly) DBTEAMRoutes * _Nonnull teamRoutes;
 

@@ -20,6 +20,8 @@
 ///
 @interface DBBase : NSObject
 
+@property (nonatomic, readonly) id<DBTransportClient> _Nonnull transportClient;
+
 /// Routes within the `auth` namespace.
 @property (nonatomic, readonly) DBAUTHRoutes * _Nonnull authRoutes;
 
