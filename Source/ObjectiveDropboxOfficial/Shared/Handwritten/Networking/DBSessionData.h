@@ -111,13 +111,13 @@
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
 
 /// Map from task id to RPC-style response handler.
-@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBRpcResponseBlock> * _Nonnull rpcHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBRpcResponseBlockStorage> * _Nonnull rpcHandlers;
 
 /// Map from task id to Upload-style response handler.
-@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBUploadResponseBlock> * _Nonnull uploadHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBUploadResponseBlockStorage> * _Nonnull uploadHandlers;
 
 /// Map from task id to Download-style response handler.
-@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBDownloadResponseBlock> * _Nonnull downloadHandlers;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBDownloadResponseBlockStorage> * _Nonnull downloadHandlers;
 
 /// Map from task id to completion data object. Stores completion data for all styles
 /// of API requests.

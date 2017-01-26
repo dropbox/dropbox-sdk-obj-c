@@ -77,7 +77,7 @@
 ///
 - (void)addRpcResponseHandler:(NSURLSessionTask * _Nonnull)task
                       session:(NSURLSession * _Nonnull)session
-              responseHandler:(DBRpcResponseBlock _Nonnull)handler
+              responseHandler:(DBRpcResponseBlockStorage _Nonnull)handler
          responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 #pragma mark - Add Upload-style handlers
@@ -95,7 +95,7 @@
 ///
 - (void)addUploadResponseHandler:(NSURLSessionTask * _Nonnull)task
                          session:(NSURLSession * _Nonnull)session
-                 responseHandler:(DBUploadResponseBlock _Nonnull)handler
+                 responseHandler:(DBUploadResponseBlockStorage _Nonnull)handler
             responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 #pragma mark - Add Download-style handlers
@@ -113,7 +113,7 @@
 ///
 - (void)addDownloadResponseHandler:(NSURLSessionTask * _Nonnull)task
                            session:(NSURLSession * _Nonnull)session
-                   responseHandler:(DBDownloadResponseBlock _Nonnull)handler
+                   responseHandler:(DBDownloadResponseBlockStorage _Nonnull)handler
               responseHandlerQueue:(NSOperationQueue * _Nullable)handlerQueue;
 
 @end

@@ -55,7 +55,7 @@
 
 @implementation DBRpcTask
 
-- (DBRpcTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBRpcTask *)response:(DBRpcResponseBlock)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -63,7 +63,7 @@
                userInfo:nil];
 }
 
-- (DBRpcTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBRpcTask *)response:(NSOperationQueue *)queue response:(DBRpcResponseBlock)responseBlock {
 #pragma unused(queue)
 #pragma unused(responseBlock)
   @throw [NSException
@@ -95,7 +95,7 @@
 
 @implementation DBUploadTask
 
-- (DBUploadTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBUploadTask *)response:(DBUploadResponseBlock)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -103,7 +103,7 @@
                userInfo:nil];
 }
 
-- (DBUploadTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBUploadTask *)response:(NSOperationQueue *)queue response:(DBUploadResponseBlock)responseBlock {
 #pragma unused(queue)
 #pragma unused(responseBlock)
   @throw [NSException
@@ -135,7 +135,7 @@
 
 @implementation DBDownloadUrlTask
 
-- (DBDownloadUrlTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
+- (DBDownloadUrlTask *)response:(DBDownloadUrlResponseBlock)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -143,8 +143,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue
-                       response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
+- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue response:(DBDownloadUrlResponseBlock)responseBlock {
 #pragma unused(queue)
 #pragma unused(responseBlock)
   @throw [NSException
@@ -176,7 +175,7 @@
 
 @implementation DBDownloadDataTask
 
-- (DBDownloadDataTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
+- (DBDownloadDataTask *)response:(DBDownloadDataResponseBlock)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -184,8 +183,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadDataTask *)response:(NSOperationQueue *)queue
-                        response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
+- (DBDownloadDataTask *)response:(NSOperationQueue *)queue response:(DBDownloadDataResponseBlock)responseBlock {
 #pragma unused(queue)
 #pragma unused(responseBlock)
   @throw [NSException

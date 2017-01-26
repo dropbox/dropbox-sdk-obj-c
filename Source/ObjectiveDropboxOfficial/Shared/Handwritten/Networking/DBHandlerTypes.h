@@ -4,10 +4,26 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBRequestErrors.h"
+
+// Storage blocks
+
+typedef void (^DBRpcResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+
+typedef void (^DBUploadResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+
+typedef void (^DBDownloadResponseBlockStorage)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+
+// Progress blocks
+
 typedef void (^DBProgressBlock)(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite);
 
-typedef void (^DBRpcResponseBlock)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+// Response blocks
 
-typedef void (^DBUploadResponseBlock)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef void (^DBRpcResponseBlock)(id _Nullable, id _Nullable, DBRequestError * _Nullable);
 
-typedef void (^DBDownloadResponseBlock)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef void (^DBUploadResponseBlock)(id _Nullable, id _Nullable, DBRequestError * _Nullable);
+
+typedef void (^DBDownloadUrlResponseBlock)(id _Nullable, id _Nullable, DBRequestError * _Nullable, NSURL * _Nullable);
+
+typedef void (^DBDownloadDataResponseBlock)(id _Nullable, id _Nullable, DBRequestError * _Nullable, NSData * _Nullable);

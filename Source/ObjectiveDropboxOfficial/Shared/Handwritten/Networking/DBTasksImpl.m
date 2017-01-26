@@ -26,12 +26,12 @@
   return self;
 }
 
-- (DBRpcTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBRpcTask *)response:(DBRpcResponseBlock)responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBRpcTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
-  DBRpcResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
+- (DBRpcTask *)response:(NSOperationQueue *)queue response:(DBRpcResponseBlock)responseBlock {
+  DBRpcResponseBlockStorage wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -91,12 +91,12 @@
   return self;
 }
 
-- (DBUploadTask *)response:(void (^)(id, id, DBRequestError *))responseBlock {
+- (DBUploadTask *)response:(DBUploadResponseBlock)responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBUploadTask *)response:(NSOperationQueue *)queue response:(void (^)(id, id, DBRequestError *))responseBlock {
-  DBUploadResponseBlock wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
+- (DBUploadTask *)response:(NSOperationQueue *)queue response:(DBUploadResponseBlock)responseBlock {
+  DBUploadResponseBlockStorage wrapperBlock = ^(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -160,13 +160,12 @@
   return self;
 }
 
-- (DBDownloadUrlTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
+- (DBDownloadUrlTask *)response:(DBDownloadUrlResponseBlock)responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue
-                       response:(void (^)(id, id, DBRequestError *dbxError, NSURL *))responseBlock {
-  DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
+- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue response:(DBDownloadUrlResponseBlock)responseBlock {
+  DBDownloadResponseBlockStorage wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
@@ -256,13 +255,12 @@
   return self;
 }
 
-- (DBDownloadDataTask *)response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
+- (DBDownloadDataTask *)response:(DBDownloadDataResponseBlock)responseBlock {
   return [self response:nil response:responseBlock];
 }
 
-- (DBDownloadDataTask *)response:(NSOperationQueue *)queue
-                        response:(void (^)(id, id, DBRequestError *dbxError, NSData *))responseBlock {
-  DBDownloadResponseBlock wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
+- (DBDownloadDataTask *)response:(NSOperationQueue *)queue response:(DBDownloadDataResponseBlock)responseBlock {
+  DBDownloadResponseBlockStorage wrapperBlock = ^(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;

@@ -49,7 +49,7 @@
   NSNumber *taskId = @(task.taskIdentifier);
 
   if (error && [task isKindOfClass:[NSURLSessionDownloadTask class]]) {
-    DBDownloadResponseBlock responseHandler = sessionData.downloadHandlers[taskId];
+    DBDownloadResponseBlockStorage responseHandler = sessionData.downloadHandlers[taskId];
     if (responseHandler) {
       NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
@@ -73,7 +73,7 @@
     }
   } else if ([task isKindOfClass:[NSURLSessionUploadTask class]]) {
     NSMutableData *responseData = sessionData.responsesData[taskId];
-    DBUploadResponseBlock responseHandler = sessionData.uploadHandlers[taskId];
+    DBUploadResponseBlockStorage responseHandler = sessionData.uploadHandlers[taskId];
     if (responseHandler) {
       NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
@@ -98,7 +98,7 @@
     }
   } else if ([task isKindOfClass:[NSURLSessionDataTask class]]) {
     NSMutableData *responseData = sessionData.responsesData[taskId];
-    DBRpcResponseBlock responseHandler = sessionData.rpcHandlers[taskId];
+    DBRpcResponseBlockStorage responseHandler = sessionData.rpcHandlers[taskId];
     if (responseHandler) {
       NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
@@ -182,7 +182,7 @@
   DBSessionData *sessionData = [self sessionDataWithSession:session];
   NSNumber *taskId = @(downloadTask.taskIdentifier);
 
-  DBDownloadResponseBlock responseHandler = sessionData.downloadHandlers[taskId];
+  DBDownloadResponseBlockStorage responseHandler = sessionData.downloadHandlers[taskId];
   if (responseHandler) {
     NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
     if (handlerQueue) {
@@ -255,7 +255,7 @@
 
 - (void)addRpcResponseHandler:(NSURLSessionTask *)task
                       session:(NSURLSession *)session
-              responseHandler:(DBRpcResponseBlock)handler
+              responseHandler:(DBRpcResponseBlockStorage)handler
          responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];
