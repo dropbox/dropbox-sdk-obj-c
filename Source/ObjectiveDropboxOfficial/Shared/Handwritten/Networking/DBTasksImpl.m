@@ -32,7 +32,7 @@
 }
 
 - (DBRpcTask *)response:(NSOperationQueue *)queue response:(DBRpcResponseBlock)responseBlock {
-  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
+  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
   [_delegate addRpcResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
   return self;
 }
@@ -70,7 +70,7 @@
 }
 
 - (DBUploadTask *)response:(NSOperationQueue *)queue response:(DBUploadResponseBlock)responseBlock {
-  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
+  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
   [_delegate addUploadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
@@ -113,7 +113,8 @@
 }
 
 - (DBDownloadUrlTask *)response:(NSOperationQueue *)queue response:(DBDownloadUrlResponseBlock)responseBlock {
-  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
+  DBDownloadResponseBlockStorage storageBlock =
+      [self storageBlockWithResponseBlock:responseBlock route:_route destination:_destination overwrite:_overwrite];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
@@ -152,7 +153,7 @@
 }
 
 - (DBDownloadDataTask *)response:(NSOperationQueue *)queue response:(DBDownloadDataResponseBlock)responseBlock {
-  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
+  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
