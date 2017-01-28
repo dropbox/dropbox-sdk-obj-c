@@ -52,4 +52,18 @@
 ///
 - (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)transportClient;
 
+///
+/// Update transport client access token.
+///
+/// @param accessToken The updated access token with which to make API calls.
+///
+- (void)updateAccessToken:(NSString * _Nonnull)accessToken;
+
+///
+/// Whether the client is authorized.
+///
+/// @return Whether the current client has a non-nil access token.
+///
+- (BOOL)isAuthorized;
+
 @end

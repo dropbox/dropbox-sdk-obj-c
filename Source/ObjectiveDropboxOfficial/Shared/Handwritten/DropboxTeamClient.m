@@ -5,19 +5,35 @@
 #import "DropboxClient.h"
 #import "DropboxTeamClient.h"
 
-@implementation DropboxTeamClient
+@implementation DropboxTeamClient {
+  DBTransportClient *_transportClient;
+}
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
   DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:accessToken];
-  return [super initWithTransportClient:transportClient];
+  if (self = [super initWithTransportClient:transportClient]) {
+    _transportClient = transportClient;
+  }
+  return self;
 }
 
 - (instancetype)initWithTransportClient:(DBTransportClient *)transportClient {
-  return [super initWithTransportClient:transportClient];
+  if (self = [super initWithTransportClient:transportClient]) {
+    _transportClient = transportClient;
+  }
+  return self;
 }
 
 - (DropboxClient *)asMember:(NSString *)memberId {
-  return [[DropboxClient alloc] initWithAccessToken:self.transportClient.accessToken selectUser:memberId];
+  return [[DropboxClient alloc] initWithAccessToken:_transportClient.accessToken selectUser:memberId];
+}
+
+- (void)updateAccessToken:(NSString *)accessToken {
+  _transportClient.accessToken = accessToken;
+}
+
+- (BOOL)isAuthorized {
+  return _transportClient.accessToken != nil;
 }
 
 @end

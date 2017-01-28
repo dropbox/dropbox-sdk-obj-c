@@ -86,8 +86,8 @@
 
 - (void)checkButtons {
   if ([DropboxClientsManager authorizedClient] != nil || [DropboxClientsManager authorizedTeamClient] != nil) {
-    if ([DropboxClientsManager authorizedClient].transportClient.accessToken != nil ||
-        [DropboxClientsManager authorizedTeamClient].transportClient.accessToken != nil) {
+    if ([[DropboxClientsManager authorizedClient] isAuthorized] ||
+        [[DropboxClientsManager authorizedTeamClient] isAuthorized]){
       [_linkButton setEnabled:NO];
       [_linkBrowserButton setEnabled:NO];
       [_unlinkButton setEnabled:YES];

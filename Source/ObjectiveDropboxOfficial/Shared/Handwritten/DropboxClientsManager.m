@@ -140,7 +140,7 @@ static DropboxTeamClient *authorizedTeamClient;
 
   if ([result isSuccess]) {
     if (authorizedClient) {
-      authorizedClient.transportClient.accessToken = result.accessToken.accessToken;
+      [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
       [DropboxClientsManager
           authorizedClient:[[DropboxClient alloc] initWithAccessToken:result.accessToken.accessToken]];
@@ -162,7 +162,7 @@ static DropboxTeamClient *authorizedTeamClient;
 
   if ([result isSuccess]) {
     if (authorizedTeamClient) {
-      authorizedTeamClient.transportClient.accessToken = result.accessToken.accessToken;
+      [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
       [DropboxClientsManager
           authorizedTeamClient:[[DropboxTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
