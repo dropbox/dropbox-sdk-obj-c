@@ -9,6 +9,8 @@
 
 @interface DBTransportClientBase : NSObject
 
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken userAgent:(NSString * _Nonnull)userAgent;
+
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
                                  selectUser:(NSString * _Nullable)selectUser
                                   userAgent:(NSString * _Nullable)userAgent
@@ -22,6 +24,7 @@
 + (id _Nullable)routeErrorWithRouteData:(DBRoute * _Nullable)route
                                    data:(NSData * _Nullable)data
                              statusCode:(int)statusCode;
+
 + (id _Nullable)routeResultWithRouteData:(DBRoute * _Nullable)route
                                     data:(NSData * _Nullable)data
                       serializationError:(NSError * _Nullable * _Nullable)serializationError;
@@ -39,7 +42,9 @@
 @property (nonatomic, copy) NSString * _Nullable accessToken;
 
 @property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
+
 @property (nonatomic, readonly, copy) NSString * _Nullable appKey;
+
 @property (nonatomic, readonly, copy) NSString * _Nullable appSecret;
 
 /// An additional authentication header field used when a team app with

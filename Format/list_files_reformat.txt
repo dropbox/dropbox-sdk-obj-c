@@ -519,6 +519,7 @@
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTasksStorage.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClient.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClient.m
+../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientBase+Protected.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientBase.h
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientBase.m
 ../Source//ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportClientProtocol.h

@@ -31,6 +31,10 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   };
 }
 
+- (instancetype)initWithAccessToken:(NSString *)accessToken userAgent:(NSString *)userAgent {
+  return [self initWithAccessToken:accessToken selectUser:nil userAgent:userAgent appKey:nil appSecret:nil];
+}
+
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                          selectUser:(NSString *)selectUser
                           userAgent:(NSString *)userAgent

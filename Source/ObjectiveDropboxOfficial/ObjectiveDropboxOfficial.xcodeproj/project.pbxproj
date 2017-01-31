@@ -160,6 +160,8 @@
 		F29AFA7B1D7FF0220043800A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7A1D7FF0220043800A /* Foundation.framework */; };
 		F29AFA7D1D7FF02B0043800A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7C1D7FF02B0043800A /* UIKit.framework */; };
 		F29AFA7F1D7FF0340043800A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29AFA7E1D7FF0340043800A /* WebKit.framework */; };
+		F2A7B10C1E406301007FD55C /* DBTransportClientBase+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A7B10B1E406301007FD55C /* DBTransportClientBase+Protected.h */; };
+		F2A7B10D1E406301007FD55C /* DBTransportClientBase+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A7B10B1E406301007FD55C /* DBTransportClientBase+Protected.h */; };
 		F2AF2CD81E3C156E00FE2EE1 /* DBAsyncObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AF2B021E3C156D00FE2EE1 /* DBAsyncObjects.m */; };
 		F2AF2CD91E3C156E00FE2EE1 /* DBAsyncObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AF2B021E3C156D00FE2EE1 /* DBAsyncObjects.m */; };
 		F2AF2CDA1E3C156E00FE2EE1 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AF2B041E3C156D00FE2EE1 /* DBASYNCLaunchEmptyResult.h */; };
@@ -1162,6 +1164,7 @@
 		F29AFA7A1D7FF0220043800A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F29AFA7C1D7FF02B0043800A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F29AFA7E1D7FF0340043800A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F2A7B10B1E406301007FD55C /* DBTransportClientBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBTransportClientBase+Protected.h"; sourceTree = "<group>"; };
 		F2AF2B021E3C156D00FE2EE1 /* DBAsyncObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAsyncObjects.m; sourceTree = "<group>"; };
 		F2AF2B041E3C156D00FE2EE1 /* DBASYNCLaunchEmptyResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBASYNCLaunchEmptyResult.h; sourceTree = "<group>"; };
 		F2AF2B051E3C156D00FE2EE1 /* DBASYNCLaunchResultBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBASYNCLaunchResultBase.h; sourceTree = "<group>"; };
@@ -1838,6 +1841,7 @@
 				F29781881E03692800876A73 /* DBTransportClient.m */,
 				F29781891E03692800876A73 /* DBTransportClientBase.h */,
 				F297818A1E03692800876A73 /* DBTransportClientBase.m */,
+				F2A7B10B1E406301007FD55C /* DBTransportClientBase+Protected.h */,
 				F297818B1E03692800876A73 /* DBTransportClientProtocol.h */,
 			);
 			path = Networking;
@@ -2802,6 +2806,7 @@
 				F2AF2F761E3C156F00FE2EE1 /* DBTEAMListMembersAppsResult.h in Headers */,
 				F2AF2E881E3C156E00FE2EE1 /* DBSHARINGMembershipInfo.h in Headers */,
 				F29788F91E03692F00876A73 /* DBOAuth.h in Headers */,
+				F2A7B10C1E406301007FD55C /* DBTransportClientBase+Protected.h in Headers */,
 				F29788B31E03692E00876A73 /* DBFILESRouteObjects.h in Headers */,
 				F2AF2FAC1E3C156F00FE2EE1 /* DBTEAMMembersListContinueError.h in Headers */,
 				F2AF2FCC1E3C156F00FE2EE1 /* DBTEAMMobileClientPlatform.h in Headers */,
@@ -3292,6 +3297,7 @@
 				F2AF2F771E3C156F00FE2EE1 /* DBTEAMListMembersAppsResult.h in Headers */,
 				F2AF2E891E3C156E00FE2EE1 /* DBSHARINGMembershipInfo.h in Headers */,
 				F29788FA1E03692F00876A73 /* DBOAuth.h in Headers */,
+				F2A7B10D1E406301007FD55C /* DBTransportClientBase+Protected.h in Headers */,
 				F29788B41E03692E00876A73 /* DBFILESRouteObjects.h in Headers */,
 				F2AF2FAD1E3C156F00FE2EE1 /* DBTEAMMembersListContinueError.h in Headers */,
 				F2AF2FCD1E3C156F00FE2EE1 /* DBTEAMMobileClientPlatform.h in Headers */,

@@ -6,23 +6,9 @@
 #import "DBStoneBase.h"
 #import "DBTasksImpl.h"
 #import "DBTransportClient.h"
+#import "DBTransportClientBase+Protected.h"
 
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
-
-@interface DBTransportClientBase ()
-
-- (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
-                           accessToken:(NSString *)accessToken
-                         serializedArg:(NSString *)serializedArg;
-+ (NSURLRequest *)requestWithHeaders:(NSDictionary *)httpHeaders
-                                 url:(NSURL *)url
-                             content:(NSData *)content
-                              stream:(NSInputStream *)stream;
-+ (NSURL *)urlWithRoute:(DBRoute *)route;
-+ (NSData *)serializeArgData:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
-+ (NSString *)serializeArgString:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
-
-@end
 
 @implementation DBTransportClient
 
