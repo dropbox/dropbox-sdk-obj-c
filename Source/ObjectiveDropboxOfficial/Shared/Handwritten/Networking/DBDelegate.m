@@ -290,7 +290,7 @@
 
 - (void)addUploadResponseHandler:(NSURLSessionTask *)task
                          session:(NSURLSession *)session
-                 responseHandler:(void (^)(NSData *, NSURLResponse *, NSError *))handler
+                 responseHandler:(DBUploadResponseBlockStorage)handler
             responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];
@@ -325,7 +325,7 @@
 
 - (void)addDownloadResponseHandler:(NSURLSessionTask *)task
                            session:(NSURLSession *)session
-                   responseHandler:(void (^)(NSURL *, NSURLResponse *, NSError *))handler
+                   responseHandler:(DBDownloadResponseBlockStorage)handler
               responseHandlerQueue:(NSOperationQueue *)handlerQueue {
   NSNumber *taskId = @(task.taskIdentifier);
   DBSessionData *sessionData = [self sessionDataWithSession:session];

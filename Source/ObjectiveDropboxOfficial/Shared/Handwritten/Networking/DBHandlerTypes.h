@@ -8,11 +8,11 @@
 
 // Storage blocks
 
-typedef void (^DBRpcResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef BOOL (^DBRpcResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
 
-typedef void (^DBUploadResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef BOOL (^DBUploadResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
 
-typedef void (^DBDownloadResponseBlockStorage)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
+typedef BOOL (^DBDownloadResponseBlockStorage)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
 
 // Progress blocks
 
