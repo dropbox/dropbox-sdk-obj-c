@@ -1,5 +1,5 @@
 //
-//  DBTransportClientBase+Protected.h
+//  DBTransportBaseClient+Protected.h
 //  ObjectiveDropboxOfficial
 //
 //  Created by Stephen Cobbe on 1/30/17.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBTransportClientBase.h"
+#import "DBTransportBaseClient.h"
 
-@interface DBTransportClientBase (Protected)
+@interface DBTransportBaseClient (Protected)
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
                            accessToken:(NSString *)accessToken

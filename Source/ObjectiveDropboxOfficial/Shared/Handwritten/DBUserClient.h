@@ -4,8 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBBase.h"
-#import "DBTransportClient.h"
+#import "DBTransportDefaultClient.h"
+#import "DBUserBaseClient.h"
 
 ///
 /// Dropbox User API Client.
@@ -15,7 +15,7 @@
 /// full list of the User API endpoints available, please visit:
 /// https://www.dropbox.com/developers/documentation/http/documentation.
 ///
-@interface DropboxClient : DBBase
+@interface DBUserClient : DBUserBaseClient
 
 ///
 /// Convenience constructor.
@@ -41,16 +41,16 @@
 /// Full constructor.
 ///
 /// @note Access token should be set in `transportClient` directly, rather than
-/// passed in to `DropboxClient` directly..
+/// passed in to `DBUserClient` directly..
 ///
-/// @param transportClient The instance of `DBTransportClient` used to make all
+/// @param transportClient The instance of `DBTransportDefaultClient` used to make all
 /// networking requests. This constructor offers the highlest-level of configurability.
-/// `DBTransportClient` offers a number of different constructors to customize networking
+/// `DBTransportDefaultClient` offers a number of different constructors to customize networking
 /// settings.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)transportClient;
+- (nonnull instancetype)initWithTransportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
 
 ///
 /// Update transport client access token.

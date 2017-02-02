@@ -7,7 +7,7 @@
 @class DBRequestError;
 @class DBRoute;
 
-@interface DBTransportClientBase : NSObject
+@interface DBTransportBaseClient : NSObject
 
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken userAgent:(NSString * _Nonnull)userAgent;
 

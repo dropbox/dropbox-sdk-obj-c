@@ -6,17 +6,17 @@
 
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthResult.h"
-#import "DropboxClientsManager.h"
-@class DBTransportClient;
+#import "DBClientsManager.h"
+@class DBTransportDefaultClient;
 @class UIApplication;
 @class UIViewController;
 
 ///
 /// Code with platform-specific (here, iOS) dependencies.
 ///
-/// Extends functionality of the `DropboxClientsManager` class.
+/// Extends functionality of the `DBClientsManager` class.
 ///
-@interface DropboxClientsManager (MobileAuth)
+@interface DBClientsManager (MobileAuth)
 
 ///
 /// Commences OAuth mobile flow from supplied view controller.
@@ -60,7 +60,7 @@
 ///
 /// This method should be used in the single Dropbox user case. If any stored OAuth
 /// tokens exist, one will arbitrarily be retrieved and used to authenticate API calls.
-/// You can customize configuration of network calls using the different `DBTransportClient`
+/// You can customize configuration of network calls using the different `DBTransportDefaultClient`
 /// constructors. This method should be called from the app delegate.
 ///
 /// @param appKey The app key of the third-party Dropbox API user app that will be
@@ -69,9 +69,9 @@
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous `DBTransportClient` constructors.
+/// of the numerous `DBTransportDefaultClient` constructors.
 ///
-+ (void)setupWithAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nullable)transportClient;
++ (void)setupWithAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
 
 ///
 /// Initializes a `DropboxClient` shared instance with the supplied app key, transport
@@ -89,13 +89,13 @@
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous `DBTransportClient` constructors.
+/// of the numerous `DBTransportDefaultClient` constructors.
 /// @param tokenUid The uid of the stored access token to use. This uid is returned
 /// after a successful progression through the OAuth flow (via `handleRedirectURL` or
 /// `handleRedirectURLTeam`) in the `DBAccessToken` field of the `DBOAuthResult` object.
 ///
 + (void)setupWithAppKeyMultiUser:(NSString * _Nonnull)appKey
-                 transportClient:(DBTransportClient * _Nullable)transportClient
+                 transportClient:(DBTransportDefaultClient * _Nullable)transportClient
                         tokenUid:(NSString * _Nullable)tokenUid;
 
 ///
@@ -119,7 +119,7 @@
 ///
 /// This method should be used in the single Dropbox user case. If any stored OAuth
 /// tokens exist, one will arbitrarily be retrieved and used to authenticate API calls.
-/// You can customize configuration of network calls using the different `DBTransportClient`
+/// You can customize configuration of network calls using the different `DBTransportDefaultClient`
 /// constructors. This method should be called from the app delegate.
 ///
 /// @param appKey The app key of the third-party Dropbox API team app that will be
@@ -128,9 +128,9 @@
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous `DBTransportClient` constructors.
+/// of the numerous `DBTransportDefaultClient` constructors.
 ///
-+ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportClient * _Nullable)transportClient;
++ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
 
 ///
 /// Initializes a `DropboxTeamClient` shared instance with the supplied app key, transport
@@ -148,13 +148,13 @@
 /// https://www.dropbox.com/developers/apps.
 /// @param transportClient The transport client used to make all API networking
 /// calls. The transport client settings can be manually configured using one
-/// of the numerous `DBTransportClient` constructors.
+/// of the numerous `DBTransportDefaultClient` constructors.
 /// @param tokenUid The uid of the stored access token to use. This uid is returned
 /// after a successful progression through the OAuth flow (via `handleRedirectURL` or
 /// `handleRedirectURLTeam`) in the `DBAccessToken` field of the `DBOAuthResult` object.
 ///
 + (void)setupWithTeamAppKeyMultiUser:(NSString * _Nonnull)appKey
-                     transportClient:(DBTransportClient * _Nullable)transportClient
+                     transportClient:(DBTransportDefaultClient * _Nullable)transportClient
                             tokenUid:(NSString * _Nullable)tokenUid;
 
 @end

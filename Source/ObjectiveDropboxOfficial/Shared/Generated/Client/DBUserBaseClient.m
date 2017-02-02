@@ -5,13 +5,13 @@
 ///
 
 #import "DBAUTHRoutes.h"
-#import "DBBase.h"
 #import "DBFILESRoutes.h"
 #import "DBSHARINGRoutes.h"
 #import "DBTransportClientProtocol.h"
 #import "DBUSERSRoutes.h"
+#import "DBUserBaseClient.h"
 
-@implementation DBBase
+@implementation DBUserBaseClient
 
 - (instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client {
   self = [super init];

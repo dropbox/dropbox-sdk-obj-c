@@ -13,7 +13,7 @@
 #import "DBAUTHRateLimitError.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
-#import "DBTransportClientBase.h"
+#import "DBTransportBaseClient.h"
 
 #pragma mark - Internal serialization helpers
 
@@ -21,7 +21,7 @@ static NSString *kV2SDKVersion = @"2.0.6";
 static NSString *kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
-@implementation DBTransportClientBase
+@implementation DBTransportBaseClient
 
 + (void)initialize {
   kV2SDKBaseHosts = @{

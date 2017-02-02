@@ -22,7 +22,7 @@
 
 @implementation ViewController
 - (IBAction)linkButtonPressed:(id)sender {
-  [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
+  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
@@ -31,7 +31,7 @@
 }
 
 - (IBAction)linkBrowserButtonPressed:(id)sender {
-  [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
+  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
@@ -46,7 +46,7 @@
 
   void (^unlink)() = ^{
     [TestFormat printAllTestsEnd];
-    [DropboxClientsManager unlinkClients];
+    [DBClientsManager unlinkClients];
     [self checkButtons];
     [self.view setNeedsDisplay];
   };
@@ -64,7 +64,7 @@
   }
 }
 - (IBAction)unlinkButtonPressed:(id)sender {
-  [DropboxClientsManager unlinkClients];
+  [DBClientsManager unlinkClients];
   [self checkButtons];
 }
 
@@ -84,9 +84,9 @@
 }
 
 - (void)checkButtons {
-  if ([DropboxClientsManager authorizedClient] != nil || [DropboxClientsManager authorizedTeamClient] != nil) {
-    if ([[DropboxClientsManager authorizedClient] isAuthorized] ||
-        [[DropboxClientsManager authorizedTeamClient] isAuthorized]) {
+  if ([DBClientsManager authorizedClient] != nil || [DBClientsManager authorizedTeamClient] != nil) {
+    if ([[DBClientsManager authorizedClient] isAuthorized] ||
+        [[DBClientsManager authorizedTeamClient] isAuthorized]) {
       _linkButton.hidden = YES;
       _linkBrowserButton.hidden = YES;
       _unlinkButton.hidden = NO;
@@ -120,7 +120,7 @@
 
  1.) Fill in personal data in `TestData`in TestData.m.
  2.) For each of the above apps, you will need to add a user-specific app key. For each test run, you
- will need to call `[DropboxClientsManager setupWithAppKey]` (or `[DropboxClientsManager setupWithTeamAppKey]`) and
+ will need to call `[DBClientsManager setupWithAppKey]` (or `[DBClientsManager setupWithTeamAppKey]`) and
  supply the
  appropriate app key value, in AppDelegate.m.
  3.) Depending on which app you are currently testing, you will need to toggle the `appPermission` variable

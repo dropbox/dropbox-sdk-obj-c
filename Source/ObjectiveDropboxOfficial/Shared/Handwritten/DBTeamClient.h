@@ -4,8 +4,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBBaseTeam.h"
-#import "DBTransportClient.h"
+#import "DBTeamBaseClient.h"
+#import "DBTransportDefaultClient.h"
+
+@class DBUserClient;
 
 ///
 /// Dropbox Business (Team) API Client.
@@ -16,7 +18,7 @@
 /// available, please visit:
 /// https://www.dropbox.com/developers/documentation/http/teams.
 ///
-@interface DropboxTeamClient : DBBaseTeam
+@interface DBTeamClient : DBTeamBaseClient
 
 ///
 /// Convenience constructor.
@@ -31,19 +33,19 @@
 /// Full constructor.
 ///
 /// @note Access token should be set in `transportClient` directly, rather than
-/// passed in to `DropboxTeamClient` directly.
+/// passed in to `DBTeamClient` directly.
 ///
-/// @param transportClient The instance of `DBTransportClient` used to make all
+/// @param transportClient The instance of `DBTransportDefaultClient` used to make all
 /// networking requests. This constructor offers the highlest-level of configurability.
-/// `DBTransportClient` offers a number of different constructors to customize networking
+/// `DBTransportDefaultClient` offers a number of different constructors to customize networking
 /// settings.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTransportClient:(DBTransportClient * _Nonnull)transportClient;
+- (nonnull instancetype)initWithTransportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
 
 ///
-/// Returns a `DropboxClient` instance that can be used to make API calls on behalf of the
+/// Returns a `DBUserClient` instance that can be used to make API calls on behalf of the
 /// designated team member.
 ///
 /// @note App must have "TeamMemberFileAccess" permissions to use
@@ -54,7 +56,7 @@
 ///
 /// @return An initialized instance.
 ///
-- (DropboxClient * _Nonnull)asMember:(NSString * _Nonnull)memberId;
+- (DBUserClient * _Nonnull)asMember:(NSString * _Nonnull)memberId;
 
 ///
 /// Update transport client access token.

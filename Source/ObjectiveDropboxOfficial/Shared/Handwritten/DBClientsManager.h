@@ -4,10 +4,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class DropboxClient;
-@class DropboxTeamClient;
+@class DBUserClient;
+@class DBTeamClient;
 @class DBOAuthResult;
-@class DBTransportClient;
+@class DBTransportDefaultClient;
 
 ///
 /// Dropbox Clients Manager.
@@ -17,37 +17,37 @@
 /// To use this class, see details in the tutorial at:
 /// https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/README.md.
 ///
-@interface DropboxClientsManager : NSObject
+@interface DBClientsManager : NSObject
 
 ///
-/// Accessor method for `DropboxClient` shared instance.
+/// Accessor method for `DBUserClient` shared instance.
 ///
-/// @return The `DropboxClient` shared instance.
+/// @return The `DBUserClient` shared instance.
 ///
-+ (DropboxClient * _Nullable)authorizedClient;
++ (DBUserClient * _Nullable)authorizedClient;
 
 ///
-/// Mutator method for `DropboxClient` shared instance.
+/// Mutator method for `DBUserClient` shared instance.
 ///
-/// @param client The updated reference to the `DropboxClient` shared
+/// @param client The updated reference to the `DBUserClient` shared
 /// instance.
 ///
-+ (void)authorizedClient:(DropboxClient * _Nullable)client;
++ (void)authorizedClient:(DBUserClient * _Nullable)client;
 
 ///
-/// Accessor method for `DropboxTeamClient` shared instance.
+/// Accessor method for `DBTeamClient` shared instance.
 ///
-/// @return The `DropboxTeamClient` shared instance.
+/// @return The `DBTeamClient` shared instance.
 ///
-+ (DropboxTeamClient * _Nullable)authorizedTeamClient;
++ (DBTeamClient * _Nullable)authorizedTeamClient;
 
 ///
-/// Mutator method for `DropboxTeamClient` shared instance.
+/// Mutator method for `DBTeamClient` shared instance.
 ///
-/// @param client The updated reference to the `DropboxTeamClient` shared
+/// @param client The updated reference to the `DBTeamClient` shared
 /// instance.
 ///
-+ (void)authorizedTeamClient:(DropboxTeamClient * _Nullable)client;
++ (void)authorizedTeamClient:(DBTeamClient * _Nullable)client;
 
 ///
 /// Reauthorizes shared user client instance with the access token retrieved from storage
@@ -86,7 +86,7 @@
 ///
 /// Handles launching the SDK with a redirect url from an external source.
 ///
-/// Used after OAuth authentication has completed. A `DropboxClient` instance
+/// Used after OAuth authentication has completed. A `DBUserClient` instance
 /// is initialized and the response access token is saved in the `DBKeychain`
 /// class.
 ///
@@ -99,7 +99,7 @@
 ///
 /// Handles launching the SDK with a redirect url from an external source.
 ///
-/// Used after OAuth authentication has completed. A `DropboxTeamClient` instance
+/// Used after OAuth authentication has completed. A `DBTeamClient` instance
 /// is initialized and the response access token is saved in the `DBKeychain`
 /// class.
 ///

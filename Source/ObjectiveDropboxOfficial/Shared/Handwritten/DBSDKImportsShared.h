@@ -8,9 +8,9 @@
 
 /// Import handwritten shared files
 
-#import "DropboxClient.h"
-#import "DropboxClientsManager.h"
-#import "DropboxTeamClient.h"
+#import "DBClientsManager.h"
+#import "DBTeamClient.h"
+#import "DBUserClient.h"
 
 /// Networking
 #import "DBDelegate.h"
@@ -18,11 +18,12 @@
 #import "DBRequestErrors.h"
 #import "DBSDKReachability.h"
 #import "DBSessionData.h"
+#import "DBTasks+Protected.h"
 #import "DBTasks.h"
 #import "DBTasksImpl.h"
 #import "DBTasksStorage.h"
-#import "DBTransportClient.h"
-#import "DBTransportClientBase.h"
+#import "DBTransportBaseClient.h"
+#import "DBTransportDefaultClient.h"
 #import "DBTransportClientProtocol.h"
 
 /// OAuth
@@ -33,8 +34,8 @@
 
 /// Resources
 #import "DBChunkInputStream.h"
-#import "DBConstants.h"
 #import "DBCustomRoutes.h"
+#import "DBSDKConstants.h"
 
 /// "Generated" Resources
 #import "DBSerializableProtocol.h"

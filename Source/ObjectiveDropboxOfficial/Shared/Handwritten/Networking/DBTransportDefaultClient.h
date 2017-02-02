@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DBSerializableProtocol.h"
-#import "DBTransportClientBase.h"
+#import "DBTransportBaseClient.h"
 #import "DBTransportClientProtocol.h"
 
 @class DBDelegate;
@@ -40,7 +40,7 @@
 ///
 /// Argument serialization is performed with this class.
 ///
-@interface DBTransportClient : DBTransportClientBase <DBTransportClient>
+@interface DBTransportDefaultClient : DBTransportBaseClient <DBTransportClient>
 
 /// The delegate used to manage execution of all response / error code. By default, this
 /// is an instance of `DBDelegate` with the main thread queue as delegate queue.

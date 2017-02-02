@@ -145,8 +145,7 @@ static const int timeoutInSec = 200;
   // immediately close session after first API call
   // because file can be uploaded in one request
   __block DBUploadTask *task = [[self uploadSessionStartUrl:@(YES) inputUrl:fileUrl]
-      response:uploadData.queue
-      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result && !routeError) {
           NSString *sessionId = result.sessionId;
           NSNumber *offset = @(fileSize);
@@ -168,7 +167,8 @@ static const int timeoutInSec = 200;
 
         [uploadData.taskStorage removeUploadTask:task];
         dispatch_group_leave(uploadData.uploadGroup);
-      }];
+      }
+                 queue:uploadData.queue];
 
   [uploadData.taskStorage addUploadTask:task];
 }
@@ -187,8 +187,7 @@ static const int timeoutInSec = 200;
 
   // do not immediately close session
   __block DBUploadTask *task = [[self uploadSessionStartStream:fileChunkInputStream]
-      response:chunkUploadContinueQueue
-      response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result && !routeError) {
           [self executeProgressHandler:uploadData startBytes:startBytes endBytes:endBytes];
 
@@ -210,7 +209,8 @@ static const int timeoutInSec = 200;
         }
 
         [uploadData.taskStorage removeUploadTask:task];
-      }];
+      }
+                 queue:chunkUploadContinueQueue];
 
   [uploadData.taskStorage addUploadTask:task];
 }
@@ -270,8 +270,7 @@ static const int timeoutInSec = 200;
   // close session on final append call
   __block DBUploadTask *task = [
       [self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
-      response:chunkUploadResponseQueue
-      response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
         if (error && !result) {
           if (!routeError) {
             if ([error isRateLimitError]) {
@@ -309,58 +308,60 @@ static const int timeoutInSec = 200;
         }
         [uploadData.taskStorage removeUploadTask:task];
         dispatch_semaphore_signal(*chunkUploadFinished);
-      }];
+      }
+                 queue:chunkUploadResponseQueue];
 
   [uploadData.taskStorage addUploadTask:task];
 }
 
 - (void)queryJobStatus:(DBBatchUploadData *)uploadData asyncJobId:(NSString *)asyncJobId retryCount:(int)retryCount {
-  [[self uploadSessionFinishBatchCheck:asyncJobId] response:^(DBFILESUploadSessionFinishBatchJobStatus *result,
-                                                              DBASYNCPollError *routeError, DBRequestError *error) {
-    if (result) {
-      if ([result isInProgress]) {
-        sleep(1);
-        if (retryCount <= timeoutInSec) {
-          [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount + 1];
-        } else {
-          NSString *errorMessage =
-              [NSString stringWithFormat:@"Result polling took > %d seconds. Timing out.", timeoutInSec];
-          NSMutableDictionary *userInfo = [NSMutableDictionary new];
-          userInfo[NSUnderlyingErrorKey] = errorMessage;
-          NSError *timeoutError =
-              [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorTimedOut userInfo:userInfo];
-          [uploadData.queue addOperationWithBlock:^{
-            uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:timeoutError]);
-          }];
-        }
-      } else if ([result isComplete]) {
-        [uploadData.queue addOperationWithBlock:^{
-          uploadData.responseBlock(result, nil, nil);
-        }];
-      }
-    } else if (error) {
-      if (!routeError) {
-        if ([error isRateLimitError]) {
-          DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
-          double backoffInSeconds = [rateLimitError.backoff doubleValue];
-          dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(backoffInSeconds * NSEC_PER_SEC));
+  [[self uploadSessionFinishBatchCheck:asyncJobId]
+      setResponseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError,
+                         DBRequestError *error) {
+        if (result) {
+          if ([result isInProgress]) {
+            sleep(1);
+            if (retryCount <= timeoutInSec) {
+              [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount + 1];
+            } else {
+              NSString *errorMessage =
+                  [NSString stringWithFormat:@"Result polling took > %d seconds. Timing out.", timeoutInSec];
+              NSMutableDictionary *userInfo = [NSMutableDictionary new];
+              userInfo[NSUnderlyingErrorKey] = errorMessage;
+              NSError *timeoutError =
+                  [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorTimedOut userInfo:userInfo];
+              [uploadData.queue addOperationWithBlock:^{
+                uploadData.responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:timeoutError]);
+              }];
+            }
+          } else if ([result isComplete]) {
+            [uploadData.queue addOperationWithBlock:^{
+              uploadData.responseBlock(result, nil, nil);
+            }];
+          }
+        } else if (error) {
+          if (!routeError) {
+            if ([error isRateLimitError]) {
+              DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
+              double backoffInSeconds = [rateLimitError.backoff doubleValue];
+              dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(backoffInSeconds * NSEC_PER_SEC));
 
-          // retry after backoff time
-          dispatch_after(delayTime, dispatch_get_main_queue(), ^(void) {
-            [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount];
-          });
-        } else {
-          [uploadData.queue addOperationWithBlock:^{
-            uploadData.responseBlock(nil, nil, error);
-          }];
+              // retry after backoff time
+              dispatch_after(delayTime, dispatch_get_main_queue(), ^(void) {
+                [self queryJobStatus:uploadData asyncJobId:asyncJobId retryCount:retryCount];
+              });
+            } else {
+              [uploadData.queue addOperationWithBlock:^{
+                uploadData.responseBlock(nil, nil, error);
+              }];
+            }
+          } else {
+            [uploadData.queue addOperationWithBlock:^{
+              uploadData.responseBlock(nil, routeError, error);
+            }];
+          }
         }
-      } else {
-        [uploadData.queue addOperationWithBlock:^{
-          uploadData.responseBlock(nil, routeError, error);
-        }];
-      }
-    }
-  }];
+      }];
 }
 
 - (void)batchFinishUponCompletion:(DBBatchUploadData *)uploadData {
@@ -368,7 +369,8 @@ static const int timeoutInSec = 200;
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     [[self uploadSessionFinishBatch:uploadData.finishArgs]
-        response:^(DBFILESUploadSessionFinishBatchLaunch *result, DBNilObject *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBFILESUploadSessionFinishBatchLaunch *result, DBNilObject *routeError,
+                           DBRequestError *error) {
           if (result && !routeError) {
             if ([result isAsyncJobId]) {
               sleep(1);

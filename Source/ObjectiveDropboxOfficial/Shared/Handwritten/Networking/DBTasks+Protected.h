@@ -10,15 +10,13 @@
 
 @interface DBRpcTask (Protected)
 
-- (DBRpcResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBRpcResponseBlock _Nonnull)responseBlock
-                                                              route:(DBRoute * _Nonnull)route;
+- (DBRpcResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBRpcResponseBlock _Nonnull)responseBlock;
 
 @end
 
 @interface DBUploadTask (Protected)
 
-- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBUploadResponseBlock _Nonnull)responseBlock
-                                                                 route:(DBRoute * _Nonnull)route;
+- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBUploadResponseBlock _Nonnull)responseBlock;
 
 @end
 
@@ -26,7 +24,6 @@
 
 - (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
                                                (DBDownloadUrlResponseBlock _Nonnull)responseBlock
-                                                                   route:(DBRoute * _Nonnull)route
                                                              destination:(NSURL * _Nonnull)destination
                                                                overwrite:(BOOL)overwrite;
 
@@ -35,7 +32,6 @@
 @interface DBDownloadDataTask (Protected)
 
 - (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
-                                               (DBDownloadDataResponseBlock _Nonnull)responseBlock
-                                                                   route:(DBRoute * _Nonnull)route;
+                                               (DBDownloadDataResponseBlock _Nonnull)responseBlock;
 
 @end

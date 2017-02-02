@@ -2,16 +2,16 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBBase.h"
-#import "DBTransportClient.h"
-#import "DropboxClient.h"
+#import "DBTransportDefaultClient.h"
+#import "DBUserBaseClient.h"
+#import "DBUserClient.h"
 
-@implementation DropboxClient {
-  DBTransportClient *_transportClient;
+@implementation DBUserClient {
+  DBTransportDefaultClient *_transportClient;
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
-  DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:accessToken];
+  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken];
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
@@ -19,15 +19,15 @@
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser {
-  DBTransportClient *transportClient =
-      [[DBTransportClient alloc] initWithAccessToken:accessToken selectUser:selectUser];
+  DBTransportDefaultClient *transportClient =
+      [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken selectUser:selectUser];
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
   return self;
 }
 
-- (instancetype)initWithTransportClient:(DBTransportClient *)transportClient {
+- (instancetype)initWithTransportClient:(DBTransportDefaultClient *)transportClient {
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }

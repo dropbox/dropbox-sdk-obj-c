@@ -4,10 +4,10 @@
 
 #import "TargetConditionals.h"
 
-#import "DropboxSDKImportsShared.h"
+#import "DBSDKImportsShared.h"
 
 #if TARGET_OS_IPHONE
-#import "DropboxSDKImports-iOS.h"
+#import "DBSDKImports-iOS.h"
 #elif TARGET_OS_MAC
-#import "DropboxSDKImports-macOS.h"
+#import "DBSDKImports-macOS.h"
 #endif

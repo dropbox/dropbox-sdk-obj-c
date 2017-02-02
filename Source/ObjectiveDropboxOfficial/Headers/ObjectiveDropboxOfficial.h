@@ -22,10 +22,10 @@ FOUNDATION_EXPORT const unsigned char ObjectiveDropboxOfficialVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import
 // <ObjectiveDropboxOfficial/PublicHeader.h>
 
-#import <ObjectiveDropboxOfficial/DropboxSDKImportsShared.h>
+#import <ObjectiveDropboxOfficial/DBSDKImportsShared.h>
 
 #if TARGET_OS_IPHONE
-#import <ObjectiveDropboxOfficial/DropboxSDKImports-iOS.h>
+#import <ObjectiveDropboxOfficial/DBSDKImports-iOS.h>
 #elif TARGET_OS_MAC
-#import <ObjectiveDropboxOfficial/DropboxSDKImports-macOS.h>
+#import <ObjectiveDropboxOfficial/DBSDKImports-macOS.h>
 #endif

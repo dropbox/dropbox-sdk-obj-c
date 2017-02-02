@@ -8,7 +8,7 @@
 #import "DBStoneBase.h"
 #import "DBTasks+Protected.h"
 #import "DBTasksImpl.h"
-#import "DBTransportClientBase.h"
+#import "DBTransportBaseClient.h"
 
 #pragma mark - RPC-style network task
 
@@ -27,21 +27,21 @@
   return self;
 }
 
-- (DBRpcTask *)response:(DBRpcResponseBlock)responseBlock {
-  return [self response:nil response:responseBlock];
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock {
+  return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBRpcTask *)response:(NSOperationQueue *)queue response:(DBRpcResponseBlock)responseBlock {
-  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addRpcResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
   return self;
 }
 
-- (DBRpcTask *)progress:(DBProgressBlock)progressBlock {
-  return [self progress:nil progress:progressBlock];
+- (DBRpcTask *)setProgressBlock:(DBProgressBlock)progressBlock {
+  return [self setProgressBlock:progressBlock queue:nil];
 }
 
-- (DBRpcTask *)progress:(NSOperationQueue *)queue progress:(DBProgressBlock)progressBlock {
+- (DBRpcTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
   [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }
@@ -65,22 +65,22 @@
   return self;
 }
 
-- (DBUploadTask *)response:(DBUploadResponseBlock)responseBlock {
-  return [self response:nil response:responseBlock];
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock {
+  return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBUploadTask *)response:(NSOperationQueue *)queue response:(DBUploadResponseBlock)responseBlock {
-  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addUploadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
 }
 
-- (DBUploadTask *)progress:(DBProgressBlock)progressBlock {
-  return [self progress:nil progress:progressBlock];
+- (DBUploadTask *)setProgressBlock:(DBProgressBlock)progressBlock {
+  return [self setProgressBlock:progressBlock queue:nil];
 }
 
-- (DBUploadTask *)progress:(NSOperationQueue *)queue progress:(DBProgressBlock)progressBlock {
+- (DBUploadTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
   [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }
@@ -108,23 +108,23 @@
   return self;
 }
 
-- (DBDownloadUrlTask *)response:(DBDownloadUrlResponseBlock)responseBlock {
-  return [self response:nil response:responseBlock];
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock {
+  return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBDownloadUrlTask *)response:(NSOperationQueue *)queue response:(DBDownloadUrlResponseBlock)responseBlock {
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
   DBDownloadResponseBlockStorage storageBlock =
-      [self storageBlockWithResponseBlock:responseBlock route:_route destination:_destination overwrite:_overwrite];
+      [self storageBlockWithResponseBlock:responseBlock destination:_destination overwrite:_overwrite];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
 }
 
-- (DBDownloadUrlTask *)progress:(DBProgressBlock)progressBlock {
-  return [self progress:nil progress:progressBlock];
+- (DBDownloadUrlTask *)setProgressBlock:(DBProgressBlock)progressBlock {
+  return [self setProgressBlock:progressBlock queue:nil];
 }
 
-- (DBDownloadUrlTask *)progress:(NSOperationQueue *)queue progress:(DBProgressBlock)progressBlock {
+- (DBDownloadUrlTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
   [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }
@@ -148,22 +148,22 @@
   return self;
 }
 
-- (DBDownloadDataTask *)response:(DBDownloadDataResponseBlock)responseBlock {
-  return [self response:nil response:responseBlock];
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock {
+  return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBDownloadDataTask *)response:(NSOperationQueue *)queue response:(DBDownloadDataResponseBlock)responseBlock {
-  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock route:_route];
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
 }
 
-- (DBDownloadDataTask *)progress:(DBProgressBlock)progressBlock {
-  return [self progress:nil progress:progressBlock];
+- (DBDownloadDataTask *)setProgressBlock:(DBProgressBlock)progressBlock {
+  return [self setProgressBlock:progressBlock queue:nil];
 }
 
-- (DBDownloadDataTask *)progress:(NSOperationQueue *)queue progress:(DBProgressBlock)progressBlock {
+- (DBDownloadDataTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
   [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }

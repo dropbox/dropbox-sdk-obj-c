@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   TestData *data = [TestData new];
-  DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:nil
+  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:nil
                                                                            selectUser:nil
                                                                             userAgent:nil
                                                                         delegateQueue:nil
@@ -28,13 +28,13 @@
                                                                             appSecret:data.fullDropboxAppSecret];
   switch (appPermission) {
   case FullDropbox:
-      [DropboxClientsManager setupWithAppKey:data.fullDropboxAppKey transportClient:transportClient];
+      [DBClientsManager setupWithAppKey:data.fullDropboxAppKey transportClient:transportClient];
       break;
   case TeamMemberFileAccess:
-      [DropboxClientsManager setupWithTeamAppKey:data.teamMemberFileAccessAppKey transportClient:transportClient];
+      [DBClientsManager setupWithTeamAppKey:data.teamMemberFileAccessAppKey transportClient:transportClient];
       break;
   case TeamMemberManagement:
-      [DropboxClientsManager setupWithTeamAppKey:data.teamMemberManagementAppKey transportClient:transportClient];
+      [DBClientsManager setupWithTeamAppKey:data.teamMemberManagementAppKey transportClient:transportClient];
       break;
   }
   return YES;
@@ -44,7 +44,7 @@
 
   switch (appPermission) {
   case FullDropbox: {
-    DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
+    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
     if (authResult != nil) {
       if ([authResult isSuccess]) {
         NSLog(@"Success! User is logged into Dropbox.");
@@ -57,7 +57,7 @@
     break;
   }
   case TeamMemberFileAccess: {
-    DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+    DBOAuthResult *authResult = [DBClientsManager handleRedirectURLTeam:url];
     if (authResult != nil) {
       if ([authResult isSuccess]) {
         NSLog(@"Success! User is logged into Dropbox.");
@@ -70,7 +70,7 @@
     break;
   }
   case TeamMemberManagement: {
-    DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURLTeam:url];
+    DBOAuthResult *authResult = [DBClientsManager handleRedirectURLTeam:url];
     if (authResult != nil) {
       if ([authResult isSuccess]) {
         NSLog(@"Success! User is logged into Dropbox.");

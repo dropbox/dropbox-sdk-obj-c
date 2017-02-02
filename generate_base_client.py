@@ -99,14 +99,14 @@ def main():
         print('Generating Obj-C user and team clients')
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-b', 'team', '--', '-m', 'DBBase', '-c', 'DBBase',
+         specs + ['-b', 'team', '--', '-m', 'DBUserBaseClient', '-c', 'DBUserBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-w', 'team', '--', '-m', 'DBBaseTeam', '-c', 'DBBaseTeam',
+         specs + ['-w', 'team', '--', '-m', 'DBTeamBaseClient', '-c', 'DBTeamBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:

@@ -2,40 +2,40 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
+#import "DBClientsManager.h"
 #import "DBOAuth.h"
 #import "DBOAuthResult.h"
-#import "DropboxClient.h"
-#import "DropboxClientsManager.h"
-#import "DropboxTeamClient.h"
+#import "DBTeamClient.h"
+#import "DBUserClient.h"
 
-@implementation DropboxClientsManager
+@implementation DBClientsManager
 
 /// An authorized client. This will be set to `nil` if unlinked.
-static DropboxClient *authorizedClient;
+static DBUserClient *authorizedClient;
 
 /// An authorized team client. This will be set to `nil` if unlinked.
-static DropboxTeamClient *authorizedTeamClient;
+static DBTeamClient *authorizedTeamClient;
 
-+ (DropboxClient *)authorizedClient {
++ (DBUserClient *)authorizedClient {
   return authorizedClient;
 }
 
-+ (void)authorizedClient:(DropboxClient *)client {
++ (void)authorizedClient:(DBUserClient *)client {
   authorizedClient = client;
 }
 
-+ (DropboxTeamClient *)authorizedTeamClient {
++ (DBTeamClient *)authorizedTeamClient {
   return authorizedTeamClient;
 }
 
-+ (void)authorizedTeamClient:(DropboxTeamClient *)client {
++ (void)authorizedTeamClient:(DBTeamClient *)client {
   authorizedTeamClient = client;
 }
 
-+ (void)setupWithOAuthManager:(DBOAuthManager *)oAuthManager transportClient:(DBTransportClient *)transportClient {
-  NSAssert(
-      [DBOAuthManager sharedOAuthManager] == nil,
-      @"Only call `[DropboxClientsManager setupWithAppKey]` or `[DropboxClientsManager setupWithTeamAppKey]` once");
++ (void)setupWithOAuthManager:(DBOAuthManager *)oAuthManager
+              transportClient:(DBTransportDefaultClient *)transportClient {
+  NSAssert([DBOAuthManager sharedOAuthManager] == nil,
+           @"Only call `[DBClientsManager setupWithAppKey]` or `[DBClientsManager setupWithTeamAppKey]` once");
   [DBOAuthManager sharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
@@ -43,10 +43,10 @@ static DropboxTeamClient *authorizedTeamClient;
 }
 
 + (void)setupWithOAuthManagerMultiUser:(DBOAuthManager *)oAuthManager
-                       transportClient:(DBTransportClient *)transportClient
+                       transportClient:(DBTransportDefaultClient *)transportClient
                               tokenUid:(NSString *)tokenUid {
-  NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DropboxClientsManager setupWithAppKeyMultiUser]` "
-                                                       @"or `[DropboxClientsManager setupWithTeamAppKeyMultiUser]` "
+  NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DBClientsManager setupWithAppKeyMultiUser]` "
+                                                       @"or `[DBClientsManager setupWithTeamAppKeyMultiUser]` "
                                                        @"once");
   [DBOAuthManager sharedOAuthManager:oAuthManager];
 
@@ -54,10 +54,10 @@ static DropboxTeamClient *authorizedTeamClient;
   [[self class] setupAuthorizedClient:accessToken transportClient:transportClient];
 }
 
-+ (void)setupWithOAuthManagerTeam:(DBOAuthManager *)oAuthManager transportClient:(DBTransportClient *)transportClient {
-  NSAssert(
-      [DBOAuthManager sharedOAuthManager] == nil,
-      @"Only call `[DropboxClientsManager setupWithAppKey]` or `[DropboxClientsManager setupWithTeamAppKey]` once");
++ (void)setupWithOAuthManagerTeam:(DBOAuthManager *)oAuthManager
+                  transportClient:(DBTransportDefaultClient *)transportClient {
+  NSAssert([DBOAuthManager sharedOAuthManager] == nil,
+           @"Only call `[DBClientsManager setupWithAppKey]` or `[DBClientsManager setupWithTeamAppKey]` once");
   [DBOAuthManager sharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
@@ -65,10 +65,10 @@ static DropboxTeamClient *authorizedTeamClient;
 }
 
 + (void)setupWithOAuthManagerMultiUserTeam:(DBOAuthManager *)oAuthManager
-                           transportClient:(DBTransportClient *)transportClient
+                           transportClient:(DBTransportDefaultClient *)transportClient
                                   tokenUid:(NSString *)tokenUid {
-  NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DropboxClientsManager setupWithAppKeyMultiUser]` "
-                                                       @"or `[DropboxClientsManager setupWithTeamAppKeyMultiUser]` "
+  NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DBClientsManager setupWithAppKeyMultiUser]` "
+                                                       @"or `[DBClientsManager setupWithTeamAppKeyMultiUser]` "
                                                        @"once");
   [DBOAuthManager sharedOAuthManager:oAuthManager];
 
@@ -78,7 +78,7 @@ static DropboxTeamClient *authorizedTeamClient;
 
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
-           @"Call `[DropboxClientsManager setupWithAppKey]` before calling this method");
+           @"Call `[DBClientsManager setupWithAppKey]` before calling this method");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
@@ -91,7 +91,7 @@ static DropboxTeamClient *authorizedTeamClient;
 
 + (BOOL)reauthorizeTeamClient:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
-           @"Call `[DropboxClientsManager setupWithTeamAppKey]` before calling this method");
+           @"Call `[DBClientsManager setupWithTeamAppKey]` before calling this method");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
@@ -102,39 +102,40 @@ static DropboxTeamClient *authorizedTeamClient;
   return NO;
 }
 
-+ (void)setupAuthorizedClient:(DBAccessToken *)accessToken transportClient:(DBTransportClient *)transportClient {
++ (void)setupAuthorizedClient:(DBAccessToken *)accessToken transportClient:(DBTransportDefaultClient *)transportClient {
   if (accessToken) {
     if (transportClient) {
       transportClient.accessToken = accessToken.accessToken;
-      authorizedClient = [[DropboxClient alloc] initWithTransportClient:transportClient];
+      authorizedClient = [[DBUserClient alloc] initWithTransportClient:transportClient];
     } else {
-      authorizedClient = [[DropboxClient alloc] initWithAccessToken:accessToken.accessToken];
+      authorizedClient = [[DBUserClient alloc] initWithAccessToken:accessToken.accessToken];
     }
   } else {
     if (transportClient) {
-      authorizedClient = [[DropboxClient alloc] initWithTransportClient:transportClient];
+      authorizedClient = [[DBUserClient alloc] initWithTransportClient:transportClient];
     }
   }
 }
 
-+ (void)setupAuthorizedTeamClient:(DBAccessToken *)accessToken transportClient:(DBTransportClient *)transportClient {
++ (void)setupAuthorizedTeamClient:(DBAccessToken *)accessToken
+                  transportClient:(DBTransportDefaultClient *)transportClient {
   if (accessToken) {
     if (transportClient) {
       transportClient.accessToken = accessToken.accessToken;
-      authorizedTeamClient = [[DropboxTeamClient alloc] initWithTransportClient:transportClient];
+      authorizedTeamClient = [[DBTeamClient alloc] initWithTransportClient:transportClient];
     } else {
-      authorizedTeamClient = [[DropboxTeamClient alloc] initWithAccessToken:accessToken.accessToken];
+      authorizedTeamClient = [[DBTeamClient alloc] initWithAccessToken:accessToken.accessToken];
     }
   } else {
     if (transportClient) {
-      authorizedTeamClient = [[DropboxTeamClient alloc] initWithTransportClient:transportClient];
+      authorizedTeamClient = [[DBTeamClient alloc] initWithTransportClient:transportClient];
     }
   }
 }
 
 + (DBOAuthResult *)handleRedirectURL:(NSURL *)url {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
-           @"Call `[DropboxClientsManager setupWithAppKey]` before calling this method");
+           @"Call `[DBClientsManager setupWithAppKey]` before calling this method");
 
   DBOAuthResult *result = [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url];
 
@@ -142,8 +143,7 @@ static DropboxTeamClient *authorizedTeamClient;
     if (authorizedClient) {
       [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
-      [DropboxClientsManager
-          authorizedClient:[[DropboxClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+      [DBClientsManager authorizedClient:[[DBUserClient alloc] initWithAccessToken:result.accessToken.accessToken]];
     }
   } else if ([result isCancel]) {
     return result;
@@ -156,7 +156,7 @@ static DropboxTeamClient *authorizedTeamClient;
 
 + (DBOAuthResult *)handleRedirectURLTeam:(NSURL *)url {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
-           @"Call `[DropboxClientsManager setupWithTeamAppKey]` before calling this method");
+           @"Call `[DBClientsManager setupWithTeamAppKey]` before calling this method");
 
   DBOAuthResult *result = [[DBOAuthManager sharedOAuthManager] handleRedirectURL:url];
 
@@ -164,8 +164,7 @@ static DropboxTeamClient *authorizedTeamClient;
     if (authorizedTeamClient) {
       [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
-      [DropboxClientsManager
-          authorizedTeamClient:[[DropboxTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+      [DBClientsManager authorizedTeamClient:[[DBTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
     }
   } else if ([result isCancel]) {
     return result;
@@ -184,13 +183,13 @@ static DropboxTeamClient *authorizedTeamClient;
 }
 
 + (void)resetClients {
-  if ([DropboxClientsManager authorizedClient] == nil && [DropboxClientsManager authorizedTeamClient] == nil) {
+  if ([DBClientsManager authorizedClient] == nil && [DBClientsManager authorizedTeamClient] == nil) {
     // already unlinked
     return;
   }
 
-  [DropboxClientsManager authorizedClient:nil];
-  [DropboxClientsManager authorizedTeamClient:nil];
+  [DBClientsManager authorizedClient:nil];
+  [DBClientsManager authorizedTeamClient:nil];
 }
 
 @end

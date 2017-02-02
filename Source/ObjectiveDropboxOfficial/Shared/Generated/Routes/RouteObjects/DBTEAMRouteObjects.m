@@ -114,7 +114,6 @@
 #import "DBTEAMTeamMemberProfile.h"
 #import "DBTEAMUpdatePropertyTemplateResult.h"
 #import "DBTEAMUserSelectorError.h"
-#import "DBTransportClient.h"
 
 @implementation DBTEAMRouteObjects
 

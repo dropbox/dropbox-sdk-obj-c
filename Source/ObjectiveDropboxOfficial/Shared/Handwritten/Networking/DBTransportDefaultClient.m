@@ -5,12 +5,12 @@
 #import "DBDelegate.h"
 #import "DBStoneBase.h"
 #import "DBTasksImpl.h"
-#import "DBTransportClient.h"
-#import "DBTransportClientBase+Protected.h"
+#import "DBTransportBaseClient+Protected.h"
+#import "DBTransportDefaultClient.h"
 
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
-@implementation DBTransportClient
+@implementation DBTransportDefaultClient
 
 @synthesize backgroundSession = _backgroundSession;
 

@@ -2,8 +2,8 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBConstants.h"
 #import "DBDelegate.h"
+#import "DBSDKConstants.h"
 #import "DBSessionData.h"
 
 @interface DBDelegate ()

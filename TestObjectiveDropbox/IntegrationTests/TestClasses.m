@@ -24,10 +24,10 @@ void MyLog(NSString *format, ...) {
   self = [super init];
   if (self) {
     _testData = testData;
-    _auth = [DropboxClientsManager authorizedClient].authRoutes;
-    _files = [DropboxClientsManager authorizedClient].filesRoutes;
-    _sharing = [DropboxClientsManager authorizedClient].sharingRoutes;
-    _users = [DropboxClientsManager authorizedClient].usersRoutes;
+    _auth = [DBClientsManager authorizedClient].authRoutes;
+    _files = [DBClientsManager authorizedClient].filesRoutes;
+    _sharing = [DBClientsManager authorizedClient].sharingRoutes;
+    _users = [DBClientsManager authorizedClient].usersRoutes;
   }
   return self;
 }
@@ -248,7 +248,7 @@ void MyLog(NSString *format, ...) {
   self = [super init];
   if (self) {
     _testData = testData;
-    _team = [DropboxClientsManager authorizedTeamClient].teamRoutes;
+    _team = [DBClientsManager authorizedTeamClient].teamRoutes;
   }
   return self;
 }
@@ -492,12 +492,12 @@ void MyLog(NSString *format, ...) {
 
 - (void)tokenRevoke:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.auth tokenRevoke] response:[NSOperationQueue new] response:^(DBNilObject *result, DBNilObject *routeError, DBRequestError *error) {
+  [[[_tester.auth tokenRevoke] setResponseBlock:^(DBNilObject *result, DBNilObject *routeError, DBRequestError *error) {
     MyLog(@"%@\n", result);
     [TestFormat printOffset:@"Token successfully revoked"];
     [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
     nextTest();
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -507,7 +507,7 @@ void MyLog(NSString *format, ...) {
 - (void)tokenFromOauth1:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.auth tokenFromOauth1:_tester.testData.oauth1Token oauth1TokenSecret:_tester.testData.oauth1TokenSecret]
-    response:[NSOperationQueue new] response:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -517,7 +517,7 @@ void MyLog(NSString *format, ...) {
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -539,7 +539,7 @@ void MyLog(NSString *format, ...) {
 - (void)delete_:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files delete_:_tester.testData.baseFolder]
-      response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -549,7 +549,7 @@ void MyLog(NSString *format, ...) {
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -559,7 +559,7 @@ void MyLog(NSString *format, ...) {
 - (void)createFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files createFolder:_tester.testData.testFolderPath]
-      response:[NSOperationQueue new] response:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -567,7 +567,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -577,7 +577,7 @@ void MyLog(NSString *format, ...) {
 - (void)listFolderError:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listFolder:@"/"]
-      response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"Something went wrong...\n");
         } else {
@@ -586,7 +586,7 @@ void MyLog(NSString *format, ...) {
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -596,7 +596,7 @@ void MyLog(NSString *format, ...) {
 - (void)listFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listFolder:_tester.testData.testFolderPath]
-      response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -604,7 +604,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -615,7 +615,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = _tester.testData.testFilePath;
   [[[_tester.files uploadData:outputPath inputData:_tester.testData.fileData]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -623,7 +623,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -636,7 +636,7 @@ void MyLog(NSString *format, ...) {
   void (^uploadSessionAppendV2)(NSString *, DBFILESUploadSessionCursor *) = ^(NSString *sessionId,
                                                                               DBFILESUploadSessionCursor *cursor) {
     [[[_tester.files uploadSessionAppendV2Data:cursor inputData:_tester.testData.fileData]
-        response:[NSOperationQueue new] response:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
           // response type for this route is nil
           if (!error) {
             DBFILESUploadSessionCursor *cursor = [[DBFILESUploadSessionCursor alloc]
@@ -646,7 +646,7 @@ void MyLog(NSString *format, ...) {
                 initWithPath:[NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_session"]];
 
             [[[_tester.files uploadSessionFinishData:cursor commit:commitInfo inputData:_tester.testData.fileData]
-                response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESUploadSessionFinishError *routeError, DBRequestError *error) {
+                setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadSessionFinishError *routeError, DBRequestError *error) {
                   if (result) {
                     MyLog(@"%@\n", result);
                     [TestFormat printOffset:@"Upload session complete"];
@@ -655,7 +655,7 @@ void MyLog(NSString *format, ...) {
                   } else {
                     [TestFormat abort:error routeError:routeError];
                   }
-                }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+                } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
               [TestFormat printSentProgress:bytesSent
                              totalBytesSent:totalBytesSent
                    totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -663,7 +663,7 @@ void MyLog(NSString *format, ...) {
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -671,7 +671,7 @@ void MyLog(NSString *format, ...) {
   };
 
   [[[_tester.files uploadSessionStartData:_tester.testData.fileData]
-      response:[NSOperationQueue new] response:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printOffset:@"Acquiring sessionId"];
@@ -683,7 +683,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -695,7 +695,7 @@ void MyLog(NSString *format, ...) {
   NSString *copyOutputPath = [NSString
       stringWithFormat:@"%@%@%@%@", _tester.testData.testFilePath, @"_duplicate", @"_", _tester.testData.testId];
   [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath]
-      response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -703,7 +703,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -713,7 +713,7 @@ void MyLog(NSString *format, ...) {
 - (void)dCopyReferenceGet:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files dCopyReferenceGet:_tester.testData.testFilePath]
-      response:[NSOperationQueue new] response:^(DBFILESGetCopyReferenceResult *result, DBFILESGetCopyReferenceError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESGetCopyReferenceResult *result, DBFILESGetCopyReferenceError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -721,7 +721,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -731,7 +731,7 @@ void MyLog(NSString *format, ...) {
 - (void)getMetadata:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getMetadata:_tester.testData.testFilePath]
-      response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -739,7 +739,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -749,7 +749,7 @@ void MyLog(NSString *format, ...) {
 - (void)getMetadataError:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getMetadata:@"/"]
-      response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
         if (result) {
           NSAssert(NO, @"This call should have errored.");
         } else {
@@ -759,7 +759,7 @@ void MyLog(NSString *format, ...) {
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -769,7 +769,7 @@ void MyLog(NSString *format, ...) {
 - (void)getTemporaryLink:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files getTemporaryLink:_tester.testData.testFilePath]
-      response:[NSOperationQueue new] response:^(DBFILESGetTemporaryLinkResult *result, DBFILESGetTemporaryLinkError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESGetTemporaryLinkResult *result, DBFILESGetTemporaryLinkError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -777,7 +777,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -787,7 +787,7 @@ void MyLog(NSString *format, ...) {
 - (void)listRevisions:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files listRevisions:_tester.testData.testFilePath]
-      response:[NSOperationQueue new] response:^(DBFILESListRevisionsResult *result, DBFILESListRevisionsError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESListRevisionsResult *result, DBFILESListRevisionsError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -795,7 +795,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -806,7 +806,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"movedLocation"];
   [[[_tester.files createFolder:folderPath]
-      response:[NSOperationQueue new] response:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printOffset:@"Created destination folder"];
@@ -816,7 +816,7 @@ void MyLog(NSString *format, ...) {
               [NSString stringWithFormat:@"%@%@%@%@", folderPath, @"/", _tester.testData.testFileName, @"_session"];
 
           [[[_tester.files move:fileToMove toPath:destPath]
-              response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+              setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
                 if (result) {
                   MyLog(@"%@\n", result);
                   [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -824,7 +824,7 @@ void MyLog(NSString *format, ...) {
                 } else {
                   [TestFormat abort:error routeError:routeError];
                 }
-              }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+              } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
             [TestFormat printSentProgress:bytesSent
                            totalBytesSent:totalBytesSent
                  totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -832,7 +832,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -847,7 +847,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *folderPath = [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFolderPath, @"/", @"dbx-test.html"];
   [[[_tester.files saveUrl:folderPath url:@"https://www.dropbox.com/help/5"]
-      response:[NSOperationQueue new] response:^(DBFILESSaveUrlResult *result, DBFILESSaveUrlError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESSaveUrlResult *result, DBFILESSaveUrlError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -855,7 +855,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -865,7 +865,7 @@ void MyLog(NSString *format, ...) {
 - (void)downloadToFile:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
           MyLog(@"%@\n", result);
           NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
@@ -877,7 +877,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -887,7 +887,7 @@ void MyLog(NSString *format, ...) {
 - (void)downloadToFileAgain:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadUrl:_tester.testData.testFilePath overwrite:YES destination:_tester.testData.destURL]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
           MyLog(@"%@\n", result);
           NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
@@ -899,7 +899,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -910,7 +910,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *filePath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_does_not_exist"];
   [[[_tester.files downloadUrl:filePath overwrite:YES destination:_tester.testData.destURL]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
         if (result) {
           NSAssert(NO, @"This call should have errored!");
         } else {
@@ -920,7 +920,7 @@ void MyLog(NSString *format, ...) {
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -930,7 +930,7 @@ void MyLog(NSString *format, ...) {
 - (void)downloadToMemory:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.files downloadData:_tester.testData.testFilePath]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
         if (result) {
           MyLog(@"%@\n", result);
           NSString *dataStr = [[NSString alloc] initWithData:fileContents encoding:NSUTF8StringEncoding];
@@ -941,7 +941,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -952,7 +952,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
   [[[_tester.files uploadUrl:outputPath inputUrl:_tester.testData.destURL]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -960,7 +960,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -971,7 +971,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_stream"];
   [[[_tester.files uploadStream:outputPath inputStream:[[NSInputStream alloc] initWithURL:_tester.testData.destURL]]
-      response:[NSOperationQueue new] response:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -979,7 +979,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -993,13 +993,13 @@ void MyLog(NSString *format, ...) {
         [NSString stringWithFormat:@"%@%@%@", _tester.testData.testFilePath, @"_duplicate2_", _tester.testData.testId];
 
     [[[_tester.files dCopy:_tester.testData.testFilePath toPath:copyOutputPath]
-        response:[NSOperationQueue new] response:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBFILESMetadata *result, DBFILESRelocationError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1008,7 +1008,7 @@ void MyLog(NSString *format, ...) {
 
   void (^listFolderContinue)(NSString *) = ^(NSString *cursor) {
     [[[_tester.files listFolderContinue:cursor]
-        response:[NSOperationQueue new] response:^(DBFILESListFolderResult *result, DBFILESListFolderContinueError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderContinueError *routeError, DBRequestError *error) {
           if (result) {
             [TestFormat printOffset:@"Here are the changes:"];
             MyLog(@"%@\n", result);
@@ -1017,7 +1017,7 @@ void MyLog(NSString *format, ...) {
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1026,7 +1026,7 @@ void MyLog(NSString *format, ...) {
 
   void (^listFolderLongpoll)(NSString *) = ^(NSString *cursor) {
     [TestFormat printOffset:@"Establishing longpoll"];
-    [[[_tester.files listFolderLongpoll:cursor] response:[NSOperationQueue new] response:^(DBFILESListFolderLongpollResult *result,
+    [[[_tester.files listFolderLongpoll:cursor] setResponseBlock:^(DBFILESListFolderLongpollResult *result,
                                                            DBFILESListFolderLongpollError *routeError, DBRequestError *error) {
       if (result) {
         MyLog(@"%@\n", result);
@@ -1039,7 +1039,7 @@ void MyLog(NSString *format, ...) {
       } else {
         [TestFormat abort:error routeError:routeError];
       }
-    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1052,7 +1052,7 @@ void MyLog(NSString *format, ...) {
 
   [TestFormat printOffset:@"Acquring cursor"];
   [[[_tester.files listFolderGetLatestCursor:_tester.testData.testFolderPath]
-      response:[NSOperationQueue new] response:^(DBFILESListFolderGetLatestCursorResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBFILESListFolderGetLatestCursorResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
           [TestFormat printOffset:@"Cursor acquired"];
           MyLog(@"%@\n", result);
@@ -1060,7 +1060,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1084,7 +1084,7 @@ void MyLog(NSString *format, ...) {
 - (void)shareFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing shareFolder:_tester.testData.testShareFolderPath]
-      response:[NSOperationQueue new] response:^(DBSHARINGShareFolderLaunch *result, DBSHARINGShareFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGShareFolderLaunch *result, DBSHARINGShareFolderError *routeError, DBRequestError *error) {
         if (result) {
           if ([result isAsyncJobId]) {
             [TestFormat
@@ -1102,7 +1102,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1112,7 +1112,7 @@ void MyLog(NSString *format, ...) {
 - (void)createSharedLinkWithSettings:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGCreateSharedLinkWithSettingsError *routeError,
+      setResponseBlock:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGCreateSharedLinkWithSettingsError *routeError,
                  DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
@@ -1122,7 +1122,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1132,7 +1132,7 @@ void MyLog(NSString *format, ...) {
 - (void)getFolderMetadata:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing getFolderMetadata:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1140,7 +1140,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1150,7 +1150,7 @@ void MyLog(NSString *format, ...) {
 - (void)getSharedLinkMetadata:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing getSharedLinkMetadata:_sharedLink]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGSharedLinkError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGSharedLinkError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1158,7 +1158,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1174,7 +1174,7 @@ void MyLog(NSString *format, ...) {
                              members:@[ addFolderMemberArg ]
                                quiet:[NSNumber numberWithBool:YES]
                        customMessage:nil]
-      response:[NSOperationQueue new] response:^(DBNilObject *result, DBSHARINGAddFolderMemberError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBNilObject *result, DBSHARINGAddFolderMemberError *routeError, DBRequestError *error) {
         if (!error) {
           [TestFormat printOffset:@"Folder member added"];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1182,7 +1182,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1192,7 +1192,7 @@ void MyLog(NSString *format, ...) {
 - (void)listFolderMembers:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listFolderMembers:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedFolderMembers *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGSharedFolderMembers *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1200,7 +1200,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1210,7 +1210,7 @@ void MyLog(NSString *format, ...) {
 - (void)listFolders:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listFolders:[NSNumber numberWithInteger:2] actions:nil]
-      response:[NSOperationQueue new] response:^(DBSHARINGListFoldersResult *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGListFoldersResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1218,7 +1218,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1228,7 +1228,7 @@ void MyLog(NSString *format, ...) {
 - (void)listSharedLinks:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing listSharedLinks]
-      response:[NSOperationQueue new] response:^(DBSHARINGListSharedLinksResult *result, DBSHARINGListSharedLinksError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGListSharedLinksResult *result, DBSHARINGListSharedLinksError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1236,7 +1236,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1249,7 +1249,7 @@ void MyLog(NSString *format, ...) {
       [[DBSHARINGMemberSelector alloc] initWithDropboxId:_tester.testData.accountId3];
 
   void (^checkJobStatus)(NSString *) = ^(NSString *asyncJobId) {
-    [[[_tester.sharing checkJobStatus:asyncJobId] response:[NSOperationQueue new] response:^(DBSHARINGJobStatus *result, DBASYNCPollError *routeError,
+    [[[_tester.sharing checkJobStatus:asyncJobId] setResponseBlock:^(DBSHARINGJobStatus *result, DBASYNCPollError *routeError,
                                                              DBRequestError *error) {
       if (result) {
         MyLog(@"%@\n", result);
@@ -1267,7 +1267,7 @@ void MyLog(NSString *format, ...) {
       } else {
         [TestFormat abort:error routeError:routeError];
       }
-    }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1275,7 +1275,7 @@ void MyLog(NSString *format, ...) {
   };
 
   [[[_tester.sharing removeFolderMember:_sharedFolderId member:memberSelector leaveACopy:[NSNumber numberWithBool:NO]]
-      response:[NSOperationQueue new] response:^(DBASYNCLaunchResultBase *result, DBSHARINGRemoveFolderMemberError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBASYNCLaunchResultBase *result, DBSHARINGRemoveFolderMemberError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           if ([result isAsyncJobId]) {
@@ -1295,7 +1295,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1305,7 +1305,7 @@ void MyLog(NSString *format, ...) {
 - (void)revokeSharedLink:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing revokeSharedLink:_sharedLink]
-      response:[NSOperationQueue new] response:^(DBNilObject *result, DBSHARINGRevokeSharedLinkError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBNilObject *result, DBSHARINGRevokeSharedLinkError *routeError, DBRequestError *error) {
         if (!routeError) {
           [TestFormat printOffset:@"Shared link revoked"];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1313,7 +1313,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1323,7 +1323,7 @@ void MyLog(NSString *format, ...) {
 - (void)unmountFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing unmountFolder:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBNilObject *result, DBSHARINGUnmountFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBNilObject *result, DBSHARINGUnmountFolderError *routeError, DBRequestError *error) {
         if (!routeError) {
           [TestFormat printOffset:@"Folder unmounted"];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1331,7 +1331,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1341,7 +1341,7 @@ void MyLog(NSString *format, ...) {
 - (void)mountFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing mountFolder:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGMountFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGMountFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1349,7 +1349,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1359,7 +1359,7 @@ void MyLog(NSString *format, ...) {
 - (void)updateFolderPolicy:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing updateFolderPolicy:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGUpdateFolderPolicyError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGUpdateFolderPolicyError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1367,7 +1367,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1377,7 +1377,7 @@ void MyLog(NSString *format, ...) {
 - (void)unshareFolder:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing unshareFolder:_sharedFolderId]
-      response:[NSOperationQueue new] response:^(DBASYNCLaunchEmptyResult *result, DBSHARINGUnshareFolderError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBASYNCLaunchEmptyResult *result, DBSHARINGUnshareFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1385,7 +1385,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1407,7 +1407,7 @@ void MyLog(NSString *format, ...) {
 - (void)getAccount:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.users getAccount:_tester.testData.accountId]
-      response:[NSOperationQueue new] response:^(DBUSERSBasicAccount *result, DBUSERSGetAccountError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBUSERSBasicAccount *result, DBUSERSGetAccountError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1415,7 +1415,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1426,7 +1426,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSArray<NSString *> *accountIds = @[ _tester.testData.accountId, _tester.testData.accountId2 ];
   [[[_tester.users getAccountBatch:accountIds]
-      response:[NSOperationQueue new] response:^(NSArray<DBUSERSBasicAccount *> *result, DBUSERSGetAccountBatchError *routeError, DBRequestError *error) {
+      setResponseBlock:^(NSArray<DBUSERSBasicAccount *> *result, DBUSERSGetAccountBatchError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1434,7 +1434,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1443,7 +1443,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getCurrentAccount:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.users getCurrentAccount] response:[NSOperationQueue new] response:^(DBUSERSFullAccount *result, DBNilObject *routeError, DBRequestError *error) {
+  [[[_tester.users getCurrentAccount] setResponseBlock:^(DBUSERSFullAccount *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1451,7 +1451,7 @@ void MyLog(NSString *format, ...) {
     } else {
       [TestFormat abort:error routeError:routeError];
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1460,7 +1460,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getSpaceUsage:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.users getSpaceUsage] response:[NSOperationQueue new] response:^(DBUSERSSpaceUsage *result, DBNilObject *routeError, DBRequestError *error) {
+  [[[_tester.users getSpaceUsage] setResponseBlock:^(DBUSERSSpaceUsage *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1468,7 +1468,7 @@ void MyLog(NSString *format, ...) {
     } else {
       [TestFormat abort:error routeError:routeError];
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1498,7 +1498,7 @@ void MyLog(NSString *format, ...) {
 - (void)initMembersGetInfo:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithEmail:_tester.testData.teamMemberEmail];
-  [[[_tester.team membersGetInfo:@[ userSelectArg ]] response:[NSOperationQueue new] response:^(NSArray<DBTEAMMembersGetInfoItem *> *result,
+  [[[_tester.team membersGetInfo:@[ userSelectArg ]] setResponseBlock:^(NSArray<DBTEAMMembersGetInfoItem *> *result,
                                                                 DBTEAMMembersGetInfoError *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
@@ -1507,14 +1507,14 @@ void MyLog(NSString *format, ...) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
         _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
-        [DropboxClientsManager authorizedClient:[[DropboxClientsManager authorizedTeamClient] asMember:_teamMemberId]];
+        [DBClientsManager authorizedClient:[[DBClientsManager authorizedTeamClient] asMember:_teamMemberId]];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();
     } else {
       [TestFormat abort:error routeError:routeError];
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1524,7 +1524,7 @@ void MyLog(NSString *format, ...) {
 - (void)listMemberDevices:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team devicesListMemberDevices:_teamMemberId]
-      response:[NSOperationQueue new] response:^(DBTEAMListMemberDevicesResult *result, DBTEAMListMemberDevicesError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMListMemberDevicesResult *result, DBTEAMListMemberDevicesError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1532,7 +1532,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1542,7 +1542,7 @@ void MyLog(NSString *format, ...) {
 - (void)listMembersDevices:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team devicesListMembersDevices]
-      response:[NSOperationQueue new] response:^(DBTEAMListMembersDevicesResult *result, DBTEAMListMembersDevicesError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMListMembersDevicesResult *result, DBTEAMListMembersDevicesError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1550,7 +1550,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1560,7 +1560,7 @@ void MyLog(NSString *format, ...) {
 - (void)linkedAppsListMemberLinkedApps:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team linkedAppsListMemberLinkedApps:_teamMemberId]
-      response:[NSOperationQueue new] response:^(DBTEAMListMemberAppsResult *result, DBTEAMListMemberAppsError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMListMemberAppsResult *result, DBTEAMListMemberAppsError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1568,7 +1568,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1578,7 +1578,7 @@ void MyLog(NSString *format, ...) {
 - (void)linkedAppsListMembersLinkedApps:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team linkedAppsListMembersLinkedApps]
-      response:[NSOperationQueue new] response:^(DBTEAMListMembersAppsResult *result, DBTEAMListMembersAppsError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMListMembersAppsResult *result, DBTEAMListMembersAppsError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1586,7 +1586,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1595,7 +1595,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getInfo:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.team getInfo] response:[NSOperationQueue new] response:^(DBTEAMTeamGetInfoResult *result, DBNilObject *routeError, DBRequestError *error) {
+  [[[_tester.team getInfo] setResponseBlock:^(DBTEAMTeamGetInfoResult *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1603,7 +1603,7 @@ void MyLog(NSString *format, ...) {
     } else {
       [TestFormat abort:error routeError:routeError];
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1615,7 +1615,7 @@ void MyLog(NSString *format, ...) {
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
   [[[_tester.team reportsGetActivity:twoDaysAgo endDate:[NSDate new]]
-      response:[NSOperationQueue new] response:^(DBTEAMGetActivityReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGetActivityReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1623,7 +1623,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1635,7 +1635,7 @@ void MyLog(NSString *format, ...) {
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
   [[[_tester.team reportsGetDevices:twoDaysAgo endDate:[NSDate new]]
-      response:[NSOperationQueue new] response:^(DBTEAMGetDevicesReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGetDevicesReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1643,7 +1643,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1655,7 +1655,7 @@ void MyLog(NSString *format, ...) {
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
   [[[_tester.team reportsGetMembership:twoDaysAgo endDate:[NSDate new]]
-      response:[NSOperationQueue new] response:^(DBTEAMGetMembershipReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGetMembershipReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1663,7 +1663,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1675,7 +1675,7 @@ void MyLog(NSString *format, ...) {
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDate *twoDaysAgo = [calendar dateByAddingUnit:NSCalendarUnitDay value:-2 toDate:[NSDate new] options:0];
   [[[_tester.team reportsGetStorage:twoDaysAgo endDate:[NSDate new]]
-      response:[NSOperationQueue new] response:^(DBTEAMGetStorageReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGetStorageReport *result, DBTEAMDateRangeError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1683,7 +1683,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1699,7 +1699,7 @@ void MyLog(NSString *format, ...) {
   [[[_tester.team groupsCreate:_tester.testData.groupName
                groupExternalId:_tester.testData.groupExternalId
            groupManagementType:nil]
-      response:[NSOperationQueue new] response:^(DBTEAMGroupFullInfo *result, DBTEAMGroupCreateError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGroupFullInfo *result, DBTEAMGroupCreateError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1707,7 +1707,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1719,7 +1719,7 @@ void MyLog(NSString *format, ...) {
   DBTEAMGroupsSelector *groupsSelector =
       [[DBTEAMGroupsSelector alloc] initWithGroupExternalIds:@[ _tester.testData.groupExternalId ]];
   [[[_tester.team groupsGetInfo:groupsSelector]
-      response:[NSOperationQueue new] response:^(NSArray<DBTEAMGroupsGetInfoItem *> *result, DBTEAMGroupsGetInfoError *routeError, DBRequestError *error) {
+      setResponseBlock:^(NSArray<DBTEAMGroupsGetInfoItem *> *result, DBTEAMGroupsGetInfoError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1727,7 +1727,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1736,7 +1736,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)groupsList:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.team groupsList] response:[NSOperationQueue new] response:^(DBTEAMGroupsListResult *result, DBNilObject *routeError, DBRequestError *error) {
+  [[[_tester.team groupsList] setResponseBlock:^(DBTEAMGroupsListResult *result, DBNilObject *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1744,7 +1744,7 @@ void MyLog(NSString *format, ...) {
     } else {
       [TestFormat abort:error routeError:routeError];
     }
-  }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+  } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1759,7 +1759,7 @@ void MyLog(NSString *format, ...) {
   DBTEAMGroupAccessType *accessType = [[DBTEAMGroupAccessType alloc] initWithMember];
   DBTEAMMemberAccess *memberAccess = [[DBTEAMMemberAccess alloc] initWithUser:userSelectorArg accessType:accessType];
   [[[_tester.team groupsMembersAdd:groupSelector members:@[ memberAccess ]]
-      response:[NSOperationQueue new] response:^(DBTEAMGroupMembersChangeResult *result, DBTEAMGroupMembersAddError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGroupMembersChangeResult *result, DBTEAMGroupMembersAddError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1767,7 +1767,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1779,7 +1779,7 @@ void MyLog(NSString *format, ...) {
   DBTEAMGroupSelector *groupSelector =
       [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
   [[[_tester.team groupsMembersList:groupSelector]
-      response:[NSOperationQueue new] response:^(DBTEAMGroupsMembersListResult *result, DBTEAMGroupSelectorError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGroupsMembersListResult *result, DBTEAMGroupSelectorError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1787,7 +1787,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1803,7 +1803,7 @@ void MyLog(NSString *format, ...) {
                  dNewGroupName:@"New Group Name"
            dNewGroupExternalId:nil
        dNewGroupManagementType:nil]
-      response:[NSOperationQueue new] response:^(DBTEAMGroupFullInfo *result, DBTEAMGroupUpdateError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMGroupFullInfo *result, DBTEAMGroupUpdateError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1811,7 +1811,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1823,7 +1823,7 @@ void MyLog(NSString *format, ...) {
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
     [[[_tester.team groupsJobStatusGet:jobId]
-        response:[NSOperationQueue new] response:^(DBASYNCPollEmptyResult *result, DBTEAMGroupsPollError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBASYNCPollEmptyResult *result, DBTEAMGroupsPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
             if ([result isInProgress]) {
@@ -1836,7 +1836,7 @@ void MyLog(NSString *format, ...) {
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1846,7 +1846,7 @@ void MyLog(NSString *format, ...) {
   DBTEAMGroupSelector *groupSelector =
       [[DBTEAMGroupSelector alloc] initWithGroupExternalId:_tester.testData.groupExternalId];
   [[[_tester.team groupsDelete:groupSelector]
-      response:[NSOperationQueue new] response:^(DBASYNCLaunchEmptyResult *result, DBTEAMGroupDeleteError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBASYNCLaunchEmptyResult *result, DBTEAMGroupDeleteError *routeError, DBRequestError *error) {
         if (result) {
           if ([result isAsyncJobId]) {
             [TestFormat printOffset:@"Waiting for deletion..."];
@@ -1860,7 +1860,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1872,7 +1872,7 @@ void MyLog(NSString *format, ...) {
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
     [[[_tester.team membersAddJobStatusGet:jobId]
-        response:[NSOperationQueue new] response:^(DBTEAMMembersAddJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBTEAMMembersAddJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
             if ([result isInProgress]) {
@@ -1891,7 +1891,7 @@ void MyLog(NSString *format, ...) {
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1902,7 +1902,7 @@ void MyLog(NSString *format, ...) {
                                                                      memberGivenName:@"FirstName"
                                                                        memberSurname:@"LastName"];
   [[[_tester.team membersAdd:@[ memberAddArg ]]
-      response:[NSOperationQueue new] response:^(DBTEAMMembersAddLaunch *result, DBNilObject *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMMembersAddLaunch *result, DBNilObject *routeError, DBRequestError *error) {
         if (result) {
           if ([result isAsyncJobId]) {
             [TestFormat printOffset:@"Result incomplete..."];
@@ -1921,7 +1921,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1932,7 +1932,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
   [[[_tester.team membersGetInfo:@[ userSelectArg ]]
-      response:[NSOperationQueue new] response:^(NSArray<DBTEAMMembersGetInfoItem *> *result, DBTEAMMembersGetInfoError *routeError, DBRequestError *error) {
+      setResponseBlock:^(NSArray<DBTEAMMembersGetInfoItem *> *result, DBTEAMMembersGetInfoError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1940,7 +1940,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1950,7 +1950,7 @@ void MyLog(NSString *format, ...) {
 - (void)membersList:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.team membersList:[NSNumber numberWithInt:2] includeRemoved:nil]
-      response:[NSOperationQueue new] response:^(DBTEAMMembersListResult *result, DBTEAMMembersListError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMMembersListResult *result, DBTEAMMembersListError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1958,7 +1958,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1969,7 +1969,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId];
   [[[_tester.team membersSendWelcomeEmail:userSelectArg]
-      response:[NSOperationQueue new] response:^(DBNilObject *result, DBTEAMMembersSendWelcomeError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBNilObject *result, DBTEAMMembersSendWelcomeError *routeError, DBRequestError *error) {
         if (!error) {
           [TestFormat printOffset:@"Welcome email sent!"];
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1977,7 +1977,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -1989,7 +1989,7 @@ void MyLog(NSString *format, ...) {
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
   DBTEAMAdminTier *dNewRole = [[DBTEAMAdminTier alloc] initWithTeamAdmin];
   [[[_tester.team membersSetAdminPermissions:userSelectArg dNewRole:dNewRole]
-      response:[NSOperationQueue new] response:^(DBTEAMMembersSetPermissionsResult *result, DBTEAMMembersSetPermissionsError *routeError,
+      setResponseBlock:^(DBTEAMMembersSetPermissionsResult *result, DBTEAMMembersSetPermissionsError *routeError,
                  DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
@@ -1998,7 +1998,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -2013,7 +2013,7 @@ void MyLog(NSString *format, ...) {
                      dNewExternalId:nil
                       dNewGivenName:@"NewFirstName"
                         dNewSurname:nil]
-      response:[NSOperationQueue new] response:^(DBTEAMTeamMemberInfo *result, DBTEAMMembersSetProfileError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBTEAMTeamMemberInfo *result, DBTEAMMembersSetProfileError *routeError, DBRequestError *error) {
         if (!error) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -2021,7 +2021,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -2033,7 +2033,7 @@ void MyLog(NSString *format, ...) {
 
   void (^jobStatus)(NSString *) = ^(NSString *jobId) {
     [[[_tester.team membersRemoveJobStatusGet:jobId]
-        response:[NSOperationQueue new] response:^(DBASYNCPollEmptyResult *result, DBASYNCPollError *routeError, DBRequestError *error) {
+        setResponseBlock:^(DBASYNCPollEmptyResult *result, DBASYNCPollError *routeError, DBRequestError *error) {
           if (result) {
             MyLog(@"%@\n", result);
             if ([result isInProgress]) {
@@ -2046,7 +2046,7 @@ void MyLog(NSString *format, ...) {
           } else {
             [TestFormat abort:error routeError:routeError];
           }
-        }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
       [TestFormat printSentProgress:bytesSent
                      totalBytesSent:totalBytesSent
            totalBytesExpectedToSend:totalBytesExpectedToSend];
@@ -2055,7 +2055,7 @@ void MyLog(NSString *format, ...) {
 
   DBTEAMUserSelectorArg *userSelectArg = [[DBTEAMUserSelectorArg alloc] initWithTeamMemberId:_teamMemberId2];
   [[[_tester.team membersRemove:userSelectArg]
-      response:[NSOperationQueue new] response:^(DBASYNCLaunchEmptyResult *result, DBTEAMMembersRemoveError *routeError, DBRequestError *error) {
+      setResponseBlock:^(DBASYNCLaunchEmptyResult *result, DBTEAMMembersRemoveError *routeError, DBRequestError *error) {
         if (result) {
           if ([result isAsyncJobId]) {
             [TestFormat printOffset:@"Result incomplete. Waiting to query status..."];
@@ -2069,7 +2069,7 @@ void MyLog(NSString *format, ...) {
         } else {
           [TestFormat abort:error routeError:routeError];
         }
-      }] progress:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];

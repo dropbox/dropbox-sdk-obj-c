@@ -18,7 +18,7 @@
 /// of which contains references to all routes within that namespace.
 /// Fully-implemented API clients will inherit this class.
 ///
-@interface DBBase : NSObject
+@interface DBUserBaseClient : NSObject
 
 @property (nonatomic, readonly) id<DBTransportClient> _Nonnull transportClient;
 
@@ -34,7 +34,7 @@
 /// Routes within the `users` namespace.
 @property (nonatomic, readonly) DBUSERSRoutes * _Nonnull usersRoutes;
 
-/// Initializes the `DBBase` object with a networking client.
+/// Initializes the `DBUserBaseClient` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client;
 
 @end

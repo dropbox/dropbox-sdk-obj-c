@@ -2,30 +2,30 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DropboxClient.h"
-#import "DropboxTeamClient.h"
+#import "DBTeamClient.h"
+#import "DBUserClient.h"
 
-@implementation DropboxTeamClient {
-  DBTransportClient *_transportClient;
+@implementation DBTeamClient {
+  DBTransportDefaultClient *_transportClient;
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
-  DBTransportClient *transportClient = [[DBTransportClient alloc] initWithAccessToken:accessToken];
+  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken];
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
   return self;
 }
 
-- (instancetype)initWithTransportClient:(DBTransportClient *)transportClient {
+- (instancetype)initWithTransportClient:(DBTransportDefaultClient *)transportClient {
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
   return self;
 }
 
-- (DropboxClient *)asMember:(NSString *)memberId {
-  return [[DropboxClient alloc] initWithAccessToken:_transportClient.accessToken selectUser:memberId];
+- (DBUserClient *)asMember:(NSString *)memberId {
+  return [[DBUserClient alloc] initWithAccessToken:_transportClient.accessToken selectUser:memberId];
 }
 
 - (void)updateAccessToken:(NSString *)accessToken {

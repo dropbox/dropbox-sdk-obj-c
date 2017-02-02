@@ -90,7 +90,6 @@
 #import "DBSHARINGUserMembershipInfo.h"
 #import "DBSHARINGVisibility.h"
 #import "DBStoneBase.h"
-#import "DBTransportClient.h"
 #import "DBUSERSTeam.h"
 
 @implementation DBSHARINGRouteObjects
