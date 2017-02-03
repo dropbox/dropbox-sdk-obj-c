@@ -114,7 +114,7 @@
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
   DBDownloadResponseBlockStorage storageBlock =
-      [self storageBlockWithResponseBlock:responseBlock destination:_destination overwrite:_overwrite];
+      [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
   return self;
