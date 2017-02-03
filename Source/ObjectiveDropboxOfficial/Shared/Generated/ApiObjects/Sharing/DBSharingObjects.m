@@ -133,9 +133,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -155,13 +153,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAccessLevel alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -259,9 +251,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -277,13 +267,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAclUpdatePolicy alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -540,9 +524,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -565,13 +547,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAddFileMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAddFolderMemberArg.h"
@@ -953,9 +929,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -995,13 +969,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAddFolderMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -1268,9 +1236,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -1297,13 +1263,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAddMemberSelectorError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -1458,11 +1418,6 @@
   if ([valueDict[@".tag"] isEqualToString:@"collection"]) {
     return [DBSHARINGCollectionLinkMetadataSerializer deserialize:valueDict];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 
 @end
@@ -1703,9 +1658,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -1720,13 +1673,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGCreateSharedLinkError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGCreateSharedLinkWithSettingsArg.h"
@@ -1985,7 +1932,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -2163,9 +2109,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -2191,13 +2135,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileAction alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileErrorResult.h"
@@ -2347,9 +2285,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -2370,13 +2306,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileErrorResult alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileLinkMetadata.h"
@@ -2500,11 +2430,6 @@
   if ([valueDict[@".tag"] isEqualToString:@"folder"]) {
     return [DBSHARINGFolderLinkMetadataSerializer deserialize:valueDict];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 
 @end
@@ -2793,9 +2718,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -2815,13 +2738,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileMemberActionError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -2958,7 +2875,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileMemberActionIndividualResult.h"
@@ -3147,9 +3063,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -3168,13 +3082,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileMemberRemoveActionResult alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -3490,9 +3398,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -3526,13 +3432,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFolderAction alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFolderLinkMetadata.h"
@@ -4176,9 +4076,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4197,13 +4095,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGGetFileMetadataError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGetFileMetadataIndividualResult.h"
@@ -4329,9 +4221,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4350,13 +4240,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGGetFileMetadataIndividualResult alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFolderAction.h"
@@ -4547,9 +4431,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4567,13 +4449,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGetSharedLinkFileError.h"
@@ -4704,9 +4580,7 @@
   } else if ([valueObj isSharedLinkIsDirectory]) {
     jsonDict[@".tag"] = @"shared_link_is_directory";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4726,13 +4600,7 @@
   } else if ([tag isEqualToString:@"shared_link_is_directory"]) {
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithSharedLinkIsDirectory];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGetSharedLinkMetadataArg.h"
@@ -4964,9 +4832,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4981,13 +4847,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGGetSharedLinksError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGetSharedLinksResult.h"
@@ -5524,9 +5384,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -5541,13 +5399,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGInviteeInfo alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -5806,9 +5658,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -5833,13 +5683,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGJobError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -5976,7 +5820,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGLinkPermissions.h"
@@ -6499,9 +6342,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6522,13 +6363,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFileMembersContinueError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGListFileMembersCountResult.h"
@@ -6713,9 +6548,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6734,13 +6567,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFileMembersError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGListFileMembersCountResult.h"
@@ -6866,9 +6693,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6887,13 +6712,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFileMembersIndividualResult alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -7138,9 +6957,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7157,13 +6974,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFilesContinueError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGListFilesResult.h"
@@ -7567,9 +7378,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7587,13 +7396,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFolderMembersContinueError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGFolderAction.h"
@@ -7809,9 +7612,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7825,13 +7626,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFoldersContinueError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGListFoldersResult.h"
@@ -8095,9 +7890,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8114,13 +7907,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListSharedLinksError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGListSharedLinksResult.h"
@@ -8454,9 +8241,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8480,13 +8265,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMemberAction alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberAction.h"
@@ -8658,9 +8437,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8676,13 +8453,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMemberPolicy alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -8803,9 +8574,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8823,13 +8592,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMemberSelector alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGModifySharedLinkSettingsArgs.h"
@@ -9063,9 +8826,7 @@
   } else if ([valueObj isEmailNotVerified]) {
     jsonDict[@".tag"] = @"email_not_verified";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -9089,13 +8850,7 @@
   } else if ([tag isEqualToString:@"email_not_verified"]) {
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithEmailNotVerified];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMountFolderArg.h"
@@ -9343,9 +9098,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -9373,13 +9126,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMountFolderError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberPermission.h"
@@ -9636,7 +9383,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGPermissionDeniedReason.h"
@@ -9814,9 +9560,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -9842,13 +9586,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGPermissionDeniedReason alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRelinquishFileMembershipArg.h"
@@ -10035,9 +9773,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10057,13 +9793,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRelinquishFileMembershipError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRelinquishFolderMembershipArg.h"
@@ -10321,9 +10051,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10351,13 +10079,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -10573,9 +10295,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10598,13 +10318,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRemoveFileMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -10864,9 +10578,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10894,13 +10606,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -11051,7 +10757,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -11173,7 +10878,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -11320,9 +11024,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11344,13 +11046,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGResolvedVisibility alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRevokeSharedLinkArg.h"
@@ -11538,9 +11234,7 @@
   } else if ([valueObj isSharedLinkMalformed]) {
     jsonDict[@".tag"] = @"shared_link_malformed";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11560,13 +11254,7 @@
   } else if ([tag isEqualToString:@"shared_link_malformed"]) {
     return [[DBSHARINGRevokeSharedLinkError alloc] initWithSharedLinkMalformed];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -11801,9 +11489,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11824,13 +11510,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGShareFolderErrorBase alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGShareFolderError.h"
@@ -11990,9 +11670,7 @@
   } else if ([valueObj isNoPermission]) {
     jsonDict[@".tag"] = @"no_permission";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -12015,13 +11693,7 @@
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGShareFolderError alloc] initWithNoPermission];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -12171,7 +11843,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -12302,7 +11973,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESPathRootError.h"
@@ -12618,9 +12288,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -12662,13 +12330,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharePathError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGroupMembershipInfo.h"
@@ -13052,9 +12714,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -13074,13 +12734,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedFolderAccessError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGMemberAccessLevelResult.h"
@@ -13209,9 +12863,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -13231,13 +12883,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedFolderMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGGroupMembershipInfo.h"
@@ -13739,9 +13385,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -13763,13 +13407,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkAccessFailureReason alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGSharedLinkPolicy.h"
@@ -13867,9 +13505,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -13885,13 +13521,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkPolicy alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -14078,7 +13708,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGSharingFileAccessError.h"
@@ -14224,9 +13853,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -14248,13 +13875,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharingFileAccessError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGSharingUserError.h"
@@ -14336,9 +13957,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -14352,13 +13971,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharingUserError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGTeamMemberInfo.h"
@@ -14684,9 +14297,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -14714,13 +14325,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGTransferFolderError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGUnmountFolderArg.h"
@@ -14906,9 +14511,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -14928,13 +14531,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUnmountFolderError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGUnshareFileArg.h"
@@ -15116,9 +14713,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -15137,13 +14732,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUnshareFileError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGUnshareFolderArg.h"
@@ -15352,9 +14941,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -15376,13 +14963,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUnshareFolderError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -15641,9 +15222,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -15671,13 +15250,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUpdateFolderMemberError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -15930,9 +15503,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -15956,13 +15527,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUpdateFolderPolicyError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBSHARINGUserInfo.h"
@@ -16275,9 +15840,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -16299,11 +15862,5 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGVisibility alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end

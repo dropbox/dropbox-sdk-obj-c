@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBClientsManager.h"
 #import "DBOAuthDesktop-macOS.h"
 #import "DBOAuthResult.h"
-#import "DBClientsManager.h"
 @class DBTransportDefaultClient;
 @class NSWorkspace;
 @class NSViewController;
@@ -71,7 +71,8 @@
 /// calls. The transport client settings can be manually configured using one
 /// of the numerous `DBTransportDefaultClient` constructors.
 ///
-+ (void)setupWithAppKeyDesktop:(NSString * _Nonnull)appKey transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
++ (void)setupWithAppKeyDesktop:(NSString * _Nonnull)appKey
+               transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
 
 ///
 /// Initializes a `DropboxClient` shared instance with the supplied app key, transport

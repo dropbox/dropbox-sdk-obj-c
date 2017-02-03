@@ -142,9 +142,7 @@
     jsonDict[@"path"] = [[DBFILESLookupErrorSerializer serialize:valueObj.path] mutableCopy];
     jsonDict[@".tag"] = @"path";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -164,13 +162,7 @@
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESPropertiesError alloc] initWithPath:path];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESInvalidPropertyGroupError.h"
@@ -342,9 +334,7 @@
   } else if ([valueObj isDoesNotFitTemplate]) {
     jsonDict[@".tag"] = @"does_not_fit_template";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -368,13 +358,7 @@
   } else if ([tag isEqualToString:@"does_not_fit_template"]) {
     return [[DBFILESInvalidPropertyGroupError alloc] initWithDoesNotFitTemplate];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESAddPropertiesError.h"
@@ -561,9 +545,7 @@
   } else if ([valueObj isPropertyGroupAlreadyExists]) {
     jsonDict[@".tag"] = @"property_group_already_exists";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -589,13 +571,7 @@
   } else if ([tag isEqualToString:@"property_group_already_exists"]) {
     return [[DBFILESAddPropertiesError alloc] initWithPropertyGroupAlreadyExists];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESGetMetadataArg.h"
@@ -876,7 +852,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESAlphaGetMetadataError.h"
@@ -1011,7 +986,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESCommitInfo.h"
@@ -1369,7 +1343,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESDeleteArg.h"
@@ -1574,9 +1547,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -1590,13 +1561,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteBatchError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -1736,9 +1701,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -1758,13 +1721,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteBatchJobStatus alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -1887,9 +1844,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -1907,13 +1862,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteBatchLaunch alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESDeleteBatchResult.h"
@@ -2110,7 +2059,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESDeleteError.h"
@@ -2233,9 +2181,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -2253,13 +2199,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESDeleteResult.h"
@@ -2424,11 +2364,6 @@
   if ([valueDict[@".tag"] isEqualToString:@"deleted"]) {
     return [DBFILESDeletedMetadataSerializer deserialize:valueDict];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 
 @end
@@ -2738,9 +2673,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -2755,13 +2688,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDownloadError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESFileMetadata.h"
@@ -3446,9 +3373,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -3463,13 +3388,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESGetCopyReferenceError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESGetCopyReferenceResult.h"
@@ -3690,9 +3609,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -3707,13 +3624,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESGetTemporaryLinkError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESFileMetadata.h"
@@ -4089,9 +4000,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4108,13 +4017,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListFolderContinueError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESListFolderError.h"
@@ -4209,9 +4112,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4226,13 +4127,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListFolderError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESListFolderGetLatestCursorResult.h"
@@ -4438,9 +4333,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4454,13 +4347,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListFolderLongpollError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESListFolderLongpollResult.h"
@@ -4761,9 +4648,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -4778,13 +4663,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListRevisionsError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESFileMetadata.h"
@@ -4939,7 +4818,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESLookupError.h"
@@ -5127,9 +5005,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -5155,13 +5031,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESLookupError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESMediaInfo.h"
@@ -5279,7 +5149,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESDimensions.h"
@@ -5372,11 +5241,6 @@
   if ([valueDict[@".tag"] isEqualToString:@"video"]) {
     return [DBFILESVideoMetadataSerializer deserialize:valueDict];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 
 @end
@@ -5744,7 +5608,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESPropertyGroupUpdate.h"
@@ -6346,9 +6209,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6377,13 +6238,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESLookupError.h"
@@ -6630,9 +6485,7 @@
   } else if ([valueObj isTooManyWriteOperations]) {
     jsonDict[@".tag"] = @"too_many_write_operations";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6665,13 +6518,7 @@
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {
     return [[DBFILESRelocationBatchError alloc] initWithTooManyWriteOperations];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -6821,7 +6668,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -6944,9 +6790,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -6964,13 +6808,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationBatchLaunch alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESRelocationBatchResult.h"
@@ -7334,9 +7172,7 @@
         [[DBFILESLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup] mutableCopy];
     jsonDict[@".tag"] = @"property_group_lookup";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7360,13 +7196,7 @@
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESRemovePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESRestoreArg.h"
@@ -7567,9 +7397,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7589,13 +7417,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRestoreError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESSaveCopyReferenceArg.h"
@@ -7815,9 +7637,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -7840,13 +7660,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESSaveCopyReferenceError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESMetadata.h"
@@ -8108,9 +7922,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8131,13 +7943,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESSaveUrlError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -8287,7 +8093,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -8418,7 +8223,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESSearchArg.h"
@@ -8594,9 +8398,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -8611,13 +8413,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESSearchError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESMetadata.h"
@@ -8801,7 +8597,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESSearchMode.h"
@@ -8923,7 +8718,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESSearchMatch.h"
@@ -9225,7 +9019,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESThumbnailFormat.h"
@@ -9329,7 +9122,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESThumbnailSize.h"
@@ -9487,7 +9279,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESInvalidPropertyGroupError.h"
@@ -9689,9 +9480,7 @@
         [[DBFILESLookUpPropertiesErrorSerializer serialize:valueObj.propertyGroupLookup] mutableCopy];
     jsonDict[@".tag"] = @"property_group_lookup";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -9719,13 +9508,7 @@
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESUpdatePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESPropertyGroupUpdate.h"
@@ -9892,9 +9675,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -9909,13 +9690,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESInvalidPropertyGroupError.h"
@@ -10041,9 +9816,7 @@
         [[DBFILESInvalidPropertyGroupErrorSerializer serialize:valueObj.propertiesError] mutableCopy];
     jsonDict[@".tag"] = @"properties_error";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10062,13 +9835,7 @@
         [DBFILESInvalidPropertyGroupErrorSerializer deserialize:valueDict[@"properties_error"]];
     return [[DBFILESUploadErrorWithProperties alloc] initWithPropertiesError:propertiesError];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESUploadSessionAppendArg.h"
@@ -10442,7 +10209,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -10567,9 +10333,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10588,13 +10352,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadSessionFinishBatchLaunch alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESUploadSessionFinishBatchResult.h"
@@ -10795,7 +10553,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESUploadSessionFinishError.h"
@@ -10936,9 +10693,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -10959,13 +10714,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadSessionFinishError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESUploadSessionLookupError.h"
@@ -11110,9 +10859,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11134,13 +10881,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadSessionLookupError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESUploadSessionOffsetError.h"
@@ -11578,9 +11319,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11598,13 +11337,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteConflictError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESWriteConflictError.h"
@@ -11776,9 +11509,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -11802,13 +11533,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBFILESWriteMode.h"
@@ -11943,5 +11668,4 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end

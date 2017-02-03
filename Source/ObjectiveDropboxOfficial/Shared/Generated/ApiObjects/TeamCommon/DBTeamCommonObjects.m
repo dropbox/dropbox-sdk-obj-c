@@ -101,9 +101,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -119,13 +117,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMCOMMONGroupManagementType alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBStoneSerializers.h"
@@ -317,9 +309,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -335,11 +325,5 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMCOMMONGroupType alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end

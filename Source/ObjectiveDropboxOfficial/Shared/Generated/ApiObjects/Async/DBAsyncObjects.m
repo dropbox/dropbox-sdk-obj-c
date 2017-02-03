@@ -102,7 +102,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCLaunchEmptyResult.h"
@@ -220,7 +219,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollArg.h"
@@ -364,7 +362,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollEmptyResult.h"
@@ -469,7 +466,6 @@
                  reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
                userInfo:nil]);
 }
-
 @end
 
 #import "DBASYNCPollError.h"
@@ -567,9 +563,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -585,11 +579,5 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBASYNCPollError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end

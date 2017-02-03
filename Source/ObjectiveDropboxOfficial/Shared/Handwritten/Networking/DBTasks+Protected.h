@@ -22,12 +22,14 @@
 
 @interface DBDownloadUrlTask (Protected)
 
-- (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBDownloadUrlResponseBlock _Nonnull)responseBlock;
+- (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
+    (DBDownloadUrlResponseBlock _Nonnull)responseBlock;
 
 @end
 
 @interface DBDownloadDataTask (Protected)
 
-- (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBDownloadDataResponseBlock _Nonnull)responseBlock;
+- (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
+    (DBDownloadDataResponseBlock _Nonnull)responseBlock;
 
 @end

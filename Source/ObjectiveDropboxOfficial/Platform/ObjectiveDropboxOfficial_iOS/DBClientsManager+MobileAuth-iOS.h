@@ -4,9 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBClientsManager.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBOAuthResult.h"
-#import "DBClientsManager.h"
 @class DBTransportDefaultClient;
 @class UIApplication;
 @class UIViewController;
@@ -130,7 +130,8 @@
 /// calls. The transport client settings can be manually configured using one
 /// of the numerous `DBTransportDefaultClient` constructors.
 ///
-+ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
++ (void)setupWithTeamAppKey:(NSString * _Nonnull)appKey
+            transportClient:(DBTransportDefaultClient * _Nullable)transportClient;
 
 ///
 /// Initializes a `DropboxTeamClient` shared instance with the supplied app key, transport

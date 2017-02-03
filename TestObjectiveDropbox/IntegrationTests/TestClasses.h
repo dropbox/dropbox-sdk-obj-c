@@ -19,7 +19,7 @@
 
 - (nonnull instancetype)initWithTestData:(TestData * _Nonnull)testData;
 
-- (void)testAllUserAPIEndpoints:(DropboxTester * _Nonnull)tester nextTest:(void (^ _Nonnull)())nextTest asMember:(BOOL)asMember;
+- (void)testAllUserAPIEndpoints:(void (^ _Nonnull)())nextTest asMember:(BOOL)asMember;
 
 @property TestData * _Nonnull testData;
 @property DBAUTHRoutes * _Nullable auth;

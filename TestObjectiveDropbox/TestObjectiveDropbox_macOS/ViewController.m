@@ -42,8 +42,6 @@
 
 - (IBAction)runTestsButtonPressed:(id)sender {
   TestData *data = [TestData new];
-  DropboxTester *tester = [[DropboxTester alloc] initWithTestData:data];
-  DropboxTeamTester *teamTester = [[DropboxTeamTester alloc] initWithTestData:data];
   
   void (^unlink)() = ^{
     [TestFormat printAllTestsEnd];
@@ -53,13 +51,13 @@
   
   switch (appPermission) {
     case FullDropbox:
-      [tester testAllUserAPIEndpoints:tester nextTest:unlink asMember:NO];
+      [[[DropboxTester alloc] initWithTestData:data] testAllUserAPIEndpoints:unlink asMember:NO];
       break;
     case TeamMemberFileAccess:
-      [teamTester testAllTeamMemberFileAcessActions:unlink];
+      [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberFileAcessActions:unlink];
       break;
     case TeamMemberManagement:
-      [teamTester testAllTeamMemberManagementActions:unlink];
+      [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
       break;
   }
 }
@@ -75,7 +73,9 @@
 }
 
 - (void)viewWillAppear {
-  [self checkButtons];
+  if ([DBClientsManager authorizedClient] != nil || [DBClientsManager authorizedTeamClient] != nil) {
+    [self checkButtons];
+  }
 }
 
 - (void)setRepresentedObject:(id)representedObject {

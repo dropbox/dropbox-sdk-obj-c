@@ -32,7 +32,7 @@
 /// @param client The updated reference to the `DBUserClient` shared
 /// instance.
 ///
-+ (void)authorizedClient:(DBUserClient * _Nullable)client;
++ (void)setAuthorizedClient:(DBUserClient * _Nullable)client;
 
 ///
 /// Accessor method for `DBTeamClient` shared instance.
@@ -47,7 +47,7 @@
 /// @param client The updated reference to the `DBTeamClient` shared
 /// instance.
 ///
-+ (void)authorizedTeamClient:(DBTeamClient * _Nullable)client;
++ (void)setAuthorizedTeamClient:(DBTeamClient * _Nullable)client;
 
 ///
 /// Reauthorizes shared user client instance with the access token retrieved from storage

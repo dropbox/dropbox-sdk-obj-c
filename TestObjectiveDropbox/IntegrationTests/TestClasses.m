@@ -23,6 +23,8 @@ void MyLog(NSString *format, ...) {
 - (instancetype)initWithTestData:(TestData *)testData {
   self = [super init];
   if (self) {
+    NSAssert([DBClientsManager authorizedClient], @"No authorized user client.");
+
     _testData = testData;
     _auth = [DBClientsManager authorizedClient].authRoutes;
     _files = [DBClientsManager authorizedClient].filesRoutes;
@@ -33,7 +35,7 @@ void MyLog(NSString *format, ...) {
 }
 
 // Test user app with 'Full Dropbox' permission
-- (void)testAllUserAPIEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest asMember:(BOOL)asMember {
+- (void)testAllUserAPIEndpoints:(void (^)())nextTest asMember:(BOOL)asMember {
   void (^end)() = ^{
     if (nextTest) {
       nextTest();
@@ -42,16 +44,16 @@ void MyLog(NSString *format, ...) {
     }
   };
   void (^testAuthEndpoints)() = ^{
-    [self testAuthEndpoints:tester nextTest:end];
+    [self testAuthEndpoints:end];
   };
   void (^testUsersEndpoints)() = ^{
-    [self testUsersEndpoints:tester nextTest:testAuthEndpoints];
+    [self testUsersEndpoints:testAuthEndpoints];
   };
   void (^testSharingEndpoints)() = ^{
-    [self testSharingEndpoints:tester nextTest:testUsersEndpoints];
+    [self testSharingEndpoints:testUsersEndpoints];
   };
   void (^testFilesEndpoints)() = ^{
-    [self testFilesEndpoints:tester nextTest:testSharingEndpoints asMember:asMember];
+    [self testFilesEndpoints:testSharingEndpoints asMember:asMember];
   };
   void (^start)() = ^{
     testFilesEndpoints();
@@ -60,8 +62,8 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testAuthEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest {
-  AuthTests *authTests = [[AuthTests alloc] init:tester];
+- (void)testAuthEndpoints:(void (^)())nextTest {
+  AuthTests *authTests = [[AuthTests alloc] init:self];
   
   void (^end)() = ^{
     [TestFormat printTestEnd];
@@ -81,8 +83,8 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testFilesEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest asMember:(BOOL)asMember {
-  FilesTests *filesTests = [[FilesTests alloc] init:tester];
+- (void)testFilesEndpoints:(void (^)())nextTest asMember:(BOOL)asMember {
+  FilesTests *filesTests = [[FilesTests alloc] init:self];
   
   void (^end)() = ^{
     [TestFormat printTestEnd];
@@ -156,8 +158,8 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testSharingEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest {
-  SharingTests *sharingTests = [[SharingTests alloc] init:tester];
+- (void)testSharingEndpoints:(void (^)())nextTest {
+  SharingTests *sharingTests = [[SharingTests alloc] init:self];
   
   void (^end)() = ^{
     [TestFormat printTestEnd];
@@ -213,8 +215,8 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testUsersEndpoints:(DropboxTester *)tester nextTest:(void (^)())nextTest {
-  UsersTests *usersTests = [[UsersTests alloc] init:tester];
+- (void)testUsersEndpoints:(void (^)())nextTest {
+  UsersTests *usersTests = [[UsersTests alloc] init:self];
   
   void (^end)() = ^{
     [TestFormat printTestEnd];
@@ -247,6 +249,8 @@ void MyLog(NSString *format, ...) {
 - (instancetype)initWithTestData:(TestData *)testData {
   self = [super init];
   if (self) {
+    NSAssert([DBClientsManager authorizedTeamClient], @"No authorized team client.");
+
     _testData = testData;
     _team = [DBClientsManager authorizedTeamClient].teamRoutes;
   }
@@ -255,8 +259,6 @@ void MyLog(NSString *format, ...) {
 
 // Test business app with 'Team member file access' permission
 - (void)testAllTeamMemberFileAcessActions:(void (^)())nextTest {
-  DropboxTester *tester = [[DropboxTester alloc] initWithTestData:_testData];
-  
   void (^end)() = ^{
     if (nextTest) {
       nextTest();
@@ -264,8 +266,10 @@ void MyLog(NSString *format, ...) {
       [TestFormat printAllTestsEnd];
     }
   };
-  void (^testPerformActionAsMember)() = ^{
-    [tester testAllUserAPIEndpoints:tester nextTest:end asMember:YES];
+  void (^testPerformActionAsMember)(TeamTests *) = ^(TeamTests *teamTests) {
+    [teamTests initMembersGetInfo:^{}];
+    DropboxTester *tester = [[DropboxTester alloc] initWithTestData:_testData];
+    [tester testAllUserAPIEndpoints:end asMember:YES];
   };
   void (^testTeamMemberFileAcessActions)() = ^{
     [self testTeamMemberFileAcessActions:testPerformActionAsMember];
@@ -296,12 +300,12 @@ void MyLog(NSString *format, ...) {
   start();
 }
 
-- (void)testTeamMemberFileAcessActions:(void (^)())nextTest {
+- (void)testTeamMemberFileAcessActions:(void (^)(TeamTests *))nextTest {
   TeamTests *teamTests = [[TeamTests alloc] init:self];
 
   void (^end)() = ^{
     [TestFormat printTestEnd];
-    nextTest();
+    nextTest(teamTests);
   };
   void (^reportsGetStorage)() = ^{
     [teamTests reportsGetStorage:end];
@@ -1507,7 +1511,7 @@ void MyLog(NSString *format, ...) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
         _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
-        [DBClientsManager authorizedClient:[[DBClientsManager authorizedTeamClient] asMember:_teamMemberId]];
+        [DBClientsManager setAuthorizedClient:[[DBClientsManager authorizedTeamClient] asMember:_teamMemberId]];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();

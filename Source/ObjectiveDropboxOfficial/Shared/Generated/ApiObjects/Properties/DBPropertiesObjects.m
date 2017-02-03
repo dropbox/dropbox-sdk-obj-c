@@ -384,9 +384,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -403,13 +401,7 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBPROPERTIESPropertyTemplateError alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBPROPERTIESModifyPropertyTemplateError.h"
@@ -585,9 +577,7 @@
   } else if ([valueObj isTemplateAttributeTooLarge]) {
     jsonDict[@".tag"] = @"template_attribute_too_large";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -612,13 +602,7 @@
   } else if ([tag isEqualToString:@"template_attribute_too_large"]) {
     return [[DBPROPERTIESModifyPropertyTemplateError alloc] initWithTemplateAttributeTooLarge];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end
 
 #import "DBPROPERTIESPropertyField.h"
@@ -896,9 +880,7 @@
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
+    jsonDict[@".tag"] = @"other";
   }
 
   return jsonDict;
@@ -912,11 +894,5 @@
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBPROPERTIESPropertyType alloc] initWithOther];
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
-
 @end

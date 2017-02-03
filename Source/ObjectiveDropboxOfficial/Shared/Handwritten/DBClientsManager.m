@@ -20,7 +20,7 @@ static DBTeamClient *authorizedTeamClient;
   return authorizedClient;
 }
 
-+ (void)authorizedClient:(DBUserClient *)client {
++ (void)setAuthorizedClient:(DBUserClient *)client {
   authorizedClient = client;
 }
 
@@ -28,7 +28,7 @@ static DBTeamClient *authorizedTeamClient;
   return authorizedTeamClient;
 }
 
-+ (void)authorizedTeamClient:(DBTeamClient *)client {
++ (void)setAuthorizedTeamClient:(DBTeamClient *)client {
   authorizedTeamClient = client;
 }
 
@@ -143,7 +143,7 @@ static DBTeamClient *authorizedTeamClient;
     if (authorizedClient) {
       [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
-      [DBClientsManager authorizedClient:[[DBUserClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+      [DBClientsManager setAuthorizedClient:[[DBUserClient alloc] initWithAccessToken:result.accessToken.accessToken]];
     }
   } else if ([result isCancel]) {
     return result;
@@ -164,8 +164,10 @@ static DBTeamClient *authorizedTeamClient;
     if (authorizedTeamClient) {
       [authorizedClient updateAccessToken:result.accessToken.accessToken];
     } else {
-      [DBClientsManager authorizedTeamClient:[[DBTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
+      [DBClientsManager
+          setAuthorizedTeamClient:[[DBTeamClient alloc] initWithAccessToken:result.accessToken.accessToken]];
     }
+    return result;
   } else if ([result isCancel]) {
     return result;
   } else if ([result isError]) {
@@ -188,8 +190,8 @@ static DBTeamClient *authorizedTeamClient;
     return;
   }
 
-  [DBClientsManager authorizedClient:nil];
-  [DBClientsManager authorizedTeamClient:nil];
+  [DBClientsManager setAuthorizedClient:nil];
+  [DBClientsManager setAuthorizedTeamClient:nil];
 }
 
 @end
