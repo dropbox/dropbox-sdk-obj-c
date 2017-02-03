@@ -161,6 +161,8 @@
   } else if ([tag isEqualToString:@"path"]) {
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESPropertiesError alloc] initWithPath:path];
+  } else {
+    return [[DBFILESPropertiesError alloc] initWithOther:path];
   }
 }
 @end
@@ -357,6 +359,8 @@
     return [[DBFILESInvalidPropertyGroupError alloc] initWithPropertyFieldTooLarge];
   } else if ([tag isEqualToString:@"does_not_fit_template"]) {
     return [[DBFILESInvalidPropertyGroupError alloc] initWithDoesNotFitTemplate];
+  } else {
+    return [[DBFILESInvalidPropertyGroupError alloc] initWithOther];
   }
 }
 @end
@@ -570,6 +574,8 @@
     return [[DBFILESAddPropertiesError alloc] initWithDoesNotFitTemplate];
   } else if ([tag isEqualToString:@"property_group_already_exists"]) {
     return [[DBFILESAddPropertiesError alloc] initWithPropertyGroupAlreadyExists];
+  } else {
+    return [[DBFILESAddPropertiesError alloc] initWithOther];
   }
 }
 @end
@@ -845,12 +851,12 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESGetMetadataError alloc] initWithPath:path];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -979,12 +985,12 @@
     DBFILESLookUpPropertiesError *propertiesError =
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"properties_error"]];
     return [[DBFILESAlphaGetMetadataError alloc] initWithPropertiesError:propertiesError];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -1336,12 +1342,12 @@
   if ([tag isEqualToString:@"path"]) {
     DBFILESWriteError *path = [DBFILESWriteErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESCreateFolderError alloc] initWithPath:path];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -1560,6 +1566,8 @@
     return [[DBFILESDeleteBatchError alloc] initWithTooManyWriteOperations];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteBatchError alloc] initWithOther];
+  } else {
+    return [[DBFILESDeleteBatchError alloc] initWithOther];
   }
 }
 @end
@@ -1720,6 +1728,8 @@
     return [[DBFILESDeleteBatchJobStatus alloc] initWithFailed:failed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESDeleteBatchJobStatus alloc] initWithOther];
+  } else {
+    return [[DBFILESDeleteBatchJobStatus alloc] initWithOther];
   }
 }
 @end
@@ -1860,6 +1870,8 @@
     DBFILESDeleteBatchResult *complete = [DBFILESDeleteBatchResultSerializer deserialize:valueDict];
     return [[DBFILESDeleteBatchLaunch alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESDeleteBatchLaunch alloc] initWithOther];
+  } else {
     return [[DBFILESDeleteBatchLaunch alloc] initWithOther];
   }
 }
@@ -2052,12 +2064,12 @@
   } else if ([tag isEqualToString:@"failure"]) {
     DBFILESDeleteError *failure = [DBFILESDeleteErrorSerializer deserialize:valueDict[@"failure"]];
     return [[DBFILESDeleteBatchResultEntry alloc] initWithFailure:failure];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -2197,6 +2209,8 @@
     DBFILESWriteError *pathWrite = [DBFILESWriteErrorSerializer deserialize:valueDict[@"path_write"]];
     return [[DBFILESDeleteError alloc] initWithPathWrite:pathWrite];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESDeleteError alloc] initWithOther];
+  } else {
     return [[DBFILESDeleteError alloc] initWithOther];
   }
 }
@@ -2686,6 +2700,8 @@
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESDownloadError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESDownloadError alloc] initWithOther];
+  } else {
     return [[DBFILESDownloadError alloc] initWithOther];
   }
 }
@@ -3387,6 +3403,8 @@
     return [[DBFILESGetCopyReferenceError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESGetCopyReferenceError alloc] initWithOther];
+  } else {
+    return [[DBFILESGetCopyReferenceError alloc] initWithOther];
   }
 }
 @end
@@ -3622,6 +3640,8 @@
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESGetTemporaryLinkError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESGetTemporaryLinkError alloc] initWithOther];
+  } else {
     return [[DBFILESGetTemporaryLinkError alloc] initWithOther];
   }
 }
@@ -4016,6 +4036,8 @@
     return [[DBFILESListFolderContinueError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListFolderContinueError alloc] initWithOther];
+  } else {
+    return [[DBFILESListFolderContinueError alloc] initWithOther];
   }
 }
 @end
@@ -4125,6 +4147,8 @@
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESListFolderError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESListFolderError alloc] initWithOther];
+  } else {
     return [[DBFILESListFolderError alloc] initWithOther];
   }
 }
@@ -4345,6 +4369,8 @@
   if ([tag isEqualToString:@"reset"]) {
     return [[DBFILESListFolderLongpollError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESListFolderLongpollError alloc] initWithOther];
+  } else {
     return [[DBFILESListFolderLongpollError alloc] initWithOther];
   }
 }
@@ -4662,6 +4688,8 @@
     return [[DBFILESListRevisionsError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESListRevisionsError alloc] initWithOther];
+  } else {
+    return [[DBFILESListRevisionsError alloc] initWithOther];
   }
 }
 @end
@@ -4811,12 +4839,12 @@
 
   if ([tag isEqualToString:@"property_group_not_found"]) {
     return [[DBFILESLookUpPropertiesError alloc] initWithPropertyGroupNotFound];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -5030,6 +5058,8 @@
     return [[DBFILESLookupError alloc] initWithInvalidPathRoot:invalidPathRoot];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESLookupError alloc] initWithOther];
+  } else {
+    return [[DBFILESLookupError alloc] initWithOther];
   }
 }
 @end
@@ -5142,12 +5172,12 @@
   } else if ([tag isEqualToString:@"metadata"]) {
     DBFILESMediaMetadata *metadata = [DBFILESMediaMetadataSerializer deserialize:valueDict[@"metadata"]];
     return [[DBFILESMediaInfo alloc] initWithMetadata:metadata];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -5601,12 +5631,12 @@
     return [[DBFILESPreviewError alloc] initWithUnsupportedExtension];
   } else if ([tag isEqualToString:@"unsupported_content"]) {
     return [[DBFILESPreviewError alloc] initWithUnsupportedContent];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -6237,6 +6267,8 @@
     return [[DBFILESRelocationError alloc] initWithTooManyFiles];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
+  } else {
+    return [[DBFILESRelocationError alloc] initWithOther];
   }
 }
 @end
@@ -6517,6 +6549,8 @@
     return [[DBFILESRelocationBatchError alloc] initWithDuplicatedOrNestedPaths];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {
     return [[DBFILESRelocationBatchError alloc] initWithTooManyWriteOperations];
+  } else {
+    return [[DBFILESRelocationBatchError alloc] initWithOther];
   }
 }
 @end
@@ -6661,12 +6695,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     DBFILESRelocationBatchError *failed = [DBFILESRelocationBatchErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBFILESRelocationBatchJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -6806,6 +6840,8 @@
     DBFILESRelocationBatchResult *complete = [DBFILESRelocationBatchResultSerializer deserialize:valueDict];
     return [[DBFILESRelocationBatchLaunch alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESRelocationBatchLaunch alloc] initWithOther];
+  } else {
     return [[DBFILESRelocationBatchLaunch alloc] initWithOther];
   }
 }
@@ -7195,6 +7231,8 @@
     DBFILESLookUpPropertiesError *propertyGroupLookup =
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESRemovePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
+  } else {
+    return [[DBFILESRemovePropertiesError alloc] initWithOther:propertyGroupLookup];
   }
 }
 @end
@@ -7415,6 +7453,8 @@
   } else if ([tag isEqualToString:@"invalid_revision"]) {
     return [[DBFILESRestoreError alloc] initWithInvalidRevision];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESRestoreError alloc] initWithOther];
+  } else {
     return [[DBFILESRestoreError alloc] initWithOther];
   }
 }
@@ -7658,6 +7698,8 @@
   } else if ([tag isEqualToString:@"too_many_files"]) {
     return [[DBFILESSaveCopyReferenceError alloc] initWithTooManyFiles];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESSaveCopyReferenceError alloc] initWithOther];
+  } else {
     return [[DBFILESSaveCopyReferenceError alloc] initWithOther];
   }
 }
@@ -7942,6 +7984,8 @@
     return [[DBFILESSaveUrlError alloc] initWithNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESSaveUrlError alloc] initWithOther];
+  } else {
+    return [[DBFILESSaveUrlError alloc] initWithOther];
   }
 }
 @end
@@ -8086,12 +8130,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     DBFILESSaveUrlError *failed = [DBFILESSaveUrlErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBFILESSaveUrlJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8216,12 +8260,12 @@
   } else if ([tag isEqualToString:@"complete"]) {
     DBFILESFileMetadata *complete = [DBFILESFileMetadataSerializer deserialize:valueDict];
     return [[DBFILESSaveUrlResult alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8412,6 +8456,8 @@
     return [[DBFILESSearchError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESSearchError alloc] initWithOther];
+  } else {
+    return [[DBFILESSearchError alloc] initWithOther];
   }
 }
 @end
@@ -8590,12 +8636,12 @@
     return [[DBFILESSearchMatchType alloc] initWithContent];
   } else if ([tag isEqualToString:@"both"]) {
     return [[DBFILESSearchMatchType alloc] initWithBoth];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8711,12 +8757,12 @@
     return [[DBFILESSearchMode alloc] initWithFilenameAndContent];
   } else if ([tag isEqualToString:@"deleted_filename"]) {
     return [[DBFILESSearchMode alloc] initWithDeletedFilename];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -9012,12 +9058,12 @@
     return [[DBFILESThumbnailError alloc] initWithUnsupportedImage];
   } else if ([tag isEqualToString:@"conversion_error"]) {
     return [[DBFILESThumbnailError alloc] initWithConversionError];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -9115,12 +9161,12 @@
     return [[DBFILESThumbnailFormat alloc] initWithJpeg];
   } else if ([tag isEqualToString:@"png"]) {
     return [[DBFILESThumbnailFormat alloc] initWithPng];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -9272,12 +9318,12 @@
     return [[DBFILESThumbnailSize alloc] initWithW640h480];
   } else if ([tag isEqualToString:@"w1024h768"]) {
     return [[DBFILESThumbnailSize alloc] initWithW1024h768];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -9507,6 +9553,8 @@
     DBFILESLookUpPropertiesError *propertyGroupLookup =
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESUpdatePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
+  } else {
+    return [[DBFILESUpdatePropertiesError alloc] initWithOther:propertyGroupLookup];
   }
 }
 @end
@@ -9689,6 +9737,8 @@
     return [[DBFILESUploadError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESUploadError alloc] initWithOther];
+  } else {
+    return [[DBFILESUploadError alloc] initWithOther];
   }
 }
 @end
@@ -9834,6 +9884,8 @@
     DBFILESInvalidPropertyGroupError *propertiesError =
         [DBFILESInvalidPropertyGroupErrorSerializer deserialize:valueDict[@"properties_error"]];
     return [[DBFILESUploadErrorWithProperties alloc] initWithPropertiesError:propertiesError];
+  } else {
+    return [[DBFILESUploadErrorWithProperties alloc] initWithOther:propertiesError];
   }
 }
 @end
@@ -10202,12 +10254,12 @@
     DBFILESUploadSessionFinishBatchResult *complete =
         [DBFILESUploadSessionFinishBatchResultSerializer deserialize:valueDict];
     return [[DBFILESUploadSessionFinishBatchJobStatus alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -10350,6 +10402,8 @@
         [DBFILESUploadSessionFinishBatchResultSerializer deserialize:valueDict];
     return [[DBFILESUploadSessionFinishBatchLaunch alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESUploadSessionFinishBatchLaunch alloc] initWithOther];
+  } else {
     return [[DBFILESUploadSessionFinishBatchLaunch alloc] initWithOther];
   }
 }
@@ -10546,12 +10600,12 @@
     DBFILESUploadSessionFinishError *failure =
         [DBFILESUploadSessionFinishErrorSerializer deserialize:valueDict[@"failure"]];
     return [[DBFILESUploadSessionFinishBatchResultEntry alloc] initWithFailure:failure];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -10712,6 +10766,8 @@
   } else if ([tag isEqualToString:@"too_many_shared_folder_targets"]) {
     return [[DBFILESUploadSessionFinishError alloc] initWithTooManySharedFolderTargets];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESUploadSessionFinishError alloc] initWithOther];
+  } else {
     return [[DBFILESUploadSessionFinishError alloc] initWithOther];
   }
 }
@@ -10879,6 +10935,8 @@
   } else if ([tag isEqualToString:@"not_closed"]) {
     return [[DBFILESUploadSessionLookupError alloc] initWithNotClosed];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESUploadSessionLookupError alloc] initWithOther];
+  } else {
     return [[DBFILESUploadSessionLookupError alloc] initWithOther];
   }
 }
@@ -11336,6 +11394,8 @@
     return [[DBFILESWriteConflictError alloc] initWithFileAncestor];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteConflictError alloc] initWithOther];
+  } else {
+    return [[DBFILESWriteConflictError alloc] initWithOther];
   }
 }
 @end
@@ -11532,6 +11592,8 @@
     return [[DBFILESWriteError alloc] initWithDisallowedName];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteError alloc] initWithOther];
+  } else {
+    return [[DBFILESWriteError alloc] initWithOther];
   }
 }
 @end
@@ -11661,11 +11723,11 @@
   } else if ([tag isEqualToString:@"update"]) {
     NSString *update = valueDict[@"update"];
     return [[DBFILESWriteMode alloc] initWithUpdate:update];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end

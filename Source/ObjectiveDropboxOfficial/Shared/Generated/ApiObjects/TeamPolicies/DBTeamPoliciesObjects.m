@@ -134,6 +134,8 @@
     return [[DBTEAMPOLICIESEmmState alloc] initWithRequired];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMPOLICIESEmmState alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESEmmState alloc] initWithOther];
   }
 }
 @end
@@ -248,6 +250,8 @@
     return [[DBTEAMPOLICIESSharedFolderJoinPolicy alloc] initWithFromAnyone];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMPOLICIESSharedFolderJoinPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMPOLICIESSharedFolderJoinPolicy alloc] initWithOther];
   }
 }
 @end
@@ -361,6 +365,8 @@
   } else if ([tag isEqualToString:@"anyone"]) {
     return [[DBTEAMPOLICIESSharedFolderMemberPolicy alloc] initWithAnyone];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESSharedFolderMemberPolicy alloc] initWithOther];
+  } else {
     return [[DBTEAMPOLICIESSharedFolderMemberPolicy alloc] initWithOther];
   }
 }
@@ -493,6 +499,8 @@
   } else if ([tag isEqualToString:@"team_only"]) {
     return [[DBTEAMPOLICIESSharedLinkCreatePolicy alloc] initWithTeamOnly];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMPOLICIESSharedLinkCreatePolicy alloc] initWithOther];
+  } else {
     return [[DBTEAMPOLICIESSharedLinkCreatePolicy alloc] initWithOther];
   }
 }

@@ -400,6 +400,8 @@
     return [[DBPROPERTIESPropertyTemplateError alloc] initWithRestrictedContent];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBPROPERTIESPropertyTemplateError alloc] initWithOther];
+  } else {
+    return [[DBPROPERTIESPropertyTemplateError alloc] initWithOther];
   }
 }
 @end
@@ -601,6 +603,8 @@
     return [[DBPROPERTIESModifyPropertyTemplateError alloc] initWithTooManyTemplates];
   } else if ([tag isEqualToString:@"template_attribute_too_large"]) {
     return [[DBPROPERTIESModifyPropertyTemplateError alloc] initWithTemplateAttributeTooLarge];
+  } else {
+    return [[DBPROPERTIESModifyPropertyTemplateError alloc] initWithOther];
   }
 }
 @end
@@ -892,6 +896,8 @@
   if ([tag isEqualToString:@"string"]) {
     return [[DBPROPERTIESPropertyType alloc] initWithString];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBPROPERTIESPropertyType alloc] initWithOther];
+  } else {
     return [[DBPROPERTIESPropertyType alloc] initWithOther];
   }
 }

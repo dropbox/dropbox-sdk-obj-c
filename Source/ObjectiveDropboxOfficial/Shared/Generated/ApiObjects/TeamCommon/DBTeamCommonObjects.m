@@ -116,6 +116,8 @@
     return [[DBTEAMCOMMONGroupManagementType alloc] initWithUserManaged];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMCOMMONGroupManagementType alloc] initWithOther];
+  } else {
+    return [[DBTEAMCOMMONGroupManagementType alloc] initWithOther];
   }
 }
 @end
@@ -323,6 +325,8 @@
   } else if ([tag isEqualToString:@"user_managed"]) {
     return [[DBTEAMCOMMONGroupType alloc] initWithUserManaged];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMCOMMONGroupType alloc] initWithOther];
+  } else {
     return [[DBTEAMCOMMONGroupType alloc] initWithOther];
   }
 }

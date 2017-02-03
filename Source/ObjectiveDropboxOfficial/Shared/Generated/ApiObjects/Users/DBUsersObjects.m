@@ -217,12 +217,12 @@
     return [[DBUSERSAccountType alloc] initWithPro];
   } else if ([tag isEqualToString:@"business"]) {
     return [[DBUSERSAccountType alloc] initWithBusiness];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -849,6 +849,8 @@
     return [[DBUSERSGetAccountBatchError alloc] initWithNoAccount:noAccount];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBUSERSGetAccountBatchError alloc] initWithOther];
+  } else {
+    return [[DBUSERSGetAccountBatchError alloc] initWithOther];
   }
 }
 @end
@@ -944,6 +946,8 @@
   if ([tag isEqualToString:@"no_account"]) {
     return [[DBUSERSGetAccountError alloc] initWithNoAccount];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBUSERSGetAccountError alloc] initWithOther];
+  } else {
     return [[DBUSERSGetAccountError alloc] initWithOther];
   }
 }
@@ -1219,6 +1223,8 @@
     DBUSERSTeamSpaceAllocation *team = [DBUSERSTeamSpaceAllocationSerializer deserialize:valueDict];
     return [[DBUSERSSpaceAllocation alloc] initWithTeam:team];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBUSERSSpaceAllocation alloc] initWithOther];
+  } else {
     return [[DBUSERSSpaceAllocation alloc] initWithOther];
   }
 }

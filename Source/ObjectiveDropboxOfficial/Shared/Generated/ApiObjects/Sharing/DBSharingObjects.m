@@ -152,6 +152,8 @@
     return [[DBSHARINGAccessLevel alloc] initWithViewerNoComment];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAccessLevel alloc] initWithOther];
+  } else {
+    return [[DBSHARINGAccessLevel alloc] initWithOther];
   }
 }
 @end
@@ -265,6 +267,8 @@
   } else if ([tag isEqualToString:@"editors"]) {
     return [[DBSHARINGAclUpdatePolicy alloc] initWithEditors];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGAclUpdatePolicy alloc] initWithOther];
+  } else {
     return [[DBSHARINGAclUpdatePolicy alloc] initWithOther];
   }
 }
@@ -545,6 +549,8 @@
   } else if ([tag isEqualToString:@"invalid_comment"]) {
     return [[DBSHARINGAddFileMemberError alloc] initWithInvalidComment];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGAddFileMemberError alloc] initWithOther];
+  } else {
     return [[DBSHARINGAddFileMemberError alloc] initWithOther];
   }
 }
@@ -968,6 +974,8 @@
     return [[DBSHARINGAddFolderMemberError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGAddFolderMemberError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGAddFolderMemberError alloc] initWithOther];
   }
 }
 @end
@@ -1261,6 +1269,8 @@
   } else if ([tag isEqualToString:@"group_not_on_team"]) {
     return [[DBSHARINGAddMemberSelectorError alloc] initWithGroupNotOnTeam];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGAddMemberSelectorError alloc] initWithOther];
+  } else {
     return [[DBSHARINGAddMemberSelectorError alloc] initWithOther];
   }
 }
@@ -1672,6 +1682,8 @@
     return [[DBSHARINGCreateSharedLinkError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGCreateSharedLinkError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGCreateSharedLinkError alloc] initWithOther];
   }
 }
 @end
@@ -1925,12 +1937,12 @@
     return [[DBSHARINGCreateSharedLinkWithSettingsError alloc] initWithSettingsError:settingsError];
   } else if ([tag isEqualToString:@"access_denied"]) {
     return [[DBSHARINGCreateSharedLinkWithSettingsError alloc] initWithAccessDenied];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -2134,6 +2146,8 @@
     return [[DBSHARINGFileAction alloc] initWithCreateLink];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileAction alloc] initWithOther];
+  } else {
+    return [[DBSHARINGFileAction alloc] initWithOther];
   }
 }
 @end
@@ -2304,6 +2318,8 @@
     NSString *permissionDeniedError = valueDict[@"permission_denied_error"];
     return [[DBSHARINGFileErrorResult alloc] initWithPermissionDeniedError:permissionDeniedError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGFileErrorResult alloc] initWithOther];
+  } else {
     return [[DBSHARINGFileErrorResult alloc] initWithOther];
   }
 }
@@ -2737,6 +2753,8 @@
     return [[DBSHARINGFileMemberActionError alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGFileMemberActionError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGFileMemberActionError alloc] initWithOther];
   }
 }
 @end
@@ -2868,12 +2886,12 @@
     DBSHARINGFileMemberActionError *memberError =
         [DBSHARINGFileMemberActionErrorSerializer deserialize:valueDict[@"member_error"]];
     return [[DBSHARINGFileMemberActionIndividualResult alloc] initWithMemberError:memberError];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -3080,6 +3098,8 @@
         [DBSHARINGFileMemberActionErrorSerializer deserialize:valueDict[@"member_error"]];
     return [[DBSHARINGFileMemberRemoveActionResult alloc] initWithMemberError:memberError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGFileMemberRemoveActionResult alloc] initWithOther];
+  } else {
     return [[DBSHARINGFileMemberRemoveActionResult alloc] initWithOther];
   }
 }
@@ -3430,6 +3450,8 @@
   } else if ([tag isEqualToString:@"create_link"]) {
     return [[DBSHARINGFolderAction alloc] initWithCreateLink];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGFolderAction alloc] initWithOther];
+  } else {
     return [[DBSHARINGFolderAction alloc] initWithOther];
   }
 }
@@ -4094,6 +4116,8 @@
     return [[DBSHARINGGetFileMetadataError alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGGetFileMetadataError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGGetFileMetadataError alloc] initWithOther];
   }
 }
 @end
@@ -4238,6 +4262,8 @@
         [DBSHARINGSharingFileAccessErrorSerializer deserialize:valueDict[@"access_error"]];
     return [[DBSHARINGGetFileMetadataIndividualResult alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGGetFileMetadataIndividualResult alloc] initWithOther];
+  } else {
     return [[DBSHARINGGetFileMetadataIndividualResult alloc] initWithOther];
   }
 }
@@ -4448,6 +4474,8 @@
     return [[DBSHARINGSharedLinkError alloc] initWithUnsupportedLinkType];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGSharedLinkError alloc] initWithOther];
   }
 }
 @end
@@ -4599,6 +4627,8 @@
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithOther];
   } else if ([tag isEqualToString:@"shared_link_is_directory"]) {
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithSharedLinkIsDirectory];
+  } else {
+    return [[DBSHARINGGetSharedLinkFileError alloc] initWithOther];
   }
 }
 @end
@@ -4845,6 +4875,8 @@
     NSString *path = valueDict[@"path"] ? valueDict[@"path"] : nil;
     return [[DBSHARINGGetSharedLinksError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGGetSharedLinksError alloc] initWithOther];
+  } else {
     return [[DBSHARINGGetSharedLinksError alloc] initWithOther];
   }
 }
@@ -5398,6 +5430,8 @@
     return [[DBSHARINGInviteeInfo alloc] initWithEmail:email];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGInviteeInfo alloc] initWithOther];
+  } else {
+    return [[DBSHARINGInviteeInfo alloc] initWithOther];
   }
 }
 @end
@@ -5682,6 +5716,8 @@
     return [[DBSHARINGJobError alloc] initWithRelinquishFolderMembershipError:relinquishFolderMembershipError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGJobError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGJobError alloc] initWithOther];
   }
 }
 @end
@@ -5813,12 +5849,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     DBSHARINGJobError *failed = [DBSHARINGJobErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBSHARINGJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -6362,6 +6398,8 @@
     return [[DBSHARINGListFileMembersContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFileMembersContinueError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGListFileMembersContinueError alloc] initWithOther];
   }
 }
 @end
@@ -6566,6 +6604,8 @@
     return [[DBSHARINGListFileMembersError alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFileMembersError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGListFileMembersError alloc] initWithOther];
   }
 }
 @end
@@ -6710,6 +6750,8 @@
         [DBSHARINGSharingFileAccessErrorSerializer deserialize:valueDict[@"access_error"]];
     return [[DBSHARINGListFileMembersIndividualResult alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGListFileMembersIndividualResult alloc] initWithOther];
+  } else {
     return [[DBSHARINGListFileMembersIndividualResult alloc] initWithOther];
   }
 }
@@ -6972,6 +7014,8 @@
   } else if ([tag isEqualToString:@"invalid_cursor"]) {
     return [[DBSHARINGListFilesContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGListFilesContinueError alloc] initWithOther];
+  } else {
     return [[DBSHARINGListFilesContinueError alloc] initWithOther];
   }
 }
@@ -7395,6 +7439,8 @@
     return [[DBSHARINGListFolderMembersContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListFolderMembersContinueError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGListFolderMembersContinueError alloc] initWithOther];
   }
 }
 @end
@@ -7624,6 +7670,8 @@
   if ([tag isEqualToString:@"invalid_cursor"]) {
     return [[DBSHARINGListFoldersContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGListFoldersContinueError alloc] initWithOther];
+  } else {
     return [[DBSHARINGListFoldersContinueError alloc] initWithOther];
   }
 }
@@ -7905,6 +7953,8 @@
   } else if ([tag isEqualToString:@"reset"]) {
     return [[DBSHARINGListSharedLinksError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGListSharedLinksError alloc] initWithOther];
+  } else {
     return [[DBSHARINGListSharedLinksError alloc] initWithOther];
   }
 }
@@ -8264,6 +8314,8 @@
     return [[DBSHARINGMemberAction alloc] initWithRemove];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMemberAction alloc] initWithOther];
+  } else {
+    return [[DBSHARINGMemberAction alloc] initWithOther];
   }
 }
 @end
@@ -8452,6 +8504,8 @@
     return [[DBSHARINGMemberPolicy alloc] initWithAnyone];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMemberPolicy alloc] initWithOther];
+  } else {
+    return [[DBSHARINGMemberPolicy alloc] initWithOther];
   }
 }
 @end
@@ -8590,6 +8644,8 @@
     NSString *email = valueDict[@"email"];
     return [[DBSHARINGMemberSelector alloc] initWithEmail:email];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGMemberSelector alloc] initWithOther];
+  } else {
     return [[DBSHARINGMemberSelector alloc] initWithOther];
   }
 }
@@ -8849,6 +8905,8 @@
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithSettingsError:settingsError];
   } else if ([tag isEqualToString:@"email_not_verified"]) {
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithEmailNotVerified];
+  } else {
+    return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithOther];
   }
 }
 @end
@@ -9125,6 +9183,8 @@
     return [[DBSHARINGMountFolderError alloc] initWithNotMountable];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMountFolderError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGMountFolderError alloc] initWithOther];
   }
 }
 @end
@@ -9376,12 +9436,12 @@
     return [[DBSHARINGPendingUploadMode alloc] initWithFile];
   } else if ([tag isEqualToString:@"folder"]) {
     return [[DBSHARINGPendingUploadMode alloc] initWithFolder];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -9584,6 +9644,8 @@
   } else if ([tag isEqualToString:@"folder_is_limited_team_folder"]) {
     return [[DBSHARINGPermissionDeniedReason alloc] initWithFolderIsLimitedTeamFolder];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGPermissionDeniedReason alloc] initWithOther];
+  } else {
     return [[DBSHARINGPermissionDeniedReason alloc] initWithOther];
   }
 }
@@ -9791,6 +9853,8 @@
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGRelinquishFileMembershipError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGRelinquishFileMembershipError alloc] initWithOther];
+  } else {
     return [[DBSHARINGRelinquishFileMembershipError alloc] initWithOther];
   }
 }
@@ -10078,6 +10142,8 @@
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithNoExplicitAccess];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithOther];
   }
 }
 @end
@@ -10316,6 +10382,8 @@
         [DBSHARINGMemberAccessLevelResultSerializer deserialize:valueDict];
     return [[DBSHARINGRemoveFileMemberError alloc] initWithNoExplicitAccess:noExplicitAccess];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGRemoveFileMemberError alloc] initWithOther];
+  } else {
     return [[DBSHARINGRemoveFileMemberError alloc] initWithOther];
   }
 }
@@ -10605,6 +10673,8 @@
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGRemoveFolderMemberError alloc] initWithOther];
   }
 }
 @end
@@ -10750,12 +10820,12 @@
     DBSHARINGRemoveFolderMemberError *failed =
         [DBSHARINGRemoveFolderMemberErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBSHARINGRemoveMemberJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -10871,12 +10941,12 @@
     return [[DBSHARINGRequestedVisibility alloc] initWithTeamOnly];
   } else if ([tag isEqualToString:@"password"]) {
     return [[DBSHARINGRequestedVisibility alloc] initWithPassword];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -11044,6 +11114,8 @@
   } else if ([tag isEqualToString:@"shared_folder_only"]) {
     return [[DBSHARINGResolvedVisibility alloc] initWithSharedFolderOnly];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGResolvedVisibility alloc] initWithOther];
+  } else {
     return [[DBSHARINGResolvedVisibility alloc] initWithOther];
   }
 }
@@ -11253,6 +11325,8 @@
     return [[DBSHARINGRevokeSharedLinkError alloc] initWithOther];
   } else if ([tag isEqualToString:@"shared_link_malformed"]) {
     return [[DBSHARINGRevokeSharedLinkError alloc] initWithSharedLinkMalformed];
+  } else {
+    return [[DBSHARINGRevokeSharedLinkError alloc] initWithOther];
   }
 }
 @end
@@ -11509,6 +11583,8 @@
     return [[DBSHARINGShareFolderErrorBase alloc] initWithDisallowedSharedLinkPolicy];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGShareFolderErrorBase alloc] initWithOther];
+  } else {
+    return [[DBSHARINGShareFolderErrorBase alloc] initWithOther];
   }
 }
 @end
@@ -11692,6 +11768,8 @@
     return [[DBSHARINGShareFolderError alloc] initWithOther];
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGShareFolderError alloc] initWithNoPermission];
+  } else {
+    return [[DBSHARINGShareFolderError alloc] initWithOther];
   }
 }
 @end
@@ -11836,12 +11914,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     DBSHARINGShareFolderError *failed = [DBSHARINGShareFolderErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBSHARINGShareFolderJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -11966,12 +12044,12 @@
   } else if ([tag isEqualToString:@"complete"]) {
     DBSHARINGSharedFolderMetadata *complete = [DBSHARINGSharedFolderMetadataSerializer deserialize:valueDict];
     return [[DBSHARINGShareFolderLaunch alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -12328,6 +12406,8 @@
     DBFILESPathRootError *invalidPathRoot = [DBFILESPathRootErrorSerializer deserialize:valueDict];
     return [[DBSHARINGSharePathError alloc] initWithInvalidPathRoot:invalidPathRoot];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGSharePathError alloc] initWithOther];
+  } else {
     return [[DBSHARINGSharePathError alloc] initWithOther];
   }
 }
@@ -12733,6 +12813,8 @@
     return [[DBSHARINGSharedFolderAccessError alloc] initWithUnmounted];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedFolderAccessError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGSharedFolderAccessError alloc] initWithOther];
   }
 }
 @end
@@ -12881,6 +12963,8 @@
         [DBSHARINGMemberAccessLevelResultSerializer deserialize:valueDict];
     return [[DBSHARINGSharedFolderMemberError alloc] initWithNoExplicitAccess:noExplicitAccess];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGSharedFolderMemberError alloc] initWithOther];
+  } else {
     return [[DBSHARINGSharedFolderMemberError alloc] initWithOther];
   }
 }
@@ -13406,6 +13490,8 @@
     return [[DBSHARINGSharedLinkAccessFailureReason alloc] initWithOwnerOnly];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharedLinkAccessFailureReason alloc] initWithOther];
+  } else {
+    return [[DBSHARINGSharedLinkAccessFailureReason alloc] initWithOther];
   }
 }
 @end
@@ -13519,6 +13605,8 @@
   } else if ([tag isEqualToString:@"members"]) {
     return [[DBSHARINGSharedLinkPolicy alloc] initWithMembers];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGSharedLinkPolicy alloc] initWithOther];
+  } else {
     return [[DBSHARINGSharedLinkPolicy alloc] initWithOther];
   }
 }
@@ -13701,12 +13789,12 @@
     return [[DBSHARINGSharedLinkSettingsError alloc] initWithInvalidSettings];
   } else if ([tag isEqualToString:@"not_authorized"]) {
     return [[DBSHARINGSharedLinkSettingsError alloc] initWithNotAuthorized];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -13874,6 +13962,8 @@
     return [[DBSHARINGSharingFileAccessError alloc] initWithInsideOsxPackage];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGSharingFileAccessError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGSharingFileAccessError alloc] initWithOther];
   }
 }
 @end
@@ -13969,6 +14059,8 @@
   if ([tag isEqualToString:@"email_unverified"]) {
     return [[DBSHARINGSharingUserError alloc] initWithEmailUnverified];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGSharingUserError alloc] initWithOther];
+  } else {
     return [[DBSHARINGSharingUserError alloc] initWithOther];
   }
 }
@@ -14324,6 +14416,8 @@
     return [[DBSHARINGTransferFolderError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGTransferFolderError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGTransferFolderError alloc] initWithOther];
   }
 }
 @end
@@ -14530,6 +14624,8 @@
     return [[DBSHARINGUnmountFolderError alloc] initWithNotUnmountable];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUnmountFolderError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGUnmountFolderError alloc] initWithOther];
   }
 }
 @end
@@ -14730,6 +14826,8 @@
         [DBSHARINGSharingFileAccessErrorSerializer deserialize:valueDict[@"access_error"]];
     return [[DBSHARINGUnshareFileError alloc] initWithAccessError:accessError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGUnshareFileError alloc] initWithOther];
+  } else {
     return [[DBSHARINGUnshareFileError alloc] initWithOther];
   }
 }
@@ -14961,6 +15059,8 @@
   } else if ([tag isEqualToString:@"too_many_files"]) {
     return [[DBSHARINGUnshareFolderError alloc] initWithTooManyFiles];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGUnshareFolderError alloc] initWithOther];
+  } else {
     return [[DBSHARINGUnshareFolderError alloc] initWithOther];
   }
 }
@@ -15249,6 +15349,8 @@
     return [[DBSHARINGUpdateFolderMemberError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGUpdateFolderMemberError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGUpdateFolderMemberError alloc] initWithOther];
   }
 }
 @end
@@ -15525,6 +15627,8 @@
   } else if ([tag isEqualToString:@"no_permission"]) {
     return [[DBSHARINGUpdateFolderPolicyError alloc] initWithNoPermission];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGUpdateFolderPolicyError alloc] initWithOther];
+  } else {
     return [[DBSHARINGUpdateFolderPolicyError alloc] initWithOther];
   }
 }
@@ -15860,6 +15964,8 @@
   } else if ([tag isEqualToString:@"shared_folder_only"]) {
     return [[DBSHARINGVisibility alloc] initWithSharedFolderOnly];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGVisibility alloc] initWithOther];
+  } else {
     return [[DBSHARINGVisibility alloc] initWithOther];
   }
 }

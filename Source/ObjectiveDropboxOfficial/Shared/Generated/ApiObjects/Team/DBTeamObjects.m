@@ -473,12 +473,12 @@
     return [[DBTEAMAdminTier alloc] initWithSupportAdmin];
   } else if ([tag isEqualToString:@"member_only"]) {
     return [[DBTEAMAdminTier alloc] initWithMemberOnly];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -777,6 +777,8 @@
 
   if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMDateRangeError alloc] initWithOther];
+  } else {
+    return [[DBTEAMDateRangeError alloc] initWithOther];
   }
 }
 @end
@@ -1037,6 +1039,8 @@
   } else if ([tag isEqualToString:@"linux"]) {
     return [[DBTEAMDesktopPlatform alloc] initWithLinux];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMDesktopPlatform alloc] initWithOther];
+  } else {
     return [[DBTEAMDesktopPlatform alloc] initWithOther];
   }
 }
@@ -1883,12 +1887,12 @@
     return [[DBTEAMGroupAccessType alloc] initWithMember];
   } else if ([tag isEqualToString:@"owner"]) {
     return [[DBTEAMGroupAccessType alloc] initWithOwner];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -2100,6 +2104,8 @@
     return [[DBTEAMGroupCreateError alloc] initWithExternalIdAlreadyInUse];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupCreateError alloc] initWithOther];
+  } else {
+    return [[DBTEAMGroupCreateError alloc] initWithOther];
   }
 }
 @end
@@ -2195,6 +2201,8 @@
   if ([tag isEqualToString:@"group_not_found"]) {
     return [[DBTEAMGroupSelectorError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMGroupSelectorError alloc] initWithOther];
+  } else {
     return [[DBTEAMGroupSelectorError alloc] initWithOther];
   }
 }
@@ -2311,6 +2319,8 @@
     return [[DBTEAMGroupDeleteError alloc] initWithOther];
   } else if ([tag isEqualToString:@"group_already_deleted"]) {
     return [[DBTEAMGroupDeleteError alloc] initWithGroupAlreadyDeleted];
+  } else {
+    return [[DBTEAMGroupDeleteError alloc] initWithOther];
   }
 }
 @end
@@ -2669,6 +2679,8 @@
     return [[DBTEAMGroupMemberSelectorError alloc] initWithOther];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMemberSelectorError alloc] initWithMemberNotInGroup];
+  } else {
+    return [[DBTEAMGroupMemberSelectorError alloc] initWithOther];
   }
 }
 @end
@@ -2802,6 +2814,8 @@
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithMemberNotInGroup];
   } else if ([tag isEqualToString:@"user_cannot_be_manager_of_company_managed_group"]) {
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithUserCannotBeManagerOfCompanyManagedGroup];
+  } else {
+    return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithOther];
   }
 }
 @end
@@ -3209,6 +3223,8 @@
                              }];
     return [[DBTEAMGroupMembersAddError alloc]
         initWithUserCannotBeManagerOfCompanyManagedGroup:userCannotBeManagerOfCompanyManagedGroup];
+  } else {
+    return [[DBTEAMGroupMembersAddError alloc] initWithOther:userCannotBeManagerOfCompanyManagedGroup];
   }
 }
 @end
@@ -3465,6 +3481,8 @@
     return [[DBTEAMGroupMembersSelectorError alloc] initWithOther];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMembersSelectorError alloc] initWithMemberNotInGroup];
+  } else {
+    return [[DBTEAMGroupMembersSelectorError alloc] initWithOther];
   }
 }
 @end
@@ -3598,6 +3616,8 @@
     return [[DBTEAMGroupMembersRemoveError alloc] initWithMemberNotInGroup];
   } else if ([tag isEqualToString:@"group_not_in_team"]) {
     return [[DBTEAMGroupMembersRemoveError alloc] initWithGroupNotInTeam];
+  } else {
+    return [[DBTEAMGroupMembersRemoveError alloc] initWithOther];
   }
 }
 @end
@@ -3863,12 +3883,12 @@
   } else if ([tag isEqualToString:@"group_external_id"]) {
     NSString *groupExternalId = valueDict[@"group_external_id"];
     return [[DBTEAMGroupSelector alloc] initWithGroupExternalId:groupExternalId];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -4116,6 +4136,8 @@
     return [[DBTEAMGroupUpdateError alloc] initWithGroupNameInvalid];
   } else if ([tag isEqualToString:@"external_id_already_in_use"]) {
     return [[DBTEAMGroupUpdateError alloc] initWithExternalIdAlreadyInUse];
+  } else {
+    return [[DBTEAMGroupUpdateError alloc] initWithOther];
   }
 }
 @end
@@ -4211,6 +4233,8 @@
   if ([tag isEqualToString:@"group_not_on_team"]) {
     return [[DBTEAMGroupsGetInfoError alloc] initWithGroupNotOnTeam];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMGroupsGetInfoError alloc] initWithOther];
+  } else {
     return [[DBTEAMGroupsGetInfoError alloc] initWithOther];
   }
 }
@@ -4336,12 +4360,12 @@
   } else if ([tag isEqualToString:@"group_info"]) {
     DBTEAMGroupFullInfo *groupInfo = [DBTEAMGroupFullInfoSerializer deserialize:valueDict];
     return [[DBTEAMGroupsGetInfoItem alloc] initWithGroupInfo:groupInfo];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -4555,6 +4579,8 @@
   if ([tag isEqualToString:@"invalid_cursor"]) {
     return [[DBTEAMGroupsListContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMGroupsListContinueError alloc] initWithOther];
+  } else {
     return [[DBTEAMGroupsListContinueError alloc] initWithOther];
   }
 }
@@ -4849,6 +4875,8 @@
     return [[DBTEAMGroupsMembersListContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupsMembersListContinueError alloc] initWithOther];
+  } else {
+    return [[DBTEAMGroupsMembersListContinueError alloc] initWithOther];
   }
 }
 @end
@@ -5056,6 +5084,8 @@
     return [[DBTEAMGroupsPollError alloc] initWithOther];
   } else if ([tag isEqualToString:@"access_denied"]) {
     return [[DBTEAMGroupsPollError alloc] initWithAccessDenied];
+  } else {
+    return [[DBTEAMGroupsPollError alloc] initWithOther];
   }
 }
 @end
@@ -5191,12 +5221,12 @@
                                                                    return elem;
                                                                  }];
     return [[DBTEAMGroupsSelector alloc] initWithGroupExternalIds:groupExternalIds];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -5348,6 +5378,8 @@
   if ([tag isEqualToString:@"member_not_found"]) {
     return [[DBTEAMListMemberAppsError alloc] initWithMemberNotFound];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMListMemberAppsError alloc] initWithOther];
+  } else {
     return [[DBTEAMListMemberAppsError alloc] initWithOther];
   }
 }
@@ -5588,6 +5620,8 @@
   if ([tag isEqualToString:@"member_not_found"]) {
     return [[DBTEAMListMemberDevicesError alloc] initWithMemberNotFound];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMListMemberDevicesError alloc] initWithOther];
+  } else {
     return [[DBTEAMListMemberDevicesError alloc] initWithOther];
   }
 }
@@ -5863,6 +5897,8 @@
     return [[DBTEAMListMembersAppsError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMListMembersAppsError alloc] initWithOther];
+  } else {
+    return [[DBTEAMListMembersAppsError alloc] initWithOther];
   }
 }
 @end
@@ -6117,6 +6153,8 @@
     return [[DBTEAMListMembersDevicesError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMListMembersDevicesError alloc] initWithOther];
+  } else {
+    return [[DBTEAMListMembersDevicesError alloc] initWithOther];
   }
 }
 @end
@@ -6355,6 +6393,8 @@
   if ([tag isEqualToString:@"reset"]) {
     return [[DBTEAMListTeamAppsError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMListTeamAppsError alloc] initWithOther];
+  } else {
     return [[DBTEAMListTeamAppsError alloc] initWithOther];
   }
 }
@@ -6609,6 +6649,8 @@
   if ([tag isEqualToString:@"reset"]) {
     return [[DBTEAMListTeamDevicesError alloc] initWithReset];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMListTeamDevicesError alloc] initWithOther];
+  } else {
     return [[DBTEAMListTeamDevicesError alloc] initWithOther];
   }
 }
@@ -7191,12 +7233,12 @@
   } else if ([tag isEqualToString:@"user_creation_failed"]) {
     NSString *userCreationFailed = valueDict[@"user_creation_failed"];
     return [[DBTEAMMemberAddResult alloc] initWithUserCreationFailed:userCreationFailed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -7579,12 +7621,12 @@
 
   if ([tag isEqualToString:@"user_not_found"]) {
     return [[DBTEAMUserSelectorError alloc] initWithUserNotFound];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -7683,12 +7725,12 @@
     return [[DBTEAMMemberSelectorError alloc] initWithUserNotFound];
   } else if ([tag isEqualToString:@"user_not_in_team"]) {
     return [[DBTEAMMemberSelectorError alloc] initWithUserNotInTeam];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -7911,12 +7953,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     NSString *failed = valueDict[@"failed"];
     return [[DBTEAMMembersAddJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8048,12 +8090,12 @@
                                return [DBTEAMMemberAddResultSerializer deserialize:elem];
                              }];
     return [[DBTEAMMembersAddLaunch alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8233,6 +8275,8 @@
     return [[DBTEAMMembersDeactivateError alloc] initWithUserNotInTeam];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersDeactivateError alloc] initWithOther];
+  } else {
+    return [[DBTEAMMembersDeactivateError alloc] initWithOther];
   }
 }
 @end
@@ -8377,6 +8421,8 @@
 
   if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersGetInfoError alloc] initWithOther];
+  } else {
+    return [[DBTEAMMembersGetInfoError alloc] initWithOther];
   }
 }
 @end
@@ -8501,12 +8547,12 @@
   } else if ([tag isEqualToString:@"member_info"]) {
     DBTEAMTeamMemberInfo *memberInfo = [DBTEAMTeamMemberInfoSerializer deserialize:valueDict];
     return [[DBTEAMMembersGetInfoItem alloc] initWithMemberInfo:memberInfo];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -8724,6 +8770,8 @@
     return [[DBTEAMMembersListContinueError alloc] initWithInvalidCursor];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersListContinueError alloc] initWithOther];
+  } else {
+    return [[DBTEAMMembersListContinueError alloc] initWithOther];
   }
 }
 @end
@@ -8801,6 +8849,8 @@
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersListError alloc] initWithOther];
+  } else {
     return [[DBTEAMMembersListError alloc] initWithOther];
   }
 }
@@ -9084,6 +9134,8 @@
   } else if ([tag isEqualToString:@"team_license_limit"]) {
     return [[DBTEAMMembersRecoverError alloc] initWithTeamLicenseLimit];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersRecoverError alloc] initWithOther];
+  } else {
     return [[DBTEAMMembersRecoverError alloc] initWithOther];
   }
 }
@@ -9505,6 +9557,8 @@
     return [[DBTEAMMembersRemoveError alloc] initWithCannotKeepAccountAndDeleteData];
   } else if ([tag isEqualToString:@"email_address_too_long_to_be_disabled"]) {
     return [[DBTEAMMembersRemoveError alloc] initWithEmailAddressTooLongToBeDisabled];
+  } else {
+    return [[DBTEAMMembersRemoveError alloc] initWithOther];
   }
 }
 @end
@@ -9619,6 +9673,8 @@
   } else if ([tag isEqualToString:@"user_not_in_team"]) {
     return [[DBTEAMMembersSendWelcomeError alloc] initWithUserNotInTeam];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersSendWelcomeError alloc] initWithOther];
+  } else {
     return [[DBTEAMMembersSendWelcomeError alloc] initWithOther];
   }
 }
@@ -9850,6 +9906,8 @@
   } else if ([tag isEqualToString:@"team_license_limit"]) {
     return [[DBTEAMMembersSetPermissionsError alloc] initWithTeamLicenseLimit];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersSetPermissionsError alloc] initWithOther];
+  } else {
     return [[DBTEAMMembersSetPermissionsError alloc] initWithOther];
   }
 }
@@ -10235,6 +10293,8 @@
     return [[DBTEAMMembersSetProfileError alloc] initWithParamCannotBeEmpty];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersSetProfileError alloc] initWithOther];
+  } else {
+    return [[DBTEAMMembersSetProfileError alloc] initWithOther];
   }
 }
 @end
@@ -10404,6 +10464,8 @@
     return [[DBTEAMMembersSuspendError alloc] initWithSuspendLastAdmin];
   } else if ([tag isEqualToString:@"team_license_limit"]) {
     return [[DBTEAMMembersSuspendError alloc] initWithTeamLicenseLimit];
+  } else {
+    return [[DBTEAMMembersSuspendError alloc] initWithOther];
   }
 }
 @end
@@ -10613,6 +10675,8 @@
     return [[DBTEAMMembersUnsuspendError alloc] initWithUnsuspendNonSuspendedMember];
   } else if ([tag isEqualToString:@"team_license_limit"]) {
     return [[DBTEAMMembersUnsuspendError alloc] initWithTeamLicenseLimit];
+  } else {
+    return [[DBTEAMMembersUnsuspendError alloc] initWithOther];
   }
 }
 @end
@@ -10780,6 +10844,8 @@
   } else if ([tag isEqualToString:@"blackberry"]) {
     return [[DBTEAMMobileClientPlatform alloc] initWithBlackberry];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMobileClientPlatform alloc] initWithOther];
+  } else {
     return [[DBTEAMMobileClientPlatform alloc] initWithOther];
   }
 }
@@ -11196,12 +11262,12 @@
   } else if ([tag isEqualToString:@"mobile_client"]) {
     DBTEAMDeviceSessionArg *mobileClient = [DBTEAMDeviceSessionArgSerializer deserialize:valueDict];
     return [[DBTEAMRevokeDeviceSessionArg alloc] initWithMobileClient:mobileClient];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -11344,6 +11410,8 @@
   NSString *tag = valueDict[@".tag"];
 
   if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMRevokeDeviceSessionBatchError alloc] initWithOther];
+  } else {
     return [[DBTEAMRevokeDeviceSessionBatchError alloc] initWithOther];
   }
 }
@@ -11525,6 +11593,8 @@
   } else if ([tag isEqualToString:@"member_not_found"]) {
     return [[DBTEAMRevokeDeviceSessionError alloc] initWithMemberNotFound];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMRevokeDeviceSessionError alloc] initWithOther];
+  } else {
     return [[DBTEAMRevokeDeviceSessionError alloc] initWithOther];
   }
 }
@@ -11808,6 +11878,8 @@
 
   if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMRevokeLinkedAppBatchError alloc] initWithOther];
+  } else {
+    return [[DBTEAMRevokeLinkedAppBatchError alloc] initWithOther];
   }
 }
 @end
@@ -11988,6 +12060,8 @@
   } else if ([tag isEqualToString:@"member_not_found"]) {
     return [[DBTEAMRevokeLinkedAppError alloc] initWithMemberNotFound];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMRevokeLinkedAppError alloc] initWithOther];
+  } else {
     return [[DBTEAMRevokeLinkedAppError alloc] initWithOther];
   }
 }
@@ -12231,6 +12305,8 @@
     return [[DBTEAMTeamFolderAccessError alloc] initWithNoAccess];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderAccessError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderAccessError alloc] initWithOther];
   }
 }
 @end
@@ -12374,6 +12450,8 @@
         [DBTEAMTeamFolderInvalidStatusErrorSerializer deserialize:valueDict[@"status_error"]];
     return [[DBTEAMTeamFolderActivateError alloc] initWithStatusError:statusError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderActivateError alloc] initWithOther];
+  } else {
     return [[DBTEAMTeamFolderActivateError alloc] initWithOther];
   }
 }
@@ -12642,6 +12720,8 @@
     return [[DBTEAMTeamFolderArchiveError alloc] initWithStatusError:statusError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderArchiveError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderArchiveError alloc] initWithOther];
   }
 }
 @end
@@ -12786,12 +12866,12 @@
   } else if ([tag isEqualToString:@"failed"]) {
     DBTEAMTeamFolderArchiveError *failed = [DBTEAMTeamFolderArchiveErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBTEAMTeamFolderArchiveJobStatus alloc] initWithFailed:failed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -12916,12 +12996,12 @@
   } else if ([tag isEqualToString:@"complete"]) {
     DBTEAMTeamFolderMetadata *complete = [DBTEAMTeamFolderMetadataSerializer deserialize:valueDict];
     return [[DBTEAMTeamFolderArchiveLaunch alloc] initWithComplete:complete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -13092,6 +13172,8 @@
     return [[DBTEAMTeamFolderCreateError alloc] initWithFolderNameAlreadyUsed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderCreateError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderCreateError alloc] initWithOther];
   }
 }
 @end
@@ -13218,12 +13300,12 @@
   } else if ([tag isEqualToString:@"team_folder_metadata"]) {
     DBTEAMTeamFolderMetadata *teamFolderMetadata = [DBTEAMTeamFolderMetadataSerializer deserialize:valueDict];
     return [[DBTEAMTeamFolderGetInfoItem alloc] initWithTeamFolderMetadata:teamFolderMetadata];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -13402,6 +13484,8 @@
   } else if ([tag isEqualToString:@"archived"]) {
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithArchived];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithOther];
+  } else {
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithOther];
   }
 }
@@ -13803,6 +13887,8 @@
     return [[DBTEAMTeamFolderPermanentlyDeleteError alloc] initWithStatusError:statusError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderPermanentlyDeleteError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderPermanentlyDeleteError alloc] initWithOther];
   }
 }
 @end
@@ -14011,6 +14097,8 @@
     return [[DBTEAMTeamFolderRenameError alloc] initWithFolderNameAlreadyUsed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
   }
 }
 @end
@@ -14124,6 +14212,8 @@
   } else if ([tag isEqualToString:@"archived"]) {
     return [[DBTEAMTeamFolderStatus alloc] initWithArchived];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderStatus alloc] initWithOther];
+  } else {
     return [[DBTEAMTeamFolderStatus alloc] initWithOther];
   }
 }
@@ -14546,12 +14636,12 @@
   } else if ([tag isEqualToString:@"removed"]) {
     DBTEAMRemovedStatus *removed = [DBTEAMRemovedStatusSerializer deserialize:valueDict];
     return [[DBTEAMTeamMemberStatus alloc] initWithRemoved:removed];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -14649,12 +14739,12 @@
     return [[DBTEAMTeamMembershipType alloc] initWithFull];
   } else if ([tag isEqualToString:@"limited"]) {
     return [[DBTEAMTeamMembershipType alloc] initWithLimited];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -14960,12 +15050,12 @@
   } else if ([tag isEqualToString:@"email"]) {
     NSString *email = valueDict[@"email"];
     return [[DBTEAMUserSelectorArg alloc] initWithEmail:email];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -15136,11 +15226,11 @@
                                                          return elem;
                                                        }];
     return [[DBTEAMUsersSelectorArg alloc] initWithEmails:emails];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end

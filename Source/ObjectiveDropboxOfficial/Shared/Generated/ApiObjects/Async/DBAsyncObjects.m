@@ -95,12 +95,12 @@
   if ([tag isEqualToString:@"async_job_id"]) {
     NSString *asyncJobId = valueDict[@"async_job_id"];
     return [[DBASYNCLaunchResultBase alloc] initWithAsyncJobId:asyncJobId];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -212,12 +212,12 @@
     return [[DBASYNCLaunchEmptyResult alloc] initWithAsyncJobId:asyncJobId];
   } else if ([tag isEqualToString:@"complete"]) {
     return [[DBASYNCLaunchEmptyResult alloc] initWithComplete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -355,12 +355,12 @@
 
   if ([tag isEqualToString:@"in_progress"]) {
     return [[DBASYNCPollResultBase alloc] initWithInProgress];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -459,12 +459,12 @@
     return [[DBASYNCPollEmptyResult alloc] initWithInProgress];
   } else if ([tag isEqualToString:@"complete"]) {
     return [[DBASYNCPollEmptyResult alloc] initWithComplete];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
   }
-
-  @throw([NSException
-      exceptionWithName:@"InvalidTag"
-                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-               userInfo:nil]);
 }
 @end
 
@@ -577,6 +577,8 @@
   } else if ([tag isEqualToString:@"internal_error"]) {
     return [[DBASYNCPollError alloc] initWithInternalError];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBASYNCPollError alloc] initWithOther];
+  } else {
     return [[DBASYNCPollError alloc] initWithOther];
   }
 }

@@ -147,6 +147,8 @@
     return [[DBAUTHAccessError alloc] initWithPaperAccessDenied:paperAccessDenied];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAccessError alloc] initWithOther];
+  } else {
+    return [[DBAUTHAccessError alloc] initWithOther];
   }
 }
 @end
@@ -297,6 +299,8 @@
     return [[DBAUTHAuthError alloc] initWithUserSuspended];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHAuthError alloc] initWithOther];
+  } else {
+    return [[DBAUTHAuthError alloc] initWithOther];
   }
 }
 @end
@@ -411,6 +415,8 @@
     return [[DBAUTHInvalidAccountTypeError alloc] initWithFeature];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
+  } else {
+    return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
   }
 }
 @end
@@ -524,6 +530,8 @@
   } else if ([tag isEqualToString:@"not_paper_user"]) {
     return [[DBAUTHPaperAccessError alloc] initWithNotPaperUser];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBAUTHPaperAccessError alloc] initWithOther];
+  } else {
     return [[DBAUTHPaperAccessError alloc] initWithOther];
   }
 }
@@ -704,6 +712,8 @@
     return [[DBAUTHRateLimitReason alloc] initWithTooManyWriteOperations];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBAUTHRateLimitReason alloc] initWithOther];
+  } else {
+    return [[DBAUTHRateLimitReason alloc] initWithOther];
   }
 }
 @end
@@ -879,6 +889,8 @@
   } else if ([tag isEqualToString:@"app_id_mismatch"]) {
     return [[DBAUTHTokenFromOAuth1Error alloc] initWithAppIdMismatch];
   } else if ([tag isEqualToString:@"other"]) {
+    return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
+  } else {
     return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
   }
 }
