@@ -3224,7 +3224,7 @@
     return [[DBTEAMGroupMembersAddError alloc]
         initWithUserCannotBeManagerOfCompanyManagedGroup:userCannotBeManagerOfCompanyManagedGroup];
   } else {
-    return [[DBTEAMGroupMembersAddError alloc] initWithOther:userCannotBeManagerOfCompanyManagedGroup];
+    return [[DBTEAMGroupMembersAddError alloc] initWithOther];
   }
 }
 @end

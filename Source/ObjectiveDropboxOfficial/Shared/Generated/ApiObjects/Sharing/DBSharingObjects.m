@@ -1428,6 +1428,11 @@
   if ([valueDict[@".tag"] isEqualToString:@"collection"]) {
     return [DBSHARINGCollectionLinkMetadataSerializer deserialize:valueDict];
   }
+
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end
@@ -2446,6 +2451,11 @@
   if ([valueDict[@".tag"] isEqualToString:@"folder"]) {
     return [DBSHARINGFolderLinkMetadataSerializer deserialize:valueDict];
   }
+
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end

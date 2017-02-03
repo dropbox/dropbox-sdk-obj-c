@@ -162,7 +162,7 @@
     DBFILESLookupError *path = [DBFILESLookupErrorSerializer deserialize:valueDict[@"path"]];
     return [[DBFILESPropertiesError alloc] initWithPath:path];
   } else {
-    return [[DBFILESPropertiesError alloc] initWithOther:path];
+    return [[DBFILESPropertiesError alloc] initWithOther];
   }
 }
 @end
@@ -2378,6 +2378,11 @@
   if ([valueDict[@".tag"] isEqualToString:@"deleted"]) {
     return [DBFILESDeletedMetadataSerializer deserialize:valueDict];
   }
+
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end
@@ -5271,6 +5276,11 @@
   if ([valueDict[@".tag"] isEqualToString:@"video"]) {
     return [DBFILESVideoMetadataSerializer deserialize:valueDict];
   }
+
+  @throw([NSException
+      exceptionWithName:@"InvalidTag"
+                 reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+               userInfo:nil]);
 }
 
 @end
@@ -7232,7 +7242,7 @@
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESRemovePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
   } else {
-    return [[DBFILESRemovePropertiesError alloc] initWithOther:propertyGroupLookup];
+    return [[DBFILESRemovePropertiesError alloc] initWithOther];
   }
 }
 @end
@@ -9554,7 +9564,7 @@
         [DBFILESLookUpPropertiesErrorSerializer deserialize:valueDict[@"property_group_lookup"]];
     return [[DBFILESUpdatePropertiesError alloc] initWithPropertyGroupLookup:propertyGroupLookup];
   } else {
-    return [[DBFILESUpdatePropertiesError alloc] initWithOther:propertyGroupLookup];
+    return [[DBFILESUpdatePropertiesError alloc] initWithOther];
   }
 }
 @end
@@ -9885,7 +9895,7 @@
         [DBFILESInvalidPropertyGroupErrorSerializer deserialize:valueDict[@"properties_error"]];
     return [[DBFILESUploadErrorWithProperties alloc] initWithPropertiesError:propertiesError];
   } else {
-    return [[DBFILESUploadErrorWithProperties alloc] initWithOther:propertiesError];
+    return [[DBFILESUploadErrorWithProperties alloc] initWithOther];
   }
 }
 @end
