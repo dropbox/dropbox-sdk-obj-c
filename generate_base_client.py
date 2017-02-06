@@ -112,15 +112,15 @@ def main():
     if o:
         print('Output:', o)
 
-    with open(dropbox_format_path + '/list_files_reformat.txt', "w") as outfile:
-        get_files_cmd = ['find', '../Source/', '-iname', '*.[mh]']
-        subprocess.call(get_files_cmd, stdout=outfile, cwd=dropbox_format_path)
-
     if args.formatting:
         if verbose:
             print('Formatting source files')
+
+        files = subprocess.check_output(
+            (['find', '../Source', '-iname', '*.[mh]']), cwd=dropbox_format_path)
+
         o = subprocess.check_output(
-            (['sh', 'reformat_files.sh', 'list_files_reformat.txt']), cwd=dropbox_format_path)
+            (['sh', 'reformat_files.sh', files]), cwd=dropbox_format_path)
         if o:
             print('Output:', o)
 

@@ -9,15 +9,8 @@
 # `sh reformat_files.sh list_files_reform.txt`
 #
 
-if [ -z "$1" ]; then
-   echo "specify the file that contains a list of files"
-   exit
-fi
-
-files=$(cat $1)
-
-for item in $files ; do
-
+for item in $1 ; do
+    echo $item
     cp $item $item.tmp
     
     clang\-format $item.tmp > $item
