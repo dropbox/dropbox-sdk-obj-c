@@ -52,12 +52,23 @@
 
   [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
                                                       style:(UIAlertActionStyle)UIAlertActionStyleCancel
-                                                    handler:nil]];
+                                                    handler:^(UIAlertAction *action){
+#pragma unused(action)
+                                                        void(^handler)(void) = buttonHandlers["Cancel"];
+
+                                                        if (handler != nil) {
+                                                            handler();
+                                                        }
+                                                    }]];
   [alertController addAction:[UIAlertAction actionWithTitle:@"Retry"
                                                       style:(UIAlertActionStyle)UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
 #pragma unused(action)
-                                                      buttonHandlers[@"Retry"]();
+                                                        void(^handler)(void) = buttonHandlers["Retry"];
+
+                                                        if (handler != nil) {
+                                                            handler();
+                                                        }
                                                     }]];
 
   [_controller presentViewController:alertController
