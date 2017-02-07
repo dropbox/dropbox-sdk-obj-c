@@ -74,65 +74,63 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
-    void (^cancelHandler)() = ^{
-        NSURL *cancelUrl = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
-        [sharedApplication presentExternalApp:cancelUrl];
+  void (^cancelHandler)() = ^{
+    NSURL *cancelUrl = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
+    [sharedApplication presentExternalApp:cancelUrl];
+  };
+
+  if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
+    NSString *message = @"Try again once you have an internet connection.";
+    NSString *title = @"No internet connection";
+
+    NSDictionary<NSString *, void (^)()> *buttonHandlers = @{
+      @"Cancel" : ^{
+        cancelHandler();
+      },
+      @"Retry" : ^{
+        [self authorizeFromSharedApplication:sharedApplication browserAuth:browserAuth];
+      },
     };
 
-    if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
-        NSString *message = @"Try again once you have an internet connection.";
-        NSString *title = @"No internet connection";
+    [sharedApplication presentErrorMessageWithHandlers:message title:title buttonHandlers:buttonHandlers];
 
-        NSDictionary<NSString *, void (^)()> *buttonHandlers =
-        @{
-          @"Cancel": ^{
-              cancelHandler();
-          },
-          @"Retry": ^{
-              [self authorizeFromSharedApplication:sharedApplication browserAuth:browserAuth];
-          },
-          };
+    return;
+  }
 
-        [sharedApplication presentErrorMessageWithHandlers:message title:title buttonHandlers:buttonHandlers];
+  if (![self conformsToAppScheme]) {
+    NSString *message = [NSString stringWithFormat:@"DropboxSDK: unable to link; app isn't registered for correct URL "
+                                                   @"scheme (db-%@). Add this scheme to your project Info.plist file, "
+                                                   @"associated with following key: \"Information Property List\" > "
+                                                   @"\"URL types\" > \"Item 0\" > \"URL Schemes\" > \"Item <N>\".",
+                                                   _appKey];
+    NSString *title = @"DropboxSDK Error";
 
-        return;
-    }
+    [sharedApplication presentErrorMessage:message title:title];
 
-    if (![self conformsToAppScheme]) {
-        NSString *message = [NSString stringWithFormat:@"DropboxSDK: unable to link; app isn't registered for correct URL "
-                             @"scheme (db-%@). Add this scheme to your project Info.plist file, "
-                             @"associated with following key: \"Information Property List\" > "
-                             @"\"URL types\" > \"Item 0\" > \"URL Schemes\" > \"Item <N>\".",
-                             _appKey];
-        NSString *title = @"DropboxSDK Error";
+    return;
+  }
 
-        [sharedApplication presentErrorMessage:message title:title];
+  NSURL *url = [self authURL];
 
-        return;
-    }
+  if ([self checkAndPresentPlatformSpecificAuth:sharedApplication]) {
+    return;
+  }
 
-    NSURL *url = [self authURL];
+  if (browserAuth) {
+    [sharedApplication presentBrowserAuth:url];
+  } else {
+    BOOL (^tryInterceptHandler)
+    (NSURL *) = ^BOOL(NSURL *url) {
+      if ([self canHandleURL:url]) {
+        [sharedApplication presentExternalApp:url];
+        return YES;
+      } else {
+        return NO;
+      }
+    };
 
-    if ([self checkAndPresentPlatformSpecificAuth:sharedApplication]) {
-        return;
-    }
-
-    if (browserAuth) {
-        [sharedApplication presentBrowserAuth:url];
-    } else {
-        BOOL (^tryInterceptHandler)
-        (NSURL *) = ^BOOL(NSURL *url) {
-            if ([self canHandleURL:url]) {
-                [sharedApplication presentExternalApp:url];
-                return YES;
-            } else {
-                return NO;
-            }
-        };
-
-
-        [sharedApplication presentWebViewAuth:url tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
-    }
+    [sharedApplication presentWebViewAuth:url tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
+  }
 }
 
 - (BOOL)conformsToAppScheme {
