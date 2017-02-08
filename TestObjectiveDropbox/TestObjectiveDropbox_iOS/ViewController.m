@@ -64,6 +64,16 @@
 }
 
 - (IBAction)openWithButtonPressedRunTests:(id)sender {
+  TestData *data = [TestData new];
+
+  DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey];
+  DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
+  if (openWithInfo) {
+    NSLog(@"Returning to Dropbox app.");
+    [connector returnToDropboxApp:openWithInfo changesPending:NO openURLWrapper:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }];
+  } else {
+    NSLog(@"No info retrieved.");
+  }
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {

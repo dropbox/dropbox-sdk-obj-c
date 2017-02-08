@@ -4,3 +4,7 @@
 
 #import "DBClientsManager+MobileAuth-iOS.h"
 #import "DBOAuthMobile-iOS.h"
+
+/// OpenWith
+#import "DBOfficialAppConnector.h"
+#import "DBOpenWithInfo.h"

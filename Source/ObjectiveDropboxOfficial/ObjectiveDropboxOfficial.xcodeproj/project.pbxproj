@@ -1210,6 +1210,10 @@
 		F2A2DBA41E56DEB1001D8449 /* DBUSERSRouteObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2D7691E56DEAF001D8449 /* DBUSERSRouteObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A2DBA51E56DEB1001D8449 /* DBUSERSRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D76A1E56DEAF001D8449 /* DBUSERSRouteObjects.m */; };
 		F2A2DBA61E56DEB1001D8449 /* DBUSERSRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D76A1E56DEAF001D8449 /* DBUSERSRouteObjects.m */; };
+		F2A2DBAD1E578C3F001D8449 /* DBOfficialAppConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2DBA91E578C3F001D8449 /* DBOfficialAppConnector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A2DBAE1E578C3F001D8449 /* DBOfficialAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2DBAA1E578C3F001D8449 /* DBOfficialAppConnector.m */; };
+		F2A2DBAF1E578C3F001D8449 /* DBOpenWithInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2DBAB1E578C3F001D8449 /* DBOpenWithInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2A2DBB01E578C3F001D8449 /* DBOpenWithInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo.m */; };
 		F2FB65101E317406004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2FB65111E31740C004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -1829,6 +1833,10 @@
 		F2A2D7681E56DEAF001D8449 /* DBTEAMRouteObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTEAMRouteObjects.m; sourceTree = "<group>"; };
 		F2A2D7691E56DEAF001D8449 /* DBUSERSRouteObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUSERSRouteObjects.h; sourceTree = "<group>"; };
 		F2A2D76A1E56DEAF001D8449 /* DBUSERSRouteObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUSERSRouteObjects.m; sourceTree = "<group>"; };
+		F2A2DBA91E578C3F001D8449 /* DBOfficialAppConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOfficialAppConnector.h; sourceTree = "<group>"; };
+		F2A2DBAA1E578C3F001D8449 /* DBOfficialAppConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOfficialAppConnector.m; sourceTree = "<group>"; };
+		F2A2DBAB1E578C3F001D8449 /* DBOpenWithInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBOpenWithInfo.h; sourceTree = "<group>"; };
+		F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBOpenWithInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1872,6 +1880,7 @@
 				F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */,
 				F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */,
 				F235B5201E29913600144F8B /* Info.plist */,
+				F2A2DBA71E578C3E001D8449 /* OfficialPartners */,
 			);
 			name = ObjectiveDropboxOfficial_iOS;
 			path = Platform/ObjectiveDropboxOfficial_iOS;
@@ -2804,6 +2813,25 @@
 			path = RouteObjects;
 			sourceTree = "<group>";
 		};
+		F2A2DBA71E578C3E001D8449 /* OfficialPartners */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2DBA81E578C3F001D8449 /* OpenWith */,
+			);
+			path = OfficialPartners;
+			sourceTree = "<group>";
+		};
+		F2A2DBA81E578C3F001D8449 /* OpenWith */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2DBA91E578C3F001D8449 /* DBOfficialAppConnector.h */,
+				F2A2DBAA1E578C3F001D8449 /* DBOfficialAppConnector.m */,
+				F2A2DBAB1E578C3F001D8449 /* DBOpenWithInfo.h */,
+				F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo.m */,
+			);
+			path = OpenWith;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2909,6 +2937,7 @@
 				F2A2DABF1E56DEB0001D8449 /* DBTEAMMembersSetProfileArg.h in Headers */,
 				F2A2DABD1E56DEB0001D8449 /* DBTEAMMembersSetPermissionsResult.h in Headers */,
 				F2A2DABB1E56DEB0001D8449 /* DBTEAMMembersSetPermissionsError.h in Headers */,
+				F2A2DBAF1E578C3F001D8449 /* DBOpenWithInfo.h in Headers */,
 				F2A2DAB91E56DEB0001D8449 /* DBTEAMMembersSetPermissionsArg.h in Headers */,
 				F2A2DAB71E56DEB0001D8449 /* DBTEAMMembersSendWelcomeError.h in Headers */,
 				F2A2DAB51E56DEB0001D8449 /* DBTEAMMembersRemoveError.h in Headers */,
@@ -3020,6 +3049,7 @@
 				F2A2D9DF1E56DEB0001D8449 /* DBSHARINGUnshareFileError.h in Headers */,
 				F2A2D9DD1E56DEB0001D8449 /* DBSHARINGUnshareFileArg.h in Headers */,
 				F2A2D9DB1E56DEB0001D8449 /* DBSHARINGUnmountFolderError.h in Headers */,
+				F2A2DBAD1E578C3F001D8449 /* DBOfficialAppConnector.h in Headers */,
 				F2A2D9D91E56DEB0001D8449 /* DBSHARINGUnmountFolderArg.h in Headers */,
 				F2A2D9D71E56DEB0001D8449 /* DBSHARINGTransferFolderError.h in Headers */,
 				F2A2D9D51E56DEB0001D8449 /* DBSHARINGTransferFolderArg.h in Headers */,
@@ -4027,6 +4057,7 @@
 				F2A2DBA11E56DEB1001D8449 /* DBTEAMRouteObjects.m in Sources */,
 				F297890B1E03692F00876A73 /* DBChunkInputStream.m in Sources */,
 				F2A2DB311E56DEB1001D8449 /* DBTeamPoliciesObjects.m in Sources */,
+				F2A2DBAE1E578C3F001D8449 /* DBOfficialAppConnector.m in Sources */,
 				F2A2DB8D1E56DEB1001D8449 /* DBUSERSRoutes.m in Sources */,
 				F2A2DB3F1E56DEB1001D8449 /* DBUsersObjects.m in Sources */,
 				F2A2D78F1E56DEAF001D8449 /* DBFilesObjects.m in Sources */,
@@ -4061,6 +4092,7 @@
 				F29788CF1E03692F00876A73 /* DBTeamClient.m in Sources */,
 				F2A2DB891E56DEB1001D8449 /* DBTEAMRoutes.m in Sources */,
 				F241694F1E5247DB0038E306 /* DBTransportBaseConfig.m in Sources */,
+				F2A2DBB01E578C3F001D8449 /* DBOpenWithInfo.m in Sources */,
 				F29788F51E03692F00876A73 /* DBTransportBaseClient.m in Sources */,
 				F29788FF1E03692F00876A73 /* DBOAuthResult.m in Sources */,
 				F2A2DB811E56DEB1001D8449 /* DBPAPERRoutes.m in Sources */,
