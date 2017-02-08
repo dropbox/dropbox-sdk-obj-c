@@ -140,6 +140,10 @@
 ///
 - (BOOL)clearStoredAccessTokens;
 
+///
+///
+@property (nonatomic, assign) BOOL disableSignup;
+
 @end
 
 #pragma mark - OAuth manager base (macOS)
