@@ -85,6 +85,11 @@
   }
 
   ViewController *mainController = (ViewController *)self.window.rootViewController;
+
+  if ([[url absoluteString] containsString:@"openWith"]) {
+    NSLog(@"Successfully retrieved openWith url");
+  }
+
   [mainController checkButtons];
 
   return NO;

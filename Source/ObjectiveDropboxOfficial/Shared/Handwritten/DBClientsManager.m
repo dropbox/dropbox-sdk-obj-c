@@ -10,11 +10,22 @@
 
 @implementation DBClientsManager
 
+/// The app key of the current Dropbox API app.
+static NSString *appKey;
+
 /// An authorized client. This will be set to `nil` if unlinked.
 static DBUserClient *authorizedClient;
 
 /// An authorized team client. This will be set to `nil` if unlinked.
 static DBTeamClient *authorizedTeamClient;
+
++ (NSString *)appKey {
+  return appKey;
+}
+
++ (void)setAppKey:(NSString *)currentAppKey {
+  appKey = currentAppKey;
+}
 
 + (DBUserClient *)authorizedClient {
   return authorizedClient;
@@ -36,7 +47,7 @@ static DBTeamClient *authorizedTeamClient;
               transportClient:(DBTransportDefaultClient *)transportClient {
   NSAssert([DBOAuthManager sharedOAuthManager] == nil,
            @"Only call `[DBClientsManager setupWithAppKey]` or `[DBClientsManager setupWithTeamAppKey]` once");
-  [DBOAuthManager sharedOAuthManager:oAuthManager];
+  [DBOAuthManager setSharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
   [[self class] setupAuthorizedClient:accessToken transportClient:transportClient];
@@ -48,7 +59,7 @@ static DBTeamClient *authorizedTeamClient;
   NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DBClientsManager setupWithAppKeyMultiUser]` "
                                                        @"or `[DBClientsManager setupWithTeamAppKeyMultiUser]` "
                                                        @"once");
-  [DBOAuthManager sharedOAuthManager:oAuthManager];
+  [DBOAuthManager setSharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   [[self class] setupAuthorizedClient:accessToken transportClient:transportClient];
@@ -58,7 +69,7 @@ static DBTeamClient *authorizedTeamClient;
                   transportClient:(DBTransportDefaultClient *)transportClient {
   NSAssert([DBOAuthManager sharedOAuthManager] == nil,
            @"Only call `[DBClientsManager setupWithAppKey]` or `[DBClientsManager setupWithTeamAppKey]` once");
-  [DBOAuthManager sharedOAuthManager:oAuthManager];
+  [DBOAuthManager setSharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
   [[self class] setupAuthorizedTeamClient:accessToken transportClient:transportClient];
@@ -70,7 +81,7 @@ static DBTeamClient *authorizedTeamClient;
   NSAssert([DBOAuthManager sharedOAuthManager] == nil, @"Only call `[DBClientsManager setupWithAppKeyMultiUser]` "
                                                        @"or `[DBClientsManager setupWithTeamAppKeyMultiUser]` "
                                                        @"once");
-  [DBOAuthManager sharedOAuthManager:oAuthManager];
+  [DBOAuthManager setSharedOAuthManager:oAuthManager];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   [[self class] setupAuthorizedTeamClient:accessToken transportClient:transportClient];

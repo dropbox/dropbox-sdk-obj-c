@@ -13,10 +13,11 @@
 
 @interface ViewController ()
 
-@property(weak, nonatomic) IBOutlet UIButton *linkButton;
-@property(weak, nonatomic) IBOutlet UIButton *linkBrowserButton;
-@property(weak, nonatomic) IBOutlet UIButton *runTestsButton;
-@property(weak, nonatomic) IBOutlet UIButton *unlinkButton;
+@property (weak, nonatomic) IBOutlet UIButton *linkButton;
+@property (weak, nonatomic) IBOutlet UIButton *linkBrowserButton;
+@property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
+@property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
+@property (weak, nonatomic) IBOutlet UIButton *openWithButton;
 
 @end
 
@@ -61,6 +62,10 @@
     break;
   }
 }
+
+- (IBAction)openWithButtonPressedRunTests:(id)sender {
+}
+
 - (IBAction)unlinkButtonPressed:(id)sender {
   [DBClientsManager unlinkClients];
   [self checkButtons];
@@ -76,27 +81,25 @@
   [self checkButtons];
 }
 
+
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
 
 - (void)checkButtons {
-  if ([DBClientsManager authorizedClient] != nil || [DBClientsManager authorizedTeamClient] != nil) {
-    if ([[DBClientsManager authorizedClient] isAuthorized] ||
-        [[DBClientsManager authorizedTeamClient] isAuthorized]) {
-      _linkButton.hidden = YES;
-      _linkBrowserButton.hidden = YES;
-      _unlinkButton.hidden = NO;
-      _runTestsButton.hidden = NO;
-      return;
-    }
+  if ([[DBClientsManager authorizedClient] isAuthorized] ||
+      [[DBClientsManager authorizedTeamClient] isAuthorized]) {
+    _linkButton.hidden = YES;
+    _linkBrowserButton.hidden = YES;
+    _unlinkButton.hidden = NO;
+    _runTestsButton.hidden = NO;
+  } else {
+    _linkButton.hidden = NO;
+    _linkBrowserButton.hidden = NO;
+    _unlinkButton.hidden = YES;
+    _runTestsButton.hidden = YES;
   }
-
-  _linkButton.hidden = NO;
-  _linkBrowserButton.hidden = NO;
-  _unlinkButton.hidden = YES;
-  _runTestsButton.hidden = YES;
 }
 
 /**

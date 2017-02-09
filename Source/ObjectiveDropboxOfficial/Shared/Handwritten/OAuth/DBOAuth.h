@@ -36,7 +36,7 @@
 /// @param sharedManager The updated reference to the `DBOAuthManager` shared
 /// instance.
 ///
-+ (void)sharedOAuthManager:(DBOAuthManager * _Nonnull)sharedManager;
++ (void)setSharedOAuthManager:(DBOAuthManager * _Nonnull)sharedManager;
 
 #pragma mark - Constructors
 

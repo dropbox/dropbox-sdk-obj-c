@@ -71,8 +71,9 @@ def main():
     if args.stone:
         stone_path = args.stone
 
-    default_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
-    dropbox_pkg_path = args.output_path if args.output_path else default_path
+    dropbox_src_path = os.path.abspath('Source')
+    dropbox_default_output_path = os.path.abspath('Source/ObjectiveDropboxOfficial/Shared/Generated')
+    dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
     dropbox_format_path = os.path.abspath('Format')
 
     if verbose:
@@ -117,7 +118,7 @@ def main():
             print('Formatting source files')
 
         files = subprocess.check_output(
-            (['find', '../Source', '-iname', '*.[mh]']), cwd=dropbox_format_path)
+            (['find', '../Source', '-iname', '*.[mh]']), cwd=dropbox_src_path)
 
         o = subprocess.check_output(
             (['sh', 'reformat_files.sh', files]), cwd=dropbox_format_path)

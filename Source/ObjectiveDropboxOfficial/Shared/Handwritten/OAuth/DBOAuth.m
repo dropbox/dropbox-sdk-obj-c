@@ -17,6 +17,7 @@ static DBOAuthManager *sharedOAuthManager;
 
 @property (nonatomic, copy) NSString * _Nullable appKey;
 @property (nonatomic, copy) NSURL * _Nullable redirectURL;
+@property (nonatomic, copy) NSURL * _Nullable cancelURL;
 @property (nonatomic, copy) NSString * _Nullable host;
 @property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
 
@@ -30,7 +31,7 @@ static DBOAuthManager *sharedOAuthManager;
   return sharedOAuthManager;
 }
 
-+ (void)sharedOAuthManager:(DBOAuthManager *)sharedManager {
++ (void)setSharedOAuthManager:(DBOAuthManager *)sharedManager {
   sharedOAuthManager = sharedManager;
 }
 
@@ -45,6 +46,7 @@ static DBOAuthManager *sharedOAuthManager;
   if (self) {
     _appKey = appKey;
     _redirectURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"db-%@://2/token", _appKey]];
+    _cancelURL = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
     _host = host;
     _urls = [NSMutableArray arrayWithObjects:_redirectURL, nil];
   }
@@ -75,8 +77,7 @@ static DBOAuthManager *sharedOAuthManager;
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
   void (^cancelHandler)() = ^{
-    NSURL *cancelUrl = [NSURL URLWithString:[NSString stringWithFormat:@"db-%@://2/cancel", _appKey]];
-    [sharedApplication presentExternalApp:cancelUrl];
+    [sharedApplication presentExternalApp:_cancelURL];
   };
 
   if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
