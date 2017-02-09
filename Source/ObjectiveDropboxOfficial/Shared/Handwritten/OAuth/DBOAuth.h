@@ -141,7 +141,10 @@
 - (BOOL)clearStoredAccessTokens;
 
 ///
-///
+/// When NO, the Dropbox web login page will show a sign up link below the
+/// form.
+/// When YES, the Dropbox web login page will show a 'Get the App' link instead.
+/// The default value is YES.
 @property (nonatomic, assign) BOOL disableSignup;
 
 @end
