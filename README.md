@@ -20,7 +20,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 * [Configure your project](#configure-your-project)
   * [Application `.plist` file](#application-plist-file)
   * [Handling the authorization flow](#handling-the-authorization-flow)
-    * [Initialize a `DBClient` instance](#initialize-a-dbclient-instance)
+    * [Initialize a `DBUserClient` instance](#initialize-a-dbuserclient-instance)
     * [Begin the authorization flow](#begin-the-authorization-flow)
     * [Handle redirect back into SDK](#handle-redirect-back-into-sdk)
 * [Try some API requests](#try-some-api-requests)
@@ -255,7 +255,7 @@ To facilitate the above authorization flows, you should take the following steps
 
 ---
 
-#### Initialize a `DBClient` instance
+#### Initialize a `DBUserClient` instance
 
 ##### iOS
 
@@ -410,13 +410,13 @@ Once you have obtained an OAuth 2.0 token, you can try some API v2 calls using t
 
 ### Dropbox client instance
 
-Start by creating a reference to the `DBClient` or `DBTeamClient` instance that you will use to make your API calls.
+Start by creating a reference to the `DBUserClient` or `DBTeamClient` instance that you will use to make your API calls.
 
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 // Reference after programmatic auth flow
-DBClient *client = [DBClientsManager authorizedClient];
+DBUserClient *client = [DBClientsManager authorizedClient];
 ```
 
 or
@@ -425,7 +425,7 @@ or
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 // Initialize with manually retrieved auth token
-DBClient *client = [[DBClient alloc] initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
+DBUserClient *client = [[DBUserClient alloc] initWithAccessToken:@"<MY_ACCESS_TOKEN>"];
 ```
 
 ---
@@ -742,9 +742,9 @@ For most apps, it is reasonable to assume that only one Dropbox account (and acc
 * if no token is found, call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
 * if auth flow is initiated, call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token (using a `DBOAuthManager` instance)
 * client manager instantiates a `DBTransportDefaultClient` (if not supplied by the user)
-* client manager instantiates a `DBClient` (or `DBTeamClient`) with the transport client as a field
+* client manager instantiates a `DBUserClient` (or `DBTeamClient`) with the transport client as a field
 
-The `DBClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
+The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
 
 * call `unlinkClients` to logout Dropbox user and clear all access tokens
 
@@ -760,9 +760,9 @@ For some apps, it is necessary to manage more than one Dropbox account (and acce
 * at this point, the app that is integrating with the SDK should persistently save the `tokenUid` from the `DBAccessToken` field of the `DBOAuthResult` object returned from the `handleRedirectURL` (or `handleRedirectURLTeam`) method
 * `tokenUid` can be reused either to authorize a new user mid-way through an app's lifecycle via `reauthorizeClient` (or `reauthorizeTeamClient`) or when the app initially launches via `setupWithAppKeyMultiUser`/`setupWithAppKeyMultiUserDesktop` (or `setupWithTeamAppKeyMultiUser`/`setupWithTeamAppKeyMultiUserDesktop`)
 * client manager instantiates a `DBTransportDefaultClient` (if not supplied by the user)
-* client manager instantiates a `DBClient` (or `DBTeamClient`) with the transport client as a field
+* client manager instantiates a `DBUserClient` (or `DBTeamClient`) with the transport client as a field
 
-The `DBClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
+The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
 
 * call `resetClients` to logout Dropbox user but not clear any access tokens
 * if specific access tokens need to be removed, use the `clearStoredAccessToken` method in `DBOAuthManager`
