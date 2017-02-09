@@ -1071,6 +1071,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F202597F1E4BD5F500A31A6F /* DBClientsManager+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+Protected.h"; sourceTree = "<group>"; };
 		F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOAuthMobile-iOS.h"; sourceTree = "<group>"; };
 		F235B51C1E29913600144F8B /* DBOAuthMobile-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOAuthMobile-iOS.m"; sourceTree = "<group>"; };
 		F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBClientsManager+MobileAuth-iOS.h"; sourceTree = "<group>"; };
@@ -1738,6 +1739,7 @@
 				F29781761E03692800876A73 /* DBTeamClient.m */,
 				F29781721E03692800876A73 /* DBClientsManager.h */,
 				F29781731E03692800876A73 /* DBClientsManager.m */,
+				F202597F1E4BD5F500A31A6F /* DBClientsManager+Protected.h */,
 				F29781741E03692800876A73 /* DBSDKImportsShared.h */,
 				F29781771E03692800876A73 /* Networking */,
 				F297818C1E03692800876A73 /* OAuth */,

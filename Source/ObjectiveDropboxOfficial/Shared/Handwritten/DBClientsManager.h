@@ -20,6 +20,13 @@
 @interface DBClientsManager : NSObject
 
 ///
+/// Accessor method for the current Dropbox API consumer app key.
+///
+/// @return The app key of the current Dropbox API app.
+///
++ (NSString * _Nullable)appKey;
+
+///
 /// Accessor method for `DBUserClient` shared instance.
 ///
 /// @return The `DBUserClient` shared instance.

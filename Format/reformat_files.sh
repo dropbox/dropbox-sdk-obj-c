@@ -10,7 +10,6 @@
 #
 
 for item in $1 ; do
-    echo $item
     cp $item $item.tmp
     
     clang\-format $item.tmp > $item

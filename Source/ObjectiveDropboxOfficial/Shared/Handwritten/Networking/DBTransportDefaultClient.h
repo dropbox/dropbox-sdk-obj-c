@@ -29,7 +29,7 @@
 /// and a `DBTask` object is returned, from which response and progress handlers
 /// can be added directly. By default, these handlers are added / executed using the main thread
 /// queue and executed in a thread-safe manner (unless a custom delegate queue is supplied via
-/// the `DBTransportClient` constructor). The `DBDelegate` class then retrieves the appropriate
+/// the `DBTransportDefaultClient` constructor). The `DBDelegate` class then retrieves the appropriate
 /// handler and executes it.
 ///
 /// While response handlers are not optional, they do not necessarily need to have been installed
@@ -61,29 +61,29 @@
 #pragma mark - Constructors
 
 ///
-/// `DBTransportClient` convenience constructor.
+/// `DBTransportDefaultClient` convenience constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 ///
-/// @return An initialized `DBTransportClient` instance.
+/// @return An initialized `DBTransportDefaultClient` instance.
 ///
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
 
 ///
-/// `DBTransportClient` convenience constructor.
+/// `DBTransportDefaultClient` convenience constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 /// @param selectUser An additional authentication header field used when a team app with
 /// the appropriate permissions "performs" user actions on behalf of a team member.
 ///
-/// @return An initialized `DBTransportClient` instance.
+/// @return An initialized `DBTransportDefaultClient` instance.
 ///
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken selectUser:(NSString * _Nullable)selectUser;
 
 - (nonnull instancetype)initWithForceForegroundSession;
 
 ///
-/// `DBTransportClient` full constructor.
+/// `DBTransportDefaultClient` full constructor.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 /// @param selectUser An additional authentication header field used when a team app with
@@ -91,11 +91,11 @@
 /// @param userAgent The user agent included in all requests. A general, non-unique identifier
 /// useful for server analytics.
 /// @param delegateQueue The queue used by `DBDelegate` for safely executing response code. If
-/// nil, then `DBTransportClient` defaults to using the main queue. This must be a serial queue.
+/// nil, then `DBTransportDefaultClient` defaults to using the main queue. This must be a serial queue.
 /// @param appKey The app key of the Dropbox API app being used. Used for "app" auth for certain routes.
 /// @param appSecret The app secret of the Dropbox API app being used. Used for "app" auth for certain routes.
 ///
-/// @return An initialized `DBTransportClient` instance.
+/// @return An initialized `DBTransportDefaultClient` instance.
 ///
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken
                                  selectUser:(NSString * _Nullable)selectUser

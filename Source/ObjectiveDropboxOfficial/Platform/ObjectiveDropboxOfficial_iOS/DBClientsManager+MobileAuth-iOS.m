@@ -4,28 +4,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DBClientsManager+Protected.h"
 #import "DBClientsManager.h"
 #import "DBOAuth.h"
 #import "DBOAuthMobile-iOS.h"
 #import "DBTransportDefaultClient.h"
-
-@interface DBClientsManager ()
-
-+ (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
-              transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
-
-+ (void)setupWithOAuthManagerMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
-                       transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
-                              tokenUid:(NSString * _Nullable)tokenUid;
-
-+ (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                  transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
-
-+ (void)setupWithOAuthManagerMultiUserTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                           transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
-                                  tokenUid:(NSString * _Nullable)tokenUid;
-
-@end
 
 @implementation DBClientsManager (MobileAuth)
 
@@ -41,10 +24,12 @@
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithAppKey:appKey transportClient:nil];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey transportClient:(DBTransportDefaultClient *)transportClient {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
                       transportClient:transportClient];
 }
@@ -52,16 +37,19 @@
 + (void)setupWithAppKeyMultiUser:(NSString *)appKey
                  transportClient:(DBTransportDefaultClient *)transportClient
                         tokenUid:(NSString *)tokenUid {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
                                transportClient:transportClient
                                       tokenUid:tokenUid];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithTeamAppKey:appKey transportClient:nil];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey transportClient:(DBTransportDefaultClient *)transportClient {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithOAuthManagerTeam:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
                           transportClient:transportClient];
 }
@@ -69,6 +57,7 @@
 + (void)setupWithTeamAppKeyMultiUser:(NSString *)appKey
                      transportClient:(DBTransportDefaultClient *)transportClient
                             tokenUid:(NSString *)tokenUid {
+  [[self class] setAppKey:appKey];
   [[self class] setupWithOAuthManagerMultiUserTeam:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
                                    transportClient:transportClient
                                           tokenUid:tokenUid];

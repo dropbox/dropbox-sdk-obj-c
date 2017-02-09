@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,48 +18,47 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Il-qF-Vab">
-                                <rect key="frame" x="217" y="405" width="166" height="30"/>
+                                <rect key="frame" x="104.5" y="438.5" width="166" height="30"/>
                                 <state key="normal" title="Unlink Dropbox Account"/>
-                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="317" y="285" width="166" height="30"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="111" y="185" width="166" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="117" y="285" width="166" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="unlinkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lzJ-ZW-kww"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-gk-MoP">
-                                <rect key="frame" x="155" y="225" width="291" height="30"/>
+                                <rect key="frame" x="42" y="258.5" width="291" height="30"/>
                                 <state key="normal" title="Link Dropbox Account via in-app web view"/>
                                 <connections>
                                     <action selector="linkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5P-LZ-Wih"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzo-xA-D2V">
-                                <rect key="frame" x="157" y="255" width="286" height="30"/>
+                                <rect key="frame" x="44.5" y="288.5" width="286" height="30"/>
                                 <state key="normal" title="Link Dropbox Account via default browser"/>
                                 <connections>
                                     <action selector="linkBrowserButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wIu-C9-g6D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db5-aq-giW">
-                                <rect key="frame" x="253" y="85" width="95" height="30"/>
+                                <rect key="frame" x="140" y="118.5" width="95" height="30"/>
                                 <state key="normal" title="Run API Tests"/>
                                 <connections>
                                     <action selector="runTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lj1-FW-imk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAs-Sd-MXl">
+                                <rect key="frame" x="38" y="365" width="299" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Read info and return to official Dropbox app"/>
+                                <connections>
+                                    <action selector="openWithButtonPressedRunTests:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2jH-2n-WvR"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="b9W-gk-MoP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-60" id="AKt-Sh-DWa"/>
                             <constraint firstItem="b9W-gk-MoP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JeO-KH-8c6"/>
@@ -70,6 +73,7 @@
                     <connections>
                         <outlet property="linkBrowserButton" destination="hzo-xA-D2V" id="HbY-Sn-mnL"/>
                         <outlet property="linkButton" destination="b9W-gk-MoP" id="7Z8-pd-xJo"/>
+                        <outlet property="openWithButton" destination="lAs-Sd-MXl" id="Z61-Mk-gKB"/>
                         <outlet property="runTestsButton" destination="db5-aq-giW" id="UYY-YH-dIy"/>
                         <outlet property="unlinkButton" destination="0Il-qF-Vab" id="oAz-BA-Qf0"/>
                     </connections>

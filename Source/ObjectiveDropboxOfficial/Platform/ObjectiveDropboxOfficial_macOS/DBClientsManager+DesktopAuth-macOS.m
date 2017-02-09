@@ -4,28 +4,11 @@
 
 #import <AppKit/AppKit.h>
 
+#import "DBClientsManager+Protected.h"
 #import "DBClientsManager.h"
 #import "DBOAuth.h"
 #import "DBOAuthDesktop-macOS.h"
 #import "DBTransportDefaultClient.h"
-
-@interface DBClientsManager ()
-
-+ (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
-              transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
-
-+ (void)setupWithOAuthManagerMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
-                       transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
-                              tokenUid:(NSString * _Nullable)tokenUid;
-
-+ (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                  transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
-
-+ (void)setupWithOAuthManagerMultiUserTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                           transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
-                                  tokenUid:(NSString * _Nullable)tokenUid;
-
-@end
 
 @implementation DBClientsManager (DesktopAuth)
 
