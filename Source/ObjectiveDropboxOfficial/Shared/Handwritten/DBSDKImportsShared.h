@@ -32,10 +32,6 @@
 #import "DBSDKKeychain.h"
 #import "DBSharedApplicationProtocol.h"
 
-/// OpenWith
-#import "DBOfficialAppConnector.h"
-#import "DBOpenWithInfo.h"
-
 /// Resources
 #import "DBChunkInputStream.h"
 #import "DBCustomRoutes.h"
