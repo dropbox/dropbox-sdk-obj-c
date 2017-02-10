@@ -140,6 +140,18 @@
 ///
 - (BOOL)clearStoredAccessTokens;
 
+///
+/// When YES users will not be able to sign up for a Dropbox account via the authorization page.
+/// Instead, the authorization page will show a link to the Dropbox iOS app in the App Store.
+/// This is was originally intended for use when necessary for compliance with App Store policies.
+///
+/// Default value is YES.
+/// 
+/// NOTE: Recent App Store policy suggests that sign up is now allowed, so it should be safe to
+/// enable signup. However we are keeping the parameter and defaulting to YES to allow SDK users
+/// to make the appropriate decision for their apps.
+@property (nonatomic, assign) BOOL disableSignup;
+
 @end
 
 #pragma mark - OAuth manager base (macOS)
