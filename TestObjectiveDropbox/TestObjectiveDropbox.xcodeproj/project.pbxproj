@@ -57,6 +57,7 @@
 		F27BA8131D63BBA100FB7864 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F27BA8161D63BBA100FB7864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F27BA8181D63BBA100FB7864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2A2CEBC1E567499001D8449 /* TestAppType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +130,7 @@
 				F23681681DEF672800D523C5 /* TestClasses.m */,
 				F23681691DEF672800D523C5 /* TestData.h */,
 				F236816A1DEF672800D523C5 /* TestData.m */,
+				F2A2CEBC1E567499001D8449 /* TestAppType.h */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";

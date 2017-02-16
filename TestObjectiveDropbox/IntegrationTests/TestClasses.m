@@ -195,11 +195,8 @@ void MyLog(NSString *format, ...) {
   void (^addFolderMember)() = ^{
     [sharingTests addFolderMember:listFolderMembers];
   };
-  void (^getSharedLinkMetadata)() = ^{
-    [sharingTests getSharedLinkMetadata:addFolderMember];
-  };
   void (^getFolderMetadata)() = ^{
-    [sharingTests getFolderMetadata:getSharedLinkMetadata];
+    [sharingTests getFolderMetadata:addFolderMember];
   };
   void (^createSharedLinkWithSettings)() = ^{
     [sharingTests createSharedLinkWithSettings:getFolderMetadata];
@@ -1118,7 +1115,9 @@ void MyLog(NSString *format, ...) {
   [[[_tester.sharing createSharedLinkWithSettings:_tester.testData.testShareFolderPath]
       setResponseBlock:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGCreateSharedLinkWithSettingsError *routeError,
                  DBRequestError *error) {
-        if (result) {
+        if (result || [routeError isSharedLinkAlreadyExists]) {
+          if ([routeError isSharedLinkAlreadyExists]) {
+          }
           MyLog(@"%@\n", result);
           _sharedLink = result.url;
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1137,24 +1136,6 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   [[[_tester.sharing getFolderMetadata:_sharedFolderId]
       setResponseBlock:^(DBSHARINGSharedFolderMetadata *result, DBSHARINGSharedFolderAccessError *routeError, DBRequestError *error) {
-        if (result) {
-          MyLog(@"%@\n", result);
-          [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-          nextTest();
-        } else {
-          [TestFormat abort:error routeError:routeError];
-        }
-      } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-    [TestFormat printSentProgress:bytesSent
-                   totalBytesSent:totalBytesSent
-         totalBytesExpectedToSend:totalBytesExpectedToSend];
-  }];
-}
-
-- (void)getSharedLinkMetadata:(void (^)())nextTest {
-  [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.sharing getSharedLinkMetadata:_sharedLink]
-      setResponseBlock:^(DBSHARINGSharedLinkMetadata *result, DBSHARINGSharedLinkError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
@@ -1511,7 +1492,7 @@ void MyLog(NSString *format, ...) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
         _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
-        [DBClientsManager setAuthorizedClient:[[DBClientsManager authorizedTeamClient] asMember:_teamMemberId]];
+        [DBClientsManager setAuthorizedClient:[[DBClientsManager authorizedTeamClient] userClientWithMemberId:_teamMemberId]];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();

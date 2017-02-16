@@ -8,9 +8,9 @@
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 #import "AppDelegate.h"
-#import "ViewController.h"
-
+#import "TestAppType.h"
 #import "TestData.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,21 +20,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   TestData *data = [TestData new];
-  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:nil
-                                                                           selectUser:nil
-                                                                            userAgent:nil
-                                                                        delegateQueue:nil
-                                                                               appKey:data.fullDropboxAppKey
-                                                                            appSecret:data.fullDropboxAppSecret];
+
+  if ([data.fullDropboxAppSecret containsString:@"<"] || [data.teamMemberFileAccessAppKey containsString:@"<"] || [data.teamMemberManagementAppKey containsString:@"<"]) {
+    NSLog(@"\n\n\nMust set test data (in TestData.h) before launching app.\n\n\nTerminating.....\n\n");
+    exit(0);
+  }
+
+  DBTransportDefaultConfig *transportConfigFullDropbox = [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
+  DBTransportDefaultConfig *transportConfigTeamFileAccess = [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
+  DBTransportDefaultConfig *transportConfigTeamManagement = [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
+
   switch (appPermission) {
   case FullDropbox:
-      [DBClientsManager setupWithAppKey:data.fullDropboxAppKey transportClient:transportClient];
+      [DBClientsManager setupWithTransportConfig:transportConfigFullDropbox];
       break;
   case TeamMemberFileAccess:
-      [DBClientsManager setupWithTeamAppKey:data.teamMemberFileAccessAppKey transportClient:transportClient];
+      [DBClientsManager setupWithTeamTransportConfig:transportConfigTeamFileAccess];
       break;
   case TeamMemberManagement:
-      [DBClientsManager setupWithTeamAppKey:data.teamMemberManagementAppKey transportClient:transportClient];
+      [DBClientsManager setupWithTeamTransportConfig:transportConfigTeamManagement];
       break;
   }
   return YES;

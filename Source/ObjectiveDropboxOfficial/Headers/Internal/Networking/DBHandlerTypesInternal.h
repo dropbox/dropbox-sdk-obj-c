@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBRequestErrors.h"
+@class DBRequestError;
 
 // Storage blocks
 
@@ -15,10 +15,6 @@ typedef BOOL (^DBRpcResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _N
 typedef BOOL (^DBUploadResponseBlockStorage)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
 
 typedef BOOL (^DBDownloadResponseBlockStorage)(NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable);
-
-// Progress blocks
-
-typedef void (^DBProgressBlock)(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite);
 
 // Response blocks
 

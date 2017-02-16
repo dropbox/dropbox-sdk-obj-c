@@ -5,17 +5,17 @@
 #import <Foundation/Foundation.h>
 
 #import "DBHandlerTypes.h"
+#import "DBHandlerTypesInternal.h"
 
 #pragma mark - Progress data
 
 ///
 /// Progress data storage.
 ///
-/// Progress and response handlers can be added to `DBDelegate` after a request is initiated.
-/// If a handler does not exist at the time the network response is received,
-/// progress data and/or response data will be saved until a handler is queued up
-/// to the corresponding task id. This gives the client the flexibility to install
-/// handlers when convenient. This class stores data for all progress handlers.
+/// Progress and response handlers can be added to `DBDelegate` after a request is initiated. If a handler does not
+/// exist at the time the network response is received, progress data and/or response data will be saved until a handler
+/// is queued up to the corresponding task id. This gives the client the flexibility to install handlers when
+/// convenient. This class stores data for all progress handlers.
 ///
 @interface DBProgressData : NSObject
 
@@ -31,12 +31,10 @@
 ///
 /// `DBProgressData` full constructor.
 ///
-/// @param committed Bytes committed (sent if RPC or Upload request, and downloaded if Download
+/// @param committed Bytes committed (sent if RPC or Upload request, and downloaded if Download request).
+/// @param totalCommitted Total bytes committed (sent if RPC or Upload request, and downloaded if Download request).
+/// @param expectedToCommit Total bytes expected to commit (sent if RPC or Upload request, and downloaded if Download
 /// request).
-/// @param totalCommitted Total bytes committed (sent if RPC or Upload request, and downloaded if
-/// Download request).
-/// @param expectedToCommit Total bytes expected to commit (sent if RPC or Upload request, and
-/// downloaded if Download request).
 ///
 /// @return An initialized `DBProgressData` instance.
 ///
@@ -51,11 +49,10 @@
 ///
 /// Completion data storage.
 ///
-/// Progress and response handlers can be added to `DBDelegate` after a request is initiated.
-/// If a handler does not exist at the time the network response is received,
-/// progress data and/or response data will be saved until a handler is queued up
-/// to the corresponding task id. This gives the client the flexibility to install
-/// handlers when convenient. This class stores data for all completion handlers.
+/// Progress and response handlers can be added to `DBDelegate` after a request is initiated. If a handler does not
+/// exist at the time the network response is received, progress data and/or response data will be saved until a handler
+/// is queued up to the corresponding task id. This gives the client the flexibility to install handlers when
+/// convenient. This class stores data for all completion handlers.
 ///
 @interface DBCompletionData : NSObject
 
@@ -93,21 +90,20 @@
 ///
 /// Session data storage.
 ///
-/// All response data and handler data for a given session id is stored in this class.
-/// `DBDelegate` maintains a map of session ids to `DBSessionData` objects to manage
-/// response handling.
+/// All response data and handler data for a given session id is stored in this class. `DBDelegate` maintains a map of
+/// session ids to `DBSessionData` objects to manage response handling.
 ///
 @interface DBSessionData : NSObject
 
-/// The unique identifier of the session. Data is stored by session (rather than
-/// task id, because task ids are not unique across sessions.
+/// The unique identifier of the session. Data is stored by session (rather than task id, because task ids are not
+/// unique across sessions.
 @property (nonatomic, copy) NSString * _Nonnull sessionId;
 
 /// Map from task id to response body data (for RPC and Upload style requests).
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSMutableData *> * _Nonnull responsesData;
 
-/// Map from task id to progress handler. Progress handlers are of the same type for
-/// all different styles of API requests.
+/// Map from task id to progress handler. Progress handlers are of the same type for all different styles of API
+/// requests.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBProgressBlock> * _Nonnull progressHandlers;
 
 /// Map from task id to RPC-style response handler.
@@ -119,20 +115,16 @@
 /// Map from task id to Download-style response handler.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBDownloadResponseBlockStorage> * _Nonnull downloadHandlers;
 
-/// Map from task id to completion data object. Stores completion data for all styles
-/// of API requests.
+/// Map from task id to completion data object. Stores completion data for all styles of API requests.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBCompletionData *> * _Nonnull completionData;
 
-/// Map from task id to progress data object. Stores progress data for all styles
-/// of API requests.
+/// Map from task id to progress data object. Stores progress data for all styles of API requests.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DBProgressData *> * _Nonnull progressData;
 
-/// Map from task id to progress handler queue. Stores handler queues for all styles
-/// of API requests.
+/// Map from task id to progress handler queue. Stores handler queues for all styles of API requests.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull progressHandlerQueues;
 
-/// Map from task id to response handler queue. Stores handler queues for all styles
-/// of API requests.
+/// Map from task id to response handler queue. Stores handler queues for all styles of API requests.
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSOperationQueue *> * _Nonnull responseHandlerQueues;
 
 ///

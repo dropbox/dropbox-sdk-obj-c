@@ -7,6 +7,7 @@
 
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
+#import "TestAppType.h"
 #import "TestClasses.h"
 #import "TestData.h"
 #import "ViewController.h"
@@ -45,9 +46,8 @@
 
   void (^unlink)() = ^{
     [TestFormat printAllTestsEnd];
-    [DBClientsManager unlinkClients];
-    [self checkButtons];
-    [self.view setNeedsDisplay];
+    [DBClientsManager unlinkAndResetClients];
+    exit(0);
   };
 
   switch (appPermission) {
@@ -67,7 +67,7 @@
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
-  [DBClientsManager unlinkClients];
+  [DBClientsManager unlinkAndResetClients];
   [self checkButtons];
 }
 
@@ -88,8 +88,7 @@
 }
 
 - (void)checkButtons {
-  if ([[DBClientsManager authorizedClient] isAuthorized] ||
-      [[DBClientsManager authorizedTeamClient] isAuthorized]) {
+  if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
     _linkButton.hidden = YES;
     _linkBrowserButton.hidden = YES;
     _unlinkButton.hidden = NO;

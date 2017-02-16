@@ -6,6 +6,7 @@
 
 #import "DBTransportBaseClient.h"
 
+/// Used by subclasses of `DBTransportBaseClient`
 @interface DBTransportBaseClient (Protected)
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes

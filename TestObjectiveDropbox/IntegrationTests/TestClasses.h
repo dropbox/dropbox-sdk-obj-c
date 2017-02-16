@@ -99,7 +99,6 @@
 - (void)shareFolder:(void (^_Nonnull)())nextTest;
 - (void)createSharedLinkWithSettings:(void (^_Nonnull)())nextTest;
 - (void)getFolderMetadata:(void (^_Nonnull)())nextTest;
-- (void)getSharedLinkMetadata:(void (^_Nonnull)())nextTest;
 - (void)addFolderMember:(void (^_Nonnull)())nextTest;
 - (void)listFolderMembers:(void (^_Nonnull)())nextTest;
 - (void)listFolders:(void (^_Nonnull)())nextTest;

@@ -25,6 +25,6 @@
                            transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig
                                   tokenUid:(NSString * _Nullable)tokenUid;
 
-+ (void)setTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (void)setTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
 @end
