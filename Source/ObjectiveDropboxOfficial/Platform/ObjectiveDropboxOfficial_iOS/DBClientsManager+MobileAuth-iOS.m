@@ -8,7 +8,7 @@
 #import "DBClientsManager.h"
 #import "DBOAuth.h"
 #import "DBOAuthMobile-iOS.h"
-#import "DBTransportDefaultClient.h"
+#import "DBTransportDefaultConfig.h"
 
 @implementation DBClientsManager (MobileAuth)
 
@@ -19,47 +19,54 @@
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   DBMobileSharedApplication *sharedMobileApplication =
-      [[DBMobileSharedApplication alloc] init:sharedApplication controller:controller openURL:openURL];
+      [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
+                                                        controller:controller
+                                                           openURL:openURL];
   [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication browserAuth:browserAuth];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithAppKey:appKey transportClient:nil];
+  [[self class] setupWithTransportConfig:[[DBTransportDefaultConfig alloc] initWithAppKey:appKey]];
 }
 
-+ (void)setupWithAppKey:(NSString *)appKey transportClient:(DBTransportDefaultClient *)transportClient {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
-                      transportClient:transportClient];
++ (void)setupWithTransportConfig:(DBTransportDefaultConfig *)transportConfig {
+  [[self class] setupWithOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                      transportConfig:transportConfig];
 }
 
-+ (void)setupWithAppKeyMultiUser:(NSString *)appKey
-                 transportClient:(DBTransportDefaultClient *)transportClient
-                        tokenUid:(NSString *)tokenUid {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
-                               transportClient:transportClient
++ (void)setupWithAppKeyMultiUser:(NSString *)appKey tokenUid:(NSString *)tokenUid {
+  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
+  [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                               transportConfig:transportConfig
+                                      tokenUid:tokenUid];
+}
+
++ (void)setupWithTransportConfigMultiUser:(DBTransportDefaultConfig *)transportConfig tokenUid:(NSString *)tokenUid {
+  [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                               transportConfig:transportConfig
                                       tokenUid:tokenUid];
 }
 
 + (void)setupWithTeamAppKey:(NSString *)appKey {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithTeamAppKey:appKey transportClient:nil];
+  [[self class] setupWithTeamTransportConfig:[[DBTransportDefaultConfig alloc] initWithAppKey:appKey]];
 }
 
-+ (void)setupWithTeamAppKey:(NSString *)appKey transportClient:(DBTransportDefaultClient *)transportClient {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithOAuthManagerTeam:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
-                          transportClient:transportClient];
++ (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig *)transportConfig {
+  [[self class] setupWithOAuthManagerTeam:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                          transportConfig:transportConfig];
 }
 
-+ (void)setupWithTeamAppKeyMultiUser:(NSString *)appKey
-                     transportClient:(DBTransportDefaultClient *)transportClient
-                            tokenUid:(NSString *)tokenUid {
-  [[self class] setAppKey:appKey];
-  [[self class] setupWithOAuthManagerMultiUserTeam:[[DBMobileOAuthManager alloc] initWithAppKey:appKey]
-                                   transportClient:transportClient
++ (void)setupWithTeamAppKeyMultiUser:(NSString *)appKey tokenUid:(NSString *)tokenUid {
+  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
+  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                                   transportConfig:transportConfig
+                                          tokenUid:tokenUid];
+}
+
++ (void)setupWithTeamTransportConfigMultiUser:(DBTransportDefaultConfig *)transportConfig
+                                     tokenUid:(NSString *)tokenUid {
+  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+                                   transportConfig:transportConfig
                                           tokenUid:tokenUid];
 }
 

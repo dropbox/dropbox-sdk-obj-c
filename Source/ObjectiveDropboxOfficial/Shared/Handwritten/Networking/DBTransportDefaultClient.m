@@ -7,67 +7,22 @@
 #import "DBTasksImpl.h"
 #import "DBTransportBaseClient+Protected.h"
 #import "DBTransportDefaultClient.h"
+#import "DBTransportDefaultConfig.h"
 
 static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
-@implementation DBTransportDefaultClient
-
-@synthesize backgroundSession = _backgroundSession;
+@implementation DBTransportDefaultClient {
+  /// The delegate used to manage execution of all response / error code. By default, this
+  /// is an instance of `DBDelegate` with the main thread queue as delegate queue.
+  DBDelegate * _Nonnull _delegate;
+}
 
 #pragma mark - Constructors
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken {
-  return [self initWithAccessToken:accessToken selectUser:nil];
-}
-
-- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser {
-  return [self initWithAccessToken:accessToken
-                        selectUser:selectUser
-                         userAgent:nil
-                     delegateQueue:nil
-                            appKey:nil
-                         appSecret:nil];
-}
-
 - (instancetype)initWithAccessToken:(NSString *)accessToken
-                         selectUser:(NSString *)selectUser
-                          userAgent:(NSString *)userAgent
-                      delegateQueue:(NSOperationQueue *)delegateQueue
-                             appKey:(NSString *)appKey
-                          appSecret:(NSString *)appSecret {
-  return [self initWithAccessToken:accessToken
-                        selectUser:selectUser
-                         userAgent:userAgent
-                     delegateQueue:delegateQueue
-            forceForegroundSession:NO
-                            appKey:appKey
-                         appSecret:appSecret];
-}
-
-- (instancetype)initWithForceForegroundSession {
-  return [self initWithAccessToken:nil
-                        selectUser:nil
-                         userAgent:nil
-                     delegateQueue:nil
-            forceForegroundSession:YES
-                            appKey:nil
-                         appSecret:nil];
-}
-
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-                         selectUser:(NSString *)selectUser
-                          userAgent:(NSString *)userAgent
-                      delegateQueue:(NSOperationQueue *)delegateQueue
-             forceForegroundSession:(BOOL)forceForegroundSession
-                             appKey:(NSString *)appKey
-                          appSecret:(NSString *)appSecret {
-  self = [super initWithAccessToken:accessToken
-                         selectUser:selectUser
-                          userAgent:userAgent
-                             appKey:appKey
-                          appSecret:appSecret];
-  if (self) {
-    _delegateQueue = delegateQueue ?: [NSOperationQueue mainQueue];
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  if (self = [super initWithAccessToken:accessToken transportConfig:transportConfig]) {
+    _delegateQueue = transportConfig.delegateQueue ?: [NSOperationQueue mainQueue];
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
 
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -77,12 +32,13 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
     NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
     NSURLSessionConfiguration *backgroundSessionConfig =
         [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
-    if (!forceForegroundSession) {
-      _backgroundSession = [NSURLSession sessionWithConfiguration:backgroundSessionConfig
-                                                         delegate:_delegate
-                                                    delegateQueue:_delegateQueue];
+    _forceBackgroundSession = transportConfig.forceForegroundSession ? YES : NO;
+    if (!_forceBackgroundSession) {
+      _secondarySession = [NSURLSession sessionWithConfiguration:backgroundSessionConfig
+                                                        delegate:_delegate
+                                                   delegateQueue:_delegateQueue];
     } else {
-      _backgroundSession = _session;
+      _secondarySession = _session;
     }
   }
   return self;
@@ -92,12 +48,12 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (DBRpcTaskImpl *)requestRpc:(DBRoute *)route arg:(id<DBSerializable>)arg {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   // RPC request submits argument in request body
-  NSData *serializedArgData = [[self class] serializeArgData:route routeArg:arg];
+  NSData *serializedArgData = [[self class] serializeDataWithRoute:route routeArg:arg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:serializedArgData stream:nil];
 
@@ -112,15 +68,15 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputUrl:(NSURL *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
-  NSURLSessionUploadTask *task = [_backgroundSession uploadTaskWithRequest:request fromFile:input];
+  NSURLSessionUploadTask *task = [_secondarySession uploadTaskWithRequest:request fromFile:input];
   DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
+      [[DBUploadTaskImpl alloc] initWithTask:task session:_secondarySession delegate:_delegate route:route];
   [task resume];
 
   return uploadTask;
@@ -130,7 +86,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputData:(NSData *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
@@ -148,7 +104,7 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (DBUploadTaskImpl *)requestUpload:(DBRoute *)route arg:(id<DBSerializable>)arg inputStream:(NSInputStream *)input {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
@@ -169,15 +125,15 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
                                  overwrite:(BOOL)overwrite
                                destination:(NSURL *)destination {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
-  NSURLSessionDownloadTask *task = [_backgroundSession downloadTaskWithRequest:request];
+  NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
   DBDownloadUrlTaskImpl *downloadTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
-                                                                            session:_backgroundSession
+                                                                            session:_secondarySession
                                                                            delegate:_delegate
                                                                               route:route
                                                                           overwrite:overwrite
@@ -191,18 +147,27 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (DBDownloadDataTaskImpl *)requestDownload:(DBRoute *)route arg:(id<DBSerializable>)arg {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
-  NSString *serializedArg = [[self class] serializeArgString:route routeArg:arg];
+  NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
   NSDictionary *headers =
       [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
-  NSURLSessionDownloadTask *task = [_backgroundSession downloadTaskWithRequest:request];
+  NSURLSessionDownloadTask *task = [_secondarySession downloadTaskWithRequest:request];
   DBDownloadDataTaskImpl *downloadTask =
-      [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_backgroundSession delegate:_delegate route:route];
+      [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_secondarySession delegate:_delegate route:route];
   [task resume];
 
   return downloadTask;
+}
+
+- (DBTransportDefaultConfig *)duplicateTransportConfigWithAsMemberId:(NSString *)asMemberId {
+  return [[DBTransportDefaultConfig alloc] initWithAppKey:self.appKey
+                                                appSecret:self.appSecret
+                                                userAgent:self.userAgent
+                                               asMemberId:asMemberId
+                                            delegateQueue:_delegateQueue
+                                   forceForegroundSession:_forceBackgroundSession];
 }
 
 #pragma mark - Session accessors and mutators
@@ -221,13 +186,13 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 - (NSURLSession *)backgroundSession {
   @synchronized(self) {
-    return _backgroundSession;
+    return _secondarySession;
   }
 }
 
 - (void)setBackgroundSession:(NSURLSession *)backgroundSession {
   @synchronized(self) {
-    _backgroundSession = backgroundSession;
+    _secondarySession = backgroundSession;
   }
 }
 

@@ -1,15 +1,19 @@
-//
-//  ObjectiveDropboxOfficial.h
-//  ObjectiveDropboxOfficial
-//
-//  Copyright © 2016 Dropbox. All rights reserved.
-//
+///
+/// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
+///
+/// Umbrella import for importing as a framework
+///
 
 #import "TargetConditionals.h"
+
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <WebKit/WebKit.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #elif TARGET_OS_MAC
+#import <AppKit/AppKit.h>
 #import <Cocoa/Cocoa.h>
 #endif
 

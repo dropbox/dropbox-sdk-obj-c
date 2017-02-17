@@ -7,6 +7,7 @@
 
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
+#import "TestAppType.h"
 #import "TestClasses.h"
 #import "TestData.h"
 #import "ViewController.h"
@@ -45,8 +46,8 @@
   
   void (^unlink)() = ^{
     [TestFormat printAllTestsEnd];
-    [DBClientsManager unlinkClients];
-    [self checkButtons];
+    [DBClientsManager unlinkAndResetClients];
+    exit(0);
   };
   
   switch (appPermission) {
@@ -63,7 +64,7 @@
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
-  [DBClientsManager unlinkClients];
+  [DBClientsManager unlinkAndResetClients];
   [self checkButtons];
 }
 
@@ -73,9 +74,7 @@
 }
 
 - (void)viewWillAppear {
-  if ([DBClientsManager authorizedClient] != nil || [DBClientsManager authorizedTeamClient] != nil) {
-    [self checkButtons];
-  }
+  [self checkButtons];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -85,22 +84,17 @@
 }
 
 - (void)checkButtons {
-  if ([DBClientsManager authorizedClient] != nil || [DBClientsManager authorizedTeamClient] != nil) {
-    if ([[DBClientsManager authorizedClient] isAuthorized] ||
-        [[DBClientsManager authorizedTeamClient] isAuthorized]){
-      [_linkButton setEnabled:NO];
-      [_linkBrowserButton setEnabled:NO];
-      [_unlinkButton setEnabled:YES];
-      [_runTestsButton setEnabled:YES];
-
-      return;
-    }
+  if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
+    [_linkButton setEnabled:NO];
+    [_linkBrowserButton setEnabled:NO];
+    [_unlinkButton setEnabled:YES];
+    [_runTestsButton setEnabled:YES];
+  } else {
+    [_linkButton setEnabled:YES];
+    [_linkBrowserButton setEnabled:YES];
+    [_unlinkButton setEnabled:NO];
+    [_runTestsButton setEnabled:NO];
   }
-
-  [_linkButton setEnabled:YES];
-  [_linkBrowserButton setEnabled:YES];
-  [_unlinkButton setEnabled:NO];
-  [_runTestsButton setEnabled:NO];
 }
 
 /**

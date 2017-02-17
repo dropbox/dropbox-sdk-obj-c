@@ -3,7 +3,7 @@
 ///
 
 #import "DBTransportDefaultClient.h"
-#import "DBUserBaseClient.h"
+#import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
 
 @implementation DBUserClient {
@@ -11,23 +11,13 @@
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
-  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken];
-  if (self = [super initWithTransportClient:transportClient]) {
-    _transportClient = transportClient;
-  }
-  return self;
+  return [self initWithAccessToken:accessToken transportConfig:nil];
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken selectUser:(NSString *)selectUser {
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
   DBTransportDefaultClient *transportClient =
-      [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken selectUser:selectUser];
-  if (self = [super initWithTransportClient:transportClient]) {
-    _transportClient = transportClient;
-  }
-  return self;
-}
-
-- (instancetype)initWithTransportClient:(DBTransportDefaultClient *)transportClient {
+      [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
@@ -36,10 +26,6 @@
 
 - (void)updateAccessToken:(NSString *)accessToken {
   _transportClient.accessToken = accessToken;
-}
-
-- (BOOL)isAuthorized {
-  return _transportClient.accessToken != nil;
 }
 
 @end

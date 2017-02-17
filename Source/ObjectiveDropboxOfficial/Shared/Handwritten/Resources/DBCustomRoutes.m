@@ -2,14 +2,15 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import <Foundation/Foundation.h>
-
 #import "DBASYNCLaunchEmptyResult.h"
 #import "DBChunkInputStream.h"
+#import "DBCustomDatatypes.h"
 #import "DBCustomRoutes.h"
+#import "DBCustomTasks.h"
 #import "DBFILESCommitInfo.h"
 #import "DBFILESUploadSessionCursor.h"
 #import "DBFILESUploadSessionFinishArg.h"
+#import "DBFILESUploadSessionFinishBatchJobStatus.h"
 #import "DBFILESUploadSessionFinishBatchLaunch.h"
 #import "DBFILESUploadSessionLookupError.h"
 #import "DBFILESUploadSessionOffsetError.h"
@@ -23,71 +24,17 @@
 static const NSUInteger fileChunkSize = 10 * 1024 * 1024;
 static const int timeoutInSec = 200;
 
-@implementation DBBatchUploadData
-
-- (instancetype)init:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
-       progressBlock:(DBProgressBlock)progressBlock
-       responseBlock:(DBBatchUploadResponseBlock)responseBlock
-               queue:(NSOperationQueue *)queue {
-  self = [super init];
-  if (self) {
-    // we specifiy a custom queue so that the main thread is not blocked
-    _queue = queue;
-    [_queue setMaxConcurrentOperationCount:1];
-
-    // we want to make sure all of our file data has been uploaded
-    // before we make our final batch commit call to `/upload_session/finish_batch`,
-    // but we also don't want to wait for each response before making a
-    // succeeding upload call, so we used dispatch groups to wait for all upload
-    // calls to return before making our final batch commit call
-    _uploadGroup = dispatch_group_create();
-
-    _fileUrlsToCommitInfo = fileUrlsToCommitInfo;
-    _finishArgs = [NSMutableArray new];
-
-    _progressBlock = progressBlock;
-    _responseBlock = responseBlock;
-
-    _taskStorage = [DBTasksStorage new];
-  }
-  return self;
-}
-
-@end
-
-@interface DBBatchUploadTask ()
-
-@property (nonatomic, readonly) DBBatchUploadData * _Nonnull uploadData;
-
-@end
-
-@implementation DBBatchUploadTask
-
-- (instancetype)initWithUploadData:(DBBatchUploadData *)uploadData {
-  self = [super init];
-  if (self) {
-    _uploadData = uploadData;
-  }
-  return self;
-}
-
-- (void)cancel {
-  _uploadData.cancel = YES;
-  [_uploadData.taskStorage cancelAllTasks];
-}
-
-@end
-
 @implementation DBFILESRoutes (DBCustomRoutes)
 
 - (DBBatchUploadTask *)batchUploadFiles:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
                                   queue:(NSOperationQueue *)queue
                           progressBlock:(DBProgressBlock)progressBlock
                           responseBlock:(DBBatchUploadResponseBlock)responseBlock {
-  DBBatchUploadData *uploadData = [[DBBatchUploadData alloc] init:fileUrlsToCommitInfo
-                                                    progressBlock:progressBlock
-                                                    responseBlock:responseBlock
-                                                            queue:queue ?: [NSOperationQueue mainQueue]];
+  DBBatchUploadData *uploadData =
+      [[DBBatchUploadData alloc] initWithFileCommitInfo:fileUrlsToCommitInfo
+                                          progressBlock:progressBlock
+                                          responseBlock:responseBlock
+                                                  queue:queue ?: [NSOperationQueue mainQueue]];
   DBBatchUploadTask *uploadTask = [[DBBatchUploadTask alloc] initWithUploadData:uploadData];
 
   NSArray<NSURL *> *fileUrls = [fileUrlsToCommitInfo allKeys];

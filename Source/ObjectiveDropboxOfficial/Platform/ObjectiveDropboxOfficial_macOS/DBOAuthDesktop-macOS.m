@@ -5,23 +5,15 @@
 #import "DBOAuth.h"
 #import "DBOAuthDesktop-macOS.h"
 
-@interface DBDesktopSharedApplication ()
+@implementation DBDesktopSharedApplication {
+  NSWorkspace * _Nullable _sharedWorkspace;
+  NSViewController * _Nullable _controller;
+  void (^_openURL)(NSURL * _Nullable);
+}
 
-@property (nonatomic) NSWorkspace * _Nullable sharedWorkspace;
-@property (nonatomic) NSViewController * _Nullable controller;
-@property (nonatomic) void (^openURL)(NSURL * _Nullable);
-
-- (nonnull instancetype)init:(NSWorkspace * _Nonnull)sharedApplication
-                  controller:(NSViewController * _Nonnull)controller
-                     openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
-
-@end
-
-@implementation DBDesktopSharedApplication
-
-- (instancetype)init:(NSWorkspace *)sharedWorkspace
-          controller:(NSViewController *)controller
-             openURL:(void (^)(NSURL *))openURL {
+- (instancetype)initWithSharedApplication:(NSWorkspace *)sharedWorkspace
+                               controller:(NSViewController *)controller
+                                  openURL:(void (^)(NSURL *))openURL {
   self = [super init];
   if (self) {
     // fields saved for app-extension safety
@@ -54,9 +46,10 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBDesktopWebViewController *webViewController = [[DBDesktopWebViewController alloc] init:authURL
-                                                                       tryInterceptHandler:tryInterceptHandler
-                                                                             cancelHandler:cancelHandler];
+  DBDesktopWebViewController *webViewController =
+      [[DBDesktopWebViewController alloc] initWithAuthUrl:authURL
+                                      tryInterceptHandler:tryInterceptHandler
+                                            cancelHandler:cancelHandler];
   [_controller presentViewControllerAsModalWindow:webViewController];
 }
 
@@ -82,7 +75,7 @@
 @property (nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable);
 @property (nonatomic) void (^_Nullable cancelHandler)(void);
 @property (nonatomic) NSProgressIndicator * _Nullable indicator;
-@property (nonatomic, copy) NSURL * _Nullable startURL;
+@property (nonatomic, copy) NSURL * _Nullable startUrl;
 
 @end
 
@@ -96,9 +89,9 @@
   return [super initWithCoder:coder];
 }
 
-- (instancetype)init:(NSURL *)URL
-    tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
-          cancelHandler:(void (^)(void))cancelHandler {
+- (instancetype)initWithAuthUrl:(NSURL *)authUrl
+            tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
+                  cancelHandler:(void (^)(void))cancelHandler {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
     _tryInterceptHandler = tryInterceptHandler;
@@ -106,7 +99,7 @@
     _indicator = [[NSProgressIndicator alloc] init];
     [_indicator setFrame:NSMakeRect(20, 20, 30, 30)];
     [_indicator setStyle:NSProgressIndicatorSpinningStyle];
-    _startURL = URL;
+    _startUrl = authUrl;
   }
   return self;
 }
@@ -140,10 +133,10 @@
   [super viewWillAppear];
 
   if (![_webView canGoBack]) {
-    if (_startURL != nil) {
-      [self loadURL:_startURL];
+    if (_startUrl != nil) {
+      [self loadURL:_startUrl];
     } else {
-      [_webView loadHTMLString:@"There is no `startURL`" baseURL:nil];
+      [_webView loadHTMLString:@"There is no `startUrl`" baseURL:nil];
     }
   }
 }

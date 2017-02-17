@@ -7,24 +7,24 @@
 #import "DBClientsManager.h"
 
 @class DBOAuthManager;
-@class DBTransportDefaultClient;
+@class DBTransportDefaultConfig;
 
 @interface DBClientsManager (Protected)
 
 + (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
-              transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
+              transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
 + (void)setupWithOAuthManagerMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
-                       transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
+                       transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig
                               tokenUid:(NSString * _Nullable)tokenUid;
 
 + (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                  transportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
+                  transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
-+ (void)setupWithOAuthManagerMultiUserTeam:(DBOAuthManager * _Nonnull)oAuthManager
-                           transportClient:(DBTransportDefaultClient * _Nonnull)transportClient
++ (void)setupWithOAuthManagerTeamMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
+                           transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig
                                   tokenUid:(NSString * _Nullable)tokenUid;
 
-+ (void)setAppKey:(NSString * _Nonnull)currentAppKey;
++ (void)setTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
 @end

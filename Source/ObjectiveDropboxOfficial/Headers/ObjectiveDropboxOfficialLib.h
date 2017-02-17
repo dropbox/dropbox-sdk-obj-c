@@ -1,6 +1,8 @@
 ///
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
+/// Umbrella import for importing as a library
+///
 
 #import "TargetConditionals.h"
 

@@ -3,6 +3,9 @@
 ///
 
 #import "DBTeamClient.h"
+
+#import "DBTransportDefaultClient.h"
+#import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
 
 @implementation DBTeamClient {
@@ -10,30 +13,26 @@
 }
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
-  DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken];
+  return [self initWithAccessToken:accessToken transportConfig:nil];
+}
+
+- (instancetype)initWithAccessToken:(NSString *)accessToken
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
+  DBTransportDefaultClient *transportClient =
+      [[DBTransportDefaultClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
   if (self = [super initWithTransportClient:transportClient]) {
     _transportClient = transportClient;
   }
   return self;
 }
 
-- (instancetype)initWithTransportClient:(DBTransportDefaultClient *)transportClient {
-  if (self = [super initWithTransportClient:transportClient]) {
-    _transportClient = transportClient;
-  }
-  return self;
-}
-
-- (DBUserClient *)asMember:(NSString *)memberId {
-  return [[DBUserClient alloc] initWithAccessToken:_transportClient.accessToken selectUser:memberId];
+- (DBUserClient *)userClientWithMemberId:(NSString *)memberId {
+  return [[DBUserClient alloc] initWithAccessToken:_transportClient.accessToken
+                                   transportConfig:[_transportClient duplicateTransportConfigWithAsMemberId:memberId]];
 }
 
 - (void)updateAccessToken:(NSString *)accessToken {
   _transportClient.accessToken = accessToken;
-}
-
-- (BOOL)isAuthorized {
-  return _transportClient.accessToken != nil;
 }
 
 @end

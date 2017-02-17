@@ -7,46 +7,36 @@
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTasks.h"
+#import "DBTransportBaseClient+Internal.h"
 #import "DBTransportBaseClient.h"
 
 #pragma mark - Base network task
 
 @implementation DBTask : NSObject
 
-- (instancetype)initWithRoute:(DBRoute *)route {
+- (instancetype)initWithRoute:(DBRoute *)route task:(NSURLSessionTask *)task {
   self = [super init];
   if (self) {
+    _task = task;
     _route = route;
   }
   return self;
 }
 
 - (void)cancel {
-  @throw [NSException
-      exceptionWithName:NSInternalInconsistencyException
-                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-               userInfo:nil];
+  [_task cancel];
 }
 
 - (void)suspend {
-  @throw [NSException
-      exceptionWithName:NSInternalInconsistencyException
-                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-               userInfo:nil];
+  [_task suspend];
 }
 
 - (void)resume {
-  @throw [NSException
-      exceptionWithName:NSInternalInconsistencyException
-                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-               userInfo:nil];
+  [_task resume];
 }
 
 - (void)start {
-  @throw [NSException
-      exceptionWithName:NSInternalInconsistencyException
-                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-               userInfo:nil];
+  [_task resume];
 }
 
 @end
@@ -242,7 +232,8 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSString *headerString = [DBTransportBaseClient caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
+    NSString *headerString =
+        [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result" dictionary:httpHeaders];
     NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
     if (clientError || !resultData) {
@@ -346,7 +337,8 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
     NSDictionary *httpHeaders = httpResponse.allHeaderFields;
-    NSString *headerString = [DBTransportBaseClient caseInsensitiveLookup:@"Dropbox-API-Result" dictionary:httpHeaders];
+    NSString *headerString =
+        [DBTransportBaseClient caseInsensitiveLookupWithKey:@"Dropbox-API-Result" dictionary:httpHeaders];
     NSData *resultData = headerString ? [headerString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 
     if (clientError || !resultData) {

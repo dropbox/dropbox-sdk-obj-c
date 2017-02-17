@@ -4,21 +4,23 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBTransportDefaultClient.h"
 #import "DBUserBaseClient.h"
+
+@class DBTransportDefaultConfig;
 
 ///
 /// Dropbox User API Client.
 ///
-/// This is the SDK user's primary interface with the Dropbox API. Routes can be accessed
-/// via each "namespace" object in the instance fields of its parent, `DBBase`. To see a
-/// full list of the User API endpoints available, please visit:
-/// https://www.dropbox.com/developers/documentation/http/documentation.
+/// This is the SDK user's primary interface with the Dropbox API. Routes can be accessed via each "namespace" object in
+/// the instance fields of its parent, `DBUserBaseClient`. To see a full list of the User API endpoints available,
+/// please visit: https://www.dropbox.com/developers/documentation/http/documentation.
 ///
 @interface DBUserClient : DBUserBaseClient
 
 ///
 /// Convenience constructor.
+///
+/// Uses standard network configuration parameters.
 ///
 /// @param accessToken The Dropbox OAuth2 access token used to make requests.
 ///
@@ -27,43 +29,21 @@
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
 
 ///
-/// Convenience constructor.
-///
-/// @param accessToken The Dropbox OAuth2 access token used to make requests.
-/// @param selectUser The Dropbox account_id of the team member to perform actions on
-/// behalf of. e.g. "dbid:12345678910..."
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken selectUser:(NSString * _Nonnull)selectUser;
-
-///
 /// Full constructor.
 ///
-/// @note Access token should be set in `transportClient` directly, rather than
-/// passed in to `DBUserClient` directly..
-///
-/// @param transportClient The instance of `DBTransportDefaultClient` used to make all
-/// networking requests. This constructor offers the highlest-level of configurability.
-/// `DBTransportDefaultClient` offers a number of different constructors to customize networking
-/// settings.
+/// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
+/// `DBTransportDefaultConfig` offers a number of different constructors to customize networking settings.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithTransportClient:(DBTransportDefaultClient * _Nonnull)transportClient;
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken
+                            transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
 
 ///
-/// Update transport client access token.
+/// Updates access token used to make API requests.
 ///
 /// @param accessToken The updated access token with which to make API calls.
 ///
 - (void)updateAccessToken:(NSString * _Nonnull)accessToken;
-
-///
-/// Whether the client is authorized.
-///
-/// @return Whether the current client has a non-nil access token.
-///
-- (BOOL)isAuthorized;
 
 @end

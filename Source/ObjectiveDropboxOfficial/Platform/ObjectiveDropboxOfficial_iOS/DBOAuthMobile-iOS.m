@@ -7,19 +7,15 @@
 
 #pragma mark - Shared application
 
-@interface DBMobileSharedApplication ()
+@implementation DBMobileSharedApplication {
+  UIApplication * _Nullable _sharedApplication;
+  UIViewController * _Nullable _controller;
+  void (^_openURL)(NSURL * _Nullable);
+}
 
-@property (nonatomic, readonly) UIApplication * _Nullable sharedApplication;
-@property (nonatomic, readonly) UIViewController * _Nullable controller;
-@property (nonatomic, readonly, nullable) void (^openURL)(NSURL * _Nullable);
-
-@end
-
-@implementation DBMobileSharedApplication
-
-- (instancetype)init:(UIApplication *)sharedApplication
-          controller:(UIViewController *)controller
-             openURL:(void (^)(NSURL *))openURL {
+- (instancetype)initWithSharedApplication:(UIApplication *)sharedApplication
+                               controller:(UIViewController *)controller
+                                  openURL:(void (^)(NSURL *))openURL {
   self = [super init];
   if (self) {
     // fields saved for app-extension safety
@@ -85,9 +81,9 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBMobileWebViewController *webViewController = [[DBMobileWebViewController alloc] init:authURL
-                                                                     tryInterceptHandler:tryInterceptHandler
-                                                                           cancelHandler:cancelHandler];
+  DBMobileWebViewController *webViewController = [[DBMobileWebViewController alloc] initWithAuthUrl:authURL
+                                                                                tryInterceptHandler:tryInterceptHandler
+                                                                                      cancelHandler:cancelHandler];
   UINavigationController *navigationController =
       [[UINavigationController alloc] initWithRootViewController:webViewController];
 
@@ -118,7 +114,7 @@
 @property (nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
 @property (nonatomic, readonly, nullable) void (^cancelHandler)(void);
 @property (nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
-@property (nonatomic, readonly, copy) NSURL * _Nullable startURL;
+@property (nonatomic, readonly, copy) NSURL * _Nullable startUrl;
 
 @end
 
@@ -132,15 +128,15 @@
   return [super initWithCoder:coder];
 }
 
-- (instancetype)init:(NSURL *)URL
-    tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
-          cancelHandler:(void (^)(void))cancelHandler {
+- (instancetype)initWithAuthUrl:(NSURL *)authUrl
+            tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
+                  cancelHandler:(void (^)(void))cancelHandler {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
     _tryInterceptHandler = tryInterceptHandler;
     _cancelHandler = cancelHandler;
     _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _startURL = URL;
+    _startUrl = authUrl;
 
     // clear any persistent cookies
     NSString *libraryPath =
@@ -177,10 +173,10 @@
   [super viewWillAppear:animated];
 
   if (![_webView canGoBack]) {
-    if (_startURL != nil) {
-      [self loadURL:_startURL];
+    if (_startUrl != nil) {
+      [self loadURL:_startUrl];
     } else {
-      [_webView loadHTMLString:@"There is no `startURL`" baseURL:nil];
+      [_webView loadHTMLString:@"There is no `startUrl`" baseURL:nil];
     }
   }
 }

@@ -20,8 +20,7 @@
 ///
 /// Accessor method for `DBOAuthManager` shared instance.
 ///
-/// Shared instance is used to authenticate users through OAuth2,
-/// save access tokens, and retrieve access tokens.
+/// Shared instance is used to authenticate users through OAuth2, save access tokens, and retrieve access tokens.
 ///
 /// @return The `DBOAuthManager` shared instance.
 ///
@@ -30,11 +29,9 @@
 ///
 /// Mutator method for `DBOAuthManager` shared instance.
 ///
-/// Shared instance is used to authenticate users through OAuth2,
-/// save access tokens, and retrieve access tokens.
+/// Shared instance is used to authenticate users through OAuth2, save access tokens, and retrieve access tokens.
 ///
-/// @param sharedManager The updated reference to the `DBOAuthManager` shared
-/// instance.
+/// @param sharedManager The updated reference to the `DBOAuthManager` shared instance.
 ///
 + (void)setSharedOAuthManager:(DBOAuthManager * _Nonnull)sharedManager;
 
@@ -68,8 +65,8 @@
 ///
 ///
 /// @param sharedApplication A platform-neutral shared application abstraction for rendering auth flow.
-/// @param browserAuth Whether the auth flow should use an external web browser for auth or not. If not,
-/// then an in-app webview is used instead.
+/// @param browserAuth Whether the auth flow should use an external web browser for auth or not. If not, then an in-app
+/// webview is used instead.
 ///
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication
                            browserAuth:(BOOL)browserAuth;
@@ -79,7 +76,7 @@
 ///
 /// @param url The redirect URL to attempt to handle.
 ///
-/// - returns nil if SDK cannot handle the redirect URL, otherwise returns an instance of `DBOAuthResult`.
+/// @return `nil` if SDK cannot handle the redirect URL, otherwise returns an instance of `DBOAuthResult`.
 ///
 - (DBOAuthResult * _Nullable)handleRedirectURL:(NSURL * _Nonnull)url;
 
@@ -141,15 +138,15 @@
 - (BOOL)clearStoredAccessTokens;
 
 ///
-/// When YES users will not be able to sign up for a Dropbox account via the authorization page.
-/// Instead, the authorization page will show a link to the Dropbox iOS app in the App Store.
-/// This is was originally intended for use when necessary for compliance with App Store policies.
+/// When YES users will not be able to sign up for a Dropbox account via the authorization page. Instead, the
+/// authorization page will show a link to the Dropbox iOS app in the App Store. This is was originally intended for use
+/// when necessary for compliance with App Store policies.
 ///
 /// Default value is YES.
-/// 
-/// NOTE: Recent App Store policy suggests that sign up is now allowed, so it should be safe to
-/// enable signup. However we are keeping the parameter and defaulting to YES to allow SDK users
-/// to make the appropriate decision for their apps.
+///
+/// NOTE: Recent App Store policy suggests that sign up is now allowed, so it should be safe to enable signup. However
+/// we are keeping the parameter and defaulting to YES to allow SDK users to make the appropriate decision for their
+/// apps.
 @property (nonatomic, assign) BOOL disableSignup;
 
 @end
@@ -177,16 +174,15 @@
 ///
 /// A Dropbox OAuth2 access token.
 ///
-/// Stores a unique identifying key (`account_id` or `team_id`) for
-/// storing in `DBKeychain`.
+/// Stores a unique identifying key (`account_id` or `team_id`) for storing in `DBKeychain`.
 ///
 @interface DBAccessToken : NSObject
 
 /// The OAuth2 access token.
 @property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
 
-/// The unique identifier of the access token used for storing in `DBKeychain`.
-/// Either the `account_id` (if user app) or the `team_id` if (team app).
+/// The unique identifier of the access token used for storing in `DBKeychain`. Either the `account_id` (if user app) or
+/// the `team_id` if (team app).
 @property (nonatomic, readonly, copy) NSString * _Nonnull uid;
 
 ///

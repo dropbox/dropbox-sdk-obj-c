@@ -12,8 +12,7 @@
 /// Stores a key / value pair in the keychain.
 + (BOOL)set:(NSString *)key value:(NSString *)value;
 
-/// Retrieves a value from the corresponding key
-/// from the keychain.
+/// Retrieves a value from the corresponding key from the keychain.
 + (NSString *)get:(NSString *)key;
 
 /// Retrieves all key / value pairs from the keychain.

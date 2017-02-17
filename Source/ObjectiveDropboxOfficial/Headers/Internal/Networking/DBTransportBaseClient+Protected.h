@@ -1,15 +1,12 @@
-//
-//  DBTransportBaseClient+Protected.h
-//  ObjectiveDropboxOfficial
-//
-//  Created by Stephen Cobbe on 1/30/17.
-//  Copyright © 2017 Dropbox. All rights reserved.
-//
+///
+/// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
+///
 
 #import <Foundation/Foundation.h>
 
 #import "DBTransportBaseClient.h"
 
+/// Used by subclasses of `DBTransportBaseClient`
 @interface DBTransportBaseClient (Protected)
 
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
@@ -23,8 +20,8 @@
 
 + (NSURL *)urlWithRoute:(DBRoute *)route;
 
-+ (NSData *)serializeArgData:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
++ (NSData *)serializeDataWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
 
-+ (NSString *)serializeArgString:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
++ (NSString *)serializeStringWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg;
 
 @end

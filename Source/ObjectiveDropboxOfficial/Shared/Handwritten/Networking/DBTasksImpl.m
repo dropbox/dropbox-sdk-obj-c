@@ -18,9 +18,9 @@
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route task:task];
   if (self) {
-    _task = task;
+    _dataTask = task;
     _session = session;
     _delegate = delegate;
   }
@@ -56,9 +56,9 @@
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route task:task];
   if (self) {
-    _task = task;
+    _uploadTask = task;
     _session = session;
     _delegate = delegate;
   }
@@ -97,9 +97,9 @@
                        route:(DBRoute *)route
                    overwrite:(BOOL)overwrite
                  destination:(NSURL *)destination {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route task:task];
   if (self) {
-    _task = task;
+    _downloadUrlTask = task;
     _session = session;
     _delegate = delegate;
     _overwrite = overwrite;
@@ -138,9 +138,9 @@
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route];
+  self = [super initWithRoute:route task:task];
   if (self) {
-    _task = task;
+    _downloadDataTask = task;
     _session = session;
     _delegate = delegate;
   }

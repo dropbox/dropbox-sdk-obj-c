@@ -161,7 +161,7 @@ static DBOAuthManager *sharedOAuthManager;
     [NSURLQueryItem queryItemWithName:@"response_type" value:@"token"],
     [NSURLQueryItem queryItemWithName:@"client_id" value:_appKey],
     [NSURLQueryItem queryItemWithName:@"redirect_uri" value:[_redirectURL absoluteString]],
-    [NSURLQueryItem queryItemWithName:@"disable_signup" value:self.disableSignup ? @"true": @"false"],
+    [NSURLQueryItem queryItemWithName:@"disable_signup" value:self.disableSignup ? @"true" : @"false"],
   ];
   return components.URL;
 }

@@ -1,10 +1,6 @@
-//
-//  DBTransportClientBase.m
-//  ObjectiveDropboxOfficial
-//
-//  Created by Stephen Cobbe on 12/1/16.
-//  Copyright © 2016 Dropbox. All rights reserved.
-//
+///
+/// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
+///
 
 #import <Foundation/Foundation.h>
 
@@ -14,6 +10,7 @@
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportBaseClient.h"
+#import "DBTransportBaseConfig.h"
 
 #pragma mark - Internal serialization helpers
 
@@ -31,25 +28,17 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   };
 }
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken userAgent:(NSString *)userAgent {
-  return [self initWithAccessToken:accessToken selectUser:nil userAgent:userAgent appKey:nil appSecret:nil];
-}
-
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-                         selectUser:(NSString *)selectUser
-                          userAgent:(NSString *)userAgent
-                             appKey:(NSString *)appKey
-                          appSecret:(NSString *)appSecret {
-  self = [super init];
-  if (self) {
+- (nonnull instancetype)initWithAccessToken:(NSString *)accessToken
+                            transportConfig:(DBTransportBaseConfig *)transportConfig {
+  if (self = [super init]) {
     _accessToken = accessToken;
+    _appKey = transportConfig.appKey;
+    _appSecret = transportConfig.appSecret;
     NSString *defaultUserAgent = [NSString stringWithFormat:@"%@/%@", kV2SDKDefaultUserAgentPrefix, kV2SDKVersion];
-
-    _selectUser = selectUser;
-    _userAgent = userAgent ? [[userAgent stringByAppendingString:@"/"] stringByAppendingString:defaultUserAgent]
-                           : defaultUserAgent;
-    _appKey = appKey;
-    _appSecret = appSecret;
+    _userAgent = transportConfig.userAgent ? [[transportConfig.userAgent stringByAppendingString:@"/"]
+                                                 stringByAppendingString:defaultUserAgent]
+                                           : defaultUserAgent;
+    _asMemberId = transportConfig.asMemberId;
   }
   return self;
 }
@@ -67,8 +56,8 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   BOOL noauth = [routeHost isEqualToString:@"notify"];
 
   if (!noauth) {
-    if (_selectUser) {
-      [headers setObject:_selectUser forKey:@"Dropbox-Api-Select-User"];
+    if (_asMemberId) {
+      [headers setObject:_asMemberId forKey:@"Dropbox-Api-Select-User"];
     }
 
     if (routeAuth && [routeAuth isEqualToString:@"app"]) {
@@ -125,7 +114,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
                                                          route.namespace_, route.name]];
 }
 
-+ (NSData *)serializeArgData:(DBRoute *)route routeArg:(id<DBSerializable>)arg {
++ (NSData *)serializeDataWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg {
   if (!arg) {
     return nil;
   }
@@ -139,11 +128,11 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return [[self class] jsonDataWithJsonObj:serializedDict];
 }
 
-+ (NSString *)serializeArgString:(DBRoute *)route routeArg:(id<DBSerializable>)arg {
++ (NSString *)serializeStringWithRoute:(DBRoute *)route routeArg:(id<DBSerializable>)arg {
   if (!arg) {
     return nil;
   }
-  NSData *jsonData = [self serializeArgData:route routeArg:arg];
+  NSData *jsonData = [self serializeDataWithRoute:route routeArg:arg];
   NSString *asciiEscapedStr = [[self class] asciiEscapeWithString:[[self class] utf8StringWithData:jsonData]];
   NSMutableString *filteredStr = [[NSMutableString alloc] initWithString:asciiEscapedStr];
   [filteredStr replaceOccurrencesOfString:@"\\/"
@@ -310,7 +299,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return statusCode == 409;
 }
 
-+ (NSString *)caseInsensitiveLookup:(NSString *)lookupKey dictionary:(NSDictionary<id, id> *)dictionary {
++ (NSString *)caseInsensitiveLookupWithKey:(NSString *)lookupKey dictionary:(NSDictionary<id, id> *)dictionary {
   for (id key in dictionary) {
     NSString *keyString = (NSString *)key;
     if ([keyString.lowercaseString isEqualToString:lookupKey.lowercaseString]) {
