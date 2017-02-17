@@ -37,7 +37,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
   * [Customizing network calls](#customizing-network-calls)
     * [Configure network client](#configure-network-client)
     * [Specify API call response queue](#specify-api-call-response-queue)
-  * [`DBClientsManager` class](#DBClientsManager-class)
+  * [`DBClientsManager` class](#dbclientsmanager-class)
     * [Single Dropbox user case](#single-dropbox-user-case)
     * [Multiple Dropbox user case](#multiple-dropbox-user-case)
 * [Examples](#examples)

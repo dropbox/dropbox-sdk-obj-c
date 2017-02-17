@@ -13,6 +13,9 @@
 ///
 /// Platform-neutral manager for performing OAuth linking.
 ///
+/// @note OAuth flow webviews localize to environment locale.
+///
+///
 @interface DBOAuthManager : NSObject
 
 #pragma mark - Shared instance accessors and mutators
