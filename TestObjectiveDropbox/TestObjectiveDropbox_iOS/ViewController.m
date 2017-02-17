@@ -12,6 +12,9 @@
 #import "TestData.h"
 #import "ViewController.h"
 
+/// OpenWith data
+static DBOpenWithInfo *s_openWithInfoNSURL = nil;
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *linkButton;
@@ -64,11 +67,35 @@
 }
 
 - (IBAction)openWithButtonPressedRunTests:(id)sender {
+  TestData *data = [TestData new];
+
+  DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey];
+  DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
+
+  if (openWithInfo) {
+    // Data retrieved from UIPasteboard
+    NSLog(@"Returning to Dropbox app via Pasteboard data...");
+    [connector returnToDropboxApp:openWithInfo changesPending:NO openURLWrapper:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }];
+  } else if (s_openWithInfoNSURL) {
+    // Data retrieved from openURL call
+    NSLog(@"Returning to Dropbox app via NSURL data...");
+    DBOfficialAppConnector *appConnector = [[DBOfficialAppConnector alloc] initWithAppKey:[DBClientsManager appKey]];
+    [appConnector returnToDropboxApp:s_openWithInfoNSURL changesPending:NO openURLWrapper:^(NSURL *url) {
+      [[UIApplication sharedApplication] openURL:url];
+    }];
+  } else {
+    // No OpenWith Data
+    NSLog(@"No info retrieved. Please ensure you have opened this test app with the correct OpenWith info.");
+  }
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {
   [DBClientsManager unlinkAndResetClients];
   [self checkButtons];
+}
+
+- (void)setOpenWithInfoNSURL:(DBOpenWithInfo *)openWithInfoNSURL {
+  s_openWithInfoNSURL = openWithInfoNSURL;
 }
 
 - (void)viewDidLoad {

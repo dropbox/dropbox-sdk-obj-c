@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBHandlerTypes.h"
+#import "DBHandlerTypesInternal.h"
 #import "DBTasks.h"
 #import <Foundation/Foundation.h>
 

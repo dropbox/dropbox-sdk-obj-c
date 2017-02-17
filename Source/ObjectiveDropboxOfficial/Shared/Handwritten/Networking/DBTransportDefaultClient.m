@@ -17,6 +17,9 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   DBDelegate * _Nonnull _delegate;
 }
 
+@synthesize session = _session;
+@synthesize secondarySession = _secondarySession;
+
 #pragma mark - Constructors
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken
@@ -178,21 +181,21 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   }
 }
 
-- (void)session:(NSURLSession *)session {
+- (void)setSession:(NSURLSession *)session {
   @synchronized(self) {
     _session = session;
   }
 }
 
-- (NSURLSession *)backgroundSession {
+- (NSURLSession *)secondarySession {
   @synchronized(self) {
     return _secondarySession;
   }
 }
 
-- (void)setBackgroundSession:(NSURLSession *)backgroundSession {
+- (void)setSecondarySession:(NSURLSession *)secondarySession {
   @synchronized(self) {
-    _secondarySession = backgroundSession;
+    _secondarySession = secondarySession;
   }
 }
 

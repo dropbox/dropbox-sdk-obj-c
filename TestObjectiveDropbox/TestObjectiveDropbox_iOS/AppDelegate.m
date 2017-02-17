@@ -97,8 +97,28 @@
 
   if ([[url absoluteString] containsString:@"openWith"]) {
     NSLog(@"Successfully retrieved openWith url");
-  }
 
+    NSMutableDictionary *urlData = [[NSMutableDictionary alloc] init];
+    NSArray *pairs = [[url absoluteString] componentsSeparatedByString:@"&"] ?: @[];
+
+    for (NSString *pair in pairs) {
+      NSArray *kv = [pair componentsSeparatedByString:@"="];
+      NSString *unEscapedValue = [[kv objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+      [urlData setObject:unEscapedValue forKey:[kv objectAtIndex:0]];
+    }
+
+    DBOpenWithInfo *openWithInfo = [[DBOpenWithInfo alloc] initWithUserId:urlData[@"uid"]
+                                                                      rev:urlData[@"rev"]
+                                                                     path:urlData[@"path"]
+                                                             modifiedTime:urlData[@"modifiedTime"]
+                                                                 readOnly:urlData[@"readOnly"]
+                                                                     verb:urlData[@"verb"]
+                                                                sessionId:urlData[@"sessionId"]
+                                                                   fileId:nil
+                                                                 fileData:nil
+                                                                sourceApp:urlData[@"sourceApp"]];
+    [mainController setOpenWithInfoNSURL:openWithInfo];
+  }
   [mainController checkButtons];
 
   return NO;
