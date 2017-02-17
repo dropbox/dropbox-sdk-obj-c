@@ -14,23 +14,31 @@
 		F2350E0B1D88B64E00BC3308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2350E0A1D88B64E00BC3308 /* Assets.xcassets */; };
 		F2350E0E1D88B64E00BC3308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2350E0C1D88B64E00BC3308 /* LaunchScreen.storyboard */; };
 		F2350E251D88B70A00BC3308 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2350E241D88B70A00BC3308 /* PhotoViewController.m */; };
-		F23B85F21D9323CF0059439A /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */; };
+		F2A2DE541E57B7A3001D8449 /* ObjectiveDropboxOfficial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A2DE4F1E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */; };
+		F2A2DE551E57B7A3001D8449 /* ObjectiveDropboxOfficial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2A2DE4F1E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F23B85EE1D9323C60059439A /* PBXContainerItemProxy */ = {
+		F2A2DE4E1E57B77A001D8449 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
+			containerPortal = F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F26B75751D7F6AF700714F70;
 			remoteInfo = "ObjectiveDropboxOfficial iOS";
 		};
-		F23B85F01D9323C60059439A /* PBXContainerItemProxy */ = {
+		F2A2DE501E57B77A001D8449 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
+			containerPortal = F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F27DE9E21D7FF909003B1CEE;
 			remoteInfo = "ObjectiveDropboxOfficial macOS";
+		};
+		F2A2DE561E57B7A3001D8449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F26B75741D7F6AF700714F70;
+			remoteInfo = "ObjectiveDropboxOfficial iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -41,6 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F2A2DE551E57B7A3001D8449 /* ObjectiveDropboxOfficial.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +69,7 @@
 		F2350E0F1D88B64E00BC3308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2350E231D88B6F600BC3308 /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		F2350E241D88B70A00BC3308 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveDropboxOfficial.xcodeproj; path = "Carthage/Checkouts/dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj"; sourceTree = "<group>"; };
+		F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveDropboxOfficial.xcodeproj; path = "Carthage/Checkouts/dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F23B85F21D9323CF0059439A /* ObjectiveDropboxOfficial.framework in Frameworks */,
+				F2A2DE541E57B7A3001D8449 /* ObjectiveDropboxOfficial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +87,7 @@
 		F2350DF21D88B64D00BC3308 = {
 			isa = PBXGroup;
 			children = (
-				F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */,
+				F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */,
 				F2350DFD1D88B64D00BC3308 /* DBRoulette */,
 				F2350DFC1D88B64D00BC3308 /* Products */,
 			);
@@ -118,11 +127,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F23B85EA1D9323C60059439A /* Products */ = {
+		F2A2DE4A1E57B77A001D8449 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */,
-				F23B85F11D9323C60059439A /* ObjectiveDropboxOfficial.framework */,
+				F2A2DE4F1E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */,
+				F2A2DE511E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F2A2DE571E57B7A3001D8449 /* PBXTargetDependency */,
 			);
 			name = DBRoulette;
 			productName = DBRoulette;
@@ -176,8 +186,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F23B85EA1D9323C60059439A /* Products */;
-					ProjectRef = F23B85E91D9323C60059439A /* ObjectiveDropboxOfficial.xcodeproj */;
+					ProductGroup = F2A2DE4A1E57B77A001D8449 /* Products */;
+					ProjectRef = F2A2DE491E57B77A001D8449 /* ObjectiveDropboxOfficial.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -188,18 +198,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F23B85EF1D9323C60059439A /* ObjectiveDropboxOfficial.framework */ = {
+		F2A2DE4F1E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ObjectiveDropboxOfficial.framework;
-			remoteRef = F23B85EE1D9323C60059439A /* PBXContainerItemProxy */;
+			remoteRef = F2A2DE4E1E57B77A001D8449 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F23B85F11D9323C60059439A /* ObjectiveDropboxOfficial.framework */ = {
+		F2A2DE511E57B77A001D8449 /* ObjectiveDropboxOfficial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ObjectiveDropboxOfficial.framework;
-			remoteRef = F23B85F01D9323C60059439A /* PBXContainerItemProxy */;
+			remoteRef = F2A2DE501E57B77A001D8449 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -246,6 +256,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2A2DE571E57B7A3001D8449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveDropboxOfficial iOS";
+			targetProxy = F2A2DE561E57B7A3001D8449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F2350E071D88B64D00BC3308 /* Main.storyboard */ = {
