@@ -18,27 +18,19 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  NSString *appKey;
+  NSString *appKey = nil;
   if (!appKey) {
-    NSString *message = @"You need to set your app key in `AppDelegate.m` before you can use DBRoulette.";
-    UIAlertController *alertController =
-        [UIAlertController alertControllerWithTitle:@"Must set app key"
-                                            message:message
-                                     preferredStyle:(UIAlertControllerStyle)UIAlertControllerStyleAlert];
-
-    [self.window makeKeyAndVisible];
-    [self.window.rootViewController presentViewController:alertController
-                                                 animated:NO
-                                               completion:^{
-                                                 [NSException raise:@"FatalError" format:@"%@", message];
-                                               }];
+    NSString *message = @"You need to set `appKey` variable in `AppDelegate.m`, as well as add to `Info.plist`, before you can use DBRoulette.";
+    NSLog(@"%@", message);
+    NSLog(@"Terminating...");
+    exit(1);
   }
-  [DropboxClientsManager setupWithAppKey:appKey];
+  [DBClientsManager setupWithAppKey:appKey];
   return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-  DBOAuthResult *authResult = [DropboxClientsManager handleRedirectURL:url];
+  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
   if (authResult != nil) {
     if ([authResult isSuccess]) {
       NSLog(@"Success! User is logged into Dropbox.");

@@ -1997,7 +1997,8 @@ void MyLog(NSString *format, ...) {
                           dNewEmail:nil
                      dNewExternalId:nil
                       dNewGivenName:@"NewFirstName"
-                        dNewSurname:nil]
+                        dNewSurname:nil
+                   dNewPersistentId:nil]
       setResponseBlock:^(DBTEAMTeamMemberInfo *result, DBTEAMMembersSetProfileError *routeError, DBRequestError *error) {
         if (!error) {
           MyLog(@"%@\n", result);

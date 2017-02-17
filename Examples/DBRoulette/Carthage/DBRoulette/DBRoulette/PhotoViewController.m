@@ -27,14 +27,14 @@
     [_currentImageView removeFromSuperview];
   }
   
-  DropboxClient *client = [DropboxClientsManager authorizedClient];
+  DBUserClient *client = [DBClientsManager authorizedClient];
   
   NSString *searchPath = @"";
-  
+
   // list folder metadata contents (folder will be root "/" Dropbox folder if app has permission
   // "Full Dropbox" or "/Apps/<APP_NAME>/" if app has permission "App Folder").
   [[client.filesRoutes listFolder:searchPath]
-   response:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBError *error) {
+   setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
      if (result) {
        [self displayPhotos:result.entries];
      } else {
@@ -117,9 +117,9 @@
 }
 
 - (void)downloadImage:(NSString *)imagePath {
-  DropboxClient *client = [DropboxClientsManager authorizedClient];
+  DBUserClient *client = [DBClientsManager authorizedClient];
   [[client.filesRoutes downloadData:imagePath]
-   response:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBError *error, NSData *fileData) {
+   setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
      if (result) {
        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:fileData]];
        imageView.frame = CGRectMake(100, 100, 300, 300);
