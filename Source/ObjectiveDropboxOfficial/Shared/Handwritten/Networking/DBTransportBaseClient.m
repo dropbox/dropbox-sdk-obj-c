@@ -14,7 +14,7 @@
 
 #pragma mark - Internal serialization helpers
 
-static NSString *kV2SDKVersion = @"3.0.0";
+static NSString *kV2SDKVersion = @"3.0.1";
 static NSString *kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
