@@ -25,7 +25,7 @@
 + (BOOL)statusCodeIsRouteError:(int)statusCode;
 
 + (NSString * _Nullable)caseInsensitiveLookupWithKey:(NSString * _Nullable)lookupKey
-                                  dictionary:(NSDictionary<id, id> * _Nullable)dictionary;
+                                         dictionary:(NSDictionary<id, id> * _Nullable)dictionary;
 
 + (NSString * _Nonnull)sdkVersion;
 

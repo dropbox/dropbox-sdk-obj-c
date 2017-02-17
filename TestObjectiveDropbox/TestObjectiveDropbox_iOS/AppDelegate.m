@@ -21,14 +21,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   TestData *data = [TestData new];
 
-  if ([data.fullDropboxAppSecret containsString:@"<"] || [data.teamMemberFileAccessAppKey containsString:@"<"] || [data.teamMemberManagementAppKey containsString:@"<"]) {
+  if ([data.fullDropboxAppSecret containsString:@"<"] ||
+      [data.teamMemberFileAccessAppKey containsString:@"<"] ||
+      [data.teamMemberManagementAppKey containsString:@"<"]) {
     NSLog(@"\n\n\nMust set test data (in TestData.h) before launching app.\n\n\nTerminating.....\n\n");
     exit(0);
   }
 
-  DBTransportDefaultConfig *transportConfigFullDropbox = [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
-  DBTransportDefaultConfig *transportConfigTeamFileAccess = [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
-  DBTransportDefaultConfig *transportConfigTeamManagement = [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
+  DBTransportDefaultConfig *transportConfigFullDropbox =
+    [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
+  DBTransportDefaultConfig *transportConfigTeamFileAccess =
+    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
+  DBTransportDefaultConfig *transportConfigTeamManagement =
+    [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
 
   switch (appPermission) {
   case FullDropbox:

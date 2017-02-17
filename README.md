@@ -333,7 +333,8 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
     if (authResult != nil) {
         if ([authResult isSuccess]) {
@@ -348,16 +349,16 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 }
 ```
 
-For iOS targets >= 9, use:
+For iOS targets < 9, use:
 
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-    ....
-    ....
+    ...
+    ...
+    ...
 }
 ```
 
@@ -682,35 +683,29 @@ In this way, datatypes with subtypes are a hybrid of structs and unions. Only a 
 
 #### Configure network client
 
-It is possible to configure the networking client used by the SDK to make API requests. You can supply custom fields like a custom user agent or custom delegate queue to manage response handler code. See below:
+It is possible to configure the networking client used by the SDK to make API requests. You can supply custom fields like a custom user agent or custom delegate queue to manage response handler code.
+
+For instance, you can force the SDK to make all network requests on a foreground session:
 
 ##### iOS
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:nil
-                                                                         selectUser:nil
-                                                                          baseHosts:nil
-                                                                          userAgent:@"CustomUserAgent"
-                                                                backgroundSessionId:@"com.custom.background.session.id"
-                                                                             appKey:(NSString *)@"<APP_KEY>"
-                                                                          appSecret:(NSString *)@"<APP_SECRET>"
-                                                                      delegateQueue:[NSOperationQueue new]];
-[DBClientsManager setupWithAppKey:@"<APP_KEY>" transportClient:transportClient];
+DBTransportDefaultConfig *transportConfig =
+    [[DBTransportDefaultConfig alloc] initWithAppKey:@"<APP_KEY>" forceForegroundSession:YES];
+[DBClientsManager setupWithTransportConfig:transportConfig];
 ```
 
 ##### macOS
 ```objective-c
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
-DBTransportDefaultClient *transportClient = [[DBTransportDefaultClient alloc] initWithAccessToken:nil
-                                                                         selectUser:nil
-                                                                          userAgent:@"CustomUserAgent"
-                                                                      delegateQueue:[NSOperationQueue new]]
-                                                                             appKey:(NSString *)@"<APP_KEY>"
-                                                                          appSecret:(NSString *)@"<APP_SECRET>";
-[DBClientsManager setupWithAppKeyDesktop:@"<APP_KEY>" transportClient:transportClient];
+DBTransportDefaultConfig *transportConfig =
+    [[DBTransportDefaultConfig alloc] initWithAppKey:@"<APP_KEY>" forceForegroundSession:YES];
+[DBClientsManager setupWithTransportConfigDesktop:transportConfig];
 ```
+
+See the `DBTransportDefaultConfig` class for all of the different customizable networking parameters.
 
 #### Specify API call response queue
 
@@ -738,15 +733,14 @@ The Objective-C SDK includes a convenience class, `DBClientsManager`, for integr
 For most apps, it is reasonable to assume that only one Dropbox account (and access token) needs to be managed at a time. In this case, the `DBClientsManager` flow looks like this: 
 
 * call `setupWithAppKey`/`setupWithAppKeyDesktop` (or `setupWithTeamAppKey`/`setupWithTeamAppKeyDesktop`) in integrating app's app delegate
-* client manager determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use
-* if no token is found, call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
-* if auth flow is initiated, call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token (using a `DBOAuthManager` instance)
-* client manager instantiates a `DBTransportDefaultClient` (if not supplied by the user)
-* client manager instantiates a `DBUserClient` (or `DBTeamClient`) with the transport client as a field
+* `DBClientsManager` class determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use
+* if no token is found, client of the SDK should call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
+* if auth flow is initiated, client of the SDK should call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token
+* `DBClientsManager` class sets up a `DBUserClient` (or `DBTeamClient`) with the particular network configuration as defined by the `DBTransportDefaultConfig` instance passed in (or a standard configuration, if no config instance was passed when the `setupWith...` method was called)
 
 The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
 
-* call `unlinkClients` to logout Dropbox user and clear all access tokens
+* call `unlinkAndResetClients` to logout Dropbox user and clear all access tokens
 
 #### Multiple Dropbox user case
 
@@ -755,12 +749,11 @@ For some apps, it is necessary to manage more than one Dropbox account (and acce
 * access token uids are managed by the app that is integrating with the SDK for later lookup
 * call `setupWithAppKeyMultiUser`/`setupWithAppKeyMultiUserDesktop` (or `setupWithTeamAppKeyMultiUser`/`setupWithTeamAppKeyMultiUserDesktop`) in integrating app's app delegate
 * client manager determines whether an access token is stored with the`tokenUid` as a key -- if one exists, this token is chosen to use
-* if no token is found, call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
-* if auth flow is initiated, call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token (using a `DBOAuthManager` instance)
+* if no token is found, client of the SDK should call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
+* if auth flow is initiated, call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token
 * at this point, the app that is integrating with the SDK should persistently save the `tokenUid` from the `DBAccessToken` field of the `DBOAuthResult` object returned from the `handleRedirectURL` (or `handleRedirectURLTeam`) method
 * `tokenUid` can be reused either to authorize a new user mid-way through an app's lifecycle via `reauthorizeClient` (or `reauthorizeTeamClient`) or when the app initially launches via `setupWithAppKeyMultiUser`/`setupWithAppKeyMultiUserDesktop` (or `setupWithTeamAppKeyMultiUser`/`setupWithTeamAppKeyMultiUserDesktop`)
-* client manager instantiates a `DBTransportDefaultClient` (if not supplied by the user)
-* client manager instantiates a `DBUserClient` (or `DBTeamClient`) with the transport client as a field
+* `DBClientsManager` class sets up a `DBUserClient` (or `DBTeamClient`) with the particular network configuration as defined by the `DBTransportDefaultConfig` instance passed in (or a standard configuration, if no config instance was passed when the `setupWith...` method was called)
 
 The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
 
