@@ -572,7 +572,7 @@
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -588,7 +588,7 @@
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

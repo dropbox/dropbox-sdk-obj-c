@@ -6,5 +6,5 @@
 #import "DBOAuthMobile-iOS.h"
 
 /// OpenWith
-#import "DBOfficialAppConnector.h"
-#import "DBOpenWithInfo.h"
+#import "DBOfficialAppConnector-iOS.h"
+#import "DBOpenWithInfo-iOS.h"

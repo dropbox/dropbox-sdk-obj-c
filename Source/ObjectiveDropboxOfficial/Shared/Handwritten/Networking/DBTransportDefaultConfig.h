@@ -13,7 +13,7 @@
 
 /// A serial delegate queue used for executing blocks of code that touch state shared across threads (mainly the request
 /// handlers storage).
-@property (nonatomic, readonly) NSOperationQueue * _Nonnull delegateQueue;
+@property (nonatomic, readonly) NSOperationQueue * _Nullable delegateQueue;
 
 /// If set to true, all network requests are made on foreground sessions (by default, most upload/download operations
 /// are performed with a background session). This is appropriate for use cases where file upload / download operations

@@ -2,6 +2,7 @@
 
 # Release checklist
 #
+# 0. Check on DBApp, Chime, Paper. Run analyzer.
 # 1. Make sure test data is reset
 # 2. Run generator
 # 3. Check pod spec lint

@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOpenWithInfo.h"
+#import "DBOpenWithInfo-iOS.h"
 
 ///
 /// @note This logic is for official Dropbox partners only, and should not need
@@ -22,7 +22,7 @@ static NSString *kStorageKeyPrefix = @"dbxOpenWith";
               fileId:(NSString *)fileId
             fileData:(NSData *)fileData
            sourceApp:(NSString *)sourceApp {
-  assert(userId && rev && path && verb);
+  NSAssert(userId && rev && path && verb, @"Not enough data supplied.");
   if ((self = [super init])) {
     _userId = userId;
     _rev = rev;

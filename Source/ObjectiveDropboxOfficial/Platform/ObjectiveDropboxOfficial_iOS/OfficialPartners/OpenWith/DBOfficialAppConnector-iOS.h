@@ -1,7 +1,6 @@
 ///
 ///  Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
-///
 
 #import <Foundation/Foundation.h>
 
@@ -56,6 +55,6 @@
 ///
 /// Returns @c DBOpenWithInfo object that wraps the relevant information for returning to the official Dropbox app.
 ///
-+ (DBOpenWithInfo * _Nonnull)retriveOfficialDropboxAppOpenWithInfo;
++ (DBOpenWithInfo * _Nullable)retriveOfficialDropboxAppOpenWithInfo;
 
 @end
