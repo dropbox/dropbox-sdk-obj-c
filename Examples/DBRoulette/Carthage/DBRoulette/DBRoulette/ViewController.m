@@ -21,7 +21,7 @@
 @implementation ViewController
 
 - (IBAction)linkDropboxButtonPressed:(id)sender {
-  [DropboxClientsManager authorizeFromController:[UIApplication sharedApplication]
+  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
@@ -30,7 +30,7 @@
 }
 
 - (IBAction)unlinkDropboxButtonPressed:(id)sender {
-  [DropboxClientsManager unlinkClients];
+  [DBClientsManager unlinkAndResetClients];
   [self checkButtons];
 }
 
@@ -56,7 +56,7 @@
 }
 
 - (void)checkButtons {
-  if ([DropboxClientsManager authorizedClient] != nil || [DropboxClientsManager authorizedTeamClient] != nil) {
+  if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
     if (_oldButton) {
       self.navigationItem.rightBarButtonItem = _oldButton;
     }
