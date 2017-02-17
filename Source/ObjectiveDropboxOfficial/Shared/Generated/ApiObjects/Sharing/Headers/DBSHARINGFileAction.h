@@ -28,8 +28,14 @@
 /// The `DBSHARINGFileActionTag` enum type represents the possible tag states
 /// with which the `DBSHARINGFileAction` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
+  /// Disable viewer information on the file.
+  DBSHARINGFileActionDisableViewerInfo,
+
   /// Change or edit contents of the file.
   DBSHARINGFileActionEditContents,
+
+  /// Enable viewer information on the file.
+  DBSHARINGFileActionEnableViewerInfo,
 
   /// Add a member with view permissions.
   DBSHARINGFileActionInviteViewer,
@@ -60,6 +66,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 #pragma mark - Constructors
 
 ///
+/// Initializes union class with tag state of "disable_viewer_info".
+///
+/// Description of the "disable_viewer_info" tag state: Disable viewer
+/// information on the file.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithDisableViewerInfo;
+
+///
 /// Initializes union class with tag state of "edit_contents".
 ///
 /// Description of the "edit_contents" tag state: Change or edit contents of the
@@ -68,6 +84,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEditContents;
+
+///
+/// Initializes union class with tag state of "enable_viewer_info".
+///
+/// Description of the "enable_viewer_info" tag state: Enable viewer information
+/// on the file.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithEnableViewerInfo;
 
 ///
 /// Initializes union class with tag state of "invite_viewer".
@@ -138,11 +164,29 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileActionTag) {
 #pragma mark - Tag state methods
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "disable_viewer_info".
+///
+/// @return Whether the union's current tag state has value
+/// "disable_viewer_info".
+///
+- (BOOL)isDisableViewerInfo;
+
+///
 /// Retrieves whether the union's current tag state has value "edit_contents".
 ///
 /// @return Whether the union's current tag state has value "edit_contents".
 ///
 - (BOOL)isEditContents;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enable_viewer_info".
+///
+/// @return Whether the union's current tag state has value
+/// "enable_viewer_info".
+///
+- (BOOL)isEnableViewerInfo;
 
 ///
 /// Retrieves whether the union's current tag state has value "invite_viewer".

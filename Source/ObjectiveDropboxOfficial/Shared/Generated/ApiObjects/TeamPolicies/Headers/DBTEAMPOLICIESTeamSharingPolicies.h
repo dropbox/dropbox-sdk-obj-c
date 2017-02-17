@@ -34,7 +34,7 @@
 /// Which shared folders team members can join.
 @property (nonatomic, readonly) DBTEAMPOLICIESSharedFolderJoinPolicy * _Nonnull sharedFolderJoinPolicy;
 
-/// What is the visibility of newly created shared links.
+/// Who can view shared links owned by team members.
 @property (nonatomic, readonly) DBTEAMPOLICIESSharedLinkCreatePolicy * _Nonnull sharedLinkCreatePolicy;
 
 #pragma mark - Constructors
@@ -44,8 +44,8 @@
 ///
 /// @param sharedFolderMemberPolicy Who can join folders shared by team members.
 /// @param sharedFolderJoinPolicy Which shared folders team members can join.
-/// @param sharedLinkCreatePolicy What is the visibility of newly created shared
-/// links.
+/// @param sharedLinkCreatePolicy Who can view shared links owned by team
+/// members.
 ///
 /// @return An initialized instance.
 ///

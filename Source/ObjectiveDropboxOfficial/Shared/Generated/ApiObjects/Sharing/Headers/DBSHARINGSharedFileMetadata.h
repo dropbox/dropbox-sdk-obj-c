@@ -10,6 +10,7 @@
 
 @class DBSHARINGFilePermission;
 @class DBSHARINGFolderPolicy;
+@class DBSHARINGSharedContentLinkMetadata;
 @class DBSHARINGSharedFileMetadata;
 @class DBUSERSTeam;
 
@@ -27,6 +28,9 @@
 @interface DBSHARINGSharedFileMetadata : NSObject <DBSerializable>
 
 #pragma mark - Instance fields
+
+/// The metadata of the link associated for the file.
+@property (nonatomic, readonly) DBSHARINGSharedContentLinkMetadata * _Nullable linkMetadata;
 
 /// Policies governing this shared file.
 @property (nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
@@ -77,6 +81,7 @@
 /// @param previewUrl URL for displaying a web preview of the shared file.
 /// @param name The name of this file.
 /// @param id_ The ID of the file.
+/// @param linkMetadata The metadata of the link associated for the file.
 /// @param permissions The sharing permissions that requesting user has on this
 /// file. This corresponds to the entries given in `actions` in
 /// `DBSHARINGGetFileMetadataBatchArg` or `actions` in
@@ -102,6 +107,7 @@
                             previewUrl:(NSString * _Nonnull)previewUrl
                                   name:(NSString * _Nonnull)name
                                    id_:(NSString * _Nonnull)id_
+                          linkMetadata:(DBSHARINGSharedContentLinkMetadata * _Nullable)linkMetadata
                            permissions:(NSArray<DBSHARINGFilePermission *> * _Nullable)permissions
                              ownerTeam:(DBUSERSTeam * _Nullable)ownerTeam
                   parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId

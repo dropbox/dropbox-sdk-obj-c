@@ -50,6 +50,10 @@
 /// application using the API may find it easier to use their own IDs instead of
 /// Dropbox IDs like account_id or team_member_id.
 /// @param accountId A user's account identifier.
+/// @param joinedOn The date and time the user joined as a member of a specific
+/// team.
+/// @param persistentId Persistent ID that a team can attach to the user. The
+/// persistent ID is unique ID to be used for SAML authentication.
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +65,9 @@
                               membershipType:(DBTEAMTeamMembershipType * _Nonnull)membershipType
                                       groups:(NSArray<NSString *> * _Nonnull)groups
                                   externalId:(NSString * _Nullable)externalId
-                                   accountId:(NSString * _Nullable)accountId;
+                                   accountId:(NSString * _Nullable)accountId
+                                    joinedOn:(NSDate * _Nullable)joinedOn
+                                persistentId:(NSString * _Nullable)persistentId;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

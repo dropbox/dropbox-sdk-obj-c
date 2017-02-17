@@ -7,6 +7,8 @@
 #import "DBClientsManager.h"
 
 @class DBTransportDefaultConfig;
+@class UIApplication;
+@class UIViewController;
 
 ///
 /// Code with platform-specific (here, iOS) dependencies.

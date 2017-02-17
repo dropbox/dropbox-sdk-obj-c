@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
   /// The team folder is not accessible outside of the team folder manager.
   DBTEAMTeamFolderStatusArchived,
 
+  /// The team folder is not accessible outside of the team folder manager.
+  DBTEAMTeamFolderStatusArchiveInProgress,
+
   /// (no description).
   DBTEAMTeamFolderStatusOther,
 
@@ -63,6 +66,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
 - (nonnull instancetype)initWithArchived;
 
 ///
+/// Initializes union class with tag state of "archive_in_progress".
+///
+/// Description of the "archive_in_progress" tag state: The team folder is not
+/// accessible outside of the team folder manager.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithArchiveInProgress;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -84,6 +97,15 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderStatusTag) {
 /// @return Whether the union's current tag state has value "archived".
 ///
 - (BOOL)isArchived;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "archive_in_progress".
+///
+/// @return Whether the union's current tag state has value
+/// "archive_in_progress".
+///
+- (BOOL)isArchiveInProgress;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBSHARINGFileMemberActionError;
+@class DBSHARINGMemberAccessLevelResult;
 @class DBSHARINGSharingFileAccessError;
 
 #pragma mark - API Object
@@ -36,6 +37,11 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
   /// Specified file was invalid or user does not have access.
   DBSHARINGFileMemberActionErrorAccessError,
 
+  /// The action cannot be completed because the target member does not have
+  /// explicit access to the file. The return value is the access that the
+  /// member has to the file from a parent folder.
+  DBSHARINGFileMemberActionErrorNoExplicitAccess,
+
   /// (no description).
   DBSHARINGFileMemberActionErrorOther,
 
@@ -48,6 +54,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 /// `isAccessError` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBSHARINGSharingFileAccessError * _Nonnull accessError;
+
+/// The action cannot be completed because the target member does not have
+/// explicit access to the file. The return value is the access that the member
+/// has to the file from a parent folder. @note Ensure the `isNoExplicitAccess`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBSHARINGMemberAccessLevelResult * _Nonnull noExplicitAccess;
 
 #pragma mark - Constructors
 
@@ -84,6 +97,22 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 - (nonnull instancetype)initWithAccessError:(DBSHARINGSharingFileAccessError * _Nonnull)accessError;
 
 ///
+/// Initializes union class with tag state of "no_explicit_access".
+///
+/// Description of the "no_explicit_access" tag state: The action cannot be
+/// completed because the target member does not have explicit access to the
+/// file. The return value is the access that the member has to the file from a
+/// parent folder.
+///
+/// @param noExplicitAccess The action cannot be completed because the target
+/// member does not have explicit access to the file. The return value is the
+/// access that the member has to the file from a parent folder.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithNoExplicitAccess:(DBSHARINGMemberAccessLevelResult * _Nonnull)noExplicitAccess;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -115,6 +144,18 @@ typedef NS_ENUM(NSInteger, DBSHARINGFileMemberActionErrorTag) {
 /// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "no_explicit_access".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `noExplicitAccess` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "no_explicit_access".
+///
+- (BOOL)isNoExplicitAccess;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

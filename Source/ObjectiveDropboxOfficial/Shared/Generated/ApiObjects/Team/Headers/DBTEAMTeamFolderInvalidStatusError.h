@@ -33,6 +33,9 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
   /// The folder is archived and the operation did not succeed.
   DBTEAMTeamFolderInvalidStatusErrorArchived,
 
+  /// The folder is being archived and the operation did not succeed.
+  DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress,
+
   /// (no description).
   DBTEAMTeamFolderInvalidStatusErrorOther,
 
@@ -64,6 +67,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 - (nonnull instancetype)initWithArchived;
 
 ///
+/// Initializes union class with tag state of "archive_in_progress".
+///
+/// Description of the "archive_in_progress" tag state: The folder is being
+/// archived and the operation did not succeed.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithArchiveInProgress;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -85,6 +98,15 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderInvalidStatusErrorTag) {
 /// @return Whether the union's current tag state has value "archived".
 ///
 - (BOOL)isArchived;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "archive_in_progress".
+///
+/// @return Whether the union's current tag state has value
+/// "archive_in_progress".
+///
+- (BOOL)isArchiveInProgress;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

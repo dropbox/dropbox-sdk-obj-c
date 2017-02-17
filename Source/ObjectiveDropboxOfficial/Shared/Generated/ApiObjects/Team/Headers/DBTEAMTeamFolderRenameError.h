@@ -9,6 +9,7 @@
 #import "DBSerializableProtocol.h"
 
 @class DBTEAMTeamFolderAccessError;
+@class DBTEAMTeamFolderInvalidStatusError;
 @class DBTEAMTeamFolderRenameError;
 
 #pragma mark - API Object
@@ -30,14 +31,20 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
   /// (no description).
   DBTEAMTeamFolderRenameErrorAccessError,
 
+  /// (no description).
+  DBTEAMTeamFolderRenameErrorStatusError,
+
+  /// (no description).
+  DBTEAMTeamFolderRenameErrorOther,
+
   /// The provided folder name cannot be used.
   DBTEAMTeamFolderRenameErrorInvalidFolderName,
 
   /// There is already a team folder with the same name.
   DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed,
 
-  /// (no description).
-  DBTEAMTeamFolderRenameErrorOther,
+  /// The provided name cannot be used because it is reserved.
+  DBTEAMTeamFolderRenameErrorFolderNameReserved,
 
 };
 
@@ -47,6 +54,10 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
 /// (no description). @note Ensure the `isAccessError` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMTeamFolderAccessError * _Nonnull accessError;
+
+/// (no description). @note Ensure the `isStatusError` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMTeamFolderInvalidStatusError * _Nonnull statusError;
 
 #pragma mark - Constructors
 
@@ -58,6 +69,22 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError * _Nonnull)accessError;
+
+///
+/// Initializes union class with tag state of "status_error".
+///
+/// @param statusError (no description).
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError * _Nonnull)statusError;
+
+///
+/// Initializes union class with tag state of "other".
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "invalid_folder_name".
@@ -80,11 +107,14 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
 - (nonnull instancetype)initWithFolderNameAlreadyUsed;
 
 ///
-/// Initializes union class with tag state of "other".
+/// Initializes union class with tag state of "folder_name_reserved".
+///
+/// Description of the "folder_name_reserved" tag state: The provided name
+/// cannot be used because it is reserved.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithOther;
+- (nonnull instancetype)initWithFolderNameReserved;
 
 #pragma mark - Tag state methods
 
@@ -97,6 +127,23 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
 /// @return Whether the union's current tag state has value "access_error".
 ///
 - (BOOL)isAccessError;
+
+///
+/// Retrieves whether the union's current tag state has value "status_error".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `statusError` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "status_error".
+///
+- (BOOL)isStatusError;
+
+///
+/// Retrieves whether the union's current tag state has value "other".
+///
+/// @return Whether the union's current tag state has value "other".
+///
+- (BOOL)isOther;
 
 ///
 /// Retrieves whether the union's current tag state has value
@@ -117,11 +164,13 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderRenameErrorTag) {
 - (BOOL)isFolderNameAlreadyUsed;
 
 ///
-/// Retrieves whether the union's current tag state has value "other".
+/// Retrieves whether the union's current tag state has value
+/// "folder_name_reserved".
 ///
-/// @return Whether the union's current tag state has value "other".
+/// @return Whether the union's current tag state has value
+/// "folder_name_reserved".
 ///
-- (BOOL)isOther;
+- (BOOL)isFolderNameReserved;
 
 ///
 /// Retrieves string value of union's current tag state.

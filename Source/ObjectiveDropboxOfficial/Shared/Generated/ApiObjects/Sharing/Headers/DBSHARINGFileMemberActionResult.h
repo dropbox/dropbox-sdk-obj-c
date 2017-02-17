@@ -17,8 +17,7 @@
 ///
 /// The `FileMemberActionResult` struct.
 ///
-/// Per-member result for `removeFileMember2` or `addFileMember` or
-/// `changeFileMemberAccess`.
+/// Per-member result for `addFileMember` or `changeFileMemberAccess`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

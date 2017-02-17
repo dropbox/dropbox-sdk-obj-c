@@ -34,7 +34,7 @@
 @property (nonatomic, readonly) NSNumber * _Nonnull allow;
 
 /// The reason why the user is denied the permission. Not present if the action
-/// is allowed
+/// is allowed.
 @property (nonatomic, readonly) DBSHARINGPermissionDeniedReason * _Nullable reason;
 
 #pragma mark - Constructors
@@ -45,7 +45,7 @@
 /// @param action The action that the user may wish to take on the file.
 /// @param allow True if the user is allowed to take the action.
 /// @param reason The reason why the user is denied the permission. Not present
-/// if the action is allowed
+/// if the action is allowed.
 ///
 /// @return An initialized instance.
 ///

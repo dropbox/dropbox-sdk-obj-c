@@ -15,7 +15,8 @@
 ///
 /// The `SharedLinkCreatePolicy` union.
 ///
-/// Policy governing the visibility of newly created shared links.
+/// Policy governing the visibility of shared links. This policy can apply to
+/// newly created shared links, or all shared links.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -38,8 +39,8 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSharedLinkCreatePolicyTag) {
   /// overridden.
   DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly,
 
-  /// Only members of the same team can access newly created shared links.
-  /// Login will be required to access the shared links.
+  /// Only members of the same team can access all shared links. Login will be
+  /// required to access all shared links.
   DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly,
 
   /// (no description).
@@ -78,8 +79,7 @@ typedef NS_ENUM(NSInteger, DBTEAMPOLICIESSharedLinkCreatePolicyTag) {
 /// Initializes union class with tag state of "team_only".
 ///
 /// Description of the "team_only" tag state: Only members of the same team can
-/// access newly created shared links. Login will be required to access the
-/// shared links.
+/// access all shared links. Login will be required to access all shared links.
 ///
 /// @return An initialized instance.
 ///

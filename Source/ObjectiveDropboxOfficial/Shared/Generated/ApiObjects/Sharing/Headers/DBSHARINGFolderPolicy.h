@@ -12,6 +12,7 @@
 @class DBSHARINGFolderPolicy;
 @class DBSHARINGMemberPolicy;
 @class DBSHARINGSharedLinkPolicy;
+@class DBSHARINGViewerInfoPolicy;
 
 #pragma mark - API Object
 
@@ -45,6 +46,9 @@
 /// Who links can be shared with.
 @property (nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
 
+/// Who can enable/disable viewer info for this shared folder.
+@property (nonatomic, readonly) DBSHARINGViewerInfoPolicy * _Nullable viewerInfoPolicy;
+
 #pragma mark - Constructors
 
 ///
@@ -62,13 +66,16 @@
 /// differ from that of member_policy if the team-wide policy is more
 /// restrictive than the folder policy. Present only if the folder is owned by a
 /// team.
+/// @param viewerInfoPolicy Who can enable/disable viewer info for this shared
+/// folder.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nonnull)aclUpdatePolicy
                                sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nonnull)sharedLinkPolicy
                                    memberPolicy:(DBSHARINGMemberPolicy * _Nullable)memberPolicy
-                           resolvedMemberPolicy:(DBSHARINGMemberPolicy * _Nullable)resolvedMemberPolicy;
+                           resolvedMemberPolicy:(DBSHARINGMemberPolicy * _Nullable)resolvedMemberPolicy
+                               viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

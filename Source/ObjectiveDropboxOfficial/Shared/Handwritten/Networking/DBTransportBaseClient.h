@@ -4,8 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBRequestError;
-@class DBRoute;
 @class DBTransportBaseConfig;
 
 @interface DBTransportBaseClient : NSObject

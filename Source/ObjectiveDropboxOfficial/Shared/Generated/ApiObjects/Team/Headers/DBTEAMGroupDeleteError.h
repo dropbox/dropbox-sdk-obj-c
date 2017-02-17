@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
   /// (no description).
   DBTEAMGroupDeleteErrorOther,
 
+  /// This operation is not supported on system-managed groups.
+  DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed,
+
   /// This group has already been deleted.
   DBTEAMGroupDeleteErrorGroupAlreadyDeleted,
 
@@ -60,6 +63,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 ///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state: This
+/// operation is not supported on system-managed groups.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
+
+///
 /// Initializes union class with tag state of "group_already_deleted".
 ///
 /// Description of the "group_already_deleted" tag state: This group has already
@@ -84,6 +97,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
 
 ///
 /// Retrieves whether the union's current tag state has value

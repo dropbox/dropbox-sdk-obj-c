@@ -6,6 +6,7 @@
 
 #import "DBAUTHRoutes.h"
 #import "DBFILESRoutes.h"
+#import "DBPAPERRoutes.h"
 #import "DBSHARINGRoutes.h"
 #import "DBTransportClientProtocol.h"
 #import "DBUSERSRoutes.h"
@@ -19,6 +20,7 @@
     _transportClient = client;
     _authRoutes = [[DBAUTHRoutes alloc] init:client];
     _filesRoutes = [[DBFILESRoutes alloc] init:client];
+    _paperRoutes = [[DBPAPERRoutes alloc] init:client];
     _sharingRoutes = [[DBSHARINGRoutes alloc] init:client];
     _usersRoutes = [[DBUSERSRoutes alloc] init:client];
   }

@@ -27,7 +27,7 @@
 /// A list of members on this file.
 @property (nonatomic, readonly) DBSHARINGSharedFileMembers * _Nonnull members;
 
-/// The number of members on this file. This does not include inherited members
+/// The number of members on this file. This does not include inherited members.
 @property (nonatomic, readonly) NSNumber * _Nonnull memberCount;
 
 #pragma mark - Constructors
@@ -37,7 +37,7 @@
 ///
 /// @param members A list of members on this file.
 /// @param memberCount The number of members on this file. This does not include
-/// inherited members
+/// inherited members.
 ///
 /// @return An initialized instance.
 ///

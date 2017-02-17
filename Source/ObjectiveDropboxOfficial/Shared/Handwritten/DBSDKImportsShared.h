@@ -4,7 +4,7 @@
 
 /// Import generated shared files
 
-#import "DBImportsGenerated.h"
+#import "DBSDKImportsGenerated.h"
 
 /// Import handwritten shared files
 
@@ -18,6 +18,7 @@
 #import "DBTasks.h"
 #import "DBTasksStorage.h"
 #import "DBTransportBaseClient.h"
+#import "DBTransportBaseConfig.h"
 #import "DBTransportClientProtocol.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"

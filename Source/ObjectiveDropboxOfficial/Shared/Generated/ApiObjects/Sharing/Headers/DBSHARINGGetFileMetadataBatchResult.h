@@ -16,7 +16,7 @@
 ///
 /// The `GetFileMetadataBatchResult` struct.
 ///
-/// Per file results of `getFileMetadataBatch`
+/// Per file results of `getFileMetadataBatch`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -30,7 +30,7 @@
 /// `DBSHARINGGetFileMetadataBatchArg`.
 @property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
-/// The result for this particular file
+/// The result for this particular file.
 @property (nonatomic, readonly) DBSHARINGGetFileMetadataIndividualResult * _Nonnull result;
 
 #pragma mark - Constructors
@@ -40,7 +40,7 @@
 ///
 /// @param file This is the input file identifier corresponding to one of
 /// `files` in `DBSHARINGGetFileMetadataBatchArg`.
-/// @param result The result for this particular file
+/// @param result The result for this particular file.
 ///
 /// @return An initialized instance.
 ///

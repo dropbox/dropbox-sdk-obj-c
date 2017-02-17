@@ -9,16 +9,18 @@
 #import "DBSerializableProtocol.h"
 
 @class DBSHARINGAclUpdatePolicy;
+@class DBSHARINGLinkSettings;
 @class DBSHARINGMemberPolicy;
 @class DBSHARINGSharedLinkPolicy;
 @class DBSHARINGUpdateFolderPolicyArg;
+@class DBSHARINGViewerInfoPolicy;
 
 #pragma mark - API Object
 
 ///
 /// The `UpdateFolderPolicyArg` struct.
 ///
-/// If any of the policy's are unset, then they retain their current setting.
+/// If any of the policies are unset, then they retain their current setting.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -38,10 +40,16 @@
 /// Who can add and remove members of this shared folder.
 @property (nonatomic, readonly) DBSHARINGAclUpdatePolicy * _Nullable aclUpdatePolicy;
 
+/// Who can enable/disable viewer info for this shared folder.
+@property (nonatomic, readonly) DBSHARINGViewerInfoPolicy * _Nullable viewerInfoPolicy;
+
 /// The policy to apply to shared links created for content inside this shared
 /// folder. The current user must be on a team to set this policy to `members`
 /// in `DBSHARINGSharedLinkPolicy`.
 @property (nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nullable sharedLinkPolicy;
+
+/// Settings on the link for this folder.
+@property (nonatomic, readonly) DBSHARINGLinkSettings * _Nullable linkSettings;
 
 #pragma mark - Constructors
 
@@ -52,16 +60,21 @@
 /// @param memberPolicy Who can be a member of this shared folder. Only
 /// applicable if the current user is on a team.
 /// @param aclUpdatePolicy Who can add and remove members of this shared folder.
+/// @param viewerInfoPolicy Who can enable/disable viewer info for this shared
+/// folder.
 /// @param sharedLinkPolicy The policy to apply to shared links created for
 /// content inside this shared folder. The current user must be on a team to set
 /// this policy to `members` in `DBSHARINGSharedLinkPolicy`.
+/// @param linkSettings Settings on the link for this folder.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithSharedFolderId:(NSString * _Nonnull)sharedFolderId
                                   memberPolicy:(DBSHARINGMemberPolicy * _Nullable)memberPolicy
                                aclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy
-                              sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy;
+                              viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy
+                              sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy
+                                  linkSettings:(DBSHARINGLinkSettings * _Nullable)linkSettings;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

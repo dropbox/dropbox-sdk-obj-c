@@ -9,6 +9,21 @@
 /// Used by internal classes of `DBTransportBaseClient`
 @interface DBTransportBaseClient (Internal)
 
+- (NSDictionary * _Nonnull)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> * _Nonnull)routeAttributes
+                                   accessToken:(NSString * _Nonnull)accessToken
+                                 serializedArg:(NSString * _Nonnull)serializedArg;
+
++ (NSURLRequest * _Nonnull)requestWithHeaders:(NSDictionary * _Nonnull)httpHeaders
+                                         url:(NSURL * _Nonnull)url
+                                     content:(NSData * _Nullable)content
+                                      stream:(NSInputStream * _Nullable)stream;
+
++ (NSURL * _Nonnull)urlWithRoute:(DBRoute * _Nonnull)route;
+
++ (NSData * _Nonnull)serializeDataWithRoute:(DBRoute * _Nonnull)route routeArg:(id<DBSerializable> _Nonnull)arg;
+
++ (NSString * _Nonnull)serializeStringWithRoute:(DBRoute * _Nonnull)route routeArg:(id<DBSerializable> _Nonnull)arg;
+
 + (DBRequestError * _Nullable)dBRequestErrorWithErrorData:(NSData * _Nullable)errorData
                                              clientError:(NSError * _Nullable)clientError
                                               statusCode:(int)statusCode

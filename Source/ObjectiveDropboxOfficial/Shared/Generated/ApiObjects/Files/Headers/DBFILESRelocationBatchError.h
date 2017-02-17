@@ -50,12 +50,12 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
   /// The operation would involve more than 10,000 files and folders.
   DBFILESRelocationBatchErrorTooManyFiles,
 
-  /// (no description).
-  DBFILESRelocationBatchErrorOther,
-
   /// There are duplicated/nested paths among `fromPath` in
   /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
   DBFILESRelocationBatchErrorDuplicatedOrNestedPaths,
+
+  /// (no description).
+  DBFILESRelocationBatchErrorOther,
 
   /// There are too many write operations in user's Dropbox. Please retry this
   /// request.
@@ -148,13 +148,6 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 - (nonnull instancetype)initWithTooManyFiles;
 
 ///
-/// Initializes union class with tag state of "other".
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithOther;
-
-///
 /// Initializes union class with tag state of "duplicated_or_nested_paths".
 ///
 /// Description of the "duplicated_or_nested_paths" tag state: There are
@@ -164,6 +157,13 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithDuplicatedOrNestedPaths;
+
+///
+/// Initializes union class with tag state of "other".
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithOther;
 
 ///
 /// Initializes union class with tag state of "too_many_write_operations".
@@ -242,13 +242,6 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 - (BOOL)isTooManyFiles;
 
 ///
-/// Retrieves whether the union's current tag state has value "other".
-///
-/// @return Whether the union's current tag state has value "other".
-///
-- (BOOL)isOther;
-
-///
 /// Retrieves whether the union's current tag state has value
 /// "duplicated_or_nested_paths".
 ///
@@ -256,6 +249,13 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// "duplicated_or_nested_paths".
 ///
 - (BOOL)isDuplicatedOrNestedPaths;
+
+///
+/// Retrieves whether the union's current tag state has value "other".
+///
+/// @return Whether the union's current tag state has value "other".
+///
+- (BOOL)isOther;
 
 ///
 /// Retrieves whether the union's current tag state has value

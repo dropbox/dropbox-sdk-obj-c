@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersAddErrorTag) {
   /// (no description).
   DBTEAMGroupMembersAddErrorOther,
 
+  /// This operation is not supported on system-managed groups.
+  DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed,
+
   /// You cannot add duplicate users. One or more of the members you are
   /// trying to add is already a member of the group.
   DBTEAMGroupMembersAddErrorDuplicateUser,
@@ -96,6 +99,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersAddErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state: This
+/// operation is not supported on system-managed groups.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
 
 ///
 /// Initializes union class with tag state of "duplicate_user".
@@ -188,6 +201,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersAddErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
 
 ///
 /// Retrieves whether the union's current tag state has value "duplicate_user".

@@ -43,6 +43,10 @@
 /// New surname for member.
 @property (nonatomic, readonly) NSString * _Nullable dNewSurname;
 
+/// New persistent ID. This field only available to teams using persistent ID
+/// SAML configuration.
+@property (nonatomic, readonly) NSString * _Nullable dNewPersistentId;
+
 #pragma mark - Constructors
 
 ///
@@ -53,6 +57,8 @@
 /// @param dNewExternalId New external ID for member.
 /// @param dNewGivenName New given name for member.
 /// @param dNewSurname New surname for member.
+/// @param dNewPersistentId New persistent ID. This field only available to
+/// teams using persistent ID SAML configuration.
 ///
 /// @return An initialized instance.
 ///
@@ -60,7 +66,8 @@
                            dNewEmail:(NSString * _Nullable)dNewEmail
                       dNewExternalId:(NSString * _Nullable)dNewExternalId
                        dNewGivenName:(NSString * _Nullable)dNewGivenName
-                         dNewSurname:(NSString * _Nullable)dNewSurname;
+                         dNewSurname:(NSString * _Nullable)dNewSurname
+                    dNewPersistentId:(NSString * _Nullable)dNewPersistentId;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

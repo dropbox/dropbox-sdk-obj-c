@@ -16,6 +16,14 @@
 
 #pragma mark - Constructors
 
+- (instancetype)initWithUserManaged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMCOMMONGroupManagementTypeUserManaged;
+  }
+  return self;
+}
+
 - (instancetype)initWithCompanyManaged {
   self = [super init];
   if (self) {
@@ -24,10 +32,10 @@
   return self;
 }
 
-- (instancetype)initWithUserManaged {
+- (instancetype)initWithSystemManaged {
   self = [super init];
   if (self) {
-    _tag = DBTEAMCOMMONGroupManagementTypeUserManaged;
+    _tag = DBTEAMCOMMONGroupManagementTypeSystemManaged;
   }
   return self;
 }
@@ -44,12 +52,16 @@
 
 #pragma mark - Tag state methods
 
+- (BOOL)isUserManaged {
+  return _tag == DBTEAMCOMMONGroupManagementTypeUserManaged;
+}
+
 - (BOOL)isCompanyManaged {
   return _tag == DBTEAMCOMMONGroupManagementTypeCompanyManaged;
 }
 
-- (BOOL)isUserManaged {
-  return _tag == DBTEAMCOMMONGroupManagementTypeUserManaged;
+- (BOOL)isSystemManaged {
+  return _tag == DBTEAMCOMMONGroupManagementTypeSystemManaged;
 }
 
 - (BOOL)isOther {
@@ -58,10 +70,12 @@
 
 - (NSString *)tagName {
   switch (_tag) {
-  case DBTEAMCOMMONGroupManagementTypeCompanyManaged:
-    return @"DBTEAMCOMMONGroupManagementTypeCompanyManaged";
   case DBTEAMCOMMONGroupManagementTypeUserManaged:
     return @"DBTEAMCOMMONGroupManagementTypeUserManaged";
+  case DBTEAMCOMMONGroupManagementTypeCompanyManaged:
+    return @"DBTEAMCOMMONGroupManagementTypeCompanyManaged";
+  case DBTEAMCOMMONGroupManagementTypeSystemManaged:
+    return @"DBTEAMCOMMONGroupManagementTypeSystemManaged";
   case DBTEAMCOMMONGroupManagementTypeOther:
     return @"DBTEAMCOMMONGroupManagementTypeOther";
   }
@@ -94,10 +108,12 @@
 + (NSDictionary *)serialize:(DBTEAMCOMMONGroupManagementType *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isCompanyManaged]) {
-    jsonDict[@".tag"] = @"company_managed";
-  } else if ([valueObj isUserManaged]) {
+  if ([valueObj isUserManaged]) {
     jsonDict[@".tag"] = @"user_managed";
+  } else if ([valueObj isCompanyManaged]) {
+    jsonDict[@".tag"] = @"company_managed";
+  } else if ([valueObj isSystemManaged]) {
+    jsonDict[@".tag"] = @"system_managed";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -110,10 +126,12 @@
 + (DBTEAMCOMMONGroupManagementType *)deserialize:(NSDictionary *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"company_managed"]) {
-    return [[DBTEAMCOMMONGroupManagementType alloc] initWithCompanyManaged];
-  } else if ([tag isEqualToString:@"user_managed"]) {
+  if ([tag isEqualToString:@"user_managed"]) {
     return [[DBTEAMCOMMONGroupManagementType alloc] initWithUserManaged];
+  } else if ([tag isEqualToString:@"company_managed"]) {
+    return [[DBTEAMCOMMONGroupManagementType alloc] initWithCompanyManaged];
+  } else if ([tag isEqualToString:@"system_managed"]) {
+    return [[DBTEAMCOMMONGroupManagementType alloc] initWithSystemManaged];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMCOMMONGroupManagementType alloc] initWithOther];
   } else {
@@ -330,4 +348,76 @@
     return [[DBTEAMCOMMONGroupType alloc] initWithOther];
   }
 }
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMCOMMONTimeRange.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMCOMMONTimeRange
+
+#pragma mark - Constructors
+
+- (instancetype)initWithStartTime:(NSDate *)startTime endTime:(NSDate *)endTime {
+
+  self = [super init];
+  if (self) {
+    _startTime = startTime;
+    _endTime = endTime;
+  }
+  return self;
+}
+
+- (instancetype)init {
+  return [self initWithStartTime:nil endTime:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (NSDictionary *)serialize:(id)instance {
+  return [DBTEAMCOMMONTimeRangeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMCOMMONTimeRangeSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMCOMMONTimeRangeSerializer serialize:self] description];
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMCOMMONTimeRangeSerializer
+
++ (NSDictionary *)serialize:(DBTEAMCOMMONTimeRange *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.startTime) {
+    jsonDict[@"start_time"] = [DBNSDateSerializer serialize:valueObj.startTime dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+  if (valueObj.endTime) {
+    jsonDict[@"end_time"] = [DBNSDateSerializer serialize:valueObj.endTime dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMCOMMONTimeRange *)deserialize:(NSDictionary *)valueDict {
+  NSDate *startTime = valueDict[@"start_time"]
+                          ? [DBNSDateSerializer deserialize:valueDict[@"start_time"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                          : nil;
+  NSDate *endTime = valueDict[@"end_time"]
+                        ? [DBNSDateSerializer deserialize:valueDict[@"end_time"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                        : nil;
+
+  return [[DBTEAMCOMMONTimeRange alloc] initWithStartTime:startTime endTime:endTime];
+}
+
 @end
