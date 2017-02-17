@@ -7,36 +7,39 @@
 ///
 /// Information for returning to the official Dropbox app.
 ///
+/// @note This logic is for official Dropbox partners only, and should not need
+/// to be used by other third-party apps.
+///
 @interface DBOpenWithInfo : NSObject <NSCoding>
 
-/// the Dropbox user ID of the current user.
+/// The Dropbox user ID of the current user.
 @property (nonatomic, copy) NSString * _Nonnull userId;
 
-/// the Dropbox revision for the file
+/// The Dropbox revision for the file.
 @property (nonatomic, copy) NSString * _Nonnull rev;
 
-/// the Dropbox path for the file
+/// The Dropbox path for the file.
 @property (nonatomic, copy) NSString * _Nonnull path;
 
-/// the time the file was modified last
+/// The time the file was modified last.
 @property (nonatomic, copy) NSDate * _Nullable modifiedTime;
 
-/// whether the file is read only or not
+/// Whether the file is read only or not.
 @property (nonatomic) BOOL readOnly;
 
-/// the Dropbox verb associated with the file
+/// The Dropbox verb associated with the file.
 @property (nonatomic, copy) NSString * _Nonnull verb;
 
-/// the Dropbox session ID associated with the file
+/// The Dropbox session ID associated with the file.
 @property (nonatomic, copy) NSString * _Nullable sessionId;
 
-/// the Dropbox file ID associated with the file
+/// The Dropbox file ID associated with the file.
 @property (nonatomic, copy) NSString * _Nullable fileId;
 
-/// relevant Dropbox file data associated with the file
+/// Relevant Dropbox file data associated with the file.
 @property (nonatomic, copy) NSData * _Nullable fileData;
 
-/// the source application from which the file content originated
+/// The source application from which the file content originated.
 @property (nonatomic, copy) NSString * _Nullable sourceApp;
 
 ///
@@ -44,16 +47,18 @@
 /// the originating Dropbox app. There are now two Dropbox apps: the regular Dropbox app and the Dropbox EMM app. Either
 /// can open with.
 ///
-/// @param userId the Dropbox user ID of the current user.
-/// @param rev the Dropbox revision for the file
-/// @param path the Dropbox path for the file
-/// @param modifiedTime the time the file was modified last
-/// @param readOnly whether the file is read only or not
-/// @param verb the action type to be taken on the file (e.g. EDIT) supplied by the official app
-/// @param sessionId the Dropbox session ID supplied by the official app
-/// @param fileId the Dropbox file ID associated with the file
-/// @param fileData relevant Dropbox file data associated with the file
-/// @param sourceApp the source application from which the file content originated
+/// @note This logic is for official Dropbox partners only, and should not need to be used by other third-party apps.
+///
+/// @param userId The Dropbox user ID of the current user.
+/// @param rev The Dropbox revision for the file.
+/// @param path The Dropbox path for the file.
+/// @param modifiedTime The time the file was modified last.
+/// @param readOnly Whether the file is read only.
+/// @param verb The action type to be taken on the file (e.g. EDIT) supplied by the official Dropbox app.
+/// @param sessionId The Dropbox session ID supplied by the official app
+/// @param fileId The Dropbox file ID associated with the file
+/// @param fileData Relevant Dropbox file data associated with the file.
+/// @param sourceApp The source application from which the file content originated.
 ///
 - (id _Nonnull)initWithUserId:(NSString * _Nonnull)userId
                           rev:(NSString * _Nonnull)rev
@@ -69,14 +74,18 @@
 ///
 /// Saves open with info to disc.
 ///
-/// @param sessionId the Dropbox session ID supplied by the official app to be used as a storage lookup
+/// @note This logic is for official Dropbox partners only, and should not need to be used by other third-party apps.
+///
+/// @param sessionId The Dropbox session ID supplied by the official app to be used as a storage lookup key.
 ///
 - (void)writeToStorageForSession:(NSString * _Nullable)sessionId;
 
 ///
 /// Retrieves open with info from disc.
 ///
-/// @param sessionId the Dropbox session ID supplied by the official app to be used as a storage lookup
+/// @note This logic is for official Dropbox partners only, and should not need to be used by other third-party apps.
+///
+/// @param sessionId The Dropbox session ID supplied by the official app to be used as a storage lookup key.
 ///
 + (DBOpenWithInfo * _Nullable)popFromStorageForSession:(NSString * _Nonnull)sessionId;
 

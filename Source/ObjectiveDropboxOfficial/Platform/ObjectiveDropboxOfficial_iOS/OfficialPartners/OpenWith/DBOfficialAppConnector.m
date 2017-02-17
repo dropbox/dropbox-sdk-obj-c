@@ -14,6 +14,10 @@ static double kMaxInstallTime = -15 * 60; // 15 minutes ago
 static NSString *kDBOpenURLAppDropbox = @"Dropbox";
 static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 
+///
+/// @note This logic is for official Dropbox partners only, and should not need
+/// to be used by other third-party apps.
+///
 @implementation DBOfficialAppConnector {
   NSString *_appKey;
 }

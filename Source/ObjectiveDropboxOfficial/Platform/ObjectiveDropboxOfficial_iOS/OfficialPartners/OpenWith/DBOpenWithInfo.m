@@ -4,6 +4,10 @@
 
 #import "DBOpenWithInfo.h"
 
+///
+/// @note This logic is for official Dropbox partners only, and should not need
+/// to be used by other third-party apps.
+///
 @implementation DBOpenWithInfo
 
 static NSString *kStorageKeyPrefix = @"dbxOpenWith";
