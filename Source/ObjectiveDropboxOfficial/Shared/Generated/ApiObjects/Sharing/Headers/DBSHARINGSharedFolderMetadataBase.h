@@ -9,7 +9,6 @@
 #import "DBSerializableProtocol.h"
 
 @class DBSHARINGAccessLevel;
-@class DBSHARINGFolderPolicy;
 @class DBSHARINGSharedFolderMetadataBase;
 @class DBUSERSTeam;
 
@@ -31,11 +30,11 @@
 /// The current user's access level for this shared folder.
 @property (nonatomic, readonly) DBSHARINGAccessLevel * _Nonnull accessType;
 
+/// Whether this folder is inside of a team folder.
+@property (nonatomic, readonly) NSNumber * _Nonnull isInsideTeamFolder;
+
 /// Whether this folder is a team folder https://www.dropbox.com/en/help/986.
 @property (nonatomic, readonly) NSNumber * _Nonnull isTeamFolder;
-
-/// Policies governing this shared folder.
-@property (nonatomic, readonly) DBSHARINGFolderPolicy * _Nonnull policy;
 
 /// The team that owns the folder. This field is not present if the folder is
 /// not owned by a team.
@@ -45,42 +44,49 @@
 /// is contained within another shared folder.
 @property (nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
 
+/// The lower-cased full path of this shared folder. Absent for unmounted
+/// folders.
+@property (nonatomic, readonly) NSString * _Nullable pathLower;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param accessType The current user's access level for this shared folder.
+/// @param isInsideTeamFolder Whether this folder is inside of a team folder.
 /// @param isTeamFolder Whether this folder is a team folder
 /// https://www.dropbox.com/en/help/986.
-/// @param policy Policies governing this shared folder.
 /// @param ownerTeam The team that owns the folder. This field is not present if
 /// the folder is not owned by a team.
 /// @param parentSharedFolderId The ID of the parent shared folder. This field
 /// is present only if the folder is contained within another shared folder.
+/// @param pathLower The lower-cased full path of this shared folder. Absent for
+/// unmounted folders.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
+                        isInsideTeamFolder:(NSNumber * _Nonnull)isInsideTeamFolder
                               isTeamFolder:(NSNumber * _Nonnull)isTeamFolder
-                                    policy:(DBSHARINGFolderPolicy * _Nonnull)policy
                                  ownerTeam:(DBUSERSTeam * _Nullable)ownerTeam
-                      parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId;
+                      parentSharedFolderId:(NSString * _Nullable)parentSharedFolderId
+                                 pathLower:(NSString * _Nullable)pathLower;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
 /// @param accessType The current user's access level for this shared folder.
+/// @param isInsideTeamFolder Whether this folder is inside of a team folder.
 /// @param isTeamFolder Whether this folder is a team folder
 /// https://www.dropbox.com/en/help/986.
-/// @param policy Policies governing this shared folder.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessType:(DBSHARINGAccessLevel * _Nonnull)accessType
-                              isTeamFolder:(NSNumber * _Nonnull)isTeamFolder
-                                    policy:(DBSHARINGFolderPolicy * _Nonnull)policy;
+                        isInsideTeamFolder:(NSNumber * _Nonnull)isInsideTeamFolder
+                              isTeamFolder:(NSNumber * _Nonnull)isTeamFolder;
 
 @end
 

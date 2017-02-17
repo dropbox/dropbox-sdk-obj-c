@@ -33,6 +33,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMemberSetAccessTypeErrorTag) {
   /// (no description).
   DBTEAMGroupMemberSetAccessTypeErrorOther,
 
+  /// This operation is not supported on system-managed groups.
+  DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed,
+
   /// The specified user is not a member of this group.
   DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup,
 
@@ -62,6 +65,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMemberSetAccessTypeErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state: This
+/// operation is not supported on system-managed groups.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
 
 ///
 /// Initializes union class with tag state of "member_not_in_group".
@@ -99,6 +112,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMemberSetAccessTypeErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
 
 ///
 /// Retrieves whether the union's current tag state has value

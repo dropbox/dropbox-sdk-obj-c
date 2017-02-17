@@ -6,7 +6,6 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-#import "DBOAuth.h"
 #import "DBSharedApplicationProtocol.h"
 
 #pragma mark - Shared application

@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
   /// There is already a team folder with the provided name.
   DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed,
 
+  /// The provided name cannot be used because it is reserved.
+  DBTEAMTeamFolderCreateErrorFolderNameReserved,
+
   /// (no description).
   DBTEAMTeamFolderCreateErrorOther,
 
@@ -63,6 +66,16 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 - (nonnull instancetype)initWithFolderNameAlreadyUsed;
 
 ///
+/// Initializes union class with tag state of "folder_name_reserved".
+///
+/// Description of the "folder_name_reserved" tag state: The provided name
+/// cannot be used because it is reserved.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithFolderNameReserved;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -88,6 +101,15 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderCreateErrorTag) {
 /// "folder_name_already_used".
 ///
 - (BOOL)isFolderNameAlreadyUsed;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_name_reserved".
+///
+/// @return Whether the union's current tag state has value
+/// "folder_name_reserved".
+///
+- (BOOL)isFolderNameReserved;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

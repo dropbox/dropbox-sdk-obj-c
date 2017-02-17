@@ -635,6 +635,152 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
+#import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBaseTeamFolderError
+
+@synthesize accessError = _accessError;
+@synthesize statusError = _statusError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBaseTeamFolderErrorAccessError;
+    _accessError = accessError;
+  }
+  return self;
+}
+
+- (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBaseTeamFolderErrorStatusError;
+    _statusError = statusError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBaseTeamFolderErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMTeamFolderAccessError *)accessError {
+  if (![self isAccessError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMBaseTeamFolderErrorAccessError, but was %@.", [self tagName]];
+  }
+  return _accessError;
+}
+
+- (DBTEAMTeamFolderInvalidStatusError *)statusError {
+  if (![self isStatusError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMBaseTeamFolderErrorStatusError, but was %@.", [self tagName]];
+  }
+  return _statusError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isAccessError {
+  return _tag == DBTEAMBaseTeamFolderErrorAccessError;
+}
+
+- (BOOL)isStatusError {
+  return _tag == DBTEAMBaseTeamFolderErrorStatusError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBaseTeamFolderErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBaseTeamFolderErrorAccessError:
+    return @"DBTEAMBaseTeamFolderErrorAccessError";
+  case DBTEAMBaseTeamFolderErrorStatusError:
+    return @"DBTEAMBaseTeamFolderErrorStatusError";
+  case DBTEAMBaseTeamFolderErrorOther:
+    return @"DBTEAMBaseTeamFolderErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (NSDictionary *)serialize:(id)instance {
+  return [DBTEAMBaseTeamFolderErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMBaseTeamFolderErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMBaseTeamFolderErrorSerializer serialize:self] description];
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBaseTeamFolderErrorSerializer
+
++ (NSDictionary *)serialize:(DBTEAMBaseTeamFolderError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isAccessError]) {
+    jsonDict[@"access_error"] = [[DBTEAMTeamFolderAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
+    jsonDict[@".tag"] = @"access_error";
+  } else if ([valueObj isStatusError]) {
+    jsonDict[@"status_error"] =
+        [[DBTEAMTeamFolderInvalidStatusErrorSerializer serialize:valueObj.statusError] mutableCopy];
+    jsonDict[@".tag"] = @"status_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBaseTeamFolderError *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"access_error"]) {
+    DBTEAMTeamFolderAccessError *accessError =
+        [DBTEAMTeamFolderAccessErrorSerializer deserialize:valueDict[@"access_error"]];
+    return [[DBTEAMBaseTeamFolderError alloc] initWithAccessError:accessError];
+  } else if ([tag isEqualToString:@"status_error"]) {
+    DBTEAMTeamFolderInvalidStatusError *statusError =
+        [DBTEAMTeamFolderInvalidStatusErrorSerializer deserialize:valueDict[@"status_error"]];
+    return [[DBTEAMBaseTeamFolderError alloc] initWithStatusError:statusError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBaseTeamFolderError alloc] initWithOther];
+  } else {
+    return [[DBTEAMBaseTeamFolderError alloc] initWithOther];
+  }
+}
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMDateRange.h"
 
 #pragma mark - API Object
@@ -2010,6 +2156,14 @@
   return self;
 }
 
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupCreateErrorSystemManagedGroupDisallowed;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -2034,6 +2188,10 @@
   return _tag == DBTEAMGroupCreateErrorExternalIdAlreadyInUse;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupCreateErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMGroupCreateErrorOther;
 }
@@ -2046,6 +2204,8 @@
     return @"DBTEAMGroupCreateErrorGroupNameInvalid";
   case DBTEAMGroupCreateErrorExternalIdAlreadyInUse:
     return @"DBTEAMGroupCreateErrorExternalIdAlreadyInUse";
+  case DBTEAMGroupCreateErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupCreateErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupCreateErrorOther:
     return @"DBTEAMGroupCreateErrorOther";
   }
@@ -2084,6 +2244,8 @@
     jsonDict[@".tag"] = @"group_name_invalid";
   } else if ([valueObj isExternalIdAlreadyInUse]) {
     jsonDict[@".tag"] = @"external_id_already_in_use";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -2102,6 +2264,8 @@
     return [[DBTEAMGroupCreateError alloc] initWithGroupNameInvalid];
   } else if ([tag isEqualToString:@"external_id_already_in_use"]) {
     return [[DBTEAMGroupCreateError alloc] initWithExternalIdAlreadyInUse];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupCreateError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupCreateError alloc] initWithOther];
   } else {
@@ -2210,8 +2374,125 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMGroupDeleteError.h"
 #import "DBTEAMGroupSelectorError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMGroupSelectorWithTeamGroupError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithGroupNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupSelectorWithTeamGroupErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isGroupNotFound {
+  return _tag == DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMGroupSelectorWithTeamGroupErrorOther;
+}
+
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound:
+    return @"DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound";
+  case DBTEAMGroupSelectorWithTeamGroupErrorOther:
+    return @"DBTEAMGroupSelectorWithTeamGroupErrorOther";
+  case DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (NSDictionary *)serialize:(id)instance {
+  return [DBTEAMGroupSelectorWithTeamGroupErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary *)dict {
+  return [DBTEAMGroupSelectorWithTeamGroupErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Description method
+
+- (NSString *)description {
+  return [[DBTEAMGroupSelectorWithTeamGroupErrorSerializer serialize:self] description];
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMGroupSelectorWithTeamGroupErrorSerializer
+
++ (NSDictionary *)serialize:(DBTEAMGroupSelectorWithTeamGroupError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isGroupNotFound]) {
+    jsonDict[@".tag"] = @"group_not_found";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMGroupSelectorWithTeamGroupError *)deserialize:(NSDictionary *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"group_not_found"]) {
+    return [[DBTEAMGroupSelectorWithTeamGroupError alloc] initWithGroupNotFound];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMGroupSelectorWithTeamGroupError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupSelectorWithTeamGroupError alloc] initWithSystemManagedGroupDisallowed];
+  } else {
+    return [[DBTEAMGroupSelectorWithTeamGroupError alloc] initWithOther];
+  }
+}
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMGroupDeleteError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
 
 #pragma mark - API Object
 
@@ -2231,6 +2512,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupDeleteErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -2255,6 +2544,10 @@
   return _tag == DBTEAMGroupDeleteErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isGroupAlreadyDeleted {
   return _tag == DBTEAMGroupDeleteErrorGroupAlreadyDeleted;
 }
@@ -2265,6 +2558,8 @@
     return @"DBTEAMGroupDeleteErrorGroupNotFound";
   case DBTEAMGroupDeleteErrorOther:
     return @"DBTEAMGroupDeleteErrorOther";
+  case DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupDeleteErrorGroupAlreadyDeleted:
     return @"DBTEAMGroupDeleteErrorGroupAlreadyDeleted";
   }
@@ -2301,6 +2596,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isGroupAlreadyDeleted]) {
     jsonDict[@".tag"] = @"group_already_deleted";
   } else {
@@ -2317,6 +2614,8 @@
     return [[DBTEAMGroupDeleteError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupDeleteError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupDeleteError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"group_already_deleted"]) {
     return [[DBTEAMGroupDeleteError alloc] initWithGroupAlreadyDeleted];
   } else {
@@ -2571,7 +2870,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMGroupMemberSelectorError.h"
-#import "DBTEAMGroupSelectorError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
 
 #pragma mark - API Object
 
@@ -2591,6 +2890,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupMemberSelectorErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -2615,6 +2922,10 @@
   return _tag == DBTEAMGroupMemberSelectorErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isMemberNotInGroup {
   return _tag == DBTEAMGroupMemberSelectorErrorMemberNotInGroup;
 }
@@ -2625,6 +2936,8 @@
     return @"DBTEAMGroupMemberSelectorErrorGroupNotFound";
   case DBTEAMGroupMemberSelectorErrorOther:
     return @"DBTEAMGroupMemberSelectorErrorOther";
+  case DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupMemberSelectorErrorMemberNotInGroup:
     return @"DBTEAMGroupMemberSelectorErrorMemberNotInGroup";
   }
@@ -2661,6 +2974,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isMemberNotInGroup]) {
     jsonDict[@".tag"] = @"member_not_in_group";
   } else {
@@ -2677,6 +2992,8 @@
     return [[DBTEAMGroupMemberSelectorError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupMemberSelectorError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupMemberSelectorError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMemberSelectorError alloc] initWithMemberNotInGroup];
   } else {
@@ -2712,6 +3029,14 @@
   return self;
 }
 
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed;
+  }
+  return self;
+}
+
 - (instancetype)initWithMemberNotInGroup {
   self = [super init];
   if (self) {
@@ -2740,6 +3065,10 @@
   return _tag == DBTEAMGroupMemberSetAccessTypeErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isMemberNotInGroup {
   return _tag == DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup;
 }
@@ -2754,6 +3083,8 @@
     return @"DBTEAMGroupMemberSetAccessTypeErrorGroupNotFound";
   case DBTEAMGroupMemberSetAccessTypeErrorOther:
     return @"DBTEAMGroupMemberSetAccessTypeErrorOther";
+  case DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup:
     return @"DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup";
   case DBTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup:
@@ -2792,6 +3123,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isMemberNotInGroup]) {
     jsonDict[@".tag"] = @"member_not_in_group";
   } else if ([valueObj isUserCannotBeManagerOfCompanyManagedGroup]) {
@@ -2810,6 +3143,8 @@
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithMemberNotInGroup];
   } else if ([tag isEqualToString:@"user_cannot_be_manager_of_company_managed_group"]) {
@@ -2963,7 +3298,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMGroupMembersAddError.h"
-#import "DBTEAMGroupSelectorError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
 
 #pragma mark - API Object
 
@@ -2987,6 +3322,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupMembersAddErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -3082,6 +3425,10 @@
   return _tag == DBTEAMGroupMembersAddErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isDuplicateUser {
   return _tag == DBTEAMGroupMembersAddErrorDuplicateUser;
 }
@@ -3112,6 +3459,8 @@
     return @"DBTEAMGroupMembersAddErrorGroupNotFound";
   case DBTEAMGroupMembersAddErrorOther:
     return @"DBTEAMGroupMembersAddErrorOther";
+  case DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupMembersAddErrorDuplicateUser:
     return @"DBTEAMGroupMembersAddErrorDuplicateUser";
   case DBTEAMGroupMembersAddErrorGroupNotInTeam:
@@ -3158,6 +3507,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isDuplicateUser]) {
     jsonDict[@".tag"] = @"duplicate_user";
   } else if ([valueObj isGroupNotInTeam]) {
@@ -3197,6 +3548,8 @@
     return [[DBTEAMGroupMembersAddError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupMembersAddError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupMembersAddError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"duplicate_user"]) {
     return [[DBTEAMGroupMembersAddError alloc] initWithDuplicateUser];
   } else if ([tag isEqualToString:@"group_not_in_team"]) {
@@ -3373,7 +3726,7 @@
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 #import "DBTEAMGroupMembersSelectorError.h"
-#import "DBTEAMGroupSelectorError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
 
 #pragma mark - API Object
 
@@ -3393,6 +3746,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupMembersSelectorErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -3417,6 +3778,10 @@
   return _tag == DBTEAMGroupMembersSelectorErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isMemberNotInGroup {
   return _tag == DBTEAMGroupMembersSelectorErrorMemberNotInGroup;
 }
@@ -3427,6 +3792,8 @@
     return @"DBTEAMGroupMembersSelectorErrorGroupNotFound";
   case DBTEAMGroupMembersSelectorErrorOther:
     return @"DBTEAMGroupMembersSelectorErrorOther";
+  case DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupMembersSelectorErrorMemberNotInGroup:
     return @"DBTEAMGroupMembersSelectorErrorMemberNotInGroup";
   }
@@ -3463,6 +3830,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isMemberNotInGroup]) {
     jsonDict[@".tag"] = @"member_not_in_group";
   } else {
@@ -3479,6 +3848,8 @@
     return [[DBTEAMGroupMembersSelectorError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupMembersSelectorError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupMembersSelectorError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMembersSelectorError alloc] initWithMemberNotInGroup];
   } else {
@@ -3496,6 +3867,9 @@
 
 @implementation DBTEAMGroupMembersRemoveError
 
+@synthesize membersNotInTeam = _membersNotInTeam;
+@synthesize usersNotFound = _usersNotFound;
+
 #pragma mark - Constructors
 
 - (instancetype)initWithGroupNotFound {
@@ -3510,6 +3884,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupMembersRemoveErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -3530,7 +3912,43 @@
   return self;
 }
 
+- (instancetype)initWithMembersNotInTeam:(NSArray<NSString *> *)membersNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMembersRemoveErrorMembersNotInTeam;
+    _membersNotInTeam = membersNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithUsersNotFound:(NSArray<NSString *> *)usersNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupMembersRemoveErrorUsersNotFound;
+    _usersNotFound = usersNotFound;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
+
+- (NSArray<NSString *> *)membersNotInTeam {
+  if (![self isMembersNotInTeam]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMGroupMembersRemoveErrorMembersNotInTeam, but was %@.", [self tagName]];
+  }
+  return _membersNotInTeam;
+}
+
+- (NSArray<NSString *> *)usersNotFound {
+  if (![self isUsersNotFound]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMGroupMembersRemoveErrorUsersNotFound, but was %@.", [self tagName]];
+  }
+  return _usersNotFound;
+}
 
 #pragma mark - Tag state methods
 
@@ -3542,6 +3960,10 @@
   return _tag == DBTEAMGroupMembersRemoveErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isMemberNotInGroup {
   return _tag == DBTEAMGroupMembersRemoveErrorMemberNotInGroup;
 }
@@ -3550,16 +3972,30 @@
   return _tag == DBTEAMGroupMembersRemoveErrorGroupNotInTeam;
 }
 
+- (BOOL)isMembersNotInTeam {
+  return _tag == DBTEAMGroupMembersRemoveErrorMembersNotInTeam;
+}
+
+- (BOOL)isUsersNotFound {
+  return _tag == DBTEAMGroupMembersRemoveErrorUsersNotFound;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMGroupMembersRemoveErrorGroupNotFound:
     return @"DBTEAMGroupMembersRemoveErrorGroupNotFound";
   case DBTEAMGroupMembersRemoveErrorOther:
     return @"DBTEAMGroupMembersRemoveErrorOther";
+  case DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupMembersRemoveErrorMemberNotInGroup:
     return @"DBTEAMGroupMembersRemoveErrorMemberNotInGroup";
   case DBTEAMGroupMembersRemoveErrorGroupNotInTeam:
     return @"DBTEAMGroupMembersRemoveErrorGroupNotInTeam";
+  case DBTEAMGroupMembersRemoveErrorMembersNotInTeam:
+    return @"DBTEAMGroupMembersRemoveErrorMembersNotInTeam";
+  case DBTEAMGroupMembersRemoveErrorUsersNotFound:
+    return @"DBTEAMGroupMembersRemoveErrorUsersNotFound";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -3594,10 +4030,24 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isMemberNotInGroup]) {
     jsonDict[@".tag"] = @"member_not_in_group";
   } else if ([valueObj isGroupNotInTeam]) {
     jsonDict[@".tag"] = @"group_not_in_team";
+  } else if ([valueObj isMembersNotInTeam]) {
+    jsonDict[@"members_not_in_team"] = [DBArraySerializer serialize:valueObj.membersNotInTeam
+                                                          withBlock:^id(id elem) {
+                                                            return elem;
+                                                          }];
+    jsonDict[@".tag"] = @"members_not_in_team";
+  } else if ([valueObj isUsersNotFound]) {
+    jsonDict[@"users_not_found"] = [DBArraySerializer serialize:valueObj.usersNotFound
+                                                      withBlock:^id(id elem) {
+                                                        return elem;
+                                                      }];
+    jsonDict[@".tag"] = @"users_not_found";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -3612,10 +4062,24 @@
     return [[DBTEAMGroupMembersRemoveError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupMembersRemoveError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupMembersRemoveError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"member_not_in_group"]) {
     return [[DBTEAMGroupMembersRemoveError alloc] initWithMemberNotInGroup];
   } else if ([tag isEqualToString:@"group_not_in_team"]) {
     return [[DBTEAMGroupMembersRemoveError alloc] initWithGroupNotInTeam];
+  } else if ([tag isEqualToString:@"members_not_in_team"]) {
+    NSArray<NSString *> *membersNotInTeam = [DBArraySerializer deserialize:valueDict[@"members_not_in_team"]
+                                                                 withBlock:^id(id elem) {
+                                                                   return elem;
+                                                                 }];
+    return [[DBTEAMGroupMembersRemoveError alloc] initWithMembersNotInTeam:membersNotInTeam];
+  } else if ([tag isEqualToString:@"users_not_found"]) {
+    NSArray<NSString *> *usersNotFound = [DBArraySerializer deserialize:valueDict[@"users_not_found"]
+                                                              withBlock:^id(id elem) {
+                                                                return elem;
+                                                              }];
+    return [[DBTEAMGroupMembersRemoveError alloc] initWithUsersNotFound:usersNotFound];
   } else {
     return [[DBTEAMGroupMembersRemoveError alloc] initWithOther];
   }
@@ -3991,7 +4455,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMGroupSelectorError.h"
+#import "DBTEAMGroupSelectorWithTeamGroupError.h"
 #import "DBTEAMGroupUpdateError.h"
 
 #pragma mark - API Object
@@ -4012,6 +4476,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMGroupUpdateErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSystemManagedGroupDisallowed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed;
   }
   return self;
 }
@@ -4052,6 +4524,10 @@
   return _tag == DBTEAMGroupUpdateErrorOther;
 }
 
+- (BOOL)isSystemManagedGroupDisallowed {
+  return _tag == DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed;
+}
+
 - (BOOL)isGroupNameAlreadyUsed {
   return _tag == DBTEAMGroupUpdateErrorGroupNameAlreadyUsed;
 }
@@ -4070,6 +4546,8 @@
     return @"DBTEAMGroupUpdateErrorGroupNotFound";
   case DBTEAMGroupUpdateErrorOther:
     return @"DBTEAMGroupUpdateErrorOther";
+  case DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed:
+    return @"DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed";
   case DBTEAMGroupUpdateErrorGroupNameAlreadyUsed:
     return @"DBTEAMGroupUpdateErrorGroupNameAlreadyUsed";
   case DBTEAMGroupUpdateErrorGroupNameInvalid:
@@ -4110,6 +4588,8 @@
     jsonDict[@".tag"] = @"group_not_found";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSystemManagedGroupDisallowed]) {
+    jsonDict[@".tag"] = @"system_managed_group_disallowed";
   } else if ([valueObj isGroupNameAlreadyUsed]) {
     jsonDict[@".tag"] = @"group_name_already_used";
   } else if ([valueObj isGroupNameInvalid]) {
@@ -4130,6 +4610,8 @@
     return [[DBTEAMGroupUpdateError alloc] initWithGroupNotFound];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMGroupUpdateError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"system_managed_group_disallowed"]) {
+    return [[DBTEAMGroupUpdateError alloc] initWithSystemManagedGroupDisallowed];
   } else if ([tag isEqualToString:@"group_name_already_used"]) {
     return [[DBTEAMGroupUpdateError alloc] initWithGroupNameAlreadyUsed];
   } else if ([tag isEqualToString:@"group_name_invalid"]) {
@@ -6813,6 +7295,7 @@
                     memberGivenName:(NSString *)memberGivenName
                       memberSurname:(NSString *)memberSurname
                    memberExternalId:(NSString *)memberExternalId
+                 memberPersistentId:(NSString *)memberPersistentId
                    sendWelcomeEmail:(NSNumber *)sendWelcomeEmail
                                role:(DBTEAMAdminTier *)role {
   [DBStoneValidators stringValidator:nil maxLength:@(255)
@@ -6828,6 +7311,7 @@
     _memberGivenName = memberGivenName;
     _memberSurname = memberSurname;
     _memberExternalId = memberExternalId;
+    _memberPersistentId = memberPersistentId;
     _sendWelcomeEmail = sendWelcomeEmail ?: @YES;
     _role = role ?: [[DBTEAMAdminTier alloc] initWithMemberOnly];
   }
@@ -6841,6 +7325,7 @@
                    memberGivenName:memberGivenName
                      memberSurname:memberSurname
                   memberExternalId:nil
+                memberPersistentId:nil
                   sendWelcomeEmail:nil
                               role:nil];
 }
@@ -6876,6 +7361,9 @@
   if (valueObj.memberExternalId) {
     jsonDict[@"member_external_id"] = valueObj.memberExternalId;
   }
+  if (valueObj.memberPersistentId) {
+    jsonDict[@"member_persistent_id"] = valueObj.memberPersistentId;
+  }
   jsonDict[@"send_welcome_email"] = valueObj.sendWelcomeEmail;
   jsonDict[@"role"] = [DBTEAMAdminTierSerializer serialize:valueObj.role];
 
@@ -6887,6 +7375,7 @@
   NSString *memberGivenName = valueDict[@"member_given_name"];
   NSString *memberSurname = valueDict[@"member_surname"];
   NSString *memberExternalId = valueDict[@"member_external_id"] ?: nil;
+  NSString *memberPersistentId = valueDict[@"member_persistent_id"] ?: nil;
   NSNumber *sendWelcomeEmail = valueDict[@"send_welcome_email"] ?: @YES;
   DBTEAMAdminTier *role = valueDict[@"role"] ? [DBTEAMAdminTierSerializer deserialize:valueDict[@"role"]]
                                              : [[DBTEAMAdminTier alloc] initWithMemberOnly];
@@ -6895,6 +7384,7 @@
                                          memberGivenName:memberGivenName
                                            memberSurname:memberSurname
                                         memberExternalId:memberExternalId
+                                      memberPersistentId:memberPersistentId
                                         sendWelcomeEmail:sendWelcomeEmail
                                                     role:role];
 }
@@ -6918,6 +7408,8 @@
 @synthesize userAlreadyPaired = _userAlreadyPaired;
 @synthesize userMigrationFailed = _userMigrationFailed;
 @synthesize duplicateExternalMemberId = _duplicateExternalMemberId;
+@synthesize duplicateMemberPersistentId = _duplicateMemberPersistentId;
+@synthesize persistentIdDisabled = _persistentIdDisabled;
 @synthesize userCreationFailed = _userCreationFailed;
 
 #pragma mark - Constructors
@@ -6990,6 +7482,24 @@
   if (self) {
     _tag = DBTEAMMemberAddResultDuplicateExternalMemberId;
     _duplicateExternalMemberId = duplicateExternalMemberId;
+  }
+  return self;
+}
+
+- (instancetype)initWithDuplicateMemberPersistentId:(NSString *)duplicateMemberPersistentId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMemberAddResultDuplicateMemberPersistentId;
+    _duplicateMemberPersistentId = duplicateMemberPersistentId;
+  }
+  return self;
+}
+
+- (instancetype)initWithPersistentIdDisabled:(NSString *)persistentIdDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMemberAddResultPersistentIdDisabled;
+    _persistentIdDisabled = persistentIdDisabled;
   }
   return self;
 }
@@ -7071,6 +7581,23 @@
   return _duplicateExternalMemberId;
 }
 
+- (NSString *)duplicateMemberPersistentId {
+  if (![self isDuplicateMemberPersistentId]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMMemberAddResultDuplicateMemberPersistentId, but was %@.", [self tagName]];
+  }
+  return _duplicateMemberPersistentId;
+}
+
+- (NSString *)persistentIdDisabled {
+  if (![self isPersistentIdDisabled]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMMemberAddResultPersistentIdDisabled, but was %@.", [self tagName]];
+  }
+  return _persistentIdDisabled;
+}
+
 - (NSString *)userCreationFailed {
   if (![self isUserCreationFailed]) {
     [NSException raise:@"IllegalStateException"
@@ -7113,6 +7640,14 @@
   return _tag == DBTEAMMemberAddResultDuplicateExternalMemberId;
 }
 
+- (BOOL)isDuplicateMemberPersistentId {
+  return _tag == DBTEAMMemberAddResultDuplicateMemberPersistentId;
+}
+
+- (BOOL)isPersistentIdDisabled {
+  return _tag == DBTEAMMemberAddResultPersistentIdDisabled;
+}
+
 - (BOOL)isUserCreationFailed {
   return _tag == DBTEAMMemberAddResultUserCreationFailed;
 }
@@ -7135,6 +7670,10 @@
     return @"DBTEAMMemberAddResultUserMigrationFailed";
   case DBTEAMMemberAddResultDuplicateExternalMemberId:
     return @"DBTEAMMemberAddResultDuplicateExternalMemberId";
+  case DBTEAMMemberAddResultDuplicateMemberPersistentId:
+    return @"DBTEAMMemberAddResultDuplicateMemberPersistentId";
+  case DBTEAMMemberAddResultPersistentIdDisabled:
+    return @"DBTEAMMemberAddResultPersistentIdDisabled";
   case DBTEAMMemberAddResultUserCreationFailed:
     return @"DBTEAMMemberAddResultUserCreationFailed";
   }
@@ -7191,6 +7730,12 @@
   } else if ([valueObj isDuplicateExternalMemberId]) {
     jsonDict[@"duplicate_external_member_id"] = valueObj.duplicateExternalMemberId;
     jsonDict[@".tag"] = @"duplicate_external_member_id";
+  } else if ([valueObj isDuplicateMemberPersistentId]) {
+    jsonDict[@"duplicate_member_persistent_id"] = valueObj.duplicateMemberPersistentId;
+    jsonDict[@".tag"] = @"duplicate_member_persistent_id";
+  } else if ([valueObj isPersistentIdDisabled]) {
+    jsonDict[@"persistent_id_disabled"] = valueObj.persistentIdDisabled;
+    jsonDict[@".tag"] = @"persistent_id_disabled";
   } else if ([valueObj isUserCreationFailed]) {
     jsonDict[@"user_creation_failed"] = valueObj.userCreationFailed;
     jsonDict[@".tag"] = @"user_creation_failed";
@@ -7230,6 +7775,12 @@
   } else if ([tag isEqualToString:@"duplicate_external_member_id"]) {
     NSString *duplicateExternalMemberId = valueDict[@"duplicate_external_member_id"];
     return [[DBTEAMMemberAddResult alloc] initWithDuplicateExternalMemberId:duplicateExternalMemberId];
+  } else if ([tag isEqualToString:@"duplicate_member_persistent_id"]) {
+    NSString *duplicateMemberPersistentId = valueDict[@"duplicate_member_persistent_id"];
+    return [[DBTEAMMemberAddResult alloc] initWithDuplicateMemberPersistentId:duplicateMemberPersistentId];
+  } else if ([tag isEqualToString:@"persistent_id_disabled"]) {
+    NSString *persistentIdDisabled = valueDict[@"persistent_id_disabled"];
+    return [[DBTEAMMemberAddResult alloc] initWithPersistentIdDisabled:persistentIdDisabled];
   } else if ([tag isEqualToString:@"user_creation_failed"]) {
     NSString *userCreationFailed = valueDict[@"user_creation_failed"];
     return [[DBTEAMMemberAddResult alloc] initWithUserCreationFailed:userCreationFailed];
@@ -7447,7 +7998,9 @@
                                 name:(DBUSERSName *)name
                       membershipType:(DBTEAMTeamMembershipType *)membershipType
                           externalId:(NSString *)externalId
-                           accountId:(NSString *)accountId {
+                           accountId:(NSString *)accountId
+                            joinedOn:(NSDate *)joinedOn
+                        persistentId:(NSString *)persistentId {
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
 
@@ -7461,6 +8014,8 @@
     _status = status;
     _name = name;
     _membershipType = membershipType;
+    _joinedOn = joinedOn;
+    _persistentId = persistentId;
   }
   return self;
 }
@@ -7478,7 +8033,9 @@
                                name:name
                      membershipType:membershipType
                          externalId:nil
-                          accountId:nil];
+                          accountId:nil
+                           joinedOn:nil
+                       persistentId:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7518,6 +8075,12 @@
   if (valueObj.accountId) {
     jsonDict[@"account_id"] = valueObj.accountId;
   }
+  if (valueObj.joinedOn) {
+    jsonDict[@"joined_on"] = [DBNSDateSerializer serialize:valueObj.joinedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+  if (valueObj.persistentId) {
+    jsonDict[@"persistent_id"] = valueObj.persistentId;
+  }
 
   return jsonDict;
 }
@@ -7532,6 +8095,10 @@
       [DBTEAMTeamMembershipTypeSerializer deserialize:valueDict[@"membership_type"]];
   NSString *externalId = valueDict[@"external_id"] ?: nil;
   NSString *accountId = valueDict[@"account_id"] ?: nil;
+  NSDate *joinedOn = valueDict[@"joined_on"]
+                         ? [DBNSDateSerializer deserialize:valueDict[@"joined_on"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                         : nil;
+  NSString *persistentId = valueDict[@"persistent_id"] ?: nil;
 
   return [[DBTEAMMemberProfile alloc] initWithTeamMemberId:teamMemberId
                                                      email:email
@@ -7540,7 +8107,9 @@
                                                       name:name
                                             membershipType:membershipType
                                                 externalId:externalId
-                                                 accountId:accountId];
+                                                 accountId:accountId
+                                                  joinedOn:joinedOn
+                                              persistentId:persistentId];
 }
 
 @end
@@ -9989,7 +10558,8 @@
                    dNewEmail:(NSString *)dNewEmail
               dNewExternalId:(NSString *)dNewExternalId
                dNewGivenName:(NSString *)dNewGivenName
-                 dNewSurname:(NSString *)dNewSurname {
+                 dNewSurname:(NSString *)dNewSurname
+            dNewPersistentId:(NSString *)dNewPersistentId {
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil
                                                                 maxLength:@(255)
                                                                   pattern:@"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-"
@@ -10008,12 +10578,14 @@
     _dNewExternalId = dNewExternalId;
     _dNewGivenName = dNewGivenName;
     _dNewSurname = dNewSurname;
+    _dNewPersistentId = dNewPersistentId;
   }
   return self;
 }
 
 - (instancetype)initWithUser:(DBTEAMUserSelectorArg *)user {
-  return [self initWithUser:user dNewEmail:nil dNewExternalId:nil dNewGivenName:nil dNewSurname:nil];
+  return
+      [self initWithUser:user dNewEmail:nil dNewExternalId:nil dNewGivenName:nil dNewSurname:nil dNewPersistentId:nil];
 }
 
 #pragma mark - Serialization methods
@@ -10054,6 +10626,9 @@
   if (valueObj.dNewSurname) {
     jsonDict[@"new_surname"] = valueObj.dNewSurname;
   }
+  if (valueObj.dNewPersistentId) {
+    jsonDict[@"new_persistent_id"] = valueObj.dNewPersistentId;
+  }
 
   return jsonDict;
 }
@@ -10064,12 +10639,14 @@
   NSString *dNewExternalId = valueDict[@"new_external_id"] ?: nil;
   NSString *dNewGivenName = valueDict[@"new_given_name"] ?: nil;
   NSString *dNewSurname = valueDict[@"new_surname"] ?: nil;
+  NSString *dNewPersistentId = valueDict[@"new_persistent_id"] ?: nil;
 
   return [[DBTEAMMembersSetProfileArg alloc] initWithUser:user
                                                 dNewEmail:dNewEmail
                                            dNewExternalId:dNewExternalId
                                             dNewGivenName:dNewGivenName
-                                              dNewSurname:dNewSurname];
+                                              dNewSurname:dNewSurname
+                                         dNewPersistentId:dNewPersistentId];
 }
 
 @end
@@ -10149,6 +10726,22 @@
   return self;
 }
 
+- (instancetype)initWithPersistentIdDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSetProfileErrorPersistentIdDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithPersistentIdUsedByOtherUser {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -10193,6 +10786,14 @@
   return _tag == DBTEAMMembersSetProfileErrorParamCannotBeEmpty;
 }
 
+- (BOOL)isPersistentIdDisabled {
+  return _tag == DBTEAMMembersSetProfileErrorPersistentIdDisabled;
+}
+
+- (BOOL)isPersistentIdUsedByOtherUser {
+  return _tag == DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMMembersSetProfileErrorOther;
 }
@@ -10215,6 +10816,10 @@
     return @"DBTEAMMembersSetProfileErrorSetProfileDisallowed";
   case DBTEAMMembersSetProfileErrorParamCannotBeEmpty:
     return @"DBTEAMMembersSetProfileErrorParamCannotBeEmpty";
+  case DBTEAMMembersSetProfileErrorPersistentIdDisabled:
+    return @"DBTEAMMembersSetProfileErrorPersistentIdDisabled";
+  case DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser:
+    return @"DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser";
   case DBTEAMMembersSetProfileErrorOther:
     return @"DBTEAMMembersSetProfileErrorOther";
   }
@@ -10263,6 +10868,10 @@
     jsonDict[@".tag"] = @"set_profile_disallowed";
   } else if ([valueObj isParamCannotBeEmpty]) {
     jsonDict[@".tag"] = @"param_cannot_be_empty";
+  } else if ([valueObj isPersistentIdDisabled]) {
+    jsonDict[@".tag"] = @"persistent_id_disabled";
+  } else if ([valueObj isPersistentIdUsedByOtherUser]) {
+    jsonDict[@".tag"] = @"persistent_id_used_by_other_user";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -10291,6 +10900,10 @@
     return [[DBTEAMMembersSetProfileError alloc] initWithSetProfileDisallowed];
   } else if ([tag isEqualToString:@"param_cannot_be_empty"]) {
     return [[DBTEAMMembersSetProfileError alloc] initWithParamCannotBeEmpty];
+  } else if ([tag isEqualToString:@"persistent_id_disabled"]) {
+    return [[DBTEAMMembersSetProfileError alloc] initWithPersistentIdDisabled];
+  } else if ([tag isEqualToString:@"persistent_id_used_by_other_user"]) {
+    return [[DBTEAMMembersSetProfileError alloc] initWithPersistentIdUsedByOtherUser];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMMembersSetProfileError alloc] initWithOther];
   } else {
@@ -12313,6 +12926,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderActivateError.h"
 #import "DBTEAMTeamFolderInvalidStatusError.h"
@@ -12582,6 +13196,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderArchiveError.h"
 #import "DBTEAMTeamFolderInvalidStatusError.h"
@@ -13088,6 +13703,14 @@
   return self;
 }
 
+- (instancetype)initWithFolderNameReserved {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderCreateErrorFolderNameReserved;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -13108,6 +13731,10 @@
   return _tag == DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed;
 }
 
+- (BOOL)isFolderNameReserved {
+  return _tag == DBTEAMTeamFolderCreateErrorFolderNameReserved;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMTeamFolderCreateErrorOther;
 }
@@ -13118,6 +13745,8 @@
     return @"DBTEAMTeamFolderCreateErrorInvalidFolderName";
   case DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed:
     return @"DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed";
+  case DBTEAMTeamFolderCreateErrorFolderNameReserved:
+    return @"DBTEAMTeamFolderCreateErrorFolderNameReserved";
   case DBTEAMTeamFolderCreateErrorOther:
     return @"DBTEAMTeamFolderCreateErrorOther";
   }
@@ -13154,6 +13783,8 @@
     jsonDict[@".tag"] = @"invalid_folder_name";
   } else if ([valueObj isFolderNameAlreadyUsed]) {
     jsonDict[@".tag"] = @"folder_name_already_used";
+  } else if ([valueObj isFolderNameReserved]) {
+    jsonDict[@".tag"] = @"folder_name_reserved";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -13170,6 +13801,8 @@
     return [[DBTEAMTeamFolderCreateError alloc] initWithInvalidFolderName];
   } else if ([tag isEqualToString:@"folder_name_already_used"]) {
     return [[DBTEAMTeamFolderCreateError alloc] initWithFolderNameAlreadyUsed];
+  } else if ([tag isEqualToString:@"folder_name_reserved"]) {
+    return [[DBTEAMTeamFolderCreateError alloc] initWithFolderNameReserved];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderCreateError alloc] initWithOther];
   } else {
@@ -13401,6 +14034,14 @@
   return self;
 }
 
+- (instancetype)initWithArchiveInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -13421,6 +14062,10 @@
   return _tag == DBTEAMTeamFolderInvalidStatusErrorArchived;
 }
 
+- (BOOL)isArchiveInProgress {
+  return _tag == DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMTeamFolderInvalidStatusErrorOther;
 }
@@ -13431,6 +14076,8 @@
     return @"DBTEAMTeamFolderInvalidStatusErrorActive";
   case DBTEAMTeamFolderInvalidStatusErrorArchived:
     return @"DBTEAMTeamFolderInvalidStatusErrorArchived";
+  case DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress:
+    return @"DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress";
   case DBTEAMTeamFolderInvalidStatusErrorOther:
     return @"DBTEAMTeamFolderInvalidStatusErrorOther";
   }
@@ -13467,6 +14114,8 @@
     jsonDict[@".tag"] = @"active";
   } else if ([valueObj isArchived]) {
     jsonDict[@".tag"] = @"archived";
+  } else if ([valueObj isArchiveInProgress]) {
+    jsonDict[@".tag"] = @"archive_in_progress";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -13483,6 +14132,8 @@
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithActive];
   } else if ([tag isEqualToString:@"archived"]) {
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithArchived];
+  } else if ([tag isEqualToString:@"archive_in_progress"]) {
+    return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithArchiveInProgress];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithOther];
   } else {
@@ -13747,6 +14398,7 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderInvalidStatusError.h"
 #import "DBTEAMTeamFolderPermanentlyDeleteError.h"
@@ -13956,7 +14608,9 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
 #import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
 #import "DBTEAMTeamFolderRenameError.h"
 
 #pragma mark - API Object
@@ -13964,6 +14618,7 @@
 @implementation DBTEAMTeamFolderRenameError
 
 @synthesize accessError = _accessError;
+@synthesize statusError = _statusError;
 
 #pragma mark - Constructors
 
@@ -13972,6 +14627,23 @@
   if (self) {
     _tag = DBTEAMTeamFolderRenameErrorAccessError;
     _accessError = accessError;
+  }
+  return self;
+}
+
+- (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderRenameErrorStatusError;
+    _statusError = statusError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderRenameErrorOther;
   }
   return self;
 }
@@ -13992,10 +14664,10 @@
   return self;
 }
 
-- (instancetype)initWithOther {
+- (instancetype)initWithFolderNameReserved {
   self = [super init];
   if (self) {
-    _tag = DBTEAMTeamFolderRenameErrorOther;
+    _tag = DBTEAMTeamFolderRenameErrorFolderNameReserved;
   }
   return self;
 }
@@ -14010,10 +14682,26 @@
   return _accessError;
 }
 
+- (DBTEAMTeamFolderInvalidStatusError *)statusError {
+  if (![self isStatusError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMTeamFolderRenameErrorStatusError, but was %@.", [self tagName]];
+  }
+  return _statusError;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isAccessError {
   return _tag == DBTEAMTeamFolderRenameErrorAccessError;
+}
+
+- (BOOL)isStatusError {
+  return _tag == DBTEAMTeamFolderRenameErrorStatusError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamFolderRenameErrorOther;
 }
 
 - (BOOL)isInvalidFolderName {
@@ -14024,20 +14712,24 @@
   return _tag == DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed;
 }
 
-- (BOOL)isOther {
-  return _tag == DBTEAMTeamFolderRenameErrorOther;
+- (BOOL)isFolderNameReserved {
+  return _tag == DBTEAMTeamFolderRenameErrorFolderNameReserved;
 }
 
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMTeamFolderRenameErrorAccessError:
     return @"DBTEAMTeamFolderRenameErrorAccessError";
+  case DBTEAMTeamFolderRenameErrorStatusError:
+    return @"DBTEAMTeamFolderRenameErrorStatusError";
+  case DBTEAMTeamFolderRenameErrorOther:
+    return @"DBTEAMTeamFolderRenameErrorOther";
   case DBTEAMTeamFolderRenameErrorInvalidFolderName:
     return @"DBTEAMTeamFolderRenameErrorInvalidFolderName";
   case DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed:
     return @"DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed";
-  case DBTEAMTeamFolderRenameErrorOther:
-    return @"DBTEAMTeamFolderRenameErrorOther";
+  case DBTEAMTeamFolderRenameErrorFolderNameReserved:
+    return @"DBTEAMTeamFolderRenameErrorFolderNameReserved";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -14071,12 +14763,18 @@
   if ([valueObj isAccessError]) {
     jsonDict[@"access_error"] = [[DBTEAMTeamFolderAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
     jsonDict[@".tag"] = @"access_error";
+  } else if ([valueObj isStatusError]) {
+    jsonDict[@"status_error"] =
+        [[DBTEAMTeamFolderInvalidStatusErrorSerializer serialize:valueObj.statusError] mutableCopy];
+    jsonDict[@".tag"] = @"status_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
   } else if ([valueObj isInvalidFolderName]) {
     jsonDict[@".tag"] = @"invalid_folder_name";
   } else if ([valueObj isFolderNameAlreadyUsed]) {
     jsonDict[@".tag"] = @"folder_name_already_used";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isFolderNameReserved]) {
+    jsonDict[@".tag"] = @"folder_name_reserved";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -14091,12 +14789,18 @@
     DBTEAMTeamFolderAccessError *accessError =
         [DBTEAMTeamFolderAccessErrorSerializer deserialize:valueDict[@"access_error"]];
     return [[DBTEAMTeamFolderRenameError alloc] initWithAccessError:accessError];
+  } else if ([tag isEqualToString:@"status_error"]) {
+    DBTEAMTeamFolderInvalidStatusError *statusError =
+        [DBTEAMTeamFolderInvalidStatusErrorSerializer deserialize:valueDict[@"status_error"]];
+    return [[DBTEAMTeamFolderRenameError alloc] initWithStatusError:statusError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
   } else if ([tag isEqualToString:@"invalid_folder_name"]) {
     return [[DBTEAMTeamFolderRenameError alloc] initWithInvalidFolderName];
   } else if ([tag isEqualToString:@"folder_name_already_used"]) {
     return [[DBTEAMTeamFolderRenameError alloc] initWithFolderNameAlreadyUsed];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"folder_name_reserved"]) {
+    return [[DBTEAMTeamFolderRenameError alloc] initWithFolderNameReserved];
   } else {
     return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
   }
@@ -14129,6 +14833,14 @@
   return self;
 }
 
+- (instancetype)initWithArchiveInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderStatusArchiveInProgress;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -14149,6 +14861,10 @@
   return _tag == DBTEAMTeamFolderStatusArchived;
 }
 
+- (BOOL)isArchiveInProgress {
+  return _tag == DBTEAMTeamFolderStatusArchiveInProgress;
+}
+
 - (BOOL)isOther {
   return _tag == DBTEAMTeamFolderStatusOther;
 }
@@ -14159,6 +14875,8 @@
     return @"DBTEAMTeamFolderStatusActive";
   case DBTEAMTeamFolderStatusArchived:
     return @"DBTEAMTeamFolderStatusArchived";
+  case DBTEAMTeamFolderStatusArchiveInProgress:
+    return @"DBTEAMTeamFolderStatusArchiveInProgress";
   case DBTEAMTeamFolderStatusOther:
     return @"DBTEAMTeamFolderStatusOther";
   }
@@ -14195,6 +14913,8 @@
     jsonDict[@".tag"] = @"active";
   } else if ([valueObj isArchived]) {
     jsonDict[@".tag"] = @"archived";
+  } else if ([valueObj isArchiveInProgress]) {
+    jsonDict[@".tag"] = @"archive_in_progress";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -14211,6 +14931,8 @@
     return [[DBTEAMTeamFolderStatus alloc] initWithActive];
   } else if ([tag isEqualToString:@"archived"]) {
     return [[DBTEAMTeamFolderStatus alloc] initWithArchived];
+  } else if ([tag isEqualToString:@"archive_in_progress"]) {
+    return [[DBTEAMTeamFolderStatus alloc] initWithArchiveInProgress];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderStatus alloc] initWithOther];
   } else {
@@ -14382,7 +15104,9 @@
                       membershipType:(DBTEAMTeamMembershipType *)membershipType
                               groups:(NSArray<NSString *> *)groups
                           externalId:(NSString *)externalId
-                           accountId:(NSString *)accountId {
+                           accountId:(NSString *)accountId
+                            joinedOn:(NSDate *)joinedOn
+                        persistentId:(NSString *)persistentId {
   [DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil](groups);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40) pattern:nil]](accountId);
@@ -14394,7 +15118,9 @@
                                 name:name
                       membershipType:membershipType
                           externalId:externalId
-                           accountId:accountId];
+                           accountId:accountId
+                            joinedOn:joinedOn
+                        persistentId:persistentId];
   if (self) {
     _groups = groups;
   }
@@ -14416,7 +15142,9 @@
                      membershipType:membershipType
                              groups:groups
                          externalId:nil
-                          accountId:nil];
+                          accountId:nil
+                           joinedOn:nil
+                       persistentId:nil];
 }
 
 #pragma mark - Serialization methods
@@ -14460,6 +15188,12 @@
   if (valueObj.accountId) {
     jsonDict[@"account_id"] = valueObj.accountId;
   }
+  if (valueObj.joinedOn) {
+    jsonDict[@"joined_on"] = [DBNSDateSerializer serialize:valueObj.joinedOn dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
+  if (valueObj.persistentId) {
+    jsonDict[@"persistent_id"] = valueObj.persistentId;
+  }
 
   return jsonDict;
 }
@@ -14478,6 +15212,10 @@
                                                      }];
   NSString *externalId = valueDict[@"external_id"] ?: nil;
   NSString *accountId = valueDict[@"account_id"] ?: nil;
+  NSDate *joinedOn = valueDict[@"joined_on"]
+                         ? [DBNSDateSerializer deserialize:valueDict[@"joined_on"] dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                         : nil;
+  NSString *persistentId = valueDict[@"persistent_id"] ?: nil;
 
   return [[DBTEAMTeamMemberProfile alloc] initWithTeamMemberId:teamMemberId
                                                          email:email
@@ -14487,7 +15225,9 @@
                                                 membershipType:membershipType
                                                         groups:groups
                                                     externalId:externalId
-                                                     accountId:accountId];
+                                                     accountId:accountId
+                                                      joinedOn:joinedOn
+                                                  persistentId:persistentId];
 }
 
 @end

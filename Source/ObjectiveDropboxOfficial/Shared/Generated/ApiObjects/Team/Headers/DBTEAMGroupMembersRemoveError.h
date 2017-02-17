@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
   /// (no description).
   DBTEAMGroupMembersRemoveErrorOther,
 
+  /// This operation is not supported on system-managed groups.
+  DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed,
+
   /// At least one of the specified users is not a member of the group.
   DBTEAMGroupMembersRemoveErrorMemberNotInGroup,
 
@@ -39,10 +42,26 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
   /// is outside of your team.
   DBTEAMGroupMembersRemoveErrorGroupNotInTeam,
 
+  /// These members are not part of your team.
+  DBTEAMGroupMembersRemoveErrorMembersNotInTeam,
+
+  /// These users were not found in Dropbox.
+  DBTEAMGroupMembersRemoveErrorUsersNotFound,
+
 };
 
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBTEAMGroupMembersRemoveErrorTag tag;
+
+/// These members are not part of your team. @note Ensure the
+/// `isMembersNotInTeam` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull membersNotInTeam;
+
+/// These users were not found in Dropbox. @note Ensure the `isUsersNotFound`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) NSArray<NSString *> * _Nonnull usersNotFound;
 
 #pragma mark - Constructors
 
@@ -64,6 +83,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 - (nonnull instancetype)initWithOther;
 
 ///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state: This
+/// operation is not supported on system-managed groups.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
+
+///
 /// Initializes union class with tag state of "member_not_in_group".
 ///
 /// Description of the "member_not_in_group" tag state: At least one of the
@@ -83,6 +112,30 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 ///
 - (nonnull instancetype)initWithGroupNotInTeam;
 
+///
+/// Initializes union class with tag state of "members_not_in_team".
+///
+/// Description of the "members_not_in_team" tag state: These members are not
+/// part of your team.
+///
+/// @param membersNotInTeam These members are not part of your team.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithMembersNotInTeam:(NSArray<NSString *> * _Nonnull)membersNotInTeam;
+
+///
+/// Initializes union class with tag state of "users_not_found".
+///
+/// Description of the "users_not_found" tag state: These users were not found
+/// in Dropbox.
+///
+/// @param usersNotFound These users were not found in Dropbox.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUsersNotFound:(NSArray<NSString *> * _Nonnull)usersNotFound;
+
 #pragma mark - Tag state methods
 
 ///
@@ -101,6 +154,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_not_in_group".
 ///
 /// @return Whether the union's current tag state has value
@@ -115,6 +177,28 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersRemoveErrorTag) {
 /// @return Whether the union's current tag state has value "group_not_in_team".
 ///
 - (BOOL)isGroupNotInTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "members_not_in_team".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `membersNotInTeam` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "members_not_in_team".
+///
+- (BOOL)isMembersNotInTeam;
+
+///
+/// Retrieves whether the union's current tag state has value "users_not_found".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `usersNotFound` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "users_not_found".
+///
+- (BOOL)isUsersNotFound;
 
 ///
 /// Retrieves string value of union's current tag state.

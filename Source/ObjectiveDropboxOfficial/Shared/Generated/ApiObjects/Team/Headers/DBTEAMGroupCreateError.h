@@ -35,6 +35,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
   /// The requested external ID is already being used by another group.
   DBTEAMGroupCreateErrorExternalIdAlreadyInUse,
 
+  /// System-managed group cannot be manually created.
+  DBTEAMGroupCreateErrorSystemManagedGroupDisallowed,
+
   /// (no description).
   DBTEAMGroupCreateErrorOther,
 
@@ -76,6 +79,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
 - (nonnull instancetype)initWithExternalIdAlreadyInUse;
 
 ///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state:
+/// System-managed group cannot be manually created.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -110,6 +123,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupCreateErrorTag) {
 /// "external_id_already_in_use".
 ///
 - (BOOL)isExternalIdAlreadyInUse;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

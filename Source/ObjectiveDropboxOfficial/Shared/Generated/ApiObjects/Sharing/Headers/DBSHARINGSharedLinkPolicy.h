@@ -15,7 +15,7 @@
 ///
 /// The `SharedLinkPolicy` union.
 ///
-/// Policy governing who can view shared links.
+/// Who can view shared links in this folder.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -30,6 +30,9 @@
 typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
   /// Links can be shared with anyone.
   DBSHARINGSharedLinkPolicyAnyone,
+
+  /// Links can be shared with anyone on the same team as the owner.
+  DBSHARINGSharedLinkPolicyTeam,
 
   /// Links can only be shared among members of the shared folder.
   DBSHARINGSharedLinkPolicyMembers,
@@ -52,6 +55,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAnyone;
+
+///
+/// Initializes union class with tag state of "team".
+///
+/// Description of the "team" tag state: Links can be shared with anyone on the
+/// same team as the owner.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithTeam;
 
 ///
 /// Initializes union class with tag state of "members".
@@ -78,6 +91,13 @@ typedef NS_ENUM(NSInteger, DBSHARINGSharedLinkPolicyTag) {
 /// @return Whether the union's current tag state has value "anyone".
 ///
 - (BOOL)isAnyone;
+
+///
+/// Retrieves whether the union's current tag state has value "team".
+///
+/// @return Whether the union's current tag state has value "team".
+///
+- (BOOL)isTeam;
 
 ///
 /// Retrieves whether the union's current tag state has value "members".

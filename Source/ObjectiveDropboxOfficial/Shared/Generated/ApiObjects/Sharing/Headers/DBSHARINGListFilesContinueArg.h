@@ -25,7 +25,7 @@
 
 #pragma mark - Instance fields
 
-/// Cursor in `cursor` in `DBSHARINGListFilesResult`
+/// Cursor in `cursor` in `DBSHARINGListFilesResult`.
 @property (nonatomic, readonly, copy) NSString * _Nonnull cursor;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param cursor Cursor in `cursor` in `DBSHARINGListFilesResult`
+/// @param cursor Cursor in `cursor` in `DBSHARINGListFilesResult`.
 ///
 /// @return An initialized instance.
 ///

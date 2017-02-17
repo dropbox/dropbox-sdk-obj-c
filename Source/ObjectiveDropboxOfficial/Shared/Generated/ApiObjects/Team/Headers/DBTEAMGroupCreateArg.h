@@ -30,7 +30,7 @@
 /// The creator of a team can associate an arbitrary external ID to the group.
 @property (nonatomic, readonly) NSString * _Nullable groupExternalId;
 
-/// Whether the team can be managed by selected users, or only by team admins
+/// Whether the team can be managed by selected users, or only by team admins.
 @property (nonatomic, readonly) DBTEAMCOMMONGroupManagementType * _Nullable groupManagementType;
 
 #pragma mark - Constructors
@@ -42,7 +42,7 @@
 /// @param groupExternalId The creator of a team can associate an arbitrary
 /// external ID to the group.
 /// @param groupManagementType Whether the team can be managed by selected
-/// users, or only by team admins
+/// users, or only by team admins.
 ///
 /// @return An initialized instance.
 ///

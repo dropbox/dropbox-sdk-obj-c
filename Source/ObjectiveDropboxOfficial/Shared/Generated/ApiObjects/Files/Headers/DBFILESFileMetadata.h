@@ -65,6 +65,11 @@
 /// explicit members but is not contained within  a shared folder.
 @property (nonatomic, readonly) NSNumber * _Nullable hasExplicitSharedMembers;
 
+/// A hash of the file content. This field can be used to verify data integrity.
+/// For more information see our Content hash /developers/reference/content-hash
+/// page.
+@property (nonatomic, readonly) NSString * _Nullable contentHash;
+
 #pragma mark - Constructors
 
 ///
@@ -105,6 +110,9 @@
 /// any explicit shared  members. This is different from sharing_info in that
 /// this could be true  in the case where a file has explicit members but is not
 /// contained within  a shared folder.
+/// @param contentHash A hash of the file content. This field can be used to
+/// verify data integrity. For more information see our Content hash
+/// /developers/reference/content-hash page.
 ///
 /// @return An initialized instance.
 ///
@@ -120,7 +128,8 @@
                            mediaInfo:(DBFILESMediaInfo * _Nullable)mediaInfo
                          sharingInfo:(DBFILESFileSharingInfo * _Nullable)sharingInfo
                       propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> * _Nullable)propertyGroups
-            hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers;
+            hasExplicitSharedMembers:(NSNumber * _Nullable)hasExplicitSharedMembers
+                         contentHash:(NSString * _Nullable)contentHash;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

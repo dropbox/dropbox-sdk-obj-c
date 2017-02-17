@@ -50,6 +50,10 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
   /// The operation would involve more than 10,000 files and folders.
   DBFILESRelocationErrorTooManyFiles,
 
+  /// There are duplicated/nested paths among `fromPath` in
+  /// `DBFILESRelocationArg` and `toPath` in `DBFILESRelocationArg`.
+  DBFILESRelocationErrorDuplicatedOrNestedPaths,
+
   /// (no description).
   DBFILESRelocationErrorOther,
 
@@ -140,6 +144,17 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 - (nonnull instancetype)initWithTooManyFiles;
 
 ///
+/// Initializes union class with tag state of "duplicated_or_nested_paths".
+///
+/// Description of the "duplicated_or_nested_paths" tag state: There are
+/// duplicated/nested paths among `fromPath` in `DBFILESRelocationArg` and
+/// `toPath` in `DBFILESRelocationArg`.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithDuplicatedOrNestedPaths;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -211,6 +226,15 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// @return Whether the union's current tag state has value "too_many_files".
 ///
 - (BOOL)isTooManyFiles;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "duplicated_or_nested_paths".
+///
+/// @return Whether the union's current tag state has value
+/// "duplicated_or_nested_paths".
+///
+- (BOOL)isDuplicatedOrNestedPaths;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -2738,7 +2738,8 @@
                    mediaInfo:(DBFILESMediaInfo *)mediaInfo
                  sharingInfo:(DBFILESFileSharingInfo *)sharingInfo
               propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> *)propertyGroups
-    hasExplicitSharedMembers:(NSNumber *)hasExplicitSharedMembers {
+    hasExplicitSharedMembers:(NSNumber *)hasExplicitSharedMembers
+                 contentHash:(NSString *)contentHash {
   [DBStoneValidators stringValidator:@(1) maxLength:nil pattern:nil](id_);
   [DBStoneValidators stringValidator:@(9) maxLength:nil pattern:@"[0-9a-f]+"](rev);
   [DBStoneValidators
@@ -2746,6 +2747,8 @@
       parentSharedFolderId);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil maxItems:nil itemValidator:nil]](propertyGroups);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64) pattern:nil]](contentHash);
 
   self =
       [super initWithName:name pathLower:pathLower pathDisplay:pathDisplay parentSharedFolderId:parentSharedFolderId];
@@ -2759,6 +2762,7 @@
     _sharingInfo = sharingInfo;
     _propertyGroups = propertyGroups;
     _hasExplicitSharedMembers = hasExplicitSharedMembers;
+    _contentHash = contentHash;
   }
   return self;
 }
@@ -2781,7 +2785,8 @@
                      mediaInfo:nil
                    sharingInfo:nil
                 propertyGroups:nil
-      hasExplicitSharedMembers:nil];
+      hasExplicitSharedMembers:nil
+                   contentHash:nil];
 }
 
 #pragma mark - Serialization methods
@@ -2841,6 +2846,9 @@
   if (valueObj.hasExplicitSharedMembers) {
     jsonDict[@"has_explicit_shared_members"] = valueObj.hasExplicitSharedMembers;
   }
+  if (valueObj.contentHash) {
+    jsonDict[@"content_hash"] = valueObj.contentHash;
+  }
 
   return jsonDict;
 }
@@ -2869,6 +2877,7 @@
                                  }]
           : nil;
   NSNumber *hasExplicitSharedMembers = valueDict[@"has_explicit_shared_members"] ?: nil;
+  NSString *contentHash = valueDict[@"content_hash"] ?: nil;
 
   return [[DBFILESFileMetadata alloc] initWithName:name
                                                id_:id_
@@ -2882,7 +2891,8 @@
                                          mediaInfo:mediaInfo
                                        sharingInfo:sharingInfo
                                     propertyGroups:propertyGroups
-                          hasExplicitSharedMembers:hasExplicitSharedMembers];
+                          hasExplicitSharedMembers:hasExplicitSharedMembers
+                                       contentHash:contentHash];
 }
 
 @end
@@ -6113,6 +6123,14 @@
   return self;
 }
 
+- (instancetype)initWithDuplicatedOrNestedPaths {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorDuplicatedOrNestedPaths;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -6177,6 +6195,10 @@
   return _tag == DBFILESRelocationErrorTooManyFiles;
 }
 
+- (BOOL)isDuplicatedOrNestedPaths {
+  return _tag == DBFILESRelocationErrorDuplicatedOrNestedPaths;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationErrorOther;
 }
@@ -6197,6 +6219,8 @@
     return @"DBFILESRelocationErrorCantMoveFolderIntoItself";
   case DBFILESRelocationErrorTooManyFiles:
     return @"DBFILESRelocationErrorTooManyFiles";
+  case DBFILESRelocationErrorDuplicatedOrNestedPaths:
+    return @"DBFILESRelocationErrorDuplicatedOrNestedPaths";
   case DBFILESRelocationErrorOther:
     return @"DBFILESRelocationErrorOther";
   }
@@ -6246,6 +6270,8 @@
     jsonDict[@".tag"] = @"cant_move_folder_into_itself";
   } else if ([valueObj isTooManyFiles]) {
     jsonDict[@".tag"] = @"too_many_files";
+  } else if ([valueObj isDuplicatedOrNestedPaths]) {
+    jsonDict[@".tag"] = @"duplicated_or_nested_paths";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -6275,6 +6301,8 @@
     return [[DBFILESRelocationError alloc] initWithCantMoveFolderIntoItself];
   } else if ([tag isEqualToString:@"too_many_files"]) {
     return [[DBFILESRelocationError alloc] initWithTooManyFiles];
+  } else if ([tag isEqualToString:@"duplicated_or_nested_paths"]) {
+    return [[DBFILESRelocationError alloc] initWithDuplicatedOrNestedPaths];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   } else {
@@ -6359,18 +6387,18 @@
   return self;
 }
 
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBFILESRelocationBatchErrorOther;
-  }
-  return self;
-}
-
 - (instancetype)initWithDuplicatedOrNestedPaths {
   self = [super init];
   if (self) {
     _tag = DBFILESRelocationBatchErrorDuplicatedOrNestedPaths;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorOther;
   }
   return self;
 }
@@ -6439,12 +6467,12 @@
   return _tag == DBFILESRelocationBatchErrorTooManyFiles;
 }
 
-- (BOOL)isOther {
-  return _tag == DBFILESRelocationBatchErrorOther;
-}
-
 - (BOOL)isDuplicatedOrNestedPaths {
   return _tag == DBFILESRelocationBatchErrorDuplicatedOrNestedPaths;
+}
+
+- (BOOL)isOther {
+  return _tag == DBFILESRelocationBatchErrorOther;
 }
 
 - (BOOL)isTooManyWriteOperations {
@@ -6467,10 +6495,10 @@
     return @"DBFILESRelocationBatchErrorCantMoveFolderIntoItself";
   case DBFILESRelocationBatchErrorTooManyFiles:
     return @"DBFILESRelocationBatchErrorTooManyFiles";
-  case DBFILESRelocationBatchErrorOther:
-    return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorDuplicatedOrNestedPaths:
     return @"DBFILESRelocationBatchErrorDuplicatedOrNestedPaths";
+  case DBFILESRelocationBatchErrorOther:
+    return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
     return @"DBFILESRelocationBatchErrorTooManyWriteOperations";
   }
@@ -6520,10 +6548,10 @@
     jsonDict[@".tag"] = @"cant_move_folder_into_itself";
   } else if ([valueObj isTooManyFiles]) {
     jsonDict[@".tag"] = @"too_many_files";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
   } else if ([valueObj isDuplicatedOrNestedPaths]) {
     jsonDict[@".tag"] = @"duplicated_or_nested_paths";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTooManyWriteOperations]) {
     jsonDict[@".tag"] = @"too_many_write_operations";
   } else {
@@ -6553,10 +6581,10 @@
     return [[DBFILESRelocationBatchError alloc] initWithCantMoveFolderIntoItself];
   } else if ([tag isEqualToString:@"too_many_files"]) {
     return [[DBFILESRelocationBatchError alloc] initWithTooManyFiles];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"duplicated_or_nested_paths"]) {
     return [[DBFILESRelocationBatchError alloc] initWithDuplicatedOrNestedPaths];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {
     return [[DBFILESRelocationBatchError alloc] initWithTooManyWriteOperations];
   } else {

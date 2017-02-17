@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-#import "DBOAuth.h"
 #import "DBSharedApplicationProtocol.h"
 
 ///

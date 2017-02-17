@@ -5,7 +5,7 @@
 #import "DBDelegate.h"
 #import "DBStoneBase.h"
 #import "DBTasksImpl.h"
-#import "DBTransportBaseClient+Protected.h"
+#import "DBTransportBaseClient+Internal.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
 

@@ -4,7 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBSerializableProtocol.h"
 #import "DBTransportBaseClient.h"
 #import "DBTransportClientProtocol.h"
 

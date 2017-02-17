@@ -29,7 +29,7 @@
 /// possible tag states with which the
 /// `DBSHARINGListFileMembersIndividualResult` union can exist.
 typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
-  /// The results of the query for this file if it was successful
+  /// The results of the query for this file if it was successful.
   DBSHARINGListFileMembersIndividualResultResult,
 
   /// The result of the query for this file if it was an error.
@@ -43,8 +43,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBSHARINGListFileMembersIndividualResultTag tag;
 
-/// The results of the query for this file if it was successful @note Ensure the
-/// `isResult` method returns true before accessing, otherwise a runtime
+/// The results of the query for this file if it was successful. @note Ensure
+/// the `isResult` method returns true before accessing, otherwise a runtime
 /// exception will be raised.
 @property (nonatomic, readonly) DBSHARINGListFileMembersCountResult * _Nonnull result;
 
@@ -59,9 +59,9 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFileMembersIndividualResultTag) {
 /// Initializes union class with tag state of "result".
 ///
 /// Description of the "result" tag state: The results of the query for this
-/// file if it was successful
+/// file if it was successful.
 ///
-/// @param result The results of the query for this file if it was successful
+/// @param result The results of the query for this file if it was successful.
 ///
 /// @return An initialized instance.
 ///

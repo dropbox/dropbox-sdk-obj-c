@@ -8,6 +8,7 @@
 
 @class DBAUTHRoutes;
 @class DBFILESRoutes;
+@class DBPAPERRoutes;
 @class DBSHARINGRoutes;
 @class DBUSERSRoutes;
 
@@ -27,6 +28,9 @@
 
 /// Routes within the `files` namespace.
 @property (nonatomic, readonly) DBFILESRoutes * _Nonnull filesRoutes;
+
+/// Routes within the `paper` namespace.
+@property (nonatomic, readonly) DBPAPERRoutes * _Nonnull paperRoutes;
 
 /// Routes within the `sharing` namespace.
 @property (nonatomic, readonly) DBSHARINGRoutes * _Nonnull sharingRoutes;

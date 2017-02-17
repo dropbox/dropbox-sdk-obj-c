@@ -15,8 +15,8 @@
 ///
 /// The `AclUpdatePolicy` union.
 ///
-/// Policy governing who can change a shared folder's access control list (ACL).
-/// In other words, who can add, remove, or change the privileges of members.
+/// Who can change a shared folder's access control list (ACL). In other words,
+/// who can add, remove, or change the privileges of members.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

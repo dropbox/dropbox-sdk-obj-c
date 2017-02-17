@@ -50,6 +50,24 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
   /// Folder is team folder for a limited team.
   DBSHARINGPermissionDeniedReasonFolderIsLimitedTeamFolder,
 
+  /// The content owner needs to be on a Dropbox team to perform this action.
+  DBSHARINGPermissionDeniedReasonOwnerNotOnTeam,
+
+  /// The user does not have permission to perform this action on the link.
+  DBSHARINGPermissionDeniedReasonPermissionDenied,
+
+  /// The user's team policy prevents performing this action on the link.
+  DBSHARINGPermissionDeniedReasonRestrictedByTeam,
+
+  /// The user's account type does not support this action.
+  DBSHARINGPermissionDeniedReasonUserAccountType,
+
+  /// The user needs to be on a Dropbox team to perform this action.
+  DBSHARINGPermissionDeniedReasonUserNotOnTeam,
+
+  /// Folder is inside of another shared folder.
+  DBSHARINGPermissionDeniedReasonFolderIsInsideSharedFolder,
+
   /// (no description).
   DBSHARINGPermissionDeniedReasonOther,
 
@@ -130,6 +148,66 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 - (nonnull instancetype)initWithFolderIsLimitedTeamFolder;
 
 ///
+/// Initializes union class with tag state of "owner_not_on_team".
+///
+/// Description of the "owner_not_on_team" tag state: The content owner needs to
+/// be on a Dropbox team to perform this action.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithOwnerNotOnTeam;
+
+///
+/// Initializes union class with tag state of "permission_denied".
+///
+/// Description of the "permission_denied" tag state: The user does not have
+/// permission to perform this action on the link.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithPermissionDenied;
+
+///
+/// Initializes union class with tag state of "restricted_by_team".
+///
+/// Description of the "restricted_by_team" tag state: The user's team policy
+/// prevents performing this action on the link.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithRestrictedByTeam;
+
+///
+/// Initializes union class with tag state of "user_account_type".
+///
+/// Description of the "user_account_type" tag state: The user's account type
+/// does not support this action.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUserAccountType;
+
+///
+/// Initializes union class with tag state of "user_not_on_team".
+///
+/// Description of the "user_not_on_team" tag state: The user needs to be on a
+/// Dropbox team to perform this action.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUserNotOnTeam;
+
+///
+/// Initializes union class with tag state of "folder_is_inside_shared_folder".
+///
+/// Description of the "folder_is_inside_shared_folder" tag state: Folder is
+/// inside of another shared folder.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithFolderIsInsideSharedFolder;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -195,6 +273,56 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 /// "folder_is_limited_team_folder".
 ///
 - (BOOL)isFolderIsLimitedTeamFolder;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "owner_not_on_team".
+///
+/// @return Whether the union's current tag state has value "owner_not_on_team".
+///
+- (BOOL)isOwnerNotOnTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "permission_denied".
+///
+/// @return Whether the union's current tag state has value "permission_denied".
+///
+- (BOOL)isPermissionDenied;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "restricted_by_team".
+///
+/// @return Whether the union's current tag state has value
+/// "restricted_by_team".
+///
+- (BOOL)isRestrictedByTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "user_account_type".
+///
+/// @return Whether the union's current tag state has value "user_account_type".
+///
+- (BOOL)isUserAccountType;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "user_not_on_team".
+///
+/// @return Whether the union's current tag state has value "user_not_on_team".
+///
+- (BOOL)isUserNotOnTeam;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_is_inside_shared_folder".
+///
+/// @return Whether the union's current tag state has value
+/// "folder_is_inside_shared_folder".
+///
+- (BOOL)isFolderIsInsideSharedFolder;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

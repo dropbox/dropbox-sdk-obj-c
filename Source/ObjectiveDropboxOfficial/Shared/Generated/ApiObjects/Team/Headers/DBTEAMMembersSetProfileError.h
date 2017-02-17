@@ -46,11 +46,18 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
   /// The external ID is already in use by another team member.
   DBTEAMMembersSetProfileErrorExternalIdUsedByOtherUser,
 
-  /// Setting profile disallowed
+  /// Pending team member's email cannot be modified.
   DBTEAMMembersSetProfileErrorSetProfileDisallowed,
 
   /// Parameter new_email cannot be empty.
   DBTEAMMembersSetProfileErrorParamCannotBeEmpty,
+
+  /// Persistent ID is only available to teams with persistent ID SAML
+  /// configuration. Please contact Dropbox for more information.
+  DBTEAMMembersSetProfileErrorPersistentIdDisabled,
+
+  /// The persistent ID is already in use by another team member.
+  DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser,
 
   /// (no description).
   DBTEAMMembersSetProfileErrorOther,
@@ -126,8 +133,8 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 ///
 /// Initializes union class with tag state of "set_profile_disallowed".
 ///
-/// Description of the "set_profile_disallowed" tag state: Setting profile
-/// disallowed
+/// Description of the "set_profile_disallowed" tag state: Pending team member's
+/// email cannot be modified.
 ///
 /// @return An initialized instance.
 ///
@@ -142,6 +149,28 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithParamCannotBeEmpty;
+
+///
+/// Initializes union class with tag state of "persistent_id_disabled".
+///
+/// Description of the "persistent_id_disabled" tag state: Persistent ID is only
+/// available to teams with persistent ID SAML configuration. Please contact
+/// Dropbox for more information.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithPersistentIdDisabled;
+
+///
+/// Initializes union class with tag state of
+/// "persistent_id_used_by_other_user".
+///
+/// Description of the "persistent_id_used_by_other_user" tag state: The
+/// persistent ID is already in use by another team member.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithPersistentIdUsedByOtherUser;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -220,6 +249,24 @@ typedef NS_ENUM(NSInteger, DBTEAMMembersSetProfileErrorTag) {
 /// "param_cannot_be_empty".
 ///
 - (BOOL)isParamCannotBeEmpty;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "persistent_id_disabled".
+///
+/// @return Whether the union's current tag state has value
+/// "persistent_id_disabled".
+///
+- (BOOL)isPersistentIdDisabled;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "persistent_id_used_by_other_user".
+///
+/// @return Whether the union's current tag state has value
+/// "persistent_id_used_by_other_user".
+///
+- (BOOL)isPersistentIdUsedByOtherUser;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

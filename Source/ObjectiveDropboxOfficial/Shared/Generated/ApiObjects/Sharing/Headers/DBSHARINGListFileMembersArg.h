@@ -29,7 +29,7 @@
 /// The file for which you want to see members.
 @property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
-/// The actions for which to return permissions on a member
+/// The actions for which to return permissions on a member.
 @property (nonatomic, readonly) NSArray<DBSHARINGMemberAction *> * _Nullable actions;
 
 /// Whether to include members who only have access from a parent shared folder.
@@ -45,7 +45,7 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file The file for which you want to see members.
-/// @param actions The actions for which to return permissions on a member
+/// @param actions The actions for which to return permissions on a member.
 /// @param includeInherited Whether to include members who only have access from
 /// a parent shared folder.
 /// @param limit Number of members to return max per query. Defaults to 100 if

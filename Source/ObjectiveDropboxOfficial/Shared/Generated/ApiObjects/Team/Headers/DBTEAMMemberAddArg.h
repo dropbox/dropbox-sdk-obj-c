@@ -36,6 +36,10 @@
 /// External ID for member.
 @property (nonatomic, readonly) NSString * _Nullable memberExternalId;
 
+/// Persistent ID for member. This field is only available to teams using
+/// persistent ID SAML configuration.
+@property (nonatomic, readonly) NSString * _Nullable memberPersistentId;
+
 /// Whether to send a welcome email to the member. If send_welcome_email is
 /// false, no email invitation will be sent to the user. This may be useful for
 /// apps using single sign-on (SSO) flows for onboarding that want to handle
@@ -54,6 +58,8 @@
 /// @param memberGivenName Member's first name.
 /// @param memberSurname Member's last name.
 /// @param memberExternalId External ID for member.
+/// @param memberPersistentId Persistent ID for member. This field is only
+/// available to teams using persistent ID SAML configuration.
 /// @param sendWelcomeEmail Whether to send a welcome email to the member. If
 /// send_welcome_email is false, no email invitation will be sent to the user.
 /// This may be useful for apps using single sign-on (SSO) flows for onboarding
@@ -66,6 +72,7 @@
                             memberGivenName:(NSString * _Nonnull)memberGivenName
                               memberSurname:(NSString * _Nonnull)memberSurname
                            memberExternalId:(NSString * _Nullable)memberExternalId
+                         memberPersistentId:(NSString * _Nullable)memberPersistentId
                            sendWelcomeEmail:(NSNumber * _Nullable)sendWelcomeEmail
                                        role:(DBTEAMAdminTier * _Nullable)role;
 

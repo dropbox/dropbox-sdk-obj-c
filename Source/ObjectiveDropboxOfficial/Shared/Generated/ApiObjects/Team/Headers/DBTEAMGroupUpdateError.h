@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
   /// (no description).
   DBTEAMGroupUpdateErrorOther,
 
+  /// This operation is not supported on system-managed groups.
+  DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed,
+
   /// The requested group name is already being used by another group.
   DBTEAMGroupUpdateErrorGroupNameAlreadyUsed,
 
@@ -64,6 +67,16 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+///
+/// Initializes union class with tag state of "system_managed_group_disallowed".
+///
+/// Description of the "system_managed_group_disallowed" tag state: This
+/// operation is not supported on system-managed groups.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithSystemManagedGroupDisallowed;
 
 ///
 /// Initializes union class with tag state of "group_name_already_used".
@@ -110,6 +123,15 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupUpdateErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+/// @return Whether the union's current tag state has value
+/// "system_managed_group_disallowed".
+///
+- (BOOL)isSystemManagedGroupDisallowed;
 
 ///
 /// Retrieves whether the union's current tag state has value

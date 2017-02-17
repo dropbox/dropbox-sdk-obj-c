@@ -29,7 +29,7 @@
 /// This is the input file identifier, whether an ID or a path.
 @property (nonatomic, readonly, copy) NSString * _Nonnull file;
 
-/// The result for this particular file
+/// The result for this particular file.
 @property (nonatomic, readonly) DBSHARINGListFileMembersIndividualResult * _Nonnull result;
 
 #pragma mark - Constructors
@@ -38,7 +38,7 @@
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param file This is the input file identifier, whether an ID or a path.
-/// @param result The result for this particular file
+/// @param result The result for this particular file.
 ///
 /// @return An initialized instance.
 ///

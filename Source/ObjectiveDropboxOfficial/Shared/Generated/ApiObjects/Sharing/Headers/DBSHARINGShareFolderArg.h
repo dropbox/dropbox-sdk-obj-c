@@ -9,9 +9,12 @@
 #import "DBSerializableProtocol.h"
 
 @class DBSHARINGAclUpdatePolicy;
+@class DBSHARINGFolderAction;
+@class DBSHARINGLinkSettings;
 @class DBSHARINGMemberPolicy;
 @class DBSHARINGShareFolderArg;
 @class DBSHARINGSharedLinkPolicy;
+@class DBSHARINGViewerInfoPolicy;
 
 #pragma mark - API Object
 
@@ -32,18 +35,30 @@
 
 /// Who can be a member of this shared folder. Only applicable if the current
 /// user is on a team.
-@property (nonatomic, readonly) DBSHARINGMemberPolicy * _Nonnull memberPolicy;
+@property (nonatomic, readonly) DBSHARINGMemberPolicy * _Nullable memberPolicy;
 
 /// Who can add and remove members of this shared folder.
-@property (nonatomic, readonly) DBSHARINGAclUpdatePolicy * _Nonnull aclUpdatePolicy;
+@property (nonatomic, readonly) DBSHARINGAclUpdatePolicy * _Nullable aclUpdatePolicy;
 
 /// The policy to apply to shared links created for content inside this shared
 /// folder.  The current user must be on a team to set this policy to `members`
 /// in `DBSHARINGSharedLinkPolicy`.
-@property (nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nonnull sharedLinkPolicy;
+@property (nonatomic, readonly) DBSHARINGSharedLinkPolicy * _Nullable sharedLinkPolicy;
 
 /// Whether to force the share to happen asynchronously.
 @property (nonatomic, readonly) NSNumber * _Nonnull forceAsync;
+
+/// This is a list indicating whether each returned folder data entry will
+/// include a boolean field `allow` in `DBSHARINGFolderPermission` that
+/// describes whether the current user can perform the `FolderAction` on the
+/// folder.
+@property (nonatomic, readonly) NSArray<DBSHARINGFolderAction *> * _Nullable actions;
+
+/// Settings on the link for this folder.
+@property (nonatomic, readonly) DBSHARINGLinkSettings * _Nullable linkSettings;
+
+/// Who can enable/disable viewer info for this shared folder.
+@property (nonatomic, readonly) DBSHARINGViewerInfoPolicy * _Nullable viewerInfoPolicy;
 
 #pragma mark - Constructors
 
@@ -59,6 +74,13 @@
 /// content inside this shared folder.  The current user must be on a team to
 /// set this policy to `members` in `DBSHARINGSharedLinkPolicy`.
 /// @param forceAsync Whether to force the share to happen asynchronously.
+/// @param actions This is a list indicating whether each returned folder data
+/// entry will include a boolean field `allow` in `DBSHARINGFolderPermission`
+/// that describes whether the current user can perform the `FolderAction` on
+/// the folder.
+/// @param linkSettings Settings on the link for this folder.
+/// @param viewerInfoPolicy Who can enable/disable viewer info for this shared
+/// folder.
 ///
 /// @return An initialized instance.
 ///
@@ -66,7 +88,10 @@
                         memberPolicy:(DBSHARINGMemberPolicy * _Nullable)memberPolicy
                      aclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nullable)aclUpdatePolicy
                     sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nullable)sharedLinkPolicy
-                          forceAsync:(NSNumber * _Nullable)forceAsync;
+                          forceAsync:(NSNumber * _Nullable)forceAsync
+                             actions:(NSArray<DBSHARINGFolderAction *> * _Nullable)actions
+                        linkSettings:(DBSHARINGLinkSettings * _Nullable)linkSettings
+                    viewerInfoPolicy:(DBSHARINGViewerInfoPolicy * _Nullable)viewerInfoPolicy;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

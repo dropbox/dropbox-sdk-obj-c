@@ -31,8 +31,14 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
   /// Change folder options, such as who can be invited to join the folder.
   DBSHARINGFolderActionChangeOptions,
 
+  /// Disable viewer information for this folder.
+  DBSHARINGFolderActionDisableViewerInfo,
+
   /// Change or edit contents of the folder.
   DBSHARINGFolderActionEditContents,
+
+  /// Enable viewer information on the folder.
+  DBSHARINGFolderActionEnableViewerInfo,
 
   /// Invite a user or group to join the folder with read and write
   /// permission.
@@ -85,6 +91,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 - (nonnull instancetype)initWithChangeOptions;
 
 ///
+/// Initializes union class with tag state of "disable_viewer_info".
+///
+/// Description of the "disable_viewer_info" tag state: Disable viewer
+/// information for this folder.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithDisableViewerInfo;
+
+///
 /// Initializes union class with tag state of "edit_contents".
 ///
 /// Description of the "edit_contents" tag state: Change or edit contents of the
@@ -93,6 +109,16 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEditContents;
+
+///
+/// Initializes union class with tag state of "enable_viewer_info".
+///
+/// Description of the "enable_viewer_info" tag state: Enable viewer information
+/// on the folder.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithEnableViewerInfo;
 
 ///
 /// Initializes union class with tag state of "invite_editor".
@@ -198,11 +224,29 @@ typedef NS_ENUM(NSInteger, DBSHARINGFolderActionTag) {
 - (BOOL)isChangeOptions;
 
 ///
+/// Retrieves whether the union's current tag state has value
+/// "disable_viewer_info".
+///
+/// @return Whether the union's current tag state has value
+/// "disable_viewer_info".
+///
+- (BOOL)isDisableViewerInfo;
+
+///
 /// Retrieves whether the union's current tag state has value "edit_contents".
 ///
 /// @return Whether the union's current tag state has value "edit_contents".
 ///
 - (BOOL)isEditContents;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enable_viewer_info".
+///
+/// @return Whether the union's current tag state has value
+/// "enable_viewer_info".
+///
+- (BOOL)isEnableViewerInfo;
 
 ///
 /// Retrieves whether the union's current tag state has value "invite_editor".

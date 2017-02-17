@@ -28,11 +28,14 @@
 /// The `DBTEAMCOMMONGroupManagementTypeTag` enum type represents the possible
 /// tag states with which the `DBTEAMCOMMONGroupManagementType` union can exist.
 typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
+  /// A group which is managed by selected users.
+  DBTEAMCOMMONGroupManagementTypeUserManaged,
+
   /// A group which is managed by team admins only.
   DBTEAMCOMMONGroupManagementTypeCompanyManaged,
 
-  /// A group which is managed by selected users.
-  DBTEAMCOMMONGroupManagementTypeUserManaged,
+  /// A group which is managed automatically by Dropbox.
+  DBTEAMCOMMONGroupManagementTypeSystemManaged,
 
   /// (no description).
   DBTEAMCOMMONGroupManagementTypeOther,
@@ -45,6 +48,16 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 #pragma mark - Constructors
 
 ///
+/// Initializes union class with tag state of "user_managed".
+///
+/// Description of the "user_managed" tag state: A group which is managed by
+/// selected users.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithUserManaged;
+
+///
 /// Initializes union class with tag state of "company_managed".
 ///
 /// Description of the "company_managed" tag state: A group which is managed by
@@ -55,14 +68,14 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 - (nonnull instancetype)initWithCompanyManaged;
 
 ///
-/// Initializes union class with tag state of "user_managed".
+/// Initializes union class with tag state of "system_managed".
 ///
-/// Description of the "user_managed" tag state: A group which is managed by
-/// selected users.
+/// Description of the "system_managed" tag state: A group which is managed
+/// automatically by Dropbox.
 ///
 /// @return An initialized instance.
 ///
-- (nonnull instancetype)initWithUserManaged;
+- (nonnull instancetype)initWithSystemManaged;
 
 ///
 /// Initializes union class with tag state of "other".
@@ -74,6 +87,13 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 #pragma mark - Tag state methods
 
 ///
+/// Retrieves whether the union's current tag state has value "user_managed".
+///
+/// @return Whether the union's current tag state has value "user_managed".
+///
+- (BOOL)isUserManaged;
+
+///
 /// Retrieves whether the union's current tag state has value "company_managed".
 ///
 /// @return Whether the union's current tag state has value "company_managed".
@@ -81,11 +101,11 @@ typedef NS_ENUM(NSInteger, DBTEAMCOMMONGroupManagementTypeTag) {
 - (BOOL)isCompanyManaged;
 
 ///
-/// Retrieves whether the union's current tag state has value "user_managed".
+/// Retrieves whether the union's current tag state has value "system_managed".
 ///
-/// @return Whether the union's current tag state has value "user_managed".
+/// @return Whether the union's current tag state has value "system_managed".
 ///
-- (BOOL)isUserManaged;
+- (BOOL)isSystemManaged;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

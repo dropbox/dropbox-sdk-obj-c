@@ -6,10 +6,8 @@
 
 #import "DBSerializableProtocol.h"
 
-@class DBDelegate;
 @class DBDownloadDataTask;
 @class DBDownloadUrlTask;
-@class DBError;
 @class DBRoute;
 @class DBRpcTask;
 @class DBUploadTask;

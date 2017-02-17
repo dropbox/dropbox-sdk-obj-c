@@ -61,6 +61,14 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
   /// (including in recoverable state).
   DBTEAMMemberAddResultDuplicateExternalMemberId,
 
+  /// A user with the given persistent ID already exists on the team
+  /// (including in recoverable state).
+  DBTEAMMemberAddResultDuplicateMemberPersistentId,
+
+  /// Persistent ID is only available to teams with persistent ID SAML
+  /// configuration. Please contact Dropbox for more information.
+  DBTEAMMemberAddResultPersistentIdDisabled,
+
   /// User creation has failed.
   DBTEAMMemberAddResultUserCreationFailed,
 
@@ -109,6 +117,17 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
 /// `isDuplicateExternalMemberId` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString * _Nonnull duplicateExternalMemberId;
+
+/// A user with the given persistent ID already exists on the team (including in
+/// recoverable state). @note Ensure the `isDuplicateMemberPersistentId` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly, copy) NSString * _Nonnull duplicateMemberPersistentId;
+
+/// Persistent ID is only available to teams with persistent ID SAML
+/// configuration. Please contact Dropbox for more information. @note Ensure the
+/// `isPersistentIdDisabled` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly, copy) NSString * _Nonnull persistentIdDisabled;
 
 /// User creation has failed. @note Ensure the `isUserCreationFailed` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -222,6 +241,35 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
 - (nonnull instancetype)initWithDuplicateExternalMemberId:(NSString * _Nonnull)duplicateExternalMemberId;
 
 ///
+/// Initializes union class with tag state of "duplicate_member_persistent_id".
+///
+/// Description of the "duplicate_member_persistent_id" tag state: A user with
+/// the given persistent ID already exists on the team (including in recoverable
+/// state).
+///
+/// @param duplicateMemberPersistentId A user with the given persistent ID
+/// already exists on the team (including in recoverable state).
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithDuplicateMemberPersistentId:(NSString * _Nonnull)duplicateMemberPersistentId;
+
+///
+/// Initializes union class with tag state of "persistent_id_disabled".
+///
+/// Description of the "persistent_id_disabled" tag state: Persistent ID is only
+/// available to teams with persistent ID SAML configuration. Please contact
+/// Dropbox for more information.
+///
+/// @param persistentIdDisabled Persistent ID is only available to teams with
+/// persistent ID SAML configuration. Please contact Dropbox for more
+/// information.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithPersistentIdDisabled:(NSString * _Nonnull)persistentIdDisabled;
+
+///
 /// Initializes union class with tag state of "user_creation_failed".
 ///
 /// Description of the "user_creation_failed" tag state: User creation has
@@ -331,6 +379,32 @@ typedef NS_ENUM(NSInteger, DBTEAMMemberAddResultTag) {
 /// "duplicate_external_member_id".
 ///
 - (BOOL)isDuplicateExternalMemberId;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "duplicate_member_persistent_id".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `duplicateMemberPersistentId` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "duplicate_member_persistent_id".
+///
+- (BOOL)isDuplicateMemberPersistentId;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "persistent_id_disabled".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `persistentIdDisabled` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "persistent_id_disabled".
+///
+- (BOOL)isPersistentIdDisabled;
 
 ///
 /// Retrieves whether the union's current tag state has value
