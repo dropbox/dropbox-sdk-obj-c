@@ -134,7 +134,7 @@
          // Route-specific request error
          title = @"Route-specific error";
          if ([routeError isPath]) {
-           message = [NSString stringWithFormat:@"Invalid path: %@", routeError];
+           message = [NSString stringWithFormat:@"Invalid path: %@", routeError.path];
          } else if ([routeError isOther]) {
            message = [NSString stringWithFormat:@"Unknown error: %@", routeError];
          }

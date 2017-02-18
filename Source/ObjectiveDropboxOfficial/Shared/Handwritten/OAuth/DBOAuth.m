@@ -86,12 +86,12 @@ static DBOAuthManager *sharedOAuthManager;
     NSString *title = @"No internet connection";
 
     NSDictionary<NSString *, void (^)()> *buttonHandlers = @{
-      @"Cancel" : ^{
+      @"Cancel": ^{
         cancelHandler();
       },
-      @"Retry" : ^{
+      @"Retry": ^{
         [self authorizeFromSharedApplication:sharedApplication browserAuth:browserAuth];
-      },
+      }
     };
 
     [sharedApplication presentErrorMessageWithHandlers:message title:title buttonHandlers:buttonHandlers];
@@ -331,6 +331,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     [sharedApplication presentErrorMessage:message title:title];
     return YES;
   }
+
 
   NSString *scheme = [self dAuthScheme:sharedApplication];
 
