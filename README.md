@@ -41,6 +41,8 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
     * [Single Dropbox user case](#single-dropbox-user-case)
     * [Multiple Dropbox user case](#multiple-dropbox-user-case)
 * [Examples](#examples)
+* [Migrating from API v1](#migrating-from-api-v1)
+    * [Migrating OAuth tokens from earlier SDKs](#migrating-oauth-tokens-from-earlier-sdks)
 * [Documentation](#documentation)
 * [Stone](#stone)
 * [Modifications](#modifications)
@@ -767,6 +769,49 @@ The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired A
 Example projects that demonstrate how to integrate your app with the SDK can be found in the `Examples/` folder.
 
 * [DBRoulette](https://github.com/dropbox/dropbox-sdk-obj-c/tree/master/Examples/DBRoulette/) - Play a fun game of photo roulette with the image files in your Dropbox!
+
+---
+
+## Migrating from API v1
+
+This section contains relevant info for migrating your app from API v1 to API v2 (which should be finished by June 28, 2017, when API v1 will be retired).
+
+For a general API v1 migration guide, please see [here](https://www.dropbox.com/developers/reference/migration-guide).
+
+### Migrating OAuth tokens from earlier SDKs
+
+If your app was originally using an earlier API v1 SDK, including the [iOS Core SDK](https://www.dropbox.com/developers-v1/core/sdks/ios), the [OS X Core SDK](https://www.dropbox.com/developers-v1/core/sdks/osx), the [iOS Sync SDK](https://www.dropbox.com/developers-v1/sync/sdks/ios), or the [OS X Sync SDK](https://www.dropbox.com/developers-v1/sync/sdks/osx), then you can use the v2 SDK to perform a one-time migration of OAuth 1 tokens to OAuth 2.0 tokens, which are used by API v2. That way, when you migrate your app from the earlier SDK to the new API v2 SDK, users will not need to reauthenticate with Dropbox after you perform this update.
+
+To perform this auth token migration, in your app delegate, you should call the following method:
+
+```objective-c
+[DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret,
+                                                    NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
+      if (invalidAppKeyOrSecret) {
+        // Developers should ensure that the appropriate app key and secret are being supplied.
+        // If your app has multiple app keys / secrets, then run this migration method for
+        // each app key / secret combination, and ignore this boolean.
+        return;
+      }
+
+      if (shouldRetry) {
+        // Store this BOOL somewhere to retry when network connection has returned
+        return;
+      }
+
+      if ([unsuccessfullyMigratedTokenData count] != 0) {
+        NSLog(@"The following tokens were unsucessfully migrated:");
+        for (NSArray<NSString *> *tokenData in unsuccessfullyMigratedTokenData) {
+          NSLog(@"%@DropboxUserID: %@, AccessToken: %@, AccessTokenSecret: %@, StoredAppKey: %@",
+                tokenData[0], tokenData[1], tokenData[2], tokenData[3]);
+        }
+      }
+    } queue:nil appKey:@"<APP_KEY>" appSecret:@"<APP_SECRET>"];
+```
+
+This method should successfully migrate all access tokens stored by the official Dropbox API SDKs from approximately 2012 until present, for both iOS and OS X. It will make one call to our OAuth 1 conversion endpoint for each OAuth 1 token that has been stored in your application's keychain by the v1 SDK. The method will execute all network requests off the main thread.
+
+Here, token migration is treated as an atomic operation. Either all tokens that are possible to migrate are migrated at once, or none of them are. If all token conversion requests complete successfully, then the `shouldRetry` argument in `responseBlock` will be `NO`. If some token conversion requests succeed and some fail, and if the failures are for any reason other than network connectivity issues (e.g. token has been invalidated), then the migration will continue normally, and those tokens that were unsuccessfully migrated will be skipped, and `shouldRetry` will be `NO`. If any of the failures were because of network connectivity issues, none of the tokens will be migrated, and `shouldRetry` will be `YES`.
 
 ---
 

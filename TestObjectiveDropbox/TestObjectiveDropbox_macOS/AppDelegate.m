@@ -22,14 +22,22 @@ static ViewController *viewController = nil;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   TestData *data = [TestData new];
-  
+
   if ([data.fullDropboxAppSecret containsString:@"<"] ||
       [data.teamMemberFileAccessAppKey containsString:@"<"] ||
       [data.teamMemberManagementAppKey containsString:@"<"]) {
     NSLog(@"\n\n\nMust set test data (in TestData.h) before launching app.\n\n\nTerminating.....\n\n");
     exit(0);
   }
-  
+
+  NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+  [Defaults setObject:@"YES" forKey:@"KeychainV1TokenMigration"];
+  [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret, NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
+    NSLog(@"Migration completed.");
+    NSLog(shouldRetry ? @"ShouldRetry: Yes" : @"ShouldRetry: No");
+    NSLog(invalidAppKeyOrSecret ? @"InvalidAppKeyOrSecret: Yes" : @"InvalidAppKeyOrSecret: No");
+  } queue:nil appKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
+
   DBTransportDefaultConfig *transportConfigFullDropbox =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
   DBTransportDefaultConfig *transportConfigTeamFileAccess =

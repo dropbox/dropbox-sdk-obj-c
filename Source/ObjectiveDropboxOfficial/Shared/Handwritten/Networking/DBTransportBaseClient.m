@@ -255,7 +255,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return dbxError;
 }
 
-+ (id)routeErrorWithRouteData:(DBRoute *)route data:(NSData *)data statusCode:(int)statusCode {
++ (id)routeErrorWithRoute:(DBRoute *)route data:(NSData *)data statusCode:(int)statusCode {
   if (!data) {
     return nil;
   }
@@ -275,7 +275,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 }
 
-+ (id)routeResultWithRouteData:(DBRoute *)route data:(NSData *)data serializationError:(NSError **)serializationError {
++ (id)routeResultWithRoute:(DBRoute *)route data:(NSData *)data serializationError:(NSError **)serializationError {
   if (!route.resultType) {
     return nil;
   }

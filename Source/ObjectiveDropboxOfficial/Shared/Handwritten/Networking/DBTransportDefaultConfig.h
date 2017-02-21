@@ -25,7 +25,7 @@
 /// Convenience constructor.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
-/// is used for querying endpoints the have "app auth" authentication type.
+/// is used for querying endpoints that have "app auth" authentication type.
 ///
 /// @return An initialized instance.
 ///
@@ -37,13 +37,31 @@
 /// Appropriate for apps that want to query endpoints with "app auth" authentication type.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
-/// is used for querying endpoints the have "app auth" authentication type.
+/// is used for querying endpoints that have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
-/// key is used for querying endpoints the have "app auth" authentication type.
+/// key is used for querying endpoints that have "app auth" authentication type.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret;
+
+///
+/// Convenience constructor.
+///
+/// Appropriate for apps that want to query endpoints with "app auth" authentication type.
+///
+/// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
+/// is used for querying endpoints that have "app auth" authentication type.
+/// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
+/// key is used for querying endpoints that have "app auth" authentication type.
+/// @param delegateQueue A serial delegate queue used for executing blocks of code that touch state shared across
+/// threads (mainly the request handlers storage).
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey
+                             appSecret:(NSString * _Nonnull)appSecret
+                         delegateQueue:(NSOperationQueue * _Nullable)delegateQueue;
 
 ///
 /// Convenience constructor.
@@ -53,7 +71,7 @@
 /// connection is lost after the request has begun.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
-/// is used for querying endpoints the have "app auth" authentication type.
+/// is used for querying endpoints that have "app auth" authentication type.
 /// @param forceForegroundSession If set to true, all network requests are made on foreground sessions (by default, most
 /// upload/download operations are performed with a background session).
 ///
@@ -65,9 +83,9 @@
 /// Convenience constructor.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
-/// is used for querying endpoints the have "app auth" authentication type.
+/// is used for querying endpoints that have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
-/// key is used for querying endpoints the have "app auth" authentication type.
+/// key is used for querying endpoints that have "app auth" authentication type.
 /// @param userAgent The user agent associated with all networking requests. Used for server logging.
 /// @param delegateQueue A serial delegate queue used for executing blocks of code that touch state shared across
 /// threads (mainly the request handlers storage).
@@ -86,9 +104,9 @@
 /// Full constructor.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
-/// is used for querying endpoints the have "app auth" authentication type.
+/// is used for querying endpoints that have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
-/// key is used for querying endpoints the have "app auth" authentication type.
+/// key is used for querying endpoints that have "app auth" authentication type.
 /// @param userAgent The user agent associated with all networking requests. Used for server logging.
 /// @param delegateQueue A serial delegate queue used for executing blocks of code that touch state shared across
 /// threads (mainly the request handlers storage).

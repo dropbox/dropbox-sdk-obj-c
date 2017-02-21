@@ -28,6 +28,14 @@
     exit(0);
   }
 
+  NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+  [Defaults setObject:@"YES" forKey:@"KeychainV1TokenMigration"];
+  [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret, NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
+    NSLog(@"Migration completed.");
+    NSLog(shouldRetry ? @"ShouldRetry: Yes" : @"ShouldRetry: No");
+    NSLog(invalidAppKeyOrSecret ? @"InvalidAppKeyOrSecret: Yes" : @"InvalidAppKeyOrSecret: No");
+  } queue:nil appKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
+
   DBTransportDefaultConfig *transportConfigFullDropbox =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
   DBTransportDefaultConfig *transportConfigTeamFileAccess =
@@ -111,7 +119,7 @@
                                                                       rev:urlData[@"rev"]
                                                                      path:urlData[@"path"]
                                                              modifiedTime:urlData[@"modifiedTime"]
-                                                                 readOnly:urlData[@"readOnly"]
+                                                                 readOnly:[urlData[@"readOnly"] boolValue]
                                                                      verb:urlData[@"verb"]
                                                                 sessionId:urlData[@"sessionId"]
                                                                    fileId:nil

@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBHandlerTypes.h"
+
 @class DBUserClient;
 @class DBTeamClient;
 @class DBOAuthResult;
@@ -121,5 +123,31 @@
 /// `DBKeychain`.
 ///
 + (void)resetClients;
+
+///
+/// Checks if performing an API v1 OAuth 1 token migration is necessary, and if so, performs it.
+///
+/// This method should successfully migrate all stored access tokens in the official Dropbox Core and Sync SDKs from
+/// April 2012 until present, for both iOS and OS X. The method executes its network requests off the main thread.
+///
+/// Token migration is treated as an atomic operation. Either all tokens that are possible to migrate are migrated at
+/// once, or none of them are. If all token conversion requests complete successfully, then the `shouldRetry` argument
+/// in `responseBlock` will be `NO`. If some token conversion requests succeed and some fail, and if the failures are
+/// for any reason other than network connectivity issues (e.g. token has been invalidated), then the migration will
+/// continue normally, and those tokens that were unsuccessfully migrated will be skipped, and `shouldRetry` will be
+/// `NO`. If any of the failures were because of network connectivity issues, none of the tokens will be migrated, and
+/// `shouldRetry` will be `YES`.
+///
+/// @param responseBlock The custom handler for determining whether to retry the migration.
+/// @param queue The operation queue on which to execute the supplied response block (defaults to main queue, if `nil`).
+/// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
+/// is used for querying endpoints that have "app auth" authentication type.
+/// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
+/// key is used for querying endpoints that have "app auth" authentication type.
+///
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
+                                  queue:(NSOperationQueue * _Nullable)queue
+                                 appKey:(NSString * _Nonnull)appKey
+                              appSecret:(NSString * _Nonnull)appSecret;
 
 @end

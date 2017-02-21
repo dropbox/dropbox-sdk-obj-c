@@ -5,6 +5,7 @@
 #import "DBClientsManager.h"
 #import "DBOAuth.h"
 #import "DBOAuthResult.h"
+#import "DBSDKKeychain.h"
 #import "DBTeamClient.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
@@ -52,8 +53,7 @@ static DBTeamClient *authorizedTeamClient;
               transportConfig:(DBTransportDefaultConfig *)transportConfig {
   NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
 
-  [DBOAuthManager setSharedOAuthManager:oAuthManager];
-  [[self class] setTransportConfig:transportConfig];
+  [[self class] setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
   [[self class] setupAuthorizedClient:accessToken];
@@ -64,8 +64,7 @@ static DBTeamClient *authorizedTeamClient;
                               tokenUid:(NSString *)tokenUid {
   NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
 
-  [DBOAuthManager setSharedOAuthManager:oAuthManager];
-  [[self class] setTransportConfig:transportConfig];
+  [[self class] setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   [[self class] setupAuthorizedClient:accessToken];
@@ -75,8 +74,7 @@ static DBTeamClient *authorizedTeamClient;
                   transportConfig:(DBTransportDefaultConfig *)transportConfig {
   NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
 
-  [DBOAuthManager setSharedOAuthManager:oAuthManager];
-  [[self class] setTransportConfig:transportConfig];
+  [[self class] setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getFirstAccessToken];
   [[self class] setupAuthorizedTeamClient:accessToken];
@@ -87,11 +85,15 @@ static DBTeamClient *authorizedTeamClient;
                                   tokenUid:(NSString *)tokenUid {
   NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
 
-  [DBOAuthManager setSharedOAuthManager:oAuthManager];
-  [[self class] setTransportConfig:transportConfig];
+  [[self class] setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig];
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   [[self class] setupAuthorizedTeamClient:accessToken];
+}
+
++ (void)setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig {
+  [DBOAuthManager setSharedOAuthManager:oAuthManager];
+  [[self class] setTransportConfig:transportConfig];
 }
 
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {
@@ -186,6 +188,13 @@ static DBTeamClient *authorizedTeamClient;
 + (void)resetClients {
   [DBClientsManager setAuthorizedClient:nil];
   [DBClientsManager setAuthorizedTeamClient:nil];
+}
+
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
+                                  queue:(NSOperationQueue *)queue
+                                 appKey:(NSString *)appKey
+                              appSecret:(NSString *)appSecret {
+  [DBSDKKeychain checkAndPerformV1TokenMigration:responseBlock queue:queue appKey:appKey appSecret:appSecret];
 }
 
 @end

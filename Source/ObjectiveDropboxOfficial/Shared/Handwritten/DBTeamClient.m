@@ -16,6 +16,15 @@
   return [self initWithAccessToken:accessToken transportConfig:nil];
 }
 
+- (instancetype)initAsUnauthorizedClientWithTransportConfig:(DBTransportDefaultConfig *)transportConfig {
+  DBTransportDefaultClient *transportClient =
+      [[DBTransportDefaultClient alloc] initWithAccessToken:nil transportConfig:transportConfig];
+  if (self = [super initWithTransportClient:transportClient]) {
+    _transportClient = transportClient;
+  }
+  return self;
+}
+
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                     transportConfig:(DBTransportDefaultConfig *)transportConfig {
   DBTransportDefaultClient *transportClient =
@@ -33,6 +42,10 @@
 
 - (void)updateAccessToken:(NSString *)accessToken {
   _transportClient.accessToken = accessToken;
+}
+
+- (BOOL)isAuthorized {
+  return _transportClient.accessToken != nil;
 }
 
 @end

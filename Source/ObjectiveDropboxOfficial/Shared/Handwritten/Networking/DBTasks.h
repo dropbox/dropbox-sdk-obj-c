@@ -76,6 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBRpcTask <TResponse, TError> : DBTask
 
+typedef void (^DBRpcResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error);
+
 ///
 /// Installs a response handler for the current request.
 ///
@@ -84,12 +86,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param responseBlock The handler block to be executed in the event of a successful or unsuccessful network request.
-/// The first argument is the route-specific result. The second argument is the route-specific error. And the third argument
-/// is the more general network error (which includes information like Dropbox request ID, http status code, etc.).
+/// The first argument is the route-specific result. The second argument is the route-specific error. And the third
+/// argument is the more general network error (which includes information like Dropbox request ID, http status code,
+/// etc.).
 ///
 /// @return The current `DBRpcTask` instance.
 ///
-- (DBRpcTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable))responseBlock;
+- (DBRpcTask<TResponse, TError> *)setResponseBlock:(DBRpcResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -106,8 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return The current `DBRpcTask` instance.
 ///
-- (DBRpcTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable,
-                                                             DBRequestError * _Nullable))responseBlock
+- (DBRpcTask<TResponse, TError> *)setResponseBlock:(DBRpcResponseBlock _Nonnull)responseBlock
                                              queue:(NSOperationQueue * _Nullable)queue;
 
 ///
@@ -158,6 +160,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBUploadTask <TResponse, TError> : DBTask
 
+typedef void (^DBUploadResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error);
+
 ///
 /// Installs a response handler for the current request.
 ///
@@ -166,12 +170,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @note Any existing handlers are replaced by the supplied handler.
 ///
 /// @param responseBlock The handler block to be executed in the event of a successful or unsuccessful network request.
-/// The first argument is the route-specific result. The second argument is the route-specific error. And the third argument
-/// is the more general network error (which includes information like Dropbox request ID, http status code, etc.).
+/// The first argument is the route-specific result. The second argument is the route-specific error. And the third
+/// argument is the more general network error (which includes information like Dropbox request ID, http status code,
+/// etc.).
 ///
 /// @return The current `DBUploadTask` instance.
 ///
-- (DBUploadTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable))responseBlock;
+- (DBUploadTask<TResponse, TError> *)setResponseBlock:(DBUploadResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -188,8 +193,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return The current `DBUploadTask` instance.
 ///
-- (DBUploadTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable,
-                                                                DBRequestError * _Nullable))responseBlock
+- (DBUploadTask<TResponse, TError> *)setResponseBlock:(DBUploadResponseBlock _Nonnull)responseBlock
                                                 queue:(NSOperationQueue * _Nullable)queue;
 
 ///
@@ -245,6 +249,9 @@ NS_ASSUME_NONNULL_BEGIN
   BOOL _overwrite;
 }
 
+typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable response, TError _Nullable routeError,
+                                               DBRequestError * _Nullable error, NSURL * _Nonnull destination);
+
 ///
 /// Installs a response handler for the current request.
 ///
@@ -262,8 +269,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return The current `DBDownloadUrlTask` instance.
 ///
-- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable,
-                                                                     DBRequestError * _Nullable, NSURL *))responseBlock;
+- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlTaskResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -280,8 +286,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return The current `DBDownloadUrlTask` instance.
 ///
-- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable,
-                                                                     DBRequestError * _Nullable, NSURL *))responseBlock
+- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlTaskResponseBlock _Nonnull)responseBlock
                                                      queue:(NSOperationQueue * _Nullable)queue;
 
 ///
@@ -333,6 +338,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBDownloadDataTask <TResponse, TError> : DBTask
 
+typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error, NSData * _Nullable fileData);
+
 ///
 /// Installs a response handler for the current request.
 ///
@@ -342,12 +349,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param responseBlock The handler block to be executed in the event of a successful or unsuccessful network request.
 /// The first argument is the route-specific result. The second argument is the route-specific error. And the third
-/// argument is the more general network error (which includes information like Dropbox request ID, http status code, etc.).
-/// The fourth argument is the output `NSData` object in memory, to which the file was downloaded.
+/// argument is the more general network error (which includes information like Dropbox request ID, http status code,
+/// etc.). The fourth argument is the output `NSData` object in memory, to which the file was downloaded.
 ///
 /// @return The current `DBDownloadDataTask` instance.
 ///
-- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable, DBRequestError * _Nullable, NSData *))responseBlock;
+- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataTaskResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -364,8 +371,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return The current `DBDownloadDataTask` instance.
 ///
-- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(void (^)(TResponse _Nullable, TError _Nullable,
-                                                                      DBRequestError * _Nullable, NSData *))responseBlock
+- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataTaskResponseBlock _Nonnull)responseBlock
                                                       queue:(NSOperationQueue * _Nullable)queue;
 
 ///
