@@ -14,6 +14,16 @@
   return [self initWithAppKey:appKey appSecret:appSecret userAgent:nil delegateQueue:nil forceForegroundSession:NO];
 }
 
+- (instancetype)initWithAppKey:(NSString *)appKey
+                     appSecret:(NSString *)appSecret
+                 delegateQueue:(NSOperationQueue *)delegateQueue {
+  return [self initWithAppKey:appKey
+                    appSecret:appSecret
+                    userAgent:nil
+                delegateQueue:delegateQueue
+       forceForegroundSession:NO];
+}
+
 - (instancetype)initWithAppKey:(NSString *)appKey forceForegroundSession:(BOOL)forceForegroundSession {
   return [self initWithAppKey:appKey
                     appSecret:nil

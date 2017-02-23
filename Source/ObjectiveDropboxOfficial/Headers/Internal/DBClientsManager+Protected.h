@@ -27,4 +27,6 @@
 
 + (void)setTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
++ (DBTransportDefaultConfig * _Nonnull)transportConfig;
+
 @end

@@ -29,13 +29,11 @@
                                               statusCode:(int)statusCode
                                              httpHeaders:(NSDictionary * _Nullable)httpHeaders;
 
-+ (id _Nullable)routeErrorWithRouteData:(DBRoute * _Nullable)route
-                                   data:(NSData * _Nullable)data
-                             statusCode:(int)statusCode;
++ (id _Nullable)routeErrorWithRoute:(DBRoute * _Nullable)route data:(NSData * _Nullable)data statusCode:(int)statusCode;
 
-+ (id _Nullable)routeResultWithRouteData:(DBRoute * _Nullable)route
-                                    data:(NSData * _Nullable)data
-                      serializationError:(NSError * _Nullable * _Nullable)serializationError;
++ (id _Nullable)routeResultWithRoute:(DBRoute * _Nullable)route
+                                data:(NSData * _Nullable)data
+                  serializationError:(NSError * _Nullable * _Nullable)serializationError;
 
 + (BOOL)statusCodeIsRouteError:(int)statusCode;
 

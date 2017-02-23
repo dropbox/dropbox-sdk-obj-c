@@ -70,7 +70,7 @@ static DBOAuthManager *sharedOAuthManager;
   DBOAuthResult *result = [self extractFromUrl:url];
 
   if ([result isSuccess]) {
-    [DBSDKKeychain set:result.accessToken.uid value:result.accessToken.accessToken];
+    [DBSDKKeychain setTokenWithKey:result.accessToken.uid value:result.accessToken.accessToken];
   }
 
   return result;
@@ -86,10 +86,10 @@ static DBOAuthManager *sharedOAuthManager;
     NSString *title = @"No internet connection";
 
     NSDictionary<NSString *, void (^)()> *buttonHandlers = @{
-      @"Cancel": ^{
+      @"Cancel" : ^{
         cancelHandler();
       },
-      @"Retry": ^{
+      @"Retry" : ^{
         [self authorizeFromSharedApplication:sharedApplication browserAuth:browserAuth];
       }
     };
@@ -214,7 +214,7 @@ static DBOAuthManager *sharedOAuthManager;
 #pragma mark - Keychain methods
 
 - (BOOL)storeAccessToken:(DBAccessToken *)accessToken {
-  return [DBSDKKeychain set:accessToken.uid value:accessToken.accessToken];
+  return [DBSDKKeychain setTokenWithKey:accessToken.uid value:accessToken.accessToken];
 }
 
 - (DBAccessToken *)getFirstAccessToken {
@@ -227,7 +227,7 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (DBAccessToken *)getAccessToken:(NSString *)owner {
-  NSString *accessToken = [DBSDKKeychain get:owner];
+  NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:owner];
   if (accessToken != nil) {
     return [[DBAccessToken alloc] initWithAccessToken:accessToken uid:owner];
   } else {
@@ -236,10 +236,10 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (NSDictionary<NSString *, DBAccessToken *> *)getAllAccessTokens {
-  NSArray<NSString *> *users = [DBSDKKeychain getAll];
+  NSArray<NSString *> *users = [DBSDKKeychain retrieveAllTokens];
   NSMutableDictionary<NSString *, DBAccessToken *> *result = [[NSMutableDictionary alloc] init];
   for (NSString *user in users) {
-    NSString *accessToken = [DBSDKKeychain get:user];
+    NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:user];
     if (accessToken != nil) {
       result[user] = [[DBAccessToken alloc] initWithAccessToken:accessToken uid:user];
     }
@@ -252,11 +252,11 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (BOOL)clearStoredAccessToken:(DBAccessToken *)token {
-  return [DBSDKKeychain delete:token.uid];
+  return [DBSDKKeychain deleteTokenWithKey:token.uid];
 }
 
 - (BOOL)clearStoredAccessTokens {
-  return [DBSDKKeychain clear];
+  return [DBSDKKeychain clearAllTokens];
 }
 
 @end
@@ -331,7 +331,6 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
     [sharedApplication presentErrorMessage:message title:title];
     return YES;
   }
-
 
   NSString *scheme = [self dAuthScheme:sharedApplication];
 
