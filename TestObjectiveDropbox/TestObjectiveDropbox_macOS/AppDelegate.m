@@ -83,11 +83,11 @@ static ViewController *viewController = nil;
       DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
       if (authResult != nil) {
         if ([authResult isSuccess]) {
-          NSLog(@"Success! User is logged into Dropbox.");
+          NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
         } else if ([authResult isCancel]) {
-          NSLog(@"Authorization flow was manually canceled by user!");
+          NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
         } else if ([authResult isError]) {
-          NSLog(@"Error: %@", authResult);
+          NSLog(@"\n\nError: %@\n\n", authResult);
         }
       }
       break;

@@ -30,6 +30,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
     * [RPC-style request](#rpc-style-request)
     * [Upload-style request](#upload-style-request)
     * [Download-style request](#download-style-request)
+    * [Note about background sessions](#note-about-background-sessions)
   * [Handling responses and errors](#handling-responses-and-errors)
     * [Route-specific errors](#route-specific-errors)
     * [Generic network request errors](#generic-network-request-errors)
@@ -476,6 +477,7 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
 #### Upload-style request
 ```objective-c
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+
 [[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account" inputData:fileData]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
@@ -491,23 +493,50 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 // To batch upload files or to chunk upload large files, use the custom `batchUploadFiles` route
 
 NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
-DBFILESCommitInfo *commitInfo =
-    [[DBFILESCommitInfo alloc] initWithPath:@"/output/path/in/Dropbox"];
-[uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:@"/local/path/to/my/file"];
+DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/output/path/in/Dropbox"];
+[uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:[NSURL URLWithString:@"/local/path/to/my/file"]];
 
-[_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo
-                            queue:nil
-                    progressBlock:^(int64_t uploaded, int64_t total, int64_t expectedTotal) {
-    NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, total, expectedTotal);
-} responseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
-    if (result) {
-      NSLog(@"%@\n", result);
-    } else {
-      NSLog(@"%@  %@\n", routeError, error);
+[client.filesRoutes batchUploadFiles:uploadFilesUrlsToCommitInfo
+  queue:nil
+  progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
+    NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal,
+          expectedToUploadTotal);
+  }
+  responseBlock:^(NSDictionary<NSURL *, DBFILESUploadSessionFinishBatchResultEntry *> *fileUrlsToBatchResultEntries,
+                  DBASYNCPollError *finishBatchRouteError, DBRequestError *finishBatchRequestError,
+                  NSDictionary<NSURL *, DBRequestError *> *fileUrlsToRequestErrors) {
+    if (fileUrlsToBatchResultEntries) {
+      NSLog(@"Call to `/upload_session/finish_batch/check` succeeded");
+      for (NSURL *clientSideFileUrl in fileUrlsToBatchResultEntries) {
+        DBFILESUploadSessionFinishBatchResultEntry *resultEntry = fileUrlsToBatchResultEntries[clientSideFileUrl];
+        if ([resultEntry isSuccess]) {
+          NSString *dropboxFilePath = resultEntry.success.pathDisplay;
+          NSLog(@"File successfully uploaded from %@ on local machine to %@ in Dropbox.",
+                [clientSideFileUrl absoluteString], dropboxFilePath);
+        } else if ([resultEntry isFailure]) {
+          // This particular file was not uploaded successfully, although the other
+          // files may have been uploaded successfully. Perhaps implement some retry
+          // logic here based on `uploadNetworkError` or `uploadSessionFinishError`
+          DBRequestError *uploadNetworkError = fileUrlsToRequestErrors[clientSideFileUrl];
+          DBFILESUploadSessionFinishError *uploadSessionFinishError = resultEntry.failure;
+
+          // implement appropriate retry logic
+        }
+      }
+    } else if (finishBatchRouteError) {
+      NSLog(@"Either bug in SDK code, or transient error on Dropbox server");
+      NSLog(@"%@", finishBatchRouteError);
+    } else if (finishBatchRequestError) {
+      NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
+      NSLog(@"%@", finishBatchRequestError);
+    } else if (fileUrlsToRequestErrors) {
+      NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
+      NSLog(@"%@", fileUrlsToRequestErrors);
     }
-}];
+  }];
 
-// note: with this method, response and progress handlers are passed directly into the route as arguments
+// note: with this method, response and progress handlers are passed directly into the route as arguments,
+// and not via the `setResponseBlock` or `setProgressBlock` methods.
 ```
 
 ---
@@ -549,6 +578,16 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
 ```
 
 ---
+
+#### Note about background sessions
+
+Currently, the SDK uses a background `NSURLSession` to perform all download tasks and some upload tasks (including upload from a file, but not from memory or from a stream). Background sessions use a separate process to handle all data transfers. This is conveneient because when your app enters the background, the download / upload will continue.
+
+However, the timeout periods for a background `NSURLSession` are virtually unlimited, so if you lose your network connection, the error handler will never be executed. Instead, the process will wait for a restored connection, and then resume from there.
+
+If you're looking for more responsive error feedback in the event of a lost connection, you will want to force all requests onto a foreground `NSURLSession`. See the example in the [network configuration](#configure-network-client) section of the README for how to do this.
+
+To read more, please consult Apple's [documentation](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Articles/UsingNSURLSession.html).
 
 ### Handling responses and errors
 

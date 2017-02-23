@@ -16,7 +16,8 @@
 
 @interface DBUploadTask (Protected)
 
-- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBUploadResponseBlockImpl _Nonnull)responseBlock;
+- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
+    (DBUploadResponseBlockImpl _Nonnull)responseBlock;
 
 @end
 
