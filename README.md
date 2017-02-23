@@ -791,12 +791,10 @@ To perform this auth token migration, in your app delegate, you should call the 
         // Developers should ensure that the appropriate app key and secret are being supplied.
         // If your app has multiple app keys / secrets, then run this migration method for
         // each app key / secret combination, and ignore this boolean.
-        return;
       }
 
       if (shouldRetry) {
         // Store this BOOL somewhere to retry when network connection has returned
-        return;
       }
 
       if ([unsuccessfullyMigratedTokenData count] != 0) {

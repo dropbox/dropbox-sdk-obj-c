@@ -112,7 +112,7 @@
 
 @property DropboxTester * _Nonnull tester;
 @property NSString * _Nonnull sharedFolderId;
-@property NSString * _Nonnull sharedLink;
+@property NSString * _Nullable sharedLink;
 
 @end
 

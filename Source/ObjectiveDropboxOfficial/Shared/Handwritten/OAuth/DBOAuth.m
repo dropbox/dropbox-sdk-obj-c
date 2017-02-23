@@ -70,7 +70,7 @@ static DBOAuthManager *sharedOAuthManager;
   DBOAuthResult *result = [self extractFromUrl:url];
 
   if ([result isSuccess]) {
-    [DBSDKKeychain setTokenWithKey:result.accessToken.uid value:result.accessToken.accessToken];
+    [DBSDKKeychain storeValueWithKey:result.accessToken.uid value:result.accessToken.accessToken];
   }
 
   return result;
@@ -162,7 +162,8 @@ static DBOAuthManager *sharedOAuthManager;
     [NSURLQueryItem queryItemWithName:@"client_id" value:_appKey],
     [NSURLQueryItem queryItemWithName:@"redirect_uri" value:[_redirectURL absoluteString]],
     [NSURLQueryItem queryItemWithName:@"disable_signup" value:self.disableSignup ? @"true" : @"false"],
-    [NSURLQueryItem queryItemWithName:@"locale" value:self.locale ?: [[NSLocale currentLocale] localeIdentifier]],
+    [NSURLQueryItem queryItemWithName:@"locale"
+                                value:[self.locale localeIdentifier] ?: [[NSLocale currentLocale] localeIdentifier]],
   ];
   return components.URL;
 }
@@ -214,7 +215,7 @@ static DBOAuthManager *sharedOAuthManager;
 #pragma mark - Keychain methods
 
 - (BOOL)storeAccessToken:(DBAccessToken *)accessToken {
-  return [DBSDKKeychain setTokenWithKey:accessToken.uid value:accessToken.accessToken];
+  return [DBSDKKeychain storeValueWithKey:accessToken.uid value:accessToken.accessToken];
 }
 
 - (DBAccessToken *)getFirstAccessToken {

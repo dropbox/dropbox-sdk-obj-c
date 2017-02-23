@@ -145,7 +145,7 @@
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
 /// key is used for querying endpoints that have "app auth" authentication type.
 ///
-+ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
++ (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
                                   queue:(NSOperationQueue * _Nullable)queue
                                  appKey:(NSString * _Nonnull)appKey
                               appSecret:(NSString * _Nonnull)appSecret;

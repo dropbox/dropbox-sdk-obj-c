@@ -18,11 +18,9 @@ static NSString *kV1TokenMigrationOccuredKeyBase = @"KeychainV1TokenMigration-%@
 
 static NSString *kV2KeychainServiceKeyBase = @"%@.dropbox.authv2";
 
-static NSString *kV1KeychainServiceKeyBase = @"%@.dropbox.auth";
 static NSString *kV1ConsumerAppKeyKey = @"kMPOAuthCredentialConsumerKey";
 static NSString *kV1UserCredentialsKey = @"kDBDropboxUserCredentials";
 static NSString *kV1UserIdKey = @"kDBDropboxUserId";
-static NSString *kV1UnknownUserIdKey = @"unknown";
 static NSString *kV1UserAccessTokenKey = @"kMPOAuthCredentialAccessToken";
 static NSString *kV1UserAccessTokenSecretKey = @"kMPOAuthCredentialAccessTokenSecret";
 
@@ -32,9 +30,13 @@ static NSString *kV1SyncUserIdKey = @"userId";
 static NSString *kV1SyncUserAccessTokenKey = @"token";
 static NSString *kV1SyncUserAccessTokenSecretKey = @"tokenSecret";
 
+#if TARGET_OS_IPHONE
+static NSString *kV1IOSKeychainServiceKeyBase = @"%@.dropbox.auth";
+static NSString *kV1IOSUnknownUserIdKey = @"unknown";
+#elif !TARGET_OS_IPHONE
 static NSString *kV1OSXKeychainServiceKeyBase = @"%@";
-static NSString *kV1OSXLinkedUserDefaultsKey = @"DropboxLinked";
 static const char *kV1OSXAccountName = "Dropbox";
+#endif
 
 @implementation DBSDKKeychain
 
@@ -42,10 +44,10 @@ static const char *kV1OSXAccountName = "Dropbox";
   [[self class] checkAccessibilityMigration];
 }
 
-+ (BOOL)set:(NSString *)key value:(NSString *)value {
++ (BOOL)storeValueWithKey:(NSString *)key value:(NSString *)value {
   NSData *encoding = [value dataUsingEncoding:NSUTF8StringEncoding];
   if (encoding) {
-    return [self storeValueWithKey:key value:encoding];
+    return [self storeDataValueWithKey:key value:encoding];
   } else {
     return NO;
   }
@@ -88,7 +90,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   return SecItemDelete((__bridge CFDictionaryRef)query) == noErr;
 }
 
-+ (BOOL)storeValueWithKey:(NSString *)key value:(NSData *)value {
++ (BOOL)storeDataValueWithKey:(NSString *)key value:(NSData *)value {
   NSMutableDictionary<id, id> *query =
       [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
   SecItemDelete((__bridge CFDictionaryRef)query);
@@ -159,15 +161,15 @@ static const char *kV1OSXAccountName = "Dropbox";
     NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
 #if TARGET_OS_IPHONE
-    NSMutableArray<NSArray<NSString *> *> *v1TokensDataIOSCore = [[self class] v1TokensDataIOSCore];
-    NSMutableArray<NSArray<NSString *> *> *v1TokensDataIOSSync = [[self class] v1TokensDataIOSSync];
+    NSArray<NSArray<NSString *> *> *v1TokensDataIOSCore = [[self class] v1TokensDataIOSCore];
+    NSArray<NSArray<NSString *> *> *v1TokensDataIOSSync = [[self class] v1TokensDataIOSSync];
 
     [v1TokensData addObjectsFromArray:v1TokensDataIOSCore];
     [v1TokensData addObjectsFromArray:v1TokensDataIOSSync];
 
 #elif !TARGET_OS_IPHONE
-    NSMutableArray<NSDictionary<id, NSString *> *> *v1TokensDataOSXCore = [[self class] v1TokensDataOSXCore];
-    NSMutableArray<NSDictionary<id, NSString *> *> *v1TokensDataOSXSync = [[self class] v1TokensDataOSXSync];
+    NSArray<NSArray<NSString *> *> *v1TokensDataOSXCore = [[self class] v1TokensDataOSXCore];
+    NSArray<NSArray<NSString *> *> *v1TokensDataOSXSync = [[self class] v1TokensDataOSXSync];
 
     [v1TokensData addObjectsFromArray:v1TokensDataOSXCore];
     [v1TokensData addObjectsFromArray:v1TokensDataOSXSync];
@@ -196,7 +198,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   NSMutableDictionary<id, id> *query = [NSMutableDictionary new];
   NSString *bundleId = [NSBundle mainBundle].bundleIdentifier ?: @"";
   [query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-  [query setObject:(id)[NSString stringWithFormat:kV1KeychainServiceKeyBase, bundleId] forKey:(id)kSecAttrService];
+  [query setObject:(id)[NSString stringWithFormat:kV1IOSKeychainServiceKeyBase, bundleId] forKey:(id)kSecAttrService];
   [query setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnAttributes];
   [query setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
   [query setObject:(id)kSecMatchLimitAll forKey:(id)kSecMatchLimit];
@@ -221,7 +223,7 @@ static const char *kV1OSXAccountName = "Dropbox";
           if (uid && accessToken && accessTokenSecret && retrievedAppKey) {
             // really old versions of the v1 SDK stored tokens without a
             // corresponding user id, so should be skipped
-            if (![uid isEqualToString:kV1UnknownUserIdKey]) {
+            if (![uid isEqualToString:kV1IOSUnknownUserIdKey]) {
               NSArray<NSString *> *tokenData = @[ uid, accessToken, accessTokenSecret, retrievedAppKey ];
               [v1TokensData addObject:tokenData];
             }
@@ -309,6 +311,11 @@ static const char *kV1OSXAccountName = "Dropbox";
       }
     }
   }
+
+  if (pData) {
+    SecKeychainItemFreeContent(nil, pData);
+  }
+
   return v1TokensData;
 }
 
@@ -345,11 +352,16 @@ static const char *kV1OSXAccountName = "Dropbox";
       }
     }
   }
+
+  if (pData) {
+    SecKeychainItemFreeContent(nil, pData);
+  }
+
   return v1TokensData;
 }
 #endif
 
-+ (void)convertV1TokenToV2:(NSMutableArray<NSDictionary<id, NSString *> *> *)v1TokensData
++ (void)convertV1TokenToV2:(NSMutableArray<NSArray<NSString *> *> *)v1TokensData
                     appKey:(NSString *)appKey
                  appSecret:(NSString *)appSecret
              responseBlock:(DBTokenMigrationResponseBlock)responseBlock
@@ -369,7 +381,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   NSMutableDictionary<NSString *, NSString *> *tokenConversionResults = [NSMutableDictionary new];
   NSLock *tokenConversionResultsLock = [NSLock new];
 
-  NSMutableArray<NSString *> * _Nonnull unsuccessfullyMigratedTokenData = [NSMutableArray new];
+  NSMutableArray<NSArray<NSString *> *> * _Nonnull unsuccessfullyMigratedTokenData = [NSMutableArray new];
   NSLock *unsuccessfullyMigratedTokenDataLock = [NSLock new];
 
   for (NSArray<NSString *> *v1TokenData in v1TokensData) {
@@ -406,7 +418,7 @@ static const char *kV1OSXAccountName = "Dropbox";
           } else {
             if ([error isClientError]) {
               NSError *clientError = error.nsError.userInfo[NSUnderlyingErrorKey];
-              if ([clientError.domain isEqualToString:kCFErrorDomainCFNetwork]) {
+              if ([clientError.domain isEqualToString:(NSString *)kCFErrorDomainCFNetwork]) {
                 // retry for connectivity errors
                 [shouldRetryLock lock];
                 shouldRetry = YES;
@@ -431,7 +443,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   dispatch_group_notify(tokenConvertGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     if (!shouldRetry) {
       for (NSString *uid in tokenConversionResults) {
-        [[self class] set:uid value:[tokenConversionResults objectForKey:uid]];
+        [[self class] storeValueWithKey:uid value:[tokenConversionResults objectForKey:uid]];
       }
       NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
       [Defaults setObject:@"YES" forKey:[NSString stringWithFormat:kV1TokenMigrationOccuredKeyBase, appKey]];

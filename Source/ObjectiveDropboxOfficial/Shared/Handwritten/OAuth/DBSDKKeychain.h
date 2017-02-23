@@ -12,7 +12,7 @@
 @interface DBSDKKeychain : NSObject
 
 /// Stores a key / value pair in the keychain.
-+ (BOOL)setTokenWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value;
++ (BOOL)storeValueWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value;
 
 /// Retrieves a value from the corresponding key from the keychain.
 + (NSString * _Nullable)retrieveTokenWithKey:(NSString * _Nonnull)key;

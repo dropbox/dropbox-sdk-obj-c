@@ -190,7 +190,7 @@ static DBTeamClient *authorizedTeamClient;
   [DBClientsManager setAuthorizedTeamClient:nil];
 }
 
-+ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
++ (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
                                   queue:(NSOperationQueue *)queue
                                  appKey:(NSString *)appKey
                               appSecret:(NSString *)appSecret {
