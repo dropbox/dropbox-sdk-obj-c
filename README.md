@@ -58,13 +58,21 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 
 ---
 
-### Xcode 8 and iOS 10 bug
+### Xcode 8 and iOS 10 bugs
 
-> The Dropbox Objective-C SDK currently supports Xcode 8 and iOS 10. However, there appears to be a bug with the Keychain in the iOS simulator environment where data is not persistently saved to the Keychain.
->
-> As a temporary workaround, in the Project Navigator, select **your project** > **Capabilities** > **Keychain Sharing** > **ON**.
->
-> You can read more about the bug [here](https://forums.developer.apple.com/message/170381#170381).
+#### Keychain bug
+The Dropbox Objective-C SDK currently supports Xcode 8 and iOS 10. However, there appears to be a bug with the Keychain in the iOS simulator environment where data is not persistently saved to the Keychain.
+
+As a temporary workaround, in the Project Navigator, select **your project** > **Capabilities** > **Keychain Sharing** > **ON**.
+
+You can read more about the bug [here](https://forums.developer.apple.com/message/170381#170381).
+
+#### Longpoll session timeout bug
+Currently, there is a bug with iOS 10 where our longpoll requests timeout after ~6 minutes (instead of our max supported timeframe of 8 minutes (480 seconds)).
+
+For this reason, we recommend that all longpoll calls be made using [`-listFolderLongpoll:timeout:`](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESRoutes.html#/c:objc(cs)DBFILESRoutes(im)listFolderLongpoll:timeout:), with a specified `timeout` values of <= 300 seconds (5 minutes), until this issue is resolved by Apple.
+
+Read more about the issue [here](https://forums.developer.apple.com/thread/67606).
 
 ## Get started
 

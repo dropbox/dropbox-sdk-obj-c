@@ -52,6 +52,9 @@
 /// true, in which case, it is simply the same session as the foreground session.
 @property (nonatomic, strong) NSURLSession * _Nonnull secondarySession;
 
+/// The foreground session on which longpoll requests are made. Has a much longer timeout period than other sessions.
+@property (nonatomic, strong) NSURLSession * _Nonnull longpollSession;
+
 #pragma mark - Constructors
 
 ///
