@@ -29,7 +29,8 @@
   }
 
   NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-  [Defaults setObject:@"YES" forKey:@"KeychainV1TokenMigration"];
+  NSString *migrationOccuredLookupKey = [NSString stringWithFormat: @"KeychainV1TokenMigration-%@", data.fullDropboxAppKey];
+  [Defaults setObject:@"YES" forKey:migrationOccuredLookupKey];
   [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret, NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
     NSLog(@"Migration completed.");
     NSLog(shouldRetry ? @"ShouldRetry: Yes" : @"ShouldRetry: No");
