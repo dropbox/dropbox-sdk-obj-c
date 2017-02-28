@@ -30,7 +30,7 @@
 /// login credentials. The disadvantage of browser auth is it requires navigating outside of the current app.
 ///
 + (void)authorizeFromControllerDesktop:(NSWorkspace * _Nonnull)sharedApplication
-                            controller:(NSViewController * _Nonnull)controller
+                            controller:(NSViewController * _Nullable)controller
                                openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL
                            browserAuth:(BOOL)browserAuth;
 

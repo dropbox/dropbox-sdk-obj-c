@@ -27,15 +27,17 @@
 }
 
 - (void)presentErrorMessage:(NSString *)message title:(NSString *)title {
-  UIAlertController *alertController =
-      [UIAlertController alertControllerWithTitle:title
-                                          message:message
-                                   preferredStyle:(UIAlertControllerStyle)UIAlertControllerStyleAlert];
-  [_controller presentViewController:alertController
-                            animated:YES
-                          completion:^{
-                            [NSException raise:@"FatalError" format:@"%@", message];
-                          }];
+  if (_controller) {
+    UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:title
+                                            message:message
+                                     preferredStyle:(UIAlertControllerStyle)UIAlertControllerStyleAlert];
+    [_controller presentViewController:alertController
+                              animated:YES
+                            completion:^{
+                              [NSException raise:@"FatalError" format:@"%@", message];
+                            }];
+  }
 }
 
 - (void)presentErrorMessageWithHandlers:(NSString * _Nonnull)message
@@ -67,10 +69,12 @@
                                                       }
                                                     }]];
 
-  [_controller presentViewController:alertController
-                            animated:YES
-                          completion:^{
-                          }];
+  if (_controller) {
+    [_controller presentViewController:alertController
+                              animated:YES
+                            completion:^{
+                            }];
+  }
 }
 
 - (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL {
@@ -81,13 +85,16 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBMobileWebViewController *webViewController = [[DBMobileWebViewController alloc] initWithAuthUrl:authURL
-                                                                                tryInterceptHandler:tryInterceptHandler
-                                                                                      cancelHandler:cancelHandler];
-  UINavigationController *navigationController =
-      [[UINavigationController alloc] initWithRootViewController:webViewController];
+  if (_controller) {
+    DBMobileWebViewController *webViewController =
+        [[DBMobileWebViewController alloc] initWithAuthUrl:authURL
+                                       tryInterceptHandler:tryInterceptHandler
+                                             cancelHandler:cancelHandler];
+    UINavigationController *navigationController =
+        [[UINavigationController alloc] initWithRootViewController:webViewController];
 
-  [_controller presentViewController:navigationController animated:YES completion:nil];
+    [_controller presentViewController:navigationController animated:YES completion:nil];
+  }
 }
 
 - (void)presentBrowserAuth:(NSURL * _Nonnull)authURL {

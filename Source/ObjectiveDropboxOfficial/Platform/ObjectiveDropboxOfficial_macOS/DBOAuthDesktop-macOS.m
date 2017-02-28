@@ -26,8 +26,10 @@
 
 - (void)presentErrorMessage:(NSString *)message title:(NSString *)title {
 #pragma unused(title)
-  NSError *error = [[NSError alloc] initWithDomain:@"" code:123 userInfo:@{NSLocalizedDescriptionKey : message}];
-  [_controller presentError:error];
+  if (_controller) {
+    NSError *error = [[NSError alloc] initWithDomain:@"" code:123 userInfo:@{NSLocalizedDescriptionKey : message}];
+    [_controller presentError:error];
+  }
 }
 
 - (void)presentErrorMessageWithHandlers:(NSString * _Nonnull)message
@@ -46,11 +48,13 @@
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
        tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
-  DBDesktopWebViewController *webViewController =
-      [[DBDesktopWebViewController alloc] initWithAuthUrl:authURL
-                                      tryInterceptHandler:tryInterceptHandler
-                                            cancelHandler:cancelHandler];
-  [_controller presentViewControllerAsModalWindow:webViewController];
+  if (_controller) {
+    DBDesktopWebViewController *webViewController =
+        [[DBDesktopWebViewController alloc] initWithAuthUrl:authURL
+                                        tryInterceptHandler:tryInterceptHandler
+                                              cancelHandler:cancelHandler];
+    [_controller presentViewControllerAsModalWindow:webViewController];
+  }
 }
 
 - (void)presentBrowserAuth:(NSURL * _Nonnull)authURL {

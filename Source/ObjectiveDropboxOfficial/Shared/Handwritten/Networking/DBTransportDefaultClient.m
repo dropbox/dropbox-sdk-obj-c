@@ -49,7 +49,8 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
     NSURLSessionConfiguration *longpollSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     longpollSessionConfig.timeoutIntervalForRequest = 480.0;
 
-    _longpollSession = [NSURLSession sessionWithConfiguration:longpollSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
+    _longpollSession =
+        [NSURLSession sessionWithConfiguration:longpollSessionConfig delegate:_delegate delegateQueue:_delegateQueue];
   }
   return self;
 }
@@ -75,7 +76,8 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
   }
 
   NSURLSessionDataTask *task = [sessionToUse dataTaskWithRequest:request];
-  DBRpcTaskImpl *rpcTask = [[DBRpcTaskImpl alloc] initWithTask:task session:sessionToUse delegate:_delegate route:route];
+  DBRpcTaskImpl *rpcTask =
+      [[DBRpcTaskImpl alloc] initWithTask:task session:sessionToUse delegate:_delegate route:route];
   [task resume];
 
   return rpcTask;
