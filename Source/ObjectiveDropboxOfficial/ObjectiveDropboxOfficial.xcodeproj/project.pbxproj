@@ -124,8 +124,6 @@
 		F2A2CEB71E566625001D8449 /* DBSDKImports-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B51F1E29913600144F8B /* DBSDKImports-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A2CEB81E56662A001D8449 /* DBOAuthMobile-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B51B1E29913600144F8B /* DBOAuthMobile-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A2CEB91E56662E001D8449 /* DBClientsManager+MobileAuth-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B51D1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2A2CEBA1E566644001D8449 /* ObjectiveDropboxOfficialLib.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5361E29917E00144F8B /* ObjectiveDropboxOfficialLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2A2CEBB1E566644001D8449 /* ObjectiveDropboxOfficialLib.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5361E29917E00144F8B /* ObjectiveDropboxOfficialLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A2D76B1E56DEAF001D8449 /* DBAsyncObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D5351E56DEAE001D8449 /* DBAsyncObjects.m */; };
 		F2A2D76C1E56DEAF001D8449 /* DBAsyncObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2D5351E56DEAE001D8449 /* DBAsyncObjects.m */; };
 		F2A2D76D1E56DEAF001D8449 /* DBASYNCLaunchEmptyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2D5371E56DEAE001D8449 /* DBASYNCLaunchEmptyResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -3360,7 +3358,6 @@
 				F2A2CEB91E56662E001D8449 /* DBClientsManager+MobileAuth-iOS.h in Headers */,
 				F2A2CEAE1E5665D1001D8449 /* DBTransportBaseConfig.h in Headers */,
 				F2A2CEB11E5665E0001D8449 /* DBTasksStorage.h in Headers */,
-				F2A2CEBB1E566644001D8449 /* ObjectiveDropboxOfficialLib.h in Headers */,
 				F2A2CEAC1E5665BB001D8449 /* DBTransportDefaultConfig.h in Headers */,
 				F29789011E03692F00876A73 /* DBSDKKeychain.h in Headers */,
 				F29788C71E03692F00876A73 /* DBClientsManager.h in Headers */,
@@ -3916,7 +3913,6 @@
 				F2A2CEB51E56661D001D8449 /* DBOAuthDesktop-macOS.h in Headers */,
 				F2A2CEB01E5665E0001D8449 /* DBTasksStorage.h in Headers */,
 				F2A2CEB61E566621001D8449 /* DBClientsManager+DesktopAuth-macOS.h in Headers */,
-				F2A2CEBA1E566644001D8449 /* ObjectiveDropboxOfficialLib.h in Headers */,
 				F2A2CEAD1E5665BC001D8449 /* DBTransportDefaultConfig.h in Headers */,
 				F29789021E03692F00876A73 /* DBSDKKeychain.h in Headers */,
 				F29788C81E03692F00876A73 /* DBClientsManager.h in Headers */,
