@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// List of finish args (which include commit info, cursor, etc.) which the SDK maintains and passes to
 /// `upload_session/finish_batch`.
-@property (atomic) NSMutableArray<DBFILESUploadSessionFinishArg *> *finishArgs;
+@property (atomic, strong) NSMutableArray<DBFILESUploadSessionFinishArg *> *finishArgs;
 
 /// The progress block that is periodically executed once a file upload is complete.
 @property (nonatomic, readonly) DBProgressBlock _Nullable progressBlock;
