@@ -381,13 +381,13 @@ static const int timeoutInSec = 200;
   });
 }
 
-- (void)executeProgressHandler:(DBBatchUploadData *)uploadData amountUploaded:(NSUInteger)amountUploaded {
+- (void)executeProgressHandler:(DBBatchUploadData *)uploadData amountUploaded:(int64_t)amountUploaded {
   if (!uploadData.progressBlock) {
     return;
   }
 
   [uploadData.queue addOperationWithBlock:^{
-    uploadData.totalUploadedSoFar += amountUploaded;
+    uploadData.totalUploadedSoFar += (NSUInteger)amountUploaded;
     uploadData.progressBlock(amountUploaded, uploadData.totalUploadedSoFar, uploadData.totalUploadSize);
   }];
 }

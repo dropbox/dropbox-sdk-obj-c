@@ -14,7 +14,7 @@
 
 #pragma mark - Internal serialization helpers
 
-static NSString *kV2SDKVersion = @"3.0.2";
+static NSString *kV2SDKVersion = @"3.0.3";
 static NSString *kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
@@ -102,7 +102,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
   if (byteOffsetStart && byteOffsetEnd) {
     NSString *bytesRangeSpecifier =
-        [NSString stringWithFormat:@"bytes=%lu-%lu", [byteOffsetStart integerValue], [byteOffsetEnd integerValue]];
+        [NSString stringWithFormat:@"bytes=%lu-%lu", [byteOffsetStart unsignedLongValue], [byteOffsetEnd unsignedLongValue]];
     [headers setObject:bytesRangeSpecifier forKey:@"Range"];
   }
 
