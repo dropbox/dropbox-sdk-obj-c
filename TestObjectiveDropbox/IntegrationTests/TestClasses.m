@@ -437,16 +437,19 @@ void MyLog(NSString *format, ...) {
   
   NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
   
-  NSLog(@"Creating files in: %@", [workingDirectory path]);
+  NSLog(@"\n\nCreating files in: %@\n\n", [workingDirectory path]);
   // create a bunch of fake files
   for (int i = 0; i < 10; i++) {
     NSString *fileName = [NSString stringWithFormat:@"test_file_%d", i];
     NSString *fileContent = [NSString stringWithFormat:@"%@'s content. Test content here.", fileName];
     NSURL *fileUrl = [workingDirectory URLByAppendingPathComponent:fileName];
-    
+
+    // set to test large file
+    BOOL testLargeFile = YES;
+
     // don't create a file for the name test_file_5 so we use a custom large file
     // there instead
-    if (i != 5) {
+    if (i != 5 || !testLargeFile) {
       NSError *fileCreationError;
       [fileContent writeToFile:[fileUrl path]
                     atomically:NO
@@ -458,6 +461,11 @@ void MyLog(NSString *format, ...) {
         NSLog(@"Terminating...");
         exit(0);
       }
+    } else {
+      if (![fileManager fileExistsAtPath:[fileUrl path]]) {
+        NSLog(@"\n\nPlease create a large file named %@ to test chunked uploading\n\n", [fileUrl lastPathComponent]);
+        exit(0);
+      }
     }
     
     DBFILESCommitInfo *commitInfo =
@@ -465,15 +473,40 @@ void MyLog(NSString *format, ...) {
     
     [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:fileUrl];
   }
-  
-  [_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo queue:nil progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
+
+  [_tester.files batchUploadFiles:uploadFilesUrlsToCommitInfo queue:nil progressBlock:^(int64_t uploaded,
+                                                                                        int64_t uploadedTotal,
+                                                                                        int64_t expectedToUploadTotal) {
     NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal, expectedToUploadTotal);
-  } responseBlock:^(DBFILESUploadSessionFinishBatchJobStatus *result, DBASYNCPollError *routeError, DBRequestError *error) {
-    if (result) {
-      MyLog(@"%@\n", result);
-      [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-    } else {
-      [TestFormat abort:error routeError:routeError];
+  } responseBlock:^(NSDictionary<NSURL *,DBFILESUploadSessionFinishBatchResultEntry *> *fileUrlsToBatchResultEntries,
+                    DBASYNCPollError *finishBatchRouteError, DBRequestError *finishBatchRequestError,
+                    NSDictionary<NSURL *,DBRequestError *> *fileUrlsToRequestErrors) {
+    if (fileUrlsToBatchResultEntries) {
+      for (NSURL *clientSideFileUrl in fileUrlsToBatchResultEntries) {
+        DBFILESUploadSessionFinishBatchResultEntry *resultEntry = fileUrlsToBatchResultEntries[clientSideFileUrl];
+        if ([resultEntry isSuccess]) {
+          NSString *dropboxFilePath = resultEntry.success.pathDisplay;
+          NSLog(@"File successfully uploaded from %@ on local machine to %@ in Dropbox.",
+                [clientSideFileUrl absoluteString], dropboxFilePath);
+        } else if ([resultEntry isFailure]) {
+          // This particular file was not uploaded successfully, although the other
+          // files may have been uploaded successfully. Perhaps implement some retry
+          // logic here based on `uploadError`
+          DBRequestError *uploadNetworkError = fileUrlsToRequestErrors[clientSideFileUrl];
+          DBFILESUploadSessionFinishError *uploadSessionFinishError = resultEntry.failure;
+
+          NSLog(@"%@\n", uploadNetworkError);
+          NSLog(@"%@\n", uploadSessionFinishError);
+        }
+      }
+    } else if (finishBatchRouteError) {
+      NSLog(@"Either bug in SDK code, or transient error on Dropbox server: %@", finishBatchRouteError);
+    } else if (finishBatchRequestError) {
+      NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
+      NSLog(@"%@", finishBatchRequestError);
+    } else if (fileUrlsToRequestErrors) {
+      NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
+      NSLog(@"%@", fileUrlsToRequestErrors);
     }
   }];
 }

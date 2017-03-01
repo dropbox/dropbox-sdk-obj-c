@@ -33,9 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// A client-supplied parameter that maps the file urls of the files to upload to the corresponding commit info objects.
 @property (nonatomic, readonly) NSDictionary<NSURL *, DBFILESCommitInfo *> *fileUrlsToCommitInfo;
 
+/// Mapping of urls for files that were unsuccessfully uploaded to any request errors that were encounted.
+@property (atomic, readonly) NSMutableDictionary<NSURL *, DBRequestError *> *fileUrlsToRequestErrors;
+
 /// List of finish args (which include commit info, cursor, etc.) which the SDK maintains and passes to
 /// `upload_session/finish_batch`.
-@property (atomic, readonly) NSMutableArray<DBFILESUploadSessionFinishArg *> *finishArgs;
+@property (atomic) NSMutableArray<DBFILESUploadSessionFinishArg *> *finishArgs;
 
 /// The progress block that is periodically executed once a file upload is complete.
 @property (nonatomic, readonly) DBProgressBlock _Nullable progressBlock;

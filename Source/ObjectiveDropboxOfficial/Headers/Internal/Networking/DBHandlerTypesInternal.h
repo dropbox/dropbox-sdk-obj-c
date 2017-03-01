@@ -24,4 +24,5 @@ typedef void (^DBUploadResponseBlockImpl)(id _Nullable, id _Nullable, DBRequestE
 
 typedef void (^DBDownloadUrlResponseBlockImpl)(id _Nullable, id _Nullable, DBRequestError * _Nullable, NSURL * _Nullable);
 
-typedef void (^DBDownloadDataResponseBlockImpl)(id _Nullable, id _Nullable, DBRequestError * _Nullable, NSData * _Nullable);
+typedef void (^DBDownloadDataResponseBlockImpl)(id _Nullable, id _Nullable, DBRequestError * _Nullable,
+                                                NSData * _Nullable);

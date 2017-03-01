@@ -304,7 +304,8 @@
                userInfo:nil];
 }
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
+                                   queue:(NSOperationQueue *)queue {
 #pragma unused(responseBlock)
 #pragma unused(queue)
   @throw [NSException

@@ -151,7 +151,8 @@
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
+                                   queue:(NSOperationQueue *)queue {
   DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 

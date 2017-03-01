@@ -25,6 +25,7 @@
     _uploadGroup = dispatch_group_create();
 
     _fileUrlsToCommitInfo = fileUrlsToCommitInfo;
+    _fileUrlsToRequestErrors = [NSMutableDictionary new];
     _finishArgs = [NSMutableArray new];
 
     _progressBlock = progressBlock;

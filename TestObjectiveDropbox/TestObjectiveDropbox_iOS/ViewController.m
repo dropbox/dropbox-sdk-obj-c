@@ -22,6 +22,7 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 @property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *openWithButton;
+@property (weak, nonatomic) IBOutlet UIButton *runBatchUploadTestsButton;
 
 @end
 
@@ -42,6 +43,11 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
                                            [[UIApplication sharedApplication] openURL:url];
                                          }
                                      browserAuth:YES];
+}
+- (IBAction)runBatchUploadTestsButtonPressed:(id)sender {
+  TestData *data = [TestData new];
+  BatchUploadTests *batchUploadTests = [[BatchUploadTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
+  [batchUploadTests batchUploadFiles];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {
@@ -120,11 +126,13 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
     _linkBrowserButton.hidden = YES;
     _unlinkButton.hidden = NO;
     _runTestsButton.hidden = NO;
+    _runBatchUploadTestsButton.hidden = NO;
   } else {
     _linkButton.hidden = NO;
     _linkBrowserButton.hidden = NO;
     _unlinkButton.hidden = YES;
     _runTestsButton.hidden = YES;
+    _runBatchUploadTestsButton.hidden = YES;
   }
 }
 

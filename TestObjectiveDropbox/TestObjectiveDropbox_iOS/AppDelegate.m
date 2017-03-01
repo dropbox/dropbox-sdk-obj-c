@@ -38,7 +38,11 @@
   } queue:nil appKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
 
   DBTransportDefaultConfig *transportConfigFullDropbox =
-    [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey appSecret:data.fullDropboxAppSecret];
+    [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey
+                                           appSecret:data.fullDropboxAppSecret
+                                           userAgent:nil
+                                       delegateQueue:nil
+                              forceForegroundSession:YES];
   DBTransportDefaultConfig *transportConfigTeamFileAccess =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
   DBTransportDefaultConfig *transportConfigTeamManagement =
@@ -65,11 +69,11 @@
     DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
     if (authResult != nil) {
       if ([authResult isSuccess]) {
-        NSLog(@"Success! User is logged into Dropbox.");
+        NSLog(@"\n\nSuccess! User is logged into Dropbox.\n\n");
       } else if ([authResult isCancel]) {
-        NSLog(@"Authorization flow was manually canceled by user!");
+        NSLog(@"\n\nAuthorization flow was manually canceled by user!\n\n");
       } else if ([authResult isError]) {
-        NSLog(@"Error: %@", authResult);
+        NSLog(@"\n\nError: %@\n\n", authResult);
       }
     }
     break;
