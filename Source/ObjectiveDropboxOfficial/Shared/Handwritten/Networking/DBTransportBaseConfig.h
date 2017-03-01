@@ -29,6 +29,17 @@
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
 /// is used for querying endpoints the have "app auth" authentication type.
+/// @param userAgent The user agent associated with all networking requests. Used for server logging.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey userAgent:(NSString * _Nullable)userAgent;
+
+///
+/// Convenience constructor.
+///
+/// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
+/// is used for querying endpoints the have "app auth" authentication type.
 /// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
 /// key is used for querying endpoints the have "app auth" authentication type.
 /// @param userAgent The user agent associated with all networking requests. Used for server logging.

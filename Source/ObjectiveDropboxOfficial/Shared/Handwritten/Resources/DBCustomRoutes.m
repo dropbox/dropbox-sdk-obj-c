@@ -115,6 +115,8 @@ static const int timeoutInSec = 200;
       }
                  queue:uploadData.queue]
       setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        #pragma unused(totalBytesWritten)
+        #pragma unused(totalBytesExpectedToWrite)
         [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
       }];
 
@@ -157,6 +159,8 @@ static const int timeoutInSec = 200;
       }
                  queue:chunkUploadContinueQueue]
       setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        #pragma unused(totalBytesWritten)
+        #pragma unused(totalBytesExpectedToWrite)
         [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
       }];
 
@@ -274,6 +278,8 @@ static const int timeoutInSec = 200;
           }
                      queue:chunkUploadResponseQueue]
           setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+            #pragma unused(totalBytesWritten)
+            #pragma unused(totalBytesExpectedToWrite)
             if (retryCount == 0) {
               [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
             }

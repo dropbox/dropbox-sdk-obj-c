@@ -6,6 +6,10 @@
 
 @implementation DBTransportBaseConfig
 
+- (instancetype)initWithAppKey:(NSString *)appKey userAgent:(NSString *)userAgent {
+  return [self initWithAppKey:appKey appSecret:nil userAgent:userAgent];
+}
+
 - (instancetype)initWithAppKey:(NSString *)appKey appSecret:(NSString *)appSecret userAgent:(NSString *)userAgent {
   return [self initWithAppKey:appKey appSecret:appSecret userAgent:userAgent asMemberId:nil];
 }

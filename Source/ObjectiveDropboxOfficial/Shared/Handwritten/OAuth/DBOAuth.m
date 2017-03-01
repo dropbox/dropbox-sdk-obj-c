@@ -208,7 +208,7 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (BOOL)checkAndPresentPlatformSpecificAuth:(id<DBSharedApplication>)sharedApplication {
-#pragma unused(sharedApplication)
+  #pragma unused(sharedApplication)
   return NO;
 }
 
