@@ -84,6 +84,7 @@
 - (void)downloadToFileAgain:(void (^_Nonnull)())nextTest;
 - (void)downloadToFileError:(void (^_Nonnull)())nextTest;
 - (void)downloadToMemory:(void (^_Nonnull)())nextTest;
+- (void)downloadToMemoryWithRange:(void (^_Nonnull)())nextTest;
 - (void)uploadFile:(void (^_Nonnull)())nextTest;
 - (void)uploadStream:(void (^_Nonnull)())nextTest;
 - (void)listFolderLongpollAndTrigger:(void (^_Nonnull)())nextTest;

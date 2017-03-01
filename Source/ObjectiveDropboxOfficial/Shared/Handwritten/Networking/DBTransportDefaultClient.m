@@ -139,14 +139,31 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 #pragma mark - Download-style request (NSURL)
 
-- (DBDownloadUrlTaskImpl *)requestDownload:(DBRoute *)route
-                                       arg:(id<DBSerializable>)arg
-                                 overwrite:(BOOL)overwrite
-                               destination:(NSURL *)destination {
+- (DBDownloadUrlTask *)requestDownload:(DBRoute *)route
+                                   arg:(id<DBSerializable>)arg
+                             overwrite:(BOOL)overwrite
+                           destination:(NSURL *)destination {
+  return [self requestDownload:route
+                           arg:arg
+                     overwrite:overwrite
+                   destination:destination
+               byteOffsetStart:nil
+                 byteOffsetEnd:nil];
+}
+
+- (DBDownloadUrlTask *)requestDownload:(DBRoute *)route
+                                   arg:(id<DBSerializable>)arg
+                             overwrite:(BOOL)overwrite
+                           destination:(NSURL *)destination
+                       byteOffsetStart:(NSNumber *)byteOffsetStart
+                         byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs
+                                         accessToken:self.accessToken
+                                       serializedArg:serializedArg
+                                     byteOffsetStart:byteOffsetStart
+                                       byteOffsetEnd:byteOffsetEnd];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
@@ -164,11 +181,21 @@ static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_ob
 
 #pragma mark - Download-style request (NSData)
 
-- (DBDownloadDataTaskImpl *)requestDownload:(DBRoute *)route arg:(id<DBSerializable>)arg {
+- (DBDownloadDataTask *)requestDownload:(DBRoute *)route arg:(id<DBSerializable>)arg {
+  return [self requestDownload:route arg:arg byteOffsetStart:nil byteOffsetEnd:nil];
+}
+
+- (DBDownloadDataTask *)requestDownload:(DBRoute *)route
+                                    arg:(id<DBSerializable>)arg
+                        byteOffsetStart:(NSNumber *)byteOffsetStart
+                          byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSURL *requestUrl = [[self class] urlWithRoute:route];
   NSString *serializedArg = [[self class] serializeStringWithRoute:route routeArg:arg];
-  NSDictionary *headers =
-      [self headersWithRouteInfo:route.attrs accessToken:self.accessToken serializedArg:serializedArg];
+  NSDictionary *headers = [self headersWithRouteInfo:route.attrs
+                                         accessToken:self.accessToken
+                                       serializedArg:serializedArg
+                                     byteOffsetStart:byteOffsetStart
+                                       byteOffsetEnd:byteOffsetEnd];
 
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 

@@ -134,6 +134,11 @@ def _get_client_args():
         + 'overwrite conflicting file at destination. `NO` will take no action, resulting in an `NSError` '
         + 'returned to the response handler in the event of a file conflict.')
 
+    download_range_start_doc = ('For partial file download. Download file beginning from this starting byte'
+        + ' position. Must include valid end range value.')
+    download_range_end_doc = ('For partial file download. Download file up until this ending byte position.'
+        + ' Must include valid start range value.')
+
     client_args = {
         'upload': [
             ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSURL * _Nonnull', input_doc.format('NSURL *')), ], ]),
@@ -143,7 +148,13 @@ def _get_client_args():
         'download': [
             ('download_url', ['Url', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
                 ('destination', 'destination', 'NSURL * _Nonnull', dest_doc), ], ]),
+            ('download_url', ['Url', [('overwrite', 'overwrite', 'BOOL', overwrite_doc),
+                ('destination', 'destination', 'NSURL * _Nonnull', dest_doc),
+                ('byteOffsetStart', 'byteOffsetStart', 'NSNumber * _Nonnull', download_range_start_doc),
+                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber * _Nonnull', download_range_end_doc)], ]),
             ('download_data', ['Data', []]),
+            ('download_data', ['Data', [('byteOffsetStart', 'byteOffsetStart', 'NSNumber * _Nonnull', download_range_start_doc),
+                ('byteOffsetEnd', 'byteOffsetEnd', 'NSNumber * _Nonnull', download_range_end_doc)]]),
         ],
     }
 

@@ -75,10 +75,35 @@
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
+- (DBDownloadUrlTask *)docsDownloadUrl:(NSString *)docId
+                          exportFormat:(DBPAPERExportFormat *)exportFormat
+                             overwrite:(BOOL)overwrite
+                           destination:(NSURL *)destination
+                       byteOffsetStart:(NSNumber *)byteOffsetStart
+                         byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBPAPERRouteObjects.DBPAPERDocsDownload;
+  DBPAPERPaperDocExport *arg = [[DBPAPERPaperDocExport alloc] initWithDocId:docId exportFormat:exportFormat];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
 - (DBDownloadDataTask *)docsDownloadData:(NSString *)docId exportFormat:(DBPAPERExportFormat *)exportFormat {
   DBRoute *route = DBPAPERRouteObjects.DBPAPERDocsDownload;
   DBPAPERPaperDocExport *arg = [[DBPAPERPaperDocExport alloc] initWithDocId:docId exportFormat:exportFormat];
   return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)docsDownloadData:(NSString *)docId
+                            exportFormat:(DBPAPERExportFormat *)exportFormat
+                         byteOffsetStart:(NSNumber *)byteOffsetStart
+                           byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBPAPERRouteObjects.DBPAPERDocsDownload;
+  DBPAPERPaperDocExport *arg = [[DBPAPERPaperDocExport alloc] initWithDocId:docId exportFormat:exportFormat];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
 - (DBRpcTask *)docsFolderUsersList:(NSString *)docId {

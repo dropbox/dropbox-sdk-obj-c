@@ -13,6 +13,12 @@
                                    accessToken:(NSString * _Nonnull)accessToken
                                  serializedArg:(NSString * _Nonnull)serializedArg;
 
+- (NSDictionary * _Nonnull)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> * _Nonnull)routeAttributes
+                                   accessToken:(NSString * _Nonnull)accessToken
+                                 serializedArg:(NSString * _Nonnull)serializedArg
+                               byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
+                                 byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+
 + (NSURLRequest * _Nonnull)requestWithHeaders:(NSDictionary * _Nonnull)httpHeaders
                                          url:(NSURL * _Nonnull)url
                                      content:(NSData * _Nullable)content

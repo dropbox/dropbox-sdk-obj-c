@@ -84,6 +84,29 @@ docsDownloadUrl:(NSString * _Nonnull)docId
 ///
 /// Exports and downloads Paper doc either as HTML or markdown.
 ///
+/// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
+/// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
+/// a file conflict.
+/// @param destination The file url of the desired download output location.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadUrlTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
+docsDownloadUrl:(NSString * _Nonnull)docId
+   exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat
+      overwrite:(BOOL)overwrite
+    destination:(NSURL * _Nonnull)destination
+byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
+  byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
+
+///
+/// Exports and downloads Paper doc either as HTML or markdown.
+///
 ///
 /// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
 /// a `DBPAPERDocLookupError` object on failure.
@@ -91,6 +114,23 @@ docsDownloadUrl:(NSString * _Nonnull)docId
 - (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
 docsDownloadData:(NSString * _Nonnull)docId
     exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat;
+
+///
+/// Exports and downloads Paper doc either as HTML or markdown.
+///
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
+/// include valid end range value.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
+/// start range value.
+///
+/// @return Through the response callback, the caller will receive a `DBPAPERPaperDocExportResult` object on success or
+/// a `DBPAPERDocLookupError` object on failure.
+///
+- (DBDownloadDataTask<DBPAPERPaperDocExportResult *, DBPAPERDocLookupError *> * _Nonnull)
+docsDownloadData:(NSString * _Nonnull)docId
+    exportFormat:(DBPAPERExportFormat * _Nonnull)exportFormat
+ byteOffsetStart:(NSNumber * _Nonnull)byteOffsetStart
+   byteOffsetEnd:(NSNumber * _Nonnull)byteOffsetEnd;
 
 ///
 /// Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private

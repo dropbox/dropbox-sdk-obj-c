@@ -46,6 +46,18 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 - (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
                            accessToken:(NSString *)accessToken
                          serializedArg:(NSString *)serializedArg {
+  return [self headersWithRouteInfo:routeAttributes
+                        accessToken:accessToken
+                      serializedArg:serializedArg
+                    byteOffsetStart:nil
+                      byteOffsetEnd:nil];
+}
+
+- (NSDictionary *)headersWithRouteInfo:(NSDictionary<NSString *, NSString *> *)routeAttributes
+                           accessToken:(NSString *)accessToken
+                         serializedArg:(NSString *)serializedArg
+                       byteOffsetStart:(NSNumber *)byteOffsetStart
+                         byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   NSString *routeStyle = routeAttributes[@"style"];
   NSString *routeHost = routeAttributes[@"host"];
   NSString *routeAuth = routeAttributes[@"auth"];
@@ -86,6 +98,12 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
     if (serializedArg) {
       [headers setObject:serializedArg forKey:@"Dropbox-API-Arg"];
     }
+  }
+
+  if (byteOffsetStart && byteOffsetEnd) {
+    NSString *bytesRangeSpecifier =
+        [NSString stringWithFormat:@"bytes=%d-%d", [byteOffsetStart integerValue], [byteOffsetEnd integerValue]];
+    [headers setObject:bytesRangeSpecifier forKey:@"Range"];
   }
 
   return headers;

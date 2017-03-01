@@ -99,8 +99,11 @@ void MyLog(NSString *format, ...) {
   void (^uploadFile)() = ^{
     [filesTests uploadFile:uploadStream];
   };
+  void (^downloadToMemoryWithRange)() = ^{
+    [filesTests downloadToMemoryWithRange:uploadFile];
+  };
   void (^downloadToMemory)() = ^{
-    [filesTests downloadToMemory:uploadFile];
+    [filesTests downloadToMemory:downloadToMemoryWithRange];
   };
   void (^downloadToFileAgain)() = ^{
     [filesTests downloadToFileAgain:downloadToMemory];
@@ -937,6 +940,8 @@ void MyLog(NSString *format, ...) {
           NSString *dataStr = [[NSString alloc] initWithData:fileContents encoding:NSUTF8StringEncoding];
           [TestFormat printOffset:@"File contents:"];
           MyLog(@"%@\n", dataStr);
+          NSUInteger len = [fileContents length];
+          MyLog(@"\nFile size: %lld\n", (long)len);
           [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
           nextTest();
         } else {
@@ -947,6 +952,30 @@ void MyLog(NSString *format, ...) {
                    totalBytesSent:totalBytesSent
          totalBytesExpectedToSend:totalBytesExpectedToSend];
   }];
+}
+
+- (void)downloadToMemoryWithRange:(void (^)())nextTest {
+  [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+  [[[_tester.files downloadData:_tester.testData.testFilePath byteOffsetStart:@(0) byteOffsetEnd:@(10)]
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
+      if (result) {
+        MyLog(@"%@\n", result);
+        [TestFormat printOffset:@"Number of bytes (expecting 11)"];
+        NSUInteger len = [fileContents length];
+        MyLog(@"\nFile size: %lld\n", (long)len);
+        if (len != 11) {
+          [TestFormat abort:error routeError:routeError];
+        }
+        [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+        nextTest();
+      } else {
+        [TestFormat abort:error routeError:routeError];
+      }
+    } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+      [TestFormat printSentProgress:bytesSent
+                     totalBytesSent:totalBytesSent
+           totalBytesExpectedToSend:totalBytesExpectedToSend];
+    }];
 }
 
 - (void)uploadFile:(void (^)())nextTest {

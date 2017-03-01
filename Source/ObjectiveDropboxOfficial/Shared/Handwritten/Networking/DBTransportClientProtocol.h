@@ -101,6 +101,27 @@ NS_ASSUME_NONNULL_BEGIN
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination;
 
+///
+/// Request to Download-style endpoint (via `NSURL` output type).
+///
+/// @param route The static `DBRoute` instance associated with the route. Contains information like route host, response
+/// type, etc.
+/// @param arg The unserialized route argument to pass. Must conform to the `DBSerializable` protocol.
+/// @param overwrite Whether the outputted file should overwrite in the event of a name collision.
+/// @param destination Location to which output content should be downloaded.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position.
+///
+/// @return A `DBDownloadUrlTask` where response and progress handlers can be added, and the request can be halted or
+/// cancelled.
+///
+- (DBDownloadUrlTask *)requestDownload:(DBRoute *)route
+                                   arg:(id<DBSerializable> _Nullable)arg
+                             overwrite:(BOOL)overwrite
+                           destination:(NSURL *)destination
+                       byteOffsetStart:(NSNumber * _Nullable)byteOffsetStart
+                         byteOffsetEnd:(NSNumber * _Nullable)byteOffsetEnd;
+
 #pragma mark - Download-style request (NSData)
 
 ///
@@ -115,6 +136,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// cancelled. Note, this return type is different from the return type of `requestDownload:arg:overwrite:destination`.
 ///
 - (DBDownloadDataTask *)requestDownload:(DBRoute *)route arg:(id<DBSerializable> _Nullable)arg;
+
+///
+/// Request to Download-style endpoint (with `NSData` output type).
+///
+/// @param route The static `DBRoute` instance associated with the route. Contains information like route host, response
+/// type, etc.
+/// @param arg The unserialized route argument to pass. Must conform to the `DBSerializable` protocol. Note, this return
+/// type is different from the return type of `requestDownload:arg`.
+/// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position.
+/// @param byteOffsetEnd For partial file download. Download file up until this ending byte position.
+///
+/// @return A `DBDownloadDataTask` where response and progress handlers can be added, and the request can be halted or
+/// cancelled. Note, this return type is different from the return type of `requestDownload:arg:overwrite:destination`.
+///
+- (DBDownloadDataTask *)requestDownload:(DBRoute *)route
+                                    arg:(id<DBSerializable> _Nullable)arg
+                        byteOffsetStart:(NSNumber * _Nullable)byteOffsetStart
+                          byteOffsetEnd:(NSNumber * _Nullable)byteOffsetEnd;
 
 @end
 
