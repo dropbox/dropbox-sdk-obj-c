@@ -45,7 +45,7 @@
 
 @implementation DBRpcTask
 
-- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock {
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -53,7 +53,7 @@
                userInfo:nil];
 }
 
-- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
 #pragma unused(responseBlock)
 #pragma unused(queue)
   @throw [NSException
@@ -79,7 +79,7 @@
                userInfo:nil];
 }
 
-- (DBRpcResponseBlockStorage)storageBlockWithResponseBlock:(DBRpcResponseBlock)responseBlock {
+- (DBRpcResponseBlockStorage)storageBlockWithResponseBlock:(DBRpcResponseBlockImpl)responseBlock {
   DBRpcResponseBlockStorage storageBlock = ^BOOL(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -118,7 +118,7 @@
 
 @implementation DBUploadTask
 
-- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock {
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -126,7 +126,7 @@
                userInfo:nil];
 }
 
-- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
 #pragma unused(responseBlock)
 #pragma unused(queue)
   @throw [NSException
@@ -152,7 +152,7 @@
                userInfo:nil];
 }
 
-- (DBUploadResponseBlockStorage)storageBlockWithResponseBlock:(DBUploadResponseBlock)responseBlock {
+- (DBUploadResponseBlockStorage)storageBlockWithResponseBlock:(DBUploadResponseBlockImpl)responseBlock {
   DBUploadResponseBlockStorage storageBlock = ^BOOL(NSData *data, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -191,7 +191,7 @@
 
 @implementation DBDownloadUrlTask
 
-- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock {
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -199,7 +199,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
 #pragma unused(responseBlock)
 #pragma unused(queue)
   @throw [NSException
@@ -225,7 +225,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadUrlResponseBlock)responseBlock {
+- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock {
   DBDownloadResponseBlockStorage storageBlock = ^BOOL(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;
@@ -296,7 +296,7 @@
 
 @implementation DBDownloadDataTask
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock {
 #pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
@@ -304,7 +304,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
 #pragma unused(responseBlock)
 #pragma unused(queue)
   @throw [NSException
@@ -330,7 +330,7 @@
                userInfo:nil];
 }
 
-- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadDataResponseBlock)responseBlock {
+- (DBDownloadResponseBlockStorage)storageBlockWithResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock {
   DBDownloadResponseBlockStorage storageBlock = ^BOOL(NSURL *location, NSURLResponse *response, NSError *clientError) {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     int statusCode = (int)httpResponse.statusCode;

@@ -19,7 +19,7 @@
 @interface DBOAuthManager : NSObject
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
-@property (nonatomic) NSLocale * _Nonnull locale;
+@property (nonatomic, strong) NSLocale * _Nonnull locale;
 
 #pragma mark - Shared instance accessors and mutators
 

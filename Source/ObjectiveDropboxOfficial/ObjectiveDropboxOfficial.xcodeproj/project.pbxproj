@@ -1212,8 +1212,8 @@
 		F2A2DBAE1E578C3F001D8449 /* DBOfficialAppConnector-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2DBAA1E578C3F001D8449 /* DBOfficialAppConnector-iOS.m */; };
 		F2A2DBAF1E578C3F001D8449 /* DBOpenWithInfo-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2DBAB1E578C3F001D8449 /* DBOpenWithInfo-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2A2DBB01E578C3F001D8449 /* DBOpenWithInfo-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo-iOS.m */; };
-		F2FB65101E317406004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2FB65111E31740C004605E4 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2C187EB1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; };
+		F2C187EC1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1229,8 +1229,6 @@
 		F235B52B1E29915400144F8B /* DBClientsManager+DesktopAuth-macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBClientsManager+DesktopAuth-macOS.m"; sourceTree = "<group>"; };
 		F235B52C1E29915400144F8B /* DBSDKImports-macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBSDKImports-macOS.h"; sourceTree = "<group>"; };
 		F235B52D1E29915400144F8B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
-		F235B5361E29917E00144F8B /* ObjectiveDropboxOfficialLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficialLib.h; sourceTree = "<group>"; };
 		F24169451E523FD30038E306 /* DBTransportDefaultConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTransportDefaultConfig.h; sourceTree = "<group>"; };
 		F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTransportDefaultConfig.m; sourceTree = "<group>"; };
 		F24169491E5247D60038E306 /* DBTransportBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTransportBaseConfig.h; sourceTree = "<group>"; };
@@ -1835,6 +1833,8 @@
 		F2A2DBAA1E578C3F001D8449 /* DBOfficialAppConnector-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOfficialAppConnector-iOS.m"; sourceTree = "<group>"; };
 		F2A2DBAB1E578C3F001D8449 /* DBOpenWithInfo-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBOpenWithInfo-iOS.h"; sourceTree = "<group>"; };
 		F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOpenWithInfo-iOS.m"; sourceTree = "<group>"; };
+		F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
+		F2C187EA1E6666A50042ABE6 /* ObjectiveDropboxOfficialLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficialLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1901,9 +1901,8 @@
 		F235B5341E29917E00144F8B /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				F235B5351E29917E00144F8B /* ObjectiveDropboxOfficial.h */,
-				F235B5361E29917E00144F8B /* ObjectiveDropboxOfficialLib.h */,
 				F2A2CE741E562817001D8449 /* Internal */,
+				F2C187E81E6666A50042ABE6 /* Umbrella */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -2830,6 +2829,15 @@
 			path = OpenWith;
 			sourceTree = "<group>";
 		};
+		F2C187E81E6666A50042ABE6 /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */,
+				F2C187EA1E6666A50042ABE6 /* ObjectiveDropboxOfficialLib.h */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3271,6 +3279,7 @@
 				F2A2D7911E56DEAF001D8449 /* DBFILESAddPropertiesError.h in Headers */,
 				F2A2D9591E56DEAF001D8449 /* DBSHARINGListFolderMembersArgs.h in Headers */,
 				F2A2D7B71E56DEAF001D8449 /* DBFILESDownloadError.h in Headers */,
+				F2C187EB1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2A2D91D1E56DEAF001D8449 /* DBSHARINGGetSharedLinksArg.h in Headers */,
 				F2A2D7CB1E56DEAF001D8449 /* DBFILESGetTemporaryLinkArg.h in Headers */,
 				F2A2D8831E56DEAF001D8449 /* DBPAPERFoldersContainingPaperDoc.h in Headers */,
@@ -3372,7 +3381,6 @@
 				F29788FD1E03692F00876A73 /* DBOAuthResult.h in Headers */,
 				F29788CB1E03692F00876A73 /* DBSDKImportsShared.h in Headers */,
 				F29788F31E03692F00876A73 /* DBTransportBaseClient.h in Headers */,
-				F2FB65111E31740C004605E4 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2A2CEA41E563004001D8449 /* DBCustomDatatypes.h in Headers */,
 				F297890F1E03692F00876A73 /* DBCustomRoutes.h in Headers */,
 				F2A2CE9C1E562E7B001D8449 /* DBCustomTasks.h in Headers */,
@@ -3624,6 +3632,7 @@
 				F2A2D8541E56DEAF001D8449 /* DBFILESUploadSessionFinishBatchJobStatus.h in Headers */,
 				F2A2D87A1E56DEAF001D8449 /* DBPAPERCursor.h in Headers */,
 				F2A2D97C1E56DEB0001D8449 /* DBSHARINGModifySharedLinkSettingsArgs.h in Headers */,
+				F2C187EC1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2A2D7E61E56DEAF001D8449 /* DBFILESListFolderResult.h in Headers */,
 				F2A2DA421E56DEB0001D8449 /* DBTEAMGroupSelectorError.h in Headers */,
 				F2A2D8E81E56DEAF001D8449 /* DBSHARINGAddMemberSelectorError.h in Headers */,
@@ -3927,7 +3936,6 @@
 				F29788FE1E03692F00876A73 /* DBOAuthResult.h in Headers */,
 				F29788CC1E03692F00876A73 /* DBSDKImportsShared.h in Headers */,
 				F29788F41E03692F00876A73 /* DBTransportBaseClient.h in Headers */,
-				F2FB65101E317406004605E4 /* ObjectiveDropboxOfficial.h in Headers */,
 				F2A2CEA71E5634E8001D8449 /* DBHandlerTypes.h in Headers */,
 				F29789101E03692F00876A73 /* DBCustomRoutes.h in Headers */,
 				F2A2CE9E1E562E90001D8449 /* DBCustomTasks.h in Headers */,

@@ -27,11 +27,11 @@
   return self;
 }
 
-- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock {
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addRpcResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
   return self;
@@ -65,11 +65,11 @@
   return self;
 }
 
-- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock {
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addUploadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
@@ -108,11 +108,11 @@
   return self;
 }
 
-- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock {
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 
@@ -147,11 +147,11 @@
   return self;
 }
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
-- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlock)responseBlock queue:(NSOperationQueue *)queue {
+- (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
   [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
 

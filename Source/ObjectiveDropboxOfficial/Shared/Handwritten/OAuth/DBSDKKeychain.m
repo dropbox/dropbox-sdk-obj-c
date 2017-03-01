@@ -410,6 +410,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     [[unauthorizedClient.authRoutes tokenFromOauth1:accessToken oauth1TokenSecret:accessTokenSecret]
         setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError,
                            DBRequestError *error) {
+#pragma unused(routeError)
           if (result) {
             NSString *oauth2Token = result.oauth2Token;
             [tokenConversionResultsLock lock];
