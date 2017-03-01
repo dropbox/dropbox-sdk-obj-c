@@ -106,8 +106,6 @@ static const int timeoutInSec = 200;
 
           // store commit info for this file
           [uploadData.finishArgs addObject:finishArg];
-
-          [self executeProgressHandler:uploadData startBytes:0 endBytes:fileSize];
         } else {
           uploadData.fileUrlsToRequestErrors[fileUrl] = error;
         }
@@ -117,7 +115,7 @@ static const int timeoutInSec = 200;
       }
                  queue:uploadData.queue]
       setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-        [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+        [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
       }];
 
   [uploadData.taskStorage addUploadTask:task];
@@ -159,7 +157,7 @@ static const int timeoutInSec = 200;
       }
                  queue:chunkUploadContinueQueue]
       setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-        [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+        [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
       }];
 
   [uploadData.taskStorage addUploadTask:task];
@@ -236,9 +234,7 @@ static const int timeoutInSec = 200;
   __block DBUploadTask *task =
       [[[self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
           setResponseBlock:^(DBNilObject *result, DBFILESUploadSessionLookupError *routeError, DBRequestError *error) {
-            if (result) {
-              [self executeProgressHandler:uploadData startBytes:startBytes endBytes:endBytes];
-            } else if (!routeError) {
+            if (!result && !routeError) {
               if ([error isRateLimitError]) {
                 DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
                 double backoffInSeconds = [rateLimitError.backoff doubleValue];
@@ -268,7 +264,7 @@ static const int timeoutInSec = 200;
                 uploadData.fileUrlsToRequestErrors[fileUrl] = error;
                 *shouldContinue = NO;
               }
-            } else {
+            } else if (!result) {
               // if we error here, there's almost certainly a bug with the SDK
               uploadData.fileUrlsToRequestErrors[fileUrl] = error;
               *shouldContinue = NO;
@@ -278,7 +274,9 @@ static const int timeoutInSec = 200;
           }
                      queue:chunkUploadResponseQueue]
           setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-            [self executeProgressHandler:uploadData startBytes:0 endBytes:bytesWritten];
+            if (retryCount == 0) {
+              [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
+            }
           }];
 
   [uploadData.taskStorage addUploadTask:task];
@@ -357,12 +355,12 @@ static const int timeoutInSec = 200;
   // wait for all upload calls to complete and then batch "finish" all uploaded files
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-    NSArray<DBFILESUploadSessionFinishArg *> *sortedFinishArgs =
-        [uploadData.finishArgs sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+    NSMutableArray<DBFILESUploadSessionFinishArg *> *sortedFinishArgs =
+        [[uploadData.finishArgs sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
           DBFILESUploadSessionFinishArg *first = (DBFILESUploadSessionFinishArg *)a;
           DBFILESUploadSessionFinishArg *second = (DBFILESUploadSessionFinishArg *)b;
           return [first.commit.path compare:second.commit.path];
-        }];
+        }] mutableCopy];
 
     uploadData.finishArgs = sortedFinishArgs;
 
@@ -383,15 +381,13 @@ static const int timeoutInSec = 200;
   });
 }
 
-- (void)executeProgressHandler:(DBBatchUploadData *)uploadData
-                    startBytes:(NSUInteger)startBytes
-                      endBytes:(NSUInteger)endBytes {
+- (void)executeProgressHandler:(DBBatchUploadData *)uploadData amountUploaded:(NSUInteger)amountUploaded {
   if (!uploadData.progressBlock) {
     return;
   }
-  NSUInteger amountUploaded = endBytes - startBytes;
-  uploadData.totalUploadedSoFar += amountUploaded;
+
   [uploadData.queue addOperationWithBlock:^{
+    uploadData.totalUploadedSoFar += amountUploaded;
     uploadData.progressBlock(amountUploaded, uploadData.totalUploadedSoFar, uploadData.totalUploadSize);
   }];
 }

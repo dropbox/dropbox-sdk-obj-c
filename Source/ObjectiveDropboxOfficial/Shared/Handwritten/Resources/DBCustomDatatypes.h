@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSUInteger totalUploadSize;
 
 /// The total size of all the file content upload so far. Used to return progress data to the client.
-@property (atomic) NSUInteger totalUploadedSoFar;
+@property (nonatomic) NSUInteger totalUploadedSoFar;
 
 /// The flag that determines whether upload continues or not.
 @property (atomic) BOOL cancel;
