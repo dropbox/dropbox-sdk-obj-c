@@ -11,6 +11,10 @@
 		F235B5241E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B51E1E29913600144F8B /* DBClientsManager+MobileAuth-iOS.m */; };
 		F235B52F1E29915400144F8B /* DBOAuthDesktop-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B5291E29915400144F8B /* DBOAuthDesktop-macOS.m */; };
 		F235B5311E29915400144F8B /* DBClientsManager+DesktopAuth-macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F235B52B1E29915400144F8B /* DBClientsManager+DesktopAuth-macOS.m */; };
+		F239DFCF1E68DA1700417314 /* DBSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F239DFCD1E68DA1700417314 /* DBSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F239DFD01E68DA1700417314 /* DBSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F239DFCD1E68DA1700417314 /* DBSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F239DFD11E68DA1700417314 /* DBSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F239DFCE1E68DA1700417314 /* DBSDKConstants.m */; };
+		F239DFD21E68DA1700417314 /* DBSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F239DFCE1E68DA1700417314 /* DBSDKConstants.m */; };
 		F24169471E523FEB0038E306 /* DBTransportDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */; };
 		F24169481E523FEB0038E306 /* DBTransportDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */; };
 		F241694E1E5247D60038E306 /* DBTransportBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F241694A1E5247D60038E306 /* DBTransportBaseConfig.m */; };
@@ -89,7 +93,6 @@
 		F2A2CE861E5628BC001D8449 /* DBTasks+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE7B1E562817001D8449 /* DBTasks+Protected.h */; };
 		F2A2CE871E5628C1001D8449 /* DBTasksImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE7C1E562817001D8449 /* DBTasksImpl.h */; };
 		F2A2CE8A1E5628CC001D8449 /* DBChunkInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE801E562817001D8449 /* DBChunkInputStream.h */; };
-		F2A2CE8B1E5628CF001D8449 /* DBSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE811E562817001D8449 /* DBSDKConstants.h */; };
 		F2A2CE8C1E5628D3001D8449 /* DBClientsManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE751E562817001D8449 /* DBClientsManager+Protected.h */; };
 		F2A2CE8D1E5628F1001D8449 /* DBClientsManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE751E562817001D8449 /* DBClientsManager+Protected.h */; };
 		F2A2CE8E1E5628F4001D8449 /* DBDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE771E562817001D8449 /* DBDelegate.h */; };
@@ -99,7 +102,6 @@
 		F2A2CE921E562901001D8449 /* DBTasks+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE7B1E562817001D8449 /* DBTasks+Protected.h */; };
 		F2A2CE931E56290B001D8449 /* DBTasksImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE7C1E562817001D8449 /* DBTasksImpl.h */; };
 		F2A2CE961E562917001D8449 /* DBChunkInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE801E562817001D8449 /* DBChunkInputStream.h */; };
-		F2A2CE971E56291A001D8449 /* DBSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE811E562817001D8449 /* DBSDKConstants.h */; };
 		F2A2CE9A1E562E46001D8449 /* DBCustomTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2CE991E562E46001D8449 /* DBCustomTasks.m */; };
 		F2A2CE9B1E562E46001D8449 /* DBCustomTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A2CE991E562E46001D8449 /* DBCustomTasks.m */; };
 		F2A2CE9C1E562E7B001D8449 /* DBCustomTasks.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A2CE981E562DFF001D8449 /* DBCustomTasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1231,6 +1233,8 @@
 		F235B52B1E29915400144F8B /* DBClientsManager+DesktopAuth-macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBClientsManager+DesktopAuth-macOS.m"; sourceTree = "<group>"; };
 		F235B52C1E29915400144F8B /* DBSDKImports-macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBSDKImports-macOS.h"; sourceTree = "<group>"; };
 		F235B52D1E29915400144F8B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F239DFCD1E68DA1700417314 /* DBSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSDKConstants.h; sourceTree = "<group>"; };
+		F239DFCE1E68DA1700417314 /* DBSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBSDKConstants.m; sourceTree = "<group>"; };
 		F24169451E523FD30038E306 /* DBTransportDefaultConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTransportDefaultConfig.h; sourceTree = "<group>"; };
 		F24169461E523FEB0038E306 /* DBTransportDefaultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTransportDefaultConfig.m; sourceTree = "<group>"; };
 		F24169491E5247D60038E306 /* DBTransportBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTransportBaseConfig.h; sourceTree = "<group>"; };
@@ -1281,7 +1285,6 @@
 		F2A2CE7B1E562817001D8449 /* DBTasks+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBTasks+Protected.h"; sourceTree = "<group>"; };
 		F2A2CE7C1E562817001D8449 /* DBTasksImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTasksImpl.h; sourceTree = "<group>"; };
 		F2A2CE801E562817001D8449 /* DBChunkInputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBChunkInputStream.h; sourceTree = "<group>"; };
-		F2A2CE811E562817001D8449 /* DBSDKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBSDKConstants.h; sourceTree = "<group>"; };
 		F2A2CE981E562DFF001D8449 /* DBCustomTasks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBCustomTasks.h; sourceTree = "<group>"; };
 		F2A2CE991E562E46001D8449 /* DBCustomTasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCustomTasks.m; sourceTree = "<group>"; };
 		F2A2CE9F1E562F7E001D8449 /* DBCustomDatatypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBCustomDatatypes.h; sourceTree = "<group>"; };
@@ -2012,6 +2015,8 @@
 			isa = PBXGroup;
 			children = (
 				F29781971E03692800876A73 /* DBChunkInputStream.m */,
+				F239DFCD1E68DA1700417314 /* DBSDKConstants.h */,
+				F239DFCE1E68DA1700417314 /* DBSDKConstants.m */,
 				F2A2CE9F1E562F7E001D8449 /* DBCustomDatatypes.h */,
 				F2A2CEA01E562FEB001D8449 /* DBCustomDatatypes.m */,
 				F29781991E03692800876A73 /* DBCustomRoutes.h */,
@@ -2050,7 +2055,6 @@
 			isa = PBXGroup;
 			children = (
 				F2A2CE801E562817001D8449 /* DBChunkInputStream.h */,
-				F2A2CE811E562817001D8449 /* DBSDKConstants.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3198,6 +3202,7 @@
 				F2A2D9451E56DEAF001D8449 /* DBSHARINGListFileMembersBatchResult.h in Headers */,
 				F2A2D93B1E56DEAF001D8449 /* DBSHARINGLinkPermission.h in Headers */,
 				F2A2D7B31E56DEAF001D8449 /* DBFILESDimensions.h in Headers */,
+				F239DFCF1E68DA1700417314 /* DBSDKConstants.h in Headers */,
 				F2A2D9031E56DEAF001D8449 /* DBSHARINGFilePermission.h in Headers */,
 				F2A2D9751E56DEB0001D8449 /* DBSHARINGMemberPolicy.h in Headers */,
 				F2A2D9191E56DEAF001D8449 /* DBSHARINGGetSharedLinkFileError.h in Headers */,
@@ -3396,7 +3401,6 @@
 				F2A2CE861E5628BC001D8449 /* DBTasks+Protected.h in Headers */,
 				F2A2CE871E5628C1001D8449 /* DBTasksImpl.h in Headers */,
 				F2A2CE8A1E5628CC001D8449 /* DBChunkInputStream.h in Headers */,
-				F2A2CE8B1E5628CF001D8449 /* DBSDKConstants.h in Headers */,
 				F2A2CEA91E565678001D8449 /* DBTransportBaseClient+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3695,6 +3699,7 @@
 				F2A2DB681E56DEB1001D8449 /* DBSDKImportsGenerated.h in Headers */,
 				F2A2D96C1E56DEB0001D8449 /* DBSHARINGListSharedLinksError.h in Headers */,
 				F2A2DAB21E56DEB0001D8449 /* DBTEAMMembersRecoverError.h in Headers */,
+				F239DFD01E68DA1700417314 /* DBSDKConstants.h in Headers */,
 				F2A2D8A41E56DEAF001D8449 /* DBPAPERListUsersOnPaperDocContinueArgs.h in Headers */,
 				F2A2D8781E56DEAF001D8449 /* DBPAPERAddPaperDocUserResult.h in Headers */,
 				F2A2DB781E56DEB1001D8449 /* DBAUTHRoutes.h in Headers */,
@@ -3952,7 +3957,6 @@
 				F2A2CE921E562901001D8449 /* DBTasks+Protected.h in Headers */,
 				F2A2CE931E56290B001D8449 /* DBTasksImpl.h in Headers */,
 				F2A2CE961E562917001D8449 /* DBChunkInputStream.h in Headers */,
-				F2A2CE971E56291A001D8449 /* DBSDKConstants.h in Headers */,
 				F2A2CEAA1E56567C001D8449 /* DBTransportBaseClient+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4079,6 +4083,7 @@
 				F29788E91E03692F00876A73 /* DBTasksImpl.m in Sources */,
 				F29788ED1E03692F00876A73 /* DBTasksStorage.m in Sources */,
 				F2A2D86F1E56DEAF001D8449 /* DBPaperObjects.m in Sources */,
+				F239DFD11E68DA1700417314 /* DBSDKConstants.m in Sources */,
 				F2A2DB911E56DEB1001D8449 /* DBAUTHRouteObjects.m in Sources */,
 				F2A2DB991E56DEB1001D8449 /* DBPAPERRouteObjects.m in Sources */,
 				F29788C51E03692F00876A73 /* DBUserClient.m in Sources */,
@@ -4135,6 +4140,7 @@
 				F29788DA1E03692F00876A73 /* DBRequestErrors.m in Sources */,
 				F29788CA1E03692F00876A73 /* DBClientsManager.m in Sources */,
 				F2A2DB861E56DEB1001D8449 /* DBSHARINGRoutes.m in Sources */,
+				F239DFD21E68DA1700417314 /* DBSDKConstants.m in Sources */,
 				F29788EA1E03692F00876A73 /* DBTasksImpl.m in Sources */,
 				F29788EE1E03692F00876A73 /* DBTasksStorage.m in Sources */,
 				F2A2D8701E56DEAF001D8449 /* DBPaperObjects.m in Sources */,

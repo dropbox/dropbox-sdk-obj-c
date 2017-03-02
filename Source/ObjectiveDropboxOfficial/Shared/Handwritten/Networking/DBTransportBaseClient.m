@@ -8,14 +8,13 @@
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
 #import "DBRequestErrors.h"
+#import "DBSDKConstants.h"
 #import "DBStoneBase.h"
 #import "DBTransportBaseClient.h"
 #import "DBTransportBaseConfig.h"
 
 #pragma mark - Internal serialization helpers
 
-static NSString *kV2SDKVersion = @"3.0.3";
-static NSString *kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
 @implementation DBTransportBaseClient

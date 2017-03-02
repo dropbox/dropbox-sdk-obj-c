@@ -4,13 +4,12 @@
 
 #import "DBDelegate.h"
 #import "DBFILESRouteObjects.h"
+#import "DBSDKConstants.h"
 #import "DBStoneBase.h"
 #import "DBTasksImpl.h"
 #import "DBTransportBaseClient+Internal.h"
 #import "DBTransportDefaultClient.h"
 #import "DBTransportDefaultConfig.h"
-
-static NSString const *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
 
 @implementation DBTransportDefaultClient {
   /// The delegate used to manage execution of all response / error code. By default, this

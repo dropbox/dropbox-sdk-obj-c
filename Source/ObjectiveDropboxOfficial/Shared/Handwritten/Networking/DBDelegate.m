@@ -357,7 +357,7 @@
 }
 
 - (NSString *)sessionIdWithSession:(NSURLSession *)session {
-  return session.configuration.identifier ?: kForegroundId;
+  return session.configuration.identifier ?: kForegroundSessionId;
 }
 
 - (DBSessionData *)sessionDataWithSession:(NSURLSession *)session {
