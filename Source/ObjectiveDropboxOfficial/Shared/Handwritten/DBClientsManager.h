@@ -114,12 +114,12 @@
 + (DBOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
 
 ///
-/// "Unlinks" the active user / team shared authorized client and clears all stored access tokens in `DBKeychain`.
+/// Sets to `nil` the active user / team shared authorized client and clears all stored access tokens in `DBKeychain`.
 ///
 + (void)unlinkAndResetClients;
 
 ///
-/// Only "unlinks" the active user / team shared authorized client but does not clear any stored access tokens in
+/// Sets to `nil` the active user / team shared authorized client but does not clear any stored access tokens in
 /// `DBKeychain`.
 ///
 + (void)resetClients;
