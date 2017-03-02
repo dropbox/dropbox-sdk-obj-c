@@ -74,7 +74,6 @@
 }
 
 - (void)viewWillAppear {
-  [self checkButtons];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

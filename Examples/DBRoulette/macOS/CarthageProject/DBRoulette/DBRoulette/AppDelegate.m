@@ -21,13 +21,17 @@ static NSTabViewController *tabViewController = nil;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   NSString *appKey = nil;
-  if (!appKey) {
+  NSString *registeredUrlToHandle = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"][0][@"CFBundleURLSchemes"][0];
+  if (!appKey || [registeredUrlToHandle containsString:@"<"]) {
     NSString *message = @"You need to set `appKey` variable in `AppDelegate.m`, as well as add to `Info.plist`, before you can use DBRoulette.";
     NSLog(@"%@", message);
     NSLog(@"Terminating...");
     exit(1);
   }
   [DBClientsManager setupWithAppKeyDesktop:appKey];
+
+  tabViewController = (NSTabViewController *)[[[NSApplication sharedApplication] windows] objectAtIndex:0].contentViewController;
+  [self checkAllButtons];
 }
 
 // generic launch handler
@@ -51,20 +55,20 @@ static NSTabViewController *tabViewController = nil;
       NSLog(@"Error: %@", authResult);
     }
   }
-  [tabViewController.childViewControllers[0] checkButtons];
-  [tabViewController.childViewControllers[1] checkButtons];
-}
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-  [NSApp activateIgnoringOtherApps:YES];
-  tabViewController = (NSTabViewController *)[NSApplication sharedApplication].mainWindow.contentViewController;
-  [tabViewController.childViewControllers[0] checkButtons];
-  [tabViewController.childViewControllers[1] checkButtons];
+  [self checkAllButtons];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
   // Insert code here to tear down your application
 }
 
+- (void)checkAllButtons {
+  if (tabViewController && tabViewController.childViewControllers[0]) {
+    [tabViewController.childViewControllers[0] checkButtons];
+  }
+  if (tabViewController && tabViewController.childViewControllers[1]) {
+    [tabViewController.childViewControllers[1] checkButtons];
+  }
+}
 
 @end

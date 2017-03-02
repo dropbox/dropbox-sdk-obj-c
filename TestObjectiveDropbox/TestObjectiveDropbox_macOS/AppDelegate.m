@@ -57,6 +57,9 @@ static ViewController *viewController = nil;
       [DBClientsManager setupWithTeamTransportConfigDesktop:transportConfigTeamManagement];
       break;
   }
+  viewController = (ViewController *)[[[NSApplication sharedApplication] windows] objectAtIndex:0].contentViewController;
+
+  [self checkButtons];
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
@@ -64,12 +67,6 @@ static ViewController *viewController = nil;
                                                      andSelector:@selector(handleAppleEvent:withReplyEvent:)
                                                    forEventClass:kInternetEventClass
                                                       andEventID:kAEGetURL];
-}
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-  [NSApp activateIgnoringOtherApps:YES];
-  viewController = (ViewController *)[NSApplication sharedApplication].mainWindow.contentViewController;
-  [viewController checkButtons];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -119,7 +116,13 @@ static ViewController *viewController = nil;
       break;
     }
   }
-  [viewController checkButtons];
+  [self checkButtons];
+}
+
+- (void)checkButtons {
+  if (viewController) {
+    [viewController checkButtons];
+  }
 }
 
 @end

@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self checkAllButtons];
 }
 
 
@@ -54,7 +53,8 @@
 }
 
 - (void)checkAllButtons {
-  NSTabViewController *tabViewController = (NSTabViewController *)[NSApplication sharedApplication].mainWindow.contentViewController;
+  NSTabViewController *  tabViewController =
+      (NSTabViewController *)[[[NSApplication sharedApplication] windows] objectAtIndex:0].contentViewController;
   [tabViewController.childViewControllers[0] checkButtons];
   [tabViewController.childViewControllers[1] checkButtons];
 }
