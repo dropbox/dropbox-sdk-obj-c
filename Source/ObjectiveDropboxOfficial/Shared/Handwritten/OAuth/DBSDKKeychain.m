@@ -13,8 +13,8 @@
 #import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
 
-static NSString *kAccessibilityMigrationOccuredKey = @"KeychainAccessibilityMigration";
-static NSString *kV1TokenMigrationOccuredKeyBase = @"KeychainV1TokenMigration-%@";
+static NSString *kAccessibilityMigrationOccurredKey = @"KeychainAccessibilityMigration";
+static NSString *kV1TokenMigrationOccurredKeyBase = @"KeychainV1TokenMigration-%@";
 
 static NSString *kV2KeychainServiceKeyBase = @"%@.dropbox.authv2";
 
@@ -41,7 +41,10 @@ static const char *kV1OSXAccountName = "Dropbox";
 @implementation DBSDKKeychain
 
 + (void)initialize {
-  [[self class] checkAccessibilityMigration];
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    [[self class] checkAccessibilityMigration];
+  });
 }
 
 + (BOOL)storeValueWithKey:(NSString *)key value:(NSString *)value {
@@ -125,26 +128,21 @@ static const char *kV1OSXAccountName = "Dropbox";
   return queryResult;
 }
 
-+ (BOOL)checkAccessibilityMigration {
++ (void)checkAccessibilityMigration {
   NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-  BOOL MigrationOccured = [[Defaults stringForKey:kAccessibilityMigrationOccuredKey] boolValue];
+  BOOL MigrationOccurred = [[Defaults stringForKey:kAccessibilityMigrationOccurredKey] boolValue];
 
-  if (!MigrationOccured) {
+  if (!MigrationOccurred) {
     NSMutableDictionary<id, id> *query = [NSMutableDictionary new];
     NSString *bundleId = [NSBundle mainBundle].bundleIdentifier ?: @"";
     [query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
     [query setObject:(id)[NSString stringWithFormat:kV2KeychainServiceKeyBase, bundleId] forKey:(id)kSecAttrService];
 
-    NSDictionary<NSString *, id> *attributesToUpdate =
+    NSDictionary<id, id> *attributesToUpdate =
         @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
     OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
-    if (status == noErr) {
-      [Defaults setObject:@"YES" forKey:kAccessibilityMigrationOccuredKey];
-    } else {
-      return NO;
-    }
+    [Defaults setObject:@"YES" forKey:kAccessibilityMigrationOccurredKey];
   }
-  return YES;
 }
 
 + (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
@@ -154,10 +152,10 @@ static const char *kV1OSXAccountName = "Dropbox";
   NSOperationQueue *queueToUse = queue ?: [NSOperationQueue mainQueue];
 
   NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-  NSString *migrationOccuredLookupKey = [NSString stringWithFormat:kV1TokenMigrationOccuredKeyBase, appKey];
-  BOOL MigrationOccured = [[Defaults stringForKey:migrationOccuredLookupKey] boolValue];
+  NSString *migrationOccurredLookupKey = [NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey];
+  BOOL MigrationOccurred = [[Defaults stringForKey:migrationOccurredLookupKey] boolValue];
 
-  if (!MigrationOccured) {
+  if (!MigrationOccurred) {
     NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
 #if TARGET_OS_IPHONE
@@ -447,7 +445,7 @@ static const char *kV1OSXAccountName = "Dropbox";
         [[self class] storeValueWithKey:uid value:[tokenConversionResults objectForKey:uid]];
       }
       NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-      [Defaults setObject:@"YES" forKey:[NSString stringWithFormat:kV1TokenMigrationOccuredKeyBase, appKey]];
+      [Defaults setObject:@"YES" forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
     }
     [queue addOperationWithBlock:^{
       responseBlock(shouldRetry, invalidAppKeyOrSecret, unsuccessfullyMigratedTokenData);

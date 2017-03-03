@@ -20,11 +20,14 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 @implementation DBTransportBaseClient
 
 + (void)initialize {
-  kV2SDKBaseHosts = @{
-    @"api" : @"https://api.dropbox.com/2",
-    @"content" : @"https://api-content.dropbox.com/2",
-    @"notify" : @"https://notify.dropboxapi.com/2",
-  };
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    kV2SDKBaseHosts = @{
+      @"api" : @"https://api.dropbox.com/2",
+      @"content" : @"https://api-content.dropbox.com/2",
+      @"notify" : @"https://notify.dropboxapi.com/2",
+    };
+  });
 }
 
 - (nonnull instancetype)initWithAccessToken:(NSString *)accessToken
