@@ -240,6 +240,7 @@
 					F27BA8031D63BBA100FB7864 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = NX6T6UBSFF;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -449,7 +450,7 @@
 				INFOPLIST_FILE = TestObjectiveDropbox_macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-macOS-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -467,7 +468,7 @@
 				INFOPLIST_FILE = TestObjectiveDropbox_macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-macOS-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -568,11 +569,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -584,11 +586,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = TestObjectiveDropbox_iOS/TestObjectiveDropbox_iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NX6T6UBSFF;
 				INFOPLIST_FILE = TestObjectiveDropbox_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dropbox.TestObjectiveDropbox-iOS-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
