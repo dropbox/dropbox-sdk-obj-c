@@ -153,6 +153,7 @@ static DBTeamClient *authorizedTeamClient;
           [[DBUserClient alloc] initWithAccessToken:accessToken transportConfig:[DBClientsManager transportConfig]];
       [DBClientsManager setAuthorizedClient:authorizedClient];
     }
+    [DBClientsManager setTransportConfig:nil];
   }
 
   return result;
@@ -173,6 +174,7 @@ static DBTeamClient *authorizedTeamClient;
           [[DBTeamClient alloc] initWithAccessToken:accessToken transportConfig:[DBClientsManager transportConfig]];
       [DBClientsManager setAuthorizedTeamClient:authorizedTeamClient];
     }
+    [DBClientsManager setTransportConfig:nil];
   }
 
   return result;
