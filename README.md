@@ -589,6 +589,8 @@ If you're looking for more responsive error feedback in the event of a lost conn
 
 To read more, please consult Apple's [documentation](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Articles/UsingNSURLSession.html).
 
+**NOTE:** You should test all background session behavior on **an actual test device** and **not** the Xcode simulator, which has a lot of buggy behavior when it comes to handling background session behavior.
+
 ### Handling responses and errors
 
 Dropbox API v2 deals largely with two data types: **structs** and **unions**. Broadly speaking, most route **arguments** are struct types and most route **errors** are union types.
