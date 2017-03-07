@@ -14,7 +14,7 @@ version_regex="[0-9]+\.[0-9]+\.[0-9]+"
 
 podspec=./ObjectiveDropboxOfficial.podspec
 readme=./README.md
-user_agent=./Source/ObjectiveDropboxOfficial/Shared/Handwritten/Networking/DBTransportBaseClient.m
+user_agent=Source/ObjectiveDropboxOfficial/Shared/Handwritten/Resources/DBSDKConstants.m
 ios_version=Source/ObjectiveDropboxOfficial/Platform/ObjectiveDropboxOfficial_iOS/Info.plist
 mac_version=Source/ObjectiveDropboxOfficial/Platform/ObjectiveDropboxOfficial_macOS/Info.plist
 
