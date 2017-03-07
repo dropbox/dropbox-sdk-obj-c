@@ -51,7 +51,7 @@
   [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
                                                       style:(UIAlertActionStyle)UIAlertActionStyleCancel
                                                     handler:^(UIAlertAction *action) {
-                                                      #pragma unused(action)
+#pragma unused(action)
                                                       void (^handler)(void) = buttonHandlers[@"Cancel"];
 
                                                       if (handler != nil) {
@@ -61,7 +61,7 @@
   [alertController addAction:[UIAlertAction actionWithTitle:@"Retry"
                                                       style:(UIAlertActionStyle)UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
-                                                      #pragma unused(action)
+#pragma unused(action)
                                                       void (^handler)(void) = buttonHandlers[@"Retry"];
 
                                                       if (handler != nil) {
@@ -191,7 +191,7 @@
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-  #pragma unused(webView)
+#pragma unused(webView)
   if (navigationAction.request.URL && _tryInterceptHandler) {
     if (_tryInterceptHandler(navigationAction.request.URL)) {
       [self dismiss:YES];
@@ -202,8 +202,8 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-  #pragma unused(webView)
-  #pragma unused(navigation)
+#pragma unused(webView)
+#pragma unused(navigation)
   [_indicator stopAnimating];
   [_indicator removeFromSuperview];
 }
@@ -224,7 +224,7 @@
 }
 
 - (void)goBack:(id)sender {
-  #pragma unused(sender)
+#pragma unused(sender)
   [_webView goBack];
 }
 

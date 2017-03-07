@@ -46,7 +46,7 @@
 @implementation DBRpcTask
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock {
-  #pragma unused(responseBlock)
+#pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -54,8 +54,8 @@
 }
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(responseBlock)
-  #pragma unused(queue)
+#pragma unused(responseBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -63,7 +63,7 @@
 }
 
 - (DBRpcTask *)setProgressBlock:(DBProgressBlock)progressBlock {
-  #pragma unused(progressBlock)
+#pragma unused(progressBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -71,8 +71,8 @@
 }
 
 - (DBRpcTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(progressBlock)
-  #pragma unused(queue)
+#pragma unused(progressBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -119,7 +119,7 @@
 @implementation DBUploadTask
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock {
-  #pragma unused(responseBlock)
+#pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -127,8 +127,8 @@
 }
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(responseBlock)
-  #pragma unused(queue)
+#pragma unused(responseBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -136,7 +136,7 @@
 }
 
 - (DBUploadTask *)setProgressBlock:(DBProgressBlock)progressBlock {
-  #pragma unused(progressBlock)
+#pragma unused(progressBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -144,8 +144,8 @@
 }
 
 - (DBUploadTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(progressBlock)
-  #pragma unused(queue)
+#pragma unused(progressBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -192,7 +192,7 @@
 @implementation DBDownloadUrlTask
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock {
-  #pragma unused(responseBlock)
+#pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -200,8 +200,8 @@
 }
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(responseBlock)
-  #pragma unused(queue)
+#pragma unused(responseBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -209,7 +209,7 @@
 }
 
 - (DBDownloadUrlTask *)setProgressBlock:(DBProgressBlock)progressBlock {
-  #pragma unused(progressBlock)
+#pragma unused(progressBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -217,8 +217,8 @@
 }
 
 - (DBDownloadUrlTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(progressBlock)
-  #pragma unused(queue)
+#pragma unused(progressBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -297,7 +297,7 @@
 @implementation DBDownloadDataTask
 
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock {
-  #pragma unused(responseBlock)
+#pragma unused(responseBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -306,8 +306,8 @@
 
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
                                    queue:(NSOperationQueue *)queue {
-  #pragma unused(responseBlock)
-  #pragma unused(queue)
+#pragma unused(responseBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -315,7 +315,7 @@
 }
 
 - (DBDownloadDataTask *)setProgressBlock:(DBProgressBlock)progressBlock {
-  #pragma unused(progressBlock)
+#pragma unused(progressBlock)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -323,8 +323,8 @@
 }
 
 - (DBDownloadDataTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  #pragma unused(progressBlock)
-  #pragma unused(queue)
+#pragma unused(progressBlock)
+#pragma unused(queue)
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]

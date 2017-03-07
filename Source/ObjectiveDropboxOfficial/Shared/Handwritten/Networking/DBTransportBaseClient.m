@@ -103,8 +103,8 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
   }
 
   if (byteOffsetStart && byteOffsetEnd) {
-    NSString *bytesRangeSpecifier =
-        [NSString stringWithFormat:@"bytes=%lu-%lu", [byteOffsetStart unsignedLongValue], [byteOffsetEnd unsignedLongValue]];
+    NSString *bytesRangeSpecifier = [NSString
+        stringWithFormat:@"bytes=%lu-%lu", [byteOffsetStart unsignedLongValue], [byteOffsetEnd unsignedLongValue]];
     [headers setObject:bytesRangeSpecifier forKey:@"Range"];
   }
 

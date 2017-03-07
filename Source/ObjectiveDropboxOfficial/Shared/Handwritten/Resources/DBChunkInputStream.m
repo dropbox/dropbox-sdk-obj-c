@@ -114,8 +114,8 @@
 }
 
 - (BOOL)getBuffer:(uint8_t **)buffer length:(NSUInteger *)len {
-  #pragma unused(buffer)
-  #pragma unused(len)
+#pragma unused(buffer)
+#pragma unused(len)
   return NO;
 }
 
@@ -168,7 +168,7 @@
 #pragma mark NSStreamDelegate methods
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
-  #pragma unused(aStream)
+#pragma unused(aStream)
   assert(aStream == _parentStream);
 
   switch (eventCode) {

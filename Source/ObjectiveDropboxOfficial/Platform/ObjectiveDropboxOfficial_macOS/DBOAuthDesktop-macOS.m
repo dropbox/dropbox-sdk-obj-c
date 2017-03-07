@@ -25,7 +25,7 @@
 }
 
 - (void)presentErrorMessage:(NSString *)message title:(NSString *)title {
-  #pragma unused(title)
+#pragma unused(title)
   if (_controller) {
     NSError *error = [[NSError alloc] initWithDomain:@"" code:123 userInfo:@{NSLocalizedDescriptionKey : message}];
     [_controller presentError:error];
@@ -35,12 +35,12 @@
 - (void)presentErrorMessageWithHandlers:(NSString * _Nonnull)message
                                   title:(NSString * _Nonnull)title
                          buttonHandlers:(NSDictionary<NSString *, void (^)()> * _Nonnull)buttonHandlers {
-  #pragma unused(buttonHandlers)
+#pragma unused(buttonHandlers)
   [self presentErrorMessage:message title:title];
 }
 
 - (BOOL)presentPlatformSpecificAuth:(NSURL * _Nonnull)authURL {
-  #pragma unused(authURL)
+#pragma unused(authURL)
   // no platform-specific auth methods for macOS
   return NO;
 }
@@ -66,7 +66,7 @@
 }
 
 - (BOOL)canPresentExternalApp:(NSURL * _Nonnull)url {
-  #pragma unused(url)
+#pragma unused(url)
   return YES;
 }
 
@@ -146,7 +146,7 @@
 }
 
 - (BOOL)windowShouldClose:(id)sender {
-  #pragma unused(sender)
+#pragma unused(sender)
   _cancelHandler();
   return YES;
 }
@@ -154,7 +154,7 @@
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-  #pragma unused(webView)
+#pragma unused(webView)
   if (navigationAction.request.URL != nil && _tryInterceptHandler != nil) {
     if (_tryInterceptHandler(navigationAction.request.URL)) {
       [self dismiss:YES];
@@ -165,8 +165,8 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-  #pragma unused(webView)
-  #pragma unused(navigation)
+#pragma unused(webView)
+#pragma unused(navigation)
   [_indicator stopAnimation:self];
   [_indicator removeFromSuperview];
 }
@@ -181,7 +181,7 @@
 }
 
 - (void)goBack:(id)sender {
-  #pragma unused(sender)
+#pragma unused(sender)
   [_webView goBack];
 }
 
@@ -195,8 +195,8 @@
 }
 
 - (void)dismiss:(BOOL)asCancel animated:(BOOL)animated {
-  #pragma unused(asCancel)
-  #pragma unused(animated)
+#pragma unused(asCancel)
+#pragma unused(animated)
   [_webView stopLoading];
   [self dismissController:nil];
 }

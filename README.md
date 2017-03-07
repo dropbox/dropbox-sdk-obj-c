@@ -472,6 +472,66 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
     }];
 ```
 
+Here's an example for `/list_folder`. In the response handler, we repeatedly call `/list_folder_continue` (for large folders), blocking execution while waiting for the response from each subsequent `/list_folder_continue` call, until we've listed the entire folder.
+
+```objective-c
+[[client.filesRoutes listFolder:@"/folder/in/dropbox"]
+      setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *error) {
+        if (response) {
+          __block NSArray<DBFILESMetadata *> *entries = response.entries;
+          __block NSString *cursor = response.cursor;
+          __block BOOL hasMore = [response.hasMore boolValue];
+
+          [self printEntries:entries];
+
+          while (hasMore) {
+            NSLog(@"Folder is large enough where we need to call `/files/list_folder/continue`");
+
+            dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
+
+            [[client.filesRoutes listFolderContinue:cursor]
+                setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
+                                   DBRequestError *error) {
+                  if (response) {
+                    entries = response.entries;
+                    cursor = response.cursor;
+                    hasMore = [response.hasMore boolValue];
+
+                    [self printEntries:entries];
+                  } else {
+                    NSLog(@"%@\n%@\n", routeError, error);
+                    hasMore = NO;
+                  }
+                  dispatch_semaphore_signal(chunkUploadFinished);
+                } queue:[NSOperationQueue new]];
+
+            // block until we receive response for next `/files/list_folder/continue` call
+            dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
+          }
+          NSLog(@"List folder complete.");
+        }
+      } queue:[NSOperationQueue new]]; // we block in the response handler, so we don't want this on the main thread
+
+...
+...
+...
+
+- (void)printEntries:(NSArray<DBFILESMetadata *> *)entries {
+  for (DBFILESMetadata *entry in entries) {
+    if ([entry isKindOfClass:[DBFILESFileMetadata class]]) {
+      DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)entry;
+      NSLog(@"File data: %@\n", fileMetadata);
+    } else if ([entry isKindOfClass:[DBFILESFolderMetadata class]]) {
+      DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)entry;
+      NSLog(@"Folder data: %@\n", folderMetadata);
+    } else if ([entry isKindOfClass:[DBFILESDeletedMetadata class]]) {
+      DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)entry;
+      NSLog(@"Deleted data: %@\n", deletedMetadata);
+    }
+  }
+}
+```
+
 ---
 
 #### Upload-style request
@@ -702,13 +762,13 @@ To determine at runtime which subtype the `Metadata` type exists as, perform an 
         if (result) {
             if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
                 DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
-                NSLog(@"%@\n", fileMetadata);
+                NSLog(@"File data: %@\n", fileMetadata);
             } else if ([result isKindOfClass:[DBFILESFolderMetadata class]]) {
                 DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)result;
-                NSLog(@"%@\n", folderMetadata);
+                NSLog(@"Folder data: %@\n", folderMetadata);
             } else if ([result isKindOfClass:[DBFILESDeletedMetadata class]]) {
                 DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)result;
-                NSLog(@"%@\n", deletedMetadata);
+                NSLog(@"Deleted data: %@\n", deletedMetadata);
             }
         } else {
             if (routeError) {
