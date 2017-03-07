@@ -472,49 +472,55 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
     }];
 ```
 
-Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders), blocking execution while waiting for the response from each subsequent `listFolderContinue:` call, until we've listed the entire folder.
+Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders) until we've listed the entire folder.
 
 ```objective-c
-[[client.filesRoutes listFolder:@"/folder/in/dropbox"]
+[[client.filesRoutes listFolder:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *error) {
       if (response) {
-        __block NSArray<DBFILESMetadata *> *entries = response.entries;
-        __block NSString *cursor = response.cursor;
-        __block BOOL hasMore = [response.hasMore boolValue];
+        NSArray<DBFILESMetadata *> *entries = response.entries;
+        NSString *cursor = response.cursor;
+        BOOL hasMore = [response.hasMore boolValue];
 
         [self printEntries:entries];
 
-        while (hasMore) {
+        if (hasMore) {
           NSLog(@"Folder is large enough where we need to call `listFolderContinue:`");
 
-          dispatch_semaphore_t listFolderContinueCallFinished = dispatch_semaphore_create(0);
-
-          [[client.filesRoutes listFolderContinue:cursor]
-              setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
-                                 DBRequestError *error) {
-                if (response) {
-                  entries = response.entries;
-                  cursor = response.cursor;
-                  hasMore = [response.hasMore boolValue];
-
-                  [self printEntries:entries];
-                } else {
-                  NSLog(@"%@\n%@\n", routeError, error);
-                  hasMore = NO;
-                }
-                dispatch_semaphore_signal(listFolderContinueCallFinished);
-              } queue:[NSOperationQueue new]];
-
-          // block until we receive response for next `listFolderContinue:` call
-          dispatch_semaphore_wait(listFolderContinueCallFinished, DISPATCH_TIME_FOREVER);
+          [self listFolderContinueWithClient:client cursor:cursor];
+        } else {
+          NSLog(@"List folder complete.");
         }
-        NSLog(@"List folder complete.");
+      } else {
+        NSLog(@"%@\n%@\n", routeError, error);
       }
-    } queue:[NSOperationQueue new]]; // we block in the response handler, so we don't want this on the main thread
+    }];
 
 ...
 ...
 ...
+
+- (void)listFolderContinueWithClient:(DBUserClient *)client cursor:(NSString *)cursor {
+  [[client.filesRoutes listFolderContinue:cursor]
+      setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
+                         DBRequestError *error) {
+        if (response) {
+          NSArray<DBFILESMetadata *> *entries = response.entries;
+          NSString *cursor = response.cursor;
+          BOOL hasMore = [response.hasMore boolValue];
+
+          [self printEntries:entries];
+
+          if (hasMore) {
+            [self listFolderContinueWithClient:client cursor:cursor];
+          } else {
+            NSLog(@"List folder complete.");
+          }
+        } else {
+          NSLog(@"%@\n%@\n", routeError, error);
+        }
+      }];
+}
 
 - (void)printEntries:(NSArray<DBFILESMetadata *> *)entries {
   for (DBFILESMetadata *entry in entries) {
