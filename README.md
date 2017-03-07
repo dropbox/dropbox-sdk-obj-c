@@ -472,7 +472,7 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
     }];
 ```
 
-Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders) until we've listed the entire folder.
+Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders) until we've listed the entire folder:
 
 ```objective-c
 [[client.filesRoutes listFolder:@"/test/path/in/Dropbox/account"]
@@ -556,7 +556,7 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 }];
 ```
 
-Here's an example of an advanced upload case for "batch" uploading a large number of files (NOTE: the `batchUploadFiles:` route method that is used below automatically chunk-uploads large files, something other upload methods in the SDK do **not** do).
+Here's an example of an advanced upload case for "batch" uploading a large number of files (NOTE: the `batchUploadFiles:` route method that is used below automatically chunk-uploads large files, something other upload methods in the SDK do **not** do):
 
 ```objective-c
 NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
@@ -609,8 +609,10 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
 ---
 
 #### Download-style request
+
+Here's an example for downloading to a file (`NSURL`):
+
 ```objective-c
-// Download to NSURL
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *outputDirectory = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
 NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_output.txt"];
@@ -629,8 +631,11 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
     }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
 }];
+```
 
-// Download to NSData
+Here's an example for downloading straight to memory (`NSData`):
+
+```objective-c
 [[[client.filesRoutes downloadData:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
                        NSData *fileContents) {
