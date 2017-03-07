@@ -274,8 +274,8 @@ To facilitate the above authorization flows, you should take the following steps
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DBClientsManager setupWithAppKey:@"<APP_KEY>"];
-    return YES;
+  [DBClientsManager setupWithAppKey:@"<APP_KEY>"];
+  return YES;
 }
 
 ```
@@ -286,7 +286,7 @@ To facilitate the above authorization flows, you should take the following steps
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [DBClientsManager setupWithAppKeyDesktop:@"<APP_KEY>"];
+  [DBClientsManager setupWithAppKeyDesktop:@"<APP_KEY>"];
 }
 ```
 
@@ -303,12 +303,12 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
-    [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
-                                        controller:self
-                                           openURL:^(NSURL *url) {
-                                                [[UIApplication sharedApplication] openURL:url];
-                                           }
-                                        browserAuth:YES];
+  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                 controller:self
+                                    openURL:^(NSURL *url) {
+                                      [[UIApplication sharedApplication] openURL:url];
+                                    }
+                                browserAuth:YES];
 }
 
 ```
@@ -319,7 +319,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (void)myButtonInControllerPressed {
-    [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
+  [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
                                            openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
                                        browserAuth:YES];
@@ -346,17 +346,17 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-    if (authResult != nil) {
-        if ([authResult isSuccess]) {
-            NSLog(@"Success! User is logged into Dropbox.");
-        } else if ([authResult isCancel]) {
-            NSLog(@"Authorization flow was manually canceled by user!");
-        } else if ([authResult isError]) {
-            NSLog(@"Error: %@", authResult);
-        }
+  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
+  if (authResult != nil) {
+    if ([authResult isSuccess]) {
+      NSLog(@"Success! User is logged into Dropbox.");
+    } else if ([authResult isCancel]) {
+      NSLog(@"Authorization flow was manually canceled by user!");
+    } else if ([authResult isError]) {
+      NSLog(@"Error: %@", authResult);
     }
-    return NO;
+  }
+  return NO;
 }
 ```
 
@@ -366,7 +366,7 @@ For iOS targets < 9, use:
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
+  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
     ...
     ...
     ...
@@ -388,17 +388,17 @@ For iOS targets < 9, use:
 
 // custom handler
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
-    NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
-    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-    if (authResult != nil) {
-        if ([authResult isSuccess]) {
-            NSLog(@"Success! User is logged into Dropbox.");
-        } else if ([authResult isCancel]) {
-            NSLog(@"Authorization flow was manually canceled by user!");
-        } else if ([authResult isError]) {
-            NSLog(@"Error: %@", authResult);
-        }
+  NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
+  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
+  if (authResult != nil) {
+    if ([authResult isSuccess]) {
+      NSLog(@"Success! User is logged into Dropbox.");
+    } else if ([authResult isCancel]) {
+      NSLog(@"Authorization flow was manually canceled by user!");
+    } else if ([authResult isError]) {
+      NSLog(@"Error: %@", authResult);
     }
+  }
 }
 ```
 
@@ -462,13 +462,13 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
 
 #### RPC-style request
 ```objective-c
-[[client.filesRoutes createFolder:@"/test/path"]
+[[client.filesRoutes createFolder:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
-        if (result) {
-            NSLog(@"%@\n", result);
-        } else {
-            NSLog(@"%@\n%@\n", routeError, error);
-        }
+      if (result) {
+        NSLog(@"%@\n", result);
+      } else {
+        NSLog(@"%@\n%@\n", routeError, error);
+      }
     }];
 ```
 
@@ -476,41 +476,41 @@ Here's an example for `/list_folder`. In the response handler, we repeatedly cal
 
 ```objective-c
 [[client.filesRoutes listFolder:@"/folder/in/dropbox"]
-      setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *error) {
-        if (response) {
-          __block NSArray<DBFILESMetadata *> *entries = response.entries;
-          __block NSString *cursor = response.cursor;
-          __block BOOL hasMore = [response.hasMore boolValue];
+    setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *error) {
+      if (response) {
+        __block NSArray<DBFILESMetadata *> *entries = response.entries;
+        __block NSString *cursor = response.cursor;
+        __block BOOL hasMore = [response.hasMore boolValue];
 
-          [self printEntries:entries];
+        [self printEntries:entries];
 
-          while (hasMore) {
-            NSLog(@"Folder is large enough where we need to call `/files/list_folder/continue`");
+        while (hasMore) {
+          NSLog(@"Folder is large enough where we need to call `/files/list_folder/continue`");
 
-            dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
+          dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
 
-            [[client.filesRoutes listFolderContinue:cursor]
-                setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
-                                   DBRequestError *error) {
-                  if (response) {
-                    entries = response.entries;
-                    cursor = response.cursor;
-                    hasMore = [response.hasMore boolValue];
+          [[client.filesRoutes listFolderContinue:cursor]
+              setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
+                                 DBRequestError *error) {
+                if (response) {
+                  entries = response.entries;
+                  cursor = response.cursor;
+                  hasMore = [response.hasMore boolValue];
 
-                    [self printEntries:entries];
-                  } else {
-                    NSLog(@"%@\n%@\n", routeError, error);
-                    hasMore = NO;
-                  }
-                  dispatch_semaphore_signal(chunkUploadFinished);
-                } queue:[NSOperationQueue new]];
+                  [self printEntries:entries];
+                } else {
+                  NSLog(@"%@\n%@\n", routeError, error);
+                  hasMore = NO;
+                }
+                dispatch_semaphore_signal(chunkUploadFinished);
+              } queue:[NSOperationQueue new]];
 
-            // block until we receive response for next `/files/list_folder/continue` call
-            dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
-          }
-          NSLog(@"List folder complete.");
+          // block until we receive response for next `/files/list_folder/continue` call
+          dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
         }
-      } queue:[NSOperationQueue new]]; // we block in the response handler, so we don't want this on the main thread
+        NSLog(@"List folder complete.");
+      }
+    } queue:[NSOperationQueue new]]; // we block in the response handler, so we don't want this on the main thread
 
 ...
 ...
@@ -540,14 +540,14 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 
 [[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account" inputData:fileData]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
-        if (result) {
-            NSLog(@"%@\n", result);
-        } else {
-            NSLog(@"%@\n%@\n", routeError, error);
-        }
+      if (result) {
+        NSLog(@"%@\n", result);
+      } else {
+        NSLog(@"%@\n%@\n", routeError, error);
+      }
     }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
-        NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
-    }];
+  NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
+}];
 
 // ADVANCED UPLOAD USE CASES
 // To batch upload files or to chunk upload large files, use the custom `batchUploadFiles` route
@@ -557,43 +557,43 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
 [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:[NSURL URLWithString:@"/local/path/to/my/file"]];
 
 [client.filesRoutes batchUploadFiles:uploadFilesUrlsToCommitInfo
-  queue:nil
-  progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
-    NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal,
-          expectedToUploadTotal);
-  }
-  responseBlock:^(NSDictionary<NSURL *, DBFILESUploadSessionFinishBatchResultEntry *> *fileUrlsToBatchResultEntries,
-                  DBASYNCPollError *finishBatchRouteError, DBRequestError *finishBatchRequestError,
-                  NSDictionary<NSURL *, DBRequestError *> *fileUrlsToRequestErrors) {
-    if (fileUrlsToBatchResultEntries) {
-      NSLog(@"Call to `/upload_session/finish_batch/check` succeeded");
-      for (NSURL *clientSideFileUrl in fileUrlsToBatchResultEntries) {
-        DBFILESUploadSessionFinishBatchResultEntry *resultEntry = fileUrlsToBatchResultEntries[clientSideFileUrl];
-        if ([resultEntry isSuccess]) {
-          NSString *dropboxFilePath = resultEntry.success.pathDisplay;
-          NSLog(@"File successfully uploaded from %@ on local machine to %@ in Dropbox.",
-                [clientSideFileUrl absoluteString], dropboxFilePath);
-        } else if ([resultEntry isFailure]) {
-          // This particular file was not uploaded successfully, although the other
-          // files may have been uploaded successfully. Perhaps implement some retry
-          // logic here based on `uploadNetworkError` or `uploadSessionFinishError`
-          DBRequestError *uploadNetworkError = fileUrlsToRequestErrors[clientSideFileUrl];
-          DBFILESUploadSessionFinishError *uploadSessionFinishError = resultEntry.failure;
-
-          // implement appropriate retry logic
-        }
-      }
-    } else if (finishBatchRouteError) {
-      NSLog(@"Either bug in SDK code, or transient error on Dropbox server");
-      NSLog(@"%@", finishBatchRouteError);
-    } else if (finishBatchRequestError) {
-      NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
-      NSLog(@"%@", finishBatchRequestError);
-    } else if (fileUrlsToRequestErrors) {
-      NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
-      NSLog(@"%@", fileUrlsToRequestErrors);
+    queue:nil
+    progressBlock:^(int64_t uploaded, int64_t uploadedTotal, int64_t expectedToUploadTotal) {
+      NSLog(@"Uploaded: %lld  UploadedTotal: %lld  ExpectedToUploadTotal: %lld", uploaded, uploadedTotal,
+            expectedToUploadTotal);
     }
-  }];
+    responseBlock:^(NSDictionary<NSURL *, DBFILESUploadSessionFinishBatchResultEntry *> *fileUrlsToBatchResultEntries,
+                    DBASYNCPollError *finishBatchRouteError, DBRequestError *finishBatchRequestError,
+                    NSDictionary<NSURL *, DBRequestError *> *fileUrlsToRequestErrors) {
+      if (fileUrlsToBatchResultEntries) {
+        NSLog(@"Call to `/upload_session/finish_batch/check` succeeded");
+        for (NSURL *clientSideFileUrl in fileUrlsToBatchResultEntries) {
+          DBFILESUploadSessionFinishBatchResultEntry *resultEntry = fileUrlsToBatchResultEntries[clientSideFileUrl];
+          if ([resultEntry isSuccess]) {
+            NSString *dropboxFilePath = resultEntry.success.pathDisplay;
+            NSLog(@"File successfully uploaded from %@ on local machine to %@ in Dropbox.",
+                  [clientSideFileUrl absoluteString], dropboxFilePath);
+          } else if ([resultEntry isFailure]) {
+            // This particular file was not uploaded successfully, although the other
+            // files may have been uploaded successfully. Perhaps implement some retry
+            // logic here based on `uploadNetworkError` or `uploadSessionFinishError`
+            DBRequestError *uploadNetworkError = fileUrlsToRequestErrors[clientSideFileUrl];
+            DBFILESUploadSessionFinishError *uploadSessionFinishError = resultEntry.failure;
+
+            // implement appropriate retry logic
+          }
+        }
+      } else if (finishBatchRouteError) {
+        NSLog(@"Either bug in SDK code, or transient error on Dropbox server");
+        NSLog(@"%@", finishBatchRouteError);
+      } else if (finishBatchRequestError) {
+        NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
+        NSLog(@"%@", finishBatchRequestError);
+      } else if (fileUrlsToRequestErrors) {
+        NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
+        NSLog(@"%@", fileUrlsToRequestErrors);
+      }
+    }];
 
 // note: with this method, response and progress handlers are passed directly into the route as arguments,
 // and not via the `setResponseBlock` or `setProgressBlock` methods.
@@ -607,34 +607,36 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *outputDirectory = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
 NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_output.txt"];
-[[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account" overwrite:YES destination:outputUrl]
-    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSURL *destination) {
-        if (result) {
-            NSLog(@"%@\n", result);
-            NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
-            NSString *dataStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog(@"%@\n", dataStr);
-        } else {
-            NSLog(@"%@\n%@\n", routeError, error);
-        }
-    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
-        NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
-    }];
 
+[[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account" overwrite:YES destination:outputUrl]
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
+                       NSURL *destination) {
+      if (result) {
+        NSLog(@"%@\n", result);
+        NSData *data = [[NSFileManager defaultManager] contentsAtPath:[destination path]];
+        NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@\n", dataStr);
+      } else {
+        NSLog(@"%@\n%@\n", routeError, error);
+      }
+    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
+  NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
+}];
 
 // Download to NSData
-[[[client.filesRoutes downloadData:@"/test/path"]
-    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileContents) {
-        if (result) {
-            NSLog(@"%@\n", result);
-            NSString *dataStr = [[NSString alloc]initWithData:fileContents encoding:NSUTF8StringEncoding];
-            NSLog(@"%@\n", dataStr);
-        } else {
-            NSLog(@"%@\n%@\n", routeError, error);
-        }
+[[[client.filesRoutes downloadData:@"/test/path/in/Dropbox/account"]
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
+                       NSData *fileContents) {
+      if (result) {
+        NSLog(@"%@\n", result);
+        NSString *dataStr = [[NSString alloc] initWithData:fileContents encoding:NSUTF8StringEncoding];
+        NSLog(@"%@\n", dataStr);
+      } else {
+        NSLog(@"%@\n%@\n", routeError, error);
+      }
     }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
-        NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
-    }];
+  NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
+}];
 ```
 
 ---
@@ -673,27 +675,27 @@ If at run time you attempt to access a union instance field that is not associat
 
 #### Route-specific errors
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"]
+[[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
-        if (result) {
-            NSLog(@"%@\n", result);
-        } else {
-            // Error is with the route specifically (status code 409)
-            if (routeError) {
-                if ([routeError isPathLookup]) {
-                    // Can safely access this field
-                    DBFILESLookupError *pathLookup = routeError.pathLookup;
-                    NSLog(@"%@\n", pathLookup);
-                } else if ([routeError isPathWrite]) {
-                    DBFILESWriteError *pathWrite = routeError.pathWrite;
-                    NSLog(@"%@\n", pathWrite);
+      if (result) {
+        NSLog(@"%@\n", result);
+      } else {
+        // Error is with the route specifically (status code 409)
+        if (routeError) {
+          if ([routeError isPathLookup]) {
+            // Can safely access this field
+            DBFILESLookupError *pathLookup = routeError.pathLookup;
+            NSLog(@"%@\n", pathLookup);
+          } else if ([routeError isPathWrite]) {
+            DBFILESWriteError *pathWrite = routeError.pathWrite;
+            NSLog(@"%@\n", pathWrite);
 
-                    // This would cause a runtime error
-                    // DBFILESLookupError *pathLookup = routeError.pathLookup;
-                }
-            }
-            NSLog(@"%@\n%@\n", routeError, error);
+            // This would cause a runtime error
+            // DBFILESLookupError *pathLookup = routeError.pathLookup;
+          }
         }
+        NSLog(@"%@\n%@\n", routeError, error);
+      }
     }];
 ```
 
@@ -707,40 +709,40 @@ The `DBRequestError` type is a special union type which is similar to the standa
 As with accessing associated values in regular unions, the `as<TAG_STATE>` should only be called after the corresponding `is<TAG_STATE>` method returns true. See below:
 
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"]
+[[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
-        if (result) {
-            NSLog(@"%@\n", result);
-        } else {
-            if (routeError) {
-                // see handling above
-            }
-            // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
-            else {
-                if ([error isInternalServerError]) {
-                    DBRequestInternalServerError *internalServerError = [error asInternalServerError];
-                    NSLog(@"%@\n", internalServerError);
-                } else if ([error isBadInputError]) {
-                    DBRequestBadInputError *badInputError = [error asBadInputError];
-                    NSLog(@"%@\n", badInputError);
-                } else if ([error isAuthError]) {
-                    DBRequestAuthError *authError = [error asAuthError];
-                    NSLog(@"%@\n", authError);
-                } else if ([error isAccessError]) {
-                    DBRequestAccessError *accessError = [error asAccessError];
-                    NSLog(@"%@\n", accessError);
-                } else if ([error isRateLimitError]) {
-                    DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
-                    NSLog(@"%@\n", rateLimitError);
-                } else if ([error isHttpError]) {
-                    DBRequestHttpError *genericHttpError = [error asHttpError];
-                    NSLog(@"%@\n", genericHttpError);
-                } else if ([error isClientError]) {
-                    DBRequestClientError *genericLocalError = [error asClientError];
-                    NSLog(@"%@\n", genericLocalError);
-                }
-            }
+      if (result) {
+        NSLog(@"%@\n", result);
+      } else {
+        if (routeError) {
+          // see handling above
         }
+        // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
+        else {
+          if ([error isInternalServerError]) {
+            DBRequestInternalServerError *internalServerError = [error asInternalServerError];
+            NSLog(@"%@\n", internalServerError);
+          } else if ([error isBadInputError]) {
+            DBRequestBadInputError *badInputError = [error asBadInputError];
+            NSLog(@"%@\n", badInputError);
+          } else if ([error isAuthError]) {
+            DBRequestAuthError *authError = [error asAuthError];
+            NSLog(@"%@\n", authError);
+          } else if ([error isAccessError]) {
+            DBRequestAccessError *accessError = [error asAccessError];
+            NSLog(@"%@\n", accessError);
+          } else if ([error isRateLimitError]) {
+            DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
+            NSLog(@"%@\n", rateLimitError);
+          } else if ([error isHttpError]) {
+            DBRequestHttpError *genericHttpError = [error asHttpError];
+            NSLog(@"%@\n", genericHttpError);
+          } else if ([error isClientError]) {
+            DBRequestClientError *genericLocalError = [error asClientError];
+            NSLog(@"%@\n", genericLocalError);
+          }
+        }
+      }
     }];
 ```
 
@@ -757,26 +759,26 @@ For example, the [/delete](https://www.dropbox.com/developers/documentation/http
 To determine at runtime which subtype the `Metadata` type exists as, perform an `isKindOfClass` check for each possible class, and then cast the result accordingly. See below:
 
 ```objective-c
-[[client.filesRoutes delete_:@"/test/path"]
+[[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
-        if (result) {
-            if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
-                DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
-                NSLog(@"File data: %@\n", fileMetadata);
-            } else if ([result isKindOfClass:[DBFILESFolderMetadata class]]) {
-                DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)result;
-                NSLog(@"Folder data: %@\n", folderMetadata);
-            } else if ([result isKindOfClass:[DBFILESDeletedMetadata class]]) {
-                DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)result;
-                NSLog(@"Deleted data: %@\n", deletedMetadata);
-            }
-        } else {
-            if (routeError) {
-                // see handling above
-            } else {
-                // see handling above
-            }
+      if (result) {
+        if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
+          DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
+          NSLog(@"File data: %@\n", fileMetadata);
+        } else if ([result isKindOfClass:[DBFILESFolderMetadata class]]) {
+          DBFILESFolderMetadata *folderMetadata = (DBFILESFolderMetadata *)result;
+          NSLog(@"Folder data: %@\n", folderMetadata);
+        } else if ([result isKindOfClass:[DBFILESDeletedMetadata class]]) {
+          DBFILESDeletedMetadata *deletedMetadata = (DBFILESDeletedMetadata *)result;
+          NSLog(@"Deleted data: %@\n", deletedMetadata);
         }
+      } else {
+        if (routeError) {
+          // see handling above
+        } else {
+          // see handling above
+        }
+      }
     }];
 ```
 
@@ -825,12 +827,12 @@ By default, response/progress handler code runs on the main thread. You can set 
 ```objective-c
 [[client.filesRoutes listFolder:@""]
     setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
-        if (result) {
-          NSLog(@"%@", [NSThread currentThread]);  // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
-          NSLog(@"%@", [NSThread mainThread]);     // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
-          NSLog(@"%@\n", result);
-        }
-    } queue:[NSOperationQueue new]];
+      if (result) {
+        NSLog(@"%@", [NSThread currentThread]); // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
+        NSLog(@"%@", [NSThread mainThread]);    // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
+        NSLog(@"%@\n", result);
+      }
+    } queue:[NSOperationQueue new]]
 ```
 
 ---
@@ -896,24 +898,24 @@ To perform this auth token migration, in your app delegate, you should call the 
 ```objective-c
 [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret,
                                                     NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
-      if (invalidAppKeyOrSecret) {
-        // Developers should ensure that the appropriate app key and secret are being supplied.
-        // If your app has multiple app keys / secrets, then run this migration method for
-        // each app key / secret combination, and ignore this boolean.
-      }
+  if (invalidAppKeyOrSecret) {
+    // Developers should ensure that the appropriate app key and secret are being supplied.
+    // If your app has multiple app keys / secrets, then run this migration method for
+    // each app key / secret combination, and ignore this boolean.
+  }
 
-      if (shouldRetry) {
-        // Store this BOOL somewhere to retry when network connection has returned
-      }
+  if (shouldRetry) {
+    // Store this BOOL somewhere to retry when network connection has returned
+  }
 
-      if ([unsuccessfullyMigratedTokenData count] != 0) {
-        NSLog(@"The following tokens were unsucessfully migrated:");
-        for (NSArray<NSString *> *tokenData in unsuccessfullyMigratedTokenData) {
-          NSLog(@"%@DropboxUserID: %@, AccessToken: %@, AccessTokenSecret: %@, StoredAppKey: %@",
-                tokenData[0], tokenData[1], tokenData[2], tokenData[3]);
-        }
-      }
-    } queue:nil appKey:@"<APP_KEY>" appSecret:@"<APP_SECRET>"];
+  if ([unsuccessfullyMigratedTokenData count] != 0) {
+    NSLog(@"The following tokens were unsucessfully migrated:");
+    for (NSArray<NSString *> *tokenData in unsuccessfullyMigratedTokenData) {
+      NSLog(@"%@DropboxUserID: %@, AccessToken: %@, AccessTokenSecret: %@, StoredAppKey: %@", tokenData[0],
+            tokenData[1], tokenData[2], tokenData[3]);
+    }
+  }
+} queue:nil appKey:@"<APP_KEY>" appSecret:@"<APP_SECRET>"];
 ```
 
 This method should successfully migrate all access tokens stored by the official Dropbox API SDKs from approximately 2012 until present, for both iOS and OS X. It will make one call to our OAuth 1 conversion endpoint for each OAuth 1 token that has been stored in your application's keychain by the v1 SDK. The method will execute all network requests off the main thread.
