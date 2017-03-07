@@ -472,7 +472,7 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
     }];
 ```
 
-Here's an example for `/list_folder`. In the response handler, we repeatedly call `/list_folder_continue` (for large folders), blocking execution while waiting for the response from each subsequent `/list_folder_continue` call, until we've listed the entire folder.
+Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders), blocking execution while waiting for the response from each subsequent `listFolderContinue:` call, until we've listed the entire folder.
 
 ```objective-c
 [[client.filesRoutes listFolder:@"/folder/in/dropbox"]
@@ -485,9 +485,9 @@ Here's an example for `/list_folder`. In the response handler, we repeatedly cal
         [self printEntries:entries];
 
         while (hasMore) {
-          NSLog(@"Folder is large enough where we need to call `/files/list_folder/continue`");
+          NSLog(@"Folder is large enough where we need to call `listFolderContinue:`");
 
-          dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
+          dispatch_semaphore_t listFolderContinueCallFinished = dispatch_semaphore_create(0);
 
           [[client.filesRoutes listFolderContinue:cursor]
               setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
@@ -502,11 +502,11 @@ Here's an example for `/list_folder`. In the response handler, we repeatedly cal
                   NSLog(@"%@\n%@\n", routeError, error);
                   hasMore = NO;
                 }
-                dispatch_semaphore_signal(chunkUploadFinished);
+                dispatch_semaphore_signal(listFolderContinueCallFinished);
               } queue:[NSOperationQueue new]];
 
-          // block until we receive response for next `/files/list_folder/continue` call
-          dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
+          // block until we receive response for next `listFolderContinue:` call
+          dispatch_semaphore_wait(listFolderContinueCallFinished, DISPATCH_TIME_FOREVER);
         }
         NSLog(@"List folder complete.");
       }
@@ -548,10 +548,11 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
     }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
   NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
 }];
+```
 
-// ADVANCED UPLOAD USE CASES
-// To batch upload files or to chunk upload large files, use the custom `batchUploadFiles` route
+Here's an example of an advanced upload case for "batch" uploading a large number of files (NOTE: the `batchUploadFiles:` route method that is used below automatically chunk-uploads large files, something other upload methods in the SDK do **not** do).
 
+```objective-c
 NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
 DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/output/path/in/Dropbox"];
 [uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:[NSURL URLWithString:@"/local/path/to/my/file"]];
