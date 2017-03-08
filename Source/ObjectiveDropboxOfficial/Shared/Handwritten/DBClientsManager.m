@@ -100,7 +100,8 @@ static DBTeamClient *authorizedTeamClient;
 }
 
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {
-  NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
+  NSAssert([DBOAuthManager sharedOAuthManager],
+           @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
@@ -112,7 +113,8 @@ static DBTeamClient *authorizedTeamClient;
 }
 
 + (BOOL)reauthorizeTeamClient:(NSString *)tokenUid {
-  NSAssert(![DBOAuthManager sharedOAuthManager], @"Only call `[DBClientsManager setupWith...]` once");
+  NSAssert([DBOAuthManager sharedOAuthManager],
+           @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
   DBAccessToken *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
   if (accessToken) {
