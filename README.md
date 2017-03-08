@@ -596,7 +596,7 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
       } else if (finishBatchRequestError) {
         NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
         NSLog(@"%@", finishBatchRequestError);
-      } else if (fileUrlsToRequestErrors) {
+      } else if (else if ([fileUrlsToRequestErrors count] > 0) {) {
         NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
         NSLog(@"%@", fileUrlsToRequestErrors);
       }

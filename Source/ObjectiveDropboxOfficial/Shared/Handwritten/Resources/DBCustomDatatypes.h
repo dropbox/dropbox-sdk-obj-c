@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nonnull instancetype)initWithFileCommitInfo:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
                                  progressBlock:(DBProgressBlock _Nullable)progressBlock
                                  responseBlock:(DBBatchUploadResponseBlock)responseBlock
-                                         queue:(NSOperationQueue * _Nullable)queue;
+                                         queue:(NSOperationQueue * _Nonnull)queue;
 
 @end
 

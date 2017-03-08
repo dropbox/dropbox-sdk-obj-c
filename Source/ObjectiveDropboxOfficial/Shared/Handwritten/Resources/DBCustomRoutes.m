@@ -213,7 +213,7 @@ static const int timeoutInSec = 200;
                     shouldContinue:&shouldContinue];
 
       // wait until each chunk upload completes before resuming loop iteration
-      dispatch_semaphore_wait(chunkUploadFinished, DISPATCH_TIME_FOREVER);
+      dispatch_semaphore_wait(chunkUploadFinished, ((int64_t)480) * NSEC_PER_SEC);
 
       if (!shouldContinue) {
         break;

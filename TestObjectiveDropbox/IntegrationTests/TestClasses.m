@@ -504,7 +504,7 @@ void MyLog(NSString *format, ...) {
     } else if (finishBatchRequestError) {
       NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
       NSLog(@"%@", finishBatchRequestError);
-    } else if (fileUrlsToRequestErrors) {
+    } else if ([fileUrlsToRequestErrors count] > 0) {
       NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
       NSLog(@"%@", fileUrlsToRequestErrors);
     }

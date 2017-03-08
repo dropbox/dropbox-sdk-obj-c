@@ -15,6 +15,8 @@
 
 static DBTransportDefaultConfig *currentTransportConfig;
 
+static NSString *currentAppKey;
+
 /// An authorized client. This will be set to `nil` if unlinked.
 static DBUserClient *authorizedClient;
 
@@ -26,11 +28,12 @@ static DBTeamClient *authorizedTeamClient;
 }
 
 + (DBTransportDefaultConfig *)transportConfig {
-  return currentTransportConfig;
+  return currentAppKey;
 }
 
 + (void)setTransportConfig:(DBTransportDefaultConfig *)transportConfig {
   currentTransportConfig = transportConfig;
+  currentAppKey = currentTransportConfig.appKey;
 }
 
 + (DBUserClient *)authorizedClient {
