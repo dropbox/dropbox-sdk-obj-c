@@ -24,11 +24,11 @@ static DBUserClient *authorizedClient;
 static DBTeamClient *authorizedTeamClient;
 
 + (NSString *)appKey {
-  return currentTransportConfig.appKey;
+  return currentAppKey;
 }
 
 + (DBTransportDefaultConfig *)transportConfig {
-  return currentAppKey;
+  return currentTransportConfig;
 }
 
 + (void)setTransportConfig:(DBTransportDefaultConfig *)transportConfig {

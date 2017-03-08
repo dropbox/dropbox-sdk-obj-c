@@ -140,7 +140,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 
     NSDictionary<id, id> *attributesToUpdate =
         @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
-    OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
+    SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
     [Defaults setObject:@"YES" forKey:kAccessibilityMigrationOccurredKey];
   }
 }
