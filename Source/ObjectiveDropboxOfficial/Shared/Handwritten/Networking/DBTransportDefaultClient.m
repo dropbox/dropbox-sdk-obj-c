@@ -33,11 +33,14 @@
     sessionConfig.timeoutIntervalForRequest = 60.0;
 
     _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:_delegateQueue];
-    NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
-    NSURLSessionConfiguration *backgroundSessionConfig =
-        [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
     _forceBackgroundSession = transportConfig.forceForegroundSession ? YES : NO;
     if (!_forceBackgroundSession) {
+      NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
+      NSURLSessionConfiguration *backgroundSessionConfig =
+          [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
+      if (transportConfig.sharedContainerIdentifier) {
+        backgroundSessionConfig.sharedContainerIdentifier = transportConfig.sharedContainerIdentifier;
+      }
       _secondarySession = [NSURLSession sessionWithConfiguration:backgroundSessionConfig
                                                         delegate:_delegate
                                                    delegateQueue:_delegateQueue];

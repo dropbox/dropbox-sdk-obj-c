@@ -21,6 +21,10 @@
 /// essentially never time out, if network connection is lost after the request has begun.
 @property (nonatomic, readonly) BOOL forceForegroundSession;
 
+/// The identifier for the shared container into which files in background URL sessions should be downloaded. This needs
+/// to be set when downloading via an app extension.
+@property (nonatomic, readonly) NSString * _Nullable sharedContainerIdentifier;
+
 ///
 /// Convenience constructor.
 ///
@@ -101,7 +105,7 @@
                 forceForegroundSession:(BOOL)forceForegroundSession;
 
 ///
-/// Full constructor.
+/// Convenience constructor.
 ///
 /// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
 /// is used for querying endpoints that have "app auth" authentication type.
@@ -123,5 +127,32 @@
                             asMemberId:(NSString * _Nullable)asMemberId
                          delegateQueue:(NSOperationQueue * _Nullable)delegateQueue
                 forceForegroundSession:(BOOL)forceForegroundSession;
+
+///
+/// Full constructor.
+///
+/// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API. Here, app key
+/// is used for querying endpoints that have "app auth" authentication type.
+/// @param appSecret The consumer app secret associated with the app that is integrating with the Dropbox API. Here, app
+/// key is used for querying endpoints that have "app auth" authentication type.
+/// @param userAgent The user agent associated with all networking requests. Used for server logging.
+/// @param delegateQueue A serial delegate queue used for executing blocks of code that touch state shared across
+/// threads (mainly the request handlers storage).
+/// @param forceForegroundSession If set to true, all network requests are made on foreground sessions (by default, most
+/// upload/download operations are performed with a background session).
+/// @param asMemberId An additional authentication header field used when a team app with the appropriate permissions
+/// "performs" user API actions on behalf of a team member.
+/// @param sharedContainerIdentifier The identifier for the shared container into which files in background URL sessions
+/// should be downloaded. This needs to be set when downloading via an app extension.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithAppKey:(NSString * _Nonnull)appKey
+                             appSecret:(NSString * _Nullable)appSecret
+                             userAgent:(NSString * _Nullable)userAgent
+                            asMemberId:(NSString * _Nullable)asMemberId
+                         delegateQueue:(NSOperationQueue * _Nullable)delegateQueue
+                forceForegroundSession:(BOOL)forceForegroundSession
+             sharedContainerIdentifier:(NSString * _Nullable)sharedContainerIdentifier;
 
 @end

@@ -27,6 +27,10 @@ static DBTeamClient *authorizedTeamClient;
   return currentAppKey;
 }
 
++ (void)setAppKey:(NSString *)appKey {
+  currentAppKey = appKey;
+}
+
 + (DBTransportDefaultConfig *)transportConfig {
   return currentTransportConfig;
 }
@@ -94,9 +98,11 @@ static DBTeamClient *authorizedTeamClient;
   [[self class] setupAuthorizedTeamClient:accessToken];
 }
 
-+ (void)setupHelperWithOAuthManager:oAuthManager transportConfig:transportConfig {
++ (void)setupHelperWithOAuthManager:(DBOAuthManager *)oAuthManager
+                    transportConfig:(DBTransportDefaultConfig *)transportConfig {
   [DBOAuthManager setSharedOAuthManager:oAuthManager];
   [[self class] setTransportConfig:transportConfig];
+  [[self class] setAppKey:transportConfig.appKey];
 }
 
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {

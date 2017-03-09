@@ -29,4 +29,6 @@
 
 + (DBTransportDefaultConfig * _Nonnull)transportConfig;
 
++ (void)setAppKey:(NSString * _Nonnull)appKey;
+
 @end

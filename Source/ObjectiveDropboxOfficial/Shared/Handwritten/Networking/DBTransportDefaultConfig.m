@@ -51,9 +51,26 @@
                     asMemberId:(NSString *)asMemberId
                  delegateQueue:(NSOperationQueue *)delegateQueue
         forceForegroundSession:(BOOL)forceForegroundSession {
+  return [self initWithAppKey:appKey
+                      appSecret:appSecret
+                      userAgent:userAgent
+                     asMemberId:asMemberId
+                  delegateQueue:delegateQueue
+         forceForegroundSession:forceForegroundSession
+      sharedContainerIdentifier:nil];
+}
+
+- (instancetype)initWithAppKey:(NSString *)appKey
+                     appSecret:(NSString *)appSecret
+                     userAgent:(NSString *)userAgent
+                    asMemberId:(NSString *)asMemberId
+                 delegateQueue:(NSOperationQueue *)delegateQueue
+        forceForegroundSession:(BOOL)forceForegroundSession
+     sharedContainerIdentifier:(NSString *)sharedContainerIdentifier {
   if (self = [super initWithAppKey:appKey appSecret:appSecret userAgent:userAgent asMemberId:asMemberId]) {
     _delegateQueue = delegateQueue;
     _forceForegroundSession = forceForegroundSession;
+    _sharedContainerIdentifier = sharedContainerIdentifier;
   }
   return self;
 }
