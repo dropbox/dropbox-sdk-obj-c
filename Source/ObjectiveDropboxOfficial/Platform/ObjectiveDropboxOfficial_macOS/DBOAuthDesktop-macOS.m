@@ -46,7 +46,7 @@
 }
 
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
-       tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
+       tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull, BOOL))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
   if (_controller) {
     DBDesktopWebViewController *webViewController =
@@ -76,7 +76,7 @@
 
 @property (nonatomic) WKWebView * _Nullable webView;
 @property (nonatomic) void (^_Nullable onWillDismiss)(BOOL);
-@property (nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic) BOOL (^_Nullable tryInterceptHandler)(NSURL * _Nullable, BOOL);
 @property (nonatomic) void (^_Nullable cancelHandler)(void);
 @property (nonatomic) NSProgressIndicator * _Nullable indicator;
 @property (nonatomic, copy) NSURL * _Nullable startUrl;
@@ -94,7 +94,7 @@
 }
 
 - (instancetype)initWithAuthUrl:(NSURL *)authUrl
-            tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
+            tryInterceptHandler:(BOOL (^)(NSURL *, BOOL))tryInterceptHandler
                   cancelHandler:(void (^)(void))cancelHandler {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
@@ -112,6 +112,7 @@
   [super viewDidLoad];
   self.title = @"Link to Dropbox";
   _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+  _webView.UIDelegate = self;
 
   [_indicator setFrameOrigin:NSMakePoint((NSWidth(_webView.bounds) - NSWidth(_indicator.frame)) / 2,
                                          (NSHeight(_webView.bounds) - NSHeight(_indicator.frame)) / 2)];
@@ -156,12 +157,23 @@
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 #pragma unused(webView)
   if (navigationAction.request.URL != nil && _tryInterceptHandler != nil) {
-    if (_tryInterceptHandler(navigationAction.request.URL)) {
+    if (_tryInterceptHandler(navigationAction.request.URL, NO)) {
       [self dismiss:YES];
       return decisionHandler((WKNavigationActionPolicy)WKNavigationActionPolicyCancel);
     }
   }
   return decisionHandler((WKNavigationActionPolicy)WKNavigationActionPolicyAllow);
+}
+
+- (WKWebView *)webView:(WKWebView *)webView
+    createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
+               forNavigationAction:(WKNavigationAction *)navigationAction
+                    windowFeatures:(WKWindowFeatures *)windowFeatures {
+  // For target="_bank" urls, we want to suppress the call, then reopen in new browser
+  if (!navigationAction.targetFrame.isMainFrame) {
+    _tryInterceptHandler(navigationAction.request.URL, YES);
+  }
+  return nil;
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {

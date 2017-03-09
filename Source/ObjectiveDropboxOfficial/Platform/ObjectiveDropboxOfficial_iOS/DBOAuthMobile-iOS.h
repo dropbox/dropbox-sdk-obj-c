@@ -37,21 +37,23 @@
 ///
 /// Platform-specific (here, iOS) `UIViewController` for rendering OAuth flow.
 ///
-@interface DBMobileWebViewController : UIViewController <WKNavigationDelegate>
+@interface DBMobileWebViewController : UIViewController <WKNavigationDelegate, WKUIDelegate>
 
 ///
 /// Full constructor.
 ///
 /// @param authUrl The auth url with which to begin the authorization flow.
 /// @param tryInterceptHandler The navigation handler for the view controller. Will check if exit URL (for redirect back
-/// to main app) can be successfully navigated to.
+/// to main app) can be successfully navigated to. Boolean parameter sets whether an external browser should be used for
+/// opening urls.
 /// @param cancelHandler Handler for auth cancellation. Will redirect back to main app with special cancel url, so that
 /// cancellation can be detected.
+
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAuthUrl:(NSURL * _Nonnull)authUrl
-                    tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
+                    tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull, BOOL))tryInterceptHandler
                           cancelHandler:(void (^_Nonnull)(void))cancelHandler;
 
 @end

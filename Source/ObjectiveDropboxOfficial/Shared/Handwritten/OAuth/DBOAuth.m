@@ -122,8 +122,11 @@ static DBOAuthManager *sharedOAuthManager;
     [sharedApplication presentBrowserAuth:url];
   } else {
     BOOL (^tryInterceptHandler)
-    (NSURL *) = ^BOOL(NSURL *url) {
-      if ([self canHandleURL:url]) {
+    (NSURL *, BOOL) = ^BOOL(NSURL *url, BOOL openExternalBrowser) {
+      if (openExternalBrowser && [url.scheme isEqualToString:@"https"]) {
+        [sharedApplication presentExternalApp:url];
+        return YES;
+      } else if ([url.scheme isEqualToString:@"itms-apps"] || [self canHandleURL:url]) {
         [sharedApplication presentExternalApp:url];
         return YES;
       } else {

@@ -117,7 +117,7 @@
 
 @property (nonatomic, readonly) WKWebView * _Nullable webView;
 @property (nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
-@property (nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable);
+@property (nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable, BOOL);
 @property (nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
 @property (nonatomic, readonly, nullable) void (^cancelHandler)(void);
 @property (nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
@@ -136,7 +136,7 @@
 }
 
 - (instancetype)initWithAuthUrl:(NSURL *)authUrl
-            tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
+            tryInterceptHandler:(BOOL (^)(NSURL *, BOOL))tryInterceptHandler
                   cancelHandler:(void (^)(void))cancelHandler {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
@@ -159,6 +159,7 @@
   [super viewDidLoad];
   self.title = @"Link to Dropbox";
   _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+  _webView.UIDelegate = self;
 
   _indicator.center = self.view.center;
   [_webView addSubview:_indicator];
@@ -192,13 +193,26 @@
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 #pragma unused(webView)
-  if (navigationAction.request.URL && _tryInterceptHandler) {
-    if (_tryInterceptHandler(navigationAction.request.URL)) {
+  NSURL *navigationUrl = navigationAction.request.URL;
+  if (navigationUrl && _tryInterceptHandler) {
+    if (_tryInterceptHandler(navigationUrl, NO)) {
       [self dismiss:YES];
       return decisionHandler(WKNavigationActionPolicyCancel);
     }
   }
+
   return decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (WKWebView *)webView:(WKWebView *)webView
+    createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
+               forNavigationAction:(WKNavigationAction *)navigationAction
+                    windowFeatures:(WKWindowFeatures *)windowFeatures {
+  // For target="_bank" urls, we want to suppress the call, then reopen in new browser
+  if (!navigationAction.targetFrame.isMainFrame) {
+    _tryInterceptHandler(navigationAction.request.URL, YES);
+  }
+  return nil;
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {

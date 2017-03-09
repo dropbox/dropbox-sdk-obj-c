@@ -51,11 +51,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// enter their login credentials manually, which can be cumbersome.
 ///
 /// @param authURL Gateway url to commence auth flow.
-/// @param tryInterceptHandler Navigation handler for redirect from webview back to normal app view.
+/// @param tryInterceptHandler Navigation handler for redirect from webview back to normal app view. Boolean parameter
+/// sets whether an external browser should be used for opening urls.
 /// @param cancelHandler Handler for cancelling auth flow. Opens "cancel" url to signal cancellation.
 ///
 - (void)presentWebViewAuth:(NSURL *)authURL
-       tryInterceptHandler:(BOOL (^)(NSURL *))tryInterceptHandler
+       tryInterceptHandler:(BOOL (^)(NSURL *, BOOL))tryInterceptHandler
              cancelHandler:(void (^)(void))cancelHandler;
 
 ///
