@@ -176,64 +176,38 @@ static const int timeoutInSec = 200;
   NSOperationQueue *chunkUploadResponseQueue = [NSOperationQueue new];
 
   [chunkUploadResponseQueue addOperationWithBlock:^{
-    NSUInteger numFileChunks = fileSize / fileChunkSize;
-    if (fileSize % fileChunkSize != 0) {
-      numFileChunks += 1;
-    }
-    NSUInteger totalBytesSent = 0;
+    NSUInteger startBytes = fileChunkSize;
+    NSUInteger endBytes = [self endBytesWithFileSize:fileSize startBytes:startBytes];
+    BOOL shouldClose = endBytes == fileSize;
 
-    dispatch_semaphore_t chunkUploadFinished = dispatch_semaphore_create(0);
+    DBChunkInputStream *fileChunkInputStream =
+        [[DBChunkInputStream alloc] initWithFileUrl:fileUrl startBytes:startBytes endBytes:endBytes];
+    DBFILESUploadSessionCursor *cursor =
+        [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:@(startBytes)];
 
-    // iterate through all remaining chunks and upload each one sequentially
-    for (NSUInteger i = 1; i < numFileChunks; i++) {
-      NSUInteger startBytes = fileChunkSize * i;
-      NSUInteger endBytes = (i != numFileChunks - 1) ? fileChunkSize * (i + 1) : fileSize;
-
-      DBChunkInputStream *fileChunkInputStream =
-          [[DBChunkInputStream alloc] initWithFileUrl:fileUrl startBytes:startBytes endBytes:endBytes];
-
-      totalBytesSent += fileChunkSize;
-
-      DBFILESUploadSessionCursor *cursor =
-          [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:@(totalBytesSent)];
-
-      BOOL shouldClose = (i != numFileChunks - 1) ? NO : YES;
-      BOOL shouldContinue = YES;
-
-      [self appendFileChunk:uploadData
-                           fileUrl:fileUrl
-                            cursor:cursor
-                       shouldClose:shouldClose
-              fileChunkInputStream:fileChunkInputStream
-          chunkUploadResponseQueue:chunkUploadResponseQueue
-               chunkUploadFinished:&chunkUploadFinished
-                        retryCount:0
-                        startBytes:startBytes
-                          endBytes:endBytes
-                    shouldContinue:&shouldContinue];
-
-      // wait until each chunk upload completes before resuming loop iteration
-      dispatch_semaphore_wait(chunkUploadFinished, ((int64_t)480) * NSEC_PER_SEC);
-
-      if (!shouldContinue) {
-        break;
-      }
-    }
-    dispatch_group_leave(uploadData.uploadGroup);
+    [self appendFileChunk:uploadData
+                         fileUrl:fileUrl
+                        fileSize:fileSize
+                       sessionId:sessionId
+        chunkUploadResponseQueue:chunkUploadResponseQueue
+                      retryCount:0
+            fileChunkInputStream:fileChunkInputStream
+                          cursor:cursor
+                      startBytes:startBytes
+                     shouldClose:shouldClose];
   }];
 }
 
 - (void)appendFileChunk:(DBBatchUploadData *)uploadData
                      fileUrl:(NSURL *)fileUrl
-                      cursor:(DBFILESUploadSessionCursor *)cursor
-                 shouldClose:(BOOL)shouldClose
-        fileChunkInputStream:(NSInputStream *)fileChunkInputStream
+                    fileSize:(NSUInteger)fileSize
+                   sessionId:(NSString *)sessionId
     chunkUploadResponseQueue:(NSOperationQueue *)chunkUploadResponseQueue
-         chunkUploadFinished:(dispatch_semaphore_t *)chunkUploadFinished
                   retryCount:(int)retryCount
+        fileChunkInputStream:(NSInputStream *)fileChunkInputStream
+                      cursor:(DBFILESUploadSessionCursor *)cursor
                   startBytes:(NSUInteger)startBytes
-                    endBytes:(NSUInteger)endBytes
-              shouldContinue:(BOOL *)shouldContinue {
+                 shouldClose:(BOOL)shouldClose {
   // close session on final append call
   __block DBUploadTask *task =
       [[[self uploadSessionAppendV2Stream:cursor close:@(shouldClose) inputStream:fileChunkInputStream]
@@ -250,31 +224,56 @@ static const int timeoutInSec = 200;
                   if (retryCount <= 3) {
                     [self appendFileChunk:uploadData
                                          fileUrl:fileUrl
-                                          cursor:cursor
-                                     shouldClose:shouldClose
-                            fileChunkInputStream:fileChunkInputStream
+                                        fileSize:fileSize
+                                       sessionId:sessionId
                         chunkUploadResponseQueue:chunkUploadResponseQueue
-                             chunkUploadFinished:chunkUploadFinished
                                       retryCount:retryCount + 1
+                            fileChunkInputStream:fileChunkInputStream
+                                          cursor:cursor
                                       startBytes:startBytes
-                                        endBytes:endBytes
-                                  shouldContinue:shouldContinue];
+                                     shouldClose:shouldClose];
                   } else {
                     uploadData.fileUrlsToRequestErrors[fileUrl] = error;
-                    *shouldContinue = NO;
+                    dispatch_group_leave(uploadData.uploadGroup);
                   }
                 });
               } else {
                 uploadData.fileUrlsToRequestErrors[fileUrl] = error;
-                *shouldContinue = NO;
+                dispatch_group_leave(uploadData.uploadGroup);
               }
             } else if (!result) {
               // if we error here, there's almost certainly a bug with the SDK
               uploadData.fileUrlsToRequestErrors[fileUrl] = error;
-              *shouldContinue = NO;
+              dispatch_group_leave(uploadData.uploadGroup);
+            } else {
+              if (shouldClose || uploadData.cancel) {
+                dispatch_group_leave(uploadData.uploadGroup);
+                return;
+              }
+
+              NSUInteger startBytesContinue = startBytes + fileChunkSize;
+              NSUInteger endBytesContinue = [self endBytesWithFileSize:fileSize startBytes:startBytesContinue];
+              BOOL shouldCloseContinue = endBytesContinue == fileSize;
+
+              DBChunkInputStream *fileChunkInputStreamContinue =
+                  [[DBChunkInputStream alloc] initWithFileUrl:fileUrl
+                                                   startBytes:startBytesContinue
+                                                     endBytes:endBytesContinue];
+              DBFILESUploadSessionCursor *cursorContinue =
+                  [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:@(startBytesContinue)];
+
+              [self appendFileChunk:uploadData
+                                   fileUrl:fileUrl
+                                  fileSize:fileSize
+                                 sessionId:sessionId
+                  chunkUploadResponseQueue:chunkUploadResponseQueue
+                                retryCount:retryCount
+                      fileChunkInputStream:fileChunkInputStreamContinue
+                                    cursor:cursorContinue
+                                startBytes:startBytesContinue
+                               shouldClose:shouldCloseContinue];
             }
             [uploadData.taskStorage removeUploadTask:task];
-            dispatch_semaphore_signal(*chunkUploadFinished);
           }
                      queue:chunkUploadResponseQueue]
           setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
@@ -357,10 +356,23 @@ static const int timeoutInSec = 200;
       }];
 }
 
+- (NSUInteger)endBytesWithFileSize:(NSUInteger)fileSize startBytes:(NSUInteger)startBytes {
+  if (startBytes + fileChunkSize < fileSize) {
+    return startBytes + fileChunkSize;
+  }
+
+  return fileSize;
+}
+
 - (void)batchFinishUponCompletion:(DBBatchUploadData *)uploadData {
   // wait for all upload calls to complete and then batch "finish" all uploaded files
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    if (uploadData.cancel) {
+      uploadData.responseBlock(nil, nil, nil, nil);
+      return;
+    }
+
     NSMutableArray<DBFILESUploadSessionFinishArg *> *sortedFinishArgs =
         [[uploadData.finishArgs sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
           DBFILESUploadSessionFinishArg *first = (DBFILESUploadSessionFinishArg *)a;

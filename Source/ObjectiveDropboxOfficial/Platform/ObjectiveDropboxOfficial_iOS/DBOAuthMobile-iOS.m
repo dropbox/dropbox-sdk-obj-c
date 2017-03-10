@@ -83,7 +83,7 @@
 }
 
 - (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
-       tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull))tryInterceptHandler
+       tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull, BOOL))tryInterceptHandler
              cancelHandler:(void (^_Nonnull)(void))cancelHandler {
   if (_controller) {
     DBMobileWebViewController *webViewController =
@@ -196,7 +196,11 @@
   NSURL *navigationUrl = navigationAction.request.URL;
   if (navigationUrl && _tryInterceptHandler) {
     if (_tryInterceptHandler(navigationUrl, NO)) {
-      [self dismiss:YES];
+      // don't dismiss controller if we're going to App Store
+      if (![navigationUrl.scheme isEqualToString:@"itms-apps"]) {
+        [self dismiss:YES];
+      }
+
       return decisionHandler(WKNavigationActionPolicyCancel);
     }
   }
