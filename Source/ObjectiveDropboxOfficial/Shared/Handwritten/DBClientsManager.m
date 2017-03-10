@@ -37,7 +37,6 @@ static DBTeamClient *authorizedTeamClient;
 
 + (void)setTransportConfig:(DBTransportDefaultConfig *)transportConfig {
   currentTransportConfig = transportConfig;
-  currentAppKey = currentTransportConfig.appKey;
 }
 
 + (DBUserClient *)authorizedClient {
