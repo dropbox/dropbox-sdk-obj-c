@@ -369,7 +369,7 @@ static const int timeoutInSec = 200;
   // with one call to `upload_session/finish_batch`
   dispatch_group_notify(uploadData.uploadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     if (uploadData.cancel) {
-      uploadData.responseBlock(nil, nil, nil, nil);
+      uploadData.responseBlock(nil, nil, nil, uploadData.fileUrlsToRequestErrors);
       return;
     }
 
