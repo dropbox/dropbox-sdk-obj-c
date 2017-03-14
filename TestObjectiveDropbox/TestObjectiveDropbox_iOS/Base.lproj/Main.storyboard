@@ -63,6 +63,13 @@
                                     <action selector="runBatchUploadTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhR-J7-UtW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-EQ-KEH">
+                                <rect key="frame" x="94" y="198.5" width="187" height="30"/>
+                                <state key="normal" title="Run Global Response Tests"/>
+                                <connections>
+                                    <action selector="runGlobalResponseTestsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W88-Xe-Tty"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -72,7 +79,9 @@
                             <constraint firstItem="KMW-d6-mUc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O2J-vQ-A1K"/>
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O8l-MN-ZX0"/>
                             <constraint firstItem="lAs-Sd-MXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgU-hg-kg7"/>
+                            <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qtc-hz-ejU"/>
                             <constraint firstItem="hzo-xA-D2V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c1M-V5-Hgf"/>
+                            <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-120" id="dgx-4H-ijK"/>
                             <constraint firstItem="KMW-d6-mUc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-160" id="fmP-zU-y03"/>
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="g3I-ak-LGi"/>
                             <constraint firstItem="0Il-qF-Vab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="jvu-7a-pCX"/>
@@ -85,6 +94,7 @@
                         <outlet property="linkButton" destination="b9W-gk-MoP" id="7Z8-pd-xJo"/>
                         <outlet property="openWithButton" destination="lAs-Sd-MXl" id="Z61-Mk-gKB"/>
                         <outlet property="runBatchUploadTestsButton" destination="KMW-d6-mUc" id="Ody-5w-o9z"/>
+                        <outlet property="runGlobalResponseTestsButton" destination="KTl-EQ-KEH" id="Ion-L3-Ck9"/>
                         <outlet property="runTestsButton" destination="db5-aq-giW" id="UYY-YH-dIy"/>
                         <outlet property="unlinkButton" destination="0Il-qF-Vab" id="oAz-BA-Qf0"/>
                     </connections>

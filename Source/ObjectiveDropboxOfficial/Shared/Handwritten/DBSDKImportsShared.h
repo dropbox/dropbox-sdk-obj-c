@@ -13,6 +13,7 @@
 #import "DBUserClient.h"
 
 /// Networking
+#import "DBGlobalErrorResponseHandler.h"
 #import "DBHandlerTypes.h"
 #import "DBRequestErrors.h"
 #import "DBTasks.h"

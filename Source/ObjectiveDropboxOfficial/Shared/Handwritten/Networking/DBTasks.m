@@ -3,6 +3,7 @@
 ///
 
 #import "DBDelegate.h"
+#import "DBGlobalErrorResponseHandler+Internal.h"
 #import "DBHandlerTypes.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
@@ -93,6 +94,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
                           : nil;
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
       responseBlock(nil, routeError, dbxError);
       return NO;
     }
@@ -166,6 +168,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
                           : nil;
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
       responseBlock(nil, routeError, dbxError);
       return NO;
     }
@@ -244,6 +247,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
                           : nil;
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
       responseBlock(nil, routeError, dbxError, _destination);
       return NO;
     }
@@ -350,6 +354,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
                           : nil;
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
       responseBlock(nil, routeError, dbxError, nil);
       return NO;
     }

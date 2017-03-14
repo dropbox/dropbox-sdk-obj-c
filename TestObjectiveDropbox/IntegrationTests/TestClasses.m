@@ -513,6 +513,131 @@ void MyLog(NSString *format, ...) {
 
 @end
 
+@implementation GlobalResponseTests
+
+- (instancetype)init:(DropboxTester *)tester {
+  self = [super init];
+  if (self) {
+    _tester = tester;
+  }
+  return self;
+}
+
+- (void)runGlobalResponseTests {
+  [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+
+  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *error) {
+#pragma unused(folderError)
+#pragma unused(error)
+    MyLog(@"\n\nListFolder: Global execution error:%@\n\n", folderError);
+  };
+
+  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *error) {
+#pragma unused(error)
+    MyLog(@"\n\nLookupError: Global execution error:%@\n\n", lookupError);
+  };
+
+  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *error) {
+#pragma unused(downloadError)
+#pragma unused(error)
+    MyLog(@"\n\nDownloadData: Global execution error\n\n");
+  };
+
+  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *error) {
+    MyLog(@"\n\n NetworkData: Global execution error:%@\n\n", error);
+  };
+
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:listFolderGlobalResponseBlock routeErrorType:[DBFILESListFolderError class]];
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:lookupErrorGlobalResponseBlock routeErrorType:[DBFILESLookupError class]];
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:downloadDataGlobalResponseBlock routeErrorType:[DBFILESDownloadError class]];
+
+  [DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
+
+  dispatch_semaphore_t continueSemaphore = dispatch_semaphore_create(0);
+
+  [[_tester.files listFolder:@""]
+    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      if (!result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+      [TestFormat printOffset:@"Call with no error."];
+      dispatch_semaphore_signal(continueSemaphore);
+    } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files listFolder:@"/does/not/exist"]
+    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      if (result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+      [TestFormat printOffset:@"Call with error."];
+      dispatch_semaphore_signal(continueSemaphore);
+    } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [DBGlobalErrorResponseHandler removeRouteErrorResponseBlockWithRouteErrorType:[DBFILESListFolderError class]];
+
+  [[_tester.files listFolder:@"/does/not/exist"]
+   setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+     if (result) {
+       [TestFormat abort:error routeError:routeError];
+     }
+     [TestFormat printOffset:@"Call with error after removal of DBFILESListFolderError global callback."];
+     dispatch_semaphore_signal(continueSemaphore);
+   } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+      if (result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+    [TestFormat printOffset:@"New call with error."];
+      dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+  
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.auth tokenRevoke] setResponseBlock:^(DBNilObject * _Nullable result, DBNilObject * _Nullable routeError, DBRequestError * _Nullable error) {
+    if (routeError || error) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    dispatch_semaphore_signal(continueSemaphore);
+  }];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+    if (result) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    [TestFormat printOffset:@"Call with network error."];
+    dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [DBGlobalErrorResponseHandler removeNetworkErrorResponseBlock];
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+    if (result) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    [TestFormat printOffset:@"Call with network error after removal of global callback."];
+    dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+  [TestFormat printAllTestsEnd];
+  [DBClientsManager unlinkAndResetClients];
+}
+
+@end
+
 /**
     Dropbox User API Endpoint Tests
  */
