@@ -157,7 +157,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = @"Link to Dropbox";
   _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
   _webView.UIDelegate = self;
 

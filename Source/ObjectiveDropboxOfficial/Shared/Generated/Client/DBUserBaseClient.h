@@ -19,9 +19,11 @@
 /// of which contains references to all routes within that namespace.
 /// Fully-implemented API clients will inherit this class.
 ///
-@interface DBUserBaseClient : NSObject
+@interface DBUserBaseClient : NSObject {
 
-@property (nonatomic, readonly) id<DBTransportClient> _Nonnull transportClient;
+@protected
+  id<DBTransportClient> _Nonnull _transportClient;
+}
 
 /// Routes within the `auth` namespace.
 @property (nonatomic, readonly) DBAUTHRoutes * _Nonnull authRoutes;

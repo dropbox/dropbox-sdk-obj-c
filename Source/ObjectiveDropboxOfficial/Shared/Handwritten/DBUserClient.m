@@ -6,9 +6,7 @@
 #import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
 
-@implementation DBUserClient {
-  DBTransportDefaultClient *_transportClient;
-}
+@implementation DBUserClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
   return [self initWithAccessToken:accessToken transportConfig:nil];

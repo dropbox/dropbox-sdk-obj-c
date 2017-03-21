@@ -8,9 +8,7 @@
 #import "DBTransportDefaultConfig.h"
 #import "DBUserClient.h"
 
-@implementation DBTeamClient {
-  DBTransportDefaultClient *_transportClient;
-}
+@implementation DBTeamClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
   return [self initWithAccessToken:accessToken transportConfig:nil];
@@ -37,7 +35,8 @@
 
 - (DBUserClient *)userClientWithMemberId:(NSString *)memberId {
   return [[DBUserClient alloc] initWithAccessToken:_transportClient.accessToken
-                                   transportConfig:[_transportClient duplicateTransportConfigWithAsMemberId:memberId]];
+                                   transportConfig:[(DBTransportDefaultClient *)_transportClient
+                                                       duplicateTransportConfigWithAsMemberId:memberId]];
 }
 
 - (void)updateAccessToken:(NSString *)accessToken {

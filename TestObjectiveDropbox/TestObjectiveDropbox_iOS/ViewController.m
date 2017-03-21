@@ -107,6 +107,8 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self checkButtons];
+  BOOL authorized = [DBClientsManager authorizedClient].isAuthorized;
+  NSLog(@"%s", authorized ? "authorized" : "not authorized");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
