@@ -35,6 +35,10 @@
   _transportClient.accessToken = accessToken;
 }
 
+- (NSString *)accessToken {
+  return _transportClient.accessToken;
+}
+
 - (BOOL)isAuthorized {
   return _transportClient.accessToken != nil;
 }

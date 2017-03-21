@@ -73,6 +73,11 @@
 - (void)updateAccessToken:(NSString * _Nonnull)accessToken;
 
 ///
+/// Returns the current access token used to make API requests.
+///
+- (NSString * _Nullable)accessToken;
+
+///
 /// Returns whether the client is authorized.
 ///
 /// @return Whether the client currently has a non-nil OAuth 2.0 access token.
