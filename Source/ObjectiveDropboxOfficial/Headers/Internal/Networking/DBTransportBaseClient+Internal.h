@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBStoneBase.h"
 #import "DBTransportBaseClient.h"
 
 /// Used by internal classes of `DBTransportBaseClient`

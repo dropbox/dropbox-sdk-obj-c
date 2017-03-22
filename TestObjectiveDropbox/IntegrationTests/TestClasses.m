@@ -526,25 +526,28 @@ void MyLog(NSString *format, ...) {
 - (void)runGlobalResponseTests {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
-  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *error) {
-#pragma unused(folderError)
-#pragma unused(error)
-    MyLog(@"\n\nListFolder: Global execution error:%@\n\n", folderError);
+  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError) {
+#pragma unused(networkError)
+    MyLog(@"\n\nListFolder: listFolderGlobalResponseBlock Global execution error:%@\n\n", folderError);
   };
 
-  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *error) {
-#pragma unused(error)
-    MyLog(@"\n\nLookupError: Global execution error:%@\n\n", lookupError);
+  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError) {
+#pragma unused(networkError)
+    MyLog(@"\n\nLookupError: lookupErrorGlobalResponseBlock Global execution error:%@\n\n", lookupError);
   };
 
-  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *error) {
+  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError) {
 #pragma unused(downloadError)
-#pragma unused(error)
-    MyLog(@"\n\nDownloadData: Global execution error\n\n");
+#pragma unused(networkError)
+    MyLog(@"\n\nDownloadData: downloadDataGlobalResponseBlock Global execution error\n\n");
   };
 
-  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *error) {
-    MyLog(@"\n\n NetworkData: Global execution error:%@\n\n", error);
+  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *networkError) {
+    MyLog(@"\n\n NetworkData: networkGlobalResponseBlock Global execution error:%@\n\n", networkError);
+
+    if ([networkError isAuthError]) {
+      [TestFormat printOffset:@"Restarting auth request"];
+    }
   };
 
   [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:listFolderGlobalResponseBlock routeErrorType:[DBFILESListFolderError class]];
@@ -553,6 +556,7 @@ void MyLog(NSString *format, ...) {
 
   [DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
 
+  [TestFormat printOffset:@"Registered handlers for listfoldererror, lookuperror, downloaderror, and network errors"];
   dispatch_semaphore_t continueSemaphore = dispatch_semaphore_create(0);
 
   [[_tester.files listFolder:@""]
@@ -560,7 +564,7 @@ void MyLog(NSString *format, ...) {
       if (!result) {
         [TestFormat abort:error routeError:routeError];
       }
-      [TestFormat printOffset:@"Call with no error."];
+      [TestFormat printOffset:@"listFolder Call finished with no error."];
       dispatch_semaphore_signal(continueSemaphore);
     } queue:[NSOperationQueue new]];
 
@@ -571,12 +575,13 @@ void MyLog(NSString *format, ...) {
       if (result) {
         [TestFormat abort:error routeError:routeError];
       }
-      [TestFormat printOffset:@"Call with error."];
+      [TestFormat printOffset:@"listFolder Call finished with error."];
       dispatch_semaphore_signal(continueSemaphore);
     } queue:[NSOperationQueue new]];
 
   dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
 
+  [TestFormat printOffset:@"Removing listfoldererror listener"];
   [DBGlobalErrorResponseHandler removeRouteErrorResponseBlockWithRouteErrorType:[DBFILESListFolderError class]];
 
   [[_tester.files listFolder:@"/does/not/exist"]
@@ -584,7 +589,7 @@ void MyLog(NSString *format, ...) {
      if (result) {
        [TestFormat abort:error routeError:routeError];
      }
-     [TestFormat printOffset:@"Call with error after removal of DBFILESListFolderError global callback."];
+     [TestFormat printOffset:@"listFolder Call finished with error after removal of DBFILESListFolderError global callback."];
      dispatch_semaphore_signal(continueSemaphore);
    } queue:[NSOperationQueue new]];
 
@@ -594,7 +599,7 @@ void MyLog(NSString *format, ...) {
       if (result) {
         [TestFormat abort:error routeError:routeError];
       }
-    [TestFormat printOffset:@"New call with error."];
+    [TestFormat printOffset:@"downloadData Call with route error."];
       dispatch_semaphore_signal(continueSemaphore);
   } queue:[NSOperationQueue new]];
   
@@ -604,6 +609,7 @@ void MyLog(NSString *format, ...) {
     if (routeError || error) {
       [TestFormat abort:error routeError:routeError];
     }
+    [TestFormat printOffset:@"tokenRevoke Call with no error."];
     dispatch_semaphore_signal(continueSemaphore);
   }];
 
@@ -613,19 +619,20 @@ void MyLog(NSString *format, ...) {
     if (result) {
       [TestFormat abort:error routeError:routeError];
     }
-    [TestFormat printOffset:@"Call with network error."];
+    [TestFormat printOffset:@"downloadData Call with auth network error."];
     dispatch_semaphore_signal(continueSemaphore);
   } queue:[NSOperationQueue new]];
 
   dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
 
+  [TestFormat printOffset:@"Removing network error listener"];
   [DBGlobalErrorResponseHandler removeNetworkErrorResponseBlock];
 
   [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
     if (result) {
       [TestFormat abort:error routeError:routeError];
     }
-    [TestFormat printOffset:@"Call with network error after removal of global callback."];
+    [TestFormat printOffset:@"Call with auth network error after removal of global callback."];
     dispatch_semaphore_signal(continueSemaphore);
   } queue:[NSOperationQueue new]];
 
@@ -634,6 +641,7 @@ void MyLog(NSString *format, ...) {
   [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
   [TestFormat printAllTestsEnd];
   [DBClientsManager unlinkAndResetClients];
+  exit(0);
 }
 
 @end

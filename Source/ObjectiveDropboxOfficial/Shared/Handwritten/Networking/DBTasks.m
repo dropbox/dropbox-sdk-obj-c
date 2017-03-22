@@ -94,7 +94,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
                           : nil;
-      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError);
       return NO;
     }
@@ -168,7 +168,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
                           : nil;
-      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError);
       return NO;
     }
@@ -247,7 +247,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
                           : nil;
-      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError, _destination);
       return NO;
     }
@@ -354,7 +354,7 @@
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                           ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
                           : nil;
-      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError error:dbxError];
+      [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError, nil);
       return NO;
     }

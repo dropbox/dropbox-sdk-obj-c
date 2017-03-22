@@ -3,6 +3,8 @@
 ///
 
 #import "DBGlobalErrorResponseHandler.h"
+#import "DBRequestErrors.h"
+#import "DBTransportBaseClient+Internal.h"
 #import <objc/runtime.h>
 
 static DBNetworkErrorResponseBlock s_networkErrorResponseBlock = nil;
@@ -10,8 +12,6 @@ static NSOperationQueue *s_networkErrorQueue;
 
 static NSMutableDictionary<Class, DBRouteErrorResponseBlock> * _Nullable s_routeErrorToResponseBlock;
 static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorToQueue;
-
-static NSLock *s_lock;
 
 @implementation DBGlobalErrorResponseHandler
 
@@ -22,8 +22,6 @@ static NSLock *s_lock;
 
     s_routeErrorToResponseBlock = [NSMutableDictionary new];
     s_routeErrorToQueue = [NSMutableDictionary new];
-
-    s_lock = [NSLock new];
   });
 }
 
@@ -37,16 +35,17 @@ static NSLock *s_lock;
                                   queue:(NSOperationQueue *)queue {
   NSOperationQueue *queueToUse = queue ?: [NSOperationQueue mainQueue];
 
-  [s_lock lock];
-  s_routeErrorToResponseBlock[routeErrorType] = routeResponseBlock;
-  s_routeErrorToQueue[routeErrorType] = queueToUse;
-  [s_lock unlock];
+  @synchronized([DBGlobalErrorResponseHandler class]) {
+    s_routeErrorToResponseBlock[routeErrorType] = routeResponseBlock;
+    s_routeErrorToQueue[routeErrorType] = queueToUse;
+  }
 }
 
 + (void)removeRouteErrorResponseBlockWithRouteErrorType:(id)routeErrorType {
-  [s_lock lock];
-  [s_routeErrorToResponseBlock removeObjectForKey:routeErrorType];
-  [s_lock unlock];
+  @synchronized([DBGlobalErrorResponseHandler class]) {
+    [s_routeErrorToResponseBlock removeObjectForKey:routeErrorType];
+    [s_routeErrorToQueue removeObjectForKey:routeErrorType];
+  }
 }
 
 + (void)registerNetworkErrorResponseBlock:(DBNetworkErrorResponseBlock)networkErrorResponseBlock {
@@ -57,76 +56,79 @@ static NSLock *s_lock;
                                     queue:(NSOperationQueue * _Nullable)queue {
   NSOperationQueue *queueToUse = queue;
 
-  [s_lock lock];
-  s_networkErrorResponseBlock = networkErrorResponseBlock;
-
-  if (queueToUse) {
-    s_networkErrorQueue = queueToUse;
+  @synchronized([DBGlobalErrorResponseHandler class]) {
+    s_networkErrorResponseBlock = networkErrorResponseBlock;
+    if (queueToUse) {
+      s_networkErrorQueue = queueToUse;
+    }
   }
-  [s_lock unlock];
 }
 
 + (void)removeNetworkErrorResponseBlock {
-  [s_lock lock];
-  s_networkErrorResponseBlock = nil;
-  [s_lock unlock];
+  @synchronized([DBGlobalErrorResponseHandler class]) {
+    s_networkErrorResponseBlock = nil;
+    s_networkErrorQueue = [NSOperationQueue mainQueue];
+  }
 }
 
-+ (void)executeRegisteredResponseBlocksWithRouteError:(id)routeError error:(DBRequestError *)error {
++ (void)executeRegisteredResponseBlocksWithRouteError:(id)routeError networkError:(DBRequestError *)networkError {
   if (routeError) {
-    // execute route error block
-    Class errorClass = [routeError class];
-    NSDictionary<Class, id> *instanceVariablesClassesToValues =
-        [[self class] instanceVariablesDataFromRouteError:routeError];
+    if ([s_routeErrorToResponseBlock count] > 0) {
+      // execute route error block
+      Class errorClass = [routeError class];
+      NSDictionary<Class, id> *fieldClassToValue =
+          [[self class] fieldDataFromRouteError:routeError];
 
-    [s_lock lock];
+      @synchronized([DBGlobalErrorResponseHandler class]) {
+        NSOperationQueue *queueToUse = s_routeErrorToQueue[errorClass];
 
-    NSOperationQueue *queueToUse = s_routeErrorToQueue[errorClass];
+        DBRouteErrorResponseBlock routeErrorBlock = s_routeErrorToResponseBlock[errorClass];
 
-    if ([s_routeErrorToResponseBlock objectForKey:errorClass]) {
-      [queueToUse addOperationWithBlock:^{
-        [s_lock lock];
-        if (s_routeErrorToResponseBlock[errorClass]) {
-          s_routeErrorToResponseBlock[errorClass](routeError, error);
+        if (routeErrorBlock) {
+          [queueToUse addOperationWithBlock:^{
+            routeErrorBlock(routeError, networkError);
+          }];
         }
-        [s_lock unlock];
-      }];
-    }
 
-    for (Class instanceClass in instanceVariablesClassesToValues) {
-      if ([s_routeErrorToResponseBlock objectForKey:instanceClass]) {
+        for (Class fieldClass in fieldClassToValue) {
+          DBRouteErrorResponseBlock routeErrorBlockForField = s_routeErrorToResponseBlock[fieldClass];
+          id fieldValue = fieldClassToValue[fieldClass];
 
-        [queueToUse addOperationWithBlock:^{
-          [s_lock lock];
-          if (s_routeErrorToResponseBlock[instanceClass]) {
-            s_routeErrorToResponseBlock[instanceClass](instanceVariablesClassesToValues[instanceClass], error);
+          if (routeErrorBlockForField) {
+            [queueToUse addOperationWithBlock:^{
+              routeErrorBlockForField(fieldValue, networkError);
+            }];
           }
-          [s_lock unlock];
-        }];
+        }
       }
     }
-    [s_lock unlock];
   }
 
   // execute network error block
-  if (error) {
-    [s_lock lock];
-    if (s_networkErrorResponseBlock) {
-      NSOperationQueue *queueToUse = s_networkErrorQueue;
-
-      [queueToUse addOperationWithBlock:^{
-        [s_lock lock];
-        if (s_networkErrorResponseBlock) {
-          s_networkErrorResponseBlock(error);
-        }
-        [s_lock unlock];
-      }];
+  if (networkError) {
+    if ([networkError isHttpError]) {
+      DBRequestHttpError *httpError = [networkError asHttpError];
+      // for normal route errors, we don't want to execute the catch-all network block
+      if ([DBTransportBaseClient statusCodeIsRouteError:[httpError.statusCode integerValue]]) {
+        return;
+      }
     }
-    [s_lock unlock];
+
+    @synchronized([DBGlobalErrorResponseHandler class]) {
+      DBNetworkErrorResponseBlock networkErrorBlock = s_networkErrorResponseBlock;
+
+      if (networkErrorBlock) {
+        NSOperationQueue *queueToUse = s_networkErrorQueue;
+
+        [queueToUse addOperationWithBlock:^{
+          networkErrorBlock(networkError);
+        }];
+      }
+    }
   }
 }
 
-+ (NSDictionary<Class, id> *)instanceVariablesDataFromRouteError:(id)routeError {
++ (NSDictionary<Class, id> *)fieldDataFromRouteError:(DBRequestError *)routeError {
   Class errorClass = [routeError class];
 
   NSMutableDictionary<Class, id> *result = [NSMutableDictionary new];
@@ -135,33 +137,47 @@ static NSLock *s_lock;
   unsigned int count;
   objc_property_t *props = class_copyPropertyList([errorClass class], &count);
 
-  for (int i = 0; i < count; i++) {
+  NSString *tagValue = nil;
+
+  for (unsigned int i = 0; i < count; i++) {
+    objc_property_t property = props[i];
+    const char *name = property_getName(property);
+    NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+    if ([propertyName isEqualToString:@"tag"]) {
+      tagValue = [routeError tagName];
+      break;
+    }
+  }
+
+  for (unsigned int i = 0; i < count; i++) {
     objc_property_t property = props[i];
     const char *name = property_getName(property);
     NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
 
     const char *type = property_getAttributes(property);
-
-    NSString *typeString = [NSString stringWithUTF8String:type];
+    NSString *typeString = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
     NSArray *attributes = [typeString componentsSeparatedByString:@","];
     NSString *typeAttribute = [attributes objectAtIndex:0];
-    NSString *propertyType = [typeAttribute substringFromIndex:1];
 
     if ([typeAttribute hasPrefix:@"T@"]) {
       NSString *typeClassName =
-          [typeAttribute substringWithRange:NSMakeRange(3, [typeAttribute length] - 4)]; // turns @"NSDate" into NSDate
+          [typeAttribute substringWithRange:NSMakeRange(3, [typeAttribute length] - 4)]; // turns T@"NSDate" into NSDate
       Class typeClass = NSClassFromString(typeClassName);
       if (typeClass != nil && typeClass != [NSString class]) {
-        // we try / catch here because for union types, a runtime exception is thrown
-        // when a value type that doesn't correspond to the tag state is accessed.
         @try {
+          // we want to make sure that we only access fields that correspond to the
+          // correct Union tag state. This check should filter most cases, but because
+          // of the imprecision of reflection, we still want the try catch block
+          if (tagValue && ![tagValue localizedCaseInsensitiveContainsString:propertyName]) {
+            continue;
+          }
           id object = [routeError valueForKey:propertyName];
           result[typeClass] = object;
-          NSDictionary<Class, id> *additionalData = [[self class] instanceVariablesDataFromRouteError:object];
+          // recursively retrieve instance data
+          NSDictionary<Class, id> *additionalData = [[self class] fieldDataFromRouteError:object];
           [result addEntriesFromDictionary:additionalData];
         } @catch (NSException *) {
         }
-        // recursively retrieve instance data
       }
     }
   }

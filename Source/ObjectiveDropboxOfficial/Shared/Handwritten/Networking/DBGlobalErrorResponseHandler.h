@@ -27,10 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DBGlobalErrorResponseHandler : NSObject
 
 // Global response handler for route-specific errors.
-typedef void (^DBRouteErrorResponseBlock)(id _Nullable routeError, DBRequestError *error);
+typedef void (^DBRouteErrorResponseBlock)(id _Nullable routeError, DBRequestError *networkError);
 
 // Global response handler for general network errors.
-typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *error);
+typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError);
 
 ///
 /// Convenience method for registering a global error handler for a specific route error type.

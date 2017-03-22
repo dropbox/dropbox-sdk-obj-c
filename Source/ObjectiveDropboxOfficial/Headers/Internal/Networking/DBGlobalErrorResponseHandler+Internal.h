@@ -8,6 +8,7 @@
 
 @interface DBGlobalErrorResponseHandler (Internal)
 
-+ (void)executeRegisteredResponseBlocksWithRouteError:(id _Nullable)routeError error:(DBRequestError * _Nullable)error;
++ (void)executeRegisteredResponseBlocksWithRouteError:(id _Nullable)routeError
+                                         networkError:(DBRequestError * _Nullable)networkError;
 
 @end
