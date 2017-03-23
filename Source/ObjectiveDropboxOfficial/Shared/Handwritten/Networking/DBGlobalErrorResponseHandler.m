@@ -54,7 +54,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
 
 + (void)registerNetworkErrorResponseBlock:(DBNetworkErrorResponseBlock)networkErrorResponseBlock
                                     queue:(NSOperationQueue * _Nullable)queue {
-  NSOperationQueue *queueToUse = queue;
+  NSOperationQueue *queueToUse = queue ?: [NSOperationQueue mainQueue];
 
   @synchronized([DBGlobalErrorResponseHandler class]) {
     s_networkErrorResponseBlock = networkErrorResponseBlock;
@@ -72,33 +72,31 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
 }
 
 + (void)executeRegisteredResponseBlocksWithRouteError:(id)routeError networkError:(DBRequestError *)networkError {
-  if (routeError) {
-    if ([s_routeErrorToResponseBlock count] > 0) {
-      // execute route error block
-      Class errorClass = [routeError class];
-      NSDictionary<Class, id> *fieldClassToValue =
-          [[self class] fieldDataFromRouteError:routeError];
+  if (routeError && [s_routeErrorToResponseBlock count] > 0) {
+    // execute route error block
+    Class errorClass = [routeError class];
+    NSDictionary<Class, id> *fieldClassToValue =
+        [self fieldDataFromRouteError:routeError];
 
-      @synchronized([DBGlobalErrorResponseHandler class]) {
-        NSOperationQueue *queueToUse = s_routeErrorToQueue[errorClass];
+    @synchronized([DBGlobalErrorResponseHandler class]) {
+      NSOperationQueue *queueToUse = s_routeErrorToQueue[errorClass];
 
-        DBRouteErrorResponseBlock routeErrorBlock = s_routeErrorToResponseBlock[errorClass];
+      DBRouteErrorResponseBlock routeErrorBlock = s_routeErrorToResponseBlock[errorClass];
 
-        if (routeErrorBlock) {
+      if (routeErrorBlock) {
+        [queueToUse addOperationWithBlock:^{
+          routeErrorBlock(routeError, networkError);
+        }];
+      }
+
+      for (Class fieldClass in fieldClassToValue) {
+        DBRouteErrorResponseBlock routeErrorBlockForField = s_routeErrorToResponseBlock[fieldClass];
+        id fieldValue = fieldClassToValue[fieldClass];
+
+        if (routeErrorBlockForField) {
           [queueToUse addOperationWithBlock:^{
-            routeErrorBlock(routeError, networkError);
+            routeErrorBlockForField(fieldValue, networkError);
           }];
-        }
-
-        for (Class fieldClass in fieldClassToValue) {
-          DBRouteErrorResponseBlock routeErrorBlockForField = s_routeErrorToResponseBlock[fieldClass];
-          id fieldValue = fieldClassToValue[fieldClass];
-
-          if (routeErrorBlockForField) {
-            [queueToUse addOperationWithBlock:^{
-              routeErrorBlockForField(fieldValue, networkError);
-            }];
-          }
         }
       }
     }
@@ -165,16 +163,26 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
       Class typeClass = NSClassFromString(typeClassName);
       if (typeClass != nil && typeClass != [NSString class]) {
         @try {
-          // we want to make sure that we only access fields that correspond to the
+          // We want to make sure that we only access fields that correspond to the
           // correct Union tag state. This check should filter most cases, but because
-          // of the imprecision of reflection, we still want the try catch block
+          // of the imprecision of reflection, we still want the try catch block. We use
+          // a string contains comparison because of the structure of property name and
+          // the tag value.
+          //
+          // For example, for a `/files/list_folder` error, for the `path` tag, we have an SDK tag
+          // type of `DBFILESListFolderErrorPath`, whose corresponding value is accessible via
+          // the error's instance field called `path`. For this reason, we want to compare
+          // `DBFILESListFolderErrorPath` and `path` with an insensitive string contains call.
+          // Because the instance field name `path` is not tightly linked to the tag type
+          // `DBFILESListFolderErrorPath`, we still want the try catch block.
+
           if (tagValue && ![tagValue localizedCaseInsensitiveContainsString:propertyName]) {
             continue;
           }
           id object = [routeError valueForKey:propertyName];
           result[typeClass] = object;
           // recursively retrieve instance data
-          NSDictionary<Class, id> *additionalData = [[self class] fieldDataFromRouteError:object];
+          NSDictionary<Class, id> *additionalData = [self fieldDataFromRouteError:object];
           [result addEntriesFromDictionary:additionalData];
         } @catch (NSException *) {
         }
