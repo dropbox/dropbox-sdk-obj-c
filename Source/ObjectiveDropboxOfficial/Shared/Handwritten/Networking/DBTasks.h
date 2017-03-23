@@ -33,11 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 @protected
   /// Information about the route to which the request was made.
   DBRoute *_route;
-  /// The request task.
-  NSURLSessionTask *_task;
+  NSOperationQueue *_queue;
 }
 
-- (nonnull instancetype)initWithRoute:(DBRoute *)route task:(NSURLSessionTask *)task;
+@property (nonatomic) int retryCount;
+
+- (nonnull instancetype)initWithRoute:(DBRoute *)route;
 
 ///
 /// Cancels the current request.
@@ -58,6 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Starts the current request.
 ///
 - (void)start;
+
+///
+/// Restarts the current request.
+///
+- (DBTask *)restart;
 
 @end
 
@@ -249,8 +255,8 @@ typedef void (^DBUploadResponseBlock)(TResponse _Nullable result, TError _Nullab
   BOOL _overwrite;
 }
 
-typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable result, TError _Nullable routeError,
-                                               DBRequestError * _Nullable networkError, NSURL * _Nonnull destination);
+typedef void (^DBDownloadUrlResponseBlock)(TResponse _Nullable result, TError _Nullable routeError,
+                                           DBRequestError * _Nullable networkError, NSURL * _Nonnull destination);
 
 ///
 /// Installs a response handler for the current request.
@@ -269,7 +275,7 @@ typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable result, TErro
 ///
 /// @return The current `DBDownloadUrlTask` instance.
 ///
-- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlTaskResponseBlock _Nonnull)responseBlock;
+- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -286,7 +292,7 @@ typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable result, TErro
 ///
 /// @return The current `DBDownloadUrlTask` instance.
 ///
-- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlTaskResponseBlock _Nonnull)responseBlock
+- (DBDownloadUrlTask<TResponse, TError> *)setResponseBlock:(DBDownloadUrlResponseBlock _Nonnull)responseBlock
                                                      queue:(NSOperationQueue * _Nullable)queue;
 
 ///
@@ -338,7 +344,7 @@ typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable result, TErro
 ///
 @interface DBDownloadDataTask <TResponse, TError> : DBTask
 
-typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable result, TError _Nullable routeError, DBRequestError * _Nullable networkError, NSData * _Nullable fileData);
+typedef void (^DBDownloadDataResponseBlock)(TResponse _Nullable result, TError _Nullable routeError, DBRequestError * _Nullable networkError, NSData * _Nullable fileData);
 
 ///
 /// Installs a response handler for the current request.
@@ -354,7 +360,7 @@ typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable result, TErr
 ///
 /// @return The current `DBDownloadDataTask` instance.
 ///
-- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataTaskResponseBlock _Nonnull)responseBlock;
+- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataResponseBlock _Nonnull)responseBlock;
 
 ///
 /// Installs a response handler for the current request with a specific queue on which to execute handler code.
@@ -371,7 +377,7 @@ typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable result, TErr
 ///
 /// @return The current `DBDownloadDataTask` instance.
 ///
-- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataTaskResponseBlock _Nonnull)responseBlock
+- (DBDownloadDataTask<TResponse, TError> *)setResponseBlock:(DBDownloadDataResponseBlock _Nonnull)responseBlock
                                                       queue:(NSOperationQueue * _Nullable)queue;
 
 ///

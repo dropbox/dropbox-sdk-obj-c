@@ -548,6 +548,7 @@ void MyLog(NSString *format, ...) {
 
     if ([networkError isAuthError]) {
       [TestFormat printOffset:@"Restarting auth request"];
+      [restartTask restart];
     }
   };
 
@@ -606,21 +607,21 @@ void MyLog(NSString *format, ...) {
   
   dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
 
-  [[_tester.auth tokenRevoke] setResponseBlock:^(DBNilObject * _Nullable result, DBNilObject * _Nullable routeError, DBRequestError * _Nullable error) {
-    if (routeError || error) {
-      [TestFormat abort:error routeError:routeError];
-    }
-    [TestFormat printOffset:@"tokenRevoke Call with no error."];
-    dispatch_semaphore_signal(continueSemaphore);
-  }];
-
-  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
-
   [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
     if (result) {
       [TestFormat abort:error routeError:routeError];
     }
     [TestFormat printOffset:@"downloadData Call with auth network error."];
+    dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files listFolder:@"/does/not/exist"] setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *networkError) {
+    if (result) {
+      [TestFormat abort:networkError routeError:routeError];
+    }
+    [TestFormat printOffset:@"Call with auth network error after removal of global callback."];
     dispatch_semaphore_signal(continueSemaphore);
   } queue:[NSOperationQueue new]];
 

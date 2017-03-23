@@ -56,6 +56,12 @@
 /// The delegate used manage handler code.
 @property (nonatomic, readonly) DBDelegate * _Nonnull delegate;
 
+/// The url to upload.
+@property (nonatomic, readonly) NSURL * _Nullable inputUrl;
+
+/// The data to upload.
+@property (nonatomic, readonly) NSData * _Nullable inputData;
+
 ///
 /// `DBUploadTask` full constructor.
 ///
@@ -64,13 +70,17 @@
 /// @param delegate The delegate that manages and executes response code.
 /// @param route The static `DBRoute` instance associated with the route to which the request was made. Contains
 /// information like route host, response type, etc.). This is used in the deserialization process.
+/// @param inputUrl The url to upload.
+/// @param inputData The data to upload.
 ///
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithTask:(NSURLSessionUploadTask * _Nonnull)task
                              session:(NSURLSession * _Nonnull)session
                             delegate:(DBDelegate * _Nonnull)delegate
-                               route:(DBRoute * _Nonnull)route;
+                               route:(DBRoute * _Nonnull)route
+                            inputUrl:(NSURL * _Nullable)inputUrl
+                           inputData:(NSData * _Nullable)inputData;
 @end
 
 #pragma mark - Download-style network task (NSURL)

@@ -4,6 +4,7 @@
 
 #import "DBGlobalErrorResponseHandler.h"
 #import "DBRequestErrors.h"
+#import "DBTasks.h"
 #import "DBTransportBaseClient+Internal.h"
 #import <objc/runtime.h>
 
@@ -71,7 +72,9 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
   }
 }
 
-+ (void)executeRegisteredResponseBlocksWithRouteError:(id)routeError networkError:(DBRequestError *)networkError {
++ (void)executeRegisteredResponseBlocksWithRouteError:(id)routeError
+                                         networkError:(DBRequestError *)networkError
+                                          restartTask:(DBTask *)restartTask {
   if (routeError && [s_routeErrorToResponseBlock count] > 0) {
     // execute route error block
     Class errorClass = [routeError class];
@@ -84,7 +87,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
 
       if (routeErrorBlock) {
         [queueToUse addOperationWithBlock:^{
-          routeErrorBlock(routeError, networkError);
+          routeErrorBlock(routeError, networkError, restartTask);
         }];
       }
 
@@ -94,7 +97,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
 
         if (routeErrorBlockForField) {
           [queueToUse addOperationWithBlock:^{
-            routeErrorBlockForField(fieldValue, networkError);
+            routeErrorBlockForField(fieldValue, networkError, restartTask);
           }];
         }
       }
@@ -118,7 +121,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
         NSOperationQueue *queueToUse = s_networkErrorQueue;
 
         [queueToUse addOperationWithBlock:^{
-          networkErrorBlock(networkError);
+          networkErrorBlock(networkError, restartTask);
         }];
       }
     }

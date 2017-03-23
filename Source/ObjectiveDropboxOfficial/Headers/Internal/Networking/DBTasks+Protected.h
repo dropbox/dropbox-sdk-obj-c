@@ -10,27 +10,30 @@
 
 @interface DBRpcTask (Protected)
 
-- (DBRpcResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBRpcResponseBlockImpl _Nonnull)responseBlock;
+- (DBRpcResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBRpcResponseBlockImpl _Nonnull)responseBlock
+                                                       cleanupBlock:(DBCleanupBlock _Nonnull)cleanupBlock;
 
 @end
 
 @interface DBUploadTask (Protected)
 
-- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
-    (DBUploadResponseBlockImpl _Nonnull)responseBlock;
+- (DBUploadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:(DBUploadResponseBlockImpl _Nonnull)responseBlock
+                                                          cleanupBlock:(DBCleanupBlock _Nonnull)cleanupBlock;
 
 @end
 
 @interface DBDownloadUrlTask (Protected)
 
 - (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
-    (DBDownloadUrlResponseBlockImpl _Nonnull)responseBlock;
+                                               (DBDownloadUrlResponseBlockImpl _Nonnull)responseBlock
+                                                            cleanupBlock:(DBCleanupBlock _Nonnull)cleanupBlock;
 
 @end
 
 @interface DBDownloadDataTask (Protected)
 
 - (DBDownloadResponseBlockStorage _Nonnull)storageBlockWithResponseBlock:
-    (DBDownloadDataResponseBlockImpl _Nonnull)responseBlock;
+                                               (DBDownloadDataResponseBlockImpl _Nonnull)responseBlock
+                                                            cleanupBlock:(DBCleanupBlock _Nonnull)cleanupBlock;
 
 @end

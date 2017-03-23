@@ -12,19 +12,45 @@
 
 #pragma mark - RPC-style network task
 
-@implementation DBRpcTaskImpl
+@implementation DBRpcTaskImpl {
+  DBRpcTaskImpl *_selfRetained;
+  DBRpcResponseBlockImpl _responseBlock;
+}
 
 - (instancetype)initWithTask:(NSURLSessionDataTask *)task
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route task:task];
+  self = [super initWithRoute:route];
   if (self) {
     _dataTask = task;
     _session = session;
     _delegate = delegate;
+    _selfRetained = self;
   }
   return self;
+}
+
+- (NSURLSessionTask *)currentTask {
+  return _dataTask;
+}
+
+- (void)cleanup {
+  _selfRetained = nil;
+
+  NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
+  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+}
+
+- (DBTask *)restart {
+  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
+  DBRpcTaskImpl *sdkTask = [[DBRpcTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
+  sdkTask.retryCount += 1;
+  [sdkTask setResponseBlock:_responseBlock queue:_queue];
+  [task resume];
+
+  return sdkTask;
 }
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock {
@@ -32,8 +58,9 @@
 }
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
-  [_delegate addRpcResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
+  _responseBlock = responseBlock;
+  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  [_delegate addRpcResponseHandler:_dataTask session:_session responseHandler:storageBlock responseHandlerQueue:queue];
   return self;
 }
 
@@ -42,7 +69,7 @@
 }
 
 - (DBRpcTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
+  [_delegate addProgressHandler:_dataTask session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }
 
@@ -50,19 +77,62 @@
 
 #pragma mark - Upload-style network task
 
-@implementation DBUploadTaskImpl
+@implementation DBUploadTaskImpl {
+  DBUploadTaskImpl *_selfRetained;
+  DBUploadResponseBlockImpl _responseBlock;
+}
 
 - (instancetype)initWithTask:(NSURLSessionUploadTask *)task
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
-                       route:(DBRoute *)route {
-  self = [super initWithRoute:route task:task];
+                       route:(DBRoute *)route
+                    inputUrl:(NSURL *)inputUrl
+                   inputData:(NSData *)inputData {
+  self = [super initWithRoute:route];
   if (self) {
     _uploadTask = task;
     _session = session;
     _delegate = delegate;
+    _inputUrl = inputUrl;
+    _inputData = inputData;
   }
   return self;
+}
+
+- (NSURLSessionTask *)currentTask {
+  return _uploadTask;
+}
+
+- (void)cleanup {
+  _selfRetained = nil;
+
+  NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
+  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+}
+
+- (DBTask *)restart {
+  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLSessionUploadTask *task = nil;
+  self.retryCount += 1;
+  if (_inputUrl) {
+    task = [_session uploadTaskWithRequest:request fromFile:self->_inputUrl];
+  } else if (_inputData) {
+    task = [_session uploadTaskWithRequest:request fromData:self->_inputData];
+  } else {
+    task = [_session uploadTaskWithStreamedRequest:request];
+  }
+
+  DBUploadTaskImpl *sdkTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                             session:_session
+                                                            delegate:_delegate
+                                                               route:_route
+                                                            inputUrl:_inputUrl
+                                                           inputData:_inputData];
+  sdkTask.retryCount += 1;
+  [sdkTask setResponseBlock:_responseBlock queue:_queue];
+  [sdkTask resume];
+
+  return sdkTask;
 }
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock {
@@ -70,8 +140,13 @@
 }
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
-  [_delegate addUploadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
+  _responseBlock = responseBlock;
+  DBUploadResponseBlockStorage storageBlock =
+      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  [_delegate addUploadResponseHandler:_uploadTask
+                              session:_session
+                      responseHandler:storageBlock
+                 responseHandlerQueue:queue];
 
   return self;
 }
@@ -81,7 +156,7 @@
 }
 
 - (DBUploadTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
+  [_delegate addProgressHandler:_uploadTask session:_session progressHandler:progressBlock progressHandlerQueue:queue];
   return self;
 }
 
@@ -89,7 +164,10 @@
 
 #pragma mark - Download-style network task (NSURL)
 
-@implementation DBDownloadUrlTaskImpl
+@implementation DBDownloadUrlTaskImpl {
+  DBDownloadUrlTaskImpl *_selfRetained;
+  DBDownloadUrlResponseBlockImpl _responseBlock;
+}
 
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
                      session:(NSURLSession *)session
@@ -97,7 +175,7 @@
                        route:(DBRoute *)route
                    overwrite:(BOOL)overwrite
                  destination:(NSURL *)destination {
-  self = [super initWithRoute:route task:task];
+  self = [super initWithRoute:route];
   if (self) {
     _downloadUrlTask = task;
     _session = session;
@@ -108,13 +186,45 @@
   return self;
 }
 
+- (NSURLSessionTask *)currentTask {
+  return _downloadUrlTask;
+}
+
+- (void)cleanup {
+  _selfRetained = nil;
+
+  NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
+  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+}
+
+- (DBTask *)restart {
+  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
+  DBDownloadUrlTaskImpl *sdkTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
+                                                                       session:_session
+                                                                      delegate:_delegate
+                                                                         route:_route
+                                                                     overwrite:_overwrite
+                                                                   destination:_destination];
+  sdkTask.retryCount += 1;
+  [sdkTask setResponseBlock:_responseBlock queue:_queue];
+  [task resume];
+
+  return sdkTask;
+}
+
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
-  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
+  _responseBlock = responseBlock;
+  DBDownloadResponseBlockStorage storageBlock =
+      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  [_delegate addDownloadResponseHandler:_downloadUrlTask
+                                session:_session
+                        responseHandler:storageBlock
+                   responseHandlerQueue:queue];
 
   return self;
 }
@@ -124,7 +234,10 @@
 }
 
 - (DBDownloadUrlTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
+  [_delegate addProgressHandler:_downloadUrlTask
+                        session:_session
+                progressHandler:progressBlock
+           progressHandlerQueue:queue];
   return self;
 }
 
@@ -132,13 +245,16 @@
 
 #pragma mark - Download-style network task (NSData)
 
-@implementation DBDownloadDataTaskImpl
+@implementation DBDownloadDataTaskImpl {
+  DBDownloadDataTaskImpl *_selfRetained;
+  DBDownloadDataResponseBlockImpl _responseBlock;
+}
 
 - (instancetype)initWithTask:(NSURLSessionDownloadTask *)task
                      session:(NSURLSession *)session
                     delegate:(DBDelegate *)delegate
                        route:(DBRoute *)route {
-  self = [super initWithRoute:route task:task];
+  self = [super initWithRoute:route];
   if (self) {
     _downloadDataTask = task;
     _session = session;
@@ -147,14 +263,42 @@
   return self;
 }
 
+- (NSURLSessionTask *)currentTask {
+  return _downloadDataTask;
+}
+
+- (void)cleanup {
+  _selfRetained = nil;
+
+  NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
+  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+}
+
+- (DBTask *)restart {
+  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
+  DBDownloadDataTaskImpl *sdkTask =
+      [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
+  sdkTask.retryCount += 1;
+  [sdkTask setResponseBlock:_responseBlock queue:_queue];
+  [task resume];
+
+  return sdkTask;
+}
+
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock {
   return [self setResponseBlock:responseBlock queue:nil];
 }
 
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
                                    queue:(NSOperationQueue *)queue {
-  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock];
-  [_delegate addDownloadResponseHandler:_task session:_session responseHandler:storageBlock responseHandlerQueue:queue];
+  _responseBlock = responseBlock;
+  DBDownloadResponseBlockStorage storageBlock =
+      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  [_delegate addDownloadResponseHandler:_downloadDataTask
+                                session:_session
+                        responseHandler:storageBlock
+                   responseHandlerQueue:queue];
 
   return self;
 }
@@ -164,7 +308,10 @@
 }
 
 - (DBDownloadDataTask *)setProgressBlock:(DBProgressBlock)progressBlock queue:(NSOperationQueue *)queue {
-  [_delegate addProgressHandler:_task session:_session progressHandler:progressBlock progressHandlerQueue:queue];
+  [_delegate addProgressHandler:_downloadDataTask
+                        session:_session
+                progressHandler:progressBlock
+           progressHandlerQueue:queue];
   return self;
 }
 

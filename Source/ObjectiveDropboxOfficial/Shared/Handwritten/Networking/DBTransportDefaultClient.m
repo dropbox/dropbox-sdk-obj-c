@@ -96,8 +96,12 @@
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
   NSURLSessionUploadTask *task = [_secondarySession uploadTaskWithRequest:request fromFile:input];
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:task session:_secondarySession delegate:_delegate route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                                session:_secondarySession
+                                                               delegate:_delegate
+                                                                  route:route
+                                                               inputUrl:input
+                                                              inputData:nil];
   [task resume];
 
   return uploadTask;
@@ -114,8 +118,12 @@
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:nil];
 
   NSURLSessionUploadTask *task = [_session uploadTaskWithRequest:request fromData:input];
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                                session:_session
+                                                               delegate:_delegate
+                                                                  route:route
+                                                               inputUrl:nil
+                                                              inputData:input];
   [task resume];
 
   return uploadTask;
@@ -132,8 +140,12 @@
   NSURLRequest *request = [[self class] requestWithHeaders:headers url:requestUrl content:nil stream:input];
 
   NSURLSessionUploadTask *task = [_session uploadTaskWithStreamedRequest:request];
-  DBUploadTaskImpl *uploadTask =
-      [[DBUploadTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:route];
+  DBUploadTaskImpl *uploadTask = [[DBUploadTaskImpl alloc] initWithTask:task
+                                                                session:_session
+                                                               delegate:_delegate
+                                                                  route:route
+                                                               inputUrl:nil
+                                                              inputData:nil];
   [task resume];
 
   return uploadTask;
