@@ -1218,6 +1218,10 @@
 		F2AB0D8C1E666C96002617AB /* ObjectiveDropboxOfficialLib.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187EA1E6666A50042ABE6 /* ObjectiveDropboxOfficialLib.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F2C187EB1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2C187EC1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; };
+		F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; };
+		F2D40D3C1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */; };
+		F2D40D3D1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1840,6 +1844,9 @@
 		F2A2DBAC1E578C3F001D8449 /* DBOpenWithInfo-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBOpenWithInfo-iOS.m"; sourceTree = "<group>"; };
 		F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficial.h; sourceTree = "<group>"; };
 		F2C187EA1E6666A50042ABE6 /* ObjectiveDropboxOfficialLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveDropboxOfficialLib.h; sourceTree = "<group>"; };
+		F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGlobalErrorResponseHandler.h; sourceTree = "<group>"; };
+		F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGlobalErrorResponseHandler.m; sourceTree = "<group>"; };
+		F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBGlobalErrorResponseHandler+Internal.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1974,6 +1981,8 @@
 			isa = PBXGroup;
 			children = (
 				F29781791E03692800876A73 /* DBDelegate.m */,
+				F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */,
+				F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */,
 				F2A2CEA51E563268001D8449 /* DBHandlerTypes.h */,
 				F297817B1E03692800876A73 /* DBRequestErrors.h */,
 				F297817C1E03692800876A73 /* DBRequestErrors.m */,
@@ -2047,6 +2056,7 @@
 				F2A2CE7B1E562817001D8449 /* DBTasks+Protected.h */,
 				F2A2CE7C1E562817001D8449 /* DBTasksImpl.h */,
 				F2A2CEA81E5655D1001D8449 /* DBTransportBaseClient+Internal.h */,
+				F2D40D3E1E779AE5004CCEB7 /* DBGlobalErrorResponseHandler+Internal.h */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -3397,6 +3407,7 @@
 				F2A2CE821E5628A8001D8449 /* DBDelegate.h in Headers */,
 				F2A2CE831E5628B1001D8449 /* DBHandlerTypesInternal.h in Headers */,
 				F2A2CE841E5628B4001D8449 /* DBSDKReachability.h in Headers */,
+				F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
 				F2A2CE851E5628B9001D8449 /* DBSessionData.h in Headers */,
 				F2A2CE861E5628BC001D8449 /* DBTasks+Protected.h in Headers */,
 				F2A2CE871E5628C1001D8449 /* DBTasksImpl.h in Headers */,
@@ -3893,6 +3904,7 @@
 				F2A2D97A1E56DEB0001D8449 /* DBSHARINGMembershipInfo.h in Headers */,
 				F2A2D78A1E56DEAF001D8449 /* DBAUTHTokenFromOAuth1Error.h in Headers */,
 				F2A2D82E1E56DEAF001D8449 /* DBFILESSearchArg.h in Headers */,
+				F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */,
 				F2A2DAE01E56DEB0001D8449 /* DBTEAMRevokeLinkedApiAppBatchArg.h in Headers */,
 				F2A2DB561E56DEB1001D8449 /* DBUSERSName.h in Headers */,
 				F2A2DA6C1E56DEB0001D8449 /* DBTEAMListMemberDevicesError.h in Headers */,
@@ -4062,6 +4074,7 @@
 				F2A2DB651E56DEB1001D8449 /* DBUserBaseClient.m in Sources */,
 				F2A2D9F71E56DEB0001D8449 /* DBTeamObjects.m in Sources */,
 				F29788F11E03692F00876A73 /* DBTransportDefaultClient.m in Sources */,
+				F2D40D3C1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */,
 				F2A2DB791E56DEB1001D8449 /* DBAUTHRoutes.m in Sources */,
 				F2A2D76B1E56DEAF001D8449 /* DBAsyncObjects.m in Sources */,
 				F29788E51E03692F00876A73 /* DBTasks.m in Sources */,
@@ -4128,6 +4141,7 @@
 				F29788E61E03692F00876A73 /* DBTasks.m in Sources */,
 				F2A2D8C21E56DEAF001D8449 /* DBPropertiesObjects.m in Sources */,
 				F2A2DBA21E56DEB1001D8449 /* DBTEAMRouteObjects.m in Sources */,
+				F2D40D3D1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */,
 				F297890C1E03692F00876A73 /* DBChunkInputStream.m in Sources */,
 				F2A2DB321E56DEB1001D8449 /* DBTeamPoliciesObjects.m in Sources */,
 				F2A2DB8E1E56DEB1001D8449 /* DBUSERSRoutes.m in Sources */,

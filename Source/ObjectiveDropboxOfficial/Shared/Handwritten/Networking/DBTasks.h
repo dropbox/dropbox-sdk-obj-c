@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBRpcTask <TResponse, TError> : DBTask
 
-typedef void (^DBRpcResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error);
+typedef void (^DBRpcResponseBlock)(TResponse _Nullable result, TError _Nullable routeError, DBRequestError * _Nullable networkError);
 
 ///
 /// Installs a response handler for the current request.
@@ -160,7 +160,7 @@ typedef void (^DBRpcResponseBlock)(TResponse _Nullable response, TError _Nullabl
 ///
 @interface DBUploadTask <TResponse, TError> : DBTask
 
-typedef void (^DBUploadResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error);
+typedef void (^DBUploadResponseBlock)(TResponse _Nullable result, TError _Nullable routeError, DBRequestError * _Nullable networkError);
 
 ///
 /// Installs a response handler for the current request.
@@ -249,8 +249,8 @@ typedef void (^DBUploadResponseBlock)(TResponse _Nullable response, TError _Null
   BOOL _overwrite;
 }
 
-typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable response, TError _Nullable routeError,
-                                               DBRequestError * _Nullable error, NSURL * _Nonnull destination);
+typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable result, TError _Nullable routeError,
+                                               DBRequestError * _Nullable networkError, NSURL * _Nonnull destination);
 
 ///
 /// Installs a response handler for the current request.
@@ -338,7 +338,7 @@ typedef void (^DBDownloadUrlTaskResponseBlock)(TResponse _Nullable response, TEr
 ///
 @interface DBDownloadDataTask <TResponse, TError> : DBTask
 
-typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable response, TError _Nullable routeError, DBRequestError * _Nullable error, NSData * _Nullable fileData);
+typedef void (^DBDownloadDataTaskResponseBlock)(TResponse _Nullable result, TError _Nullable routeError, DBRequestError * _Nullable networkError, NSData * _Nullable fileData);
 
 ///
 /// Installs a response handler for the current request.

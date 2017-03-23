@@ -513,6 +513,139 @@ void MyLog(NSString *format, ...) {
 
 @end
 
+@implementation GlobalResponseTests
+
+- (instancetype)init:(DropboxTester *)tester {
+  self = [super init];
+  if (self) {
+    _tester = tester;
+  }
+  return self;
+}
+
+- (void)runGlobalResponseTests {
+  [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
+
+  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError) {
+#pragma unused(networkError)
+    MyLog(@"\n\nListFolder: listFolderGlobalResponseBlock Global execution error:%@\n\n", folderError);
+  };
+
+  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError) {
+#pragma unused(networkError)
+    MyLog(@"\n\nLookupError: lookupErrorGlobalResponseBlock Global execution error:%@\n\n", lookupError);
+  };
+
+  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError) {
+#pragma unused(downloadError)
+#pragma unused(networkError)
+    MyLog(@"\n\nDownloadData: downloadDataGlobalResponseBlock Global execution error\n\n");
+  };
+
+  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *networkError) {
+    MyLog(@"\n\n NetworkData: networkGlobalResponseBlock Global execution error:%@\n\n", networkError);
+
+    if ([networkError isAuthError]) {
+      [TestFormat printOffset:@"Restarting auth request"];
+    }
+  };
+
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:listFolderGlobalResponseBlock routeErrorType:[DBFILESListFolderError class]];
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:lookupErrorGlobalResponseBlock routeErrorType:[DBFILESLookupError class]];
+  [DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:downloadDataGlobalResponseBlock routeErrorType:[DBFILESDownloadError class]];
+
+  [DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
+
+  [TestFormat printOffset:@"Registered handlers for listfoldererror, lookuperror, downloaderror, and network errors"];
+  dispatch_semaphore_t continueSemaphore = dispatch_semaphore_create(0);
+
+  [[_tester.files listFolder:@""]
+    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      if (!result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+      [TestFormat printOffset:@"listFolder Call finished with no error."];
+      dispatch_semaphore_signal(continueSemaphore);
+    } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files listFolder:@"/does/not/exist"]
+    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+      if (result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+      [TestFormat printOffset:@"listFolder Call finished with error."];
+      dispatch_semaphore_signal(continueSemaphore);
+    } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [TestFormat printOffset:@"Removing listfoldererror listener"];
+  [DBGlobalErrorResponseHandler removeRouteErrorResponseBlockWithRouteErrorType:[DBFILESListFolderError class]];
+
+  [[_tester.files listFolder:@"/does/not/exist"]
+   setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+     if (result) {
+       [TestFormat abort:error routeError:routeError];
+     }
+     [TestFormat printOffset:@"listFolder Call finished with error after removal of DBFILESListFolderError global callback."];
+     dispatch_semaphore_signal(continueSemaphore);
+   } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+      if (result) {
+        [TestFormat abort:error routeError:routeError];
+      }
+    [TestFormat printOffset:@"downloadData Call with route error."];
+      dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+  
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.auth tokenRevoke] setResponseBlock:^(DBNilObject * _Nullable result, DBNilObject * _Nullable routeError, DBRequestError * _Nullable error) {
+    if (routeError || error) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    [TestFormat printOffset:@"tokenRevoke Call with no error."];
+    dispatch_semaphore_signal(continueSemaphore);
+  }];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+    if (result) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    [TestFormat printOffset:@"downloadData Call with auth network error."];
+    dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [TestFormat printOffset:@"Removing network error listener"];
+  [DBGlobalErrorResponseHandler removeNetworkErrorResponseBlock];
+
+  [[_tester.files downloadData:@"/does/not/exist"] setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error, NSData *fileData) {
+    if (result) {
+      [TestFormat abort:error routeError:routeError];
+    }
+    [TestFormat printOffset:@"Call with auth network error after removal of global callback."];
+    dispatch_semaphore_signal(continueSemaphore);
+  } queue:[NSOperationQueue new]];
+
+  dispatch_semaphore_wait(continueSemaphore, DISPATCH_TIME_FOREVER);
+
+  [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
+  [TestFormat printAllTestsEnd];
+  [DBClientsManager unlinkAndResetClients];
+  exit(0);
+}
+
+@end
+
 /**
     Dropbox User API Endpoint Tests
  */

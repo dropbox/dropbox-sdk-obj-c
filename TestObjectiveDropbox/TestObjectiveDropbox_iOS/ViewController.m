@@ -23,6 +23,7 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *openWithButton;
 @property (weak, nonatomic) IBOutlet UIButton *runBatchUploadTestsButton;
+@property (weak, nonatomic) IBOutlet UIButton *runGlobalResponseTestsButton;
 
 @end
 
@@ -44,11 +45,7 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
                                          }
                                      browserAuth:YES];
 }
-- (IBAction)runBatchUploadTestsButtonPressed:(id)sender {
-  TestData *data = [TestData new];
-  BatchUploadTests *batchUploadTests = [[BatchUploadTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
-  [batchUploadTests batchUploadFiles];
-}
+
 
 - (IBAction)runTestsButtonPressed:(id)sender {
   TestData *data = [TestData new];
@@ -70,6 +67,20 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
     [[[DropboxTeamTester alloc] initWithTestData:data] testAllTeamMemberManagementActions:unlink];
     break;
   }
+}
+
+- (IBAction)runBatchUploadTestsButtonPressed:(id)sender {
+  TestData *data = [TestData new];
+  BatchUploadTests *batchUploadTests = [[BatchUploadTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
+  [batchUploadTests batchUploadFiles];
+}
+
+- (IBAction)runGlobalResponseTestsButtonPressed:(id)sender {
+  TestData *data = [TestData new];
+  GlobalResponseTests *globalResponseTests = [[GlobalResponseTests alloc] init:[[DropboxTester alloc] initWithTestData:data]];
+  [[NSOperationQueue new] addOperationWithBlock:^{
+    [globalResponseTests runGlobalResponseTests];
+  }];
 }
 
 - (IBAction)openWithButtonPressedRunTests:(id)sender {
@@ -131,12 +142,14 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
     _unlinkButton.hidden = NO;
     _runTestsButton.hidden = NO;
     _runBatchUploadTestsButton.hidden = NO;
+    _runGlobalResponseTestsButton.hidden = NO;
   } else {
     _linkButton.hidden = NO;
     _linkBrowserButton.hidden = NO;
     _unlinkButton.hidden = YES;
     _runTestsButton.hidden = YES;
     _runBatchUploadTestsButton.hidden = YES;
+    _runGlobalResponseTestsButton.hidden = YES;
   }
 }
 

@@ -4,7 +4,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DBSerializableProtocol.h"
 #import "DBTransportBaseClient.h"
+
+@class DBRequestError;
+@class DBRoute;
 
 /// Used by internal classes of `DBTransportBaseClient`
 @interface DBTransportBaseClient (Internal)

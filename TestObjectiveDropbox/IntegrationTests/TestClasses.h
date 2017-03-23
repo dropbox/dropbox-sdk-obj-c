@@ -51,6 +51,16 @@
 
 @end
 
+@interface GlobalResponseTests : NSObject
+
+- (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
+
+- (void)runGlobalResponseTests;
+
+@property DropboxTester * _Nonnull tester;
+
+@end
+
 @interface AuthTests : NSObject
 
 - (nonnull instancetype)init:(DropboxTester * _Nonnull)tester;
