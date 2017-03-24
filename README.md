@@ -463,11 +463,11 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
 #### RPC-style request
 ```objective-c
 [[client.filesRoutes createFolder:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
       } else {
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }];
 ```
@@ -476,7 +476,7 @@ Here's an example for listing a folder's contents. In the response handler, we r
 
 ```objective-c
 [[client.filesRoutes listFolder:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderError *routeError, DBRequestError *networkError) {
       if (response) {
         NSArray<DBFILESMetadata *> *entries = response.entries;
         NSString *cursor = response.cursor;
@@ -492,7 +492,7 @@ Here's an example for listing a folder's contents. In the response handler, we r
           NSLog(@"List folder complete.");
         }
       } else {
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }];
 
@@ -503,7 +503,7 @@ Here's an example for listing a folder's contents. In the response handler, we r
 - (void)listFolderContinueWithClient:(DBUserClient *)client cursor:(NSString *)cursor {
   [[client.filesRoutes listFolderContinue:cursor]
       setResponseBlock:^(DBFILESListFolderResult *response, DBFILESListFolderContinueError *routeError,
-                         DBRequestError *error) {
+                         DBRequestError *networkError) {
         if (response) {
           NSArray<DBFILESMetadata *> *entries = response.entries;
           NSString *cursor = response.cursor;
@@ -517,7 +517,7 @@ Here's an example for listing a folder's contents. In the response handler, we r
             NSLog(@"List folder complete.");
           }
         } else {
-          NSLog(@"%@\n%@\n", routeError, error);
+          NSLog(@"%@\n%@\n", routeError, networkError);
         }
       }];
 }
@@ -545,11 +545,11 @@ Here's an example for listing a folder's contents. In the response handler, we r
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
 
 [[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account" inputData:fileData]
-    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
       } else {
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
   NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
@@ -618,7 +618,7 @@ NSURL *outputDirectory = [fileManager URLsForDirectory:NSDocumentDirectory inDom
 NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_output.txt"];
 
 [[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account" overwrite:YES destination:outputUrl]
-    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *networkError,
                        NSURL *destination) {
       if (result) {
         NSLog(@"%@\n", result);
@@ -626,7 +626,7 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
         NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@\n", dataStr);
       } else {
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
@@ -637,14 +637,14 @@ Here's an example for downloading straight to memory (`NSData`):
 
 ```objective-c
 [[[client.filesRoutes downloadData:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
+    setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *networkError,
                        NSData *fileContents) {
       if (result) {
         NSLog(@"%@\n", result);
         NSString *dataStr = [[NSString alloc] initWithData:fileContents encoding:NSUTF8StringEncoding];
         NSLog(@"%@\n", dataStr);
       } else {
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
@@ -688,7 +688,7 @@ If at run time you attempt to access a union instance field that is not associat
 #### Route-specific errors
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
       } else {
@@ -706,7 +706,7 @@ If at run time you attempt to access a union instance field that is not associat
             // DBFILESLookupError *pathLookup = routeError.pathLookup;
           }
         }
-        NSLog(@"%@\n%@\n", routeError, error);
+        NSLog(@"%@\n%@\n", routeError, networkError);
       }
     }];
 ```
@@ -722,7 +722,7 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
 
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
       } else {
@@ -731,26 +731,26 @@ As with accessing associated values in regular unions, the `as<TAG_STATE>` shoul
         }
         // Error not specific to the route (status codes 500, 400, 401, 403, 404, 429)
         else {
-          if ([error isInternalServerError]) {
-            DBRequestInternalServerError *internalServerError = [error asInternalServerError];
+          if ([networkError isInternalServerError]) {
+            DBRequestInternalServerError *internalServerError = [networkError asInternalServerError];
             NSLog(@"%@\n", internalServerError);
-          } else if ([error isBadInputError]) {
-            DBRequestBadInputError *badInputError = [error asBadInputError];
+          } else if ([networkError isBadInputError]) {
+            DBRequestBadInputError *badInputError = [networkError asBadInputError];
             NSLog(@"%@\n", badInputError);
-          } else if ([error isAuthError]) {
-            DBRequestAuthError *authError = [error asAuthError];
+          } else if ([networkError isAuthError]) {
+            DBRequestAuthError *authError = [networkError asAuthError];
             NSLog(@"%@\n", authError);
-          } else if ([error isAccessError]) {
-            DBRequestAccessError *accessError = [error asAccessError];
+          } else if ([networkError isAccessError]) {
+            DBRequestAccessError *accessError = [networkError asAccessError];
             NSLog(@"%@\n", accessError);
-          } else if ([error isRateLimitError]) {
-            DBRequestRateLimitError *rateLimitError = [error asRateLimitError];
+          } else if ([networkError isRateLimitError]) {
+            DBRequestRateLimitError *rateLimitError = [networkError asRateLimitError];
             NSLog(@"%@\n", rateLimitError);
-          } else if ([error isHttpError]) {
-            DBRequestHttpError *genericHttpError = [error asHttpError];
+          } else if ([networkError isHttpError]) {
+            DBRequestHttpError *genericHttpError = [networkError asHttpError];
             NSLog(@"%@\n", genericHttpError);
-          } else if ([error isClientError]) {
-            DBRequestClientError *genericLocalError = [error asClientError];
+          } else if ([networkError isClientError]) {
+            DBRequestClientError *genericLocalError = [networkError asClientError];
             NSLog(@"%@\n", genericLocalError);
           }
         }
@@ -772,7 +772,7 @@ To determine at runtime which subtype the `Metadata` type exists as, perform an 
 
 ```objective-c
 [[client.filesRoutes delete_:@"/test/path/in/Dropbox/account"]
-    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESMetadata *result, DBFILESDeleteError *routeError, DBRequestError *networkError) {
       if (result) {
         if ([result isKindOfClass:[DBFILESFileMetadata class]]) {
           DBFILESFileMetadata *fileMetadata = (DBFILESFileMetadata *)result;
@@ -838,7 +838,7 @@ By default, response/progress handler code runs on the main thread. You can set 
 
 ```objective-c
 [[client.filesRoutes listFolder:@""]
-    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
+    setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@", [NSThread currentThread]); // Output: <NSThread: 0x600000261480>{number = 5, name = (null)}
         NSLog(@"%@", [NSThread mainThread]);    // Output: <NSThread: 0x618000062bc0>{number = 1, name = (null)}
