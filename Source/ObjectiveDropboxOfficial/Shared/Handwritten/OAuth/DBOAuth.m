@@ -160,13 +160,15 @@ static DBOAuthManager *sharedOAuthManager;
   components.host = _host;
   components.path = @"/oauth2/authorize";
 
+  NSString *localeIdentifier = [[NSBundle mainBundle] preferredLocalizations].firstObject ?: @"en";
+
   components.queryItems = @[
     [NSURLQueryItem queryItemWithName:@"response_type" value:@"token"],
     [NSURLQueryItem queryItemWithName:@"client_id" value:_appKey],
     [NSURLQueryItem queryItemWithName:@"redirect_uri" value:[_redirectURL absoluteString]],
     [NSURLQueryItem queryItemWithName:@"disable_signup" value:self.disableSignup ? @"true" : @"false"],
     [NSURLQueryItem queryItemWithName:@"locale"
-                                value:[self.locale localeIdentifier] ?: [[NSLocale currentLocale] localeIdentifier]],
+                                value:[self.locale localeIdentifier] ?: localeIdentifier],
   ];
   return components.URL;
 }
