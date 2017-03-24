@@ -107,7 +107,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
     if ([networkError isHttpError]) {
       DBRequestHttpError *httpError = [networkError asHttpError];
       // for normal route errors, we don't want to execute the catch-all network block
-      if ([DBTransportBaseClient statusCodeIsRouteError:[httpError.statusCode integerValue]]) {
+      if ([DBTransportBaseClient statusCodeIsRouteError:[httpError.statusCode intValue]]) {
         return;
       }
     }
@@ -179,7 +179,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
             continue;
           }
           id object = [routeError valueForKey:propertyName];
-          result[typeClass] = object;
+          result[(id)typeClass] = object;
           // recursively retrieve instance data
           NSDictionary<Class, id> *additionalData = [self fieldDataFromRouteError:object];
           [result addEntriesFromDictionary:additionalData];
