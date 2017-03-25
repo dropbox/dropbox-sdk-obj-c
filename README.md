@@ -923,7 +923,7 @@ To perform this auth token migration, in your app delegate, you should call the 
   if ([unsuccessfullyMigratedTokenData count] != 0) {
     NSLog(@"The following tokens were unsucessfully migrated:");
     for (NSArray<NSString *> *tokenData in unsuccessfullyMigratedTokenData) {
-      NSLog(@"%@DropboxUserID: %@, AccessToken: %@, AccessTokenSecret: %@, StoredAppKey: %@", tokenData[0],
+      NSLog(@"DropboxUserID: %@, AccessToken: %@, AccessTokenSecret: %@, StoredAppKey: %@", tokenData[0],
             tokenData[1], tokenData[2], tokenData[3]);
     }
   }
