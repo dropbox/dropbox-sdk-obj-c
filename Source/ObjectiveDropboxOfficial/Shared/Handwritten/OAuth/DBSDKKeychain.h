@@ -27,7 +27,7 @@
 + (BOOL)clearAllTokens;
 
 /// Checks if performing a v1 token migration is necessary, and if so, performs it.
-+ (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
                                   queue:(NSOperationQueue * _Nullable)queue
                                  appKey:(NSString * _Nonnull)appKey
                               appSecret:(NSString * _Nonnull)appSecret;

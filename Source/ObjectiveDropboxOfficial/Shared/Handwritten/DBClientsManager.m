@@ -202,11 +202,11 @@ static DBTeamClient *authorizedTeamClient;
   [DBClientsManager setAuthorizedTeamClient:nil];
 }
 
-+ (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
                                   queue:(NSOperationQueue *)queue
                                  appKey:(NSString *)appKey
                               appSecret:(NSString *)appSecret {
-  [DBSDKKeychain checkAndPerformV1TokenMigration:responseBlock queue:queue appKey:appKey appSecret:appSecret];
+  return [DBSDKKeychain checkAndPerformV1TokenMigration:responseBlock queue:queue appKey:appKey appSecret:appSecret];
 }
 
 @end
