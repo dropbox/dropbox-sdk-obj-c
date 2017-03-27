@@ -908,7 +908,7 @@ If your app was originally using an earlier API v1 SDK, including the [iOS Core 
 To perform this auth token migration, in your app delegate, you should call the following method:
 
 ```objective-c
-[DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret,
+BOOL willPerformMigration = [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret,
                                                     NSArray<NSArray<NSString *> *> *unsuccessfullyMigratedTokenData) {
   if (invalidAppKeyOrSecret) {
     // Developers should ensure that the appropriate app key and secret are being supplied.
@@ -927,7 +927,15 @@ To perform this auth token migration, in your app delegate, you should call the 
             tokenData[1], tokenData[2], tokenData[3]);
     }
   }
+
+  if (!invalidAppKeyOrSecret && !shouldRetry && [unsuccessfullyMigratedTokenData count] == 0) {
+    [DBClientsManager setupWithAppKey:@"<APP_KEY>"];
+  }
 } queue:nil appKey:@"<APP_KEY>" appSecret:@"<APP_SECRET>"];
+
+if (!willPerformMigration) {
+  [DBClientsManager setupWithAppKey:@"<APP_KEY>"];
+}
 ```
 
 This method should successfully migrate all access tokens stored by the official Dropbox API SDKs from approximately 2012 until present, for both iOS and OS X. It will make one call to our OAuth 1 conversion endpoint for each OAuth 1 token that has been stored in your application's keychain by the v1 SDK. The method will execute all network requests off the main thread.
