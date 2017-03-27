@@ -183,10 +183,6 @@ static const char *kV1OSXAccountName = "Dropbox";
       }];
       return YES;
     }
-  } else {
-    [queueToUse addOperationWithBlock:^{
-      responseBlock(NO, NO, @[]);
-    }];
   }
   return NO;
 }
