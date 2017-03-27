@@ -145,7 +145,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   }
 }
 
-+ (void)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
++ (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
                                   queue:(NSOperationQueue *)queue
                                  appKey:(NSString *)appKey
                               appSecret:(NSString *)appSecret {
@@ -181,12 +181,14 @@ static const char *kV1OSXAccountName = "Dropbox";
                            responseBlock:responseBlock
                                    queue:queueToUse];
       }];
+      return YES;
     }
   } else {
     [queueToUse addOperationWithBlock:^{
       responseBlock(NO, NO, @[]);
     }];
   }
+  return NO;
 }
 
 #if TARGET_OS_IPHONE
