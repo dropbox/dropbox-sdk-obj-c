@@ -99,7 +99,6 @@
 #import "DBSHARINGRevokeSharedLinkArg.h"
 #import "DBSHARINGRevokeSharedLinkError.h"
 #import "DBSHARINGRouteObjects.h"
-#import "DBSHARINGRoutes.h"
 #import "DBSHARINGShareFolderArg.h"
 #import "DBSHARINGShareFolderError.h"
 #import "DBSHARINGShareFolderErrorBase.h"
@@ -135,6 +134,7 @@
 #import "DBSHARINGUpdateFolderMemberError.h"
 #import "DBSHARINGUpdateFolderPolicyArg.h"
 #import "DBSHARINGUpdateFolderPolicyError.h"
+#import "DBSHARINGUserAuthRoutes.h"
 #import "DBSHARINGUserMembershipInfo.h"
 #import "DBSHARINGViewerInfoPolicy.h"
 #import "DBSHARINGVisibility.h"
@@ -142,7 +142,7 @@
 #import "DBTransportClientProtocol.h"
 #import "DBUSERSTeam.h"
 
-@implementation DBSHARINGRoutes
+@implementation DBSHARINGUserAuthRoutes
 
 - (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];

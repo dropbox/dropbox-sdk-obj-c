@@ -44,14 +44,14 @@
 ///
 /// Routes for the `Paper` namespace
 ///
-@interface DBPAPERRoutes : NSObject
+@interface DBPAPERUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
 @property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
-/// Initializes the `DBPAPERRoutes` namespace container object with a networking
-/// client.
+/// Initializes the `DBPAPERUserAuthRoutes` namespace container object with a
+/// networking client.
 - (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///

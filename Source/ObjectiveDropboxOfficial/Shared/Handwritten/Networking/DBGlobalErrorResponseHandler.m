@@ -75,8 +75,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
   if (routeError && [s_routeErrorToResponseBlock count] > 0) {
     // execute route error block
     Class errorClass = [routeError class];
-    NSDictionary<Class, id> *fieldClassToValue =
-        [self fieldDataFromRouteError:routeError];
+    NSDictionary<Class, id> *fieldClassToValue = [self fieldDataFromRouteError:routeError];
 
     @synchronized([DBGlobalErrorResponseHandler class]) {
       NSOperationQueue *queueToUse = s_routeErrorToQueue[errorClass];
@@ -175,7 +174,8 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
           // `DBFILESListFolderErrorPath` and `path` with an insensitive string contains call.
           // Because the instance field name `path` is not tightly linked to the tag type
           // `DBFILESListFolderErrorPath`, we still want the try catch block.
-          if (tagValue && [tagValue rangeOfString:propertyName options:NSCaseInsensitiveSearch].location != NSNotFound) {
+          if (tagValue &&
+              [tagValue rangeOfString:propertyName options:NSCaseInsensitiveSearch].location != NSNotFound) {
             continue;
           }
           id object = [routeError valueForKey:propertyName];

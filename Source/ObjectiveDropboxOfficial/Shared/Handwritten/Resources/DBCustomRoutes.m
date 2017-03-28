@@ -26,7 +26,7 @@
 static const NSUInteger fileChunkSize = 10 * 1024 * 1024;
 static const int timeoutInSec = 200;
 
-@implementation DBFILESRoutes (DBCustomRoutes)
+@implementation DBFILESUserAuthRoutes (DBCustomRoutes)
 
 - (DBBatchUploadTask *)batchUploadFiles:(NSDictionary<NSURL *, DBFILESCommitInfo *> *)fileUrlsToCommitInfo
                                   queue:(NSOperationQueue *)queue

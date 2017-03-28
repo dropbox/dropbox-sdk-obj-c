@@ -18,11 +18,11 @@
 #import "DBUSERSGetAccountError.h"
 #import "DBUSERSName.h"
 #import "DBUSERSRouteObjects.h"
-#import "DBUSERSRoutes.h"
 #import "DBUSERSSpaceAllocation.h"
 #import "DBUSERSSpaceUsage.h"
+#import "DBUSERSUserAuthRoutes.h"
 
-@implementation DBUSERSRoutes
+@implementation DBUSERSUserAuthRoutes
 
 - (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];

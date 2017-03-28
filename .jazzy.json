@@ -15,12 +15,13 @@
     {
       "name": "API Routes", 
       "children": [
-        "DBAUTHRoutes", 
-        "DBFILESRoutes", 
-        "DBPAPERRoutes", 
-        "DBSHARINGRoutes", 
-        "DBTEAMRoutes", 
-        "DBUSERSRoutes"
+        "DBAUTHAppAuthRoutes", 
+        "DBAUTHUserAuthRoutes", 
+        "DBFILESUserAuthRoutes", 
+        "DBPAPERUserAuthRoutes", 
+        "DBSHARINGUserAuthRoutes", 
+        "DBTEAMTeamAuthRoutes", 
+        "DBUSERSUserAuthRoutes"
       ]
     }, 
     {

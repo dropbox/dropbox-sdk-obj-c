@@ -5,6 +5,7 @@ import argparse
 import glob
 import json
 import os
+import shutil
 import subprocess
 
 cmdline_desc = """\
@@ -76,6 +77,10 @@ def main():
     dropbox_pkg_path = args.output_path if args.output_path else dropbox_default_output_path
     dropbox_format_path = os.path.abspath('Format')
 
+    if os.path.exists(dropbox_default_output_path):
+        shutil.rmtree(dropbox_default_output_path)
+    os.makedirs(dropbox_default_output_path)
+
     if verbose:
         print('Dropbox package path: %s' % dropbox_pkg_path)
 
@@ -100,14 +105,21 @@ def main():
         print('Generating Obj-C user and team clients')
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-b', 'team', '--', '-m', 'DBUserBaseClient', '-c', 'DBUserBaseClient',
+         specs + ['--', '-w', 'user', '-m', 'DBUserBaseClient', '-c', 'DBUserBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:
         print('Output:', o)
     o = subprocess.check_output(
         (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
-         specs + ['-w', 'team', '--', '-m', 'DBTeamBaseClient', '-c', 'DBTeamBaseClient',
+         specs + ['--', '-w', 'team', '-m', 'DBTeamBaseClient', '-c', 'DBTeamBaseClient',
+         '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
+        cwd=stone_path)
+    if o:
+        print('Output:', o)
+    o = subprocess.check_output(
+        (['python', '-m', 'stone.cli', '-a', 'host', '-a', 'style', '-a', 'auth', 'obj_c_client', dropbox_pkg_path] +
+         specs + ['--', '-w', 'app', '-m', 'DBAppBaseClient', '-c', 'DBAppBaseClient',
          '-t', 'DBTransportClient', '-y', client_args, '-z', style_to_request]),
         cwd=stone_path)
     if o:

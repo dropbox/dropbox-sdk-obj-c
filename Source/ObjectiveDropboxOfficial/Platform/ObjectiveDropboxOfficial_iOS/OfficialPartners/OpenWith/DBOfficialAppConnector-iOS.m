@@ -24,7 +24,9 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   void (^_openURLWrapper)(NSURL * _Nonnull);
 }
 
-- (instancetype)initWithAppKey:(NSString *)appKey canOpenURLWrapper:(BOOL (^)(NSURL *))canOpenURLWrapper openURLWrapper:(void (^)(NSURL *))openURLWrapper {
+- (instancetype)initWithAppKey:(NSString *)appKey
+             canOpenURLWrapper:(BOOL (^)(NSURL *))canOpenURLWrapper
+                openURLWrapper:(void (^)(NSURL *))openURLWrapper {
   if (self = [super init]) {
     _appKey = appKey;
     _canOpenURLWrapper = canOpenURLWrapper;
@@ -33,12 +35,8 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   return self;
 }
 
-- (void)returnToDropboxApp:(DBOpenWithInfo *)openWithInfo
-            changesPending:(BOOL)changesPending {
-  [self returnToDropboxApp:openWithInfo
-            changesPending:changesPending
-                 errorName:nil
-                    extras:nil];
+- (void)returnToDropboxApp:(DBOpenWithInfo *)openWithInfo changesPending:(BOOL)changesPending {
+  [self returnToDropboxApp:openWithInfo changesPending:changesPending errorName:nil extras:nil];
 }
 
 - (void)returnToDropboxApp:(DBOpenWithInfo *)openWithInfo
@@ -53,9 +51,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
                                                                errorName:(NSString *)errorName
                                                                   extras:(NSDictionary *)extras];
   query[@"origin"] = @"dropboxInitiated";
-  [self db_handleUrlOpenWithURL:@"viewPath"
-                         params:query
-                     dropboxApp:openWithInfo.sourceApp];
+  [self db_handleUrlOpenWithURL:@"viewPath" params:query dropboxApp:openWithInfo.sourceApp];
 }
 
 + (DBOpenWithInfo *)retriveOfficialDropboxAppOpenWithInfo {
@@ -175,10 +171,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 ///
 /// Opens the url using the Dropbox app. If app is nil, this defaults to the consumer Dropbox app
 ///
-- (void)db_handleUrlOpenWithURL:(NSString *)subPath
-                         params:(NSDictionary *)params
-                     dropboxApp:(NSString *)app
-                  {
+- (void)db_handleUrlOpenWithURL:(NSString *)subPath params:(NSDictionary *)params dropboxApp:(NSString *)app {
   NSString *scheme = [self db_schemeToOpenDropboxApp:app];
   if (!scheme) {
     return;

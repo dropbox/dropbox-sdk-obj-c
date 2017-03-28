@@ -15,9 +15,9 @@
 #import "DBUSERSGetAccountError.h"
 #import "DBUSERSName.h"
 #import "DBUSERSRouteObjects.h"
-#import "DBUSERSRoutes.h"
 #import "DBUSERSSpaceAllocation.h"
 #import "DBUSERSSpaceUsage.h"
+#import "DBUSERSUserAuthRoutes.h"
 
 @implementation DBUSERSRouteObjects
 

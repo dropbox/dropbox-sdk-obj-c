@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBTEAMTeamAuthRoutes;
+@class DBAUTHAppAuthRoutes;
 
 @protocol DBTransportClient;
 
@@ -15,16 +15,16 @@
 /// of which contains references to all routes within that namespace.
 /// Fully-implemented API clients will inherit this class.
 ///
-@interface DBTeamBaseClient : NSObject {
+@interface DBAppBaseClient : NSObject {
 
 @protected
   id<DBTransportClient> _Nonnull _transportClient;
 }
 
-/// Routes within the `team` namespace.
-@property (nonatomic, readonly) DBTEAMTeamAuthRoutes * _Nonnull teamRoutes;
+/// Routes within the `auth` namespace.
+@property (nonatomic, readonly) DBAUTHAppAuthRoutes * _Nonnull authRoutes;
 
-/// Initializes the `DBTeamBaseClient` object with a networking client.
+/// Initializes the `DBAppBaseClient` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client;
 
 @end

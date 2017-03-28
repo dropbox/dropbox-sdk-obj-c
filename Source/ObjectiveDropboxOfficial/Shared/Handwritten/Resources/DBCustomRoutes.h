@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DBFILESRoutes.h"
+#import "DBFILESUserAuthRoutes.h"
 #import "DBHandlerTypes.h"
 
 @class DBBatchUploadTask;
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// These routes serve as a convenience layer built on top of our auto-generated routes.
 ///
-@interface DBFILESRoutes (DBCustomRoutes)
+@interface DBFILESUserAuthRoutes (DBCustomRoutes)
 
 ///
 /// Batch uploads small and large files.

@@ -10,7 +10,7 @@
 @class DBTransportDefaultConfig;
 
 ///
-/// Dropbox Business (Team) API Client.
+/// Dropbox Business (Team) API Client for all endpoints with auth type "team".
 ///
 /// This is the SDK user's primary interface with the Dropbox Business (Team) API. Routes can be accessed via each
 /// "namespace" object in the instance fields of its parent, `DBUserBaseClient`. To see a full list of the Business
@@ -28,19 +28,6 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken;
-
-///
-/// Convenience constructor for initializing an "unauthorized" client.
-///
-/// This "unauthorized" client can be used to query endpoints that do not require an OAuth 2.0 access token as part of
-/// the authorization.
-///
-/// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
-/// `DBTransportDefaultConfig` offers a number of different constructors to customize networking settings.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initAsUnauthorizedClientWithTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
 ///
 /// Full constructor.

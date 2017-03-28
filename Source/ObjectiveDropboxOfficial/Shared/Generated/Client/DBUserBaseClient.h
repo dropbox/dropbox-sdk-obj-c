@@ -6,11 +6,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBAUTHRoutes;
-@class DBFILESRoutes;
-@class DBPAPERRoutes;
-@class DBSHARINGRoutes;
-@class DBUSERSRoutes;
+@class DBAUTHUserAuthRoutes;
+@class DBFILESUserAuthRoutes;
+@class DBPAPERUserAuthRoutes;
+@class DBSHARINGUserAuthRoutes;
+@class DBUSERSUserAuthRoutes;
 
 @protocol DBTransportClient;
 
@@ -26,19 +26,19 @@
 }
 
 /// Routes within the `auth` namespace.
-@property (nonatomic, readonly) DBAUTHRoutes * _Nonnull authRoutes;
+@property (nonatomic, readonly) DBAUTHUserAuthRoutes * _Nonnull authRoutes;
 
 /// Routes within the `files` namespace.
-@property (nonatomic, readonly) DBFILESRoutes * _Nonnull filesRoutes;
+@property (nonatomic, readonly) DBFILESUserAuthRoutes * _Nonnull filesRoutes;
 
 /// Routes within the `paper` namespace.
-@property (nonatomic, readonly) DBPAPERRoutes * _Nonnull paperRoutes;
+@property (nonatomic, readonly) DBPAPERUserAuthRoutes * _Nonnull paperRoutes;
 
 /// Routes within the `sharing` namespace.
-@property (nonatomic, readonly) DBSHARINGRoutes * _Nonnull sharingRoutes;
+@property (nonatomic, readonly) DBSHARINGUserAuthRoutes * _Nonnull sharingRoutes;
 
 /// Routes within the `users` namespace.
-@property (nonatomic, readonly) DBUSERSRoutes * _Nonnull usersRoutes;
+@property (nonatomic, readonly) DBUSERSUserAuthRoutes * _Nonnull usersRoutes;
 
 /// Initializes the `DBUserBaseClient` object with a networking client.
 - (nonnull instancetype)initWithTransportClient:(id<DBTransportClient> _Nonnull)client;

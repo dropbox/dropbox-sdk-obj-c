@@ -24,14 +24,14 @@
 ///
 /// Routes for the `Users` namespace
 ///
-@interface DBUSERSRoutes : NSObject
+@interface DBUSERSUserAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
 @property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
-/// Initializes the `DBUSERSRoutes` namespace container object with a networking
-/// client.
+/// Initializes the `DBUSERSUserAuthRoutes` namespace container object with a
+/// networking client.
 - (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///

@@ -8,6 +8,7 @@
 
 /// Import handwritten shared files
 
+#import "DBAppClient.h"
 #import "DBClientsManager.h"
 #import "DBTeamClient.h"
 #import "DBUserClient.h"

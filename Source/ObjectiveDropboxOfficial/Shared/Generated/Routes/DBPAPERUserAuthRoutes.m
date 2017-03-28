@@ -37,10 +37,10 @@
 #import "DBPAPERRefPaperDoc.h"
 #import "DBPAPERRemovePaperDocUser.h"
 #import "DBPAPERRouteObjects.h"
-#import "DBPAPERRoutes.h"
 #import "DBPAPERSharingPolicy.h"
 #import "DBPAPERSharingPublicPolicyType.h"
 #import "DBPAPERSharingTeamPolicyType.h"
+#import "DBPAPERUserAuthRoutes.h"
 #import "DBPAPERUserInfoWithPermissionLevel.h"
 #import "DBPAPERUserOnPaperDocFilter.h"
 #import "DBRequestErrors.h"
@@ -50,7 +50,7 @@
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
 
-@implementation DBPAPERRoutes
+@implementation DBPAPERUserAuthRoutes
 
 - (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];

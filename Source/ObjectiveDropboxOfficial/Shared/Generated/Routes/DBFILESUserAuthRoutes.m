@@ -72,7 +72,6 @@
 #import "DBFILESRestoreArg.h"
 #import "DBFILESRestoreError.h"
 #import "DBFILESRouteObjects.h"
-#import "DBFILESRoutes.h"
 #import "DBFILESSaveCopyReferenceArg.h"
 #import "DBFILESSaveCopyReferenceError.h"
 #import "DBFILESSaveCopyReferenceResult.h"
@@ -106,6 +105,7 @@
 #import "DBFILESUploadSessionStartArg.h"
 #import "DBFILESUploadSessionStartResult.h"
 #import "DBFILESUploadWriteFailed.h"
+#import "DBFILESUserAuthRoutes.h"
 #import "DBFILESWriteError.h"
 #import "DBFILESWriteMode.h"
 #import "DBPROPERTIESGetPropertyTemplateArg.h"
@@ -119,7 +119,7 @@
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
 
-@implementation DBFILESRoutes
+@implementation DBFILESUserAuthRoutes
 
 - (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];
@@ -598,18 +598,6 @@
                                                         includeMediaInfo:includeMediaInfo
                                                           includeDeleted:includeDeleted
                                          includeHasExplicitSharedMembers:includeHasExplicitSharedMembers];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)listFolderLongpoll:(NSString *)cursor {
-  DBRoute *route = DBFILESRouteObjects.DBFILESListFolderLongpoll;
-  DBFILESListFolderLongpollArg *arg = [[DBFILESListFolderLongpollArg alloc] initWithCursor:cursor];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)listFolderLongpoll:(NSString *)cursor timeout:(NSNumber *)timeout {
-  DBRoute *route = DBFILESRouteObjects.DBFILESListFolderLongpoll;
-  DBFILESListFolderLongpollArg *arg = [[DBFILESListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
   return [self.client requestRpc:route arg:arg];
 }
 

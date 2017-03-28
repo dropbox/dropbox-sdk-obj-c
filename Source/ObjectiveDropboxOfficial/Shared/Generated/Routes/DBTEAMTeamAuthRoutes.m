@@ -137,8 +137,8 @@
 #import "DBTEAMRevokeLinkedAppError.h"
 #import "DBTEAMRevokeLinkedAppStatus.h"
 #import "DBTEAMRouteObjects.h"
-#import "DBTEAMRoutes.h"
 #import "DBTEAMStorageBucket.h"
+#import "DBTEAMTeamAuthRoutes.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderActivateError.h"
 #import "DBTEAMTeamFolderArchiveArg.h"
@@ -168,7 +168,7 @@
 #import "DBTEAMUserSelectorError.h"
 #import "DBTransportClientProtocol.h"
 
-@implementation DBTEAMRoutes
+@implementation DBTEAMTeamAuthRoutes
 
 - (instancetype)init:(id<DBTransportClient>)client {
   self = [super init];

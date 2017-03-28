@@ -123,14 +123,14 @@
 ///
 /// Routes for the `Team` namespace
 ///
-@interface DBTEAMRoutes : NSObject
+@interface DBTEAMTeamAuthRoutes : NSObject
 
 /// An instance of the networking client that each route will use to submit a
 /// request.
 @property (nonatomic, readonly) id<DBTransportClient> _Nonnull client;
 
-/// Initializes the `DBTEAMRoutes` namespace container object with a networking
-/// client.
+/// Initializes the `DBTEAMTeamAuthRoutes` namespace container object with a
+/// networking client.
 - (nonnull instancetype)init:(id<DBTransportClient> _Nonnull)client;
 
 ///

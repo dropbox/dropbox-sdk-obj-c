@@ -4,14 +4,15 @@
 
 #import <Security/Security.h>
 
-#import "DBAUTHRoutes.h"
+#import "DBAUTHAppAuthRoutes.h"
 #import "DBAUTHTokenFromOAuth1Error.h"
 #import "DBAUTHTokenFromOAuth1Result.h"
+#import "DBAUTHUserAuthRoutes.h"
+#import "DBAppClient.h"
 #import "DBClientsManager+Protected.h"
 #import "DBRequestErrors.h"
 #import "DBSDKKeychain.h"
 #import "DBTransportDefaultConfig.h"
-#import "DBUserClient.h"
 
 static NSString *kAccessibilityMigrationOccurredKey = @"KeychainAccessibilityMigration";
 static NSString *kV1TokenMigrationOccurredKeyBase = @"KeychainV1TokenMigration-%@";
@@ -362,9 +363,7 @@ static const char *kV1OSXAccountName = "Dropbox";
                  appSecret:(NSString *)appSecret
              responseBlock:(DBTokenMigrationResponseBlock)responseBlock
                      queue:(NSOperationQueue *)queue {
-  DBTransportDefaultConfig *transportConfig =
-      [[DBTransportDefaultConfig alloc] initWithAppKey:appKey appSecret:appSecret];
-  DBUserClient *unauthorizedClient = [[DBUserClient alloc] initAsUnauthorizedClientWithTransportConfig:transportConfig];
+  DBAppClient *appAuthClient = [[DBAppClient alloc] initWithAppKey:appKey appSecret:appSecret];
 
   dispatch_group_t tokenConvertGroup = dispatch_group_create();
 
@@ -403,7 +402,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     }
 
     dispatch_group_enter(tokenConvertGroup);
-    [[unauthorizedClient.authRoutes tokenFromOauth1:accessToken oauth1TokenSecret:accessTokenSecret]
+    [[appAuthClient.authRoutes tokenFromOauth1:accessToken oauth1TokenSecret:accessTokenSecret]
         setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError,
                            DBRequestError *error) {
 #pragma unused(routeError)
