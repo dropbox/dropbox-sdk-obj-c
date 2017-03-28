@@ -57,11 +57,18 @@
                     extras:(NSDictionary * _Nullable)extras;
 
 ///
+/// Determines whether an official Dropbox app is installed.
+///
+/// @return Whether an official Dropbox app is installed.
+///
+- (BOOL)isRequiredDropboxAppInstalled;
+
+///
 /// Retrieves from a shared `UIPasteboard` information used to return to the official Dropbox app.
 ///
 /// @note This logic is for official Dropbox partners only, and should not need to be used by other third-party apps.
 ///
-/// Returns @c DBOpenWithInfo object that wraps the relevant information for returning to the official Dropbox app.
+/// @return @c DBOpenWithInfo object that wraps the relevant information for returning to the official Dropbox app.
 ///
 + (DBOpenWithInfo * _Nullable)retriveOfficialDropboxAppOpenWithInfo;
 

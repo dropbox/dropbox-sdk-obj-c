@@ -96,6 +96,10 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   return nil;
 }
 
+- (BOOL)isRequiredDropboxAppInstalled {
+  return [self db_canOpenScheme:kDropboxScheme] || [self db_canOpenScheme:kDropboxEMMScheme];
+}
+
 + (NSDateFormatter *)dateFormatter {
   NSMutableDictionary *dictionary = [[NSThread currentThread] threadDictionary];
   static NSString *dateFormatterKey = @"DBMetadataDateFormatter";
