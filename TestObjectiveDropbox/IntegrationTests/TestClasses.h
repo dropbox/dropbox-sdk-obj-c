@@ -7,13 +7,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBAUTHRoutes;
-@class DBFILESRoutes;
-@class DBSHARINGRoutes;
-@class DBUSERSRoutes;
-@class DBTEAMRoutes;
-@class TestData;
-@class DBRequestError;
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
+#import "TestClasses.h"
+#import "TestData.h"
 
 @interface DropboxTester : NSObject
 
@@ -22,10 +19,11 @@
 - (void)testAllUserAPIEndpoints:(void (^ _Nonnull)())nextTest asMember:(BOOL)asMember;
 
 @property TestData * _Nonnull testData;
-@property DBAUTHRoutes * _Nullable auth;
-@property DBFILESRoutes * _Nullable files;
-@property DBSHARINGRoutes * _Nullable sharing;
-@property DBUSERSRoutes * _Nullable users;
+@property DBAUTHUserAuthRoutes * _Nullable auth;
+@property DBAUTHAppAuthRoutes * _Nullable appAuth;
+@property DBFILESUserAuthRoutes * _Nullable files;
+@property DBSHARINGUserAuthRoutes * _Nullable sharing;
+@property DBUSERSUserAuthRoutes * _Nullable users;
 
 @end
 
@@ -36,7 +34,7 @@
 - (void)testAllTeamMemberFileAcessActions:(void (^ _Nonnull)())nextTest;
 - (void)testAllTeamMemberManagementActions:(void (^ _Nonnull)())nextTest;
 
-@property DBTEAMRoutes * _Nullable team;
+@property DBTEAMTeamAuthRoutes * _Nullable team;
 @property TestData * _Nonnull testData;
 
 @end

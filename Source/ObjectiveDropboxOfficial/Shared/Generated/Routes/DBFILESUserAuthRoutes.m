@@ -601,6 +601,18 @@
   return [self.client requestRpc:route arg:arg];
 }
 
+- (DBRpcTask *)listFolderLongpoll:(NSString *)cursor {
+  DBRoute *route = DBFILESRouteObjects.DBFILESListFolderLongpoll;
+  DBFILESListFolderLongpollArg *arg = [[DBFILESListFolderLongpollArg alloc] initWithCursor:cursor];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)listFolderLongpoll:(NSString *)cursor timeout:(NSNumber *)timeout {
+  DBRoute *route = DBFILESRouteObjects.DBFILESListFolderLongpoll;
+  DBFILESListFolderLongpollArg *arg = [[DBFILESListFolderLongpollArg alloc] initWithCursor:cursor timeout:timeout];
+  return [self.client requestRpc:route arg:arg];
+}
+
 - (DBRpcTask *)listRevisions:(NSString *)path {
   DBRoute *route = DBFILESRouteObjects.DBFILESListRevisions;
   DBFILESListRevisionsArg *arg = [[DBFILESListRevisionsArg alloc] initWithPath:path];

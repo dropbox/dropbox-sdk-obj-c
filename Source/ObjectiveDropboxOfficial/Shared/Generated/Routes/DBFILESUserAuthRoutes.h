@@ -985,6 +985,42 @@ includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMe
 includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMembers;
 
 ///
+/// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
+/// a low-latency way to monitor an account for file changes. The connection will block until there are changes
+/// available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for
+/// server-side notifications, check out our webhooks documentation
+/// https://www.dropbox.com/developers/reference/webhooks.
+///
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by setting
+/// `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderLongpollResult` object on success
+/// or a `DBFILESListFolderLongpollError` object on failure.
+///
+- (DBRpcTask<DBFILESListFolderLongpollResult *, DBFILESListFolderLongpollError *> * _Nonnull)listFolderLongpoll:
+    (NSString * _Nonnull)cursor;
+
+///
+/// A longpoll endpoint to wait for changes on an account. In conjunction with `listFolderContinue`, this call gives you
+/// a low-latency way to monitor an account for file changes. The connection will block until there are changes
+/// available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for
+/// server-side notifications, check out our webhooks documentation
+/// https://www.dropbox.com/developers/reference/webhooks.
+///
+/// @param cursor A cursor as returned by `listFolder` or `listFolderContinue`. Cursors retrieved by setting
+/// `includeMediaInfo` in `DBFILESListFolderArg` to true are not supported.
+/// @param timeout A timeout in seconds. The request will block for at most this length of time, plus up to 90 seconds
+/// of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter, as some
+/// network infrastructure does not support long timeouts.
+///
+/// @return Through the response callback, the caller will receive a `DBFILESListFolderLongpollResult` object on success
+/// or a `DBFILESListFolderLongpollError` object on failure.
+///
+- (DBRpcTask<DBFILESListFolderLongpollResult *, DBFILESListFolderLongpollError *> * _Nonnull)
+listFolderLongpoll:(NSString * _Nonnull)cursor
+           timeout:(NSNumber * _Nullable)timeout;
+
+///
 /// Return revisions of a file.
 ///
 /// @param path The path to the file you want to see the revisions of.

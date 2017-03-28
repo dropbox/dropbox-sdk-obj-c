@@ -5,8 +5,6 @@
 //  Copyright © 2016 Dropbox. All rights reserved.
 //
 
-#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
-
 #import "TestClasses.h"
 #import "TestData.h"
 
@@ -24,9 +22,10 @@ void MyLog(NSString *format, ...) {
   self = [super init];
   if (self) {
     NSAssert([DBClientsManager authorizedClient], @"No authorized user client.");
-
+    DBAppClient *unauthorizedClient = [[DBAppClient alloc] initWithAppKey:_testData.fullDropboxAppKey appSecret:_testData.fullDropboxAppSecret];
     _testData = testData;
     _auth = [DBClientsManager authorizedClient].authRoutes;
+    _appAuth = unauthorizedClient.authRoutes;
     _files = [DBClientsManager authorizedClient].filesRoutes;
     _sharing = [DBClientsManager authorizedClient].sharingRoutes;
     _users = [DBClientsManager authorizedClient].usersRoutes;
@@ -526,23 +525,27 @@ void MyLog(NSString *format, ...) {
 - (void)runGlobalResponseTests {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
-  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError) {
+  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *, DBTask *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError, DBTask *restartTask) {
 #pragma unused(networkError)
+#pragma unused(restartTask)
     MyLog(@"\n\nListFolder: listFolderGlobalResponseBlock Global execution error:%@\n\n", folderError);
   };
 
-  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError) {
+  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *, DBTask *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError, DBTask *restartTask) {
 #pragma unused(networkError)
+#pragma unused(restartTask)
     MyLog(@"\n\nLookupError: lookupErrorGlobalResponseBlock Global execution error:%@\n\n", lookupError);
   };
 
-  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError) {
+  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *, DBTask *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError, DBTask *restartTask) {
 #pragma unused(downloadError)
 #pragma unused(networkError)
+#pragma unused(restartTask)
     MyLog(@"\n\nDownloadData: downloadDataGlobalResponseBlock Global execution error\n\n");
   };
 
-  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *networkError) {
+  void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) = ^(DBRequestError *networkError, DBTask *restartTask) {
+#pragma unused(restartTask)
     MyLog(@"\n\n NetworkData: networkGlobalResponseBlock Global execution error:%@\n\n", networkError);
 
     if ([networkError isAuthError]) {
@@ -676,7 +679,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)tokenFromOauth1:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.auth tokenFromOauth1:_tester.testData.oauth1Token oauth1TokenSecret:_tester.testData.oauth1TokenSecret]
+  [[[_tester.appAuth tokenFromOauth1:_tester.testData.oauth1Token oauth1TokenSecret:_tester.testData.oauth1TokenSecret]
     setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
