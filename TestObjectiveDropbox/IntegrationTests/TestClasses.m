@@ -525,27 +525,23 @@ void MyLog(NSString *format, ...) {
 - (void)runGlobalResponseTests {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
 
-  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *, DBTask *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError, DBTask *restartTask) {
+  void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *) = ^(DBFILESListFolderError *folderError, DBRequestError *networkError) {
 #pragma unused(networkError)
-#pragma unused(restartTask)
     MyLog(@"\n\nListFolder: listFolderGlobalResponseBlock Global execution error:%@\n\n", folderError);
   };
 
-  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *, DBTask *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError, DBTask *restartTask) {
+  void (^lookupErrorGlobalResponseBlock)(DBFILESLookupError *, DBRequestError *) = ^(DBFILESLookupError *lookupError, DBRequestError *networkError) {
 #pragma unused(networkError)
-#pragma unused(restartTask)
     MyLog(@"\n\nLookupError: lookupErrorGlobalResponseBlock Global execution error:%@\n\n", lookupError);
   };
 
-  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *, DBTask *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError, DBTask *restartTask) {
+  void (^downloadDataGlobalResponseBlock)(DBFILESDownloadError *, DBRequestError *) = ^(DBFILESDownloadError *downloadError, DBRequestError *networkError) {
 #pragma unused(downloadError)
 #pragma unused(networkError)
-#pragma unused(restartTask)
     MyLog(@"\n\nDownloadData: downloadDataGlobalResponseBlock Global execution error\n\n");
   };
 
-  void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) = ^(DBRequestError *networkError, DBTask *restartTask) {
-#pragma unused(restartTask)
+  void (^networkGlobalResponseBlock)(DBRequestError *) = ^(DBRequestError *networkError) {
     MyLog(@"\n\n NetworkData: networkGlobalResponseBlock Global execution error:%@\n\n", networkError);
 
     if ([networkError isAuthError]) {
