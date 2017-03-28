@@ -202,6 +202,9 @@ static DBTeamClient *authorizedTeamClient;
   [DBClientsManager setAuthorizedTeamClient:nil];
 }
 
++ (BOOL)v1TokensExistForAppKey:(NSString *)appKey {
+  return [DBSDKKeychain v1TokensExistForAppKey:appKey];
+}
 + (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
                                   queue:(NSOperationQueue *)queue
                                  appKey:(NSString *)appKey
