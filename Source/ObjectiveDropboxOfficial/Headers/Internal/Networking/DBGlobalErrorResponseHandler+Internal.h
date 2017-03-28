@@ -6,9 +6,12 @@
 
 #import "DBGlobalErrorResponseHandler.h"
 
+@class DBTask;
+
 @interface DBGlobalErrorResponseHandler (Internal)
 
 + (void)executeRegisteredResponseBlocksWithRouteError:(id _Nullable)routeError
-                                         networkError:(DBRequestError * _Nullable)networkError;
+                                         networkError:(DBRequestError * _Nullable)networkError
+                                          restartTask:(DBTask * _Nonnull)restartTask;
 
 @end

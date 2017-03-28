@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @class DBRequestError;
+@class DBTask;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,16 +22,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// For the route-specific error handling, you may supply either the direct route error type, or any type that the route
 /// error type contains as an instance field (or an instance field of an instance field, and so on).
 ///
-/// @note These globally supplied response handlers will be executed *in addition* to the original request-specific
-/// response handler. The global response handlers will be guaranteed to be executed first.
+/// @note These globally supplied response handlers will be executed *in place* of the original request-specific
+/// response handler. At most one global response handler will be executed, with the prioirty going to the general
+/// network
+/// response handler, followed by the handler that is associated directly with the route's error response type, followed
+/// by the handler associated with the first matching instance field.
 ///
 @interface DBGlobalErrorResponseHandler : NSObject
 
-// Global response handler for route-specific errors.
-typedef void (^DBRouteErrorResponseBlock)(id _Nullable routeError, DBRequestError *networkError);
+// Global response handler for route-specific errors. The first parameter is the route specific error to handle. The
+// second paramater is the general network error to handle. The third parameter is the SDK wrapper task used to restart
+// the request, if necessary.
+typedef void (^DBRouteErrorResponseBlock)(id _Nullable routeError, DBRequestError *networkError, DBTask *restartTask);
 
-// Global response handler for general network errors.
-typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError);
+// Global response handler for general network errors. The first parameter is the general network error to handle. The
+// second parameter is the SDK wrapper task used to restart the request, if necessary.
+typedef void (^DBNetworkErrorResponseBlock)(DBRequestError *networkError, DBTask *restartTask);
 
 ///
 /// Convenience method for registering a global error handler for a specific route error type.
