@@ -92,7 +92,7 @@
                                                                       httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
+                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:data statusCode:statusCode]
                           : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError);
@@ -100,12 +100,12 @@
     }
 
     NSError *serializationError;
-    id result = [DBTransportBaseClient routeResultWithRoute:_route data:data serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return NO;
     }
-    result = !_route.resultType ? [DBNilObject new] : result;
+    result = !self->_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil);
 
     return YES;
@@ -166,7 +166,7 @@
                                                                       httpHeaders:httpHeaders];
     if (dbxError) {
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:_route data:data statusCode:statusCode]
+                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:data statusCode:statusCode]
                           : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError);
@@ -174,12 +174,12 @@
     }
 
     NSError *serializationError;
-    id result = [DBTransportBaseClient routeResultWithRoute:_route data:data serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return NO;
     }
-    result = !_route.resultType ? [DBNilObject new] : result;
+    result = !self->_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil);
 
     return YES;
@@ -245,48 +245,48 @@
                                                                          statusCode:statusCode
                                                                         httpHeaders:httpHeaders];
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
+                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
                           : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
-      responseBlock(nil, routeError, dbxError, _destination);
+      responseBlock(nil, routeError, dbxError, self->_destination);
       return NO;
     }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *destinationPath = [_destination path];
+    NSString *destinationPath = [self->_destination path];
 
     if ([fileManager fileExistsAtPath:destinationPath]) {
       NSError *fileMoveError;
-      if (_overwrite) {
+      if (self->_overwrite) {
         [fileManager removeItemAtPath:destinationPath error:&fileMoveError];
         if (fileMoveError) {
-          responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
+          responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], self->_destination);
           return NO;
         }
       }
       [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
-        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
+        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], self->_destination);
         return NO;
       }
     } else {
       NSError *fileMoveError;
       [fileManager moveItemAtPath:[location path] toPath:destinationPath error:&fileMoveError];
       if (fileMoveError) {
-        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], _destination);
+        responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:fileMoveError], self->_destination);
         return NO;
       }
     }
 
     NSError *serializationError;
     id result =
-        [DBTransportBaseClient routeResultWithRoute:_route data:resultData serializationError:&serializationError];
+        [DBTransportBaseClient routeResultWithRoute:self->_route data:resultData serializationError:&serializationError];
     if (serializationError) {
-      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], _destination);
+      responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], self->_destination);
       return NO;
     }
-    result = !_route.resultType ? [DBNilObject new] : result;
-    responseBlock(result, nil, nil, _destination);
+    result = !self->_route.resultType ? [DBNilObject new] : result;
+    responseBlock(result, nil, nil, self->_destination);
 
     return YES;
   };
@@ -352,7 +352,7 @@
                                                                          statusCode:statusCode
                                                                         httpHeaders:httpHeaders];
       id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:_route data:errorData statusCode:statusCode]
+                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
                           : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError, nil);
@@ -361,12 +361,12 @@
 
     NSError *serializationError;
     id result =
-        [DBTransportBaseClient routeResultWithRoute:_route data:resultData serializationError:&serializationError];
+        [DBTransportBaseClient routeResultWithRoute:self->_route data:resultData serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], nil);
       return NO;
     }
-    result = !_route.resultType ? [DBNilObject new] : result;
+    result = !self->_route.resultType ? [DBNilObject new] : result;
     responseBlock(result, nil, nil, [NSData dataWithContentsOfFile:[location path]]);
     return YES;
   };

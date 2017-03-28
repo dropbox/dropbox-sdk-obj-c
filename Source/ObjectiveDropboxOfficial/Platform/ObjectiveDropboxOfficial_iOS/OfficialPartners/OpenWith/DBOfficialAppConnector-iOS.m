@@ -193,7 +193,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"URL open: %@", [components URL]);
-    _openURLWrapper([components URL]);
+    self->_openURLWrapper([components URL]);
   });
 }
 

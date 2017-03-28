@@ -78,7 +78,7 @@ static DBOAuthManager *sharedOAuthManager;
 
 - (void)authorizeFromSharedApplication:(id<DBSharedApplication>)sharedApplication browserAuth:(BOOL)browserAuth {
   void (^cancelHandler)() = ^{
-    [sharedApplication presentExternalApp:_cancelURL];
+    [sharedApplication presentExternalApp:self->_cancelURL];
   };
 
   if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
