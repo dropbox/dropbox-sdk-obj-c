@@ -24,29 +24,35 @@
 }
 
 - (void)cancel {
-  [[self currentTask] cancel];
-}
-
-- (void)suspend {
-  [[self currentTask] suspend];
-}
-
-- (void)resume {
-  [[self currentTask] resume];
-}
-
-- (void)start {
-  [[self currentTask] resume];
-}
-
-- (DBTask *)restart {
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                userInfo:nil];
 }
 
-- (NSURLSessionTask *)currentTask {
+- (void)suspend {
+  @throw [NSException
+      exceptionWithName:NSInternalInconsistencyException
+                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+               userInfo:nil];
+  ;
+}
+
+- (void)resume {
+  @throw [NSException
+      exceptionWithName:NSInternalInconsistencyException
+                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+               userInfo:nil];
+}
+
+- (void)start {
+  @throw [NSException
+      exceptionWithName:NSInternalInconsistencyException
+                 reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+               userInfo:nil];
+}
+
+- (DBTask *)restart {
   @throw [NSException
       exceptionWithName:NSInternalInconsistencyException
                  reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
@@ -108,9 +114,10 @@
                                                                        statusCode:statusCode
                                                                       httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:strongSelf->_route data:data statusCode:statusCode]
-                          : nil;
+      id routeError =
+          [DBTransportBaseClient statusCodeIsRouteError:statusCode]
+              ? [DBTransportBaseClient routeErrorWithRoute:strongSelf->_route data:data statusCode:statusCode]
+              : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:dbxError
                                                                       restartTask:self];
@@ -120,8 +127,9 @@
     }
 
     NSError *serializationError;
-    id result =
-        [DBTransportBaseClient routeResultWithRoute:strongSelf->_route data:data serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:strongSelf->_route
+                                                       data:data
+                                         serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       cleanupBlock();
@@ -192,9 +200,10 @@
                                                                        statusCode:statusCode
                                                                       httpHeaders:httpHeaders];
     if (dbxError) {
-      id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:strongSelf->_route data:data statusCode:statusCode]
-                          : nil;
+      id routeError =
+          [DBTransportBaseClient statusCodeIsRouteError:statusCode]
+              ? [DBTransportBaseClient routeErrorWithRoute:strongSelf->_route data:data statusCode:statusCode]
+              : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError
                                                                      networkError:dbxError
                                                                       restartTask:self];
@@ -204,8 +213,9 @@
     }
 
     NSError *serializationError;
-    id result =
-        [DBTransportBaseClient routeResultWithRoute:strongSelf->_route data:data serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:strongSelf->_route
+                                                       data:data
+                                         serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       cleanupBlock();

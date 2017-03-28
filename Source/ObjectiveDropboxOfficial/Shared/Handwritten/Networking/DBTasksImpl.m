@@ -31,19 +31,33 @@
   return self;
 }
 
-- (NSURLSessionTask *)currentTask {
-  return _dataTask;
+- (void)cancel {
+  [_dataTask cancel];
+}
+
+- (void)suspend {
+  [_dataTask suspend];
+}
+
+- (void)resume {
+  [_dataTask resume];
+}
+
+- (void)start {
+  [_dataTask resume];
 }
 
 - (void)cleanup {
   _selfRetained = nil;
 
   NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
-  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+  [queueToUse addOperationWithBlock:^{
+    self->_responseBlock = nil;
+  }];
 }
 
 - (DBTask *)restart {
-  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLRequest *request = [_dataTask.originalRequest copy];
   NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
   DBRpcTaskImpl *sdkTask = [[DBRpcTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
   sdkTask.retryCount += 1;
@@ -59,7 +73,10 @@
 
 - (DBRpcTask *)setResponseBlock:(DBRpcResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  DBRpcResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
+                                                                  cleanupBlock:^{
+                                                                    [self cleanup];
+                                                                  }];
   [_delegate addRpcResponseHandler:_dataTask session:_session responseHandler:storageBlock responseHandlerQueue:queue];
   return self;
 }
@@ -99,19 +116,33 @@
   return self;
 }
 
-- (NSURLSessionTask *)currentTask {
-  return _uploadTask;
+- (void)cancel {
+  [_uploadTask cancel];
+}
+
+- (void)suspend {
+  [_uploadTask suspend];
+}
+
+- (void)resume {
+  [_uploadTask resume];
+}
+
+- (void)start {
+  [_uploadTask resume];
 }
 
 - (void)cleanup {
   _selfRetained = nil;
 
   NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
-  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+  [queueToUse addOperationWithBlock:^{
+    self->_responseBlock = nil;
+  }];
 }
 
 - (DBTask *)restart {
-  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLRequest *request = [_uploadTask.originalRequest copy];
   NSURLSessionUploadTask *task = nil;
   self.retryCount += 1;
   if (_inputUrl) {
@@ -141,8 +172,10 @@
 
 - (DBUploadTask *)setResponseBlock:(DBUploadResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  DBUploadResponseBlockStorage storageBlock =
-      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  DBUploadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
+                                                                     cleanupBlock:^{
+                                                                       [self cleanup];
+                                                                     }];
   [_delegate addUploadResponseHandler:_uploadTask
                               session:_session
                       responseHandler:storageBlock
@@ -186,19 +219,33 @@
   return self;
 }
 
-- (NSURLSessionTask *)currentTask {
-  return _downloadUrlTask;
+- (void)cancel {
+  [_downloadUrlTask cancel];
+}
+
+- (void)suspend {
+  [_downloadUrlTask suspend];
+}
+
+- (void)resume {
+  [_downloadUrlTask resume];
+}
+
+- (void)start {
+  [_downloadUrlTask resume];
 }
 
 - (void)cleanup {
   _selfRetained = nil;
 
   NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
-  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+  [queueToUse addOperationWithBlock:^{
+    self->_responseBlock = nil;
+  }];
 }
 
 - (DBTask *)restart {
-  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLRequest *request = [_downloadUrlTask.originalRequest copy];
   NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
   DBDownloadUrlTaskImpl *sdkTask = [[DBDownloadUrlTaskImpl alloc] initWithTask:task
                                                                        session:_session
@@ -219,8 +266,10 @@
 
 - (DBDownloadUrlTask *)setResponseBlock:(DBDownloadUrlResponseBlockImpl)responseBlock queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  DBDownloadResponseBlockStorage storageBlock =
-      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
+                                                                       cleanupBlock:^{
+                                                                         [self cleanup];
+                                                                       }];
   [_delegate addDownloadResponseHandler:_downloadUrlTask
                                 session:_session
                         responseHandler:storageBlock
@@ -263,19 +312,33 @@
   return self;
 }
 
-- (NSURLSessionTask *)currentTask {
-  return _downloadDataTask;
+- (void)cancel {
+  [_downloadDataTask cancel];
+}
+
+- (void)suspend {
+  [_downloadDataTask suspend];
+}
+
+- (void)resume {
+  [_downloadDataTask resume];
+}
+
+- (void)start {
+  [_downloadDataTask resume];
 }
 
 - (void)cleanup {
   _selfRetained = nil;
 
   NSOperationQueue *queueToUse = _queue ?: [NSOperationQueue mainQueue];
-  [queueToUse addOperationWithBlock:^{ self->_responseBlock = nil; }];
+  [queueToUse addOperationWithBlock:^{
+    self->_responseBlock = nil;
+  }];
 }
 
 - (DBTask *)restart {
-  NSURLRequest *request = [[self currentTask].originalRequest copy];
+  NSURLRequest *request = [_downloadDataTask.originalRequest copy];
   NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request];
   DBDownloadDataTaskImpl *sdkTask =
       [[DBDownloadDataTaskImpl alloc] initWithTask:task session:_session delegate:_delegate route:_route];
@@ -293,8 +356,10 @@
 - (DBDownloadDataTask *)setResponseBlock:(DBDownloadDataResponseBlockImpl)responseBlock
                                    queue:(NSOperationQueue *)queue {
   _responseBlock = responseBlock;
-  DBDownloadResponseBlockStorage storageBlock =
-      [self storageBlockWithResponseBlock:responseBlock cleanupBlock:^{ [self cleanup]; }];
+  DBDownloadResponseBlockStorage storageBlock = [self storageBlockWithResponseBlock:responseBlock
+                                                                       cleanupBlock:^{
+                                                                         [self cleanup];
+                                                                       }];
   [_delegate addDownloadResponseHandler:_downloadDataTask
                                 session:_session
                         responseHandler:storageBlock
