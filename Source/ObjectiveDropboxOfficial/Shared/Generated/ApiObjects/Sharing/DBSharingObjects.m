@@ -338,8 +338,8 @@
 
   jsonDict[@"file"] = valueObj.file;
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBSHARINGMemberSelectorSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBSHARINGMemberSelectorSerializer serialize:elem0];
                                             }];
   if (valueObj.customMessage) {
     jsonDict[@"custom_message"] = valueObj.customMessage;
@@ -355,8 +355,8 @@
   NSString *file = valueDict[@"file"];
   NSArray<DBSHARINGMemberSelector *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGMemberSelectorSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGMemberSelectorSerializer deserialize:elem0];
                            }];
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
   NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
@@ -617,8 +617,8 @@
 
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBSHARINGAddMemberSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBSHARINGAddMemberSerializer serialize:elem0];
                                             }];
   jsonDict[@"quiet"] = valueObj.quiet;
   if (valueObj.customMessage) {
@@ -632,8 +632,8 @@
   NSString *sharedFolderId = valueDict[@"shared_folder_id"];
   NSArray<DBSHARINGAddMember *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGAddMemberSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGAddMemberSerializer deserialize:elem0];
                            }];
   NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
@@ -3933,8 +3933,8 @@
   jsonDict[@"file"] = valueObj.file;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFileActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFileActionSerializer serialize:elem0];
                                               }];
   }
 
@@ -3945,8 +3945,8 @@
   NSString *file = valueDict[@"file"];
   NSArray<DBSHARINGFileAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFileActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFileActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -4012,13 +4012,13 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"files"] = [DBArraySerializer serialize:valueObj.files
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFileActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFileActionSerializer serialize:elem0];
                                               }];
   }
 
@@ -4027,13 +4027,13 @@
 
 + (DBSHARINGGetFileMetadataBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *files = [DBArraySerializer deserialize:valueDict[@"files"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSArray<DBSHARINGFileAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFileActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFileActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -4452,8 +4452,8 @@
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFolderActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFolderActionSerializer serialize:elem0];
                                               }];
   }
 
@@ -4464,8 +4464,8 @@
   NSString *sharedFolderId = valueDict[@"shared_folder_id"];
   NSArray<DBSHARINGFolderAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFolderActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFolderActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -5057,8 +5057,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"links"] = [DBArraySerializer serialize:valueObj.links
-                                          withBlock:^id(id elem) {
-                                            return [DBSHARINGLinkMetadataSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBSHARINGLinkMetadataSerializer serialize:elem0];
                                           }];
 
   return jsonDict;
@@ -5067,8 +5067,8 @@
 + (DBSHARINGGetSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGLinkMetadata *> *links =
       [DBArraySerializer deserialize:valueDict[@"links"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGLinkMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGLinkMetadataSerializer deserialize:elem0];
                            }];
 
   return [[DBSHARINGGetSharedLinksResult alloc] initWithLinks:links];
@@ -5260,8 +5260,8 @@
   jsonDict[@"access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessType];
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem0];
                                                   }];
   }
   if (valueObj.initials) {
@@ -5276,8 +5276,8 @@
   DBSHARINGAccessLevel *accessType = [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_type"]];
   NSArray<DBSHARINGMemberPermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
@@ -5353,8 +5353,8 @@
   jsonDict[@"group"] = [DBSHARINGGroupInfoSerializer serialize:valueObj.group];
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem0];
                                                   }];
   }
   if (valueObj.initials) {
@@ -5370,8 +5370,8 @@
   DBSHARINGGroupInfo *group = [DBSHARINGGroupInfoSerializer deserialize:valueDict[@"group"]];
   NSArray<DBSHARINGMemberPermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
@@ -5629,8 +5629,8 @@
   jsonDict[@"invitee"] = [DBSHARINGInviteeInfoSerializer serialize:valueObj.invitee];
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem0];
                                                   }];
   }
   if (valueObj.initials) {
@@ -5649,8 +5649,8 @@
   DBSHARINGInviteeInfo *invitee = [DBSHARINGInviteeInfoSerializer deserialize:valueDict[@"invitee"]];
   NSArray<DBSHARINGMemberPermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
@@ -6859,8 +6859,8 @@
   jsonDict[@"file"] = valueObj.file;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGMemberActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGMemberActionSerializer serialize:elem0];
                                               }];
   }
   jsonDict[@"include_inherited"] = valueObj.includeInherited;
@@ -6873,8 +6873,8 @@
   NSString *file = valueDict[@"file"];
   NSArray<DBSHARINGMemberAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGMemberActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGMemberActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
   NSNumber *includeInherited = valueDict[@"include_inherited"] ?: @YES;
@@ -6944,8 +6944,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"files"] = [DBArraySerializer serialize:valueObj.files
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   jsonDict[@"limit"] = valueObj.limit;
 
@@ -6954,8 +6954,8 @@
 
 + (DBSHARINGListFileMembersBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *files = [DBArraySerializer deserialize:valueDict[@"files"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSNumber *limit = valueDict[@"limit"] ?: @(10);
 
@@ -7657,8 +7657,8 @@
   jsonDict[@"limit"] = valueObj.limit;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFileActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFileActionSerializer serialize:elem0];
                                               }];
   }
 
@@ -7669,8 +7669,8 @@
   NSNumber *limit = valueDict[@"limit"] ?: @(100);
   NSArray<DBSHARINGFileAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFileActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFileActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -7918,8 +7918,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBSHARINGSharedFileMetadataSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBSHARINGSharedFileMetadataSerializer serialize:elem0];
                                             }];
   if (valueObj.cursor) {
     jsonDict[@"cursor"] = valueObj.cursor;
@@ -7931,8 +7931,8 @@
 + (DBSHARINGListFilesResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGSharedFileMetadata *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGSharedFileMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGSharedFileMetadataSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
 
@@ -7995,8 +7995,8 @@
 
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGMemberActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGMemberActionSerializer serialize:elem0];
                                               }];
   }
   jsonDict[@"limit"] = valueObj.limit;
@@ -8007,8 +8007,8 @@
 + (DBSHARINGListFolderMembersCursorArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGMemberAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGMemberActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGMemberActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
   NSNumber *limit = valueDict[@"limit"] ?: @(1000);
@@ -8076,8 +8076,8 @@
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGMemberActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGMemberActionSerializer serialize:elem0];
                                               }];
   }
   jsonDict[@"limit"] = valueObj.limit;
@@ -8089,8 +8089,8 @@
   NSString *sharedFolderId = valueDict[@"shared_folder_id"];
   NSArray<DBSHARINGMemberAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGMemberActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGMemberActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
   NSNumber *limit = valueDict[@"limit"] ?: @(1000);
@@ -8345,8 +8345,8 @@
   jsonDict[@"limit"] = valueObj.limit;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFolderActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFolderActionSerializer serialize:elem0];
                                               }];
   }
 
@@ -8357,8 +8357,8 @@
   NSNumber *limit = valueDict[@"limit"] ?: @(1000);
   NSArray<DBSHARINGFolderAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFolderActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFolderActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -8574,8 +8574,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBSHARINGSharedFolderMetadataSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBSHARINGSharedFolderMetadataSerializer serialize:elem0];
                                             }];
   if (valueObj.cursor) {
     jsonDict[@"cursor"] = valueObj.cursor;
@@ -8587,8 +8587,8 @@
 + (DBSHARINGListFoldersResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGSharedFolderMetadata *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGSharedFolderMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGSharedFolderMetadataSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
 
@@ -8860,8 +8860,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"links"] = [DBArraySerializer serialize:valueObj.links
-                                          withBlock:^id(id elem) {
-                                            return [DBSHARINGSharedLinkMetadataSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBSHARINGSharedLinkMetadataSerializer serialize:elem0];
                                           }];
   jsonDict[@"has_more"] = valueObj.hasMore;
   if (valueObj.cursor) {
@@ -8874,8 +8874,8 @@
 + (DBSHARINGListSharedLinksResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGSharedLinkMetadata *> *links =
       [DBArraySerializer deserialize:valueDict[@"links"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGSharedLinkMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGSharedLinkMetadataSerializer deserialize:elem0];
                            }];
   NSNumber *hasMore = valueDict[@"has_more"];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
@@ -8950,8 +8950,8 @@
   if (valueObj.accessDetails) {
     jsonDict[@"access_details"] =
         [DBArraySerializer serialize:valueObj.accessDetails
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGParentFolderAccessInfoSerializer serialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGParentFolderAccessInfoSerializer serialize:elem0];
                            }];
   }
 
@@ -8965,8 +8965,8 @@
   NSArray<DBSHARINGParentFolderAccessInfo *> *accessDetails =
       valueDict[@"access_details"]
           ? [DBArraySerializer deserialize:valueDict[@"access_details"]
-                                 withBlock:^id(id elem) {
-                                   return [DBSHARINGParentFolderAccessInfoSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBSHARINGParentFolderAccessInfoSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -10088,8 +10088,8 @@
   jsonDict[@"folder_name"] = valueObj.folderName;
   jsonDict[@"shared_folder_id"] = valueObj.sharedFolderId;
   jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                withBlock:^id(id elem) {
-                                                  return [DBSHARINGMemberPermissionSerializer serialize:elem];
+                                                withBlock:^id(id elem0) {
+                                                  return [DBSHARINGMemberPermissionSerializer serialize:elem0];
                                                 }];
 
   return jsonDict;
@@ -10100,8 +10100,8 @@
   NSString *sharedFolderId = valueDict[@"shared_folder_id"];
   NSArray<DBSHARINGMemberPermission *> *permissions =
       [DBArraySerializer deserialize:valueDict[@"permissions"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGMemberPermissionSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
                            }];
 
   return [[DBSHARINGParentFolderAccessInfo alloc] initWithFolderName:folderName
@@ -12374,8 +12374,8 @@
   jsonDict[@"force_async"] = valueObj.forceAsync;
   if (valueObj.actions) {
     jsonDict[@"actions"] = [DBArraySerializer serialize:valueObj.actions
-                                              withBlock:^id(id elem) {
-                                                return [DBSHARINGFolderActionSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBSHARINGFolderActionSerializer serialize:elem0];
                                               }];
   }
   if (valueObj.linkSettings) {
@@ -12402,8 +12402,8 @@
   NSNumber *forceAsync = valueDict[@"force_async"] ?: @NO;
   NSArray<DBSHARINGFolderAction *> *actions =
       valueDict[@"actions"] ? [DBArraySerializer deserialize:valueDict[@"actions"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBSHARINGFolderActionSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBSHARINGFolderActionSerializer deserialize:elem0];
                                                    }]
                             : nil;
   DBSHARINGLinkSettings *linkSettings =
@@ -13483,13 +13483,13 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"audience_options"] = [DBArraySerializer serialize:valueObj.audienceOptions
-                                                     withBlock:^id(id elem) {
-                                                       return [DBSHARINGLinkAudienceSerializer serialize:elem];
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBSHARINGLinkAudienceSerializer serialize:elem0];
                                                      }];
   jsonDict[@"current_audience"] = [DBSHARINGLinkAudienceSerializer serialize:valueObj.currentAudience];
   jsonDict[@"link_permissions"] = [DBArraySerializer serialize:valueObj.linkPermissions
-                                                     withBlock:^id(id elem) {
-                                                       return [DBSHARINGLinkPermissionSerializer serialize:elem];
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBSHARINGLinkPermissionSerializer serialize:elem0];
                                                      }];
   jsonDict[@"password_protected"] = valueObj.passwordProtected;
   if (valueObj.expiry) {
@@ -13502,14 +13502,14 @@
 + (DBSHARINGSharedContentLinkMetadataBase *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGLinkAudience *> *audienceOptions =
       [DBArraySerializer deserialize:valueDict[@"audience_options"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGLinkAudienceSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGLinkAudienceSerializer deserialize:elem0];
                            }];
   DBSHARINGLinkAudience *currentAudience = [DBSHARINGLinkAudienceSerializer deserialize:valueDict[@"current_audience"]];
   NSArray<DBSHARINGLinkPermission *> *linkPermissions =
       [DBArraySerializer deserialize:valueDict[@"link_permissions"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGLinkPermissionSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGLinkPermissionSerializer deserialize:elem0];
                            }];
   NSNumber *passwordProtected = valueDict[@"password_protected"];
   NSDate *expiry = valueDict[@"expiry"]
@@ -13597,13 +13597,13 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"audience_options"] = [DBArraySerializer serialize:valueObj.audienceOptions
-                                                     withBlock:^id(id elem) {
-                                                       return [DBSHARINGLinkAudienceSerializer serialize:elem];
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBSHARINGLinkAudienceSerializer serialize:elem0];
                                                      }];
   jsonDict[@"current_audience"] = [DBSHARINGLinkAudienceSerializer serialize:valueObj.currentAudience];
   jsonDict[@"link_permissions"] = [DBArraySerializer serialize:valueObj.linkPermissions
-                                                     withBlock:^id(id elem) {
-                                                       return [DBSHARINGLinkPermissionSerializer serialize:elem];
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBSHARINGLinkPermissionSerializer serialize:elem0];
                                                      }];
   jsonDict[@"password_protected"] = valueObj.passwordProtected;
   jsonDict[@"url"] = valueObj.url;
@@ -13617,14 +13617,14 @@
 + (DBSHARINGSharedContentLinkMetadata *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGLinkAudience *> *audienceOptions =
       [DBArraySerializer deserialize:valueDict[@"audience_options"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGLinkAudienceSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGLinkAudienceSerializer deserialize:elem0];
                            }];
   DBSHARINGLinkAudience *currentAudience = [DBSHARINGLinkAudienceSerializer deserialize:valueDict[@"current_audience"]];
   NSArray<DBSHARINGLinkPermission *> *linkPermissions =
       [DBArraySerializer deserialize:valueDict[@"link_permissions"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGLinkPermissionSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGLinkPermissionSerializer deserialize:elem0];
                            }];
   NSNumber *passwordProtected = valueDict[@"password_protected"];
   NSString *url = valueDict[@"url"];
@@ -13705,16 +13705,16 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
-                                          withBlock:^id(id elem) {
-                                            return [DBSHARINGUserMembershipInfoSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBSHARINGUserMembershipInfoSerializer serialize:elem0];
                                           }];
   jsonDict[@"groups"] = [DBArraySerializer serialize:valueObj.groups
-                                           withBlock:^id(id elem) {
-                                             return [DBSHARINGGroupMembershipInfoSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBSHARINGGroupMembershipInfoSerializer serialize:elem0];
                                            }];
   jsonDict[@"invitees"] = [DBArraySerializer serialize:valueObj.invitees
-                                             withBlock:^id(id elem) {
-                                               return [DBSHARINGInviteeMembershipInfoSerializer serialize:elem];
+                                             withBlock:^id(id elem0) {
+                                               return [DBSHARINGInviteeMembershipInfoSerializer serialize:elem0];
                                              }];
   if (valueObj.cursor) {
     jsonDict[@"cursor"] = valueObj.cursor;
@@ -13726,18 +13726,18 @@
 + (DBSHARINGSharedFileMembers *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGUserMembershipInfo *> *users =
       [DBArraySerializer deserialize:valueDict[@"users"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGUserMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGUserMembershipInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGGroupMembershipInfo *> *groups =
       [DBArraySerializer deserialize:valueDict[@"groups"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGGroupMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGGroupMembershipInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGInviteeMembershipInfo *> *invitees =
       [DBArraySerializer deserialize:valueDict[@"invitees"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGInviteeMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGInviteeMembershipInfoSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
 
@@ -13846,8 +13846,8 @@
   }
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGFilePermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGFilePermissionSerializer serialize:elem0];
                                                   }];
   }
   if (valueObj.ownerTeam) {
@@ -13880,8 +13880,8 @@
           : nil;
   NSArray<DBSHARINGFilePermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGFilePermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGFilePermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
   DBUSERSTeam *ownerTeam =
@@ -14274,16 +14274,16 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
-                                          withBlock:^id(id elem) {
-                                            return [DBSHARINGUserMembershipInfoSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBSHARINGUserMembershipInfoSerializer serialize:elem0];
                                           }];
   jsonDict[@"groups"] = [DBArraySerializer serialize:valueObj.groups
-                                           withBlock:^id(id elem) {
-                                             return [DBSHARINGGroupMembershipInfoSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBSHARINGGroupMembershipInfoSerializer serialize:elem0];
                                            }];
   jsonDict[@"invitees"] = [DBArraySerializer serialize:valueObj.invitees
-                                             withBlock:^id(id elem) {
-                                               return [DBSHARINGInviteeMembershipInfoSerializer serialize:elem];
+                                             withBlock:^id(id elem0) {
+                                               return [DBSHARINGInviteeMembershipInfoSerializer serialize:elem0];
                                              }];
   if (valueObj.cursor) {
     jsonDict[@"cursor"] = valueObj.cursor;
@@ -14295,18 +14295,18 @@
 + (DBSHARINGSharedFolderMembers *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGUserMembershipInfo *> *users =
       [DBArraySerializer deserialize:valueDict[@"users"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGUserMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGUserMembershipInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGGroupMembershipInfo *> *groups =
       [DBArraySerializer deserialize:valueDict[@"groups"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGGroupMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGGroupMembershipInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGInviteeMembershipInfo *> *invitees =
       [DBArraySerializer deserialize:valueDict[@"invitees"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGInviteeMembershipInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGInviteeMembershipInfoSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
 
@@ -14544,8 +14544,8 @@
   }
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGFolderPermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGFolderPermissionSerializer serialize:elem0];
                                                   }];
   }
 
@@ -14571,8 +14571,8 @@
           : nil;
   NSArray<DBSHARINGFolderPermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGFolderPermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGFolderPermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
 
@@ -17144,8 +17144,8 @@
   jsonDict[@"user"] = [DBSHARINGUserInfoSerializer serialize:valueObj.user];
   if (valueObj.permissions) {
     jsonDict[@"permissions"] = [DBArraySerializer serialize:valueObj.permissions
-                                                  withBlock:^id(id elem) {
-                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem];
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBSHARINGMemberPermissionSerializer serialize:elem0];
                                                   }];
   }
   if (valueObj.initials) {
@@ -17161,8 +17161,8 @@
   DBSHARINGUserInfo *user = [DBSHARINGUserInfoSerializer deserialize:valueDict[@"user"]];
   NSArray<DBSHARINGMemberPermission *> *permissions =
       valueDict[@"permissions"] ? [DBArraySerializer deserialize:valueDict[@"permissions"]
-                                                       withBlock:^id(id elem) {
-                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem];
+                                                       withBlock:^id(id elem0) {
+                                                         return [DBSHARINGMemberPermissionSerializer deserialize:elem0];
                                                        }]
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;

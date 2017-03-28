@@ -732,8 +732,8 @@
   jsonDict[@"include_has_explicit_shared_members"] = valueObj.includeHasExplicitSharedMembers;
   if (valueObj.includePropertyTemplates) {
     jsonDict[@"include_property_templates"] = [DBArraySerializer serialize:valueObj.includePropertyTemplates
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
   }
 
@@ -747,8 +747,8 @@
   NSNumber *includeHasExplicitSharedMembers = valueDict[@"include_has_explicit_shared_members"] ?: @NO;
   NSArray<NSString *> *includePropertyTemplates =
       valueDict[@"include_property_templates"] ? [DBArraySerializer deserialize:valueDict[@"include_property_templates"]
-                                                                      withBlock:^id(id elem) {
-                                                                        return elem;
+                                                                      withBlock:^id(id elem0) {
+                                                                        return elem0;
                                                                       }]
                                                : nil;
 
@@ -1152,8 +1152,8 @@
   jsonDict[@"mute"] = valueObj.mute;
   if (valueObj.propertyGroups) {
     jsonDict[@"property_groups"] = [DBArraySerializer serialize:valueObj.propertyGroups
-                                                      withBlock:^id(id elem) {
-                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem];
+                                                      withBlock:^id(id elem0) {
+                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem0];
                                                       }];
   }
 
@@ -1172,8 +1172,8 @@
   NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups =
       valueDict[@"property_groups"]
           ? [DBArraySerializer deserialize:valueDict[@"property_groups"]
-                                 withBlock:^id(id elem) {
-                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -1456,8 +1456,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESDeleteArgSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESDeleteArgSerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -1465,8 +1465,8 @@
 
 + (DBFILESDeleteBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESDeleteArg *> *entries = [DBArraySerializer deserialize:valueDict[@"entries"]
-                                                              withBlock:^id(id elem) {
-                                                                return [DBFILESDeleteArgSerializer deserialize:elem];
+                                                              withBlock:^id(id elem0) {
+                                                                return [DBFILESDeleteArgSerializer deserialize:elem0];
                                                               }];
 
   return [[DBFILESDeleteBatchArg alloc] initWithEntries:entries];
@@ -1924,8 +1924,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESDeleteBatchResultEntrySerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESDeleteBatchResultEntrySerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -1934,8 +1934,8 @@
 + (DBFILESDeleteBatchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESDeleteBatchResultEntry *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESDeleteBatchResultEntrySerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESDeleteBatchResultEntrySerializer deserialize:elem0];
                            }];
 
   return [[DBFILESDeleteBatchResult alloc] initWithEntries:entries];
@@ -2839,8 +2839,8 @@
   }
   if (valueObj.propertyGroups) {
     jsonDict[@"property_groups"] = [DBArraySerializer serialize:valueObj.propertyGroups
-                                                      withBlock:^id(id elem) {
-                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem];
+                                                      withBlock:^id(id elem0) {
+                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem0];
                                                       }];
   }
   if (valueObj.hasExplicitSharedMembers) {
@@ -2872,8 +2872,8 @@
   NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups =
       valueDict[@"property_groups"]
           ? [DBArraySerializer deserialize:valueDict[@"property_groups"]
-                                 withBlock:^id(id elem) {
-                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem0];
                                  }]
           : nil;
   NSNumber *hasExplicitSharedMembers = valueDict[@"has_explicit_shared_members"] ?: nil;
@@ -3126,8 +3126,8 @@
   }
   if (valueObj.propertyGroups) {
     jsonDict[@"property_groups"] = [DBArraySerializer serialize:valueObj.propertyGroups
-                                                      withBlock:^id(id elem) {
-                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem];
+                                                      withBlock:^id(id elem0) {
+                                                        return [DBPROPERTIESPropertyGroupSerializer serialize:elem0];
                                                       }];
   }
 
@@ -3146,8 +3146,8 @@
   NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups =
       valueDict[@"property_groups"]
           ? [DBArraySerializer deserialize:valueDict[@"property_groups"]
-                                 withBlock:^id(id elem) {
-                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBPROPERTIESPropertyGroupSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -4509,8 +4509,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESMetadataSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESMetadataSerializer serialize:elem0];
                                             }];
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -4520,8 +4520,8 @@
 
 + (DBFILESListFolderResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESMetadata *> *entries = [DBArraySerializer deserialize:valueDict[@"entries"]
-                                                             withBlock:^id(id elem) {
-                                                               return [DBFILESMetadataSerializer deserialize:elem];
+                                                             withBlock:^id(id elem0) {
+                                                               return [DBFILESMetadataSerializer deserialize:elem0];
                                                              }];
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -4758,8 +4758,8 @@
 
   jsonDict[@"is_deleted"] = valueObj.isDeleted;
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESFileMetadataSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESFileMetadataSerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -4769,8 +4769,8 @@
   NSNumber *isDeleted = valueDict[@"is_deleted"];
   NSArray<DBFILESFileMetadata *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESFileMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESFileMetadataSerializer deserialize:elem0];
                            }];
 
   return [[DBFILESListRevisionsResult alloc] initWithIsDeleted:isDeleted entries:entries];
@@ -5722,14 +5722,14 @@
   if (valueObj.addOrUpdateFields) {
     jsonDict[@"add_or_update_fields"] =
         [DBArraySerializer serialize:valueObj.addOrUpdateFields
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyFieldSerializer serialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyFieldSerializer serialize:elem0];
                            }];
   }
   if (valueObj.removeFields) {
     jsonDict[@"remove_fields"] = [DBArraySerializer serialize:valueObj.removeFields
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   }
 
@@ -5741,14 +5741,14 @@
   NSArray<DBPROPERTIESPropertyField *> *addOrUpdateFields =
       valueDict[@"add_or_update_fields"]
           ? [DBArraySerializer deserialize:valueDict[@"add_or_update_fields"]
-                                 withBlock:^id(id elem) {
-                                   return [DBPROPERTIESPropertyFieldSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBPROPERTIESPropertyFieldSerializer deserialize:elem0];
                                  }]
           : nil;
   NSArray<NSString *> *removeFields = valueDict[@"remove_fields"]
                                           ? [DBArraySerializer deserialize:valueDict[@"remove_fields"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }]
                                           : nil;
 
@@ -5809,8 +5809,8 @@
 
   jsonDict[@"path"] = valueObj.path;
   jsonDict[@"property_groups"] = [DBArraySerializer serialize:valueObj.propertyGroups
-                                                    withBlock:^id(id elem) {
-                                                      return [DBPROPERTIESPropertyGroupSerializer serialize:elem];
+                                                    withBlock:^id(id elem0) {
+                                                      return [DBPROPERTIESPropertyGroupSerializer serialize:elem0];
                                                     }];
 
   return jsonDict;
@@ -5820,8 +5820,8 @@
   NSString *path = valueDict[@"path"];
   NSArray<DBPROPERTIESPropertyGroup *> *propertyGroups =
       [DBArraySerializer deserialize:valueDict[@"property_groups"]
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyGroupSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyGroupSerializer deserialize:elem0];
                            }];
 
   return [[DBFILESPropertyGroupWithPath alloc] initWithPath:path propertyGroups:propertyGroups];
@@ -6023,8 +6023,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESRelocationPathSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESRelocationPathSerializer serialize:elem0];
                                             }];
   jsonDict[@"allow_shared_folder"] = valueObj.allowSharedFolder;
   jsonDict[@"autorename"] = valueObj.autorename;
@@ -6035,8 +6035,8 @@
 + (DBFILESRelocationBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESRelocationPath *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESRelocationPathSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESRelocationPathSerializer deserialize:elem0];
                            }];
   NSNumber *allowSharedFolder = valueDict[@"allow_shared_folder"] ?: @NO;
   NSNumber *autorename = valueDict[@"autorename"] ?: @NO;
@@ -6932,8 +6932,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESRelocationResultSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESRelocationResultSerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -6942,8 +6942,8 @@
 + (DBFILESRelocationBatchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESRelocationResult *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESRelocationResultSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESRelocationResultSerializer deserialize:elem0];
                            }];
 
   return [[DBFILESRelocationBatchResult alloc] initWithEntries:entries];
@@ -7060,8 +7060,8 @@
 
   jsonDict[@"path"] = valueObj.path;
   jsonDict[@"property_template_ids"] = [DBArraySerializer serialize:valueObj.propertyTemplateIds
-                                                          withBlock:^id(id elem) {
-                                                            return elem;
+                                                          withBlock:^id(id elem0) {
+                                                            return elem0;
                                                           }];
 
   return jsonDict;
@@ -7070,8 +7070,8 @@
 + (DBFILESRemovePropertiesArg *)deserialize:(NSDictionary *)valueDict {
   NSString *path = valueDict[@"path"];
   NSArray<NSString *> *propertyTemplateIds = [DBArraySerializer deserialize:valueDict[@"property_template_ids"]
-                                                                  withBlock:^id(id elem) {
-                                                                    return elem;
+                                                                  withBlock:^id(id elem0) {
+                                                                    return elem0;
                                                                   }];
 
   return [[DBFILESRemovePropertiesArg alloc] initWithPath:path propertyTemplateIds:propertyTemplateIds];
@@ -8853,8 +8853,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"matches"] = [DBArraySerializer serialize:valueObj.matches
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESSearchMatchSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESSearchMatchSerializer serialize:elem0];
                                             }];
   jsonDict[@"more"] = valueObj.more;
   jsonDict[@"start"] = valueObj.start;
@@ -8865,8 +8865,8 @@
 + (DBFILESSearchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESSearchMatch *> *matches =
       [DBArraySerializer deserialize:valueDict[@"matches"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESSearchMatchSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESSearchMatchSerializer deserialize:elem0];
                            }];
   NSNumber *more = valueDict[@"more"];
   NSNumber *start = valueDict[@"start"];
@@ -9649,8 +9649,8 @@
   jsonDict[@"path"] = valueObj.path;
   jsonDict[@"update_property_groups"] =
       [DBArraySerializer serialize:valueObj.updatePropertyGroups
-                         withBlock:^id(id elem) {
-                           return [DBFILESPropertyGroupUpdateSerializer serialize:elem];
+                         withBlock:^id(id elem0) {
+                           return [DBFILESPropertyGroupUpdateSerializer serialize:elem0];
                          }];
 
   return jsonDict;
@@ -9660,8 +9660,8 @@
   NSString *path = valueDict[@"path"];
   NSArray<DBFILESPropertyGroupUpdate *> *updatePropertyGroups =
       [DBArraySerializer deserialize:valueDict[@"update_property_groups"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESPropertyGroupUpdateSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESPropertyGroupUpdateSerializer deserialize:elem0];
                            }];
 
   return [[DBFILESUpdatePropertyGroupArg alloc] initWithPath:path updatePropertyGroups:updatePropertyGroups];
@@ -10162,8 +10162,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"entries"] = [DBArraySerializer serialize:valueObj.entries
-                                            withBlock:^id(id elem) {
-                                              return [DBFILESUploadSessionFinishArgSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBFILESUploadSessionFinishArgSerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -10172,8 +10172,8 @@
 + (DBFILESUploadSessionFinishBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESUploadSessionFinishArg *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESUploadSessionFinishArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESUploadSessionFinishArgSerializer deserialize:elem0];
                            }];
 
   return [[DBFILESUploadSessionFinishBatchArg alloc] initWithEntries:entries];
@@ -10495,8 +10495,8 @@
 
   jsonDict[@"entries"] =
       [DBArraySerializer serialize:valueObj.entries
-                         withBlock:^id(id elem) {
-                           return [DBFILESUploadSessionFinishBatchResultEntrySerializer serialize:elem];
+                         withBlock:^id(id elem0) {
+                           return [DBFILESUploadSessionFinishBatchResultEntrySerializer serialize:elem0];
                          }];
 
   return jsonDict;
@@ -10505,8 +10505,8 @@
 + (DBFILESUploadSessionFinishBatchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBFILESUploadSessionFinishBatchResultEntry *> *entries =
       [DBArraySerializer deserialize:valueDict[@"entries"]
-                           withBlock:^id(id elem) {
-                             return [DBFILESUploadSessionFinishBatchResultEntrySerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBFILESUploadSessionFinishBatchResultEntrySerializer deserialize:elem0];
                            }];
 
   return [[DBFILESUploadSessionFinishBatchResult alloc] initWithEntries:entries];

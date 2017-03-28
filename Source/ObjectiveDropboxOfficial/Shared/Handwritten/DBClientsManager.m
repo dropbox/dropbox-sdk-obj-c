@@ -159,9 +159,9 @@ static DBTeamClient *authorizedTeamClient;
     if (authorizedClient) {
       [authorizedClient updateAccessToken:accessToken];
     } else {
-      DBUserClient *authorizedClient =
+      DBUserClient *userClient =
           [[DBUserClient alloc] initWithAccessToken:accessToken transportConfig:[DBClientsManager transportConfig]];
-      [DBClientsManager setAuthorizedClient:authorizedClient];
+      [DBClientsManager setAuthorizedClient:userClient];
     }
     [DBClientsManager setTransportConfig:nil];
   }
@@ -180,9 +180,9 @@ static DBTeamClient *authorizedTeamClient;
     if (authorizedTeamClient) {
       [authorizedTeamClient updateAccessToken:accessToken];
     } else {
-      DBTeamClient *authorizedTeamClient =
+      DBTeamClient *teamClient =
           [[DBTeamClient alloc] initWithAccessToken:accessToken transportConfig:[DBClientsManager transportConfig]];
-      [DBClientsManager setAuthorizedTeamClient:authorizedTeamClient];
+      [DBClientsManager setAuthorizedTeamClient:teamClient];
     }
     [DBClientsManager setTransportConfig:nil];
   }

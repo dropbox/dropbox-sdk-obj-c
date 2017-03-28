@@ -100,7 +100,8 @@
     }
 
     NSError *serializationError;
-    id result = [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
+    id result =
+        [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return NO;
@@ -174,7 +175,8 @@
     }
 
     NSError *serializationError;
-    id result = [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
+    id result =
+        [DBTransportBaseClient routeResultWithRoute:self->_route data:data serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError]);
       return NO;
@@ -244,9 +246,10 @@
                                                                         clientError:clientError
                                                                          statusCode:statusCode
                                                                         httpHeaders:httpHeaders];
-      id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
-                          : nil;
+      id routeError =
+          [DBTransportBaseClient statusCodeIsRouteError:statusCode]
+              ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
+              : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError, self->_destination);
       return NO;
@@ -279,8 +282,9 @@
     }
 
     NSError *serializationError;
-    id result =
-        [DBTransportBaseClient routeResultWithRoute:self->_route data:resultData serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:self->_route
+                                                       data:resultData
+                                         serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], self->_destination);
       return NO;
@@ -351,17 +355,19 @@
                                                                         clientError:clientError
                                                                          statusCode:statusCode
                                                                         httpHeaders:httpHeaders];
-      id routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
-                          ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
-                          : nil;
+      id routeError =
+          [DBTransportBaseClient statusCodeIsRouteError:statusCode]
+              ? [DBTransportBaseClient routeErrorWithRoute:self->_route data:errorData statusCode:statusCode]
+              : nil;
       [DBGlobalErrorResponseHandler executeRegisteredResponseBlocksWithRouteError:routeError networkError:dbxError];
       responseBlock(nil, routeError, dbxError, nil);
       return NO;
     }
 
     NSError *serializationError;
-    id result =
-        [DBTransportBaseClient routeResultWithRoute:self->_route data:resultData serializationError:&serializationError];
+    id result = [DBTransportBaseClient routeResultWithRoute:self->_route
+                                                       data:resultData
+                                         serializationError:&serializationError];
     if (serializationError) {
       responseBlock(nil, nil, [[DBRequestError alloc] initAsClientError:serializationError], nil);
       return NO;

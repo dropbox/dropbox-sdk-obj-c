@@ -112,14 +112,14 @@ static DBOAuthManager *sharedOAuthManager;
     return;
   }
 
-  NSURL *url = [self authURL];
+  NSURL *authUrl = [self authURL];
 
   if ([self checkAndPresentPlatformSpecificAuth:sharedApplication]) {
     return;
   }
 
   if (browserAuth) {
-    [sharedApplication presentBrowserAuth:url];
+    [sharedApplication presentBrowserAuth:authUrl];
   } else {
     BOOL (^tryInterceptHandler)
     (NSURL *, BOOL) = ^BOOL(NSURL *url, BOOL openExternalBrowser) {
@@ -134,7 +134,7 @@ static DBOAuthManager *sharedOAuthManager;
       }
     };
 
-    [sharedApplication presentWebViewAuth:url tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
+    [sharedApplication presentWebViewAuth:authUrl tryInterceptHandler:tryInterceptHandler cancelHandler:cancelHandler];
   }
 }
 

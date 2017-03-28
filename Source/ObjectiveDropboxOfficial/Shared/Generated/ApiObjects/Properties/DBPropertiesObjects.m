@@ -117,8 +117,8 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"description"] = valueObj.description_;
   jsonDict[@"fields"] = [DBArraySerializer serialize:valueObj.fields
-                                           withBlock:^id(id elem) {
-                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                            }];
 
   return jsonDict;
@@ -129,8 +129,8 @@
   NSString *description_ = valueDict[@"description"];
   NSArray<DBPROPERTIESPropertyFieldTemplate *> *fields =
       [DBArraySerializer deserialize:valueDict[@"fields"]
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem0];
                            }];
 
   return [[DBPROPERTIESPropertyGroupTemplate alloc] initWithName:name description_:description_ fields:fields];
@@ -189,8 +189,8 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"description"] = valueObj.description_;
   jsonDict[@"fields"] = [DBArraySerializer serialize:valueObj.fields
-                                           withBlock:^id(id elem) {
-                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                            }];
 
   return jsonDict;
@@ -201,8 +201,8 @@
   NSString *description_ = valueDict[@"description"];
   NSArray<DBPROPERTIESPropertyFieldTemplate *> *fields =
       [DBArraySerializer deserialize:valueDict[@"fields"]
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem0];
                            }];
 
   return [[DBPROPERTIESGetPropertyTemplateResult alloc] initWithName:name description_:description_ fields:fields];
@@ -258,8 +258,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"template_ids"] = [DBArraySerializer serialize:valueObj.templateIds
-                                                 withBlock:^id(id elem) {
-                                                   return elem;
+                                                 withBlock:^id(id elem0) {
+                                                   return elem0;
                                                  }];
 
   return jsonDict;
@@ -267,8 +267,8 @@
 
 + (DBPROPERTIESListPropertyTemplateIds *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *templateIds = [DBArraySerializer deserialize:valueDict[@"template_ids"]
-                                                          withBlock:^id(id elem) {
-                                                            return elem;
+                                                          withBlock:^id(id elem0) {
+                                                            return elem0;
                                                           }];
 
   return [[DBPROPERTIESListPropertyTemplateIds alloc] initWithTemplateIds:templateIds];
@@ -785,8 +785,8 @@
 
   jsonDict[@"template_id"] = valueObj.templateId;
   jsonDict[@"fields"] = [DBArraySerializer serialize:valueObj.fields
-                                           withBlock:^id(id elem) {
-                                             return [DBPROPERTIESPropertyFieldSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBPROPERTIESPropertyFieldSerializer serialize:elem0];
                                            }];
 
   return jsonDict;
@@ -796,8 +796,8 @@
   NSString *templateId = valueDict[@"template_id"];
   NSArray<DBPROPERTIESPropertyField *> *fields =
       [DBArraySerializer deserialize:valueDict[@"fields"]
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyFieldSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyFieldSerializer deserialize:elem0];
                            }];
 
   return [[DBPROPERTIESPropertyGroup alloc] initWithTemplateId:templateId fields:fields];

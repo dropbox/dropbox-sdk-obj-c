@@ -191,8 +191,8 @@
 
   jsonDict[@"doc_id"] = valueObj.docId;
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBPAPERAddMemberSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBPAPERAddMemberSerializer serialize:elem0];
                                             }];
   if (valueObj.customMessage) {
     jsonDict[@"custom_message"] = valueObj.customMessage;
@@ -205,8 +205,8 @@
 + (DBPAPERAddPaperDocUser *)deserialize:(NSDictionary *)valueDict {
   NSString *docId = valueDict[@"doc_id"];
   NSArray<DBPAPERAddMember *> *members = [DBArraySerializer deserialize:valueDict[@"members"]
-                                                              withBlock:^id(id elem) {
-                                                                return [DBPAPERAddMemberSerializer deserialize:elem];
+                                                              withBlock:^id(id elem0) {
+                                                                return [DBPAPERAddMemberSerializer deserialize:elem0];
                                                               }];
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
   NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
@@ -1383,8 +1383,8 @@
   }
   if (valueObj.folders) {
     jsonDict[@"folders"] = [DBArraySerializer serialize:valueObj.folders
-                                              withBlock:^id(id elem) {
-                                                return [DBPAPERFolderSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBPAPERFolderSerializer serialize:elem0];
                                               }];
   }
 
@@ -1398,8 +1398,8 @@
           : nil;
   NSArray<DBPAPERFolder *> *folders = valueDict[@"folders"]
                                           ? [DBArraySerializer deserialize:valueDict[@"folders"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return [DBPAPERFolderSerializer deserialize:elem];
+                                                                 withBlock:^id(id elem0) {
+                                                                   return [DBPAPERFolderSerializer deserialize:elem0];
                                                                  }]
                                           : nil;
 
@@ -1893,8 +1893,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"doc_ids"] = [DBArraySerializer serialize:valueObj.docIds
-                                            withBlock:^id(id elem) {
-                                              return elem;
+                                            withBlock:^id(id elem0) {
+                                              return elem0;
                                             }];
   jsonDict[@"cursor"] = [DBPAPERCursorSerializer serialize:valueObj.cursor];
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -1904,8 +1904,8 @@
 
 + (DBPAPERListPaperDocsResponse *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *docIds = [DBArraySerializer deserialize:valueDict[@"doc_ids"]
-                                                     withBlock:^id(id elem) {
-                                                       return elem;
+                                                     withBlock:^id(id elem0) {
+                                                       return elem0;
                                                      }];
   DBPAPERCursor *cursor = [DBPAPERCursorSerializer deserialize:valueDict[@"cursor"]];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -2496,12 +2496,12 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"invitees"] = [DBArraySerializer serialize:valueObj.invitees
-                                             withBlock:^id(id elem) {
-                                               return [DBSHARINGInviteeInfoSerializer serialize:elem];
+                                             withBlock:^id(id elem0) {
+                                               return [DBSHARINGInviteeInfoSerializer serialize:elem0];
                                              }];
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
-                                          withBlock:^id(id elem) {
-                                            return [DBSHARINGUserInfoSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBSHARINGUserInfoSerializer serialize:elem0];
                                           }];
   jsonDict[@"cursor"] = [DBPAPERCursorSerializer serialize:valueObj.cursor];
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -2512,12 +2512,12 @@
 + (DBPAPERListUsersOnFolderResponse *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBSHARINGInviteeInfo *> *invitees =
       [DBArraySerializer deserialize:valueDict[@"invitees"]
-                           withBlock:^id(id elem) {
-                             return [DBSHARINGInviteeInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBSHARINGInviteeInfoSerializer deserialize:elem0];
                            }];
   NSArray<DBSHARINGUserInfo *> *users = [DBArraySerializer deserialize:valueDict[@"users"]
-                                                             withBlock:^id(id elem) {
-                                                               return [DBSHARINGUserInfoSerializer deserialize:elem];
+                                                             withBlock:^id(id elem0) {
+                                                               return [DBSHARINGUserInfoSerializer deserialize:elem0];
                                                              }];
   DBPAPERCursor *cursor = [DBPAPERCursorSerializer deserialize:valueDict[@"cursor"]];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -2719,12 +2719,12 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"invitees"] = [DBArraySerializer serialize:valueObj.invitees
-                                             withBlock:^id(id elem) {
-                                               return [DBPAPERInviteeInfoWithPermissionLevelSerializer serialize:elem];
+                                             withBlock:^id(id elem0) {
+                                               return [DBPAPERInviteeInfoWithPermissionLevelSerializer serialize:elem0];
                                              }];
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
-                                          withBlock:^id(id elem) {
-                                            return [DBPAPERUserInfoWithPermissionLevelSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBPAPERUserInfoWithPermissionLevelSerializer serialize:elem0];
                                           }];
   jsonDict[@"doc_owner"] = [DBSHARINGUserInfoSerializer serialize:valueObj.docOwner];
   jsonDict[@"cursor"] = [DBPAPERCursorSerializer serialize:valueObj.cursor];
@@ -2736,13 +2736,13 @@
 + (DBPAPERListUsersOnPaperDocResponse *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBPAPERInviteeInfoWithPermissionLevel *> *invitees =
       [DBArraySerializer deserialize:valueDict[@"invitees"]
-                           withBlock:^id(id elem) {
-                             return [DBPAPERInviteeInfoWithPermissionLevelSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPAPERInviteeInfoWithPermissionLevelSerializer deserialize:elem0];
                            }];
   NSArray<DBPAPERUserInfoWithPermissionLevel *> *users =
       [DBArraySerializer deserialize:valueDict[@"users"]
-                           withBlock:^id(id elem) {
-                             return [DBPAPERUserInfoWithPermissionLevelSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPAPERUserInfoWithPermissionLevelSerializer deserialize:elem0];
                            }];
   DBSHARINGUserInfo *docOwner = [DBSHARINGUserInfoSerializer deserialize:valueDict[@"doc_owner"]];
   DBPAPERCursor *cursor = [DBPAPERCursorSerializer deserialize:valueDict[@"cursor"]];

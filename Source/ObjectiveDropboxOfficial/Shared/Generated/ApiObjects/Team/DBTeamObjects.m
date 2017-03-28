@@ -264,8 +264,8 @@
   jsonDict[@"name"] = valueObj.name;
   jsonDict[@"description"] = valueObj.description_;
   jsonDict[@"fields"] = [DBArraySerializer serialize:valueObj.fields
-                                           withBlock:^id(id elem) {
-                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                            }];
 
   return jsonDict;
@@ -276,8 +276,8 @@
   NSString *description_ = valueDict[@"description"];
   NSArray<DBPROPERTIESPropertyFieldTemplate *> *fields =
       [DBArraySerializer deserialize:valueDict[@"fields"]
-                           withBlock:^id(id elem) {
-                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMAddPropertyTemplateArg alloc] initWithName:name description_:description_ fields:fields];
@@ -1316,32 +1316,32 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"windows"] = [DBArraySerializer serialize:valueObj.windows
-                                            withBlock:^id(id elem) {
-                                              return elem;
+                                            withBlock:^id(id elem0) {
+                                              return elem0;
                                             }];
   jsonDict[@"macos"] = [DBArraySerializer serialize:valueObj.macos
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   jsonDict[@"linux"] = [DBArraySerializer serialize:valueObj.linux
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   jsonDict[@"ios"] = [DBArraySerializer serialize:valueObj.ios
-                                        withBlock:^id(id elem) {
-                                          return elem;
+                                        withBlock:^id(id elem0) {
+                                          return elem0;
                                         }];
   jsonDict[@"android"] = [DBArraySerializer serialize:valueObj.android
-                                            withBlock:^id(id elem) {
-                                              return elem;
+                                            withBlock:^id(id elem0) {
+                                              return elem0;
                                             }];
   jsonDict[@"other"] = [DBArraySerializer serialize:valueObj.other
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   jsonDict[@"total"] = [DBArraySerializer serialize:valueObj.total
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
 
   return jsonDict;
@@ -1349,32 +1349,32 @@
 
 + (DBTEAMDevicesActive *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSNumber *> *windows = [DBArraySerializer deserialize:valueDict[@"windows"]
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
   NSArray<NSNumber *> *macos = [DBArraySerializer deserialize:valueDict[@"macos"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSArray<NSNumber *> *linux = [DBArraySerializer deserialize:valueDict[@"linux"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSArray<NSNumber *> *ios = [DBArraySerializer deserialize:valueDict[@"ios"]
-                                                  withBlock:^id(id elem) {
-                                                    return elem;
+                                                  withBlock:^id(id elem0) {
+                                                    return elem0;
                                                   }];
   NSArray<NSNumber *> *android = [DBArraySerializer deserialize:valueDict[@"android"]
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
   NSArray<NSNumber *> *other = [DBArraySerializer deserialize:valueDict[@"other"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSArray<NSNumber *> *total = [DBArraySerializer deserialize:valueDict[@"total"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
 
   return [[DBTEAMDevicesActive alloc] initWithWindows:windows
@@ -1476,62 +1476,62 @@
 
   jsonDict[@"start_date"] = valueObj.startDate;
   jsonDict[@"adds"] = [DBArraySerializer serialize:valueObj.adds
-                                         withBlock:^id(id elem) {
-                                           return elem;
+                                         withBlock:^id(id elem0) {
+                                           return elem0;
                                          }];
   jsonDict[@"edits"] = [DBArraySerializer serialize:valueObj.edits
-                                          withBlock:^id(id elem) {
-                                            return elem;
+                                          withBlock:^id(id elem0) {
+                                            return elem0;
                                           }];
   jsonDict[@"deletes"] = [DBArraySerializer serialize:valueObj.deletes
-                                            withBlock:^id(id elem) {
-                                              return elem;
+                                            withBlock:^id(id elem0) {
+                                              return elem0;
                                             }];
   jsonDict[@"active_users_28_day"] = [DBArraySerializer serialize:valueObj.activeUsers28Day
-                                                        withBlock:^id(id elem) {
-                                                          return elem;
+                                                        withBlock:^id(id elem0) {
+                                                          return elem0;
                                                         }];
   jsonDict[@"active_users_7_day"] = [DBArraySerializer serialize:valueObj.activeUsers7Day
-                                                       withBlock:^id(id elem) {
-                                                         return elem;
+                                                       withBlock:^id(id elem0) {
+                                                         return elem0;
                                                        }];
   jsonDict[@"active_users_1_day"] = [DBArraySerializer serialize:valueObj.activeUsers1Day
-                                                       withBlock:^id(id elem) {
-                                                         return elem;
+                                                       withBlock:^id(id elem0) {
+                                                         return elem0;
                                                        }];
   jsonDict[@"active_shared_folders_28_day"] = [DBArraySerializer serialize:valueObj.activeSharedFolders28Day
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
   jsonDict[@"active_shared_folders_7_day"] = [DBArraySerializer serialize:valueObj.activeSharedFolders7Day
-                                                                withBlock:^id(id elem) {
-                                                                  return elem;
+                                                                withBlock:^id(id elem0) {
+                                                                  return elem0;
                                                                 }];
   jsonDict[@"active_shared_folders_1_day"] = [DBArraySerializer serialize:valueObj.activeSharedFolders1Day
-                                                                withBlock:^id(id elem) {
-                                                                  return elem;
+                                                                withBlock:^id(id elem0) {
+                                                                  return elem0;
                                                                 }];
   jsonDict[@"shared_links_created"] = [DBArraySerializer serialize:valueObj.sharedLinksCreated
-                                                         withBlock:^id(id elem) {
-                                                           return elem;
+                                                         withBlock:^id(id elem0) {
+                                                           return elem0;
                                                          }];
   jsonDict[@"shared_links_viewed_by_team"] = [DBArraySerializer serialize:valueObj.sharedLinksViewedByTeam
-                                                                withBlock:^id(id elem) {
-                                                                  return elem;
+                                                                withBlock:^id(id elem0) {
+                                                                  return elem0;
                                                                 }];
   jsonDict[@"shared_links_viewed_by_outside_user"] =
       [DBArraySerializer serialize:valueObj.sharedLinksViewedByOutsideUser
-                         withBlock:^id(id elem) {
-                           return elem;
+                         withBlock:^id(id elem0) {
+                           return elem0;
                          }];
   jsonDict[@"shared_links_viewed_by_not_logged_in"] =
       [DBArraySerializer serialize:valueObj.sharedLinksViewedByNotLoggedIn
-                         withBlock:^id(id elem) {
-                           return elem;
+                         withBlock:^id(id elem0) {
+                           return elem0;
                          }];
   jsonDict[@"shared_links_viewed_total"] = [DBArraySerializer serialize:valueObj.sharedLinksViewedTotal
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
 
   return jsonDict;
@@ -1540,66 +1540,66 @@
 + (DBTEAMGetActivityReport *)deserialize:(NSDictionary *)valueDict {
   NSString *startDate = valueDict[@"start_date"];
   NSArray<NSNumber *> *adds = [DBArraySerializer deserialize:valueDict[@"adds"]
-                                                   withBlock:^id(id elem) {
-                                                     return elem;
+                                                   withBlock:^id(id elem0) {
+                                                     return elem0;
                                                    }];
   NSArray<NSNumber *> *edits = [DBArraySerializer deserialize:valueDict[@"edits"]
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   NSArray<NSNumber *> *deletes = [DBArraySerializer deserialize:valueDict[@"deletes"]
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
   NSArray<NSNumber *> *activeUsers28Day = [DBArraySerializer deserialize:valueDict[@"active_users_28_day"]
-                                                               withBlock:^id(id elem) {
-                                                                 return elem;
+                                                               withBlock:^id(id elem0) {
+                                                                 return elem0;
                                                                }];
   NSArray<NSNumber *> *activeUsers7Day = [DBArraySerializer deserialize:valueDict[@"active_users_7_day"]
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
   NSArray<NSNumber *> *activeUsers1Day = [DBArraySerializer deserialize:valueDict[@"active_users_1_day"]
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
   NSArray<NSNumber *> *activeSharedFolders28Day =
       [DBArraySerializer deserialize:valueDict[@"active_shared_folders_28_day"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *activeSharedFolders7Day =
       [DBArraySerializer deserialize:valueDict[@"active_shared_folders_7_day"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *activeSharedFolders1Day =
       [DBArraySerializer deserialize:valueDict[@"active_shared_folders_1_day"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *sharedLinksCreated = [DBArraySerializer deserialize:valueDict[@"shared_links_created"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
   NSArray<NSNumber *> *sharedLinksViewedByTeam =
       [DBArraySerializer deserialize:valueDict[@"shared_links_viewed_by_team"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *sharedLinksViewedByOutsideUser =
       [DBArraySerializer deserialize:valueDict[@"shared_links_viewed_by_outside_user"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *sharedLinksViewedByNotLoggedIn =
       [DBArraySerializer deserialize:valueDict[@"shared_links_viewed_by_not_logged_in"]
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
   NSArray<NSNumber *> *sharedLinksViewedTotal = [DBArraySerializer deserialize:valueDict[@"shared_links_viewed_total"]
-                                                                     withBlock:^id(id elem) {
-                                                                       return elem;
+                                                                     withBlock:^id(id elem0) {
+                                                                       return elem0;
                                                                      }];
 
   return [[DBTEAMGetActivityReport alloc] initWithStartDate:startDate
@@ -1755,24 +1755,24 @@
 
   jsonDict[@"start_date"] = valueObj.startDate;
   jsonDict[@"team_size"] = [DBArraySerializer serialize:valueObj.teamSize
-                                              withBlock:^id(id elem) {
-                                                return elem;
+                                              withBlock:^id(id elem0) {
+                                                return elem0;
                                               }];
   jsonDict[@"pending_invites"] = [DBArraySerializer serialize:valueObj.pendingInvites
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
   jsonDict[@"members_joined"] = [DBArraySerializer serialize:valueObj.membersJoined
-                                                   withBlock:^id(id elem) {
-                                                     return elem;
+                                                   withBlock:^id(id elem0) {
+                                                     return elem0;
                                                    }];
   jsonDict[@"suspended_members"] = [DBArraySerializer serialize:valueObj.suspendedMembers
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
   jsonDict[@"licenses"] = [DBArraySerializer serialize:valueObj.licenses
-                                             withBlock:^id(id elem) {
-                                               return elem;
+                                             withBlock:^id(id elem0) {
+                                               return elem0;
                                              }];
 
   return jsonDict;
@@ -1781,24 +1781,24 @@
 + (DBTEAMGetMembershipReport *)deserialize:(NSDictionary *)valueDict {
   NSString *startDate = valueDict[@"start_date"];
   NSArray<NSNumber *> *teamSize = [DBArraySerializer deserialize:valueDict[@"team_size"]
-                                                       withBlock:^id(id elem) {
-                                                         return elem;
+                                                       withBlock:^id(id elem0) {
+                                                         return elem0;
                                                        }];
   NSArray<NSNumber *> *pendingInvites = [DBArraySerializer deserialize:valueDict[@"pending_invites"]
-                                                             withBlock:^id(id elem) {
-                                                               return elem;
+                                                             withBlock:^id(id elem0) {
+                                                               return elem0;
                                                              }];
   NSArray<NSNumber *> *membersJoined = [DBArraySerializer deserialize:valueDict[@"members_joined"]
-                                                            withBlock:^id(id elem) {
-                                                              return elem;
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
                                                             }];
   NSArray<NSNumber *> *suspendedMembers = [DBArraySerializer deserialize:valueDict[@"suspended_members"]
-                                                               withBlock:^id(id elem) {
-                                                                 return elem;
+                                                               withBlock:^id(id elem0) {
+                                                                 return elem0;
                                                                }];
   NSArray<NSNumber *> *licenses = [DBArraySerializer deserialize:valueDict[@"licenses"]
-                                                       withBlock:^id(id elem) {
-                                                         return elem;
+                                                       withBlock:^id(id elem0) {
+                                                         return elem0;
                                                        }];
 
   return [[DBTEAMGetMembershipReport alloc] initWithStartDate:startDate
@@ -1875,27 +1875,27 @@
 
   jsonDict[@"start_date"] = valueObj.startDate;
   jsonDict[@"total_usage"] = [DBArraySerializer serialize:valueObj.totalUsage
-                                                withBlock:^id(id elem) {
-                                                  return elem;
+                                                withBlock:^id(id elem0) {
+                                                  return elem0;
                                                 }];
   jsonDict[@"shared_usage"] = [DBArraySerializer serialize:valueObj.sharedUsage
-                                                 withBlock:^id(id elem) {
-                                                   return elem;
+                                                 withBlock:^id(id elem0) {
+                                                   return elem0;
                                                  }];
   jsonDict[@"unshared_usage"] = [DBArraySerializer serialize:valueObj.unsharedUsage
-                                                   withBlock:^id(id elem) {
-                                                     return elem;
+                                                   withBlock:^id(id elem0) {
+                                                     return elem0;
                                                    }];
   jsonDict[@"shared_folders"] = [DBArraySerializer serialize:valueObj.sharedFolders
-                                                   withBlock:^id(id elem) {
-                                                     return elem;
+                                                   withBlock:^id(id elem0) {
+                                                     return elem0;
                                                    }];
   jsonDict[@"member_storage_map"] =
       [DBArraySerializer serialize:valueObj.memberStorageMap
-                         withBlock:^id(id elem) {
-                           return [DBArraySerializer serialize:elem
-                                                     withBlock:^id(id elem) {
-                                                       return [DBTEAMStorageBucketSerializer serialize:elem];
+                         withBlock:^id(id elem0) {
+                           return [DBArraySerializer serialize:elem0
+                                                     withBlock:^id(id elem1) {
+                                                       return [DBTEAMStorageBucketSerializer serialize:elem1];
                                                      }];
                          }];
 
@@ -1905,27 +1905,27 @@
 + (DBTEAMGetStorageReport *)deserialize:(NSDictionary *)valueDict {
   NSString *startDate = valueDict[@"start_date"];
   NSArray<NSNumber *> *totalUsage = [DBArraySerializer deserialize:valueDict[@"total_usage"]
-                                                         withBlock:^id(id elem) {
-                                                           return elem;
+                                                         withBlock:^id(id elem0) {
+                                                           return elem0;
                                                          }];
   NSArray<NSNumber *> *sharedUsage = [DBArraySerializer deserialize:valueDict[@"shared_usage"]
-                                                          withBlock:^id(id elem) {
-                                                            return elem;
+                                                          withBlock:^id(id elem0) {
+                                                            return elem0;
                                                           }];
   NSArray<NSNumber *> *unsharedUsage = [DBArraySerializer deserialize:valueDict[@"unshared_usage"]
-                                                            withBlock:^id(id elem) {
-                                                              return elem;
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
                                                             }];
   NSArray<NSNumber *> *sharedFolders = [DBArraySerializer deserialize:valueDict[@"shared_folders"]
-                                                            withBlock:^id(id elem) {
-                                                              return elem;
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
                                                             }];
   NSArray<NSArray<DBTEAMStorageBucket *> *> *memberStorageMap =
       [DBArraySerializer deserialize:valueDict[@"member_storage_map"]
-                           withBlock:^id(id elem) {
-                             return [DBArraySerializer deserialize:elem
-                                                         withBlock:^id(id elem) {
-                                                           return [DBTEAMStorageBucketSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBArraySerializer deserialize:elem0
+                                                         withBlock:^id(id elem1) {
+                                                           return [DBTEAMStorageBucketSerializer deserialize:elem1];
                                                          }];
                            }];
 
@@ -2709,8 +2709,8 @@
   }
   if (valueObj.members) {
     jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                              withBlock:^id(id elem) {
-                                                return [DBTEAMGroupMemberInfoSerializer serialize:elem];
+                                              withBlock:^id(id elem0) {
+                                                return [DBTEAMGroupMemberInfoSerializer serialize:elem0];
                                               }];
   }
 
@@ -2727,8 +2727,8 @@
   NSNumber *memberCount = valueDict[@"member_count"] ?: nil;
   NSArray<DBTEAMGroupMemberInfo *> *members =
       valueDict[@"members"] ? [DBArraySerializer deserialize:valueDict[@"members"]
-                                                   withBlock:^id(id elem) {
-                                                     return [DBTEAMGroupMemberInfoSerializer deserialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBTEAMGroupMemberInfoSerializer deserialize:elem0];
                                                    }]
                             : nil;
 
@@ -3273,8 +3273,8 @@
 
   jsonDict[@"group"] = [DBTEAMGroupSelectorSerializer serialize:valueObj.group];
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMMemberAccessSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMMemberAccessSerializer serialize:elem0];
                                             }];
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
@@ -3285,8 +3285,8 @@
   DBTEAMGroupSelector *group = [DBTEAMGroupSelectorSerializer deserialize:valueDict[@"group"]];
   NSArray<DBTEAMMemberAccess *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberAccessSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberAccessSerializer deserialize:elem0];
                            }];
   NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
@@ -3515,14 +3515,14 @@
     jsonDict[@".tag"] = @"group_not_in_team";
   } else if ([valueObj isMembersNotInTeam]) {
     jsonDict[@"members_not_in_team"] = [DBArraySerializer serialize:valueObj.membersNotInTeam
-                                                          withBlock:^id(id elem) {
-                                                            return elem;
+                                                          withBlock:^id(id elem0) {
+                                                            return elem0;
                                                           }];
     jsonDict[@".tag"] = @"members_not_in_team";
   } else if ([valueObj isUsersNotFound]) {
     jsonDict[@"users_not_found"] = [DBArraySerializer serialize:valueObj.usersNotFound
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
     jsonDict[@".tag"] = @"users_not_found";
   } else if ([valueObj isUserMustBeActiveToBeOwner]) {
@@ -3530,8 +3530,8 @@
   } else if ([valueObj isUserCannotBeManagerOfCompanyManagedGroup]) {
     jsonDict[@"user_cannot_be_manager_of_company_managed_group"] =
         [DBArraySerializer serialize:valueObj.userCannotBeManagerOfCompanyManagedGroup
-                           withBlock:^id(id elem) {
-                             return elem;
+                           withBlock:^id(id elem0) {
+                             return elem0;
                            }];
     jsonDict[@".tag"] = @"user_cannot_be_manager_of_company_managed_group";
   } else {
@@ -3556,14 +3556,14 @@
     return [[DBTEAMGroupMembersAddError alloc] initWithGroupNotInTeam];
   } else if ([tag isEqualToString:@"members_not_in_team"]) {
     NSArray<NSString *> *membersNotInTeam = [DBArraySerializer deserialize:valueDict[@"members_not_in_team"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
     return [[DBTEAMGroupMembersAddError alloc] initWithMembersNotInTeam:membersNotInTeam];
   } else if ([tag isEqualToString:@"users_not_found"]) {
     NSArray<NSString *> *usersNotFound = [DBArraySerializer deserialize:valueDict[@"users_not_found"]
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
     return [[DBTEAMGroupMembersAddError alloc] initWithUsersNotFound:usersNotFound];
   } else if ([tag isEqualToString:@"user_must_be_active_to_be_owner"]) {
@@ -3571,8 +3571,8 @@
   } else if ([tag isEqualToString:@"user_cannot_be_manager_of_company_managed_group"]) {
     NSArray<NSString *> *userCannotBeManagerOfCompanyManagedGroup =
         [DBArraySerializer deserialize:valueDict[@"user_cannot_be_manager_of_company_managed_group"]
-                             withBlock:^id(id elem) {
-                               return elem;
+                             withBlock:^id(id elem0) {
+                               return elem0;
                              }];
     return [[DBTEAMGroupMembersAddError alloc]
         initWithUserCannotBeManagerOfCompanyManagedGroup:userCannotBeManagerOfCompanyManagedGroup];
@@ -3701,8 +3701,8 @@
 
   jsonDict[@"group"] = [DBTEAMGroupSelectorSerializer serialize:valueObj.group];
   jsonDict[@"users"] = [DBArraySerializer serialize:valueObj.users
-                                          withBlock:^id(id elem) {
-                                            return [DBTEAMUserSelectorArgSerializer serialize:elem];
+                                          withBlock:^id(id elem0) {
+                                            return [DBTEAMUserSelectorArgSerializer serialize:elem0];
                                           }];
   jsonDict[@"return_members"] = valueObj.returnMembers;
 
@@ -3713,8 +3713,8 @@
   DBTEAMGroupSelector *group = [DBTEAMGroupSelectorSerializer deserialize:valueDict[@"group"]];
   NSArray<DBTEAMUserSelectorArg *> *users =
       [DBArraySerializer deserialize:valueDict[@"users"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMUserSelectorArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMUserSelectorArgSerializer deserialize:elem0];
                            }];
   NSNumber *returnMembers = valueDict[@"return_members"] ?: @YES;
 
@@ -4038,14 +4038,14 @@
     jsonDict[@".tag"] = @"group_not_in_team";
   } else if ([valueObj isMembersNotInTeam]) {
     jsonDict[@"members_not_in_team"] = [DBArraySerializer serialize:valueObj.membersNotInTeam
-                                                          withBlock:^id(id elem) {
-                                                            return elem;
+                                                          withBlock:^id(id elem0) {
+                                                            return elem0;
                                                           }];
     jsonDict[@".tag"] = @"members_not_in_team";
   } else if ([valueObj isUsersNotFound]) {
     jsonDict[@"users_not_found"] = [DBArraySerializer serialize:valueObj.usersNotFound
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
     jsonDict[@".tag"] = @"users_not_found";
   } else {
@@ -4070,14 +4070,14 @@
     return [[DBTEAMGroupMembersRemoveError alloc] initWithGroupNotInTeam];
   } else if ([tag isEqualToString:@"members_not_in_team"]) {
     NSArray<NSString *> *membersNotInTeam = [DBArraySerializer deserialize:valueDict[@"members_not_in_team"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
     return [[DBTEAMGroupMembersRemoveError alloc] initWithMembersNotInTeam:membersNotInTeam];
   } else if ([tag isEqualToString:@"users_not_found"]) {
     NSArray<NSString *> *usersNotFound = [DBArraySerializer deserialize:valueDict[@"users_not_found"]
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
     return [[DBTEAMGroupMembersRemoveError alloc] initWithUsersNotFound:usersNotFound];
   } else {
@@ -5119,8 +5119,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"groups"] = [DBArraySerializer serialize:valueObj.groups
-                                           withBlock:^id(id elem) {
-                                             return [DBTEAMCOMMONGroupSummarySerializer serialize:elem];
+                                           withBlock:^id(id elem0) {
+                                             return [DBTEAMCOMMONGroupSummarySerializer serialize:elem0];
                                            }];
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -5131,8 +5131,8 @@
 + (DBTEAMGroupsListResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMCOMMONGroupSummary *> *groups =
       [DBArraySerializer deserialize:valueDict[@"groups"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMCOMMONGroupSummarySerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMCOMMONGroupSummarySerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -5414,8 +5414,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMGroupMemberInfoSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMGroupMemberInfoSerializer serialize:elem0];
                                             }];
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -5426,8 +5426,8 @@
 + (DBTEAMGroupsMembersListResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMGroupMemberInfo *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMGroupMemberInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMGroupMemberInfoSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -5669,14 +5669,14 @@
 
   if ([valueObj isGroupIds]) {
     jsonDict[@"group_ids"] = [DBArraySerializer serialize:valueObj.groupIds
-                                                withBlock:^id(id elem) {
-                                                  return elem;
+                                                withBlock:^id(id elem0) {
+                                                  return elem0;
                                                 }];
     jsonDict[@".tag"] = @"group_ids";
   } else if ([valueObj isGroupExternalIds]) {
     jsonDict[@"group_external_ids"] = [DBArraySerializer serialize:valueObj.groupExternalIds
-                                                         withBlock:^id(id elem) {
-                                                           return elem;
+                                                         withBlock:^id(id elem0) {
+                                                           return elem0;
                                                          }];
     jsonDict[@".tag"] = @"group_external_ids";
   } else {
@@ -5693,14 +5693,14 @@
 
   if ([tag isEqualToString:@"group_ids"]) {
     NSArray<NSString *> *groupIds = [DBArraySerializer deserialize:valueDict[@"group_ids"]
-                                                         withBlock:^id(id elem) {
-                                                           return elem;
+                                                         withBlock:^id(id elem0) {
+                                                           return elem0;
                                                          }];
     return [[DBTEAMGroupsSelector alloc] initWithGroupIds:groupIds];
   } else if ([tag isEqualToString:@"group_external_ids"]) {
     NSArray<NSString *> *groupExternalIds = [DBArraySerializer deserialize:valueDict[@"group_external_ids"]
-                                                                 withBlock:^id(id elem) {
-                                                                   return elem;
+                                                                 withBlock:^id(id elem0) {
+                                                                   return elem0;
                                                                  }];
     return [[DBTEAMGroupsSelector alloc] initWithGroupExternalIds:groupExternalIds];
   } else {
@@ -5914,8 +5914,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"linked_api_apps"] = [DBArraySerializer serialize:valueObj.linkedApiApps
-                                                    withBlock:^id(id elem) {
-                                                      return [DBTEAMApiAppSerializer serialize:elem];
+                                                    withBlock:^id(id elem0) {
+                                                      return [DBTEAMApiAppSerializer serialize:elem0];
                                                     }];
 
   return jsonDict;
@@ -5923,8 +5923,8 @@
 
 + (DBTEAMListMemberAppsResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMApiApp *> *linkedApiApps = [DBArraySerializer deserialize:valueDict[@"linked_api_apps"]
-                                                                withBlock:^id(id elem) {
-                                                                  return [DBTEAMApiAppSerializer deserialize:elem];
+                                                                withBlock:^id(id elem0) {
+                                                                  return [DBTEAMApiAppSerializer deserialize:elem0];
                                                                 }];
 
   return [[DBTEAMListMemberAppsResult alloc] initWithLinkedApiApps:linkedApiApps];
@@ -6172,22 +6172,22 @@
 
   if (valueObj.activeWebSessions) {
     jsonDict[@"active_web_sessions"] = [DBArraySerializer serialize:valueObj.activeWebSessions
-                                                          withBlock:^id(id elem) {
-                                                            return [DBTEAMActiveWebSessionSerializer serialize:elem];
+                                                          withBlock:^id(id elem0) {
+                                                            return [DBTEAMActiveWebSessionSerializer serialize:elem0];
                                                           }];
   }
   if (valueObj.desktopClientSessions) {
     jsonDict[@"desktop_client_sessions"] =
         [DBArraySerializer serialize:valueObj.desktopClientSessions
-                           withBlock:^id(id elem) {
-                             return [DBTEAMDesktopClientSessionSerializer serialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMDesktopClientSessionSerializer serialize:elem0];
                            }];
   }
   if (valueObj.mobileClientSessions) {
     jsonDict[@"mobile_client_sessions"] =
         [DBArraySerializer serialize:valueObj.mobileClientSessions
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMobileClientSessionSerializer serialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMobileClientSessionSerializer serialize:elem0];
                            }];
   }
 
@@ -6198,22 +6198,22 @@
   NSArray<DBTEAMActiveWebSession *> *activeWebSessions =
       valueDict[@"active_web_sessions"]
           ? [DBArraySerializer deserialize:valueDict[@"active_web_sessions"]
-                                 withBlock:^id(id elem) {
-                                   return [DBTEAMActiveWebSessionSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBTEAMActiveWebSessionSerializer deserialize:elem0];
                                  }]
           : nil;
   NSArray<DBTEAMDesktopClientSession *> *desktopClientSessions =
       valueDict[@"desktop_client_sessions"]
           ? [DBArraySerializer deserialize:valueDict[@"desktop_client_sessions"]
-                                 withBlock:^id(id elem) {
-                                   return [DBTEAMDesktopClientSessionSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBTEAMDesktopClientSessionSerializer deserialize:elem0];
                                  }]
           : nil;
   NSArray<DBTEAMMobileClientSession *> *mobileClientSessions =
       valueDict[@"mobile_client_sessions"]
           ? [DBArraySerializer deserialize:valueDict[@"mobile_client_sessions"]
-                                 withBlock:^id(id elem) {
-                                   return [DBTEAMMobileClientSessionSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBTEAMMobileClientSessionSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -6440,8 +6440,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"apps"] = [DBArraySerializer serialize:valueObj.apps
-                                         withBlock:^id(id elem) {
-                                           return [DBTEAMMemberLinkedAppsSerializer serialize:elem];
+                                         withBlock:^id(id elem0) {
+                                           return [DBTEAMMemberLinkedAppsSerializer serialize:elem0];
                                          }];
   jsonDict[@"has_more"] = valueObj.hasMore;
   if (valueObj.cursor) {
@@ -6454,8 +6454,8 @@
 + (DBTEAMListMembersAppsResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMMemberLinkedApps *> *apps =
       [DBArraySerializer deserialize:valueDict[@"apps"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberLinkedAppsSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberLinkedAppsSerializer deserialize:elem0];
                            }];
   NSNumber *hasMore = valueDict[@"has_more"];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
@@ -6696,8 +6696,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"devices"] = [DBArraySerializer serialize:valueObj.devices
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMMemberDevicesSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMMemberDevicesSerializer serialize:elem0];
                                             }];
   jsonDict[@"has_more"] = valueObj.hasMore;
   if (valueObj.cursor) {
@@ -6710,8 +6710,8 @@
 + (DBTEAMListMembersDevicesResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMMemberDevices *> *devices =
       [DBArraySerializer deserialize:valueDict[@"devices"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberDevicesSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberDevicesSerializer deserialize:elem0];
                            }];
   NSNumber *hasMore = valueDict[@"has_more"];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
@@ -6937,8 +6937,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"apps"] = [DBArraySerializer serialize:valueObj.apps
-                                         withBlock:^id(id elem) {
-                                           return [DBTEAMMemberLinkedAppsSerializer serialize:elem];
+                                         withBlock:^id(id elem0) {
+                                           return [DBTEAMMemberLinkedAppsSerializer serialize:elem0];
                                          }];
   jsonDict[@"has_more"] = valueObj.hasMore;
   if (valueObj.cursor) {
@@ -6951,8 +6951,8 @@
 + (DBTEAMListTeamAppsResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMMemberLinkedApps *> *apps =
       [DBArraySerializer deserialize:valueDict[@"apps"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberLinkedAppsSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberLinkedAppsSerializer deserialize:elem0];
                            }];
   NSNumber *hasMore = valueDict[@"has_more"];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
@@ -7193,8 +7193,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"devices"] = [DBArraySerializer serialize:valueObj.devices
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMMemberDevicesSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMMemberDevicesSerializer serialize:elem0];
                                             }];
   jsonDict[@"has_more"] = valueObj.hasMore;
   if (valueObj.cursor) {
@@ -7207,8 +7207,8 @@
 + (DBTEAMListTeamDevicesResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMMemberDevices *> *devices =
       [DBArraySerializer deserialize:valueDict[@"devices"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberDevicesSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberDevicesSerializer deserialize:elem0];
                            }];
   NSNumber *hasMore = valueDict[@"has_more"];
   NSString *cursor = valueDict[@"cursor"] ?: nil;
@@ -7859,20 +7859,20 @@
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   if (valueObj.webSessions) {
     jsonDict[@"web_sessions"] = [DBArraySerializer serialize:valueObj.webSessions
-                                                   withBlock:^id(id elem) {
-                                                     return [DBTEAMActiveWebSessionSerializer serialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBTEAMActiveWebSessionSerializer serialize:elem0];
                                                    }];
   }
   if (valueObj.desktopClients) {
     jsonDict[@"desktop_clients"] = [DBArraySerializer serialize:valueObj.desktopClients
-                                                      withBlock:^id(id elem) {
-                                                        return [DBTEAMDesktopClientSessionSerializer serialize:elem];
+                                                      withBlock:^id(id elem0) {
+                                                        return [DBTEAMDesktopClientSessionSerializer serialize:elem0];
                                                       }];
   }
   if (valueObj.mobileClients) {
     jsonDict[@"mobile_clients"] = [DBArraySerializer serialize:valueObj.mobileClients
-                                                     withBlock:^id(id elem) {
-                                                       return [DBTEAMMobileClientSessionSerializer serialize:elem];
+                                                     withBlock:^id(id elem0) {
+                                                       return [DBTEAMMobileClientSessionSerializer serialize:elem0];
                                                      }];
   }
 
@@ -7883,22 +7883,22 @@
   NSString *teamMemberId = valueDict[@"team_member_id"];
   NSArray<DBTEAMActiveWebSession *> *webSessions =
       valueDict[@"web_sessions"] ? [DBArraySerializer deserialize:valueDict[@"web_sessions"]
-                                                        withBlock:^id(id elem) {
-                                                          return [DBTEAMActiveWebSessionSerializer deserialize:elem];
+                                                        withBlock:^id(id elem0) {
+                                                          return [DBTEAMActiveWebSessionSerializer deserialize:elem0];
                                                         }]
                                  : nil;
   NSArray<DBTEAMDesktopClientSession *> *desktopClients =
       valueDict[@"desktop_clients"]
           ? [DBArraySerializer deserialize:valueDict[@"desktop_clients"]
-                                 withBlock:^id(id elem) {
-                                   return [DBTEAMDesktopClientSessionSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBTEAMDesktopClientSessionSerializer deserialize:elem0];
                                  }]
           : nil;
   NSArray<DBTEAMMobileClientSession *> *mobileClients =
       valueDict[@"mobile_clients"]
           ? [DBArraySerializer deserialize:valueDict[@"mobile_clients"]
-                                 withBlock:^id(id elem) {
-                                   return [DBTEAMMobileClientSessionSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBTEAMMobileClientSessionSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -7959,8 +7959,8 @@
 
   jsonDict[@"team_member_id"] = valueObj.teamMemberId;
   jsonDict[@"linked_api_apps"] = [DBArraySerializer serialize:valueObj.linkedApiApps
-                                                    withBlock:^id(id elem) {
-                                                      return [DBTEAMApiAppSerializer serialize:elem];
+                                                    withBlock:^id(id elem0) {
+                                                      return [DBTEAMApiAppSerializer serialize:elem0];
                                                     }];
 
   return jsonDict;
@@ -7969,8 +7969,8 @@
 + (DBTEAMMemberLinkedApps *)deserialize:(NSDictionary *)valueDict {
   NSString *teamMemberId = valueDict[@"team_member_id"];
   NSArray<DBTEAMApiApp *> *linkedApiApps = [DBArraySerializer deserialize:valueDict[@"linked_api_apps"]
-                                                                withBlock:^id(id elem) {
-                                                                  return [DBTEAMApiAppSerializer deserialize:elem];
+                                                                withBlock:^id(id elem0) {
+                                                                  return [DBTEAMApiAppSerializer deserialize:elem0];
                                                                 }];
 
   return [[DBTEAMMemberLinkedApps alloc] initWithTeamMemberId:teamMemberId linkedApiApps:linkedApiApps];
@@ -8355,8 +8355,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"new_members"] = [DBArraySerializer serialize:valueObj.dNewMembers
-                                                withBlock:^id(id elem) {
-                                                  return [DBTEAMMemberAddArgSerializer serialize:elem];
+                                                withBlock:^id(id elem0) {
+                                                  return [DBTEAMMemberAddArgSerializer serialize:elem0];
                                                 }];
   jsonDict[@"force_async"] = valueObj.forceAsync;
 
@@ -8366,8 +8366,8 @@
 + (DBTEAMMembersAddArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMMemberAddArg *> *dNewMembers =
       [DBArraySerializer deserialize:valueDict[@"new_members"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMMemberAddArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMMemberAddArgSerializer deserialize:elem0];
                            }];
   NSNumber *forceAsync = valueDict[@"force_async"] ?: @NO;
 
@@ -8491,8 +8491,8 @@
     jsonDict[@".tag"] = @"in_progress";
   } else if ([valueObj isComplete]) {
     jsonDict[@"complete"] = [DBArraySerializer serialize:valueObj.complete
-                                               withBlock:^id(id elem) {
-                                                 return [DBTEAMMemberAddResultSerializer serialize:elem];
+                                               withBlock:^id(id elem0) {
+                                                 return [DBTEAMMemberAddResultSerializer serialize:elem0];
                                                }];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
@@ -8515,8 +8515,8 @@
   } else if ([tag isEqualToString:@"complete"]) {
     NSArray<DBTEAMMemberAddResult *> *complete =
         [DBArraySerializer deserialize:valueDict[@"complete"]
-                             withBlock:^id(id elem) {
-                               return [DBTEAMMemberAddResultSerializer deserialize:elem];
+                             withBlock:^id(id elem0) {
+                               return [DBTEAMMemberAddResultSerializer deserialize:elem0];
                              }];
     return [[DBTEAMMembersAddJobStatus alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"failed"]) {
@@ -8633,8 +8633,8 @@
     jsonDict[@".tag"] = @"async_job_id";
   } else if ([valueObj isComplete]) {
     jsonDict[@"complete"] = [DBArraySerializer serialize:valueObj.complete
-                                               withBlock:^id(id elem) {
-                                                 return [DBTEAMMemberAddResultSerializer serialize:elem];
+                                               withBlock:^id(id elem0) {
+                                                 return [DBTEAMMemberAddResultSerializer serialize:elem0];
                                                }];
     jsonDict[@".tag"] = @"complete";
   } else {
@@ -8655,8 +8655,8 @@
   } else if ([tag isEqualToString:@"complete"]) {
     NSArray<DBTEAMMemberAddResult *> *complete =
         [DBArraySerializer deserialize:valueDict[@"complete"]
-                             withBlock:^id(id elem) {
-                               return [DBTEAMMemberAddResultSerializer deserialize:elem];
+                             withBlock:^id(id elem0) {
+                               return [DBTEAMMemberAddResultSerializer deserialize:elem0];
                              }];
     return [[DBTEAMMembersAddLaunch alloc] initWithComplete:complete];
   } else {
@@ -8897,8 +8897,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMUserSelectorArgSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMUserSelectorArgSerializer serialize:elem0];
                                             }];
 
   return jsonDict;
@@ -8907,8 +8907,8 @@
 + (DBTEAMMembersGetInfoArgs *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMUserSelectorArg *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMUserSelectorArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMUserSelectorArgSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMMembersGetInfoArgs alloc] initWithMembers:members];
@@ -9476,8 +9476,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
-                                            withBlock:^id(id elem) {
-                                              return [DBTEAMTeamMemberInfoSerializer serialize:elem];
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMTeamMemberInfoSerializer serialize:elem0];
                                             }];
   jsonDict[@"cursor"] = valueObj.cursor;
   jsonDict[@"has_more"] = valueObj.hasMore;
@@ -9488,8 +9488,8 @@
 + (DBTEAMMembersListResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMTeamMemberInfo *> *members =
       [DBArraySerializer deserialize:valueDict[@"members"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMTeamMemberInfoSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMTeamMemberInfoSerializer deserialize:elem0];
                            }];
   NSString *cursor = valueDict[@"cursor"];
   NSNumber *hasMore = valueDict[@"has_more"];
@@ -11931,8 +11931,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"revoke_devices"] = [DBArraySerializer serialize:valueObj.revokeDevices
-                                                   withBlock:^id(id elem) {
-                                                     return [DBTEAMRevokeDeviceSessionArgSerializer serialize:elem];
+                                                   withBlock:^id(id elem0) {
+                                                     return [DBTEAMRevokeDeviceSessionArgSerializer serialize:elem0];
                                                    }];
 
   return jsonDict;
@@ -11941,8 +11941,8 @@
 + (DBTEAMRevokeDeviceSessionBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMRevokeDeviceSessionArg *> *revokeDevices =
       [DBArraySerializer deserialize:valueDict[@"revoke_devices"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMRevokeDeviceSessionArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMRevokeDeviceSessionArgSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMRevokeDeviceSessionBatchArg alloc] initWithRevokeDevices:revokeDevices];
@@ -12078,8 +12078,8 @@
 
   jsonDict[@"revoke_devices_status"] =
       [DBArraySerializer serialize:valueObj.revokeDevicesStatus
-                         withBlock:^id(id elem) {
-                           return [DBTEAMRevokeDeviceSessionStatusSerializer serialize:elem];
+                         withBlock:^id(id elem0) {
+                           return [DBTEAMRevokeDeviceSessionStatusSerializer serialize:elem0];
                          }];
 
   return jsonDict;
@@ -12088,8 +12088,8 @@
 + (DBTEAMRevokeDeviceSessionBatchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMRevokeDeviceSessionStatus *> *revokeDevicesStatus =
       [DBArraySerializer deserialize:valueDict[@"revoke_devices_status"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMRevokeDeviceSessionStatusSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMRevokeDeviceSessionStatusSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMRevokeDeviceSessionBatchResult alloc] initWithRevokeDevicesStatus:revokeDevicesStatus];
@@ -12398,8 +12398,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"revoke_linked_app"] = [DBArraySerializer serialize:valueObj.revokeLinkedApp
-                                                      withBlock:^id(id elem) {
-                                                        return [DBTEAMRevokeLinkedApiAppArgSerializer serialize:elem];
+                                                      withBlock:^id(id elem0) {
+                                                        return [DBTEAMRevokeLinkedApiAppArgSerializer serialize:elem0];
                                                       }];
 
   return jsonDict;
@@ -12408,8 +12408,8 @@
 + (DBTEAMRevokeLinkedApiAppBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMRevokeLinkedApiAppArg *> *revokeLinkedApp =
       [DBArraySerializer deserialize:valueDict[@"revoke_linked_app"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMRevokeLinkedApiAppArgSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMRevokeLinkedApiAppArgSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMRevokeLinkedApiAppBatchArg alloc] initWithRevokeLinkedApp:revokeLinkedApp];
@@ -12545,8 +12545,8 @@
 
   jsonDict[@"revoke_linked_app_status"] =
       [DBArraySerializer serialize:valueObj.revokeLinkedAppStatus
-                         withBlock:^id(id elem) {
-                           return [DBTEAMRevokeLinkedAppStatusSerializer serialize:elem];
+                         withBlock:^id(id elem0) {
+                           return [DBTEAMRevokeLinkedAppStatusSerializer serialize:elem0];
                          }];
 
   return jsonDict;
@@ -12555,8 +12555,8 @@
 + (DBTEAMRevokeLinkedAppBatchResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMRevokeLinkedAppStatus *> *revokeLinkedAppStatus =
       [DBArraySerializer deserialize:valueDict[@"revoke_linked_app_status"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMRevokeLinkedAppStatusSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMRevokeLinkedAppStatusSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMRevokeLinkedAppBatchResult alloc] initWithRevokeLinkedAppStatus:revokeLinkedAppStatus];
@@ -13990,8 +13990,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"team_folder_ids"] = [DBArraySerializer serialize:valueObj.teamFolderIds
-                                                    withBlock:^id(id elem) {
-                                                      return elem;
+                                                    withBlock:^id(id elem0) {
+                                                      return elem0;
                                                     }];
 
   return jsonDict;
@@ -13999,8 +13999,8 @@
 
 + (DBTEAMTeamFolderIdListArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *teamFolderIds = [DBArraySerializer deserialize:valueDict[@"team_folder_ids"]
-                                                            withBlock:^id(id elem) {
-                                                              return elem;
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
                                                             }];
 
   return [[DBTEAMTeamFolderIdListArg alloc] initWithTeamFolderIds:teamFolderIds];
@@ -14310,8 +14310,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"team_folders"] = [DBArraySerializer serialize:valueObj.teamFolders
-                                                 withBlock:^id(id elem) {
-                                                   return [DBTEAMTeamFolderMetadataSerializer serialize:elem];
+                                                 withBlock:^id(id elem0) {
+                                                   return [DBTEAMTeamFolderMetadataSerializer serialize:elem0];
                                                  }];
 
   return jsonDict;
@@ -14320,8 +14320,8 @@
 + (DBTEAMTeamFolderListResult *)deserialize:(NSDictionary *)valueDict {
   NSArray<DBTEAMTeamFolderMetadata *> *teamFolders =
       [DBArraySerializer deserialize:valueDict[@"team_folders"]
-                           withBlock:^id(id elem) {
-                             return [DBTEAMTeamFolderMetadataSerializer deserialize:elem];
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMTeamFolderMetadataSerializer deserialize:elem0];
                            }];
 
   return [[DBTEAMTeamFolderListResult alloc] initWithTeamFolders:teamFolders];
@@ -15179,8 +15179,8 @@
   jsonDict[@"name"] = [DBUSERSNameSerializer serialize:valueObj.name];
   jsonDict[@"membership_type"] = [DBTEAMTeamMembershipTypeSerializer serialize:valueObj.membershipType];
   jsonDict[@"groups"] = [DBArraySerializer serialize:valueObj.groups
-                                           withBlock:^id(id elem) {
-                                             return elem;
+                                           withBlock:^id(id elem0) {
+                                             return elem0;
                                            }];
   if (valueObj.externalId) {
     jsonDict[@"external_id"] = valueObj.externalId;
@@ -15207,8 +15207,8 @@
   DBTEAMTeamMembershipType *membershipType =
       [DBTEAMTeamMembershipTypeSerializer deserialize:valueDict[@"membership_type"]];
   NSArray<NSString *> *groups = [DBArraySerializer deserialize:valueDict[@"groups"]
-                                                     withBlock:^id(id elem) {
-                                                       return elem;
+                                                     withBlock:^id(id elem0) {
+                                                       return elem0;
                                                      }];
   NSString *externalId = valueDict[@"external_id"] ?: nil;
   NSString *accountId = valueDict[@"account_id"] ?: nil;
@@ -15555,8 +15555,8 @@
   }
   if (valueObj.addFields) {
     jsonDict[@"add_fields"] = [DBArraySerializer serialize:valueObj.addFields
-                                                 withBlock:^id(id elem) {
-                                                   return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem];
+                                                 withBlock:^id(id elem0) {
+                                                   return [DBPROPERTIESPropertyFieldTemplateSerializer serialize:elem0];
                                                  }];
   }
 
@@ -15570,8 +15570,8 @@
   NSArray<DBPROPERTIESPropertyFieldTemplate *> *addFields =
       valueDict[@"add_fields"]
           ? [DBArraySerializer deserialize:valueDict[@"add_fields"]
-                                 withBlock:^id(id elem) {
-                                   return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem];
+                                 withBlock:^id(id elem0) {
+                                   return [DBPROPERTIESPropertyFieldTemplateSerializer deserialize:elem0];
                                  }]
           : nil;
 
@@ -15920,20 +15920,20 @@
 
   if ([valueObj isTeamMemberIds]) {
     jsonDict[@"team_member_ids"] = [DBArraySerializer serialize:valueObj.teamMemberIds
-                                                      withBlock:^id(id elem) {
-                                                        return elem;
+                                                      withBlock:^id(id elem0) {
+                                                        return elem0;
                                                       }];
     jsonDict[@".tag"] = @"team_member_ids";
   } else if ([valueObj isExternalIds]) {
     jsonDict[@"external_ids"] = [DBArraySerializer serialize:valueObj.externalIds
-                                                   withBlock:^id(id elem) {
-                                                     return elem;
+                                                   withBlock:^id(id elem0) {
+                                                     return elem0;
                                                    }];
     jsonDict[@".tag"] = @"external_ids";
   } else if ([valueObj isEmails]) {
     jsonDict[@"emails"] = [DBArraySerializer serialize:valueObj.emails
-                                             withBlock:^id(id elem) {
-                                               return elem;
+                                             withBlock:^id(id elem0) {
+                                               return elem0;
                                              }];
     jsonDict[@".tag"] = @"emails";
   } else {
@@ -15950,20 +15950,20 @@
 
   if ([tag isEqualToString:@"team_member_ids"]) {
     NSArray<NSString *> *teamMemberIds = [DBArraySerializer deserialize:valueDict[@"team_member_ids"]
-                                                              withBlock:^id(id elem) {
-                                                                return elem;
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
                                                               }];
     return [[DBTEAMUsersSelectorArg alloc] initWithTeamMemberIds:teamMemberIds];
   } else if ([tag isEqualToString:@"external_ids"]) {
     NSArray<NSString *> *externalIds = [DBArraySerializer deserialize:valueDict[@"external_ids"]
-                                                            withBlock:^id(id elem) {
-                                                              return elem;
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
                                                             }];
     return [[DBTEAMUsersSelectorArg alloc] initWithExternalIds:externalIds];
   } else if ([tag isEqualToString:@"emails"]) {
     NSArray<NSString *> *emails = [DBArraySerializer deserialize:valueDict[@"emails"]
-                                                       withBlock:^id(id elem) {
-                                                         return elem;
+                                                       withBlock:^id(id elem0) {
+                                                         return elem0;
                                                        }];
     return [[DBTEAMUsersSelectorArg alloc] initWithEmails:emails];
   } else {

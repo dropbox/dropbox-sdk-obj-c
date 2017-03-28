@@ -59,8 +59,8 @@ static DBRoute *DBUSERSGetSpaceUsage;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBUSERSBasicAccountSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBUSERSBasicAccountSerializer deserialize:elem0];
                                       }];
         }];
   }

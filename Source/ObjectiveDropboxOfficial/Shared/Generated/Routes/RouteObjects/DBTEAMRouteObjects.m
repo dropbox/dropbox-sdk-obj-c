@@ -331,8 +331,8 @@ static DBRoute *DBTEAMTeamFolderRename;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem0];
                                       }];
         }];
   }
@@ -480,8 +480,8 @@ static DBRoute *DBTEAMTeamFolderRename;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMGroupsGetInfoItemSerializer deserialize:elem0];
                                       }];
         }];
   }
@@ -647,8 +647,8 @@ static DBRoute *DBTEAMTeamFolderRename;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBTEAMMembersGetInfoItemSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMMembersGetInfoItemSerializer deserialize:elem0];
                                       }];
         }];
   }
@@ -1066,8 +1066,8 @@ static DBRoute *DBTEAMTeamFolderRename;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBTEAMTeamFolderGetInfoItemSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBTEAMTeamFolderGetInfoItemSerializer deserialize:elem0];
                                       }];
         }];
   }

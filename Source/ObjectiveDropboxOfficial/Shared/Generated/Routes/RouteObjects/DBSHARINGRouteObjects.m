@@ -153,8 +153,8 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBSHARINGFileMemberActionResultSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBSHARINGFileMemberActionResultSerializer deserialize:elem0];
                                       }];
         }];
   }
@@ -320,8 +320,8 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBSHARINGGetFileMetadataBatchResultSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBSHARINGGetFileMetadataBatchResultSerializer deserialize:elem0];
                                       }];
         }];
   }
@@ -433,8 +433,8 @@ static DBRoute *DBSHARINGUpdateFolderPolicy;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBSHARINGListFileMembersBatchResultSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBSHARINGListFileMembersBatchResultSerializer deserialize:elem0];
                                       }];
         }];
   }

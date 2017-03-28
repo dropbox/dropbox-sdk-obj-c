@@ -244,8 +244,8 @@ static DBRoute *DBPAPERDocsUsersRemove;
         arraySerialBlock:nil
         arrayDeserialBlock:^id(id array) {
           return [DBArraySerializer deserialize:array
-                                      withBlock:^id(id elem) {
-                                        return [DBPAPERAddPaperDocUserMemberResultSerializer deserialize:elem];
+                                      withBlock:^id(id elem0) {
+                                        return [DBPAPERAddPaperDocUserMemberResultSerializer deserialize:elem0];
                                       }];
         }];
   }

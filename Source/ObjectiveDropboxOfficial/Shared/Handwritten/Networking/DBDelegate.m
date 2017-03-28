@@ -230,10 +230,8 @@
 
   [_delegateQueue addOperationWithBlock:^{
     DBSessionData *sessionData = [self sessionDataWithSession:session];
-    // there is a handler queued to be executed
     DBProgressData *progressData = sessionData.progressData[taskId];
     if (progressData) {
-      NSOperationQueue *handlerQueue = sessionData.progressHandlerQueues[taskId];
       if (handlerQueue) {
         [handlerQueue addOperationWithBlock:^{
           handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
@@ -263,7 +261,6 @@
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
         [handlerQueue addOperationWithBlock:^{
           handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
@@ -298,7 +295,6 @@
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
         [handlerQueue addOperationWithBlock:^{
           handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
@@ -333,7 +329,6 @@
   [_delegateQueue addOperationWithBlock:^{
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
-      NSOperationQueue *handlerQueue = sessionData.responseHandlerQueues[taskId];
       if (handlerQueue) {
         [handlerQueue addOperationWithBlock:^{
           handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);

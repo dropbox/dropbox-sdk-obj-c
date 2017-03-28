@@ -726,8 +726,8 @@
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
   jsonDict[@"account_ids"] = [DBArraySerializer serialize:valueObj.accountIds
-                                                withBlock:^id(id elem) {
-                                                  return elem;
+                                                withBlock:^id(id elem0) {
+                                                  return elem0;
                                                 }];
 
   return jsonDict;
@@ -735,8 +735,8 @@
 
 + (DBUSERSGetAccountBatchArg *)deserialize:(NSDictionary *)valueDict {
   NSArray<NSString *> *accountIds = [DBArraySerializer deserialize:valueDict[@"account_ids"]
-                                                         withBlock:^id(id elem) {
-                                                           return elem;
+                                                         withBlock:^id(id elem0) {
+                                                           return elem0;
                                                          }];
 
   return [[DBUSERSGetAccountBatchArg alloc] initWithAccountIds:accountIds];
