@@ -438,7 +438,7 @@ void MyLog(NSString *format, ...) {
   
   NSLog(@"\n\nCreating files in: %@\n\n", [workingDirectory path]);
   // create a bunch of fake files
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 150; i++) {
     NSString *fileName = [NSString stringWithFormat:@"test_file_%d", i];
     NSString *fileContent = [NSString stringWithFormat:@"%@'s content. Test content here.", fileName];
     NSURL *fileUrl = [workingDirectory URLByAppendingPathComponent:fileName];
@@ -498,7 +498,9 @@ void MyLog(NSString *format, ...) {
           NSLog(@"%@\n", uploadSessionFinishError);
         }
       }
-    } else if (finishBatchRouteError) {
+    }
+
+    if (finishBatchRouteError) {
       NSLog(@"Either bug in SDK code, or transient error on Dropbox server: %@", finishBatchRouteError);
     } else if (finishBatchRequestError) {
       NSLog(@"Request error from calling `/upload_session/finish_batch/check`");

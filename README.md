@@ -590,7 +590,9 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
             // implement appropriate retry logic
           }
         }
-      } else if (finishBatchRouteError) {
+      }
+
+      if (finishBatchRouteError) {
         NSLog(@"Either bug in SDK code, or transient error on Dropbox server");
         NSLog(@"%@", finishBatchRouteError);
       } else if (finishBatchRequestError) {
