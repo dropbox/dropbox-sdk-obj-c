@@ -146,27 +146,6 @@ static const char *kV1OSXAccountName = "Dropbox";
   }
 }
 
-+ (BOOL)v1TokensExistForAppKey:(NSString *)appKey {
-  NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
-
-#if TARGET_OS_IPHONE
-  NSArray<NSArray<NSString *> *> *v1TokensDataIOSCore = [[self class] v1TokensDataIOSCore];
-  NSArray<NSArray<NSString *> *> *v1TokensDataIOSSync = [[self class] v1TokensDataIOSSync];
-
-  [v1TokensData addObjectsFromArray:v1TokensDataIOSCore];
-  [v1TokensData addObjectsFromArray:v1TokensDataIOSSync];
-
-#elif !TARGET_OS_IPHONE
-  NSArray<NSArray<NSString *> *> *v1TokensDataOSXCore = [[self class] v1TokensDataOSXCore];
-  NSArray<NSArray<NSString *> *> *v1TokensDataOSXSync = [[self class] v1TokensDataOSXSync];
-
-  [v1TokensData addObjectsFromArray:v1TokensDataOSXCore];
-  [v1TokensData addObjectsFromArray:v1TokensDataOSXSync];
-#endif
-
-  return [v1TokensData count] > 0;
-}
-
 + (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock)responseBlock
                                   queue:(NSOperationQueue *)queue
                                  appKey:(NSString *)appKey

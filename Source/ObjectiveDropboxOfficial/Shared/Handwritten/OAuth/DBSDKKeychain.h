@@ -26,8 +26,6 @@
 /// Deletes all key / value pairs in the keychain.
 + (BOOL)clearAllTokens;
 
-+ (BOOL)v1TokensExistForAppKey:(NSString * _Nonnull)appKey;
-
 /// Checks if performing a v1 token migration is necessary, and if so, performs it.
 + (BOOL)checkAndPerformV1TokenMigration:(DBTokenMigrationResponseBlock _Nonnull)responseBlock
                                   queue:(NSOperationQueue * _Nullable)queue

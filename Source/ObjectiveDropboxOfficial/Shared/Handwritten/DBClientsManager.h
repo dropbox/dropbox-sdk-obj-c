@@ -125,18 +125,6 @@
 + (void)resetClients;
 
 ///
-/// Checks if any API v1 OAuth 1 tokens exist for the supplied app key.
-///
-/// This method should return a valid result for all access tokens stored using the official Dropbox Core and Sync SDKs
-/// from April 2012 until present, for both iOS and OS X.
-///
-/// @param appKey The consumer app key associated with the app that is integrating with the Dropbox API.
-///
-/// @returns Whether there exist any API v1 access tokens for the supplied app key.
-///
-+ (BOOL)v1TokensExistForAppKey:(NSString * _Nonnull)appKey;
-
-///
 /// Checks if performing an API v1 OAuth 1 token migration is necessary, and if so, performs it.
 ///
 /// This method should successfully migrate all stored access tokens in the official Dropbox Core and Sync SDKs from
