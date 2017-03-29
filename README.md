@@ -35,6 +35,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
     * [Route-specific errors](#route-specific-errors)
     * [Generic network request errors](#generic-network-request-errors)
     * [Response handling edge cases](#response-handling-edge-cases)
+    * [Consistent global error handling](#consistent-global-error-handling)
   * [Customizing network calls](#customizing-network-calls)
     * [Configure network client](#configure-network-client)
     * [Specify API call response queue](#specify-api-call-response-queue)
@@ -803,6 +804,48 @@ Datatypes with subtypes are a way combining structs and unions. Datatypes with s
 In the above example, the `Metadata` type can exists as `FileMetadata`, `FolderMetadata` or `DeleteMetadata`. Each of these types have common instances fields like "name" (the name for the file, folder or deleted type), but also instance fields that are specific to the particular subtype. In order to leverage inheritance, we set a common supertype called `Metadata` which captures all of the common instance fields, but also has a tag instance field, which specifies which subtype the object currently exists as.
 
 In this way, datatypes with subtypes are a hybrid of structs and unions. Only a few routes return result types like this.
+
+---
+
+#### Consistent global error handling
+
+Normally, errors are handled on a request-by-request basis by calling `setResponseBlock` on the returned request task object. Sometimes, however, it makes more sense to handle errors consistently, based on error type, regardless of the source of the request. For instance, maybe you want to display the same dialog every time there is a `/files/list_folder` error. Or perhaps every time there is an HTTP auth error, you simply want to log the user out of your application. Here's how you would implement these examples:
+
+```objective-c
+void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *, DBTask *) =
+    ^(DBFILESListFolderError *folderError, DBRequestError *networkError, DBTask *restartTask) {
+      if (folderError) {
+        // Display some dialog relating to this error
+      }
+    };
+
+void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
+    ^(DBRequestError *networkError, DBTask *restartTask) {
+      if ([networkError isAuthError]) {
+        // log the user out of the app, for instance
+      } else if ([networkError isRateLimitError]) {
+        // automatically retry after backoff period
+        DBAUTHRateLimitError *rateLimitError = [networkError asRateLimitError];
+        int backOff = [rateLimitError.retryAfter intValue];
+
+        // all reqeusting done using the SDK should be on the main thread
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, backOff * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+          [restartTask restart];
+        });
+      }
+    };
+
+// one response block per error type to globally handle
+[DBGlobalErrorResponseHandler registerRouteErrorResponseBlock:listFolderGlobalResponseBlock
+                                               routeErrorType:[DBFILESListFolderError class]];
+
+// only one response block total to handle all network errors
+[DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
+```
+
+The SDK allows you to set one response block to handle all generic network errors that aren't route-specific (like an HTTP auth error, or a rate-limit error). The SDK also allows you to set a response block to be executed in the event that a certain error type is returned.
+
+These global response blocks will automatically be executed **in addition** to the response block that you supply for the specific request. These global response blocks are guaranteed to be executed before the normal response block is executed.
 
 ---
 
