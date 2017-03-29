@@ -178,7 +178,7 @@ static NSMutableDictionary<Class, NSOperationQueue *> * _Nullable s_routeErrorTo
           // Because the instance field name `path` is not tightly linked to the tag type
           // `DBFILESListFolderErrorPath`, we still want the try catch block.
           if (tagValue &&
-              [tagValue rangeOfString:propertyName options:NSCaseInsensitiveSearch].location != NSNotFound) {
+              [tagValue rangeOfString:propertyName options:NSCaseInsensitiveSearch].location == NSNotFound) {
             continue;
           }
           id object = [routeError valueForKey:propertyName];

@@ -85,8 +85,8 @@ static const int timeoutInSec = 200;
             // `/upload_session/append_v2` until the file is uploaded
             [self startUploadLargeFile:uploadData fileUrl:fileUrl fileSize:fileSize blockingSemaphore:semaphore];
           }
-          dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
       }];
     } else {
       break;
