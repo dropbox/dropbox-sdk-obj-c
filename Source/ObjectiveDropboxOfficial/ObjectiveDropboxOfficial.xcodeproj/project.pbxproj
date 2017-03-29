@@ -1230,8 +1230,8 @@
 		F2AB3AE01E89E1E9004F6379 /* DBUSERSRouteObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB369C1E89E1E7004F6379 /* DBUSERSRouteObjects.m */; };
 		F2C187EB1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2C187EC1E6666C30042ABE6 /* ObjectiveDropboxOfficial.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C187E91E6666A50042ABE6 /* ObjectiveDropboxOfficial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; };
-		F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; };
+		F2D40D3A1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2D40D3B1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D40D381E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2D40D3C1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */; };
 		F2D40D3D1E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D40D391E7782C7004CCEB7 /* DBGlobalErrorResponseHandler.m */; };
 /* End PBXBuildFile section */
