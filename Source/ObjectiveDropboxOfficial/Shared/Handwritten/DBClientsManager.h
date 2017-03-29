@@ -66,7 +66,8 @@
 ///
 /// @returns An authorized User Client, or `nil`.
 ///
-+ (DBUserClient * _Nullable)userClientFromTokenUid:(NSString * _Nonnull)tokenUid transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (DBUserClient * _Nullable)userClientFromTokenUid:(NSString * _Nonnull)tokenUid
+                                  transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
 
 ///
 /// Creates a Team Client from the supplied `tokenUid` associated with the stored access token.
@@ -76,7 +77,8 @@
 ///
 /// @returns An authorized Team Client, or `nil`.
 ///
-+ (DBTeamClient * _Nullable)teamClientFromTokenUid:(NSString * _Nonnull)tokenUid transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
++ (DBTeamClient * _Nullable)teamClientFromTokenUid:(NSString * _Nonnull)tokenUid
+                                  transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
 
 ///
 /// Reauthorizes the shared authorized user client instance with the access token retrieved from storage via the

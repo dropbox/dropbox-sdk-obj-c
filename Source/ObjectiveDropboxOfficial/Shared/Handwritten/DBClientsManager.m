@@ -55,7 +55,8 @@ static DBTeamClient *authorizedTeamClient;
   authorizedTeamClient = client;
 }
 
-+ (DBUserClient *)userClientFromTokenUid:(NSString *)tokenUid transportConfig:(DBTransportDefaultConfig *)transportConfig {
++ (DBUserClient *)userClientFromTokenUid:(NSString *)tokenUid
+                         transportConfig:(DBTransportDefaultConfig *)transportConfig {
   NSString *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid].accessToken;
   if (accessToken) {
     return [[DBUserClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
@@ -63,7 +64,8 @@ static DBTeamClient *authorizedTeamClient;
   return nil;
 }
 
-+ (DBTeamClient *)teamClientFromTokenUid:(NSString *)tokenUid transportConfig:(DBTransportDefaultConfig *)transportConfig {
++ (DBTeamClient *)teamClientFromTokenUid:(NSString *)tokenUid
+                         transportConfig:(DBTransportDefaultConfig *)transportConfig {
   NSString *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid].accessToken;
   if (accessToken) {
     return [[DBTeamClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];

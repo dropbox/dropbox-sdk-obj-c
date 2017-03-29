@@ -180,6 +180,13 @@ In the Project Navigator in Xcode, select your project, and then navigate to **G
 
 Then navigate to **Build Phases** > **+** > **New Copy Files Phase**. In the newly-created **Copy Files** section, click the **Destination** drop-down menu and select **Products Directory**, then drag and drop `ObjectiveDropboxOfficial.framework.dSYM` (from `Carthage/Build/Mac`).
 
+>Note: If you wish to keep the SDK outside of your Xcode project folder (perhaps to share between different apps), you will need to configure your a few environmental variables.
+>
+>In the Project Navigator in Xcode, select your project, and then navigate to your project's build target > **Build Settings**:
+>
+>**Header Search Path**: `$(PROJECT_DIR)/../<PATH_TO_SDK>/dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial (recursive)`
+>
+>**Framework Search Paths**: `$(PROJECT_DIR)/../<PATH_TO_SDK>/dropbox-sdk-obj-c/Source/ObjectiveDropboxOfficial/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) (non-recursive)`
 ---
 
 ### Manually add subproject
@@ -557,7 +564,7 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 }];
 ```
 
-Here's an example of an advanced upload case for "batch" uploading a large number of files (NOTE: the `batchUploadFiles:` route method that is used below automatically chunk-uploads large files, something other upload methods in the SDK do **not** do):
+Here's an example of an advanced upload case for "batch" uploading a large number of files:
 
 ```objective-c
 NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
@@ -604,10 +611,9 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
         NSLog(@"%@", fileUrlsToRequestErrors);
       }
     }];
-
-// note: with this method, response and progress handlers are passed directly into the route as arguments,
-// and not via the `setResponseBlock` or `setProgressBlock` methods.
 ```
+
+> Note: the `batchUploadFiles:` route method that is used above automatically chunk-uploads large files, something other upload methods in the SDK do **not** do. Also, with this route, response and progress handlers are passed directly into the route as arguments, and not via the `setResponseBlock` or `setProgressBlock` methods.
 
 ---
 
