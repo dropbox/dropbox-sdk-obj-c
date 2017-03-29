@@ -27,7 +27,7 @@ static NSDictionary<NSString *, NSNumber *> *errorTypeLookup;
       @"" : [NSNumber numberWithInt:DBAuthUnknown],
     };
   }
-  return (DBOAuthErrorType)errorTypeLookup[errorDescription] ?: DBAuthUnknown;
+  return (DBOAuthErrorType)[errorTypeLookup[errorDescription] intValue] ?: DBAuthUnknown;
 }
 
 - (instancetype)initWithSuccess:(DBAccessToken *)accessToken {

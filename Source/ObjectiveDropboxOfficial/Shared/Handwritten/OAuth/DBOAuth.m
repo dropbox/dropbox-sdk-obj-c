@@ -19,7 +19,7 @@ static DBOAuthManager *sharedOAuthManager;
 @property (nonatomic, copy) NSURL * _Nullable redirectURL;
 @property (nonatomic, copy) NSURL * _Nullable cancelURL;
 @property (nonatomic, copy) NSString * _Nullable host;
-@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+@property (nonatomic) NSMutableArray<NSURL *> * _Nullable urls;
 
 @end
 
@@ -282,7 +282,7 @@ static NSString *kDBLinkNonce = @"dropbox.sync.nonce";
 @property (nonatomic, copy) NSString * _Nullable appKey;
 @property (nonatomic, copy) NSURL * _Nullable redirectURL;
 @property (nonatomic, copy) NSString * _Nullable host;
-@property (nonatomic, copy) NSMutableArray<NSURL *> * _Nullable urls;
+@property (nonatomic) NSMutableArray<NSURL *> * _Nullable urls;
 
 /// The redirect url from the mobile "direct auth" flow, wherein
 /// authorization is received from an official Dropbox mobile app,
