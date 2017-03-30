@@ -60,39 +60,6 @@
 + (void)setupWithTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
 
 ///
-/// Stores the user app key. If an access token already exists associated with the `tokenUid` key, initializes an
-/// authorized shared `DBUserClient` instance. Convenience method for `setupWithTransportConfigMultiUser:`.
-///
-/// This method should be used in the multi Dropbox user case (i.e. when it is necessary to track multiple Dropbox
-/// accounts / access tokens). Here, a token uid is supplied by the client of the SDK. If there exists an access token
-/// stored with that uid as a key, it is retrieved and used to instantiate a `DBUserClient` instance. This method should
-/// be called from the app delegate.
-///
-/// @param appKey The app key of the third-party Dropbox API user app that will be associated with all API calls. To
-/// create an app or to locate your app's app key, please visit the App Console here:
-/// https://www.dropbox.com/developers/apps.
-/// @param tokenUid The uid of the stored access token to use. This uid is returned after a successful progression
-/// through the OAuth flow (via `handleRedirectURL:`) in the `DBAccessToken` field of the `DBOAuthResult` object.
-///
-+ (void)setupWithAppKeyMultiUser:(NSString * _Nonnull)appKey tokenUid:(NSString * _Nullable)tokenUid;
-
-///
-/// Stores the user transport config info. If an access token already exists associated with the `tokenUid` key,
-/// initializes an authorized shared `DBUserClient` instance.
-///
-/// This method should be used in the multi Dropbox user case (i.e. when it is necessary to track multiple Dropbox
-/// accounts / access tokens). Here, a token uid is supplied by the client of the SDK. If there exists an access token
-/// stored with that uid as a key, it is retrieved and used to instantiate a `DBUserClient` instance. This method should
-/// be called from the app delegate.
-///
-/// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
-/// @param tokenUid The uid of the stored access token to use. This uid is returned after a successful progression
-/// through the OAuth flow (via `handleRedirectURL:`) in the `DBAccessToken` field of the `DBOAuthResult` object.
-///
-+ (void)setupWithTransportConfigMultiUser:(DBTransportDefaultConfig * _Nullable)transportConfig
-                                 tokenUid:(NSString * _Nullable)tokenUid;
-
-///
 /// Stores the team app key. If any access token already exists, initializes an authorized shared `DBTeamClient`
 /// instance. Convenience method for `setupWithTeamTransportConfig:`.
 ///
@@ -117,38 +84,5 @@
 /// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
 ///
 + (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
-
-///
-/// Stores the team app key. If an access token already exists associated with the `tokenUid` key, initializes an
-/// authorized shared `DBTeamClient` instance. Convenience method for `setupWithTeamTransportConfigMultiUser:`.
-///
-/// This method should be used in the multi Dropbox user case (i.e. when it is necessary to track multiple Dropbox
-/// accounts / access tokens). Here, a token uid is supplied by the client of the SDK. If there exists an access token
-/// stored with that uid as a key, it is retrieved and used to instantiate a `DBTeamClient` instance. This method should
-/// be called from the app delegate.
-///
-/// @param appKey The app key of the third-party Dropbox API user app that will be associated with all API calls. To
-/// create an app or to locate your app's app key, please visit the App Console here:
-/// https://www.dropbox.com/developers/apps.
-/// @param tokenUid The uid of the stored access token to use. This uid is returned after a successful progression
-/// through the OAuth flow (via `handleRedirectURLTeam:`) in the `DBAccessToken` field of the `DBOAuthResult` object.
-///
-+ (void)setupWithTeamAppKeyMultiUser:(NSString * _Nonnull)appKey tokenUid:(NSString * _Nullable)tokenUid;
-
-///
-/// Stores the team transport config info. If an access token already exists associated with the `tokenUid` key,
-/// initializes an authorized shared `DBTeamClient` instance.
-///
-/// This method should be used in the multi Dropbox user case (i.e. when it is necessary to track multiple Dropbox
-/// accounts / access tokens). Here, a token uid is supplied by the client of the SDK. If there exists an access token
-/// stored with that uid as a key, it is retrieved and used to instantiate a `DBTeamClient` instance. This method should
-/// be called from the app delegate.
-///
-/// @param transportConfig A wrapper around the different parameters that can be set to change network calling behavior.
-/// @param tokenUid The uid of the stored access token to use. This uid is returned after a successful progression
-/// through the OAuth flow (via `handleRedirectURLTeam:`) in the `DBAccessToken` field of the `DBOAuthResult` object.
-///
-+ (void)setupWithTeamTransportConfigMultiUser:(DBTransportDefaultConfig * _Nullable)transportConfig
-                                     tokenUid:(NSString * _Nullable)tokenUid;
 
 @end

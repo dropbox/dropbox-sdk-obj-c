@@ -14,16 +14,8 @@
 + (void)setupWithOAuthManager:(DBOAuthManager * _Nonnull)oAuthManager
               transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 
-+ (void)setupWithOAuthManagerMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
-                       transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig
-                              tokenUid:(NSString * _Nullable)tokenUid;
-
 + (void)setupWithOAuthManagerTeam:(DBOAuthManager * _Nonnull)oAuthManager
                   transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
-
-+ (void)setupWithOAuthManagerTeamMultiUser:(DBOAuthManager * _Nonnull)oAuthManager
-                           transportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig
-                                  tokenUid:(NSString * _Nullable)tokenUid;
 
 + (void)setTransportConfig:(DBTransportDefaultConfig * _Nonnull)transportConfig;
 

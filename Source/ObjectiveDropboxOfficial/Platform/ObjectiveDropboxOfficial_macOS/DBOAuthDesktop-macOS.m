@@ -110,6 +110,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.title = @"";
+
   _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
   _webView.UIDelegate = self;
 

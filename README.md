@@ -834,10 +834,7 @@ void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
         DBAUTHRateLimitError *rateLimitError = [networkError asRateLimitError];
         int backOff = [rateLimitError.retryAfter intValue];
 
-        // all reqeusting done using the SDK should be on the main thread
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, backOff * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-          [restartTask restart];
-        });
+        [restartTask restart];
       }
     };
 
@@ -909,7 +906,7 @@ The Objective-C SDK includes a convenience class, `DBClientsManager`, for integr
 For most apps, it is reasonable to assume that only one Dropbox account (and access token) needs to be managed at a time. In this case, the `DBClientsManager` flow looks like this: 
 
 * call `setupWithAppKey`/`setupWithAppKeyDesktop` (or `setupWithTeamAppKey`/`setupWithTeamAppKeyDesktop`) in integrating app's app delegate
-* `DBClientsManager` class determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use
+* `DBClientsManager` class determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use for the `authorizedClient` / `authorizedTeamClient` shared instance
 * if no token is found, client of the SDK should call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
 * if auth flow is initiated, client of the SDK should call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token
 * `DBClientsManager` class sets up a `DBUserClient` (or `DBTeamClient`) with the particular network configuration as defined by the `DBTransportDefaultConfig` instance passed in (or a standard configuration, if no config instance was passed when the `setupWith...` method was called)
@@ -923,18 +920,18 @@ The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired A
 For some apps, it is necessary to manage more than one Dropbox account (and access token) at a time. In this case, the `DBClientsManager` flow looks like this: 
 
 * access token uids are managed by the app that is integrating with the SDK for later lookup
-* call `setupWithAppKeyMultiUser`/`setupWithAppKeyMultiUserDesktop` (or `setupWithTeamAppKeyMultiUser`/`setupWithTeamAppKeyMultiUserDesktop`) in integrating app's app delegate
-* client manager determines whether an access token is stored with the`tokenUid` as a key -- if one exists, this token is chosen to use
+* call `setupWithAppKey`/`setupWithAppKeyDesktop` (or `setupWithTeamAppKey`/`setupWithTeamAppKeyDesktop`) in integrating app's app delegate
+* `DBClientsManager` class determines whether any access tokens are stored -- if any exist, one token is arbitrarily chosen to use for the `authorizedClient` / `authorizedTeamClient` shared instance
+* `DBClientsManager` class also populates `authorizedClients` / `authorizedTeamClients` shared dictionary from all tokens stored in keychain, if any exist
 * if no token is found, client of the SDK should call `authorizeFromController`/`authorizeFromControllerDesktop` to initiate the OAuth flow
 * if auth flow is initiated, call `handleRedirectURL` (or `handleRedirectURLTeam`) in integrating app's app delegate to handle auth redirect back into the app and store the retrieved access token
 * at this point, the app that is integrating with the SDK should persistently save the `tokenUid` from the `DBAccessToken` field of the `DBOAuthResult` object returned from the `handleRedirectURL` (or `handleRedirectURLTeam`) method
-* `tokenUid` can be reused either to authorize a new user mid-way through an app's lifecycle via `reauthorizeClient` (or `reauthorizeTeamClient`) or when the app initially launches via `setupWithAppKeyMultiUser`/`setupWithAppKeyMultiUserDesktop` (or `setupWithTeamAppKeyMultiUser`/`setupWithTeamAppKeyMultiUserDesktop`)
-* `DBClientsManager` class sets up a `DBUserClient` (or `DBTeamClient`) with the particular network configuration as defined by the `DBTransportDefaultConfig` instance passed in (or a standard configuration, if no config instance was passed when the `setupWith...` method was called)
+* `DBClientsManager` class sets up a `DBUserClient` (or `DBTeamClient`) with the particular network configuration as defined by the `DBTransportDefaultConfig` instance passed in (or a standard configuration, if no config instance was passed when the `setupWith...` method was called) and saves it to the list of authorized clients
 
-The `DBUserClient` (or `DBTeamClient`) is then used to make all of the desired API calls.
+The `DBUserClient`s (or `DBTeamClient`s) in `authorizedClients` / `authorizedTeamClients` is then used to make all of the desired API calls.
 
-* call `resetClients` to logout Dropbox user but not clear any access tokens
-* if specific access tokens need to be removed, use the `clearStoredAccessToken` method in `DBOAuthManager`
+* call `unlinkAndResetClients` to logout Dropbox user and clear all access tokens
+* if specific access tokens need to be removed, use the `clearStoredAccessToken` method in `DBOAuthManager`.
 
 ---
 

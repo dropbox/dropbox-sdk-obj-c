@@ -34,20 +34,6 @@
                       transportConfig:transportConfig];
 }
 
-+ (void)setupWithAppKeyMultiUserDesktop:(NSString *)appKey tokenUid:(NSString *)tokenUid {
-  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
-  [[self class] setupWithOAuthManagerMultiUser:[[DBDesktopOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                               transportConfig:transportConfig
-                                      tokenUid:tokenUid];
-}
-
-+ (void)setupWithTransportConfigMultiUserDesktop:(DBTransportDefaultConfig *)transportConfig
-                                        tokenUid:(NSString *)tokenUid {
-  [[self class] setupWithOAuthManagerMultiUser:[[DBDesktopOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                               transportConfig:transportConfig
-                                      tokenUid:tokenUid];
-}
-
 + (void)setupWithTeamAppKeyDesktop:(NSString *)appKey {
   [[self class] setupWithTeamTransportConfigDesktop:[[DBTransportDefaultConfig alloc] initWithAppKey:appKey]];
 }
@@ -55,20 +41,6 @@
 + (void)setupWithTeamTransportConfigDesktop:(DBTransportDefaultConfig *)transportConfig {
   [[self class] setupWithOAuthManagerTeam:[[DBDesktopOAuthManager alloc] initWithAppKey:transportConfig.appKey]
                           transportConfig:transportConfig];
-}
-
-+ (void)setupWithTeamAppKeyMultiUserDesktop:(NSString *)appKey tokenUid:(NSString *)tokenUid {
-  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
-  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBDesktopOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                                   transportConfig:transportConfig
-                                          tokenUid:tokenUid];
-}
-
-+ (void)setupWithTeamTransportConfigMultiUserDesktop:(DBTransportDefaultConfig *)transportConfig
-                                            tokenUid:(NSString *)tokenUid {
-  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBDesktopOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                                   transportConfig:transportConfig
-                                          tokenUid:tokenUid];
 }
 
 @end

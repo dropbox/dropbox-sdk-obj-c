@@ -8,6 +8,8 @@
 #import "TestClasses.h"
 #import "TestData.h"
 
+static DBUserClient *s_teamAdminUserClient = nil;
+
 void MyLog(NSString *format, ...) {
   va_list args;
   va_start(args, format);
@@ -21,14 +23,15 @@ void MyLog(NSString *format, ...) {
 - (instancetype)initWithTestData:(TestData *)testData {
   self = [super init];
   if (self) {
-    NSAssert([DBClientsManager authorizedClient], @"No authorized user client.");
+    DBUserClient *clientToUse = s_teamAdminUserClient ?: [DBClientsManager authorizedClient];
+    NSAssert(clientToUse, @"No authorized user client.");
     DBAppClient *unauthorizedClient = [[DBAppClient alloc] initWithAppKey:_testData.fullDropboxAppKey appSecret:_testData.fullDropboxAppSecret];
     _testData = testData;
-    _auth = [DBClientsManager authorizedClient].authRoutes;
+    _auth = clientToUse.authRoutes;
     _appAuth = unauthorizedClient.authRoutes;
-    _files = [DBClientsManager authorizedClient].filesRoutes;
-    _sharing = [DBClientsManager authorizedClient].sharingRoutes;
-    _users = [DBClientsManager authorizedClient].usersRoutes;
+    _files = clientToUse.filesRoutes;
+    _sharing = clientToUse.sharingRoutes;
+    _users = clientToUse.usersRoutes;
   }
   return self;
 }
@@ -1685,8 +1688,7 @@ void MyLog(NSString *format, ...) {
       if ([getInfo isIdNotFound]) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
-        _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
-        [DBClientsManager setAuthorizedClient:[[DBClientsManager authorizedTeamClient] userClientWithMemberId:_teamMemberId]];
+        s_teamAdminUserClient = [[DBClientsManager authorizedTeamClient] userClientWithMemberId:_teamMemberId];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
       nextTest();

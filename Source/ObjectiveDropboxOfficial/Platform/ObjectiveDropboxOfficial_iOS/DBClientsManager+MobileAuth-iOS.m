@@ -34,19 +34,6 @@
                       transportConfig:transportConfig];
 }
 
-+ (void)setupWithAppKeyMultiUser:(NSString *)appKey tokenUid:(NSString *)tokenUid {
-  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
-  [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                               transportConfig:transportConfig
-                                      tokenUid:tokenUid];
-}
-
-+ (void)setupWithTransportConfigMultiUser:(DBTransportDefaultConfig *)transportConfig tokenUid:(NSString *)tokenUid {
-  [[self class] setupWithOAuthManagerMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                               transportConfig:transportConfig
-                                      tokenUid:tokenUid];
-}
-
 + (void)setupWithTeamAppKey:(NSString *)appKey {
   [[self class] setupWithTeamTransportConfig:[[DBTransportDefaultConfig alloc] initWithAppKey:appKey]];
 }
@@ -54,20 +41,6 @@
 + (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig *)transportConfig {
   [[self class] setupWithOAuthManagerTeam:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
                           transportConfig:transportConfig];
-}
-
-+ (void)setupWithTeamAppKeyMultiUser:(NSString *)appKey tokenUid:(NSString *)tokenUid {
-  DBTransportDefaultConfig *transportConfig = [[DBTransportDefaultConfig alloc] initWithAppKey:appKey];
-  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                                   transportConfig:transportConfig
-                                          tokenUid:tokenUid];
-}
-
-+ (void)setupWithTeamTransportConfigMultiUser:(DBTransportDefaultConfig *)transportConfig
-                                     tokenUid:(NSString *)tokenUid {
-  [[self class] setupWithOAuthManagerTeamMultiUser:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
-                                   transportConfig:transportConfig
-                                          tokenUid:tokenUid];
 }
 
 @end

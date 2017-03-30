@@ -36,12 +36,11 @@
 + (DBUserClient * _Nullable)authorizedClient;
 
 ///
-/// Mutator method for the authorized `DBUserClient` shared instance.
+/// Multi-Dropbox account use case. Returns all current Dropbox user clients.
 ///
-/// @param client The updated reference to the `DBUserClient` shared
-/// instance.
+/// @return Mapping of account ID to authorized `DBUserClient` instance.
 ///
-+ (void)setAuthorizedClient:(DBUserClient * _Nullable)client;
++ (NSDictionary<NSString *, DBUserClient *> * _Nonnull)authorizedClients;
 
 ///
 /// Accessor method for the authorized `DBTeamClient` shared instance.
@@ -51,20 +50,15 @@
 + (DBTeamClient * _Nullable)authorizedTeamClient;
 
 ///
-/// Mutator method for the authorized `DBTeamClient` shared instance.
+/// Multi-Dropbox account use case. Returns all current Dropbox team clients.
 ///
-/// @param client The updated reference to the `DBTeamClient` shared
-/// instance.
+/// @return Mapping of account ID to authorized `DBTeamClient` instance.
 ///
-+ (void)setAuthorizedTeamClient:(DBTeamClient * _Nullable)client;
++ (NSDictionary<NSString *, DBTeamClient *> * _Nonnull)authorizedTeamClients;
 
 ///
-/// Reauthorizes the shared authorized user client instance with the access token retrieved from storage via the
+/// Creates and stores a new shared authorized user client instance with the access token retrieved from storage via the
 /// supplied `tokenUid` key.
-///
-/// In the multi Dropbox user case, this method should be called when authorizing a new user after application has
-/// initially launched. For example, if an initially authorized user is logged out and the app is not shutdown, and a
-/// new user is to be authorized via a pre-existing access token, this method should be called.
 ///
 /// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned after a successful
 /// progression through the OAuth flow (via `handleRedirectURL:`) in the `DBAccessToken` field of the `DBOAuthResult`
@@ -75,12 +69,8 @@
 + (BOOL)reauthorizeClient:(NSString * _Nullable)tokenUid;
 
 ///
-/// Reauthorizes the shared authorized team client instance with the access token retrieved from storage via the
+/// Creates and stores a new shared authorized team client instance with the access token retrieved from storage via the
 /// supplied `tokenUid` key.
-///
-/// In the multi Dropbox user case, this method should be called when authorizing a new user after application has
-/// initially launched. For example, if an initially authorized user is logged out and the app is not shutdown, and a
-/// new user is to be authorized via a pre-existing access token, this method should be called.
 ///
 /// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned after a successful
 /// progression through the OAuth flow (via `handleRedirectURLTeam:`) in the `DBAccessToken` field of the
