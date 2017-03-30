@@ -226,9 +226,9 @@
                    session:(NSURLSession *)session
            progressHandler:(void (^)(int64_t, int64_t, int64_t))handler
       progressHandlerQueue:(NSOperationQueue *)handlerQueue {
-  NSNumber *taskId = @(task.taskIdentifier);
-
   [_delegateQueue addOperationWithBlock:^{
+    NSNumber *taskId = @(task.taskIdentifier);
+
     DBSessionData *sessionData = [self sessionDataWithSession:session];
     DBProgressData *progressData = sessionData.progressData[taskId];
     if (progressData) {
@@ -255,10 +255,10 @@
                       session:(NSURLSession *)session
               responseHandler:(DBRpcResponseBlockStorage)handler
          responseHandlerQueue:(NSOperationQueue *)handlerQueue {
-  NSNumber *taskId = @(task.taskIdentifier);
-  DBSessionData *sessionData = [self sessionDataWithSession:session];
-
   [_delegateQueue addOperationWithBlock:^{
+    NSNumber *taskId = @(task.taskIdentifier);
+    DBSessionData *sessionData = [self sessionDataWithSession:session];
+
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       if (handlerQueue) {
@@ -289,10 +289,10 @@
                          session:(NSURLSession *)session
                  responseHandler:(DBUploadResponseBlockStorage)handler
             responseHandlerQueue:(NSOperationQueue *)handlerQueue {
-  NSNumber *taskId = @(task.taskIdentifier);
-  DBSessionData *sessionData = [self sessionDataWithSession:session];
-
   [_delegateQueue addOperationWithBlock:^{
+    NSNumber *taskId = @(task.taskIdentifier);
+    DBSessionData *sessionData = [self sessionDataWithSession:session];
+
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       if (handlerQueue) {
@@ -323,10 +323,10 @@
                            session:(NSURLSession *)session
                    responseHandler:(DBDownloadResponseBlockStorage)handler
               responseHandlerQueue:(NSOperationQueue *)handlerQueue {
-  NSNumber *taskId = @(task.taskIdentifier);
-  DBSessionData *sessionData = [self sessionDataWithSession:session];
-
   [_delegateQueue addOperationWithBlock:^{
+    NSNumber *taskId = @(task.taskIdentifier);
+    DBSessionData *sessionData = [self sessionDataWithSession:session];
+
     DBCompletionData *completionData = sessionData.completionData[taskId];
     if (completionData) {
       if (handlerQueue) {

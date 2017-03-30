@@ -40,13 +40,6 @@
                             transportConfig:(DBTransportDefaultConfig * _Nullable)transportConfig;
 
 ///
-/// Updates access token used to make API requests.
-///
-/// @param accessToken The updated access token with which to make API calls.
-///
-- (void)updateAccessToken:(NSString * _Nonnull)accessToken;
-
-///
 /// Returns the current access token used to make API requests.
 ///
 - (NSString * _Nullable)accessToken;

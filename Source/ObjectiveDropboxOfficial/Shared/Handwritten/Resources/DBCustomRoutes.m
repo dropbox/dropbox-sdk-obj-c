@@ -75,17 +75,15 @@ static const int timeoutInSec = 200;
 
       // queue to `limitRequestsQueue` then back to main queue to make request
       [limitRequestsQueue addOperationWithBlock:^{
-        __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          if (fileSize < fileChunkSize) {
-            // file is small, so we won't chunk upload it.
-            [self startUploadSmallFile:uploadData fileUrl:fileUrl fileSize:fileSize blockingSemaphore:semaphore];
-          } else {
-            // file is somewhat large, so we will chunk upload it, repeatedly querying
-            // `/upload_session/append_v2` until the file is uploaded
-            [self startUploadLargeFile:uploadData fileUrl:fileUrl fileSize:fileSize blockingSemaphore:semaphore];
-          }
-        }];
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        if (fileSize < fileChunkSize) {
+          // file is small, so we won't chunk upload it.
+          [self startUploadSmallFile:uploadData fileUrl:fileUrl fileSize:fileSize blockingSemaphore:semaphore];
+        } else {
+          // file is somewhat large, so we will chunk upload it, repeatedly querying
+          // `/upload_session/append_v2` until the file is uploaded
+          [self startUploadLargeFile:uploadData fileUrl:fileUrl fileSize:fileSize blockingSemaphore:semaphore];
+        }
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
       }];
     } else {

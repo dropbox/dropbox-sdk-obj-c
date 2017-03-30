@@ -24,7 +24,7 @@
 }
 
 - (NSString *)accessToken {
-  return _transportClient.accessToken;
+    return _transportClient.accessToken;
 }
 
 - (BOOL)isAuthorized {

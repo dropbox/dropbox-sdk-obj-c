@@ -9,7 +9,7 @@
 @interface DBTransportBaseClient : NSObject
 
 /// The Dropbox OAuth2 access token used to make requests.
-@property (nonatomic, copy) NSString * _Nullable accessToken;
+@property (nonatomic, readonly, copy) NSString * _Nullable accessToken;
 
 /// The user agent associated with all networking requests. Used for server logging.
 @property (nonatomic, readonly, copy) NSString * _Nonnull userAgent;
