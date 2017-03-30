@@ -113,30 +113,6 @@ static DBTeamClient *authorizedTeamClient;
   [[self class] setAppKey:transportConfig.appKey];
 }
 
-+ (DBUserClient *)userClientFromTokenUid:(NSString *)tokenUid
-                         transportConfig:(DBTransportDefaultConfig *)transportConfig {
-  NSAssert([DBOAuthManager sharedOAuthManager],
-           @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
-
-  NSString *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid].accessToken;
-  if (accessToken) {
-    return [[DBUserClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
-  }
-  return nil;
-}
-
-+ (DBTeamClient *)teamClientFromTokenUid:(NSString *)tokenUid
-                         transportConfig:(DBTransportDefaultConfig *)transportConfig {
-  NSAssert([DBOAuthManager sharedOAuthManager],
-           @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
-
-  NSString *accessToken = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid].accessToken;
-  if (accessToken) {
-    return [[DBTeamClient alloc] initWithAccessToken:accessToken transportConfig:transportConfig];
-  }
-  return nil;
-}
-
 + (BOOL)reauthorizeClient:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager],
            @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
