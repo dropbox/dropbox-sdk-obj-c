@@ -104,7 +104,7 @@ static const int timeoutInSec = 200;
            blockingSemaphore:(dispatch_semaphore_t)blockingSemaphore {
   // immediately close session after first API call
   // because file can be uploaded in one request
-  __block DBUploadTask *task = [[[self uploadSessionStartUrl:@(YES) inputUrl:fileUrl]
+  __block DBUploadTask *task = [[[self uploadSessionStartStream:@(YES) inputStream:[NSInputStream inputStreamWithURL:fileUrl]]
       setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
         if (result && !routeError) {
           NSString *sessionId = result.sessionId;
