@@ -138,9 +138,7 @@
     }
 
     responseBlock(result, routeError, dbxError);
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      cleanupBlock();
-    }];
+    cleanupBlock();
 
     return successful;
   };
@@ -227,9 +225,7 @@
     }
 
     responseBlock(result, routeError, dbxError);
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      cleanupBlock();
-    }];
+    cleanupBlock();
 
     return successful;
   };
@@ -346,9 +342,7 @@
     }
 
     responseBlock(result, routeError, dbxError, destination);
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      cleanupBlock();
-    }];
+    cleanupBlock();
 
     return successful;
   };
@@ -446,9 +440,7 @@
     }
 
     responseBlock(result, routeError, dbxError, downloadContent);
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      cleanupBlock();
-    }];
+    cleanupBlock();
 
     return successful;
   };
