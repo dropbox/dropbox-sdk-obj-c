@@ -57,8 +57,8 @@
 + (NSDictionary<NSString *, DBTeamClient *> * _Nonnull)authorizedTeamClients;
 
 ///
-/// Creates and stores a new shared authorized user client instance with the access token retrieved from storage via the
-/// supplied `tokenUid` key.
+/// Multi-Dropbox account use case. Creates and stores a new shared authorized user client instance with the access
+/// token retrieved from storage via the supplied `tokenUid` key.
 ///
 /// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned after a successful
 /// progression through the OAuth flow (via `handleRedirectURL:`) in the `DBAccessToken` field of the `DBOAuthResult`
@@ -66,11 +66,11 @@
 ///
 /// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
 ///
-+ (BOOL)reauthorizeClient:(NSString * _Nullable)tokenUid;
++ (BOOL)authorizeClientFromKeychain:(NSString * _Nullable)tokenUid;
 
 ///
-/// Creates and stores a new shared authorized team client instance with the access token retrieved from storage via the
-/// supplied `tokenUid` key.
+/// Multi-Dropbox account use case. Creates and stores a new shared authorized team client instance with the access
+/// token retrieved from storage via the supplied `tokenUid` key.
 ///
 /// @param tokenUid The uid of the stored access token to use to reauthorize. This uid is returned after a successful
 /// progression through the OAuth flow (via `handleRedirectURLTeam:`) in the `DBAccessToken` field of the
@@ -78,7 +78,7 @@
 ///
 /// @returns Whether a valid token exists in storage for the supplied `tokenUid`.
 ///
-+ (BOOL)reauthorizeTeamClient:(NSString * _Nullable)tokenUid;
++ (BOOL)authorizeTeamClientFromKeychain:(NSString * _Nullable)tokenUid;
 
 ///
 /// Handles launching the SDK with a redirect url from an external source to authorize a user API client.
@@ -105,15 +105,18 @@
 + (DBOAuthResult * _Nullable)handleRedirectURLTeam:(NSURL * _Nonnull)url;
 
 ///
+/// Multi-Dropbox account use case. Sets to `nil` the active user / team shared authorized client, clears the stored
+/// access token associated with the supplied `tokenUid`, and removes the assocaited client from the shared clients
+/// list.
+///
+/// @param tokenUid The uid of the token to clear.
+///
++ (void)unlinkAndResetClient:(NSString * _Nonnull)tokenUid;
+
+///
 /// Sets to `nil` the active user / team shared authorized client and clears all stored access tokens in `DBKeychain`.
 ///
 + (void)unlinkAndResetClients;
-
-///
-/// Sets to `nil` the active user / team shared authorized client but does not clear any stored access tokens in
-/// `DBKeychain`.
-///
-+ (void)resetClients;
 
 ///
 /// Checks if performing an API v1 OAuth 1 token migration is necessary, and if so, performs it.

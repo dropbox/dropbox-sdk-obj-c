@@ -231,10 +231,10 @@ static DBOAuthManager *sharedOAuthManager;
   return nil;
 }
 
-- (DBAccessToken *)getAccessToken:(NSString *)owner {
-  NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:owner];
+- (DBAccessToken *)getAccessToken:(NSString *)tokenUid {
+  NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:tokenUid];
   if (accessToken != nil) {
-    return [[DBAccessToken alloc] initWithAccessToken:accessToken uid:owner];
+    return [[DBAccessToken alloc] initWithAccessToken:accessToken uid:tokenUid];
   } else {
     return nil;
   }
@@ -256,8 +256,8 @@ static DBOAuthManager *sharedOAuthManager;
   return [self getAllAccessTokens].count != 0;
 }
 
-- (BOOL)clearStoredAccessToken:(DBAccessToken *)token {
-  return [DBSDKKeychain deleteTokenWithKey:token.uid];
+- (BOOL)clearStoredAccessToken:(NSString *)tokenUid {
+  return [DBSDKKeychain deleteTokenWithKey:tokenUid];
 }
 
 - (BOOL)clearStoredAccessTokens {

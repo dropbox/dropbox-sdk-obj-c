@@ -116,9 +116,9 @@
     id result = nil;
     id routeError = nil;
     DBRequestError *networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:data
-                                                                      clientError:clientError
-                                                                       statusCode:statusCode
-                                                                      httpHeaders:httpHeaders];
+                                                                          clientError:clientError
+                                                                           statusCode:statusCode
+                                                                          httpHeaders:httpHeaders];
     if (networkError) {
       routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                        ? [DBTransportBaseClient routeErrorWithRoute:route data:data statusCode:statusCode]
@@ -203,9 +203,9 @@
     id result = nil;
     id routeError = nil;
     DBRequestError *networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:data
-                                                                      clientError:clientError
-                                                                       statusCode:statusCode
-                                                                      httpHeaders:httpHeaders];
+                                                                          clientError:clientError
+                                                                           statusCode:statusCode
+                                                                          httpHeaders:httpHeaders];
     if (networkError) {
       routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                        ? [DBTransportBaseClient routeErrorWithRoute:route data:data statusCode:statusCode]
@@ -299,9 +299,9 @@
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:errorData
-                                                        clientError:clientError
-                                                         statusCode:statusCode
-                                                        httpHeaders:httpHeaders];
+                                                            clientError:clientError
+                                                             statusCode:statusCode
+                                                            httpHeaders:httpHeaders];
       routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                        ? [DBTransportBaseClient routeErrorWithRoute:route data:errorData statusCode:statusCode]
                        : nil;
@@ -417,9 +417,9 @@
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:errorData
-                                                        clientError:clientError
-                                                         statusCode:statusCode
-                                                        httpHeaders:httpHeaders];
+                                                            clientError:clientError
+                                                             statusCode:statusCode
+                                                            httpHeaders:httpHeaders];
       routeError = [DBTransportBaseClient statusCodeIsRouteError:statusCode]
                        ? [DBTransportBaseClient routeErrorWithRoute:route data:errorData statusCode:statusCode]
                        : nil;

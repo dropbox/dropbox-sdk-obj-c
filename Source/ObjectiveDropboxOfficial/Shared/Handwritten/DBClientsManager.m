@@ -107,6 +107,18 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
++ (void)removeAuthorizedClient:(NSString *)tokenUid {
+  @synchronized(self) {
+    [s_tokenUidToAuthorizedClients removeObjectForKey:tokenUid];
+  }
+}
+
++ (void)removeAuthorizedTeamClient:(NSString *)tokenUid {
+  @synchronized(self) {
+    [s_tokenUidToAuthorizedTeamClients removeObjectForKey:tokenUid];
+  }
+}
+
 + (void)removeAllAuthorizedClients {
   @synchronized(self) {
     [s_tokenUidToAuthorizedClients removeAllObjects];
@@ -119,7 +131,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   }
 }
 
-+ (BOOL)reauthorizeClient:(NSString *)tokenUid {
++ (BOOL)authorizeClientFromKeychain:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager],
            @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
@@ -133,7 +145,7 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   return NO;
 }
 
-+ (BOOL)reauthorizeTeamClient:(NSString *)tokenUid {
++ (BOOL)authorizeTeamClientFromKeychain:(NSString *)tokenUid {
   NSAssert([DBOAuthManager sharedOAuthManager],
            @"Call the appropriate `[DBClientsManager setupWith...]` before calling this method");
 
@@ -236,10 +248,45 @@ static NSMutableDictionary<NSString *, DBTeamClient *> *s_tokenUidToAuthorizedTe
   return result;
 }
 
++ (void)unlinkAndResetClient:(NSString *)tokenUid {
+  if ([DBOAuthManager sharedOAuthManager]) {
+    [[DBOAuthManager sharedOAuthManager] clearStoredAccessToken:tokenUid];
+    [[self class] resetClient:tokenUid];
+  }
+}
+
 + (void)unlinkAndResetClients {
   if ([DBOAuthManager sharedOAuthManager]) {
     [[DBOAuthManager sharedOAuthManager] clearStoredAccessTokens];
     [[self class] resetClients];
+  }
+}
+
++ (void)resetClient:(NSString *)tokenUid {
+  [DBClientsManager removeAuthorizedClient:tokenUid];
+  [DBClientsManager removeAuthorizedTeamClient:tokenUid];
+
+  DBAccessToken *token = [[DBOAuthManager sharedOAuthManager] getAccessToken:tokenUid];
+  if (token.accessToken == [DBClientsManager authorizedClient].accessToken) {
+    [DBClientsManager setAuthorizedClient:nil tokenUid:nil];
+
+    NSDictionary<NSString *, DBUserClient *> *authorizedClientsCopy = [DBClientsManager authorizedClients];
+
+    if ([authorizedClientsCopy count] > 0) {
+      NSString *firstUid = [authorizedClientsCopy allKeys]
+          [0][[DBClientsManager setAuthorizedClient:[authorizedClientsCopy][firstUid] tokenUid:tokenUid]];
+    }
+  }
+
+  if (token.accessToken == [DBClientsManager authorizedTeamClient].accessToken) {
+    [DBClientsManager setAuthorizedTeamClient:nil tokenUid:nil];
+
+    NSDictionary<NSString *, DBTeamClient *> *authorizedTeamClientsCopy = [DBClientsManager authorizedTeamClients];
+
+    if ([authorizedTeamClientsCopy count] > 0) {
+      NSString *firstUid = [authorizedTeamClientsCopy allKeys]
+          [0][[DBClientsManager setAuthorizedTeamClient:[authorizedTeamClientsCopy][firstUid] tokenUid:tokenUid]];
+    }
   }
 }
 

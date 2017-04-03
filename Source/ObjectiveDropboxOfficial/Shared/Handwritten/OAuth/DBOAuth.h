@@ -107,16 +107,16 @@
 ///
 /// Retrieves the access token for a particular user from the `DBKeychain` class.
 ///
-/// @param owner The owner of the access token to retrieve. Either `account_id` or `team_id`.
+/// @param tokenUid The uid of the access token to retrieve.
 ///
 /// @return An access token if present, otherwise nil.
 ///
-- (DBAccessToken * _Nullable)getAccessToken:(NSString * _Nonnull)owner;
+- (DBAccessToken * _Nullable)getAccessToken:(NSString * _Nonnull)tokenUid;
 
 ///
 /// Retrieves all stored access tokens from the `DBKeychain` class.
 ///
-/// @return a dictionary mapping owners (via `account_id` or `team_id`) to their access tokens.
+/// @return a dictionary mapping token uids to their access tokens.
 ///
 - (NSDictionary<NSString *, DBAccessToken *> * _Nonnull)getAllAccessTokens;
 
@@ -130,11 +130,11 @@
 ///
 /// Deletes a specific access tokens from the `DBKeychain` class.
 ///
-/// @param token The access token to delete.
+/// @param tokenUid The uid of the access token to delete.
 ///
 /// @return Whether the delete operation succeeded.
 ///
-- (BOOL)clearStoredAccessToken:(DBAccessToken * _Nonnull)token;
+- (BOOL)clearStoredAccessToken:(NSString * _Nonnull)tokenUid;
 
 ///
 /// Deletes all stored access tokens in the `DBKeychain` class.
@@ -180,7 +180,7 @@
 ///
 /// A Dropbox OAuth2 access token.
 ///
-/// Stores a unique identifying key (`account_id` or `team_id`) for storing in `DBKeychain`.
+/// Stores a unique identifying key for storing in `DBKeychain`.
 ///
 @interface DBAccessToken : NSObject
 

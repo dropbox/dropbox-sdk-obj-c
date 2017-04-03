@@ -85,12 +85,16 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 
 - (IBAction)openWithButtonPressedRunTests:(id)sender {
   TestData *data = [TestData new];
-
-  DBOfficialAppConnector *connector =
-      [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey canOpenURLWrapper:^BOOL(NSURL *url) { return [[UIApplication sharedApplication] canOpenURL:url]; }
-                                      openURLWrapper:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }];
+  
+  DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:data.fullDropboxAppKey
+                                                                   canOpenURLWrapper:^BOOL(NSURL *url) {
+                                                                     return [[UIApplication sharedApplication] canOpenURL:url];
+                                                                   }
+                                                                      openURLWrapper:^(NSURL *url) {
+                                                                        [[UIApplication sharedApplication] openURL:url];
+                                                                      }];
   DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector retriveOfficialDropboxAppOpenWithInfo];
-
+  
   if (openWithInfo) {
     // Data retrieved from UIPasteboard
     NSLog(@"Returning to Dropbox app via Pasteboard data...");
@@ -98,9 +102,13 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
   } else if (s_openWithInfoNSURL) {
     // Data retrieved from openURL call
     NSLog(@"Returning to Dropbox app via NSURL data...");
-    DBOfficialAppConnector *appConnector =
-        [[DBOfficialAppConnector alloc] initWithAppKey:[DBClientsManager appKey] canOpenURLWrapper:^BOOL(NSURL *url) { return [[UIApplication sharedApplication] canOpenURL:url]; }
-                                        openURLWrapper:^(NSURL *url) { [[UIApplication sharedApplication] openURL:url]; }];
+    DBOfficialAppConnector *appConnector = [[DBOfficialAppConnector alloc] initWithAppKey:[DBClientsManager appKey]
+                                                                        canOpenURLWrapper:^BOOL(NSURL *url) {
+                                                                          return [[UIApplication sharedApplication] canOpenURL:url];
+                                                                        }
+                                                                           openURLWrapper:^(NSURL *url) {
+                                                                             [[UIApplication sharedApplication] openURL:url];
+                                                                           }];
     [appConnector returnToDropboxApp:s_openWithInfoNSURL changesPending:NO];
   } else {
     // No OpenWith Data

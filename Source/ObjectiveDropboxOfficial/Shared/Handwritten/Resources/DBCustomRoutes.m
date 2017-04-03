@@ -104,33 +104,34 @@ static const int timeoutInSec = 200;
            blockingSemaphore:(dispatch_semaphore_t)blockingSemaphore {
   // immediately close session after first API call
   // because file can be uploaded in one request
-  __block DBUploadTask *task = [[[self uploadSessionStartStream:@(YES) inputStream:[NSInputStream inputStreamWithURL:fileUrl]]
-      setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
-        if (result && !routeError) {
-          NSString *sessionId = result.sessionId;
-          NSNumber *offset = @(fileSize);
-          DBFILESUploadSessionCursor *cursor =
-              [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
-          DBFILESCommitInfo *commitInfo = uploadData.fileUrlsToCommitInfo[fileUrl];
-          DBFILESUploadSessionFinishArg *finishArg =
-              [[DBFILESUploadSessionFinishArg alloc] initWithCursor:cursor commit:commitInfo];
+  __block DBUploadTask *task =
+      [[[self uploadSessionStartStream:@(YES) inputStream:[NSInputStream inputStreamWithURL:fileUrl]]
+          setResponseBlock:^(DBFILESUploadSessionStartResult *result, DBNilObject *routeError, DBRequestError *error) {
+            if (result && !routeError) {
+              NSString *sessionId = result.sessionId;
+              NSNumber *offset = @(fileSize);
+              DBFILESUploadSessionCursor *cursor =
+                  [[DBFILESUploadSessionCursor alloc] initWithSessionId:sessionId offset:offset];
+              DBFILESCommitInfo *commitInfo = uploadData.fileUrlsToCommitInfo[fileUrl];
+              DBFILESUploadSessionFinishArg *finishArg =
+                  [[DBFILESUploadSessionFinishArg alloc] initWithCursor:cursor commit:commitInfo];
 
-          // store commit info for this file
-          [uploadData.finishArgs addObject:finishArg];
-        } else {
-          uploadData.fileUrlsToRequestErrors[fileUrl] = error;
-        }
+              // store commit info for this file
+              [uploadData.finishArgs addObject:finishArg];
+            } else {
+              uploadData.fileUrlsToRequestErrors[fileUrl] = error;
+            }
 
-        [uploadData.taskStorage removeUploadTask:task];
-        dispatch_semaphore_signal(blockingSemaphore);
-        dispatch_group_leave(uploadData.uploadGroup);
-      }
-                 queue:uploadData.queue]
-      setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+            [uploadData.taskStorage removeUploadTask:task];
+            dispatch_semaphore_signal(blockingSemaphore);
+            dispatch_group_leave(uploadData.uploadGroup);
+          }
+                     queue:uploadData.queue]
+          setProgressBlock:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
 #pragma unused(totalBytesWritten)
 #pragma unused(totalBytesExpectedToWrite)
-        [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
-      }];
+            [self executeProgressHandler:uploadData amountUploaded:bytesWritten];
+          }];
 
   [uploadData.taskStorage addUploadTask:task];
 }
