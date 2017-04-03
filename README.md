@@ -815,7 +815,9 @@ In this way, datatypes with subtypes are a hybrid of structs and unions. Only a 
 
 #### Consistent global error handling
 
-Normally, errors are handled on a request-by-request basis by calling `setResponseBlock` on the returned request task object. Sometimes, however, it makes more sense to handle errors consistently, based on error type, regardless of the source of the request. For instance, maybe you want to display the same dialog every time there is a `/files/list_folder` error. Or perhaps every time there is an HTTP auth error, you simply want to log the user out of your application. Here's how you would implement these examples:
+Normally, errors are handled on a request-by-request basis by calling `setResponseBlock` on the returned request task object. Sometimes, however, it makes more sense to handle errors consistently, based on error type, regardless of the source of the request. For instance, maybe you want to display the same dialog every time there is a `/files/list_folder` error. Or perhaps every time there is an HTTP auth error, you simply want to log the user out of your application.
+
+To implement these examples, you should have code in your app's setup logic (probably in your app delegate) that looks something like the following:
 
 ```objective-c
 void (^listFolderGlobalResponseBlock)(DBFILESListFolderError *, DBRequestError *, DBTask *) =
@@ -831,10 +833,12 @@ void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
         // log the user out of the app, for instance
       } else if ([networkError isRateLimitError]) {
         // automatically retry after backoff period
-        DBAUTHRateLimitError *rateLimitError = [networkError asRateLimitError];
+        DBRequestRateLimitError *rateLimitError = [networkError asRateLimitError];
         int backOff = [rateLimitError.retryAfter intValue];
 
-        [restartTask restart];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, backOff * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [restartTask restart];
+        });
       }
     };
 
@@ -848,7 +852,7 @@ void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
 
 The SDK allows you to set one response block to handle all generic network errors that aren't route-specific (like an HTTP auth error, or a rate-limit error). The SDK also allows you to set a response block to be executed in the event that a certain error type is returned.
 
-These global response blocks will automatically be executed **in addition** to the response block that you supply for the specific request. These global response blocks are guaranteed to be executed before the normal response block is executed.
+These global response blocks will automatically be executed **in addition** to the response block that you supply for the specific request.
 
 ---
 
