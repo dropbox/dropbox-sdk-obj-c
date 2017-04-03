@@ -222,8 +222,8 @@ static DBOAuthManager *sharedOAuthManager;
   return [DBSDKKeychain storeValueWithKey:accessToken.uid value:accessToken.accessToken];
 }
 
-- (DBAccessToken *)getFirstAccessToken {
-  NSDictionary<NSString *, DBAccessToken *> *tokens = [self getAllAccessTokens];
+- (DBAccessToken *)retrieveFirstAccessToken {
+  NSDictionary<NSString *, DBAccessToken *> *tokens = [self retrieveAllAccessTokens];
   NSArray *values = [tokens allValues];
   if ([values count] != 0) {
     return [values objectAtIndex:0];
@@ -231,7 +231,7 @@ static DBOAuthManager *sharedOAuthManager;
   return nil;
 }
 
-- (DBAccessToken *)getAccessToken:(NSString *)tokenUid {
+- (DBAccessToken *)retrieveAccessToken:(NSString *)tokenUid {
   NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:tokenUid];
   if (accessToken != nil) {
     return [[DBAccessToken alloc] initWithAccessToken:accessToken uid:tokenUid];
@@ -240,7 +240,7 @@ static DBOAuthManager *sharedOAuthManager;
   }
 }
 
-- (NSDictionary<NSString *, DBAccessToken *> *)getAllAccessTokens {
+- (NSDictionary<NSString *, DBAccessToken *> *)retrieveAllAccessTokens {
   NSArray<NSString *> *users = [DBSDKKeychain retrieveAllTokens];
   NSMutableDictionary<NSString *, DBAccessToken *> *result = [[NSMutableDictionary alloc] init];
   for (NSString *user in users) {
@@ -253,7 +253,7 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (BOOL)hasStoredAccessTokens {
-  return [self getAllAccessTokens].count != 0;
+  return [self retrieveAllAccessTokens].count != 0;
 }
 
 - (BOOL)clearStoredAccessToken:(NSString *)tokenUid {

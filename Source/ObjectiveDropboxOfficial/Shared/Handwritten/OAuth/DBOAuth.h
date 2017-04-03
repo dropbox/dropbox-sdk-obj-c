@@ -102,7 +102,7 @@
 ///
 /// @return the "first" access token found, if any, otherwise nil.
 ///
-- (DBAccessToken * _Nullable)getFirstAccessToken;
+- (DBAccessToken * _Nullable)retrieveFirstAccessToken;
 
 ///
 /// Retrieves the access token for a particular user from the `DBKeychain` class.
@@ -111,14 +111,14 @@
 ///
 /// @return An access token if present, otherwise nil.
 ///
-- (DBAccessToken * _Nullable)getAccessToken:(NSString * _Nonnull)tokenUid;
+- (DBAccessToken * _Nullable)retrieveAccessToken:(NSString * _Nonnull)tokenUid;
 
 ///
 /// Retrieves all stored access tokens from the `DBKeychain` class.
 ///
 /// @return a dictionary mapping token uids to their access tokens.
 ///
-- (NSDictionary<NSString *, DBAccessToken *> * _Nonnull)getAllAccessTokens;
+- (NSDictionary<NSString *, DBAccessToken *> * _Nonnull)retrieveAllAccessTokens;
 
 ///
 /// Checks if there are any stored access tokens in the `DBKeychain` class.

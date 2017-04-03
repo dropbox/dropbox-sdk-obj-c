@@ -81,6 +81,9 @@ static const char *kV1OSXAccountName = "Dropbox";
       [results addObject:(id)dict[(NSString *)kSecAttrAccount]];
     }
   }
+
+  CFRelease(dataResult);
+
   return results;
 }
 
@@ -112,7 +115,8 @@ static const char *kV1OSXAccountName = "Dropbox";
   OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&dataResult);
 
   if (status == noErr) {
-    return (__bridge NSData *)dataResult;
+    NSData *data = [[NSData alloc] initWithData:(__bridge_transfer NSData *)dataResult];
+    return data;
   }
   return nil;
 }

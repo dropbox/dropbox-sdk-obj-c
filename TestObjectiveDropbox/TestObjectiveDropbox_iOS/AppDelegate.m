@@ -59,7 +59,6 @@
       [DBClientsManager setupWithTeamTransportConfig:transportConfigTeamManagement];
       break;
   }
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:[NSURL URLWithString:@"dbapi-2://1/connect?k=4adrwp5qg3jf2lz&s=&state=oauth2:09AF2A35-AAB4-4857-B7EB-1F744D182FEF"]];
 
   return YES;
 }
