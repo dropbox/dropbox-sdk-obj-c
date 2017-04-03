@@ -17,8 +17,8 @@
 /// Retrieves a value from the corresponding key from the keychain.
 + (NSString * _Nullable)retrieveTokenWithKey:(NSString * _Nonnull)key;
 
-/// Retrieves all key / value pairs from the keychain.
-+ (NSArray<NSString *> * _Nonnull)retrieveAllTokens;
+/// Retrieves all token uids from the keychain.
++ (NSArray<NSString *> * _Nonnull)retrieveAllTokenIds;
 
 /// Deletes a key / value pair in the keychain.
 + (BOOL)deleteTokenWithKey:(NSString * _Nonnull)key;

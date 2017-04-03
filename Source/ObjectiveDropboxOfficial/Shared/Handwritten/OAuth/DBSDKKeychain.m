@@ -60,13 +60,13 @@ static const char *kV1OSXAccountName = "Dropbox";
 + (NSString *)retrieveTokenWithKey:(NSString *)key {
   NSData *data = [self lookupTokenDataWithKey:key];
   if (data != nil) {
-    return [NSString stringWithUTF8String:[data bytes]];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
   } else {
     return nil;
   }
 }
 
-+ (NSArray<NSString *> *)retrieveAllTokens {
++ (NSArray<NSString *> *)retrieveAllTokenIds {
   NSMutableDictionary<id, id> *query = [DBSDKKeychain
       queryWithDict:@{(id)kSecReturnAttributes : (id)kCFBooleanTrue, (id)kSecMatchLimit : (id)kSecMatchLimitAll}];
   CFDataRef dataResult = nil;

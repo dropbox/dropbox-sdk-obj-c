@@ -241,7 +241,7 @@ static DBOAuthManager *sharedOAuthManager;
 }
 
 - (NSDictionary<NSString *, DBAccessToken *> *)retrieveAllAccessTokens {
-  NSArray<NSString *> *users = [DBSDKKeychain retrieveAllTokens];
+  NSArray<NSString *> *users = [DBSDKKeychain retrieveAllTokenIds];
   NSMutableDictionary<NSString *, DBAccessToken *> *result = [[NSMutableDictionary alloc] init];
   for (NSString *user in users) {
     NSString *accessToken = [DBSDKKeychain retrieveTokenWithKey:user];

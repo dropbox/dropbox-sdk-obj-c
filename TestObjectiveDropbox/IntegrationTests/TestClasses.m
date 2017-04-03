@@ -1688,6 +1688,7 @@ void MyLog(NSString *format, ...) {
       if ([getInfo isIdNotFound]) {
         [TestFormat abort:error routeError:routeError];
       } else if ([getInfo isMemberInfo]) {
+        _teamMemberId = getInfo.memberInfo.profile.teamMemberId;
         s_teamAdminUserClient = [[DBClientsManager authorizedTeamClient] userClientWithMemberId:_teamMemberId];
       }
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
