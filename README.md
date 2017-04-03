@@ -934,8 +934,8 @@ For some apps, it is necessary to manage more than one Dropbox account (and acce
 
 The `DBUserClient`s (or `DBTeamClient`s) in `authorizedClients` / `authorizedTeamClients` is then used to make all of the desired API calls.
 
-* call `unlinkAndResetClients` to logout Dropbox user and clear all access tokens
-* if specific access tokens need to be removed, use the `clearStoredAccessToken` method in `DBOAuthManager`.
+* call `unlinkAndResetClient` to logout a particular Dropbox user and clear their access token
+* call `unlinkAndResetClients` to logout all Dropbox users and clear all access tokens
 
 ---
 
