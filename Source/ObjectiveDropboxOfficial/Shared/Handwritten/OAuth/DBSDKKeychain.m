@@ -75,14 +75,12 @@ static const char *kV1OSXAccountName = "Dropbox";
   NSMutableArray<NSString *> *results = [NSMutableArray new];
 
   if (status == noErr) {
-    NSData *data = (__bridge NSData *)dataResult;
+    NSData *data = (__bridge_transfer NSData *)dataResult;
     NSArray<NSDictionary<NSString *, id> *> *dataResultDict = (NSArray<NSDictionary<NSString *, id> *> *)data ?: @[];
     for (NSDictionary<NSString *, id> *dict in dataResultDict) {
       [results addObject:(id)dict[(NSString *)kSecAttrAccount]];
     }
   }
-
-  CFRelease(dataResult);
 
   return results;
 }
