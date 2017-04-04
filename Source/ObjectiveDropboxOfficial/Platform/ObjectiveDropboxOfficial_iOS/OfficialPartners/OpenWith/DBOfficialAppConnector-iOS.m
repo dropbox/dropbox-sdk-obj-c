@@ -103,6 +103,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
 - (id)getQueryItemValueFromName:(NSString *)name queryItems:(NSArray<NSURLQueryItem *> *)queryItems {
   __block NSObject *result = nil;
   [queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem *obj, NSUInteger idx, BOOL *stop) {
+#pragma unused(idx)
     if ([obj.name isEqualToString:name]) {
       result = obj.value;
       *stop = YES;

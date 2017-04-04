@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBUSERSAccount : NSObject <DBSerializable>
+@interface DBUSERSAccount : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -90,6 +90,8 @@
                                     email:(NSString * _Nonnull)email
                             emailVerified:(NSNumber * _Nonnull)emailVerified
                                  disabled:(NSNumber * _Nonnull)disabled;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

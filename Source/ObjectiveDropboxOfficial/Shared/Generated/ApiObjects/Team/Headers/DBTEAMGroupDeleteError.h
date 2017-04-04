@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMGroupDeleteError : NSObject <DBSerializable>
+@interface DBTEAMGroupDeleteError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -81,6 +81,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupDeleteErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupAlreadyDeleted;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

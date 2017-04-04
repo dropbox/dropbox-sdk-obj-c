@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMUsersSelectorArg : NSObject <DBSerializable>
+@interface DBTEAMUsersSelectorArg : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -89,6 +89,8 @@ typedef NS_ENUM(NSInteger, DBTEAMUsersSelectorArgTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithEmails:(NSArray<NSString *> * _Nonnull)emails;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

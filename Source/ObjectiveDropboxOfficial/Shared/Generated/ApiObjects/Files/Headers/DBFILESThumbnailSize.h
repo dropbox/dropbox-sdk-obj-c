@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESThumbnailSize : NSObject <DBSerializable>
+@interface DBFILESThumbnailSize : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -92,6 +92,8 @@ typedef NS_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithW1024h768;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

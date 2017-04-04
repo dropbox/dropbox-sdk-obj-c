@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBAUTHTokenFromOAuth1Arg : NSObject <DBSerializable>
+@interface DBAUTHTokenFromOAuth1Arg : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -42,6 +42,8 @@
 ///
 - (nonnull instancetype)initWithOauth1Token:(NSString * _Nonnull)oauth1Token
                           oauth1TokenSecret:(NSString * _Nonnull)oauth1TokenSecret;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

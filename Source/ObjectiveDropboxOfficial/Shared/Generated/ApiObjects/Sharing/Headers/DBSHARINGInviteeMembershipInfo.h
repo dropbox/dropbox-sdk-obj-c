@@ -26,7 +26,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGInviteeMembershipInfo : DBSHARINGMembershipInfo <DBSerializable>
+@interface DBSHARINGInviteeMembershipInfo : DBSHARINGMembershipInfo <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGAddFileMemberArgs : NSObject <DBSerializable>
+@interface DBSHARINGAddFileMemberArgs : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -88,6 +88,8 @@
 ///
 - (nonnull instancetype)initWithFile:(NSString * _Nonnull)file
                              members:(NSArray<DBSHARINGMemberSelector *> * _Nonnull)members;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

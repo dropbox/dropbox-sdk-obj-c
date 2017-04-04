@@ -49,6 +49,14 @@
   return [[DBPAPERAddMemberSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -109,6 +117,14 @@
 
 - (NSString *)description {
   return [[DBPAPERRefPaperDocSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -178,6 +194,14 @@
 
 - (NSString *)description {
   return [[DBPAPERAddPaperDocUserSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -252,6 +276,14 @@
 
 - (NSString *)description {
   return [[DBPAPERAddPaperDocUserMemberResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -427,6 +459,14 @@
   return [[DBPAPERAddPaperDocUserResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -482,6 +522,7 @@
     return [[DBPAPERAddPaperDocUserResult alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERCursor.h"
@@ -522,6 +563,14 @@
 
 - (NSString *)description {
   return [[DBPAPERCursorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -617,6 +666,14 @@
   return [[DBPAPERPaperApiBaseErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -648,6 +705,7 @@
     return [[DBPAPERPaperApiBaseError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERDocLookupError.h"
@@ -730,6 +788,14 @@
   return [[DBPAPERDocLookupErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -765,6 +831,7 @@
     return [[DBPAPERDocLookupError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERDocSubscriptionLevel.h"
@@ -860,6 +927,14 @@
   return [[DBPAPERDocSubscriptionLevelSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -904,6 +979,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPAPERExportFormat.h"
@@ -985,6 +1061,14 @@
   return [[DBPAPERExportFormatSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1020,6 +1104,7 @@
     return [[DBPAPERExportFormat alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERFolder.h"
@@ -1056,6 +1141,14 @@
 
 - (NSString *)description {
   return [[DBPAPERFolderSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1147,6 +1240,14 @@
   return [[DBPAPERFolderSharingPolicyTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1183,6 +1284,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPAPERFolderSubscriptionLevel.h"
@@ -1278,6 +1380,14 @@
   return [[DBPAPERFolderSubscriptionLevelSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1322,6 +1432,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPAPERFolder.h"
@@ -1348,7 +1459,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithFolderSharingPolicyType:nil folders:nil];
 }
 
@@ -1366,6 +1477,14 @@
 
 - (NSString *)description {
   return [[DBPAPERFoldersContainingPaperDocSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1446,6 +1565,14 @@
 
 - (NSString *)description {
   return [[DBPAPERInviteeInfoWithPermissionLevelSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1550,6 +1677,14 @@
   return [[DBPAPERListDocsCursorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1584,6 +1719,7 @@
     return [[DBPAPERListDocsCursorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERListPaperDocsArgs.h"
@@ -1615,7 +1751,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithFilterBy:nil sortBy:nil sortOrder:nil limit:nil];
 }
 
@@ -1633,6 +1769,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListPaperDocsArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1702,6 +1846,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListPaperDocsContinueArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1805,6 +1957,14 @@
   return [[DBPAPERListPaperDocsFilterBySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1840,6 +2000,7 @@
     return [[DBPAPERListPaperDocsFilterBy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERCursor.h"
@@ -1881,6 +2042,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListPaperDocsResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2008,6 +2177,14 @@
   return [[DBPAPERListPaperDocsSortBySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2047,6 +2224,7 @@
     return [[DBPAPERListPaperDocsSortBy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERListPaperDocsSortOrder.h"
@@ -2128,6 +2306,14 @@
   return [[DBPAPERListPaperDocsSortOrderSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2163,6 +2349,7 @@
     return [[DBPAPERListPaperDocsSortOrder alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERListUsersCursorError.h"
@@ -2271,6 +2458,14 @@
   return [[DBPAPERListUsersCursorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2313,6 +2508,7 @@
     return [[DBPAPERListUsersCursorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERListUsersOnFolderArgs.h"
@@ -2354,6 +2550,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListUsersOnFolderArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2414,6 +2618,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListUsersOnFolderContinueArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2484,6 +2696,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListUsersOnFolderResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2572,6 +2792,14 @@
   return [[DBPAPERListUsersOnPaperDocArgsSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2634,6 +2862,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListUsersOnPaperDocContinueArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2707,6 +2943,14 @@
 
 - (NSString *)description {
   return [[DBPAPERListUsersOnPaperDocResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2864,6 +3108,14 @@
   return [[DBPAPERPaperApiCursorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2907,6 +3159,7 @@
     return [[DBPAPERPaperApiCursorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERExportFormat.h"
@@ -2944,6 +3197,14 @@
 
 - (NSString *)description {
   return [[DBPAPERPaperDocExportSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3009,6 +3270,14 @@
 
 - (NSString *)description {
   return [[DBPAPERPaperDocExportResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3118,6 +3387,14 @@
   return [[DBPAPERPaperDocPermissionLevelSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3153,6 +3430,7 @@
     return [[DBPAPERPaperDocPermissionLevel alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPAPERPaperDocSharingPolicy.h"
@@ -3190,6 +3468,14 @@
 
 - (NSString *)description {
   return [[DBPAPERPaperDocSharingPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3253,6 +3539,14 @@
   return [[DBPAPERRemovePaperDocUserSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3300,7 +3594,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithPublicSharingPolicy:nil teamSharingPolicy:nil];
 }
 
@@ -3318,6 +3612,14 @@
 
 - (NSString *)description {
   return [[DBPAPERSharingPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3435,6 +3737,14 @@
   return [[DBPAPERSharingTeamPolicyTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3475,6 +3785,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPAPERSharingPublicPolicyType.h"
@@ -3571,6 +3882,14 @@
   return [[DBPAPERSharingPublicPolicyTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3615,6 +3934,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPAPERPaperDocPermissionLevel.h"
@@ -3654,6 +3974,14 @@
 
 - (NSString *)description {
   return [[DBPAPERUserInfoWithPermissionLevelSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3760,6 +4088,14 @@
   return [[DBPAPERUserOnPaperDocFilterSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3795,4 +4131,5 @@
     return [[DBPAPERUserOnPaperDocFilter alloc] initWithOther];
   }
 }
+
 @end

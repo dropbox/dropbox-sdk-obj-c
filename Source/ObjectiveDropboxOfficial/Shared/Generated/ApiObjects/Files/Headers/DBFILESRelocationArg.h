@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESRelocationArg : DBFILESRelocationPath <DBSerializable>
+@interface DBFILESRelocationArg : DBFILESRelocationPath <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

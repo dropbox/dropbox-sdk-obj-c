@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGInsufficientQuotaAmounts : NSObject <DBSerializable>
+@interface DBSHARINGInsufficientQuotaAmounts : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -48,6 +48,8 @@
 - (nonnull instancetype)initWithSpaceNeeded:(NSNumber * _Nonnull)spaceNeeded
                               spaceShortage:(NSNumber * _Nonnull)spaceShortage
                                   spaceLeft:(NSNumber * _Nonnull)spaceLeft;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

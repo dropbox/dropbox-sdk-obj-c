@@ -26,7 +26,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMGetDevicesReport : DBTEAMBaseDfbReport <DBSerializable>
+@interface DBTEAMGetDevicesReport : DBTEAMBaseDfbReport <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBUSERSGetAccountBatchArg : NSObject <DBSerializable>
+@interface DBUSERSGetAccountBatchArg : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -38,6 +38,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccountIds:(NSArray<NSString *> * _Nonnull)accountIds;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

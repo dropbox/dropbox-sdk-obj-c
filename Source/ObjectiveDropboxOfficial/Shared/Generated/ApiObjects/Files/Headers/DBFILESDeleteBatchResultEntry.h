@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESDeleteBatchResultEntry : NSObject <DBSerializable>
+@interface DBFILESDeleteBatchResultEntry : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, DBFILESDeleteBatchResultEntryTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFailure:(DBFILESDeleteError * _Nonnull)failure;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

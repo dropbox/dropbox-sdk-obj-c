@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable>
+@interface DBFILESFileMetadata : DBFILESMetadata <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

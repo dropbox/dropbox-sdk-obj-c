@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMTeamFolderArchiveLaunch : NSObject <DBSerializable>
+@interface DBTEAMTeamFolderArchiveLaunch : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -74,6 +74,8 @@ typedef NS_ENUM(NSInteger, DBTEAMTeamFolderArchiveLaunchTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithComplete:(DBTEAMTeamFolderMetadata * _Nonnull)complete;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

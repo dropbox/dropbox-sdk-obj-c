@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGPendingUploadMode : NSObject <DBSerializable>
+@interface DBSHARINGPendingUploadMode : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -59,6 +59,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPendingUploadModeTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithFolder;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

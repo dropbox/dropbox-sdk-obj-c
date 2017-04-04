@@ -385,7 +385,7 @@
 
 - (DBRpcTask *)getSharedLinks {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGGetSharedLinks;
-  DBSHARINGGetSharedLinksArg *arg = [[DBSHARINGGetSharedLinksArg alloc] init];
+  DBSHARINGGetSharedLinksArg *arg = [[DBSHARINGGetSharedLinksArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -454,7 +454,7 @@
 
 - (DBRpcTask *)listFolders {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListFolders;
-  DBSHARINGListFoldersArgs *arg = [[DBSHARINGListFoldersArgs alloc] init];
+  DBSHARINGListFoldersArgs *arg = [[DBSHARINGListFoldersArgs alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -472,7 +472,7 @@
 
 - (DBRpcTask *)listMountableFolders {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListMountableFolders;
-  DBSHARINGListFoldersArgs *arg = [[DBSHARINGListFoldersArgs alloc] init];
+  DBSHARINGListFoldersArgs *arg = [[DBSHARINGListFoldersArgs alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -490,7 +490,7 @@
 
 - (DBRpcTask *)listReceivedFiles {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListReceivedFiles;
-  DBSHARINGListFilesArg *arg = [[DBSHARINGListFilesArg alloc] init];
+  DBSHARINGListFilesArg *arg = [[DBSHARINGListFilesArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -508,7 +508,7 @@
 
 - (DBRpcTask *)listSharedLinks {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGListSharedLinks;
-  DBSHARINGListSharedLinksArg *arg = [[DBSHARINGListSharedLinksArg alloc] init];
+  DBSHARINGListSharedLinksArg *arg = [[DBSHARINGListSharedLinksArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 

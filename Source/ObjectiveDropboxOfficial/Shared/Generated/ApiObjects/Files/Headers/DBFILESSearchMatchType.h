@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESSearchMatchType : NSObject <DBSerializable>
+@interface DBFILESSearchMatchType : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, DBFILESSearchMatchTypeTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBoth;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

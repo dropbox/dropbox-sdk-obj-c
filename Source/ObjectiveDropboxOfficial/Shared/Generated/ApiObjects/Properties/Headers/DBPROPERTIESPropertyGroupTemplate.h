@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPROPERTIESPropertyGroupTemplate : NSObject <DBSerializable>
+@interface DBPROPERTIESPropertyGroupTemplate : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -55,6 +55,8 @@
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name
                         description_:(NSString * _Nonnull)description_
                               fields:(NSArray<DBPROPERTIESPropertyFieldTemplate *> * _Nonnull)fields;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

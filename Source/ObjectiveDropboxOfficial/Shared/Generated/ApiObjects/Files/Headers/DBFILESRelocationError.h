@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESRelocationError : NSObject <DBSerializable>
+@interface DBFILESRelocationError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -160,6 +160,8 @@ typedef NS_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

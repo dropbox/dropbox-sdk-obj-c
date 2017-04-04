@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMRevokeDeviceSessionBatchArg : NSObject <DBSerializable>
+@interface DBTEAMRevokeDeviceSessionBatchArg : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -37,6 +37,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithRevokeDevices:(NSArray<DBTEAMRevokeDeviceSessionArg *> * _Nonnull)revokeDevices;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

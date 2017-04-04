@@ -42,6 +42,14 @@
   return [[DBPROPERTIESGetPropertyTemplateArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -103,6 +111,14 @@
 
 - (NSString *)description {
   return [[DBPROPERTIESPropertyGroupTemplateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -177,6 +193,14 @@
   return [[DBPROPERTIESGetPropertyTemplateResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -246,6 +270,14 @@
 
 - (NSString *)description {
   return [[DBPROPERTIESListPropertyTemplateIdsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -367,6 +399,14 @@
   return [[DBPROPERTIESPropertyTemplateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -404,6 +444,7 @@
     return [[DBPROPERTIESPropertyTemplateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPROPERTIESModifyPropertyTemplateError.h"
@@ -554,6 +595,14 @@
   return [[DBPROPERTIESModifyPropertyTemplateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -607,6 +656,7 @@
     return [[DBPROPERTIESModifyPropertyTemplateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBPROPERTIESPropertyField.h"
@@ -643,6 +693,14 @@
 
 - (NSString *)description {
   return [[DBPROPERTIESPropertyFieldSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -709,6 +767,14 @@
   return [[DBPROPERTIESPropertyFieldTemplateSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -772,6 +838,14 @@
 
 - (NSString *)description {
   return [[DBPROPERTIESPropertyGroupSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -870,6 +944,14 @@
   return [[DBPROPERTIESPropertyTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -901,4 +983,5 @@
     return [[DBPROPERTIESPropertyType alloc] initWithOther];
   }
 }
+
 @end

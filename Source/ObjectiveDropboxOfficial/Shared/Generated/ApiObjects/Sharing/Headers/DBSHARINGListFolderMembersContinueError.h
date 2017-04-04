@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGListFolderMembersContinueError : NSObject <DBSerializable>
+@interface DBSHARINGListFolderMembersContinueError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGListFolderMembersContinueErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

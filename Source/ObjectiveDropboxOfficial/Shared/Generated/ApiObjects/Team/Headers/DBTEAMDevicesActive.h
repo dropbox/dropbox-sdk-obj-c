@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMDevicesActive : NSObject <DBSerializable>
+@interface DBTEAMDevicesActive : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -74,6 +74,8 @@
                                 android:(NSArray<NSNumber *> * _Nonnull)android
                                   other:(NSArray<NSNumber *> * _Nonnull)other
                                   total:(NSArray<NSNumber *> * _Nonnull)total;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

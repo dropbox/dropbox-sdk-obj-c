@@ -99,6 +99,14 @@
   return [[DBTEAMPOLICIESEmmStateSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -138,6 +146,7 @@
     return [[DBTEAMPOLICIESEmmState alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -219,6 +228,14 @@
   return [[DBTEAMPOLICIESSharedFolderJoinPolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -254,6 +271,7 @@
     return [[DBTEAMPOLICIESSharedFolderJoinPolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -335,6 +353,14 @@
   return [[DBTEAMPOLICIESSharedFolderMemberPolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -370,6 +396,7 @@
     return [[DBTEAMPOLICIESSharedFolderMemberPolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -465,6 +492,14 @@
   return [[DBTEAMPOLICIESSharedLinkCreatePolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -504,6 +539,7 @@
     return [[DBTEAMPOLICIESSharedLinkCreatePolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -543,6 +579,14 @@
 
 - (NSString *)description {
   return [[DBTEAMPOLICIESTeamMemberPoliciesSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -610,6 +654,14 @@
 
 - (NSString *)description {
   return [[DBTEAMPOLICIESTeamSharingPoliciesSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end

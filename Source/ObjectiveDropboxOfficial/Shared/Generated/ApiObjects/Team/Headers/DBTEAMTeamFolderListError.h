@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMTeamFolderListError : NSObject <DBSerializable>
+@interface DBTEAMTeamFolderListError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -37,6 +37,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError * _Nonnull)accessError;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

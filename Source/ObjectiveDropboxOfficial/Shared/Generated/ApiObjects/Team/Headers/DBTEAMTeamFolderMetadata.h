@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMTeamFolderMetadata : NSObject <DBSerializable>
+@interface DBTEAMTeamFolderMetadata : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -49,6 +49,8 @@
 - (nonnull instancetype)initWithTeamFolderId:(NSString * _Nonnull)teamFolderId
                                         name:(NSString * _Nonnull)name
                                       status:(DBTEAMTeamFolderStatus * _Nonnull)status;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

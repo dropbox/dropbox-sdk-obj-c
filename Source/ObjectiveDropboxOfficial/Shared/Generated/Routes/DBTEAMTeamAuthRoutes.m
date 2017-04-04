@@ -198,7 +198,7 @@
 
 - (DBRpcTask *)devicesListMembersDevices {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMDevicesListMembersDevices;
-  DBTEAMListMembersDevicesArg *arg = [[DBTEAMListMembersDevicesArg alloc] init];
+  DBTEAMListMembersDevicesArg *arg = [[DBTEAMListMembersDevicesArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -216,7 +216,7 @@
 
 - (DBRpcTask *)devicesListTeamDevices {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMDevicesListTeamDevices;
-  DBTEAMListTeamDevicesArg *arg = [[DBTEAMListTeamDevicesArg alloc] init];
+  DBTEAMListTeamDevicesArg *arg = [[DBTEAMListTeamDevicesArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -286,7 +286,7 @@
 
 - (DBRpcTask *)groupsList {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMGroupsList;
-  DBTEAMGroupsListArg *arg = [[DBTEAMGroupsListArg alloc] init];
+  DBTEAMGroupsListArg *arg = [[DBTEAMGroupsListArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -399,7 +399,7 @@
 
 - (DBRpcTask *)linkedAppsListMembersLinkedApps {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsListMembersLinkedApps;
-  DBTEAMListMembersAppsArg *arg = [[DBTEAMListMembersAppsArg alloc] init];
+  DBTEAMListMembersAppsArg *arg = [[DBTEAMListMembersAppsArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -411,7 +411,7 @@
 
 - (DBRpcTask *)linkedAppsListTeamLinkedApps {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMLinkedAppsListTeamLinkedApps;
-  DBTEAMListTeamAppsArg *arg = [[DBTEAMListTeamAppsArg alloc] init];
+  DBTEAMListTeamAppsArg *arg = [[DBTEAMListTeamAppsArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -470,7 +470,7 @@
 
 - (DBRpcTask *)membersList {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersList;
-  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] init];
+  DBTEAMMembersListArg *arg = [[DBTEAMMembersListArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -610,7 +610,7 @@
 
 - (DBRpcTask *)reportsGetActivity {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetActivity;
-  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] init];
+  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -622,7 +622,7 @@
 
 - (DBRpcTask *)reportsGetDevices {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetDevices;
-  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] init];
+  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -634,7 +634,7 @@
 
 - (DBRpcTask *)reportsGetMembership {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetMembership;
-  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] init];
+  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -646,7 +646,7 @@
 
 - (DBRpcTask *)reportsGetStorage {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetStorage;
-  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] init];
+  DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -695,7 +695,7 @@
 
 - (DBRpcTask *)teamFolderList {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderList;
-  DBTEAMTeamFolderListArg *arg = [[DBTEAMTeamFolderListArg alloc] init];
+  DBTEAMTeamFolderListArg *arg = [[DBTEAMTeamFolderListArg alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 

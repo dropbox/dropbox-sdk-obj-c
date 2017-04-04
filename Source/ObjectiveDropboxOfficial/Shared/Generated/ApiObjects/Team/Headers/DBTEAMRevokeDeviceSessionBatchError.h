@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMRevokeDeviceSessionBatchError : NSObject <DBSerializable>
+@interface DBTEAMRevokeDeviceSessionBatchError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -43,6 +43,8 @@ typedef NS_ENUM(NSInteger, DBTEAMRevokeDeviceSessionBatchErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

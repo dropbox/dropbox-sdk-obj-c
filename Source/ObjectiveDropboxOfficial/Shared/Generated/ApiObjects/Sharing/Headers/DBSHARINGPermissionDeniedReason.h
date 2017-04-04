@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGPermissionDeniedReason : NSObject <DBSerializable>
+@interface DBSHARINGPermissionDeniedReason : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -213,6 +213,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGPermissionDeniedReasonTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

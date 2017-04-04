@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESSearchResult : NSObject <DBSerializable>
+@interface DBFILESSearchResult : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -51,6 +51,8 @@
 - (nonnull instancetype)initWithMatches:(NSArray<DBFILESSearchMatch *> * _Nonnull)matches
                                    more:(NSNumber * _Nonnull)more
                                   start:(NSNumber * _Nonnull)start;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

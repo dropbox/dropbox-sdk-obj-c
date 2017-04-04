@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGParentFolderAccessInfo : NSObject <DBSerializable>
+@interface DBSHARINGParentFolderAccessInfo : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -49,6 +49,8 @@
 - (nonnull instancetype)initWithFolderName:(NSString * _Nonnull)folderName
                             sharedFolderId:(NSString * _Nonnull)sharedFolderId
                                permissions:(NSArray<DBSHARINGMemberPermission *> * _Nonnull)permissions;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

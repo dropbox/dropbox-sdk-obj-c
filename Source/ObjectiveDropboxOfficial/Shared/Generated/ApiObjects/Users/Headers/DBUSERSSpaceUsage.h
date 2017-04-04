@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBUSERSSpaceUsage : NSObject <DBSerializable>
+@interface DBUSERSSpaceUsage : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -43,6 +43,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithUsed:(NSNumber * _Nonnull)used allocation:(DBUSERSSpaceAllocation * _Nonnull)allocation;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

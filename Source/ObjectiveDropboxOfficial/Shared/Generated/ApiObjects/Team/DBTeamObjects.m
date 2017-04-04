@@ -53,6 +53,14 @@
   return [[DBTEAMDeviceSessionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -158,6 +166,14 @@
   return [[DBTEAMActiveWebSessionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -252,6 +268,14 @@
   return [[DBTEAMAddPropertyTemplateArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -319,6 +343,14 @@
 
 - (NSString *)description {
   return [[DBTEAMAddPropertyTemplateResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -436,6 +468,14 @@
   return [[DBTEAMAdminTierSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -480,6 +520,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -529,6 +570,14 @@
 
 - (NSString *)description {
   return [[DBTEAMApiAppSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -609,6 +658,14 @@
 
 - (NSString *)description {
   return [[DBTEAMBaseDfbReportSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -735,6 +792,14 @@
   return [[DBTEAMBaseTeamFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -777,6 +842,7 @@
     return [[DBTEAMBaseTeamFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -799,7 +865,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithStartDate:nil endDate:nil];
 }
 
@@ -817,6 +883,14 @@
 
 - (NSString *)description {
   return [[DBTEAMDateRangeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -900,6 +974,14 @@
   return [[DBTEAMDateRangeErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -927,6 +1009,7 @@
     return [[DBTEAMDateRangeError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -995,6 +1078,14 @@
 
 - (NSString *)description {
   return [[DBTEAMDesktopClientSessionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1151,6 +1242,14 @@
   return [[DBTEAMDesktopPlatformSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1190,6 +1289,7 @@
     return [[DBTEAMDesktopPlatform alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -1226,6 +1326,14 @@
 
 - (NSString *)description {
   return [[DBTEAMDeviceSessionArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1304,6 +1412,14 @@
 
 - (NSString *)description {
   return [[DBTEAMDevicesActiveSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1463,6 +1579,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGetActivityReportSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1663,6 +1787,14 @@
   return [[DBTEAMGetDevicesReportSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1742,6 +1874,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGetMembershipReportSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1862,6 +2002,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGetStorageReportSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2004,6 +2152,14 @@
   return [[DBTEAMGroupAccessTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2040,6 +2196,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -2084,6 +2241,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupCreateArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2229,6 +2394,14 @@
   return [[DBTEAMGroupCreateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2272,6 +2445,7 @@
     return [[DBTEAMGroupCreateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -2339,6 +2513,14 @@
   return [[DBTEAMGroupSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2370,6 +2552,7 @@
     return [[DBTEAMGroupSelectorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -2452,6 +2635,14 @@
   return [[DBTEAMGroupSelectorWithTeamGroupErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2487,6 +2678,7 @@
     return [[DBTEAMGroupSelectorWithTeamGroupError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -2583,6 +2775,14 @@
   return [[DBTEAMGroupDeleteErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2622,6 +2822,7 @@
     return [[DBTEAMGroupDeleteError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -2685,6 +2886,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupFullInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2781,6 +2990,14 @@
   return [[DBTEAMGroupMemberInfoSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2841,6 +3058,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMemberSelectorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2961,6 +3186,14 @@
   return [[DBTEAMGroupMemberSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3000,6 +3233,7 @@
     return [[DBTEAMGroupMemberSelectorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -3110,6 +3344,14 @@
   return [[DBTEAMGroupMemberSetAccessTypeErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3153,6 +3395,7 @@
     return [[DBTEAMGroupMemberSetAccessTypeError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -3174,7 +3417,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithReturnMembers:nil];
 }
 
@@ -3192,6 +3435,14 @@
 
 - (NSString *)description {
   return [[DBTEAMIncludeMembersArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3260,6 +3511,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMembersAddArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3494,6 +3753,14 @@
   return [[DBTEAMGroupMembersAddErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3580,6 +3847,7 @@
     return [[DBTEAMGroupMembersAddError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -3618,6 +3886,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMembersChangeResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3688,6 +3964,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMembersRemoveArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3817,6 +4101,14 @@
   return [[DBTEAMGroupMembersSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3856,6 +4148,7 @@
     return [[DBTEAMGroupMembersSelectorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4017,6 +4310,14 @@
   return [[DBTEAMGroupMembersRemoveErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4084,6 +4385,7 @@
     return [[DBTEAMGroupMembersRemoveError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4122,6 +4424,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMembersSelectorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4195,6 +4505,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupMembersSetAccessTypeArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4314,6 +4632,14 @@
   return [[DBTEAMGroupSelectorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4354,6 +4680,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4407,6 +4734,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupUpdateArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4575,6 +4910,14 @@
   return [[DBTEAMGroupUpdateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4622,6 +4965,7 @@
     return [[DBTEAMGroupUpdateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4689,6 +5033,14 @@
   return [[DBTEAMGroupsGetInfoErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4720,6 +5072,7 @@
     return [[DBTEAMGroupsGetInfoError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4809,6 +5162,14 @@
   return [[DBTEAMGroupsGetInfoItemSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4849,6 +5210,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -4871,7 +5233,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithLimit:nil];
 }
 
@@ -4889,6 +5251,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupsListArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4946,6 +5316,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupsListContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5035,6 +5413,14 @@
   return [[DBTEAMGroupsListContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5066,6 +5452,7 @@
     return [[DBTEAMGroupsListContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -5107,6 +5494,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupsListResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5184,6 +5579,14 @@
   return [[DBTEAMGroupsMembersListArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5241,6 +5644,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupsMembersListContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5330,6 +5741,14 @@
   return [[DBTEAMGroupsMembersListContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5361,6 +5780,7 @@
     return [[DBTEAMGroupsMembersListContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -5402,6 +5822,14 @@
 
 - (NSString *)description {
   return [[DBTEAMGroupsMembersListResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5531,6 +5959,14 @@
   return [[DBTEAMGroupsPollErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5570,6 +6006,7 @@
     return [[DBTEAMGroupsPollError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -5658,6 +6095,14 @@
   return [[DBTEAMGroupsSelectorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5710,6 +6155,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -5745,6 +6191,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMemberAppsArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5834,6 +6288,14 @@
   return [[DBTEAMListMemberAppsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5865,6 +6327,7 @@
     return [[DBTEAMListMemberAppsError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -5902,6 +6365,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMemberAppsResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5978,6 +6449,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMemberDevicesArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6076,6 +6555,14 @@
   return [[DBTEAMListMemberDevicesErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6107,6 +6594,7 @@
     return [[DBTEAMListMemberDevicesError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -6141,7 +6629,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithActiveWebSessions:nil desktopClientSessions:nil mobileClientSessions:nil];
 }
 
@@ -6159,6 +6647,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMemberDevicesResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6243,7 +6739,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithCursor:nil];
 }
 
@@ -6261,6 +6757,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMembersAppsArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6352,6 +6856,14 @@
   return [[DBTEAMListMembersAppsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6383,6 +6895,7 @@
     return [[DBTEAMListMembersAppsError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -6428,6 +6941,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMembersAppsResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6490,7 +7011,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithCursor:nil includeWebSessions:nil includeDesktopClients:nil includeMobileClients:nil];
 }
 
@@ -6508,6 +7029,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMembersDevicesArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6608,6 +7137,14 @@
   return [[DBTEAMListMembersDevicesErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6639,6 +7176,7 @@
     return [[DBTEAMListMembersDevicesError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -6684,6 +7222,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListMembersDevicesResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6740,7 +7286,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithCursor:nil];
 }
 
@@ -6758,6 +7304,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListTeamAppsArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6849,6 +7403,14 @@
   return [[DBTEAMListTeamAppsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6880,6 +7442,7 @@
     return [[DBTEAMListTeamAppsError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -6925,6 +7488,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListTeamAppsResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6987,7 +7558,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithCursor:nil includeWebSessions:nil includeDesktopClients:nil includeMobileClients:nil];
 }
 
@@ -7005,6 +7576,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListTeamDevicesArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7105,6 +7684,14 @@
   return [[DBTEAMListTeamDevicesErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7136,6 +7723,7 @@
     return [[DBTEAMListTeamDevicesError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -7181,6 +7769,14 @@
 
 - (NSString *)description {
   return [[DBTEAMListTeamDevicesResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7254,6 +7850,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMemberAccessSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7344,6 +7948,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMemberAddArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7697,6 +8309,14 @@
   return [[DBTEAMMemberAddResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7791,6 +8411,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -7845,6 +8466,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMemberDevicesSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7946,6 +8575,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMemberLinkedAppsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8052,6 +8689,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMemberProfileSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8165,6 +8810,14 @@
   return [[DBTEAMUserSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8197,6 +8850,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -8265,6 +8919,14 @@
   return [[DBTEAMMemberSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8301,6 +8963,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -8343,6 +9006,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersAddArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8478,6 +9149,14 @@
   return [[DBTEAMMembersAddJobStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8529,6 +9208,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -8619,6 +9299,14 @@
   return [[DBTEAMMembersAddLaunchSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8666,6 +9354,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -8707,6 +9396,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersDeactivateArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8813,6 +9510,14 @@
   return [[DBTEAMMembersDeactivateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8848,6 +9553,7 @@
     return [[DBTEAMMembersDeactivateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -8885,6 +9591,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersGetInfoArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8967,6 +9681,14 @@
   return [[DBTEAMMembersGetInfoErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8994,6 +9716,7 @@
     return [[DBTEAMMembersGetInfoError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -9083,6 +9806,14 @@
   return [[DBTEAMMembersGetInfoItemSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9123,6 +9854,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -9146,7 +9878,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithLimit:nil includeRemoved:nil];
 }
 
@@ -9164,6 +9896,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersListArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9223,6 +9963,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersListContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9312,6 +10060,14 @@
   return [[DBTEAMMembersListContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9343,6 +10099,7 @@
     return [[DBTEAMMembersListContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -9396,6 +10153,14 @@
   return [[DBTEAMMembersListErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9423,6 +10188,7 @@
     return [[DBTEAMMembersListError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -9464,6 +10230,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersListResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9533,6 +10307,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersRecoverArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9665,6 +10447,14 @@
   return [[DBTEAMMembersRecoverErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9708,6 +10498,7 @@
     return [[DBTEAMMembersRecoverError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -9755,6 +10546,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersRemoveArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10047,6 +10846,14 @@
   return [[DBTEAMMembersRemoveErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10130,6 +10937,7 @@
     return [[DBTEAMMembersRemoveError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -10212,6 +11020,14 @@
   return [[DBTEAMMembersSendWelcomeErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10247,6 +11063,7 @@
     return [[DBTEAMMembersSendWelcomeError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -10285,6 +11102,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersSetPermissionsArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10433,6 +11258,14 @@
   return [[DBTEAMMembersSetPermissionsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10480,6 +11313,7 @@
     return [[DBTEAMMembersSetPermissionsError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -10517,6 +11351,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersSetPermissionsResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10602,6 +11444,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersSetProfileArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10843,6 +11693,14 @@
   return [[DBTEAMMembersSetProfileErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10910,6 +11768,7 @@
     return [[DBTEAMMembersSetProfileError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -11034,6 +11893,14 @@
   return [[DBTEAMMembersSuspendErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11081,6 +11948,7 @@
     return [[DBTEAMMembersSuspendError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -11117,6 +11985,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMembersUnsuspendArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11249,6 +12125,14 @@
   return [[DBTEAMMembersUnsuspendErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11292,6 +12176,7 @@
     return [[DBTEAMMembersUnsuspendError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -11415,6 +12300,14 @@
   return [[DBTEAMMobileClientPlatformSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11462,6 +12355,7 @@
     return [[DBTEAMMobileClientPlatform alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -11527,6 +12421,14 @@
 
 - (NSString *)description {
   return [[DBTEAMMobileClientSessionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11631,6 +12533,14 @@
   return [[DBTEAMRemovedStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11693,6 +12603,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeDesktopClientArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11835,6 +12753,14 @@
   return [[DBTEAMRevokeDeviceSessionArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11882,6 +12808,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -11919,6 +12846,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeDeviceSessionBatchArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12001,6 +12936,14 @@
   return [[DBTEAMRevokeDeviceSessionBatchErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12028,6 +12971,7 @@
     return [[DBTEAMRevokeDeviceSessionBatchError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -12065,6 +13009,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeDeviceSessionBatchResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12176,6 +13128,14 @@
   return [[DBTEAMRevokeDeviceSessionErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12211,6 +13171,7 @@
     return [[DBTEAMRevokeDeviceSessionError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -12252,6 +13213,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeDeviceSessionStatusSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12324,6 +13293,14 @@
   return [[DBTEAMRevokeLinkedApiAppArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12386,6 +13363,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeLinkedApiAppBatchArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12468,6 +13453,14 @@
   return [[DBTEAMRevokeLinkedAppBatchErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12495,6 +13488,7 @@
     return [[DBTEAMRevokeLinkedAppBatchError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -12532,6 +13526,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeLinkedAppBatchResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12643,6 +13645,14 @@
   return [[DBTEAMRevokeLinkedAppErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12678,6 +13688,7 @@
     return [[DBTEAMRevokeLinkedAppError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -12719,6 +13730,14 @@
 
 - (NSString *)description {
   return [[DBTEAMRevokeLinkedAppStatusSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12782,6 +13801,14 @@
 
 - (NSString *)description {
   return [[DBTEAMStorageBucketSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12887,6 +13914,14 @@
   return [[DBTEAMTeamFolderAccessErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12922,6 +13957,7 @@
     return [[DBTEAMTeamFolderAccessError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -13027,6 +14063,14 @@
   return [[DBTEAMTeamFolderActivateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13069,6 +14113,7 @@
     return [[DBTEAMTeamFolderActivateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -13105,6 +14150,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderIdArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -13168,6 +14221,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderArchiveArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -13297,6 +14358,14 @@
   return [[DBTEAMTeamFolderArchiveErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13339,6 +14408,7 @@
     return [[DBTEAMTeamFolderArchiveError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -13444,6 +14514,14 @@
   return [[DBTEAMTeamFolderArchiveJobStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13488,6 +14566,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -13578,6 +14657,14 @@
   return [[DBTEAMTeamFolderArchiveLaunchSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13618,6 +14705,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -13653,6 +14741,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderCreateArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -13770,6 +14866,14 @@
   return [[DBTEAMTeamFolderCreateErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13809,6 +14913,7 @@
     return [[DBTEAMTeamFolderCreateError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -13899,6 +15004,14 @@
   return [[DBTEAMTeamFolderGetInfoItemSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13940,6 +15053,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -13978,6 +15092,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderIdListArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14101,6 +15223,14 @@
   return [[DBTEAMTeamFolderInvalidStatusErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14140,6 +15270,7 @@
     return [[DBTEAMTeamFolderInvalidStatusError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -14162,7 +15293,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithLimit:nil];
 }
 
@@ -14180,6 +15311,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderListArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14240,6 +15379,14 @@
   return [[DBTEAMTeamFolderListErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14298,6 +15445,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderListResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14368,6 +15523,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14501,6 +15664,14 @@
   return [[DBTEAMTeamFolderPermanentlyDeleteErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14543,6 +15714,7 @@
     return [[DBTEAMTeamFolderPermanentlyDeleteError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -14580,6 +15752,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamFolderRenameArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14751,6 +15931,14 @@
   return [[DBTEAMTeamFolderRenameErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14805,6 +15993,7 @@
     return [[DBTEAMTeamFolderRenameError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -14900,6 +16089,14 @@
   return [[DBTEAMTeamFolderStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14939,6 +16136,7 @@
     return [[DBTEAMTeamFolderStatus alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -14983,6 +16181,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamGetInfoResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15056,6 +16262,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamMemberInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15161,6 +16375,14 @@
 
 - (NSString *)description {
   return [[DBTEAMTeamMemberProfileSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15337,6 +16559,14 @@
   return [[DBTEAMTeamMemberStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15383,6 +16613,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -15450,6 +16681,14 @@
   return [[DBTEAMTeamMembershipTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15486,6 +16725,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBPROPERTIESPropertyFieldTemplate.h"
@@ -15535,6 +16775,14 @@
 
 - (NSString *)description {
   return [[DBTEAMUpdatePropertyTemplateArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15617,6 +16865,14 @@
 
 - (NSString *)description {
   return [[DBTEAMUpdatePropertyTemplateResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15751,6 +17007,14 @@
   return [[DBTEAMUserSelectorArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15797,6 +17061,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -15909,6 +17174,14 @@
   return [[DBTEAMUsersSelectorArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15973,4 +17246,5 @@
                  userInfo:nil]);
   }
 }
+
 @end

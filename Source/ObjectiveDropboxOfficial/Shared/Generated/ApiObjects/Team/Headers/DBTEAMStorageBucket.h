@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMStorageBucket : NSObject <DBSerializable>
+@interface DBTEAMStorageBucket : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -45,6 +45,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithBucket:(NSString * _Nonnull)bucket users:(NSNumber * _Nonnull)users;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

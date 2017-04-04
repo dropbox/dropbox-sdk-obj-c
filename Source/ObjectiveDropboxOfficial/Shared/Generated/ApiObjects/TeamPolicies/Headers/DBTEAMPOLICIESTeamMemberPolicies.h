@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable>
+@interface DBTEAMPOLICIESTeamMemberPolicies : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -54,6 +54,8 @@
 ///
 - (nonnull instancetype)initWithSharing:(DBTEAMPOLICIESTeamSharingPolicies * _Nonnull)sharing
                                emmState:(DBTEAMPOLICIESEmmState * _Nonnull)emmState;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

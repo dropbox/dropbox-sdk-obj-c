@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPAPERListUsersOnFolderArgs : DBPAPERRefPaperDoc <DBSerializable>
+@interface DBPAPERListUsersOnFolderArgs : DBPAPERRefPaperDoc <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

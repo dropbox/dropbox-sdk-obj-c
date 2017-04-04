@@ -108,6 +108,14 @@
   return [[DBAUTHAccessErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -151,6 +159,7 @@
     return [[DBAUTHAccessError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHAuthError.h"
@@ -260,6 +269,14 @@
   return [[DBAUTHAuthErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -303,6 +320,7 @@
     return [[DBAUTHAuthError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHInvalidAccountTypeError.h"
@@ -384,6 +402,14 @@
   return [[DBAUTHInvalidAccountTypeErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -419,6 +445,7 @@
     return [[DBAUTHInvalidAccountTypeError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHPaperAccessError.h"
@@ -500,6 +527,14 @@
   return [[DBAUTHPaperAccessErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -535,6 +570,7 @@
     return [[DBAUTHPaperAccessError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHRateLimitError.h"
@@ -576,6 +612,14 @@
 
 - (NSString *)description {
   return [[DBAUTHRateLimitErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -681,6 +725,14 @@
   return [[DBAUTHRateLimitReasonSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -716,6 +768,7 @@
     return [[DBAUTHRateLimitReason alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHTokenFromOAuth1Arg.h"
@@ -754,6 +807,14 @@
 
 - (NSString *)description {
   return [[DBAUTHTokenFromOAuth1ArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -859,6 +920,14 @@
   return [[DBAUTHTokenFromOAuth1ErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -894,6 +963,7 @@
     return [[DBAUTHTokenFromOAuth1Error alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBAUTHTokenFromOAuth1Result.h"
@@ -930,6 +1000,14 @@
 
 - (NSString *)description {
   return [[DBAUTHTokenFromOAuth1ResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end

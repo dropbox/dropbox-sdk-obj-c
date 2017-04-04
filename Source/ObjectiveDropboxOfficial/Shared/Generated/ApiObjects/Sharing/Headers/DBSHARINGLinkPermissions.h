@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGLinkPermissions : NSObject <DBSerializable>
+@interface DBSHARINGLinkPermissions : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -80,6 +80,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCanRevoke:(NSNumber * _Nonnull)canRevoke;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

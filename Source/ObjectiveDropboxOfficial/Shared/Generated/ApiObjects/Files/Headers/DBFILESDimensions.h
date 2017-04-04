@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESDimensions : NSObject <DBSerializable>
+@interface DBFILESDimensions : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -42,6 +42,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithHeight:(NSNumber * _Nonnull)height width:(NSNumber * _Nonnull)width;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

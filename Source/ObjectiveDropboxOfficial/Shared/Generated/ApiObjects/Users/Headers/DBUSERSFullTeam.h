@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBUSERSFullTeam : DBUSERSTeam <DBSerializable>
+@interface DBUSERSFullTeam : DBUSERSTeam <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

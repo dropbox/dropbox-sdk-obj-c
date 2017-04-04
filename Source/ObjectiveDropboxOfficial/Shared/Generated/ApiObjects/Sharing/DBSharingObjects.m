@@ -113,6 +113,14 @@
   return [[DBSHARINGAccessLevelSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -156,6 +164,7 @@
     return [[DBSHARINGAccessLevel alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -237,6 +246,14 @@
   return [[DBSHARINGAclUpdatePolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -272,6 +289,7 @@
     return [[DBSHARINGAclUpdatePolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -325,6 +343,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGAddFileMemberArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -505,6 +531,14 @@
   return [[DBSHARINGAddFileMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -554,6 +588,7 @@
     return [[DBSHARINGAddFileMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAddFolderMemberArg.h"
@@ -604,6 +639,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGAddFolderMemberArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -896,6 +939,14 @@
   return [[DBSHARINGAddFolderMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -978,6 +1029,7 @@
     return [[DBSHARINGAddFolderMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -1020,6 +1072,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGAddMemberSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1217,6 +1277,14 @@
   return [[DBSHARINGAddMemberSelectorErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1274,6 +1342,7 @@
     return [[DBSHARINGAddMemberSelectorError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -1316,6 +1385,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGChangeFileMemberAccessArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1386,6 +1463,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGLinkMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1477,6 +1562,14 @@
   return [[DBSHARINGCollectionLinkMetadataSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1549,6 +1642,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGCreateSharedLinkArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1658,6 +1759,14 @@
   return [[DBSHARINGCreateSharedLinkErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1691,6 +1800,7 @@
     return [[DBSHARINGCreateSharedLinkError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGCreateSharedLinkWithSettingsArg.h"
@@ -1734,6 +1844,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGCreateSharedLinkWithSettingsArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1895,6 +2013,14 @@
   return [[DBSHARINGCreateSharedLinkWithSettingsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1949,6 +2075,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -2128,6 +2255,14 @@
   return [[DBSHARINGFileActionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2191,6 +2326,7 @@
     return [[DBSHARINGFileAction alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFileErrorResult.h"
@@ -2319,6 +2455,14 @@
   return [[DBSHARINGFileErrorResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2364,6 +2508,7 @@
     return [[DBSHARINGFileErrorResult alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFileLinkMetadata.h"
@@ -2432,6 +2577,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedLinkMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2577,6 +2730,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGFileLinkMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -2786,6 +2947,14 @@
   return [[DBSHARINGFileMemberActionErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2837,6 +3006,7 @@
     return [[DBSHARINGFileMemberActionError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -2929,6 +3099,14 @@
   return [[DBSHARINGFileMemberActionIndividualResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2973,6 +3151,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGFileMemberActionIndividualResult.h"
@@ -3012,6 +3191,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGFileMemberActionResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3143,6 +3330,14 @@
   return [[DBSHARINGFileMemberRemoveActionResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3183,6 +3378,7 @@
     return [[DBSHARINGFileMemberRemoveActionResult alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -3228,6 +3424,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGFilePermissionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3492,6 +3696,14 @@
   return [[DBSHARINGFolderActionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3571,6 +3783,7 @@
     return [[DBSHARINGFolderAction alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFolderLinkMetadata.h"
@@ -3637,6 +3850,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGFolderLinkMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3744,6 +3965,14 @@
   return [[DBSHARINGFolderPermissionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3827,6 +4056,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGFolderPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -3921,6 +4158,14 @@
   return [[DBSHARINGGetFileMetadataArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4002,6 +4247,14 @@
   return [[DBSHARINGGetFileMetadataBatchArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4078,6 +4331,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGetFileMetadataBatchResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4207,6 +4468,14 @@
   return [[DBSHARINGGetFileMetadataErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4248,6 +4517,7 @@
     return [[DBSHARINGGetFileMetadataError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGGetFileMetadataIndividualResult.h"
@@ -4354,6 +4624,14 @@
   return [[DBSHARINGGetFileMetadataIndividualResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4395,6 +4673,7 @@
     return [[DBSHARINGGetFileMetadataIndividualResult alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFolderAction.h"
@@ -4438,6 +4717,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGetMetadataArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4567,6 +4854,14 @@
   return [[DBSHARINGSharedLinkErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4606,6 +4901,7 @@
     return [[DBSHARINGSharedLinkError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGGetSharedLinkFileError.h"
@@ -4716,6 +5012,14 @@
   return [[DBSHARINGGetSharedLinkFileErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4759,6 +5063,7 @@
     return [[DBSHARINGGetSharedLinkFileError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGGetSharedLinkMetadataArg.h"
@@ -4802,6 +5107,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGetSharedLinkMetadataArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4853,7 +5166,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithPath:nil];
 }
 
@@ -4871,6 +5184,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGetSharedLinksArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -4973,6 +5294,14 @@
   return [[DBSHARINGGetSharedLinksErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5008,6 +5337,7 @@
     return [[DBSHARINGGetSharedLinksError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGGetSharedLinksResult.h"
@@ -5045,6 +5375,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGetSharedLinksResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5145,6 +5483,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGGroupInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5248,6 +5594,14 @@
   return [[DBSHARINGMembershipInfoSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5340,6 +5694,14 @@
   return [[DBSHARINGGroupMembershipInfoSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5423,6 +5785,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGInsufficientQuotaAmountsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5529,6 +5899,14 @@
   return [[DBSHARINGInviteeInfoSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5562,6 +5940,7 @@
     return [[DBSHARINGInviteeInfo alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -5614,6 +5993,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGInviteeMembershipInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -5796,6 +6183,14 @@
   return [[DBSHARINGJobErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5848,6 +6243,7 @@
     return [[DBSHARINGJobError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -5942,6 +6338,14 @@
   return [[DBSHARINGJobStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5984,6 +6388,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGLinkAction.h"
@@ -6107,6 +6512,14 @@
   return [[DBSHARINGLinkActionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6154,6 +6567,7 @@
     return [[DBSHARINGLinkAction alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGLinkAudience.h"
@@ -6249,6 +6663,14 @@
   return [[DBSHARINGLinkAudienceSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6288,6 +6710,7 @@
     return [[DBSHARINGLinkAudience alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGLinkExpiry.h"
@@ -6380,6 +6803,14 @@
   return [[DBSHARINGLinkExpirySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6417,6 +6848,7 @@
     return [[DBSHARINGLinkExpiry alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGLinkPassword.h"
@@ -6509,6 +6941,14 @@
   return [[DBSHARINGLinkPasswordSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6546,6 +6986,7 @@
     return [[DBSHARINGLinkPassword alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGLinkAction.h"
@@ -6591,6 +7032,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGLinkPermissionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6670,6 +7119,14 @@
   return [[DBSHARINGLinkPermissionsSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6743,7 +7200,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithAudience:nil expiry:nil password:nil];
 }
 
@@ -6761,6 +7218,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGLinkSettingsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6845,6 +7310,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFileMembersArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -6934,6 +7407,14 @@
   return [[DBSHARINGListFileMembersBatchArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7002,6 +7483,14 @@
   return [[DBSHARINGListFileMembersBatchResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7060,6 +7549,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFileMembersContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7202,6 +7699,14 @@
   return [[DBSHARINGListFileMembersContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7247,6 +7752,7 @@
     return [[DBSHARINGListFileMembersContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGListFileMembersCountResult.h"
@@ -7284,6 +7790,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFileMembersCountResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7412,6 +7926,14 @@
   return [[DBSHARINGListFileMembersErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7453,6 +7975,7 @@
     return [[DBSHARINGListFileMembersError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGListFileMembersCountResult.h"
@@ -7559,6 +8082,14 @@
   return [[DBSHARINGListFileMembersIndividualResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7600,6 +8131,7 @@
     return [[DBSHARINGListFileMembersIndividualResult alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFileAction.h"
@@ -7625,7 +8157,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithLimit:nil actions:nil];
 }
 
@@ -7643,6 +8175,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFilesArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7712,6 +8252,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFilesContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7827,6 +8375,14 @@
   return [[DBSHARINGListFilesContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7864,6 +8420,7 @@
     return [[DBSHARINGListFilesContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGListFilesResult.h"
@@ -7906,6 +8463,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFilesResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -7964,7 +8529,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithActions:nil limit:nil];
 }
 
@@ -7982,6 +8547,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFolderMembersCursorArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8064,6 +8637,14 @@
   return [[DBSHARINGListFolderMembersArgsSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8133,6 +8714,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFolderMembersContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8249,6 +8838,14 @@
   return [[DBSHARINGListFolderMembersContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8288,6 +8885,7 @@
     return [[DBSHARINGListFolderMembersContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGFolderAction.h"
@@ -8313,7 +8911,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithLimit:nil actions:nil];
 }
 
@@ -8331,6 +8929,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFoldersArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8400,6 +9006,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFoldersContinueArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8489,6 +9103,14 @@
   return [[DBSHARINGListFoldersContinueErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8520,6 +9142,7 @@
     return [[DBSHARINGListFoldersContinueError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGListFoldersResult.h"
@@ -8562,6 +9185,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListFoldersResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8623,7 +9254,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithPath:nil cursor:nil directOnly:nil];
 }
 
@@ -8641,6 +9272,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListSharedLinksArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8766,6 +9405,14 @@
   return [[DBSHARINGListSharedLinksErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8803,6 +9450,7 @@
     return [[DBSHARINGListSharedLinksError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGListSharedLinksResult.h"
@@ -8848,6 +9496,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGListSharedLinksResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -8912,7 +9568,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithAccessLevel:nil warning:nil accessDetails:nil];
 }
 
@@ -8930,6 +9586,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGMemberAccessLevelResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9112,6 +9776,14 @@
   return [[DBSHARINGMemberActionSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9163,6 +9835,7 @@
     return [[DBSHARINGMemberAction alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberAction.h"
@@ -9208,6 +9881,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGMemberPermissionSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9318,6 +9999,14 @@
   return [[DBSHARINGMemberPolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9353,6 +10042,7 @@
     return [[DBSHARINGMemberPolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -9455,6 +10145,14 @@
   return [[DBSHARINGMemberSelectorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9494,6 +10192,7 @@
     return [[DBSHARINGMemberSelector alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGModifySharedLinkSettingsArgs.h"
@@ -9538,6 +10237,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGModifySharedLinkSettingsArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9703,6 +10410,14 @@
   return [[DBSHARINGModifySharedLinkSettingsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9754,6 +10469,7 @@
     return [[DBSHARINGModifySharedLinkSettingsError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMountFolderArg.h"
@@ -9790,6 +10506,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGMountFolderArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -9973,6 +10697,14 @@
   return [[DBSHARINGMountFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10032,6 +10764,7 @@
     return [[DBSHARINGMountFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberPermission.h"
@@ -10074,6 +10807,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGParentFolderAccessInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10153,6 +10894,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGPathLinkMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10252,6 +11001,14 @@
   return [[DBSHARINGPendingUploadModeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10288,6 +11045,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGPermissionDeniedReason.h"
@@ -10523,6 +11281,14 @@
   return [[DBSHARINGPermissionDeniedReasonSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10602,6 +11368,7 @@
     return [[DBSHARINGPermissionDeniedReason alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGRelinquishFileMembershipArg.h"
@@ -10638,6 +11405,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGRelinquishFileMembershipArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -10768,6 +11543,14 @@
   return [[DBSHARINGRelinquishFileMembershipErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10811,6 +11594,7 @@
     return [[DBSHARINGRelinquishFileMembershipError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGRelinquishFolderMembershipArg.h"
@@ -10852,6 +11636,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGRelinquishFolderMembershipArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11040,6 +11832,14 @@
   return [[DBSHARINGRelinquishFolderMembershipErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11099,6 +11899,7 @@
     return [[DBSHARINGRelinquishFolderMembershipError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -11137,6 +11938,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGRemoveFileMemberArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11291,6 +12100,14 @@
   return [[DBSHARINGRemoveFileMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11340,6 +12157,7 @@
     return [[DBSHARINGRemoveFileMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberSelector.h"
@@ -11381,6 +12199,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGRemoveFolderMemberArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -11571,6 +12397,14 @@
   return [[DBSHARINGRemoveFolderMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11630,6 +12464,7 @@
     return [[DBSHARINGRemoveFolderMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -11735,6 +12570,14 @@
   return [[DBSHARINGRemoveMemberJobStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11780,6 +12623,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -11861,6 +12705,14 @@
   return [[DBSHARINGRequestedVisibilitySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11901,6 +12753,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -12025,6 +12878,14 @@
   return [[DBSHARINGResolvedVisibilitySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12072,6 +12933,7 @@
     return [[DBSHARINGResolvedVisibility alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGRevokeSharedLinkArg.h"
@@ -12107,6 +12969,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGRevokeSharedLinkArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12239,6 +13109,14 @@
   return [[DBSHARINGRevokeSharedLinkErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12282,6 +13160,7 @@
     return [[DBSHARINGRevokeSharedLinkError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -12350,6 +13229,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGShareFolderArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -12544,6 +13431,14 @@
   return [[DBSHARINGShareFolderErrorBaseSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12589,6 +13484,7 @@
     return [[DBSHARINGShareFolderErrorBase alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGShareFolderError.h"
@@ -12725,6 +13621,14 @@
   return [[DBSHARINGShareFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12774,6 +13678,7 @@
     return [[DBSHARINGShareFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBASYNCPollResultBase.h"
@@ -12879,6 +13784,14 @@
   return [[DBSHARINGShareFolderJobStatusSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12923,6 +13836,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCLaunchResultBase.h"
@@ -13013,6 +13927,14 @@
   return [[DBSHARINGShareFolderLaunchSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13053,6 +13975,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBFILESPathRootError.h"
@@ -13325,6 +14248,14 @@
   return [[DBSHARINGSharePathErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13413,6 +14344,7 @@
     return [[DBSHARINGSharePathError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGLinkAudience.h"
@@ -13471,6 +14403,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedContentLinkMetadataBaseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -13587,6 +14527,14 @@
   return [[DBSHARINGSharedContentLinkMetadataSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13693,6 +14641,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedFileMembersSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -13826,6 +14782,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedFileMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14015,6 +14979,14 @@
   return [[DBSHARINGSharedFolderAccessErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14058,6 +15030,7 @@
     return [[DBSHARINGSharedFolderAccessError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGMemberAccessLevelResult.h"
@@ -14166,6 +15139,14 @@
   return [[DBSHARINGSharedFolderMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14209,6 +15190,7 @@
     return [[DBSHARINGSharedFolderMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGGroupMembershipInfo.h"
@@ -14262,6 +15244,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedFolderMembersSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14374,6 +15364,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedFolderMetadataBaseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14511,6 +15509,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedFolderMetadataSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -14714,6 +15720,14 @@
   return [[DBSHARINGSharedLinkAccessFailureReasonSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14761,6 +15775,7 @@
     return [[DBSHARINGSharedLinkAccessFailureReason alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGSharedLinkPolicy.h"
@@ -14856,6 +15871,14 @@
   return [[DBSHARINGSharedLinkPolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14895,6 +15918,7 @@
     return [[DBSHARINGSharedLinkPolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGRequestedVisibility.h"
@@ -14921,7 +15945,7 @@
   return self;
 }
 
-- (instancetype)init {
+- (instancetype)initDefault {
   return [self initWithRequestedVisibility:nil linkPassword:nil expires:nil];
 }
 
@@ -14939,6 +15963,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGSharedLinkSettingsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15045,6 +16077,14 @@
   return [[DBSHARINGSharedLinkSettingsErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15081,6 +16121,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBSHARINGSharingFileAccessError.h"
@@ -15204,6 +16245,14 @@
   return [[DBSHARINGSharingFileAccessErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15251,6 +16300,7 @@
     return [[DBSHARINGSharingFileAccessError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGSharingUserError.h"
@@ -15318,6 +16368,14 @@
   return [[DBSHARINGSharingUserErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15349,6 +16407,7 @@
     return [[DBSHARINGSharingUserError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGTeamMemberInfo.h"
@@ -15393,6 +16452,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGTeamMemberInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15459,6 +16526,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGTransferFolderArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15646,6 +16721,14 @@
   return [[DBSHARINGTransferFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15705,6 +16788,7 @@
     return [[DBSHARINGTransferFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGUnmountFolderArg.h"
@@ -15741,6 +16825,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUnmountFolderArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -15870,6 +16962,14 @@
   return [[DBSHARINGUnmountFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15913,6 +17013,7 @@
     return [[DBSHARINGUnmountFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGUnshareFileArg.h"
@@ -15949,6 +17050,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUnshareFileArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -16075,6 +17184,14 @@
   return [[DBSHARINGUnshareFileErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16116,6 +17233,7 @@
     return [[DBSHARINGUnshareFileError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGUnshareFolderArg.h"
@@ -16157,6 +17275,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUnshareFolderArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -16302,6 +17428,14 @@
   return [[DBSHARINGUnshareFolderErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16349,6 +17483,7 @@
     return [[DBSHARINGUnshareFolderError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAccessLevel.h"
@@ -16389,6 +17524,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUpdateFileMemberArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -16457,6 +17600,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUpdateFolderMemberArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -16645,6 +17796,14 @@
   return [[DBSHARINGUpdateFolderMemberErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16704,6 +17863,7 @@
     return [[DBSHARINGUpdateFolderMemberError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGAclUpdatePolicy.h"
@@ -16764,6 +17924,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUpdateFolderPolicyArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -16957,6 +18125,14 @@
   return [[DBSHARINGUpdateFolderPolicyErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -17008,6 +18184,7 @@
     return [[DBSHARINGUpdateFolderPolicyError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGUserInfo.h"
@@ -17052,6 +18229,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUserInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -17129,6 +18314,14 @@
 
 - (NSString *)description {
   return [[DBSHARINGUserMembershipInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -17256,6 +18449,14 @@
   return [[DBSHARINGViewerInfoPolicySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -17291,6 +18492,7 @@
     return [[DBSHARINGViewerInfoPolicy alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBSHARINGVisibility.h"
@@ -17414,6 +18616,14 @@
   return [[DBSHARINGVisibilitySerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -17461,4 +18671,5 @@
     return [[DBSHARINGVisibility alloc] initWithOther];
   }
 }
+
 @end

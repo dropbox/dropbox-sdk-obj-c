@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMTeamFolderRenameArg : DBTEAMTeamFolderIdArg <DBSerializable>
+@interface DBTEAMTeamFolderRenameArg : DBTEAMTeamFolderIdArg <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

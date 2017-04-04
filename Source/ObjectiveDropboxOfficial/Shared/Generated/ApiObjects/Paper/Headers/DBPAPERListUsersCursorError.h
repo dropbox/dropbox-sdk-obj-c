@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPAPERListUsersCursorError : NSObject <DBSerializable>
+@interface DBPAPERListUsersCursorError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -85,6 +85,8 @@ typedef NS_ENUM(NSInteger, DBPAPERListUsersCursorErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithCursorError:(DBPAPERPaperApiCursorError * _Nonnull)cursorError;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

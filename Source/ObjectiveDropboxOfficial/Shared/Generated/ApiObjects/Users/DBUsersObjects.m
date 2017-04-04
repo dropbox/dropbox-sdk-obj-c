@@ -66,6 +66,14 @@
   return [[DBUSERSAccountSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -184,6 +192,14 @@
   return [[DBUSERSAccountTypeSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -224,6 +240,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -291,6 +308,14 @@
 
 - (NSString *)description {
   return [[DBUSERSBasicAccountSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -429,6 +454,14 @@
   return [[DBUSERSFullAccountSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -531,6 +564,14 @@
   return [[DBUSERSTeamSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -592,6 +633,14 @@
 
 - (NSString *)description {
   return [[DBUSERSFullTeamSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -657,6 +706,14 @@
   return [[DBUSERSGetAccountArgSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -714,6 +771,14 @@
 
 - (NSString *)description {
   return [[DBUSERSGetAccountBatchArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -820,6 +885,14 @@
   return [[DBUSERSGetAccountBatchErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -853,6 +926,7 @@
     return [[DBUSERSGetAccountBatchError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -920,6 +994,14 @@
   return [[DBUSERSGetAccountErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -951,6 +1033,7 @@
     return [[DBUSERSGetAccountError alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -986,6 +1069,14 @@
 
 - (NSString *)description {
   return [[DBUSERSIndividualSpaceAllocationSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1051,6 +1142,14 @@
 
 - (NSString *)description {
   return [[DBUSERSNameSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1189,6 +1288,14 @@
   return [[DBUSERSSpaceAllocationSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1228,6 +1335,7 @@
     return [[DBUSERSSpaceAllocation alloc] initWithOther];
   }
 }
+
 @end
 
 #import "DBStoneSerializers.h"
@@ -1265,6 +1373,14 @@
 
 - (NSString *)description {
   return [[DBUSERSSpaceUsageSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -1325,6 +1441,14 @@
 
 - (NSString *)description {
   return [[DBUSERSTeamSpaceAllocationSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end

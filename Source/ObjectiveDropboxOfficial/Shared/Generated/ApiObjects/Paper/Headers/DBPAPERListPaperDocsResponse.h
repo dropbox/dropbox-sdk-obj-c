@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPAPERListPaperDocsResponse : NSObject <DBSerializable>
+@interface DBPAPERListPaperDocsResponse : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -60,6 +60,8 @@
 - (nonnull instancetype)initWithDocIds:(NSArray<NSString *> * _Nonnull)docIds
                                 cursor:(DBPAPERCursor * _Nonnull)cursor
                                hasMore:(NSNumber * _Nonnull)hasMore;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

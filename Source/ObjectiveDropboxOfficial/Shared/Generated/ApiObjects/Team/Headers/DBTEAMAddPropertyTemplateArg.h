@@ -23,7 +23,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMAddPropertyTemplateArg : DBPROPERTIESPropertyGroupTemplate <DBSerializable>
+@interface DBTEAMAddPropertyTemplateArg : DBPROPERTIESPropertyGroupTemplate <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

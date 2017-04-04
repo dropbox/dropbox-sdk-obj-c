@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESRemovePropertiesError : NSObject <DBSerializable>
+@interface DBFILESRemovePropertiesError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -110,6 +110,8 @@ typedef NS_ENUM(NSInteger, DBFILESRemovePropertiesErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithPropertyGroupLookup:(DBFILESLookUpPropertiesError * _Nonnull)propertyGroupLookup;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

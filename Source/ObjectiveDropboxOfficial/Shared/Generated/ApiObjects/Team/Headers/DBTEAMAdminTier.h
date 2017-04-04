@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMAdminTier : NSObject <DBSerializable>
+@interface DBTEAMAdminTier : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -86,6 +86,8 @@ typedef NS_ENUM(NSInteger, DBTEAMAdminTierTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithMemberOnly;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

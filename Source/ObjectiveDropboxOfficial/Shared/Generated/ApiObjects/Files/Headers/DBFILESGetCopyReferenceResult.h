@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESGetCopyReferenceResult : NSObject <DBSerializable>
+@interface DBFILESGetCopyReferenceResult : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -50,6 +50,8 @@
 - (nonnull instancetype)initWithMetadata:(DBFILESMetadata * _Nonnull)metadata
                           dCopyReference:(NSString * _Nonnull)dCopyReference
                                  expires:(NSDate * _Nonnull)expires;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

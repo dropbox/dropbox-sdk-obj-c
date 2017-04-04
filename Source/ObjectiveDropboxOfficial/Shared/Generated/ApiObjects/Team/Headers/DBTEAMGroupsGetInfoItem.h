@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMGroupsGetInfoItem : NSObject <DBSerializable>
+@interface DBTEAMGroupsGetInfoItem : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -79,6 +79,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupsGetInfoItemTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithGroupInfo:(DBTEAMGroupFullInfo * _Nonnull)groupInfo;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

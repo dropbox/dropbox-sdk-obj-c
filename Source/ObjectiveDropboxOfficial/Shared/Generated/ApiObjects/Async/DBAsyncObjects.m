@@ -68,6 +68,14 @@
   return [[DBASYNCLaunchResultBaseSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -102,6 +110,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCLaunchEmptyResult.h"
@@ -181,6 +190,14 @@
   return [[DBASYNCLaunchEmptyResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -219,6 +236,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCPollArg.h"
@@ -255,6 +273,14 @@
 
 - (NSString *)description {
   return [[DBASYNCPollArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
 }
 
 @end
@@ -330,6 +356,14 @@
   return [[DBASYNCPollResultBaseSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -362,6 +396,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCPollEmptyResult.h"
@@ -430,6 +465,14 @@
   return [[DBASYNCPollEmptyResultSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -466,6 +509,7 @@
                  userInfo:nil]);
   }
 }
+
 @end
 
 #import "DBASYNCPollError.h"
@@ -547,6 +591,14 @@
   return [[DBASYNCPollErrorSerializer serialize:self] description];
 }
 
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -582,4 +634,5 @@
     return [[DBASYNCPollError alloc] initWithOther];
   }
 }
+
 @end

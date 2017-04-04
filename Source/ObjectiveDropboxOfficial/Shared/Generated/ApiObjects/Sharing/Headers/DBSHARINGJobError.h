@@ -25,7 +25,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGJobError : NSObject <DBSerializable>
+@interface DBSHARINGJobError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -114,6 +114,8 @@ typedef NS_ENUM(NSInteger, DBSHARINGJobErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

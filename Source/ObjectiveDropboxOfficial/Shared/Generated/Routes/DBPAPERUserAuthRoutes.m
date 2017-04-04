@@ -133,7 +133,7 @@
 
 - (DBRpcTask *)docsList {
   DBRoute *route = DBPAPERRouteObjects.DBPAPERDocsList;
-  DBPAPERListPaperDocsArgs *arg = [[DBPAPERListPaperDocsArgs alloc] init];
+  DBPAPERListPaperDocsArgs *arg = [[DBPAPERListPaperDocsArgs alloc] initDefault];
   return [self.client requestRpc:route arg:arg];
 }
 

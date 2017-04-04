@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESUploadSessionFinishArg : NSObject <DBSerializable>
+@interface DBFILESUploadSessionFinishArg : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -43,6 +43,8 @@
 ///
 - (nonnull instancetype)initWithCursor:(DBFILESUploadSessionCursor * _Nonnull)cursor
                                 commit:(DBFILESCommitInfo * _Nonnull)commit;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

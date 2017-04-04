@@ -22,7 +22,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESCommitInfoWithProperties : DBFILESCommitInfo <DBSerializable>
+@interface DBFILESCommitInfoWithProperties : DBFILESCommitInfo <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 

@@ -19,7 +19,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMGroupMembersAddError : NSObject <DBSerializable>
+@interface DBTEAMGroupMembersAddError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -185,6 +185,8 @@ typedef NS_ENUM(NSInteger, DBTEAMGroupMembersAddErrorTag) {
 ///
 - (nonnull instancetype)initWithUserCannotBeManagerOfCompanyManagedGroup:
     (NSArray<NSString *> * _Nonnull)userCannotBeManagerOfCompanyManagedGroup;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

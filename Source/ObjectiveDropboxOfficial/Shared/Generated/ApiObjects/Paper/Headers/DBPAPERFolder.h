@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPAPERFolder : NSObject <DBSerializable>
+@interface DBPAPERFolder : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -42,6 +42,8 @@
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithId_:(NSString * _Nonnull)id_ name:(NSString * _Nonnull)name;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

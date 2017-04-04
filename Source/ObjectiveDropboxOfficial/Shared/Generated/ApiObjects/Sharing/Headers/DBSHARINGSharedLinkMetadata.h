@@ -24,7 +24,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGSharedLinkMetadata : NSObject <DBSerializable>
+@interface DBSHARINGSharedLinkMetadata : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -102,6 +102,8 @@
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url
                                name:(NSString * _Nonnull)name
                     linkPermissions:(DBSHARINGLinkPermissions * _Nonnull)linkPermissions;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

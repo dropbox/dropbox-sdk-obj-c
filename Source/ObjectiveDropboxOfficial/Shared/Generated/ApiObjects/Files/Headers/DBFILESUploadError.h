@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBFILESUploadError : NSObject <DBSerializable>
+@interface DBFILESUploadError : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -63,6 +63,8 @@ typedef NS_ENUM(NSInteger, DBFILESUploadErrorTag) {
 /// @return An initialized instance.
 ///
 - (nonnull instancetype)initWithOther;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
 

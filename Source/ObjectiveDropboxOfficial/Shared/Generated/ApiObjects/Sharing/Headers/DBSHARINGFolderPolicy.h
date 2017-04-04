@@ -25,7 +25,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBSHARINGFolderPolicy : NSObject <DBSerializable>
+@interface DBSHARINGFolderPolicy : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -89,6 +89,8 @@
 ///
 - (nonnull instancetype)initWithAclUpdatePolicy:(DBSHARINGAclUpdatePolicy * _Nonnull)aclUpdatePolicy
                                sharedLinkPolicy:(DBSHARINGSharedLinkPolicy * _Nonnull)sharedLinkPolicy;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

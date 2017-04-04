@@ -913,7 +913,7 @@
 
 - (DBUploadTask *)uploadSessionStartUrl:(NSURL *)inputUrl {
   DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionStart;
-  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] init];
+  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] initDefault];
   return [self.client requestUpload:route arg:arg inputUrl:inputUrl];
 }
 
@@ -925,7 +925,7 @@
 
 - (DBUploadTask *)uploadSessionStartData:(NSData *)inputData {
   DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionStart;
-  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] init];
+  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] initDefault];
   return [self.client requestUpload:route arg:arg inputData:inputData];
 }
 
@@ -937,7 +937,7 @@
 
 - (DBUploadTask *)uploadSessionStartStream:(NSInputStream *)inputStream {
   DBRoute *route = DBFILESRouteObjects.DBFILESUploadSessionStart;
-  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] init];
+  DBFILESUploadSessionStartArg *arg = [[DBFILESUploadSessionStartArg alloc] initDefault];
   return [self.client requestUpload:route arg:arg inputStream:inputStream];
 }
 

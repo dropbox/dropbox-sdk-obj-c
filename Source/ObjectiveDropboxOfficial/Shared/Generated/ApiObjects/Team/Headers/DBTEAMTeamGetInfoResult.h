@@ -20,7 +20,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBTEAMTeamGetInfoResult : NSObject <DBSerializable>
+@interface DBTEAMTeamGetInfoResult : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -59,6 +59,8 @@
                     numLicensedUsers:(NSNumber * _Nonnull)numLicensedUsers
                  numProvisionedUsers:(NSNumber * _Nonnull)numProvisionedUsers
                             policies:(DBTEAMPOLICIESTeamMemberPolicies * _Nonnull)policies;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

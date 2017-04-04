@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBPAPERUserInfoWithPermissionLevel : NSObject <DBSerializable>
+@interface DBPAPERUserInfoWithPermissionLevel : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -43,6 +43,8 @@
 ///
 - (nonnull instancetype)initWithUser:(DBSHARINGUserInfo * _Nonnull)user
                      permissionLevel:(DBPAPERPaperDocPermissionLevel * _Nonnull)permissionLevel;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 

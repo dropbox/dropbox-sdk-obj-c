@@ -21,7 +21,7 @@
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
 ///
-@interface DBUSERSName : NSObject <DBSerializable>
+@interface DBUSERSName : NSObject <DBSerializable, NSCopying>
 
 #pragma mark - Instance fields
 
@@ -65,6 +65,8 @@
                              familiarName:(NSString * _Nonnull)familiarName
                               displayName:(NSString * _Nonnull)displayName
                           abbreviatedName:(NSString * _Nonnull)abbreviatedName;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 @end
 
