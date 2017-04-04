@@ -6,11 +6,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBAUTHUserAuthRoutes;
-@class DBFILESUserAuthRoutes;
-@class DBPAPERUserAuthRoutes;
-@class DBSHARINGUserAuthRoutes;
-@class DBUSERSUserAuthRoutes;
+#import "DBAUTHUserAuthRoutes.h"
+#import "DBFILESUserAuthRoutes.h"
+#import "DBPAPERUserAuthRoutes.h"
+#import "DBRequestErrors.h"
+#import "DBSHARINGUserAuthRoutes.h"
+#import "DBTasks.h"
+#import "DBUSERSUserAuthRoutes.h"
 
 @protocol DBTransportClient;
 

@@ -56,7 +56,6 @@
                  errorName:(NSString * _Nullable)errorName
                     extras:(NSDictionary * _Nullable)extras;
 
-
 ///
 /// Parses the url from the official Dropbox app into a `DBOpenWithInfo` object.
 ///

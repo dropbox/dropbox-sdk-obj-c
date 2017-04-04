@@ -6,7 +6,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBAUTHAppAuthRoutes;
+#import "DBAUTHAppAuthRoutes.h"
+#import "DBRequestErrors.h"
+#import "DBTasks.h"
 
 @protocol DBTransportClient;
 

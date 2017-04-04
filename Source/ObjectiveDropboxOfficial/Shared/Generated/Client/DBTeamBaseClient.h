@@ -6,7 +6,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBTEAMTeamAuthRoutes;
+#import "DBRequestErrors.h"
+#import "DBTEAMTeamAuthRoutes.h"
+#import "DBTasks.h"
 
 @protocol DBTransportClient;
 
