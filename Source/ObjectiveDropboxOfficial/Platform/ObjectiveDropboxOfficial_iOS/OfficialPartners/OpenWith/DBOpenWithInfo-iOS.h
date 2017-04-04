@@ -13,34 +13,34 @@
 @interface DBOpenWithInfo : NSObject <NSCoding>
 
 /// The Dropbox user ID of the current user.
-@property (nonatomic, copy) NSString * _Nonnull userId;
+@property (nonatomic, copy, readonly) NSString * _Nonnull userId;
 
 /// The Dropbox revision for the file.
-@property (nonatomic, copy) NSString * _Nonnull rev;
+@property (nonatomic, copy, readonly) NSString * _Nonnull rev;
 
 /// The Dropbox path for the file.
-@property (nonatomic, copy) NSString * _Nonnull path;
+@property (nonatomic, copy, readonly) NSString * _Nonnull path;
 
 /// The time the file was modified last.
-@property (nonatomic, copy) NSDate * _Nullable modifiedTime;
+@property (nonatomic, copy, readonly) NSDate * _Nullable modifiedTime;
 
 /// Whether the file is read only or not.
-@property (nonatomic) BOOL readOnly;
+@property (nonatomic, readonly) BOOL readOnly;
 
 /// The Dropbox verb associated with the file.
-@property (nonatomic, copy) NSString * _Nonnull verb;
+@property (nonatomic, copy, readonly) NSString * _Nonnull verb;
 
 /// The Dropbox session ID associated with the file.
-@property (nonatomic, copy) NSString * _Nullable sessionId;
+@property (nonatomic, copy, readonly) NSString * _Nullable sessionId;
 
 /// The Dropbox file ID associated with the file.
-@property (nonatomic, copy) NSString * _Nullable fileId;
+@property (nonatomic, copy, readonly) NSString * _Nullable fileId;
 
 /// Relevant Dropbox file data associated with the file.
-@property (nonatomic, copy) NSData * _Nullable fileData;
+@property (nonatomic, copy, readonly) NSData * _Nullable fileData;
 
 /// The source application from which the file content originated.
-@property (nonatomic, copy) NSString * _Nullable sourceApp;
+@property (nonatomic, copy, readonly) NSString * _Nullable sourceApp;
 
 ///
 /// Initializer containing the parameters that we were opened with. Some of these parameters are necessary to return to

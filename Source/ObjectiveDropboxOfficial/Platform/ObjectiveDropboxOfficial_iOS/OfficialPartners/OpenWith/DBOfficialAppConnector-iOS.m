@@ -100,6 +100,17 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   return [self db_canOpenScheme:kDropboxScheme] || [self db_canOpenScheme:kDropboxEMMScheme];
 }
 
+- (id)getQueryItemValueFromName:(NSString *)name queryItems:(NSArray<NSURLQueryItem *> *)queryItems {
+  __block NSObject *result = nil;
+  [queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem *obj, NSUInteger idx, BOOL *stop) {
+    if ([obj.name isEqualToString:name]) {
+      result = obj.value;
+      *stop = YES;
+    }
+  }];
+  return result;
+};
+
 + (NSDateFormatter *)dateFormatter {
   NSMutableDictionary *dictionary = [[NSThread currentThread] threadDictionary];
   static NSString *dateFormatterKey = @"DBMetadataDateFormatter";
@@ -114,6 +125,40 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
     [dictionary setObject:dateFormatter forKey:dateFormatterKey];
   }
   return dateFormatter;
+}
+
+- (DBOpenWithInfo *)openWithInfoFromURL:(NSURL *)url {
+  DBOpenWithInfo *openWithInfo = nil;
+  if (url) {
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
+    NSArray<NSURLQueryItem *> *queryItems = urlComponents.queryItems;
+    if (queryItems) {
+      openWithInfo = [[DBOpenWithInfo alloc]
+          initWithUserId:[NSString
+                             stringWithFormat:@"%@", [self getQueryItemValueFromName:@"uid" queryItems:queryItems]]
+                     rev:[NSString
+                             stringWithFormat:@"%@", [self getQueryItemValueFromName:@"rev" queryItems:queryItems]]
+                    path:[NSString
+                             stringWithFormat:@"%@", [self getQueryItemValueFromName:@"path" queryItems:queryItems]]
+                             .lowercaseString
+            modifiedTime:[[self.class dateFormatter]
+                             dateFromString:[NSString
+                                                stringWithFormat:@"%@", [self getQueryItemValueFromName:@"modifiedTime"
+                                                                                             queryItems:queryItems]]]
+                readOnly:[[NSString stringWithFormat:@"%@", [self getQueryItemValueFromName:@"readOnly"
+                                                                                 queryItems:queryItems]] boolValue]
+                    verb:[NSString
+                             stringWithFormat:@"%@", [self getQueryItemValueFromName:@"verb" queryItems:queryItems]]
+               sessionId:[NSString stringWithFormat:@"%@",
+                                                    [self getQueryItemValueFromName:@"sessionId" queryItems:queryItems]]
+                  fileId:nil
+                fileData:nil
+               sourceApp:[NSString stringWithFormat:@"%@", [self getQueryItemValueFromName:@"sourceApp"
+                                                                                queryItems:queryItems]]];
+      NSAssert(openWithInfo, @"Error creating OpenWith info.");
+    }
+  }
+  return openWithInfo;
 }
 
 - (NSMutableDictionary *)db_dictForOfficialDropboxCallAtPath:(NSString *)path
@@ -196,7 +241,6 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   components.queryItems = queryItems;
 
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"URL open: %@", [components URL]);
     self->_openURLWrapper([components URL]);
   });
 }

@@ -56,6 +56,16 @@
                  errorName:(NSString * _Nullable)errorName
                     extras:(NSDictionary * _Nullable)extras;
 
+
+///
+/// Parses the url from the official Dropbox app into a `DBOpenWithInfo` object.
+///
+/// @param url The url from the official Dropbox app used to open the SDK.
+///
+/// @return Structured data parsed from the supplied url.
+///
+- (DBOpenWithInfo * _Nullable)openWithInfoFromURL:(NSURL * _Nonnull)url;
+
 ///
 /// Determines whether an official Dropbox app is installed.
 ///
