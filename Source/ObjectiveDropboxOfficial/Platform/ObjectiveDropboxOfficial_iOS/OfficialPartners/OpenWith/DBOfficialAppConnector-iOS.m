@@ -100,7 +100,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   return [self db_canOpenScheme:kDropboxScheme] || [self db_canOpenScheme:kDropboxEMMScheme];
 }
 
-- (id)getQueryItemValueFromName:(NSString *)name queryItems:(NSArray<NSURLQueryItem *> *)queryItems {
++ (id)getQueryItemValueFromName:(NSString *)name queryItems:(NSArray<NSURLQueryItem *> *)queryItems {
   __block NSObject *result = nil;
   [queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem *obj, NSUInteger idx, BOOL *stop) {
 #pragma unused(idx)
@@ -128,7 +128,7 @@ static NSString *kDBOpenURLAppDropboxEMM = @"DropboxEMM";
   return dateFormatter;
 }
 
-- (DBOpenWithInfo *)openWithInfoFromURL:(NSURL *)url {
++ (DBOpenWithInfo *)openWithInfoFromURL:(NSURL *)url {
   DBOpenWithInfo *openWithInfo = nil;
   if (url) {
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];

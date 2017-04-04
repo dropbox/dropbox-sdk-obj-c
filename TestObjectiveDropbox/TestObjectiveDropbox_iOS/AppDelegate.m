@@ -121,16 +121,7 @@
       [urlData setObject:unEscapedValue forKey:[kv objectAtIndex:0]];
     }
 
-    DBOpenWithInfo *openWithInfo = [[DBOpenWithInfo alloc] initWithUserId:urlData[@"uid"]
-                                                                      rev:urlData[@"rev"]
-                                                                     path:urlData[@"path"]
-                                                             modifiedTime:urlData[@"modifiedTime"]
-                                                                 readOnly:[urlData[@"readOnly"] boolValue]
-                                                                     verb:urlData[@"verb"]
-                                                                sessionId:urlData[@"sessionId"]
-                                                                   fileId:nil
-                                                                 fileData:nil
-                                                                sourceApp:urlData[@"sourceApp"]];
+    DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector openWithInfoFromURL:url];
     [mainController setOpenWithInfoNSURL:openWithInfo];
   }
   [mainController checkButtons];

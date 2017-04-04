@@ -63,7 +63,7 @@
 ///
 /// @return Structured data parsed from the supplied url.
 ///
-- (DBOpenWithInfo * _Nullable)openWithInfoFromURL:(NSURL * _Nonnull)url;
++ (DBOpenWithInfo * _Nullable)openWithInfoFromURL:(NSURL * _Nonnull)url;
 
 ///
 /// Determines whether an official Dropbox app is installed.
