@@ -559,7 +559,7 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
       } else {
         NSLog(@"%@\n%@\n", routeError, networkError);
       }
-    }] progress:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
+    }] setProgressBlock:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
   NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
 }];
 ```
@@ -637,7 +637,7 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
       } else {
         NSLog(@"%@\n%@\n", routeError, networkError);
       }
-    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
+    }] setProgressBlock:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
 }];
 ```
@@ -655,7 +655,7 @@ Here's an example for downloading straight to memory (`NSData`):
       } else {
         NSLog(@"%@\n%@\n", routeError, networkError);
       }
-    }] progress:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
+    }] setProgressBlock:^(int64_t bytesDownloaded, int64_t totalBytesDownloaded, int64_t totalBytesExpectedToDownload) {
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
 }];
 ```

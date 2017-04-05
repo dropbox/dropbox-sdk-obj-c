@@ -33,8 +33,8 @@
     sessionConfig.timeoutIntervalForRequest = 60.0;
 
     _session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:_delegate delegateQueue:_delegateQueue];
-    _forceBackgroundSession = transportConfig.forceForegroundSession ? YES : NO;
-    if (!_forceBackgroundSession) {
+    _forceForegroundSession = transportConfig.forceForegroundSession ? YES : NO;
+    if (!_forceForegroundSession) {
       NSString *backgroundId = [NSString stringWithFormat:@"%@.%@", kBackgroundSessionId, [NSUUID UUID].UUIDString];
       NSURLSessionConfiguration *backgroundSessionConfig =
           [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:backgroundId];
@@ -227,7 +227,7 @@
                                                 userAgent:self.userAgent
                                                asMemberId:asMemberId
                                             delegateQueue:_delegateQueue
-                                   forceForegroundSession:_forceBackgroundSession];
+                                   forceForegroundSession:_forceForegroundSession];
 }
 
 #pragma mark - Session accessors and mutators

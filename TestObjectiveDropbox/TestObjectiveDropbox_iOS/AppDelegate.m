@@ -41,8 +41,10 @@
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.fullDropboxAppKey
                                            appSecret:data.fullDropboxAppSecret
                                            userAgent:nil
+                                          asMemberId:nil
                                        delegateQueue:[NSOperationQueue new]
-                              forceForegroundSession:YES];
+                              forceForegroundSession:NO
+                           sharedContainerIdentifier:[NSBundle mainBundle].bundleIdentifier];
   DBTransportDefaultConfig *transportConfigTeamFileAccess =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberFileAccessAppKey appSecret:data.teamMemberFileAccessAppSecret];
   DBTransportDefaultConfig *transportConfigTeamManagement =

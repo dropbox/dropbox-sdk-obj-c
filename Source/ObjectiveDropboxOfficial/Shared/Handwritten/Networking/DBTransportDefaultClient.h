@@ -41,14 +41,14 @@
 /// appropriate for use cases where file upload / download operations will be quick, and immediate response is
 /// preferable. Otherwise, for background sessions, uploads/downloads will essentially never time out, if network
 /// connection is lost after the request has begun.
-@property (nonatomic, readonly) BOOL forceBackgroundSession;
+@property (nonatomic, readonly) BOOL forceForegroundSession;
 
 /// The foreground session used to make all foreground requests (RPC style requests, upload from `NSData` and
 /// `NSInputStream`, and download to `NSData`).
 @property (nonatomic, strong) NSURLSession * _Nonnull session;
 
 /// By default, the background session used to make all background requests (Upload and Download style requests, except
-/// for upload from `NSData` and `NSInputStream`, and download to `NSData`) unless `forceBackgroundSession` is set to
+/// for upload from `NSData` and `NSInputStream`, and download to `NSData`) unless `forceForegroundSession` is set to
 /// true, in which case, it is simply the same session as the foreground session.
 @property (nonatomic, strong) NSURLSession * _Nonnull secondarySession;
 
