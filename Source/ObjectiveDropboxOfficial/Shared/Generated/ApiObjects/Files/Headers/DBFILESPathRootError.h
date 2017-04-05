@@ -25,7 +25,7 @@
 
 /// The user's latest path root value. None if the user no longer has a path
 /// root.
-@property (nonatomic, readonly) NSString * _Nullable pathRoot;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathRoot;
 
 #pragma mark - Constructors
 

@@ -29,7 +29,7 @@
 
 /// If requestedVisibility is `password` in `DBSHARINGRequestedVisibility` this
 /// is needed to specify the password to access the link.
-@property (nonatomic, readonly) NSString * _Nullable linkPassword;
+@property (nonatomic, readonly, copy) NSString * _Nullable linkPassword;
 
 /// Expiration time of the shared link. By default the link won't expire.
 @property (nonatomic, readonly) NSDate * _Nullable expires;

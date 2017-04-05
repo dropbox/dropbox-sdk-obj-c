@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) NSArray<DBSHARINGMemberSelector *> * _Nonnull members;
 
 /// Message to send to added members in their invitation.
-@property (nonatomic, readonly) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
 
 /// Whether added members should be notified via device notifications of their
 /// invitation.

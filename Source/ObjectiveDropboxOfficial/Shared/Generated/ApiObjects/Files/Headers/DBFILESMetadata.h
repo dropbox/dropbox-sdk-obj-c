@@ -31,7 +31,7 @@
 
 /// The lowercased full path in the user's Dropbox. This always starts with a
 /// slash. This field will be null if the file or folder is not mounted.
-@property (nonatomic, readonly) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
 
 /// The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior
@@ -39,11 +39,11 @@
 /// component will have the correct casing. Changes to only the casing of paths
 /// won't be returned by `listFolderContinue`. This field will be null if the
 /// file or folder is not mounted.
-@property (nonatomic, readonly) NSString * _Nullable pathDisplay;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathDisplay;
 
 /// Deprecated. Please use `parentSharedFolderId` in `DBFILESFileSharingInfo` or
 /// `parentSharedFolderId` in `DBFILESFolderSharingInfo` instead.
-@property (nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 #pragma mark - Constructors
 

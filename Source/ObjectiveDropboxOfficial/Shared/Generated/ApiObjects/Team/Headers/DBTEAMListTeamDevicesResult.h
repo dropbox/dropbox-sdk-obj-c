@@ -33,7 +33,7 @@
 
 /// Pass the cursor into `devicesListTeamDevices` to receive the next sub list
 /// of team's devices.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

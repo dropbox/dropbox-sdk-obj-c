@@ -34,10 +34,10 @@
 /// External ID that a team can attach to the user. An application using the API
 /// may find it easier to use their own IDs instead of Dropbox IDs like
 /// account_id or team_member_id.
-@property (nonatomic, readonly) NSString * _Nullable externalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable externalId;
 
 /// A user's account identifier.
-@property (nonatomic, readonly) NSString * _Nullable accountId;
+@property (nonatomic, readonly, copy) NSString * _Nullable accountId;
 
 /// Email address of user.
 @property (nonatomic, readonly, copy) NSString * _Nonnull email;
@@ -60,7 +60,7 @@
 
 /// Persistent ID that a team can attach to the user. The persistent ID is
 /// unique ID to be used for SAML authentication.
-@property (nonatomic, readonly) NSString * _Nullable persistentId;
+@property (nonatomic, readonly, copy) NSString * _Nullable persistentId;
 
 #pragma mark - Constructors
 

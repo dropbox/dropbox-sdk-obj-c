@@ -35,7 +35,7 @@
 /// yet. Pass the cursor into the corresponding continue endpoint (either
 /// `listFoldersContinue` or `listMountableFoldersContinue`) to list additional
 /// folders.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

@@ -27,7 +27,7 @@
 /// passed. Then, if the result of the call includes a cursor, the following
 /// requests should include the received cursors in order to receive the next
 /// sub list of team devices
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// Whether to list web sessions of the team members
 @property (nonatomic, readonly) NSNumber * _Nonnull includeWebSessions;

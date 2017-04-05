@@ -32,10 +32,10 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull appName;
 
 /// The application publisher name
-@property (nonatomic, readonly) NSString * _Nullable publisher;
+@property (nonatomic, readonly, copy) NSString * _Nullable publisher;
 
 /// The publisher's URL
-@property (nonatomic, readonly) NSString * _Nullable publisherUrl;
+@property (nonatomic, readonly, copy) NSString * _Nullable publisherUrl;
 
 /// The time this application was linked
 @property (nonatomic, readonly) NSDate * _Nullable linked;

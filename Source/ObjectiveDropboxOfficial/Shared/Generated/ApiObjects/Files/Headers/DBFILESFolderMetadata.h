@@ -30,7 +30,7 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull id_;
 
 /// Deprecated. Please use sharingInfo instead.
-@property (nonatomic, readonly) NSString * _Nullable sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable sharedFolderId;
 
 /// Set if the folder is contained in a shared folder or is a shared folder
 /// mount point.

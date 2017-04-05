@@ -32,20 +32,20 @@
 @property (nonatomic, readonly) DBTEAMUserSelectorArg * _Nonnull user;
 
 /// New email for member.
-@property (nonatomic, readonly) NSString * _Nullable dNewEmail;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewEmail;
 
 /// New external ID for member.
-@property (nonatomic, readonly) NSString * _Nullable dNewExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewExternalId;
 
 /// New given name for member.
-@property (nonatomic, readonly) NSString * _Nullable dNewGivenName;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGivenName;
 
 /// New surname for member.
-@property (nonatomic, readonly) NSString * _Nullable dNewSurname;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewSurname;
 
 /// New persistent ID. This field only available to teams using persistent ID
 /// SAML configuration.
-@property (nonatomic, readonly) NSString * _Nullable dNewPersistentId;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewPersistentId;
 
 #pragma mark - Constructors
 

@@ -35,7 +35,7 @@
 @property (nonatomic, readonly) NSArray<DBSHARINGMemberPermission *> * _Nullable permissions;
 
 /// Suggested name initials for a member.
-@property (nonatomic, readonly) NSString * _Nullable initials;
+@property (nonatomic, readonly, copy) NSString * _Nullable initials;
 
 /// True if the member has access from a parent folder.
 @property (nonatomic, readonly) NSNumber * _Nonnull isInherited;

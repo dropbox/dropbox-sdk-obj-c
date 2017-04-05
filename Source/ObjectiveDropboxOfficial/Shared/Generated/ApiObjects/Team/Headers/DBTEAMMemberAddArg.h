@@ -34,11 +34,11 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull memberSurname;
 
 /// External ID for member.
-@property (nonatomic, readonly) NSString * _Nullable memberExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable memberExternalId;
 
 /// Persistent ID for member. This field is only available to teams using
 /// persistent ID SAML configuration.
-@property (nonatomic, readonly) NSString * _Nullable memberPersistentId;
+@property (nonatomic, readonly, copy) NSString * _Nullable memberPersistentId;
 
 /// Whether to send a welcome email to the member. If send_welcome_email is
 /// false, no email invitation will be sent to the user. This may be useful for

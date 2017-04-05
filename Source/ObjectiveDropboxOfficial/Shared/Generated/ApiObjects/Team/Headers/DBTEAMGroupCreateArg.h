@@ -28,7 +28,7 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull groupName;
 
 /// The creator of a team can associate an arbitrary external ID to the group.
-@property (nonatomic, readonly) NSString * _Nullable groupExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable groupExternalId;
 
 /// Whether the team can be managed by selected users, or only by team admins.
 @property (nonatomic, readonly) DBTEAMCOMMONGroupManagementType * _Nullable groupManagementType;

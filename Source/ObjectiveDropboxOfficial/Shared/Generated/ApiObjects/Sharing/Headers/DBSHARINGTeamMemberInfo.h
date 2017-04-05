@@ -34,7 +34,7 @@
 
 /// ID of user as a member of a team. This field will only be present if the
 /// member is in the same team as current user.
-@property (nonatomic, readonly) NSString * _Nullable memberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable memberId;
 
 #pragma mark - Constructors
 

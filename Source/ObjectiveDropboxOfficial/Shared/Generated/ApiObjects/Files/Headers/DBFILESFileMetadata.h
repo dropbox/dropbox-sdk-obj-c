@@ -68,7 +68,7 @@
 /// A hash of the file content. This field can be used to verify data integrity.
 /// For more information see our Content hash /developers/reference/content-hash
 /// page.
-@property (nonatomic, readonly) NSString * _Nullable contentHash;
+@property (nonatomic, readonly, copy) NSString * _Nullable contentHash;
 
 #pragma mark - Constructors
 

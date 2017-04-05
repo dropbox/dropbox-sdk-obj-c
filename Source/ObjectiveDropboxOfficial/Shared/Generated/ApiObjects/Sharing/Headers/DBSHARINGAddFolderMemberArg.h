@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) NSNumber * _Nonnull quiet;
 
 /// Optional message to display to added members in their invitation.
-@property (nonatomic, readonly) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
 
 #pragma mark - Constructors
 

@@ -30,12 +30,12 @@
 @property (nonatomic, readonly) DBTEAMGroupSelector * _Nonnull group;
 
 /// Optional argument. Set group name to this if provided.
-@property (nonatomic, readonly) NSString * _Nullable dNewGroupName;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGroupName;
 
 /// Optional argument. New group external ID. If the argument is None, the
 /// group's external_id won't be updated. If the argument is empty string, the
 /// group's external id will be cleared.
-@property (nonatomic, readonly) NSString * _Nullable dNewGroupExternalId;
+@property (nonatomic, readonly, copy) NSString * _Nullable dNewGroupExternalId;
 
 /// Set new group management type, if provided.
 @property (nonatomic, readonly) DBTEAMCOMMONGroupManagementType * _Nullable dNewGroupManagementType;

@@ -42,11 +42,11 @@
 
 /// The ID of the parent shared folder. This field is present only if the folder
 /// is contained within another shared folder.
-@property (nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// The lower-cased full path of this shared folder. Absent for unmounted
 /// folders.
-@property (nonatomic, readonly) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
 
 #pragma mark - Constructors
 

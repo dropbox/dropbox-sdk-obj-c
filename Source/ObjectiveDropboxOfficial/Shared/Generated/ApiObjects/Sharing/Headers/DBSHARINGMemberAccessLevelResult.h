@@ -34,7 +34,7 @@
 
 /// A localized string with additional information about why the user has this
 /// access level to the content.
-@property (nonatomic, readonly) NSString * _Nullable warning;
+@property (nonatomic, readonly, copy) NSString * _Nullable warning;
 
 /// The parent folders that a member has access to. The field is present if the
 /// user has access to the first parent folder where the member gains access.

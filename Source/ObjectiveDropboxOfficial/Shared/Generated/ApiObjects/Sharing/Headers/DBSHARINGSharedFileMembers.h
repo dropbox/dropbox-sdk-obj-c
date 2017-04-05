@@ -43,7 +43,7 @@
 /// Present if there are additional shared file members that have not been
 /// returned yet. Pass the cursor into `listFileMembersContinue` to list
 /// additional members.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

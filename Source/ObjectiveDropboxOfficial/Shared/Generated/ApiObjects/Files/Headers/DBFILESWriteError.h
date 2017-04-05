@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, DBFILESWriteErrorTag) {
 
 /// (no description). @note Ensure the `isMalformedPath` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
 
 /// Couldn't write to the target path because there was something in the way.
 /// @note Ensure the `isConflict` method returns true before accessing,

@@ -34,7 +34,7 @@
 
 /// The team member ID of the shared folder member. Only present if sameTeam is
 /// true.
-@property (nonatomic, readonly) NSString * _Nullable teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
 
 #pragma mark - Constructors
 

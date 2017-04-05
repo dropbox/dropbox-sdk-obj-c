@@ -42,7 +42,7 @@
 @property (nonatomic, readonly) NSNumber * _Nonnull emailVerified;
 
 /// URL for the photo representing the user, if one is set.
-@property (nonatomic, readonly) NSString * _Nullable profilePhotoUrl;
+@property (nonatomic, readonly, copy) NSString * _Nullable profilePhotoUrl;
 
 /// Whether the user has been disabled.
 @property (nonatomic, readonly) NSNumber * _Nonnull disabled;

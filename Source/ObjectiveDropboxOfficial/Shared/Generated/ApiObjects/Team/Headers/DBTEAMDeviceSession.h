@@ -27,10 +27,10 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 
 /// The IP address of the last activity from this session
-@property (nonatomic, readonly) NSString * _Nullable ipAddress;
+@property (nonatomic, readonly, copy) NSString * _Nullable ipAddress;
 
 /// The country from which the last activity from this session was made
-@property (nonatomic, readonly) NSString * _Nullable country;
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
 
 /// The time this session was created
 @property (nonatomic, readonly) NSDate * _Nullable created;

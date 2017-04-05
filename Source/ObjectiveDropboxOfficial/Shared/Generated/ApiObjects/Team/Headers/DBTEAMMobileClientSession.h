@@ -34,13 +34,13 @@
 @property (nonatomic, readonly) DBTEAMMobileClientPlatform * _Nonnull clientType;
 
 /// The dropbox client version
-@property (nonatomic, readonly) NSString * _Nullable clientVersion;
+@property (nonatomic, readonly, copy) NSString * _Nullable clientVersion;
 
 /// The hosting OS version
-@property (nonatomic, readonly) NSString * _Nullable osVersion;
+@property (nonatomic, readonly, copy) NSString * _Nullable osVersion;
 
 /// last carrier used by the device
-@property (nonatomic, readonly) NSString * _Nullable lastCarrier;
+@property (nonatomic, readonly, copy) NSString * _Nullable lastCarrier;
 
 #pragma mark - Constructors
 

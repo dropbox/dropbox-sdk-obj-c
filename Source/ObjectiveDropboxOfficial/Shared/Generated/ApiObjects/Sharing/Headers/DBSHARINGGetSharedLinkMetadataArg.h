@@ -29,10 +29,10 @@
 /// If the shared link is to a folder, this parameter can be used to retrieve
 /// the metadata for a specific file or sub-folder in this folder. A relative
 /// path should be used.
-@property (nonatomic, readonly) NSString * _Nullable path;
+@property (nonatomic, readonly, copy) NSString * _Nullable path;
 
 /// If the shared link has a password, this parameter can be used.
-@property (nonatomic, readonly) NSString * _Nullable linkPassword;
+@property (nonatomic, readonly, copy) NSString * _Nullable linkPassword;
 
 #pragma mark - Constructors
 

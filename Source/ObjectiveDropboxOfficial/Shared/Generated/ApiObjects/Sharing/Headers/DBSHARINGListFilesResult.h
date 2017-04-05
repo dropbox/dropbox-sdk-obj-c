@@ -30,7 +30,7 @@
 @property (nonatomic, readonly) NSArray<DBSHARINGSharedFileMetadata *> * _Nonnull entries;
 
 /// Cursor used to obtain additional shared files.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

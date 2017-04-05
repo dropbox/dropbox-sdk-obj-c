@@ -27,7 +27,7 @@
 @property (nonatomic, readonly, copy) NSString * _Nonnull path;
 
 /// Deprecated. Please specify revision in path instead.
-@property (nonatomic, readonly) NSString * _Nullable rev;
+@property (nonatomic, readonly, copy) NSString * _Nullable rev;
 
 #pragma mark - Constructors
 

@@ -47,18 +47,18 @@
 
 /// The ID of the parent shared folder. This field is present only if the file
 /// is contained within a shared folder.
-@property (nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// URL for displaying a web preview of the shared file.
 @property (nonatomic, readonly, copy) NSString * _Nonnull previewUrl;
 
 /// The lower-case full path of this file. Absent for unmounted files.
-@property (nonatomic, readonly) NSString * _Nullable pathLower;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathLower;
 
 /// The cased path to be used for display purposes only. In rare instances the
 /// casing will not correctly match the user's filesystem, but this behavior
 /// will match the path provided in the Core API v1. Absent for unmounted files.
-@property (nonatomic, readonly) NSString * _Nullable pathDisplay;
+@property (nonatomic, readonly, copy) NSString * _Nullable pathDisplay;
 
 /// The name of this file.
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;

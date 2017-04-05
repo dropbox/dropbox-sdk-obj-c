@@ -31,7 +31,7 @@
 
 /// The user's two-letter country code, if available. Country codes are based on
 /// ISO 3166-1 http://en.wikipedia.org/wiki/ISO_3166-1.
-@property (nonatomic, readonly) NSString * _Nullable country;
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
 
 /// The language that the user specified. Locale tags will be IETF language tags
 /// http://en.wikipedia.org/wiki/IETF_language_tag.
@@ -45,7 +45,7 @@
 
 /// This account's unique team member id. This field will only be present if
 /// team is present.
-@property (nonatomic, readonly) NSString * _Nullable teamMemberId;
+@property (nonatomic, readonly, copy) NSString * _Nullable teamMemberId;
 
 /// Whether the user has a personal and work account. If the current account is
 /// personal, then team will always be null, but isPaired will indicate if a

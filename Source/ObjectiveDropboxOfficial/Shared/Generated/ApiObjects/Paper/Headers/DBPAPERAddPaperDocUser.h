@@ -30,7 +30,7 @@
 @property (nonatomic, readonly) NSArray<DBPAPERAddMember *> * _Nonnull members;
 
 /// A personal message that will be emailed to each successfully added member.
-@property (nonatomic, readonly) NSString * _Nullable customMessage;
+@property (nonatomic, readonly, copy) NSString * _Nullable customMessage;
 
 /// Clients should set this to true if no email shall be sent to added users.
 @property (nonatomic, readonly) NSNumber * _Nonnull quiet;

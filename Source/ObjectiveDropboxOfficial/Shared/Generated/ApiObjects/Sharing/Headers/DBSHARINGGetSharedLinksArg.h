@@ -24,7 +24,7 @@
 #pragma mark - Instance fields
 
 /// See `getSharedLinks` description.
-@property (nonatomic, readonly) NSString * _Nullable path;
+@property (nonatomic, readonly, copy) NSString * _Nullable path;
 
 #pragma mark - Constructors
 

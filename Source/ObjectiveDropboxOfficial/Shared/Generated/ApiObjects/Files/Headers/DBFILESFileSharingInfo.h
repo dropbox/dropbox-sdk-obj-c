@@ -31,7 +31,7 @@
 
 /// The last user who modified the file. This field will be null if the user's
 /// account has been deleted.
-@property (nonatomic, readonly) NSString * _Nullable modifiedBy;
+@property (nonatomic, readonly, copy) NSString * _Nullable modifiedBy;
 
 #pragma mark - Constructors
 

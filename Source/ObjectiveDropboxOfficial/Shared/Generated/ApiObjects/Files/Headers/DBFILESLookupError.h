@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, DBFILESLookupErrorTag) {
 
 /// (no description). @note Ensure the `isMalformedPath` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) NSString * _Nullable malformedPath;
+@property (nonatomic, readonly, copy) NSString * _Nullable malformedPath;
 
 /// The path root parameter provided is invalid. @note Ensure the
 /// `isInvalidPathRoot` method returns true before accessing, otherwise a

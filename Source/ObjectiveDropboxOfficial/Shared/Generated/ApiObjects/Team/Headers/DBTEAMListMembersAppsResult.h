@@ -35,7 +35,7 @@
 
 /// Pass the cursor into `linkedAppsListMembersLinkedApps` to receive the next
 /// sub list of team's applications.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

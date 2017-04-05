@@ -24,10 +24,10 @@
 #pragma mark - Instance fields
 
 /// See `listSharedLinks` description.
-@property (nonatomic, readonly) NSString * _Nullable path;
+@property (nonatomic, readonly, copy) NSString * _Nullable path;
 
 /// The cursor returned by your last call to `listSharedLinks`.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 /// See `listSharedLinks` description.
 @property (nonatomic, readonly) NSNumber * _Nullable directOnly;

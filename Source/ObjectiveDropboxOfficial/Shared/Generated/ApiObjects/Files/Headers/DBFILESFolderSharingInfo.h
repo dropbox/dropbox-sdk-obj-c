@@ -28,11 +28,11 @@
 #pragma mark - Instance fields
 
 /// Set if the folder is contained by a shared folder.
-@property (nonatomic, readonly) NSString * _Nullable parentSharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable parentSharedFolderId;
 
 /// If this folder is a shared folder mount point, the ID of the shared folder
 /// mounted at this location.
-@property (nonatomic, readonly) NSString * _Nullable sharedFolderId;
+@property (nonatomic, readonly, copy) NSString * _Nullable sharedFolderId;
 
 /// Specifies that the folder can only be traversed and the user can only see a
 /// limited subset of the contents of this folder because they don't have read

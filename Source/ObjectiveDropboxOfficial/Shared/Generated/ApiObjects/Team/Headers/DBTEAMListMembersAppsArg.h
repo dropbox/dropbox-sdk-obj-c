@@ -29,7 +29,7 @@
 /// shouldn't be passed. Then, if the result of the call includes a cursor, the
 /// following requests should include the received cursors in order to receive
 /// the next sub list of the team applications
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

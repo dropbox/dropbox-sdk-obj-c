@@ -33,7 +33,7 @@
 
 /// Pass the cursor into `listSharedLinks` to obtain the additional links.
 /// Cursor is returned only if no path is given.
-@property (nonatomic, readonly) NSString * _Nullable cursor;
+@property (nonatomic, readonly, copy) NSString * _Nullable cursor;
 
 #pragma mark - Constructors
 

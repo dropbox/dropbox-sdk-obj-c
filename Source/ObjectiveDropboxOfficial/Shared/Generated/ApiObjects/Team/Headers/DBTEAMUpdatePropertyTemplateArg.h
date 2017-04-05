@@ -29,11 +29,11 @@
 
 /// A display name for the property template. Property template names can be up
 /// to 256 bytes.
-@property (nonatomic, readonly) NSString * _Nullable name;
+@property (nonatomic, readonly, copy) NSString * _Nullable name;
 
 /// Description for new property template. Property template descriptions can be
 /// up to 1024 bytes.
-@property (nonatomic, readonly) NSString * _Nullable description_;
+@property (nonatomic, readonly, copy) NSString * _Nullable description_;
 
 /// This is a list of custom properties to add to the property template. There
 /// can be up to 64 properties in a single property template.
