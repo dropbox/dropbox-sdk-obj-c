@@ -106,8 +106,21 @@ $ gem install cocoapods
 
 Then navigate to the directory that contains your project and create a new file called `Podfile`. You can do this either with `pod init`, or open an existing Podfile, and then add `pod 'ObjectiveDropboxOfficial'` to the main loop. Your Podfile should look something like this:
 
+##### iOS
+
 ```ruby
 platform :ios, '8.0'
+use_frameworks!
+
+target '<YOUR_PROJECT_NAME>' do
+    pod 'ObjectiveDropboxOfficial'
+end
+```
+
+##### macOS
+
+```ruby
+platform :osx, '10.10'
 use_frameworks!
 
 target '<YOUR_PROJECT_NAME>' do
