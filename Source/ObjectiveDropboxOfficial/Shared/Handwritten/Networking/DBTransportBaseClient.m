@@ -296,6 +296,10 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 }
 
 + (id)routeResultWithRoute:(DBRoute *)route data:(NSData *)data serializationError:(NSError **)serializationError {
+  if (!data) {
+    return nil;
+  }
+
   if (!route.resultType) {
     return nil;
   }
