@@ -582,7 +582,7 @@ Here's an example of an advanced upload case for "batch" uploading a large numbe
 ```objective-c
 NSMutableDictionary<NSURL *, DBFILESCommitInfo *> *uploadFilesUrlsToCommitInfo = [NSMutableDictionary new];
 DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/output/path/in/Dropbox"];
-[uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:[NSURL URLWithString:@"/local/path/to/my/file"]];
+[uploadFilesUrlsToCommitInfo setObject:commitInfo forKey:[NSURL fileURLWithPath:@"/local/path/to/my/file"]];
 
 [client.filesRoutes batchUploadFiles:uploadFilesUrlsToCommitInfo
     queue:nil
@@ -619,7 +619,7 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
       } else if (finishBatchRequestError) {
         NSLog(@"Request error from calling `/upload_session/finish_batch/check`");
         NSLog(@"%@", finishBatchRequestError);
-      } else if (else if ([fileUrlsToRequestErrors count] > 0) {) {
+      } else if ([fileUrlsToRequestErrors count] > 0) {
         NSLog(@"Other additional errors (e.g. file doesn't exist client-side, etc.).");
         NSLog(@"%@", fileUrlsToRequestErrors);
       }
