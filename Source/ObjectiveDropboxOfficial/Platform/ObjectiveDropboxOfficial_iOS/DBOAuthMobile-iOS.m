@@ -188,7 +188,8 @@
   }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration {
   [_webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 }
 

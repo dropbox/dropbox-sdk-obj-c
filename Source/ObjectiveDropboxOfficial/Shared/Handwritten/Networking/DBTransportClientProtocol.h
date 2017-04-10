@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return A `DBUploadTask` where response and progress handlers can be added, and the request can be halted or
 /// cancelled.
 ///
-- (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable> _Nullable)arg inputUrl:(NSURL *)input;
+- (DBUploadTask *)requestUpload:(DBRoute *)route arg:(id<DBSerializable> _Nullable)arg inputUrl:(NSString *)input;
 
 #pragma mark - Upload-style request (NSData)
 

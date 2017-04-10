@@ -134,14 +134,14 @@ includeHasExplicitSharedMembers:(NSNumber * _Nullable)includeHasExplicitSharedMe
 /// alpha and is slightly different from `upload`. Do not use this to upload a file larger than 150 MB. Instead, create
 /// an upload session with `uploadSessionStart`.
 ///
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadErrorWithProperties` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadErrorWithProperties *> * _Nonnull)
 alphaUploadUrl:(NSString * _Nonnull)path
-      inputUrl:(NSURL * _Nonnull)inputUrl;
+      inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -149,7 +149,7 @@ alphaUploadUrl:(NSString * _Nonnull)path
 /// an upload session with `uploadSessionStart`.
 ///
 /// @param propertyGroups List of custom properties to add to file.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadErrorWithProperties` object on failure.
@@ -161,7 +161,7 @@ alphaUploadUrl:(NSString * _Nonnull)path
 clientModified:(NSDate * _Nullable)clientModified
           mute:(NSNumber * _Nullable)mute
 propertyGroups:(NSArray<DBPROPERTIESPropertyGroup *> * _Nullable)propertyGroups
-      inputUrl:(NSURL * _Nonnull)inputUrl;
+      inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API
@@ -1281,13 +1281,13 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// Instead, create an upload session with `uploadSessionStart`.
 ///
 /// @param path Path in the user's Dropbox to save the file.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadError` object on failure.
 ///
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadError *> * _Nonnull)uploadUrl:(NSString * _Nonnull)path
-                                                                        inputUrl:(NSURL * _Nonnull)inputUrl;
+                                                                        inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -1302,7 +1302,7 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// desktop clients, mobile clients, and API apps of when the file was actually created or modified.
 /// @param mute Normally, users are made aware of any file modifications in their Dropbox account via notifications in
 /// the client software. If true, this tells the clients that this modification shouldn't result in a user notification.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadError` object on failure.
@@ -1312,7 +1312,7 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
                                                                       autorename:(NSNumber * _Nullable)autorename
                                                                   clientModified:(NSDate * _Nullable)clientModified
                                                                             mute:(NSNumber * _Nullable)mute
-                                                                        inputUrl:(NSURL * _Nonnull)inputUrl;
+                                                                        inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB.
@@ -1399,7 +1399,7 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 /// @param sessionId The upload session ID (returned by `uploadSessionStart`).
 /// @param offset The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or
 /// duplicated in the event of a network error.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILESUploadSessionLookupError` object on failure.
@@ -1407,7 +1407,7 @@ updatePropertyGroups:(NSArray<DBFILESPropertyGroupUpdate *> * _Nonnull)updatePro
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendUrl:(NSString * _Nonnull)sessionId
                 offset:(NSNumber * _Nonnull)offset
-              inputUrl:(NSURL * _Nonnull)inputUrl
+              inputUrl:(NSString * _Nonnull)inputUrl
     __deprecated_msg("upload_session/append is deprecated. Use upload_session/append_v2.");
 
 ///
@@ -1451,14 +1451,14 @@ uploadSessionAppendStream:(NSString * _Nonnull)sessionId
 /// request should not upload more than 150 MB of file contents.
 ///
 /// @param cursor Contains the upload session ID and the offset.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILESUploadSessionLookupError` object on failure.
 ///
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
-                inputUrl:(NSURL * _Nonnull)inputUrl;
+                inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -1467,7 +1467,7 @@ uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// @param cursor Contains the upload session ID and the offset.
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppendV2` anymore with the current session.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBFILESUploadSessionLookupError` object on failure.
@@ -1475,7 +1475,7 @@ uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
 - (DBUploadTask<DBNilObject *, DBFILESUploadSessionLookupError *> * _Nonnull)
 uploadSessionAppendV2Url:(DBFILESUploadSessionCursor * _Nonnull)cursor
                    close:(NSNumber * _Nullable)close
-                inputUrl:(NSURL * _Nonnull)inputUrl;
+                inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Append more data to an upload session. When the parameter close is set, this call will close the session. A single
@@ -1545,7 +1545,7 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
 /// `DBFILESUploadSessionFinishError` object on failure.
@@ -1553,7 +1553,7 @@ uploadSessionAppendV2Stream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 - (DBUploadTask<DBFILESFileMetadata *, DBFILESUploadSessionFinishError *> * _Nonnull)
 uploadSessionFinishUrl:(DBFILESUploadSessionCursor * _Nonnull)cursor
                 commit:(DBFILESCommitInfo * _Nonnull)commit
-              inputUrl:(NSURL * _Nonnull)inputUrl;
+              inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload more
@@ -1625,13 +1625,13 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 /// `uploadSessionAppendV2` to add more data and `uploadSessionFinish` to save all the data to a file in Dropbox. A
 /// single request should not upload more than 150 MB of file contents.
 ///
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
 /// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)uploadSessionStartUrl:
-    (NSURL * _Nonnull)inputUrl;
+    (NSString * _Nonnull)inputUrl;
 
 ///
 /// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is
@@ -1641,14 +1641,14 @@ uploadSessionFinishStream:(DBFILESUploadSessionCursor * _Nonnull)cursor
 ///
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppendV2` anymore with the current session.
-/// @param inputUrl The file to upload, as an NSURL * object.
+/// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
 /// or a `void` object on failure.
 ///
 - (DBUploadTask<DBFILESUploadSessionStartResult *, DBNilObject *> * _Nonnull)
 uploadSessionStartUrl:(NSNumber * _Nullable)close
-             inputUrl:(NSURL * _Nonnull)inputUrl;
+             inputUrl:(NSString * _Nonnull)inputUrl;
 
 ///
 /// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is

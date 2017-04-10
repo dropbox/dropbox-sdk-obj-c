@@ -153,7 +153,7 @@ def _get_client_args():
 
     client_args = {
         'upload': [
-            ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSURL * _Nonnull', input_doc.format('NSURL *')), ], ]),
+            ('upload', ['Url', [('inputUrl', 'inputUrl', 'NSString * _Nonnull', input_doc.format('NSString *')), ], ]),
             ('upload', ['Data', [('inputData', 'inputData', 'NSData * _Nonnull', input_doc.format('NSData *')), ], ]),
             ('upload', ['Stream', [('inputStream', 'inputStream', 'NSInputStream * _Nonnull', input_doc.format('NSInputStream *')), ], ]),
         ],
