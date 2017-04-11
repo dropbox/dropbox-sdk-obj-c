@@ -12,3 +12,5 @@ NSString *const kV2SDKVersion = @"3.0.10";
 NSString *const kV2SDKDefaultUserAgentPrefix = @"OfficialDropboxObjCSDKv2";
 NSString *const kForegroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_foreground";
 NSString *const kBackgroundSessionId = @"com.dropbox.dropbox_sdk_obj_c_background";
+// should never be YES in production
+BOOL const kDebug = NO;

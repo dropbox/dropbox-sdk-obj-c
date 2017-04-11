@@ -22,11 +22,20 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 + (void)initialize {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    kV2SDKBaseHosts = @{
-      @"api" : @"https://api.dropbox.com/2",
-      @"content" : @"https://api-content.dropbox.com/2",
-      @"notify" : @"https://notify.dropboxapi.com/2",
-    };
+    if (!kDebug) {
+      kV2SDKBaseHosts = @{
+        @"api" : @"https://api.dropbox.com/2",
+        @"content" : @"https://api-content.dropbox.com/2",
+        @"notify" : @"https://notify.dropboxapi.com/2",
+      };
+    } else {
+      kV2SDKBaseHosts = @{
+        @"api" : @"https://api-dbdev.dev.corp.dropbox.com/2",
+        @"content" : @"https://api-content-dbdev.dev.corp.dropbox.com/2",
+        @"notify" : @"https://notify-dbdev.dev.corp.dropboxapi.com/2",
+      };
+    }
+
   });
 }
 
