@@ -6,23 +6,24 @@
 
 #import "DBClientsManager+Protected.h"
 #import "DBClientsManager.h"
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
+#import "DBOAuthMobileManager-iOS.h"
 #import "DBTransportDefaultConfig.h"
 
 @implementation DBClientsManager (MobileAuth)
 
 + (void)authorizeFromController:(UIApplication *)sharedApplication
                      controller:(UIViewController *)controller
-                        openURL:(void (^_Nonnull)(NSURL *))openURL
-                    browserAuth:(BOOL)browserAuth {
+                        openURL:(void (^_Nonnull)(NSURL *))openURL {
   NSAssert([DBOAuthManager sharedOAuthManager] != nil,
            @"Call `Dropbox.setupWithAppKey` or `Dropbox.setupWithTeamAppKey` before calling this method");
   DBMobileSharedApplication *sharedMobileApplication =
       [[DBMobileSharedApplication alloc] initWithSharedApplication:sharedApplication
                                                         controller:controller
                                                            openURL:openURL];
-  [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication browserAuth:browserAuth];
+  [DBMobileSharedApplication setMobileSharedApplication:sharedMobileApplication];
+  [[DBOAuthManager sharedOAuthManager] authorizeFromSharedApplication:sharedMobileApplication];
 }
 
 + (void)setupWithAppKey:(NSString *)appKey {
@@ -30,7 +31,7 @@
 }
 
 + (void)setupWithTransportConfig:(DBTransportDefaultConfig *)transportConfig {
-  [[self class] setupWithOAuthManager:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+  [[self class] setupWithOAuthManager:[[DBOAuthMobileManager alloc] initWithAppKey:transportConfig.appKey]
                       transportConfig:transportConfig];
 }
 
@@ -39,7 +40,7 @@
 }
 
 + (void)setupWithTeamTransportConfig:(DBTransportDefaultConfig *)transportConfig {
-  [[self class] setupWithOAuthManagerTeam:[[DBMobileOAuthManager alloc] initWithAppKey:transportConfig.appKey]
+  [[self class] setupWithOAuthManagerTeam:[[DBOAuthMobileManager alloc] initWithAppKey:transportConfig.appKey]
                           transportConfig:transportConfig];
 }
 

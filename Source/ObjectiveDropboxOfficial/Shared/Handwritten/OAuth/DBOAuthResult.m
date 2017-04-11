@@ -2,7 +2,7 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBOAuthResult.h"
 
 @implementation DBOAuthResult

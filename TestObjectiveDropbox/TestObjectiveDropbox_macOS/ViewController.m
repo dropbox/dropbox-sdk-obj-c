@@ -15,7 +15,6 @@
 @interface ViewController ()
 
 @property(weak) IBOutlet NSButtonCell *linkButton;
-@property(weak) IBOutlet NSButtonCell *linkBrowserButton;
 @property(weak) IBOutlet NSButtonCell *runTestsButton;
 @property(weak) IBOutlet NSButtonCell *unlinkButton;
 
@@ -28,17 +27,7 @@
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[NSWorkspace sharedWorkspace] openURL:url];
-                                         }
-                                     browserAuth:NO];
-}
-
-- (IBAction)linkBrowserButtonPressed:(id)sender {
-  [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
-                                      controller:self
-                                         openURL:^(NSURL *url) {
-                                           [[NSWorkspace sharedWorkspace] openURL:url];
-                                         }
-                                     browserAuth:YES];
+                                         }];
 }
 
 - (IBAction)runTestsButtonPressed:(id)sender {
@@ -85,12 +74,10 @@
 - (void)checkButtons {
   if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
     [_linkButton setEnabled:NO];
-    [_linkBrowserButton setEnabled:NO];
     [_unlinkButton setEnabled:YES];
     [_runTestsButton setEnabled:YES];
   } else {
     [_linkButton setEnabled:YES];
-    [_linkBrowserButton setEnabled:YES];
     [_unlinkButton setEnabled:NO];
     [_runTestsButton setEnabled:NO];
   }

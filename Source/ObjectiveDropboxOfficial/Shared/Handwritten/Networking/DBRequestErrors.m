@@ -5,7 +5,7 @@
 #import "DBAUTHAccessError.h"
 #import "DBAUTHAuthError.h"
 #import "DBAUTHRateLimitError.h"
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBRequestErrors.h"
 
 #pragma mark - HTTP error

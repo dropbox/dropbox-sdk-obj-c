@@ -2,15 +2,26 @@
 /// Copyright (c) 2016 Dropbox, Inc. All rights reserved.
 ///
 
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBOAuthMobile-iOS.h"
+#import "DBSDKSystem.h"
 
 #pragma mark - Shared application
+
+static DBMobileSharedApplication *s_mobileSharedApplication;
 
 @implementation DBMobileSharedApplication {
   UIApplication * _Nullable _sharedApplication;
   UIViewController * _Nullable _controller;
   void (^_openURL)(NSURL * _Nullable);
+}
+
++ (DBMobileSharedApplication *)mobileSharedApplication {
+  return s_mobileSharedApplication;
+}
+
++ (void)setMobileSharedApplication:(DBMobileSharedApplication *)mobileSharedApplication {
+  s_mobileSharedApplication = mobileSharedApplication;
 }
 
 - (instancetype)initWithSharedApplication:(UIApplication *)sharedApplication
@@ -82,23 +93,16 @@
   return YES;
 }
 
-- (void)presentWebViewAuth:(NSURL * _Nonnull)authURL
-       tryInterceptHandler:(BOOL (^_Nonnull)(NSURL * _Nonnull, BOOL))tryInterceptHandler
-             cancelHandler:(void (^_Nonnull)(void))cancelHandler {
+- (void)presentAuthChannel:(NSURL * _Nonnull)authURL cancelHandler:(DBOAuthCancelBlock)cancelHandler {
   if (_controller) {
-    DBMobileWebViewController *webViewController =
-        [[DBMobileWebViewController alloc] initWithAuthUrl:authURL
-                                       tryInterceptHandler:tryInterceptHandler
-                                             cancelHandler:cancelHandler];
-    UINavigationController *navigationController =
-        [[UINavigationController alloc] initWithRootViewController:webViewController];
-
-    [_controller presentViewController:navigationController animated:YES completion:nil];
+    if ([DBMobileSafariViewController class]) {
+      DBMobileSafariViewController *safariViewController =
+          [[DBMobileSafariViewController alloc] initWithUrl:authURL cancelHandler:cancelHandler];
+      [_controller presentViewController:safariViewController animated:YES completion:nil];
+    } else {
+      [self presentExternalApp:authURL];
+    }
   }
-}
-
-- (void)presentBrowserAuth:(NSURL * _Nonnull)authURL {
-  [self presentExternalApp:authURL];
 }
 
 - (void)presentExternalApp:(NSURL * _Nonnull)url {
@@ -109,168 +113,41 @@
   return [_sharedApplication canOpenURL:url];
 }
 
+- (void)dismissAuthController {
+  if (_controller) {
+    [_controller dismissViewControllerAnimated:YES completion:nil];
+  }
+}
+
 @end
 
 #pragma mark - Web view controller
 
-@interface DBMobileWebViewController ()
-
-@property (nonatomic, readonly) WKWebView * _Nullable webView;
-@property (nonatomic, readonly, nullable) void (^onWillDismiss)(BOOL);
-@property (nonatomic, readonly, nullable) BOOL (^tryInterceptHandler)(NSURL * _Nullable, BOOL);
-@property (nonatomic, readonly) UIBarButtonItem * _Nullable cancelButton;
-@property (nonatomic, readonly, nullable) void (^cancelHandler)(void);
-@property (nonatomic, readonly) UIActivityIndicatorView * _Nullable indicator;
-@property (nonatomic, readonly, copy) NSURL * _Nullable startUrl;
-
-@end
-
-@implementation DBMobileWebViewController
-
-- (instancetype)init {
-  return [super initWithNibName:nil bundle:nil];
+@implementation DBMobileSafariViewController {
+  DBOAuthCancelBlock _cancelHandler;
 }
 
-- (instancetype)init:(NSCoder *)coder {
-  return [super initWithCoder:coder];
-}
-
-- (instancetype)initWithAuthUrl:(NSURL *)authUrl
-            tryInterceptHandler:(BOOL (^)(NSURL *, BOOL))tryInterceptHandler
-                  cancelHandler:(void (^)(void))cancelHandler {
-  self = [super initWithNibName:nil bundle:nil];
-  if (self) {
-    _tryInterceptHandler = tryInterceptHandler;
+- (instancetype)initWithUrl:(NSURL *)url cancelHandler:(DBOAuthCancelBlock)cancelHandler {
+  if (self = [super initWithURL:url]) {
     _cancelHandler = cancelHandler;
-    _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _startUrl = authUrl;
-
-    // clear any persistent cookies
-    NSString *libraryPath =
-        [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
-    NSError *errors;
-    [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
+    self.delegate = self;
   }
   return self;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-  _webView.UIDelegate = self;
-
-  _indicator.center = self.view.center;
-  [_webView addSubview:_indicator];
-  [_indicator startAnimating];
-
-  [self.view addSubview:_webView];
-
-  _webView.navigationDelegate = self;
-
-  self.view.backgroundColor = [UIColor whiteColor];
-
-  _cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                target:self
-                                                                action:@selector(cancel:)];
-  self.navigationItem.rightBarButtonItem = _cancelButton;
+- (void)dealloc {
+  self.delegate = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-
-  if (![_webView canGoBack]) {
-    if (_startUrl != nil) {
-      [self loadURL:_startUrl];
-    } else {
-      [_webView loadHTMLString:@"There is no `startUrl`" baseURL:nil];
-    }
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+  if (!didLoadSuccessfully) {
+    [controller dismissViewControllerAnimated:true completion:nil];
   }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                         duration:(NSTimeInterval)duration {
-  [_webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-}
-
-- (void)webView:(WKWebView *)webView
-    decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
-                    decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-#pragma unused(webView)
-  NSURL *navigationUrl = navigationAction.request.URL;
-  if (navigationUrl && _tryInterceptHandler) {
-    if (_tryInterceptHandler(navigationUrl, NO)) {
-      // don't dismiss controller if we're going to App Store
-      if (![navigationUrl.scheme isEqualToString:@"itms-apps"]) {
-        [self dismiss:YES];
-      }
-
-      return decisionHandler(WKNavigationActionPolicyCancel);
-    }
-  }
-
-  return decisionHandler(WKNavigationActionPolicyAllow);
-}
-
-- (WKWebView *)webView:(WKWebView *)webView
-    createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
-               forNavigationAction:(WKNavigationAction *)navigationAction
-                    windowFeatures:(WKWindowFeatures *)windowFeatures {
-#pragma unused(webView)
-#pragma unused(configuration)
-#pragma unused(windowFeatures)
-  // For target="_bank" urls, we want to suppress the call, then reopen in new browser
-  if (!navigationAction.targetFrame.isMainFrame) {
-    _tryInterceptHandler(navigationAction.request.URL, YES);
-  }
-  return nil;
-}
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-#pragma unused(webView)
-#pragma unused(navigation)
-  [_indicator stopAnimating];
-  [_indicator removeFromSuperview];
-}
-
-- (void)loadURL:(NSURL *)url {
-  [_webView loadRequest:[NSURLRequest requestWithURL:url]];
-}
-
-- (void)showHideBackButton:(BOOL)show {
-  if (show) {
-    self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
-                                                      target:self
-                                                      action:@selector(goBack:)];
-  } else {
-    self.navigationItem.leftBarButtonItem = nil;
-  }
-}
-
-- (void)goBack:(id)sender {
-#pragma unused(sender)
-  [_webView goBack];
-}
-
-- (void)cancel:(id)sender {
-  [self dismiss:YES animated:(sender != nil)];
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+#pragma unused(controller)
   _cancelHandler();
-}
-
-- (void)dismiss:(BOOL)animated {
-  [self dismiss:NO animated:animated];
-}
-
-- (void)dismiss:(BOOL)asCancel animated:(BOOL)animated {
-  [_webView stopLoading];
-
-  if (_onWillDismiss) {
-    _onWillDismiss(asCancel);
-  }
-  if (self.presentingViewController) {
-    [self.presentingViewController dismissViewControllerAnimated:animated completion:nil];
-  }
 }
 
 @end

@@ -23,15 +23,10 @@
 /// @param sharedApplication The `UIApplication` with which to render the OAuth flow.
 /// @param controller The `UIViewController` with which to render the OAuth flow.
 /// @param openURL A wrapper around app-extension unsafe `openURL` call.
-/// @param browserAuth Whether to use an external web-browser to perform authorization. If set to false, then an in-app
-/// webview will be used to facilitate the auth flow. The advantage of browser auth is it is safer for the end user and
-/// it can leverage existing session information, which might mean the end user can avoid re-entering their Dropbox
-/// login credentials. The disadvantage of browser auth is it requires navigating outside of the current app.
 ///
 + (void)authorizeFromController:(UIApplication * _Nonnull)sharedApplication
                      controller:(UIViewController * _Nullable)controller
-                        openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL
-                    browserAuth:(BOOL)browserAuth;
+                        openURL:(void (^_Nonnull)(NSURL * _Nonnull))openURL;
 
 ///
 /// Stores the user app key. If any access token already exists, initializes an authorized shared `DBUserClient`

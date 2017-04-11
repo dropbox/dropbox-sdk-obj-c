@@ -8,6 +8,34 @@
 @class DBOAuthResult;
 @protocol DBSharedApplication;
 
+#pragma mark - Access token class
+
+///
+/// A Dropbox OAuth2 access token.
+///
+/// Stores a unique identifying key for storing in `DBKeychain`.
+///
+@interface DBAccessToken : NSObject
+
+/// The OAuth2 access token.
+@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
+
+/// The unique identifier of the access token used for storing in `DBKeychain`. Either the `account_id` (if user app) or
+/// the `team_id` if (team app).
+@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
+
+///
+/// DBAccessToken full constructor.
+///
+/// @param accessToken The OAuth2 access token retrieved from the auth flow.
+/// @param uid The unique identifier used to store in `DBKeychain`.
+///
+/// @return An initialized instance.
+///
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken uid:(NSString * _Nonnull)uid;
+
+@end
+
 #pragma mark - OAuth manager base
 
 ///
@@ -16,7 +44,14 @@
 /// @note OAuth flow webviews localize to environment locale.
 ///
 ///
-@interface DBOAuthManager : NSObject
+@interface DBOAuthManager : NSObject {
+@protected
+  NSString *_appKey;
+  NSURL *_redirectURL;
+  NSURL *_cancelURL;
+  NSString *_host;
+  NSMutableArray<NSURL *> *_urls;
+}
 
 /// Sets the locale of the OAuth flow webpages. If `nil`, then defaults to device locale.
 @property (nonatomic, strong) NSLocale * _Nonnull locale;
@@ -37,9 +72,9 @@
 ///
 /// Shared instance is used to authenticate users through OAuth2, save access tokens, and retrieve access tokens.
 ///
-/// @param sharedManager The updated reference to the `DBOAuthManager` shared instance.
+/// @param sharedOAuthManager The updated reference to the `DBOAuthManager` shared instance.
 ///
-+ (void)setSharedOAuthManager:(DBOAuthManager * _Nonnull)sharedManager;
++ (void)setSharedOAuthManager:(DBOAuthManager * _Nonnull)sharedOAuthManager;
 
 #pragma mark - Constructors
 
@@ -71,11 +106,8 @@
 ///
 ///
 /// @param sharedApplication A platform-neutral shared application abstraction for rendering auth flow.
-/// @param browserAuth Whether the auth flow should use an external web browser for auth or not. If not, then an in-app
-/// webview is used instead.
 ///
-- (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication
-                           browserAuth:(BOOL)browserAuth;
+- (void)authorizeFromSharedApplication:(id<DBSharedApplication> _Nonnull)sharedApplication;
 
 ///
 /// Handles a redirect back into the application (from whichever auth flow was being used).
@@ -154,51 +186,5 @@
 /// we are keeping the parameter and defaulting to YES to allow SDK users to make the appropriate decision for their
 /// apps.
 @property (nonatomic, assign) BOOL disableSignup;
-
-@end
-
-#pragma mark - OAuth manager base (macOS)
-
-///
-/// Platform-specific (macOS) manager for performing OAuth linking.
-///
-@interface DBDesktopOAuthManager : DBOAuthManager
-
-@end
-
-#pragma mark - OAuth manager base (iOS)
-
-///
-/// Platform-specific (iOS) manager for performing OAuth linking.
-///
-@interface DBMobileOAuthManager : DBOAuthManager
-
-@end
-
-#pragma mark - Access token class
-
-///
-/// A Dropbox OAuth2 access token.
-///
-/// Stores a unique identifying key for storing in `DBKeychain`.
-///
-@interface DBAccessToken : NSObject
-
-/// The OAuth2 access token.
-@property (nonatomic, readonly, copy) NSString * _Nonnull accessToken;
-
-/// The unique identifier of the access token used for storing in `DBKeychain`. Either the `account_id` (if user app) or
-/// the `team_id` if (team app).
-@property (nonatomic, readonly, copy) NSString * _Nonnull uid;
-
-///
-/// DBAccessToken full constructor.
-///
-/// @param accessToken The OAuth2 access token retrieved from the auth flow.
-/// @param uid The unique identifier used to store in `DBKeychain`.
-///
-/// @return An initialized instance.
-///
-- (nonnull instancetype)initWithAccessToken:(NSString * _Nonnull)accessToken uid:(NSString * _Nonnull)uid;
 
 @end

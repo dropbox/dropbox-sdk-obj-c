@@ -18,7 +18,6 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *linkButton;
-@property (weak, nonatomic) IBOutlet UIButton *linkBrowserButton;
 @property (weak, nonatomic) IBOutlet UIButton *runTestsButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlinkButton;
 @property (weak, nonatomic) IBOutlet UIButton *openWithButton;
@@ -33,19 +32,8 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
-                                         }
-                                     browserAuth:NO];
+                                         }];
 }
-
-- (IBAction)linkBrowserButtonPressed:(id)sender {
-  [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
-                                      controller:self
-                                         openURL:^(NSURL *url) {
-                                           [[UIApplication sharedApplication] openURL:url];
-                                         }
-                                     browserAuth:YES];
-}
-
 
 - (IBAction)runTestsButtonPressed:(id)sender {
   TestData *data = [TestData new];
@@ -149,14 +137,12 @@ static DBOpenWithInfo *s_openWithInfoNSURL = nil;
 - (void)checkButtons {
   if ([DBClientsManager authorizedClient] || [DBClientsManager authorizedTeamClient]) {
     _linkButton.hidden = YES;
-    _linkBrowserButton.hidden = YES;
     _unlinkButton.hidden = NO;
     _runTestsButton.hidden = NO;
     _runBatchUploadTestsButton.hidden = NO;
     _runGlobalResponseTestsButton.hidden = NO;
   } else {
     _linkButton.hidden = NO;
-    _linkBrowserButton.hidden = NO;
     _unlinkButton.hidden = YES;
     _runTestsButton.hidden = YES;
     _runBatchUploadTestsButton.hidden = YES;

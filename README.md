@@ -109,7 +109,7 @@ Then navigate to the directory that contains your project and create a new file 
 ##### iOS
 
 ```ruby
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target '<YOUR_PROJECT_NAME>' do
@@ -277,11 +277,10 @@ After you've made the above changes, your application's `.plist` file should loo
 
 ### Handling the authorization flow
 
-There are three methods to programmatically retrieve an OAuth 2.0 access token:
+There are two methods to programmatically retrieve an OAuth 2.0 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* **In-app webview auth** (iOS, macOS): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
-* **External browser auth** (iOS, macOS): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **External browser auth** (iOS, macOS): This launches the platform's default browser for authenticating via the Dropbox authorization page. For iOS >= 9, a `SFSafariViewController` is used instead of an external browser. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
@@ -315,8 +314,8 @@ To facilitate the above authorization flows, you should take the following steps
 
 #### Begin the authorization flow
 
-You can commence the auth flow by calling `authorizeFromController:controller:openURL:browserAuth` method in your application's
-view controller. If you wish to authenticate via the in-app webview, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
+You can commence the auth flow by calling `authorizeFromController:controller:openURL` method in your application's
+view controller.
 
 ##### iOS
 
@@ -328,8 +327,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
                                  controller:self
                                     openURL:^(NSURL *url) {
                                       [[UIApplication sharedApplication] openURL:url];
-                                    }
-                                browserAuth:YES];
+                                    }];
 }
 
 ```
@@ -342,8 +340,7 @@ view controller. If you wish to authenticate via the in-app webview, then set `b
 - (void)myButtonInControllerPressed {
   [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
-                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
-                                       browserAuth:YES];
+                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }];
 }
 ```
 
@@ -600,7 +597,7 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
           if ([resultEntry isSuccess]) {
             NSString *dropboxFilePath = resultEntry.success.pathDisplay;
             NSLog(@"File successfully uploaded from %@ on local machine to %@ in Dropbox.",
-                  [clientSideFileUrl absoluteString], dropboxFilePath);
+                  [clientSideFileUrl path], dropboxFilePath);
           } else if ([resultEntry isFailure]) {
             // This particular file was not uploaded successfully, although the other
             // files may have been uploaded successfully. Perhaps implement some retry

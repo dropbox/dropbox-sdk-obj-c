@@ -3,7 +3,7 @@
 ///
 
 #import "DBClientsManager.h"
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBOAuthResult.h"
 #import "DBSDKKeychain.h"
 #import "DBTeamClient.h"

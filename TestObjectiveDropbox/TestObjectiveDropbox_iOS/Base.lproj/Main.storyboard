@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,17 +29,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-gk-MoP">
-                                <rect key="frame" x="42" y="258.5" width="291" height="30"/>
-                                <state key="normal" title="Link Dropbox Account via in-app web view"/>
+                                <rect key="frame" x="112" y="258.5" width="152" height="30"/>
+                                <state key="normal" title="Link Dropbox Account"/>
                                 <connections>
                                     <action selector="linkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5P-LZ-Wih"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzo-xA-D2V">
-                                <rect key="frame" x="54.5" y="288.5" width="267" height="30"/>
-                                <state key="normal" title="Link Dropbox Account via web browser"/>
-                                <connections>
-                                    <action selector="linkBrowserButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wIu-C9-g6D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db5-aq-giW">
@@ -80,17 +73,14 @@
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O8l-MN-ZX0"/>
                             <constraint firstItem="lAs-Sd-MXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgU-hg-kg7"/>
                             <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qtc-hz-ejU"/>
-                            <constraint firstItem="hzo-xA-D2V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c1M-V5-Hgf"/>
                             <constraint firstItem="KTl-EQ-KEH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-120" id="dgx-4H-ijK"/>
                             <constraint firstItem="KMW-d6-mUc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-160" id="fmP-zU-y03"/>
                             <constraint firstItem="db5-aq-giW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="g3I-ak-LGi"/>
                             <constraint firstItem="0Il-qF-Vab" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="jvu-7a-pCX"/>
                             <constraint firstItem="lAs-Sd-MXl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="q5c-K2-FME"/>
-                            <constraint firstItem="hzo-xA-D2V" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="s9N-LQ-UJZ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="linkBrowserButton" destination="hzo-xA-D2V" id="HbY-Sn-mnL"/>
                         <outlet property="linkButton" destination="b9W-gk-MoP" id="7Z8-pd-xJo"/>
                         <outlet property="openWithButton" destination="lAs-Sd-MXl" id="Z61-Mk-gKB"/>
                         <outlet property="runBatchUploadTestsButton" destination="KMW-d6-mUc" id="Ody-5w-o9z"/>

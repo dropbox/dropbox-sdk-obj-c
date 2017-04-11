@@ -1149,7 +1149,7 @@ void MyLog(NSString *format, ...) {
 - (void)uploadFile:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
   NSString *outputPath = [NSString stringWithFormat:@"%@%@", _tester.testData.testFilePath, @"_from_file"];
-  [[[_tester.files uploadUrl:outputPath inputUrl:_tester.testData.destURL]
+  [[[_tester.files uploadUrl:outputPath inputUrl:[_tester.testData.destURL path]]
       setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"%@\n", result);

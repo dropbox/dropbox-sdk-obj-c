@@ -26,7 +26,7 @@
 #import "DBTransportDefaultConfig.h"
 
 /// OAuth
-#import "DBOAuth.h"
+#import "DBOAuthManager.h"
 #import "DBOAuthResult.h"
 #import "DBSDKKeychain.h"
 #import "DBSharedApplicationProtocol.h"
