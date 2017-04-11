@@ -33,8 +33,7 @@
 - (IBAction)linkButtonPressed:(id)sender {
   [DBClientsManager authorizeFromControllerDesktop:[NSWorkspace sharedWorkspace]
                                         controller:self
-                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }
-                                       browserAuth:NO];
+                                           openURL:^(NSURL *url){ [[NSWorkspace sharedWorkspace] openURL:url]; }];
 }
 
 - (IBAction)unlinkButtonPressed:(id)sender {

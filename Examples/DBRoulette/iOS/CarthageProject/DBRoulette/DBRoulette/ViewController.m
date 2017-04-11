@@ -25,8 +25,7 @@
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
-                                         }
-                                     browserAuth:NO];
+                                         }];
 }
 
 - (IBAction)unlinkDropboxButtonPressed:(id)sender {
@@ -73,7 +72,7 @@
 - (void)presentPhotoViewController {
   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
   PhotoViewController *photoViewController =
-  (PhotoViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PhotoViewController"];
+    (PhotoViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PhotoViewController"];
   [self.navigationController pushViewController:photoViewController animated:NO];
 }
 

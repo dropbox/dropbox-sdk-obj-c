@@ -25,8 +25,7 @@
                                       controller:self
                                          openURL:^(NSURL *url) {
                                            [[UIApplication sharedApplication] openURL:url];
-                                         }
-                                     browserAuth:NO];
+                                         }];
 }
 
 - (IBAction)unlinkDropboxButtonPressed:(id)sender {
