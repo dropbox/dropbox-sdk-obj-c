@@ -562,7 +562,7 @@ Here's an example for listing a folder's contents. In the response handler, we r
 ```objective-c
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
 
-[[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account" inputData:fileData]
+[[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account/my_output.txt" inputData:fileData]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
@@ -636,7 +636,7 @@ NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *outputDirectory = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
 NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_output.txt"];
 
-[[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account" overwrite:YES destination:outputUrl]
+[[[client.filesRoutes downloadUrl:@"/test/path/in/Dropbox/account/my_file.txt" overwrite:YES destination:outputUrl]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *networkError,
                        NSURL *destination) {
       if (result) {
@@ -655,7 +655,7 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
 Here's an example for downloading straight to memory (`NSData`):
 
 ```objective-c
-[[[client.filesRoutes downloadData:@"/test/path/in/Dropbox/account"]
+[[[client.filesRoutes downloadData:@"/test/path/in/Dropbox/account/my_file.txt"]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *networkError,
                        NSData *fileContents) {
       if (result) {
@@ -841,6 +841,7 @@ void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
     ^(DBRequestError *networkError, DBTask *restartTask) {
       if ([networkError isAuthError]) {
         // log the user out of the app, for instance
+        [DBClientsManager unlinkAndResetClients];
       } else if ([networkError isRateLimitError]) {
         // automatically retry after backoff period
         DBRequestRateLimitError *rateLimitError = [networkError asRateLimitError];

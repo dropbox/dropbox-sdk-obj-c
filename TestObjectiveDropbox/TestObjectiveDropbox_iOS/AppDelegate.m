@@ -50,6 +50,18 @@
   DBTransportDefaultConfig *transportConfigTeamManagement =
     [[DBTransportDefaultConfig alloc] initWithAppKey:data.teamMemberManagementAppKey appSecret:data.teamMemberManagementAppSecret];
 
+  void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
+  ^(DBRequestError *networkError, DBTask *restartTask) {
+    if ([networkError isAuthError] || [networkError isBadInputError]) {
+      [DBClientsManager unlinkAndResetClients];
+      ViewController *mainController = (ViewController *)self.window.rootViewController;
+      [mainController checkButtons];
+    }
+  };
+
+  // only one response block total to handle all network errors
+  [DBGlobalErrorResponseHandler registerNetworkErrorResponseBlock:networkGlobalResponseBlock];
+
   switch (appPermission) {
   case FullDropbox:
       [DBClientsManager setupWithTransportConfig:transportConfigFullDropbox];
