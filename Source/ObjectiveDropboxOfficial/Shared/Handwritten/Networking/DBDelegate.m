@@ -20,11 +20,7 @@
 - (instancetype)initWithQueue:(NSOperationQueue *)delegateQueue {
   self = [super init];
   if (self) {
-    if (delegateQueue) {
-      _delegateQueue = delegateQueue;
-    } else {
-      _delegateQueue = [NSOperationQueue mainQueue];
-    }
+    _delegateQueue = delegateQueue ?: [NSOperationQueue new];
     [_delegateQueue setMaxConcurrentOperationCount:1];
     _sessionData = [NSMutableDictionary new];
   }

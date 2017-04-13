@@ -26,7 +26,8 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                     transportConfig:(DBTransportDefaultConfig *)transportConfig {
   if (self = [super initWithAccessToken:accessToken transportConfig:transportConfig]) {
-    _delegateQueue = transportConfig.delegateQueue ?: [NSOperationQueue mainQueue];
+    _delegateQueue = transportConfig.delegateQueue ?: [NSOperationQueue new];
+    _delegateQueue.maxConcurrentOperationCount = 1;
     _delegate = [[DBDelegate alloc] initWithQueue:_delegateQueue];
 
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
