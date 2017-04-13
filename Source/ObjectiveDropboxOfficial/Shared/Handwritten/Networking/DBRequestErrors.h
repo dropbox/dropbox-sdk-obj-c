@@ -624,7 +624,7 @@ typedef NS_ENUM(NSInteger, DBRequestErrorTag) {
 ///
 /// @return An initialized `DBRequestAccessError` instance.
 ///
-- (DBRequestAuthError * _Nonnull)asAccessError;
+- (DBRequestAccessError * _Nonnull)asAccessError;
 
 ///
 /// Creates a `DBRequestRateLimitError` instance based on the data in the current `DBRequestError` instance.
