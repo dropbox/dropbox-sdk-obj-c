@@ -40,8 +40,6 @@
 
 #pragma mark - Web view controller
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 9
-
 ///
 /// Platform-specific (here, iOS) `UIViewController` for rendering OAuth flow.
 ///
@@ -50,5 +48,3 @@
 - (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url cancelHandler:(DBOAuthCancelBlock _Nonnull)cancelHandler;
 
 @end
-
-#endif

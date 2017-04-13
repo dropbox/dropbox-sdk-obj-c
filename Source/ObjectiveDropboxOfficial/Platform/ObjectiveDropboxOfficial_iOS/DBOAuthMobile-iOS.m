@@ -95,13 +95,9 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
 
 - (void)presentAuthChannel:(NSURL * _Nonnull)authURL cancelHandler:(DBOAuthCancelBlock)cancelHandler {
   if (_controller) {
-    if ([DBMobileSafariViewController class]) {
-      DBMobileSafariViewController *safariViewController =
-          [[DBMobileSafariViewController alloc] initWithUrl:authURL cancelHandler:cancelHandler];
-      [_controller presentViewController:safariViewController animated:YES completion:nil];
-    } else {
-      [self presentExternalApp:authURL];
-    }
+    DBMobileSafariViewController *safariViewController =
+        [[DBMobileSafariViewController alloc] initWithUrl:authURL cancelHandler:cancelHandler];
+    [_controller presentViewController:safariViewController animated:YES completion:nil];
   }
 }
 
