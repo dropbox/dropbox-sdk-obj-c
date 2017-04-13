@@ -54,7 +54,7 @@ Full documentation [here](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/la
 
 ## System requirements
 
-- iOS 8.0+
+- iOS 9.0+
 - macOS 10.10+
 - Xcode 7.3+
 
