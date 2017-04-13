@@ -236,7 +236,7 @@ Once you have integrated the Dropbox Objective-C SDK into your project, there ar
 
 ### Application `.plist` file
 
-If you are compiling on iOS SDK 9.0, you will need to modify your application's `.plist` to handle Apple's [new security changes](https://developer.apple.com/videos/wwdc/2015/?id=703) to the `canOpenURL` function. You should
+You will need to modify your application's `.plist` to handle Apple's [new security changes](https://developer.apple.com/videos/wwdc/2015/?id=703) to the `canOpenURL` function. You should
 add the following code to your application's `.plist` file:
 
 ```
@@ -280,7 +280,7 @@ After you've made the above changes, your application's `.plist` file should loo
 There are two methods to programmatically retrieve an OAuth 2.0 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* **External browser auth** (iOS, macOS): This launches the platform's default browser for authenticating via the Dropbox authorization page. For iOS >= 9, a `SFSafariViewController` is used instead of an external browser. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Safari view controller auth** (iOS, macOS): This launches a `SFSafariViewController` to facillitate the auth flow. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
@@ -375,19 +375,6 @@ To handle the redirection back into the Objective-C SDK once the authentication 
     }
   }
   return NO;
-}
-```
-
-For iOS targets < 9, use:
-
-```objective-c
-#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-  DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
-    ...
-    ...
-    ...
 }
 ```
 
