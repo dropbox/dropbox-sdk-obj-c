@@ -61,6 +61,71 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  if (self.ipAddress) {
+    result = prime * result + [self.ipAddress hash];
+  }
+  if (self.country) {
+    result = prime * result + [self.country hash];
+  }
+  if (self.created) {
+    result = prime * result + [self.created hash];
+  }
+  if (self.updated) {
+    result = prime * result + [self.updated hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDeviceSession:other];
+}
+
+- (BOOL)isEqualToDeviceSession:(DBTEAMDeviceSession *)aDeviceSession {
+  if (self == aDeviceSession) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:aDeviceSession.sessionId]) {
+    return NO;
+  }
+  if (self.ipAddress) {
+    if (![self.ipAddress isEqual:aDeviceSession.ipAddress]) {
+      return NO;
+    }
+  }
+  if (self.country) {
+    if (![self.country isEqual:aDeviceSession.country]) {
+      return NO;
+    }
+  }
+  if (self.created) {
+    if (![self.created isEqual:aDeviceSession.created]) {
+      return NO;
+    }
+  }
+  if (self.updated) {
+    if (![self.updated isEqual:aDeviceSession.updated]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -174,6 +239,83 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  result = prime * result + [self.userAgent hash];
+  result = prime * result + [self.os hash];
+  result = prime * result + [self.browser hash];
+  if (self.ipAddress) {
+    result = prime * result + [self.ipAddress hash];
+  }
+  if (self.country) {
+    result = prime * result + [self.country hash];
+  }
+  if (self.created) {
+    result = prime * result + [self.created hash];
+  }
+  if (self.updated) {
+    result = prime * result + [self.updated hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToActiveWebSession:other];
+}
+
+- (BOOL)isEqualToActiveWebSession:(DBTEAMActiveWebSession *)anActiveWebSession {
+  if (self == anActiveWebSession) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:anActiveWebSession.sessionId]) {
+    return NO;
+  }
+  if (![self.userAgent isEqual:anActiveWebSession.userAgent]) {
+    return NO;
+  }
+  if (![self.os isEqual:anActiveWebSession.os]) {
+    return NO;
+  }
+  if (![self.browser isEqual:anActiveWebSession.browser]) {
+    return NO;
+  }
+  if (self.ipAddress) {
+    if (![self.ipAddress isEqual:anActiveWebSession.ipAddress]) {
+      return NO;
+    }
+  }
+  if (self.country) {
+    if (![self.country isEqual:anActiveWebSession.country]) {
+      return NO;
+    }
+  }
+  if (self.created) {
+    if (![self.created isEqual:anActiveWebSession.created]) {
+      return NO;
+    }
+  }
+  if (self.updated) {
+    if (![self.updated isEqual:anActiveWebSession.updated]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -276,6 +418,47 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.description_ hash];
+  result = prime * result + [self.fields hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToAddPropertyTemplateArg:other];
+}
+
+- (BOOL)isEqualToAddPropertyTemplateArg:(DBTEAMAddPropertyTemplateArg *)anAddPropertyTemplateArg {
+  if (self == anAddPropertyTemplateArg) {
+    return YES;
+  }
+  if (![self.name isEqual:anAddPropertyTemplateArg.name]) {
+    return NO;
+  }
+  if (![self.description_ isEqual:anAddPropertyTemplateArg.description_]) {
+    return NO;
+  }
+  if (![self.fields isEqual:anAddPropertyTemplateArg.fields]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -351,6 +534,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.templateId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToAddPropertyTemplateResult:other];
+}
+
+- (BOOL)isEqualToAddPropertyTemplateResult:(DBTEAMAddPropertyTemplateResult *)anAddPropertyTemplateResult {
+  if (self == anAddPropertyTemplateResult) {
+    return YES;
+  }
+  if (![self.templateId isEqual:anAddPropertyTemplateResult.templateId]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -476,6 +692,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMAdminTierTeamAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMAdminTierUserManagementAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMAdminTierSupportAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMAdminTierMemberOnly:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToAdminTier:other];
+}
+
+- (BOOL)isEqualToAdminTier:(DBTEAMAdminTier *)anAdminTier {
+  if (self == anAdminTier) {
+    return YES;
+  }
+  if (self.tag != anAdminTier.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMAdminTierTeamAdmin:
+    return [[self tagName] isEqual:[anAdminTier tagName]];
+  case DBTEAMAdminTierUserManagementAdmin:
+    return [[self tagName] isEqual:[anAdminTier tagName]];
+  case DBTEAMAdminTierSupportAdmin:
+    return [[self tagName] isEqual:[anAdminTier tagName]];
+  case DBTEAMAdminTierMemberOnly:
+    return [[self tagName] isEqual:[anAdminTier tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -580,6 +848,71 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.appId hash];
+  result = prime * result + [self.appName hash];
+  result = prime * result + [self.isAppFolder hash];
+  if (self.publisher) {
+    result = prime * result + [self.publisher hash];
+  }
+  if (self.publisherUrl) {
+    result = prime * result + [self.publisherUrl hash];
+  }
+  if (self.linked) {
+    result = prime * result + [self.linked hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToApiApp:other];
+}
+
+- (BOOL)isEqualToApiApp:(DBTEAMApiApp *)anApiApp {
+  if (self == anApiApp) {
+    return YES;
+  }
+  if (![self.appId isEqual:anApiApp.appId]) {
+    return NO;
+  }
+  if (![self.appName isEqual:anApiApp.appName]) {
+    return NO;
+  }
+  if (![self.isAppFolder isEqual:anApiApp.isAppFolder]) {
+    return NO;
+  }
+  if (self.publisher) {
+    if (![self.publisher isEqual:anApiApp.publisher]) {
+      return NO;
+    }
+  }
+  if (self.publisherUrl) {
+    if (![self.publisherUrl isEqual:anApiApp.publisherUrl]) {
+      return NO;
+    }
+  }
+  if (self.linked) {
+    if (![self.linked isEqual:anApiApp.linked]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -666,6 +999,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.startDate hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBaseDfbReport:other];
+}
+
+- (BOOL)isEqualToBaseDfbReport:(DBTEAMBaseDfbReport *)aBaseDfbReport {
+  if (self == aBaseDfbReport) {
+    return YES;
+  }
+  if (![self.startDate isEqual:aBaseDfbReport.startDate]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -800,6 +1166,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBaseTeamFolderErrorAccessError:
+    result = prime * result + [self.accessError hash];
+  case DBTEAMBaseTeamFolderErrorStatusError:
+    result = prime * result + [self.statusError hash];
+  case DBTEAMBaseTeamFolderErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBaseTeamFolderError:other];
+}
+
+- (BOOL)isEqualToBaseTeamFolderError:(DBTEAMBaseTeamFolderError *)aBaseTeamFolderError {
+  if (self == aBaseTeamFolderError) {
+    return YES;
+  }
+  if (self.tag != aBaseTeamFolderError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBaseTeamFolderErrorAccessError:
+    return [self.accessError isEqual:aBaseTeamFolderError.accessError];
+  case DBTEAMBaseTeamFolderErrorStatusError:
+    return [self.statusError isEqual:aBaseTeamFolderError.statusError];
+  case DBTEAMBaseTeamFolderErrorOther:
+    return [[self tagName] isEqual:[aBaseTeamFolderError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -893,6 +1307,51 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.startDate) {
+    result = prime * result + [self.startDate hash];
+  }
+  if (self.endDate) {
+    result = prime * result + [self.endDate hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDateRange:other];
+}
+
+- (BOOL)isEqualToDateRange:(DBTEAMDateRange *)aDateRange {
+  if (self == aDateRange) {
+    return YES;
+  }
+  if (self.startDate) {
+    if (![self.startDate isEqual:aDateRange.startDate]) {
+      return NO;
+    }
+  }
+  if (self.endDate) {
+    if (![self.endDate isEqual:aDateRange.endDate]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -980,6 +1439,46 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMDateRangeErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDateRangeError:other];
+}
+
+- (BOOL)isEqualToDateRangeError:(DBTEAMDateRangeError *)aDateRangeError {
+  if (self == aDateRangeError) {
+    return YES;
+  }
+  if (self.tag != aDateRangeError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMDateRangeErrorOther:
+    return [[self tagName] isEqual:[aDateRangeError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -1086,6 +1585,91 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  result = prime * result + [self.hostName hash];
+  result = prime * result + [self.clientType hash];
+  result = prime * result + [self.clientVersion hash];
+  result = prime * result + [self.platform hash];
+  result = prime * result + [self.isDeleteOnUnlinkSupported hash];
+  if (self.ipAddress) {
+    result = prime * result + [self.ipAddress hash];
+  }
+  if (self.country) {
+    result = prime * result + [self.country hash];
+  }
+  if (self.created) {
+    result = prime * result + [self.created hash];
+  }
+  if (self.updated) {
+    result = prime * result + [self.updated hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDesktopClientSession:other];
+}
+
+- (BOOL)isEqualToDesktopClientSession:(DBTEAMDesktopClientSession *)aDesktopClientSession {
+  if (self == aDesktopClientSession) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:aDesktopClientSession.sessionId]) {
+    return NO;
+  }
+  if (![self.hostName isEqual:aDesktopClientSession.hostName]) {
+    return NO;
+  }
+  if (![self.clientType isEqual:aDesktopClientSession.clientType]) {
+    return NO;
+  }
+  if (![self.clientVersion isEqual:aDesktopClientSession.clientVersion]) {
+    return NO;
+  }
+  if (![self.platform isEqual:aDesktopClientSession.platform]) {
+    return NO;
+  }
+  if (![self.isDeleteOnUnlinkSupported isEqual:aDesktopClientSession.isDeleteOnUnlinkSupported]) {
+    return NO;
+  }
+  if (self.ipAddress) {
+    if (![self.ipAddress isEqual:aDesktopClientSession.ipAddress]) {
+      return NO;
+    }
+  }
+  if (self.country) {
+    if (![self.country isEqual:aDesktopClientSession.country]) {
+      return NO;
+    }
+  }
+  if (self.created) {
+    if (![self.created isEqual:aDesktopClientSession.created]) {
+      return NO;
+    }
+  }
+  if (self.updated) {
+    if (![self.updated isEqual:aDesktopClientSession.updated]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -1250,6 +1834,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMDesktopPlatformWindows:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMDesktopPlatformMac:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMDesktopPlatformLinux:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMDesktopPlatformOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDesktopPlatform:other];
+}
+
+- (BOOL)isEqualToDesktopPlatform:(DBTEAMDesktopPlatform *)aDesktopPlatform {
+  if (self == aDesktopPlatform) {
+    return YES;
+  }
+  if (self.tag != aDesktopPlatform.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMDesktopPlatformWindows:
+    return [[self tagName] isEqual:[aDesktopPlatform tagName]];
+  case DBTEAMDesktopPlatformMac:
+    return [[self tagName] isEqual:[aDesktopPlatform tagName]];
+  case DBTEAMDesktopPlatformLinux:
+    return [[self tagName] isEqual:[aDesktopPlatform tagName]];
+  case DBTEAMDesktopPlatformOther:
+    return [[self tagName] isEqual:[aDesktopPlatform tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1336,6 +1972,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  result = prime * result + [self.teamMemberId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDeviceSessionArg:other];
+}
+
+- (BOOL)isEqualToDeviceSessionArg:(DBTEAMDeviceSessionArg *)aDeviceSessionArg {
+  if (self == aDeviceSessionArg) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:aDeviceSessionArg.sessionId]) {
+    return NO;
+  }
+  if (![self.teamMemberId isEqual:aDeviceSessionArg.teamMemberId]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1420,6 +2093,63 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.windows hash];
+  result = prime * result + [self.macos hash];
+  result = prime * result + [self.linux hash];
+  result = prime * result + [self.ios hash];
+  result = prime * result + [self.android hash];
+  result = prime * result + [self.other hash];
+  result = prime * result + [self.total hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDevicesActive:other];
+}
+
+- (BOOL)isEqualToDevicesActive:(DBTEAMDevicesActive *)aDevicesActive {
+  if (self == aDevicesActive) {
+    return YES;
+  }
+  if (![self.windows isEqual:aDevicesActive.windows]) {
+    return NO;
+  }
+  if (![self.macos isEqual:aDevicesActive.macos]) {
+    return NO;
+  }
+  if (![self.linux isEqual:aDevicesActive.linux]) {
+    return NO;
+  }
+  if (![self.ios isEqual:aDevicesActive.ios]) {
+    return NO;
+  }
+  if (![self.android isEqual:aDevicesActive.android]) {
+    return NO;
+  }
+  if (![self.other isEqual:aDevicesActive.other]) {
+    return NO;
+  }
+  if (![self.total isEqual:aDevicesActive.total]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -1587,6 +2317,95 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.startDate hash];
+  result = prime * result + [self.adds hash];
+  result = prime * result + [self.edits hash];
+  result = prime * result + [self.deletes hash];
+  result = prime * result + [self.activeUsers28Day hash];
+  result = prime * result + [self.activeUsers7Day hash];
+  result = prime * result + [self.activeUsers1Day hash];
+  result = prime * result + [self.activeSharedFolders28Day hash];
+  result = prime * result + [self.activeSharedFolders7Day hash];
+  result = prime * result + [self.activeSharedFolders1Day hash];
+  result = prime * result + [self.sharedLinksCreated hash];
+  result = prime * result + [self.sharedLinksViewedByTeam hash];
+  result = prime * result + [self.sharedLinksViewedByOutsideUser hash];
+  result = prime * result + [self.sharedLinksViewedByNotLoggedIn hash];
+  result = prime * result + [self.sharedLinksViewedTotal hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetActivityReport:other];
+}
+
+- (BOOL)isEqualToGetActivityReport:(DBTEAMGetActivityReport *)aGetActivityReport {
+  if (self == aGetActivityReport) {
+    return YES;
+  }
+  if (![self.startDate isEqual:aGetActivityReport.startDate]) {
+    return NO;
+  }
+  if (![self.adds isEqual:aGetActivityReport.adds]) {
+    return NO;
+  }
+  if (![self.edits isEqual:aGetActivityReport.edits]) {
+    return NO;
+  }
+  if (![self.deletes isEqual:aGetActivityReport.deletes]) {
+    return NO;
+  }
+  if (![self.activeUsers28Day isEqual:aGetActivityReport.activeUsers28Day]) {
+    return NO;
+  }
+  if (![self.activeUsers7Day isEqual:aGetActivityReport.activeUsers7Day]) {
+    return NO;
+  }
+  if (![self.activeUsers1Day isEqual:aGetActivityReport.activeUsers1Day]) {
+    return NO;
+  }
+  if (![self.activeSharedFolders28Day isEqual:aGetActivityReport.activeSharedFolders28Day]) {
+    return NO;
+  }
+  if (![self.activeSharedFolders7Day isEqual:aGetActivityReport.activeSharedFolders7Day]) {
+    return NO;
+  }
+  if (![self.activeSharedFolders1Day isEqual:aGetActivityReport.activeSharedFolders1Day]) {
+    return NO;
+  }
+  if (![self.sharedLinksCreated isEqual:aGetActivityReport.sharedLinksCreated]) {
+    return NO;
+  }
+  if (![self.sharedLinksViewedByTeam isEqual:aGetActivityReport.sharedLinksViewedByTeam]) {
+    return NO;
+  }
+  if (![self.sharedLinksViewedByOutsideUser isEqual:aGetActivityReport.sharedLinksViewedByOutsideUser]) {
+    return NO;
+  }
+  if (![self.sharedLinksViewedByNotLoggedIn isEqual:aGetActivityReport.sharedLinksViewedByNotLoggedIn]) {
+    return NO;
+  }
+  if (![self.sharedLinksViewedTotal isEqual:aGetActivityReport.sharedLinksViewedTotal]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -1795,6 +2614,51 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.startDate hash];
+  result = prime * result + [self.active1Day hash];
+  result = prime * result + [self.active7Day hash];
+  result = prime * result + [self.active28Day hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetDevicesReport:other];
+}
+
+- (BOOL)isEqualToGetDevicesReport:(DBTEAMGetDevicesReport *)aGetDevicesReport {
+  if (self == aGetDevicesReport) {
+    return YES;
+  }
+  if (![self.startDate isEqual:aGetDevicesReport.startDate]) {
+    return NO;
+  }
+  if (![self.active1Day isEqual:aGetDevicesReport.active1Day]) {
+    return NO;
+  }
+  if (![self.active7Day isEqual:aGetDevicesReport.active7Day]) {
+    return NO;
+  }
+  if (![self.active28Day isEqual:aGetDevicesReport.active28Day]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -1882,6 +2746,59 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.startDate hash];
+  result = prime * result + [self.teamSize hash];
+  result = prime * result + [self.pendingInvites hash];
+  result = prime * result + [self.membersJoined hash];
+  result = prime * result + [self.suspendedMembers hash];
+  result = prime * result + [self.licenses hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetMembershipReport:other];
+}
+
+- (BOOL)isEqualToGetMembershipReport:(DBTEAMGetMembershipReport *)aGetMembershipReport {
+  if (self == aGetMembershipReport) {
+    return YES;
+  }
+  if (![self.startDate isEqual:aGetMembershipReport.startDate]) {
+    return NO;
+  }
+  if (![self.teamSize isEqual:aGetMembershipReport.teamSize]) {
+    return NO;
+  }
+  if (![self.pendingInvites isEqual:aGetMembershipReport.pendingInvites]) {
+    return NO;
+  }
+  if (![self.membersJoined isEqual:aGetMembershipReport.membersJoined]) {
+    return NO;
+  }
+  if (![self.suspendedMembers isEqual:aGetMembershipReport.suspendedMembers]) {
+    return NO;
+  }
+  if (![self.licenses isEqual:aGetMembershipReport.licenses]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -2010,6 +2927,59 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.startDate hash];
+  result = prime * result + [self.totalUsage hash];
+  result = prime * result + [self.sharedUsage hash];
+  result = prime * result + [self.unsharedUsage hash];
+  result = prime * result + [self.sharedFolders hash];
+  result = prime * result + [self.memberStorageMap hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetStorageReport:other];
+}
+
+- (BOOL)isEqualToGetStorageReport:(DBTEAMGetStorageReport *)aGetStorageReport {
+  if (self == aGetStorageReport) {
+    return YES;
+  }
+  if (![self.startDate isEqual:aGetStorageReport.startDate]) {
+    return NO;
+  }
+  if (![self.totalUsage isEqual:aGetStorageReport.totalUsage]) {
+    return NO;
+  }
+  if (![self.sharedUsage isEqual:aGetStorageReport.sharedUsage]) {
+    return NO;
+  }
+  if (![self.unsharedUsage isEqual:aGetStorageReport.unsharedUsage]) {
+    return NO;
+  }
+  if (![self.sharedFolders isEqual:aGetStorageReport.sharedFolders]) {
+    return NO;
+  }
+  if (![self.memberStorageMap isEqual:aGetStorageReport.memberStorageMap]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -2160,6 +3130,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupAccessTypeMember:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupAccessTypeOwner:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupAccessType:other];
+}
+
+- (BOOL)isEqualToGroupAccessType:(DBTEAMGroupAccessType *)aGroupAccessType {
+  if (self == aGroupAccessType) {
+    return YES;
+  }
+  if (self.tag != aGroupAccessType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupAccessTypeMember:
+    return [[self tagName] isEqual:[aGroupAccessType tagName]];
+  case DBTEAMGroupAccessTypeOwner:
+    return [[self tagName] isEqual:[aGroupAccessType tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2249,6 +3263,55 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.groupName hash];
+  if (self.groupExternalId) {
+    result = prime * result + [self.groupExternalId hash];
+  }
+  if (self.groupManagementType) {
+    result = prime * result + [self.groupManagementType hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupCreateArg:other];
+}
+
+- (BOOL)isEqualToGroupCreateArg:(DBTEAMGroupCreateArg *)aGroupCreateArg {
+  if (self == aGroupCreateArg) {
+    return YES;
+  }
+  if (![self.groupName isEqual:aGroupCreateArg.groupName]) {
+    return NO;
+  }
+  if (self.groupExternalId) {
+    if (![self.groupExternalId isEqual:aGroupCreateArg.groupExternalId]) {
+      return NO;
+    }
+  }
+  if (self.groupManagementType) {
+    if (![self.groupManagementType isEqual:aGroupCreateArg.groupManagementType]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -2402,6 +3465,62 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupCreateErrorGroupNameAlreadyUsed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupCreateErrorGroupNameInvalid:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupCreateErrorExternalIdAlreadyInUse:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupCreateErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupCreateErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupCreateError:other];
+}
+
+- (BOOL)isEqualToGroupCreateError:(DBTEAMGroupCreateError *)aGroupCreateError {
+  if (self == aGroupCreateError) {
+    return YES;
+  }
+  if (self.tag != aGroupCreateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupCreateErrorGroupNameAlreadyUsed:
+    return [[self tagName] isEqual:[aGroupCreateError tagName]];
+  case DBTEAMGroupCreateErrorGroupNameInvalid:
+    return [[self tagName] isEqual:[aGroupCreateError tagName]];
+  case DBTEAMGroupCreateErrorExternalIdAlreadyInUse:
+    return [[self tagName] isEqual:[aGroupCreateError tagName]];
+  case DBTEAMGroupCreateErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupCreateError tagName]];
+  case DBTEAMGroupCreateErrorOther:
+    return [[self tagName] isEqual:[aGroupCreateError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2519,6 +3638,50 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupSelectorErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupSelectorErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupSelectorError:other];
+}
+
+- (BOOL)isEqualToGroupSelectorError:(DBTEAMGroupSelectorError *)aGroupSelectorError {
+  if (self == aGroupSelectorError) {
+    return YES;
+  }
+  if (self.tag != aGroupSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupSelectorErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupSelectorError tagName]];
+  case DBTEAMGroupSelectorErrorOther:
+    return [[self tagName] isEqual:[aGroupSelectorError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -2641,6 +3804,55 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupSelectorWithTeamGroupErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupSelectorWithTeamGroupError:other];
+}
+
+- (BOOL)isEqualToGroupSelectorWithTeamGroupError:
+    (DBTEAMGroupSelectorWithTeamGroupError *)aGroupSelectorWithTeamGroupError {
+  if (self == aGroupSelectorWithTeamGroupError) {
+    return YES;
+  }
+  if (self.tag != aGroupSelectorWithTeamGroupError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupSelectorWithTeamGroupErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupSelectorWithTeamGroupError tagName]];
+  case DBTEAMGroupSelectorWithTeamGroupErrorOther:
+    return [[self tagName] isEqual:[aGroupSelectorWithTeamGroupError tagName]];
+  case DBTEAMGroupSelectorWithTeamGroupErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupSelectorWithTeamGroupError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -2783,6 +3995,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupDeleteErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupDeleteErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupDeleteErrorGroupAlreadyDeleted:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupDeleteError:other];
+}
+
+- (BOOL)isEqualToGroupDeleteError:(DBTEAMGroupDeleteError *)aGroupDeleteError {
+  if (self == aGroupDeleteError) {
+    return YES;
+  }
+  if (self.tag != aGroupDeleteError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupDeleteErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupDeleteError tagName]];
+  case DBTEAMGroupDeleteErrorOther:
+    return [[self tagName] isEqual:[aGroupDeleteError tagName]];
+  case DBTEAMGroupDeleteErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupDeleteError tagName]];
+  case DBTEAMGroupDeleteErrorGroupAlreadyDeleted:
+    return [[self tagName] isEqual:[aGroupDeleteError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2896,6 +4160,75 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.groupName hash];
+  result = prime * result + [self.groupId hash];
+  result = prime * result + [self.groupManagementType hash];
+  result = prime * result + [self.created hash];
+  if (self.groupExternalId) {
+    result = prime * result + [self.groupExternalId hash];
+  }
+  if (self.memberCount) {
+    result = prime * result + [self.memberCount hash];
+  }
+  if (self.members) {
+    result = prime * result + [self.members hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupFullInfo:other];
+}
+
+- (BOOL)isEqualToGroupFullInfo:(DBTEAMGroupFullInfo *)aGroupFullInfo {
+  if (self == aGroupFullInfo) {
+    return YES;
+  }
+  if (![self.groupName isEqual:aGroupFullInfo.groupName]) {
+    return NO;
+  }
+  if (![self.groupId isEqual:aGroupFullInfo.groupId]) {
+    return NO;
+  }
+  if (![self.groupManagementType isEqual:aGroupFullInfo.groupManagementType]) {
+    return NO;
+  }
+  if (![self.created isEqual:aGroupFullInfo.created]) {
+    return NO;
+  }
+  if (self.groupExternalId) {
+    if (![self.groupExternalId isEqual:aGroupFullInfo.groupExternalId]) {
+      return NO;
+    }
+  }
+  if (self.memberCount) {
+    if (![self.memberCount isEqual:aGroupFullInfo.memberCount]) {
+      return NO;
+    }
+  }
+  if (self.members) {
+    if (![self.members isEqual:aGroupFullInfo.members]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -2998,6 +4331,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.profile hash];
+  result = prime * result + [self.accessType hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMemberInfo:other];
+}
+
+- (BOOL)isEqualToGroupMemberInfo:(DBTEAMGroupMemberInfo *)aGroupMemberInfo {
+  if (self == aGroupMemberInfo) {
+    return YES;
+  }
+  if (![self.profile isEqual:aGroupMemberInfo.profile]) {
+    return NO;
+  }
+  if (![self.accessType isEqual:aGroupMemberInfo.accessType]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3066,6 +4436,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.user hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMemberSelector:other];
+}
+
+- (BOOL)isEqualToGroupMemberSelector:(DBTEAMGroupMemberSelector *)aGroupMemberSelector {
+  if (self == aGroupMemberSelector) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupMemberSelector.group]) {
+    return NO;
+  }
+  if (![self.user isEqual:aGroupMemberSelector.user]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -3192,6 +4599,58 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupMemberSelectorErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSelectorErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSelectorErrorMemberNotInGroup:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMemberSelectorError:other];
+}
+
+- (BOOL)isEqualToGroupMemberSelectorError:(DBTEAMGroupMemberSelectorError *)aGroupMemberSelectorError {
+  if (self == aGroupMemberSelectorError) {
+    return YES;
+  }
+  if (self.tag != aGroupMemberSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupMemberSelectorErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupMemberSelectorError tagName]];
+  case DBTEAMGroupMemberSelectorErrorOther:
+    return [[self tagName] isEqual:[aGroupMemberSelectorError tagName]];
+  case DBTEAMGroupMemberSelectorErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupMemberSelectorError tagName]];
+  case DBTEAMGroupMemberSelectorErrorMemberNotInGroup:
+    return [[self tagName] isEqual:[aGroupMemberSelectorError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -3352,6 +4811,62 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupMemberSetAccessTypeErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSetAccessTypeErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMemberSetAccessTypeError:other];
+}
+
+- (BOOL)isEqualToGroupMemberSetAccessTypeError:(DBTEAMGroupMemberSetAccessTypeError *)aGroupMemberSetAccessTypeError {
+  if (self == aGroupMemberSetAccessTypeError) {
+    return YES;
+  }
+  if (self.tag != aGroupMemberSetAccessTypeError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupMemberSetAccessTypeErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupMemberSetAccessTypeError tagName]];
+  case DBTEAMGroupMemberSetAccessTypeErrorOther:
+    return [[self tagName] isEqual:[aGroupMemberSetAccessTypeError tagName]];
+  case DBTEAMGroupMemberSetAccessTypeErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupMemberSetAccessTypeError tagName]];
+  case DBTEAMGroupMemberSetAccessTypeErrorMemberNotInGroup:
+    return [[self tagName] isEqual:[aGroupMemberSetAccessTypeError tagName]];
+  case DBTEAMGroupMemberSetAccessTypeErrorUserCannotBeManagerOfCompanyManagedGroup:
+    return [[self tagName] isEqual:[aGroupMemberSetAccessTypeError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3445,6 +4960,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.returnMembers hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToIncludeMembersArg:other];
+}
+
+- (BOOL)isEqualToIncludeMembersArg:(DBTEAMIncludeMembersArg *)anIncludeMembersArg {
+  if (self == anIncludeMembersArg) {
+    return YES;
+  }
+  if (![self.returnMembers isEqual:anIncludeMembersArg.returnMembers]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3519,6 +5067,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.members hash];
+  result = prime * result + [self.returnMembers hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersAddArg:other];
+}
+
+- (BOOL)isEqualToGroupMembersAddArg:(DBTEAMGroupMembersAddArg *)aGroupMembersAddArg {
+  if (self == aGroupMembersAddArg) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupMembersAddArg.group]) {
+    return NO;
+  }
+  if (![self.members isEqual:aGroupMembersAddArg.members]) {
+    return NO;
+  }
+  if (![self.returnMembers isEqual:aGroupMembersAddArg.returnMembers]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -3761,6 +5350,79 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupMembersAddErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorDuplicateUser:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorGroupNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorMembersNotInTeam:
+    result = prime * result + [self.membersNotInTeam hash];
+  case DBTEAMGroupMembersAddErrorUsersNotFound:
+    result = prime * result + [self.usersNotFound hash];
+  case DBTEAMGroupMembersAddErrorUserMustBeActiveToBeOwner:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup:
+    result = prime * result + [self.userCannotBeManagerOfCompanyManagedGroup hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersAddError:other];
+}
+
+- (BOOL)isEqualToGroupMembersAddError:(DBTEAMGroupMembersAddError *)aGroupMembersAddError {
+  if (self == aGroupMembersAddError) {
+    return YES;
+  }
+  if (self.tag != aGroupMembersAddError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupMembersAddErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorOther:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorDuplicateUser:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorGroupNotInTeam:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorMembersNotInTeam:
+    return [self.membersNotInTeam isEqual:aGroupMembersAddError.membersNotInTeam];
+  case DBTEAMGroupMembersAddErrorUsersNotFound:
+    return [self.usersNotFound isEqual:aGroupMembersAddError.usersNotFound];
+  case DBTEAMGroupMembersAddErrorUserMustBeActiveToBeOwner:
+    return [[self tagName] isEqual:[aGroupMembersAddError tagName]];
+  case DBTEAMGroupMembersAddErrorUserCannotBeManagerOfCompanyManagedGroup:
+    return [self.userCannotBeManagerOfCompanyManagedGroup
+        isEqual:aGroupMembersAddError.userCannotBeManagerOfCompanyManagedGroup];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3896,6 +5558,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.groupInfo hash];
+  result = prime * result + [self.asyncJobId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersChangeResult:other];
+}
+
+- (BOOL)isEqualToGroupMembersChangeResult:(DBTEAMGroupMembersChangeResult *)aGroupMembersChangeResult {
+  if (self == aGroupMembersChangeResult) {
+    return YES;
+  }
+  if (![self.groupInfo isEqual:aGroupMembersChangeResult.groupInfo]) {
+    return NO;
+  }
+  if (![self.asyncJobId isEqual:aGroupMembersChangeResult.asyncJobId]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -3972,6 +5671,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.users hash];
+  result = prime * result + [self.returnMembers hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersRemoveArg:other];
+}
+
+- (BOOL)isEqualToGroupMembersRemoveArg:(DBTEAMGroupMembersRemoveArg *)aGroupMembersRemoveArg {
+  if (self == aGroupMembersRemoveArg) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupMembersRemoveArg.group]) {
+    return NO;
+  }
+  if (![self.users isEqual:aGroupMembersRemoveArg.users]) {
+    return NO;
+  }
+  if (![self.returnMembers isEqual:aGroupMembersRemoveArg.returnMembers]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -4107,6 +5847,58 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupMembersSelectorErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersSelectorErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersSelectorErrorMemberNotInGroup:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersSelectorError:other];
+}
+
+- (BOOL)isEqualToGroupMembersSelectorError:(DBTEAMGroupMembersSelectorError *)aGroupMembersSelectorError {
+  if (self == aGroupMembersSelectorError) {
+    return YES;
+  }
+  if (self.tag != aGroupMembersSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupMembersSelectorErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupMembersSelectorError tagName]];
+  case DBTEAMGroupMembersSelectorErrorOther:
+    return [[self tagName] isEqual:[aGroupMembersSelectorError tagName]];
+  case DBTEAMGroupMembersSelectorErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupMembersSelectorError tagName]];
+  case DBTEAMGroupMembersSelectorErrorMemberNotInGroup:
+    return [[self tagName] isEqual:[aGroupMembersSelectorError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -4318,6 +6110,70 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupMembersRemoveErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersRemoveErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersRemoveErrorMemberNotInGroup:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersRemoveErrorGroupNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupMembersRemoveErrorMembersNotInTeam:
+    result = prime * result + [self.membersNotInTeam hash];
+  case DBTEAMGroupMembersRemoveErrorUsersNotFound:
+    result = prime * result + [self.usersNotFound hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersRemoveError:other];
+}
+
+- (BOOL)isEqualToGroupMembersRemoveError:(DBTEAMGroupMembersRemoveError *)aGroupMembersRemoveError {
+  if (self == aGroupMembersRemoveError) {
+    return YES;
+  }
+  if (self.tag != aGroupMembersRemoveError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupMembersRemoveErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupMembersRemoveError tagName]];
+  case DBTEAMGroupMembersRemoveErrorOther:
+    return [[self tagName] isEqual:[aGroupMembersRemoveError tagName]];
+  case DBTEAMGroupMembersRemoveErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupMembersRemoveError tagName]];
+  case DBTEAMGroupMembersRemoveErrorMemberNotInGroup:
+    return [[self tagName] isEqual:[aGroupMembersRemoveError tagName]];
+  case DBTEAMGroupMembersRemoveErrorGroupNotInTeam:
+    return [[self tagName] isEqual:[aGroupMembersRemoveError tagName]];
+  case DBTEAMGroupMembersRemoveErrorMembersNotInTeam:
+    return [self.membersNotInTeam isEqual:aGroupMembersRemoveError.membersNotInTeam];
+  case DBTEAMGroupMembersRemoveErrorUsersNotFound:
+    return [self.usersNotFound isEqual:aGroupMembersRemoveError.usersNotFound];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4434,6 +6290,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.users hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersSelector:other];
+}
+
+- (BOOL)isEqualToGroupMembersSelector:(DBTEAMGroupMembersSelector *)aGroupMembersSelector {
+  if (self == aGroupMembersSelector) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupMembersSelector.group]) {
+    return NO;
+  }
+  if (![self.users isEqual:aGroupMembersSelector.users]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4513,6 +6406,51 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.accessType hash];
+  result = prime * result + [self.returnMembers hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupMembersSetAccessTypeArg:other];
+}
+
+- (BOOL)isEqualToGroupMembersSetAccessTypeArg:(DBTEAMGroupMembersSetAccessTypeArg *)aGroupMembersSetAccessTypeArg {
+  if (self == aGroupMembersSetAccessTypeArg) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupMembersSetAccessTypeArg.group]) {
+    return NO;
+  }
+  if (![self.user isEqual:aGroupMembersSetAccessTypeArg.user]) {
+    return NO;
+  }
+  if (![self.accessType isEqual:aGroupMembersSetAccessTypeArg.accessType]) {
+    return NO;
+  }
+  if (![self.returnMembers isEqual:aGroupMembersSetAccessTypeArg.returnMembers]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -4640,6 +6578,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupSelectorGroupId:
+    result = prime * result + [self.groupId hash];
+  case DBTEAMGroupSelectorGroupExternalId:
+    result = prime * result + [self.groupExternalId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupSelector:other];
+}
+
+- (BOOL)isEqualToGroupSelector:(DBTEAMGroupSelector *)aGroupSelector {
+  if (self == aGroupSelector) {
+    return YES;
+  }
+  if (self.tag != aGroupSelector.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupSelectorGroupId:
+    return [self.groupId isEqual:aGroupSelector.groupId];
+  case DBTEAMGroupSelectorGroupExternalId:
+    return [self.groupExternalId isEqual:aGroupSelector.groupExternalId];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -4742,6 +6724,67 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.returnMembers hash];
+  if (self.dNewGroupName) {
+    result = prime * result + [self.dNewGroupName hash];
+  }
+  if (self.dNewGroupExternalId) {
+    result = prime * result + [self.dNewGroupExternalId hash];
+  }
+  if (self.dNewGroupManagementType) {
+    result = prime * result + [self.dNewGroupManagementType hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupUpdateArgs:other];
+}
+
+- (BOOL)isEqualToGroupUpdateArgs:(DBTEAMGroupUpdateArgs *)aGroupUpdateArgs {
+  if (self == aGroupUpdateArgs) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupUpdateArgs.group]) {
+    return NO;
+  }
+  if (![self.returnMembers isEqual:aGroupUpdateArgs.returnMembers]) {
+    return NO;
+  }
+  if (self.dNewGroupName) {
+    if (![self.dNewGroupName isEqual:aGroupUpdateArgs.dNewGroupName]) {
+      return NO;
+    }
+  }
+  if (self.dNewGroupExternalId) {
+    if (![self.dNewGroupExternalId isEqual:aGroupUpdateArgs.dNewGroupExternalId]) {
+      return NO;
+    }
+  }
+  if (self.dNewGroupManagementType) {
+    if (![self.dNewGroupManagementType isEqual:aGroupUpdateArgs.dNewGroupManagementType]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -4918,6 +6961,66 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupUpdateErrorGroupNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupUpdateErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupUpdateErrorGroupNameAlreadyUsed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupUpdateErrorGroupNameInvalid:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupUpdateErrorExternalIdAlreadyInUse:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupUpdateError:other];
+}
+
+- (BOOL)isEqualToGroupUpdateError:(DBTEAMGroupUpdateError *)aGroupUpdateError {
+  if (self == aGroupUpdateError) {
+    return YES;
+  }
+  if (self.tag != aGroupUpdateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupUpdateErrorGroupNotFound:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  case DBTEAMGroupUpdateErrorOther:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  case DBTEAMGroupUpdateErrorSystemManagedGroupDisallowed:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  case DBTEAMGroupUpdateErrorGroupNameAlreadyUsed:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  case DBTEAMGroupUpdateErrorGroupNameInvalid:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  case DBTEAMGroupUpdateErrorExternalIdAlreadyInUse:
+    return [[self tagName] isEqual:[aGroupUpdateError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5039,6 +7142,50 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsGetInfoErrorGroupNotOnTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsGetInfoErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsGetInfoError:other];
+}
+
+- (BOOL)isEqualToGroupsGetInfoError:(DBTEAMGroupsGetInfoError *)aGroupsGetInfoError {
+  if (self == aGroupsGetInfoError) {
+    return YES;
+  }
+  if (self.tag != aGroupsGetInfoError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsGetInfoErrorGroupNotOnTeam:
+    return [[self tagName] isEqual:[aGroupsGetInfoError tagName]];
+  case DBTEAMGroupsGetInfoErrorOther:
+    return [[self tagName] isEqual:[aGroupsGetInfoError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -5170,6 +7317,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsGetInfoItemIdNotFound:
+    result = prime * result + [self.idNotFound hash];
+  case DBTEAMGroupsGetInfoItemGroupInfo:
+    result = prime * result + [self.groupInfo hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsGetInfoItem:other];
+}
+
+- (BOOL)isEqualToGroupsGetInfoItem:(DBTEAMGroupsGetInfoItem *)aGroupsGetInfoItem {
+  if (self == aGroupsGetInfoItem) {
+    return YES;
+  }
+  if (self.tag != aGroupsGetInfoItem.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsGetInfoItemIdNotFound:
+    return [self.idNotFound isEqual:aGroupsGetInfoItem.idNotFound];
+  case DBTEAMGroupsGetInfoItemGroupInfo:
+    return [self.groupInfo isEqual:aGroupsGetInfoItem.groupInfo];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5261,6 +7452,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.limit hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsListArg:other];
+}
+
+- (BOOL)isEqualToGroupsListArg:(DBTEAMGroupsListArg *)aGroupsListArg {
+  if (self == aGroupsListArg) {
+    return YES;
+  }
+  if (![self.limit isEqual:aGroupsListArg.limit]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5324,6 +7548,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.cursor hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsListContinueArg:other];
+}
+
+- (BOOL)isEqualToGroupsListContinueArg:(DBTEAMGroupsListContinueArg *)aGroupsListContinueArg {
+  if (self == aGroupsListContinueArg) {
+    return YES;
+  }
+  if (![self.cursor isEqual:aGroupsListContinueArg.cursor]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -5421,6 +7678,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsListContinueErrorInvalidCursor:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsListContinueErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsListContinueError:other];
+}
+
+- (BOOL)isEqualToGroupsListContinueError:(DBTEAMGroupsListContinueError *)aGroupsListContinueError {
+  if (self == aGroupsListContinueError) {
+    return YES;
+  }
+  if (self.tag != aGroupsListContinueError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsListContinueErrorInvalidCursor:
+    return [[self tagName] isEqual:[aGroupsListContinueError tagName]];
+  case DBTEAMGroupsListContinueErrorOther:
+    return [[self tagName] isEqual:[aGroupsListContinueError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5502,6 +7803,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.groups hash];
+  result = prime * result + [self.cursor hash];
+  result = prime * result + [self.hasMore hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsListResult:other];
+}
+
+- (BOOL)isEqualToGroupsListResult:(DBTEAMGroupsListResult *)aGroupsListResult {
+  if (self == aGroupsListResult) {
+    return YES;
+  }
+  if (![self.groups isEqual:aGroupsListResult.groups]) {
+    return NO;
+  }
+  if (![self.cursor isEqual:aGroupsListResult.cursor]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aGroupsListResult.hasMore]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -5587,6 +7929,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.group hash];
+  result = prime * result + [self.limit hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsMembersListArg:other];
+}
+
+- (BOOL)isEqualToGroupsMembersListArg:(DBTEAMGroupsMembersListArg *)aGroupsMembersListArg {
+  if (self == aGroupsMembersListArg) {
+    return YES;
+  }
+  if (![self.group isEqual:aGroupsMembersListArg.group]) {
+    return NO;
+  }
+  if (![self.limit isEqual:aGroupsMembersListArg.limit]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5652,6 +8031,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.cursor hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsMembersListContinueArg:other];
+}
+
+- (BOOL)isEqualToGroupsMembersListContinueArg:(DBTEAMGroupsMembersListContinueArg *)aGroupsMembersListContinueArg {
+  if (self == aGroupsMembersListContinueArg) {
+    return YES;
+  }
+  if (![self.cursor isEqual:aGroupsMembersListContinueArg.cursor]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -5749,6 +8161,51 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsMembersListContinueErrorInvalidCursor:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsMembersListContinueErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsMembersListContinueError:other];
+}
+
+- (BOOL)isEqualToGroupsMembersListContinueError:
+    (DBTEAMGroupsMembersListContinueError *)aGroupsMembersListContinueError {
+  if (self == aGroupsMembersListContinueError) {
+    return YES;
+  }
+  if (self.tag != aGroupsMembersListContinueError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsMembersListContinueErrorInvalidCursor:
+    return [[self tagName] isEqual:[aGroupsMembersListContinueError tagName]];
+  case DBTEAMGroupsMembersListContinueErrorOther:
+    return [[self tagName] isEqual:[aGroupsMembersListContinueError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -5830,6 +8287,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.members hash];
+  result = prime * result + [self.cursor hash];
+  result = prime * result + [self.hasMore hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsMembersListResult:other];
+}
+
+- (BOOL)isEqualToGroupsMembersListResult:(DBTEAMGroupsMembersListResult *)aGroupsMembersListResult {
+  if (self == aGroupsMembersListResult) {
+    return YES;
+  }
+  if (![self.members isEqual:aGroupsMembersListResult.members]) {
+    return NO;
+  }
+  if (![self.cursor isEqual:aGroupsMembersListResult.cursor]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aGroupsMembersListResult.hasMore]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -5965,6 +8463,58 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsPollErrorInvalidAsyncJobId:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsPollErrorInternalError:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsPollErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMGroupsPollErrorAccessDenied:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsPollError:other];
+}
+
+- (BOOL)isEqualToGroupsPollError:(DBTEAMGroupsPollError *)aGroupsPollError {
+  if (self == aGroupsPollError) {
+    return YES;
+  }
+  if (self.tag != aGroupsPollError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsPollErrorInvalidAsyncJobId:
+    return [[self tagName] isEqual:[aGroupsPollError tagName]];
+  case DBTEAMGroupsPollErrorInternalError:
+    return [[self tagName] isEqual:[aGroupsPollError tagName]];
+  case DBTEAMGroupsPollErrorOther:
+    return [[self tagName] isEqual:[aGroupsPollError tagName]];
+  case DBTEAMGroupsPollErrorAccessDenied:
+    return [[self tagName] isEqual:[aGroupsPollError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -6103,6 +8653,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMGroupsSelectorGroupIds:
+    result = prime * result + [self.groupIds hash];
+  case DBTEAMGroupsSelectorGroupExternalIds:
+    result = prime * result + [self.groupExternalIds hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupsSelector:other];
+}
+
+- (BOOL)isEqualToGroupsSelector:(DBTEAMGroupsSelector *)aGroupsSelector {
+  if (self == aGroupsSelector) {
+    return YES;
+  }
+  if (self.tag != aGroupsSelector.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMGroupsSelectorGroupIds:
+    return [self.groupIds isEqual:aGroupsSelector.groupIds];
+  case DBTEAMGroupsSelectorGroupExternalIds:
+    return [self.groupExternalIds isEqual:aGroupsSelector.groupExternalIds];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6201,6 +8795,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberAppsArg:other];
+}
+
+- (BOOL)isEqualToListMemberAppsArg:(DBTEAMListMemberAppsArg *)aListMemberAppsArg {
+  if (self == aListMemberAppsArg) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aListMemberAppsArg.teamMemberId]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6296,6 +8923,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListMemberAppsErrorMemberNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListMemberAppsErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberAppsError:other];
+}
+
+- (BOOL)isEqualToListMemberAppsError:(DBTEAMListMemberAppsError *)aListMemberAppsError {
+  if (self == aListMemberAppsError) {
+    return YES;
+  }
+  if (self.tag != aListMemberAppsError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListMemberAppsErrorMemberNotFound:
+    return [[self tagName] isEqual:[aListMemberAppsError tagName]];
+  case DBTEAMListMemberAppsErrorOther:
+    return [[self tagName] isEqual:[aListMemberAppsError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6373,6 +9044,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.linkedApiApps hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberAppsResult:other];
+}
+
+- (BOOL)isEqualToListMemberAppsResult:(DBTEAMListMemberAppsResult *)aListMemberAppsResult {
+  if (self == aListMemberAppsResult) {
+    return YES;
+  }
+  if (![self.linkedApiApps isEqual:aListMemberAppsResult.linkedApiApps]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -6457,6 +9161,51 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.includeWebSessions hash];
+  result = prime * result + [self.includeDesktopClients hash];
+  result = prime * result + [self.includeMobileClients hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberDevicesArg:other];
+}
+
+- (BOOL)isEqualToListMemberDevicesArg:(DBTEAMListMemberDevicesArg *)aListMemberDevicesArg {
+  if (self == aListMemberDevicesArg) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aListMemberDevicesArg.teamMemberId]) {
+    return NO;
+  }
+  if (![self.includeWebSessions isEqual:aListMemberDevicesArg.includeWebSessions]) {
+    return NO;
+  }
+  if (![self.includeDesktopClients isEqual:aListMemberDevicesArg.includeDesktopClients]) {
+    return NO;
+  }
+  if (![self.includeMobileClients isEqual:aListMemberDevicesArg.includeMobileClients]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -6563,6 +9312,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListMemberDevicesErrorMemberNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListMemberDevicesErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberDevicesError:other];
+}
+
+- (BOOL)isEqualToListMemberDevicesError:(DBTEAMListMemberDevicesError *)aListMemberDevicesError {
+  if (self == aListMemberDevicesError) {
+    return YES;
+  }
+  if (self.tag != aListMemberDevicesError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListMemberDevicesErrorMemberNotFound:
+    return [[self tagName] isEqual:[aListMemberDevicesError tagName]];
+  case DBTEAMListMemberDevicesErrorOther:
+    return [[self tagName] isEqual:[aListMemberDevicesError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6655,6 +9448,59 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.activeWebSessions) {
+    result = prime * result + [self.activeWebSessions hash];
+  }
+  if (self.desktopClientSessions) {
+    result = prime * result + [self.desktopClientSessions hash];
+  }
+  if (self.mobileClientSessions) {
+    result = prime * result + [self.mobileClientSessions hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMemberDevicesResult:other];
+}
+
+- (BOOL)isEqualToListMemberDevicesResult:(DBTEAMListMemberDevicesResult *)aListMemberDevicesResult {
+  if (self == aListMemberDevicesResult) {
+    return YES;
+  }
+  if (self.activeWebSessions) {
+    if (![self.activeWebSessions isEqual:aListMemberDevicesResult.activeWebSessions]) {
+      return NO;
+    }
+  }
+  if (self.desktopClientSessions) {
+    if (![self.desktopClientSessions isEqual:aListMemberDevicesResult.desktopClientSessions]) {
+      return NO;
+    }
+  }
+  if (self.mobileClientSessions) {
+    if (![self.mobileClientSessions isEqual:aListMemberDevicesResult.mobileClientSessions]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -6767,6 +9613,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersAppsArg:other];
+}
+
+- (BOOL)isEqualToListMembersAppsArg:(DBTEAMListMembersAppsArg *)aListMembersAppsArg {
+  if (self == aListMembersAppsArg) {
+    return YES;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListMembersAppsArg.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6864,6 +9747,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListMembersAppsErrorReset:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListMembersAppsErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersAppsError:other];
+}
+
+- (BOOL)isEqualToListMembersAppsError:(DBTEAMListMembersAppsError *)aListMembersAppsError {
+  if (self == aListMembersAppsError) {
+    return YES;
+  }
+  if (self.tag != aListMembersAppsError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListMembersAppsErrorReset:
+    return [[self tagName] isEqual:[aListMembersAppsError tagName]];
+  case DBTEAMListMembersAppsErrorOther:
+    return [[self tagName] isEqual:[aListMembersAppsError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -6949,6 +9876,51 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.apps hash];
+  result = prime * result + [self.hasMore hash];
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersAppsResult:other];
+}
+
+- (BOOL)isEqualToListMembersAppsResult:(DBTEAMListMembersAppsResult *)aListMembersAppsResult {
+  if (self == aListMembersAppsResult) {
+    return YES;
+  }
+  if (![self.apps isEqual:aListMembersAppsResult.apps]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aListMembersAppsResult.hasMore]) {
+    return NO;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListMembersAppsResult.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -7037,6 +10009,55 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+  result = prime * result + [self.includeWebSessions hash];
+  result = prime * result + [self.includeDesktopClients hash];
+  result = prime * result + [self.includeMobileClients hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersDevicesArg:other];
+}
+
+- (BOOL)isEqualToListMembersDevicesArg:(DBTEAMListMembersDevicesArg *)aListMembersDevicesArg {
+  if (self == aListMembersDevicesArg) {
+    return YES;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListMembersDevicesArg.cursor]) {
+      return NO;
+    }
+  }
+  if (![self.includeWebSessions isEqual:aListMembersDevicesArg.includeWebSessions]) {
+    return NO;
+  }
+  if (![self.includeDesktopClients isEqual:aListMembersDevicesArg.includeDesktopClients]) {
+    return NO;
+  }
+  if (![self.includeMobileClients isEqual:aListMembersDevicesArg.includeMobileClients]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -7145,6 +10166,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListMembersDevicesErrorReset:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListMembersDevicesErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersDevicesError:other];
+}
+
+- (BOOL)isEqualToListMembersDevicesError:(DBTEAMListMembersDevicesError *)aListMembersDevicesError {
+  if (self == aListMembersDevicesError) {
+    return YES;
+  }
+  if (self.tag != aListMembersDevicesError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListMembersDevicesErrorReset:
+    return [[self tagName] isEqual:[aListMembersDevicesError tagName]];
+  case DBTEAMListMembersDevicesErrorOther:
+    return [[self tagName] isEqual:[aListMembersDevicesError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7232,6 +10297,51 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.devices hash];
+  result = prime * result + [self.hasMore hash];
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListMembersDevicesResult:other];
+}
+
+- (BOOL)isEqualToListMembersDevicesResult:(DBTEAMListMembersDevicesResult *)aListMembersDevicesResult {
+  if (self == aListMembersDevicesResult) {
+    return YES;
+  }
+  if (![self.devices isEqual:aListMembersDevicesResult.devices]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aListMembersDevicesResult.hasMore]) {
+    return NO;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListMembersDevicesResult.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7312,6 +10422,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamAppsArg:other];
+}
+
+- (BOOL)isEqualToListTeamAppsArg:(DBTEAMListTeamAppsArg *)aListTeamAppsArg {
+  if (self == aListTeamAppsArg) {
+    return YES;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListTeamAppsArg.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -7411,6 +10558,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListTeamAppsErrorReset:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListTeamAppsErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamAppsError:other];
+}
+
+- (BOOL)isEqualToListTeamAppsError:(DBTEAMListTeamAppsError *)aListTeamAppsError {
+  if (self == aListTeamAppsError) {
+    return YES;
+  }
+  if (self.tag != aListTeamAppsError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListTeamAppsErrorReset:
+    return [[self tagName] isEqual:[aListTeamAppsError tagName]];
+  case DBTEAMListTeamAppsErrorOther:
+    return [[self tagName] isEqual:[aListTeamAppsError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7496,6 +10687,51 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.apps hash];
+  result = prime * result + [self.hasMore hash];
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamAppsResult:other];
+}
+
+- (BOOL)isEqualToListTeamAppsResult:(DBTEAMListTeamAppsResult *)aListTeamAppsResult {
+  if (self == aListTeamAppsResult) {
+    return YES;
+  }
+  if (![self.apps isEqual:aListTeamAppsResult.apps]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aListTeamAppsResult.hasMore]) {
+    return NO;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListTeamAppsResult.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -7584,6 +10820,55 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+  result = prime * result + [self.includeWebSessions hash];
+  result = prime * result + [self.includeDesktopClients hash];
+  result = prime * result + [self.includeMobileClients hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamDevicesArg:other];
+}
+
+- (BOOL)isEqualToListTeamDevicesArg:(DBTEAMListTeamDevicesArg *)aListTeamDevicesArg {
+  if (self == aListTeamDevicesArg) {
+    return YES;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListTeamDevicesArg.cursor]) {
+      return NO;
+    }
+  }
+  if (![self.includeWebSessions isEqual:aListTeamDevicesArg.includeWebSessions]) {
+    return NO;
+  }
+  if (![self.includeDesktopClients isEqual:aListTeamDevicesArg.includeDesktopClients]) {
+    return NO;
+  }
+  if (![self.includeMobileClients isEqual:aListTeamDevicesArg.includeMobileClients]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -7692,6 +10977,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMListTeamDevicesErrorReset:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMListTeamDevicesErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamDevicesError:other];
+}
+
+- (BOOL)isEqualToListTeamDevicesError:(DBTEAMListTeamDevicesError *)aListTeamDevicesError {
+  if (self == aListTeamDevicesError) {
+    return YES;
+  }
+  if (self.tag != aListTeamDevicesError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMListTeamDevicesErrorReset:
+    return [[self tagName] isEqual:[aListTeamDevicesError tagName]];
+  case DBTEAMListTeamDevicesErrorOther:
+    return [[self tagName] isEqual:[aListTeamDevicesError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7779,6 +11108,51 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.devices hash];
+  result = prime * result + [self.hasMore hash];
+  if (self.cursor) {
+    result = prime * result + [self.cursor hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToListTeamDevicesResult:other];
+}
+
+- (BOOL)isEqualToListTeamDevicesResult:(DBTEAMListTeamDevicesResult *)aListTeamDevicesResult {
+  if (self == aListTeamDevicesResult) {
+    return YES;
+  }
+  if (![self.devices isEqual:aListTeamDevicesResult.devices]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aListTeamDevicesResult.hasMore]) {
+    return NO;
+  }
+  if (self.cursor) {
+    if (![self.cursor isEqual:aListTeamDevicesResult.cursor]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -7858,6 +11232,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.accessType hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberAccess:other];
+}
+
+- (BOOL)isEqualToMemberAccess:(DBTEAMMemberAccess *)aMemberAccess {
+  if (self == aMemberAccess) {
+    return YES;
+  }
+  if (![self.user isEqual:aMemberAccess.user]) {
+    return NO;
+  }
+  if (![self.accessType isEqual:aMemberAccess.accessType]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -7956,6 +11367,71 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.memberEmail hash];
+  result = prime * result + [self.memberGivenName hash];
+  result = prime * result + [self.memberSurname hash];
+  if (self.memberExternalId) {
+    result = prime * result + [self.memberExternalId hash];
+  }
+  if (self.memberPersistentId) {
+    result = prime * result + [self.memberPersistentId hash];
+  }
+  result = prime * result + [self.sendWelcomeEmail hash];
+  result = prime * result + [self.role hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberAddArg:other];
+}
+
+- (BOOL)isEqualToMemberAddArg:(DBTEAMMemberAddArg *)aMemberAddArg {
+  if (self == aMemberAddArg) {
+    return YES;
+  }
+  if (![self.memberEmail isEqual:aMemberAddArg.memberEmail]) {
+    return NO;
+  }
+  if (![self.memberGivenName isEqual:aMemberAddArg.memberGivenName]) {
+    return NO;
+  }
+  if (![self.memberSurname isEqual:aMemberAddArg.memberSurname]) {
+    return NO;
+  }
+  if (self.memberExternalId) {
+    if (![self.memberExternalId isEqual:aMemberAddArg.memberExternalId]) {
+      return NO;
+    }
+  }
+  if (self.memberPersistentId) {
+    if (![self.memberPersistentId isEqual:aMemberAddArg.memberPersistentId]) {
+      return NO;
+    }
+  }
+  if (![self.sendWelcomeEmail isEqual:aMemberAddArg.sendWelcomeEmail]) {
+    return NO;
+  }
+  if (![self.role isEqual:aMemberAddArg.role]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -8317,6 +11793,86 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMemberAddResultSuccess:
+    result = prime * result + [self.success hash];
+  case DBTEAMMemberAddResultTeamLicenseLimit:
+    result = prime * result + [self.teamLicenseLimit hash];
+  case DBTEAMMemberAddResultFreeTeamMemberLimitReached:
+    result = prime * result + [self.freeTeamMemberLimitReached hash];
+  case DBTEAMMemberAddResultUserAlreadyOnTeam:
+    result = prime * result + [self.userAlreadyOnTeam hash];
+  case DBTEAMMemberAddResultUserOnAnotherTeam:
+    result = prime * result + [self.userOnAnotherTeam hash];
+  case DBTEAMMemberAddResultUserAlreadyPaired:
+    result = prime * result + [self.userAlreadyPaired hash];
+  case DBTEAMMemberAddResultUserMigrationFailed:
+    result = prime * result + [self.userMigrationFailed hash];
+  case DBTEAMMemberAddResultDuplicateExternalMemberId:
+    result = prime * result + [self.duplicateExternalMemberId hash];
+  case DBTEAMMemberAddResultDuplicateMemberPersistentId:
+    result = prime * result + [self.duplicateMemberPersistentId hash];
+  case DBTEAMMemberAddResultPersistentIdDisabled:
+    result = prime * result + [self.persistentIdDisabled hash];
+  case DBTEAMMemberAddResultUserCreationFailed:
+    result = prime * result + [self.userCreationFailed hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberAddResult:other];
+}
+
+- (BOOL)isEqualToMemberAddResult:(DBTEAMMemberAddResult *)aMemberAddResult {
+  if (self == aMemberAddResult) {
+    return YES;
+  }
+  if (self.tag != aMemberAddResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMemberAddResultSuccess:
+    return [self.success isEqual:aMemberAddResult.success];
+  case DBTEAMMemberAddResultTeamLicenseLimit:
+    return [self.teamLicenseLimit isEqual:aMemberAddResult.teamLicenseLimit];
+  case DBTEAMMemberAddResultFreeTeamMemberLimitReached:
+    return [self.freeTeamMemberLimitReached isEqual:aMemberAddResult.freeTeamMemberLimitReached];
+  case DBTEAMMemberAddResultUserAlreadyOnTeam:
+    return [self.userAlreadyOnTeam isEqual:aMemberAddResult.userAlreadyOnTeam];
+  case DBTEAMMemberAddResultUserOnAnotherTeam:
+    return [self.userOnAnotherTeam isEqual:aMemberAddResult.userOnAnotherTeam];
+  case DBTEAMMemberAddResultUserAlreadyPaired:
+    return [self.userAlreadyPaired isEqual:aMemberAddResult.userAlreadyPaired];
+  case DBTEAMMemberAddResultUserMigrationFailed:
+    return [self.userMigrationFailed isEqual:aMemberAddResult.userMigrationFailed];
+  case DBTEAMMemberAddResultDuplicateExternalMemberId:
+    return [self.duplicateExternalMemberId isEqual:aMemberAddResult.duplicateExternalMemberId];
+  case DBTEAMMemberAddResultDuplicateMemberPersistentId:
+    return [self.duplicateMemberPersistentId isEqual:aMemberAddResult.duplicateMemberPersistentId];
+  case DBTEAMMemberAddResultPersistentIdDisabled:
+    return [self.persistentIdDisabled isEqual:aMemberAddResult.persistentIdDisabled];
+  case DBTEAMMemberAddResultUserCreationFailed:
+    return [self.userCreationFailed isEqual:aMemberAddResult.userCreationFailed];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8476,6 +12032,63 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  if (self.webSessions) {
+    result = prime * result + [self.webSessions hash];
+  }
+  if (self.desktopClients) {
+    result = prime * result + [self.desktopClients hash];
+  }
+  if (self.mobileClients) {
+    result = prime * result + [self.mobileClients hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberDevices:other];
+}
+
+- (BOOL)isEqualToMemberDevices:(DBTEAMMemberDevices *)aMemberDevices {
+  if (self == aMemberDevices) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aMemberDevices.teamMemberId]) {
+    return NO;
+  }
+  if (self.webSessions) {
+    if (![self.webSessions isEqual:aMemberDevices.webSessions]) {
+      return NO;
+    }
+  }
+  if (self.desktopClients) {
+    if (![self.desktopClients isEqual:aMemberDevices.desktopClients]) {
+      return NO;
+    }
+  }
+  if (self.mobileClients) {
+    if (![self.mobileClients isEqual:aMemberDevices.mobileClients]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8583,6 +12196,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.linkedApiApps hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberLinkedApps:other];
+}
+
+- (BOOL)isEqualToMemberLinkedApps:(DBTEAMMemberLinkedApps *)aMemberLinkedApps {
+  if (self == aMemberLinkedApps) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aMemberLinkedApps.teamMemberId]) {
+    return NO;
+  }
+  if (![self.linkedApiApps isEqual:aMemberLinkedApps.linkedApiApps]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -8697,6 +12347,91 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.email hash];
+  result = prime * result + [self.emailVerified hash];
+  result = prime * result + [self.status hash];
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.membershipType hash];
+  if (self.externalId) {
+    result = prime * result + [self.externalId hash];
+  }
+  if (self.accountId) {
+    result = prime * result + [self.accountId hash];
+  }
+  if (self.joinedOn) {
+    result = prime * result + [self.joinedOn hash];
+  }
+  if (self.persistentId) {
+    result = prime * result + [self.persistentId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberProfile:other];
+}
+
+- (BOOL)isEqualToMemberProfile:(DBTEAMMemberProfile *)aMemberProfile {
+  if (self == aMemberProfile) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aMemberProfile.teamMemberId]) {
+    return NO;
+  }
+  if (![self.email isEqual:aMemberProfile.email]) {
+    return NO;
+  }
+  if (![self.emailVerified isEqual:aMemberProfile.emailVerified]) {
+    return NO;
+  }
+  if (![self.status isEqual:aMemberProfile.status]) {
+    return NO;
+  }
+  if (![self.name isEqual:aMemberProfile.name]) {
+    return NO;
+  }
+  if (![self.membershipType isEqual:aMemberProfile.membershipType]) {
+    return NO;
+  }
+  if (self.externalId) {
+    if (![self.externalId isEqual:aMemberProfile.externalId]) {
+      return NO;
+    }
+  }
+  if (self.accountId) {
+    if (![self.accountId isEqual:aMemberProfile.accountId]) {
+      return NO;
+    }
+  }
+  if (self.joinedOn) {
+    if (![self.joinedOn isEqual:aMemberProfile.joinedOn]) {
+      return NO;
+    }
+  }
+  if (self.persistentId) {
+    if (![self.persistentId isEqual:aMemberProfile.persistentId]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -8818,6 +12553,46 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMUserSelectorErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserSelectorError:other];
+}
+
+- (BOOL)isEqualToUserSelectorError:(DBTEAMUserSelectorError *)anUserSelectorError {
+  if (self == anUserSelectorError) {
+    return YES;
+  }
+  if (self.tag != anUserSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMUserSelectorErrorUserNotFound:
+    return [[self tagName] isEqual:[anUserSelectorError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -8927,6 +12702,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMemberSelectorErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMemberSelectorErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMemberSelectorError:other];
+}
+
+- (BOOL)isEqualToMemberSelectorError:(DBTEAMMemberSelectorError *)aMemberSelectorError {
+  if (self == aMemberSelectorError) {
+    return YES;
+  }
+  if (self.tag != aMemberSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMemberSelectorErrorUserNotFound:
+    return [[self tagName] isEqual:[aMemberSelectorError tagName]];
+  case DBTEAMMemberSelectorErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMemberSelectorError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9014,6 +12833,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewMembers hash];
+  result = prime * result + [self.forceAsync hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersAddArg:other];
+}
+
+- (BOOL)isEqualToMembersAddArg:(DBTEAMMembersAddArg *)aMembersAddArg {
+  if (self == aMembersAddArg) {
+    return YES;
+  }
+  if (![self.dNewMembers isEqual:aMembersAddArg.dNewMembers]) {
+    return NO;
+  }
+  if (![self.forceAsync isEqual:aMembersAddArg.forceAsync]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -9155,6 +13011,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersAddJobStatusInProgress:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersAddJobStatusComplete:
+    result = prime * result + [self.complete hash];
+  case DBTEAMMembersAddJobStatusFailed:
+    result = prime * result + [self.failed hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersAddJobStatus:other];
+}
+
+- (BOOL)isEqualToMembersAddJobStatus:(DBTEAMMembersAddJobStatus *)aMembersAddJobStatus {
+  if (self == aMembersAddJobStatus) {
+    return YES;
+  }
+  if (self.tag != aMembersAddJobStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersAddJobStatusInProgress:
+    return [[self tagName] isEqual:[aMembersAddJobStatus tagName]];
+  case DBTEAMMembersAddJobStatusComplete:
+    return [self.complete isEqual:aMembersAddJobStatus.complete];
+  case DBTEAMMembersAddJobStatusFailed:
+    return [self.failed isEqual:aMembersAddJobStatus.failed];
+  }
+  return YES;
 }
 
 @end
@@ -9307,6 +13211,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersAddLaunchAsyncJobId:
+    result = prime * result + [self.asyncJobId hash];
+  case DBTEAMMembersAddLaunchComplete:
+    result = prime * result + [self.complete hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersAddLaunch:other];
+}
+
+- (BOOL)isEqualToMembersAddLaunch:(DBTEAMMembersAddLaunch *)aMembersAddLaunch {
+  if (self == aMembersAddLaunch) {
+    return YES;
+  }
+  if (self.tag != aMembersAddLaunch.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersAddLaunchAsyncJobId:
+    return [self.asyncJobId isEqual:aMembersAddLaunch.asyncJobId];
+  case DBTEAMMembersAddLaunchComplete:
+    return [self.complete isEqual:aMembersAddLaunch.complete];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9404,6 +13352,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.wipeData hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersDeactivateArg:other];
+}
+
+- (BOOL)isEqualToMembersDeactivateArg:(DBTEAMMembersDeactivateArg *)aMembersDeactivateArg {
+  if (self == aMembersDeactivateArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersDeactivateArg.user]) {
+    return NO;
+  }
+  if (![self.wipeData isEqual:aMembersDeactivateArg.wipeData]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -9518,6 +13503,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersDeactivateErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersDeactivateErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersDeactivateErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersDeactivateError:other];
+}
+
+- (BOOL)isEqualToMembersDeactivateError:(DBTEAMMembersDeactivateError *)aMembersDeactivateError {
+  if (self == aMembersDeactivateError) {
+    return YES;
+  }
+  if (self.tag != aMembersDeactivateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersDeactivateErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  case DBTEAMMembersDeactivateErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  case DBTEAMMembersDeactivateErrorOther:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9599,6 +13632,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.members hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersGetInfoArgs:other];
+}
+
+- (BOOL)isEqualToMembersGetInfoArgs:(DBTEAMMembersGetInfoArgs *)aMembersGetInfoArgs {
+  if (self == aMembersGetInfoArgs) {
+    return YES;
+  }
+  if (![self.members isEqual:aMembersGetInfoArgs.members]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -9687,6 +13753,46 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersGetInfoErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersGetInfoError:other];
+}
+
+- (BOOL)isEqualToMembersGetInfoError:(DBTEAMMembersGetInfoError *)aMembersGetInfoError {
+  if (self == aMembersGetInfoError) {
+    return YES;
+  }
+  if (self.tag != aMembersGetInfoError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersGetInfoErrorOther:
+    return [[self tagName] isEqual:[aMembersGetInfoError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -9814,6 +13920,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersGetInfoItemIdNotFound:
+    result = prime * result + [self.idNotFound hash];
+  case DBTEAMMembersGetInfoItemMemberInfo:
+    result = prime * result + [self.memberInfo hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersGetInfoItem:other];
+}
+
+- (BOOL)isEqualToMembersGetInfoItem:(DBTEAMMembersGetInfoItem *)aMembersGetInfoItem {
+  if (self == aMembersGetInfoItem) {
+    return YES;
+  }
+  if (self.tag != aMembersGetInfoItem.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersGetInfoItemIdNotFound:
+    return [self.idNotFound isEqual:aMembersGetInfoItem.idNotFound];
+  case DBTEAMMembersGetInfoItemMemberInfo:
+    return [self.memberInfo isEqual:aMembersGetInfoItem.memberInfo];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9906,6 +14056,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.limit hash];
+  result = prime * result + [self.includeRemoved hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersListArg:other];
+}
+
+- (BOOL)isEqualToMembersListArg:(DBTEAMMembersListArg *)aMembersListArg {
+  if (self == aMembersListArg) {
+    return YES;
+  }
+  if (![self.limit isEqual:aMembersListArg.limit]) {
+    return NO;
+  }
+  if (![self.includeRemoved isEqual:aMembersListArg.includeRemoved]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -9971,6 +14158,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.cursor hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersListContinueArg:other];
+}
+
+- (BOOL)isEqualToMembersListContinueArg:(DBTEAMMembersListContinueArg *)aMembersListContinueArg {
+  if (self == aMembersListContinueArg) {
+    return YES;
+  }
+  if (![self.cursor isEqual:aMembersListContinueArg.cursor]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -10068,6 +14288,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersListContinueErrorInvalidCursor:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersListContinueErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersListContinueError:other];
+}
+
+- (BOOL)isEqualToMembersListContinueError:(DBTEAMMembersListContinueError *)aMembersListContinueError {
+  if (self == aMembersListContinueError) {
+    return YES;
+  }
+  if (self.tag != aMembersListContinueError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersListContinueErrorInvalidCursor:
+    return [[self tagName] isEqual:[aMembersListContinueError tagName]];
+  case DBTEAMMembersListContinueErrorOther:
+    return [[self tagName] isEqual:[aMembersListContinueError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10161,6 +14425,46 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersListErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersListError:other];
+}
+
+- (BOOL)isEqualToMembersListError:(DBTEAMMembersListError *)aMembersListError {
+  if (self == aMembersListError) {
+    return YES;
+  }
+  if (self.tag != aMembersListError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersListErrorOther:
+    return [[self tagName] isEqual:[aMembersListError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10240,6 +14544,47 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.members hash];
+  result = prime * result + [self.cursor hash];
+  result = prime * result + [self.hasMore hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersListResult:other];
+}
+
+- (BOOL)isEqualToMembersListResult:(DBTEAMMembersListResult *)aMembersListResult {
+  if (self == aMembersListResult) {
+    return YES;
+  }
+  if (![self.members isEqual:aMembersListResult.members]) {
+    return NO;
+  }
+  if (![self.cursor isEqual:aMembersListResult.cursor]) {
+    return NO;
+  }
+  if (![self.hasMore isEqual:aMembersListResult.hasMore]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10315,6 +14660,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersRecoverArg:other];
+}
+
+- (BOOL)isEqualToMembersRecoverArg:(DBTEAMMembersRecoverArg *)aMembersRecoverArg {
+  if (self == aMembersRecoverArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersRecoverArg.user]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -10455,6 +14833,62 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersRecoverErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRecoverErrorUserUnrecoverable:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRecoverErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRecoverErrorTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRecoverErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersRecoverError:other];
+}
+
+- (BOOL)isEqualToMembersRecoverError:(DBTEAMMembersRecoverError *)aMembersRecoverError {
+  if (self == aMembersRecoverError) {
+    return YES;
+  }
+  if (self.tag != aMembersRecoverError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersRecoverErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersRecoverError tagName]];
+  case DBTEAMMembersRecoverErrorUserUnrecoverable:
+    return [[self tagName] isEqual:[aMembersRecoverError tagName]];
+  case DBTEAMMembersRecoverErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersRecoverError tagName]];
+  case DBTEAMMembersRecoverErrorTeamLicenseLimit:
+    return [[self tagName] isEqual:[aMembersRecoverError tagName]];
+  case DBTEAMMembersRecoverErrorOther:
+    return [[self tagName] isEqual:[aMembersRecoverError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -10554,6 +14988,63 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.wipeData hash];
+  if (self.transferDestId) {
+    result = prime * result + [self.transferDestId hash];
+  }
+  if (self.transferAdminId) {
+    result = prime * result + [self.transferAdminId hash];
+  }
+  result = prime * result + [self.keepAccount hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersRemoveArg:other];
+}
+
+- (BOOL)isEqualToMembersRemoveArg:(DBTEAMMembersRemoveArg *)aMembersRemoveArg {
+  if (self == aMembersRemoveArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersRemoveArg.user]) {
+    return NO;
+  }
+  if (![self.wipeData isEqual:aMembersRemoveArg.wipeData]) {
+    return NO;
+  }
+  if (self.transferDestId) {
+    if (![self.transferDestId isEqual:aMembersRemoveArg.transferDestId]) {
+      return NO;
+    }
+  }
+  if (self.transferAdminId) {
+    if (![self.transferAdminId isEqual:aMembersRemoveArg.transferAdminId]) {
+      return NO;
+    }
+  }
+  if (![self.keepAccount isEqual:aMembersRemoveArg.keepAccount]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -10854,6 +15345,102 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersRemoveErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferDestUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersRemoveError:other];
+}
+
+- (BOOL)isEqualToMembersRemoveError:(DBTEAMMembersRemoveError *)aMembersRemoveError {
+  if (self == aMembersRemoveError) {
+    return YES;
+  }
+  if (self.tag != aMembersRemoveError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersRemoveErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorOther:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorRemoveLastAdmin:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorRemovedAndTransferDestShouldDiffer:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorRemovedAndTransferAdminShouldDiffer:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferDestUserNotFound:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferDestUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotFound:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferAdminUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorUnspecifiedTransferAdminId:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorTransferAdminIsNotAdmin:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorCannotKeepAccountAndTransfer:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorCannotKeepAccountAndDeleteData:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  case DBTEAMMembersRemoveErrorEmailAddressTooLongToBeDisabled:
+    return [[self tagName] isEqual:[aMembersRemoveError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11028,6 +15615,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersSendWelcomeErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSendWelcomeErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSendWelcomeErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSendWelcomeError:other];
+}
+
+- (BOOL)isEqualToMembersSendWelcomeError:(DBTEAMMembersSendWelcomeError *)aMembersSendWelcomeError {
+  if (self == aMembersSendWelcomeError) {
+    return YES;
+  }
+  if (self.tag != aMembersSendWelcomeError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersSendWelcomeErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersSendWelcomeError tagName]];
+  case DBTEAMMembersSendWelcomeErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersSendWelcomeError tagName]];
+  case DBTEAMMembersSendWelcomeErrorOther:
+    return [[self tagName] isEqual:[aMembersSendWelcomeError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11110,6 +15745,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  result = prime * result + [self.dNewRole hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSetPermissionsArg:other];
+}
+
+- (BOOL)isEqualToMembersSetPermissionsArg:(DBTEAMMembersSetPermissionsArg *)aMembersSetPermissionsArg {
+  if (self == aMembersSetPermissionsArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersSetPermissionsArg.user]) {
+    return NO;
+  }
+  if (![self.dNewRole isEqual:aMembersSetPermissionsArg.dNewRole]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -11266,6 +15938,66 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersSetPermissionsErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetPermissionsErrorLastAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetPermissionsErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetPermissionsErrorCannotSetPermissions:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetPermissionsErrorTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetPermissionsErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSetPermissionsError:other];
+}
+
+- (BOOL)isEqualToMembersSetPermissionsError:(DBTEAMMembersSetPermissionsError *)aMembersSetPermissionsError {
+  if (self == aMembersSetPermissionsError) {
+    return YES;
+  }
+  if (self.tag != aMembersSetPermissionsError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersSetPermissionsErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  case DBTEAMMembersSetPermissionsErrorLastAdmin:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  case DBTEAMMembersSetPermissionsErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  case DBTEAMMembersSetPermissionsErrorCannotSetPermissions:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  case DBTEAMMembersSetPermissionsErrorTeamLicenseLimit:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  case DBTEAMMembersSetPermissionsErrorOther:
+    return [[self tagName] isEqual:[aMembersSetPermissionsError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11361,6 +16093,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.role hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSetPermissionsResult:other];
+}
+
+- (BOOL)isEqualToMembersSetPermissionsResult:(DBTEAMMembersSetPermissionsResult *)aMembersSetPermissionsResult {
+  if (self == aMembersSetPermissionsResult) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aMembersSetPermissionsResult.teamMemberId]) {
+    return NO;
+  }
+  if (![self.role isEqual:aMembersSetPermissionsResult.role]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11452,6 +16221,79 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+  if (self.dNewEmail) {
+    result = prime * result + [self.dNewEmail hash];
+  }
+  if (self.dNewExternalId) {
+    result = prime * result + [self.dNewExternalId hash];
+  }
+  if (self.dNewGivenName) {
+    result = prime * result + [self.dNewGivenName hash];
+  }
+  if (self.dNewSurname) {
+    result = prime * result + [self.dNewSurname hash];
+  }
+  if (self.dNewPersistentId) {
+    result = prime * result + [self.dNewPersistentId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSetProfileArg:other];
+}
+
+- (BOOL)isEqualToMembersSetProfileArg:(DBTEAMMembersSetProfileArg *)aMembersSetProfileArg {
+  if (self == aMembersSetProfileArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersSetProfileArg.user]) {
+    return NO;
+  }
+  if (self.dNewEmail) {
+    if (![self.dNewEmail isEqual:aMembersSetProfileArg.dNewEmail]) {
+      return NO;
+    }
+  }
+  if (self.dNewExternalId) {
+    if (![self.dNewExternalId isEqual:aMembersSetProfileArg.dNewExternalId]) {
+      return NO;
+    }
+  }
+  if (self.dNewGivenName) {
+    if (![self.dNewGivenName isEqual:aMembersSetProfileArg.dNewGivenName]) {
+      return NO;
+    }
+  }
+  if (self.dNewSurname) {
+    if (![self.dNewSurname isEqual:aMembersSetProfileArg.dNewSurname]) {
+      return NO;
+    }
+  }
+  if (self.dNewPersistentId) {
+    if (![self.dNewPersistentId isEqual:aMembersSetProfileArg.dNewPersistentId]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -11701,6 +16543,86 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersSetProfileErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorNoNewDataSpecified:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorEmailReservedForOtherUser:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorExternalIdUsedByOtherUser:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorSetProfileDisallowed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorParamCannotBeEmpty:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorPersistentIdDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSetProfileErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSetProfileError:other];
+}
+
+- (BOOL)isEqualToMembersSetProfileError:(DBTEAMMembersSetProfileError *)aMembersSetProfileError {
+  if (self == aMembersSetProfileError) {
+    return YES;
+  }
+  if (self.tag != aMembersSetProfileError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersSetProfileErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorExternalIdAndNewExternalIdUnsafe:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorNoNewDataSpecified:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorEmailReservedForOtherUser:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorExternalIdUsedByOtherUser:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorSetProfileDisallowed:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorParamCannotBeEmpty:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorPersistentIdDisabled:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorPersistentIdUsedByOtherUser:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  case DBTEAMMembersSetProfileErrorOther:
+    return [[self tagName] isEqual:[aMembersSetProfileError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11901,6 +16823,66 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersSuspendErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSuspendErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSuspendErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSuspendError:other];
+}
+
+- (BOOL)isEqualToMembersSuspendError:(DBTEAMMembersSuspendError *)aMembersSuspendError {
+  if (self == aMembersSuspendError) {
+    return YES;
+  }
+  if (self.tag != aMembersSuspendError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersSuspendErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorOther:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -11993,6 +16975,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.user hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersUnsuspendArg:other];
+}
+
+- (BOOL)isEqualToMembersUnsuspendArg:(DBTEAMMembersUnsuspendArg *)aMembersUnsuspendArg {
+  if (self == aMembersUnsuspendArg) {
+    return YES;
+  }
+  if (![self.user isEqual:aMembersUnsuspendArg.user]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -12131,6 +17146,62 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersUnsuspendErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersUnsuspendErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersUnsuspendErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersUnsuspendErrorUnsuspendNonSuspendedMember:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMembersUnsuspendErrorTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersUnsuspendError:other];
+}
+
+- (BOOL)isEqualToMembersUnsuspendError:(DBTEAMMembersUnsuspendError *)aMembersUnsuspendError {
+  if (self == aMembersUnsuspendError) {
+    return YES;
+  }
+  if (self.tag != aMembersUnsuspendError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersUnsuspendErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersUnsuspendError tagName]];
+  case DBTEAMMembersUnsuspendErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersUnsuspendError tagName]];
+  case DBTEAMMembersUnsuspendErrorOther:
+    return [[self tagName] isEqual:[aMembersUnsuspendError tagName]];
+  case DBTEAMMembersUnsuspendErrorUnsuspendNonSuspendedMember:
+    return [[self tagName] isEqual:[aMembersUnsuspendError tagName]];
+  case DBTEAMMembersUnsuspendErrorTeamLicenseLimit:
+    return [[self tagName] isEqual:[aMembersUnsuspendError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -12308,6 +17379,66 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMobileClientPlatformIphone:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMobileClientPlatformIpad:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMobileClientPlatformAndroid:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMobileClientPlatformWindowsPhone:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMobileClientPlatformBlackberry:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMMobileClientPlatformOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMobileClientPlatform:other];
+}
+
+- (BOOL)isEqualToMobileClientPlatform:(DBTEAMMobileClientPlatform *)aMobileClientPlatform {
+  if (self == aMobileClientPlatform) {
+    return YES;
+  }
+  if (self.tag != aMobileClientPlatform.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMobileClientPlatformIphone:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  case DBTEAMMobileClientPlatformIpad:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  case DBTEAMMobileClientPlatformAndroid:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  case DBTEAMMobileClientPlatformWindowsPhone:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  case DBTEAMMobileClientPlatformBlackberry:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  case DBTEAMMobileClientPlatformOther:
+    return [[self tagName] isEqual:[aMobileClientPlatform tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12431,6 +17562,103 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  result = prime * result + [self.deviceName hash];
+  result = prime * result + [self.clientType hash];
+  if (self.ipAddress) {
+    result = prime * result + [self.ipAddress hash];
+  }
+  if (self.country) {
+    result = prime * result + [self.country hash];
+  }
+  if (self.created) {
+    result = prime * result + [self.created hash];
+  }
+  if (self.updated) {
+    result = prime * result + [self.updated hash];
+  }
+  if (self.clientVersion) {
+    result = prime * result + [self.clientVersion hash];
+  }
+  if (self.osVersion) {
+    result = prime * result + [self.osVersion hash];
+  }
+  if (self.lastCarrier) {
+    result = prime * result + [self.lastCarrier hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMobileClientSession:other];
+}
+
+- (BOOL)isEqualToMobileClientSession:(DBTEAMMobileClientSession *)aMobileClientSession {
+  if (self == aMobileClientSession) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:aMobileClientSession.sessionId]) {
+    return NO;
+  }
+  if (![self.deviceName isEqual:aMobileClientSession.deviceName]) {
+    return NO;
+  }
+  if (![self.clientType isEqual:aMobileClientSession.clientType]) {
+    return NO;
+  }
+  if (self.ipAddress) {
+    if (![self.ipAddress isEqual:aMobileClientSession.ipAddress]) {
+      return NO;
+    }
+  }
+  if (self.country) {
+    if (![self.country isEqual:aMobileClientSession.country]) {
+      return NO;
+    }
+  }
+  if (self.created) {
+    if (![self.created isEqual:aMobileClientSession.created]) {
+      return NO;
+    }
+  }
+  if (self.updated) {
+    if (![self.updated isEqual:aMobileClientSession.updated]) {
+      return NO;
+    }
+  }
+  if (self.clientVersion) {
+    if (![self.clientVersion isEqual:aMobileClientSession.clientVersion]) {
+      return NO;
+    }
+  }
+  if (self.osVersion) {
+    if (![self.osVersion isEqual:aMobileClientSession.osVersion]) {
+      return NO;
+    }
+  }
+  if (self.lastCarrier) {
+    if (![self.lastCarrier isEqual:aMobileClientSession.lastCarrier]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12541,6 +17769,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.isRecoverable hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRemovedStatus:other];
+}
+
+- (BOOL)isEqualToRemovedStatus:(DBTEAMRemovedStatus *)aRemovedStatus {
+  if (self == aRemovedStatus) {
+    return YES;
+  }
+  if (![self.isRecoverable isEqual:aRemovedStatus.isRecoverable]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12611,6 +17872,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sessionId hash];
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.deleteOnUnlink hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDesktopClientArg:other];
+}
+
+- (BOOL)isEqualToRevokeDesktopClientArg:(DBTEAMRevokeDesktopClientArg *)aRevokeDesktopClientArg {
+  if (self == aRevokeDesktopClientArg) {
+    return YES;
+  }
+  if (![self.sessionId isEqual:aRevokeDesktopClientArg.sessionId]) {
+    return NO;
+  }
+  if (![self.teamMemberId isEqual:aRevokeDesktopClientArg.teamMemberId]) {
+    return NO;
+  }
+  if (![self.deleteOnUnlink isEqual:aRevokeDesktopClientArg.deleteOnUnlink]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -12761,6 +18063,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionArgWebSession:
+    result = prime * result + [self.webSession hash];
+  case DBTEAMRevokeDeviceSessionArgDesktopClient:
+    result = prime * result + [self.desktopClient hash];
+  case DBTEAMRevokeDeviceSessionArgMobileClient:
+    result = prime * result + [self.mobileClient hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionArg:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionArg:(DBTEAMRevokeDeviceSessionArg *)aRevokeDeviceSessionArg {
+  if (self == aRevokeDeviceSessionArg) {
+    return YES;
+  }
+  if (self.tag != aRevokeDeviceSessionArg.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionArgWebSession:
+    return [self.webSession isEqual:aRevokeDeviceSessionArg.webSession];
+  case DBTEAMRevokeDeviceSessionArgDesktopClient:
+    return [self.desktopClient isEqual:aRevokeDeviceSessionArg.desktopClient];
+  case DBTEAMRevokeDeviceSessionArgMobileClient:
+    return [self.mobileClient isEqual:aRevokeDeviceSessionArg.mobileClient];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12856,6 +18206,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.revokeDevices hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionBatchArg:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionBatchArg:(DBTEAMRevokeDeviceSessionBatchArg *)aRevokeDeviceSessionBatchArg {
+  if (self == aRevokeDeviceSessionBatchArg) {
+    return YES;
+  }
+  if (![self.revokeDevices isEqual:aRevokeDeviceSessionBatchArg.revokeDevices]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -12944,6 +18327,46 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionBatchErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionBatchError:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionBatchError:(DBTEAMRevokeDeviceSessionBatchError *)aRevokeDeviceSessionBatchError {
+  if (self == aRevokeDeviceSessionBatchError) {
+    return YES;
+  }
+  if (self.tag != aRevokeDeviceSessionBatchError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionBatchErrorOther:
+    return [[self tagName] isEqual:[aRevokeDeviceSessionBatchError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13017,6 +18440,40 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.revokeDevicesStatus hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionBatchResult:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionBatchResult:
+    (DBTEAMRevokeDeviceSessionBatchResult *)aRevokeDeviceSessionBatchResult {
+  if (self == aRevokeDeviceSessionBatchResult) {
+    return YES;
+  }
+  if (![self.revokeDevicesStatus isEqual:aRevokeDeviceSessionBatchResult.revokeDevicesStatus]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -13136,6 +18593,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionErrorDeviceSessionNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMRevokeDeviceSessionErrorMemberNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMRevokeDeviceSessionErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionError:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionError:(DBTEAMRevokeDeviceSessionError *)aRevokeDeviceSessionError {
+  if (self == aRevokeDeviceSessionError) {
+    return YES;
+  }
+  if (self.tag != aRevokeDeviceSessionError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRevokeDeviceSessionErrorDeviceSessionNotFound:
+    return [[self tagName] isEqual:[aRevokeDeviceSessionError tagName]];
+  case DBTEAMRevokeDeviceSessionErrorMemberNotFound:
+    return [[self tagName] isEqual:[aRevokeDeviceSessionError tagName]];
+  case DBTEAMRevokeDeviceSessionErrorOther:
+    return [[self tagName] isEqual:[aRevokeDeviceSessionError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13223,6 +18728,47 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.success hash];
+  if (self.errorType) {
+    result = prime * result + [self.errorType hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeDeviceSessionStatus:other];
+}
+
+- (BOOL)isEqualToRevokeDeviceSessionStatus:(DBTEAMRevokeDeviceSessionStatus *)aRevokeDeviceSessionStatus {
+  if (self == aRevokeDeviceSessionStatus) {
+    return YES;
+  }
+  if (![self.success isEqual:aRevokeDeviceSessionStatus.success]) {
+    return NO;
+  }
+  if (self.errorType) {
+    if (![self.errorType isEqual:aRevokeDeviceSessionStatus.errorType]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13301,6 +18847,47 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.appId hash];
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.keepAppFolder hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedApiAppArg:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedApiAppArg:(DBTEAMRevokeLinkedApiAppArg *)aRevokeLinkedApiAppArg {
+  if (self == aRevokeLinkedApiAppArg) {
+    return YES;
+  }
+  if (![self.appId isEqual:aRevokeLinkedApiAppArg.appId]) {
+    return NO;
+  }
+  if (![self.teamMemberId isEqual:aRevokeLinkedApiAppArg.teamMemberId]) {
+    return NO;
+  }
+  if (![self.keepAppFolder isEqual:aRevokeLinkedApiAppArg.keepAppFolder]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13371,6 +18958,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.revokeLinkedApp hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedApiAppBatchArg:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedApiAppBatchArg:(DBTEAMRevokeLinkedApiAppBatchArg *)aRevokeLinkedApiAppBatchArg {
+  if (self == aRevokeLinkedApiAppBatchArg) {
+    return YES;
+  }
+  if (![self.revokeLinkedApp isEqual:aRevokeLinkedApiAppBatchArg.revokeLinkedApp]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -13461,6 +19081,46 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRevokeLinkedAppBatchErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedAppBatchError:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedAppBatchError:(DBTEAMRevokeLinkedAppBatchError *)aRevokeLinkedAppBatchError {
+  if (self == aRevokeLinkedAppBatchError) {
+    return YES;
+  }
+  if (self.tag != aRevokeLinkedAppBatchError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRevokeLinkedAppBatchErrorOther:
+    return [[self tagName] isEqual:[aRevokeLinkedAppBatchError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13534,6 +19194,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.revokeLinkedAppStatus hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedAppBatchResult:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedAppBatchResult:(DBTEAMRevokeLinkedAppBatchResult *)aRevokeLinkedAppBatchResult {
+  if (self == aRevokeLinkedAppBatchResult) {
+    return YES;
+  }
+  if (![self.revokeLinkedAppStatus isEqual:aRevokeLinkedAppBatchResult.revokeLinkedAppStatus]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -13653,6 +19346,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMRevokeLinkedAppErrorAppNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMRevokeLinkedAppErrorMemberNotFound:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMRevokeLinkedAppErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedAppError:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedAppError:(DBTEAMRevokeLinkedAppError *)aRevokeLinkedAppError {
+  if (self == aRevokeLinkedAppError) {
+    return YES;
+  }
+  if (self.tag != aRevokeLinkedAppError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMRevokeLinkedAppErrorAppNotFound:
+    return [[self tagName] isEqual:[aRevokeLinkedAppError tagName]];
+  case DBTEAMRevokeLinkedAppErrorMemberNotFound:
+    return [[self tagName] isEqual:[aRevokeLinkedAppError tagName]];
+  case DBTEAMRevokeLinkedAppErrorOther:
+    return [[self tagName] isEqual:[aRevokeLinkedAppError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13740,6 +19481,47 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.success hash];
+  if (self.errorType) {
+    result = prime * result + [self.errorType hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToRevokeLinkedAppStatus:other];
+}
+
+- (BOOL)isEqualToRevokeLinkedAppStatus:(DBTEAMRevokeLinkedAppStatus *)aRevokeLinkedAppStatus {
+  if (self == aRevokeLinkedAppStatus) {
+    return YES;
+  }
+  if (![self.success isEqual:aRevokeLinkedAppStatus.success]) {
+    return NO;
+  }
+  if (self.errorType) {
+    if (![self.errorType isEqual:aRevokeLinkedAppStatus.errorType]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -13809,6 +19591,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.bucket hash];
+  result = prime * result + [self.users hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToStorageBucket:other];
+}
+
+- (BOOL)isEqualToStorageBucket:(DBTEAMStorageBucket *)aStorageBucket {
+  if (self == aStorageBucket) {
+    return YES;
+  }
+  if (![self.bucket isEqual:aStorageBucket.bucket]) {
+    return NO;
+  }
+  if (![self.users isEqual:aStorageBucket.users]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -13920,6 +19739,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderAccessErrorInvalidTeamFolderId:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderAccessErrorNoAccess:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderAccessErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderAccessError:other];
+}
+
+- (BOOL)isEqualToTeamFolderAccessError:(DBTEAMTeamFolderAccessError *)aTeamFolderAccessError {
+  if (self == aTeamFolderAccessError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderAccessError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderAccessErrorInvalidTeamFolderId:
+    return [[self tagName] isEqual:[aTeamFolderAccessError tagName]];
+  case DBTEAMTeamFolderAccessErrorNoAccess:
+    return [[self tagName] isEqual:[aTeamFolderAccessError tagName]];
+  case DBTEAMTeamFolderAccessErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderAccessError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -14071,6 +19938,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderActivateErrorAccessError:
+    result = prime * result + [self.accessError hash];
+  case DBTEAMTeamFolderActivateErrorStatusError:
+    result = prime * result + [self.statusError hash];
+  case DBTEAMTeamFolderActivateErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderActivateError:other];
+}
+
+- (BOOL)isEqualToTeamFolderActivateError:(DBTEAMTeamFolderActivateError *)aTeamFolderActivateError {
+  if (self == aTeamFolderActivateError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderActivateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderActivateErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderActivateError.accessError];
+  case DBTEAMTeamFolderActivateErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderActivateError.statusError];
+  case DBTEAMTeamFolderActivateErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderActivateError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14160,6 +20075,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderIdArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderIdArg:(DBTEAMTeamFolderIdArg *)aTeamFolderIdArg {
+  if (self == aTeamFolderIdArg) {
+    return YES;
+  }
+  if (![self.teamFolderId isEqual:aTeamFolderIdArg.teamFolderId]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14229,6 +20177,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderId hash];
+  result = prime * result + [self.forceAsyncOff hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderArchiveArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderArchiveArg:(DBTEAMTeamFolderArchiveArg *)aTeamFolderArchiveArg {
+  if (self == aTeamFolderArchiveArg) {
+    return YES;
+  }
+  if (![self.teamFolderId isEqual:aTeamFolderArchiveArg.teamFolderId]) {
+    return NO;
+  }
+  if (![self.forceAsyncOff isEqual:aTeamFolderArchiveArg.forceAsyncOff]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -14364,6 +20349,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveErrorAccessError:
+    result = prime * result + [self.accessError hash];
+  case DBTEAMTeamFolderArchiveErrorStatusError:
+    result = prime * result + [self.statusError hash];
+  case DBTEAMTeamFolderArchiveErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderArchiveError:other];
+}
+
+- (BOOL)isEqualToTeamFolderArchiveError:(DBTEAMTeamFolderArchiveError *)aTeamFolderArchiveError {
+  if (self == aTeamFolderArchiveError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderArchiveError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderArchiveError.accessError];
+  case DBTEAMTeamFolderArchiveErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderArchiveError.statusError];
+  case DBTEAMTeamFolderArchiveErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderArchiveError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -14522,6 +20555,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveJobStatusInProgress:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderArchiveJobStatusComplete:
+    result = prime * result + [self.complete hash];
+  case DBTEAMTeamFolderArchiveJobStatusFailed:
+    result = prime * result + [self.failed hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderArchiveJobStatus:other];
+}
+
+- (BOOL)isEqualToTeamFolderArchiveJobStatus:(DBTEAMTeamFolderArchiveJobStatus *)aTeamFolderArchiveJobStatus {
+  if (self == aTeamFolderArchiveJobStatus) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderArchiveJobStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveJobStatusInProgress:
+    return [[self tagName] isEqual:[aTeamFolderArchiveJobStatus tagName]];
+  case DBTEAMTeamFolderArchiveJobStatusComplete:
+    return [self.complete isEqual:aTeamFolderArchiveJobStatus.complete];
+  case DBTEAMTeamFolderArchiveJobStatusFailed:
+    return [self.failed isEqual:aTeamFolderArchiveJobStatus.failed];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14665,6 +20746,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveLaunchAsyncJobId:
+    result = prime * result + [self.asyncJobId hash];
+  case DBTEAMTeamFolderArchiveLaunchComplete:
+    result = prime * result + [self.complete hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderArchiveLaunch:other];
+}
+
+- (BOOL)isEqualToTeamFolderArchiveLaunch:(DBTEAMTeamFolderArchiveLaunch *)aTeamFolderArchiveLaunch {
+  if (self == aTeamFolderArchiveLaunch) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderArchiveLaunch.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderArchiveLaunchAsyncJobId:
+    return [self.asyncJobId isEqual:aTeamFolderArchiveLaunch.asyncJobId];
+  case DBTEAMTeamFolderArchiveLaunchComplete:
+    return [self.complete isEqual:aTeamFolderArchiveLaunch.complete];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -14749,6 +20874,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderCreateArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderCreateArg:(DBTEAMTeamFolderCreateArg *)aTeamFolderCreateArg {
+  if (self == aTeamFolderCreateArg) {
+    return YES;
+  }
+  if (![self.name isEqual:aTeamFolderCreateArg.name]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -14872,6 +21030,58 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderCreateErrorInvalidFolderName:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderCreateErrorFolderNameReserved:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderCreateErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderCreateError:other];
+}
+
+- (BOOL)isEqualToTeamFolderCreateError:(DBTEAMTeamFolderCreateError *)aTeamFolderCreateError {
+  if (self == aTeamFolderCreateError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderCreateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderCreateErrorInvalidFolderName:
+    return [[self tagName] isEqual:[aTeamFolderCreateError tagName]];
+  case DBTEAMTeamFolderCreateErrorFolderNameAlreadyUsed:
+    return [[self tagName] isEqual:[aTeamFolderCreateError tagName]];
+  case DBTEAMTeamFolderCreateErrorFolderNameReserved:
+    return [[self tagName] isEqual:[aTeamFolderCreateError tagName]];
+  case DBTEAMTeamFolderCreateErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderCreateError tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -15012,6 +21222,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderGetInfoItemIdNotFound:
+    result = prime * result + [self.idNotFound hash];
+  case DBTEAMTeamFolderGetInfoItemTeamFolderMetadata:
+    result = prime * result + [self.teamFolderMetadata hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderGetInfoItem:other];
+}
+
+- (BOOL)isEqualToTeamFolderGetInfoItem:(DBTEAMTeamFolderGetInfoItem *)aTeamFolderGetInfoItem {
+  if (self == aTeamFolderGetInfoItem) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderGetInfoItem.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderGetInfoItemIdNotFound:
+    return [self.idNotFound isEqual:aTeamFolderGetInfoItem.idNotFound];
+  case DBTEAMTeamFolderGetInfoItemTeamFolderMetadata:
+    return [self.teamFolderMetadata isEqual:aTeamFolderGetInfoItem.teamFolderMetadata];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15100,6 +21354,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderIds hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderIdListArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderIdListArg:(DBTEAMTeamFolderIdListArg *)aTeamFolderIdListArg {
+  if (self == aTeamFolderIdListArg) {
+    return YES;
+  }
+  if (![self.teamFolderIds isEqual:aTeamFolderIdListArg.teamFolderIds]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -15231,6 +21518,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderInvalidStatusErrorActive:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderInvalidStatusErrorArchived:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderInvalidStatusErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderInvalidStatusError:other];
+}
+
+- (BOOL)isEqualToTeamFolderInvalidStatusError:(DBTEAMTeamFolderInvalidStatusError *)aTeamFolderInvalidStatusError {
+  if (self == aTeamFolderInvalidStatusError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderInvalidStatusError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderInvalidStatusErrorActive:
+    return [[self tagName] isEqual:[aTeamFolderInvalidStatusError tagName]];
+  case DBTEAMTeamFolderInvalidStatusErrorArchived:
+    return [[self tagName] isEqual:[aTeamFolderInvalidStatusError tagName]];
+  case DBTEAMTeamFolderInvalidStatusErrorArchiveInProgress:
+    return [[self tagName] isEqual:[aTeamFolderInvalidStatusError tagName]];
+  case DBTEAMTeamFolderInvalidStatusErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderInvalidStatusError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15321,6 +21660,39 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.limit hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderListArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderListArg:(DBTEAMTeamFolderListArg *)aTeamFolderListArg {
+  if (self == aTeamFolderListArg) {
+    return YES;
+  }
+  if (![self.limit isEqual:aTeamFolderListArg.limit]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15385,6 +21757,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.accessError hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderListError:other];
+}
+
+- (BOOL)isEqualToTeamFolderListError:(DBTEAMTeamFolderListError *)aTeamFolderListError {
+  if (self == aTeamFolderListError) {
+    return YES;
+  }
+  if (![self.accessError isEqual:aTeamFolderListError.accessError]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -15453,6 +21858,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolders hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderListResult:other];
+}
+
+- (BOOL)isEqualToTeamFolderListResult:(DBTEAMTeamFolderListResult *)aTeamFolderListResult {
+  if (self == aTeamFolderListResult) {
+    return YES;
+  }
+  if (![self.teamFolders isEqual:aTeamFolderListResult.teamFolders]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -15531,6 +21969,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderId hash];
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.status hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderMetadata:other];
+}
+
+- (BOOL)isEqualToTeamFolderMetadata:(DBTEAMTeamFolderMetadata *)aTeamFolderMetadata {
+  if (self == aTeamFolderMetadata) {
+    return YES;
+  }
+  if (![self.teamFolderId isEqual:aTeamFolderMetadata.teamFolderId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aTeamFolderMetadata.name]) {
+    return NO;
+  }
+  if (![self.status isEqual:aTeamFolderMetadata.status]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -15672,6 +22151,55 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderPermanentlyDeleteErrorAccessError:
+    result = prime * result + [self.accessError hash];
+  case DBTEAMTeamFolderPermanentlyDeleteErrorStatusError:
+    result = prime * result + [self.statusError hash];
+  case DBTEAMTeamFolderPermanentlyDeleteErrorOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderPermanentlyDeleteError:other];
+}
+
+- (BOOL)isEqualToTeamFolderPermanentlyDeleteError:
+    (DBTEAMTeamFolderPermanentlyDeleteError *)aTeamFolderPermanentlyDeleteError {
+  if (self == aTeamFolderPermanentlyDeleteError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderPermanentlyDeleteError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderPermanentlyDeleteErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderPermanentlyDeleteError.accessError];
+  case DBTEAMTeamFolderPermanentlyDeleteErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderPermanentlyDeleteError.statusError];
+  case DBTEAMTeamFolderPermanentlyDeleteErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderPermanentlyDeleteError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -15760,6 +22288,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderRenameArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderRenameArg:(DBTEAMTeamFolderRenameArg *)aTeamFolderRenameArg {
+  if (self == aTeamFolderRenameArg) {
+    return YES;
+  }
+  if (![self.teamFolderId isEqual:aTeamFolderRenameArg.teamFolderId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aTeamFolderRenameArg.name]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -15939,6 +22504,66 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderRenameErrorAccessError:
+    result = prime * result + [self.accessError hash];
+  case DBTEAMTeamFolderRenameErrorStatusError:
+    result = prime * result + [self.statusError hash];
+  case DBTEAMTeamFolderRenameErrorOther:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderRenameErrorInvalidFolderName:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderRenameErrorFolderNameReserved:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderRenameError:other];
+}
+
+- (BOOL)isEqualToTeamFolderRenameError:(DBTEAMTeamFolderRenameError *)aTeamFolderRenameError {
+  if (self == aTeamFolderRenameError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderRenameError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderRenameErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderRenameError.accessError];
+  case DBTEAMTeamFolderRenameErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderRenameError.statusError];
+  case DBTEAMTeamFolderRenameErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderRenameError tagName]];
+  case DBTEAMTeamFolderRenameErrorInvalidFolderName:
+    return [[self tagName] isEqual:[aTeamFolderRenameError tagName]];
+  case DBTEAMTeamFolderRenameErrorFolderNameAlreadyUsed:
+    return [[self tagName] isEqual:[aTeamFolderRenameError tagName]];
+  case DBTEAMTeamFolderRenameErrorFolderNameReserved:
+    return [[self tagName] isEqual:[aTeamFolderRenameError tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16097,6 +22722,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderStatusActive:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderStatusArchived:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderStatusArchiveInProgress:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamFolderStatusOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderStatus:other];
+}
+
+- (BOOL)isEqualToTeamFolderStatus:(DBTEAMTeamFolderStatus *)aTeamFolderStatus {
+  if (self == aTeamFolderStatus) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderStatusActive:
+    return [[self tagName] isEqual:[aTeamFolderStatus tagName]];
+  case DBTEAMTeamFolderStatusArchived:
+    return [[self tagName] isEqual:[aTeamFolderStatus tagName]];
+  case DBTEAMTeamFolderStatusArchiveInProgress:
+    return [[self tagName] isEqual:[aTeamFolderStatus tagName]];
+  case DBTEAMTeamFolderStatusOther:
+    return [[self tagName] isEqual:[aTeamFolderStatus tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16191,6 +22868,55 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.teamId hash];
+  result = prime * result + [self.numLicensedUsers hash];
+  result = prime * result + [self.numProvisionedUsers hash];
+  result = prime * result + [self.policies hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamGetInfoResult:other];
+}
+
+- (BOOL)isEqualToTeamGetInfoResult:(DBTEAMTeamGetInfoResult *)aTeamGetInfoResult {
+  if (self == aTeamGetInfoResult) {
+    return YES;
+  }
+  if (![self.name isEqual:aTeamGetInfoResult.name]) {
+    return NO;
+  }
+  if (![self.teamId isEqual:aTeamGetInfoResult.teamId]) {
+    return NO;
+  }
+  if (![self.numLicensedUsers isEqual:aTeamGetInfoResult.numLicensedUsers]) {
+    return NO;
+  }
+  if (![self.numProvisionedUsers isEqual:aTeamGetInfoResult.numProvisionedUsers]) {
+    return NO;
+  }
+  if (![self.policies isEqual:aTeamGetInfoResult.policies]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16270,6 +22996,43 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.profile hash];
+  result = prime * result + [self.role hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMemberInfo:other];
+}
+
+- (BOOL)isEqualToTeamMemberInfo:(DBTEAMTeamMemberInfo *)aTeamMemberInfo {
+  if (self == aTeamMemberInfo) {
+    return YES;
+  }
+  if (![self.profile isEqual:aTeamMemberInfo.profile]) {
+    return NO;
+  }
+  if (![self.role isEqual:aTeamMemberInfo.role]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -16383,6 +23146,95 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamMemberId hash];
+  result = prime * result + [self.email hash];
+  result = prime * result + [self.emailVerified hash];
+  result = prime * result + [self.status hash];
+  result = prime * result + [self.name hash];
+  result = prime * result + [self.membershipType hash];
+  result = prime * result + [self.groups hash];
+  if (self.externalId) {
+    result = prime * result + [self.externalId hash];
+  }
+  if (self.accountId) {
+    result = prime * result + [self.accountId hash];
+  }
+  if (self.joinedOn) {
+    result = prime * result + [self.joinedOn hash];
+  }
+  if (self.persistentId) {
+    result = prime * result + [self.persistentId hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMemberProfile:other];
+}
+
+- (BOOL)isEqualToTeamMemberProfile:(DBTEAMTeamMemberProfile *)aTeamMemberProfile {
+  if (self == aTeamMemberProfile) {
+    return YES;
+  }
+  if (![self.teamMemberId isEqual:aTeamMemberProfile.teamMemberId]) {
+    return NO;
+  }
+  if (![self.email isEqual:aTeamMemberProfile.email]) {
+    return NO;
+  }
+  if (![self.emailVerified isEqual:aTeamMemberProfile.emailVerified]) {
+    return NO;
+  }
+  if (![self.status isEqual:aTeamMemberProfile.status]) {
+    return NO;
+  }
+  if (![self.name isEqual:aTeamMemberProfile.name]) {
+    return NO;
+  }
+  if (![self.membershipType isEqual:aTeamMemberProfile.membershipType]) {
+    return NO;
+  }
+  if (![self.groups isEqual:aTeamMemberProfile.groups]) {
+    return NO;
+  }
+  if (self.externalId) {
+    if (![self.externalId isEqual:aTeamMemberProfile.externalId]) {
+      return NO;
+    }
+  }
+  if (self.accountId) {
+    if (![self.accountId isEqual:aTeamMemberProfile.accountId]) {
+      return NO;
+    }
+  }
+  if (self.joinedOn) {
+    if (![self.joinedOn isEqual:aTeamMemberProfile.joinedOn]) {
+      return NO;
+    }
+  }
+  if (self.persistentId) {
+    if (![self.persistentId isEqual:aTeamMemberProfile.persistentId]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -16567,6 +23419,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamMemberStatusActive:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamMemberStatusInvited:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamMemberStatusSuspended:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamMemberStatusRemoved:
+    result = prime * result + [self.removed hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMemberStatus:other];
+}
+
+- (BOOL)isEqualToTeamMemberStatus:(DBTEAMTeamMemberStatus *)aTeamMemberStatus {
+  if (self == aTeamMemberStatus) {
+    return YES;
+  }
+  if (self.tag != aTeamMemberStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamMemberStatusActive:
+    return [[self tagName] isEqual:[aTeamMemberStatus tagName]];
+  case DBTEAMTeamMemberStatusInvited:
+    return [[self tagName] isEqual:[aTeamMemberStatus tagName]];
+  case DBTEAMTeamMemberStatusSuspended:
+    return [[self tagName] isEqual:[aTeamMemberStatus tagName]];
+  case DBTEAMTeamMemberStatusRemoved:
+    return [self.removed isEqual:aTeamMemberStatus.removed];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16689,6 +23593,50 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamMembershipTypeFull:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMTeamMembershipTypeLimited:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMembershipType:other];
+}
+
+- (BOOL)isEqualToTeamMembershipType:(DBTEAMTeamMembershipType *)aTeamMembershipType {
+  if (self == aTeamMembershipType) {
+    return YES;
+  }
+  if (self.tag != aTeamMembershipType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamMembershipTypeFull:
+    return [[self tagName] isEqual:[aTeamMembershipType tagName]];
+  case DBTEAMTeamMembershipTypeLimited:
+    return [[self tagName] isEqual:[aTeamMembershipType tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16785,6 +23733,63 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.templateId hash];
+  if (self.name) {
+    result = prime * result + [self.name hash];
+  }
+  if (self.description_) {
+    result = prime * result + [self.description_ hash];
+  }
+  if (self.addFields) {
+    result = prime * result + [self.addFields hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUpdatePropertyTemplateArg:other];
+}
+
+- (BOOL)isEqualToUpdatePropertyTemplateArg:(DBTEAMUpdatePropertyTemplateArg *)anUpdatePropertyTemplateArg {
+  if (self == anUpdatePropertyTemplateArg) {
+    return YES;
+  }
+  if (![self.templateId isEqual:anUpdatePropertyTemplateArg.templateId]) {
+    return NO;
+  }
+  if (self.name) {
+    if (![self.name isEqual:anUpdatePropertyTemplateArg.name]) {
+      return NO;
+    }
+  }
+  if (self.description_) {
+    if (![self.description_ isEqual:anUpdatePropertyTemplateArg.description_]) {
+      return NO;
+    }
+  }
+  if (self.addFields) {
+    if (![self.addFields isEqual:anUpdatePropertyTemplateArg.addFields]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -16873,6 +23878,39 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.templateId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUpdatePropertyTemplateResult:other];
+}
+
+- (BOOL)isEqualToUpdatePropertyTemplateResult:(DBTEAMUpdatePropertyTemplateResult *)anUpdatePropertyTemplateResult {
+  if (self == anUpdatePropertyTemplateResult) {
+    return YES;
+  }
+  if (![self.templateId isEqual:anUpdatePropertyTemplateResult.templateId]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
@@ -17013,6 +24051,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMUserSelectorArgTeamMemberId:
+    result = prime * result + [self.teamMemberId hash];
+  case DBTEAMUserSelectorArgExternalId:
+    result = prime * result + [self.externalId hash];
+  case DBTEAMUserSelectorArgEmail:
+    result = prime * result + [self.email hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserSelectorArg:other];
+}
+
+- (BOOL)isEqualToUserSelectorArg:(DBTEAMUserSelectorArg *)anUserSelectorArg {
+  if (self == anUserSelectorArg) {
+    return YES;
+  }
+  if (self.tag != anUserSelectorArg.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMUserSelectorArgTeamMemberId:
+    return [self.teamMemberId isEqual:anUserSelectorArg.teamMemberId];
+  case DBTEAMUserSelectorArgExternalId:
+    return [self.externalId isEqual:anUserSelectorArg.externalId];
+  case DBTEAMUserSelectorArgEmail:
+    return [self.email isEqual:anUserSelectorArg.email];
+  }
+  return YES;
 }
 
 @end
@@ -17180,6 +24266,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMUsersSelectorArgTeamMemberIds:
+    result = prime * result + [self.teamMemberIds hash];
+  case DBTEAMUsersSelectorArgExternalIds:
+    result = prime * result + [self.externalIds hash];
+  case DBTEAMUsersSelectorArgEmails:
+    result = prime * result + [self.emails hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUsersSelectorArg:other];
+}
+
+- (BOOL)isEqualToUsersSelectorArg:(DBTEAMUsersSelectorArg *)anUsersSelectorArg {
+  if (self == anUsersSelectorArg) {
+    return YES;
+  }
+  if (self.tag != anUsersSelectorArg.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMUsersSelectorArgTeamMemberIds:
+    return [self.teamMemberIds isEqual:anUsersSelectorArg.teamMemberIds];
+  case DBTEAMUsersSelectorArgExternalIds:
+    return [self.externalIds isEqual:anUsersSelectorArg.externalIds];
+  case DBTEAMUsersSelectorArgEmails:
+    return [self.emails isEqual:anUsersSelectorArg.emails];
+  }
+  return YES;
 }
 
 @end

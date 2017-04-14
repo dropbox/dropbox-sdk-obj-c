@@ -107,6 +107,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMCOMMONGroupManagementTypeUserManaged:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCOMMONGroupManagementTypeCompanyManaged:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCOMMONGroupManagementTypeSystemManaged:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCOMMONGroupManagementTypeOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupManagementType:other];
+}
+
+- (BOOL)isEqualToGroupManagementType:(DBTEAMCOMMONGroupManagementType *)aGroupManagementType {
+  if (self == aGroupManagementType) {
+    return YES;
+  }
+  if (self.tag != aGroupManagementType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMCOMMONGroupManagementTypeUserManaged:
+    return [[self tagName] isEqual:[aGroupManagementType tagName]];
+  case DBTEAMCOMMONGroupManagementTypeCompanyManaged:
+    return [[self tagName] isEqual:[aGroupManagementType tagName]];
+  case DBTEAMCOMMONGroupManagementTypeSystemManaged:
+    return [[self tagName] isEqual:[aGroupManagementType tagName]];
+  case DBTEAMCOMMONGroupManagementTypeOther:
+    return [[self tagName] isEqual:[aGroupManagementType tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -209,6 +261,63 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.groupName hash];
+  result = prime * result + [self.groupId hash];
+  result = prime * result + [self.groupManagementType hash];
+  if (self.groupExternalId) {
+    result = prime * result + [self.groupExternalId hash];
+  }
+  if (self.memberCount) {
+    result = prime * result + [self.memberCount hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupSummary:other];
+}
+
+- (BOOL)isEqualToGroupSummary:(DBTEAMCOMMONGroupSummary *)aGroupSummary {
+  if (self == aGroupSummary) {
+    return YES;
+  }
+  if (![self.groupName isEqual:aGroupSummary.groupName]) {
+    return NO;
+  }
+  if (![self.groupId isEqual:aGroupSummary.groupId]) {
+    return NO;
+  }
+  if (![self.groupManagementType isEqual:aGroupSummary.groupManagementType]) {
+    return NO;
+  }
+  if (self.groupExternalId) {
+    if (![self.groupExternalId isEqual:aGroupSummary.groupExternalId]) {
+      return NO;
+    }
+  }
+  if (self.memberCount) {
+    if (![self.memberCount isEqual:aGroupSummary.memberCount]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end
@@ -338,6 +447,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMCOMMONGroupTypeTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCOMMONGroupTypeUserManaged:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMCOMMONGroupTypeOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGroupType:other];
+}
+
+- (BOOL)isEqualToGroupType:(DBTEAMCOMMONGroupType *)aGroupType {
+  if (self == aGroupType) {
+    return YES;
+  }
+  if (self.tag != aGroupType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMCOMMONGroupTypeTeam:
+    return [[self tagName] isEqual:[aGroupType tagName]];
+  case DBTEAMCOMMONGroupTypeUserManaged:
+    return [[self tagName] isEqual:[aGroupType tagName]];
+  case DBTEAMCOMMONGroupTypeOther:
+    return [[self tagName] isEqual:[aGroupType tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -422,6 +579,51 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.startTime) {
+    result = prime * result + [self.startTime hash];
+  }
+  if (self.endTime) {
+    result = prime * result + [self.endTime hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTimeRange:other];
+}
+
+- (BOOL)isEqualToTimeRange:(DBTEAMCOMMONTimeRange *)aTimeRange {
+  if (self == aTimeRange) {
+    return YES;
+  }
+  if (self.startTime) {
+    if (![self.startTime isEqual:aTimeRange.startTime]) {
+      return NO;
+    }
+  }
+  if (self.endTime) {
+    if (![self.endTime isEqual:aTimeRange.endTime]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end

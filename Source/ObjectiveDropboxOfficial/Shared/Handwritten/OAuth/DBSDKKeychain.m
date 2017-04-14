@@ -67,7 +67,8 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (NSArray<NSString *> *)retrieveAllTokenIds {
-  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecReturnAttributes : (id)kCFBooleanTrue, (id)kSecMatchLimit : (id)kSecMatchLimitAll}];
+  NSMutableDictionary<id, id> *query = [DBSDKKeychain
+      queryWithDict:@{(id)kSecReturnAttributes : (id)kCFBooleanTrue, (id)kSecMatchLimit : (id)kSecMatchLimitAll}];
   CFDataRef dataResult = nil;
   OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&dataResult);
 
@@ -95,7 +96,8 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (BOOL)storeDataValueWithKey:(NSString *)key value:(NSData *)value {
-  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
+  NSMutableDictionary<id, id> *query =
+      [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
   SecItemDelete((__bridge CFDictionaryRef)query);
   return SecItemAdd((__bridge CFDictionaryRef)query, nil) == noErr;
 }
@@ -139,7 +141,8 @@ static const char *kV1OSXAccountName = "Dropbox";
     [query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
     [query setObject:(id)[NSString stringWithFormat:kV2KeychainServiceKeyBase, bundleId] forKey:(id)kSecAttrService];
 
-    NSDictionary<id, id> *attributesToUpdate = @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
+    NSDictionary<id, id> *attributesToUpdate =
+        @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
     SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
     [userDefaults setBool:YES forKey:kAccessibilityMigrationOccurredKey];
   }
@@ -251,7 +254,8 @@ static const char *kV1OSXAccountName = "Dropbox";
     for (NSDictionary<NSString *, id> *dict in dataResultDict) {
       NSData *foundData = dict[(NSString *)kSecValueData];
       if (foundData != nil) {
-        NSDictionary *credentialsDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:foundData][kV1SyncAccountCredentialsKey];
+        NSDictionary *credentialsDictionary =
+            [NSKeyedUnarchiver unarchiveObjectWithData:foundData][kV1SyncAccountCredentialsKey];
         for (NSString *credentialKey in credentialsDictionary) {
           NSArray<NSDictionary<NSString *, id> *> *credentialList = credentialsDictionary[credentialKey];
           for (NSDictionary<NSString *, id> *credential in credentialList) {
