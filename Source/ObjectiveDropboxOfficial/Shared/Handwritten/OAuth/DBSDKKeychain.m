@@ -440,7 +440,7 @@ static const char *kV1OSXAccountName = "Dropbox";
         [[self class] storeValueWithKey:uid value:[tokenConversionResults objectForKey:uid]];
       }
       NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-		[userDefaults setBool:YES forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
+      [userDefaults setBool:YES forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
     }
 
     [queue addOperationWithBlock:^{
