@@ -131,7 +131,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 
 + (void)checkAccessibilityMigration {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  BOOL migrationOccurred = [[userDefaults stringForKey:kAccessibilityMigrationOccurredKey] boolValue];
+  BOOL migrationOccurred = [userDefaults boolForKey:kAccessibilityMigrationOccurredKey];
 
   if (migrationOccurred == NO) {
     NSMutableDictionary<id, id> *query = [NSMutableDictionary new];
@@ -153,7 +153,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSString *migrationOccurredLookupKey = [NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey];
-  BOOL migrationOccurred = [[userDefaults stringForKey:migrationOccurredLookupKey] boolValue];
+  BOOL migrationOccurred = [userDefaults boolForKey:migrationOccurredLookupKey];
 
   if (migrationOccurred == NO) {
     NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
@@ -442,7 +442,7 @@ static const char *kV1OSXAccountName = "Dropbox";
       NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 		[userDefaults setBool:YES forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
     }
-	  
+
     [queue addOperationWithBlock:^{
       responseBlock(shouldRetry, invalidAppKeyOrSecret, unsuccessfullyMigratedTokenData);
     }];
