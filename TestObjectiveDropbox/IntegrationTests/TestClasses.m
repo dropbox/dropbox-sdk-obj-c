@@ -25,8 +25,9 @@ void MyLog(NSString *format, ...) {
   if (self) {
     DBUserClient *clientToUse = s_teamAdminUserClient ?: [DBClientsManager authorizedClient];
     NSAssert(clientToUse, @"No authorized user client.");
-    DBAppClient *unauthorizedClient = [[DBAppClient alloc] initWithAppKey:_testData.fullDropboxAppKey appSecret:_testData.fullDropboxAppSecret];
     _testData = testData;
+    DBAppClient *unauthorizedClient = [[DBAppClient alloc] initWithAppKey:_testData.fullDropboxAppKey appSecret:_testData.fullDropboxAppSecret];
+    _unauthorizedClient = unauthorizedClient;
     _auth = clientToUse.authRoutes;
     _appAuth = unauthorizedClient.authRoutes;
     _files = clientToUse.filesRoutes;
@@ -682,12 +683,20 @@ void MyLog(NSString *format, ...) {
     setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError, DBRequestError *error) {
     if (result) {
       MyLog(@"%@\n", result);
+      [[DBOAuthManager sharedOAuthManager] storeAccessToken:[[DBAccessToken alloc] initWithAccessToken:result.oauth2Token uid:@"123"]];
+      [DBClientsManager authorizeClientFromKeychain:@"123"];
+      [[[DBClientsManager authorizedClient].filesRoutes listFolder:@""]
+       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *networkError) {
+        if (result) {
+          MyLog(@"%@\n", result);
+          nextTest();
+        } else {
+          [TestFormat abort:error routeError:routeError];
+        }
+      }];
       [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-      nextTest();
     } else {
-      [TestFormat printErrors:error routeError:routeError];
-      [TestFormat printSubTestEnd:NSStringFromSelector(_cmd)];
-      nextTest();
+      [TestFormat abort:error routeError:routeError];
     }
   } queue:[NSOperationQueue new]] setProgressBlock:^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     [TestFormat printSentProgress:bytesSent
@@ -748,10 +757,11 @@ void MyLog(NSString *format, ...) {
 
 - (void)listFolderError:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.files listFolder:@"/"]
+  [[[_tester.files listFolder:@"/does/not/exist/folder"]
       setResponseBlock:^(DBFILESListFolderResult *result, DBFILESListFolderError *routeError, DBRequestError *error) {
         if (result) {
           MyLog(@"Something went wrong...\n");
+          [TestFormat abort:error routeError:routeError];
         } else {
           [TestFormat printOffset:@"Intentionally errored.\n"];
           [TestFormat printErrors:error routeError:routeError];
@@ -920,7 +930,7 @@ void MyLog(NSString *format, ...) {
 
 - (void)getMetadataError:(void (^)())nextTest {
   [TestFormat printSubTestBegin:NSStringFromSelector(_cmd)];
-  [[[_tester.files getMetadata:@"/"]
+  [[[_tester.files getMetadata:@"/this/path/does/not/exist"]
       setResponseBlock:^(DBFILESMetadata *result, DBFILESGetMetadataError *routeError, DBRequestError *error) {
         if (result) {
           NSAssert(NO, @"This call should have errored.");

@@ -53,6 +53,7 @@
   void (^networkGlobalResponseBlock)(DBRequestError *, DBTask *) =
   ^(DBRequestError *networkError, DBTask *restartTask) {
     if ([networkError isAuthError] || [networkError isBadInputError]) {
+      NSLog(@"Unexpected error. Logging out...");
       [DBClientsManager unlinkAndResetClients];
       ViewController *mainController = (ViewController *)self.window.rootViewController;
       [mainController checkButtons];

@@ -19,6 +19,7 @@
 - (void)testAllUserAPIEndpoints:(void (^ _Nonnull)())nextTest asMember:(BOOL)asMember;
 
 @property TestData * _Nonnull testData;
+@property DBAppClient * _Nonnull unauthorizedClient;
 @property DBAUTHUserAuthRoutes * _Nullable auth;
 @property DBAUTHAppAuthRoutes * _Nullable appAuth;
 @property DBFILESUserAuthRoutes * _Nullable files;

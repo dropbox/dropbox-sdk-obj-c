@@ -38,7 +38,7 @@
 ///
 /// Multi-Dropbox account use case. Returns all current Dropbox user clients.
 ///
-/// @return Mapping of account ID to authorized `DBUserClient` instance.
+/// @return Mapping of `tokenUid` (account ID) to authorized `DBUserClient` instance.
 ///
 + (NSDictionary<NSString *, DBUserClient *> * _Nonnull)authorizedClients;
 
@@ -52,7 +52,7 @@
 ///
 /// Multi-Dropbox account use case. Returns all current Dropbox team clients.
 ///
-/// @return Mapping of account ID to authorized `DBTeamClient` instance.
+/// @return Mapping of `tokenUid` (account ID) to authorized `DBTeamClient` instance.
 ///
 + (NSDictionary<NSString *, DBTeamClient *> * _Nonnull)authorizedTeamClients;
 
