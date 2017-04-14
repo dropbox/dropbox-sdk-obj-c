@@ -50,7 +50,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 
 + (BOOL)storeValueWithKey:(NSString *)key value:(NSString *)value {
   NSData *encoding = [value dataUsingEncoding:NSUTF8StringEncoding];
-  if (encoding) {
+  if (encoding != nil) {
     return [self storeDataValueWithKey:key value:encoding];
   } else {
     return NO;
@@ -67,8 +67,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (NSArray<NSString *> *)retrieveAllTokenIds {
-  NSMutableDictionary<id, id> *query = [DBSDKKeychain
-      queryWithDict:@{(id)kSecReturnAttributes : (id)kCFBooleanTrue, (id)kSecMatchLimit : (id)kSecMatchLimitAll}];
+  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecReturnAttributes : (id)kCFBooleanTrue, (id)kSecMatchLimit : (id)kSecMatchLimitAll}];
   CFDataRef dataResult = nil;
   OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&dataResult);
 
@@ -96,8 +95,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (BOOL)storeDataValueWithKey:(NSString *)key value:(NSData *)value {
-  NSMutableDictionary<id, id> *query =
-      [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
+  NSMutableDictionary<id, id> *query = [DBSDKKeychain queryWithDict:@{(id)kSecAttrAccount : key, (id)kSecValueData : value}];
   SecItemDelete((__bridge CFDictionaryRef)query);
   return SecItemAdd((__bridge CFDictionaryRef)query, nil) == noErr;
 }
@@ -132,19 +130,18 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 
 + (void)checkAccessibilityMigration {
-  NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-  BOOL MigrationOccurred = [[Defaults stringForKey:kAccessibilityMigrationOccurredKey] boolValue];
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  BOOL migrationOccurred = [userDefaults boolForKey:kAccessibilityMigrationOccurredKey];
 
-  if (!MigrationOccurred) {
+  if (migrationOccurred == NO) {
     NSMutableDictionary<id, id> *query = [NSMutableDictionary new];
     NSString *bundleId = [NSBundle mainBundle].bundleIdentifier ?: @"";
     [query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
     [query setObject:(id)[NSString stringWithFormat:kV2KeychainServiceKeyBase, bundleId] forKey:(id)kSecAttrService];
 
-    NSDictionary<id, id> *attributesToUpdate =
-        @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
+    NSDictionary<id, id> *attributesToUpdate = @{(id)kSecAttrAccessible : (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly};
     SecItemUpdate((__bridge CFDictionaryRef)query, (__bridge CFDictionaryRef)attributesToUpdate);
-    [Defaults setObject:@"YES" forKey:kAccessibilityMigrationOccurredKey];
+    [userDefaults setBool:YES forKey:kAccessibilityMigrationOccurredKey];
   }
 }
 
@@ -154,11 +151,11 @@ static const char *kV1OSXAccountName = "Dropbox";
                               appSecret:(NSString *)appSecret {
   NSOperationQueue *queueToUse = queue ?: [NSOperationQueue mainQueue];
 
-  NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSString *migrationOccurredLookupKey = [NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey];
-  BOOL MigrationOccurred = [[Defaults stringForKey:migrationOccurredLookupKey] boolValue];
+  BOOL migrationOccurred = [userDefaults boolForKey:migrationOccurredLookupKey];
 
-  if (!MigrationOccurred) {
+  if (migrationOccurred == NO) {
     NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
 #if TARGET_OS_IPHONE
@@ -210,7 +207,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     NSArray<NSDictionary<NSString *, id> *> *dataResultDict = (NSArray<NSDictionary<NSString *, id> *> *)data ?: @[];
     for (NSDictionary<NSString *, id> *dict in dataResultDict) {
       NSData *foundData = dict[(NSString *)kSecValueData];
-      if (foundData) {
+      if (foundData != nil) {
         NSDictionary *unarchivedFoundData = [NSKeyedUnarchiver unarchiveObjectWithData:foundData];
         NSString *retrievedAppKey = unarchivedFoundData[kV1ConsumerAppKeyKey];
         NSArray<NSDictionary<NSString *, id> *> *credentialsList = unarchivedFoundData[kV1UserCredentialsKey];
@@ -219,10 +216,10 @@ static const char *kV1OSXAccountName = "Dropbox";
           NSString *accessToken = credential[kV1UserAccessTokenKey];
           NSString *accessTokenSecret = credential[kV1UserAccessTokenSecretKey];
 
-          if (uid && accessToken && accessTokenSecret && retrievedAppKey) {
+          if (uid != nil && accessToken != nil && accessTokenSecret != nil && retrievedAppKey != nil) {
             // really old versions of the v1 SDK stored tokens without a
             // corresponding user id, so should be skipped
-            if (![uid isEqualToString:kV1IOSUnknownUserIdKey]) {
+            if ([uid isEqualToString:kV1IOSUnknownUserIdKey] == NO) {
               NSArray<NSString *> *tokenData = @[ uid, accessToken, accessTokenSecret, retrievedAppKey ];
               [v1TokensData addObject:tokenData];
             }
@@ -253,9 +250,8 @@ static const char *kV1OSXAccountName = "Dropbox";
     NSArray<NSDictionary<NSString *, id> *> *dataResultDict = (NSArray<NSDictionary<NSString *, id> *> *)data ?: @[];
     for (NSDictionary<NSString *, id> *dict in dataResultDict) {
       NSData *foundData = dict[(NSString *)kSecValueData];
-      if (foundData) {
-        NSDictionary *credentialsDictionary =
-            [NSKeyedUnarchiver unarchiveObjectWithData:foundData][kV1SyncAccountCredentialsKey];
+      if (foundData != nil) {
+        NSDictionary *credentialsDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:foundData][kV1SyncAccountCredentialsKey];
         for (NSString *credentialKey in credentialsDictionary) {
           NSArray<NSDictionary<NSString *, id> *> *credentialList = credentialsDictionary[credentialKey];
           for (NSDictionary<NSString *, id> *credential in credentialList) {
@@ -263,7 +259,7 @@ static const char *kV1OSXAccountName = "Dropbox";
             NSString *accessToken = credential[kV1SyncUserAccessTokenKey];
             NSString *accessTokenSecret = credential[kV1SyncUserAccessTokenSecretKey];
 
-            if (uid && accessToken && accessTokenSecret && credentialKey) {
+            if (uid != nil && accessToken != nil && accessTokenSecret != nil && credentialKey != nil) {
               NSArray<NSString *> *tokenData = @[ uid, accessToken, accessTokenSecret, credentialKey ];
               [v1TokensData addObject:tokenData];
             }
@@ -304,14 +300,14 @@ static const char *kV1OSXAccountName = "Dropbox";
       NSString *accessToken = credential[kV1UserAccessTokenKey];
       NSString *accessTokenSecret = credential[kV1UserAccessTokenSecretKey];
 
-      if (uid && accessToken && accessTokenSecret && retrievedAppKey) {
+      if (uid != nil && accessToken != nil && accessTokenSecret != nil && retrievedAppKey != nil) {
         NSArray<NSString *> *tokenData = @[ uid, accessToken, accessTokenSecret, retrievedAppKey ];
         [v1TokensData addObject:tokenData];
       }
     }
   }
 
-  if (pData) {
+  if (pData != nil) {
     SecKeychainItemFreeContent(nil, pData);
   }
 
@@ -344,7 +340,7 @@ static const char *kV1OSXAccountName = "Dropbox";
         NSString *accessToken = credential[kV1SyncUserAccessTokenKey];
         NSString *accessTokenSecret = credential[kV1SyncUserAccessTokenSecretKey];
 
-        if (uid && accessToken && accessTokenSecret && credentialKey) {
+        if (uid != nil && accessToken != nil && accessTokenSecret != nil && credentialKey != nil) {
           NSArray<NSString *> *tokenData = @[ uid, accessToken, accessTokenSecret, credentialKey ];
           [v1TokensData addObject:tokenData];
         }
@@ -352,7 +348,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     }
   }
 
-  if (pData) {
+  if (pData != nil) {
     SecKeychainItemFreeContent(nil, pData);
   }
 
@@ -391,7 +387,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     NSString *accessTokenSecret = v1TokenData[2];
     NSString *retrievedAppKey = v1TokenData[3];
 
-    if (![retrievedAppKey isEqualToString:appKey]) {
+    if ([retrievedAppKey isEqualToString:appKey] == NO) {
       [invalidAppKeyOrSecretLock lock];
       invalidAppKeyOrSecret = YES;
       [invalidAppKeyOrSecretLock unlock];
@@ -408,7 +404,7 @@ static const char *kV1OSXAccountName = "Dropbox";
         setResponseBlock:^(DBAUTHTokenFromOAuth1Result *result, DBAUTHTokenFromOAuth1Error *routeError,
                            DBRequestError *error) {
 #pragma unused(routeError)
-          if (result) {
+          if (result != nil) {
             NSString *oauth2Token = result.oauth2Token;
             [tokenConversionResultsLock lock];
             [tokenConversionResults setObject:oauth2Token forKey:uid];
@@ -439,13 +435,14 @@ static const char *kV1OSXAccountName = "Dropbox";
 
   // wait for all token conversion calls to complete and then update the keychain, and call the response block
   dispatch_group_notify(tokenConvertGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-    if (!shouldRetry) {
+    if (shouldRetry == NO) {
       for (NSString *uid in tokenConversionResults) {
         [[self class] storeValueWithKey:uid value:[tokenConversionResults objectForKey:uid]];
       }
-      NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
-      [Defaults setObject:@"YES" forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
+      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+      [userDefaults setBool:YES forKey:[NSString stringWithFormat:kV1TokenMigrationOccurredKeyBase, appKey]];
     }
+
     [queue addOperationWithBlock:^{
       responseBlock(shouldRetry, invalidAppKeyOrSecret, unsuccessfullyMigratedTokenData);
     }];
