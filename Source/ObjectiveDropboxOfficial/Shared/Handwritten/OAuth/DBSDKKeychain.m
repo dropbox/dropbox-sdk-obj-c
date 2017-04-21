@@ -177,7 +177,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 #endif
 
     if ([v1TokensData count] > 0) {
-      [[NSOperationQueue new] addOperationWithBlock:^{
+      [[self v1TokenConversionOperationQueue] addOperationWithBlock:^{
         [[self class] convertV1TokenToV2:v1TokensData
                                   appKey:appKey
                                appSecret:appSecret
@@ -434,7 +434,7 @@ static const char *kV1OSXAccountName = "Dropbox";
           }
           dispatch_group_leave(tokenConvertGroup);
         }
-                   queue:[NSOperationQueue new]];
+                   queue:[self rpcTaskOperationQueue]];
   }
 
   // wait for all token conversion calls to complete and then update the keychain, and call the response block
@@ -451,6 +451,32 @@ static const char *kV1OSXAccountName = "Dropbox";
       responseBlock(shouldRetry, invalidAppKeyOrSecret, unsuccessfullyMigratedTokenData);
     }];
   });
+}
+
+#pragma mark - Operation Queues
+
+static NSOperationQueue *_v1TokenConversionOperationQueue = nil;
++ (NSOperationQueue *)v1TokenConversionOperationQueue {
+    static dispatch_once_t tokenConversionOnceToken;
+    dispatch_once(&tokenConversionOnceToken, ^{
+        _v1TokenConversionOperationQueue = [[NSOperationQueue alloc] init];
+        _v1TokenConversionOperationQueue.name = [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
+        _v1TokenConversionOperationQueue.qualityOfService = NSQualityOfServiceUtility;
+    });
+
+    return _v1TokenConversionOperationQueue;
+}
+
+static NSOperationQueue *_rpcTaskOperationQueue = nil;
++ (NSOperationQueue *)rpcTaskOperationQueue {
+    static dispatch_once_t rpcTaskOnceToken;
+    dispatch_once(&rpcTaskOnceToken, ^{
+        _rpcTaskOperationQueue = [[NSOperationQueue alloc] init];
+        _rpcTaskOperationQueue.name = [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
+        _rpcTaskOperationQueue.qualityOfService = NSQualityOfServiceUtility;
+    });
+
+    return _rpcTaskOperationQueue;
 }
 
 @end
