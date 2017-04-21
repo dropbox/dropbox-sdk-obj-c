@@ -107,6 +107,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESEmmStateDisabled:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESEmmStateOptional:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESEmmStateRequired:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESEmmStateOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToEmmState:other];
+}
+
+- (BOOL)isEqualToEmmState:(DBTEAMPOLICIESEmmState *)anEmmState {
+  if (self == anEmmState) {
+    return YES;
+  }
+  if (self.tag != anEmmState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESEmmStateDisabled:
+    return [[self tagName] isEqual:[anEmmState tagName]];
+  case DBTEAMPOLICIESEmmStateOptional:
+    return [[self tagName] isEqual:[anEmmState tagName]];
+  case DBTEAMPOLICIESEmmStateRequired:
+    return [[self tagName] isEqual:[anEmmState tagName]];
+  case DBTEAMPOLICIESEmmStateOther:
+    return [[self tagName] isEqual:[anEmmState tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -236,6 +288,54 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedFolderJoinPolicyFromAnyone:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedFolderJoinPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedFolderJoinPolicy:other];
+}
+
+- (BOOL)isEqualToSharedFolderJoinPolicy:(DBTEAMPOLICIESSharedFolderJoinPolicy *)aSharedFolderJoinPolicy {
+  if (self == aSharedFolderJoinPolicy) {
+    return YES;
+  }
+  if (self.tag != aSharedFolderJoinPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedFolderJoinPolicyFromTeamOnly:
+    return [[self tagName] isEqual:[aSharedFolderJoinPolicy tagName]];
+  case DBTEAMPOLICIESSharedFolderJoinPolicyFromAnyone:
+    return [[self tagName] isEqual:[aSharedFolderJoinPolicy tagName]];
+  case DBTEAMPOLICIESSharedFolderJoinPolicyOther:
+    return [[self tagName] isEqual:[aSharedFolderJoinPolicy tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -359,6 +459,54 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedFolderMemberPolicyTeam:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedFolderMemberPolicyAnyone:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedFolderMemberPolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedFolderMemberPolicy:other];
+}
+
+- (BOOL)isEqualToSharedFolderMemberPolicy:(DBTEAMPOLICIESSharedFolderMemberPolicy *)aSharedFolderMemberPolicy {
+  if (self == aSharedFolderMemberPolicy) {
+    return YES;
+  }
+  if (self.tag != aSharedFolderMemberPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedFolderMemberPolicyTeam:
+    return [[self tagName] isEqual:[aSharedFolderMemberPolicy tagName]];
+  case DBTEAMPOLICIESSharedFolderMemberPolicyAnyone:
+    return [[self tagName] isEqual:[aSharedFolderMemberPolicy tagName]];
+  case DBTEAMPOLICIESSharedFolderMemberPolicyOther:
+    return [[self tagName] isEqual:[aSharedFolderMemberPolicy tagName]];
+  }
+  return YES;
 }
 
 @end
@@ -500,6 +648,58 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly:
+    result = prime * result + [[self tagName] hash];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyOther:
+    result = prime * result + [[self tagName] hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedLinkCreatePolicy:other];
+}
+
+- (BOOL)isEqualToSharedLinkCreatePolicy:(DBTEAMPOLICIESSharedLinkCreatePolicy *)aSharedLinkCreatePolicy {
+  if (self == aSharedLinkCreatePolicy) {
+    return YES;
+  }
+  if (self.tag != aSharedLinkCreatePolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultPublic:
+    return [[self tagName] isEqual:[aSharedLinkCreatePolicy tagName]];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyDefaultTeamOnly:
+    return [[self tagName] isEqual:[aSharedLinkCreatePolicy tagName]];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyTeamOnly:
+    return [[self tagName] isEqual:[aSharedLinkCreatePolicy tagName]];
+  case DBTEAMPOLICIESSharedLinkCreatePolicyOther:
+    return [[self tagName] isEqual:[aSharedLinkCreatePolicy tagName]];
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -589,6 +789,43 @@
   return self;
 }
 
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sharing hash];
+  result = prime * result + [self.emmState hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamMemberPolicies:other];
+}
+
+- (BOOL)isEqualToTeamMemberPolicies:(DBTEAMPOLICIESTeamMemberPolicies *)aTeamMemberPolicies {
+  if (self == aTeamMemberPolicies) {
+    return YES;
+  }
+  if (![self.sharing isEqual:aTeamMemberPolicies.sharing]) {
+    return NO;
+  }
+  if (![self.emmState isEqual:aTeamMemberPolicies.emmState]) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
 
 #pragma mark - Serializer Object
@@ -662,6 +899,47 @@
 #pragma unused(zone)
   /// object is immutable
   return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.sharedFolderMemberPolicy hash];
+  result = prime * result + [self.sharedFolderJoinPolicy hash];
+  result = prime * result + [self.sharedLinkCreatePolicy hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamSharingPolicies:other];
+}
+
+- (BOOL)isEqualToTeamSharingPolicies:(DBTEAMPOLICIESTeamSharingPolicies *)aTeamSharingPolicies {
+  if (self == aTeamSharingPolicies) {
+    return YES;
+  }
+  if (![self.sharedFolderMemberPolicy isEqual:aTeamSharingPolicies.sharedFolderMemberPolicy]) {
+    return NO;
+  }
+  if (![self.sharedFolderJoinPolicy isEqual:aTeamSharingPolicies.sharedFolderJoinPolicy]) {
+    return NO;
+  }
+  if (![self.sharedLinkCreatePolicy isEqual:aTeamSharingPolicies.sharedLinkCreatePolicy]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
