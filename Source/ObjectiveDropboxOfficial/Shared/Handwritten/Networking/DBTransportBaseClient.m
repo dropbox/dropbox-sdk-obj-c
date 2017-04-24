@@ -22,7 +22,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 + (void)initialize {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    if (!kDebug) {
+    if (!kSDKDebug) {
       kV2SDKBaseHosts = @{
         @"api" : @"https://api.dropbox.com/2",
         @"content" : @"https://api-content.dropbox.com/2",
