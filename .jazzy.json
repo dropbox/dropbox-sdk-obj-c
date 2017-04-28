@@ -606,8 +606,7 @@
     {
       "name": "OAuth", 
       "children": [
-        "DBDesktopOAuthManager", 
-        "DBMobileOAuthManager", 
+        "DBOAuthMobileManager", 
         "DBOAuthManager", 
         "DBAccessToken", 
         "DBOAuthResult", 
