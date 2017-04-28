@@ -136,7 +136,15 @@
       [urlData setObject:unEscapedValue forKey:[kv objectAtIndex:0]];
     }
 
-    DBOpenWithInfo *openWithInfo = [DBOfficialAppConnector openWithInfoFromURL:url];
+    DBOfficialAppConnector *connector = [[DBOfficialAppConnector alloc] initWithAppKey:[TestData new].fullDropboxAppKey
+                                                                     canOpenURLWrapper:^BOOL(NSURL *url) {
+                                                                       return [[UIApplication sharedApplication] canOpenURL:url];
+                                                                     }
+                                                                        openURLWrapper:^(NSURL *url) {
+                                                                          [[UIApplication sharedApplication] openURL:url];
+                                                                        }];
+
+    DBOpenWithInfo *openWithInfo = [connector openWithInfoFromURL:url];
     [mainController setOpenWithInfoNSURL:openWithInfo];
   }
   [mainController checkButtons];
