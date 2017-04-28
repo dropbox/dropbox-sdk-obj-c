@@ -21,7 +21,7 @@
     _testFolderPath = [NSString stringWithFormat:@"%@%@%@%@%@", _baseFolder, @"/", _testFolderName, @"_", _testId];
     _testShareFolderName = @"testShareFolder";
     _testShareFolderPath =
-        [NSString stringWithFormat:@"%@%@%@%@%@", _baseFolder, @"/", _testShareFolderName, @"_", _testId];
+    [NSString stringWithFormat:@"%@%@%@%@%@", _baseFolder, @"/", _testShareFolderName, @"_", _testId];
     _testFileName = @"testFile";
     _testFilePath = [NSString stringWithFormat:@"%@%@%@", _testFolderPath, @"/", _testFileName];
     _testData = @"testing data example";
@@ -30,36 +30,36 @@
     _directoryURL = [_fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
     _destURL = [_directoryURL URLByAppendingPathComponent:_testFileName];
     _destURLException = [_directoryURL
-        URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", _testFileName, @"_does_not_exist"]];
-
+                         URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", _testFileName, @"_does_not_exist"]];
+    
     // generic team data
     _testIdTeam = [NSString stringWithFormat:@"%d", arc4random_uniform(1000)];
     _groupName = [NSString stringWithFormat:@"%@%@", @"GroupName", _testIdTeam];
     _groupExternalId = [NSString stringWithFormat:@"%@%@", @"group-", _testIdTeam];
-
+    
     // personal user data
-    _accountId = @"dbid:<ID1>";
-    _accountId2 = @"dbid:<ID2>";
-    _accountId3 = @"dbid:<ID3>";
-    _accountId3Email = @"<EMAIL1>";
-
+    _accountId = @"dbid:AABL4QRrY7tB9viLgPUqmjkzE6Fe5ujlnlE";
+    _accountId2 = @"dbid:AABZqArm5N_YcH1YxpVbjEWkdzGkYQ6mkqk";
+    _accountId3 = @"dbid:AABi4KhsNtI1RhK-uQINEWkim3ucF-ASWgE";
+    _accountId3Email = @"scobbe502+test1@gmail.com";
+    
     // personal team data
-    _teamMemberEmail = @"<EMAIL2>";
-    _teamMemberNewEmail = @"<EMAIL3>";
+    _teamMemberEmail = @"scobbe502+dfb@gmail.com";
+    _teamMemberNewEmail = @"scobbe@yahoo.com";
     
     // OAuth 1.0 token
-    _oauth1Token = @"<OAUTH_1_TOKEN>";
-    _oauth1TokenSecret = @"<OAUTH_1_TOKEN_SECRET>";
+    _oauth1Token = @"af8oagaahpio0pqf";
+    _oauth1TokenSecret = @"pdfkj7uqqskqyc2";
     
     // App key and secret
-    _fullDropboxAppKey = @"<FULL_DROPBOX_APP_KEY>";
-    _fullDropboxAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
+    _fullDropboxAppKey = @"4adrwp5qg3jf2lz";
+    _fullDropboxAppSecret = @"b8rah3119t9bgzy";
     
-    _teamMemberFileAccessAppKey = @"<TEAM_MEMBER_FILE_ACCESS_APP_KEY>";
-    _teamMemberFileAccessAppSecret = @"<FULL_DROPBOX_APP_SECRET>";
+    _teamMemberFileAccessAppKey = @"ye8gk3g89l1qzti";
+    _teamMemberFileAccessAppSecret = @"ih95mtheg11fxq2";
     
-    _teamMemberManagementAppKey = @"<TEAM_MEMBER_MANAGEMENT_APP_KEY>";
-    _teamMemberManagementAppSecret = @"<TEAM_MEMBER_MANAGEMENT_APP_SECRET>";
+    _teamMemberManagementAppKey = @"58b6omn1ngccg9r";
+    _teamMemberManagementAppSecret = @"tptdjks2gnoib7q";
   }
   return self;
 }
