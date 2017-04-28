@@ -466,6 +466,7 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
 ### Request types
 
 #### RPC-style request
+
 ```objective-c
 [[client.filesRoutes createFolder:@"/test/path/in/Dropbox/account"]
     setResponseBlock:^(DBFILESFolderMetadata *result, DBFILESCreateFolderError *routeError, DBRequestError *networkError) {
@@ -476,6 +477,8 @@ Response handlers are required for all endpoints. Progress handlers, on the othe
       }
     }];
 ```
+
+[-createFolder:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)createFolder:)
 
 Here's an example for listing a folder's contents. In the response handler, we repeatedly call `listFolderContinue:` (for large folders) until we've listed the entire folder:
 
@@ -543,9 +546,12 @@ Here's an example for listing a folder's contents. In the response handler, we r
 }
 ```
 
+[-listFolder:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)listFolder:) and [-listFolderContinue:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)listFolder:)
+
 ---
 
 #### Upload-style request
+
 ```objective-c
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
 
@@ -560,6 +566,8 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
   NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
 }];
 ```
+
+[-uploadData:inputData:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)uploadData:inputData:)
 
 Here's an example of an advanced upload case for "batch" uploading a large number of files:
 
@@ -612,6 +620,8 @@ DBFILESCommitInfo *commitInfo = [[DBFILESCommitInfo alloc] initWithPath:@"/outpu
 
 > Note: the `batchUploadFiles:` route method that is used above automatically chunk-uploads large files, something other upload methods in the SDK do **not** do. Also, with this route, response and progress handlers are passed directly into the route as arguments, and not via the `setResponseBlock` or `setProgressBlock` methods.
 
+[-batchUploadFiles:queue:progressBlock:responseBlock:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)batchUploadFiles:queue:progressBlock:responseBlock:)
+
 ---
 
 #### Download-style request
@@ -639,6 +649,8 @@ NSURL *outputUrl = [outputDirectory URLByAppendingPathComponent:@"test_file_outp
 }];
 ```
 
+[-downloadUrl:rev:overwrite:destination:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)downloadUrl:rev:overwrite:destination:)
+
 Here's an example for downloading straight to memory (`NSData`):
 
 ```objective-c
@@ -656,6 +668,8 @@ Here's an example for downloading straight to memory (`NSData`):
   NSLog(@"%lld\n%lld\n%lld\n", bytesDownloaded, totalBytesDownloaded, totalBytesExpectedToDownload);
 }];
 ```
+
+[-downloadData:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)downloadData:)
 
 ---
 
@@ -716,6 +730,8 @@ If at run time you attempt to access a union instance field that is not associat
       }
     }];
 ```
+
+[-delete_:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)downloadData:)
 
 ---
 
@@ -956,6 +972,8 @@ For a general API v1 migration guide, please see [here](https://www.dropbox.com/
 If your app was originally using an earlier API v1 SDK, including the [iOS Core SDK](https://www.dropbox.com/developers-v1/core/sdks/ios), the [OS X Core SDK](https://www.dropbox.com/developers-v1/core/sdks/osx), the [iOS Sync SDK](https://www.dropbox.com/developers-v1/sync/sdks/ios), or the [OS X Sync SDK](https://www.dropbox.com/developers-v1/sync/sdks/osx), then you can use the v2 SDK to perform a one-time migration of OAuth 1 tokens to OAuth 2.0 tokens, which are used by API v2. That way, when you migrate your app from the earlier SDK to the new API v2 SDK, users will not need to reauthenticate with Dropbox after you perform this update.
 
 To perform this auth token migration, in your app delegate, you should call the following method:
+
+[+checkAndPerformV1TokenMigration:queue:appKey:appSecret:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBClientsManager.html#/c:objc(cs)DBClientsManager(cm)checkAndPerformV1TokenMigration:queue:appKey:appSecret:)
 
 ```objective-c
 BOOL willPerformMigration = [DBClientsManager checkAndPerformV1TokenMigration:^(BOOL shouldRetry, BOOL invalidAppKeyOrSecret,
