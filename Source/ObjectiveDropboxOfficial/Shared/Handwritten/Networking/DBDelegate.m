@@ -53,7 +53,9 @@
           responseHandler(nil, task.response, error);
         }];
       } else {
-        responseHandler(nil, task.response, error);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          responseHandler(nil, task.response, error);
+        }];
       }
       [sessionData.downloadHandlers removeObjectForKey:taskId];
       [sessionData.progressHandlers removeObjectForKey:taskId];
@@ -77,7 +79,9 @@
           responseHandler(responseData, task.response, error);
         }];
       } else {
-        responseHandler(responseData, task.response, error);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          responseHandler(responseData, task.response, error);
+        }];
       }
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.uploadHandlers removeObjectForKey:taskId];
@@ -102,7 +106,9 @@
           responseHandler(responseData, task.response, error);
         }];
       } else {
-        responseHandler(responseData, task.response, error);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          responseHandler(responseData, task.response, error);
+        }];
       }
       [sessionData.responsesData removeObjectForKey:taskId];
       [sessionData.rpcHandlers removeObjectForKey:taskId];
@@ -137,7 +143,9 @@
           progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
         }];
       } else {
-        progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          progressHandler(bytesSent, totalBytesSent, totalBytesExpectedToSend);
+        }];
       }
     } else {
       sessionData.progressData[taskId] = [[DBProgressData alloc] initWithProgressData:bytesSent
@@ -163,7 +171,9 @@
         progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
       }];
     } else {
-      progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        progressHandler(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+      }];
     }
   } else {
     sessionData.progressData[taskId] = [[DBProgressData alloc] initWithProgressData:bytesWritten
@@ -187,7 +197,9 @@
         responseHandler([NSURL URLWithString:tmpOutputPath], downloadTask.response, nil);
       }];
     } else {
-      responseHandler(location, downloadTask.response, nil);
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        responseHandler(location, downloadTask.response, nil);
+      }];
     }
     [sessionData.downloadHandlers removeObjectForKey:taskId];
     [sessionData.progressHandlers removeObjectForKey:taskId];
@@ -233,7 +245,9 @@
           handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
         }];
       } else {
-        handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          handler(progressData.committed, progressData.totalCommitted, progressData.expectedToCommit);
+        }];
       }
       [sessionData.progressData removeObjectForKey:taskId];
     } else {
@@ -262,7 +276,9 @@
           handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
         }];
       } else {
-        handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        }];
       }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
@@ -296,7 +312,9 @@
           handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
         }];
       } else {
-        handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          handler(completionData.responseBody, completionData.responseMetadata, completionData.responseError);
+        }];
       }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
@@ -330,7 +348,9 @@
           handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
         }];
       } else {
-        handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          handler(completionData.urlOutput, completionData.responseMetadata, completionData.responseError);
+        }];
       }
       [sessionData.progressData removeObjectForKey:taskId];
       [sessionData.completionData removeObjectForKey:taskId];
