@@ -23,4 +23,8 @@
   [_uploadData.taskStorage cancelAllTasks];
 }
 
+- (BOOL)uploadsInProgress {
+  return [_uploadData.taskStorage tasksInProgress];
+}
+
 @end

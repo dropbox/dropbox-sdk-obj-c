@@ -115,4 +115,10 @@
   }
 }
 
+- (BOOL)tasksInProgress {
+  @synchronized (self) {
+    return [_uploadTasks count] > 0 || [_downloadUrlTasks count] > 0 || [_downloadDataTasks count] > 0;
+  }
+}
+
 @end

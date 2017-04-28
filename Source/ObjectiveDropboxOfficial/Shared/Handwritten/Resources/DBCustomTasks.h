@@ -30,4 +30,13 @@
 ///
 - (void)cancel;
 
+///
+/// Determines whether there are any upload tasks still in progress.
+///
+/// NOTE: This will return `NO` during the final polling / commit phase of batch upload.
+///
+/// @return Whether there are any upload tasks in progress.
+///
+- (BOOL)uploadsInProgress;
+
 @end
