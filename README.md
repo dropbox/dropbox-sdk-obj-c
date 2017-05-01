@@ -555,7 +555,15 @@ Here's an example for listing a folder's contents. In the response handler, we r
 ```objective-c
 NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
 
-[[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account/my_output.txt" inputData:fileData]
+// For overriding on upload
+DBFILESWriteMode *mode = [[DBFILESWriteMode alloc] initWithOverwrite];
+
+[[[client.filesRoutes uploadData:@"/test/path/in/Dropbox/account/my_output.txt"
+                            mode:mode
+                      autorename:@(YES)
+                  clientModified:nil
+                            mute:@(NO)
+                       inputData:fileData]
     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
       if (result) {
         NSLog(@"%@\n", result);
@@ -567,7 +575,7 @@ NSData *fileData = [@"file data example" dataUsingEncoding:NSUTF8StringEncoding 
 }];
 ```
 
-[-uploadData:inputData:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)uploadData:inputData:)
+[-uploadData:mode:autorename:clientModified:mute:inputData:](http://dropbox.github.io/dropbox-sdk-obj-c/api-docs/latest/Classes/DBFILESUserAuthRoutes.html#/c:objc(cs)DBFILESUserAuthRoutes(im)uploadData:mode:autorename:clientModified:mute:inputData:)
 
 Here's an example of an advanced upload case for "batch" uploading a large number of files:
 

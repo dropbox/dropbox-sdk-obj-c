@@ -174,11 +174,10 @@
     [sessionData.responseHandlerQueues removeObjectForKey:taskId];
     [sessionData.progressHandlerQueues removeObjectForKey:taskId];
   } else {
-    sessionData.completionData[taskId] =
-        [[DBCompletionData alloc] initWithCompletionData:nil
-                                        responseMetadata:downloadTask.response
-                                           responseError:fileMoveError
-                                               urlOutput:tmpOutputUrl];
+    sessionData.completionData[taskId] = [[DBCompletionData alloc] initWithCompletionData:nil
+                                                                         responseMetadata:downloadTask.response
+                                                                            responseError:fileMoveError
+                                                                                urlOutput:tmpOutputUrl];
   }
 }
 

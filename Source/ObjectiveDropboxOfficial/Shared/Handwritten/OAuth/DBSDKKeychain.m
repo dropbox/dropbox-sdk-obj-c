@@ -457,26 +457,28 @@ static const char *kV1OSXAccountName = "Dropbox";
 
 static NSOperationQueue *_v1TokenConversionOperationQueue = nil;
 + (NSOperationQueue *)v1TokenConversionOperationQueue {
-    static dispatch_once_t tokenConversionOnceToken;
-    dispatch_once(&tokenConversionOnceToken, ^{
-        _v1TokenConversionOperationQueue = [[NSOperationQueue alloc] init];
-        _v1TokenConversionOperationQueue.name = [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
-        _v1TokenConversionOperationQueue.qualityOfService = NSQualityOfServiceUtility;
-    });
+  static dispatch_once_t tokenConversionOnceToken;
+  dispatch_once(&tokenConversionOnceToken, ^{
+    _v1TokenConversionOperationQueue = [[NSOperationQueue alloc] init];
+    _v1TokenConversionOperationQueue.name =
+        [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
+    _v1TokenConversionOperationQueue.qualityOfService = NSQualityOfServiceUtility;
+  });
 
-    return _v1TokenConversionOperationQueue;
+  return _v1TokenConversionOperationQueue;
 }
 
 static NSOperationQueue *_rpcTaskOperationQueue = nil;
 + (NSOperationQueue *)rpcTaskOperationQueue {
-    static dispatch_once_t rpcTaskOnceToken;
-    dispatch_once(&rpcTaskOnceToken, ^{
-        _rpcTaskOperationQueue = [[NSOperationQueue alloc] init];
-        _rpcTaskOperationQueue.name = [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
-        _rpcTaskOperationQueue.qualityOfService = NSQualityOfServiceUtility;
-    });
+  static dispatch_once_t rpcTaskOnceToken;
+  dispatch_once(&rpcTaskOnceToken, ^{
+    _rpcTaskOperationQueue = [[NSOperationQueue alloc] init];
+    _rpcTaskOperationQueue.name =
+        [NSString stringWithFormat:@"%@ %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd)];
+    _rpcTaskOperationQueue.qualityOfService = NSQualityOfServiceUtility;
+  });
 
-    return _rpcTaskOperationQueue;
+  return _rpcTaskOperationQueue;
 }
 
 @end

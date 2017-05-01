@@ -111,7 +111,8 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
 
 - (void)dismissAuthController {
   if (_controller != nil) {
-    if (_controller.presentedViewController != nil && _controller.presentedViewController.isBeingDismissed == NO && [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]]) {
+    if (_controller.presentedViewController != nil && _controller.presentedViewController.isBeingDismissed == NO &&
+        [_controller.presentedViewController isKindOfClass:[DBMobileSafariViewController class]]) {
       [_controller dismissViewControllerAnimated:YES completion:nil];
     }
   }
