@@ -344,7 +344,7 @@ view controller.
 }
 ```
 
-Beginning the authentication flow via in-app webview will launch a window like this:
+Beginning the authentication flow on mobile will launch a window like this:
 
 
 <p align="center">
@@ -407,14 +407,14 @@ To handle the redirection back into the Objective-C SDK once the authentication 
 }
 ```
 
-After the end user signs in with their Dropbox login credentials via the in-app webview, they will see a window like this:
+After the end user signs in with their Dropbox login credentials on mobile, they will see a window like this:
 
 
 <p align="center">
   <img src="https://github.com/dropbox/dropbox-sdk-obj-c/blob/master/Images/OAuthFlowApproval.png?raw=true" alt="Auth Flow Approval Example"/>
 </p>
 
-If they press **Allow** or **Cancel**, the `db-<APP_KEY>` redirect URL will be launched from the webview, and will be handled in your application
+If they press **Allow** or **Cancel**, the `db-<APP_KEY>` redirect URL will be launched from the view controller, and will be handled in your application
 delegate's `application:handleOpenURL` method, from which the result of the authorization can be parsed.
 
 Now you're ready to begin making API requests!
