@@ -85,7 +85,7 @@ NSDictionary<NSString *, NSString *> *kV2SDKBaseHosts;
 
     if (routeAuth && [routeAuth isEqualToString:@"app"]) {
       if (!_appKey || !_appSecret) {
-        NSLog(@"App key and/or secret not properly configured. Use custom `DBTransportClient` instance to set.");
+        NSLog(@"App key and/or secret not properly configured. Use custom `DBTransportDefaultConfig` instance to set.");
       }
       NSString *authString = [NSString stringWithFormat:@"%@:%@", _appKey, _appSecret];
       NSData *authData = [authString dataUsingEncoding:NSUTF8StringEncoding];

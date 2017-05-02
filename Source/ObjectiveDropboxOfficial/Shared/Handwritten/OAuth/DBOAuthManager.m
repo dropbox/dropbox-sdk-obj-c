@@ -93,8 +93,10 @@ static DBOAuthManager *s_sharedOAuthManager;
   };
 
   if ([[DBSDKReachability reachabilityForInternetConnection] currentReachabilityStatus] == DBNotReachable) {
-    NSString *message = @"Try again once you have an internet connection.";
-    NSString *title = @"No internet connection";
+    NSString *message = NSLocalizedString(@"Try again once you have an internet connection.",
+                                          @"Displayed when commencing authorization flow without internet connection.");
+    NSString *title = NSLocalizedString(@"No internet connection",
+                                        @"Displayed when commencing authorization flow without internet connection.");
 
     NSDictionary<NSString *, void (^)()> *buttonHandlers = @{
       @"Cancel" : ^{

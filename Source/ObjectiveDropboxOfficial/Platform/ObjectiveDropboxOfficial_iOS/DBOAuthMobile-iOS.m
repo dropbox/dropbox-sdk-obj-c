@@ -59,7 +59,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
                                           message:message
                                    preferredStyle:(UIAlertControllerStyle)UIAlertControllerStyleAlert];
 
-  [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
+  [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancels the current window.")
                                                       style:(UIAlertActionStyle)UIAlertActionStyleCancel
                                                     handler:^(UIAlertAction *action) {
 #pragma unused(action)
@@ -69,7 +69,7 @@ static DBMobileSharedApplication *s_mobileSharedApplication;
                                                         handler();
                                                       }
                                                     }]];
-  [alertController addAction:[UIAlertAction actionWithTitle:@"Retry"
+  [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Retry", @"Retries the previous action.")
                                                       style:(UIAlertActionStyle)UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
 #pragma unused(action)
